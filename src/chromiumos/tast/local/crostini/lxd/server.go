@@ -88,13 +88,12 @@ type imagesJSONVersion struct {
 }
 
 type imagesJSONItem struct {
-	CombinedSquashfsSha256 string `json:"combined_squashfs_sha256,omitempty"`
-	Path                   string `json:"path"`
-	Size                   int    `json:"size"`
-	Ftype                  string `json:"ftype"`
-	CombinedRootxzSha256   string `json:"combined_rootxz_sha256,omitempty"`
-	CombinedSha256         string `json:"combined_sha256,omitempty"`
-	Sha256                 string `json:"sha256"`
+	Path                 string `json:"path"`
+	Size                 int    `json:"size"`
+	Ftype                string `json:"ftype"`
+	CombinedRootxzSha256 string `json:"combined_rootxz_sha256,omitempty"`
+	CombinedSha256       string `json:"combined_sha256,omitempty"`
+	Sha256               string `json:"sha256"`
 }
 
 func detectArch() string {
@@ -123,9 +122,9 @@ func makeIndexJSON() ([]byte, error) {
 		})
 }
 
-func makeImagesJSON(imageDirectory string) ([]byte, error) {
+func makeImagesJSON(metadataPath, rootfsPath string) ([]byte, error) {
 	arch := detectArch()
-	items, err := makeImagesJSONItems(imageDirectory, product(arch))
+	items, err := makeImagesJSONItems(metadataPath, rootfsPath, product(arch))
 	if err != nil {
 		return nil, err
 	}
@@ -151,51 +150,45 @@ func makeImagesJSON(imageDirectory string) ([]byte, error) {
 	return json.Marshal(images)
 }
 
-func makeImagesJSONItems(imageDirectory, product string) (map[string]*imagesJSONItem, error) {
+func makeImagesJSONItems(metadataPath, rootfsPath, product string) (map[string]*imagesJSONItem, error) {
 	productPath := "images/" + strings.ReplaceAll(product, ":", "/") + "/" + fakeVersionName + "/"
 	ftypes := map[string]string{
-		"rootfs.tar.xz":   "root.tar.xz",
-		"lxd.tar.xz":      "lxd.tar.xz",
-		"rootfs.squashfs": "squashfs",
+		rootfsPath:   "root.tar.xz",
+		metadataPath: "lxd.tar.xz",
+	}
+	filenames := map[string]string{
+		"root.tar.xz": "rootfs.tar.xz",
+		"lxd.tar.xz":  "lxd.tar.xz",
 	}
 
-	combinedSquashfs := ""
 	combinedRootfs := ""
 
 	items := map[string]*imagesJSONItem{}
-	for filename, ftype := range ftypes {
-		sha, written, err := hashFile(sha256.New(), path.Join(imageDirectory, filename))
+	for filepath, ftype := range ftypes {
+		sha, written, err := hashFile(sha256.New(), filepath)
 		if err != nil {
-			if os.IsNotExist(err) {
-				continue
-			}
 			return nil, err
 		}
 
-		items[filename] = &imagesJSONItem{
-			Path:   productPath + filename,
+		items[filenames[ftype]] = &imagesJSONItem{
+			Path:   productPath + filenames[ftype],
 			Sha256: hex.EncodeToString(sha.Sum(nil)),
 			Size:   int(written),
 			Ftype:  ftype,
 		}
 
 		// Calculate combined shas.
-		if filename != "lxd.tar.xz" {
-			sha, _, err = hashFile(sha, path.Join(imageDirectory, "lxd.tar.xz"))
+		if filenames[ftype] != "lxd.tar.xz" {
+			sha, _, err = hashFile(sha, metadataPath)
 			if err != nil {
 				return nil, err
 			}
-			if filename == "rootfs.tar.xz" {
-				combinedRootfs = hex.EncodeToString(sha.Sum(nil))
-			} else if filename == "rootfs.squashfs" {
-				combinedSquashfs = hex.EncodeToString(sha.Sum(nil))
-			}
+			combinedRootfs = hex.EncodeToString(sha.Sum(nil))
 		}
 	}
 
 	items["lxd.tar.xz"].CombinedSha256 = combinedRootfs
 	items["lxd.tar.xz"].CombinedRootxzSha256 = combinedRootfs
-	items["lxd.tar.xz"].CombinedSquashfsSha256 = combinedSquashfs
 
 	return items, nil
 }
@@ -222,11 +215,20 @@ func bytesHandler(ctx context.Context, bytes []byte) func(w http.ResponseWriter,
 
 // fileHandler serves files from the image directory over HTTP.
 // It ignores any directory in the request path, it only matches the filename.
-func fileHandler(ctx context.Context, imageDirectory string) func(w http.ResponseWriter, r *http.Request) {
+func fileHandler(ctx context.Context, metadataPath, rootfsPath string) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		testing.ContextLogf(ctx, "File %s requested from tast lxd server", r.URL.Path)
 		_, filename := path.Split(r.URL.Path)
-		filepath := path.Join(imageDirectory, filename)
+		filepath := ""
+		if filename == "lxd.tar.xz" {
+			filepath = metadataPath
+		} else if filename == "rootfs.tar.xz" {
+			filepath = rootfsPath
+		} else {
+			testing.ContextLogf(ctx, "Error: Image server got unexpected request at %s", r.URL.Path)
+			return
+		}
+
 		f, err := os.Open(filepath)
 		if err != nil {
 			testing.ContextLogf(ctx, "Error: Couldn't open file %s requested from image server at url %s: %v", filepath, r.URL.Path, err)
@@ -243,13 +245,13 @@ func fileHandler(ctx context.Context, imageDirectory string) func(w http.Respons
 
 // NewServer creates a new simplestreams lxd container server
 // serving images from the specified directory.
-func NewServer(ctx context.Context, imageDirectory string) (*Server, error) {
+func NewServer(ctx context.Context, metadataPath, rootfsPath string) (*Server, error) {
 	indexJSON, err := makeIndexJSON()
 	if err != nil {
 		return nil, err
 	}
 
-	imagesJSON, err := makeImagesJSON(imageDirectory)
+	imagesJSON, err := makeImagesJSON(metadataPath, rootfsPath)
 	if err != nil {
 		return nil, err
 	}
@@ -257,7 +259,7 @@ func NewServer(ctx context.Context, imageDirectory string) (*Server, error) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/streams/v1/index.json", bytesHandler(ctx, indexJSON))
 	mux.HandleFunc("/streams/v1/images.json", bytesHandler(ctx, imagesJSON))
-	mux.HandleFunc("/images/", fileHandler(ctx, imageDirectory))
+	mux.HandleFunc("/images/", fileHandler(ctx, metadataPath, rootfsPath))
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(404)
 		testing.ContextLogf(ctx, "Tast lxd server received request to unknown path %s", r.URL)
