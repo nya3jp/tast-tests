@@ -16,6 +16,166 @@
       "revId": "4e24913440bc3038c98bf62b49062fbbd0a329f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2972a2_a62af1e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 45
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T07:47:36Z",
+      "side": 1,
+      "message": "Is the logging useful?\n\nIf so, you didn\u0027t log when BSSID is matched using BSSAdded signal watcher.",
+      "revId": "4e24913440bc3038c98bf62b49062fbbd0a329f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a794fa3d_eb9a4072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 45
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T07:47:36Z",
+      "side": 1,
+      "message": "Not sure if I asked before: can we convert request.Ssid and request.Bssid to []byte at the beginning so that we don\u0027t need to convert the candidates\u0027 SSID and BSSID from []byte to string in here and line 263?",
+      "revId": "4e24913440bc3038c98bf62b49062fbbd0a329f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "664b9749_86ae4dcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 45
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T07:47:36Z",
+      "side": 1,
+      "message": "unexpected SSID and BSSID: got %q, %q; want %q %q\n\nHow about split the if-condition into two so that the error message is simpler?\nif bssSSID !\u003d request.Ssid {\n  return false, errors.Errorf(\"got SSID: %q, want %q\", ...) \n}\nif bssBSSID !\u003d request.Bssid {\n  return false, errors.Errorf(\"got BSSID: %q, want %q\", ...) \n}",
+      "range": {
+        "startLine": 293,
+        "startChar": 35,
+        "endLine": 293,
+        "endChar": 91
+      },
+      "revId": "4e24913440bc3038c98bf62b49062fbbd0a329f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54b6bd57_0b619cea",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 45
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T07:47:36Z",
+      "side": 1,
+      "message": "Since we know the type of SSID and BSSID returned by D-Bus BSSAdded signal, shall we stores its underlying type instead of generic interface{}?",
+      "revId": "4e24913440bc3038c98bf62b49062fbbd0a329f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58a36fe0_45bc39f8",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 45
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T07:47:36Z",
+      "side": 1,
+      "message": "parses the D-Bus signal to a BSSAddedSignal.",
+      "range": {
+        "startLine": 68,
+        "startChar": 23,
+        "endLine": 68,
+        "endChar": 61
+      },
+      "revId": "4e24913440bc3038c98bf62b49062fbbd0a329f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d0f8616_36a711e3",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 45
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T07:47:36Z",
+      "side": 1,
+      "message": "len(sig.Body)\u003d%d",
+      "range": {
+        "startLine": 71,
+        "startChar": 29,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "4e24913440bc3038c98bf62b49062fbbd0a329f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc5be6f2_c39935bf",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 45
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T07:47:36Z",
+      "side": 1,
+      "message": "got sig.Body[0]: %v, want dbus.ObjectPath type",
+      "range": {
+        "startLine": 76,
+        "startChar": 29,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "4e24913440bc3038c98bf62b49062fbbd0a329f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af1e057_faff9957",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 45
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T07:47:36Z",
+      "side": 1,
+      "message": "got sig.Body[1]: %v, want map[string]dbus.Variant type",
+      "revId": "4e24913440bc3038c98bf62b49062fbbd0a329f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
