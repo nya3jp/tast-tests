@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf5fa246_536f0593",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-21T18:03:01Z",
+      "side": 1,
+      "message": "lgtm\n\nmight as well add the same test-owner as the 1st CL now",
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
