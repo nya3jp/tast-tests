@@ -10,15 +10,19 @@ import (
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/vm"
 )
 
 var unhandledFiles = []string{
-	"disk_io_perf.go",       // Uses StartedTraceVM
-	"no_access_to_drive.go", // Uses real gaia login
-	"run_with_arc.go",       // Requires ARC++ enabled
-	"share_drive.go",        // Uses real gaia login
-	"startup_perf.go",       // Doesn't use crostini preconditions at all
-	"two_users_install.go",  // Uses real gaia login and doesn't use crostini preconditions
+	"disk_io_perf.go",      // Uses StartedTraceVM
+	"run_with_arc.go",      // Requires ARC++ enabled
+	"startup_perf.go",      // Doesn't use crostini preconditions at all
+	"two_users_install.go", // Uses real gaia login and doesn't use crostini preconditions
+}
+
+var gaiaLoginTests = []string{
+	"no_access_to_drive.go",
+	"share_drive.go",
 }
 
 var expensiveTests = map[string]time.Duration{
@@ -88,6 +92,17 @@ func TestExpensiveParams(t *testing.T) {
 			MinimalSet:    true,
 			IsNotMainline: filename != "fs_corruption.go",
 		}})
+		genparams.Ensure(t, filename, params)
+	}
+}
+
+func TestGaiaLoginParams(t *testing.T) {
+	for _, filename := range gaiaLoginTests {
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			Preconditions: map[vm.ContainerDebianVersion]string{
+				vm.DebianStretch: "crostini.StartedByArtifactWithGaiaLoginStretch()",
+				vm.DebianBuster:  "crostini.StartedByArtifactWithGaiaLoginBuster()",
+			}}})
 		genparams.Ensure(t, filename, params)
 	}
 }
