@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1e2f333_b1312dde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T04:09:45Z",
+      "side": 1,
+      "message": "IIUC, yes. \n\nEven though the txpower information is kept in vif.bss_info when the warning is triggered, and driver can still get the value in add_interface call. (e.g. I see ath10k driver does read the value in its add_interface) As we\u0027re setting \"auto\" here which depends on the operation channel, we might still get the wrong setting before hostapd properly configures the channel.\n\nUpdated the commit message with more information.",
+      "parentUuid": "95ed1ef6_672a9140",
+      "range": {
+        "startLine": 10,
+        "startChar": 57,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "958d97c16a0e9e0a291ab06493b8b84449d61177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5847bb0_1531004c",
         "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "958d97c16a0e9e0a291ab06493b8b84449d61177",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fb4525e_c7034d38",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T04:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5847bb0_1531004c",
+      "revId": "958d97c16a0e9e0a291ab06493b8b84449d61177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
