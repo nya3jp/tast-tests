@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "945a42dd_59821d37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T02:22:24Z",
+      "side": 1,
+      "message": "Thanks for taking a look!",
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "873ee892_4922abaf",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 15
@@ -30,6 +47,30 @@
       "writtenOn": "2020-08-21T01:37:19Z",
       "side": 1,
       "message": "Microseconds()?",
+      "range": {
+        "startLine": 87,
+        "startChar": 78,
+        "endLine": 87,
+        "endChar": 97
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa24669b_6fb59456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T02:22:24Z",
+      "side": 1,
+      "message": "Here I would like to get a number for number of seconds so I think it should be Milliseconds ?\nOr are you suggesting using commandDuration.Microseconds() / 1E6 ?",
+      "parentUuid": "873ee892_4922abaf",
       "range": {
         "startLine": 87,
         "startChar": 78,
@@ -65,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "a1f8817a_979434cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T02:22:24Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "bbe13632_d2989496",
+      "range": {
+        "startLine": 88,
+        "startChar": 76,
+        "endLine": 88,
+        "endChar": 95
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64353291_8fa8f0d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 15
@@ -76,6 +141,30 @@
       "writtenOn": "2020-08-21T01:37:19Z",
       "side": 1,
       "message": "Is there anything you can poll for instead to check the status? testing.Sleep should be avoided if possible.",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "115e84fc_02bb2ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T02:22:24Z",
+      "side": 1,
+      "message": "Totally agree with the idea of avoiding testing.Sleep.\nUnfortunately there is no information exposed by CRAS for this so I guess we need to live with it.",
+      "parentUuid": "64353291_8fa8f0d4",
       "range": {
         "startLine": 98,
         "startChar": 2,
@@ -111,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "d5108172_0410970b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T02:22:24Z",
+      "side": 1,
+      "message": "That is a good point.\nI was thinking that using defer can help waiting for the playback and capture command to return even if any early return happens in crasPerfOneIteration.\nOr maybe I don\u0027t need to worry about that ?",
+      "parentUuid": "d8fb0f0e_21787863",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09675d68_090aff73",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 15
@@ -122,6 +235,30 @@
       "writtenOn": "2020-08-21T01:37:19Z",
       "side": 1,
       "message": "nit: merge line and make the next if an else if",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 16
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c779624c_db762ede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T02:22:24Z",
+      "side": 1,
+      "message": "I see. I was wondering which one is preferred, now I got it. Thanks!",
+      "parentUuid": "09675d68_090aff73",
       "range": {
         "startLine": 160,
         "startChar": 1,
@@ -157,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "c83f1407_0aef63b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T02:22:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e66e6b7e_6b6ed886",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 32
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5efc41e4_c7ab9b7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestutils/cras_test_utils.go",
         "patchSetId": 15
@@ -168,6 +329,30 @@
       "writtenOn": "2020-08-21T01:37:19Z",
       "side": 1,
       "message": "generally testutil is not the best naming convention. Maybe just cras. Then change the function name to be PlaybackCommand and CaptureCommand. That way when using it, you just call cras.PlaybackCommand(...).",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b304678_96506ecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestutils/cras_test_utils.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T02:22:24Z",
+      "side": 1,
+      "message": "There is another package to talk to cras through its dbus API.\nIn this package I would like to put some utility function using cras_test_client.\nMaybe I should rename this as package as cras_test_client. What do you think ?",
+      "parentUuid": "5efc41e4_c7ab9b7e",
       "range": {
         "startLine": 6,
         "startChar": 8,
@@ -203,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "b7427b3d_75f78a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T02:22:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b53609a_ebb64425",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 65
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a91bc09_451d33a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
         "patchSetId": 15
@@ -214,6 +423,30 @@
       "writtenOn": "2020-08-21T01:37:19Z",
       "side": 1,
       "message": "what if both playback and capture are false. You should probably return an error in that case to let the user know that they are miss using the api.",
+      "range": {
+        "startLine": 100,
+        "startChar": 45,
+        "endLine": 100,
+        "endChar": 67
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a51e6d52_e2a9171a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T02:22:24Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. Yes I should fix it.",
+      "parentUuid": "5a91bc09_451d33a0",
       "range": {
         "startLine": 100,
         "startChar": 45,
