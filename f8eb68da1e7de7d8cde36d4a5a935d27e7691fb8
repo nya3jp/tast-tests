@@ -22,6 +22,30 @@
       "revId": "f8eb68da1e7de7d8cde36d4a5a935d27e7691fb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e68b47_7c1e3057",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-08-21T19:01:30Z",
+      "side": 1,
+      "message": "Makes sense. I wasn\u0027t sure if `interface {}` was acceptable or not the first round.",
+      "parentUuid": "a682f1d3_7038720e",
+      "range": {
+        "startLine": 112,
+        "startChar": 80,
+        "endLine": 112,
+        "endChar": 92
+      },
+      "revId": "f8eb68da1e7de7d8cde36d4a5a935d27e7691fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
