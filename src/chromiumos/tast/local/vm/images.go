@@ -174,8 +174,10 @@ func DownloadStagingContainer(ctx context.Context, debianVersion ContainerDebian
 	for _, matches := range allPaths {
 		imagePath := matches[0]
 		filename := matches[1]
-		if filename == "rootfs.tar.xz" {
-			// rootfs.tar.xz doesn't seem to be used, so don't waste time downloading it.
+		if filename == "rootfs.squashfs" {
+			// LXD prefers to use squashfs if it's
+			// available, but it's a larger download so
+			// perfer the rootfs.tar.xz instead.
 			continue
 		}
 
