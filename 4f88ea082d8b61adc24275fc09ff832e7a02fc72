@@ -83,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "59c393c9_7728200a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-21T17:24:39Z",
+      "side": 1,
+      "message": "Sorry, I did the math backwards in my head. in that case, I would use Seconds()",
+      "parentUuid": "fa24669b_6fb59456",
+      "range": {
+        "startLine": 87,
+        "startChar": 78,
+        "endLine": 87,
+        "endChar": 97
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbe13632_d2989496",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 15
@@ -177,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "16b749b8_e6f9da44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-21T17:24:39Z",
+      "side": 1,
+      "message": "If it is possible to eventually modify CRAS to expose some information, I would create a TODO with tracking bug, otherwise, testing.Sleep is fine.",
+      "parentUuid": "115e84fc_02bb2ab4",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8fb0f0e_21787863",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 15
@@ -212,6 +260,30 @@
       "side": 1,
       "message": "That is a good point.\nI was thinking that using defer can help waiting for the playback and capture command to return even if any early return happens in crasPerfOneIteration.\nOr maybe I don\u0027t need to worry about that ?",
       "parentUuid": "d8fb0f0e_21787863",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d315a3c_b8b7dbc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-21T17:24:39Z",
+      "side": 1,
+      "message": "If you are want this to catch the early returns, you need to define it before the early returns happen. You can move it up towards the top of the function for that.",
+      "parentUuid": "d5108172_0410970b",
       "range": {
         "startLine": 122,
         "startChar": 1,
@@ -353,6 +425,30 @@
       "side": 1,
       "message": "There is another package to talk to cras through its dbus API.\nIn this package I would like to put some utility function using cras_test_client.\nMaybe I should rename this as package as cras_test_client. What do you think ?",
       "parentUuid": "5efc41e4_c7ab9b7e",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "4f88ea082d8b61adc24275fc09ff832e7a02fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4122ed5_c2d66de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestutils/cras_test_utils.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-21T17:24:39Z",
+      "side": 1,
+      "message": "That sounds better. It is more specific on the use case.",
+      "parentUuid": "4b304678_96506ecb",
       "range": {
         "startLine": 6,
         "startChar": 8,
