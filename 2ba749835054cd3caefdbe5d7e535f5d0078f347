@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20a9d213_85be2d6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-08-21T20:57:13Z",
+      "side": 1,
+      "message": "nit: rm",
+      "revId": "2ba749835054cd3caefdbe5d7e535f5d0078f347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
