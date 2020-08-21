@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92bd27a3_4c147419",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T03:11:14Z",
+      "side": 1,
+      "message": "Current patch looks quite nice, but as there are still some changes on the way (e.g. bluetooth private), I\u0027ll defer the review until it is ready. Feel free to ping me when you need my review.",
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d27d994_359846d4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T03:11:14Z",
+      "side": 1,
+      "message": "I think we should also include authors/maintainers of chrome for approval/suggestion on this. But I think as you\u0027re looking at some alternatives (bluetooth private), maybe defer this after the decision is made.\n\nFeel free to ping me when this is ready (or include related reviewers directly).",
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4acb4c3_eea8e978",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T03:11:14Z",
+      "side": 1,
+      "message": "nit: end the comment with period as it is a complete sentence? (same below)",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50e01194_e42b18ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T03:11:14Z",
+      "side": 1,
+      "message": "nit: one space here?",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 5
+      },
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb0ce269_b8b68056",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T03:11:14Z",
+      "side": 1,
+      "message": "As Close call is in the caller, I guess it might be clearer to be handled in caller (right after deferred Close)",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7158f40_915fb699",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T03:11:14Z",
+      "side": 1,
+      "message": "The error here is in fact dropped. I guess you mean something like:\n\n  func AssertWifiEnabled(...) (retErr error) {\n    defer func(ctx context.Context) {\n      if err :\u003d tf.DeconfigAP(ctx, ap); err !\u003d nil {\n        if retErr \u003d\u003d nil {\n          retErr \u003d errors.Wrap(err, \"failed to deconfig the ap\")\n        } else {\n          testing.ContextLog(\"Failed to deconfig the ap: \", err)\n        }\n      }\n    }(ctx)\n  }",
+      "range": {
+        "startLine": 24,
+        "startChar": 33,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
