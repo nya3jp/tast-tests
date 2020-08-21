@@ -6,7 +6,6 @@ package policy
 
 import (
 	"context"
-	"fmt"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
@@ -82,21 +81,18 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to create Test API connection: ", err)
 			}
 
+			type windowMode bool
 			const (
-				newBrowser          string = "{keyCode: 'n', shift: false, control: true, alt: false, search: false, pressed: true}"
-				newIncognitoBrowser string = "{keyCode: 'n', shift: true, control: true, alt: false, search: false, pressed: true}"
+				normalWindow    windowMode = false
+				incognitoWindow windowMode = true
 			)
-
-			triggerAccelerator := func(accelerator string) error {
-				expr := fmt.Sprintf(`
-					(async () => {
-						let accelerator = %s;
-						await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accelerator);
-						accelerator.pressed = false;
-						await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accelerator)
-					})()`, accelerator)
-
-				if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
+			openWindow := func(mode windowMode) error {
+				if err := tconn.Call(ctx, nil, `async (incognito) => {
+					let accelerator = {keyCode: 'n', shift: incognito, control: true, alt: false, search: false, pressed: true};
+					await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accelerator);
+					accelerator.pressed = false;
+					await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accelerator);
+				}`, mode); err != nil {
 					return errors.Wrap(err, "could not open browser")
 				}
 
@@ -106,7 +102,7 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 			incognitoEnabled := param.value.Val != IncognitoModeDisabled
 
 			// Open an incognito window
-			if err := triggerAccelerator(newIncognitoBrowser); err != nil {
+			if err := openWindow(incognitoWindow); err != nil {
 				if incognitoEnabled {
 					s.Fatal("Failed to open incognito browser window: ", err)
 				}
@@ -115,7 +111,7 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 			}
 
 			// Open a normal window
-			if err := triggerAccelerator(newBrowser); err != nil {
+			if err := openWindow(normalWindow); err != nil {
 				s.Fatal("Failed to open browser window: ", err)
 			}
 
