@@ -650,6 +650,24 @@
     },
     {
       "key": {
+        "uuid": "a688656f_a5ec8703",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-21T18:02:09Z",
+      "side": 1,
+      "message": "+1 the settings package should probably contain the OpenSettings method/the logic from it.",
+      "parentUuid": "7f5dc039_c32875d0",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b59e7fe3_4e987257",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 4

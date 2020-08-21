@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "656c0c61_596da4f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/listset/listset.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-21T18:02:09Z",
+      "side": 1,
+      "message": "nit: also update the package description to be specific to listset",
+      "range": {
+        "startLine": 5,
+        "startChar": 28,
+        "endLine": 5,
+        "endChar": 54
+      },
+      "revId": "0209a19c9fec323c64125d71ca00430769212775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
