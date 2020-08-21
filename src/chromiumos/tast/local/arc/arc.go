@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -142,6 +143,13 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, err
 	}
 
+	// Open syslog for early-boot analysis.
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
 	arc := &ARC{}
 	toClose := arc
 	defer func() {
@@ -168,6 +176,11 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 			testing.ContextLog(ctx, "Forcing collection of logcat at early boot")
 			// Wait for logcat process to fetch some data
 			testing.Sleep(ctx, time.Second)
+		}
+
+		// Check if there's interesting log in syslog first, and use that.
+		if err := diagnoseSyslog(ctx, reader); err != nil {
+			return nil, errors.Wrap(err, "Android failed to boot in very early stage")
 		}
 
 		return nil, diagnose(logcatPath, errors.Wrap(err, "Android failed to boot in very early stage"))

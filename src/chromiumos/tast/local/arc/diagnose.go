@@ -6,12 +6,15 @@ package arc
 
 import (
 	"bufio"
+	"context"
+	"io"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/syslog"
 )
 
 // crashRegexp matches a line in logcat about a crashed process.
@@ -53,4 +56,23 @@ func diagnose(logcatPath string, observedErr error) error {
 		return errors.Wrapf(observedErr, "Android failed to boot (%s crashed)", crashed)
 	}
 	return errors.Wrap(observedErr, "Android failed to boot")
+}
+
+// diagnoseSyslog scans for typical failures in syslog. Useful in
+// diagnosing ARCVM boot failures.  Add a message if possible.
+func diagnoseSyslog(ctx context.Context, reader *syslog.Reader) error {
+	const crosvmInitialization = "The architecture failed to build the vm:"
+
+	for {
+		e, err := reader.Read()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			return errors.Wrap(err, "Trying to diagnose syslog")
+		}
+		if strings.Contains(e.Content, crosvmInitialization) {
+			return errors.Errorf("crosvm failed initialization: %v", e.Content)
+		}
+	}
 }
