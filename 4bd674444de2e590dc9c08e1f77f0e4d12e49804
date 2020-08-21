@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f63f500e_e1db90fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-21T06:03:02Z",
+      "side": 1,
+      "message": "LGTM % nits. Would be good to get a review from someone who is familiar with crostini tests as well.",
+      "revId": "4bd674444de2e590dc9c08e1f77f0e4d12e49804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce0a6719_8e7cb2b6",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-21T06:03:02Z",
+      "side": 1,
+      "message": "You could probably remove this, and do this in your Close() routine:\nE.g.\nif keepState() \u0026\u0026 startedSuccessfully {\n   // Do nothing\n} else {\n   // Unmount and DeleteImages\n}\n\nstartedSuccessfully might be able to be inferred from the precondition state, or simply mutable state that you add.",
+      "range": {
+        "startLine": 402,
+        "startChar": 3,
+        "endLine": 406,
+        "endChar": 110
+      },
+      "revId": "4bd674444de2e590dc9c08e1f77f0e4d12e49804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd1a2e2_4054d584",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-21T06:03:02Z",
+      "side": 1,
+      "message": "This one is pre-existing, but why is this ignoring the error returned by MountComponent? (unlike in the fast path?)",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 459,
+        "endChar": 19
+      },
+      "revId": "4bd674444de2e590dc9c08e1f77f0e4d12e49804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "788badd0_22ace87d",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-21T06:03:02Z",
+      "side": 1,
+      "message": "Somewhat prefer strconv.ParseBool to parse val so that if the user enters invalid input, they know, and it doesn\u0027t fail silently.",
+      "range": {
+        "startLine": 536,
+        "startChar": 14,
+        "endLine": 536,
+        "endChar": 44
+      },
+      "revId": "4bd674444de2e590dc9c08e1f77f0e4d12e49804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83990356_5c46c655",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-21T06:03:02Z",
+      "side": 1,
+      "message": "Might be useful to errors.Wrap these to add context.",
+      "range": {
+        "startLine": 618,
+        "startChar": 9,
+        "endLine": 618,
+        "endChar": 12
+      },
+      "revId": "4bd674444de2e590dc9c08e1f77f0e4d12e49804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
