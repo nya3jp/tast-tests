@@ -1784,3 +1784,64 @@ func (s *WifiService) WaitForBSSID(ctx context.Context, request *network.WaitFor
 	}
 	return &empty.Empty{}, nil
 }
+
+// EAPAuthSkipped is a streaming gRPC, who watches wpa_supplicant's D-Bus signals until the next connection
+// completes, and tells that the EAP authentication is skipped (i.e., PMKSA is cached and used) or not.
+// Note that the method sends an empty response after the signal watcher is initialized.
+func (s *WifiService) EAPAuthSkipped(_ *empty.Empty, sender network.WifiService_EAPAuthSkippedServer) error {
+	ctx := sender.Context()
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create shill manager")
+	}
+	ifaceName, err := shill.WifiInterface(ctx, m, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to get WiFi interface")
+	}
+	supplicant, err := wpasupplicant.NewSupplicant(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to wpa_supplicant")
+	}
+	iface, err := supplicant.GetInterface(ctx, ifaceName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get interface object paths")
+	}
+
+	sw, err := iface.DBusObject().CreateWatcher(ctx, wpasupplicant.DBusInterfaceSignalPropertiesChanged, wpasupplicant.DBusInterfaceSignalEAP)
+	if err != nil {
+		return errors.Wrap(err, "failed to create signal watcher")
+	}
+	defer sw.Close(ctx)
+
+	// Send an empty response to notify that the watcher is ready.
+	if err := sender.Send(&network.EAPAuthSkippedResponse{}); err != nil {
+		return errors.Wrap(err, "failed to send a ready signal")
+	}
+
+	// Watch if there is any EAP signal until the connection completes.
+	skipped := true
+	for {
+		var s *dbus.Signal
+		select {
+		case s = <-sw.Signals:
+		case <-ctx.Done():
+			return ctx.Err()
+		}
+
+		switch name := wpasupplicant.SignalName(s); name {
+		case wpasupplicant.DBusInterfaceSignalEAP:
+			// Any of the EAP signals indicate that wpa_supplicant has started an EAP authentication state machine.
+			skipped = false
+		case wpasupplicant.DBusInterfaceSignalPropertiesChanged:
+			props := s.Body[0].(map[string]dbus.Variant)
+			if val, ok := props["State"]; ok {
+				if state := val.Value().(string); state == wpasupplicant.DBusInterfaceStateCompleted {
+					return sender.Send(&network.EAPAuthSkippedResponse{Skipped: skipped})
+				}
+			}
+		default:
+			return errors.Errorf("unexpected name type: %s", name)
+		}
+	}
+}

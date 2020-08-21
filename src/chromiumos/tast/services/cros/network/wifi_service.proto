@@ -129,6 +129,11 @@ service WifiService {
 
   // GetMACRandomize tells if MAC randomization is enabled for the WiFi device.
   rpc GetMACRandomize(google.protobuf.Empty) returns (GetMACRandomizeResponse) {}
+
+  // EAPAuthSkipped is a streaming gRPC, who watches wpa_supplicant's D-Bus signals until the next connection
+  // completes, and tells that the EAP authentication is skipped (i.e., PMKSA is cached and used) or not.
+  // Note that the method sends an empty response as the signal watcher is set.
+  rpc EAPAuthSkipped(google.protobuf.Empty) returns (stream EAPAuthSkippedResponse) {}
 }
 
 message ConnectRequest {
@@ -379,4 +384,8 @@ message MACRandomizeSupportResponse {
 
 message GetMACRandomizeResponse {
   bool enabled = 1;
+}
+
+message EAPAuthSkippedResponse {
+  bool skipped = 1;
 }
