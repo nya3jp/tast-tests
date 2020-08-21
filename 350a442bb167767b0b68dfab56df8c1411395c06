@@ -46,6 +46,30 @@
       "revId": "350a442bb167767b0b68dfab56df8c1411395c06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "414c531b_6575a09f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-21T23:26:34Z",
+      "side": 1,
+      "message": "^^ You got the key part of this wrong\n\nBTW, when I said \"error (unexpected)\", I mean \"error, for things that are truly unexpected\", as in an unparseable BSS signal, for instance -- an \"unexpected\" (as in non-matching) BSS is actually perfectly fine.",
+      "parentUuid": "93d8157c_e022f366",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 15
+      },
+      "revId": "350a442bb167767b0b68dfab56df8c1411395c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
