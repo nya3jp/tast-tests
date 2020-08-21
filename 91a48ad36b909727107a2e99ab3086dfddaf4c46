@@ -364,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "7ae0240f_e27d9bbe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T03:11:14Z",
+      "side": 1,
+      "message": "Ah, sorry. my comment was not clear. I mean, maybe we should use s.Error instead of s.Log. My intention is: if we have some problem in TestFixture teardown, it is possible that we\u0027ll leave a bad state to later tests. A test failure is easier to notice than a log and can possibly reduce some debug time for the case.",
+      "parentUuid": "7a56da6a_4fb7a9c3",
+      "range": {
+        "startLine": 69,
+        "startChar": 6,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "91a48ad36b909727107a2e99ab3086dfddaf4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffc0bfc7_c52c495f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
         "patchSetId": 5
