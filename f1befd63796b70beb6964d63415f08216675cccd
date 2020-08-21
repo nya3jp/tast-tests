@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "0318c6a2_57761c3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-21T06:36:57Z",
+      "side": 1,
+      "message": "Thank you for review.",
+      "revId": "f1befd63796b70beb6964d63415f08216675cccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65ca4542_21209fdc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 1
@@ -47,6 +64,30 @@
       "writtenOn": "2020-08-21T06:33:48Z",
       "side": 1,
       "message": "seem to have lost semicolon there?",
+      "range": {
+        "startLine": 310,
+        "startChar": 44,
+        "endLine": 310,
+        "endChar": 46
+      },
+      "revId": "f1befd63796b70beb6964d63415f08216675cccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55aea5b_dbfe33cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-21T06:36:57Z",
+      "side": 1,
+      "message": "It evaluates the expression (instead of statement), and store the result to the last pointer if given.\nSo, it should be ok (and be better, IMO).",
+      "parentUuid": "65ca4542_21209fdc",
       "range": {
         "startLine": 310,
         "startChar": 44,
