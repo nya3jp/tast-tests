@@ -94,6 +94,30 @@
       "revId": "334e2ef2de5ddb51a155c09ca6b0af238074c977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "898498a1_094ca9aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-21T02:11:54Z",
+      "side": 1,
+      "message": "yeah I\u0027m okay with the current code but wanted to double check with Tao.",
+      "parentUuid": "d7d226b1_824f7bc8",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "334e2ef2de5ddb51a155c09ca6b0af238074c977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
