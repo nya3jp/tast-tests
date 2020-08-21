@@ -15,18 +15,8 @@ import (
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/vm"
 )
-
-// Files that are not handled either here or in their own tests, along
-// with why they currently can't be handled.
-var unhandledFiles = []string{
-	"disk_io_perf.go",       // Uses StartedTraceVM
-	"no_access_to_drive.go", // Uses real gaia login
-	"run_with_arc.go",       // Requires ARC++ enabled
-	"share_drive.go",        // Uses real gaia login
-	"startup_perf.go",       // Doesn't use crostini preconditions at all
-	"two_users_install.go",  // Uses real gaia login and doesn't use crostini preconditions
-}
 
 var testFiles = []string{
 	"audio_basic.go",
@@ -109,6 +99,45 @@ func TestExpensiveParams(t *testing.T) {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
 			Timeout:    duration,
 			MinimalSet: true,
+		}})
+		genparams.Ensure(t, filename, params)
+	}
+}
+
+var gaiaLoginTests = []string{
+	"no_access_to_drive.go",
+	"share_drive.go",
+}
+
+func TestGaiaLoginParams(t *testing.T) {
+	for _, filename := range gaiaLoginTests {
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			Preconditions: map[vm.ContainerDebianVersion]string{
+				vm.DebianStretch: "crostini.StartedByArtifactWithGaiaLoginStretch()",
+				vm.DebianBuster:  "crostini.StartedByArtifactWithGaiaLoginBuster()",
+			}}})
+		genparams.Ensure(t, filename, params)
+	}
+}
+
+var appTests = []string{
+	"app_android_studio.go",
+	"app_eclipse.go",
+	"app_emacs.go",
+	"app_gedit.go",
+	"app_vscode.go",
+}
+
+func TestAppTestParams(t *testing.T) {
+	for _, filename := range appTests {
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			Timeout:    15 * time.Minute,
+			MinimalSet: true,
+			Preconditions: map[vm.ContainerDebianVersion]string{
+				vm.DebianBuster: "crostini.StartedByArtifactBusterLargeContainer()",
+			},
+			StableHardwareDep: "crostini.CrostiniAppTest",
+			UseLargeContainer: true,
 		}})
 		genparams.Ensure(t, filename, params)
 	}
