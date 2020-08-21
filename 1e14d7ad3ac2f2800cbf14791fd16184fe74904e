@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "319ba246_77a7dacf",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-21T00:30:23Z",
+      "side": 1,
+      "message": "Is this function is new in the change?\n\nSeems ok, but please mention it in the commit message.",
+      "revId": "1e14d7ad3ac2f2800cbf14791fd16184fe74904e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
