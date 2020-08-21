@@ -122,10 +122,9 @@ var CrostiniStable = hwdep.D(hwdep.SkipOnModel(UnstableModels...))
 // models that are known to be flaky when running Crostini tests.
 var CrostiniUnstable = hwdep.D(hwdep.Model(UnstableModels...))
 
-// ImageArtifact holds the name of the artifact which will be used to
-// boot crostini. When using the StartedByArtifact precondition, you
-// must list this as one of the data dependencies of your test.
-const ImageArtifact string = "crostini_guest_images.tar"
+const vmArtifactPattern string = "crostini_vm_%s.zip"
+const containerMetadataPattern string = "crostini_container_metadata_%s_%s.tar.xz"
+const containerRootfsPattern string = "crostini_container_rootfs_%s_%s.tar.xz"
 
 // The PreData object is made available to users of this precondition via:
 //
@@ -140,49 +139,68 @@ type PreData struct {
 	Keyboard    *input.KeyboardEventWriter
 }
 
-// StartedByArtifact is similar to StartedByDownloadBuster, but will
-// use a pre-built image as a data-dependency rather than downloading one. To
-// use this precondition you must have crostini.ImageArtifact as a data dependency.
-// Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
+// These definitions only exist so I can run the params generator.
 
-// StartedByDownloadStretch is a precondition that ensures a tast test
-// will begin after crostini has been started by downloading an image
-// running Debian Stretch.
-// Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByDownloadStretch() testing.Precondition { return startedByDownloadStretchPre }
+// StartedByArtifact ...
+func StartedByArtifact() testing.Precondition { return startedByArtifactStretchPre }
 
-// StartedByDownloadBuster is a precondition that ensures a tast test will
-// begin after crostini has been started by downloading an image
-// running Debian Buster.
+// StartedByDownloadStretch ...
+func StartedByDownloadStretch() testing.Precondition { return startedByArtifactStretchPre }
+
+// StartedByDownloadBuster ...
+func StartedByDownloadBuster() testing.Precondition { return startedByArtifactStretchPre }
+
+// StartedByArtifactWithGaiaLogin ...
+func StartedByArtifactWithGaiaLogin() testing.Precondition { return startedByArtifactStretchPre }
+
+// StartedByDownloadBusterWithGaiaLogin ...
+func StartedByDownloadBusterWithGaiaLogin() testing.Precondition { return startedByArtifactStretchPre }
+
+// ImageArtifact ...
+const ImageArtifact string = "abc"
+
+// StartedByArtifactStretch ensures that a VM running stretch has
+// started before the test runs. This precondition has complex
+// requirements to use that are best met using the test parameter
+// generator in params.go.
 // Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByDownloadBuster() testing.Precondition { return startedByDownloadBusterPre }
+func StartedByArtifactStretch() testing.Precondition { return startedByArtifactStretchPre }
+
+// StartedByArtifactBuster ensures that a VM running buster has
+// started before the test runs. This precondition has complex
+// requirements to use that are best met using the test parameter
+// generator in params.go.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedByArtifactBuster() testing.Precondition { return startedByArtifactBusterPre }
 
 // StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
 func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 
-// StartedARCEnabled is similar to StartedByArtifact, but will start Chrome
-// with ARCEnabled() option.
+// StartedARCEnabled is similar to StartedByArtifactBuster, but will
+// start Chrome with ARCEnabled() option.
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
 
-// StartedByArtifactWithGaiaLogin is similar to StartedByArtifact, but will log in Chrome with Gaia
-// with Auth() option.
+// StartedByArtifactWithGaiaLoginStretch is similar to
+// StartedByArtifactStretch, but will log in Chrome with Gaia with
+// Auth() option.
 // Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByArtifactWithGaiaLogin() testing.Precondition { return startedByArtifactWithGaiaLoginPre }
+func StartedByArtifactWithGaiaLoginStretch() testing.Precondition {
+	return startedByArtifactWithGaiaLoginStretchPre
+}
 
-// StartedByDownloadBusterWithGaiaLogin is similar to StartedByDownloadBuster, but will log in Chrome with Gaia
-// with Auth() option.
+// StartedByArtifactWithGaiaLoginBuster is similar to
+// StartedByArtifactBuster, but will log in Chrome with Gaia with
+// Auth() option.
 // Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByDownloadBusterWithGaiaLogin() testing.Precondition {
-	return startedByDownloadBusterWithGaiaLoginPre
+func StartedByArtifactWithGaiaLoginBuster() testing.Precondition {
+	return startedByArtifactWithGaiaLoginBusterPre
 }
 
 type setupMode int
 
 const (
 	artifact setupMode = iota
-	download
 )
 
 type loginType int
@@ -192,23 +210,17 @@ const (
 	loginGaia
 )
 
-var startedByArtifactPre = &preImpl{
-	name:    "crostini_started_by_artifact",
-	timeout: chrome.LoginTimeout + 7*time.Minute,
-	mode:    artifact,
-}
-
-var startedByDownloadStretchPre = &preImpl{
-	name:          "crostini_started_by_download_stretch",
-	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	mode:          download,
+var startedByArtifactStretchPre = &preImpl{
+	name:          "crostini_started_by_artifact",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	mode:          artifact,
 	debianVersion: vm.DebianStretch,
 }
 
-var startedByDownloadBusterPre = &preImpl{
-	name:          "crostini_started_by_download_buster",
-	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	mode:          download,
+var startedByArtifactBusterPre = &preImpl{
+	name:          "crostini_started_by_artifact",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	mode:          artifact,
 	debianVersion: vm.DebianBuster,
 }
 
@@ -226,17 +238,18 @@ var startedARCEnabledPre = &preImpl{
 	arcEnabled: true,
 }
 
-var startedByArtifactWithGaiaLoginPre = &preImpl{
-	name:      "crostini_started_by_artifact_gaialogin",
-	timeout:   chrome.LoginTimeout + 7*time.Minute,
-	mode:      artifact,
-	loginType: loginGaia,
+var startedByArtifactWithGaiaLoginStretchPre = &preImpl{
+	name:          "crostini_started_by_artifact_gaialogin",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	mode:          artifact,
+	debianVersion: vm.DebianStretch,
+	loginType:     loginGaia,
 }
 
-var startedByDownloadBusterWithGaiaLoginPre = &preImpl{
-	name:          "crostini_started_by_download_buster_gaialogin",
-	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	mode:          download,
+var startedByArtifactWithGaiaLoginBusterPre = &preImpl{
+	name:          "crostini_started_by_artifact_gaialogin",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	mode:          artifact,
 	debianVersion: vm.DebianBuster,
 	loginType:     loginGaia,
 }
@@ -312,6 +325,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	// have it defined.
 	useLocalImage := keepState(s) && vm.TerminaImageExists()
 
+	var arch string
+	for _, dep := range s.SoftwareDeps() {
+		if dep == "amd64" || dep == "arm" {
+			arch = dep
+		}
+	}
+
 	if p.cont != nil {
 		if err := BasicCommandWorks(ctx, p.cont); err != nil {
 			s.Log("Precondition unsatisifed: ", err)
@@ -385,14 +405,16 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		// Install Crostini.
 		iOptions := &cui.InstallationOptions{
 			UserName:      p.cr.User(),
-			Mode:          cui.Download,
+			Mode:          cui.Artifact,
 			MinDiskSize:   p.minDiskSize,
 			DebianVersion: p.debianVersion,
 		}
-		if p.mode == artifact {
-			iOptions.Mode = cui.Artifact
-			iOptions.ImageArtifactPath = s.DataPath(ImageArtifact)
+		if arch == "" {
+			s.Fatal("Running on an unknown architecture")
 		}
+		iOptions.VMArtifactPath = s.DataPath(fmt.Sprintf(vmArtifactPattern, arch))
+		iOptions.ContainerMetadataPath = s.DataPath(fmt.Sprintf(containerMetadataPattern, p.debianVersion, arch))
+		iOptions.ContainerRootfsPath = s.DataPath(fmt.Sprintf(containerRootfsPattern, p.debianVersion, arch))
 		if err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}
