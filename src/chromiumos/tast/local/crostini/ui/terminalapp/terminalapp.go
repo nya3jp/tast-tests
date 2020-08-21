@@ -32,16 +32,23 @@ type TerminalApp struct {
 // Launch launches the Terminal App and returns it.
 // An error is returned if the app fails to launch.
 func Launch(ctx context.Context, tconn *chrome.TestConn, userName string) (*TerminalApp, error) {
-	rootFindParams := ui.FindParams{
-		Name:      userName + "@penguin: ~",
-		Role:      ui.RoleTypeWindow,
-		ClassName: "BrowserFrame",
-	}
-
 	// Launch the Terminal App.
 	if err := apps.Launch(ctx, tconn, apps.Terminal.ID); err != nil {
 		return nil, err
 	}
+	return Find(ctx, tconn, userName, "~")
+}
+
+// Find finds an open Terminal App with the specified userName and current.
+// working directory (cwd). An error is returned if terminal cannot be found.
+func Find(ctx context.Context, tconn *chrome.TestConn, userName, cwd string) (*TerminalApp, error) {
+	title := userName + "@penguin: " + cwd
+	rootFindParams := ui.FindParams{
+		Name:      title,
+		Role:      ui.RoleTypeWindow,
+		ClassName: "BrowserFrame",
+	}
+
 	app, err := ui.FindWithTimeout(ctx, tconn, rootFindParams, time.Minute)
 	if err != nil {
 		return nil, err
@@ -54,11 +61,11 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, userName string) (*Term
 	}
 
 	terminalApp := &TerminalApp{tconn: tconn, Root: app}
-	return terminalApp, terminalApp.waitForPrompt(ctx, userName)
+	return terminalApp, terminalApp.waitForPrompt(ctx, title)
 }
 
-func (ta *TerminalApp) waitForPrompt(ctx context.Context, userName string) error {
-	waitForPrompt := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: userName + "@penguin: ~"}, uiTimeout).
+func (ta *TerminalApp) waitForPrompt(ctx context.Context, title string) error {
+	waitForPrompt := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: title}, uiTimeout).
 		FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "$ "}, 90*time.Second).
 		WithNamef("Terminal.waitForPrompt()")
 	return uig.Do(ctx, ta.tconn, waitForPrompt)
