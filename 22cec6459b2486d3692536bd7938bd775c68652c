@@ -34,6 +34,24 @@
       "revId": "22cec6459b2486d3692536bd7938bd775c68652c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61983626_a3c9cbe2",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-21T13:22:19Z",
+      "side": 0,
+      "message": "Unlike the referred code in chrome.go, this part actually runs some code.\nSo, if |result| could be kept false due to the communication breakage between chrome and Tast,  an error instance should be returned, regardless of the policy, IIUC.\n\nIf there\u0027s some special case that an error instance won\u0027t be returned but result is kept false, could you share the concrete example scenarios? It sounds like very exceptional case, and very important to be documented in details, IMO.",
+      "parentUuid": "742cd909_a492d101",
+      "revId": "22cec6459b2486d3692536bd7938bd775c68652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

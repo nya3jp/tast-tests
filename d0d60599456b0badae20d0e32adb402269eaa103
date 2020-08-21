@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "d1a41a13_05ff015a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-21T13:22:19Z",
+      "side": 1,
+      "message": "Thank you for review!",
+      "revId": "d0d60599456b0badae20d0e32adb402269eaa103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb8a4e9d_03c5b829",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/incognito_mode_availability.go",
         "patchSetId": 1
