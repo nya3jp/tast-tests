@@ -1,0 +1,5 @@
+{
+    "sha256sum": "53b2ab90b77f6270f110e94de8bb386ce2802ad6a583892320fcbfbb1c76dbbd",
+    "size": 373303132,
+    "url": "gs://cros-containers-staging/88/images/debian/buster/amd64/test/20200929_00:34/rootfs.tar.xz"
+}
