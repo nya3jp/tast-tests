@@ -1034,3 +1034,26 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 
 	return waitForProperties, nil
 }
+
+// EAPAuthSkipped is a wrapper for the streaming gRPC call EAPAuthSkipped.
+// It returns a function that waits and verifies the EAP authentication is skipped or not in the next connection.
+func (tf *TestFixture) EAPAuthSkipped(ctx context.Context) (func() (bool, error), error) {
+	recv, err := tf.WifiClient().EAPAuthSkipped(ctx, &empty.Empty{})
+	if err != nil {
+		return nil, err
+	}
+	s, err := recv.Recv()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to receive ready signal from EAPAuthSkipped")
+	}
+	if s.Skipped {
+		return nil, errors.New("unexpected ready signal: got true, want false")
+	}
+	return func() (bool, error) {
+		resp, err := recv.Recv()
+		if err != nil {
+			return false, errors.Wrap(err, "failed to receive from EAPAuthSkipped")
+		}
+		return resp.Skipped, nil
+	}, nil
+}

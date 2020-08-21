@@ -24,6 +24,8 @@ const (
 	DBusInterfaceSignalPropertiesChanged = "PropertiesChanged"
 	// DBusInterfaceSignalScanDone indicates that the scanning is finished.
 	DBusInterfaceSignalScanDone = "ScanDone"
+	// DBusInterfaceSignalEAP indicates the status of the EAP peer.
+	DBusInterfaceSignalEAP = "EAP"
 
 	// DBusInterfaceStateAssociated is the value of the State property when the interface is associated.
 	DBusInterfaceStateAssociated = "associated"
