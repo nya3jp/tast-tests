@@ -16,6 +16,103 @@
       "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff43c5cd_3a3c0f0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T16:56:09Z",
+      "side": 1,
+      "message": "Thanks for implementing the missing feature. Yenlin, PTAL.",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dc57e82_85534588",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T16:56:09Z",
+      "side": 1,
+      "message": "Test the ability to select network correctly among APs with similar network configurations. It configures two APs with the same SSID/channel/mode but different security config.",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 98
+      },
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75f519f_a8fc02fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T16:56:09Z",
+      "side": 1,
+      "message": "Move to Test.Desc.",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee09565_99e334bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T16:56:09Z",
+      "side": 1,
+      "message": "Guideline says you shall log info when you‘re about to do something that could take a while. Let\u0027s log at the beginning of the time consuming action instead of at the end of it.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77e6a3e0_3e35bd08",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T16:56:09Z",
+      "side": 1,
+      "message": "AP1",
+      "range": {
+        "startLine": 88,
+        "startChar": 32,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
