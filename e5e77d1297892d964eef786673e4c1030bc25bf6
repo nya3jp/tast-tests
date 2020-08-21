@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f52535c_55716e70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-21T20:50:34Z",
+      "side": 1,
+      "message": "This is awesome! Thanks, Ian!\n\nFor reference, https://tastboard.corp.google.com/test?contact\u003dcros-telemetry\u0026testname\u003dbreakpad\u0026dep\u003d has a link to easily check status of these.",
+      "revId": "e5e77d1297892d964eef786673e4c1030bc25bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d2beb55_ba856b8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-21T20:50:34Z",
+      "side": 1,
+      "message": "this one seems stable, actually? https://tastboard.corp.google.com/test/ui.ChromeCrashLoop.breakpad",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "e5e77d1297892d964eef786673e4c1030bc25bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
