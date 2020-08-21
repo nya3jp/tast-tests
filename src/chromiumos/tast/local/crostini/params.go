@@ -5,6 +5,7 @@
 package crostini
 
 import (
+	"fmt"
 	"time"
 
 	"chromiumos/tast/common/genparams"
@@ -119,86 +120,68 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 		}
 
-		for _, stable := range []bool{true, false} {
-			name := "artifact"
-			if !stable {
-				name += "_unstable"
-			}
-
-			// _unstable tests can never be CQ critical.
-			var extraAttr []string
-			if !stable && canBeCritical && !testCase.IsNotMainline {
-				extraAttr = append(extraAttr, "informational")
-			}
-
-			extraData := []string{ImageArtifact}
-
-			var hardwareDeps string
-			if stable {
-				hardwareDeps = "crostini.CrostiniStable"
-			} else {
-				hardwareDeps = "crostini.CrostiniUnstable"
-			}
-
-			var timeout time.Duration
-			if testCase.Timeout != time.Duration(0) {
-				timeout = testCase.Timeout
-			} else {
-				timeout = 7 * time.Minute
-			}
-
-			testParam := generatedParam{
-				Name:              namePrefix + name,
-				ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
-				ExtraData:         append(testCase.ExtraData, extraData...),
-				ExtraSoftwareDeps: testCase.ExtraSoftwareDeps,
-				ExtraHardwareDeps: hardwareDeps,
-				Pre:               "crostini.StartedByArtifact()",
-				Timeout:           timeout,
-				Val:               testCase.Val,
-			}
-			result = append(result, testParam)
-		}
-
-		if testCase.MinimalSet {
-			continue
-		}
-
 		for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
-			name := "download_" + string(debianVersion)
-
-			var extraAttr []string
-			// Download tests can never be CQ critical.
-			if canBeCritical && !testCase.IsNotMainline {
-				extraAttr = append(extraAttr, "informational")
+			if testCase.MinimalSet && debianVersion != vm.DebianBuster {
+				continue
 			}
 
-			var pre string
-			if debianVersion == vm.DebianStretch {
-				pre = "crostini.StartedByDownloadStretch()"
-			} else {
-				pre = "crostini.StartedByDownloadBuster()"
-			}
+			for _, arch := range []string{"amd64", "arm"} {
 
-			var timeout time.Duration
-			if testCase.Timeout != time.Duration(0) {
-				timeout = testCase.Timeout + 3*time.Minute
-			} else {
-				timeout = 10 * time.Minute
-			}
+				for _, stable := range []bool{true, false} {
+					name := "artifact_" + string(debianVersion) + "_" + arch
+					if !stable {
+						name += "_unstable"
+					}
 
-			testParam := generatedParam{
-				Name:              namePrefix + name,
-				ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
-				ExtraData:         testCase.ExtraData,
-				ExtraSoftwareDeps: testCase.ExtraSoftwareDeps,
-				Pre:               pre,
-				Timeout:           timeout,
-				Val:               testCase.Val,
+					// _unstable tests can never be CQ critical.
+					var extraAttr []string
+					if !stable && canBeCritical && !testCase.IsNotMainline {
+						extraAttr = append(extraAttr, "informational")
+					}
+
+					extraData := []string{
+						fmt.Sprintf(vmArtifactPattern, arch),
+						fmt.Sprintf(containerMetadataPattern, debianVersion, arch),
+						fmt.Sprintf(containerRootfsPattern, debianVersion, arch),
+					}
+
+					extraSoftwareDeps := []string{arch}
+
+					var hardwareDeps string
+					if stable {
+						hardwareDeps = "crostini.CrostiniStable"
+					} else {
+						hardwareDeps = "crostini.CrostiniUnstable"
+					}
+
+					var precondition string
+					if debianVersion == vm.DebianStretch {
+						precondition = "crostini.StartedByArtifactStretch()"
+					} else {
+						precondition = "crostini.StartedByArtifactBuster()"
+					}
+
+					var timeout time.Duration
+					if testCase.Timeout != time.Duration(0) {
+						timeout = testCase.Timeout
+					} else {
+						timeout = 7 * time.Minute
+					}
+
+					testParam := generatedParam{
+						Name:              namePrefix + name,
+						ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
+						ExtraData:         append(testCase.ExtraData, extraData...),
+						ExtraSoftwareDeps: append(testCase.ExtraSoftwareDeps, extraSoftwareDeps...),
+						ExtraHardwareDeps: hardwareDeps,
+						Pre:               precondition,
+						Timeout:           timeout,
+						Val:               testCase.Val,
+					}
+					result = append(result, testParam)
+				}
 			}
-			result = append(result, testParam)
 		}
-
 	}
 	return genparams.Template(t, template, result)
 }
