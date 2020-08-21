@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b32e72ad_534f3810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-21T02:00:42Z",
+      "side": 1,
+      "message": "This was done following the similar CL (CL/2321721) suggested by Ricardo.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2321721/comment/c7d699e2_0e6fabe6/\n\nPlease let me know if you think this should be changed, then I have to modify the other file as   well.",
+      "parentUuid": "d37a555a_d2fd7869",
+      "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c66de0a5_f867b8f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11b20063_76d80de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-21T02:00:42Z",
+      "side": 1,
+      "message": "I created a new function that calculates the button bounds before zoom based on button bounds after zoom and zoom factor. Please take a look and if you feel more assertions are needed, please let me know.",
+      "parentUuid": "c66de0a5_f867b8f9",
+      "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f2fb5308_67e2febd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-21T02:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3883a9d_a157d16f",
+      "range": {
+        "startLine": 432,
+        "startChar": 13,
+        "endLine": 432,
+        "endChar": 20
+      },
+      "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85a73b41_095e4fe6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 1
@@ -79,6 +139,30 @@
       "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "643c1535_6362f801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-08-21T02:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a73b41_095e4fe6",
+      "range": {
+        "startLine": 435,
+        "startChar": 13,
+        "endLine": 435,
+        "endChar": 20
+      },
+      "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
