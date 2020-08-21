@@ -19,6 +19,80 @@
     },
     {
       "key": {
+        "uuid": "f0ab2a01_04b9d65c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T06:24:50Z",
+      "side": 1,
+      "message": "Please update.",
+      "range": {
+        "startLine": 414,
+        "startChar": 36,
+        "endLine": 414,
+        "endChar": 48
+      },
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e387cc48_53bbab52",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T06:24:50Z",
+      "side": 1,
+      "message": "ConnectWifi() explicitly obtains SSID so this is unused, right?",
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c930107_664d57e9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T06:24:50Z",
+      "side": 1,
+      "message": "Can it be fully copied?",
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf1f53b_bdc1f3f2",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T06:24:50Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2ffb0fc_e603056b",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
