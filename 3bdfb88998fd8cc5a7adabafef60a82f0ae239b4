@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5218c60_1c0e611a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-21T00:32:34Z",
+      "side": 1,
+      "message": "PTAL.\n\n(I overlooked two occurrences in the previous CL...).",
+      "revId": "3bdfb88998fd8cc5a7adabafef60a82f0ae239b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
