@@ -32,16 +32,22 @@ type TerminalApp struct {
 // Launch launches the Terminal App and returns it.
 // An error is returned if the app fails to launch.
 func Launch(ctx context.Context, tconn *chrome.TestConn, userName string) (*TerminalApp, error) {
+	// Launch the Terminal App.
+	if err := apps.Launch(ctx, tconn, apps.Terminal.ID); err != nil {
+		return nil, err
+	}
+	return Find(ctx, tconn, userName)
+}
+
+// Find finds an open Terminal App, validates it is open for the specified
+// userName and returns it. An error is returned if terminal cannot be found.
+func Find(ctx context.Context, tconn *chrome.TestConn, userName string) (*TerminalApp, error) {
 	rootFindParams := ui.FindParams{
 		Name:      userName + "@penguin: ~",
 		Role:      ui.RoleTypeWindow,
 		ClassName: "BrowserFrame",
 	}
 
-	// Launch the Terminal App.
-	if err := apps.Launch(ctx, tconn, apps.Terminal.ID); err != nil {
-		return nil, err
-	}
 	app, err := ui.FindWithTimeout(ctx, tconn, rootFindParams, time.Minute)
 	if err != nil {
 		return nil, err
