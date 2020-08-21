@@ -22,6 +22,30 @@
       "revId": "334e2ef2de5ddb51a155c09ca6b0af238074c977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd72e3a2_85af00c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-21T01:59:24Z",
+      "side": 1,
+      "message": "I assume some tasts could still benefit from extra debug logging?  If it\u0027s disabled for tasts, we\u0027d provide a function to use dev conf if needed.\n\nIf majority of tasts are not timing critical, I think encapsulate it with rest of the perf chrome flags into a function (http://b/165872341) as khmel@ suggested and use only in perf tasts makes sense.  Otherwise disable by default. There are a lot of other perf flags floating around so which ever way we go it\u0027s good to put them in one place. Thoughts?  @khmel?",
+      "parentUuid": "21c2db9f_8211a70a",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "334e2ef2de5ddb51a155c09ca6b0af238074c977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
