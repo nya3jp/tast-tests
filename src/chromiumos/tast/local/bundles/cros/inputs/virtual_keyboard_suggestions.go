@@ -120,8 +120,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Clear text field before test")
-		if err := conn.Exec(ctx,
-			`document.getElementById('target').value='';`); err != nil {
+		if err := conn.Eval(ctx, `document.getElementById('target').value=''`, nil); err != nil {
 			s.Error("Failed to clear text field: ", err)
 			continue
 		}
