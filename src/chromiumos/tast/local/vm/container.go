@@ -60,6 +60,16 @@ const (
 	DebianBuster ContainerDebianVersion = "buster"
 )
 
+// ContainerArch represents the architecture of the container
+type ContainerArch string
+
+const (
+	// Amd64 indicates that the container is built for amd64
+	Amd64 ContainerArch = "amd64"
+	// Arm indicates that the container is build for arm
+	Arm ContainerArch = "arm"
+)
+
 // ContainerType defines the type of container.
 type ContainerType struct {
 	// Image is the image source for this container.
