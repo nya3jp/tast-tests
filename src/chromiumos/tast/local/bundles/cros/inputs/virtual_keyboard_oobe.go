@@ -51,7 +51,7 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 	}
 
 	// User lands on GAIA login page afterwards.
-	if err := oobeConn.Exec(ctx, "Oobe.skipToLoginForTesting()"); err != nil {
+	if err := oobeConn.Eval(ctx, "Oobe.skipToLoginForTesting()", nil); err != nil {
 		s.Fatal("Failed to skip to login: ", err)
 	}
 
