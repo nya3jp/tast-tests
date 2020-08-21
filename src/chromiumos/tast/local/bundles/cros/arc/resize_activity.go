@@ -226,7 +226,9 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 			}
 			s.Logf("Image containing the black pixels: %s", path)
 
-			s.Fatalf("Test failed. Contains %d / %d (%d%%) black pixels", blackPixels, totalPixels, percent)
+			if percent > 3 {
+				s.Fatalf("Test failed. Contains %d / %d (%d%%) black pixels", blackPixels, totalPixels, percent)
+			}
 		}
 
 		// Restore the activity bounds.
