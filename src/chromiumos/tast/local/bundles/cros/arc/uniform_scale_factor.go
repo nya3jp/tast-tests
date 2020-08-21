@@ -8,13 +8,12 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/perappdensity"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -23,6 +22,7 @@ func init() {
 		Desc:         "Checks that the uniform scale factor is applied to Android applications",
 		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
@@ -30,30 +30,17 @@ func init() {
 }
 
 func UniformScaleFactor(ctx context.Context, s *testing.State) {
-	const (
-		cleanupTime              = 10 * time.Second // time reserved for cleanup.
-		squareSidePx             = 100
-		uniformScaleFactor       = 1.25
-		perAppDensityPackageName = "org.chromium.arc.testapp.perappdensitytest"
-
-		uniformScaleFactorSetting = "persist.sys.ui.uniform_app_scaling"
-	)
+	const squareSidePx = 100
 
 	cr := s.PreValue().(arc.PreData).Chrome
 	a := s.PreValue().(arc.PreData).ARC
-
-	if err := arc.BootstrapCommand(ctx, perappdensity.Setprop, uniformScaleFactorSetting, "1").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to set developer option: ", err)
-	}
 
 	dd, err := perappdensity.MeasureDisplayDensity(ctx, a)
 	if err != nil {
 		s.Fatal("Error obtaining initial display density: ", err)
 	}
 
-	expectedPixelCount := (int)((dd * squareSidePx * uniformScaleFactor) * (dd * squareSidePx * uniformScaleFactor))
-
-	if err := perappdensity.SetUpApk(ctx, a, perappdensity.DensityApk); err != nil {
+	if err := perappdensity.SetUpApk(ctx, a, perappdensity.Apk); err != nil {
 		s.Fatal("Failed to set up perAppDensityApk: ", err)
 	}
 
@@ -62,44 +49,25 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	act, err := arc.NewActivity(a, perAppDensityPackageName, ".ViewActivity")
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
+		s.Fatal("Failed to get internal display info: ", err)
 	}
-	defer act.Close()
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	origShelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, dispInfo.ID)
 	if err != nil {
-		s.Fatal("Failed to set tablet mode to false: ", err)
-	}
-	defer func(ctx context.Context) {
-		cleanup(ctx)
-	}(ctx)
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
-
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start the activity: ", err)
-	}
-	defer func(ctx context.Context, tconn *chrome.TestConn) {
-		act.Stop(ctx, tconn)
-	}(ctx, tconn)
-	ctx, cancel = ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
-
-	if err := ash.WaitForVisible(ctx, tconn, perAppDensityPackageName); err != nil {
-		s.Fatal("Failed to wait for visible app: ", err)
+		s.Fatal("Failed to get shelf behavior: ", err)
 	}
 
-	if err := act.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
-		s.Fatal("Failed to set window state to fullscreen: ", err)
+	// Hide shelf.
+	if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorAlwaysAutoHide); err != nil {
+		s.Fatal("Failed to set shelf behavior to Always Auto Hide: ", err)
 	}
+	// Restore shelf state to original behavior.
+	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, perAppDensityPackageName, ash.WindowStateFullscreen); err != nil {
-		s.Fatal("Failed to wait for the activity to be fullscreen: ", err)
-	}
-
-	if err := perappdensity.CountBlackPixels(ctx, cr, expectedPixelCount); err != nil {
-		s.Fatal("Failed to confirm expected pixels: ", err)
+	wantPixelCount := (int)((dd * squareSidePx) * (dd * squareSidePx))
+	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateFullscreen, wantPixelCount); err != nil {
+		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
 	}
 }
