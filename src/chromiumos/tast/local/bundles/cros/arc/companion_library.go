@@ -77,10 +77,10 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	const (
 		apk = "ArcCompanionLibDemo.apk"
 
-		mainActivity   = ".MainActivity"
-		resizeActivity = ".MoveResizeActivity"
-		shadowActivity = ".ShadowActivity"
-		wallpaper      = "white_wallpaper.jpg"
+		mainActivity     = ".MainActivity"
+		resizeActivityID = ".MoveResizeActivity"
+		shadowActivityID = ".ShadowActivity"
+		wallpaper        = "white_wallpaper.jpg"
 	)
 
 	cr := s.PreValue().(arc.PreData).Chrome
@@ -137,8 +137,8 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Maximize App-controlled Window", mainActivity, testMaximize},
 		{"Always on Top Window State", mainActivity, testAlwaysOnTop},
 		{"Popup Window", mainActivity, testPopupWindow},
-		{"Window shadow", shadowActivity, testWindowShadow},
-		{"Move and Resize Window", resizeActivity, testResizeWindow},
+		//{"Window shadow", shadowActivity, testWindowShadow},
+		//{"Move and Resize Window", resizeActivity, testResizeWindow},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			act, err := arc.NewActivity(a, companionLibDemoPkg, tc.actName)
