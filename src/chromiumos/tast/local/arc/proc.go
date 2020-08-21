@@ -35,8 +35,7 @@ func getUserPath() (user, path string, err error) {
 	return "android-root", initPath, nil
 }
 
-// InitPID returns the PID (outside the guest) of the ARC init process.
-func InitPID() (int32, error) {
+func initPIDImpl(errorIfNotFound bool) (int32, error) {
 	u, initPath, err := getUserPath()
 	if err != nil {
 		return -1, err
@@ -59,5 +58,25 @@ func InitPID() (int32, error) {
 			}
 		}
 	}
-	return -1, errors.New("didn't find init process")
+
+	if errorIfNotFound {
+		return -1, errors.New("didn't find init process")
+	}
+
+	return -1, nil
+}
+
+// InitPID returns the PID (outside the guest) of the ARC init process.
+// It returns an error in case process is not found.
+func InitPID() (int32, error) {
+	return initPIDImpl(true)
+}
+
+// InitExists returns true in case ARC init process exists.
+func InitExists() (bool, error) {
+	pid, err := initPIDImpl(false)
+	if err != nil {
+		return false, err
+	}
+	return pid != -1, nil
 }
