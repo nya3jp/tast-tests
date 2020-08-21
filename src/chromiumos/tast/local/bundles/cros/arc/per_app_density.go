@@ -44,10 +44,10 @@ func PerAppDensity(ctx context.Context, s *testing.State) {
 		s.Fatal("Error obtaining initial display density: ", err)
 	}
 
-	if err := perappdensity.SetUpApk(ctx, a, perappdensity.DensityApk); err != nil {
+	if err := perappdensity.SetUpApk(ctx, a, perappdensity.Apk); err != nil {
 		s.Fatal("Failed to setup perAppDensityApk: ", err)
 	}
-	defer arc.BootstrapCommand(ctx, perappdensity.Setprop, perappdensity.DensitySetting, "false").Run(testexec.DumpLogOnError)
+	defer arc.BootstrapCommand(ctx, perappdensity.Setprop, perappdensity.Setting, "false").Run(testexec.DumpLogOnError)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -61,7 +61,7 @@ func PerAppDensity(ctx context.Context, s *testing.State) {
 	defer cleanup(ctx)
 
 	expectedInitialPixelCount := (dd * squareSidePx) * (dd * squareSidePx)
-	testSteps := []perappdensity.DensityChange{
+	testSteps := []perappdensity.Change{
 		{
 			Name:            "increase",
 			KeySequence:     "ctrl+=",
