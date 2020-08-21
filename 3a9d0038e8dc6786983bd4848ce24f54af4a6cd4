@@ -34,6 +34,24 @@
       "revId": "3a9d0038e8dc6786983bd4848ce24f54af4a6cd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5a06014_4f0bc6df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T04:52:43Z",
+      "side": 1,
+      "message": "My pleasure. This is subtle and my team also hit the pitfall before. I\u0027m writing a section about reserving ctx for cleanup in Writing Tast document.",
+      "parentUuid": "cb4bf4bd_fed276f3",
+      "revId": "3a9d0038e8dc6786983bd4848ce24f54af4a6cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
