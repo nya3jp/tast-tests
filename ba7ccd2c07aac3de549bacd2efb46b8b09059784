@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "303e7d88_2f1c3e28",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T16:11:28Z",
+      "side": 1,
+      "message": "Good catch. We shall have a proper prefix to avoid name collision. Consider \"ConnOption\"?",
+      "parentUuid": "e86b5943_19502166",
+      "range": {
+        "startLine": 415,
+        "startChar": 5,
+        "endLine": 415,
+        "endChar": 11
+      },
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e387cc48_53bbab52",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -144,6 +168,30 @@
       "writtenOn": "2020-08-21T08:04:26Z",
       "side": 1,
       "message": "Do you think it would be better:\n\n  secProps, err :\u003d c.secConf.ShillServiceProperties()\n  ...\n\n  props :\u003d make(map[string]interface{})\n  for k, v :\u003d range c.props {\n    props[k] \u003d v\n  }\n  for k, v :\u003d range secProps {\n    props[k] \u003d v\n  }\n\n  propsEnc, err :\u003d protoutil.EncodeToShillValMap(props)",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 56
+      },
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "477c914e_226ce426",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T16:11:28Z",
+      "side": 1,
+      "message": "Aren\u0027t they equivalent?",
+      "parentUuid": "e743450c_7b191e67",
       "range": {
         "startLine": 467,
         "startChar": 0,
