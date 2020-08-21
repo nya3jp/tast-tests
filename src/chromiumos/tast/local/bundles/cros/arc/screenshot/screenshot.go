@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/screenshot"
 )
 
@@ -71,6 +72,22 @@ func CountDiffPixels(imageA, imageB image.Image, threshold uint8) (int, error) {
 		}
 	}
 	return numPixels, nil
+}
+
+// GrabAndCropScreenshot grabs a screenshot and crops it to the specified bounds.
+func GrabAndCropScreenshot(ctx context.Context, cr *chrome.Chrome, bounds coords.Rect) (image.Image, error) {
+	img, err := GrabScreenshot(ctx, cr)
+	if err != nil {
+		return nil, err
+	}
+
+	x1 := bounds.Left + bounds.Width
+	y1 := bounds.Top + bounds.Height
+	subImage := img.(interface {
+		SubImage(r image.Rectangle) image.Image
+	}).SubImage(image.Rect(bounds.Left, bounds.Top, x1, y1))
+
+	return subImage, nil
 }
 
 // GrabScreenshot creates a screenshot and returns an image.Image.
