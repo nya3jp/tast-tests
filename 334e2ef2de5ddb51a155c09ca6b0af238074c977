@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "a6609b52_68f5dbde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2020-08-21T20:54:15Z",
+      "side": 1,
+      "message": "Suppose we will have pstore ready soon, I am fine to disable all dev stuff in all tast tests. That make sure we are in same code path with regular users",
+      "parentUuid": "898498a1_094ca9aa",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "334e2ef2de5ddb51a155c09ca6b0af238074c977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbf3ab0d_3f2bafba",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
