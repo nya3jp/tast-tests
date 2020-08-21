@@ -1664,3 +1664,60 @@ func (s *WifiService) SetDHCPProperties(ctx context.Context, req *network.SetDHC
 		},
 	}, nil
 }
+
+func (s *WifiService) EAPAuthSkipped(_ *empty.Empty, sender network.WifiService_EAPAuthSkippedServer) error {
+	ctx := sender.Context()
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create shill manager")
+	}
+	ifaceName, err := shill.WifiInterface(ctx, m, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to get WiFi interface")
+	}
+	supplicant, err := wpasupplicant.NewSupplicant(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to wpa_supplicant")
+	}
+	iface, err := supplicant.GetInterface(ctx, ifaceName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get interface object paths")
+	}
+
+	sw, err := iface.DBusObject().CreateWatcher(ctx, wpasupplicant.DBusInterfaceSignalPropertiesChanged, wpasupplicant.DBusInterfaceSignalEAP)
+	if err != nil {
+		return errors.Wrap(err, "failed to create signal watcher")
+	}
+	defer sw.Close(ctx)
+
+	if err := sender.Send(&network.EAPAuthSkippedResponse{}); err != nil {
+		return errors.Wrap(err, "failed to send a ready signal")
+	}
+
+	for {
+		var s *dbus.Signal
+		select {
+		case s = <-sw.Signals:
+		case <-ctx.Done():
+			return ctx.Err()
+		}
+
+		parts := strings.Split(s.Name, ".")
+		switch member := parts[len(parts)-1]; member {
+		case wpasupplicant.DBusInterfaceSignalEAP:
+			// Any of the EAP signals indicate that wpa_supplicant has started an EAP authentication state machine.
+			return sender.Send(&network.EAPAuthSkippedResponse{Skipped: false})
+		case wpasupplicant.DBusInterfaceSignalPropertiesChanged:
+			props := s.Body[0].(map[string]dbus.Variant)
+			if val, ok := props["State"]; ok {
+				if state := val.Value().(string); state == wpasupplicant.DBusInterfaceStateCompleted {
+					// The connection has completed without EAP authentication, considered skipped.
+					return sender.Send(&network.EAPAuthSkippedResponse{Skipped: true})
+				}
+			}
+		default:
+			return errors.Errorf("unexpected member type: %s", member)
+		}
+	}
+}

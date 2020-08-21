@@ -17,10 +17,14 @@ const (
 	dbusInterfaceInterface         = "fi.w1.wpa_supplicant1.Interface"
 	dbusInterfaceMethodReassociate = "Reassociate"
 	dbusInterfacePropBSSs          = "BSSs"
+
 	// DBusInterfaceSignalBSSAdded Interface became awaere of a new BSS.
 	DBusInterfaceSignalBSSAdded = "BSSAdded"
 	// DBusInterfaceSignalPropertiesChanged indicates that some properties have changed. Possible properties are: "ApScan", "Scanning", "State", "CurrentBSS", "CurrentNetwork".
 	DBusInterfaceSignalPropertiesChanged = "PropertiesChanged"
+	// DBusInterfaceSignalEAP indicates the status of the EAP peer.
+	DBusInterfaceSignalEAP = "EAP"
+
 	// DBusInterfaceStateAssociated is the value of the State property when the interface is associated.
 	DBusInterfaceStateAssociated = "associated"
 	// DBusInterfaceStateCompleted is the value of the State property when all authentication is completed.
