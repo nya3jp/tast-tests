@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "7e303d7a_8a708947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-21T23:10:24Z",
+      "side": 1,
+      "message": "For P, in order to get info from the Activity, we were using \"dumpsys --proto\". The problem was that in R that code no longer works since a lot of the dumpsys info was moved to SystemUI.\n\nrisan@ is working on providing that info in R. \nMy guess is that you should be able to get that info from dumpsys / system ui.\n\nInfo here:\nhttp://b/152576355",
+      "parentUuid": "9534aa7e_643c4498",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 215,
+        "endChar": 37
+      },
+      "revId": "3d2d0df7c390810ef212fba0cbe10a9b0c1f3d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b35d6f76_3ec33904",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
