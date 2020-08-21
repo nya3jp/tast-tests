@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5310d5c_573023d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-21T09:23:07Z",
+      "side": 1,
+      "message": "PTAL.",
+      "revId": "d0d60599456b0badae20d0e32adb402269eaa103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb8a4e9d_03c5b829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/incognito_mode_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-21T09:23:07Z",
+      "side": 1,
+      "message": "Note: Renamed (+ slightly refactored) to make the responsibility clearer.",
+      "revId": "d0d60599456b0badae20d0e32adb402269eaa103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
