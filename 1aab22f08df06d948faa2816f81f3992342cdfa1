@@ -138,6 +138,30 @@
     },
     {
       "key": {
+        "uuid": "b2101c5b_5a1ba7e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-08-21T10:20:01Z",
+      "side": 1,
+      "message": "Hi Shuhei, I had assumed that by not starting the external sub-process, you meant not using [sh -c], which I had already done. Glad, we were able to rule out the confusion over chat. Will implement the changes. Thanks.",
+      "parentUuid": "33f72d97_1e1b5a26",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "1aab22f08df06d948faa2816f81f3992342cdfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c273f34_4d10d8f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
         "patchSetId": 11
