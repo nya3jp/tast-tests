@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b575314_b1474fe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-08-21T06:58:26Z",
+      "side": 1,
+      "message": "Maybe call them \u0027ZIP files\u0027 so that it\u0027s clear that \u0027zip\u0027 is not used as a verb or a function.\nIf you decide to follow this convention, then make sure to be consistent too.",
+      "range": {
+        "startLine": 80,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "d4389c7f0cef269ec6dba46f054a4d19e426441d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d331587f_6276e74e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-08-21T06:58:26Z",
+      "side": 1,
+      "message": "How about making all the error messages consistent:\n\n  \"Cannot blah\"\n\ninstead of\n\n  \"Failed to blah\"\n\nor\n\n  \"Unable to blah\"\n\nor \n\n  \"Blah failed\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 21
+      },
+      "revId": "d4389c7f0cef269ec6dba46f054a4d19e426441d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7abd1a4c_e0ed12b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-08-21T06:58:26Z",
+      "side": 1,
+      "message": "Ctrl",
+      "range": {
+        "startLine": 109,
+        "startChar": 27,
+        "endLine": 109,
+        "endChar": 31
+      },
+      "revId": "d4389c7f0cef269ec6dba46f054a4d19e426441d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "286b70a9_090c43ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-08-21T06:58:26Z",
+      "side": 1,
+      "message": "How about something like:\n\n  fmt.Sprintf(\"%d files selected\", len(zipFiles))",
+      "range": {
+        "startLine": 119,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 69
+      },
+      "revId": "d4389c7f0cef269ec6dba46f054a4d19e426441d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
