@@ -351,6 +351,30 @@
       "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260a6c27_e4371739",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-21T05:51:05Z",
+      "side": 1,
+      "message": "I see. Thank you for the explanation. I will change my patch series to pass a pointer to PerfStatOutput to create the PerfOpts.",
+      "parentUuid": "6250cdfb_74c98e9b",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
