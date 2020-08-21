@@ -46,6 +46,30 @@
       "revId": "1c6fd3df4709d7faecc3585018ae6bd33e5ab76a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ad49554_02e973eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-21T16:27:39Z",
+      "side": 1,
+      "message": "Sorry my bad. I thought that :\u003d performs partial definition. But when it takes place in the inner scope, variable shadowing takes precedence.",
+      "parentUuid": "e044306a_24c53b0a",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 5
+      },
+      "revId": "1c6fd3df4709d7faecc3585018ae6bd33e5ab76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
