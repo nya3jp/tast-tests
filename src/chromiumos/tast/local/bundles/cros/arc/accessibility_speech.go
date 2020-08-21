@@ -73,13 +73,13 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			[]string{"OFF", "Toggle Button", "Not pressed", "Press Search+Space to toggle"},
 		}, {
 			"Search+Right",
-			[]string{"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle"},
+			[]string{"CheckBox", "Check box", "Not checked", "not checked", "Press Search+Space to toggle"},
 		}, {
 			"Search+Right",
-			[]string{"seekBar", "Slider", "25", "Min 0", "Max 100"},
+			[]string{"seekBar", "Slider", "25%", "Min 0", "Max 100"},
 		}, {
 			"Search+Right",
-			[]string{"Slider", "3", "Min 0", "Max 10"},
+			[]string{"Slider", "30%", "Min 0", "Max 10"},
 		}, {
 			"Search+Right",
 			[]string{"ANNOUNCE", "Button", "Press Search+Space to activate"},
