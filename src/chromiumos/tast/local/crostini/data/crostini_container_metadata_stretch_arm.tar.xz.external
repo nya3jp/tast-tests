@@ -1,0 +1,5 @@
+{
+  "url": "gs://cros-containers-staging/87/images/debian/stretch/arm64/test/20200820_01:16/lxd.tar.xz",
+  "size": 672,
+  "sha256sum": "f43ccc3f0406ed9b7410186000c6c1d24fa99b4aa32c27da986dff900f36eac3"
+}

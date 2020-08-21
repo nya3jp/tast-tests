@@ -122,10 +122,9 @@ var CrostiniStable = hwdep.D(hwdep.SkipOnModel(UnstableModels...))
 // models that are known to be flaky when running Crostini tests.
 var CrostiniUnstable = hwdep.D(hwdep.Model(UnstableModels...))
 
-// ImageArtifact holds the name of the artifact which will be used to
-// boot crostini. When using the StartedByArtifact precondition, you
-// must list this as one of the data dependencies of your test.
-const ImageArtifact string = "crostini_guest_images.tar"
+const vmArtifactPattern string = "crostini_vm_%s.zip"
+const containerMetadataPattern string = "crostini_container_metadata_%s_%s.tar.xz"
+const containerRootfsPattern string = "crostini_container_rootfs_%s_%s.tar.xz"
 
 // The PreData object is made available to users of this precondition via:
 //
@@ -312,6 +311,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	// have it defined.
 	useLocalImage := keepState(s) && vm.TerminaImageExists()
 
+	var arch string
+	for _, dep := range s.SoftwareDeps() {
+		if dep == "amd64" || dep == "arm" {
+			arch = dep
+		}
+	}
+
 	if p.cont != nil {
 		if err := BasicCommandWorks(ctx, p.cont); err != nil {
 			s.Log("Precondition unsatisifed: ", err)
@@ -390,8 +396,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			DebianVersion: p.debianVersion,
 		}
 		if p.mode == artifact {
+			if arch == "" {
+				s.Fatal("Running on an unknown architecture")
+			}
 			iOptions.Mode = cui.Artifact
-			iOptions.ImageArtifactPath = s.DataPath(ImageArtifact)
+			iOptions.VMArtifactPath = s.DataPath(fmt.Sprintf(vmArtifactPattern, arch))
+			iOptions.ContainerMetadataPath = s.DataPath(fmt.Sprintf(containerMetadataPattern, p.debianVersion, arch))
+			iOptions.ContainerRootfsPath = s.DataPath(fmt.Sprintf(containerRootfsPattern, p.debianVersion, arch))
 		}
 		if err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
