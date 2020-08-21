@@ -247,6 +247,11 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 		return v, err
 	}
 
+	s.Log("Waiting for ARC to stop")
+	if err := waitForARCStopped(ctx); err != nil {
+		return v, err
+	}
+
 	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		s.Fatal("Failed to wait until CPU is cooled down: ", err)
 	}
@@ -323,6 +328,21 @@ func waitForAndroidDataRemoved(ctx context.Context) error {
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for Android data directory to be removed")
+	}
+	return nil
+}
+
+// waitForARCStopped waits for ARC to stop.
+func waitForARCStopped(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if exist, err := arc.InitExists(); err != nil {
+			return testing.PollBreak(err)
+		} else if exist {
+			return errors.New("ARC is not yet stopped")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for ARC to stop")
 	}
 	return nil
 }
