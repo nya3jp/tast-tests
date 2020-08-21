@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"path"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -122,6 +123,9 @@ var CrostiniUnstable = hwdep.D(hwdep.Model(UnstableModels...))
 // boot crostini. When using the StartedByArtifact precondition, you
 // must list this as one of the data dependencies of your test.
 const ImageArtifact string = "crostini_guest_images.tar"
+
+const rootfsPattern string = "crostini_container_%s_%s_rootfs"
+const metadataPattern string = "crostini_container_%s_%s_metadata"
 
 // The PreData object is made available to users of this precondition via:
 //
@@ -365,9 +369,11 @@ const (
 )
 
 var startedByArtifactPre = &preImpl{
-	name:    "crostini_started_by_artifact",
-	timeout: chrome.LoginTimeout + 7*time.Minute,
-	mode:    artifact,
+	name:          "crostini_started_by_artifact",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	mode:          artifact,
+	debianVersion: vm.DebianStretch,
+	arch:          vm.Amd64,
 }
 
 var startedByDownloadStretchPre = &preImpl{
@@ -419,6 +425,7 @@ type preImpl struct {
 	timeout       time.Duration             // Timeout for completing the precondition.
 	mode          setupMode                 // Where (download/build artifact) the container image comes from.
 	debianVersion vm.ContainerDebianVersion // OS version of the container image.
+	arch          vm.ContainerArch          // e.g. amd64, arm64
 	arcEnabled    bool                      // Flag for whether Arc++ should be available (as well as crostini).
 	minDiskSize   uint64                    // The minimum size of the VM image in bytes. 0 to use default disk size.
 	cr            *chrome.Chrome
@@ -564,7 +571,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 
 	terminaImage := ""
-	containerDir := ""
+	rootfsPath := ""
+	metadataPath := ""
 
 	switch p.mode {
 	case download:
@@ -573,10 +581,12 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			s.Fatal("Failed to download staging termina: ", err)
 		}
 
-		containerDir, err = vm.DownloadStagingContainer(ctx, p.debianVersion)
+		containerDir, err := vm.DownloadStagingContainer(ctx, p.debianVersion)
 		if err != nil {
 			s.Fatal("Failed to download staging container: ", err)
 		}
+		rootfsPath = path.Join(containerDir, "rootfs.tar.xz")
+		metadataPath = path.Join(containerDir, "lxd.tar.xz")
 
 	case artifact:
 		artifactPath := s.DataPath(ImageArtifact)
@@ -585,15 +595,14 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			s.Fatal("Failed to extract termina: ", err)
 		}
 
-		containerDir, err = vm.ExtractContainer(ctx, p.cr.User(), artifactPath)
-		if err != nil {
-			s.Fatal("Failed to extract container: ", err)
-		}
+		metadataPath = s.DataPath(fmt.Sprintf(metadataPattern, p.debianVersion, p.arch))
+		rootfsPath = s.DataPath(fmt.Sprintf(rootfsPattern, p.debianVersion, p.arch))
+
 	default:
 		s.Fatal("Unrecognized mode: ", p.mode)
 	}
 
-	server, err := lxd.NewServer(ctx, containerDir)
+	server, err := lxd.NewServer(ctx, metadataPath, rootfsPath)
 	if err != nil {
 		s.Fatal("Error creating lxd image server: ", err)
 	}
