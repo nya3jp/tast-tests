@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61343812_eefb2df7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2020-08-21T20:22:47Z",
+      "side": 1,
+      "message": "Added a README.txt in blob.zip, stating the copyright terms.",
+      "revId": "2c722b984992bfcfabe6ce2ec94537fca113ba8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
