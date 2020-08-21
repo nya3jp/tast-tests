@@ -6,9 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
-	"regexp"
-	"strconv"
 	"strings"
 	"time"
 
@@ -16,34 +13,12 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arc/screen"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
-
-const (
-	keyTotalFramesRendered = "Total frames rendered"
-	keyJankyFrames         = "Janky frames"
-)
-
-// Global regexp to avoid compiling it multiple times during the test.
-// Treat it a s a const.
-
-var gfxinfoSamplesRe = regexp.MustCompile(
-	fmt.Sprintf(
-		`(%s): (?P<num_frames>\d+)\s+`+
-			`(%s): (\d+) \((?:\d+\.\d+|-?nan)%%\)\s+`+
-			`(?:50th percentile: \d+ms\s+)?`+
-			`(90th percentile): (\d+)ms\s+`+
-			`(95th percentile): (\d+)ms\s+`+
-			`(99th percentile): (\d+)ms\s+`+
-			`(Number Missed Vsync): (\d+)\s+`+
-			`(Number High input latency): (\d+)\s+`+
-			`(Number Slow UI thread): (\d+)\s+`+
-			`(Number Slow bitmap uploads): (\d+)\s+`+
-			`(Number Slow issue draw commands): (\d+)\s+`, keyTotalFramesRendered, keyJankyFrames))
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -174,7 +149,7 @@ func grabPerfSamples(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d 
 			// Before resetting the stats, it is important to wait until the activity
 			// is not generating new frame captures, otherwise it will generate "noise"
 			// in the stats.
-			if err := waitUntilNoNewFramesAvailable(ctx, a, pkgName); err != nil {
+			if err := screen.WaitUntilNoNewFramesAvailable(ctx, a, pkgName); err != nil {
 				return nil, err
 			}
 
@@ -186,11 +161,11 @@ func grabPerfSamples(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d 
 				return nil, err
 			}
 
-			stats, err := gfxinfoDumpStats(ctx, a, pkgName)
+			stats, err := screen.GfxinfoDumpStats(ctx, a, pkgName)
 			if err != nil {
 				return nil, err
 			}
-			numFrames := stats[keyTotalFramesRendered]
+			numFrames := stats[screen.KeyTotalFramesRendered]
 			if numFrames == 0 {
 				testing.ContextLog(ctx, "Ignoring stats since no frames were captured during the screen rotation")
 				continue
@@ -201,14 +176,14 @@ func grabPerfSamples(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d 
 				if err != nil {
 					return nil, err
 				}
-				if key == keyJankyFrames {
+				if key == screen.KeyJankyFrames {
 					// Since "Janky frames" is meaningless by itself, we track the "Janky percentage" instead.
 					key = "Janky percentage"
 					value = 100 * value / numFrames
 				}
 
 				dir := perf.SmallerIsBetter
-				if strings.HasPrefix(key, keyTotalFramesRendered) {
+				if strings.HasPrefix(key, screen.KeyTotalFramesRendered) {
 					dir = perf.BiggerIsBetter
 				}
 
@@ -237,61 +212,9 @@ func grabPerfSamples(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d 
 	return samples, nil
 }
 
-// gfxinfoDumpStats parses and returns the output of "dumpsys gfxinfo" using the global gfxinfoSampleRe regexp.
-func gfxinfoDumpStats(ctx context.Context, a *arc.ARC, pkgName string) (map[string]int, error) {
-	// Returning dumpsys text output as it doesn't support Protobuf.
-	output, err := a.Command(ctx, "dumpsys", "gfxinfo", pkgName).Output(testexec.DumpLogOnError)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to launch dumpsys")
-	}
-	ss := string(output)
-	stats := gfxinfoSamplesRe.FindStringSubmatch(ss)
-	if stats == nil {
-		testing.ContextLog(ctx, "Dumpsys output: ", ss)
-		return nil, testing.PollBreak(errors.New("failed to parse output"))
-	}
-	m := make(map[string]int)
-	// Skip group 0 since it is the one that contains all the groups together.
-	for i := 1; i < len(stats); i += 2 {
-		k := stats[i]
-		v, err := strconv.Atoi(stats[i+1])
-		if err != nil {
-			return nil, err
-		}
-		m[k] = v
-	}
-	return m, nil
-}
-
 // gfxinfoResetStats resets the graphics stats associated with a package name.
 func gfxinfoResetStats(ctx context.Context, a *arc.ARC, pkgName string) error {
 	return a.Command(ctx, "dumpsys", "gfxinfo", pkgName, "reset").Run()
-}
-
-// waitUntilNoNewFramesAvailable waits until no new frames are captured by "dumpsys gfxinfo".
-// This "wait" is needed to prevent "polluting" the next capture from frames that don't belong to
-// the rotation.
-func waitUntilNoNewFramesAvailable(ctx context.Context, a *arc.ARC, pkgName string) error {
-	current := -1
-
-	// testing.Poll is using an "Interval == 1 second" which is more than enough time to capture a
-	// frame. If no frames are being captured during that time, it is safe to assume that the
-	// activity is "idle" and won't trigger any new frame capture.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		stats, err := gfxinfoDumpStats(ctx, a, pkgName)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		numFrames := stats[keyTotalFramesRendered]
-		if current != numFrames {
-			current = numFrames
-			return errors.New("frames are still being captured")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to rotate device")
-	}
-	return nil
 }
 
 // rotateDisplaySync rotates to display to a given angle. Waits until the rotation is complete in the Android side.
