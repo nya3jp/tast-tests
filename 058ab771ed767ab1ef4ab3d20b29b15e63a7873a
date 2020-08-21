@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0398945_85a618d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-21T18:17:58Z",
+      "side": 1,
+      "message": "LGTM, though it would probably be a good idea to talk with Ricardo about \"dumpsys for R\". I have seen some discussion around it, but don\u0027t know a ton of the details of what has actually been decided for it. This bug is related to it: b/152576355",
+      "revId": "058ab771ed767ab1ef4ab3d20b29b15e63a7873a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
