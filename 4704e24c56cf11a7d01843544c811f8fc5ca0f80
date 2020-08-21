@@ -327,6 +327,30 @@
       "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6250cdfb_74c98e9b",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-21T02:39:14Z",
+      "side": 1,
+      "message": "It\u0027s true that we always have to consider trade-offs, but I strongly recommend against the obscure map[string]interface{} type because type safety is the most powerful feature of Go\u0027s static analysis that prevents bugs. I also don\u0027t think the interface is simple --- users have to know which entry has which type, otherwise reading values will panic.\n\nPlease note that using options to specify output variables is a known technique in Go. An example from gRPC-Go:\nhttps://pkg.go.dev/google.golang.org/grpc?tab\u003ddoc#Header\nhttps://pkg.go.dev/google.golang.org/grpc?tab\u003ddoc#Peer\nhttps://pkg.go.dev/google.golang.org/grpc?tab\u003ddoc#Trailer\n\nIf you want to prevent users from reading the output value before it\u0027s ready, the simplest way seems to be to fill the output value only after End is called (i.e. to avoid filling the output value incrementally). Then even when users try to read the output value before calling End, the error is obvious because the value is always empty. Alternatively you can specify a callback in the option that is called in End, but in general callbacks are unpopular in Go because they make the code execution flow harder to read.",
+      "parentUuid": "9e265c48_912a161b",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "4704e24c56cf11a7d01843544c811f8fc5ca0f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
