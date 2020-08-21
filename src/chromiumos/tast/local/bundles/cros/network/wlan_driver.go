@@ -142,7 +142,7 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.19": "wireless/marvell/mwifiex/mwifiex_pcie.ko",
 	},
 	wlan.Realtek8822CPCIE: {
-		"4.14": "wireless/realtek/rtw88/rtwpci.ko",
+		"4.14": "wireless/realtek/rtw88/rtw88_8822ce.ko",
 		"5.4":  "wireless/realtek/rtw88/rtwpci.ko",
 	},
 }
