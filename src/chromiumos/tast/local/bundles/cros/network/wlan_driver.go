@@ -143,7 +143,7 @@ var expectedWLANDriver = map[string]map[string]string{
 	},
 	wlan.Realtek8822CPCIE: {
 		"4.14": "wireless/realtek/rtw88/rtw88_8822ce.ko",
-		"5.4":  "wireless/realtek/rtw88/rtwpci.ko",
+		"5.4":  "wireless/realtek/rtw88/rtw88_8822ce.ko",
 	},
 }
 
