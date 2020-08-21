@@ -97,8 +97,8 @@ func (s *Server) ctrlPath() string {
 	return path.Join(s.workDir, s.filename("ctrl"))
 }
 
-// stdoutFilename returns the filename under OutDir to store stdout of this hostapd.
-func (s *Server) stdoutFilename() string {
+// StdoutFilename returns the filename under OutDir to store stdout of this hostapd.
+func (s *Server) StdoutFilename() string {
 	return s.filename("stdout")
 }
 
@@ -154,7 +154,7 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 	}
 	cmd.Stderr = s.stderrFile
 
-	s.stdoutFile, err = fileutil.PrepareOutDirFile(ctx, s.stdoutFilename())
+	s.stdoutFile, err = fileutil.PrepareOutDirFile(ctx, s.StdoutFilename())
 	if err != nil {
 		return errors.Wrap(err, "failed to open stdout log of hostapd")
 	}
