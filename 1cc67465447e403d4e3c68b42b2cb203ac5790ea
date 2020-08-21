@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "824e701e_9df69037",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-21T00:36:31Z",
+      "side": 1,
+      "message": "I\u0027m happy you found FastDebug useful :)\n\nThat said, what I dislike about the current implementation in pita is that the parameter is supplied in a file instead of as an argument to tast run. There\u0027s a simple fix to this: getting the parameter via s.Var().\n\nI\u0027ll be proposing a CL to do this for pita and you might consider doing the same here. I\u0027ll link the CL when it\u0027s ready.",
+      "revId": "1cc67465447e403d4e3c68b42b2cb203ac5790ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
