@@ -11,6 +11,7 @@ import (
 	"math"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/screenshot"
@@ -28,6 +29,8 @@ const (
 	DensitySetting = "persist.sys.enable_application_zoom"
 	// DensityApk is the name of the apk used in these tests.
 	DensityApk = "ArcPerAppDensityTest.apk"
+	// DensityPackageName is the name of density activity.
+	DensityPackageName = "org.chromium.arc.testapp.perappdensitytest"
 )
 
 // DensityChange is a struct containing information to perform density changes.
@@ -47,21 +50,29 @@ func (dc *DensityChange) ExecuteChange(ctx context.Context, cr *chrome.Chrome, e
 	if err := ew.Accel(ctx, dc.KeySequence); err != nil {
 		return errors.Wrapf(err, "could not change scale factor using %q", dc.KeySequence)
 	}
-	if err := CountBlackPixels(ctx, cr, int(dc.BlackPixelCount)); err != nil {
+	if err := ConfirmBlackPixelCount(ctx, cr, int(dc.BlackPixelCount)); err != nil {
 		return errors.Wrap(err, "could not check number of black pixels")
 	}
 	return nil
 }
 
-// CountBlackPixels grabs a screenshot and checks that number of black pixels is equal to wantPixelCount.
-func CountBlackPixels(ctx context.Context, cr *chrome.Chrome, wantPixelCount int) error {
+// CountBlackPixels grabs a screenshot and counts the number of black pixels.
+func CountBlackPixels(ctx context.Context, cr *chrome.Chrome) (int, error) {
+	img, err := screenshot.GrabScreenshot(ctx, cr)
+	if err != nil {
+		return 0, err
+	}
+	return screenshot.CountPixels(img, color.Black), nil
+}
+
+// ConfirmBlackPixelCount grabs a screenshot and checks that number of black pixels is equal to wantPixelCount.
+func ConfirmBlackPixelCount(ctx context.Context, cr *chrome.Chrome, wantPixelCount int) error {
 	// Need to wait for relayout to complete, before grabbing new screenshot.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		img, err := screenshot.GrabScreenshot(ctx, cr)
+		gotPixelCount, err := CountBlackPixels(ctx, cr)
 		if err != nil {
-			return testing.PollBreak(err)
+			testing.PollBreak(err)
 		}
-		gotPixelCount := screenshot.CountPixels(img, color.Black)
 		diff := math.Abs(float64(wantPixelCount-gotPixelCount) / float64(wantPixelCount))
 		if diff > 0.01 {
 			return errors.Errorf("wrong number of black pixels, got: %d, want: %d", gotPixelCount, wantPixelCount)
@@ -102,6 +113,76 @@ func SetUpApk(ctx context.Context, a *arc.ARC, apk string) error {
 	return nil
 }
 
+// StartDensityActivityWithWindowState starts the density activity with the specified window state.
+// It is the callers responsibility to close the activity.
+func StartDensityActivityWithWindowState(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, cr *chrome.Chrome, windowState arc.WindowState) (*arc.Activity, error) {
+	cleanupTime := 10 * time.Second // time reserved for cleanup.
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to set tablet mode to false")
+	}
+	defer func(ctx context.Context) {
+		cleanup(ctx)
+	}(ctx)
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	act, err := arc.NewActivity(a, DensityPackageName, ".ViewActivity")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create new activity")
+	}
+	//defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return nil, errors.Wrap(err, "failed to start the activity")
+	}
+	//	defer act.Stop(ctx, tconn)
+
+	if err := ash.WaitForVisible(ctx, tconn, DensityPackageName); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for visible app")
+	}
+
+	if err := act.SetWindowState(ctx, tconn, windowState); err != nil {
+		return nil, errors.Wrap(err, "failed to set window state to normal")
+	}
+
+	ashWindowState, err := windowState.ToAshWindowState()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get ash window state")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, DensityPackageName, ashWindowState); err != nil {
+		return nil, errors.Wrapf(err, "failed to wait for the activity to have required window state %q", windowState.String())
+	}
+
+	return act, nil
+}
+
+// EnableUSFAndConfirmPixelState enables USF, and then confirms the state afterwards.
+func EnableUSFAndConfirmPixelState(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, cr *chrome.Chrome, windowState arc.WindowState, defaultPixelCount int) error {
+	const (
+		uniformScaleFactor        = 1.25
+		uniformScaleFactorSetting = "persist.sys.ui.uniform_app_scaling"
+	)
+	if err := arc.BootstrapCommand(ctx, Setprop, uniformScaleFactorSetting, "1").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to set developer option")
+	}
+
+	expectedPixelCount := (int)((float64)(defaultPixelCount) * uniformScaleFactor * uniformScaleFactor)
+
+	testing.ContextLog(ctx, "Running app, with uniform scaling enabled")
+	act, err := StartDensityActivityWithWindowState(ctx, a, tconn, cr, windowState)
+	if err != nil {
+		return errors.Wrap(err, "failed to start activity after enabling uniform scale factor")
+	}
+	defer act.Close()
+
+	if err := ConfirmBlackPixelCount(ctx, cr, expectedPixelCount); err != nil {
+		return errors.Wrap(err, "failed to verify uniform scale factor state")
+	}
+	return nil
+}
+
 // RunTest takes a slice of activity names and a slice of density changes and executes them.
 func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName string, testSteps []DensityChange, activity string, expectedInitialPixelCount float64) error {
 	tconn, err := cr.TestAPIConn(ctx)
@@ -137,7 +218,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 		return errors.Wrap(err, "failed to wait for the activity to be fullscreen")
 	}
 
-	if err := CountBlackPixels(ctx, cr, int(expectedInitialPixelCount)); err != nil {
+	if err := ConfirmBlackPixelCount(ctx, cr, int(expectedInitialPixelCount)); err != nil {
 		return errors.Wrap(err, "failed to check initial state: ")
 	}
 
