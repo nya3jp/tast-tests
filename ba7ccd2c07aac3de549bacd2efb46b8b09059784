@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "922ced4b_61afd89a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T06:18:08Z",
+      "side": 1,
+      "message": "I think you don\u0027t have to CR+2 your own CL. See: https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#updating-cls-after-code_review_2",
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2ffb0fc_e603056b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-21T06:18:08Z",
+      "side": 1,
+      "message": "Let secConf have \u0026base.Config{} as default. Otherwise secConf is, in fact, a required parameter as you\u0027ll assume it non-nil in later logic.\n\n(And then, the caller can omit Security(\u0026base.Config{}))",
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
