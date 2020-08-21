@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a682f1d3_7038720e",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-21T13:43:18Z",
+      "side": 1,
+      "message": "maybe, change this to \"value interface{}\", so SetVoiceInteractionConcentValue can use this, too?\n\noptional/huge nit: as you touch this function, nice to move this to L92 (above ToggleUIWithHotkey) to put it closer to the using functions.",
+      "range": {
+        "startLine": 112,
+        "startChar": 80,
+        "endLine": 112,
+        "endChar": 92
+      },
+      "revId": "f8eb68da1e7de7d8cde36d4a5a935d27e7691fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
