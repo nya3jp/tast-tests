@@ -77,10 +77,10 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	const (
 		apk = "ArcCompanionLibDemo.apk"
 
-		mainActivity   = ".MainActivity"
-		resizeActivity = ".MoveResizeActivity"
-		shadowActivity = ".ShadowActivity"
-		wallpaper      = "white_wallpaper.jpg"
+		mainActivity     = ".MainActivity"
+		resizeActivityID = ".MoveResizeActivity"
+		shadowActivityID = ".ShadowActivity"
+		wallpaper        = "white_wallpaper.jpg"
 	)
 
 	cr := s.PreValue().(arc.PreData).Chrome
