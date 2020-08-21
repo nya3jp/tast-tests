@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cff13c41_181b86be",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-08-21T21:07:07Z",
+      "side": 1,
+      "message": "I saw the other pattern is calling this in the autotest_private_api?",
+      "range": {
+        "startLine": 89,
+        "startChar": 68,
+        "endLine": 89,
+        "endChar": 86
+      },
+      "revId": "2ba749835054cd3caefdbe5d7e535f5d0078f347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20a9d213_85be2d6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
         "patchSetId": 3
