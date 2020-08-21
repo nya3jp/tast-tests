@@ -5,8 +5,11 @@
 package wificell
 
 import (
+	"bytes"
 	"context"
+	"io/ioutil"
 	"net"
+	"path"
 	"time"
 
 	"chromiumos/tast/common/network/ip"
@@ -247,5 +250,22 @@ func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
 	}
 	h.hostapd = hs
 
+	return nil
+}
+
+// ConfirmPMKSACached confirms that PMKSA was cached and used on AP.
+func (h *APIface) ConfirmPMKSACached(ctx context.Context) error {
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("failed to get output directory")
+	}
+	logFilePath := path.Join(dir, h.hostapd.StdoutFilename())
+	b, err := ioutil.ReadFile(logFilePath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read hostapd log file")
+	}
+	if !bytes.Contains(b, []byte("PMK from PMKSA cache")) {
+		return errors.New("PMKSA cache not found")
+	}
 	return nil
 }
