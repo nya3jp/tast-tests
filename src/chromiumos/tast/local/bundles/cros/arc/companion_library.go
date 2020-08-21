@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arc/companionlib"
 	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -77,10 +78,9 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	const (
 		apk = "ArcCompanionLibDemo.apk"
 
-		mainActivity   = ".MainActivity"
-		resizeActivity = ".MoveResizeActivity"
-		shadowActivity = ".ShadowActivity"
-		wallpaper      = "white_wallpaper.jpg"
+		mainActivity     = ".MainActivity"
+		resizeActivityID = ".MoveResizeActivity"
+		shadowActivityID = ".ShadowActivity"
 	)
 
 	cr := s.PreValue().(arc.PreData).Chrome
@@ -119,8 +119,8 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 
 	// Change the wallpaper to pure white for counting pixels easiler.
 	// The Wallpaper will exist continuous if the Chrome session gets reused.
-	if err := setWallpaper(ctx, tconn, server.URL+"/"+wallpaper); err != nil {
-		s.Error("Failed to set wallpaper: ", err)
+	if err := companionlib.SetWhiteWallpaper(ctx, tconn, s); err != nil {
+		s.Error("Failed to set white wallpaper: ", err)
 	}
 
 	for _, tc := range []struct {
@@ -1418,15 +1418,6 @@ func getLastJSONMessage(ctx context.Context, d *ui.Device) (*companionLibMessage
 		return nil, errors.Wrap(err, "parse JSON format message failure")
 	}
 	return &msg, nil
-}
-
-// setWallpaper setting given URL as ChromeOS wallpaper.
-func setWallpaper(ctx context.Context, tconn *chrome.TestConn, wallpaperURL string) error {
-	return tconn.Call(ctx, nil, `(url) => tast.promisify(chrome.wallpaper.setWallpaper)({
-		  url: url,
-		  layout: 'STRETCH',
-		  filename: 'test_wallpaper'
-		})`, wallpaperURL)
 }
 
 // getWindowCaptionScreenshot returns a screenshot image of window caption bar.

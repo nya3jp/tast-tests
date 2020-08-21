@@ -11,11 +11,13 @@ import (
 	"math"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -24,14 +26,16 @@ import (
 const (
 	// Setprop is the path for setprop command.
 	Setprop = "/system/bin/setprop"
-	// DensitySetting is the settings string for allowing density changes.
-	DensitySetting = "persist.sys.enable_application_zoom"
-	// DensityApk is the name of the apk used in these tests.
-	DensityApk = "ArcPerAppDensityTest.apk"
+	// Setting is the settings string for allowing density changes.
+	Setting = "persist.sys.enable_application_zoom"
+	// Apk is the name of the apk used in these tests.
+	Apk = "ArcPerAppDensityTest.apk"
+	// PackageName is the name of density activity.
+	PackageName = "org.chromium.arc.testapp.perappdensitytest"
 )
 
-// DensityChange is a struct containing information to perform density changes.
-type DensityChange struct {
+// Change is a struct containing information to perform density changes.
+type Change struct {
 	// The action that should be performed to the current density.
 	Name string
 	// The corresponding key sequence to perform the action.
@@ -42,29 +46,41 @@ type DensityChange struct {
 
 // ExecuteChange executes the density change, specified by KeySequence
 // and confirms that the density was changed by validating the size of the square on the screen.
-func (dc *DensityChange) ExecuteChange(ctx context.Context, cr *chrome.Chrome, ew *input.KeyboardEventWriter) error {
+func (dc *Change) ExecuteChange(ctx context.Context, cr *chrome.Chrome, ew *input.KeyboardEventWriter) error {
 	testing.ContextLogf(ctx, "%s density using key %q", dc.Name, dc.KeySequence)
 	if err := ew.Accel(ctx, dc.KeySequence); err != nil {
 		return errors.Wrapf(err, "could not change scale factor using %q", dc.KeySequence)
 	}
-	if err := CountBlackPixels(ctx, cr, int(dc.BlackPixelCount)); err != nil {
+	if err := WaitForBlackPixelCount(ctx, cr, int(dc.BlackPixelCount)); err != nil {
 		return errors.Wrap(err, "could not check number of black pixels")
 	}
 	return nil
 }
 
-// CountBlackPixels grabs a screenshot and checks that number of black pixels is equal to wantPixelCount.
-func CountBlackPixels(ctx context.Context, cr *chrome.Chrome, wantPixelCount int) error {
+// CountBlackPixels grabs a screenshot and counts the number of black pixels.
+func CountBlackPixels(ctx context.Context, cr *chrome.Chrome) (int, error) {
+	img, err := screenshot.GrabScreenshot(ctx, cr)
+	if err != nil {
+		return 0, err
+	}
+	return screenshot.CountPixels(img, color.Black), nil
+}
+
+// WaitForBlackPixelCount polls until number of black pixels is equal to wantPixelCount.
+// As the drawing of the black pixels is handled by the Android framework, which does this and
+// scale factor computation with floats, we need to account for small tolerance when performing
+// the diff calculation.
+func WaitForBlackPixelCount(ctx context.Context, cr *chrome.Chrome, wantPixelCount int) error {
 	// Need to wait for relayout to complete, before grabbing new screenshot.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		img, err := screenshot.GrabScreenshot(ctx, cr)
+		n, err := CountBlackPixels(ctx, cr)
 		if err != nil {
-			return testing.PollBreak(err)
+			testing.PollBreak(err)
 		}
-		gotPixelCount := screenshot.CountPixels(img, color.Black)
-		diff := math.Abs(float64(wantPixelCount-gotPixelCount) / float64(wantPixelCount))
+		diff := math.Abs(float64(wantPixelCount-n) / float64(wantPixelCount))
+		// Allow a small epsilon as wantPixelCount is computed as a float.
 		if diff > 0.01 {
-			return errors.Errorf("wrong number of black pixels, got: %d, want: %d", gotPixelCount, wantPixelCount)
+			return errors.Errorf("wrong number of black pixels, got: %d, want: %d", n, wantPixelCount)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
@@ -92,7 +108,7 @@ func MeasureDisplayDensity(ctx context.Context, a *arc.ARC) (float64, error) {
 
 // SetUpApk enables developer option for density changes, and installs the specified apk.
 func SetUpApk(ctx context.Context, a *arc.ARC, apk string) error {
-	if err := arc.BootstrapCommand(ctx, Setprop, DensitySetting, "true").Run(testexec.DumpLogOnError); err != nil {
+	if err := arc.BootstrapCommand(ctx, Setprop, Setting, "true").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to set developer option")
 	}
 	testing.ContextLog(ctx, "Installing app")
@@ -102,8 +118,96 @@ func SetUpApk(ctx context.Context, a *arc.ARC, apk string) error {
 	return nil
 }
 
+// StartDensityActivityWithWindowState starts the density activity with the specified window state.
+// It is the responsibility of the caller to close the activity.
+func StartDensityActivityWithWindowState(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, windowState arc.WindowState) (*arc.Activity, error) {
+	const cleanupTime = 10 * time.Second // time reserved for cleanup.
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to set tablet mode to false")
+	}
+	defer cleanup(ctx)
+
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get internal display info")
+	}
+
+	origShelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, dispInfo.ID)
+	if err != nil {
+		s.Fatal("Failed to get shelf behavior: ", err)
+	}
+
+	// Hide shelf.
+	if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorAlwaysAutoHide); err != nil {
+		return nil, errors.Wrap(err, "failed to set shelf behavior to Always Auto Hide")
+	}
+	// Restore shelf state to original behavior.
+	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
+
+	act, err := arc.NewActivity(a, PackageName, ".ViewActivity")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create new activity")
+	}
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return nil, errors.Wrap(err, "failed to start the activity")
+	}
+
+	if err := ash.WaitForVisible(ctx, tconn, PackageName); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for visible app")
+	}
+
+	if err := act.SetWindowState(ctx, tconn, windowState); err != nil {
+		return nil, errors.Wrap(err, "failed to set window state to normal")
+	}
+
+	ashWindowState, err := windowState.ToAshWindowState()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get ash window state")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, PackageName, ashWindowState); err != nil {
+		return nil, errors.Wrapf(err, "failed to wait for the activity to have required window state %q", windowState)
+	}
+
+	return act, nil
+}
+
+// VerifyPixelsWithUSFEnabled enables Uniform Scale Factor(USF), which applies a scale factor of 1.25. It then confirms that the
+// 1.25 scaling has been correctly applied by checking the number of pixels drawn.
+// nonScaledPixelCount is the size of the drawn square, before USF is applied. This value is used to compute the expected of the
+// drawn square.
+func VerifyPixelsWithUSFEnabled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, windowState arc.WindowState, nonScaledPixelCount int) error {
+	const (
+		// Uniform scale factor applies 1.25 scaling.
+		uniformScaleFactor        = 1.25
+		uniformScaleFactorSetting = "persist.sys.ui.uniform_app_scaling"
+	)
+	if err := arc.BootstrapCommand(ctx, Setprop, uniformScaleFactorSetting, "1").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to set developer option")
+	}
+
+	testing.ContextLog(ctx, "Running app, with uniform scaling enabled")
+	act, err := StartDensityActivityWithWindowState(ctx, tconn, a, windowState)
+	if err != nil {
+		return errors.Wrap(err, "failed to start activity after enabling uniform scale factor")
+	}
+	defer act.Close()
+
+	// Multiply each side of the drawn square by uniform scale factor.
+	wantPixelCount := (int)((float64)(nonScaledPixelCount) * uniformScaleFactor * uniformScaleFactor)
+	if err := WaitForBlackPixelCount(ctx, cr, wantPixelCount); err != nil {
+		return errors.Wrap(err, "failed to verify uniform scale factor state")
+	}
+	return nil
+}
+
 // RunTest takes a slice of activity names and a slice of density changes and executes them.
-func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName string, testSteps []DensityChange, activity string, expectedInitialPixelCount float64) error {
+func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName string, testSteps []Change, activity string, expectedInitialPixelCount float64) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create Test API connection")
@@ -137,7 +241,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 		return errors.Wrap(err, "failed to wait for the activity to be fullscreen")
 	}
 
-	if err := CountBlackPixels(ctx, cr, int(expectedInitialPixelCount)); err != nil {
+	if err := WaitForBlackPixelCount(ctx, cr, int(expectedInitialPixelCount)); err != nil {
 		return errors.Wrap(err, "failed to check initial state: ")
 	}
 
@@ -149,7 +253,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 
 	// Ensure that density is restored to initial state.
 	defer func() error {
-		initialState := DensityChange{"reset", "ctrl+0", expectedInitialPixelCount}
+		initialState := Change{"reset", "ctrl+0", expectedInitialPixelCount}
 
 		if err := initialState.ExecuteChange(ctx, cr, ew); err != nil {
 			return errors.Wrap(err, "error with restoring initial state: ")
