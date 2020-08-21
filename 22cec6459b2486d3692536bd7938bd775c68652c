@@ -16,6 +16,24 @@
       "revId": "22cec6459b2486d3692536bd7938bd775c68652c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "742cd909_a492d101",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-21T10:03:31Z",
+      "side": 0,
+      "message": "The bool var is there only to verify that the communication between tast and Chrome is still working as expected in both directions. Updating some policies can break it.\n\nIt\u0027s inspired by:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d1028",
+      "parentUuid": "06203924_a0fe69af",
+      "revId": "22cec6459b2486d3692536bd7938bd775c68652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
