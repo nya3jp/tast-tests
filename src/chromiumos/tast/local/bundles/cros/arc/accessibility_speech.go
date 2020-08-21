@@ -20,7 +20,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type expectedSpeechLog struct {
+	CheckBox []string
+	SeekBar  []string
+	Slider   []string
+}
+
 func init() {
+
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilitySpeech,
 		Desc:         "Checks ChromeVox reads Android elements as expected",
@@ -30,9 +37,33 @@ func init() {
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
+			Val: expectedSpeechLog{
+				CheckBox: []string{
+					"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle",
+				},
+				SeekBar: []string{
+					"seekBar", "Slider", "25", "Min 0", "Max 100",
+				},
+				Slider: []string{
+					"Slider", "3", "Min 0", "Max 10",
+				},
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "vm",
+			Name: "vm",
+			Val: expectedSpeechLog{
+				CheckBox: []string{
+					// Currently, ChromeVox reads "Not checked" twice on R.
+					// TODO: b/154433831#comment23
+					"CheckBox", "Check box", "Not checked", "not checked", "Press Search+Space to toggle",
+				},
+				SeekBar: []string{
+					"seekBar", "Slider", "25%", "Min 0", "Max 100",
+				},
+				Slider: []string{
+					"Slider", "30%", "Min 0", "Max 10",
+				},
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -73,13 +104,13 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			[]string{"OFF", "Toggle Button", "Not pressed", "Press Search+Space to toggle"},
 		}, {
 			"Search+Right",
-			[]string{"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle"},
+			s.Param().(expectedSpeechLog).CheckBox,
 		}, {
 			"Search+Right",
-			[]string{"seekBar", "Slider", "25", "Min 0", "Max 100"},
+			s.Param().(expectedSpeechLog).SeekBar,
 		}, {
 			"Search+Right",
-			[]string{"Slider", "3", "Min 0", "Max 10"},
+			s.Param().(expectedSpeechLog).Slider,
 		}, {
 			"Search+Right",
 			[]string{"ANNOUNCE", "Button", "Press Search+Space to activate"},
