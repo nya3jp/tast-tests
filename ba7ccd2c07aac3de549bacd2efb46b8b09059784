@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ac4016c0_65d3b963",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-22T03:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0ab2a01_04b9d65c",
+      "range": {
+        "startLine": 414,
+        "startChar": 36,
+        "endLine": 414,
+        "endChar": 48
+      },
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e86b5943_19502166",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -89,6 +113,54 @@
     },
     {
       "key": {
+        "uuid": "6862bd83_7e39ac61",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-22T03:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "303e7d88_2f1c3e28",
+      "range": {
+        "startLine": 415,
+        "startChar": 5,
+        "endLine": 415,
+        "endChar": 11
+      },
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "124063b1_12b39b55",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-22T03:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "303e7d88_2f1c3e28",
+      "range": {
+        "startLine": 415,
+        "startChar": 5,
+        "endLine": 415,
+        "endChar": 11
+      },
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e387cc48_53bbab52",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -106,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "a23551d1_cc5fd2e6",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-22T03:00:06Z",
+      "side": 1,
+      "message": "That\u0027s true.",
+      "parentUuid": "e387cc48_53bbab52",
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c930107_664d57e9",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -117,6 +207,24 @@
       "writtenOn": "2020-08-21T06:24:50Z",
       "side": 1,
       "message": "Can it be fully copied?",
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e175e698_ff26427b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-22T03:00:06Z",
+      "side": 1,
+      "message": "IIUC, the security.Config is the security interface. Do you want me to fully copy the config struct used by the interface?",
+      "parentUuid": "0c930107_664d57e9",
       "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -140,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "aa338938_b5674aa1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-22T03:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecf1f53b_bdc1f3f2",
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2ffb0fc_e603056b",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -154,6 +280,24 @@
       "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ca19968_6199fb48",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-22T03:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2ffb0fc_e603056b",
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -192,6 +336,30 @@
       "side": 1,
       "message": "Aren\u0027t they equivalent?",
       "parentUuid": "e743450c_7b191e67",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 56
+      },
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad1e9876_a0950fbb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-22T03:00:06Z",
+      "side": 1,
+      "message": "I think this is easier to read so I used it",
+      "parentUuid": "477c914e_226ce426",
       "range": {
         "startLine": 467,
         "startChar": 0,
