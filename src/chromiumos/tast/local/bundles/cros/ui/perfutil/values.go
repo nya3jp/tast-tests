@@ -79,3 +79,20 @@ func (v *Values) Values() *perf.Values {
 func (v *Values) Save(outdir string) error {
 	return v.Values().Save(outdir)
 }
+
+// AllZero makes sure there is at least one non-zero value in the data.
+func (v *Values) AllZero() bool {
+	for name := range v.metrics {
+		vs := v.values[name]
+		if len(vs) == 0 {
+			continue
+		}
+
+		for _, v := range vs {
+			if v != 0 {
+				return false
+			}
+		}
+	}
+	return true
+}
