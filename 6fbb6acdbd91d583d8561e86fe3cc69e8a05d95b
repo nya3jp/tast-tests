@@ -139,6 +139,23 @@
     },
     {
       "key": {
+        "uuid": "0894ffc2_ab1e4eda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-08-23T20:37:55Z",
+      "side": 1,
+      "message": "I checked and not yet time for it. Chrome branched at 4240 and CrOS is still behind. Hopefully soon!",
+      "revId": "6fbb6acdbd91d583d8561e86fe3cc69e8a05d95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c09acc80_a211e5b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder.go",
         "patchSetId": 1
