@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30ed79cb_c7ae5661",
+        "filename": "src/chromiumos/tast/local/graphics/trace/comm/comm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-23T02:00:55Z",
+      "side": 1,
+      "message": "Could you add some comment? What is the flags and how is this different from the labels?",
+      "revId": "6fb2de923764d2b3ea00b4011fbeeb3073d63cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
