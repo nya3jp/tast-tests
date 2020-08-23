@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "e8280f65_f67c1f4f",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-23T23:36:31Z",
+      "side": 1,
+      "message": "Observation: This method will generate an error if keepState is not defined in the test\u0027s Vars. However, if p.cont !\u003d nil (re-using container from previous test execution) this error will be hidden. Only if the test was the first to setup the precondition, or the last to tear it down, will the precondition check the test defined a keepState variable.\n\nThis could mean the error is only surfaced when tests are promoted/demoted from CQ (i.e. when it becomes the first or last to run in the subset that is on CQ).\n\nSuggestions:\n- We could add a linter rule to check \"keepState\" is defined as a var when the precondition is used.\n- We could check keepState earlier, to force an error even if the precondition is recycled.",
+      "range": {
+        "startLine": 382,
+        "startChar": 18,
+        "endLine": 382,
+        "endChar": 30
+      },
+      "revId": "9bf666340a4232785465b3b25643e33566a3f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "895b5a25_05e2d806",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 9
