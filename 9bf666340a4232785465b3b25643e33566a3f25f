@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe754bc7_c6a214fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-23T23:27:46Z",
+      "side": 1,
+      "message": "LGTM % one more nit",
+      "revId": "9bf666340a4232785465b3b25643e33566a3f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "895b5a25_05e2d806",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-23T23:27:46Z",
+      "side": 1,
+      "message": "I think this should be reset to false at the end of cleanUp. It is a guarantee of cleanUp that the struct\u0027s mutable fields are reset.\n\nScenarios:\n- Precondition setup panics in chrome.Lock() / vm.Lock(). Thus p.cleanupVM() runs and should clear all mutable state so that the next attempt to prepare the precondition gets a clean run.\n- For some reason the precondition gets setup/torn down more than once. p.startedOK from the first run will be re-used in the second run.",
+      "range": {
+        "startLine": 579,
+        "startChar": 20,
+        "endLine": 579,
+        "endChar": 31
+      },
+      "revId": "9bf666340a4232785465b3b25643e33566a3f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
