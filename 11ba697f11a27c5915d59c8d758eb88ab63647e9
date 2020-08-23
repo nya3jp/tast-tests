@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bc10fc3_cc57ae60",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-23T05:29:13Z",
+      "side": 1,
+      "message": "Would it be an issue if we put more and more perfType specific stuff into this struct ?",
+      "revId": "11ba697f11a27c5915d59c8d758eb88ab63647e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
