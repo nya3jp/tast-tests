@@ -16,6 +16,24 @@
       "revId": "6fb2de923764d2b3ea00b4011fbeeb3073d63cb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d7d995_a1f1b745",
+        "filename": "src/chromiumos/tast/local/graphics/trace/comm/comm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-08-23T03:05:46Z",
+      "side": 1,
+      "message": "I\u0027m going to add comments to both these fields as well as make them more functional. Now both fields are kind of experimental.",
+      "parentUuid": "30ed79cb_c7ae5661",
+      "revId": "6fb2de923764d2b3ea00b4011fbeeb3073d63cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
