@@ -1,0 +1,20 @@
+<html>
+  <body>
+    <video id="video" src="bear-320x240.vp8.webm"></video>
+    <button id="pipButton">Enter Picture-in-Picture</button>
+  </body>
+  <script>
+    pipButton.addEventListener('click', async function(event) {
+      console.log('Toggling Picture-in-Picture...');
+      try {
+        await video.requestPictureInPicture();
+      } catch(error) {
+        console.log(`Error! ${error}`);
+      } finally {
+        console.log(`Entered PiP!`);
+      }
+    });
+    video.loop = true;
+    video.play();
+  </script>
+</html>
