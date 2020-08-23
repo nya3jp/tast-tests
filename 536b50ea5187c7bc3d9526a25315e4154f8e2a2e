@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bda631cd_0ce9f5f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-23T21:06:50Z",
+      "side": 1,
+      "message": "Hi xiyuan and mukai, please review this CL, thanks!",
+      "revId": "536b50ea5187c7bc3d9526a25315e4154f8e2a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
