@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f39010b_bf7cada5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-24T16:15:15Z",
+      "side": 1,
+      "message": "Thank you for your comments.\n\nGabor or Tatsuhisa, could you please re-apply +1 as a TAST owner?\nThanks",
+      "revId": "2d9307981cf9e903e36b663219a8eb230b57284d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
