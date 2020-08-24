@@ -128,6 +128,30 @@
       "revId": "352faee5364c7d7f723e8857ccd4aae3680ebf90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae64845b_65850bde",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-24T21:48:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "210d83dc_d32b13ce",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "352faee5364c7d7f723e8857ccd4aae3680ebf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
