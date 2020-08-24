@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20c1187e_232d6fce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-24T22:57:08Z",
+      "side": 1,
+      "message": "nit: Could we move these two lines above \"Cq-Depend:\" and the other ones uses \":\"?\ni.e.\n\nUse ui.ytExperiments instead of ui.VideoCUJ.ytExperiments\n\nBUG\u003dNone\nTEST\u003dtast run ui.VideoCUJ\n\nCq-Depend: chrome-internal:3232915\nChange-Id: I79b7a21d587db6eed209c9afe8e9252c2a4cf664",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "c642b52977cc18469209d51db109aade0904d765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
