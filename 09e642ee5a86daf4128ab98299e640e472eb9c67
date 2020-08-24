@@ -16,6 +16,109 @@
       "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3068fe3_1087370d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-24T07:59:41Z",
+      "side": 1,
+      "message": "LGTM % comment, nit",
+      "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81abcd71_e41e7366",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-24T07:59:41Z",
+      "side": 1,
+      "message": "Instead of creating a new function from InitPID(), you can put the \"didn\u0027t find init process\" error into a variable, and in InitExists(), you can check whether the returned error is that specific error. Example: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/howto.md#checking-wrapped-errors\n\nThe benefit of this is when someone reads this file, they have less functions to learn about.\n\nIt is but a suggestion. Apply this change only if you like it.",
+      "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10b3d0d_daaa99e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-24T07:59:41Z",
+      "side": 1,
+      "message": "nit: \"ARC to stop\" (unless it is a signal name)",
+      "range": {
+        "startLine": 250,
+        "startChar": 20,
+        "endLine": 250,
+        "endChar": 34
+      },
+      "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc90dae_cf1a0ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-24T07:59:41Z",
+      "side": 1,
+      "message": "Please put the \"exist, err :\u003d arc.InitExists()\" part into the if, and instead of the second \"if\", use \"else if\". This way \"exist\" will be still available in the second condition check.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 3
+      },
+      "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beb89c0d_82894def",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-24T07:59:41Z",
+      "side": 1,
+      "message": "same as the previous nit",
+      "range": {
+        "startLine": 347,
+        "startChar": 46,
+        "endLine": 347,
+        "endChar": 60
+      },
+      "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
