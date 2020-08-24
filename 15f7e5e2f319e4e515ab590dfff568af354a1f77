@@ -33,6 +33,29 @@
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d105a3e7_4a044da8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-24T23:00:32Z",
+      "side": 1,
+      "message": "the \u0027wificell_unstable\u0027 label means it still won\u0027t actually run as CQ.\n\nIf we think this is actually stable, we should remove wificell_unstable and prep to remove the Autotest version. (Same for others with both *_cq and *_unstable.)",
+      "range": {
+        "startLine": 317,
+        "startChar": 40,
+        "endLine": 317,
+        "endChar": 57
+      },
+      "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
