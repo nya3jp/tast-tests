@@ -16,6 +16,23 @@
       "revId": "adaedc9e8ad5e0a606a595c5ba610e1aee3cae12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ccbaada_7d2064a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/thermal.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-24T17:14:39Z",
+      "side": 1,
+      "message": "Where does this value come from?\nI think this comes from my comments in the bug; anyways I believe it is great to be documented here.\n\u003e Currently there\u0027s no way to obtain the temperature condition for a CPU to be throttled. Thus a static value (75C) is used for now. TODO(https://crbug.com/xxxxx): fix this",
+      "revId": "adaedc9e8ad5e0a606a595c5ba610e1aee3cae12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
