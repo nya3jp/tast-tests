@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fbcf515_a58dee90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-24T15:39:07Z",
+      "side": 1,
+      "message": "Hi Mukai, I checked crbug/1087182 and saw it hasn\u0027t been started yet so I made this CL, hope it doesn\u0027t conflict with your CL...",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
