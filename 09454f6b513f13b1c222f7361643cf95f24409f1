@@ -63,6 +63,30 @@
       "revId": "09454f6b513f13b1c222f7361643cf95f24409f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add8c756_e890afc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-24T22:37:24Z",
+      "side": 1,
+      "message": "You can talk to mukai@ and he can give you more details, but to my understanding for context menus, the items inside of it are moving around as it opens. Those should be location events.\n\nSpecifically for context menus, it would be really nice if there was a way to query if they are open and fully ready. Might be worth reaching out to the accessibility team about it, since they maintain the automation api.",
+      "parentUuid": "93953c17_e566dc08",
+      "range": {
+        "startLine": 346,
+        "startChar": 11,
+        "endLine": 346,
+        "endChar": 51
+      },
+      "revId": "09454f6b513f13b1c222f7361643cf95f24409f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
