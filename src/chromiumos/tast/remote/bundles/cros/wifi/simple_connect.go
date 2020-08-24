@@ -106,7 +106,8 @@ func init() {
 				},
 			}, {
 				// This test verifies that DUT can connect to an open 802.11n network on 5 GHz channel with short guard intervals enabled (both 20/40 Mhz).
-				Name: "80211nsgi",
+				Name:      "80211nsgi",
+				ExtraAttr: []string{"wificell_cq"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20, ap.HTCapSGI20)}},
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40Minus, ap.HTCapSGI40)}},
@@ -286,7 +287,7 @@ func init() {
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for pure WPA with both AES based CCMP and TKIP.
 				Name:      "wpamulti",
-				ExtraAttr: []string{"wificell_unstable"},
+				ExtraAttr: []string{"wificell_cq", "wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -313,7 +314,7 @@ func init() {
 				// Verifies that we can connect to an AP broadcasting a WPA2 network using AES based CCMP.
 				// In addition, the client must also support 802.11w protected management frames.
 				Name:      "wpa2pmf",
-				ExtraAttr: []string{"wificell_unstable"},
+				ExtraAttr: []string{"wificell_cq", "wificell_unstable"},
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFRequired)},
@@ -481,7 +482,8 @@ func init() {
 				// Verifies that DUT can connect to an open network on a DFS channel.
 				// DFS (dynamic frequency selection) channels are channels that may be unavailable if radar interference is detected.
 				// See: https://en.wikipedia.org/wiki/Dynamic_frequency_selection, https://en.wikipedia.org/wiki/List_of_WLAN_channels
-				Name: "dfs",
+				Name:      "dfs",
+				ExtraAttr: []string{"wificell_cq"},
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40)}},
 				},
@@ -496,7 +498,8 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a networks with the longest and shortest SSID.
-				Name: "ssid_limits",
+				Name:      "ssid_limits",
+				ExtraAttr: []string{"wificell_cq"},
 				Val: []simpleConnectTestcase{
 					{apOpts: wificell.CommonAPOptions(ap.SSID("a"))},
 					{apOpts: wificell.CommonAPOptions(ap.SSID(strings.Repeat("MaxLengthSSID", 4)[:32]))},
