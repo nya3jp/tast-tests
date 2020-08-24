@@ -19,13 +19,16 @@ package nethelper
 import (
 	"bufio"
 	"context"
+	"encoding/binary"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -166,7 +169,7 @@ func listenForClients(ctx context.Context, listener net.Listener) {
 			testing.ContextLogf(ctx, "Stop listening %s", err)
 			return
 		}
-		testing.ContextLogf(ctx, "Connection is ready %s", conn.RemoteAddr().String())
+		testing.ContextLogf(ctx, "Connection is ready: remote=%s, local=%s", conn.RemoteAddr().String(), conn.LocalAddr().String())
 		go handleClient(ctx, conn)
 	}
 
@@ -176,17 +179,18 @@ func handleClient(ctx context.Context, conn net.Conn) {
 	defer conn.Close()
 
 	const (
-		cmdDropCaches = "drop_caches"
+		cmdDropCaches     = "drop_caches"
+		cmdReceivePayload = "receive_payload"
 	)
 
 	for {
 		message, err := bufio.NewReader(conn).ReadString('\n')
 		if err != nil {
 			if err == io.EOF {
-				testing.ContextLogf(ctx, "Connection is closed %s", conn.RemoteAddr().String())
+				testing.ContextLogf(ctx, "Connection is closed: remote=%s, local=%s", conn.RemoteAddr().String(), conn.LocalAddr().String())
 				return
 			}
-			testing.ContextLogf(ctx, "Connection is broken %s: %s", conn.RemoteAddr().String(), err)
+			testing.ContextLogf(ctx, "Connection is broken: remote=%s, local=%s", conn.RemoteAddr().String(), conn.LocalAddr().String())
 			return
 		}
 		msg := strings.TrimSuffix(string(message), "\n")
@@ -196,6 +200,15 @@ func handleClient(ctx context.Context, conn net.Conn) {
 			_, err := conn.Write([]byte(result + "\n"))
 			if err != nil {
 				testing.ContextLogf(ctx, "Failed to respond %q to %s, %s", result, conn.RemoteAddr().String(), err)
+				return
+			}
+		case cmdReceivePayload:
+			if _, err := conn.Write([]byte(okResponse + "\n")); err != nil {
+				testing.ContextLogf(ctx, "Failed to respond to %s, %s", conn.RemoteAddr().String(), err)
+				return
+			}
+			if err := handleReceivePayload(ctx, conn); err != nil {
+				testing.ContextLogf(ctx, "Failed to receive payload: %s", err)
 				return
 			}
 		default:
@@ -215,4 +228,36 @@ func handleDropCaches(ctx context.Context) string {
 	}
 	testing.ContextLog(ctx, "Flushed file system buffer, cleared caches, dentries and inodes")
 	return okResponse
+}
+
+func handleReceivePayload(ctx context.Context, conn net.Conn) error {
+	const (
+		headerSize       = 8
+		tReadWaitTimeout = 1 * time.Minute
+	)
+
+	conn.SetReadDeadline(time.Now().Add(tReadWaitTimeout))
+	r := bufio.NewReader(conn)
+
+	// Obtain header containing size of the payload.
+	header := make([]byte, headerSize)
+	if bytesRead, err := io.ReadFull(r, header); err != nil || bytesRead != headerSize {
+		return errors.Wrap(err, "failed to read header from connection")
+	}
+	payloadSize := binary.LittleEndian.Uint64(header)
+
+	// Read the payload itself in its entirety.
+	payload := make([]byte, payloadSize)
+	if bytesRead, err := io.ReadFull(r, payload); err != nil || uint64(bytesRead) != payloadSize {
+		return errors.Wrap(err, "failed to read payload from connection")
+	}
+	testing.ContextLogf(ctx, "Read payload with size %d bytes from %s", payloadSize, conn.RemoteAddr().String())
+
+	// Send Ack to complete transaction with remote client.
+	ackMsg := "Ack from nethelper connection at " + conn.LocalAddr().String() + " pid=" + strconv.Itoa(os.Getpid())
+	if _, err := conn.Write([]byte(ackMsg)); err != nil {
+		return errors.Wrapf(err, "failed to send ack message to %s", conn.RemoteAddr().String())
+	}
+
+	return nil
 }
