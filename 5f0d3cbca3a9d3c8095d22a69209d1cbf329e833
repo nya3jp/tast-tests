@@ -70,6 +70,24 @@
       "revId": "5f0d3cbca3a9d3c8095d22a69209d1cbf329e833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47670e2d_02c3fda5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-08-24T19:16:05Z",
+      "side": 1,
+      "message": "Sounds good. I\u0027m not really sure what to do anymore so I can abandon this CL.",
+      "parentUuid": "71dd588f_adeb2615",
+      "revId": "5f0d3cbca3a9d3c8095d22a69209d1cbf329e833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
