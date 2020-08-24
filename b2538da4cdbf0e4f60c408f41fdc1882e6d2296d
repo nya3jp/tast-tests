@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "4efef984_1a6ef290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-24T22:58:28Z",
+      "side": 1,
+      "message": "Please resolve all open comments before submission. Thanks!",
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f748d3d6_7cdae12b",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 4
