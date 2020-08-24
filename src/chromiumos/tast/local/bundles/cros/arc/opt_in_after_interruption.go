@@ -50,7 +50,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Timeout:      7 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "unmanaged",
 			ExtraSoftwareDeps: []string{"android_p"},
