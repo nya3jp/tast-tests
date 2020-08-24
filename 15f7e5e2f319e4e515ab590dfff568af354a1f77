@@ -16,6 +16,23 @@
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fb14647_f696b835",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-08-24T22:54:46Z",
+      "side": 1,
+      "message": "because Tast is in active development, I\u0027d bet that these tests are most likely to break due to changes in the .../tast-tests repo, rather than shill and wpa_supplicant. Do we need to adjust the wificell-cq path coverage parameters, so it will run when the tests change? That\u0027ll possibly create some trouble on figuring out the right paths to watch, or else create a ton of lab load if we run on every tast-tests CL",
+      "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
