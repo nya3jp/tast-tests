@@ -668,6 +668,24 @@
     },
     {
       "key": {
+        "uuid": "aea0c110_e08683e2",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-24T04:27:25Z",
+      "side": 1,
+      "message": "Moved open settings to package settings. Leave the code in installer.go unchanged because I\u0027m working on it in another cl: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2352403.\n\nPlease note that method Open only opens Settings app, OpenLinuxSettings opens linux settings page. Before installing crostini, there is no linux settings page.",
+      "parentUuid": "a688656f_a5ec8703",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b59e7fe3_4e987257",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 4
