@@ -16,6 +16,24 @@
       "revId": "367047d305ec76f4d505725b664260d7231abe91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "131c334e_4dfb1b09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-24T22:53:27Z",
+      "side": 1,
+      "message": "I use Gerrit web interface instead of repo upload to make new CL so...",
+      "parentUuid": "30a8ac27_a10cacab",
+      "revId": "367047d305ec76f4d505725b664260d7231abe91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
