@@ -16,6 +16,23 @@
       "revId": "31848e47f6ac4e05a0b71b999d4b439f95780cc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cac69aa_7f8a08ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-24T23:27:37Z",
+      "side": 1,
+      "message": "Can you explain the background why this should be renamed?  Are you using the same value for another test?  I\u0027m afraid that this is not necessary right now.",
+      "revId": "31848e47f6ac4e05a0b71b999d4b439f95780cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
