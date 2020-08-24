@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e21a466_0b52fd98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-08-24T17:47:38Z",
+      "side": 1,
+      "message": "LGTM, thanks for looking into this +mukai incase we need to apply this to other tests",
+      "revId": "560cb4a29e88a0668dcad14b2f393f1f287007ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e496a5e0_14e28b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/values.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-08-24T17:47:38Z",
+      "side": 1,
+      "message": "huge nit: period at the end.",
+      "revId": "560cb4a29e88a0668dcad14b2f393f1f287007ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
