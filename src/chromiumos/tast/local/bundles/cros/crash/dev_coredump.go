@@ -48,7 +48,13 @@ func init() {
 			"veyron_fievel",
 			"veyron_mickey",
 			"veyron_tiger",
-		), hwdep.SkipOnModel("blooglet", "ezkinil", "trembyle")),
+			// TODO(https://crbug.com/1121243): cros_config gives the above four boards the below platform IDs.
+			// Once it gives them their proper names, remove these.
+			"gru",
+			"fievel",
+			"mickey",
+			"tiger",
+		), hwdep.SkipOnModel("blooglet", "dalboz", "ezkinil", "trembyle")),
 	})
 }
 
