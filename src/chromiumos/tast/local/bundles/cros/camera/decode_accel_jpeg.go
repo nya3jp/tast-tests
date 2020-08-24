@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -39,6 +40,15 @@ func DecodeAccelJPEG(ctx context.Context, s *testing.State) {
 	defer vl.Close()
 
 	testDir := filepath.Dir(s.DataPath(decodeAccelJpegTestFile))
+
+	// Stopping the UI is not strictly needed to run the test executable
+	// below. However, it's a good idea for stability reasons: if the UI
+	// plays a video (e.g., in the OOBE), we don't want that to interfere
+	// with the test.
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui: ", err)
+	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	// Execute the test binary.
 	const exec = "jpeg_decode_accelerator_unittest"
