@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6e29dc1c_61f8075a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-24T04:57:44Z",
+      "side": 1,
+      "message": "Have never done dependencies for Go, I think I might need some help with configuring the tast package so it depends on the protobuf correctly\n\nI\u0027ll ping you offline about this.",
+      "parentUuid": "5cb3b326_1c79a118",
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aea5f734_1e1dee29",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
         "patchSetId": 3
@@ -57,6 +75,30 @@
       "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e6daccc_f3562ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-24T04:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aea5f734_1e1dee29",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 49
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "f5d8a6e6_83ab8d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-24T04:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c10e837_bf3ec668",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 62
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27cbcb32_ee39c175",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
         "patchSetId": 3
@@ -103,6 +169,30 @@
       "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c309cc01_fee6b014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-24T04:57:44Z",
+      "side": 1,
+      "message": "Now writing the combined output to a file",
+      "parentUuid": "27cbcb32_ee39c175",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -129,6 +219,30 @@
     },
     {
       "key": {
+        "uuid": "1d57d24e_2a495794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-24T04:57:44Z",
+      "side": 1,
+      "message": "Good point, made it so that on error, stop tast test, and check the logs manually for results.",
+      "parentUuid": "699c9bc1_40fe5337",
+      "range": {
+        "startLine": 67,
+        "startChar": 21,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a05f7ebc_d3a3f896",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
         "patchSetId": 3
@@ -152,6 +266,30 @@
     },
     {
       "key": {
+        "uuid": "a1c9c26b_fd6b9a52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-24T04:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a05f7ebc_d3a3f896",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 8
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17c2e50b_440a9a43",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
         "patchSetId": 3
@@ -166,6 +304,24 @@
       "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfb4e0ab_a9810b59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-24T04:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17c2e50b_440a9a43",
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +342,24 @@
     },
     {
       "key": {
+        "uuid": "0cd96ff7_807a5973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-24T04:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33cac1c9_aec9b832",
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e89095be_32d8200b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
         "patchSetId": 3
@@ -200,6 +374,24 @@
       "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c81d8cb8_b9dfe164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-24T04:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e89095be_32d8200b",
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +415,30 @@
       "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "550cb955_244e27f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1377451
+      },
+      "writtenOn": "2020-08-24T04:57:44Z",
+      "side": 1,
+      "message": "Was trying to access the map without going over the line limit, rewrote it so that\u0027s no longer needed.",
+      "parentUuid": "6f8039b0_2df308c7",
+      "range": {
+        "startLine": 104,
+        "startChar": 18,
+        "endLine": 104,
+        "endChar": 61
+      },
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
