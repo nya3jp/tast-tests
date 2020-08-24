@@ -7,6 +7,7 @@
 // arc_eth0 on port 1235 is used as communication point. This helper currently
 // supports the following commands:
 //   * drop_caches - drops system caches, returns OK/FAILED
+//   * receive_payload - receives payload from client, return OK/FAILED and ACK
 //
 // Usage pattern is following:
 // 	conn, err := nethelper.Start(ctx)
@@ -23,9 +24,11 @@ import (
 	"io"
 	"io/ioutil"
 	"net"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -166,7 +169,7 @@ func listenForClients(ctx context.Context, listener net.Listener) {
 			testing.ContextLogf(ctx, "Stop listening %s", err)
 			return
 		}
-		testing.ContextLogf(ctx, "Connection is ready %s", conn.RemoteAddr().String())
+		testing.ContextLogf(ctx, "Connection is ready %s<->%s", conn.LocalAddr().String(), conn.RemoteAddr().String())
 		go handleClient(ctx, conn)
 	}
 
@@ -176,11 +179,23 @@ func handleClient(ctx context.Context, conn net.Conn) {
 	defer conn.Close()
 
 	const (
-		cmdDropCaches = "drop_caches"
+		// Supported commands (unrecognized ones are ignored).
+		cmdDropCaches     = "drop_caches"
+		cmdReceivePayload = "receive_payload"
+
+		tReadWaitTimeout = 1 * time.Minute
 	)
 
+	// Set read timeout in case remote connection is lost.
+	if err := conn.SetReadDeadline(time.Now().Add(tReadWaitTimeout)); err != nil {
+		testing.ContextLog(ctx, "Failed to set read deadline")
+		return
+	}
+
+	// Use single bufio.Reader instance for each connection.
+	r := bufio.NewReader(conn)
 	for {
-		message, err := bufio.NewReader(conn).ReadString('\n')
+		message, err := r.ReadString('\n')
 		if err != nil {
 			if err == io.EOF {
 				testing.ContextLogf(ctx, "Connection is closed %s", conn.RemoteAddr().String())
@@ -189,17 +204,32 @@ func handleClient(ctx context.Context, conn net.Conn) {
 			testing.ContextLogf(ctx, "Connection is broken %s: %s", conn.RemoteAddr().String(), err)
 			return
 		}
-		msg := strings.TrimSuffix(string(message), "\n")
+		msg := strings.TrimSuffix(message, "\n")
+
 		switch msg {
 		case cmdDropCaches:
 			result := handleDropCaches(ctx)
-			_, err := conn.Write([]byte(result + "\n"))
-			if err != nil {
+			if _, err := conn.Write([]byte(result + "\n")); err != nil {
 				testing.ContextLogf(ctx, "Failed to respond %q to %s, %s", result, conn.RemoteAddr().String(), err)
 				return
 			}
+			if result == okResponse {
+				testing.ContextLogf(ctx, "Flushed system buffers and cleared caches, dentries, inodes for %s", conn.RemoteAddr().String())
+			}
+		case cmdReceivePayload:
+			ack := fmt.Sprintf("Ack from nethelper connection %s pid=%s", conn.LocalAddr().String(), strconv.Itoa(os.Getpid()))
+			if _, err := conn.Write([]byte(okResponse + "\n" + ack)); err != nil {
+				testing.ContextLogf(ctx, "Failed to send response to %s, %s", conn.RemoteAddr().String(), err)
+				return
+			}
+			if result, err := handleReceivePayload(r); err != nil {
+				testing.ContextLogf(ctx, "Failed to receive payload from %s: %s", conn.RemoteAddr().String(), err)
+				return
+			} else if result > 0 {
+				testing.ContextLogf(ctx, "Received %d bytes payload from %s", result, conn.RemoteAddr().String())
+			}
 		default:
-			testing.ContextLogf(ctx, "Unknown command %s: %s", conn.RemoteAddr().String(), msg)
+			testing.ContextLogf(ctx, "Unknown command from %s: %s", conn.RemoteAddr().String(), msg)
 		}
 	}
 }
@@ -213,6 +243,27 @@ func handleDropCaches(ctx context.Context) string {
 		testing.ContextLogf(ctx, "Failed to drop caches: %s", err)
 		return failedResponse
 	}
-	testing.ContextLog(ctx, "Flushed file system buffer, cleared caches, dentries and inodes")
 	return okResponse
+}
+
+func handleReceivePayload(r *bufio.Reader) (int64, error) {
+	message, err := r.ReadString('\n')
+	if err != nil {
+		if err == io.EOF {
+			return 0, errors.New("failed to read header with EOF, connection is closed")
+		}
+		return 0, errors.Wrap(err, "failed to read header, connection is broken")
+	}
+
+	// Read header containing size of the payload.
+	payloadSize, err := strconv.ParseInt(strings.TrimSuffix(message, "\n"), 10, 64)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to parse header")
+	}
+
+	// Read payload and discard immediately since it's not used.
+	if bytesRead, err := io.CopyN(ioutil.Discard, r, payloadSize); err != nil || bytesRead != payloadSize {
+		return 0, errors.Wrap(err, "failed to read payload")
+	}
+	return payloadSize, nil
 }
