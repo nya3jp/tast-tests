@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "5de995da_6366146a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-24T04:27:25Z",
+      "side": 1,
+      "message": "Added a new method FindSettingsPage.",
+      "parentUuid": "3c90ee63_0eb37011",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "a72269395467d01afc85ac9e743530f148f9b316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ec54c3f_c17b20ee",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 14
