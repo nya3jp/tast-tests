@@ -23,21 +23,9 @@ func init() {
 		Func:         SyncTime,
 		Desc:         "Manually sets the time in the guest to an incorrect value, uses 'SyncTimes' to correct it, and verifies that it is correct",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      7 * time.Minute,
-		Data:         []string{crostini.ImageArtifact},
-		Pre:          crostini.StartedByArtifact(),
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
-		Params: []testing.Param{
-			{
-				Name:              "artifact",
-				ExtraHardwareDeps: crostini.CrostiniStable,
-			},
-			{
-				Name:              "artifact_unstable",
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-			},
-		},
+		Params:       crostini.MakeTestParams(crostini.TestInformational),
 	})
 }
 

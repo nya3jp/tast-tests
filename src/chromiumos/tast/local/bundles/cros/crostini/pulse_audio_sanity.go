@@ -7,7 +7,6 @@ package crostini
 import (
 	"context"
 	"regexp"
-	"time"
 
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/testexec"
@@ -17,30 +16,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PulseAudioSanity,
-		Desc:     "Runs a sanity test on the container's pusleaudio service using a pre-built crostini image",
-		Contacts: []string{"paulhsia@chromium.org", "cros-containers-dev@google.com", "chromeos-audio-bugs@google.com"},
-		Attr:     []string{"group:mainline"},
-		Params: []testing.Param{{
-			Name:              "artifact",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniStable,
-			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:              "artifact_unstable",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniUnstable,
-			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:      "download_buster",
-			Pre:       crostini.StartedByDownloadBuster(),
-			Timeout:   10 * time.Minute,
-			ExtraAttr: []string{"informational"},
-		}},
+		Func:         PulseAudioSanity,
+		Desc:         "Runs a sanity test on the container's pusleaudio service using a pre-built crostini image",
+		Contacts:     []string{"paulhsia@chromium.org", "cros-containers-dev@google.com", "chromeos-audio-bugs@google.com"},
+		Attr:         []string{"group:mainline"},
+		Params:       crostini.MakeTestParams(crostini.TestInformational),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }

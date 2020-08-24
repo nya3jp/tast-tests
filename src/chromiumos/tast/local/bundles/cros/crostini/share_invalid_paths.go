@@ -12,7 +12,6 @@ import (
 	"path/filepath"
 	"strings"
 	"syscall"
-	"time"
 
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
@@ -23,26 +22,9 @@ func init() {
 		Func:         ShareInvalidPaths,
 		Desc:         "Tests that seneschal rejects paths that contain symlinks or point to non-regular files/directories",
 		Contacts:     []string{"chirantan@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
-		Params: []testing.Param{
-			{
-				Name:      "artifact",
-				Pre:       crostini.StartedByArtifact(),
-				Timeout:   7 * time.Minute,
-				ExtraData: []string{crostini.ImageArtifact},
-			},
-			{
-				Name:    "download_stretch",
-				Pre:     crostini.StartedByDownloadStretch(),
-				Timeout: 10 * time.Minute,
-			},
-			{
-				Name:    "download_buster",
-				Pre:     crostini.StartedByDownloadBuster(),
-				Timeout: 10 * time.Minute,
-			},
-		},
+		Params:       crostini.MakeTestParams(crostini.TestInformational),
 	})
 }
 

@@ -21,34 +21,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Restart,
-		Desc:     "Tests that we can shut down and restart crostini (where the VM image is a build artifact)",
-		Contacts: []string{"hollingum@chromium.org", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:mainline"},
-		Params: []testing.Param{{
-			Name:              "artifact",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniStable,
-		}, {
-			Name:              "artifact_unstable",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniUnstable,
-			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:      "download_stretch",
-			Pre:       crostini.StartedByDownloadStretch(),
-			Timeout:   10 * time.Minute,
-			ExtraAttr: []string{"informational"},
-		}, {
-			Name:      "download_buster",
-			Pre:       crostini.StartedByDownloadBuster(),
-			Timeout:   10 * time.Minute,
-			ExtraAttr: []string{"informational"},
-		}},
+		Func:         Restart,
+		Desc:         "Tests that we can shut down and restart crostini (where the VM image is a build artifact)",
+		Contacts:     []string{"hollingum@chromium.org", "cros-containers-dev@google.com"},
+		Attr:         []string{"group:mainline"},
+		Params:       crostini.MakeTestParams(crostini.TestCritical),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Vars:         []string{"crostini.Restart.numRestarts"},
 	})
