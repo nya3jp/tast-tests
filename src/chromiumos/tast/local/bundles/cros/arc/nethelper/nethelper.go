@@ -7,6 +7,7 @@
 // arc_eth0 on port 1235 is used as communication point. This helper currently
 // supports the following commands:
 //   * drop_caches - drops system caches, returns OK/FAILED
+//   * receive_payload - receives payload from client, return OK/FAILED and ACK
 //
 // Usage pattern is following:
 // 	conn, err := nethelper.Start(ctx)
@@ -23,9 +24,11 @@ import (
 	"io"
 	"io/ioutil"
 	"net"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -166,7 +169,7 @@ func listenForClients(ctx context.Context, listener net.Listener) {
 			testing.ContextLogf(ctx, "Stop listening %s", err)
 			return
 		}
-		testing.ContextLogf(ctx, "Connection is ready %s", conn.RemoteAddr().String())
+		testing.ContextLogf(ctx, "Connection is ready: remote=%s, local=%s", conn.RemoteAddr().String(), conn.LocalAddr().String())
 		go handleClient(ctx, conn)
 	}
 
@@ -176,26 +179,44 @@ func handleClient(ctx context.Context, conn net.Conn) {
 	defer conn.Close()
 
 	const (
-		cmdDropCaches = "drop_caches"
+		cmdDropCaches     = "drop_caches"
+		cmdReceivePayload = "receive_payload"
+		tReadWaitTimeout  = 1 * time.Minute
 	)
+
+	// Set read timeout in case remote connection is lost.
+	if err := conn.SetReadDeadline(time.Now().Add(tReadWaitTimeout)); err != nil {
+		testing.ContextLog(ctx, "Failed to set read deadline")
+		return
+	}
 
 	for {
 		message, err := bufio.NewReader(conn).ReadString('\n')
 		if err != nil {
 			if err == io.EOF {
-				testing.ContextLogf(ctx, "Connection is closed %s", conn.RemoteAddr().String())
+				testing.ContextLogf(ctx, "Connection is closed: remote=%s, local=%s", conn.RemoteAddr().String(), conn.LocalAddr().String())
 				return
 			}
-			testing.ContextLogf(ctx, "Connection is broken %s: %s", conn.RemoteAddr().String(), err)
+			testing.ContextLogf(ctx, "Connection is broken: remote=%s, local=%s", conn.RemoteAddr().String(), conn.LocalAddr().String())
 			return
 		}
-		msg := strings.TrimSuffix(string(message), "\n")
+		msg := strings.TrimSuffix(message, "\n")
+
 		switch msg {
 		case cmdDropCaches:
 			result := handleDropCaches(ctx)
 			_, err := conn.Write([]byte(result + "\n"))
 			if err != nil {
 				testing.ContextLogf(ctx, "Failed to respond %q to %s, %s", result, conn.RemoteAddr().String(), err)
+				return
+			}
+		case cmdReceivePayload:
+			if _, err := conn.Write([]byte(okResponse + "\n")); err != nil {
+				testing.ContextLogf(ctx, "Failed to respond to %s, %s", conn.RemoteAddr().String(), err)
+				return
+			}
+			if err := handleReceivePayload(ctx, conn); err != nil {
+				testing.ContextLogf(ctx, "Failed to receive payload: %s", err)
 				return
 			}
 		default:
@@ -215,4 +236,35 @@ func handleDropCaches(ctx context.Context) string {
 	}
 	testing.ContextLog(ctx, "Flushed file system buffer, cleared caches, dentries and inodes")
 	return okResponse
+}
+
+func handleReceivePayload(ctx context.Context, conn net.Conn) error {
+	r := bufio.NewReader(conn)
+
+	// Read header containing size of the payload.
+	message, err := r.ReadString('\n')
+	if err != nil {
+		if err == io.EOF {
+			return errors.Wrapf(err, "failed to read header from %s, connection is closed", conn.RemoteAddr().String())
+		}
+		return errors.Wrapf(err, "failed to read header from %s, connection is broken", conn.RemoteAddr().String())
+	}
+	payloadSize, err := strconv.ParseInt(strings.TrimSuffix(message, "\n"), 10, 64)
+	if err != nil {
+		return errors.Wrapf(err, "failed to parse header from %s", conn.RemoteAddr().String())
+	}
+
+	// Read the payload itself in its entirety and discard data since it's not verified for test purpose.
+	if bytesRead, err := io.CopyN(ioutil.Discard, r, payloadSize); err != nil || bytesRead != payloadSize {
+		return errors.Wrapf(err, "failed to read payload from %s", conn.RemoteAddr().String())
+	}
+
+	// Send Ack to complete transaction with remote client.
+	ackMsg := fmt.Sprintf("Ack from nethelper connection at %s pid=%s", conn.LocalAddr().String(), strconv.Itoa(os.Getpid()))
+	if _, err := conn.Write([]byte(ackMsg)); err != nil {
+		return errors.Wrapf(err, "failed to send ack message to %s", conn.RemoteAddr().String())
+	}
+	testing.ContextLogf(ctx, "Completed receiving payload with %d bytes from %s", payloadSize, conn.RemoteAddr().String())
+
+	return nil
 }
