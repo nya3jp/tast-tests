@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "31dddaea_260cc45c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-08-24T21:12:25Z",
+      "side": 1,
+      "message": "doing that later (probably after the kimiyuki@\u0027s pstore tool lands) seems fine to me too.",
+      "parentUuid": "5b0bd5f6_fddacc89",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "334e2ef2de5ddb51a155c09ca6b0af238074c977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbf3ab0d_3f2bafba",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
