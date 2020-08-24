@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "a6920fb2_2e32054d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-24T13:06:20Z",
+      "side": 1,
+      "message": "Thanks! LGTM with nits, I\u0027ll defer to Oleh and Patrick for Tast reviews.\n",
+      "revId": "11ba697f11a27c5915d59c8d758eb88ab63647e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2bf985_6d50cac2",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-24T13:06:20Z",
+      "side": 1,
+      "message": "The default is not meaningful now that PerfOpts is not directly constructed by users.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 30
+      },
+      "revId": "11ba697f11a27c5915d59c8d758eb88ab63647e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5bc10fc3_cc57ae60",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 9
@@ -13,6 +53,52 @@
       "writtenOn": "2020-08-23T05:29:13Z",
       "side": 1,
       "message": "Would it be an issue if we put more and more perfType specific stuff into this struct ?",
+      "revId": "11ba697f11a27c5915d59c8d758eb88ab63647e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3858b9c_2ae9b200",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-24T13:06:20Z",
+      "side": 1,
+      "message": "It would be good to add a brief explanation of out (e.g. what is it, when is it set?)",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 67
+      },
+      "revId": "11ba697f11a27c5915d59c8d758eb88ab63647e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13044238_385d219b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-24T13:06:20Z",
+      "side": 1,
+      "message": "It would be good to call PerfRecordOpts() here.",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 20
+      },
       "revId": "11ba697f11a27c5915d59c8d758eb88ab63647e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
