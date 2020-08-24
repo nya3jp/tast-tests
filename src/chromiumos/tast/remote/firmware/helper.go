@@ -9,10 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
@@ -39,6 +38,9 @@ type Helper struct {
 	// Currently, this is based on cros_config / name.
 	Model string
 
+	// Reporter reports various info from the DUT.
+	Reporter *reporters.Reporter
+
 	// RPCClient is a direct client connection to the Tast gRPC server hosted on the DUT.
 	RPCClient *rpc.Client
 
@@ -64,6 +66,7 @@ func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, configDataDir, servoHostPor
 	return &Helper{
 		configDataDir: configDataDir,
 		DUT:           d,
+		Reporter:      reporters.New(d),
 		rpcHint:       rpcHint,
 		servoHostPort: servoHostPort,
 	}
@@ -127,20 +130,22 @@ func (h *Helper) CloseRPCConnection(ctx context.Context) error {
 	return nil
 }
 
-// RequirePlatform fetches the DUT's board and model from RPC and caches them, unless they have already been cached.
+// RequirePlatform fetches the DUT's board and model and caches them, unless they have already been cached.
 func (h *Helper) RequirePlatform(ctx context.Context) error {
-	if h.Board != "" {
-		return nil
+	if h.Board == "" {
+		board, err := h.Reporter.Board(ctx)
+		if err != nil {
+			return errors.Wrap(err, "getting DUT board")
+		}
+		h.Board = strings.ToLower(board)
 	}
-	if err := h.RequireRPCUtils(ctx); err != nil {
-		return errors.Wrap(err, "requiring RPC utils")
+	if h.Model == "" {
+		model, err := h.Reporter.Model(ctx)
+		if err != nil {
+			return errors.Wrap(err, "getting DUT model")
+		}
+		h.Model = strings.ToLower(model)
 	}
-	platformResponse, err := h.RPCUtils.Platform(ctx, &empty.Empty{})
-	if err != nil {
-		return errors.Wrap(err, "during Platform rpc")
-	}
-	h.Board = strings.ToLower(platformResponse.Board)
-	h.Model = strings.ToLower(platformResponse.Model)
 	return nil
 }
 
