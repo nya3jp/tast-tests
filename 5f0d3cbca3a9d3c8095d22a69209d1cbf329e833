@@ -52,6 +52,24 @@
       "revId": "5f0d3cbca3a9d3c8095d22a69209d1cbf329e833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71dd588f_adeb2615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-24T18:42:34Z",
+      "side": 1,
+      "message": "I also tried the test locally, and noticed that the presentation timestamp comes from the past one.  However, I believe that case should be blocked by viz at https://source.chromium.org/chromium/chromium/src/+/master:components/viz/service/display/display.cc;l\u003d125?q\u003dcomponents%2Fviz%2Fservice%2Fdisplay%2Fdisplay.cc\u0026ss\u003dchromium%2Fchromium%2Fsrc. Not sure why the feedback on the board is not get blocked at this point.\n\nAs I suggested previously, I don\u0027t think things like SomeZero also does not solve the solution. This is not specific to OverviewScrollPerf itself, it is the problem of the board of not having the right metric data.  My suggestion is to make a change in chromium code base to not produce such problematic data points.  We can do that for you if you\u0027re not familiar with the code base.",
+      "parentUuid": "f547b429_ef26364e",
+      "revId": "5f0d3cbca3a9d3c8095d22a69209d1cbf329e833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
