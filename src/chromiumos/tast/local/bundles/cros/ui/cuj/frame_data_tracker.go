@@ -6,7 +6,6 @@ package cuj
 
 import (
 	"context"
-	"fmt"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -54,18 +53,22 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 		return
 	}
 
-	for i, data := range t.animationData {
-		prefix := fmt.Sprintf("TPS.Animation.%d", i)
-		pv.Set(perf.Metric{
-			Name:      prefix + ".FramesExpected",
-			Unit:      "count",
-			Direction: perf.BiggerIsBetter,
-		}, float64(data.FramesExpected))
-		pv.Set(perf.Metric{
-			Name:      prefix + ".FramesProduced",
-			Unit:      "count",
-			Direction: perf.BiggerIsBetter,
-		}, float64(data.FramesProduced))
+	feMetric := perf.Metric{
+		Name:      "TPS.Animation.FramesExpected",
+		Unit:      "count",
+		Direction: perf.BiggerIsBetter,
+		Multiple:  true,
+	}
+	fpMetric := perf.Metric{
+		Name:      "TPS.Animation.FramesProduced",
+		Unit:      "count",
+		Direction: perf.BiggerIsBetter,
+		Multiple:  true,
+	}
+
+	for _, data := range t.animationData {
+		pv.Set(feMetric, float64(data.FramesExpected))
+		pv.Set(fpMetric, float64(data.FramesProduced))
 	}
 }
 
