@@ -16,6 +16,148 @@
       "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdfa12f1_26b7fc37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-24T18:56:00Z",
+      "side": 1,
+      "message": "nit: add chormeos-wmp@ as well ?",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e6c2dcb_2c110ba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-24T18:56:00Z",
+      "side": 1,
+      "message": "Suggest to add \"absolute_experiments\" param like VideoCUJ [1] to avoid showing ads and surveys. These could be have extra elements on the page and break our test scripts (e.g. covers the pip button).\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go;l\u003d123?q\u003dvideocuj\u0026sq\u003dfile:%5Esrc%20package:%5Echromeos_(internal%7Cpublic)$",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db8da8e9_603e1e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-24T18:56:00Z",
+      "side": 1,
+      "message": "This could be flaky. I learned it the hard way when VideoCUJ runs on bots.\n\nThe script runs in parallel with the page layout. To reliably click/tap an element, we need something like [1], i.e. wait for the element bounds to stabilize and the element to be on top to get the click/tap.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go;l\u003d188?q\u003dvideocuj\u0026sq\u003dfile:%5Esrc%20package:%5Echromeos_(internal%7Cpublic)$",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd247b08_0f9690cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-24T18:56:00Z",
+      "side": 1,
+      "message": "defer pc.Close() ?",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f108e148_c639673f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-24T18:56:00Z",
+      "side": 1,
+      "message": "I wonder whether we should add the metrics when they are relevant. That is, add \"ClamshellMode\" ones for clamshell mode and \"TabletMode\" ones for tablet mode. Having 0 in collected results might be confusing.",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c88a0c3_b4dd10de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-24T18:56:00Z",
+      "side": 1,
+      "message": "super nit: nuke the empty line.",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c88602c_e0e47dda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-24T18:56:00Z",
+      "side": 1,
+      "message": "We should have two windows splitted already, right? Would move mouse to center reveals the divider that we could use to resize the splitview ?",
+      "range": {
+        "startLine": 291,
+        "startChar": 62,
+        "endLine": 291,
+        "endChar": 95
+      },
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fad78584_8ace8be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-24T18:56:00Z",
+      "side": 1,
+      "message": "Do this and fail before we \"Store perf metrics\".",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
