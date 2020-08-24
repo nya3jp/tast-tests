@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95e0baa4_9a067804",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-08-24T14:34:33Z",
+      "side": 1,
+      "message": "I\u0027ve also got that ommitting trailing punctuation is more consistent with our guideline and the referenced document.\nhttps://chromium.googlesource.com/chromiumos/docs/+/refs/heads/master/contributing.md#commit-messages\nhttps://chris.beams.io/posts/git-commit/#end",
+      "parentUuid": "00c143e0_0ae2d024",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae0c0143_92123337",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -53,6 +77,23 @@
       "writtenOn": "2020-08-24T07:59:41Z",
       "side": 1,
       "message": "LGTM % comment, nit",
+      "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "633242ee_bef31607",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-08-24T14:34:33Z",
+      "side": 1,
+      "message": "LGTM after Gabor\u0027s comments are answered.",
       "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -110,6 +151,30 @@
       "writtenOn": "2020-08-24T07:59:41Z",
       "side": 1,
       "message": "Please put the \"exist, err :\u003d arc.InitExists()\" part into the if, and instead of the second \"if\", use \"else if\". This way \"exist\" will be still available in the second condition check.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 3
+      },
+      "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35af39f2_734f39d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-08-24T14:34:33Z",
+      "side": 1,
+      "message": "I also think same way.",
+      "parentUuid": "9cc90dae_cf1a0ff8",
       "range": {
         "startLine": 338,
         "startChar": 0,
