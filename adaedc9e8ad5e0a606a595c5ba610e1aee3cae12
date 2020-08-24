@@ -33,6 +33,24 @@
       "revId": "adaedc9e8ad5e0a606a595c5ba610e1aee3cae12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65064a9b_3bb2208b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/thermal.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-24T17:52:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ccbaada_7d2064a3",
+      "revId": "adaedc9e8ad5e0a606a595c5ba610e1aee3cae12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
