@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c221ce6_e7b3b153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-24T08:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2186e41_07177537",
+      "range": {
+        "startLine": 40,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "161157e3f5d719009df52e665e40ba3c9e4f356d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afac026a_1a8289ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "161157e3f5d719009df52e665e40ba3c9e4f356d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31647f7c_30e6a454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-24T08:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afac026a_1a8289ee",
+      "range": {
+        "startLine": 91,
+        "startChar": 27,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "161157e3f5d719009df52e665e40ba3c9e4f356d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
