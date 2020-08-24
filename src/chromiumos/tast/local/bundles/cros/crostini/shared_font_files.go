@@ -7,7 +7,6 @@ package crostini
 import (
 	"context"
 	"strings"
-	"time"
 
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/testexec"
@@ -16,31 +15,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     SharedFontFiles,
-		Desc:     "Checks that the hostOS font files are shared with the guestOS and they are accessible",
-		Contacts: []string{"matterchen@google.com", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Params: []testing.Param{{
-			Name:              "artifact",
-			Pre:               crostini.StartedByArtifact(),
-			Timeout:           10 * time.Minute,
-			ExtraData:         []string{crostini.ImageArtifact},
-			ExtraHardwareDeps: crostini.CrostiniStable,
-		}, {
-			Name:              "artifact_unstable",
-			Pre:               crostini.StartedByArtifact(),
-			Timeout:           10 * time.Minute,
-			ExtraData:         []string{crostini.ImageArtifact},
-			ExtraHardwareDeps: crostini.CrostiniUnstable,
-		}, {
-			Name:    "download_stretch",
-			Pre:     crostini.StartedByDownloadStretch(),
-			Timeout: 10 * time.Minute,
-		}, {
-			Name:    "download_buster",
-			Pre:     crostini.StartedByDownloadBuster(),
-			Timeout: 10 * time.Minute,
-		}},
+		Func:         SharedFontFiles,
+		Desc:         "Checks that the hostOS font files are shared with the guestOS and they are accessible",
+		Contacts:     []string{"matterchen@google.com", "cros-containers-dev@google.com"},
+		Attr:         []string{"group:mainline"},
+		Params:       crostini.MakeTestParams(crostini.TestInformational),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }

@@ -139,17 +139,21 @@ type PreData struct {
 // StartedByArtifact is similar to StartedByDownloadBuster, but will
 // use a pre-built image as a data-dependency rather than downloading one. To
 // use this precondition you must have crostini.ImageArtifact as a data dependency.
-func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
+func StartedByArtifact() testing.Precondition { return getPreconditionIfExists(startedByArtifactPre) }
 
 // StartedByDownloadStretch is a precondition that ensures a tast test
 // will begin after crostini has been started by downloading an image
 // running Debian Stretch.
-func StartedByDownloadStretch() testing.Precondition { return startedByDownloadStretchPre }
+func StartedByDownloadStretch() testing.Precondition {
+	return getPreconditionIfExists(startedByDownloadStretchPre)
+}
 
 // StartedByDownloadBuster is a precondition that ensures a tast test will
 // begin after crostini has been started by downloading an image
 // running Debian Buster.
-func StartedByDownloadBuster() testing.Precondition { return startedByDownloadBusterPre }
+func StartedByDownloadBuster() testing.Precondition {
+	return getPreconditionIfExists(startedByDownloadBusterPre)
+}
 
 // StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
 func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
@@ -166,6 +170,184 @@ func StartedByArtifactWithGaiaLogin() testing.Precondition { return startedByArt
 // with Auth() option.
 func StartedByDownloadBusterWithGaiaLogin() testing.Precondition {
 	return startedByDownloadBusterWithGaiaLoginPre
+}
+
+// Param is like testing.Param, but without fields that cannot be
+// supported by MakeTestParamsFromList, such as preconditions,
+// hardware dependencies, timeouts, and so on.
+type Param struct {
+	// Name of the test case. Generated tests will look like "name_artifact", "name_download_buster" etc.
+	Name string
+
+	// ExtraAttr contains additional attributes to add to the
+	// generated test's ExtraAttr field beyond what the generator
+	// function adds. If you want your tests to be off of the CQ,
+	// add "informational" here.
+	ExtraAttr []string
+
+	// ExtraData contains paths of additional data files needed by
+	// the test case. Note that data files required for specific
+	// crostini preconditions are added automatically to the
+	// generated tests and should not be added here.
+	ExtraData []string
+
+	// ExtraSoftwareDeps lists software features that are required
+	// to run this test case.
+	ExtraSoftwareDeps []string
+
+	// Val is a freeform value that can be retrieved from
+	// testing.State.Param() method. This field is passed
+	// unmodified into the generated test cases.
+	Val interface{}
+}
+
+var generatedPreconditions = make(map[string]*preImpl)
+
+// getPreconditionIfExists takes a newly generated precondition object
+// and returns the first precondition to be created by that name
+// (possibly the one just passed in).
+//
+// This is needed because tast relies on us using the exact same
+// precondition object between tests which are to share a preconditon,
+// not just preconditions with equivalent definitions.
+func getPreconditionIfExists(new *preImpl) *preImpl {
+	if generated, ok := generatedPreconditions[new.name]; ok {
+		return generated
+	}
+	generatedPreconditions[new.name] = new
+	return new
+}
+
+// MakeTestParamsFromList takes a list of test cases (in the form of
+// crostini.Param objects) and generates a full set of crostini tests
+// for each. Currently this means all four of artifact,
+// artifact_unstable, download_stretch, and download_buster tests. If
+// the input items have values assigned to their parameters, these
+// will be merged into the output test cases.
+//
+// In particular, if a particular test case should not be cq-critical
+// (e.g. all new tests), add "informational" to ExtraAttr for that
+// case. Otherwise the generated tests which are eligible for being on
+// the CQ (not unstable or download tests) will be made cq-critical.
+//
+// Normally you should use MakeTestParams instead, but if your test is
+// parameterized beyond which crostini preconditions it uses, you will
+// need this.
+func MakeTestParamsFromList(baseCases []Param) []testing.Param {
+	var result []testing.Param
+	for _, testCase := range baseCases {
+		var namePrefix string
+		if testCase.Name != "" {
+			namePrefix = testCase.Name + "_"
+		}
+
+		// Check here if it's possible for any iteration of
+		// this test to be critical, i.e. if it doesn't
+		// already have the "informational" attribute.
+		canBeCritical := true
+		for _, attr := range testCase.ExtraAttr {
+			if attr == "informational" {
+				canBeCritical = false
+			}
+		}
+
+		for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
+			name := "download_" + string(debianVersion)
+
+			var extraAttr []string
+			// Download tests can never be CQ critical.
+			if canBeCritical {
+				extraAttr = append(extraAttr, "informational")
+			}
+
+			var startedByDownloadPre = &preImpl{
+				name:          "crostini_started_by_download_" + string(debianVersion),
+				timeout:       chrome.LoginTimeout + 10*time.Minute,
+				mode:          download,
+				debianVersion: debianVersion,
+			}
+
+			testParam := testing.Param{
+				Name:              namePrefix + name,
+				ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
+				ExtraData:         testCase.ExtraData,
+				ExtraSoftwareDeps: testCase.ExtraSoftwareDeps,
+				Pre:               getPreconditionIfExists(startedByDownloadPre),
+				Timeout:           10 * time.Minute,
+				Val:               testCase.Val,
+			}
+			result = append(result, testParam)
+		}
+
+		for _, stable := range []bool{true, false} {
+			name := "artifact"
+			if !stable {
+				name += "_unstable"
+			}
+
+			// _unstable tests can never be CQ critical.
+			var extraAttr []string
+			if !stable && canBeCritical {
+				extraAttr = append(extraAttr, "informational")
+			}
+
+			extraData := []string{ImageArtifact}
+
+			var hardwareDeps hwdep.Deps
+			if stable {
+				hardwareDeps = CrostiniStable
+			} else {
+				hardwareDeps = CrostiniUnstable
+			}
+
+			testParam := testing.Param{
+				Name:              namePrefix + name,
+				ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
+				ExtraData:         append(testCase.ExtraData, extraData...),
+				ExtraSoftwareDeps: testCase.ExtraSoftwareDeps,
+				ExtraHardwareDeps: hardwareDeps,
+				Pre:               StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				Val:               testCase.Val,
+			}
+			result = append(result, testParam)
+		}
+	}
+	return result
+}
+
+// TestCriticality is an enum indicating if the generated test cases
+// should contain cq-critical tests or not.
+type TestCriticality int
+
+const (
+	// TestInformational indicates that no tests should be critical
+	TestInformational TestCriticality = iota
+	// TestCritical indicates that tests can be critical. Note
+	// that some test cases are inelligible to be cq-critical
+	// regardless of this value.
+	TestCritical
+)
+
+// MakeTestParams generates the default set of crostini test
+// parameters using MakeTestParamsFromList. If your test only needs to
+// be parameterized over how crostini is acquired and which version is
+// installed, use this. Otherwise, you may need to use
+// MakeTestParamsFromList.
+//
+// If your test should not be cq-critical (e.g. all new tests), set
+// the input criticality=TestInformational. Otherwise the generated
+// tests which are eligible for being on the CQ (not unstable or
+// download tests) will be made cq-critical.
+func MakeTestParams(criticality TestCriticality) []testing.Param {
+	defaultTest := Param{
+		ExtraAttr: []string{},
+	}
+	if criticality == TestInformational {
+		defaultTest.ExtraAttr = []string{"informational"}
+	}
+
+	return MakeTestParamsFromList([]Param{defaultTest})
 }
 
 type setupMode int

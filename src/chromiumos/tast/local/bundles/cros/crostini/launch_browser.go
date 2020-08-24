@@ -19,34 +19,9 @@ func init() {
 		Func:         LaunchBrowser,
 		Desc:         "Opens a browser window on the host from the container, using several common approaches (/etc/alternatives, $BROWSER, and xdg-open)",
 		Contacts:     []string{"davidmunro@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
-		Params: []testing.Param{
-			{
-				Name:              "artifact",
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniStable,
-			},
-			{
-				Name:              "artifact_unstable",
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-			},
-			{
-				Name:    "download_stretch",
-				Pre:     crostini.StartedByDownloadStretch(),
-				Timeout: 10 * time.Minute,
-			},
-			{
-				Name:    "download_buster",
-				Pre:     crostini.StartedByDownloadBuster(),
-				Timeout: 10 * time.Minute,
-			},
-		},
+		Params:       crostini.MakeTestParams(crostini.TestInformational),
 	})
 }
 

@@ -22,49 +22,14 @@ func init() {
 		Desc:     "Runs a crostini application from the terminal in high/low DPI modes and compares sizes",
 		Contacts: []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
-		Params: []testing.Param{{
-			Name:              "wayland_artifact",
-			Pre:               crostini.StartedByArtifact(),
-			Timeout:           7 * time.Minute,
-			ExtraData:         []string{crostini.ImageArtifact},
-			Val:               crostini.WaylandDemoConfig(),
-			ExtraHardwareDeps: crostini.CrostiniStable,
-		}, {
-			Name:              "wayland_artifact_unstable",
-			Pre:               crostini.StartedByArtifact(),
-			Timeout:           7 * time.Minute,
-			ExtraData:         []string{crostini.ImageArtifact},
-			Val:               crostini.WaylandDemoConfig(),
-			ExtraHardwareDeps: crostini.CrostiniUnstable,
-			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:      "wayland_download_buster",
-			Pre:       crostini.StartedByDownloadBuster(),
-			Timeout:   10 * time.Minute,
-			Val:       crostini.WaylandDemoConfig(),
-			ExtraAttr: []string{"informational"},
-		}, {
-			Name:              "x11_artifact",
-			Pre:               crostini.StartedByArtifact(),
-			Timeout:           7 * time.Minute,
-			ExtraData:         []string{crostini.ImageArtifact},
-			Val:               crostini.X11DemoConfig(),
-			ExtraHardwareDeps: crostini.CrostiniStable,
-		}, {
-			Name:              "x11_artifact_unstable",
-			Pre:               crostini.StartedByArtifact(),
-			Timeout:           7 * time.Minute,
-			ExtraData:         []string{crostini.ImageArtifact},
-			Val:               crostini.X11DemoConfig(),
-			ExtraHardwareDeps: crostini.CrostiniUnstable,
-			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:      "x11_download_buster",
-			Pre:       crostini.StartedByDownloadBuster(),
-			Timeout:   10 * time.Minute,
-			Val:       crostini.X11DemoConfig(),
-			ExtraAttr: []string{"informational"},
-		}},
+		Params: crostini.MakeTestParamsFromList([]crostini.Param{
+			{
+				Name: "wayland",
+				Val:  crostini.WaylandDemoConfig(),
+			}, {
+				Name: "x11",
+				Val:  crostini.X11DemoConfig(),
+			}}),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }

@@ -20,31 +20,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     CommandCd,
-		Desc:     "Test command cd in Terminal window",
-		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Params: []testing.Param{{
-			Name:              "artifact",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniStable,
-		}, {
-			Name:              "artifact_unstable",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniUnstable,
-		}, {
-			Name:    "download_stretch",
-			Pre:     crostini.StartedByDownloadStretch(),
-			Timeout: 10 * time.Minute,
-		}, {
-			Name:    "download_buster",
-			Pre:     crostini.StartedByDownloadBuster(),
-			Timeout: 10 * time.Minute,
-		}},
+		Func:         CommandCd,
+		Desc:         "Test command cd in Terminal window",
+		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Attr:         []string{"group:mainline"},
+		Params:       crostini.MakeTestParams(crostini.TestInformational),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }

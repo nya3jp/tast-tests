@@ -7,7 +7,6 @@ package crostini
 import (
 	"context"
 	"strings"
-	"time"
 
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
@@ -19,21 +18,8 @@ func init() {
 		Desc:         "Attempts to uninstall a non-existant desktop file and expects to see errors",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
-		Timeout:      7 * time.Minute,
-		Data:         []string{crostini.ImageArtifact},
-		Pre:          crostini.StartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
-		Params: []testing.Param{
-			{
-				Name:              "artifact",
-				ExtraHardwareDeps: crostini.CrostiniStable,
-			},
-			{
-				Name:              "artifact_unstable",
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				ExtraAttr:         []string{"informational"},
-			},
-		},
+		Params:       crostini.MakeTestParams(crostini.TestCritical),
 	})
 }
 

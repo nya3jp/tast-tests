@@ -20,31 +20,11 @@ const filename = "test.txt"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     HomeDirectoryInFilesapp,
-		Desc:     "Runs a basic test on the default share folder (through UI) using a pre-built crostini image",
-		Contacts: []string{"jinrongwu@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
-		Params: []testing.Param{{
-			Name:              "artifact",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniStable,
-		}, {
-			Name:              "artifact_unstable",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniUnstable,
-		}, {
-			Name:    "download_stretch",
-			Pre:     crostini.StartedByDownloadStretch(),
-			Timeout: 10 * time.Minute,
-		}, {
-			Name:    "download_buster",
-			Pre:     crostini.StartedByDownloadBuster(),
-			Timeout: 10 * time.Minute,
-		}},
+		Func:         HomeDirectoryInFilesapp,
+		Desc:         "Runs a basic test on the default share folder (through UI) using a pre-built crostini image",
+		Contacts:     []string{"jinrongwu@chromium.org"},
+		Attr:         []string{"group:mainline"},
+		Params:       crostini.MakeTestParams(crostini.TestInformational),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
