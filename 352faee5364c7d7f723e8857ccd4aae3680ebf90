@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "39ce8bac_096849e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-24T20:55:33Z",
+      "side": 1,
+      "message": "Thanks Greg, that does help a lot.",
+      "parentUuid": "68e9262a_40bf50cc",
+      "revId": "352faee5364c7d7f723e8857ccd4aae3680ebf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00430121_3f01b312",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity.go",
         "patchSetId": 10
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "7ceb1da3_97fce639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-24T20:55:33Z",
+      "side": 1,
+      "message": "I think we have some other tests also named with sanity.  I\u0027ll follow up with a CL to rename.",
+      "parentUuid": "00430121_3f01b312",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "352faee5364c7d7f723e8857ccd4aae3680ebf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a30de30_fe27f704",
         "filename": "src/chromiumos/tast/local/vm/images.go",
         "patchSetId": 10
@@ -53,6 +95,30 @@
       "writtenOn": "2020-08-24T15:14:13Z",
       "side": 1,
       "message": "os.IsNotExist(err) would be more precise. os.Stat can return a non-nil error for other reasons, such as a permission error or a timeout error. http://go/godoc/os/#IsNotExist\n\nBecause os.Stat can cause errors other than file-not-found, I also recommend changing the function signature to return (bool, error).",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "352faee5364c7d7f723e8857ccd4aae3680ebf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "210d83dc_d32b13ce",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-24T20:55:33Z",
+      "side": 1,
+      "message": "I did consider checking only os.IsNotExist or returning (bool, error), but for my usecase, I\u0027m pretty sure that any other error besides file-not-found (permissions, timeout) has the same outcome that the ext4 image would fail to mount and be usable, so this code seemed like the correct check that I need.\n\nI will update the comment:\n// TerminaImageExists returns true if the termina image exists and is readable.",
+      "parentUuid": "0a30de30_fe27f704",
       "range": {
         "startLine": 35,
         "startChar": 8,
