@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "559390a8_df787c34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-24T10:20:20Z",
+      "side": 1,
+      "message": "I added a comment.",
+      "parentUuid": "e7bcc6d3_d373c646",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eab0b078_6012bc05",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ada071b_73109944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-24T10:20:20Z",
+      "side": 1,
+      "message": "* Yes.\n* I added a comment.",
+      "parentUuid": "eab0b078_6012bc05",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "252997a8_5e183e3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-24T10:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ce3bc31_ad76530a",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f555dddb_be0347c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc8019b2_8405dcb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-24T10:20:20Z",
+      "side": 1,
+      "message": "I changed to construct filePaths only when needed.",
+      "parentUuid": "f555dddb_be0347c1",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "97d78bf7_0dfb761f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-24T10:20:20Z",
+      "side": 1,
+      "message": "I replaced `regexes` and `missing` with `expectedFileNameRegexes` and `missingFileNameRegexes`.",
+      "parentUuid": "fb21b8c0_59be0044",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "516bde91_6bb7f324",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2020-08-24T05:38:18Z",
       "side": 1,
       "message": "How about just returning error here?\nYou\u0027re putting the list of files in the error message anyways.",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f9f4d85_6e1288ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-24T10:20:20Z",
+      "side": 1,
+      "message": "Just returning here seems nice since the code becomes simpler, but I (weakly) want to leave this as it is. Because listing missing files are more friendly and be also used in other tests like AppCrash. What do you think?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/crash/crash.go;rcl\u003d085895dfcfadecb410e87f8e8fc25493a302d382;l\u003d257",
+      "parentUuid": "516bde91_6bb7f324",
       "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -124,6 +232,30 @@
       "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d62bf00_affdc05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-24T10:20:20Z",
+      "side": 1,
+      "message": "I made this a constant and add a comment. Also reduced the timeout a little.",
+      "parentUuid": "1b5d80bc_6be14e93",
+      "range": {
+        "startLine": 121,
+        "startChar": 25,
+        "endLine": 121,
+        "endChar": 50
+      },
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
