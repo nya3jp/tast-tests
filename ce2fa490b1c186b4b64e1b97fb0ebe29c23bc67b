@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5bb7f7d9_011416a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-08-24T10:46:28Z",
+      "side": 1,
+      "message": "I think this statement helps people know the intention of this CL, which is: this CL isn\u0027t perfect and focuses on splitting tests.\n\n\u003e just curious: why do you need refactor it?\nFor example, as Garfield mentioned, the bounds check of the test isn\u0027t perfect.",
+      "parentUuid": "b18ed267_971f4d47",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "ce2fa490b1c186b4b64e1b97fb0ebe29c23bc67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1569ec90_5ed04540",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -70,6 +94,24 @@
       "writtenOn": "2020-08-14T18:28:19Z",
       "side": 1,
       "message": "LGTM, but please resolve other comment and wait approval from Garfield :)\n\nThanks!",
+      "revId": "ce2fa490b1c186b4b64e1b97fb0ebe29c23bc67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "090fc8b9_b1106036",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-08-24T10:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "458aeb77_7fcecfeb",
       "revId": "ce2fa490b1c186b4b64e1b97fb0ebe29c23bc67b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
