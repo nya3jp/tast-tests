@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d74fa0c0_dcd8ac85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-24T17:02:39Z",
+      "side": 1,
+      "message": "This does not sound like the comment to init(), and we usually do not comment init(). Maybe moving at the definition of Data: declaration?",
+      "revId": "21b2568e58d6a92c65c1b89a0fc7e4ae2e230362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100ff641_cfd54499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-24T17:02:39Z",
+      "side": 1,
+      "message": "Typically the first parameter of TempDir should be empty as the Go runtime chooses the right place for you if so; cf. https://golang.org/pkg/io/ioutil/#TempDir\n\u003e If dir is the empty string, TempDir uses the default directory for temporary files (see os.TempDir)",
+      "range": {
+        "startLine": 97,
+        "startChar": 32,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "21b2568e58d6a92c65c1b89a0fc7e4ae2e230362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
