@@ -24,7 +24,7 @@ func init() {
 			"briannorris@chromium.org",
 			"chromeos-platform-connectivity@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "shill-wifi"},
 
 		Params: []testing.Param{
