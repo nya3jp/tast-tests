@@ -58,11 +58,11 @@ func Goofy(fullCtx context.Context, s *testing.State) {
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if _, err := os.Stat(finishFlagFilePath); err != nil {
-			return errors.Wrapf(err, "failed to access finished flag file %s", finishFlagFilePath)
+			return errors.Errorf("finished flag file %s is missing", finishFlagFilePath)
 		}
 		return nil
 	}, nil); err != nil {
-		s.Fatal("Failed to execute the TestList or running Goofy: ", err)
+		s.Fatal("Factory software fail to init and run. This high level and complicate tests is not a good choice to debug. Please check dumpped logs or other failed tests.  Failed to finish Goofy in time: ", err)
 	}
 }
 
