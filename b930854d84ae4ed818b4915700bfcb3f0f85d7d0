@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "623c2a5f_52ce4d83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-08-24T11:11:11Z",
+      "side": 1,
+      "message": "ZIP",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "b930854d84ae4ed818b4915700bfcb3f0f85d7d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc1d61a5_64006610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-08-24T11:11:11Z",
+      "side": 1,
+      "message": "Cannot",
+      "range": {
+        "startLine": 88,
+        "startChar": 11,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "b930854d84ae4ed818b4915700bfcb3f0f85d7d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "198817ef_7c133aab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-08-24T11:11:11Z",
+      "side": 1,
+      "message": "Cannot",
+      "range": {
+        "startLine": 121,
+        "startChar": 12,
+        "endLine": 121,
+        "endChar": 21
+      },
+      "revId": "b930854d84ae4ed818b4915700bfcb3f0f85d7d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1de428_a7698064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-08-24T11:11:11Z",
+      "side": 1,
+      "message": "The information carried by `err` is lost here. Is it expected?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 42
+      },
+      "revId": "b930854d84ae4ed818b4915700bfcb3f0f85d7d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
