@@ -13,10 +13,8 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/firmware"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/lsbrelease"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
@@ -32,23 +30,6 @@ func init() {
 // UtilsService implements tast.cros.firmware.UtilsService.
 type UtilsService struct {
 	s *testing.ServiceState
-}
-
-// Platform gets the name of the DUT board (coral, samus, drallion, etc) and model (robo360, nasher, etc).
-func (*UtilsService) Platform(ctx context.Context, req *empty.Empty) (*fwpb.PlatformResponse, error) {
-	lsbContents, err := lsbrelease.Load()
-	if err != nil {
-		return nil, errors.Wrap(err, "loading lsbrelease contents")
-	}
-	board, ok := lsbContents[lsbrelease.Board]
-	if !ok {
-		return nil, errors.Errorf("failed to find %s in lsbrelease contents", lsbrelease.Board)
-	}
-	model, err := crosconfig.Get(ctx, "/", "name")
-	if err != nil {
-		return &fwpb.PlatformResponse{Board: board}, errors.Wrap(err, "getting model name from cros_config")
-	}
-	return &fwpb.PlatformResponse{Board: board, Model: model}, nil
 }
 
 // CurrentBootMode determines the DUT's current firmware boot mode.
