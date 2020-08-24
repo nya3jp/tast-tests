@@ -29,4 +29,6 @@ var stableModels = []string{
 var AppsStableModels = hwdep.D(hwdep.Model(stableModels...))
 
 // AppsUnstableModels is a list of models to run inputs tests at 'informational' so that we know once they are stable enough to be promoted to CQ.
-var AppsUnstableModels = hwdep.D(hwdep.SkipOnModel(stableModels...))
+// kevin64 is an experimental board does not support nacl, which fails Canvas installation.
+// To stablize the tests, have to exclude entire kevin model as no distinguish between kevin and kevin64.
+var AppsUnstableModels = hwdep.D(hwdep.SkipOnModel(append(stableModels, "kevin1")...))
