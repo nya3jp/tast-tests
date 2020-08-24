@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7df6091c_2a419ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-24T21:40:40Z",
+      "side": 1,
+      "message": "I mean consts can be defined in a function which uses it, e.g.\n\n  func displaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {\n    const roundingError \u003d 0.01\n    ...\n\nthat way, the visibility of roundingError is scoped within this function. I believe this is better.",
+      "parentUuid": "b32e72ad_534f3810",
+      "revId": "ccaacad07c0bea0aa2494fbe36bf2c6c465edc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c66de0a5_f867b8f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 1
