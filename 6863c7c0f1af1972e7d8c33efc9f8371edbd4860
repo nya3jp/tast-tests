@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1ed7bc1_6aeaee29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-24T19:09:26Z",
+      "side": 1,
+      "message": "Fixed server start issues and confirmed server is up and running.\n1. string conversion had extra misc. chars previously.\n2. htnos for port is required and previously missing.\n\n```\nlocalhost ~ # netstat -anp TCP | grep 2332\ntcp        0      0 127.0.0.1:2332          0.0.0.0:*               LISTEN      31433/cros \n```\n\nThere is still a connection refused error in APK though.",
+      "revId": "6863c7c0f1af1972e7d8c33efc9f8371edbd4860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
