@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b957cc55_9768abd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-24T18:03:47Z",
+      "side": 1,
+      "message": "I am afraid that this is not the best place to fix this issue.\n\n- the assumption is that the metric should never be zero. This allows some zero results. Maybe checking in perfutil.StoreLatency might be a choice.\n- or, I guess it\u0027s even nicer to change in ash/public/cpp/presentation_time_recorder.cc in chromium repository to not produce metrics.\n\nDo you know why it fails?  Is it a problem of the certain board?\nIf the board is known to be problematic right now, can we also add a hwdep to exclude that?",
+      "revId": "5f0d3cbca3a9d3c8095d22a69209d1cbf329e833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
