@@ -16,6 +16,69 @@
       "revId": "2f66868b8251671103e4a62e153a2aa0b3806ddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "954242d8_a9dfb1b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-24T12:41:08Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "2f66868b8251671103e4a62e153a2aa0b3806ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a59c48d_52bc89a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-24T12:41:08Z",
+      "side": 1,
+      "message": "You can put the \"windowState, err :\u003d act.GetWindowState(ctx)\" into the if, and use \"else if\" instead of the second \"if\". This way the \"windowState\" is still available in the second \"if\", but the checks are more compact.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 3
+      },
+      "revId": "2f66868b8251671103e4a62e153a2aa0b3806ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea4631e_78ad9da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-24T12:41:08Z",
+      "side": 1,
+      "message": "question: You use this inside of the checks above. Is it possible to call it only once, or the other functions change the info of the window in a way that makes it impossible?",
+      "range": {
+        "startLine": 110,
+        "startChar": 20,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "2f66868b8251671103e4a62e153a2aa0b3806ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
