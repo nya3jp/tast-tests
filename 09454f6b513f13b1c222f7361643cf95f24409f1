@@ -39,6 +39,30 @@
       "revId": "09454f6b513f13b1c222f7361643cf95f24409f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93953c17_e566dc08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-24T09:05:56Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, I\u0027ve seen that WaitForLocationChangeCompleted has been used elsewhere to address the same problem, but I\u0027m not sure to understand why we are watching \"locationChanged\" events specifically, especially in this case.\n\nI\u0027m wondering even if I do expected it to work since calling this function leaves time for the context menu to update.",
+      "parentUuid": "fc3906ed_7582e0a9",
+      "range": {
+        "startLine": 346,
+        "startChar": 11,
+        "endLine": 346,
+        "endChar": 51
+      },
+      "revId": "09454f6b513f13b1c222f7361643cf95f24409f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
