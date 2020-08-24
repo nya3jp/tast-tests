@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"strings"
 	"text/template"
+	"time"
 
 	"chromiumos/tast/errors"
 )
@@ -59,6 +60,10 @@ func formatRec(v interface{}, needType bool) (text string, err error) {
 
 	val := reflect.ValueOf(v)
 	typ := val.Type()
+
+	if duration, ok := v.(time.Duration); ok {
+		return formatDuration(duration)
+	}
 
 	if defined(typ) {
 		return "", errors.Errorf("unsupported type %T", v)
@@ -156,4 +161,16 @@ func defined(t reflect.Type) bool {
 	// PkgPath is empty for predeclared types and non-defined types.
 	// Name is empty for non-defined types.
 	return t.PkgPath() != "" && t.Name() != ""
+}
+
+func formatDuration(t time.Duration) (string, error) {
+	if hours := t.Hours(); hours == float64(int64(hours)) {
+		return strconv.FormatInt(int64(hours), 10) + " * time.Hour", nil
+	} else if minutes := t.Minutes(); minutes == float64(int64(minutes)) {
+		return strconv.FormatInt(int64(minutes), 10) + " * time.Minute", nil
+	} else if seconds := t.Seconds(); seconds == float64(int64(seconds)) {
+		return strconv.FormatInt(int64(seconds), 10) + " * time.Second", nil
+	} else {
+		return "", errors.Errorf("time.Duration %v is too precise", t)
+	}
 }
