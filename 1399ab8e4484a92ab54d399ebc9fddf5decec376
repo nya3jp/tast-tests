@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "354e884d_3c8e6b0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-24T03:07:28Z",
+      "side": 1,
+      "message": "Thanks for the change.",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dc57e82_85534588",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
         "patchSetId": 3
@@ -110,6 +127,40 @@
         "endLine": 88,
         "endChar": 35
       },
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed98fbfb_c40c26e1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-24T03:07:28Z",
+      "side": 1,
+      "message": "Need to r.freeIface if we get error here. Or maybe move r.setIfaceBusy after this. (regarding ensureUniqueMAC as part of preparation).",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b57a33b_750b494d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-24T03:07:28Z",
+      "side": 1,
+      "message": "As one PHY can be occupied by multiple hostapd-s now, the set of PHY business setter/getter will also need to be updated. We only have busy/free binary state in the past and it can\u0027t identify the case of \"occupied by multiple\". (sorry I didn\u0027t make it flexible enough) \n\nI think maybe we can change r.busyPhy from map[int]map[iw.IfType]bool to map[int]map[iw.IfType]int (+ modification on the usage). Or, one alternative is to drop the r.busyPhy cache and traverse r.busyIfaces for checking business of a given phyID + type.",
       "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
