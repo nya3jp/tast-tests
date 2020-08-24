@@ -34,6 +34,24 @@
       "revId": "2c722b984992bfcfabe6ce2ec94537fca113ba8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91f52e0c_b7ab7c2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2020-08-24T22:31:26Z",
+      "side": 1,
+      "message": "No, I didn\u0027t find the owner of chromiumos-test-assets-public storage space. Maybe should I ask chromium-os-dev@chromium.org, as listed at https://www.chromium.org/chromium-os/testing\n?",
+      "parentUuid": "4b1a654f_abdf8490",
+      "revId": "2c722b984992bfcfabe6ce2ec94537fca113ba8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
