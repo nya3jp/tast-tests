@@ -16,6 +16,24 @@
       "revId": "5f0d3cbca3a9d3c8095d22a69209d1cbf329e833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a28e38a7_862461f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003276
+      },
+      "writtenOn": "2020-08-24T18:11:05Z",
+      "side": 1,
+      "message": "\u003e Do you know why it fails?  Is it a problem of the certain board?\n\u003e If the board is known to be problematic right now, can we also add a hwdep to exclude that?\n\nIt seems to be related to not getting valid timing back from kernel, I\u0027ve posted a patch for the board we observed this problem.  But it would probably be good for the test to fail in case other boards have the same problem.\n\nupstream kernel patch: https://patchwork.freedesktop.org/patch/386167/?series\u003d80751\u0026rev\u003d1",
+      "parentUuid": "b957cc55_9768abd5",
+      "revId": "5f0d3cbca3a9d3c8095d22a69209d1cbf329e833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
