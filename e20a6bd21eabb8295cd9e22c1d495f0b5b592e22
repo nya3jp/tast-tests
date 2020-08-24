@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7bcc6d3_d373c646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-08-24T05:38:18Z",
+      "side": 1,
+      "message": "Please add a comment to describe why this command and argument were chosen.",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab0b078_6012bc05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-08-24T05:38:18Z",
+      "side": 1,
+      "message": "- Shouldn\u0027t this be fatal?\n- Why is err !\u003d nil success, while err \u003d\u003d nil is an error?",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce3bc31_ad76530a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-08-24T05:38:18Z",
+      "side": 1,
+      "message": "Please make it clear that you are looking for the crash dump directory which is used only by the VM, not the crash report dir used for all types of crash reports.",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f555dddb_be0347c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-08-24T05:38:18Z",
+      "side": 1,
+      "message": "filePaths is only used when returning an error.\nHow about either:\n- Just use files instead of filePaths in the error string.\n- Construct filePaths only when needed.",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb21b8c0_59be0044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-08-24T05:38:18Z",
+      "side": 1,
+      "message": "Please make it clear (by changing the variable name or adding a comment) that this variable is for regexps, not for file names.",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516bde91_6bb7f324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-08-24T05:38:18Z",
+      "side": 1,
+      "message": "How about just returning error here?\nYou\u0027re putting the list of files in the error message anyways.",
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5d80bc_6be14e93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-08-24T05:38:18Z",
+      "side": 1,
+      "message": "Please make this a constant.\nAlso please add a comment to describe why this value is appropriate.",
+      "range": {
+        "startLine": 121,
+        "startChar": 25,
+        "endLine": 121,
+        "endChar": 50
+      },
+      "revId": "e20a6bd21eabb8295cd9e22c1d495f0b5b592e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
