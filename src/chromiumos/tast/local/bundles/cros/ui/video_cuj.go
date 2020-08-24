@@ -42,7 +42,7 @@ func init() {
 		Vars: []string{
 			"ui.cuj_username",
 			"ui.cuj_password",
-			"ui.VideoCUJ.ytExperiments",
+			"ui.ytExperiments",
 		},
 		Params: []testing.Param{{
 			Name: "clamshell",
@@ -121,7 +121,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	s.Log("Open youtube Web")
 	ytConn, err := cr.NewConn(ctx,
 		"https://www.youtube.com/watch?v=EEIk7gwjgIM&absolute_experiments="+
-			s.RequiredVar("ui.VideoCUJ.ytExperiments"),
+			s.RequiredVar("ui.ytExperiments"),
 		cdputil.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open youtube: ", err)
