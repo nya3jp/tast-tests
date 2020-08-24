@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "199558f3_4d99c882",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-24T06:54:14Z",
+      "side": 1,
+      "message": "super nit: \"iz\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd99c4b3_190dadd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-24T06:54:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 16,
+        "startChar": 46,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c259e51_f684c955",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -16,6 +62,69 @@
       "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d3976d3_571db682",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-24T06:54:14Z",
+      "side": 1,
+      "message": "I\u0027m just curious why we cannot merge this test into existing USF test (uniform_scale_factor.go).",
+      "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab97d8f0_ff346d38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-24T06:54:14Z",
+      "side": 1,
+      "message": "we should update this description for the non-maximized test.",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 90
+      },
+      "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f235722_8823310f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-24T06:54:14Z",
+      "side": 1,
+      "message": "optional: is it possible to somehow extract this function into USF\u0027s util module, and re-use it from uniform_scale_factor.go (test for maximized)?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
