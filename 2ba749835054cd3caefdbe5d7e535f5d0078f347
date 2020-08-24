@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "5764de9b_b52d3f52",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-08-24T17:13:27Z",
+      "side": 1,
+      "message": "It is fine. ignore my previous comments.\nI did not notice that setWhitelistedPref is public and we can call at here at well.",
+      "parentUuid": "15ee4f23_aeeef69f",
+      "range": {
+        "startLine": 89,
+        "startChar": 68,
+        "endLine": 89,
+        "endChar": 86
+      },
+      "revId": "2ba749835054cd3caefdbe5d7e535f5d0078f347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20a9d213_85be2d6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
         "patchSetId": 3
