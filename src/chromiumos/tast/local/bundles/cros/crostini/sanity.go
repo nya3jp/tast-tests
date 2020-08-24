@@ -6,7 +6,6 @@ package crostini
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
@@ -20,35 +19,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState"},
-		Params: []testing.Param{
-			{
-				Name:              "artifact",
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniStable,
-			},
-			{
-				Name:              "artifact_unstable",
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name:      "download_stretch",
-				Pre:       crostini.StartedByDownloadStretch(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
-			},
-			{
-				Name:      "download_buster",
-				Pre:       crostini.StartedByDownloadBuster(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
-			},
-		},
+		Params:       crostini.MakeTestParams(crostini.TestCritical),
 	})
 }
 

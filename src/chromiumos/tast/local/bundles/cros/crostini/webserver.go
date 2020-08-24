@@ -24,21 +24,8 @@ func init() {
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState"},
-		Timeout:      7 * time.Minute,
-		Data:         []string{crostini.ImageArtifact},
-		Pre:          crostini.StartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
-		Params: []testing.Param{
-			{
-				Name:              "artifact",
-				ExtraHardwareDeps: crostini.CrostiniStable,
-			},
-			{
-				Name:              "artifact_unstable",
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				ExtraAttr:         []string{"informational"},
-			},
-		},
+		Params:       crostini.MakeTestParams(crostini.TestCritical),
 	})
 }
 

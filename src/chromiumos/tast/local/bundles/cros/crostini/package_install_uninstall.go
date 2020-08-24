@@ -15,35 +15,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PackageInstallUninstall,
-		Desc:     "Installs and then uninstalls a package that we have copied into the container",
-		Contacts: []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:mainline"},
-		Vars:     []string{"keepState"},
-		Params: []testing.Param{{
-			Name:              "artifact",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniStable,
-		}, {
-			Name:              "artifact_unstable",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniUnstable,
-			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:      "download_stretch",
-			Pre:       crostini.StartedByDownloadStretch(),
-			Timeout:   10 * time.Minute,
-			ExtraAttr: []string{"informational"},
-		}, {
-			Name:      "download_buster",
-			Pre:       crostini.StartedByDownloadBuster(),
-			Timeout:   10 * time.Minute,
-			ExtraAttr: []string{"informational"},
-		}},
+		Func:         PackageInstallUninstall,
+		Desc:         "Installs and then uninstalls a package that we have copied into the container",
+		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Attr:         []string{"group:mainline"},
+		Vars:         []string{"keepState"},
+		Params:       crostini.MakeTestParams(crostini.TestCritical),
 		Data:         []string{"package.deb"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})

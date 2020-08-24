@@ -85,187 +85,37 @@ func init() {
 		Vars:     []string{"keepState"},
 		Data:     []string{copyApplet, pasteApplet},
 		// Test every combination of:
-		//   * Source container via Download/DownloadBuster/Artifact/Artifact unstable
 		//   * Copy from Wayland|X11
 		//   * Copy to Wayland|X11
-		// As of writing tast requires that parameters are written out in full as
-		// static initialisers hence the big list.
-		Params: []testing.Param{
+		Params: crostini.MakeTestParamsFromList([]crostini.Param{
 			{
-				Name: "wayland_to_wayland_download_stretch",
+				Name: "wayland_to_wayland",
 				Val: testParameters{
 					Copy:  waylandCopyConfig,
 					Paste: waylandPasteConfig,
 				},
-				Pre:       crostini.StartedByDownloadStretch(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
 			},
 			{
-				Name: "wayland_to_x11_download_stretch",
+				Name: "wayland_to_x11",
 				Val: testParameters{
 					Copy:  waylandCopyConfig,
 					Paste: x11PasteConfig,
 				},
-				Pre:       crostini.StartedByDownloadStretch(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
 			},
 			{
-				Name: "x11_to_wayland_download_stretch",
+				Name: "x11_to_wayland",
 				Val: testParameters{
 					Copy:  x11CopyConfig,
 					Paste: waylandPasteConfig,
 				},
-				Pre:       crostini.StartedByDownloadStretch(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
 			},
 			{
-				Name: "x11_to_x11_download_stretch",
+				Name: "x11_to_x11",
 				Val: testParameters{
 					Copy:  x11CopyConfig,
 					Paste: x11PasteConfig,
 				},
-				Pre:       crostini.StartedByDownloadStretch(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
-			},
-			{
-				Name: "wayland_to_wayland_download_buster",
-				Val: testParameters{
-					Copy:  waylandCopyConfig,
-					Paste: waylandPasteConfig,
-				},
-				Pre:       crostini.StartedByDownloadBuster(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
-			},
-			{
-				Name: "wayland_to_x11_download_buster",
-				Val: testParameters{
-					Copy:  waylandCopyConfig,
-					Paste: x11PasteConfig,
-				},
-				Pre:       crostini.StartedByDownloadBuster(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
-			},
-			{
-				Name: "x11_to_wayland_download_buster",
-				Val: testParameters{
-					Copy:  x11CopyConfig,
-					Paste: waylandPasteConfig,
-				},
-				Pre:       crostini.StartedByDownloadBuster(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
-			},
-			{
-				Name: "x11_to_x11_download_buster",
-				Val: testParameters{
-					Copy:  x11CopyConfig,
-					Paste: x11PasteConfig,
-				},
-				Pre:       crostini.StartedByDownloadBuster(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
-			},
-			{
-				Name: "wayland_to_wayland_artifact",
-				Val: testParameters{
-					Copy:  waylandCopyConfig,
-					Paste: waylandPasteConfig,
-				},
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniStable,
-			},
-			{
-				Name: "wayland_to_wayland_artifact_unstable",
-				Val: testParameters{
-					Copy:  waylandCopyConfig,
-					Paste: waylandPasteConfig,
-				},
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name: "wayland_to_x11_artifact",
-				Val: testParameters{
-					Copy:  waylandCopyConfig,
-					Paste: x11PasteConfig,
-				},
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniStable,
-			},
-			{
-				Name: "wayland_to_x11_artifact_unstable",
-				Val: testParameters{
-					Copy:  waylandCopyConfig,
-					Paste: x11PasteConfig,
-				},
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name: "x11_to_wayland_artifact",
-				Val: testParameters{
-					Copy:  x11CopyConfig,
-					Paste: waylandPasteConfig,
-				},
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniStable,
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name: "x11_to_wayland_artifact_unstable",
-				Val: testParameters{
-					Copy:  x11CopyConfig,
-					Paste: waylandPasteConfig,
-				},
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name: "x11_to_x11_artifact",
-				Val: testParameters{
-					Copy:  x11CopyConfig,
-					Paste: x11PasteConfig,
-				},
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniStable,
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name: "x11_to_x11_artifact_unstable",
-				Val: testParameters{
-					Copy:  x11CopyConfig,
-					Paste: x11PasteConfig,
-				},
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				ExtraAttr:         []string{"informational"},
-			},
-		},
+			}}),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }

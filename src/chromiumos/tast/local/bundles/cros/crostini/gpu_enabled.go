@@ -7,7 +7,6 @@ package crostini
 import (
 	"context"
 	"strings"
-	"time"
 
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/testexec"
@@ -23,62 +22,17 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host", "crosvm_gpu"},
-		Params: []testing.Param{
+		Params: crostini.MakeTestParamsFromList([]crostini.Param{
 			{
-				Name:              "artifact_sw",
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
+				Name:              "sw",
 				Val:               "llvmpipe",
 				ExtraSoftwareDeps: []string{"crosvm_no_gpu"},
-				ExtraHardwareDeps: crostini.CrostiniStable,
 			},
 			{
-				Name:              "artifact_sw_unstable",
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				Val:               "llvmpipe",
-				ExtraSoftwareDeps: []string{"crosvm_no_gpu"},
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name:              "artifact_gpu",
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
+				Name:              "gpu",
 				Val:               "virgl",
 				ExtraSoftwareDeps: []string{"crosvm_gpu"},
-				ExtraHardwareDeps: crostini.CrostiniStable,
-			},
-			{
-				Name:              "artifact_gpu_unstable",
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				Val:               "virgl",
-				ExtraSoftwareDeps: []string{"crosvm_gpu"},
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name:              "download_buster_sw",
-				Pre:               crostini.StartedByDownloadBuster(),
-				Timeout:           10 * time.Minute,
-				Val:               "llvmpipe",
-				ExtraSoftwareDeps: []string{"crosvm_no_gpu"},
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name:              "download_sw",
-				Pre:               crostini.StartedByDownloadStretch(),
-				Timeout:           10 * time.Minute,
-				Val:               "llvmpipe",
-				ExtraSoftwareDeps: []string{"crosvm_no_gpu"},
-				ExtraAttr:         []string{"informational"},
-			},
-		},
+			}}),
 	})
 }
 

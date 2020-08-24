@@ -19,32 +19,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     IconAndUsername,
-		Desc:     "Test Terminal icon on shelf and username in Terminal window",
-		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Vars:     []string{"keepState"},
-		Params: []testing.Param{{
-			Name:              "artifact",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniStable,
-		}, {
-			Name:              "artifact_unstable",
-			Pre:               crostini.StartedByArtifact(),
-			ExtraData:         []string{crostini.ImageArtifact},
-			Timeout:           7 * time.Minute,
-			ExtraHardwareDeps: crostini.CrostiniUnstable,
-		}, {
-			Name:    "download_stretch",
-			Pre:     crostini.StartedByDownloadStretch(),
-			Timeout: 10 * time.Minute,
-		}, {
-			Name:    "download_buster",
-			Pre:     crostini.StartedByDownloadBuster(),
-			Timeout: 10 * time.Minute,
-		}},
+		Func:         IconAndUsername,
+		Desc:         "Test Terminal icon on shelf and username in Terminal window",
+		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Attr:         []string{"group:mainline"},
+		Vars:         []string{"keepState"},
+		Params:       crostini.MakeTestParams(crostini.TestInformational),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
