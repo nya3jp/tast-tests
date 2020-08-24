@@ -13,12 +13,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        Config,
-		Desc:        "Verifies that remote tests can load fw-testing-configs properly",
-		Contacts:    []string{"cros-fw-engprod@google.com"},
-		Data:        firmware.ConfigDatafiles(),
-		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
-		Attr:        []string{"group:mainline", "informational"},
+		Func:     Config,
+		Desc:     "Verifies that remote tests can load fw-testing-configs properly",
+		Contacts: []string{"cros-fw-engprod@google.com"},
+		Data:     firmware.ConfigDatafiles(),
+		Attr:     []string{"group:mainline", "informational"},
 	})
 }
 
@@ -30,7 +29,7 @@ func Config(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create firmware config: ", err)
 	}
 
-	// Verify that the loaded config's "platform" attribute matches the board (or board variant) returned by RPC.
+	// Verify that the loaded config's "platform" attribute matches the board/variant fetched by the helper.
 	expectedPlatform := firmware.CfgPlatformFromLSBBoard(h.Board)
 	if h.Config.Platform != expectedPlatform {
 		s.Errorf("Unexpected Platform value; got %s, want %s", h.Config.Platform, expectedPlatform)
