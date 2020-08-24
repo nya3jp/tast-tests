@@ -6,9 +6,13 @@ package arc
 
 import (
 	"context"
+	"io"
+	"net"
+	"os"
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/apploading"
 	"chromiumos/tast/local/power/setup"
@@ -16,7 +20,19 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-const apkName = "ArcAppLoadingTest.apk"
+const (
+	// Name of APK used for this test.
+	apkName = "ArcAppLoadingTest.apk"
+
+	// Number of connections in NetworkTest.
+	networkTestConnections = 30
+
+	// Time to wait to read from clients in NetworkTest.
+	networkTestReadTimeOut = 2 * time.Minute
+
+	// Initial port used for server in NetworkTest.
+	networkTestPort = 7177
+)
 
 var (
 	arcAppLoadingGaia = &arc.GaiaVars{
@@ -81,10 +97,12 @@ func init() {
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	weightsDict := map[string]float64{
-		"memory":  0.1,
-		"file":    6.5,
-		"network": 5.2,
-		"opengl":  4.0,
+		"memory":        0.5,
+		"file":          2.2,
+		"network":       3.6,
+		"opengl":        1.7,
+		"decompression": 7.5,
+		"ui":            760.0,
 	}
 
 	finalPerfValues := perf.NewValues()
@@ -104,6 +122,12 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	}, {
 		name:   "OpenGLTest",
 		prefix: "opengl",
+	}, {
+		name:   "DecompressionTest",
+		prefix: "decompression",
+	}, {
+		name:   "UITest",
+		prefix: "ui",
 	}}
 
 	config := apploading.TestConfig{
@@ -117,6 +141,14 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
 	for _, test := range tests {
+		if test.prefix == "network" {
+			// Start servers before APK instrumentation.
+			for i := 0; i < networkTestConnections; i++ {
+				port := networkTestPort + i
+				s.Logf("Starting TCP server at port: %d", port)
+				go startServer(networkTestPort + i)
+			}
+		}
 		config.ClassName = test.name
 		config.Prefix = test.prefix
 		score, err := apploading.RunTest(ctx, config, a, cr)
@@ -146,4 +178,49 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	if err := finalPerfValues.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save final perf metrics: ", err)
 	}
+}
+
+func startServer(port int) error {
+	serverAddr := ":" + string(port)
+	tcpAddr, err := net.ResolveTCPAddr("tcp4", serverAddr)
+	if err != nil {
+		return errors.Wrapf(err, "failed to resolve TCP address: %s", serverAddr)
+	}
+	listener, err := net.ListenTCP("tcp", tcpAddr)
+	if err != nil {
+		return errors.Wrap(err, "failed to listen")
+	}
+
+	conn, err := listener.Accept()
+	if err != nil {
+		return errors.Wrap(err, "failed to accept client")
+	}
+	if err := handleClient(conn); err != nil {
+		return errors.Wrap(err, "failed to handle client")
+	}
+
+	return nil
+}
+
+func handleClient(conn net.Conn) error {
+	conn.SetReadDeadline(time.Now().Add(networkTestReadTimeOut))
+	// Set max message length to 512KB.
+	request := make([]byte, 512*1024)
+	defer conn.Close()
+	for {
+		bytesRead, err := conn.Read(request)
+		if err != nil && err != io.EOF {
+			return errors.Wrap(err, "failed to read from connection")
+		}
+
+		if bytesRead == 0 {
+			// No more data from client, close.
+			break
+		} else {
+			ackMsg := "Ack from server process " + string(os.Getpid())
+			conn.Write([]byte(ackMsg))
+		}
+	}
+
+	return nil
 }
