@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33c5142d_59da2dd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-24T13:08:58Z",
+      "side": 1,
+      "message": "Thanks! LGTM with a nit.",
+      "revId": "6b020256c8de0405ea6eeb5cd82d88f18a97801d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22f9a0f8_9ec9417d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-24T13:08:58Z",
+      "side": 1,
+      "message": "You can write this as: fmt.Fprintln(fout, dataLine)",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 30
+      },
+      "revId": "6b020256c8de0405ea6eeb5cd82d88f18a97801d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
