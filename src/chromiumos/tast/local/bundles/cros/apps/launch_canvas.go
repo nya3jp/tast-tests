@@ -26,7 +26,7 @@ func init() {
 			"blick-swe@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
@@ -35,6 +35,7 @@ func init() {
 		}, {
 			Name:              "unstable",
 			ExtraHardwareDeps: pre.AppsUnstableModels,
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
