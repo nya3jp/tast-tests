@@ -704,6 +704,24 @@
     },
     {
       "key": {
+        "uuid": "c25797f0_af6dc23b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-24T23:48:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6f9a3f31_37e6868e",
+      "revId": "8964e10f6e5e57c52f8add6f5c570d6b3a0bf411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b59e7fe3_4e987257",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 4
