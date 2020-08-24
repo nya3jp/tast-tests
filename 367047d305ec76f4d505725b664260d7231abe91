@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30a8ac27_a10cacab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-08-24T22:49:32Z",
+      "side": 1,
+      "message": "lgtm\n\nI wonder how \"repo upload\" presumbit check did not complain about CL description missing \"BUG\u003d\" and \"TEST\u003d\" line. If it does, please add these two lines. \ne.g.\n\nBUG\u003dNone\nTEST\u003dtast run ui.VideoCUJ",
+      "revId": "367047d305ec76f4d505725b664260d7231abe91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
