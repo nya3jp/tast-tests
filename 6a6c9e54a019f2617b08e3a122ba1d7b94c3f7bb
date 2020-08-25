@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e265deb_f07dd0ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-25T23:47:44Z",
+      "side": 1,
+      "message": "I don\u0027t think the case should be failed due to this reason.",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "6a6c9e54a019f2617b08e3a122ba1d7b94c3f7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
