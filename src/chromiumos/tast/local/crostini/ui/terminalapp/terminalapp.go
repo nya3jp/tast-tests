@@ -79,9 +79,17 @@ func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemName string) 
 	return uig.Do(ctx, ta.tconn, shutdown)
 }
 
+// ShutdownCrostini shuts down crostini by selecting the shutdown option on the terminal context menu.
+func (ta *TerminalApp) ShutdownCrostini(ctx context.Context) error {
+	if err := ta.clickShelfMenuItem(ctx, "Shut down Linux (Beta)"); err != nil {
+		return err
+	}
+	return nil
+}
+
 // RestartCrostini shuts down Crostini and launch and exit the Terminal window.
 func (ta *TerminalApp) RestartCrostini(ctx context.Context, keyboard *input.KeyboardEventWriter, cont *vm.Container, userName string) error {
-	if err := ta.clickShelfMenuItem(ctx, "Shut down Linux (Beta)"); err != nil {
+	if err := ta.ShutdownCrostini(ctx); err != nil {
 		return errors.Wrap(err, "failed to shutdown crostini")
 	}
 
