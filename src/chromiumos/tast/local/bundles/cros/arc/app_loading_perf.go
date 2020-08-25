@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -80,30 +81,43 @@ func init() {
 // subflow will be tested separately including separate performance metrics
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
-	weightsDict := map[string]float64{
-		"memory":  0.1,
-		"file":    6.5,
-		"network": 5.2,
-		"opengl":  4.0,
-	}
-
 	finalPerfValues := perf.NewValues()
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
 	tests := []struct {
-		name   string
-		prefix string
+		name     string
+		prefix   string
+		function string
 	}{{
 		name:   "MemoryTest",
 		prefix: "memory",
 	}, {
-		name:   "FileTest",
-		prefix: "file",
+		name:     "FileTest",
+		prefix:   "file_obb",
+		function: "runObbTest",
+	}, {
+		name:     "FileTest",
+		prefix:   "file_squashfs",
+		function: "runSquashFSTest",
+	}, {
+		name:     "FileTest",
+		prefix:   "file_esd",
+		function: "runEsdTest",
+	}, {
+		name:     "FileTest",
+		prefix:   "file_ext4",
+		function: "runExt4Test",
 	}, {
 		name:   "NetworkTest",
 		prefix: "network",
 	}, {
 		name:   "OpenGLTest",
 		prefix: "opengl",
+	}, {
+		name:   "DecompressionTest",
+		prefix: "decompression",
+	}, {
+		name:   "UITest",
+		prefix: "ui",
 	}}
 
 	config := apploading.TestConfig{
@@ -119,18 +133,19 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	for _, test := range tests {
 		config.ClassName = test.name
 		config.Prefix = test.prefix
+		config.Function = test.function
 		score, err := apploading.RunTest(ctx, config, a, cr)
 		if err != nil {
 			s.Fatal("Failed to run apploading test: ", err)
 		}
 
-		weight, ok := weightsDict[config.Prefix]
-		if !ok {
-			s.Fatal("Failed to obtain weight value for test: ", config.Prefix)
-		}
-		score *= weight
-		totalScore += score
+		totalScore += math.Log(score)
 	}
+
+	// Compute geometric mean but use antilog method to prevent overflow.
+	// EXP((LOG(x1) + LOG(x2) + LOG(x3)) ... + LOG(xn)) / n)
+	totalScore /= float64(len(tests))
+	totalScore = math.Exp(totalScore)
 
 	finalPerfValues.Set(
 		perf.Metric{
