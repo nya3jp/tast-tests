@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc61ab50_3b9e2f31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-25T07:52:55Z",
+      "side": 1,
+      "message": "Rebase to resolve conflict in gRPC .pb.go file.",
+      "revId": "affef71883b2ea5f365a02c177e020fc24b88903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
