@@ -87,6 +87,30 @@
       "revId": "09454f6b513f13b1c222f7361643cf95f24409f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "814cd08a_db29407e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-25T02:33:45Z",
+      "side": 1,
+      "message": "Ok, thanks for the reply!",
+      "parentUuid": "add8c756_e890afc8",
+      "range": {
+        "startLine": 346,
+        "startChar": 11,
+        "endLine": 346,
+        "endChar": 51
+      },
+      "revId": "09454f6b513f13b1c222f7361643cf95f24409f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
