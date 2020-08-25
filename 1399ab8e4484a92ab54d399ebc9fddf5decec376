@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "ca8fa7d4_b7f55fe7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-08-25T02:27:01Z",
+      "side": 1,
+      "message": "Done-ish. I had to edit that slightly to pass linting (well, strictly speaking it just wanted there to not be a trailing period, but I assume that having multiple sentences where only the final one lacks punctuation is probably not in the spirit of that rule either).",
+      "parentUuid": "2dc57e82_85534588",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 98
+      },
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e75f519f_a8fc02fd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
         "patchSetId": 3
@@ -93,6 +117,24 @@
     },
     {
       "key": {
+        "uuid": "abd50bce_167dd58d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-08-25T02:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e75f519f_a8fc02fd",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ee09565_99e334bc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
         "patchSetId": 3
@@ -107,6 +149,24 @@
       "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91ddaa13_abe9039c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-08-25T02:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ee09565_99e334bc",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "794f3243_b405bb5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-08-25T02:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77e6a3e0_3e35bd08",
+      "range": {
+        "startLine": 88,
+        "startChar": 32,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed98fbfb_c40c26e1",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 3
@@ -150,6 +234,24 @@
     },
     {
       "key": {
+        "uuid": "f69a87b9_32bc1962",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-08-25T02:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed98fbfb_c40c26e1",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b57a33b_750b494d",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 3
@@ -161,6 +263,24 @@
       "writtenOn": "2020-08-24T03:07:28Z",
       "side": 1,
       "message": "As one PHY can be occupied by multiple hostapd-s now, the set of PHY business setter/getter will also need to be updated. We only have busy/free binary state in the past and it can\u0027t identify the case of \"occupied by multiple\". (sorry I didn\u0027t make it flexible enough) \n\nI think maybe we can change r.busyPhy from map[int]map[iw.IfType]bool to map[int]map[iw.IfType]int (+ modification on the usage). Or, one alternative is to drop the r.busyPhy cache and traverse r.busyIfaces for checking business of a given phyID + type.",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f464fccd_90df7597",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-08-25T02:27:01Z",
+      "side": 1,
+      "message": "I took a stab at the \"remove r.busyPhy entirely\" option and I think that\u0027s probably the better choice overall -- it\u0027s shorter, there\u0027s one less source of truth to keep track of, and I highly doubt there\u0027s a noticeable performance difference.\n\nI\u0027m running through `(\"group:wificell\" \u0026\u0026 wificell_func \u0026\u0026 !wificell_unstable)` just to sanity-check that change didn\u0027t have any side effects by mistake, but it\u0027s looking good so far.",
+      "parentUuid": "8b57a33b_750b494d",
       "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
