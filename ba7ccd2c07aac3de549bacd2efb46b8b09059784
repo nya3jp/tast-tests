@@ -231,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "35c7f407_a6d4a9bd",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-25T07:11:47Z",
+      "side": 1,
+      "message": "I forgot security.Config is an interface. Sorry.",
+      "parentUuid": "e175e698_ff26427b",
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecf1f53b_bdc1f3f2",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -393,6 +411,30 @@
       "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a4c3056_f5f468e9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-25T07:11:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ef48cad_56dd0638",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 56
+      },
+      "revId": "ba7ccd2c07aac3de549bacd2efb46b8b09059784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
