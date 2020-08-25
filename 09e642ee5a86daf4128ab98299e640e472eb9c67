@@ -301,6 +301,30 @@
     },
     {
       "key": {
+        "uuid": "1982f5c3_713d94b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-25T17:56:24Z",
+      "side": 1,
+      "message": "Second version works. Thanks!",
+      "parentUuid": "6406a878_a2c26203",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 3
+      },
+      "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "beb89c0d_82894def",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
         "patchSetId": 2
