@@ -79,12 +79,11 @@ func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemName string) 
 	return uig.Do(ctx, ta.tconn, shutdown)
 }
 
-// RestartCrostini shuts down Crostini and launch and exit the Terminal window.
-func (ta *TerminalApp) RestartCrostini(ctx context.Context, keyboard *input.KeyboardEventWriter, cont *vm.Container, userName string) error {
+// ShutdownCrostini shuts down crostini by selecting the shutdown option on the terminal context menu.
+func (ta *TerminalApp) ShutdownCrostini(ctx context.Context) error {
 	if err := ta.clickShelfMenuItem(ctx, "Shut down Linux (Beta)"); err != nil {
-		return errors.Wrap(err, "failed to shutdown crostini")
+		return errors.Wrap(err, "failed to click \"Shut down\"")
 	}
-
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		// While the VM is down, this command is expected to fail.
 		if out, err := cont.Command(ctx, "pwd").Output(); err == nil {
@@ -93,7 +92,15 @@ func (ta *TerminalApp) RestartCrostini(ctx context.Context, keyboard *input.Keyb
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 	if err != nil {
-		return errors.Wrap(err, "VM failed to stop: ")
+		return errors.Wrap(err, "VM failed to stop")
+	}
+	return nil
+}
+
+// RestartCrostini shuts down Crostini and launch and exit the Terminal window.
+func (ta *TerminalApp) RestartCrostini(ctx context.Context, keyboard *input.KeyboardEventWriter, cont *vm.Container, userName string) error {
+	if err := ta.ShutdownCrostini(ctx); err != nil {
+		return errors.Wrap(err, "failed to shutdown crostini")
 	}
 
 	// Start the VM and container.
