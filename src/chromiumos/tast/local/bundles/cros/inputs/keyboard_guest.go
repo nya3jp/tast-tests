@@ -26,8 +26,14 @@ func init() {
 		Contacts:     []string{"essential-inputs-team@google.com", "shengjun@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: pre.InputsStableModels,
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "stable",
+			ExtraHardwareDeps: pre.InputsStableModels,
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: pre.InputsUnstableModels,
+		}},
 	})
 }
 

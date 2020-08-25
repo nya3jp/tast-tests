@@ -22,8 +22,6 @@ var stableModels = []string{
 	"bobba",
 	"kefka",
 	"coral",
-	// VM used for basic development.
-	"betty",
 }
 
 // InputsStableModels is a shortlist of models aiming to run critical inputs tests.
@@ -31,4 +29,6 @@ var stableModels = []string{
 var InputsStableModels = hwdep.D(hwdep.Model(stableModels...))
 
 // InputsUnstableModels is a list of models to run inputs tests at 'informational' so that we know once they are stable enough to be promoted to CQ.
-var InputsUnstableModels = hwdep.D(hwdep.SkipOnModel(stableModels...))
+// kevin64 is an experimental board does not support nacl, which fails Canvas installation.
+// To stablize the tests, have to exclude entire kevin model as no distinguish between kevin and kevin64.
+var InputsUnstableModels = hwdep.D(hwdep.SkipOnModel(append(stableModels, "kevin1")...))

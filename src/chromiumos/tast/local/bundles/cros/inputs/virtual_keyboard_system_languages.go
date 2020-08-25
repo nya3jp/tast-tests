@@ -32,24 +32,53 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: pre.InputsStableModels,
 		Params: []testing.Param{
 			{
-				Name: "es",
+				Name:              "es_stable",
+				ExtraHardwareDeps: pre.InputsStableModels,
 				Val: testParameters{
 					regionCode:              "es",
 					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:es::spa",
 					defaultInputMethodLabel: "ES",
 				},
 			}, {
-				Name: "fr",
+				Name:              "es_unstable",
+				ExtraHardwareDeps: pre.InputsUnstableModels,
+				ExtraAttr:         []string{"informational"},
+				Val: testParameters{
+					regionCode:              "es",
+					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:es::spa",
+					defaultInputMethodLabel: "ES",
+				},
+			}, {
+				Name:              "fr_stable",
+				ExtraHardwareDeps: pre.InputsStableModels,
 				Val: testParameters{
 					regionCode:              "fr",
 					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:fr::fra",
 					defaultInputMethodLabel: "FR",
 				},
 			}, {
-				Name: "jp",
+				Name:              "fr_unstable",
+				ExtraHardwareDeps: pre.InputsUnstableModels,
+				ExtraAttr:         []string{"informational"},
+				Val: testParameters{
+					regionCode:              "fr",
+					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:fr::fra",
+					defaultInputMethodLabel: "FR",
+				},
+			}, {
+				Name:              "jp_stable",
+				ExtraHardwareDeps: pre.InputsStableModels,
+				Val: testParameters{
+					regionCode:              "jp",
+					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:jp::jpn",
+					defaultInputMethodLabel: "JA",
+				},
+			}, {
+				Name:              "jp_unstable",
+				ExtraHardwareDeps: pre.InputsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:              "jp",
 					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:jp::jpn",
