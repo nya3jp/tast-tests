@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9aec6dde_c817a711",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-08-25T16:15:43Z",
+      "side": 1,
+      "message": "I have updated the generated file to produce json output to simplify this considerably. Once we have a less fluid schema we can revisit the shared proto idea.",
+      "parentUuid": "6e29dc1c_61f8075a",
+      "revId": "b27197445369d2c52e21427fe6688e73cbf61e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aea5f734_1e1dee29",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
         "patchSetId": 3
