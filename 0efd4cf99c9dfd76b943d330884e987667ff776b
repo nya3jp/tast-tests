@@ -16,6 +16,92 @@
       "revId": "0efd4cf99c9dfd76b943d330884e987667ff776b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "093610e2_80b206e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-25T14:58:44Z",
+      "side": 1,
+      "message": "LGTM % nits/comments",
+      "revId": "0efd4cf99c9dfd76b943d330884e987667ff776b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2463eb09_fd87f6fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-25T14:58:44Z",
+      "side": 1,
+      "message": "I think we need to save some time to set tablet mode to the state it was before test, please use ctxutil.Shorten:\n\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n\n// Turn the device into clamshell.\ntabletModeEnabled, err :\u003d ash.TabletModeEnabled(ctx, tconn)\nif err !\u003d nil {\n\treturn errors.Wrap(err, \"failed to get tablet mode\")\n}\ndefer ash.SetTabletModeEnabled(cleanupCtx, tconn, tabletModeEnabled)\n```\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "0efd4cf99c9dfd76b943d330884e987667ff776b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1417bc95_dabebcab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-25T14:58:44Z",
+      "side": 1,
+      "message": "please move closer to the first use in line 114:\n\n// launchBoundsThreshold stores the launch bounds of the last activity launch. This test is\n// written in the order from small launch bounds to big launch bounds so this variable\n// serves as the lower bound of launch bounds.\nlaunchBoundsThreshold :\u003d window.BoundsInRoot",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 38
+      },
+      "revId": "0efd4cf99c9dfd76b943d330884e987667ff776b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec618535_5f42ed34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-25T14:58:44Z",
+      "side": 1,
+      "message": "there are many cases before, when you exist from function, but don\u0027t close activity which must we closed due to documentation:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/arc/activity.go;l\u003d119?q\u003darc.NewActivity\n\nCan you put act.Close() under defer statement?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 12
+      },
+      "revId": "0efd4cf99c9dfd76b943d330884e987667ff776b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
