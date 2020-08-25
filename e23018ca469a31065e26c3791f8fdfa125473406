@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc368ba2_bc1aad25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-25T23:15:54Z",
+      "side": 1,
+      "message": "nit: this check is unnecessary (pirimaryDisplayInfo should be non-nil if there\u0027s no errors)",
+      "revId": "e23018ca469a31065e26c3791f8fdfa125473406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
