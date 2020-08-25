@@ -31,6 +31,7 @@ import (
 type TestConfig struct {
 	ClassName            string
 	Prefix               string
+	Subtest              string
 	PerfValues           *perf.Values
 	BatteryDischargeMode setup.BatteryDischargeMode
 	ApkPath              string
@@ -76,6 +77,9 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	)
 
 	testName := packageName + "." + config.ClassName
+	if config.Subtest != "" {
+		testName += "#" + config.Subtest
+	}
 	testing.ContextLogf(ctx, "Running test: %s", testName)
 
 	testing.ContextLog(ctx, "Clearing caches, system buffer, dentries and inodes")
