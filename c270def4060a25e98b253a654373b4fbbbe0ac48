@@ -33,6 +33,24 @@
       "revId": "c270def4060a25e98b253a654373b4fbbbe0ac48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be725efe_f5d606ce",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-25T09:55:24Z",
+      "side": 1,
+      "message": "A bit, but they often get split up. E.g. a bit down from here we just reference p.debianVersion without the type, elsewhere we might use vm.DebianBuster without the field name, or a variable of type ContainerDebianVersion without touching this struct at all. I think we just have to live with the redundancy to avoid any of those being ambiguous or confusing.",
+      "parentUuid": "68eb43ed_aba14e58",
+      "revId": "c270def4060a25e98b253a654373b4fbbbe0ac48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
