@@ -8,9 +8,7 @@
 package main
 
 import (
-	"os"
-
-	"chromiumos/tast/bundle"
+	"chromiumos/tast/local/bundlemain"
 
 	// These packages register their tests via init functions.
 	_ "chromiumos/tast/remote/bundles/cros/arc"
@@ -33,5 +31,5 @@ import (
 )
 
 func main() {
-	os.Exit(bundle.RemoteDefault())
+	bundlemain.RunRemote()
 }
