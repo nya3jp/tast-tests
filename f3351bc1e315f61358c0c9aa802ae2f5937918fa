@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5506de80_831eb28f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-25T15:59:23Z",
+      "side": 1,
+      "message": "Hi Jack,\n\nIIUC, there will be no elm and hana in the nearest future, but right now you have to keep them all for some short time period? If so, can you please prepare CL to remove elm and hana boards?\n\nThanks!",
+      "revId": "f3351bc1e315f61358c0c9aa802ae2f5937918fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
