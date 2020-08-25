@@ -228,7 +228,7 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		return err
 	}
 
-	const waitTimeout = 30 * time.Second
+	const waitTimeout = 60 * time.Second
 	testing.ContextLogf(ctx, "Waiting for cryptohome for user %q with timeout %v", user, waitTimeout)
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		partitions, err := findMounts(mounter)
