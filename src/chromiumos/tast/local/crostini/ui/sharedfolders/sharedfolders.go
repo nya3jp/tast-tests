@@ -26,12 +26,14 @@ const (
 	MountPath          = "/mnt/chromeos"
 	MountFolderMyFiles = "MyFiles"
 	MountPathMyFiles   = MountPath + "/" + MountFolderMyFiles
+	MountPathDownloads = MountPathMyFiles + "/" + filesapp.Downloads
 )
 
 // Strings for sharing My files.
 const (
-	MyFilesMsg = "Give Linux apps permission to modify files in the My files folder"
-	MyFiles    = "My files"
+	MyFilesMsg      = "Give Linux apps permission to modify files in the My files folder"
+	MyFiles         = "My files"
+	SharedDownloads = MyFiles + " › " + filesapp.Downloads
 )
 
 const uiTimeout = 15 * time.Second
