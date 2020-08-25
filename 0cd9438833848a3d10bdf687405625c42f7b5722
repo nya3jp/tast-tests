@@ -754,6 +754,24 @@
     },
     {
       "key": {
+        "uuid": "8ab7642e_878f02bb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settingsapp/settingsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-25T01:37:13Z",
+      "side": 1,
+      "message": "sounds good to me",
+      "parentUuid": "a88e906c_5850108d",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "915bf0cf_05695e6c",
         "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
         "patchSetId": 3
@@ -1090,6 +1108,24 @@
       "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3768d52b_0e046b22",
+        "filename": "src/chromiumos/tast/local/crostini/ui/linuxfiles/linuxfiles.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-25T01:37:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b43768dd_d6880de1",
+      "revId": "0cd9438833848a3d10bdf687405625c42f7b5722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
