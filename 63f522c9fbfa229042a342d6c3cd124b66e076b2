@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5446bc29_148a5b27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2020-08-25T06:05:07Z",
+      "side": 1,
+      "message": "Hi Gwendal, are we going to test on light sensors with this tast test, as the samples may not be triggered in a fixed period.\nI can add arguments in iioservice_simpleclient such as num of samples needed and no timeout.",
+      "revId": "63f522c9fbfa229042a342d6c3cd124b66e076b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
