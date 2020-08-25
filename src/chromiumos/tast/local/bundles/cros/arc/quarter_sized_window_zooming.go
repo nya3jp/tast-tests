@@ -43,7 +43,7 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	if err := arc.BootstrapCommand(ctx, "/system/bin/setprop", quarterSizeSetting, "whitelist").Run(testexec.DumpLogOnError); err != nil {
+	if err := arc.BootstrapCommand(ctx, "/system/bin/setprop", quarterSizeSetting, "allowlist").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to set developer option: ", err)
 	}
 	defer arc.BootstrapCommand(ctx, "/system/bin/setprop", quarterSizeSetting, "default").Run(testexec.DumpLogOnError)
