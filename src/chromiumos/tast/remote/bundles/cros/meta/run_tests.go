@@ -69,7 +69,7 @@ func init() {
 				wantFiles: map[string]string{
 					"meta.LocalFail/faillog/ps.txt":  exists,
 					"meta.LocalPass/faillog/ps.txt":  notExists,
-					"meta.RemoteFail/faillog/ps.txt": notExists,
+					"meta.RemoteFail/faillog/ps.txt": exists,
 					"meta.RemotePass/faillog/ps.txt": notExists,
 				},
 			},
