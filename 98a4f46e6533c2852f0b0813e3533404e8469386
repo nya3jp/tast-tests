@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e97f585f_73d2aa04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-25T00:56:41Z",
+      "side": 1,
+      "message": "Hi reviewers, this is enable E14s tests to run on most boards, covering critical boards in CQ and non-critical boards at informational.\n\n@pwang, since you have reviewed most inputs tests I added recently, I assume you have lot of context here. Hope you do not mind I add you as reviewer directly.",
+      "revId": "98a4f46e6533c2852f0b0813e3533404e8469386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
