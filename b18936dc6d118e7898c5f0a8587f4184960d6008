@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3eaba8a9_427e2f21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-08-25T00:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "199558f3_4d99c882",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd99c4b3_190dadd2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6121177e_0cfb5cb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-08-25T00:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd99c4b3_190dadd2",
+      "range": {
+        "startLine": 16,
+        "startChar": 46,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "c6d6c9d6_45abe2a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-08-25T00:10:44Z",
+      "side": 1,
+      "message": "yeah thats a good point. How about merging common logic of usf/ and usf_non_maximized, and leaving the two test cases?\nFoe example: merge startScaleFactorActivity().",
+      "parentUuid": "9d3976d3_571db682",
+      "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab97d8f0_ff346d38",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
         "patchSetId": 5
@@ -102,6 +168,30 @@
       "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "973e9b94_74ec5613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-08-25T00:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab97d8f0_ff346d38",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 90
+      },
+      "revId": "b18936dc6d118e7898c5f0a8587f4184960d6008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
