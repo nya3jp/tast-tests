@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb0ffc5d_a9ee1c76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_media_recorder.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-08-25T13:30:57Z",
+      "side": 1,
+      "message": "Tast reviews strongly encourage having tiny CLs, would you mind\nsplitting the wiring of the duration into a CL on its own? Also\nyou\u0027d never know how some devices (esp. old and low powered ones)\nare going to react, so best to be able to bisect narrowly.",
+      "range": {
+        "startLine": 18,
+        "startChar": 46,
+        "endLine": 18,
+        "endChar": 62
+      },
+      "revId": "f5441ce75c86c0a3a765a62e7f16102ba7f2d474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32072ee5_d5b636b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/parallel_media_recorder_accelerator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-08-25T13:30:57Z",
+      "side": 1,
+      "message": "I have a CL renaming s/MediaRecorderAccelerator/MediaRecorder/, to line up\nwith other parameterized tests in video and webrtc that have simple names.\nWould you mind renaming this to MediaRecorderParallel ? And perhaps \ns/Parallel/Simultaneous/ (a bit long) or s/Parallel/Multi/ ? (There\u0027re \nRTCPeerConnectionPerf cases with \"multi\" to represent multiple remote\nfeeds.",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "f5441ce75c86c0a3a765a62e7f16102ba7f2d474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
