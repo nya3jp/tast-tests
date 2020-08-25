@@ -37,6 +37,11 @@ func Save(ctx context.Context) {
 		return
 	}
 
+	SaveToDir(ctx, dir)
+}
+
+// SaveToDir saves fail log to a specific directory.
+func SaveToDir(ctx context.Context, dir string) {
 	saveProcessList(dir)
 	saveUpstartJobs(ctx, dir)
 	saveScreenshot(ctx, dir)
