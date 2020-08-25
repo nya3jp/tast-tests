@@ -284,6 +284,24 @@
       "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4995e39a_1e0c17a7",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-25T02:54:29Z",
+      "side": 1,
+      "message": "It looks good to me. Thanks for the change.",
+      "parentUuid": "f464fccd_90df7597",
+      "revId": "1399ab8e4484a92ab54d399ebc9fddf5decec376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
