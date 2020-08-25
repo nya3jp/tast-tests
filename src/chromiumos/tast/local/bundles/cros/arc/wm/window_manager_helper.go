@@ -555,3 +555,21 @@ func SetupAndRunTestCases(ctx context.Context, s *testing.State, isTabletMode bo
 		}
 	}
 }
+
+// GetButtonBounds is used to get button bounds in a given package name.
+func GetButtonBounds(ctx context.Context, d *ui.Device, actPkgName string) (coords.Rect, error) {
+	// Get a buttons info.
+	button := d.Object(ui.PackageName(actPkgName),
+		ui.ClassName("android.widget.Button"),
+		ui.ID("org.chromium.arc.testapp.windowmanager:id/button_show"))
+
+	if err := button.WaitForExists(ctx, 10*time.Second); err != nil {
+		return coords.Rect{}, err
+	}
+	buttonBounds, err := button.GetBounds(ctx)
+	if err != nil {
+		return coords.Rect{}, err
+	}
+
+	return buttonBounds, nil
+}

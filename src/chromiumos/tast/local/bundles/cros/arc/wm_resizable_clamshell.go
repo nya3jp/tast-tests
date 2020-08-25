@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -85,6 +86,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			// resizable/clamshell: hide Shelf when app maximized
 			Name: "RC12_hide_Shelf_when_app_maximized",
 			Func: wmRC12,
+		},
+		wm.TestCase{
+			// resizable/clamshell: display size change
+			Name: "RC15_display_size_change",
+			Func: wmRC15,
 		},
 	})
 }
@@ -520,6 +526,124 @@ func wmRC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
+// wmRC15 covers resizable/clamshell: display size change.
+// Expected behavior is defined in: go/arc-wm-r RC15: resizable/clamshell: display size change.
+func wmRC15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	for _, actName := range []string{
+		wm.ResizableLandscapeActivity,
+		wm.ResizablePortraitActivity,
+		wm.ResizableUnspecifiedActivity,
+	} {
+		if err := rcDisplaySizeChangeTestsHelper(ctx, tconn, a, d, actName); err != nil {
+			errors.Wrapf(err, "%s test failed", actName)
+		}
+	}
+
+	return nil
+}
+
+// rcDisplaySizeChangeTestsHelper is used for Tast-tests that are testing resolution change and its effects on an activity.
+func rcDisplaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
+	// Start a new activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Get primary display info before zoom.
+	dIBZ, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if dIBZ == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	dID := dIBZ.ID
+	oz := dIBZ.DisplayZoomFactor
+
+	// Get app window info to get window bounds before zoom.
+	wIBZ, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+	wBBZ := wIBZ.BoundsInRoot
+
+	// Get buttons info before zoom.
+	bBBZ, err := wm.GetButtonBounds(ctx, d, act.PackageName())
+	if err != nil {
+		return err
+	}
+
+	nz := 0.
+
+	zfs := dIBZ.AvailableDisplayZoomFactors
+	for _, z := range zfs {
+		if z > oz {
+			nz = z
+			break
+		}
+	}
+	if nz == 0 {
+		return errors.Errorf("invalid AvailableDisplayZoomFactors: got an empty array; want array with at least one value grater than '%.2f'", oz)
+	}
+
+	if err := wm.ChangeDisplayZoomFactor(ctx, tconn, dID, nz); err != nil {
+		return err
+	}
+	defer wm.ChangeDisplayZoomFactor(ctx, tconn, dID, oz)
+
+	// Get buttons info after zoom.
+	bBAZ, err := wm.GetButtonBounds(ctx, d, act.PackageName())
+	if err != nil {
+		return err
+	}
+
+	// Get app window info to get window bounds After change the display resolution.
+	wIAZ, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+	wBAZ := wIAZ.BoundsInRoot
+
+	// Get primary display info after display resolution change.
+	dIAZ, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if dIAZ == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	if bBBZ == bBAZ {
+		return errors.Errorf("invalid button bounds after resolution changed, got: %q, want different: %q", bBAZ, bBBZ)
+	}
+
+	if wBBZ != wBAZ {
+		return errors.Errorf("invalid app window bounds after resolution changed, got: %q, want: %q", wBAZ, wBBZ)
+	}
+
+	if math.Abs(nz-dIBZ.DPIX/dIAZ.DPIX) > 0.01 {
+		return errors.Errorf("invalid DPIX ration after resolution changed, got: %.3f, want: %.3f", dIBZ.DPIX/dIAZ.DPIX, nz)
+	}
+
+	if math.Abs(nz-dIBZ.DPIY/dIAZ.DPIY) > 0.01 {
+		return errors.Errorf("invalid DPIY ration after resolution changed, got: %.3f, want: %.3f", dIBZ.DPIY/dIAZ.DPIY, nz)
+	}
+
+	return nil
 }
 
 // immerseViaAPIHelper used to run immerse via API from maximized by activity name.
