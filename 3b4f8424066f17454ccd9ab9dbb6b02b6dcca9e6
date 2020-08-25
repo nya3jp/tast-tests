@@ -16,6 +16,47 @@
       "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1610a206_91a6d084",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-25T21:01:59Z",
+      "side": 1,
+      "message": "I guess we will have code like this in all of our modules/wrappers. A separate file could make sense if we start having a lot like this. \n\nI wonder if it is possible to generate these from the chromium src or something\n\nBrendan any idea how difficult/plausible that is",
+      "parentUuid": "40b503df_1dfb4680",
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8da2c53_d33e89fe",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-08-25T21:01:59Z",
+      "side": 1,
+      "message": "Is this explicit/specific enough? I wonder if this will break in future",
+      "range": {
+        "startLine": 403,
+        "startChar": 6,
+        "endLine": 404,
+        "endChar": 21
+      },
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
