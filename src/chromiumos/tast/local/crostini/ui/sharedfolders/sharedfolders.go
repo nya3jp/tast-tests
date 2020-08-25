@@ -20,20 +20,27 @@ import (
 
 // Folder sharing strings.
 const (
-	ManageLinuxSharing = "Manage Linux Sharing"
-	ShareWithLinux     = "Share with Linux"
-	DialogName         = "Share folder with Linux"
-	MountPath          = "/mnt/chromeos"
-	MountFolderMyFiles = "MyFiles"
-	MountPathMyFiles   = MountPath + "/" + MountFolderMyFiles
-	MountPathDownloads = MountPathMyFiles + "/" + filesapp.Downloads
+	ManageLinuxSharing     = "Manage Linux Sharing"
+	ShareWithLinux         = "Share with Linux"
+	DialogName             = "Share folder with Linux"
+	MountPath              = "/mnt/chromeos"
+	MountFolderMyFiles     = "MyFiles"
+	MountPathMyFiles       = MountPath + "/" + MountFolderMyFiles
+	MountFolderGoogleDrive = "GoogleDrive"
+	MountPathGoogleDrive   = MountPath + "/" + MountFolderGoogleDrive
+	MountFolderMyDrive     = "MyDrive"
+	MountPathMyDrive       = MountPathGoogleDrive + "/" + MountFolderMyDrive
 )
 
 // Strings for sharing My files.
 const (
 	MyFilesMsg      = "Give Linux apps permission to modify files in the My files folder"
+	DriveMsg        = "Give Linux apps permission to modify files in your Google Drive. Changes will sync to your other devices."
 	MyFiles         = "My files"
 	SharedDownloads = MyFiles + " › " + filesapp.Downloads
+
+	// SharedDrive represents the name for Drive on the Settings page.
+	SharedDrive = filesapp.GoogleDrive + " › " + filesapp.MyDrive
 )
 
 const uiTimeout = 15 * time.Second
@@ -194,6 +201,35 @@ func (sf *SharedFolders) ShareMyFiles(ctx context.Context, tconn *chrome.TestCon
 	}
 
 	return findShareConfirmDialog(ctx, tconn, msg)
+}
+
+// ShareDriveOK shares Google Drive with Crostini and clicks OK button on the confirmation dialog.
+func (sf *SharedFolders) ShareDriveOK(ctx context.Context, filesApp *filesapp.FilesApp, tconn *chrome.TestConn) error {
+	if _, ok := sf.Folders[SharedDrive]; ok {
+		return errors.New("Google Drive has already been shared with Linux")
+	}
+
+	// Right click Google Drive and select Share with Linux.
+	if err := filesApp.SelectDirectoryContextMenuItem(ctx, filesapp.GoogleDrive, ShareWithLinux); err != nil {
+		return errors.Wrapf(err, "failed to click %q on Google Drive ", ShareWithLinux)
+	}
+
+	scd, err := findShareConfirmDialog(ctx, tconn, DriveMsg)
+	if err != nil {
+		return errors.Wrap(err, "failed to find share confirm dialog after sharing Google Drive")
+	}
+	defer scd.Release(ctx)
+
+	// Click button OK.
+	toast, err := scd.ClickOK(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to click button OK on share confirm dialog")
+	}
+	defer toast.Release(ctx)
+
+	sf.AddFolder(SharedDrive)
+
+	return nil
 }
 
 // AddFolder adds shared folders into the map.
