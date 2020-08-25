@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40b503df_1dfb4680",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-25T04:32:39Z",
+      "side": 1,
+      "message": "I tried to add these params near where they are used, but I\u0027m wondering if it would be better to put them in a separate file, or at least lump them all together at the top of this file. I\u0027m leaning towards the latter, but what do you guys think?",
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
