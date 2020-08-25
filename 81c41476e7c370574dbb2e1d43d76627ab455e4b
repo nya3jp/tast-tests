@@ -16,6 +16,23 @@
       "revId": "81c41476e7c370574dbb2e1d43d76627ab455e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "009fd2e6_a19f88fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-25T23:38:02Z",
+      "side": 1,
+      "message": "It is not clear to me why we need youtube.com website here -- could you tell me what is the motivation here?\nIf that\u0027s to add extra complexity for PiP windows, maybe we could reuse a static html data, like https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go#33",
+      "revId": "81c41476e7c370574dbb2e1d43d76627ab455e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
