@@ -58,5 +58,5 @@ import (
 )
 
 func main() {
-	bundlemain.Main()
+	bundlemain.RunLocal()
 }
