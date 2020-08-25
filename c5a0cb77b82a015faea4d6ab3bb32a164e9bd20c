@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48f3b099_6f05a86c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/open_with_terminal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-25T01:43:32Z",
+      "side": 1,
+      "message": "Is this JS API going to be stable long term?",
+      "range": {
+        "startLine": 100,
+        "startChar": 26,
+        "endLine": 100,
+        "endChar": 57
+      },
+      "revId": "c5a0cb77b82a015faea4d6ab3bb32a164e9bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b41afd8_6f62cb5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/open_with_terminal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-25T01:43:32Z",
+      "side": 1,
+      "message": "Doesn\u0027t have to be in this CL, but it would be good to put some of this in a library for the terminal app.  Eg in the terminal restart code we are reading the terminal prompt as well, however it is done through the automation API rather than the JS API you are using here.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 67
+      },
+      "revId": "c5a0cb77b82a015faea4d6ab3bb32a164e9bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
