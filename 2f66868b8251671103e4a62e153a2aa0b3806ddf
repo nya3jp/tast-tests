@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "844b9207_48912294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-08-25T04:43:20Z",
+      "side": 1,
+      "message": "Thanks for the advice!\nI don\u0027t want to nest if statements that much so I\u0027ll leave it as is.",
+      "parentUuid": "4a59c48d_52bc89a4",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 3
+      },
+      "revId": "2f66868b8251671103e4a62e153a2aa0b3806ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ea4631e_78ad9da1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
         "patchSetId": 3
@@ -79,6 +103,30 @@
       "revId": "2f66868b8251671103e4a62e153a2aa0b3806ddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cdfbdc_bac72317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-08-25T04:43:20Z",
+      "side": 1,
+      "message": "currently no. but it might be used for another purpose in the future, so I\u0027ll leave it as is.",
+      "parentUuid": "1ea4631e_78ad9da1",
+      "range": {
+        "startLine": 110,
+        "startChar": 20,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "2f66868b8251671103e4a62e153a2aa0b3806ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
