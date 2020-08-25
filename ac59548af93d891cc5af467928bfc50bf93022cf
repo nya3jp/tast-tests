@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "6e2c6989_a29f0623",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-25T13:11:28Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "ac59548af93d891cc5af467928bfc50bf93022cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1dcdca1_a48ecf16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-25T13:11:28Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "ac59548af93d891cc5af467928bfc50bf93022cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ab3070f_41f2cf3e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -13,6 +59,23 @@
       "writtenOn": "2020-08-25T12:50:22Z",
       "side": 1,
       "message": "Generated code, PTAL.\n\nThanks",
+      "revId": "ac59548af93d891cc5af467928bfc50bf93022cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "336d07f5_eba76e31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-25T13:11:28Z",
+      "side": 1,
+      "message": "LGTM",
       "revId": "ac59548af93d891cc5af467928bfc50bf93022cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
