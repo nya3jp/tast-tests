@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ad69a45e_d9179ca3",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-25T17:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a56a38bd_fe9a74be",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12a4d0a9_f23cc99e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
         "patchSetId": 7
@@ -62,6 +86,30 @@
       "revId": "59e808872fbac154cee73619637face44207cc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a91014_5fab5246",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-25T17:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12a4d0a9_f23cc99e",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "067aebf0_fc97b329",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-25T17:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdcb6cee_c9d5227e",
+      "range": {
+        "startLine": 80,
+        "startChar": 45,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7492baa5_825c0741",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
         "patchSetId": 7
@@ -99,6 +171,24 @@
       "writtenOn": "2020-08-25T17:14:36Z",
       "side": 1,
       "message": "As a temporary measure, you could skip it explicitly on the VM boards. AFAIK, those are only betty and betty-pi-arc.",
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "046d4cb0_38d4d728",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-25T17:50:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the best way to do this would be; the original post in https://crbug.com/967901 makes a good argument against adding a software dep for servo. (also, the existing deps both already skip on VMs, anyway).\n\nI posted on https://crbug.com/1085320#c10 asking for further guidance.",
+      "parentUuid": "7492baa5_825c0741",
       "revId": "59e808872fbac154cee73619637face44207cc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -119,6 +209,24 @@
       "revId": "59e808872fbac154cee73619637face44207cc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e618c21c_b583d990",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-25T17:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33ad711e_0ec181ca",
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "2f20324c_abf6a356",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-25T17:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "405dbb15_a7928a2b",
+      "range": {
+        "startLine": 264,
+        "startChar": 19,
+        "endLine": 264,
+        "endChar": 21
+      },
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6b2f2b9_21a1c654",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 7
@@ -159,6 +291,24 @@
       "revId": "59e808872fbac154cee73619637face44207cc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cc22e15_700d422c",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-25T17:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6b2f2b9_21a1c654",
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
