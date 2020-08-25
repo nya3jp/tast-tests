@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1c9e053_861b1005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-25T02:23:52Z",
+      "side": 1,
+      "message": "nit: should be lower case like \"non-maximized\"?",
+      "range": {
+        "startLine": 24,
+        "startChar": 68,
+        "endLine": 24,
+        "endChar": 81
+      },
+      "revId": "7e345ab38062ae37aeace0d92490247f1d30c814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
