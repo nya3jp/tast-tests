@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "013827c2_ab209eb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-25T03:50:22Z",
+      "side": 1,
+      "message": "+2 for tast shadow review as well",
+      "revId": "f16931e0f993bc73daf728da20bd01a5770261af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "667506dc_c2ce7fc1",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-25T03:50:22Z",
+      "side": 1,
+      "message": "I think this field is ever used?",
+      "revId": "f16931e0f993bc73daf728da20bd01a5770261af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12386354_ce67b005",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-25T03:50:22Z",
+      "side": 1,
+      "message": "optional: set the mode here as well rather than on line 352?  or else invert the condition so you don\u0027t need an else case?",
+      "revId": "f16931e0f993bc73daf728da20bd01a5770261af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
