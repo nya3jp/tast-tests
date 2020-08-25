@@ -79,3 +79,64 @@ func LaunchAtPage(ctx context.Context, tconn *chrome.TestConn, subpage ui.FindPa
 	}
 	return nil
 }
+
+// ChromeConn returns a Chrome connection to the Settings app.
+func ChromeConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
+	return cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://os-settings/"))
+}
+
+// EnablePINUnlock enables unlocking the device with the specified PIN.
+func EnablePINUnlock(ctx context.Context, settingsConn *chrome.Conn, password, PIN string, autosubmit bool) error {
+	// Wait for chrome.quickUnlockPrivate to be available.
+	if err := settingsConn.WaitForExpr(ctx, `chrome.quickUnlockPrivate !== undefined`); err != nil {
+		return errors.Wrap(err, "failed waiting for chrome.quickUnlockPrivate to load")
+	}
+
+	// An auth token is required to set up the PIN.
+	var token string
+	if err := settingsConn.Call(ctx, &token,
+		`(password) => new Promise(function(resolve, reject) {
+			chrome.quickUnlockPrivate.getAuthToken(password, function(authToken) {
+			  if (chrome.runtime.lastError === undefined) {
+				resolve(authToken['token']);
+			  } else {
+				reject(chrome.runtime.lastError.message);
+			  }
+			});
+		  })`, password,
+	); err != nil {
+		return errors.Wrap(err, "failed to get auth token")
+	}
+
+	// Set the PIN and enable PIN unlock.
+	if err := settingsConn.Call(ctx, nil,
+		`(token, PIN) => new Promise(function(resolve, reject) {
+			chrome.quickUnlockPrivate.setModes(token, [chrome.quickUnlockPrivate.QuickUnlockMode.PIN], [PIN], function(success) {
+			  if (chrome.runtime.lastError === undefined) {
+				resolve(success);
+			  } else {
+				reject(chrome.runtime.lastError.message);
+			  }
+			});
+		  })`, token, PIN,
+	); err != nil {
+		return errors.Wrap(err, "failed to set PIN and enable PIN unlock")
+	}
+
+	// Enable or disable PIN autosubmit.
+	if err := settingsConn.Call(ctx, nil,
+		`(token, PIN, autosubmit) => new Promise(function(resolve, reject) {
+			chrome.quickUnlockPrivate.setPinAutosubmitEnabled(token, PIN, autosubmit, function(success) {
+				if (chrome.runtime.lastError === undefined) {
+				resolve(success);
+				} else {
+				reject(chrome.runtime.lastError.message);
+				}
+			});
+			})`, token, PIN, autosubmit,
+	); err != nil {
+		return errors.Wrap(err, "failed to enable PIN autosubmit")
+	}
+
+	return nil
+}
