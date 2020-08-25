@@ -81,6 +81,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			Name: "RC09_new_activity_follows_root_activity",
 			Func: wmRC09,
 		},
+		wm.TestCase{
+			// resizable/clamshell: hide Shelf when app maximized
+			Name: "RC12_hide_Shelf_when_app_maximized",
+			Func: wmRC12,
+		},
 	})
 }
 
@@ -417,6 +422,104 @@ func wmRC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Errorf("invalid child activity window bounds, got: %q, want: %q", childWindowInfo.BoundsInRoot, rootWindowInfo.BoundsInRoot)
 	}
 	return nil
+}
+
+// wmRC12 covers resizable/clamshell: hide shelf when app maximized.
+// Expected behavior is defined in: go/arc-wm-r RC12: resizable/clamshell: hide shelf when app maximized.
+func wmRC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// Get primary display info to set shelf behavior.
+	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if primaryDisplayInfo == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	// Get initial shelf behavior.
+	initSB, err := ash.GetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID)
+	if err != nil {
+		return err
+	}
+	if initSB != ash.ShelfBehaviorNeverAutoHide {
+		// Set shelf behavior to never auto hide for test's initial state.
+		if err := ash.SetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID, ash.ShelfBehaviorNeverAutoHide); err != nil {
+			return err
+		}
+	}
+
+	// Start the activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Maximize the window (Required based on the spec).
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
+		return err
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
+		return err
+	}
+
+	// Store initial window info to compare with after hiding and showing the shelf.
+	winInfoInitialState, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Set shelf behavior to auto hide.
+	if err := ash.SetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID, ash.ShelfBehaviorAlwaysAutoHide); err != nil {
+		return err
+	}
+
+	// Wait for shelf animation to complete.
+	if err := wm.WaitForShelfAnimationComplete(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for shelf animation to complete")
+	}
+
+	winInfoShelfHidden, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	// Compare window bounds before and after hiding the shelf. It should be larger when shelf is hidden.
+	if winInfoShelfHidden.BoundsInRoot.Height <= winInfoInitialState.BoundsInRoot.Height {
+		return errors.Errorf("invalid window bounds when shelf is shown, got: %s, want smaller than: %s", winInfoInitialState.BoundsInRoot, winInfoShelfHidden.BoundsInRoot)
+	}
+
+	// Show the shelf.
+	if err := ash.SetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID, ash.ShelfBehaviorNeverAutoHide); err != nil {
+		return err
+	}
+
+	// Wait for shelf animation to complete.
+	if err := wm.WaitForShelfAnimationComplete(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for shelf animation to complete")
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		winInfoShelfReShown, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		// Compare window bounds after showing the shelf with initial bounds. They should be equal.
+		if winInfoInitialState.BoundsInRoot != winInfoShelfReShown.BoundsInRoot {
+			return errors.Errorf("invalid window bounds after hiding and showing the shelf, got: %s, want: %s", winInfoShelfReShown.BoundsInRoot, winInfoInitialState.BoundsInRoot)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
 // immerseViaAPIHelper used to run immerse via API from maximized by activity name.
