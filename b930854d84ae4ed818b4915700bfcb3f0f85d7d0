@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8070002d_d4cfaea9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-25T05:33:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "623c2a5f_52ce4d83",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "b930854d84ae4ed818b4915700bfcb3f0f85d7d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc1d61a5_64006610",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9e585100_cc5b8b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-25T05:33:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "462ffe60_f5ad9ea7",
+      "range": {
+        "startLine": 88,
+        "startChar": 11,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "b930854d84ae4ed818b4915700bfcb3f0f85d7d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "198817ef_7c133aab",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 2
@@ -92,6 +140,30 @@
       "revId": "b930854d84ae4ed818b4915700bfcb3f0f85d7d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13082a02_94353afd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-25T05:33:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "198817ef_7c133aab",
+      "range": {
+        "startLine": 121,
+        "startChar": 12,
+        "endLine": 121,
+        "endChar": 21
+      },
+      "revId": "b930854d84ae4ed818b4915700bfcb3f0f85d7d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +211,30 @@
       "revId": "b930854d84ae4ed818b4915700bfcb3f0f85d7d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a01a16a8_84287f82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-25T05:33:51Z",
+      "side": 1,
+      "message": "Actually, having checked existing code, it seems pretty common. err !\u003d nil is the only way we use `err` in this case, the information it carries is not used.",
+      "parentUuid": "823e1b58_f801a68f",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 42
+      },
+      "revId": "b930854d84ae4ed818b4915700bfcb3f0f85d7d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
