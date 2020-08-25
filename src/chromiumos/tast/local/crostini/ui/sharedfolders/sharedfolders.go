@@ -20,18 +20,24 @@ import (
 
 // Folder sharing strings.
 const (
-	ManageLinuxSharing = "Manage Linux Sharing"
-	ShareWithLinux     = "Share with Linux"
-	DialogName         = "Share folder with Linux"
-	MountPath          = "/mnt/chromeos"
-	MountFolderMyFiles = "MyFiles"
-	MountPathMyFiles   = MountPath + "/" + MountFolderMyFiles
+	ManageLinuxSharing     = "Manage Linux Sharing"
+	ShareWithLinux         = "Share with Linux"
+	DialogName             = "Share folder with Linux"
+	MountPath              = "/mnt/chromeos"
+	MountFolderMyFiles     = "MyFiles"
+	MountPathMyFiles       = MountPath + "/" + MountFolderMyFiles
+	MountFolderGoogleDrive = "GoogleDrive"
+	MountPathGoogleDrive   = MountPath + "/" + MountFolderGoogleDrive
+	MountFolderMyDrive     = "MyDrive"
+	MountPathMyDrive       = MountPathGoogleDrive + "/" + MountFolderMyDrive
 )
 
 // Strings for sharing My files.
 const (
-	MyFilesMsg = "Give Linux apps permission to modify files in the My files folder"
-	MyFiles    = "My files"
+	MyFilesMsg  = "Give Linux apps permission to modify files in the My files folder"
+	DriveMsg    = "Give Linux apps permission to modify files in your Google Drive. Changes will sync to your other devices."
+	MyFiles     = "My files"
+	SharedDrive = filesapp.GoogleDrive + " › " + filesapp.MyDrive
 )
 
 const uiTimeout = 15 * time.Second
@@ -192,6 +198,20 @@ func (sf *SharedFolders) ShareMyFiles(ctx context.Context, tconn *chrome.TestCon
 	}
 
 	return findShareConfirmDialog(ctx, tconn, msg)
+}
+
+// ShareDrive shares Google Drive.
+func (sf *SharedFolders) ShareDrive(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp) (scd *ShareConfirmDialog, err error) {
+	if _, ok := sf.Folders[SharedDrive]; ok {
+		return nil, errors.New("Google Drive has already been shared with Linux")
+	}
+
+	// Right click My files and select Share with Linux.
+	if err = filesApp.SelectDirectoryContextMenuItem(ctx, filesapp.GoogleDrive, ShareWithLinux); err != nil {
+		return nil, errors.Wrapf(err, "failed to click %q on Google Drive ", ShareWithLinux)
+	}
+
+	return findShareConfirmDialog(ctx, tconn, DriveMsg)
 }
 
 // AddFolder adds shared folders into the map.
