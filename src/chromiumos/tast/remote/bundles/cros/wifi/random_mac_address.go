@@ -36,7 +36,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				ExtraAttr:         []string{"wificell_unstable"},
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("elm", "hana")),
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("oak", "elm", "hana")),
 			},
 			{
 				// TODO(b/149247291): marvel driver in kernel 3.18 does not yet support MAC randomization.
@@ -45,7 +45,7 @@ func init() {
 				// subtest for now and merge it after uprev.
 				Name:              "oak",
 				ExtraAttr:         []string{"wificell_unstable"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform("elm", "hana")),
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("oak", "elm", "hana")),
 			},
 		},
 	})

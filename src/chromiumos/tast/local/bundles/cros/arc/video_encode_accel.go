@@ -25,6 +25,7 @@ var deviceBlocklist = []string{
 	"elm_kernelnext",
 	"hana",
 	"hana_kernelnext",
+	"oak",
 }
 
 func init() {

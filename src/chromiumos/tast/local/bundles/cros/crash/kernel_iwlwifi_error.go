@@ -53,6 +53,7 @@ func init() {
 			"jacuzzi",
 			"kevin",
 			"kukui",
+			"oak",
 			"scarlet",
 			"veyron_fievel",
 			"veyron_mickey",
