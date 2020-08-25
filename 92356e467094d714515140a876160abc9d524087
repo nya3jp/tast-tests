@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "79f2ca11_a7e6499f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-25T10:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86186583_c95ffa89",
+      "revId": "92356e467094d714515140a876160abc9d524087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93599c0e_3500da08",
         "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
         "patchSetId": 10
@@ -67,6 +85,24 @@
       "revId": "92356e467094d714515140a876160abc9d524087",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7b060b7_387c8853",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-25T10:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93599c0e_3500da08",
+      "revId": "92356e467094d714515140a876160abc9d524087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
