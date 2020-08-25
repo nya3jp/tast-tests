@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bc916ce_d767a6a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/open_with_terminal.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-25T02:35:37Z",
+      "side": 1,
+      "message": "I think this no longer checks that the terminal is in the right directory?",
+      "revId": "8bfabfb14a002a1d37b5fa2b0a0b3ccd20872d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
