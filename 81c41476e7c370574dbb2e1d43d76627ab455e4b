@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "225e9ce5_5ad831f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-25T21:37:57Z",
+      "side": 1,
+      "message": "Hi Oshima san, we would like to know more about Ash.SplitViewResize.PresentationTime, that is, with two snapped windows, is dragging the MultiWindowResizeController(divider) able to start collecting Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow?",
+      "revId": "81c41476e7c370574dbb2e1d43d76627ab455e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
