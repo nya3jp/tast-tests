@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f33ccca3_a2c7a334",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-25T01:01:35Z",
+      "side": 1,
+      "message": "LGTM with a nit.\n",
+      "revId": "aa99ef7ed2b7766a583c256a35aed997deab3812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18c5c96b_4eecc39e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-25T01:01:35Z",
+      "side": 1,
+      "message": "Strictly speaking, err might be something other than \"file not found\". In this way, such unexpected errors are treated just like a file is just missing. If you want to make the error message more readable in the case of \"file not found\", how about:\n\n if _, err :\u003d os.Stat(...); os.IsNotExist(err) {\n   ...\n } else if err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 60,
+        "startChar": 43,
+        "endLine": 60,
+        "endChar": 56
+      },
+      "revId": "aa99ef7ed2b7766a583c256a35aed997deab3812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
