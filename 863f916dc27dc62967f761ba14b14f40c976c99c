@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c325a7ae_47e7b21a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_div_zero.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-08-25T00:00:31Z",
+      "side": 1,
+      "message": "I would consider naming this EcCrash or such. Is it specifically important that the crash is a divide-by-zero crash as opposed to some other crash in the EC? \n\nThe name was confusing me, honestly. I thought we needed to test some particular subcase of EC crashes, instead of this being the one-and-only EC crash test",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "863f916dc27dc62967f761ba14b14f40c976c99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c54f6846_297c9ba8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_div_zero.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-08-25T00:00:31Z",
+      "side": 1,
+      "message": "nit: could be const",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "863f916dc27dc62967f761ba14b14f40c976c99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
