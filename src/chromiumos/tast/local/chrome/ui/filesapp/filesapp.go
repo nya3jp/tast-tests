@@ -38,7 +38,9 @@ const (
 
 // Directory names.
 const (
-	Downloads = "Downloads"
+	Downloads   = "Downloads"
+	GoogleDrive = "Google Drive"
+	MyDrive     = "My Drive"
 )
 
 // TODO(crbug/1046853): Look for way to not rely on names being in English.
@@ -143,7 +145,7 @@ func (f *FilesApp) OpenDownloads(ctx context.Context) error {
 // OpenDrive opens the Google Drive folder in the Files App.
 // An error is returned if Drive is not found or does not open.
 func (f *FilesApp) OpenDrive(ctx context.Context) error {
-	return f.OpenDir(ctx, "Google Drive", "Files - My Drive")
+	return f.OpenDir(ctx, GoogleDrive, "Files - "+MyDrive)
 }
 
 // file returns a ui.Node that references the specified file.
