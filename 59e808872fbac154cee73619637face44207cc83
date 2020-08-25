@@ -16,6 +16,149 @@
       "revId": "59e808872fbac154cee73619637face44207cc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a56a38bd_fe9a74be",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-25T17:14:36Z",
+      "side": 1,
+      "message": "Here and elsewhere, could you please change the initialism \"Ec\" to \"EC\"? In this case, EcCrashExt would become ECCrashExt.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a4d0a9_f23cc99e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-25T17:14:36Z",
+      "side": 1,
+      "message": "As elsewhere, could you please change this to ECCrash?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdcb6cee_c9d5227e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-25T17:14:36Z",
+      "side": 1,
+      "message": "As elsewhere, could you please change this to ECCrash?",
+      "range": {
+        "startLine": 80,
+        "startChar": 45,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7492baa5_825c0741",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-25T17:14:36Z",
+      "side": 1,
+      "message": "As a temporary measure, you could skip it explicitly on the VM boards. AFAIK, those are only betty and betty-pi-arc.",
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ad711e_0ec181ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-25T17:14:36Z",
+      "side": 1,
+      "message": "Because Go doesn\u0027t have a maximum line length, I think this is clearer if L135-136 are kept on one line.",
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "405dbb15_a7928a2b",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-25T17:14:36Z",
+      "side": 1,
+      "message": "As elsewhere, would you please rename to RunECCommand?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 264,
+        "startChar": 19,
+        "endLine": 264,
+        "endChar": 21
+      },
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b2f2b9_21a1c654",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-25T17:14:36Z",
+      "side": 1,
+      "message": "Two suggestions here:\n\n1. If you define \"ec_uart_cmd\" as a StringControl const at the top of this file, then future devs will be able to reuse it without fear of typos. See L19-28.\n\n    const (\n        ...\n        ECUARTCmd StringControl \u003d \"ec_uart_cmd\"\n        ...\n    )\n\n2. You can reuse the existing s.SetString method (L137-146) to prevent redundant code and to gain a bit of error-wrapping.\n\n    // RunECCommand runs the given command on the EC on the device.\n    func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {\n        return s.SetString(ctx, ECUARTCmd, cmd)\n    }",
+      "revId": "59e808872fbac154cee73619637face44207cc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
