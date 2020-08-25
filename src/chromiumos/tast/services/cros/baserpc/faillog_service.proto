@@ -1,0 +1,27 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.baserpc;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/baserpc";
+
+
+// FaillogService provides a service to save faillog for host machine to downloaded.
+service FaillogService {
+  // Create creates a faillog in target machine.
+  rpc Create (google.protobuf.Empty) returns (CreateResponse) {}
+
+  // Remove remove a previous created faillog in target machine.
+  rpc Remove (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message CreateResponse {
+  // The path for the temporary faillog directory will be return as a string
+  string path = 1;
+}
+
