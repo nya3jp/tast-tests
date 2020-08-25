@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package tast.mtbf.svc;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/svc";
+
+service WebService {
+  rpc OpenURL (OpenURLRequest) returns (google.protobuf.Empty);
+  rpc CloseURL (CloseURLRequest) returns (google.protobuf.Empty);
+  rpc Click(ClickRequest) returns (google.protobuf.Empty);
+  rpc ClickLinkByName(ClickLinkByNameRequest) returns (google.protobuf.Empty);
+  rpc PlayElement (PlayElementRequest) returns (google.protobuf.Empty);
+  rpc IsGmailChatRoomExists (google.protobuf.Empty) returns (IsGmailChatRoomExistsResponse);
+  rpc JoinAppRTCRoom (JoinAppRTCRoomRequest) returns (google.protobuf.Empty);
+}
+
+message OpenURLRequest {
+  string url = 1;
+}
+
+message CloseURLRequest {
+  string url = 1;
+}
+
+message ClickRequest {
+  string url = 1;
+  string selector = 2;
+}
+
+message ClickLinkByNameRequest {
+  string url = 1;
+  string name = 2;
+}
+
+message PlayElementRequest {
+  string url = 1;
+  string selector = 2;
+}
+
+message IsGmailChatRoomExistsResponse {
+  bool isExists = 1;
+}
+
+message JoinAppRTCRoomRequest {
+  string roomName = 1;
+}

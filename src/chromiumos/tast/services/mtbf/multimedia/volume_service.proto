@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package tast.mtbf.multimedia;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/multimedia";
+
+enum FnKey {
+  UNKNOWN = 0;
+  F8  = 8;
+  F9  = 9;
+  F10 = 10;
+}
+
+service VolumeService {
+  rpc Get (google.protobuf.Empty) returns (VolumeResponse);
+  rpc Set (VolumeRequest) returns (google.protobuf.Empty);
+  
+  rpc Mute (google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc Unmute (google.protobuf.Empty) returns (google.protobuf.Empty);
+  
+  // PressKey sets the volume by simulating a function key pressed.
+  rpc PressKey (PressKeyRequest) returns (VolumeResponse);
+}
+
+message VolumeRequest {
+  int64 value = 1;
+
+  // Check indicates whether to verify the new volume after the request
+  // is applied.
+  bool  check = 2;
+}
+
+message VolumeResponse {
+  int64 value = 1;
+  bool  mute  = 2;
+}
+
+message PressKeyRequest {
+  FnKey  key = 1;
+
+  // Check indicates whether to verify the new volume after the request
+  // is applied.
+  bool check = 2;
+}

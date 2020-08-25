@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package tast.mtbf.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/ui";
+
+service KeyboardService {
+  // Accel sends keyboard command to DUT
+  rpc Accel (KeyboardAccelRequest) returns (google.protobuf.Empty);
+  rpc Type (KeyboardTypeRequest) returns (google.protobuf.Empty);
+}
+
+message KeyboardAccelRequest {
+  string command = 1;
+  int64 times = 2;
+}
+
+message KeyboardTypeRequest {
+  string text = 1;
+}

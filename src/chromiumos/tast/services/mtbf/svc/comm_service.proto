@@ -1,0 +1,37 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.mtbf.svc;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/svc";
+
+// CommService common remote operations.
+service CommService {
+
+  // Login do chrome login.
+  rpc Login (LoginRequest) returns (google.protobuf.Empty) {}
+
+  // LoginWithARC do chrome login and ARC checking.
+  rpc LoginWithARC (LoginRequest) returns (google.protobuf.Empty) {}
+
+  // Close closes the login session.
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // TakeScreenshot
+  rpc TakeScreenshot (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+}
+
+message LoginRequest {
+  // The temporary directory of local service test output (on DUT).
+  string outDir = 1;
+}
+
+message Screenshot {
+  bytes content = 1;
+}

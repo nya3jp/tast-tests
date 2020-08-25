@@ -1,0 +1,28 @@
+
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.mtbf.wifi;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/wifi";
+
+service WifiService {
+  // Disable disables Wi-Fi.
+  rpc Disable (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Verify verifies whether Wi-Fi service is enable or not.
+  rpc Verify (VerifyRequest) returns (VerifyResponse) {}
+}
+
+message VerifyRequest {
+  bool enable = 1;
+}
+
+message VerifyResponse {
+  string status = 1;
+}

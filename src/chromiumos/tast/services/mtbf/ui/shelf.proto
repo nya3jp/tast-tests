@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package tast.mtbf.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/ui";
+
+service Shelf {
+  rpc OpenSystemTray (google.protobuf.Empty) returns (google.protobuf.Empty);
+}

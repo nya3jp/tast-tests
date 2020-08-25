@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package tast.mtbf.bluetooth;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/bluetooth";
+
+service Bluetooth {
+
+  // Enable turns on the bluetooth.
+  rpc Enable (google.protobuf.Empty) returns (google.protobuf.Empty);
+  
+  // Disable turns off the bluetooth.
+  rpc Disable (google.protobuf.Empty) returns (google.protobuf.Empty);
+  
+  // Address returns the internal address of the bluetooth.
+  rpc Address (google.protobuf.StringValue) returns (google.protobuf.StringValue);
+
+  // IsA2DP checks if bluetooth device type is IsA2DP.
+  rpc IsA2DP (google.protobuf.StringValue) returns (google.protobuf.BoolValue);
+
+  // IsHSP checks if bluetooth device type is HSP.
+  rpc IsHSP (google.protobuf.StringValue) returns (google.protobuf.BoolValue);
+
+  rpc Connect (google.protobuf.StringValue) returns (google.protobuf.Empty);
+
+  // IsConnected checks if the device is connected by the given address.
+  rpc IsConnected (google.protobuf.StringValue) returns (google.protobuf.BoolValue);
+
+  rpc Scan (google.protobuf.BoolValue) returns (google.protobuf.BoolValue);
+}
+
+service Testcases {
+  rpc RunLocal039Part1 (Case039Request) returns (google.protobuf.Empty);
+  rpc RunLocal039Part2 (Case039Request) returns (google.protobuf.Empty);
+  rpc RunLocal039Part3 (Case039Request) returns (google.protobuf.Empty);
+}
+
+message Case039Request {
+  string A2DP_device_name = 1;
+  string hangoutsURL      = 2;
+}

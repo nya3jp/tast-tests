@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package tast.mtbf.camera;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/camera";
+
+service CameraService {
+  rpc SwitchToPortraitMode (SwitchToPortraitModeRequest) returns (google.protobuf.Empty);
+  rpc SwitchCamera (SwitchCameraRequest) returns (google.protobuf.Empty);
+  rpc GetNumOfCameras (GetNumOfCamerasRequest) returns (GetNumOfCamerasResponse);
+  rpc GetModeState (GetModeStateRequest) returns (GetModeStateResponse);
+  rpc CheckElementExist (CheckElementExistRequest) returns (google.protobuf.Empty);
+  rpc CloseCamera (CloseCameraRequest) returns (google.protobuf.Empty);
+}
+
+message SwitchToPortraitModeRequest{
+  string outDir = 1;
+}
+
+message SwitchCameraRequest{
+  string outDir = 1;
+}
+
+message GetNumOfCamerasRequest{
+  string outDir = 1;
+}
+
+message GetNumOfCamerasResponse{
+  string outDir = 1;
+  int64 num = 2;
+}
+
+message GetModeStateRequest {
+  string outDir = 1;
+  string mode = 2;
+}
+
+message GetModeStateResponse {
+  string outDir = 1;
+  bool active = 2;
+}
+
+message CheckElementExistRequest {
+  string outDir = 1;
+  string selector = 2;
+  bool expected = 3;
+}
+
+message CloseCameraRequest{
+  string outDir = 1;
+}

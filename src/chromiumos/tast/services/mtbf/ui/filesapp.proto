@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package tast.mtbf.ui;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/ui";
+
+service FilesApp {
+  // Close closes the Files App.
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty);
+
+  // SelectInDownloads launches the Files App, selecting a file by the relative
+  // path insides the Downloads directory. It opens the file if the request's
+  // Open field set to true.
+  rpc SelectInDownloads (FileRequest) returns (google.protobuf.Empty);
+
+  // Stat returns the file information by the absolute path. It does NOT launch
+  // the Files App.
+  rpc Stat (FileRequest) returns (FileResponse);
+}
+
+message FileRequest {
+  string path = 1;
+  bool   open = 2;
+}
+
+message FileResponse {
+  string name = 1;
+  int64  size = 2;
+  google.protobuf.Timestamp mod_time = 3;
+  bool is_dir = 4;
+}

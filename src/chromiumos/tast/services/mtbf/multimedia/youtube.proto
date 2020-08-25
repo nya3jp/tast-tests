@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package tast.mtbf.multimedia;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/multimedia";
+
+service YoutubeService {
+  rpc IsPlaying (IsPlayingRequest) returns (IsPlayingResponse);
+  rpc PlayYoutubeVideo(PlayYoutubeVideoRequest) returns (google.protobuf.Empty);
+}
+
+message IsPlayingRequest {
+  string url = 1;
+  int64 timeout = 2;
+}
+
+message IsPlayingResponse{
+  bool isPlaying = 1;
+}
+
+message PlayYoutubeVideoRequest {
+  string URL = 1;
+}

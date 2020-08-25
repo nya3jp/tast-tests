@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package tast.mtbf.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/ui";
+
+service UI {
+  rpc WaitElement (WaitElementRequest) returns (google.protobuf.Empty);
+  rpc ClickElement (ClickElementRequest) returns (google.protobuf.Empty);
+}
+
+message WaitElementRequest {
+  string role = 1;
+  string name = 2;
+  int64 timeout = 3;
+}
+
+message ClickElementRequest {
+  string role = 1;
+  string name = 2;
+}

@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package tast.mtbf.multimedia;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/multimedia";
+
+service AudioPlayer {
+
+  // OpenInDownloads launches the Files app, opening the file by the
+  // relative path insides the Downloads directory.
+  rpc OpenInDownloads (FileRequest) returns (google.protobuf.Empty);
+
+  // Focus makes the window switched to the audio player.
+  rpc Focus (google.protobuf.Empty) returns (google.protobuf.Empty);
+  
+  // Close closes the Audio Player app.
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty);
+  
+  // CloseAll closes the Audio Player and the Files app.
+  rpc CloseAll (google.protobuf.Empty) returns (google.protobuf.Empty);
+
+  // Play resumes the audio in the player.
+  rpc Play (google.protobuf.Empty) returns (google.protobuf.Empty);
+  
+  // Pause pauses the audio the player is playing.
+  rpc Pause (google.protobuf.Empty) returns (google.protobuf.Empty);
+
+  // CurrentTime returns the playing time of the player in seconds.
+  rpc CurrentTime (google.protobuf.Empty) returns (TimeResponse);
+
+  // MustPlaying checks if the player is playing the audio, retunring
+  // an error if it's not.
+  rpc MustPlaying (TimeoutRequest) returns (google.protobuf.Empty);
+
+  // MustPaused checks if the player is paused, returning an error
+  // if it's not.
+  rpc MustPaused (TimeoutRequest) returns (google.protobuf.Empty);
+}
+
+message FileRequest {
+  string filepath = 1;
+}
+
+message TimeoutRequest {
+  int64 seconds = 1;
+}
+
+message TimeResponse {
+  int64 current_time = 1;
+}
