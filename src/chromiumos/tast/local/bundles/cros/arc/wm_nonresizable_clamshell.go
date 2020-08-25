@@ -345,7 +345,7 @@ func wmNC15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		wm.NonResizablePortraitActivity,
 		wm.NonResizableUnspecifiedActivity,
 	} {
-		if err := displaySizeChangeTestsHelper(ctx, tconn, a, d, actName); err != nil {
+		if err := ncDisplaySizeChangeTestsHelper(ctx, tconn, a, d, actName); err != nil {
 			return err
 		}
 	}
@@ -353,8 +353,8 @@ func wmNC15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	return nil
 }
 
-// displaySizeChangeTestsHelper is used for non-resizable Tast-tests that are testing resolution change.
-func displaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
+// ncDisplaySizeChangeTestsHelper is used for non-resizable Tast-tests that are testing resolution change.
+func ncDisplaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
 	const roundingErrorDecimal = 0.01
 
 	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
@@ -386,7 +386,7 @@ func displaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a
 	originalZoom := dispInfoBeforeZoom.DisplayZoomFactor
 
 	// Get buttons info before zoom.
-	buttonBoundsBeforeZoom, err := getButtonBounds(ctx, d, act.PackageName())
+	buttonBoundsBeforeZoom, err := wm.GetButtonBounds(ctx, d, act.PackageName())
 	if err != nil {
 		return err
 	}
@@ -401,7 +401,7 @@ func displaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a
 		}
 	}
 	if newZoom == 0 {
-		return errors.Errorf("invalid AvailableDisplayZoomFactors: got '%f'; want array with at least one value greater than '%f'", displayZoomFactors, originalZoom)
+		return errors.Errorf("invalid AvailableDisplayZoomFactors: got an empty array; want array with at least one value greater than '%.2f'", originalZoom)
 	}
 
 	if err := wm.ChangeDisplayZoomFactor(ctx, tconn, displayID, newZoom); err != nil {
@@ -410,7 +410,7 @@ func displaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a
 	defer wm.ChangeDisplayZoomFactor(ctx, tconn, displayID, dispInfoBeforeZoom.DisplayZoomFactor)
 
 	// Get buttons info after zoom.
-	buttonBoundsAfterZoom, err := getButtonBounds(ctx, d, act.PackageName())
+	buttonBoundsAfterZoom, err := wm.GetButtonBounds(ctx, d, act.PackageName())
 	if err != nil {
 		return err
 	}
@@ -443,23 +443,6 @@ func displaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a
 	}
 
 	return nil
-}
-
-// getButtonBounds returns a button's bounds in the given package.
-func getButtonBounds(ctx context.Context, d *ui.Device, packageName string) (coords.Rect, error) {
-	button := d.Object(ui.PackageName(packageName),
-		ui.ClassName("android.widget.Button"),
-		ui.ID("org.chromium.arc.testapp.windowmanager:id/button_show"))
-	if err := button.WaitForExists(ctx, 5*time.Second); err != nil {
-		return coords.Rect{}, errors.Wrap(err, "getButtonBounds failed")
-	}
-
-	buttonBounds, err := button.GetBounds(ctx)
-	if err != nil {
-		return coords.Rect{}, errors.Wrap(err, "getButtonBounds failed")
-	}
-
-	return buttonBounds, nil
 }
 
 // buttonBoundsCheckAfterZoom calculates old rect (before zoom) values based on the new rect and the ratio.
