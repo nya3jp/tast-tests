@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "3b44d987_bbe73135",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "Thanks. Sorry I missed them.",
+      "parentUuid": "4efef984_1a6ef290",
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f748d3d6_7cdae12b",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 4
@@ -93,6 +111,30 @@
     },
     {
       "key": {
+        "uuid": "df4c97b6_3afe5996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f748d3d6_7cdae12b",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81c5fd8f_ffb7c3cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 4
@@ -113,6 +155,30 @@
       "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da5a9e2_d706d5ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c5fd8f_ffb7c3cc",
+      "range": {
+        "startLine": 55,
+        "startChar": 53,
+        "endLine": 55,
+        "endChar": 60
+      },
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +228,54 @@
     },
     {
       "key": {
+        "uuid": "9afc1382_3645ed9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3b8c5ed_8c9b6192",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 30
+      },
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f96391a_d27959d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a595cad1_d8501c5c",
+      "range": {
+        "startLine": 69,
+        "startChar": 38,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b808412_6c625a8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 4
@@ -185,6 +299,30 @@
     },
     {
       "key": {
+        "uuid": "17256c85_76a58112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "testutil.Tempdir requires a testing.T, which seemed to be available for unit tests only.\nioutil.Tempfile is used instead.",
+      "parentUuid": "0b808412_6c625a8a",
+      "range": {
+        "startLine": 77,
+        "startChar": 24,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23a57827_8ff26e59",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 4
@@ -205,6 +343,30 @@
       "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eca6761_57117e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "Done, shorten added.",
+      "parentUuid": "23a57827_8ff26e59",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -254,6 +416,54 @@
     },
     {
       "key": {
+        "uuid": "2cff7813_b448e25c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d88f87_25725b0f",
+      "range": {
+        "startLine": 97,
+        "startChar": 29,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c8bca6d_c84014ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e2d375f_7e83ff79",
+      "range": {
+        "startLine": 97,
+        "startChar": 38,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "844d6d31_91d14492",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
         "patchSetId": 4
@@ -297,6 +507,54 @@
       "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b05de5a_e8a98455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba4f22c4_23d350d8",
+      "range": {
+        "startLine": 111,
+        "startChar": 29,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bfad989_a039e8de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset_tpm1.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-25T19:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "844d6d31_91d14492",
+      "range": {
+        "startLine": 111,
+        "startChar": 31,
+        "endLine": 111,
+        "endChar": 46
+      },
+      "revId": "b2538da4cdbf0e4f60c408f41fdc1882e6d2296d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
