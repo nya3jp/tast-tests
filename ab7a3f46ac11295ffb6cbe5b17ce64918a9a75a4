@@ -16,6 +16,86 @@
       "revId": "ab7a3f46ac11295ffb6cbe5b17ce64918a9a75a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc03bbf8_70113e60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 48
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-25T04:15:53Z",
+      "side": 1,
+      "message": "A nit about variable naming. Go ahead after you address it.",
+      "revId": "ab7a3f46ac11295ffb6cbe5b17ce64918a9a75a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "011af61d_5d668588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-25T04:15:53Z",
+      "side": 1,
+      "message": "I think you can directly use request.Ssid. If you want to use the alias for symmetric purpose, how about renaming it as \"requestSSID\" or \"wantSSID\"?",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 22
+      },
+      "revId": "ab7a3f46ac11295ffb6cbe5b17ce64918a9a75a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f3714f9_6a823a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-25T04:15:53Z",
+      "side": 1,
+      "message": "How about renaming it as \"requestBSSID\" or \"wantBSSID\"? And give a comment:\n// Convert BSSID from human readable string to hardware address in bytes.",
+      "range": {
+        "startLine": 256,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 7
+      },
+      "revId": "ab7a3f46ac11295ffb6cbe5b17ce64918a9a75a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a876df1_5a634523",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 48
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-25T04:15:53Z",
+      "side": 1,
+      "message": "That\u0027s correct. We shall use bytes as SSID type as it allows any bytes according to the spec.",
+      "revId": "ab7a3f46ac11295ffb6cbe5b17ce64918a9a75a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
