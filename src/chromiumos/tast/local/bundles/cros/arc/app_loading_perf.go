@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -88,30 +89,53 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	weightsDict := map[string]float64{
-		"memory":  0.1,
-		"file":    6.5,
-		"network": 5.2,
-		"opengl":  4.0,
-	}
-
 	finalPerfValues := perf.NewValues()
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
 	tests := []struct {
-		name   string
-		prefix string
+		name     string
+		prefix   string
+		subtest  string
+		priority int
 	}{{
-		name:   "MemoryTest",
-		prefix: "memory",
+		name:     "MemoryTest",
+		prefix:   "memory",
+		priority: 0,
 	}, {
-		name:   "FileTest",
-		prefix: "file",
+		name:     "FileTest",
+		prefix:   "file_obb",
+		subtest:  "runObbTest",
+		priority: 1,
 	}, {
-		name:   "NetworkTest",
-		prefix: "network",
+		name:     "FileTest",
+		prefix:   "file_squashfs",
+		subtest:  "runSquashFSTest",
+		priority: 1,
 	}, {
-		name:   "OpenGLTest",
-		prefix: "opengl",
+		name:     "FileTest",
+		prefix:   "file_esd",
+		subtest:  "runEsdTest",
+		priority: 1,
+	}, {
+		name:     "FileTest",
+		prefix:   "file_ext4",
+		subtest:  "runExt4Test",
+		priority: 0,
+	}, {
+		name:     "NetworkTest",
+		prefix:   "network",
+		priority: 0,
+	}, {
+		name:     "OpenGLTest",
+		prefix:   "opengl",
+		priority: 0,
+	}, {
+		name:     "DecompressionTest",
+		prefix:   "decompression",
+		priority: 0,
+	}, {
+		name:     "UITest",
+		prefix:   "ui",
+		priority: 0,
 	}}
 
 	config := apploading.TestConfig{
@@ -121,23 +145,37 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		OutDir:               s.OutDir(),
 	}
 
-	var totalScore float64
+	scoresDict := map[int][]float64{
+		0: make([]float64, 0),
+		1: make([]float64, 0),
+	}
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
 	for _, test := range tests {
 		config.ClassName = test.name
 		config.Prefix = test.prefix
+		config.Subtest = test.subtest
+
 		score, err := apploading.RunTest(ctx, config, a, cr)
 		if err != nil {
 			s.Fatal("Failed to run apploading test: ", err)
 		}
 
-		weight, ok := weightsDict[config.Prefix]
-		if !ok {
-			s.Fatal("Failed to obtain weight value for test: ", config.Prefix)
+		if scores, ok := scoresDict[test.priority]; ok {
+			scores = append(scores, score)
+			scoresDict[test.priority] = scores
+		} else {
+			s.Fatal("Failed to find score priority: ", test.priority)
 		}
-		score *= weight
-		totalScore += score
+	}
+
+	// Calculate hierarchical geometric mean with each level based on priority.
+	var totalScore float64
+	for i := len(scoresDict) - 1; i >= 0; i-- {
+		if totalScore > 0 {
+			scoresDict[i] = append(scoresDict[i], totalScore)
+		}
+		totalScore = calcGeometricMean(scoresDict[i])
 	}
 
 	finalPerfValues.Set(
@@ -154,4 +192,20 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	if err := finalPerfValues.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save final perf metrics: ", err)
 	}
+}
+
+// calcGeometricMean computes the geometric mean but use antilog method to
+// prevent overflow: EXP((LOG(x1) + LOG(x2) + LOG(x3)) ... + LOG(xn)) / n)
+func calcGeometricMean(scores []float64) float64 {
+	if len(scores) == 0 {
+		return 0
+	}
+
+	var mean float64
+	for _, score := range scores {
+		mean += math.Log(score)
+	}
+	mean /= float64(len(scores))
+
+	return math.Exp(mean)
 }
