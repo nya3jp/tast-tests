@@ -14,7 +14,9 @@ import (
 	"time"
 
 	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
 
+	lorgnette "chromiumos/system_api/lorgnette_proto"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
@@ -39,6 +41,12 @@ const (
 	goldenImage = "scan_escl_ipp_golden.png"
 )
 
+const (
+	dbusName      = "org.chromium.lorgnette"
+	dbusPath      = "/org/chromium/lorgnette/Manager"
+	dbusInterface = "org.chromium.lorgnette.Manager"
+)
+
 // findScanner runs lsusb in order to find the Bus and Device number for the USB
 // device with the VID and PID given in devInfo.
 func findScanner(ctx context.Context, devInfo usbprinter.DevInfo) (bus, device string, err error) {
@@ -59,6 +67,79 @@ func findScanner(ctx context.Context, devInfo usbprinter.DevInfo) (bus, device s
 	}
 
 	return tokens[1], tokens[3], nil
+}
+
+func startScan(ctx context.Context, obj dbus.BusObject, request *lorgnette.StartScanRequest) (*lorgnette.StartScanResponse, error) {
+	marshalled, err := proto.Marshal(request)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to marshal StartScanRequest")
+	}
+	call := obj.CallWithContext(ctx, dbusInterface+".StartScanMultiPage", 0, marshalled)
+	if call.Err != nil {
+		return nil, errors.Wrap(call.Err, "failed to call StartScan")
+	}
+
+	marshalled = nil
+	call.Store(&marshalled)
+	response := &lorgnette.StartScanResponse{}
+	err = proto.Unmarshal(marshalled, response)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal StartScanResponse")
+	}
+
+	return response, nil
+}
+
+func getNextImage(ctx context.Context, obj dbus.BusObject, request *lorgnette.GetNextImageRequest, outFD uintptr) (*lorgnette.GetNextImageResponse, error) {
+	marshalled, err := proto.Marshal(request)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to marshal GetNextImageRequest")
+	}
+
+	call := obj.CallWithContext(ctx, dbusInterface+".GetNextImage", 0, marshalled, dbus.UnixFD(outFD))
+	if call.Err != nil {
+		return nil, errors.Wrap(call.Err, "failed to call GetNextImage")
+	}
+
+	marshalled = nil
+	call.Store(&marshalled)
+	response := &lorgnette.GetNextImageResponse{}
+	err = proto.Unmarshal(marshalled, response)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal GetNextImageResponse")
+	}
+
+	return response, nil
+}
+
+func waitForScanCompletion(ctx context.Context, ch <-chan *dbus.Signal, uuid string) error {
+	for dbusSignal := range ch {
+		var marshalled []byte
+		dbus.Store(dbusSignal.Body, &marshalled)
+		signal := lorgnette.ScanStatusChangedSignal{}
+		err := proto.Unmarshal(marshalled, &signal)
+		if err != nil {
+			return errors.Wrap(err, "failed to unmarshal ScanStatusChangedSignal")
+		}
+
+		if signal.ScanUuid != uuid {
+			continue
+		}
+
+		if signal.State == lorgnette.ScanState_SCAN_STATE_FAILED {
+			return errors.Errorf("scan failed: %s", signal.FailureReason)
+		}
+
+		if signal.State == lorgnette.ScanState_SCAN_STATE_PAGE_COMPLETED && signal.MorePages {
+			return errors.New("Did not expect additional pages for scan")
+		}
+
+		if signal.State == lorgnette.ScanState_SCAN_STATE_COMPLETED {
+			return nil
+		}
+	}
+
+	return errors.New("Did not receive scan completion signal")
 }
 
 func ScanESCLIPP(ctx context.Context, s *testing.State) {
@@ -129,28 +210,66 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open scan output file: ", err)
 	}
 
-	scannerName := fmt.Sprintf("airscan:escl:TestScanner:http://localhost:%d/eSCL", port)
-	fileDescriptor := dbus.UnixFD(scanFile.Fd())
-	scanProperties := map[string]dbus.Variant{
-		"Resolution": dbus.MakeVariant(uint32(300)),
-		"Mode":       dbus.MakeVariant("Color"),
+	startScanRequest := &lorgnette.StartScanRequest{
+		DeviceName: fmt.Sprintf("airscan:escl:TestScanner:http://localhost:%d/eSCL", port),
+		Settings: &lorgnette.ScanSettings{
+			Resolution: 300,
+			Source: &lorgnette.DocumentSource{
+				Type: lorgnette.SourceType_SOURCE_PLATEN,
+				Name: "Flatbed",
+			},
+			ColorMode: lorgnette.ColorMode_MODE_COLOR,
+		},
 	}
-
-	const (
-		dbusName      = "org.chromium.lorgnette"
-		dbusPath      = "/org/chromium/lorgnette/Manager"
-		dbusInterface = "org.chromium.lorgnette.Manager"
-	)
 
 	conn, err := dbusutil.SystemBus()
 	if err != nil {
 		s.Fatal("Failed to connect to system bus: ", err)
 	}
 
-	s.Log("Requesting Lorgnette to ScanImage")
 	obj := conn.Object(dbusName, dbus.ObjectPath(dbusPath))
-	if err := obj.CallWithContext(ctx, dbusInterface+".ScanImage", 0, scannerName, fileDescriptor, scanProperties).Err; err != nil {
-		s.Fatal("Failed to ScanImage: ", err)
+
+	s.Log("Starting scan")
+	startScanResponse, err := startScan(ctx, obj, startScanRequest)
+	if err != nil {
+		s.Fatal("Failed to call StartScan: ", err)
+	}
+
+	if startScanResponse.State != lorgnette.ScanState_SCAN_STATE_IN_PROGRESS {
+		s.Fatal("Failed to start scan: ", startScanResponse.FailureReason)
+	}
+
+	// Register 'signals' to receive ScanStatusChanged signals from lorgnette,
+	// which will be used to communicate scan completion.
+	err = conn.AddMatchSignal(
+		dbus.WithMatchObjectPath(dbusPath),
+		dbus.WithMatchInterface(dbusInterface),
+		dbus.WithMatchMember("ScanStatusChanged"),
+	)
+	if err != nil {
+		s.Fatal("Failed to register for signals from lorgnette: ", err)
+	}
+	signals := make(chan *dbus.Signal, 100)
+	conn.Signal(signals)
+
+	getNextImageRequest := &lorgnette.GetNextImageRequest{
+		ScanUuid: startScanResponse.ScanUuid,
+	}
+
+	s.Log("Getting next image")
+	getNextImageResponse, err := getNextImage(ctx, obj, getNextImageRequest, scanFile.Fd())
+	if err != nil {
+		s.Fatal("Failed to call GetNextImage: ", err)
+	}
+
+	if !getNextImageResponse.Success {
+		s.Fatal("Failed to get next image: ", getNextImageResponse.FailureReason)
+	}
+
+	s.Log("Waiting for completion signal")
+	err = waitForScanCompletion(ctx, signals, startScanResponse.ScanUuid)
+	if err != nil {
+		s.Fatal("Failed to wait for scan completion: ", err)
 	}
 
 	s.Log("Comparing scanned file to golden image")
