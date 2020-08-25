@@ -19,7 +19,7 @@ func init() {
 		Func:     AudioSanity,
 		Desc:     "Runs a sanity test on the container's audio (through alsa) using a pre-built crostini image",
 		Contacts: []string{"paulhsia@chromium.org", "cros-containers-dev@google.com", "chromeos-audio-bugs@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "artifact",
 			Pre:               crostini.StartedByArtifact(),

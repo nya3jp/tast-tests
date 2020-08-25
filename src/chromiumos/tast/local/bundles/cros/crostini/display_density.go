@@ -21,7 +21,7 @@ func init() {
 		Func:     DisplayDensity,
 		Desc:     "Runs a crostini application from the terminal in high/low DPI modes and compares sizes",
 		Contacts: []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "wayland_artifact",
 			Pre:               crostini.StartedByArtifact(),
