@@ -14,8 +14,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/testing"
 )
+
+const uiTimeout = 10 * time.Second
 
 // State contains the state returned by chrome.autotestPrivate.loginStatus,
 // corresponding to 'LoginStatusDict' as defined in autotest_private.idl.
@@ -77,4 +80,23 @@ func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username 
 		Attributes: attributes,
 	}
 	return ui.WaitUntilExists(ctx, tconn, params, timeout)
+}
+
+// EnterPIN enters the specified PIN.
+func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
+	pad := uig.FindWithTimeout(ui.FindParams{ClassName: "LoginPinView"}, uiTimeout)
+
+	for _, d := range PIN {
+		if err := uig.Do(ctx, tconn, uig.Steps(
+			pad.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: string(d)}, uiTimeout).LeftClick(),
+		)); err != nil {
+			return errors.Wrapf(err, "failed to press %v button", d)
+		}
+	}
+	return nil
+}
+
+// SubmitPIN submits the entered PIN.
+func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
+	return uig.Do(ctx, tconn, uig.FindWithTimeout(ui.FindParams{Name: "Submit", Role: ui.RoleTypeButton}, uiTimeout).LeftClick())
 }
