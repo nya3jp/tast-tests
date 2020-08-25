@@ -16,6 +16,57 @@
       "revId": "92356e467094d714515140a876160abc9d524087",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cb50f14_c9580e63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-08-25T09:34:34Z",
+      "side": 1,
+      "message": "LGTM w/nit",
+      "revId": "92356e467094d714515140a876160abc9d524087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86186583_c95ffa89",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-08-25T09:34:34Z",
+      "side": 1,
+      "message": "\"want\" is preferred over \"expected\" for this kind of message.\ngo/go-style/decisions#got-before-want",
+      "revId": "92356e467094d714515140a876160abc9d524087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93599c0e_3500da08",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-08-25T09:34:34Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "92356e467094d714515140a876160abc9d524087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
