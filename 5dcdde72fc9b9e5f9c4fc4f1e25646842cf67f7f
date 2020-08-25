@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "181eb552_7c5a99aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-25T17:32:57Z",
+      "side": 1,
+      "message": "Besides crostini.GPUEnabled.ArtifactGPU, the other tests all exhibit a few recent failures per build. But, they are comparable with the failures I see among other Crostini tests on Tastboard. Are you aware of any previous discussion about how stable Crostini tests must be before we promote them to critical? And if so, could you point me toward those discussions?",
+      "revId": "5dcdde72fc9b9e5f9c4fc4f1e25646842cf67f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ba0fb4f_e86e2a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-25T17:32:57Z",
+      "side": 1,
+      "message": "This test is still quite unstable in Tastboard. Please do not promote it yet.\n\nhttp://tastboard/test/crostini.GPUEnabled.artifact_gpu",
+      "revId": "5dcdde72fc9b9e5f9c4fc4f1e25646842cf67f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
