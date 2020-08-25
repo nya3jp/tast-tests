@@ -21,10 +21,10 @@ import (
 // deviceBlocklist is the list of devices we want to disable these tests on.
 var deviceBlocklist = []string{
 	// The ARC++ HW encoder is not enabled on MT8173: b/142514178
+	// TODO(crbug.com/1115620): remove "Elm" and "Hana" after unibuild migration completed.
 	"elm",
-	"elm_kernelnext",
 	"hana",
-	"hana_kernelnext",
+	"oak",
 }
 
 func init() {
