@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "121d897d_bdcc7442",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-25T21:58:34Z",
+      "side": 1,
+      "message": "This isn\u0027t wrong, but having a floating error check that isn\u0027t directly anchored to the error it is checking feels odd. Any way we can reorder things to make this error connection more clear? Maybe move the special logic for the network pod into find pod button?",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 16
+      },
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78012715_fdd13290",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-25T21:58:34Z",
+      "side": 1,
+      "message": "nit: return pod.Restriction \u003d\u003d ui.RestrictionDisabled, nil",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 18
+      },
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40b503df_1dfb4680",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 4
@@ -31,6 +77,47 @@
       "side": 1,
       "message": "I guess we will have code like this in all of our modules/wrappers. A separate file could make sense if we start having a lot like this. \n\nI wonder if it is possible to generate these from the chromium src or something\n\nBrendan any idea how difficult/plausible that is",
       "parentUuid": "40b503df_1dfb4680",
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd93165e_89c586ce",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-25T21:58:34Z",
+      "side": 1,
+      "message": "I would move these to a constants.go in the quicksettings package.\n\nAs for autogenerating, I am not really sure. I am not even sure where in the chromium source to look for all of this info. Not sure how directly it maps from chromium src to accessibility layer either.",
+      "parentUuid": "1610a206_91a6d084",
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb3f263a_a0d9dd88",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-25T21:58:34Z",
+      "side": 1,
+      "message": "nit: just NotificationsHidden",
+      "range": {
+        "startLine": 381,
+        "startChar": 5,
+        "endLine": 381,
+        "endChar": 27
+      },
       "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
