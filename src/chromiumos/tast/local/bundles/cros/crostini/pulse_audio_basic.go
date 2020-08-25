@@ -17,8 +17,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PulseAudioSanity,
-		Desc:     "Runs a sanity test on the container's pusleaudio service using a pre-built crostini image",
+		Func:     PulseAudioBasic,
+		Desc:     "Runs a basic test on the container's pusleaudio service using a pre-built crostini image",
 		Contacts: []string{"paulhsia@chromium.org", "cros-containers-dev@google.com", "chromeos-audio-bugs@google.com"},
 		Attr:     []string{"group:mainline"},
 		Vars:     []string{"keepState"},
@@ -65,7 +65,7 @@ func controlPulse(ctx context.Context, s *testing.State, cont *vm.Container, cmd
 	}
 }
 
-func PulseAudioSanity(ctx context.Context, s *testing.State) {
+func PulseAudioBasic(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	defer crostini.RunCrostiniPostTest(ctx, cont)
 

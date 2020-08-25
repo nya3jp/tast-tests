@@ -14,7 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Sanity,
+		Func:         Basic,
 		Desc:         "Tests basic Crostini startup only (where crostini was shipped with the build)",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
@@ -52,11 +52,11 @@ func init() {
 	})
 }
 
-func Sanity(ctx context.Context, s *testing.State) {
+func Basic(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	defer crostini.RunCrostiniPostTest(ctx, cont)
 
-	if err := crostini.SimpleCommandWorks(ctx, cont); err != nil {
+	if err := crostini.BasicCommandWorks(ctx, cont); err != nil {
 		s.Fatal("Failed to run a command in the container: ", err)
 	}
 }

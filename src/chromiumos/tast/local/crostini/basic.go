@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -11,8 +11,8 @@ import (
 	"chromiumos/tast/local/vm"
 )
 
-// SimpleCommandWorks executes a command in the container and returns
+// BasicCommandWorks executes a command in the container and returns
 // an error if it fails.
-func SimpleCommandWorks(ctx context.Context, cont *vm.Container) error {
+func BasicCommandWorks(ctx context.Context, cont *vm.Container) error {
 	return cont.Command(ctx, "pwd").Run(testexec.DumpLogOnError)
 }

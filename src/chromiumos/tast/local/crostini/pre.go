@@ -343,7 +343,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	useLocalImage := keepState(s) && vm.TerminaImageExists()
 
 	if p.cont != nil {
-		if err := SimpleCommandWorks(ctx, p.cont); err != nil {
+		if err := BasicCommandWorks(ctx, p.cont); err != nil {
 			s.Log("Precondition unsatisifed: ", err)
 			p.cont = nil
 			p.Close(ctx, s)
