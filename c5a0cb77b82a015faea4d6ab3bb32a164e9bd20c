@@ -110,6 +110,30 @@
       "revId": "c5a0cb77b82a015faea4d6ab3bb32a164e9bd20c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4544ea4f_c72ff023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/open_with_terminal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-25T02:30:46Z",
+      "side": 1,
+      "message": "Matt, I wasn\u0027t aware of the other APIs, but they are much better for me to use.  Thanks.",
+      "parentUuid": "99a1bae8_57bc6f80",
+      "range": {
+        "startLine": 100,
+        "startChar": 26,
+        "endLine": 100,
+        "endChar": 57
+      },
+      "revId": "c5a0cb77b82a015faea4d6ab3bb32a164e9bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
