@@ -28,6 +28,11 @@ func Save(ctx context.Context) {
 		testing.ContextLog(ctx, "Failed to get name of directory")
 		return
 	}
+	SaveToDir(ctx, dir)
+}
+
+// SaveToDir saves fail log to a specific directory
+func SaveToDir(ctx context.Context, dir string) {
 	if _, err := os.Stat(dir); err != nil {
 		return
 	}
