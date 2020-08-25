@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "977de96b_48d2b861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-08-25T09:48:01Z",
+      "side": 1,
+      "message": "Seems redundant to have both the ",
+      "revId": "c270def4060a25e98b253a654373b4fbbbe0ac48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68eb43ed_aba14e58",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-08-25T09:48:01Z",
+      "side": 1,
+      "message": "Seems redundant to have Debian in both the type and the variable names?",
+      "revId": "c270def4060a25e98b253a654373b4fbbbe0ac48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
