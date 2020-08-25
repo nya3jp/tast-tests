@@ -22,7 +22,7 @@ const DownloadPath = "/home/chronos/user/Downloads/"
 
 const uiTimeout = 15 * time.Second
 
-// Context menu items for a file
+// Context menu items for a file.
 const (
 	Open         = "Open"
 	OpenWith     = "Open with..."
@@ -34,6 +34,11 @@ const (
 	Delete       = "Delete"
 	ZipSelection = "Zip select"
 	NewFolder    = "New folder"
+)
+
+// Directory names.
+const (
+	Downloads = "Downloads"
 )
 
 // TODO(crbug/1046853): Look for way to not rely on names being in English.
@@ -69,7 +74,7 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	// MyFiles, and these folders appear at the same time, wait for the
 	// Downloads folder to load to indicate that the tree's ui has settled.
 	params := ui.FindParams{
-		Name: "Downloads",
+		Name: Downloads,
 		Role: ui.RoleTypeTreeItem,
 	}
 	if err := app.WaitUntilDescendantExists(ctx, params, uiTimeout); err != nil {
@@ -132,7 +137,7 @@ func (f *FilesApp) OpenDir(ctx context.Context, dirName, expectedTitle string) e
 // OpenDownloads opens the Downloads folder in the Files App.
 // An error is returned if Downloads is not found or does not open.
 func (f *FilesApp) OpenDownloads(ctx context.Context) error {
-	return f.OpenDir(ctx, "Downloads", "Files - Downloads")
+	return f.OpenDir(ctx, Downloads, "Files - "+Downloads)
 }
 
 // OpenDrive opens the Google Drive folder in the Files App.
