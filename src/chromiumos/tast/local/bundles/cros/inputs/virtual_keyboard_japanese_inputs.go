@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -26,6 +27,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "stable",
+			ExtraHardwareDeps: pre.InputsStableModels,
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: pre.InputsUnstableModels,
+		}},
 	})
 }
 

@@ -24,7 +24,14 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: pre.InputsStableModels,
+		Params: []testing.Param{{
+			Name:              "stable",
+			ExtraHardwareDeps: pre.InputsStableModels,
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
