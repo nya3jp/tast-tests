@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "cb8bfbe2_b8d532cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-25T23:38:38Z",
+      "side": 1,
+      "message": "Please link to chromium:1087182 as it\u0027s related.",
+      "revId": "31848e47f6ac4e05a0b71b999d4b439f95780cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9f1c786_ef680ef4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -48,6 +65,24 @@
       "side": 1,
       "message": "ui.WindowArrangementCUJ[1] might want to also use this to avoid showing ads and surveys. We need to click the miniplayer button to enter pip mode, and based on Xiyuan\u0027s experience in VideoCUJ, we need to avoid showing ads and surveys so that the test won\u0027t fail by unexpected elements on youtube page.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2370778",
       "parentUuid": "9cac69aa_7f8a08ad",
+      "revId": "31848e47f6ac4e05a0b71b999d4b439f95780cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eaf49cf3_40b9cb2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-25T23:38:38Z",
+      "side": 1,
+      "message": "Ah, I see.\nI\u0027m still not sure if it needs to be a youtube website, but I\u0027ll bring my comment there.  This CL would be fine.",
+      "parentUuid": "df163d29_6f7117a5",
       "revId": "31848e47f6ac4e05a0b71b999d4b439f95780cc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
