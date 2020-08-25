@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82718808_568d9098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-25T19:43:33Z",
+      "side": 1,
+      "message": "LGTM, a few comments to consider.",
+      "revId": "bc9e62c822399199acee71313c39587307d48357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc4a69ba_63a636c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-25T19:43:33Z",
+      "side": 1,
+      "message": "nit: Not sure if it would ever lead to flakiness, but you may want to copy the file to the downloads folder before opening the folder.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "bc9e62c822399199acee71313c39587307d48357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cdbab61_769183a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-25T19:43:33Z",
+      "side": 1,
+      "message": "Do you also want to check for any of the specific files in the zip?",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "bc9e62c822399199acee71313c39587307d48357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9a4d97_defa37a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-25T19:43:33Z",
+      "side": 1,
+      "message": "You might want to move this up and defer it on L150, but I am not completely sure.",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 39
+      },
+      "revId": "bc9e62c822399199acee71313c39587307d48357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
