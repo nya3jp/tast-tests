@@ -16,6 +16,24 @@
       "revId": "f3351bc1e315f61358c0c9aa802ae2f5937918fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89b3692a_0d829759",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-08-25T16:00:15Z",
+      "side": 1,
+      "message": "Yep, I\u0027ll get a CL sent when both Elm and Hana are migrated.",
+      "parentUuid": "5506de80_831eb28f",
+      "revId": "f3351bc1e315f61358c0c9aa802ae2f5937918fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
