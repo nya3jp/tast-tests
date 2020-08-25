@@ -277,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "6406a878_a2c26203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-08-25T02:09:43Z",
+      "side": 1,
+      "message": "I could not repro the \"repo check\" you mentioned.\nIf it means https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow,\n\nI guess you would have tried:\n\t\tif exist, err :\u003d arc.InitExists(); err !\u003d nil {\n\t\t\treturn testing.PollBreak(err)\n\t\t} else if exist {\n\t\t\treturn errors.New(\"ARC is not yet stopped\")\n\t\t} else {\n\t\t\treturn nil\n\t\t}\n\nbut I think we can still do like:\n\t\tif exist, err :\u003d arc.InitExists(); err !\u003d nil {\n\t\t\treturn testing.PollBreak(err)\n\t\t} else if exist {\n\t\t\treturn errors.New(\"ARC is not yet stopped\")\n\t\t}\n\t\treturn nil\n\nIf the latter still gets rejected, let me know. I think this PS4 is also acceptable in that case.",
+      "parentUuid": "a460f9a1_99b6ff8f",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 3
+      },
+      "revId": "09e642ee5a86daf4128ab98299e640e472eb9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "beb89c0d_82894def",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
         "patchSetId": 2
