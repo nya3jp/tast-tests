@@ -4,7 +4,7 @@
 # found in the LICENSE file.
 
 failed=0
-files=$(git diff-tree --no-commit-id --name-only -r "$1" \
+files=$(git diff-tree --no-commit-id --name-only -r "$1" -- \
     src/chromiumos/tast/local/bundles/cros/crostini/)
 for file in $files; do
     if ! grep 'Pre:\s*crostini\.' "$file" &>/dev/null; then
