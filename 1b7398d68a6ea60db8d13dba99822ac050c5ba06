@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e38dbb6_7071673e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-25T22:30:07Z",
+      "side": 1,
+      "message": "I had to --ignore-hooks to rename these tests, but not set them back to informational.\n\n  Hook script \"tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        -: Newly added tests should be marked as \u0027informational\u0027.\n",
+      "revId": "1b7398d68a6ea60db8d13dba99822ac050c5ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
