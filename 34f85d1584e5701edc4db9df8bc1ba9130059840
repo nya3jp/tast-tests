@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "3312d47b_e22aa2d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-25T20:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdfa12f1_26b7fc37",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e6c2dcb_2c110ba4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 10
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "1aad4cd0_bba920eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-25T20:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e6c2dcb_2c110ba4",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db8da8e9_603e1e35",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 10
@@ -64,6 +100,24 @@
       "writtenOn": "2020-08-24T18:56:00Z",
       "side": 1,
       "message": "This could be flaky. I learned it the hard way when VideoCUJ runs on bots.\n\nThe script runs in parallel with the page layout. To reliably click/tap an element, we need something like [1], i.e. wait for the element bounds to stabilize and the element to be on top to get the click/tap.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go;l\u003d188?q\u003dvideocuj\u0026sq\u003dfile:%5Esrc%20package:%5Echromeos_(internal%7Cpublic)$",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae423fb2_343577f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-25T20:28:13Z",
+      "side": 1,
+      "message": "Do you mind if I put getTappableYtElemBounds out of func VideoCUJ and reuse it?",
+      "parentUuid": "db8da8e9_603e1e35",
       "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "fc8cc26c_0cf1d32d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-25T20:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd247b08_0f9690cb",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f108e148_c639673f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 10
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "3aafab8c_f214df7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-25T20:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f108e148_c639673f",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c88a0c3_b4dd10de",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 10
@@ -118,6 +208,24 @@
       "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6f389fc_5180b48f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-25T20:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c88a0c3_b4dd10de",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -144,6 +252,30 @@
     },
     {
       "key": {
+        "uuid": "4a52586d_0bb98d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-25T20:28:13Z",
+      "side": 1,
+      "message": "With two snapped windows, dragging the MultiWindowResizeController can not collect Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow. While dragging the divider between a snapped window and a empty overview grid can.\n\n+oshima@ san might know more about Ash.SplitViewResize.PresentationTime?",
+      "parentUuid": "6c88602c_e0e47dda",
+      "range": {
+        "startLine": 291,
+        "startChar": 62,
+        "endLine": 291,
+        "endChar": 95
+      },
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fad78584_8ace8be2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 10
@@ -158,6 +290,24 @@
       "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "164c390d_db6ec231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-25T20:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fad78584_8ace8be2",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
