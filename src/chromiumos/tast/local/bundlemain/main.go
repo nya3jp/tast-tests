@@ -12,8 +12,12 @@ package bundlemain
 import (
 	"context"
 	"io"
+	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
+
+	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/bundle"
 	"chromiumos/tast/errors"
@@ -21,6 +25,9 @@ import (
 	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/ready"
+	"chromiumos/tast/remote/dutfs"
+	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/remote"
 	"chromiumos/tast/testing"
 )
 
@@ -122,7 +129,7 @@ func ensureDiskSpace(ctx context.Context, purgeable []string) (uint64, error) {
 	return disk.FreeSpace(statefulPartition)
 }
 
-func testHook(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
+func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
 	// Store the current log state.
 	oldInfo, err := os.Stat(varLogMessages)
 	if err != nil {
@@ -182,10 +189,86 @@ func testHook(ctx context.Context, s *testing.TestHookState) func(ctx context.Co
 	}
 }
 
-// Main is an entry point function for bundles.
-func Main() {
+// testHookRemote returns a function that performs post-run activity after a test run is done.
+func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx context.Context,
+	s *testing.TestHookState) {
+	return func(ctx context.Context, s *testing.TestHookState) {
+		if !s.HasError() {
+			return
+		}
+		// Connect to the DUT.
+		cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+		if err != nil {
+			s.Log("Failed to connect to the RPC service on the DUT: ", err)
+			return
+		}
+		defer cl.Close(ctx)
+		// Get the Faillog Service client.
+		cr := remote.NewFaillogServiceClient(cl.Conn)
+		res, err := cr.Create(ctx, &empty.Empty{})
+		if err != nil {
+			s.Log("Failed to get faillog: ", err)
+			return
+		}
+		// Remove faillog temporary file at the DUT.
+		defer func() {
+			if _, err := cr.Remove(ctx, &empty.Empty{}); err != nil {
+				s.Log("Failed to remove faillog.tar.gz from DUT: ", err)
+				return
+			}
+		}()
+		if res.Path == "" {
+			s.Log("Got empty path for faillog")
+			return
+		}
+		// Get the dutfs client for file transfer.
+		fs := dutfs.NewClient(cl.Conn)
+		// Make sure test result directory is writable in host machine.
+		dir, ok := testing.ContextOutDir(ctx)
+		if !ok || dir == "" {
+			s.Log("Failed to get name of output directory")
+			return
+		}
+		if _, err := os.Stat(dir); err != nil {
+			s.Logf("Cannot access directory %v: %v", dir, err)
+			return
+		}
+		// Transfer the file from DUt to host machine.
+		data, err := fs.ReadFile(ctx, res.Path)
+		if err != nil {
+			s.Logf("Failed to download %v: %v", res.Path, err)
+			return
+		}
+		faillogTar := filepath.Join(dir, "faillog.tar.gz")
+		if err := ioutil.WriteFile(faillogTar, data, 0644); err != nil {
+			s.Logf("Failed to create %v: %v", faillogTar, err)
+			return
+		}
+		// Remove faillog.tar.gz after it is successfully extracted.
+		defer func() {
+			if err = os.Remove(faillogTar); err != nil {
+				s.Log("Failed to remove ", faillogTar)
+			}
+		}()
+		// Extract the faillog directory from the faillog.tar.gz.
+		if err = exec.Command("tar", "-xvzf", faillogTar, "-C", dir).Run(); err != nil {
+			s.Logf("Failed to untar %v: %v", faillogTar, err)
+			return
+		}
+	}
+}
+
+// RunLocal is an entry point function for local bundles.
+func RunLocal() {
 	os.Exit(bundle.LocalDefault(bundle.LocalDelegate{
 		Ready:    ready.Wait,
-		TestHook: testHook,
+		TestHook: testHookLocal,
+	}))
+}
+
+// RunRemote is an entry point function for remote bundles.
+func RunRemote() {
+	os.Exit(bundle.RemoteDefault(bundle.RemoteDelegate{
+		TestHook: testHookRemote,
 	}))
 }
