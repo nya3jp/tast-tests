@@ -33,6 +33,24 @@
       "revId": "31848e47f6ac4e05a0b71b999d4b439f95780cc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df163d29_6f7117a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-25T01:41:44Z",
+      "side": 1,
+      "message": "ui.WindowArrangementCUJ[1] might want to also use this to avoid showing ads and surveys. We need to click the miniplayer button to enter pip mode, and based on Xiyuan\u0027s experience in VideoCUJ, we need to avoid showing ads and surveys so that the test won\u0027t fail by unexpected elements on youtube page.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2370778",
+      "parentUuid": "9cac69aa_7f8a08ad",
+      "revId": "31848e47f6ac4e05a0b71b999d4b439f95780cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
