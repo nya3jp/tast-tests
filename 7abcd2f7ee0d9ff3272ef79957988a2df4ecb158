@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61ce32a1_f0146c70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-25T23:42:08Z",
+      "side": 1,
+      "message": "Please also add cros-containers-dev@google.com",
+      "range": {
+        "startLine": 30,
+        "startChar": 46,
+        "endLine": 30,
+        "endChar": 47
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3821d99_f99bf5a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-25T23:42:08Z",
+      "side": 1,
+      "message": "There are two cases here: resizing while the vm is running and shutdown. Suggest to split them into two since they do not depend on each other.",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea25b28_94cc3ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-25T23:42:08Z",
+      "side": 1,
+      "message": "Besides verifying the disk size in the container, we also need to verify the displayed disk size on settings page.",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5bf7833_5b6a91f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-25T23:42:08Z",
+      "side": 1,
+      "message": "If you split the case, consider move this to package settings for sharing.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 15
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6643c4dd_56856366",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-25T23:42:08Z",
+      "side": 1,
+      "message": "Please also move these to the method ShutdownCrostini.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
