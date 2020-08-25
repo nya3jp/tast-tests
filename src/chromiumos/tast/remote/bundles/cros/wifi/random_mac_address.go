@@ -36,16 +36,17 @@ func init() {
 		Params: []testing.Param{
 			{
 				ExtraAttr:         []string{"wificell_unstable"},
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("elm", "hana")),
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("oak", "elm", "hana")),
 			},
 			{
 				// TODO(b/149247291): marvel driver in kernel 3.18 does not yet support MAC randomization.
 				// However, elm and hana (oak) is going to be uprev to 4.19 and they should pass the test
 				// after that. As we cannot yet combine hw and sw dependencies. Let's separate them into a
 				// subtest for now and merge it after uprev.
+				// TODO(crbug.com/1115620): remove "Elm" and "Hana" after unibuild migration completed.
 				Name:              "oak",
 				ExtraAttr:         []string{"wificell_unstable"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform("elm", "hana")),
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("oak", "elm", "hana")),
 			},
 		},
 	})

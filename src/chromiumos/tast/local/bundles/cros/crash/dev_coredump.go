@@ -34,6 +34,8 @@ func init() {
 		// WiFi chips that would work for this test. However, for now
 		// there is no better way to specify the exact hardware
 		// parameters needed for this test. (See linked bug.)
+		// TODO(crbug.com/1115620): remove "Elm" and "Hana" after
+		// unibuild migration completed.
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob",
 			"elm",
 			"grunt",
@@ -41,6 +43,7 @@ func init() {
 			"jacuzzi",
 			"kevin",
 			"kukui",
+			"oak",
 			"scarlet",
 			"veyron_fievel",
 			"veyron_mickey",

@@ -33,7 +33,8 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 		// TODO(b/149247291): remove the dependency once elm/hana upreved kernel to 4.19 or above.
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("elm"), hwdep.SkipOnPlatform("hana")),
+		// TODO(crbug.com/1115620): remove "Elm" and "Hana" after unibuild migration completed.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("oak"), hwdep.SkipOnPlatform("elm"), hwdep.SkipOnPlatform("hana")),
 	})
 }
 
