@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80b55665_a6a41886",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-08-25T09:12:07Z",
+      "side": 1,
+      "message": "lgtm\nPlease get reviewed by a tast reviewer.",
+      "revId": "8cc887872f87b6a9c3d6242213031c7eab1beedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ce96707_54300cfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-08-25T09:12:07Z",
+      "side": 1,
+      "message": "does nothing",
+      "range": {
+        "startLine": 57,
+        "startChar": 59,
+        "endLine": 57,
+        "endChar": 74
+      },
+      "revId": "8cc887872f87b6a9c3d6242213031c7eab1beedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5c558c_baf2fd86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-08-25T09:12:07Z",
+      "side": 1,
+      "message": "Please add a brief description about why 10 seconds is not too large, but not too small.",
+      "range": {
+        "startLine": 57,
+        "startChar": 104,
+        "endLine": 57,
+        "endChar": 139
+      },
+      "revId": "8cc887872f87b6a9c3d6242213031c7eab1beedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
