@@ -39,6 +39,30 @@
       "revId": "745545033660cc7c466818e8d7f41554035e21a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef286151_a1f8bb06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_system_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-25T03:15:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1275dbd9_4b33eff1",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "745545033660cc7c466818e8d7f41554035e21a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
