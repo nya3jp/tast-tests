@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b838ae1f_30b31fce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-08-26T06:29:17Z",
+      "side": 1,
+      "message": "If we are faking out the user account, what benefits do we gain from having this test in tast? Would we be better to moving this to being a browsertest in Chromium at this point?",
+      "revId": "e5e6c8b84d0d490d8f299d9b91378a8e6cabd590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
