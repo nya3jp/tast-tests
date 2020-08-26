@@ -16,6 +16,24 @@
       "revId": "ef7e2043aaf3da2f2fc1c4546f8ec04f1f3188ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc49d1b_9d74e360",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_ok.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-26T03:33:04Z",
+      "side": 1,
+      "message": "A method makes the structure a bit clearer.",
+      "parentUuid": "ef9b48c5_878bf143",
+      "revId": "ef7e2043aaf3da2f2fc1c4546f8ec04f1f3188ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
