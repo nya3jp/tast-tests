@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab72c32d_cc9b7b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-26T03:33:48Z",
+      "side": 1,
+      "message": "Does this really need polling?  I guess some calls to do the sharing are async, but it surprises me if they are so slow.",
+      "revId": "0046c5675ef44012cf1db9233ab026a289c18161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
