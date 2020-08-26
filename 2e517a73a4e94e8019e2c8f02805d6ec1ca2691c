@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1eb70cf7_03026e69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-08-26T17:57:51Z",
+      "side": 1,
+      "message": "What is it?",
+      "parentUuid": "37097add_cb6c16ab",
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26dc273c_7249a968",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-08-19T13:40:51Z",
       "side": 1,
       "message": "Are these used in other tests?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b745e6d9_d8bc770f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-08-26T17:57:51Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve found this account from another session test.",
+      "parentUuid": "26dc273c_7249a968",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "557fca4f_f6f21cf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-08-26T17:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a99c08ff_4e55be8a",
+      "range": {
+        "startLine": 32,
+        "startChar": 25,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09870030_fc9435f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
         "patchSetId": 1
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "c6989612_5a5dd0b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-08-26T17:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "09870030_fc9435f0",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17144b2e_45ea6981",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
         "patchSetId": 1
@@ -108,6 +198,30 @@
       "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92a13a00_27addc0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-08-26T17:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "17144b2e_45ea6981",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
