@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
@@ -38,10 +39,86 @@ type TestSuite struct {
 	Fn   TestFunc
 }
 
+<<<<<<< HEAD   (a2f3d4 network: VPNConnect: Wait for ethernet state.)
 // TestParams represents the collection of tests to run in tablet mode or clamshell mode.
 type TestParams struct {
 	TabletMode bool
 	Tests      []TestSuite
+=======
+// RunTestCases setups the device and runs all app compat test cases.
+func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases []TestCase) {
+	// Step up chrome on Chromebook.
+	cr, tconn, a, d := SetUpDevice(ctx, s, appPkgName, appActivity)
+	defer d.Close()
+
+	// Ensure app launches before test cases.
+	act, err := arc.NewActivity(a, appPkgName, appActivity)
+	if err != nil {
+		s.Fatal("Failed to create new app activity: ", err)
+	}
+	defer act.Close()
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed to start app before test cases: ", err)
+	}
+	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+		s.Fatal("Failed to get window info: ", err)
+	} else if err := window.CloseWindow(ctx, tconn); err != nil {
+		s.Fatal("Failed to close app window before test cases: ", err)
+	}
+	if err := act.Stop(ctx, tconn); err != nil {
+		s.Fatal("Failed to stop app before test cases: ", err)
+	}
+	s.Log("Successfully tested launching and closing the app")
+
+	// Run the different test cases.
+	for idx, test := range testCases {
+		// Run subtests.
+		s.Run(ctx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+			// Save time for cleanup and screenshot.
+			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
+			defer cancel()
+			// Launch the app.
+			if err := act.Start(ctx, tconn); err != nil {
+				s.Fatal("Failed to start app: ", err)
+			}
+			s.Log("App launched successfully")
+
+			// Close the app between iterations.
+			defer func(ctx context.Context) {
+				if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+					s.Fatal("Failed to get window info: ", err)
+				} else if err := window.CloseWindow(ctx, tconn); err != nil {
+					s.Fatal("Failed to close app window: ", err)
+				}
+				if err := act.Stop(ctx, tconn); err != nil {
+					s.Fatal("Failed to stop app: ", err)
+				}
+			}(cleanupCtx)
+
+			// Take screenshot on failure.
+			defer func(ctx context.Context) {
+				if s.HasError() {
+					filename := fmt.Sprintf("screenshot-arcappcompat-failed-test-%d.png", idx)
+					path := filepath.Join(s.OutDir(), filename)
+					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+						s.Log("Failed to capture screenshot: ", err)
+					}
+				}
+			}(cleanupCtx)
+
+			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+
+			// It is ok if the package is currently equal the the installer package.
+			// This happens when you need to accept permissions.
+			if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
+				s.Fatal("Failed to get current app package: ", err)
+			} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" {
+				s.Fatalf("Failed to launch app: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
+			}
+			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
+		})
+	}
+>>>>>>> CHANGE (afdbe3 tast-tests: fix appcompat closing and resizing)
 }
 
 // SetUpDevice func setup Chrome on Chromebook.
@@ -126,6 +203,7 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 
 // MinimizeRestoreApp Test "minimize and relaunch the app" and verifies app relaunch successfully without crash or ANR.
 func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+<<<<<<< HEAD   (a2f3d4 network: VPNConnect: Wait for ethernet state.)
 
 	if currentAppPkg := CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
 		s.Fatal("Entered MinimizeRestoreApp and failed to launch the app: ", currentAppPkg)
@@ -133,6 +211,13 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	s.Log("App launched successfully and entered MinimizeRestoreApp")
 
 	s.Log("Minimize the window")
+=======
+	s.Log("Minimizing the window")
+	defaultState, err := ash.GetARCAppWindowState(ctx, tconn, appPkgName)
+	if err != nil {
+		s.Error("Failed to get the default window state: ", err)
+	}
+>>>>>>> CHANGE (afdbe3 tast-tests: fix appcompat closing and resizing)
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMinimize); err != nil {
 		s.Error("Failed to minimize the window: ", err)
 	}
@@ -140,16 +225,32 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Error("The window is not minimized: ", err)
 	}
 	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+<<<<<<< HEAD   (a2f3d4 network: VPNConnect: Wait for ethernet state.)
 	// Create a gmail app activity handle.
 	act, err := arc.NewActivity(a, appPkgName, appActivity)
 	if err != nil {
 		s.Fatal("Failed to create new app activity: ", err)
+=======
+
+	s.Log("Restoring the window")
+	restoreEvent := ash.WMEventNormal
+	if defaultState == ash.WindowStateFullscreen {
+		restoreEvent = ash.WMEventFullscreen
+>>>>>>> CHANGE (afdbe3 tast-tests: fix appcompat closing and resizing)
 	}
+<<<<<<< HEAD   (a2f3d4 network: VPNConnect: Wait for ethernet state.)
 	s.Log("Created new app activity")
 	defer act.Close()
 	// Launch the activity.
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start app: ", err)
+=======
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, restoreEvent); err != nil {
+		s.Error("Failed to restore the window: ", err)
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, defaultState); err != nil {
+		s.Error("The window is not restored: ", err)
+>>>>>>> CHANGE (afdbe3 tast-tests: fix appcompat closing and resizing)
 	}
 	s.Log("App relaunched successfully")
 
@@ -216,8 +317,13 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 				s.Error("The window is not normalized: ", err)
 			}
 			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+<<<<<<< HEAD   (a2f3d4 network: VPNConnect: Wait for ethernet state.)
 			CurrentAppPackage(ctx, s, d)
 			s.Log("Get back to maximized window state")
+=======
+
+			s.Log("Setting window back to maximized")
+>>>>>>> CHANGE (afdbe3 tast-tests: fix appcompat closing and resizing)
 			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
 				s.Log("Maximize the window is failed: ", err)
 			}
@@ -269,7 +375,26 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 	s.Log("Created new app activity")
 
 	defer act.Close()
+<<<<<<< HEAD   (a2f3d4 network: VPNConnect: Wait for ethernet state.)
 	// ReLaunch the activity.
+=======
+
+	// Close the app.
+	s.Log("Closing the app")
+	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+		s.Fatal("Failed to get window info: ", err)
+	} else if err := window.CloseWindow(ctx, tconn); err != nil {
+		s.Fatal("Failed to close app window: ", err)
+	}
+	if err := act.Stop(ctx, tconn); err != nil {
+		s.Fatal("Failed to stop app: ", err)
+	}
+
+	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+
+	// Relaunch the app.
+	s.Log("Relaunching the app")
+>>>>>>> CHANGE (afdbe3 tast-tests: fix appcompat closing and resizing)
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start app: ", err)
 	}
