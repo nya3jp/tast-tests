@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b7a9f41_6c2455d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-26T20:26:40Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "2073908bdea4f67b3ed036f322d1fc87eda55b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fbdf13e_f4be2600",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-26T20:26:40Z",
+      "side": 1,
+      "message": "nit: \nGo uses short variable names, specially for local vars with limited scope.\n\nIn this example, we infer from the function name that you are getting the orientation, so the var name could be:\n\n  o, err :\u003d display.GetOrientation(...)\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 19
+      },
+      "revId": "2073908bdea4f67b3ed036f322d1fc87eda55b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f9f39fa_81bdb376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-26T20:26:40Z",
+      "side": 1,
+      "message": "nit, optional (ditto below):\n\nSince ntActivities is being used in other functions, I wouldn\u0027t change it, but take into account that short variable names with limited scope are preferred.\n\ne.g:\n\n  acts :\u003d []wm.TabletLaunch...\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "2073908bdea4f67b3ed036f322d1fc87eda55b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
