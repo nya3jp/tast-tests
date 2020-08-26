@@ -59,5 +59,5 @@ func InitPID() (int32, error) {
 			}
 		}
 	}
-	return -1, errors.New("didn't find init process")
+	return -1, errors.Errorf("didn't find %v process", initPath)
 }
