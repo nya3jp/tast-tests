@@ -22,6 +22,30 @@
       "revId": "a827d4d5fb3d5db62231547b049a2690fb06a7a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95809c3a_9cc3b5eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/multi_auth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-08-26T22:15:22Z",
+      "side": 1,
+      "message": "Done, thanks for the catch!",
+      "parentUuid": "b4900a83_6bcc4489",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "a827d4d5fb3d5db62231547b049a2690fb06a7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
