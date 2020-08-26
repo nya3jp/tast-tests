@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12999334_c3740ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-26T03:40:10Z",
+      "side": 1,
+      "message": "Given that you are doing this check in multiple tests, it would make sense to create a shared function.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 62
+      },
+      "revId": "6d3622debb031fe955c622461d6d488f0d4023fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
