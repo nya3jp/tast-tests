@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8789e72_28342e57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-26T04:16:53Z",
+      "side": 1,
+      "message": "Since you define the function as an inner function, you can directly access outer scope variable, so tf parameter can be omitted. However, for primaryChannel and alternateChannel, explicitly passing them improves readability with the change of moving out swapping primaryChannel and alternateChannel logic:\n\n// I think clientInit can be renamed and defined just before the function definition.\nclientInitDisconnect :\u003d s.Param().(bool)\ncsaDisconnectCore :\u003d func(...) {...}\n\nfor i :\u003d 0; i \u003c maxRetry; i++ {\n\tcsaDisconnectCore(ctx, primaryChannel, alternateChannel, i)\n\t// Swap primaryChannel with alternateChannel so we don\u0027t configure\n\t// AP using same channel in back-to-back runs.\n\ttmp :\u003d alternateChannel\n\talternateChannel \u003d primaryChannel\n\tprimaryChannel \u003d tmp\n}",
+      "range": {
+        "startLine": 92,
+        "startChar": 47,
+        "endLine": 92,
+        "endChar": 72
+      },
+      "revId": "9da7fc14b1707b3e6e7a20b2542caeda497f8a89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3c2366a_3bd521f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-26T04:16:53Z",
+      "side": 1,
+      "message": "ithRun",
+      "range": {
+        "startLine": 92,
+        "startChar": 125,
+        "endLine": 92,
+        "endChar": 126
+      },
+      "revId": "9da7fc14b1707b3e6e7a20b2542caeda497f8a89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56303da5_26f8ce38",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-26T04:16:53Z",
+      "side": 1,
+      "message": "For client initiated disconnect, tf.DisconnectWifi() succeed implies tf.AssureDisconnect() succeed. So this should be after \nif err :\u003d ap.DeauthenticateClient(...) {...}",
+      "revId": "9da7fc14b1707b3e6e7a20b2542caeda497f8a89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
