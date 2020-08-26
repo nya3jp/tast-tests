@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "96a73543_aeee1a2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-26T22:50:09Z",
+      "side": 1,
+      "message": "Thanks for the comment Jun. From my understanding, WaitForLocationChangeCompleted waits for any ui changes on the desktop. The intention here is to wait for settings page value change complete after calling api. The trick problem now is that after changing setting by calling api, and then click omnibox to trigger vk, the setting is not yet effective because of some async functions working in background. So I added this function and it does solve my problem.",
+      "parentUuid": "41193ee4_8ed233ba",
+      "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61a8ed2a_36250d68",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-08-26T22:29:49Z",
       "side": 1,
       "message": "Not sure if this is the right fix. I think vkb.IsShown should communicate with the vk extension or Ash to check the visibility of the virtual keyboard; and that should be usually stable. What type of errors did you see for this?  It is not obvious from the bug.",
+      "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c743046_27d4247b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-26T22:50:09Z",
+      "side": 1,
+      "message": "The error mostly raised in this function and error message is `Failed to check vk visibility: cdp.Runtime: CallFunctionOn: context deadline exceeded`. Then intension is to check continously in next a few seconds and vk should not be shown.\n\nSo it should be okay to throw error here and retry. Appreciate it if you have any better solution.",
+      "parentUuid": "61a8ed2a_36250d68",
       "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
