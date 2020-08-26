@@ -348,6 +348,24 @@
     },
     {
       "key": {
+        "uuid": "a2fd319f_69247802",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-08-26T23:38:57Z",
+      "side": 1,
+      "message": "Sorry, I was confused, moved AssureDisconnect back below DeauthenticateClient.\n\nThe test should only fail, if the DUT fail to configure/connect to the channel (alternateChannel).",
+      "parentUuid": "ee3e0c32_bba276e7",
+      "revId": "6c10833f5b0a152ef16f751297aeac21b3582f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a97a3e9_28029c96",
         "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
         "patchSetId": 14
