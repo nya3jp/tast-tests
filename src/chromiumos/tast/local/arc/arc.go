@@ -333,6 +333,15 @@ func WaitAndroidInit(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, androidInitTimeout)
 	defer cancel()
 
+	// Wait for init or crosvm process to start before checking deeper.
+	testing.ContextLog(ctx, "Waiting for initial ARC process")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := InitPID()
+		return err
+	}, &testing.PollOptions{Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "Init/crosvm process did not start up")
+	}
+
 	// Wait for an arbitrary property set by Android init very
 	// early in "on boot". Wait for it to ensure Android init
 	// process started.
