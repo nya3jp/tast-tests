@@ -19,6 +19,80 @@
     },
     {
       "key": {
+        "uuid": "58b6911a_3ef951b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T16:24:30Z",
+      "side": 1,
+      "message": "Please make sure the DUT is not updated as part of the test.",
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ef4a508_631d86a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_minimum_version_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T16:24:30Z",
+      "side": 1,
+      "message": "nit: be consistent with the other returns. Use \u0026empty.Empty{}",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "659a77fc_e1a0285c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_minimum_version_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T16:24:30Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99581b1b_4447b0f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_minimum_version_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T16:24:30Z",
+      "side": 1,
+      "message": "Does this actually download an update? You should not update the DUT.",
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bcead13_410e9265",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
         "patchSetId": 1
@@ -36,6 +110,133 @@
         "endLine": 31,
         "endChar": 42
       },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989a09c8_023e4fb4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T16:24:30Z",
+      "side": 1,
+      "message": "enrollement tests are run for each build and do run as part of the Cq. There is no informational attribute for this group.",
+      "parentUuid": "0bcead13_410e9265",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "decf9d04_83f2412e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T16:24:30Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8fdd38_42c880e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T16:24:30Z",
+      "side": 1,
+      "message": "nit: either keep using pb or use more descriptive names (ex: emptyPb, minimumVersionPb)",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 4
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7076e40_06f116b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T16:24:30Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 7
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d54d9e9_315a6a17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T16:24:30Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26dbf40c_c5270f34",
+        "filename": "src/chromiumos/tast/services/cros/policy/device_minimum_version_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T16:24:30Z",
+      "side": 1,
+      "message": "nit: mention the test using this call",
       "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
