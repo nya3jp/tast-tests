@@ -58,6 +58,11 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 			Func: wmNC09,
 		},
 		wm.TestCase{
+			// non-resizable/clamshell: new activity replaces root activity
+			Name: "NC_new_activity_replaces_root_activity",
+			Func: wmNC10,
+		},
+		wm.TestCase{
 			// non-resizable/clamshell: hide shelf when app maximized
 			Name: "NC_hide_shelf_app_max",
 			Func: wmNC12,
@@ -220,6 +225,59 @@ func wmNC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	} else if nrActivities != 2 {
 		return errors.Errorf("invalid number of activities: got %d; want 2", nrActivities)
+	}
+
+	childWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	if rootWindowInfo.BoundsInRoot != childWindowInfo.BoundsInRoot {
+		return errors.Errorf("invalid child activity window bounds, got: %q, want: %q", childWindowInfo.BoundsInRoot, rootWindowInfo.BoundsInRoot)
+	}
+
+	return nil
+}
+
+// wmNC10 covers non-resizable/clamshell: new activity replaces root activity.
+// Expected behavior is defined in: go/arc-wm-r NC10: resizable/clamshell: new activity replaces root activity.
+func wmNC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// Start the activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Get the root window info so it could be compared with child window.
+	rootWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return err
+	}
+
+	if err := wm.UIClickRootActivity(ctx, act, d); err != nil {
+		return err
+	}
+	if err := wm.UIClickLaunchActivity(ctx, act, d); err != nil {
+		return err
+	}
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	if nrActivities, err := wm.UINumberActivities(ctx, act, d); err != nil {
+		return err
+	} else if nrActivities != 1 {
+		return errors.Errorf("invalid number of activities: got %d; want 1", nrActivities)
 	}
 
 	childWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
