@@ -22,6 +22,30 @@
       "revId": "6a6c9e54a019f2617b08e3a122ba1d7b94c3f7bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a8076ae_71a8a843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-26T07:02:38Z",
+      "side": 1,
+      "message": "I removed this check, and moved the cont.Cleanup call into RunCrostiniPostTest. I think that gives us enough confidence that there aren\u0027t any left over files from previous tests.",
+      "parentUuid": "6e265deb_f07dd0ca",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "6a6c9e54a019f2617b08e3a122ba1d7b94c3f7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
