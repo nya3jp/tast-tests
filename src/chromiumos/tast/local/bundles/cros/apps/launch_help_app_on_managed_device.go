@@ -7,6 +7,7 @@ package apps
 import (
 	"context"
 
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
@@ -23,7 +24,6 @@ func init() {
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"apps.LaunchHelpAppOnManagedDevice.enterprise_username", "apps.LaunchHelpAppOnManagedDevice.enterprise_password"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
@@ -48,13 +48,18 @@ func init() {
 
 // LaunchHelpAppOnManagedDevice verifies launching Showoff on a managed device.
 func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("apps.LaunchHelpAppOnManagedDevice.enterprise_username")
-	password := s.RequiredVar("apps.LaunchHelpAppOnManagedDevice.enterprise_password")
-
 	isOOBE := s.Param().(bool)
 
-	// TODO(b/161938620): Switch to fake DMS once crbug.com/1099310 is resolved.
-	args := append([]chrome.Option(nil), chrome.Auth(username, password, "gaia-id"), chrome.GAIALogin(), chrome.ProdPolicy())
+	// Using fakedms and login
+	fdms, err := fakedms.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start FakeDMS: ", err)
+	}
+	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+		s.Fatal("Failed to write policies to FakeDMS: ", err)
+	}
+
+	args := append([]chrome.Option(nil), chrome.Auth("tast-user@managedchrome.com", "test0000", "gaia-id"), chrome.DMSPolicy(fdms.URL))
 	if isOOBE {
 		args = append(args, chrome.DontSkipOOBEAfterLogin(), chrome.ExtraArgs("--enable-features=HelpAppFirstRun"))
 	}
