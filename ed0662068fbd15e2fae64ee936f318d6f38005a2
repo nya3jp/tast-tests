@@ -16,6 +16,46 @@
       "revId": "ed0662068fbd15e2fae64ee936f318d6f38005a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f69ebb19_998a89ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T17:07:27Z",
+      "side": 1,
+      "message": "LGTM % one last nit",
+      "revId": "ed0662068fbd15e2fae64ee936f318d6f38005a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cceb64a7_b5cd659e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T17:07:27Z",
+      "side": 1,
+      "message": "nit: This error does not mean that the policy is not set. Maybe \"Failed to verify policy behaviour\"?",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 52
+      },
+      "revId": "ed0662068fbd15e2fae64ee936f318d6f38005a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
