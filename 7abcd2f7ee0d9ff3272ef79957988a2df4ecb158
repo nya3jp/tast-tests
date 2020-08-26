@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "adcffd24_782bd98b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-26T06:52:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61ce32a1_f0146c70",
+      "range": {
+        "startLine": 30,
+        "startChar": 46,
+        "endLine": 30,
+        "endChar": 47
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3821d99_f99bf5a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2020-08-25T23:42:08Z",
       "side": 1,
       "message": "Besides verifying the disk size in the container, we also need to verify the displayed disk size on settings page.",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90df9985_f8834773",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-26T06:52:00Z",
+      "side": 1,
+      "message": "That text doesn\u0027t have an aria label so I don\u0027t think there\u0027s a way to search for the node. Possibly we should fix that.",
+      "parentUuid": "1ea25b28_94cc3ccd",
       "range": {
         "startLine": 102,
         "startChar": 4,
@@ -114,6 +162,30 @@
       "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43beb7b_c90bce76",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-26T06:52:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6643c4dd_56856366",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
