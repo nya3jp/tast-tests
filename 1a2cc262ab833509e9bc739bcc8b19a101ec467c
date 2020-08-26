@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b43c6740_8a95ae48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-26T16:30:40Z",
+      "side": 1,
+      "message": "It seems the failure is not related.",
+      "revId": "1a2cc262ab833509e9bc739bcc8b19a101ec467c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
