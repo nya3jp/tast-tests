@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/local/sysutil"
 )
 
-var errInitNotFound = errors.New("didn't find init process")
+var errInitNotFound = errors.New("Init not found")
 
 // getUserPath returns the user and the path to the entry point of ARC
 func getUserPath() (user, path string, err error) {
@@ -63,7 +63,7 @@ func InitPID() (int32, error) {
 		}
 	}
 
-	return -1, errInitNotFound
+	return -1, errors.Errorf("didn't find %v process: %w", initPath, errInitNotFound)
 }
 
 // InitExists returns true in case ARC init process exists.
