@@ -22,6 +22,30 @@
       "revId": "6d3622debb031fe955c622461d6d488f0d4023fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc8a6f46_07ffe369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-26T04:04:31Z",
+      "side": 1,
+      "message": "It is not very straightforward to write one method for all of them. Each verifies different path and content, the parameters of the method could be very long.",
+      "parentUuid": "12999334_c3740ce9",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 62
+      },
+      "revId": "6d3622debb031fe955c622461d6d488f0d4023fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
