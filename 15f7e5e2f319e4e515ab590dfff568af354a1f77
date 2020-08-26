@@ -36,6 +36,40 @@
     },
     {
       "key": {
+        "uuid": "f20e6981_ee84ffe2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-26T03:10:16Z",
+      "side": 1,
+      "message": "Please address Brian\u0027s comment. We may trigger CQ for platform/tast and platform/tast-test change.\n",
+      "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f99363b_a9693d76",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-08-26T03:10:16Z",
+      "side": 1,
+      "message": "Yes it is correct.",
+      "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d105a3e7_4a044da8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 1
