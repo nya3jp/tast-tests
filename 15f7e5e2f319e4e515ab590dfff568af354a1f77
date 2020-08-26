@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "401aaa16_88a52a57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-08-26T23:25:32Z",
+      "side": 1,
+      "message": "I agree with Brian and Dean that we should add tast and tast-test repos to trigger wificq, but I\u0027m not sure we have the bandwidth on our DUTs to run the tests triggered by that yet. I\u0027m going to hold off on submitting this CL until I review what impact that would have.\n\nThanks.\n ",
+      "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f99363b_a9693d76",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 1
