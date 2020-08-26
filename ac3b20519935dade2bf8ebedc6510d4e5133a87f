@@ -50,6 +50,24 @@
       "revId": "ac3b20519935dade2bf8ebedc6510d4e5133a87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af88c44_bee6f77e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-26T23:34:06Z",
+      "side": 1,
+      "message": "This does not work because filepath.Join does not return a constant.",
+      "parentUuid": "e10cf86a_cb9c5bdb",
+      "revId": "ac3b20519935dade2bf8ebedc6510d4e5133a87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
