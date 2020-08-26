@@ -16,6 +16,24 @@
       "revId": "e5e6c8b84d0d490d8f299d9b91378a8e6cabd590",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "250ef7ca_3b871a75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-26T11:40:12Z",
+      "side": 1,
+      "message": "Although we faked the user account, it only fakes the dms server. At OS level, user is still enterprise user and device is managed.",
+      "parentUuid": "b838ae1f_30b31fce",
+      "revId": "e5e6c8b84d0d490d8f299d9b91378a8e6cabd590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
