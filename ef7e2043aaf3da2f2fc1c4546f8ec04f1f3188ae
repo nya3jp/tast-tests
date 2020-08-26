@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef9b48c5_878bf143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_ok.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-26T03:28:55Z",
+      "side": 1,
+      "message": "Given that this test is short, I would be inclined to inline this function, but either way is fine.",
+      "revId": "ef7e2043aaf3da2f2fc1c4546f8ec04f1f3188ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
