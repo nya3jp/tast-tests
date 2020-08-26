@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f3b06a1b_8261f9d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T23:37:12Z",
+      "side": 1,
+      "message": "WaitForLocationChangeCompleted is NOT waiting for UI changes.  It just waits for the automation events (accessibility events) of location changes.  Trust me, I implemented this function.\n\nFrom your description, I still think that this method would not be the best thing to wait for that purpose.\n\nWhat type of UI should it cause?  I think it should update the language indicator at the bottom right of the screen; if so ui.FindWithTimeout with a proper parameter might be a choice.",
+      "parentUuid": "96a73543_aeee1a2e",
+      "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61a8ed2a_36250d68",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "The error mostly raised in this function and error message is `Failed to check vk visibility: cdp.Runtime: CallFunctionOn: context deadline exceeded`. Then intension is to check continously in next a few seconds and vk should not be shown.\n\nSo it should be okay to throw error here and retry. Appreciate it if you have any better solution.",
       "parentUuid": "61a8ed2a_36250d68",
+      "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ab5bc6_9253c265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T23:37:12Z",
+      "side": 1,
+      "message": "Context-deadline exceeded would generally mean simply timeout has passed. For this case, it is either of the entire test timeout has passed, or the testing.Poll\u0027s timeout has passed at the very last run of the iteration.\n\nIf it hits the former case, it should fail.  To prevent the failure, the right way is to extend the timeout of the test (setting Timeout: property of testing.Test).  If it is the latter case, it would be skip using the ctx passed to the function, but use of external context, i.e.\n\n  testing.Poll(ctx, func(pollCtx context.Context) error {\n    // Note: do not use internal pollCtx but use the external context, as the\n    // last iteration it may hit the context deadline exceeded error.\n    if isVKShown, err :\u003d vkb.IsShown(ctx, tconn); err !\u003d nil {\n      s.Fatal(...)\n    } else if isVKShown {\n      s.Fatal(...)\n    }\n    return errors.New(...)\n  }, \u0026testing.PollOptions{Interval: 100*time.Millisecond, Timeout: 10*time.Second})",
+      "parentUuid": "7c743046_27d4247b",
       "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
