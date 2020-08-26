@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1ade753_f81bbe00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-26T03:38:33Z",
+      "side": 1,
+      "message": "needs comment string",
+      "revId": "800964f00409e1c0529d13e6dfe1e43ad34cdac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2e9241_3d0cfcce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-26T03:38:33Z",
+      "side": 1,
+      "message": "I think you clean up all files and dirs that get created in case they clash with other tests.\n\nSee https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/share_files.go?q\u003dtast%20share_files.go",
+      "revId": "800964f00409e1c0529d13e6dfe1e43ad34cdac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
