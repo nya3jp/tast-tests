@@ -16,6 +16,259 @@
       "revId": "275eb560650540372e250474a40b113dfe4afbcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d71ef92_55392106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "Add a blank line.\nHave you run repo upload without --no-verify?\nI thought it checks go fmt, which adds a blank line here, but sorry if I\u0027m wrong.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adab8a11_9c449e72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "Shouldn\u0027t RunCrostiniPostTest run in the original ctx?\nIf so, could you move crostini.RunCrostiniPostTest(ctx, cont) before this line?",
+      "range": {
+        "startLine": 48,
+        "startChar": 68,
+        "endLine": 48,
+        "endChar": 75
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75cf0136_6b821ba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "optional: Could you check error in the same mannar as L63?",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e775db5_172c3c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "Updating sharedFolders from tests looks to be a fragile way for managing state.\nHow about making helper functions automatically manage the status? (I think ideally AddFolder should not be exposed to tests if possible.)\n\nIn this case, how about making ShareDrive call AddFolder ?\n\nMaybe another way for fixing the problem is to avoid managing states and always call s.GetSharedFolders whenever shared folders are needed. If it\u0027s allowed, I guess it\u0027s more robust. WDYT?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 51
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1deb48_eb385832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "Could you name the variable shorter, e.g. shared ?\n\nAlso consider using nested ifs.\n\nif shared, err :\u003d ...; err !\u003d nil {\n  return ...\n} else if ... {\n  return ...\n}",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b552e33_be8e5743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "Could inline this? cf. https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#assert\n\nif want :\u003d []string{sharedfolders.SharedDrive}; !reflect.DeepEqual(shared, want) {\n  return errors.Wrapf(err, \"shared folders \u003d %v, want %v\", shared, want)\n}",
+      "range": {
+        "startLine": 110,
+        "startChar": 19,
+        "endLine": 110,
+        "endChar": 34
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "099be360_1c2364ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "Same here. Just use reflect.DeepEquals, and construct error message on your own.\nFor sorting, please just sort list before comparison. You might want to use cmp.Diff with  cmpopts.SortSlices instead, but it can be an overkill, cf. http://google3/corp/physicalsecurity/cloudcams/admin/api/workitem/store_test.go?l\u003d851\u0026rcl\u003d326298738",
+      "range": {
+        "startLine": 120,
+        "startChar": 20,
+        "endLine": 120,
+        "endChar": 35
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d163313_81bcc636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 127,
+        "startChar": 20,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d2d49a_2e6fe7c4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "Could you document this?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aea1d157_0d1b52e4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "Could you document that Releasing scd is caller\u0027s responsibility?",
+      "range": {
+        "startLine": 203,
+        "startChar": 33,
+        "endLine": 203,
+        "endChar": 34
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09429c0a_09fa48f8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-26T08:28:08Z",
+      "side": 1,
+      "message": "nit: You don\u0027t have to name return values if what they are are clear, and the names are not used.",
+      "range": {
+        "startLine": 204,
+        "startChar": 111,
+        "endLine": 204,
+        "endChar": 145
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
