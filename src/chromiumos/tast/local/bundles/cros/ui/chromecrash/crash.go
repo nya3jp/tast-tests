@@ -659,7 +659,7 @@ func KillCrashpad(ctx context.Context) error {
 			if exe, err := process.Exe(); err == nil && exe == crashpadExecPath {
 				foundCrashpadProcess = true
 				if err = syscall.Kill(int(process.Pid), syscall.SIGKILL); err != nil {
-					return testing.PollBreak(errors.Wrap(err, "failed to kill crashpad_handler process"))
+					return errors.Wrap(err, "failed to kill crashpad_handler process")
 				}
 			}
 			// else ignore the error. If a process exited, or we otherwise can't
