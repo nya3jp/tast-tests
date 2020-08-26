@@ -16,6 +16,40 @@
       "revId": "ac3b20519935dade2bf8ebedc6510d4e5133a87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "057e51d8_4987f807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-26T14:31:39Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "ac3b20519935dade2bf8ebedc6510d4e5133a87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e10cf86a_cb9c5bdb",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-26T14:31:39Z",
+      "side": 1,
+      "message": "Here and in L28, I think that using path.Join will more effectively guard against misplaced \"/\"s.\n\nhttp://go/godoc/path/#Join",
+      "revId": "ac3b20519935dade2bf8ebedc6510d4e5133a87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
