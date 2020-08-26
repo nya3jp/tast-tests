@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a284596_0573b109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-26T15:35:48Z",
+      "side": 1,
+      "message": "we have here 4 file system measurements\n\nThis might be too strong part in overall score.\n\nWDYT about idea to use geometric score here before passing to overall geometric score.\n\n\nEven more. I think file_ext4 is more important here and we could pass it to overall computation as is.\n\nFor other three we can compute local geometric score and pass this result to overall computation.\n\nThus we would have 2 flows representing files in overall.\n\nWDYT?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "0d2d5bad4bb6faa8476f555bfe8cef13678fa9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
