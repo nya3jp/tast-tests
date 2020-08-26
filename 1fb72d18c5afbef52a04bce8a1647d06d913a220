@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "75e47dc8_621de38a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T23:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51e087b0_dde30b6c",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "278403e0_f87b9b8b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2020-08-26T16:14:08Z",
       "side": 1,
       "message": "It\u0027s a bit hard to understand what this test does w/o reading through the code. I also had similar issue in other tast tests. Is there a good way/place to describe what tests actually do and verify?",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bcaa7a0_63b03a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T23:18:54Z",
+      "side": 1,
+      "message": "This property should be a single-line short description; I don\u0027t think this is a great place to describe them entirely.\n\nI noted the behavior as https://docs.google.com/document/d/1Des45A-lwyXX1h7x4IrlZmJ34ITmYuriZaqaHtru8sQ/edit#heading\u003dh.fwfk0yg3teo1\n\nIf you want, maybe it\u0027s great to set up a spreadsheet. wdyt?",
+      "parentUuid": "278403e0_f87b9b8b",
       "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "70b67874_d9b128a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T23:18:54Z",
+      "side": 1,
+      "message": "sorry, what do you mean for \"this\"?",
+      "parentUuid": "0c43c2ba_8ba3fe38",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e9b8b76_c16ac1a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70e4db6_1a2411d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T23:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e9b8b76_c16ac1a0",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "fadbbb79_cc30454d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T23:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5712e0cb_5874d6ba",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a782905_9423a7e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
         "patchSetId": 4
@@ -98,6 +188,24 @@
       "writtenOn": "2020-08-26T16:14:08Z",
       "side": 1,
       "message": "isn\u0027t this already covered by ui.OverviewPerf ?",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c893a607_1be73a33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T23:18:54Z",
+      "side": 1,
+      "message": "Right. This test is not for increasing the coverage. The scenarios of this test are already covered by other performance tests.\n\nThe point of this test is the purpose.  Performance tests are \"group:crosbolt\" and do not fail, they simply record the result numbers to Crosbolt. This test is \"group:mainline\" and runs in CQ, and fails when the performance is obviously bad.  That way it can prevent the performance regressions much earlier than that.\n\nPlease see https://docs.google.com/document/d/1Des45A-lwyXX1h7x4IrlZmJ34ITmYuriZaqaHtru8sQ/edit for why adding this test separately.",
+      "parentUuid": "2a782905_9423a7e8",
       "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "b2fbbc17_6e668f5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T23:18:54Z",
+      "side": 1,
+      "message": "What page should we use?  Do you have any good ideas?",
+      "parentUuid": "aafaa9a6_6267499f",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "218ff9a6_4001d091",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 4
@@ -135,6 +261,24 @@
       "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55a7ed93_3dfe1183",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T23:18:54Z",
+      "side": 1,
+      "message": "Oops, forgotten that. Added.",
+      "parentUuid": "218ff9a6_4001d091",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
