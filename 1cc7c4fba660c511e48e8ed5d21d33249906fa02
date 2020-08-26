@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41193ee4_8ed233ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T22:29:49Z",
+      "side": 1,
+      "message": "I am afraid that waiting at this point would not help stabilizing the test. Location change events for automation API happens everytime some UI updated.\n\nAs far as I see this test script, the location changes should happen on both vkb showing and hiding.  I think the tricky part is rather in assertInputMode which waits for the virtual keyboard shown and then taps some keys on the keyboard.  After the virtual keyboard is shown logically, automation API may still see the old locations and so TapKey may fail.\n\nIf that is correct, this location of WaitForLocationChangeCompleted wouldn\u0027t help, rather it should wait around line 102, after vkb.WaitUntilShown and after vkb.TapKey.  That way, it ensures that automation API will see the right location for vkb.TapKey.",
+      "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a8ed2a_36250d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-26T22:29:49Z",
+      "side": 1,
+      "message": "Not sure if this is the right fix. I think vkb.IsShown should communicate with the vk extension or Ash to check the visibility of the virtual keyboard; and that should be usually stable. What type of errors did you see for this?  It is not obvious from the bug.",
+      "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
