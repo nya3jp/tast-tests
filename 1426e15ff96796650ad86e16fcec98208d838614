@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37b6f59b_6df2610a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-26T15:39:20Z",
+      "side": 1,
+      "message": "lgtm, however there is an open Q about support in ARCVM\nThanks!",
+      "revId": "1426e15ff96796650ad86e16fcec98208d838614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70155b0f_4b56b26b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-26T15:39:20Z",
+      "side": 1,
+      "message": "is it really so big?",
+      "range": {
+        "startLine": 210,
+        "startChar": 30,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "1426e15ff96796650ad86e16fcec98208d838614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
