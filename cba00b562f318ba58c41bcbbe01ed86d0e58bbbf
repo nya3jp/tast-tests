@@ -153,6 +153,24 @@
     },
     {
       "key": {
+        "uuid": "ac5d83c5_68d6cd21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_minimum_version_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T17:07:27Z",
+      "side": 1,
+      "message": "Let\u0027s keep this safe 😊",
+      "parentUuid": "4880cf0d_085e8aa2",
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bcead13_410e9265",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
         "patchSetId": 1
