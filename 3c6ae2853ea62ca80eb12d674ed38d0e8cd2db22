@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00fa3ef9_b1b34546",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-08-26T15:37:40Z",
+      "side": 1,
+      "message": "pausing on this since https://crrev.com/c/2376389 may resolve some of these failures.",
+      "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
