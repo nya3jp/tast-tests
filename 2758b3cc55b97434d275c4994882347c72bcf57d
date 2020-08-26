@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c77282f6_d6dd7376",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-08-26T06:04:41Z",
+      "side": 1,
+      "message": "the change is looking good!",
+      "revId": "2758b3cc55b97434d275c4994882347c72bcf57d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0f49f79_386befba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-08-26T06:04:41Z",
+      "side": 1,
+      "message": "I think we want to add a separate param here, so that we can use separate sources for P and R. (as the current state would fail in P.)\nAn example of how to do this is in boot.go (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/boot.go?q\u003dVal:\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcros%2Farc%2F\u0026originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F).\n\nfor android_p, axSpeechTestStep should remain unchanged, but for android_vm we should use the one from this CL.",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "2758b3cc55b97434d275c4994882347c72bcf57d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e1df02a_9f7b5e5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-08-26T06:04:41Z",
+      "side": 1,
+      "message": "nit: start comment with \"C\" and end in \".\"",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 76,
+        "endChar": 52
+      },
+      "revId": "2758b3cc55b97434d275c4994882347c72bcf57d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
