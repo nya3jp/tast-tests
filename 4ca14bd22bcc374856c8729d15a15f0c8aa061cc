@@ -52,6 +52,24 @@
       "revId": "4ca14bd22bcc374856c8729d15a15f0c8aa061cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8a622e9_ceb45939",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-26T01:42:53Z",
+      "side": 1,
+      "message": "Yeah, I wasn\u0027t aware. Kinda sad that creating a new keyboard writer isn\u0027t cheap anymore. It is always kinda annoying when functions start to have a ton of parameters, so I tend to prefer recreating cheap things.",
+      "parentUuid": "2c242dbe_ed05c329",
+      "revId": "4ca14bd22bcc374856c8729d15a15f0c8aa061cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
