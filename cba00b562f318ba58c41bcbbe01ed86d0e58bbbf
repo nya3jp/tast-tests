@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c4cb88d_b463cb12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T16:05:12Z",
+      "side": 1,
+      "message": "Hi,\n\nThis CL adds a tast test for DeviceMinimumVersion policy. PTAL.\n\nThanks",
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bcead13_410e9265",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T16:05:12Z",
+      "side": 1,
+      "message": "Can you please tell me when are the tests in \u0027enrollment\u0027 group run ?\nIf they are run in the CQ, do we have support for \u0027informational\u0027 or something similar in the \u0027enrollement\u0027 group to avoid blocking the commit queue ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
