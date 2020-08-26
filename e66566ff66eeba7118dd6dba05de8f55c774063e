@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2272aa29_ab42b01a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T18:41:41Z",
+      "side": 1,
+      "message": "LGTM for style % questions + nit.\nPlease also wait for a review from Jorge.",
+      "revId": "e66566ff66eeba7118dd6dba05de8f55c774063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69d8e48b_a39a4978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T18:41:41Z",
+      "side": 1,
+      "message": "Do we want to check if we can actually read/write to the cryptohome?",
+      "revId": "e66566ff66eeba7118dd6dba05de8f55c774063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

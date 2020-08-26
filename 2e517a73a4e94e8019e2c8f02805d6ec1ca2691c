@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "34d9a2e3_1ac1e767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T18:41:41Z",
+      "side": 1,
+      "message": "Does it make sense to have an unique user here?",
+      "parentUuid": "b745e6d9_d8bc770f",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a99c08ff_4e55be8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
         "patchSetId": 1
@@ -222,6 +246,30 @@
       "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffbdf216_1139a9ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-26T18:41:41Z",
+      "side": 1,
+      "message": "Use Error in this case. No one is watching the logs for issues.",
+      "parentUuid": "92a13a00_27addc0f",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
