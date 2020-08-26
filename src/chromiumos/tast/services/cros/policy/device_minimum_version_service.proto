@@ -1,0 +1,19 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.policy;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/policy";
+
+// DeviceMinimumVersionService provides functions to test the DeviceMinimumVersion policy.
+service DeviceMinimumVersionService {
+  // Creates a new instance of Chrome using the state from the existing one.
+  // Checks that an update required screen with update now button is visible on the login page.
+  // Chrome is closed when function exists.
+  rpc TestUpdateRequiredScreenIsVisible (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
