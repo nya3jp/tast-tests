@@ -21,6 +21,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/c2e2etest"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/testexec"
@@ -109,6 +111,14 @@ func waitForFinishedHack(ctx context.Context, a *arc.ARC, ac *arc.Activity) erro
 	}, nil)
 }
 
+func makeActivityFullscreen(ctx context.Context, activity *arc.Activity, tconn *chrome.TestConn) error {
+	if err := activity.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
+		return err
+	}
+
+	return ash.WaitForARCAppWindowState(ctx, tconn, activity.PackageName(), ash.WindowStateFullscreen)
+}
+
 func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo string, requireMD5File bool) *c2e2etest.VideoMetadata {
 	a := s.PreValue().(arc.PreData).ARC
 
@@ -195,6 +205,11 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 		s.Fatal("Failed starting APK main activity: ", err)
 	}
 
+	s.Log("Making activity fullscreen")
+	if err := makeActivityFullscreen(ctx, act, tconn); err != nil {
+		s.Fatal("Failed to make activity fullscreen: ", err)
+	}
+
 	s.Log("Waiting for activity to finish")
 	if err := waitForFinishedHack(ctx, a, act); err != nil {
 		s.Fatal("Failed to wait for activity: ", err)
@@ -244,6 +259,11 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 		"--esa", "test-args", strings.Join(args, ","),
 		"--es", "log-file", arcFilePath + textLogName}); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
+	}
+
+	s.Log("Making activity fullscreen")
+	if err := makeActivityFullscreen(ctx, act, tconn); err != nil {
+		s.Fatal("Failed to make activity fullscreen: ", err)
 	}
 
 	const measureDelay = time.Duration(5) * time.Second
