@@ -374,11 +374,6 @@ func reportFrameStats(logPath string) (float64, float64, error) {
 
 // RunARCVideoPerfTest runs testFPS in c2_e2e_test and sets as perf metric.
 func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string) {
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
-	if err != nil {
-		s.Fatal("Failed to set up benchmark mode: ", err)
-	}
-	defer cleanUpBenchmark(ctx)
 	defer arcVideoTestCleanup(ctx, s.PreValue().(arc.PreData).ARC)
 
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -419,6 +414,13 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, stats["df"])
+
+	s.Log("Configuring for benchmark")
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	if err != nil {
+		s.Fatal("Failed to set up benchmark mode: ", err)
+	}
+	defer cleanUpBenchmark(ctx)
 
 	s.Log("Running no_render test")
 	stats = runARCVideoPerfTest(ctx, s, arcTestConfig{
