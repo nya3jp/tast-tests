@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "b74b4ba3_d4aca02e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_minimum_version_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T17:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ef4a508_631d86a8",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "659a77fc_e1a0285c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_minimum_version_service.go",
         "patchSetId": 1
@@ -76,6 +100,24 @@
     },
     {
       "key": {
+        "uuid": "71da8711_d4d26614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_minimum_version_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T17:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "659a77fc_e1a0285c",
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99581b1b_4447b0f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_minimum_version_service.go",
         "patchSetId": 1
@@ -90,6 +132,24 @@
       "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4880cf0d_085e8aa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_minimum_version_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T17:01:28Z",
+      "side": 1,
+      "message": "It could if the device has older version of Chrome OS and there is an update available and we are stuck at this step for long enough to download the entire update. But to be safe, I have removed the call to click on the update button.",
+      "parentUuid": "99581b1b_4447b0f8",
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "55cfbdaf_1558dc20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T17:01:28Z",
+      "side": 1,
+      "message": "Ok, thanks",
+      "parentUuid": "989a09c8_023e4fb4",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "decf9d04_83f2412e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
         "patchSetId": 1
@@ -154,6 +238,24 @@
       "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8625f3e8_d3ff85d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T17:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "decf9d04_83f2412e",
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "cc4e70c9_042718f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T17:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8fdd38_42c880e2",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 4
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7076e40_06f116b6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
         "patchSetId": 1
@@ -200,6 +326,30 @@
       "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249422e4_b4c733e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T17:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7076e40_06f116b6",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 7
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "72c2a118_f44a2217",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T17:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54d9e9_315a6a17",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26dbf40c_c5270f34",
         "filename": "src/chromiumos/tast/services/cros/policy/device_minimum_version_service.proto",
         "patchSetId": 1
@@ -240,6 +414,24 @@
       "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d971d7f6_d92fa3bf",
+        "filename": "src/chromiumos/tast/services/cros/policy/device_minimum_version_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-08-26T17:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26dbf40c_c5270f34",
+      "revId": "cba00b562f318ba58c41bcbbe01ed86d0e58bbbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
