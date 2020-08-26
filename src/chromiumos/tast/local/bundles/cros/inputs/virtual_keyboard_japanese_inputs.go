@@ -144,6 +144,9 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 			document.getElementById('preedit_method').dispatchEvent(new Event('change'));`, mode.name), nil); err != nil {
 			s.Fatalf("Failed to update input mode to %s: %v", mode.name, err)
 		}
+		if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+			s.Fatal("Failed to wait for animation finished: ", err)
+		}
 	}
 
 	assertInputMode(romajiInput)
