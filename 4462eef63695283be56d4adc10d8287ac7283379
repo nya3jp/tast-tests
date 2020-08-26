@@ -16,6 +16,69 @@
       "revId": "4462eef63695283be56d4adc10d8287ac7283379",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c14b097_d897fc78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-08-26T22:32:37Z",
+      "side": 1,
+      "message": "LGTM with two suggestions. Thanks!",
+      "revId": "4462eef63695283be56d4adc10d8287ac7283379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24c3d7c7_9a0f9a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-08-26T22:32:37Z",
+      "side": 1,
+      "message": "nit: We can remove this mailing list now.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "4462eef63695283be56d4adc10d8287ac7283379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e45733f9_9f036721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-08-26T22:32:37Z",
+      "side": 1,
+      "message": "nit: IIUC the Min and Max will be 1 and 2, in normal operations;\nl.101 guarantees that the UMA entry has been updated twice, which\nis what we are looking for here, correct? If so, I\u0027d say that \ncomparing with diff.Min is superfluous and could be removed for\nclarity, and just leave the diff.Max comparison. I\u0027d also make\nit a named constant e.g. TwoMediaRecorderVEAUsedSuccess.",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 56
+      },
+      "revId": "4462eef63695283be56d4adc10d8287ac7283379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
