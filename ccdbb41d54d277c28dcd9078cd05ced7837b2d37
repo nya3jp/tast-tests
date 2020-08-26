@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5764f987_25ba28f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-26T22:53:59Z",
+      "side": 1,
+      "message": "I am not sure if this will work perfectly, but I think closing and resizing apps like this should work better.",
+      "revId": "ccdbb41d54d277c28dcd9078cd05ced7837b2d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
