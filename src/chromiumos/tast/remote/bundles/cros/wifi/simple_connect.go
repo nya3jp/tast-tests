@@ -5,9 +5,12 @@
 package wifi
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"strings"
+
+	"github.com/google/gopacket/layers"
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/network/ping"
@@ -18,8 +21,11 @@ import (
 	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/common/wifi/security/wpaeap"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/network/ip"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -1202,14 +1208,93 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		s.Fatal("Failed to get client interface: ", err)
+	}
+	ipr := ip.NewRemoteRunner(s.DUT().Conn())
+	mac, err := ipr.MAC(ctx, iface)
+	if err != nil {
+		s.Fatal("Failed to get MAC of the WiFi interface")
+	}
+	printRates := func(ctx context.Context, capturer *pcap.Capturer) error {
+		if capturer == nil {
+			return errors.New("invalid capturer")
+		}
+		path, err := capturer.PacketPath(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get packet path")
+		}
+
+		filters := []pcap.Filter{
+			pcap.TypeFilter(layers.LayerTypeDot11, nil),
+		}
+		packets, err := pcap.ReadPackets(path, filters...)
+		if err != nil {
+			return errors.Wrap(err, "failed to read packets")
+		}
+		txRates := make(map[string]struct{})
+		rxRates := make(map[string]struct{})
+		for _, p := range packets {
+			layer := p.Layer(layers.LayerTypeDot11)
+			if layer == nil {
+				return errors.New("non 802.11 packet passed filter")
+			}
+			dot11 := layer.(*layers.Dot11)
+			layer = p.Layer(layers.LayerTypeRadioTap)
+			if layer == nil {
+				return errors.New("no radio tap info")
+			}
+			radioTap := layer.(*layers.RadioTap)
+
+			var target *map[string]struct{}
+			// FIXME: Naive rx/tx check, not sure if all packets has
+			// receiver=Addr1 and sender=Addr2.
+			if bytes.Equal(dot11.Address1, mac) {
+				target = &rxRates
+			} else if bytes.Equal(dot11.Address2, mac) {
+				target = &txRates
+			} else {
+				continue
+			}
+
+			switch {
+			case radioTap.Present.VHT():
+				(*target)[radioTap.VHT.String()] = struct{}{}
+			case radioTap.Present.MCS():
+				(*target)[radioTap.MCS.String()] = struct{}{}
+			case radioTap.Present.Rate():
+				(*target)[radioTap.Rate.String()] = struct{}{}
+			default:
+				return errors.Errorf("No rate information, radioTap=%v", radioTap)
+			}
+		}
+
+		formatRateMap := func(m map[string]struct{}) string {
+			var b []string
+			for r := range m {
+				b = append(b, fmt.Sprintf("%q", r))
+			}
+			return strings.Join(b, ", ")
+		}
+		s.Log("tx rates: ", formatRateMap(txRates))
+		s.Log("rx rates: ", formatRateMap(rxRates))
+
+		return nil
+	}
+
 	testOnce := func(ctx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, pingOps []ping.Option, expectedFailure bool) {
 		ap, err := tf.ConfigureAP(ctx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
 		}
 		defer func(ctx context.Context) {
+			capturer, _ := tf.Capturer(ap)
 			if err := tf.DeconfigAP(ctx, ap); err != nil {
 				s.Error("Failed to deconfig ap, err: ", err)
+			}
+			if err := printRates(ctx, capturer); err != nil {
+				s.Error("Failed to print tx/rx rates: ", err)
 			}
 		}(ctx)
 		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
@@ -1282,6 +1367,12 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		if serInfo.Wifi.HiddenSsid != ap.Config().Hidden {
 			s.Fatalf("Unexpected hidden SSID status: got %t, want %t ", serInfo.Wifi.HiddenSsid, ap.Config().Hidden)
 		}
+
+		out, err := s.DUT().Command("iw", iface, "station", "dump").Output(ctx)
+		if err != nil {
+			s.Fatal("Failed to run iw station dump: ", err)
+		}
+		s.Logf("iw %s station dump:\n%s", iface, string(out))
 
 		// TODO(crbug.com/1034875): Assert no deauth detected from the server side.
 		// TODO(crbug.com/1034875): Maybe some more check on the WiFi capabilities to
