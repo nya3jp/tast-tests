@@ -6,6 +6,7 @@ package webrtc
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/webrtc/mediarecorder"
 	"chromiumos/tast/local/chrome"
@@ -56,7 +57,13 @@ func init() {
 
 // MediaRecorderAccelerator verifies that a video encode accelerator was used.
 func MediaRecorderAccelerator(ctx context.Context, s *testing.State) {
-	if err := mediarecorder.VerifyMediaRecorderUsesEncodeAccelerator(ctx, s.PreValue().(*chrome.Chrome), s.DataFileSystem(), s.Param().(videotype.Codec)); err != nil {
+	const (
+		// Let the MediaRecorder accumulate a few milliseconds, otherwise we might
+		// receive just bits and pieces of the container header.
+		recordDuration = 100 * time.Millisecond
+	)
+
+	if err := mediarecorder.VerifyMediaRecorderUsesEncodeAccelerator(ctx, s.PreValue().(*chrome.Chrome), s.DataFileSystem(), s.Param().(videotype.Codec), recordDuration); err != nil {
 		s.Error("Failed to run VerifyMediaRecorderUsesEncodeAccelerator: ", err)
 	}
 }
