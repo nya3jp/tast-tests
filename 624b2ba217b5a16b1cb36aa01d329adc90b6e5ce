@@ -16,6 +16,138 @@
       "revId": "624b2ba217b5a16b1cb36aa01d329adc90b6e5ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "154ab22b_b4e9475a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-26T07:38:57Z",
+      "side": 1,
+      "message": "Thanks, the direction looks good!",
+      "revId": "624b2ba217b5a16b1cb36aa01d329adc90b6e5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ac638ca_a39d4a74",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-26T07:38:57Z",
+      "side": 1,
+      "message": "faillog.tar.gz might be as large as megabytes, so we want to avoid loading the whole bytes into memory. Also, we want to avoid depending on FileSystemService to avoid putting the service in the always-allowed list.\n\nInstead you can use chromiumos/tast/ssh/linuxssh.GetFile to copy files with streaming. It even uses \"tar -cz\" so we don\u0027t have to make an archive in advance.",
+      "range": {
+        "startLine": 237,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 41
+      },
+      "revId": "624b2ba217b5a16b1cb36aa01d329adc90b6e5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48044d8a_f5094115",
+        "filename": "src/chromiumos/tast/local/bundles/cros/remote/faillog_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-26T07:38:57Z",
+      "side": 1,
+      "message": "Can you add this service in the baserpc package? It\u0027s a good package for general services like tihs.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "624b2ba217b5a16b1cb36aa01d329adc90b6e5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da3da7a3_8154903f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/grpc_fail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-26T07:38:57Z",
+      "side": 1,
+      "message": "I guess meta.RemoteFail is enough to test the remote faillog behavior.",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "624b2ba217b5a16b1cb36aa01d329adc90b6e5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87859fe2_f9faf27d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/grpc_fail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-26T07:38:57Z",
+      "side": 1,
+      "message": "style: GRPCFail\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "624b2ba217b5a16b1cb36aa01d329adc90b6e5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6a69f8_768d8055",
+        "filename": "src/chromiumos/tast/services/cros/remote/faillog_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-26T07:38:57Z",
+      "side": 1,
+      "message": "Can you move this to the baserpc package as well?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "624b2ba217b5a16b1cb36aa01d329adc90b6e5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
