@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b1b00ec8_da9e02e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-26T04:16:17Z",
+      "side": 1,
+      "message": "no it doesn\u0027t",
+      "parentUuid": "e1ade753_f81bbe00",
+      "revId": "800964f00409e1c0529d13e6dfe1e43ad34cdac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b2e9241_3d0cfcce",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "800964f00409e1c0529d13e6dfe1e43ad34cdac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212e16a2_74b99d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-08-26T04:16:17Z",
+      "side": 1,
+      "message": "Sorry, I missed where you are doing that.",
+      "parentUuid": "6b2e9241_3d0cfcce",
+      "revId": "800964f00409e1c0529d13e6dfe1e43ad34cdac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
