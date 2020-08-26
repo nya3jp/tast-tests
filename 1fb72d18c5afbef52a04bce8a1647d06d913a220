@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51e087b0_dde30b6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-26T16:14:08Z",
+      "side": 1,
+      "message": "not sure what the go style guide says, but \"Runs: Runs\" confused me a bit.\nit\u0027d be nice if we can make it clearer.",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "278403e0_f87b9b8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-26T16:14:08Z",
+      "side": 1,
+      "message": "It\u0027s a bit hard to understand what this test does w/o reading through the code. I also had similar issue in other tast tests. Is there a good way/place to describe what tests actually do and verify?",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c43c2ba_8ba3fe38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-26T16:14:08Z",
+      "side": 1,
+      "message": "is this something we should have in common?",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9b8b76_c16ac1a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-26T16:14:08Z",
+      "side": 1,
+      "message": "window state transition",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5712e0cb_5874d6ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-26T16:14:08Z",
+      "side": 1,
+      "message": "can you document why this is needed?",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a782905_9423a7e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-26T16:14:08Z",
+      "side": 1,
+      "message": "isn\u0027t this already covered by ui.OverviewPerf ?",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafaa9a6_6267499f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-26T16:14:08Z",
+      "side": 1,
+      "message": "chrome resize performance depends on the content. Are we using settings page now? Maybe we should have some static page.",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "218ff9a6_4001d091",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-26T16:14:08Z",
+      "side": 1,
+      "message": "what about fullscreen? (It only does restore animation tho)",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
