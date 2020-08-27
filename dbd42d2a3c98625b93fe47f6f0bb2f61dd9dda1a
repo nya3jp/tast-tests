@@ -16,6 +16,121 @@
       "revId": "dbd42d2a3c98625b93fe47f6f0bb2f61dd9dda1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a8aaa1e_6b8a8787",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:06:15Z",
+      "side": 1,
+      "message": "IIUC this test may reset TPM and clear the stateful partition, right? I thought such tests should stay in group:hwsec_destructive at this moment...",
+      "range": {
+        "startLine": 35,
+        "startChar": 18,
+        "endLine": 35,
+        "endChar": 53
+      },
+      "revId": "dbd42d2a3c98625b93fe47f6f0bb2f61dd9dda1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b20b21d_869ae16d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:06:15Z",
+      "side": 1,
+      "message": "data may contain multi-line strings, so please avoid including it in error messages.\n\nIn any case, when an error happens, stat(1) writes error messages to stderr (not stdout), so I guess data will be almost always empty.",
+      "range": {
+        "startLine": 53,
+        "startChar": 52,
+        "endLine": 53,
+        "endChar": 56
+      },
+      "revId": "dbd42d2a3c98625b93fe47f6f0bb2f61dd9dda1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ddbbc0_b140c8fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:06:15Z",
+      "side": 1,
+      "message": "nit: I recommend %q for formatting strings obtained from external sources, espeically when it can be empty (empty string formatted with %s is a bit confusing)",
+      "range": {
+        "startLine": 89,
+        "startChar": 62,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "dbd42d2a3c98625b93fe47f6f0bb2f61dd9dda1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a23767_8bb34112",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:06:15Z",
+      "side": 1,
+      "message": "Error messages can be read by anyone, not only test authors, so it\u0027s good to keep them readable without knowning implementation details. Can you try to make them more natural, e.g.\n\n s.Fatal(\"Failed to wait boot complete: \", err)",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 47
+      },
+      "revId": "dbd42d2a3c98625b93fe47f6f0bb2f61dd9dda1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3972f58_019b78ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:06:15Z",
+      "side": 1,
+      "message": "huge nit: This part looks a bit dense. Can you try inserting some blank lines?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "dbd42d2a3c98625b93fe47f6f0bb2f61dd9dda1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
