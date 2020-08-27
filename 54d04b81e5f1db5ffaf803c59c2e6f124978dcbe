@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ea34525_4b5add9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-08-27T19:16:45Z",
+      "side": 1,
+      "message": "Lets go ahead and see. My main worry is that some DUTs in the lab are called kevin and some kevin1.",
+      "revId": "54d04b81e5f1db5ffaf803c59c2e6f124978dcbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
