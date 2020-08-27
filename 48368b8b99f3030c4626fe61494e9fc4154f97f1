@@ -33,6 +33,24 @@
       "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88b3295_e346aeb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-08-27T19:40:36Z",
+      "side": 1,
+      "message": "I am not 100% sure that sync is valid in non-root context. Per what it is should do it must be root user. Also sync is integrate past of dropping caches. De-facto it is standard to use sync prior to writing drop_caches. Separating it would mean add one more place to maintain and it would be confusing. Thus we delegate dropping the cache in one place and consumer does not care about impl.",
+      "parentUuid": "a6f4a4a8_1b017f4e",
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
