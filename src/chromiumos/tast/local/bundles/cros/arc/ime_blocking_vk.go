@@ -36,6 +36,22 @@ func waitForVKVisibility(ctx context.Context, tconn *chrome.TestConn, shown bool
 	return chromeui.WaitUntilExists(ctx, tconn, params, 30*time.Second)
 }
 
+func disablePlayStore(ctx context.Context, a *arc.ARC, s *testing.State) {
+	// In contrast to the "pm disable" the command "pm disable-user" does not require root permission
+	// and the app can be enabled in the UI, which can be useful for debugging.
+	s.Log("Disabling Play Store")
+	if err := a.Command(ctx, "pm", "disable-user", "--user", "0", "com.android.vending").Run(); err != nil {
+		s.Error("Failed disabling Play Store app: ", err)
+	}
+}
+
+func enablePlayStore(ctx context.Context, a *arc.ARC, s *testing.State) {
+	s.Log("Enabling Play Store")
+	if err := a.Command(ctx, "pm", "enable", "com.android.vending").Run(); err != nil {
+		s.Fatal("Failed disabling Play Store app: ", err)
+	}
+}
+
 func IMEBlockingVK(ctx context.Context, s *testing.State) {
 	p := s.PreValue().(arc.PreData)
 	cr := p.Chrome
@@ -51,6 +67,9 @@ func IMEBlockingVK(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
 	defer d.Close()
+
+	disablePlayStore(ctx, a, s)
+	defer enablePlayStore(ctx, a, s)
 
 	const (
 		apk = "ArcImeBlockingTest.apk"
