@@ -241,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "75542881_e9a7068e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-27T09:46:44Z",
+      "side": 1,
+      "message": "Thanks for confirming!",
+      "parentUuid": "31dddaea_260cc45c",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "334e2ef2de5ddb51a155c09ca6b0af238074c977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbf3ab0d_3f2bafba",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -252,6 +276,23 @@
       "writtenOn": "2020-08-21T20:38:45Z",
       "side": 1,
       "message": "We need to wait for a while for chrome uprev so \nhttps://chromium-review.googlesource.com/c/chromium/src/+/2360946 is in chrome os image.",
+      "revId": "334e2ef2de5ddb51a155c09ca6b0af238074c977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d7c3a42_62e95eb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-27T09:46:44Z",
+      "side": 1,
+      "message": "Chrome uprev\u0027d to 87.0.4245.0 containing https://crrev.com/c/2360946.  Submitting...",
       "revId": "334e2ef2de5ddb51a155c09ca6b0af238074c977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
