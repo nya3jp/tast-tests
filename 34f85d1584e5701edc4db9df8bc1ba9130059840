@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "636390c3_df20fd08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-27T10:06:01Z",
+      "side": 1,
+      "message": "Since we are not using Youtube videos anymore...",
+      "parentUuid": "db918f64_25af12f7",
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd247b08_0f9690cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 10
@@ -315,6 +333,30 @@
       "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79122547_afca16b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-27T10:06:01Z",
+      "side": 1,
+      "message": "Based on what avery said in crbug/1087182, I think we should keep the preparation for one snapped window and one empty overview grid before dragging the divider.",
+      "parentUuid": "a598ef5c_90a310a2",
+      "range": {
+        "startLine": 291,
+        "startChar": 62,
+        "endLine": 291,
+        "endChar": 95
+      },
+      "revId": "34f85d1584e5701edc4db9df8bc1ba9130059840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

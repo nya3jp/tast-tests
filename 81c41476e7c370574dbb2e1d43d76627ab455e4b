@@ -51,6 +51,24 @@
       "revId": "81c41476e7c370574dbb2e1d43d76627ab455e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d1fd21f_60d64aef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-27T10:06:01Z",
+      "side": 1,
+      "message": "Done.\nI guess system PiP is what we need.",
+      "parentUuid": "0a0ccd30_abaed449",
+      "revId": "81c41476e7c370574dbb2e1d43d76627ab455e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
