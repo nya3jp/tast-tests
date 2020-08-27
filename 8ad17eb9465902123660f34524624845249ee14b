@@ -16,6 +16,252 @@
       "revId": "8ad17eb9465902123660f34524624845249ee14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "993b19f4_a503edd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "FYI: You can look for a window by its title, if you don\u0027t want to rely on checking a specific element inside the window.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/howto.md#checking-windows",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42db1dba_ed7652e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "whats new",
+      "range": {
+        "startLine": 66,
+        "startChar": 33,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79dcb98f_fbb2399c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "This modification is unrelated to the main part of the commit, so I think it should not be here.\nAlso, you are not calling the function from anywhere. You should only add it when you are using it.",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23a33329_cd9dfd71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "typo: launches",
+      "range": {
+        "startLine": 89,
+        "startChar": 26,
+        "endLine": 89,
+        "endChar": 33
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f248a157_86f71684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "nit: end the sentence with a dot.",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a53427d_a395b62e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "I am not familiar with this part, what is its purpose? If the element was already found with FindWithTimeout(), but it still moves, will element be updated, and LeftClick() will look for the element in its final position?",
+      "range": {
+        "startLine": 97,
+        "startChar": 15,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c629dde3_a0973296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "As you are only using the params once, you can skip creating a variable from it, and can define it inside the function call:\n\tif err :\u003d clickElement(ui.FindParams{\n\t\tRole:      ui.RoleTypePopUpButton,\n\t\tClassName: \"BrowserAppMenuButton\",\n\t}); err !\u003d nil {\n\nSame for the next two clickElement() calls.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18bf1a0d_b336d3b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "Get Help",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 23
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c22b3d7_c5ceb2f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "nit: add comment // Test author",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20b85964_77514a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "Out of curiosity: are you splitting the tests into two parts, so you can make better statistics from the test results?",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "488a034f_12311ced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "Do you plan to leave it in the test, or it was just for the development process?",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94d75318_08642321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T08:41:56Z",
+      "side": 1,
+      "message": "This does not ensure that there is a new browser. You can use:\n\tconn, err :\u003d cr.NewConn(ctx, \"chrome://newtab\")\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to lunch a new browser: \", err)\n\t}\n\tdefer conn.Close()",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
