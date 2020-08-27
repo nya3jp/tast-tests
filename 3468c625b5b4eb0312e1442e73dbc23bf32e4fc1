@@ -22,6 +22,30 @@
       "revId": "3468c625b5b4eb0312e1442e73dbc23bf32e4fc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b473b2_cd7d1d58",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-27T09:09:37Z",
+      "side": 1,
+      "message": "Yes, that should be |ctx| I forgot to edit it when moving this code.\n\nI\u0027m not sure about the semantics of ContextOutDir, so I\u0027ll move this bit up.",
+      "parentUuid": "5be00a89_9a64bdbe",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "3468c625b5b4eb0312e1442e73dbc23bf32e4fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
