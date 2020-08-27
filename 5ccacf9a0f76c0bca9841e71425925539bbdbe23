@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "912d3034_9db89ac3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-27T05:23:20Z",
+      "side": 1,
+      "message": "Tast Shadow Review: LGTM % nits.",
+      "revId": "5ccacf9a0f76c0bca9841e71425925539bbdbe23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bcd0866_cd680904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-27T05:23:20Z",
+      "side": 1,
+      "message": "nit: The time to wait _for_ dump files. (insert \u0027for\u0027)",
+      "range": {
+        "startLine": 88,
+        "startChar": 60,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "5ccacf9a0f76c0bca9841e71425925539bbdbe23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2678223f_f11b39e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-27T05:23:20Z",
+      "side": 1,
+      "message": "nit: appear (no \u0027s\u0027)",
+      "range": {
+        "startLine": 88,
+        "startChar": 88,
+        "endLine": 88,
+        "endChar": 95
+      },
+      "revId": "5ccacf9a0f76c0bca9841e71425925539bbdbe23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59ffdf94_8c313604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-27T05:23:20Z",
+      "side": 1,
+      "message": "Is this expected to occur during the happy path? Or should there by a testing.PollBreak() here?",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "5ccacf9a0f76c0bca9841e71425925539bbdbe23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
