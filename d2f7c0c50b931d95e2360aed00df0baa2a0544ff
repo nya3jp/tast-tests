@@ -16,6 +16,97 @@
       "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3766cf02_9fba7f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T05:45:07Z",
+      "side": 1,
+      "message": "Should this be a part of clean up?",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca705d4a_55e51c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T05:45:07Z",
+      "side": 1,
+      "message": "clarification: is it ok to iterate files in the directory even in case of unshare failing?",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35806e8e_338aca6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T05:45:07Z",
+      "side": 1,
+      "message": "and return from here?",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "440107cd_27098d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T05:45:07Z",
+      "side": 1,
+      "message": "Instead, could you use ioutil.TempFile? Or, if fixed file name is required, could you use iotuil.TempDir?",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71fb470f_863d5132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T05:45:07Z",
+      "side": 1,
+      "message": "hugenit: \"got X, want X\" is the common order, I think.",
+      "range": {
+        "startLine": 188,
+        "startChar": 55,
+        "endLine": 188,
+        "endChar": 70
+      },
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
