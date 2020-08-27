@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/apploading"
+	"chromiumos/tast/local/bundles/cros/arc/nethelper"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -80,6 +81,13 @@ func init() {
 // subflow will be tested separately including separate performance metrics
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
+	// Start network helper to serve requests from the app.
+	conn, err := nethelper.Start(ctx)
+	if err != nil {
+		s.Fatal("Failed to start helper: ", err)
+	}
+	defer conn.Close()
+
 	weightsDict := map[string]float64{
 		"memory":  0.1,
 		"file":    6.5,
