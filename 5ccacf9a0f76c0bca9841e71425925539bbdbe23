@@ -65,6 +65,54 @@
     },
     {
       "key": {
+        "uuid": "1d2d8993_d59adf73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-27T08:24:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2678223f_f11b39e1",
+      "range": {
+        "startLine": 88,
+        "startChar": 88,
+        "endLine": 88,
+        "endChar": 95
+      },
+      "revId": "5ccacf9a0f76c0bca9841e71425925539bbdbe23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbda0395_23a6225d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-27T08:24:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bcd0866_cd680904",
+      "range": {
+        "startLine": 88,
+        "startChar": 60,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "5ccacf9a0f76c0bca9841e71425925539bbdbe23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59ffdf94_8c313604",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
         "patchSetId": 4
@@ -85,6 +133,30 @@
       "revId": "5ccacf9a0f76c0bca9841e71425925539bbdbe23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c457660_b66510d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-27T08:24:35Z",
+      "side": 1,
+      "message": "I used testing.PollBreak().\nIt\u0027s not in the happy path because I expect that the crashDir always exists even before any crash happens.",
+      "parentUuid": "59ffdf94_8c313604",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "5ccacf9a0f76c0bca9841e71425925539bbdbe23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
