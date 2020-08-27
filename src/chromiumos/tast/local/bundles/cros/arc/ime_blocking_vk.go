@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
@@ -40,6 +41,36 @@ func IMEBlockingVK(ctx context.Context, s *testing.State) {
 	p := s.PreValue().(arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
+
+	disablePlayStore := func(ctx context.Context) error {
+		// In contrast to the "pm disable" the command "pm disable-user" does not require root permission
+		// and the app can be enabled in the UI, which can be useful for debugging.
+		// If the notifications of the app are shown, they are removed during the call or soon after it.
+		// Potentially if the gap between disabling Play Store and testing app showing up is too small,
+		// then the test can be flaky as the notificaton may not be removed fast enough.
+		s.Log("Disabling Play Store")
+		return a.Command(ctx, "pm", "disable-user", "--user", "0", "com.android.vending").Run()
+	}
+
+	enablePlayStore := func(ctx context.Context) error {
+		s.Log("Enabling Play Store")
+		return a.Command(ctx, "pm", "enable", "com.android.vending").Run()
+	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	// Disabling Play Store to get rid of unnecessary notifications.
+	if err := disablePlayStore(ctx); err != nil {
+		s.Fatal("Failed disabling Play Store app: ", err)
+	}
+
+	defer func(ctx context.Context) {
+		if err := enablePlayStore(ctx); err != nil {
+			s.Error("Failed enabling Play Store app: ", err)
+		}
+	}(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
