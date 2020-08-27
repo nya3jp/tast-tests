@@ -391,6 +391,24 @@
     },
     {
       "key": {
+        "uuid": "5d816846_76eeabb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-27T07:29:11Z",
+      "side": 1,
+      "message": "about:blank can be a good candidate to measure the resize performance only.\nCorrectly measure the resize with render is a bit tricky as it is throttled.\nWe can measure both though.\nThe animated one would be a good one too, although I\u0027d wait until all issues are sorted out.",
+      "parentUuid": "0d2544af_d27312cf",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "218ff9a6_4001d091",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 4
