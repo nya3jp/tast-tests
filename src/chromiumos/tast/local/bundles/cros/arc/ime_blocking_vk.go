@@ -52,6 +52,12 @@ func IMEBlockingVK(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
+	// Disabling Phonesky to prevent showing unnecessary clickable notifications.
+	s.Log("Disabling Play Store")
+	if err := a.Command(ctx, "pm", "disable-user", "--user", "0", "com.android.vending").Run(); err != nil {
+		s.Fatal("Failed disable Play Store app: ", err)
+	}
+
 	const (
 		apk = "ArcImeBlockingTest.apk"
 		pkg = "org.chromium.arc.testapp.imeblocking"
