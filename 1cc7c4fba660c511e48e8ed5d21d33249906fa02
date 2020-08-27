@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b7b6a874_84f25967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T01:18:33Z",
+      "side": 1,
+      "message": "Using warm-up sleep instead. Thanks for explanation and knowldge sharing offline.",
+      "parentUuid": "f3b06a1b_8261f9d2",
+      "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61a8ed2a_36250d68",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
         "patchSetId": 1
@@ -105,6 +123,24 @@
       "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6326dc7a_865b2d23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T01:18:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f4ab5bc6_9253c265",
+      "revId": "1cc7c4fba660c511e48e8ed5d21d33249906fa02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
