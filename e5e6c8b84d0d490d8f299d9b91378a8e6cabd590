@@ -105,6 +105,24 @@
       "revId": "e5e6c8b84d0d490d8f299d9b91378a8e6cabd590",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118996c6_e0027e73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T07:23:40Z",
+      "side": 1,
+      "message": "Hi Hidehiko, I have resolved this. Passed policy.* tests on my local too.",
+      "parentUuid": "b8233425_272e6e18",
+      "revId": "e5e6c8b84d0d490d8f299d9b91378a8e6cabd590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
