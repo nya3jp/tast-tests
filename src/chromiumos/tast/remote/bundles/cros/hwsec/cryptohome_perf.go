@@ -20,12 +20,13 @@ import (
 )
 
 const (
-	bootstatDir    = "/tmp"
-	uptimePrefix   = "uptime-"
-	cryptohomeName = "cryptohome"
-	tpmManagerName = "tpm_manager"
-	chapsName      = "chaps"
-	startedSuffix  = "-started"
+	bootstatDir            = "/tmp"
+	uptimePrefix           = "uptime-"
+	cryptohomeName         = "cryptohome"
+	cryptohomeInternalName = "cryptohome_internal"
+	tpmManagerName         = "tpm_manager"
+	chapsName              = "chaps"
+	startedSuffix          = "-started"
 )
 
 func init() {
@@ -50,7 +51,7 @@ func init() {
 func waitUntilBootComplete(ctx context.Context, remote *hwsecremote.CmdRunnerRemote) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		// Check that bootstat files are available.
-		for _, services := range []string{cryptohomeName, tpmManagerName, chapsName} {
+		for _, services := range []string{cryptohomeName, cryptohomeInternalName, tpmManagerName, chapsName} {
 			file := filepath.Join(bootstatDir, uptimePrefix+services+startedSuffix)
 			_, err := remote.Run(ctx, "stat", file)
 			if err != nil {
@@ -170,6 +171,11 @@ func CryptohomePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to parse cryptohome uptime: ", err)
 	}
 
+	cryptohomeInternalUptime, err := parseUptime(ctx, r, cryptohomeInternalName, 0)
+	if err != nil {
+		s.Fatal("Failed to parse cryptohome-internal uptime: ", err)
+	}
+
 	tpmManagerUptime, err := parseUptime(ctx, r, tpmManagerName, 0)
 	if err != nil {
 		s.Fatal("Failed to parse tpm_manager uptime: ", err)
@@ -185,7 +191,10 @@ func CryptohomePerf(ctx context.Context, s *testing.State) {
 
 	startUpTime := math.Min(cryptohomeUptime-tpmManagerUptime, cryptohomeUptime-chapsUptime)
 
+	startUpTimeInternal := math.Min(cryptohomeInternalUptime-tpmManagerUptime, cryptohomeInternalUptime-chapsUptime)
+
 	s.Log("start-up time of cryptohome: ", startUpTime)
+	s.Log("start-up time of cryptohome internal: ", startUpTimeInternal)
 
 	value.Set(perf.Metric{
 		Name:      "crpytohome_start_time",
@@ -194,5 +203,13 @@ func CryptohomePerf(ctx context.Context, s *testing.State) {
 		Direction: perf.SmallerIsBetter,
 		Multiple:  false,
 	}, startUpTime)
+
+	value.Set(perf.Metric{
+		Name:      "crpytohome_start_time",
+		Variant:   "oobe_internal",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, startUpTimeInternal)
 
 }
