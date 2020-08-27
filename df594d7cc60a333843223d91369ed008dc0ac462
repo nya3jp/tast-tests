@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "649d4de2_84e7c1c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-27T02:28:31Z",
+      "side": 1,
+      "message": "-R oka@ to clean up my stack. Please add back if needed.\n",
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0651f19e_17bb7caf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/lifecycle_chromeos_perf.go",
         "patchSetId": 8
