@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cc2f7f1_23fc8710",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_multiple_folders.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-27T07:39:36Z",
+      "side": 1,
+      "message": "How about just ShareFolders? Folder\u0027s\u0027 should already implies multiple.",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdeef18f_2be01c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_multiple_folders.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-27T07:39:36Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a432eeac_c09c728e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_multiple_folders.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-27T07:39:36Z",
+      "side": 1,
+      "message": "Instead of removing all files under Download, how about only removing testShareFolder1, testShareFolder2, testShareFolder3? You can also move the defer logic to os.MkdirAll to improve readability.",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 3
+      },
+      "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb51bff_603b272c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_multiple_folders.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-27T07:39:36Z",
+      "side": 1,
+      "message": "Can you add a comment on why a \u003e is needed here?\nLooks like it would be \n\"My files \u003e Downloads \u003e testShareFolder1\"?",
+      "range": {
+        "startLine": 89,
+        "startChar": 52,
+        "endLine": 89,
+        "endChar": 53
+      },
+      "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997895b3_52ecf920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_multiple_folders.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-27T07:39:36Z",
+      "side": 1,
+      "message": "Not used?",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7e7ad4a_0b6c888b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_multiple_folders.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-27T07:39:36Z",
+      "side": 1,
+      "message": "How about a for loop?\n\nsharedFolder :\u003d func(folder string) string {\n\treturn sharedfolders.SharedDownloads + \" › \" + folder\n}\n\nfor _, folder :\u003d range []string{folder1, folder2, folder3} {\n\tif err :\u003d os.MkdirAll(filepath.Join(filesapp.DownloadPath, folder), 0755); err !\u003d nil {\n\t\ts.Fatalf(\"Failed to create %s in Downloads: %q\", folder, err)\n\t}\n        sharedFolder.AddFolder(sharedFolder(folder))\n}",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 39
+      },
+      "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
