@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "0dc502ee_ccce8b88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "In this case it is WAI. It checks content rendered.",
+      "parentUuid": "993b19f4_a503edd5",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42db1dba_ed7652e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 4
@@ -73,6 +91,30 @@
       "revId": "8ad17eb9465902123660f34524624845249ee14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4869f1_bf6f631d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "function removed.",
+      "parentUuid": "42db1dba_ed7652e3",
+      "range": {
+        "startLine": 66,
+        "startChar": 33,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -120,6 +162,30 @@
       "revId": "8ad17eb9465902123660f34524624845249ee14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cc4514d_f628e022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "Sure, removed. It will be used in future test. It is very minor change. So it is fine.",
+      "parentUuid": "79dcb98f_fbb2399c",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -181,6 +247,48 @@
     },
     {
       "key": {
+        "uuid": "67d466c5_32c06601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23a33329_cd9dfd71",
+      "range": {
+        "startLine": 89,
+        "startChar": 26,
+        "endLine": 89,
+        "endChar": 33
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad32fc3b_d3587e4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f248a157_86f71684",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a53427d_a395b62e",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 4
@@ -192,6 +300,30 @@
       "writtenOn": "2020-08-27T08:41:56Z",
       "side": 1,
       "message": "I am not familiar with this part, what is its purpose? If the element was already found with FindWithTimeout(), but it still moves, will element be updated, and LeftClick() will look for the element in its final position?",
+      "range": {
+        "startLine": 97,
+        "startChar": 15,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e3feecf_a701a8c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "You are right. LeftClick updates element before actually click it. However without this function, click fails intermittently. Animation is a pain in ui interaction.",
+      "parentUuid": "0a53427d_a395b62e",
       "range": {
         "startLine": 97,
         "startChar": 15,
@@ -251,6 +383,30 @@
     },
     {
       "key": {
+        "uuid": "513a701a_aa3848f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c629dde3_a0973296",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18bf1a0d_b336d3b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 4
@@ -274,6 +430,30 @@
     },
     {
       "key": {
+        "uuid": "dc14581a_25b96de3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18bf1a0d_b336d3b4",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 23
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c22b3d7_c5ceb2f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
         "patchSetId": 4
@@ -288,6 +468,24 @@
       "revId": "8ad17eb9465902123660f34524624845249ee14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "506de20e_5a77e60c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c22b3d7_c5ceb2f9",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -308,6 +506,24 @@
     },
     {
       "key": {
+        "uuid": "6400eb82_cffb70e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "The intention is to promote stable models into CQ, and remain unstable boards in informational. This is to follow the same practice we used in other apps tests. So it can be easy to know when it is ready for promotion.",
+      "parentUuid": "20b85964_77514a26",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "488a034f_12311ced",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
         "patchSetId": 4
@@ -319,6 +535,24 @@
       "writtenOn": "2020-08-27T08:41:56Z",
       "side": 1,
       "message": "Do you plan to leave it in the test, or it was just for the development process?",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e04a4237_f470fe93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "This is intentional. A11y tree is same important as screenshot in faillog.",
+      "parentUuid": "488a034f_12311ced",
       "revId": "8ad17eb9465902123660f34524624845249ee14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -360,6 +594,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "94d75318_08642321",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c907106_7f41687e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T09:00:23Z",
+      "side": 1,
+      "message": "Great catch. Fix it. btw, is there any good way to start a connection in incognito mode? Sometimes keyboard shortcut is not reliable, especially when device is warming up after login.",
+      "parentUuid": "030991df_a031194b",
       "range": {
         "startLine": 51,
         "startChar": 0,
