@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d950b2ff_ba8a9e98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:56:31Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "1e50e37da5ad81c24c0f50f52e63440de70ed9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af923e73_3f3c3f3b",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:56:31Z",
+      "side": 1,
+      "message": "You can skip checking OutDir. It\u0027s almost always available (unless we\u0027re in some critical issues). Also, even if OutDir is not writable, linuxssh.GetFile will return appropriate error messages to us.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 3
+      },
+      "revId": "1e50e37da5ad81c24c0f50f52e63440de70ed9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9701388c_421f3cab",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:56:31Z",
+      "side": 1,
+      "message": "nit: This code block looks a bit dense. Can you insert some blank lines in-between?",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 3
+      },
+      "revId": "1e50e37da5ad81c24c0f50f52e63440de70ed9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff2baa97_f0b8edb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/faillog_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:56:31Z",
+      "side": 1,
+      "message": "Let\u0027s clear c.tmpDir here to maintain the invariant: c.tmpDir !\u003d \"\" \u003c\u003d\u003e c.tmpDir exists",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "1e50e37da5ad81c24c0f50f52e63440de70ed9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c87eea_29f257dc",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:56:31Z",
+      "side": 1,
+      "message": "I guess that users will usually expect SaveToDir to save files directly under dir, instead of creating \"faillog\" under dir.\n\nCan you move the code to create \"faillog\" to Save?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "1e50e37da5ad81c24c0f50f52e63440de70ed9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
