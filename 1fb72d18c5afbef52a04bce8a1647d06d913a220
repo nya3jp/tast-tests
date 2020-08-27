@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "0a12ec1c_95543b36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-27T00:05:00Z",
+      "side": 1,
+      "message": "Ideally this should be in the repository, othewrise it\u0027ll be difficult if someone else broke it and want to investigate. Maybe we can add short link to it?",
+      "parentUuid": "0bcaa7a0_63b03a71",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c43c2ba_8ba3fe38",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
         "patchSetId": 4
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "sorry, what do you mean for \"this\"?",
       "parentUuid": "0c43c2ba_8ba3fe38",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cf7e109_422b40c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-27T00:05:00Z",
+      "side": 1,
+      "message": "make sure these uma stats never go below these number, regardless of the test?",
+      "parentUuid": "70b67874_d9b128a7",
       "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -212,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "4e201c4f_bbb13f49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-27T00:05:00Z",
+      "side": 1,
+      "message": "Oh, so this runs only in CQ, but not on crosbolt?",
+      "parentUuid": "c893a607_1be73a33",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aafaa9a6_6267499f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
         "patchSetId": 4
@@ -241,6 +295,24 @@
       "side": 1,
       "message": "What page should we use?  Do you have any good ideas?",
       "parentUuid": "aafaa9a6_6267499f",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade8eb0b_e21c96a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-08-27T00:05:00Z",
+      "side": 1,
+      "message": "Setings may actually be fine, but the potential issue is that some change to settings page may affect the performance. If we only care about pure resize performance, we can use about:blank. Or maybe snapshot of settings.",
+      "parentUuid": "b2fbbc17_6e668f5a",
       "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
