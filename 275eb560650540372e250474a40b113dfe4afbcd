@@ -207,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "a9130740_eaafe2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-27T02:19:12Z",
+      "side": 1,
+      "message": "Sorry I\u0027m not sure what you mean. Could you elaborate?\n\nIt look like whenever tests or other functions call sharedFolders.ShareDrive, they should also call AddFolder(...SharedDrive). I think it\u0027s strange.\nIf tests can freely call AddFolder, it probably means that the sharedFolder\u0027s state cannot be the source of truth, and doesn\u0027t necessarily reflect the reality. I\u0027m not sure why such a state can be useful.",
+      "parentUuid": "7b3942f6_6b27e34f",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 51
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f1deb48_eb385832",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
         "patchSetId": 2
@@ -348,6 +372,30 @@
     },
     {
       "key": {
+        "uuid": "82a93114_7fa28b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-27T02:19:12Z",
+      "side": 1,
+      "message": "I believe http://go/go-style/decisions#assert still applies.\nI think consistency is important for long-term maintainability and readability. cmp is a de-facto standard library for comparison in google3 Go code, and so in Tast.\nIOW, we can assume that people (reviewers/future readers/maintainers) are familiar with cmp, but not with originally invented assertion functions.\nAlso, note that the error message is generic in CheckListsMatch, but we can make the error message more context-specific by constructing it on the fly.\n\nIf you don\u0027t want to sort strings in this function, or avoid use of cmpopts.SortSlices, how about making GetFileList return sorted strings? Then you can just use reflect.DeepEqual.",
+      "parentUuid": "533113af_181f38e5",
+      "range": {
+        "startLine": 120,
+        "startChar": 20,
+        "endLine": 120,
+        "endChar": 35
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d163313_81bcc636",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
         "patchSetId": 2
@@ -383,6 +431,30 @@
       "side": 1,
       "message": "Same as above.",
       "parentUuid": "3d163313_81bcc636",
+      "range": {
+        "startLine": 127,
+        "startChar": 20,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "275eb560650540372e250474a40b113dfe4afbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0916394_06e51524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-27T02:19:12Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "c205efaf_bee687e8",
       "range": {
         "startLine": 127,
         "startChar": 20,

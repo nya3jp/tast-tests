@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74ad6e95_5bd8ee76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-27T02:19:12Z",
+      "side": 1,
+      "message": "Is the error message correct?",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 64,
+        "endChar": 41
+      },
+      "revId": "81ce9c5706561564e70911458b075f59fdccc9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d5835e2_87444efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-27T02:19:12Z",
+      "side": 1,
+      "message": "No need to wrap. err is nil here.",
+      "range": {
+        "startLine": 116,
+        "startChar": 22,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "81ce9c5706561564e70911458b075f59fdccc9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08fa9b83_4bf2408c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-27T02:19:12Z",
+      "side": 1,
+      "message": "typo: page",
+      "range": {
+        "startLine": 40,
+        "startChar": 104,
+        "endLine": 40,
+        "endChar": 108
+      },
+      "revId": "81ce9c5706561564e70911458b075f59fdccc9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d0d331_ec1a1070",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-27T02:19:12Z",
+      "side": 1,
+      "message": "Given it\u0027s an exported field, could you make this a doc comment? i.e. move this above SharedDrive, and start the sentence with SharedDrive ...",
+      "range": {
+        "startLine": 40,
+        "startChar": 62,
+        "endLine": 40,
+        "endChar": 109
+      },
+      "revId": "81ce9c5706561564e70911458b075f59fdccc9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
