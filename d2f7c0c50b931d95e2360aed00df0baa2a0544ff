@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1adeec7b_a6d2e4fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-27T07:08:02Z",
+      "side": 1,
+      "message": "You mean clean up in line 67? presubmit check would not pass if it is inside the defer func.",
+      "parentUuid": "3766cf02_9fba7f1e",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca705d4a_55e51c5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
         "patchSetId": 3
@@ -50,6 +68,24 @@
       "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab158aa1_f0cbed31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-27T07:08:02Z",
+      "side": 1,
+      "message": "Yes, it is. CRUD could be done on the files when the folders are shared.",
+      "parentUuid": "ca705d4a_55e51c5d",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "315ac2da_02a41222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-27T07:08:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35806e8e_338aca6d",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "440107cd_27098d8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
         "patchSetId": 3
@@ -84,6 +138,24 @@
       "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9f7b415_9445d4ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-27T07:08:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "440107cd_27098d8c",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -107,6 +179,30 @@
       "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a643cf_15f622e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-27T07:08:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71fb470f_863d5132",
+      "range": {
+        "startLine": 188,
+        "startChar": 55,
+        "endLine": 188,
+        "endChar": 70
+      },
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
