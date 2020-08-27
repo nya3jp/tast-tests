@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
@@ -51,6 +52,28 @@ func IMEBlockingVK(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
 	defer d.Close()
+
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
+	disablePlayStore := func(ctx context.Context) {
+		// In contrast to the "pm disable" the command "pm disable-user" does not require root permission
+		// and the app can be enabled in the UI, which can be useful for debugging.
+		s.Log("Disabling Play Store")
+		if err := a.Command(ctx, "pm", "disable-user", "--user", "0", "com.android.vending").Run(); err != nil {
+			s.Error("Failed disabling Play Store app: ", err)
+		}
+	}
+
+	enablePlayStore := func(ctx context.Context) {
+		s.Log("Enabling Play Store")
+		if err := a.Command(ctx, "pm", "enable", "com.android.vending").Run(); err != nil {
+			s.Fatal("Failed enabling Play Store app: ", err)
+		}
+	}
+
+	disablePlayStore(ctx)
+	defer enablePlayStore(ctx)
 
 	const (
 		apk = "ArcImeBlockingTest.apk"
