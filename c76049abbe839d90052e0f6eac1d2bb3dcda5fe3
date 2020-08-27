@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed3b55f1_25d23a65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T01:48:51Z",
+      "side": 1,
+      "message": "Hi Rachel, thanks for covering incognito test in browser test https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/web_applications/help_app_integration_browsertest.cc;drc\u003dcba4cee0cc1e2e3924a85d962dc13fa3af679e42;l\u003d186\n\nI reckon it is reasonable to have some overlap between browser \u0026 tast tests. This cl added functions including launching browser in incognito mode, and launching help app in three dot menu. It can be a good example for extending tests.",
+      "revId": "c76049abbe839d90052e0f6eac1d2bb3dcda5fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
