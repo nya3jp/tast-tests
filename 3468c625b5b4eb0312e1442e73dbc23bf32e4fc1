@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5be00a89_9a64bdbe",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-08-27T08:39:55Z",
+      "side": 1,
+      "message": "I could not find cleanupCtx declaration.\nDid you mean ctx or a package-level variable?\n\nAlso, is it ok that this would not execute when failed on ContextOutDir? (I guess yes because that would indicate wrong context and not recoverable.)",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "3468c625b5b4eb0312e1442e73dbc23bf32e4fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
