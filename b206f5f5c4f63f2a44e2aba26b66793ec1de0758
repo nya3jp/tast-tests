@@ -33,6 +33,24 @@
       "revId": "b206f5f5c4f63f2a44e2aba26b66793ec1de0758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73850f26_70089a92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-27T18:26:10Z",
+      "side": 1,
+      "message": "Here were my thoughts, most of the individual tests get 10 minutes as the global test timeout. This means that they do not have much time for each individual test case, especially since installing the app may take the first 4 minutes. Thus, I want to make the defaultTestCaseTimeout as small as possible and then override it for specific tests as necessary. For example, if we find that launching and logging into facebook takes too long, we can specifically give it a longer timeout by passing timeout in with the test case.\n\nAs for long UI timeout, I also want to make it as small as possible while not making test fail unnecessarily. If a user is interacting with an app and it take multiple minutes to interact with a single feature, that is likely a performance bug of some sort. For now, I want to try and make these timeouts quite restrictive, and then later, they can be expanded if necessary. Also, if specific locations need an extra long timeout, they can specifically change the timeout.\n\nNeither of these numbers are set in stone, I just want to try and keep them small to allow tests to fail fast.",
+      "parentUuid": "3c7c7e90_4f10b1d0",
+      "revId": "b206f5f5c4f63f2a44e2aba26b66793ec1de0758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
