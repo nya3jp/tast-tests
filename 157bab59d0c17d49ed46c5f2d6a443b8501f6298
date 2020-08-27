@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a95845cf_8a44e443",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:21:17Z",
+      "side": 1,
+      "message": "Sorry for delayed reply. Looks much better!",
+      "revId": "157bab59d0c17d49ed46c5f2d6a443b8501f6298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9548a87_2f461b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:21:17Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to check it, because ReadFile just be low should report it.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "157bab59d0c17d49ed46c5f2d6a443b8501f6298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383ad58c_19f93219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:21:17Z",
+      "side": 1,
+      "message": "style: logFile above is the os.File instance, but resultsFile is not a File but a content of the file, so they look inconsistent. Suggestion: outputJson, or simply \"output\" named after \"output_path\".",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "157bab59d0c17d49ed46c5f2d6a443b8501f6298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13701cfa_d669723c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:21:17Z",
+      "side": 1,
+      "message": "could you add comment about the reference of the struct (json schema) definitions?",
+      "revId": "157bab59d0c17d49ed46c5f2d6a443b8501f6298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d92d7e_d37748fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:21:17Z",
+      "side": 1,
+      "message": "nit: iotuil.ReadFile returns []byte, so casting (converting) is redundant.",
+      "range": {
+        "startLine": 87,
+        "startChar": 26,
+        "endLine": 87,
+        "endChar": 45
+      },
+      "revId": "157bab59d0c17d49ed46c5f2d6a443b8501f6298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
