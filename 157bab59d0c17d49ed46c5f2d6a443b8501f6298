@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "2f1d3c32_e6b8bae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T14:27:39Z",
+      "side": 1,
+      "message": "My bad. outputJSON is correct style.",
+      "parentUuid": "144215b3_e004e072",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "157bab59d0c17d49ed46c5f2d6a443b8501f6298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13701cfa_d669723c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
         "patchSetId": 5
