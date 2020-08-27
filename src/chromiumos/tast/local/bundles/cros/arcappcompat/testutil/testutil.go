@@ -29,8 +29,9 @@ import (
 const (
 	AndroidButtonClassName = "android.widget.Button"
 
-	DefaultUITimeout = 20 * time.Second
-	LongUITimeout    = 5 * time.Minute
+	defaultTestCaseTimeout = 2 * time.Minute
+	DefaultUITimeout       = 20 * time.Second
+	LongUITimeout          = 90 * time.Second
 )
 
 // TestFunc represents the "test" function.
@@ -38,8 +39,9 @@ type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 
 // TestCase represents the  name of test, and the function to call.
 type TestCase struct {
-	Name string
-	Fn   TestFunc
+	Name    string
+	Fn      TestFunc
+	Timeout time.Duration
 }
 
 // RunTestCases setups the device and runs all app compat test cases.
@@ -69,8 +71,15 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 
 	// Run the different test cases.
 	for idx, test := range testCases {
-		// Run subtests.
-		s.Run(ctx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+		// If a timeout is not specified, limited individual test cases to the default.
+		// This makes sure that one test case doesn't use all of the time when it fails.
+		timeout := defaultTestCaseTimeout
+		if test.Timeout != 0 {
+			timeout = test.Timeout
+		}
+		testCaseCtx, cancel := ctxutil.Shorten(ctx, timeout)
+		defer cancel()
+		s.Run(testCaseCtx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
 			// Save time for cleanup and screenshot.
 			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
 			defer cancel()
@@ -114,6 +123,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			}
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
 		})
+		cancel()
 	}
 }
 
