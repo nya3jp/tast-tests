@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ab1c625_a2d27408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:33:32Z",
+      "side": 1,
+      "message": "Could you remove this directory in defer stmt just after err check below?\n\nI.e.: at L65 defer os.RemoveAll(tmpdir)",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "ea8813007c9ad4bf11af4e83e68acce1c8fb303e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e389c7f_79d1adbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:33:32Z",
+      "side": 1,
+      "message": "very sorry one thing I overlooked during iterations. You need to stop fdms in defer stmt.\n\nAt L71: defer fdms.Stop(ctx)",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 39
+      },
+      "revId": "ea8813007c9ad4bf11af4e83e68acce1c8fb303e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
