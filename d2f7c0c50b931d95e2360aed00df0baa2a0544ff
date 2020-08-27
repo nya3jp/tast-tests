@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "78a66052_2dffb7b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:47:30Z",
+      "side": 1,
+      "message": "I meant to use cleanupCtx, at least.\n\n\u003e presubmit check would not pass if it is inside the defer func.\n\nHmm... could you share the error message?",
+      "parentUuid": "1adeec7b_a6d2e4fe",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca705d4a_55e51c5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
         "patchSetId": 3
@@ -86,6 +104,24 @@
       "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "347b9804_2515780d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:47:30Z",
+      "side": 1,
+      "message": "Good to know. Could you add a brief comment that it is intentional?",
+      "parentUuid": "ab158aa1_f0cbed31",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
