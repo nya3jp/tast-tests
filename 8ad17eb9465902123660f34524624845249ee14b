@@ -753,6 +753,30 @@
       "revId": "8ad17eb9465902123660f34524624845249ee14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8677cfd4_dd729a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-27T11:19:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a5cd827_b25434e9",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
