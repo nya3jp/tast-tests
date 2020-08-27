@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "70065936_c9024cb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2020-08-27T01:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c3d7c7_9a0f9a12",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "4462eef63695283be56d4adc10d8287ac7283379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e45733f9_9f036721",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
         "patchSetId": 3
@@ -70,6 +94,30 @@
       "writtenOn": "2020-08-26T22:32:37Z",
       "side": 1,
       "message": "nit: IIUC the Min and Max will be 1 and 2, in normal operations;\nl.101 guarantees that the UMA entry has been updated twice, which\nis what we are looking for here, correct? If so, I\u0027d say that \ncomparing with diff.Min is superfluous and could be removed for\nclarity, and just leave the diff.Max comparison. I\u0027d also make\nit a named constant e.g. TwoMediaRecorderVEAUsedSuccess.",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 56
+      },
+      "revId": "4462eef63695283be56d4adc10d8287ac7283379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab14662_08c01766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2020-08-27T01:18:37Z",
+      "side": 1,
+      "message": "\u003e nit: IIUC the Min and Max will be 1 and 2, in normal operations;\n\u003e l.101 guarantees that the UMA entry has been updated twice, which\n\u003e is what we are looking for here, correct? \n\nYes. Right now it\u0027s two, but I can see a case added for VP8/VP9/H264 if any hardware supports it.\n\n\u003e If so, I\u0027d say that \n\u003e comparing with diff.Min is superfluous and could be removed for\n\u003e clarity, and just leave the diff.Max comparison. I\u0027d also make\n\u003e it a named constant e.g. TwoMediaRecorderVEAUsedSuccess.\n\nRemoved the Min, but I don\u0027t follow what you mean about \"TwoMediaRecorderVEAUsedSuccess\". success+1 is what WasHWAccelUsed() uses, and is quite clear since the histogram bucket is an open (at the max end) interval.",
+      "parentUuid": "e45733f9_9f036721",
       "range": {
         "startLine": 99,
         "startChar": 4,
