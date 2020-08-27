@@ -109,8 +109,10 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the input element: ", err)
 	}
 
-	// Check virtual keyboard is not shown in the following 3 seconds
-	testing.Poll(ctx, func(ctx context.Context) error {
+	// Check virtual keyboard is not shown in the following 10 seconds
+	testing.Poll(ctx, func(pollCtx context.Context) error {
+		// Note: do not use internal pollCtx but use the external context, as the
+		// last iteration it may hit the context deadline exceeded error.
 		if isVKShown, err := vkb.IsShown(ctx, tconn); err != nil {
 			s.Fatal("Failed to check vk visibility: ", err)
 		} else if isVKShown {

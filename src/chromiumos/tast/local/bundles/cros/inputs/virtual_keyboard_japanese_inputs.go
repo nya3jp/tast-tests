@@ -144,6 +144,15 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 			document.getElementById('preedit_method').dispatchEvent(new Event('change'));`, mode.name), nil); err != nil {
 			s.Fatalf("Failed to update input mode to %s: %v", mode.name, err)
 		}
+
+		// No available method to check that settings being loaded. On a low-end device, it might take a second.
+		// So added 2 seconds sleep to wait for loading.
+		const loadNewSettingDuration = 2 * time.Second
+
+		s.Log("Warmup: Waiting for loading new settings")
+		if err := testing.Sleep(ctx, loadNewSettingDuration); err != nil {
+			s.Fatal("Failed to sleep: ", err)
+		}
 	}
 
 	assertInputMode(romajiInput)
