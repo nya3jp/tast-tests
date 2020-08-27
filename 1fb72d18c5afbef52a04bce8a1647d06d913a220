@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "f6f7185b_c4af4ff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-27T01:34:00Z",
+      "side": 1,
+      "message": "Created a go link and added here.",
+      "parentUuid": "0a12ec1c_95543b36",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c43c2ba_8ba3fe38",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
         "patchSetId": 4
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "make sure these uma stats never go below these number, regardless of the test?",
       "parentUuid": "70b67874_d9b128a7",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d6abbbf_287a025f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-27T01:34:00Z",
+      "side": 1,
+      "message": "I think it\u0027s great to have shared default values, but I also think we need to allow customizing the condition individually, that way we can allow a known bad metric individually for the time being.\n\nCreated a utility function to create expects of the default values, and added a comment in case future developer wants to customize the values.",
+      "parentUuid": "4cf7e109_422b40c1",
       "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -266,6 +302,24 @@
     },
     {
       "key": {
+        "uuid": "516ac35b_8e7ee4f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-27T01:34:00Z",
+      "side": 1,
+      "message": "Right, this will run on CQ but not on crosbolt.",
+      "parentUuid": "4e201c4f_bbb13f49",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aafaa9a6_6267499f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
         "patchSetId": 4
@@ -313,6 +367,24 @@
       "side": 1,
       "message": "Setings may actually be fine, but the potential issue is that some change to settings page may affect the performance. If we only care about pure resize performance, we can use about:blank. Or maybe snapshot of settings.",
       "parentUuid": "b2fbbc17_6e668f5a",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d2544af_d27312cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-27T01:34:00Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to use about:blank as it will not create a rendering process, that could be better than actual. Also I like to have some enough content data to be more realistic.\nMaybe use of about:version?\n\nOr possibly I should wait for yjliu\u0027s change of animated page, and then simply reuse it?",
+      "parentUuid": "ade8eb0b_e21c96a7",
       "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
