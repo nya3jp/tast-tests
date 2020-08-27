@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/graphics/trace/comm"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
@@ -214,6 +215,8 @@ func pushTraceReplayApp(ctx context.Context, cont *vm.Container) error {
 
 // RunTraceReplayTest starts a VM and replays all the traces in the test config.
 func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *testing.CloudStorage, cont *vm.Container, group *comm.TestGroupConfig) error {
+	defer crostini.RunCrostiniPostTest(ctx, cont)
+
 	// Guest is unable to use VM network interface to access it's host because of security reason,
 	// and the only to make such connectivity is to use host's outbound network interface.
 	outboundIP, err := getOutboundIP()
