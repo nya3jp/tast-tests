@@ -20,7 +20,7 @@ import (
 
 // Folder sharing strings.
 const (
-	ManageLinuxSharing     = "Manage Linux Sharing"
+	ManageLinuxSharing     = "Manage Linux sharing"
 	ShareWithLinux         = "Share with Linux"
 	DialogName             = "Share folder with Linux"
 	MountPath              = "/mnt/chromeos"
@@ -220,6 +220,19 @@ func (sf *SharedFolders) ShareDriveOK(ctx context.Context, filesApp *filesapp.Fi
 		return errors.Wrap(err, "failed to find share confirm dialog after sharing Google Drive")
 	}
 	defer scd.Release(ctx)
+	sf.AddFolder(SharedDrive)
+
+	return nil
+}
+
+// ShareMyFilesOK shares My files and clicks OK button on the confirm dialog.
+func (sf *SharedFolders) ShareMyFilesOK(ctx context.Context, filesApp *filesapp.FilesApp, tconn *chrome.TestConn) error {
+	// Share My files, click OK on the confirm dialog.
+	scd, err := sf.ShareMyFiles(ctx, tconn, filesApp, MyFilesMsg)
+	if err != nil {
+		return errors.Wrap(err, "failed to share My files")
+	}
+	defer scd.Release(ctx)
 
 	// Click button OK.
 	toast, err := scd.ClickOK(ctx, tconn)
@@ -227,8 +240,7 @@ func (sf *SharedFolders) ShareDriveOK(ctx context.Context, filesApp *filesapp.Fi
 		return errors.Wrap(err, "failed to click button OK on share confirm dialog")
 	}
 	defer toast.Release(ctx)
-
-	sf.AddFolder(SharedDrive)
+	sf.AddFolder(MyFiles)
 
 	return nil
 }
