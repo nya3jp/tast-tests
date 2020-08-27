@@ -24,7 +24,7 @@ func init() {
 		Func:         KeyboardGuest,
 		Desc:         "Checks that both physical and virtual keyboards work in guest mode",
 		Contacts:     []string{"essential-inputs-team@google.com", "shengjun@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
@@ -33,6 +33,7 @@ func init() {
 		}, {
 			Name:              "unstable",
 			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
