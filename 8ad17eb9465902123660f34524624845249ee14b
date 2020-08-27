@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "e1df084c_add07213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T08:52:31Z",
+      "side": 1,
+      "message": "Gabor already covered most points :) ",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "993b19f4_a503edd5",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 4
@@ -82,6 +99,30 @@
     },
     {
       "key": {
+        "uuid": "432a4dfb_59b07e9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T08:52:31Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "79dcb98f_fbb2399c",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23a33329_cd9dfd71",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 4
@@ -122,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "a14ae391_384246e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T08:52:31Z",
+      "side": 1,
+      "message": "c.f. https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "parentUuid": "f248a157_86f71684",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a53427d_a395b62e",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 4
@@ -156,6 +215,30 @@
       "writtenOn": "2020-08-27T08:41:56Z",
       "side": 1,
       "message": "As you are only using the params once, you can skip creating a variable from it, and can define it inside the function call:\n\tif err :\u003d clickElement(ui.FindParams{\n\t\tRole:      ui.RoleTypePopUpButton,\n\t\tClassName: \"BrowserAppMenuButton\",\n\t}); err !\u003d nil {\n\nSame for the next two clickElement() calls.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ceab25_6556d47c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T08:52:31Z",
+      "side": 1,
+      "message": "I think either approach sounds fine. Sometimes it\u0027s more readable to inline, sometimes not. Two-line literal sounds like on a borderline...",
+      "parentUuid": "c629dde3_a0973296",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -253,6 +336,30 @@
       "writtenOn": "2020-08-27T08:41:56Z",
       "side": 1,
       "message": "This does not ensure that there is a new browser. You can use:\n\tconn, err :\u003d cr.NewConn(ctx, \"chrome://newtab\")\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to lunch a new browser: \", err)\n\t}\n\tdefer conn.Close()",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "030991df_a031194b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T08:52:31Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "94d75318_08642321",
       "range": {
         "startLine": 51,
         "startChar": 0,
