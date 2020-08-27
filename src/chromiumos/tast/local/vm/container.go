@@ -650,48 +650,6 @@ func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cm
 	return containerCommand(ctx, c.VM.name, c.containerName, c.VM.Concierge.ownerID, vshArgs...)
 }
 
-// CreateDefaultContainer prepares a container in a running VM with default settings.
-// user is the user that is running the VM.
-// The directory dir may be used to store logs on failure. If the container
-// type is Tarball, then artifactPath must be specified with the path to the
-// tarball containing the termina VM and container. Otherwise, artifactPath
-// is ignored. Caller may wish to stop the VM if an error is returned.
-func CreateDefaultContainer(ctx context.Context, user string, t ContainerType, dir string) (*Container, error) {
-	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("LxdContainerCreated"))
-	if err != nil {
-		return nil, err
-	}
-	// Always close the InstallLinuxPackageProgress watcher regardless of success.
-	defer created.Close(ctx)
-
-	c, err := DefaultContainer(ctx, user)
-	if err != nil {
-		return nil, err
-	}
-	if err := c.Create(ctx, t); err != nil {
-		return nil, err
-	}
-	// Container is being created, wait for signal.
-	createdSig := &cpb.LxdContainerCreatedSignal{}
-	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", c.containerName, c.VM.name)
-	if err := waitForDBusSignal(ctx, created, nil, createdSig); err != nil {
-		return nil, errors.Wrap(err, "failed to get LxdContainerCreatedSignal")
-	}
-	if createdSig.GetVmName() != c.VM.name {
-		return nil, errors.Errorf("unexpected container creation signal for VM %q", createdSig.GetVmName())
-	} else if createdSig.GetContainerName() != c.containerName {
-		return nil, errors.Errorf("unexpected container creation signal for container %q", createdSig.GetContainerName())
-	}
-	if createdSig.GetStatus() != cpb.LxdContainerCreatedSignal_CREATED {
-		return nil, errors.Errorf("failed to create container: status: %d reason: %v", createdSig.GetStatus(), createdSig.GetFailureReason())
-	}
-
-	if err := c.StartAndWait(ctx, dir); err != nil {
-		return nil, err
-	}
-	return c, nil
-}
-
 func ciceroneDBusMatchSpec(memberName string) dbusutil.MatchSpec {
 	return dbusutil.MatchSpec{
 		Type:      "signal",
