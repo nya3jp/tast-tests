@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "077f7c76_d9963b66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T14:27:39Z",
+      "side": 1,
+      "message": "Sorry, one thing I overlooked here.\n\nIs this just a temporary directory to store output json file?\nif so, could you use temporary directory?\n\nworkspace, err :\u003d ioutil.TempDir(...)\nif err !\u003d nil {\n  ...\n}\ndefer os.RemoveAll(workspace)\n\ncmd :\u003d testexec.CommadnContext(\n  ...\n  \"--workspace_path\u003d\"+workspace,\n  ...)\n\nso that it wouldn\u0027t be retained after the test completion.\n\nTast do not cleans /usr/local, and sometimes we hit disk capacity error on some devices, so we should try to reduce if possible.",
+      "revId": "92bd275b3ba9b76a797a776888cb5cf99f3e4ba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
