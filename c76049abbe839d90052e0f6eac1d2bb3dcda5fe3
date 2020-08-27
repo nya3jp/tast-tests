@@ -16,6 +16,46 @@
       "revId": "c76049abbe839d90052e0f6eac1d2bb3dcda5fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c845083f_c29335c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-08-27T03:42:37Z",
+      "side": 1,
+      "message": "While I like all the new helpful functions, I don\u0027t agree that we should use tast tests to check edge cases like incognito that are already covered in unit tests. I\u0027m happy to have an e2e tast test that checks we can open the app from the 3 dot menu, or settings etc. But think we should just do that for a regular consumer profile to keep the number of tast test we have low.\n\nMore robust testing of code paths we can cover in unit and browser tests",
+      "revId": "c76049abbe839d90052e0f6eac1d2bb3dcda5fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e1942bd_35e9fd1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-08-27T03:42:37Z",
+      "side": 1,
+      "message": "nit: IsWhatsNewShown",
+      "range": {
+        "startLine": 68,
+        "startChar": 12,
+        "endLine": 68,
+        "endChar": 13
+      },
+      "revId": "c76049abbe839d90052e0f6eac1d2bb3dcda5fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
