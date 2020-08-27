@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "b7b7ecf3_a2a374eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-27T16:11:54Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we could mix group:cros_bolt and group:hwsec_destructive.",
+      "parentUuid": "f8cc6b49_c509fe08",
+      "range": {
+        "startLine": 35,
+        "startChar": 18,
+        "endLine": 35,
+        "endChar": 53
+      },
+      "revId": "dbd42d2a3c98625b93fe47f6f0bb2f61dd9dda1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b20b21d_869ae16d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
         "patchSetId": 4

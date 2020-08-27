@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18987bc2_f80bcb17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-08-27T16:11:54Z",
+      "side": 1,
+      "message": "Do you want to add some comments on why we want to take the differences between these daemons?",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 89
+      },
+      "revId": "806bb707a81e2f7510e9d79dbf99a2e3432c00e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
