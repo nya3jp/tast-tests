@@ -16,6 +16,46 @@
       "revId": "be777101c2e4294aa0c7b43ec2687355823aa7e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "966ec34e_a947faa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-27T19:08:35Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "be777101c2e4294aa0c7b43ec2687355823aa7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3556ba0_21e8a2d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_ok.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-08-27T19:08:35Z",
+      "side": 1,
+      "message": "nit: add docstring to all non-trivial funcs.",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "be777101c2e4294aa0c7b43ec2687355823aa7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
