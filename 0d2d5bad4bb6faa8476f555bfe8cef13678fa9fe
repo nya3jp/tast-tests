@@ -22,6 +22,30 @@
       "revId": "0d2d5bad4bb6faa8476f555bfe8cef13678fa9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5dd9fb7_45542f36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-27T09:07:34Z",
+      "side": 1,
+      "message": "Based on the data from Hearthstone app, I think what you are suggesting makes sense.  I haven\u0027t seen data on other apps, but if your experience suggests the FS usage trend in Hearthstone is representative of a larger population of apps, then it makes sense.\n\nhttp://doc/1dQ-Y6JTZchSQMaNVQSB5fl4wXr5t4q3dt6Ygpra1nJo#heading\u003dh.pyd832zhgv33",
+      "parentUuid": "6a284596_0573b109",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "0d2d5bad4bb6faa8476f555bfe8cef13678fa9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
