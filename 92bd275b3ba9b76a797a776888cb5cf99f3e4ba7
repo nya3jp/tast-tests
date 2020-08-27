@@ -70,6 +70,24 @@
       "revId": "92bd275b3ba9b76a797a776888cb5cf99f3e4ba7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00175bb5_bef64a08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T15:07:35Z",
+      "side": 1,
+      "message": "ok, got it. Thank you for confirmation!",
+      "parentUuid": "79d4f0d6_41cbcc98",
+      "revId": "92bd275b3ba9b76a797a776888cb5cf99f3e4ba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
