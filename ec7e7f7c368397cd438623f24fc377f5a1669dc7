@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0210ed53_d1992099",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:10:22Z",
+      "side": 1,
+      "message": "FYI: vsavu@ for policyutil/pre introduction.\n\nLooks better to me :-).",
+      "revId": "ec7e7f7c368397cd438623f24fc377f5a1669dc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aca56a95_bf9eb58f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:10:22Z",
+      "side": 1,
+      "message": "Could you use temporary directory to be consistent with precondition?",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "ec7e7f7c368397cd438623f24fc377f5a1669dc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5fca1eb_7763f524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T13:10:22Z",
+      "side": 1,
+      "message": "Could you move this to the isOOBE block below, too?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 2
+      },
+      "revId": "ec7e7f7c368397cd438623f24fc377f5a1669dc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
