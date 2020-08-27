@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "892bc34a_e7ac8c8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-27T23:07:16Z",
+      "side": 1,
+      "message": "[FAILED] chromiumos/platform/tast-tests: crostini_lint                    \n    Hook script \"tools/run_crostini_lint.sh ${PRESUBMIT_COMMIT}\" failed with code 1:\n      src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go: Missing call to Crostini post-test hooks\n      Try adding e.g. defer crostini.RunCrostiniPostTest(ctx, cont) at the start of your test.",
+      "parentUuid": "78a66052_2dffb7b1",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca705d4a_55e51c5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
         "patchSetId": 3
@@ -122,6 +140,24 @@
       "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faef8ec6_b86d7269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-27T23:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "347b9804_2515780d",
+      "revId": "d2f7c0c50b931d95e2360aed00df0baa2a0544ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
