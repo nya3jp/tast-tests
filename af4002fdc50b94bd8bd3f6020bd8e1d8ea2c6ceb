@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "662c2e2a_37f24e6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2020-08-27T04:27:01Z",
+      "side": 1,
+      "message": "Don\u0027t know if gerrit sent a message when I started this review, so here is one. This is a pre-req for the new test.",
+      "revId": "af4002fdc50b94bd8bd3f6020bd8e1d8ea2c6ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
