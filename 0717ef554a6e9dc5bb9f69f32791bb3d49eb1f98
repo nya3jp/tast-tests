@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "43ef680a_8b7944fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-08-27T15:11:38Z",
+      "side": 1,
+      "message": "Thanks very much for working through this with me!",
+      "parentUuid": "3c2fd105_14bbeb1c",
+      "revId": "0717ef554a6e9dc5bb9f69f32791bb3d49eb1f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5d59df3_0a048479",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "0717ef554a6e9dc5bb9f69f32791bb3d49eb1f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a97f0a27_57f132c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark_soda.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-08-27T15:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5d59df3_0a048479",
+      "revId": "0717ef554a6e9dc5bb9f69f32791bb3d49eb1f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
