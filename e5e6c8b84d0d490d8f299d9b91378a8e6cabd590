@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "19ef354c_5ffa3112",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-08-27T13:46:26Z",
+      "side": 1,
+      "message": "Just to clarify: This does not enroll the device, just the user is managed.",
+      "parentUuid": "41563623_21b7f69b",
+      "revId": "e5e6c8b84d0d490d8f299d9b91378a8e6cabd590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0fc2d86_b46e24e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
         "patchSetId": 2
