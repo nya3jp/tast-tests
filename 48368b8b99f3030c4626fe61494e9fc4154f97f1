@@ -16,6 +16,23 @@
       "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6f4a4a8_1b017f4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-27T19:21:12Z",
+      "side": 1,
+      "message": "Same comment as https://googleplex-android-review.git.corp.google.com/c/platform/vendor/google_arc/+/12464250/comment/9a2c8721_5554b400/:\n\nsync() doesn\u0027t require special user access.  So should this function just focus on drop_caches while sync() can be called outside this context?  WDYT?\n\nhttps://unix.stackexchange.com/questions/478599/calling-sync-without-root-privileges",
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
