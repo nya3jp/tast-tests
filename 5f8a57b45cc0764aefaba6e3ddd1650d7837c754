@@ -16,6 +16,23 @@
       "revId": "5f8a57b45cc0764aefaba6e3ddd1650d7837c754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0b37d74_b34bdd82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T14:00:51Z",
+      "side": 1,
+      "message": "I used the Password from the pre.go in\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/allow_screen_lock.go?q\u003dpre.Password\nand\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go?q\u003dpre.Password\nPlease relink these as well.",
+      "revId": "5f8a57b45cc0764aefaba6e3ddd1650d7837c754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
