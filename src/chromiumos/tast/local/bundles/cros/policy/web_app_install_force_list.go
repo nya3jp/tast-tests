@@ -11,10 +11,10 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/policy/pre"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
 )
 
