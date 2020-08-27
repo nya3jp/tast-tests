@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f27a6b7f_23090925",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-27T07:55:31Z",
+      "side": 1,
+      "message": "I feel like this is extremely similar to crostini.ShareDownloads in crrev.com/c/2374912? Is it possible to merge these two tests into one test?\n\ntast global timeout for information suite has been bumped from 1hr to 3hr several months ago as tast tests # grows. And we are slowly hitting the 3hr global timeout again. I think it would be nice if we can group tests with similar functionality into one to save the overhead.",
+      "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cc2f7f1_23fc8710",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_multiple_folders.go",
         "patchSetId": 1
