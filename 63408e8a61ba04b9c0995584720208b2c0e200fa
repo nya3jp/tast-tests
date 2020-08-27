@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b31587c_c4e48eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:19:14Z",
+      "side": 1,
+      "message": "cmd.Wait should be called in any case to release resources associated with cmd.\n\nA usual idiom is:\n\n cmd :\u003d a.Command(...)\n if err :\u003d cmd.Start(); err !\u003d nil {\n   ...\n }\n defer cmd.Wait()\n defer cmd.Kill()",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "63408e8a61ba04b9c0995584720208b2c0e200fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "435e0a0e_a61bc1ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:19:14Z",
+      "side": 1,
+      "message": "Isn\u0027t pkill available in /system/bin? If there\u0027s a reason it\u0027s good to add a comment.",
+      "range": {
+        "startLine": 68,
+        "startChar": 28,
+        "endLine": 68,
+        "endChar": 45
+      },
+      "revId": "63408e8a61ba04b9c0995584720208b2c0e200fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e1c50fd_5729a204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-27T09:19:14Z",
+      "side": 1,
+      "message": "In a rare race condition, pkill might start before sleep, then this will fail.\n\nSome possible workarounds:\n\n1. Call pkill with testing.Poll.\n2. Make the shell kill itself, e.g. sh -c \u0027kill -SEGV $$\u0027.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "63408e8a61ba04b9c0995584720208b2c0e200fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
