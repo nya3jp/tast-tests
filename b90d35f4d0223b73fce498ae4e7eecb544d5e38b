@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53d187e6_398c3e52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2020-08-27T18:18:16Z",
+      "side": 1,
+      "message": "mukai-san, do you want me to look at something in particular here? I see Oshima-san already gave +2, so you probably don\u0027t need me! 😄",
+      "revId": "b90d35f4d0223b73fce498ae4e7eecb544d5e38b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
