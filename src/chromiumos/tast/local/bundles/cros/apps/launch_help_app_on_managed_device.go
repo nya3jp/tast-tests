@@ -6,11 +6,15 @@ package apps
 
 import (
 	"context"
+	"io/ioutil"
+	"os"
 
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	policyPre "chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -23,7 +27,6 @@ func init() {
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"apps.LaunchHelpAppOnManagedDevice.enterprise_username", "apps.LaunchHelpAppOnManagedDevice.enterprise_password"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
@@ -37,10 +40,12 @@ func init() {
 			}, {
 				Name:              "logged_in_stable",
 				ExtraHardwareDeps: pre.AppsStableModels,
+				Pre:               policyPre.User,
 				Val:               false,
 			}, {
 				Name:              "logged_in_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				Pre:               policyPre.User,
 				Val:               false,
 			},
 		}})
@@ -48,25 +53,41 @@ func init() {
 
 // LaunchHelpAppOnManagedDevice verifies launching Showoff on a managed device.
 func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("apps.LaunchHelpAppOnManagedDevice.enterprise_username")
-	password := s.RequiredVar("apps.LaunchHelpAppOnManagedDevice.enterprise_password")
-
 	isOOBE := s.Param().(bool)
 
-	// TODO(b/161938620): Switch to fake DMS once crbug.com/1099310 is resolved.
-	args := append([]chrome.Option(nil), chrome.Auth(username, password, "gaia-id"), chrome.GAIALogin(), chrome.ProdPolicy())
+	var cr *chrome.Chrome
 	if isOOBE {
-		args = append(args, chrome.DontSkipOOBEAfterLogin(), chrome.ExtraArgs("--enable-features=HelpAppFirstRun"))
-	}
+		// Using fakedms and login
+		// Start FakeDMS.
+		tmpdir, err := ioutil.TempDir("", "fdms-")
+		if err != nil {
+			s.Fatal("Failed to create fdms temp dir: ", err)
+		}
+		defer os.RemoveAll(tmpdir)
 
-	cr, err := chrome.New(
-		ctx,
-		args...,
-	)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+		testing.ContextLogf(ctx, "FakeDMS starting in %s", tmpdir)
+		fdms, err := fakedms.New(ctx, tmpdir)
+		if err != nil {
+			s.Fatal("Failed to start FakeDMS: ", err)
+		}
+		defer fdms.Stop(ctx)
+
+		if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+			s.Fatal("Failed to write policies to FakeDMS: ", err)
+		}
+
+		cr, err = chrome.New(
+			ctx,
+			chrome.Auth(policyPre.Username, policyPre.Password, policyPre.GaiaID),
+			chrome.DMSPolicy(fdms.URL), chrome.DontSkipOOBEAfterLogin(),
+			chrome.ExtraArgs("--enable-features=HelpAppFirstRun"),
+		)
+		if err != nil {
+			s.Fatal("Failed to connect to Chrome: ", err)
+		}
+	} else {
+		cr = s.PreValue().(*policyPre.PreData).Chrome
 	}
-	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
