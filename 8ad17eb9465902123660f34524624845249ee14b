@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "68ac6c53_5fd186e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T09:24:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0dc502ee_ccce8b88",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42db1dba_ed7652e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 4
@@ -336,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "5da63506_4e984679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T09:24:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e3feecf_a701a8c7",
+      "range": {
+        "startLine": 97,
+        "startChar": 15,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c629dde3_a0973296",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 4
@@ -395,6 +437,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "c629dde3_a0973296",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d3c0dd6_2810a4c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T09:24:11Z",
+      "side": 1,
+      "message": "I see. In this case it is up to you Jun, you can change it back to the original, if you like that one.",
+      "parentUuid": "513a701a_aa3848f6",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -524,6 +590,24 @@
     },
     {
       "key": {
+        "uuid": "3e4214dd_4a5143b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T09:24:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6400eb82_cffb70e5",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "488a034f_12311ced",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
         "patchSetId": 4
@@ -556,6 +640,24 @@
       "revId": "8ad17eb9465902123660f34524624845249ee14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd96790_0b94d6a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T09:24:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e04a4237_f470fe93",
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -618,6 +720,30 @@
       "side": 1,
       "message": "Great catch. Fix it. btw, is there any good way to start a connection in incognito mode? Sometimes keyboard shortcut is not reliable, especially when device is warming up after login.",
       "parentUuid": "030991df_a031194b",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "8ad17eb9465902123660f34524624845249ee14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a5cd827_b25434e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-27T09:24:11Z",
+      "side": 1,
+      "message": "It is good question, I could not find anything in chrome://about. It would be nice to open an incognito window from the URL bar.\n\nI just found that instead of \"chrome://newtab\" you can use \"\", or chrome.BlankURL.",
+      "parentUuid": "8c907106_7f41687e",
       "range": {
         "startLine": 51,
         "startChar": 0,
