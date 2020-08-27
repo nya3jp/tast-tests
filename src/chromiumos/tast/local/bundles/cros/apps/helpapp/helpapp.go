@@ -28,6 +28,7 @@ func WaitForApp(ctx context.Context, tconn *chrome.TestConn) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to find help app")
 	}
+
 	// Find Overview tab to verify app rendering.
 	params := ui.FindParams{
 		Name: "Overview",
@@ -60,13 +61,22 @@ func Exists(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 
 // IsPerkShown checks if the perks tab is displayed or not.
 func IsPerkShown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	return isTabShown(ctx, tconn, "Perks")
+}
+
+// IsWhatsnewShown checks if the perks tab is displayed or not.
+func IsWhatsnewShown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	return isTabShown(ctx, tconn, "What's new")
+}
+
+func isTabShown(ctx context.Context, tconn *chrome.TestConn, tabName string) (bool, error) {
 	helpRootNode, err := HelpRootNode(ctx, tconn)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to find help app")
 	}
 
 	params := ui.FindParams{
-		Name: "Perks",
+		Name: tabName,
 		Role: ui.RoleTypeTreeItem,
 	}
 	return helpRootNode.DescendantExists(ctx, params)
@@ -75,4 +85,54 @@ func IsPerkShown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 // HelpRootNode returns the root ui node of Help app.
 func HelpRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
 	return ui.FindWithTimeout(ctx, tconn, helpRootNodeParams, 20*time.Second)
+}
+
+// LaunchFromThreeDotMenu launchs Help app from three dot menu
+func LaunchFromThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) error {
+	// Find and click the three dot menu via UI.
+	params := ui.FindParams{
+		Role:      ui.RoleTypePopUpButton,
+		ClassName: "BrowserAppMenuButton",
+	}
+	menu, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the three dot menu")
+	}
+	defer menu.Release(ctx)
+
+	if err := menu.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click three dot menu")
+	}
+
+	// Find and click Help in three dot menu via UI.
+	helpMenuParams := ui.FindParams{
+		Name:      "Help",
+		ClassName: "MenuItemView",
+	}
+	helpMenu, err := ui.FindWithTimeout(ctx, tconn, helpMenuParams, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find Help in three dot menu")
+	}
+	defer menu.Release(ctx)
+
+	if err := helpMenu.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click help in three dot menu")
+	}
+
+	// Find and click Help in three dot menu via UI.
+	getHelpMenuParams := ui.FindParams{
+		Name:      "Get Help",
+		ClassName: "MenuItemView",
+	}
+	getHelpMenu, err := ui.FindWithTimeout(ctx, tconn, getHelpMenuParams, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find get Help in help sub-menu")
+	}
+	defer menu.Release(ctx)
+
+	if err := getHelpMenu.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click get Help in help sub-menu")
+	}
+
+	return WaitForApp(ctx, tconn)
 }
