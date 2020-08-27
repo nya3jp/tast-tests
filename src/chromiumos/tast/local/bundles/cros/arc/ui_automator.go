@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -30,6 +31,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraAttr:         []string{"informational"},
 		}},
+		Timeout: 12 * time.Minute,
 	})
 }
 
@@ -52,6 +54,11 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 	)
 
 	a := s.PreValue().(arc.PreData).ARC
+	cr := s.PreValue().(arc.PreData).Chrome
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
+	}
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
@@ -64,8 +71,20 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
+	// Sleep long enough for the screen to turn off
+	testing.Sleep(ctx, 8*time.Minute)
+
 	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed starting app: ", err)
+	}
+
+	s.Log("Waiting for the app to be displayed")
+	if err := ash.WaitForVisible(ctx, tconn, pkg); err != nil {
+		s.Fatal("The app window doesn't display if the screen is off: ", err)
+		// As a note, if you didn't wait for the window to display, the test would still pass.
+		// ARC is capable of interacting with an invisible app.
+		// So this issue mostly effects tests that care about the window displaying.
+		// Feel free to move the mouse or type a key, you should see the app launch.
 	}
 
 	must := func(err error) {
