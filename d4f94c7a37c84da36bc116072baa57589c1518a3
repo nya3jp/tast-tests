@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fdea437_4d655678",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-08-27T05:36:05Z",
+      "side": 1,
+      "message": "Precisely speaking, shouldn\u0027t we move this to just before return nil?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 26
+      },
+      "revId": "d4f94c7a37c84da36bc116072baa57589c1518a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
