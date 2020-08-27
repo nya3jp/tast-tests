@@ -16,6 +16,23 @@
       "revId": "efabc69b8543be52a58564d3b05de7cb043e1ca7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c9f1d43_65562e66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-08-27T19:18:05Z",
+      "side": 1,
+      "message": "Is this by any chance collecting vmlog from host?",
+      "revId": "efabc69b8543be52a58564d3b05de7cb043e1ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
