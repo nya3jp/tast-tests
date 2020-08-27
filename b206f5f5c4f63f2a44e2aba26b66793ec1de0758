@@ -16,6 +16,23 @@
       "revId": "b206f5f5c4f63f2a44e2aba26b66793ec1de0758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c7c7e90_4f10b1d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1445212
+      },
+      "writtenOn": "2020-08-27T17:42:14Z",
+      "side": 1,
+      "message": "Hi Brendan, LongUITimeout \u003d 5 * time.Minute was defined based on the timeout needed for all the apps. I am not sure by changing this value will affect the test case results of an app. So it will be good if we change LongUITimeout \u003d 5 * time and defaultTestCaseTimeout \u003d 6 * time.Minute .Thanks.",
+      "revId": "b206f5f5c4f63f2a44e2aba26b66793ec1de0758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
