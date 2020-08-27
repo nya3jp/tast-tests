@@ -87,6 +87,24 @@
       "revId": "e5e6c8b84d0d490d8f299d9b91378a8e6cabd590",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8233425_272e6e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-27T06:57:47Z",
+      "side": 1,
+      "message": "SGTM as it\u0027s not regression. Could you file a tracking bug, and add TODO here referring the bug?",
+      "parentUuid": "f8b5cefc_c3fd6836",
+      "revId": "e5e6c8b84d0d490d8f299d9b91378a8e6cabd590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
