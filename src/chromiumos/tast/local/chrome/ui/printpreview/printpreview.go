@@ -116,10 +116,17 @@ func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error
 	if err := layoutList.LeftClick(ctx); err != nil {
 		return errors.Wrap(err, "failed to click layout list")
 	}
-	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
-	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
+
+	// Find the landscape layout option to verify the layout list has expanded.
+	params = ui.FindParams{
+		Name: "Landscape",
+		Role: ui.RoleTypeListBoxOption,
+	}
+	landscapeOption, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
 		return errors.Wrap(err, "failed to wait for layout list to expand")
 	}
+	defer landscapeOption.Release(ctx)
 
 	// Select the desired layout.
 	kb, err := input.Keyboard(ctx)
@@ -158,10 +165,17 @@ func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 	if err := pagesList.LeftClick(ctx); err != nil {
 		return errors.Wrap(err, "failed to click pages list")
 	}
-	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
-	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
+
+	// Find the custom pages option to verify the pages list has expanded.
+	params = ui.FindParams{
+		Name: "Custom",
+		Role: ui.RoleTypeListBoxOption,
+	}
+	customOption, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
 		return errors.Wrap(err, "failed to wait for pages list to expand")
 	}
+	defer customOption.Release(ctx)
 
 	// Select "Custom" and set the desired page range.
 	kb, err := input.Keyboard(ctx)
