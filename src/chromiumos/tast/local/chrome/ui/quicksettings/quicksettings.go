@@ -8,6 +8,8 @@ package quicksettings
 import (
 	"context"
 	"regexp"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -17,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -334,4 +337,157 @@ func NotificationsHidden(ctx context.Context, tconn *chrome.TestConn) (bool, err
 		return false, errors.Wrap(err, "failed checking if notification node exists")
 	}
 	return exists, nil
+}
+
+// findSlider finds the UI node for the specified slider. Callers should defer releasing the returned node.
+func findSlider(ctx context.Context, tconn *chrome.TestConn, slider SliderType) (*ui.Node, error) {
+	// The mic gain slider is on the audio settings page of Quick Settings, so we need to navigate there first.
+	if slider == SliderTypeMicGain {
+		audioParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "Audio settings"}
+
+		exists, err := ui.Exists(ctx, tconn, audioParams)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to check if audio settings button exists")
+		}
+
+		if exists {
+			audioBtn, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, Name: "Audio settings"}, uiTimeout)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to find audio settings button")
+			}
+			defer audioBtn.Release(ctx)
+
+			if err := audioBtn.LeftClick(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to click audio settings button")
+			}
+		}
+	}
+
+	s, err := ui.FindWithTimeout(ctx, tconn, SliderParamMap[slider], uiTimeout)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed finding the %v slider", slider)
+	}
+	return s, nil
+}
+
+// SliderValue returns the slider value as an integer.
+// The slider node's value taken directly is a string expressing a percentage, like "50%".
+func SliderValue(ctx context.Context, tconn *chrome.TestConn, slider SliderType) (int, error) {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return 0, err
+	}
+	defer cleanup(ctx)
+
+	s, err := findSlider(ctx, tconn, slider)
+	if err != nil {
+		return 0, err
+	}
+	defer s.Release(ctx)
+
+	percent := strings.Replace(s.Value, "%", "", 1)
+	level, err := strconv.Atoi(percent)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to convert %v to int", percent)
+	}
+	return level, nil
+}
+
+// focusSlider puts the keyboard focus on the slider. The keyboard can then be used to change the slider level.
+// TODO(crbug/1123231): use better slider automation controls if possible, instead of keyboard controls.
+func focusSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slider SliderType) error {
+	s, err := findSlider(ctx, tconn, slider)
+	if err != nil {
+		return err
+	}
+	defer s.Release(ctx)
+
+	// Return if already focused.
+	if s.State[ui.StateTypeFocused] == true {
+		return nil
+	}
+
+	// Press tab to ensure keyboard focus is already in Quick Settings, otherwise it may not receive the focus.
+	if err := kb.Accel(ctx, "Tab"); err != nil {
+		return errors.Wrap(err, "failed to press tab key")
+	}
+
+	if err := s.FocusAndWait(ctx, uiTimeout); err != nil {
+		return errors.Wrapf(err, "failed to focus the %v slider", slider)
+	}
+	return nil
+}
+
+// changeSlider increments or decrements the slider using the keyboard.
+// TODO(crbug/1123231): use better slider automation controls if possible, instead of keyboard controls.
+func changeSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slider SliderType, increase bool) error {
+	key := "up"
+	if !increase {
+		key = "down"
+	}
+
+	if err := focusSlider(ctx, tconn, kb, slider); err != nil {
+		return err
+	}
+
+	initial, err := SliderValue(ctx, tconn, slider)
+	if err != nil {
+		return err
+	}
+
+	if err := kb.Accel(ctx, key); err != nil {
+		return errors.Wrapf(err, "failed to press %v arrow key", key)
+	}
+
+	// The value changes smoothly as the slider animates, so wait for it to finish before returning the final value.
+	previous := initial
+	slidingDone := func(ctx context.Context) error {
+		current, err := SliderValue(ctx, tconn, slider)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if current == initial {
+			return errors.New("slider hasn't started moving yet")
+		}
+		if current != previous {
+			previous = current
+			return errors.New("slider still sliding")
+		}
+		return nil
+	}
+
+	if err := testing.Poll(ctx, slidingDone, &testing.PollOptions{Interval: 1000 * time.Millisecond, Timeout: 2 * uiTimeout}); err != nil {
+		return errors.Wrap(err, "failed waiting for slider animation to complete")
+	}
+	return nil
+}
+
+// IncreaseSlider increments the slider positively using the keyboard and returns the new level.
+func IncreaseSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slider SliderType) (int, error) {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return 0, err
+	}
+	defer cleanup(ctx)
+
+	if err := changeSlider(ctx, tconn, kb, slider, true); err != nil {
+		return 0, err
+	}
+
+	return SliderValue(ctx, tconn, slider)
+}
+
+// DecreaseSlider increments the slider positively using the keyboard and returns the new level.
+func DecreaseSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slider SliderType) (int, error) {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return 0, err
+	}
+	defer cleanup(ctx)
+
+	if err := changeSlider(ctx, tconn, kb, slider, false); err != nil {
+		return 0, err
+	}
+
+	return SliderValue(ctx, tconn, slider)
 }
