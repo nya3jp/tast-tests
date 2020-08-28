@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6688f86e_913b2878",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-08-28T10:19:22Z",
+      "side": 1,
+      "message": "You can exchange two variable by `a, b \u003d b, a` pattern.\n\nSee: https://golang.org/ref/spec#Assignments",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 22
+      },
+      "revId": "d8a3377277c87b795b49efc3e27cc3e254cc7f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
