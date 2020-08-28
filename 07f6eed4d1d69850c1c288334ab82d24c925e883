@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bf4805d_785c9bc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-08-28T18:50:12Z",
+      "side": 1,
+      "message": "LGTM with a nit",
+      "revId": "07f6eed4d1d69850c1c288334ab82d24c925e883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d15a6080_649b5eda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-08-28T18:50:12Z",
+      "side": 1,
+      "message": "Break into two lines?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 107
+      },
+      "revId": "07f6eed4d1d69850c1c288334ab82d24c925e883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
