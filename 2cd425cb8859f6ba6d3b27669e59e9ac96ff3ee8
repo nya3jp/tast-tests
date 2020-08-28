@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "fdff5053_e50bf6e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-28T22:24:32Z",
+      "side": 1,
+      "message": "I mentioned it a little in the patch comment, but since the test ends with the screen locked, the next test that runs will fail since the UI reset doesn\u0027t unlock the screen again.\n\nI just found that the test account password is exported in chrome.go, though, so I\u0027ll go ahead and re-add the precondition and just unlock the screen at the end of the test.",
+      "parentUuid": "2d166e53_ad070f5b",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "2cd425cb8859f6ba6d3b27669e59e9ac96ff3ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bec9d1bb_c17ccafa",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 6
@@ -62,6 +86,30 @@
       "revId": "2cd425cb8859f6ba6d3b27669e59e9ac96ff3ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6354ec9f_20736354",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-28T22:24:32Z",
+      "side": 1,
+      "message": "Weird, I guess I forgot to remove it!",
+      "parentUuid": "bec9d1bb_c17ccafa",
+      "range": {
+        "startLine": 248,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 23
+      },
+      "revId": "2cd425cb8859f6ba6d3b27669e59e9ac96ff3ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

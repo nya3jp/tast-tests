@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "c9cf951a_12ac467b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-28T22:24:32Z",
+      "side": 1,
+      "message": "Sounds good, removed the Is/Are prefixes.",
+      "parentUuid": "73200c5e_7eaf9e7d",
+      "range": {
+        "startLine": 381,
+        "startChar": 5,
+        "endLine": 381,
+        "endChar": 27
+      },
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8da2c53_d33e89fe",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 4
