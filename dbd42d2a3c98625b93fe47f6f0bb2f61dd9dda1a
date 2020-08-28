@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "a2006fdc_acd479d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-08-28T06:44:31Z",
+      "side": 1,
+      "message": "After discussed with garryxiao@ and hctsai@, here is the conclusion:\n\nWe can put 2+ groups in a tast.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/test_attributes.md\n\nBut this tast would run twice with these two control\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.hwsec-destructive\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.crosbolt-perbuild\n\nAnd it still have chance to destroy the local files of other crosbolt build...\n\nA solution of it is add a new group and control file but using the same suite of crosbolt.\n\nOr using the old groups, and change the expr of the old control files.",
+      "parentUuid": "b7b7ecf3_a2a374eb",
+      "range": {
+        "startLine": 35,
+        "startChar": 18,
+        "endLine": 35,
+        "endChar": 53
+      },
+      "revId": "dbd42d2a3c98625b93fe47f6f0bb2f61dd9dda1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b20b21d_869ae16d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
         "patchSetId": 4
