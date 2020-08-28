@@ -309,3 +309,10 @@ func WaitForDecoderEnabled(ctx context.Context, cr *chrome.Chrome, enabled bool)
 	}
 	return nil
 }
+
+// EnableA11yVirtualKeyboard enables or disables accessibility mode of the
+// virtual keyboard. When disabled, the tablet non-a11y virtual keyboard will
+// be used when activated.
+func EnableA11yVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.a11y.virtual_keyboard", enabled)
+}
