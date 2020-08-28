@@ -55,14 +55,14 @@ func (c *fakeConsoleAPICalledClient) Close() error {
 }
 
 // verifyLog saves logs accumulated in m and compares the content with exp.
-func verifyLog(t *testing.T, m *Master, exp string) {
+func verifyLog(t *testing.T, agg *Aggregator, exp string) {
 	t.Helper()
 
 	td := testutil.TempDir(t)
 	defer os.RemoveAll(td)
 	fn := filepath.Join(td, "jslog.txt")
 
-	if err := m.Save(fn); err != nil {
+	if err := agg.Save(fn); err != nil {
 		t.Fatal("Failed to save JS logs: ", err)
 	}
 
@@ -78,13 +78,13 @@ func verifyLog(t *testing.T, m *Master, exp string) {
 }
 
 func TestLogger(t *testing.T) {
-	m := NewMaster()
-	defer m.Close()
+	agg := NewAggregator()
+	defer agg.Close()
 
 	ev1 := newFakeConsoleAPICalledClient()
 	ev2 := newFakeConsoleAPICalledClient()
-	w1 := m.NewWorker("foo", "fooURL", ev1)
-	w2 := m.NewWorker("bar", "barURL", ev2)
+	w1 := agg.NewWorker("foo", "fooURL", ev1)
+	w2 := agg.NewWorker("bar", "barURL", ev2)
 
 	go func() {
 		ts := time.Date(2018, 10, 26, 19, 20, 28, 0, time.Local)
@@ -118,31 +118,31 @@ func TestLogger(t *testing.T) {
 2018-10-26 19:20:28 [type] message2
 
 `
-	verifyLog(t, m, exp)
+	verifyLog(t, agg, exp)
 
 	// Log is cleared on save.
-	verifyLog(t, m, "")
+	verifyLog(t, agg, "")
 }
 
 func TestLogger_Empty(t *testing.T) {
-	m := NewMaster()
-	defer m.Close()
+	agg := NewAggregator()
+	defer agg.Close()
 
 	ev := newFakeConsoleAPICalledClient()
-	w := m.NewWorker("targetID", "initURL", ev)
+	w := agg.NewWorker("targetID", "initURL", ev)
 
 	go ev.finish()
 	w.Close()
 
-	verifyLog(t, m, "")
+	verifyLog(t, agg, "")
 }
 
 func TestLogger_ClearOnSave(t *testing.T) {
-	m := NewMaster()
-	defer m.Close()
+	agg := NewAggregator()
+	defer agg.Close()
 
 	ev := newFakeConsoleAPICalledClient()
-	w := m.NewWorker("foo", "fooURL", ev)
+	w := agg.NewWorker("foo", "fooURL", ev)
 
 	go func() {
 		ts := time.Date(2018, 10, 26, 19, 20, 28, 0, time.Local)
@@ -158,20 +158,20 @@ func TestLogger_ClearOnSave(t *testing.T) {
 
 	w.Close()
 
-	if err := m.Save("/dev/null"); err != nil {
+	if err := agg.Save("/dev/null"); err != nil {
 		t.Fatal("Failed to save: ", err)
 	}
 
 	// Log is cleared on save.
-	verifyLog(t, m, "")
+	verifyLog(t, agg, "")
 }
 
 func TestLogger_ErrorStackTrace(t *testing.T) {
-	m := NewMaster()
-	defer m.Close()
+	agg := NewAggregator()
+	defer agg.Close()
 
 	ev := newFakeConsoleAPICalledClient()
-	w := m.NewWorker("foo", "fooURL", ev)
+	w := agg.NewWorker("foo", "fooURL", ev)
 
 	go func() {
 		ts := time.Date(2018, 10, 26, 19, 20, 28, 0, time.Local)
@@ -208,15 +208,15 @@ func TestLogger_ErrorStackTrace(t *testing.T) {
 	at bar (chrome://bar [33:44])
 
 `
-	verifyLog(t, m, exp)
+	verifyLog(t, agg, exp)
 }
 
 func TestLogger_InfoStackTrace(t *testing.T) {
-	m := NewMaster()
-	defer m.Close()
+	agg := NewAggregator()
+	defer agg.Close()
 
 	ev := newFakeConsoleAPICalledClient()
-	w := m.NewWorker("foo", "fooURL", ev)
+	w := agg.NewWorker("foo", "fooURL", ev)
 
 	go func() {
 		ts := time.Date(2018, 10, 26, 19, 20, 28, 0, time.Local)
@@ -251,5 +251,5 @@ func TestLogger_InfoStackTrace(t *testing.T) {
 2018-10-26 19:20:28 [info] message
 
 `
-	verifyLog(t, m, exp)
+	verifyLog(t, agg, exp)
 }

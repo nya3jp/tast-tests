@@ -19,9 +19,9 @@ import (
 	"github.com/mafredri/cdp/protocol/runtime"
 )
 
-// Master records JavaScript console logs across multiple DevTool targets, and
+// Aggregator records JavaScript console logs across multiple DevTool targets, and
 // saves them as a single text file suitable for inspection.
-type Master struct {
+type Aggregator struct {
 	targets map[string]*target // keyed by target ID
 	mutex   sync.Mutex         // protects targets
 
@@ -37,7 +37,7 @@ type target struct {
 	buf bytes.Buffer
 }
 
-// entry is a log entry sent from workers to the master.
+// entry is a log entry sent from workers to the aggregator.
 type entry struct {
 	targetID string
 	ts       time.Time
@@ -61,28 +61,28 @@ func (e *entry) writeTo(w io.Writer) {
 	}
 }
 
-// NewMaster creates a new Master and starts a background goroutine to
+// NewAggregator creates a new Aggregator and starts a background goroutine to
 // collect log entries from workers. On cleanup, Close must be called to stop
 // the background goroutine.
-func NewMaster() *Master {
-	master := &Master{
+func NewAggregator() *Aggregator {
+	agg := &Aggregator{
 		targets: make(map[string]*target),
 		logCh:   make(chan *entry),
 		finCh:   make(chan struct{}),
 	}
-	go master.run()
-	return master
+	go agg.run()
+	return agg
 }
 
 // Close stops the background goroutine to collect logs from workers.
 // This method does not wait for workers to stop.
-func (m *Master) Close() {
+func (m *Aggregator) Close() {
 	close(m.finCh)
 }
 
 // Save saves the collected logs to path as a single text file.
 // Logs in memory are cleared when this method successfully returns.
-func (m *Master) Save(path string) error {
+func (m *Aggregator) Save(path string) error {
 	// Pause the background goroutine to avoid data races. This panics if m has
 	// been already closed.
 	m.finCh <- struct{}{}
@@ -119,7 +119,7 @@ func (m *Master) Save(path string) error {
 }
 
 // run is executed on a background goroutine to collect logs from workers.
-func (m *Master) run() {
+func (m *Aggregator) run() {
 	for {
 		select {
 		case <-m.finCh:
@@ -134,7 +134,7 @@ func (m *Master) run() {
 }
 
 // NewWorker creates a Worker that collects JavaScript console logs of a target.
-func (m *Master) NewWorker(targetID, initURL string, ev runtime.ConsoleAPICalledClient) *Worker {
+func (m *Aggregator) NewWorker(targetID, initURL string, ev runtime.ConsoleAPICalledClient) *Worker {
 	m.mutex.Lock() // protect m.targets
 	if _, ok := m.targets[targetID]; !ok {
 		m.targets[targetID] = &target{initURL: initURL, openTime: time.Now()}
@@ -147,7 +147,7 @@ func (m *Master) NewWorker(targetID, initURL string, ev runtime.ConsoleAPICalled
 }
 
 // Worker collects JavaScript console logs of a target. Collected logs are
-// sent to Master via logCh.
+// sent to Aggregator via logCh.
 type Worker struct {
 	targetID string
 	logCh    chan *entry
@@ -157,7 +157,7 @@ type Worker struct {
 }
 
 // Close closes the stream to receive console API notifications. Once this method
-// returns, you can assume all logs are flushed to Master.
+// returns, you can assume all logs are flushed to Aggregator.
 func (w *Worker) Close() {
 	w.ev.Close()
 	<-w.doneCh
@@ -182,7 +182,7 @@ func (w *Worker) run() {
 	close(w.doneCh)
 }
 
-// Report sends a log to Master. This method can be called from Conn to Report
+// Report sends a log to Aggregator. This method can be called from Conn to Report
 // eval failures.
 func (w *Worker) Report(ts time.Time, typ, msg string, stack *runtime.StackTrace) {
 	w.logCh <- &entry{

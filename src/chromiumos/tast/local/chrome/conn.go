@@ -22,7 +22,7 @@ import (
 type Conn struct {
 	co *cdputil.Conn
 
-	lw *jslog.Worker
+	la *jslog.Worker
 
 	locked bool // if true, don't allow Close or CloseTarget to be called
 
@@ -32,7 +32,7 @@ type Conn struct {
 // NewConn starts a new session using sm for communicating with the supplied target.
 // pageURL is only used when logging JavaScript console messages via lm.
 func NewConn(ctx context.Context, s *cdputil.Session, id target.ID,
-	lm *jslog.Master, pageURL string, chromeErr func(error) error) (c *Conn, retErr error) {
+	la *jslog.Aggregator, pageURL string, chromeErr func(error) error) (c *Conn, retErr error) {
 	co, err := s.NewConn(ctx, id)
 	if err != nil {
 		return nil, err
@@ -50,7 +50,7 @@ func NewConn(ctx context.Context, s *cdputil.Session, id target.ID,
 
 	return &Conn{
 		co:        co,
-		lw:        lm.NewWorker(string(id), pageURL, ev),
+		la:        la.NewWorker(string(id), pageURL, ev),
 		chromeErr: chromeErr,
 	}, nil
 }
@@ -62,7 +62,7 @@ func (c *Conn) Close() error {
 	if c.locked {
 		return errors.New("can't close locked connection")
 	}
-	c.lw.Close()
+	c.la.Close()
 	return c.co.Close()
 }
 
@@ -147,7 +147,7 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 	exc, err := c.co.Eval(ctx, expr, awaitPromise, out)
 	if err != nil {
 		if exc != nil {
-			c.lw.Report(time.Now(), "eval-error", err.Error(), exc.StackTrace)
+			c.la.Report(time.Now(), "eval-error", err.Error(), exc.StackTrace)
 		}
 		return err
 	}

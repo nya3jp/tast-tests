@@ -54,7 +54,7 @@ func (ob *JSObject) Call(ctx context.Context, out interface{}, fn string, args .
 	exc, err := ob.conn.co.CallOn(ctx, *ob.ro.ObjectID, out, fn, callArgs...)
 	if err != nil {
 		if exc != nil {
-			ob.conn.lw.Report(time.Now(), "callon-error", err.Error(), exc.StackTrace)
+			ob.conn.la.Report(time.Now(), "callon-error", err.Error(), exc.StackTrace)
 		}
 		return err
 	}
