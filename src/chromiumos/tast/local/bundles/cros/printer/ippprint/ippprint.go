@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package pinprint implements PinPrint* tests.
-package pinprint
+// Package ippprint implements printing with IPP options.
+package ippprint
 
 import (
 	"context"
@@ -25,7 +25,7 @@ import (
 // Option is for supplying filter options
 type Option string
 
-// Params struct used by all pin print tests for parameterized tests.
+// Params struct used by all ipp print tests for parameterized tests.
 type Params struct {
 	PpdFile      string   // Name of the ppd used to print the job.
 	PrintFile    string   // PS file to print.
@@ -37,6 +37,11 @@ type Params struct {
 // WithJobPassword properly formats a job-password option
 func WithJobPassword(pass string) Option {
 	return Option(fmt.Sprintf("job-password=%s", pass))
+}
+
+// WithResolution properly formats a printer-resolution option
+func WithResolution(res string) Option {
+	return Option(fmt.Sprintf("printer-resolution=%s", res))
 }
 
 // optionsToString turns an array of options into a space-delimited string
@@ -143,11 +148,11 @@ func Run(ctx context.Context, s *testing.State, p *Params) {
 		}
 
 		// Write out the complete output.
-		psPath := filepath.Join(s.OutDir(), strings.TrimSuffix(p.OutDiffFile, filepath.Ext(p.OutDiffFile))+".ps")
+		psPath := filepath.Join(s.OutDir(), p.ExpectedFile)
 		if err := ioutil.WriteFile(psPath, []byte(cleanPSContents(string(request))), 0644); err != nil {
 			s.Error("Failed to dump ps: ", err)
 		}
 
-		s.Errorf("Output diff from the golden file, diff at %s, output.ps at %s", p.OutDiffFile, psPath)
+		s.Errorf("Output diff from the golden file, diff at %s, output at %s", p.OutDiffFile, p.ExpectedFile)
 	}
 }
