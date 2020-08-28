@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "94d0da60_8095ce4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-08-28T03:29:38Z",
+      "side": 1,
+      "message": ":-/ Can we just add an aria label in chrome? It should probably have one anyway.\n\nAm I right in thinking that these names come from aria? Is the UI tree documented anywhere?",
+      "parentUuid": "17f63bf5_f7ded198",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5bf7833_5b6a91f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
         "patchSetId": 1
