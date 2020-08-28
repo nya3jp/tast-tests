@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "7719d99a_a9a646fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T15:55:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65bec90d_8512de60",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 7
+      },
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "456509b7_a8185f73",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 1
@@ -73,6 +97,24 @@
       "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31cdee8c_a07d5aa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T15:55:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "456509b7_a8185f73",
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "cd58d7f7_5932fefa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T15:55:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6af2a9a_d0df3b30",
+      "range": {
+        "startLine": 86,
+        "startChar": 38,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f825530_3ff01304",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 1
@@ -122,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "4898f745_ea2af9cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T15:55:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f825530_3ff01304",
+      "range": {
+        "startLine": 116,
+        "startChar": 64,
+        "endLine": 116,
+        "endChar": 68
+      },
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "498b21d4_3c590367",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 1
@@ -142,6 +232,30 @@
       "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d089865_91698fc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T15:55:35Z",
+      "side": 1,
+      "message": "I would written in line for one call. Here is absolutely valid content. However next CL will re-use it. Anyway, let do it strict and have write inlined.",
+      "parentUuid": "498b21d4_3c590367",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 3
+      },
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -218,6 +332,30 @@
       "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e311a68_522c1e38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T15:55:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20b2a670_e29da622",
+      "range": {
+        "startLine": 163,
+        "startChar": 9,
+        "endLine": 163,
+        "endChar": 17
+      },
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
