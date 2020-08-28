@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "039627f5_5e69776a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T18:04:39Z",
+      "side": 1,
+      "message": "Still LGTM, make sure to verified+1 when you CQ+2.",
+      "revId": "e5962719f51719c0caddbaed9a5e82464421f16a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
