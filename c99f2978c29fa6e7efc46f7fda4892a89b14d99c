@@ -16,6 +16,92 @@
       "revId": "c99f2978c29fa6e7efc46f7fda4892a89b14d99c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad2243d0_bcbf1162",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-28T03:04:08Z",
+      "side": 1,
+      "message": "Sorry for the late reply and thank you for the clean up!\nLGTM with some nits.",
+      "revId": "c99f2978c29fa6e7efc46f7fda4892a89b14d99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5fb4e3b_69d0483c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-28T03:04:08Z",
+      "side": 1,
+      "message": "nit: delete this because these are no longer used",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 66
+      },
+      "revId": "c99f2978c29fa6e7efc46f7fda4892a89b14d99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "142727b6_6dbe8667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-28T03:04:08Z",
+      "side": 1,
+      "message": "nit: not used",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "c99f2978c29fa6e7efc46f7fda4892a89b14d99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6ba89de_2de6a141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-08-28T03:04:08Z",
+      "side": 1,
+      "message": "can we refer perappdensity.DensityPackageName here? if we can, also delete L71 (def of perAppDensityPackageName).",
+      "range": {
+        "startLine": 87,
+        "startChar": 32,
+        "endLine": 87,
+        "endChar": 56
+      },
+      "revId": "c99f2978c29fa6e7efc46f7fda4892a89b14d99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
