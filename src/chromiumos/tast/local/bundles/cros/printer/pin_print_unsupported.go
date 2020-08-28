@@ -7,7 +7,7 @@ package printer
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/printer/pinprint"
+	"chromiumos/tast/local/bundles/cros/printer/ippprint"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -22,7 +22,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data: []string{
-			"printer_pin_print_unsupported_GenericPostScript.ppd.gz",
+			"printer_unsupported_GenericPostScript.ppd.gz",
 			"to_print.pdf",
 			"printer_pin_print_unsupported_golden.ps",
 		},
@@ -30,8 +30,8 @@ func init() {
 		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "no_pin",
-			Val: &pinprint.Params{
-				PpdFile:      "printer_pin_print_unsupported_GenericPostScript.ppd.gz",
+			Val: &ippprint.Params{
+				PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_unsupported_golden.ps",
 				OutDiffFile:  "no-pin_diff.txt",
@@ -40,12 +40,12 @@ func init() {
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "pin",
-			Val: &pinprint.Params{
-				PpdFile:      "printer_pin_print_unsupported_GenericPostScript.ppd.gz",
+			Val: &ippprint.Params{
+				PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_unsupported_golden.ps",
 				OutDiffFile:  "pin_diff.txt",
-				Options:      []pinprint.Option{pinprint.WithJobPassword("1234")},
+				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{},
 			ExtraAttr: []string{"informational"},
@@ -54,7 +54,7 @@ func init() {
 }
 
 func PinPrintUnsupported(ctx context.Context, s *testing.State) {
-	testOpt := s.Param().(*pinprint.Params)
+	testOpt := s.Param().(*ippprint.Params)
 
-	pinprint.Run(ctx, s, testOpt)
+	ippprint.Run(ctx, s, testOpt)
 }
