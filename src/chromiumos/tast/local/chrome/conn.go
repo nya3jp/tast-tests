@@ -32,7 +32,7 @@ type Conn struct {
 // NewConn starts a new session using sm for communicating with the supplied target.
 // pageURL is only used when logging JavaScript console messages via lm.
 func NewConn(ctx context.Context, s *cdputil.Session, id target.ID,
-	lm *jslog.Master, pageURL string, chromeErr func(error) error) (c *Conn, retErr error) {
+	la *jslog.Aggregator, pageURL string, chromeErr func(error) error) (c *Conn, retErr error) {
 	co, err := s.NewConn(ctx, id)
 	if err != nil {
 		return nil, err
@@ -50,7 +50,7 @@ func NewConn(ctx context.Context, s *cdputil.Session, id target.ID,
 
 	return &Conn{
 		co:        co,
-		lw:        lm.NewWorker(string(id), pageURL, ev),
+		lw:        la.NewWorker(string(id), pageURL, ev),
 		chromeErr: chromeErr,
 	}, nil
 }
