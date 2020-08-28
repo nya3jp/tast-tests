@@ -107,6 +107,264 @@
     },
     {
       "key": {
+        "uuid": "3a277e51_47ec5299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "Hi Jiewei,\n\nThanks for your CL! I have some comments:",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0156b000_4447839f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "Is it really so long to install all apps? Default timeout is 90 seconds.",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46fbae41_52601f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "this method should not know about testing.State, instead please return error -- Go preferred way of handlng errors.\n\nCaller should decide what to do with error",
+      "range": {
+        "startLine": 30,
+        "startChar": 54,
+        "endLine": 30,
+        "endChar": 70
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628c1235_987b3ba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "nit: rename it to tconn, tconn is much more common name for TestAPIConn",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b0f230_1a7889e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "nit: you can skip it",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f017f4ee_f1c16028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "nit: so it will be (int, error)",
+      "range": {
+        "startLine": 61,
+        "startChar": 95,
+        "endLine": 61,
+        "endChar": 98
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70ea0477_0dfb2902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "nit: omit get prefix\n\nhttps://golang.org/doc/effective_go.html#Getters",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d3f5bfe_c17caf9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 61,
+        "startChar": 58,
+        "endLine": 61,
+        "endChar": 74
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8bd20d_1bee4214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "please don\u0027t close TestAPIConn since it\u0027s shared connection:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d990",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4960153_7daddd80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "s.Fatal will panic and Go test will stop here",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 9
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c66e872_f708b162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "I think we have to split this method into 2, because \n1. you need to Close each chrome\n2. it\u0027s good to put Close into defer statements, e.g. you may have multiple returns and may forgot to close it in each case\n3. you need to Close first chrome before starting new one.\n\nIf you won\u0027t Close Chrome you may leak some resources, e.g. goroutines, etc\n\n\nHow it can look like:\n\n\n```\nfunc firstRun(ctx context.Context, chromeOpts ...chrome.Option) error {\n  cleanupCtx :\u003d ctx\n  ctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n  defer cancel()\n\n  cr, err :\u003d chrome.New(ctx, chromeOpts...)\n  if err !\u003d nil {\n    return errors.Wrap(err, \"failed to start first Chrome instance\")\n  }\n  defer func(ctx context.Context) {\n    if err :\u003d cr.Close(ctx); err !\u003d nil {\n      testing.ContextLog(ctx, \"Failed to stop first Chrome instance\")\n    }\n  }(cleanupCtx)\n\n  ...\n}\n\nfunc secondRun(...) {...}\n\nfunc testSystemWebAppsReinstall(ctx context.Context, chromeOpts ...chrome.Option) error {\n  if err :\u003d firstRun(ctx, chromeOpts...); err !\u003d nil {\n    return err;\n  }\n  if err :\u003d secondRun(ctx, chromeOpts...); err !\u003d nil {\n    return err;\n  }\n  return nil;\n}\n```",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7542db22_e683fb26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "nit: remove this message, please log only before long running operations:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b0a2df7_a8b79c84",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -175,6 +433,178 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c4541cc_71521152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "same: please remove",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac482f3f_9112e884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "please return error instead, for example:\n\nreturn errors.Errorf(\"unexpected number of installed apps: want %d; got %d\", registeredAppCount, installedAppCount)",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 81
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a678f755_36c2a6b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "chrome.New() should do that, please check documentation:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d365?q\u003dchrome%20close\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 2
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2540bbc_193e8f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "nit: \n\nreinstallOpts :\u003d append(chromeOpts, chrome.KeepState(), chrome.EnableFeatures(\"AlwaysReinstallSystemWebApps\"))",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20297cd2_58d1f1b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "What are you actually trying to test here? Do you wanna test that old apps are still installed? or old apps were reinstalled? \n\nHow does Chrome behaves in this situation? Does it silently updating apps or remove all of them and install again?\n\nDo you maybe need waitForSystemWebAppsInstall here as well?",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 0
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a3f6c2_3c7eac57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "Close() won\u0027t be called if s.Fatal will execute or you return from function before, please put it into defer statement.",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25e513fd_e9494744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "Please put most important functions first, i.e. right after init()",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 27
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759bd0ca_57c256a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-28T12:00:35Z",
+      "side": 1,
+      "message": "instead you may be interested in Parametrized tests:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests\n\nIn your approach if there will be erorr in first testSystemWebAppsReinstall, then you won\u0027t run second testSystemWebAppsReinstall.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 0
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
