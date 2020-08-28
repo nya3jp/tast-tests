@@ -18,6 +18,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/video/decode"
@@ -287,14 +288,16 @@ func TestSeek(ctx context.Context, httpHandler http.Handler, cr *chrome.Chrome, 
 // TestPlayAndScreenshot plays the filename video, switches it to full
 // screen mode, takes a screenshot and analyzes the resulting image to
 // sample the colors of a few interesting points and compare them against
-// expectations.
+// expectations. The expectations are defined by refFilename which is a
+// PNG file corresponding to the ideally rendered video frame in the absence
+// of scaling or artifacts.
 //
 // Caveat: this test does not disable night light. Night light doesn't
 // seem to affect the output of the screenshot tool, but this might
 // not hold in the future in case we decide to apply night light at
 // compositing time if the hardware does not support the color
 // transform matrix.
-func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) error {
+func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename, refFilename string) error {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	url := path.Join(server.URL, "video.html")
@@ -314,7 +317,7 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	}
 
 	// Start playing the video indefinitely.
-	if err := conn.Eval(ctx, fmt.Sprintf("playRepeatedly(%q)", s.Param().(string)), nil); err != nil {
+	if err := conn.Eval(ctx, fmt.Sprintf("playRepeatedly(%q)", filename), nil); err != nil {
 		return errors.Wrapf(err, "failed to play %v", filename)
 	}
 
@@ -383,48 +386,78 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	left := 0
 	right := img.Bounds().Dx() - 1
 
-	// Calculate the coordinates of the centers of the four rectangles in the video.
-	x25 := left + (right-left)/4
-	y25 := top + (bottom-top)/4
-	x75 := left + 3*(right-left)/4
-	y75 := top + 3*(bottom-top)/4
+	// Open the reference file to assert expectations on the screenshot later.
+	refPath := s.DataPath(refFilename)
+	f, err = os.Open(refPath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to open %v", refPath)
+	}
+	defer f.Close()
+	refImg, _, err := image.Decode(f)
+	if err != nil {
+		return errors.Wrapf(err, "could not decode %v", refPath)
+	}
+	videoW := refImg.Bounds().Dx()
+	videoH := refImg.Bounds().Dy()
 
-	// These are the expectations on the four rectangles of the test video:
-	//
-	// - CornerX and CornerY are the coordinates of a corner of the video plus some padding. The padding
-	//   is used to avoid testing exactly at the edges of the video where we might be subject to some
-	//   color bleeding artifacts that are still acceptable.
-	//
-	// - CenterX, CenterY are the coordinates of the center of the rectangle.
-	//
-	// - Color is the expected color for the entire rectangle (this includes the corner and the centers).
-	colors := map[string]struct {
-		CornerX, CornerY int
-		CenterX, CenterY int
-		Color            color.Color
+	// Refer to README.md for a description of the pixels we sample.
+	samples := map[string]struct {
+		x, y int
 	}{
-		"top-left":     {left + 2, top + 2, x25, y25, color.RGBA{128, 64, 32, 255}},
-		"top-right":    {right - 2, top + 2, x75, y25, color.RGBA{32, 128, 64, 255}},
-		"bottom-right": {right - 2, bottom - 2, x75, y75, color.RGBA{64, 32, 128, 255}},
-		"bottom-left":  {left + 2, bottom - 2, x25, y75, color.RGBA{128, 32, 64, 255}},
+		"outer_top_left":       {0, 0},
+		"inner_top_left_1":     {6, 6},
+		"inner_top_left_2":     {10, 6},
+		"inner_top_left_3":     {10, 10},
+		"inner_top_left_4":     {6, 10},
+		"outer_top_right":      {videoW - 1, 0},
+		"inner_top_right_1":    {videoW - 7, 6},
+		"inner_top_right_2":    {videoW - 3, 6},
+		"inner_top_right_3":    {videoW - 3, 10},
+		"inner_top_right_4":    {videoW - 7, 10},
+		"outer_bottom_right":   {videoW - 1, videoH - 1},
+		"inner_bottom_right_1": {videoW - 7, videoH - 7},
+		"inner_bottom_right_2": {videoW - 3, videoH - 7},
+		"inner_bottom_right_3": {videoW - 3, videoH - 3},
+		"inner_bottom_right_4": {videoW - 7, videoH - 3},
+		"outer_bottom_left":    {0, videoH - 1},
+		"inner_bottom_left_1":  {6, videoH - 7},
+		"inner_bottom_left_2":  {10, videoH - 7},
+		"inner_bottom_left_3":  {10, videoH - 3},
+		"inner_bottom_left_4":  {6, videoH - 3},
 	}
 
-	const tolerance = 2
+	p := perf.NewValues()
+	totalDistance := 0
+	for k, v := range samples {
+		// First convert from the coordinates from video space to screenshot space.
+		videoX := v.x
+		videoY := v.y
+		screenX := left + (right-left)*v.x/(videoW-1)
+		screenY := top + (bottom-top)*v.y/(videoH-1)
 
-	// Check the colors of the centers of the four rectangles in the video.
-	for k, v := range colors {
-		actualColor := img.At(v.CenterX, v.CenterY)
-		if colorDistance(actualColor, v.Color) > tolerance {
-			return errors.Errorf("at the center of the %s rectangle (%d, %d): expected RGBA = %v; got RGBA = %v", k, v.CenterX, v.CenterY, v.Color, actualColor)
-		}
+		// Then report the distance between the expected and actual colors at this location.
+		expectedColor := refImg.At(videoX, videoY)
+		actualColor := img.At(screenX, screenY)
+		distance := colorDistance(expectedColor, actualColor)
+		totalDistance += distance
+		s.Logf("At %v (video space = (%d, %d), screen space = (%d, %d)): expected RGBA = %v; got RGBA = %v; distance = %d",
+			k, videoX, videoY, screenX, screenY, expectedColor, actualColor, distance)
+		p.Set(perf.Metric{
+			Name:      k,
+			Unit:      "None",
+			Direction: perf.SmallerIsBetter,
+		}, float64(distance))
 	}
 
-	// Check the color of the four corners of the video.
-	for k, v := range colors {
-		actualColor := img.At(v.CornerX, v.CornerY)
-		if colorDistance(actualColor, v.Color) > tolerance {
-			return errors.Errorf("at the %s corner (%d, %d): expected RGBA = %v; got RGBA = %v", k, v.CornerX, v.CornerY, v.Color, actualColor)
-		}
-	}
+	// Report a total distance for the image: the sum of all the distances
+	// computed. Since the number of sampled pixels is the same regardless of the
+	// video's resolution, this distance doesn't need to be normalized.
+	p.Set(perf.Metric{
+		Name:      "total_distance",
+		Unit:      "None",
+		Direction: perf.SmallerIsBetter,
+	}, float64(totalDistance))
+	p.Save(s.OutDir())
+
 	return nil
 }
