@@ -15,6 +15,7 @@ import (
 )
 
 const onErrorOccurred = "OnErrorOccurred:"
+const latencyExceedsTolerance = "Max Latency exceeds Latency Tolerance."
 const succeedReadingSamples = "Number of success reads"
 
 func init() {
@@ -61,6 +62,8 @@ func SensorIioservice(ctx context.Context, s *testing.State) {
 		strOut = string(out)
 		if strings.Contains(strOut, onErrorOccurred) {
 			s.Error("OnErrorOccurred: ", sn.Name)
+		} else if strings.Contains(strOut, latencyExceedsTolerance) {
+			s.Error("Latency Exceeds Tolerance: ", sn.Name)
 		} else if !strings.Contains(strOut, succeedReadingSamples) {
 			s.Error("Not enough successful readsamples on sensor: ", sn.Name)
 		} else {
