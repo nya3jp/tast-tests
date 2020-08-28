@@ -33,6 +33,23 @@
       "revId": "d340040a2e4c379ba2f382641f6c38f2ba1a9875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77aee14e_2533bb80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-08-28T05:17:54Z",
+      "side": 1,
+      "message": "Chumping with permissions of CrOS oncall. This is blocking people from submitting CLs in tast-tests-* (unless they skip presubmits, not ideal), and as a presubmit-only change the CQ isn\u0027t testing it anyway.",
+      "revId": "d340040a2e4c379ba2f382641f6c38f2ba1a9875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
