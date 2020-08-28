@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "192ae74f_acdfdb25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-28T22:32:24Z",
+      "side": 1,
+      "message": "Since this is intended for use by other tests, maybe add a comment like:\n\n\"All currently supported commands are listed here (please add more as needed):\"",
+      "revId": "b0b158c05c7c6cd73b3fcc2b382839e646730db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f4089b_4b32c5a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-28T22:32:24Z",
+      "side": 1,
+      "message": "Maybe add a comment to add support for other functions here?  Otherwise, this could be just if... else... \n\nAlso the commands could be test specific, should there be handler callback support so that this file doesn\u0027t need to include other tasts for calling test-specific handling functions?",
+      "revId": "b0b158c05c7c6cd73b3fcc2b382839e646730db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
