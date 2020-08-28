@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "19571fa0_f4c297aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-28T01:04:24Z",
+      "side": 1,
+      "message": "Thanks for adding this!",
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6f4a4a8_1b017f4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 1
@@ -51,6 +68,24 @@
       "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0586023c_bcacc31a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-28T01:04:24Z",
+      "side": 1,
+      "message": "SG.",
+      "parentUuid": "a88b3295_e346aeb5",
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
