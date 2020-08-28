@@ -33,6 +33,24 @@
       "revId": "e66566ff66eeba7118dd6dba05de8f55c774063e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "740580bb_471a58a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-08-28T17:45:48Z",
+      "side": 1,
+      "message": "CreateVault will do some basic checks to make sure the vault is mounted, so this is probably good enough for now.",
+      "parentUuid": "69d8e48b_a39a4978",
+      "revId": "e66566ff66eeba7118dd6dba05de8f55c774063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
