@@ -16,6 +16,29 @@
       "revId": "2582951b23ec9048090e51af3d916d1df59ff741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e643ed6c_f6b45da0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/faillog_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-28T10:45:29Z",
+      "side": 1,
+      "message": "I guess this will end up $outdir/faillog/faillog/ps.txt, hmm? I think we can just call faillog.SaveDir(ctx, c.tmpDir).",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "2582951b23ec9048090e51af3d916d1df59ff741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
