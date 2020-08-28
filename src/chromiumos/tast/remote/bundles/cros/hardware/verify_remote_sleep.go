@@ -18,6 +18,21 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// all clocks from linux.die.net/man/2/clock_gettime are supported at the
+// time of writing this comment. This array should be kept in sync with
+// the `clocks` array in helpers/local/hardware.VerifyRemoteSleep.timersignal.c,
+// which implements the remote side of this test.
+var allowableRemoteClocks = []string{
+	"CLOCK_REALTIME",
+	"CLOCK_REALTIME_COARSE",
+	"CLOCK_MONOTONIC",
+	"CLOCK_MONOTONIC_COARSE",
+	"CLOCK_MONOTONIC_RAW",
+	"CLOCK_BOOTTIME",
+	"CLOCK_PROCESS_CPUTIME_ID",
+	"CLOCK_THREAD_CPUTIME_ID",
+}
+
 const (
 	sleepDuration   = 300 * time.Second
 	sleepIterations = 10
@@ -26,8 +41,8 @@ const (
 	// no network or other sources of noise in the test. Heavy load may cause this
 	// to fail sporadically* (albeit I've never managed to make it happen), but if
 	// the test fails repeatably, something is amiss.
-	// *Some theoretical flakiness is sadly introduced simply because of the fact
-	// that this test requires communication between DUT and the testing machine.
+	// *Some theoretical flakiness is necessarily introduced simply because of the
+	// fact that this test requires communication between DUT and the testing machine.
 	sleepTolerance = 20 * time.Millisecond
 	// set to false if you want to run the test to completion even if it fails
 	failEagerly = true
@@ -41,15 +56,26 @@ func init() {
 		Attr:         []string{},
 		Timeout:      sleepDuration*sleepIterations + time.Minute,
 		SoftwareDeps: []string{},
+		Vars:         []string{"hardware.VerifyRemoteSleep.clock"},
 	})
 }
 
-func doRemoteSleep(ctx context.Context, s *testing.State) *ssh.Cmd {
+func stringInSlice(a string, list []string) bool {
+	for _, b := range list {
+		if b == a {
+			return true
+		}
+	}
+
+	return false
+}
+
+func doRemoteSleep(ctx context.Context, s *testing.State, remoteClock string) *ssh.Cmd {
 	const exe = "/usr/local/libexec/tast/helpers/local/cros/hardware.VerifyRemoteSleep.timersignal"
 	sleepArg := strconv.FormatInt(int64(sleepDuration.Milliseconds()), 10)
 	itersArg := strconv.FormatInt(sleepIterations, 10)
 	fileArg := "/dev/ttyS0"
-	testCommand := fmt.Sprintf("sleep 1; %s %s %s %s", exe, sleepArg, itersArg, fileArg)
+	testCommand := fmt.Sprintf("sleep 1; %s %s %s %s %s", exe, sleepArg, itersArg, remoteClock, fileArg)
 
 	dut := s.DUT()
 	cmd := dut.Conn().Command("sh", "-c", testCommand)
@@ -134,7 +160,14 @@ func measureRemoteSleep(ctx context.Context, s *testing.State) []time.Duration {
 }
 
 func VerifyRemoteSleep(ctx context.Context, s *testing.State) {
-	cmd := doRemoteSleep(ctx, s)
+	remoteClockArg, ok := s.Var("hardware.VerifyRemoteSleep.clock")
+	if !ok {
+		s.Fatal("Variable hardware.VerifyRemoteSleep.clock not supplied. Consider passing one of the following values: ", allowableRemoteClocks)
+	} else if !stringInSlice(remoteClockArg, allowableRemoteClocks) {
+		s.Fatal("Invalid variable hardware.VerifyRemoteSleep.clock. Consider passing one of the following values: ", allowableRemoteClocks)
+	}
+
+	cmd := doRemoteSleep(ctx, s, remoteClockArg)
 	defer cmd.Wait(ctx)
 	defer cmd.Abort()
 
