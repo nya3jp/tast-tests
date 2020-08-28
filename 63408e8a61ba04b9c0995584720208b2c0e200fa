@@ -140,6 +140,30 @@
       "revId": "63408e8a61ba04b9c0995584720208b2c0e200fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed5a5d68_8e6e48b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-28T10:52:57Z",
+      "side": 1,
+      "message": "Please, please avoid sleeping for a fixed time to workaround race conditions. Sleep doesn\u0027t really solve race conditions, and it always wastes testing time.\n\n\u003e Sleeping without polling for a condition is discouraged, since it makes tests flakier (when the sleep duration isn\u0027t long enough) or slower (when the duration is too long).\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n\npkill(1) returns different exit code when a process is not found vs. encountering other errors. I guess we can check it in testing.Poll.\nhttps://linux.die.net/man/1/pkill",
+      "parentUuid": "0336eba7_dae127c4",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "63408e8a61ba04b9c0995584720208b2c0e200fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
