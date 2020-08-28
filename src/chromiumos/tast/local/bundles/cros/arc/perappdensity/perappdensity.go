@@ -9,6 +9,7 @@ import (
 	"context"
 	"image/color"
 	"math"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -45,12 +46,12 @@ type DensityChange struct {
 
 // ExecuteChange executes the density change, specified by KeySequence
 // and confirms that the density was changed by validating the size of the square on the screen.
-func (dc *DensityChange) ExecuteChange(ctx context.Context, cr *chrome.Chrome, ew *input.KeyboardEventWriter) error {
+func (dc *DensityChange) ExecuteChange(ctx context.Context, cr *chrome.Chrome, ew *input.KeyboardEventWriter, outDir string) error {
 	testing.ContextLogf(ctx, "%s density using key %q", dc.Name, dc.KeySequence)
 	if err := ew.Accel(ctx, dc.KeySequence); err != nil {
 		return errors.Wrapf(err, "could not change scale factor using %q", dc.KeySequence)
 	}
-	if err := ConfirmBlackPixelCount(ctx, cr, int(dc.BlackPixelCount)); err != nil {
+	if err := ConfirmBlackPixelCount(ctx, cr, int(dc.BlackPixelCount), outDir); err != nil {
 		return errors.Wrap(err, "could not check number of black pixels")
 	}
 	return nil
@@ -66,7 +67,7 @@ func CountBlackPixels(ctx context.Context, cr *chrome.Chrome) (int, error) {
 }
 
 // ConfirmBlackPixelCount grabs a screenshot and checks that number of black pixels is equal to wantPixelCount.
-func ConfirmBlackPixelCount(ctx context.Context, cr *chrome.Chrome, wantPixelCount int) error {
+func ConfirmBlackPixelCount(ctx context.Context, cr *chrome.Chrome, wantPixelCount int, outDir string) error {
 	// Need to wait for relayout to complete, before grabbing new screenshot.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		gotPixelCount, err := CountBlackPixels(ctx, cr)
@@ -79,6 +80,18 @@ func ConfirmBlackPixelCount(ctx context.Context, cr *chrome.Chrome, wantPixelCou
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		// Save a screenshot.
+		screenshotFilename := "screenshot-uniform-scale-factor.png"
+		path := filepath.Join(outDir, screenshotFilename)
+		img, err := screenshot.GrabScreenshot(ctx, cr)
+		if err != nil {
+			return errors.Wrap(err, "failed to capture screenshot")
+		}
+		if err := screenshot.DumpImageToPNG(ctx, &img, path); err != nil {
+			return errors.Wrap(err, "failed to save screenshot")
+		}
+
+		testing.ContextLogf(ctx, "Saved screenshot to %s", screenshotFilename)
 		return errors.Wrap(err, "timed out waiting for updated screen")
 	}
 	return nil
@@ -157,7 +170,7 @@ func StartDensityActivityWithWindowState(ctx context.Context, a *arc.ARC, tconn 
 }
 
 // EnableUSFAndConfirmPixelState enables USF, and then confirms the state afterwards.
-func EnableUSFAndConfirmPixelState(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, cr *chrome.Chrome, windowState arc.WindowState, defaultPixelCount int) error {
+func EnableUSFAndConfirmPixelState(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, cr *chrome.Chrome, windowState arc.WindowState, defaultPixelCount int, outDir string) error {
 	const (
 		uniformScaleFactor        = 1.25
 		uniformScaleFactorSetting = "persist.sys.ui.uniform_app_scaling"
@@ -175,14 +188,14 @@ func EnableUSFAndConfirmPixelState(ctx context.Context, a *arc.ARC, tconn *chrom
 	}
 	defer act.Close()
 
-	if err := ConfirmBlackPixelCount(ctx, cr, expectedPixelCount); err != nil {
+	if err := ConfirmBlackPixelCount(ctx, cr, expectedPixelCount, outDir); err != nil {
 		return errors.Wrap(err, "failed to verify uniform scale factor state")
 	}
 	return nil
 }
 
 // RunTest takes a slice of activity names and a slice of density changes and executes them.
-func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName string, testSteps []DensityChange, activity string, expectedInitialPixelCount float64) error {
+func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName string, testSteps []DensityChange, activity, outDir string, expectedInitialPixelCount float64) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create Test API connection")
@@ -216,12 +229,12 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 		return errors.Wrap(err, "failed to wait for the activity to be fullscreen")
 	}
 
-	if err := ConfirmBlackPixelCount(ctx, cr, int(expectedInitialPixelCount)); err != nil {
+	if err := ConfirmBlackPixelCount(ctx, cr, int(expectedInitialPixelCount), outDir); err != nil {
 		return errors.Wrap(err, "failed to check initial state: ")
 	}
 
 	for _, testStep := range testSteps {
-		if err := testStep.ExecuteChange(ctx, cr, ew); err != nil {
+		if err := testStep.ExecuteChange(ctx, cr, ew, outDir); err != nil {
 			return errors.Wrapf(err, "failed performing %q on %q", testStep.Name, activity)
 		}
 	}
@@ -230,7 +243,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 	defer func() error {
 		initialState := DensityChange{"reset", "ctrl+0", expectedInitialPixelCount}
 
-		if err := initialState.ExecuteChange(ctx, cr, ew); err != nil {
+		if err := initialState.ExecuteChange(ctx, cr, ew, outDir); err != nil {
 			return errors.Wrap(err, "error with restoring initial state: ")
 		}
 		return nil

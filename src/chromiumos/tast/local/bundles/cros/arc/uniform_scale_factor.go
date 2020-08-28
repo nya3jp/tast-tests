@@ -50,7 +50,7 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	if err := perappdensity.EnableUSFAndConfirmPixelState(ctx, a, tconn, cr, arc.WindowStateFullscreen, expectedPixelCount); err != nil {
+	if err := perappdensity.EnableUSFAndConfirmPixelState(ctx, a, tconn, cr, arc.WindowStateFullscreen, expectedPixelCount, s.OutDir()); err != nil {
 		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
 	}
 }
