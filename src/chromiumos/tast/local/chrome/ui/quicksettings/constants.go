@@ -42,6 +42,24 @@ var CollapseBtnParams ui.FindParams = ui.FindParams{
 	ClassName: "CollapseButton",
 }
 
+// SliderType represents the Quick Settings slider elements.
+type SliderType string
+
+// List of descriptive slider names. These don't correspond to any UI node attributes,
+// but will be used as keys to map descriptive names to the UI params defined below.
+const (
+	SliderTypeVolume     SliderType = "Volume"
+	SliderTypeBrightness SliderType = "Brightness"
+	SliderTypeMicGain    SliderType = "Mic gain"
+)
+
+// SliderParamMap maps slider names (SliderType) to the params to find the sliders in the UI.
+var SliderParamMap = map[SliderType]ui.FindParams{
+	SliderTypeVolume:     VolumeSliderParams,
+	SliderTypeBrightness: BrightnessSliderParams,
+	SliderTypeMicGain:    MicGainSliderParams,
+}
+
 // VolumeSliderParams are the UI params for the Quick Settings volume slider.
 var VolumeSliderParams ui.FindParams = ui.FindParams{
 	Name:      "Volume",
@@ -52,6 +70,15 @@ var VolumeSliderParams ui.FindParams = ui.FindParams{
 // BrightnessSliderParams are the UI params for the Quick Settings brightness slider.
 var BrightnessSliderParams ui.FindParams = ui.FindParams{
 	Name:      "Brightness",
+	ClassName: "Slider",
+	Role:      ui.RoleTypeSlider,
+}
+
+// MicGainSliderParams are the UI params for the Quick Settings mic gain slider.
+// The params are identical to the volume slider, but it's located on a different
+// page of Quick Settings.
+var MicGainSliderParams ui.FindParams = ui.FindParams{
+	Name:      "Volume",
 	ClassName: "Slider",
 	Role:      ui.RoleTypeSlider,
 }
