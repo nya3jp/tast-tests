@@ -16,6 +16,23 @@
       "revId": "69d4944a12ed850adae414905e8373e1981426c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd4b0158_db46859a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-28T07:44:52Z",
+      "side": 1,
+      "message": "I based this benchmark setup code on our earlier autotest code which did the same.\n\nI\u0027m really not sure moving this is a good idea:\n- The CPU percentage will be quite useless as a metric, as it will be influenced by scaling.\n- We won\u0027t be able to compare results between two subsequent runs anymore. In one run CPU scaling might kick in, while in a subsequent run this might not happen. This could suddenly cause a jump/decrease in CPU usage, triggering a perf alert while nothing actually changed.\n- We won\u0027t be able to compare results anymore between different tests. e.g. 40% CPU usage for H264 and 60% for VP9 won\u0027t mean anything anymore, as CPU scaling might have kicked in in one case and not the other.\n- The Chrome side video decode/encoder tests also disable CPU scaling, so we won\u0027t be able to compare results between ARC++/ARCVM and Chrome anymore.\n\nakahaung@, acourbot@: What is your opinion?",
+      "revId": "69d4944a12ed850adae414905e8373e1981426c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
