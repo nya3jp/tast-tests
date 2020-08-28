@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "053eec7d_e3b68d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T19:07:31Z",
+      "side": 1,
+      "message": "Per L91 it could pt tcp6. So, tcp is automatically select.",
+      "parentUuid": "d1a20046_7e93cff3",
+      "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fb5821a_162c7bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 2
@@ -47,6 +65,30 @@
       "writtenOn": "2020-08-28T18:58:50Z",
       "side": 1,
       "message": "\"address / port not available\"?",
+      "range": {
+        "startLine": 105,
+        "startChar": 63,
+        "endLine": 105,
+        "endChar": 73
+      },
+      "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a832e7_2d8f0f01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T19:07:31Z",
+      "side": 1,
+      "message": "ok, will add next update.",
+      "parentUuid": "0fb5821a_162c7bd8",
       "range": {
         "startLine": 105,
         "startChar": 63,
@@ -73,6 +115,24 @@
       "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce48f5cd_1687ec3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T19:07:31Z",
+      "side": 1,
+      "message": "in case of err it is logged, current connection is closed. However system is ready to accept new connections.\nFailure in acceptance means socket is closed (line L48).\nMost heavy part is done while allocating server socket which is done synchronously.\n\nI think error logging is good enough.",
+      "parentUuid": "1a201360_bdecbe3b",
+      "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
