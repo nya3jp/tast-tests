@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d042d28_b1bd410d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_resolution_Ricoh.ppd.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-08-28T17:03:10Z",
+      "side": 1,
+      "message": "I wonder... And I know it\u0027s correcting short-sightedness on my part... but if rather than make a brand-new copy of one of the Ricoh ppds for these tests, if we instead shouldn\u0027t rename the HP / Ricoh / Lexmark / Sharp / Epson ppds to not refer to the type of test, and then just refer to them in whatever tests we need them in? This would help avoid drift between the PPDs, and if we do need to change a PPD in the tests for some reason, would ensure that we haven\u0027t inadvertently regressed any other functionality. That work could be combined with renaming pinprint.go to a more useful utility name.\n\nWDYT?",
+      "revId": "6e443479f5e7fb2e25c498297ec2fbadb9f15726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2afad7be_69734aa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_resolution_ricoh_600dpi_golden.ps.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-08-28T17:03:10Z",
+      "side": 1,
+      "message": "I can\u0027t download this .ps file. Are you sure the name is right?",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 106
+      },
+      "revId": "6e443479f5e7fb2e25c498297ec2fbadb9f15726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39344d94_568f25ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/resolution_ricoh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-08-28T17:03:10Z",
+      "side": 1,
+      "message": "It would be great to have a resolution test that considers the AAAxBBBdpi case too. The Lexmark ppd (src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/printer/data/printer_pin_print_Lexmark.ppd.external) has such resolutions you can test against.",
+      "range": {
+        "startLine": 59,
+        "startChar": 37,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "6e443479f5e7fb2e25c498297ec2fbadb9f15726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86bc311d_84f96a28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/resolution_ricoh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-08-28T17:03:10Z",
+      "side": 1,
+      "message": "I really think we need to refactor the name of this helper before you use it for something else. Apologies for not considering that when I wrote it.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "6e443479f5e7fb2e25c498297ec2fbadb9f15726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
