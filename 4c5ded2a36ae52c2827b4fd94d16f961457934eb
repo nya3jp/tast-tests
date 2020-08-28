@@ -16,6 +16,121 @@
       "revId": "4c5ded2a36ae52c2827b4fd94d16f961457934eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f69aa3b_d8a3e37d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T00:47:59Z",
+      "side": 1,
+      "message": "nit: add comment \"// https://golang.org/doc/faq#closures_and_goroutine\" incase anyone doesn\u0027t understand why this is needed when reading the code.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 12
+      },
+      "revId": "4c5ded2a36ae52c2827b4fd94d16f961457934eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72e772e_832de7d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T00:47:59Z",
+      "side": 1,
+      "message": "Just wondering, why is this at least instead of exactly?",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 86
+      },
+      "revId": "4c5ded2a36ae52c2827b4fd94d16f961457934eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e61d5a9_cff3dca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T00:47:59Z",
+      "side": 1,
+      "message": "Missing a check for if len(histogramDiff) \u003d\u003d 0",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "4c5ded2a36ae52c2827b4fd94d16f961457934eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75c1e64f_f49ab868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T00:47:59Z",
+      "side": 1,
+      "message": "For the locations where you use s.Param().([]videotype.Codec) or s.PreValue().(*chrome.Chrome), you should define a variable towards the top of the file to make these lines more readable, especially since you are using the values more than once.\n\nex:\ncr :\u003d s.PreValue().(*chrome.Chrome)\ncodecs :\u003d s.Param().([]videotype.Codec)",
+      "range": {
+        "startLine": 100,
+        "startChar": 34,
+        "endLine": 100,
+        "endChar": 63
+      },
+      "revId": "4c5ded2a36ae52c2827b4fd94d16f961457934eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69da46d8_1ff76b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T00:47:59Z",
+      "side": 1,
+      "message": "nit: prefer got/want over actual/expected. Also put got before want.",
+      "range": {
+        "startLine": 101,
+        "startChar": 44,
+        "endLine": 101,
+        "endChar": 77
+      },
+      "revId": "4c5ded2a36ae52c2827b4fd94d16f961457934eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
