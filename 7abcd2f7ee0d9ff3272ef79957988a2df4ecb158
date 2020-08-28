@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "17f63bf5_f7ded198",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-28T03:23:17Z",
+      "side": 1,
+      "message": "I got something like this:\nnode id\u003d3626 role\u003dgenericContainer state\u003d{} parentID\u003d3454 childIds\u003d[3629] className\u003dsecondary\nnode id\u003d3629 role\u003dstaticText state\u003d{} parentID\u003d3626 childIds\u003d[4506] name\u003d7.5 GB\nnode id\u003d4506 role\u003dinlineTextBox state\u003d{} parentID\u003d3629 childIds\u003d[] name\u003d7.5 GB\n\nThe className\u003dsecondary is unique. We could find this node first and get its child nodes and then get the displayed disk size.",
+      "parentUuid": "90df9985_f8834773",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5bf7833_5b6a91f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
         "patchSetId": 1
