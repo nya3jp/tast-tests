@@ -33,11 +33,11 @@ const BinaryPath = LacrosTestPath + "/lacros_binary"
 // LacrosChrome contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
 type LacrosChrome struct {
-	Devsess     *cdputil.Session // Debugging session for lacros-chrome
-	cmd         *testexec.Cmd    // The command context used to start lacros-chrome.
-	logMaster   *jslog.Master    // collects JS console output
-	testExtID   string           // ID for test extension exposing APIs
-	testExtConn *chrome.Conn     // connection to test extension exposing APIs
+	Devsess       *cdputil.Session  // Debugging session for lacros-chrome
+	cmd           *testexec.Cmd     // The command context used to start lacros-chrome.
+	logAggregator *jslog.Aggregator // collects JS console output
+	testExtID     string            // ID for test extension exposing APIs
+	testExtConn   *chrome.Conn      // connection to test extension exposing APIs
 }
 
 // Close kills a launched instance of lacros-chrome.
@@ -53,9 +53,9 @@ func (l *LacrosChrome) Close(ctx context.Context) error {
 		l.cmd.Cmd.Wait()
 		l.cmd = nil
 	}
-	if l.logMaster != nil {
-		l.logMaster.Close()
-		l.logMaster = nil
+	if l.logAggregator != nil {
+		l.logAggregator.Close()
+		l.logAggregator = nil
 	}
 	if l.testExtConn != nil {
 		l.testExtConn.Close()
@@ -161,7 +161,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
 
-	l.logMaster = jslog.NewMaster()
+	l.logAggregator = jslog.NewAggregator()
 
 	return l, nil
 }
@@ -196,7 +196,7 @@ func (l *LacrosChrome) NewConn(ctx context.Context, url string, opts ...cdputil.
 }
 
 func (l *LacrosChrome) newConnInternal(ctx context.Context, id target.ID, url string) (*chrome.Conn, error) {
-	conn, err := chrome.NewConn(ctx, l.Devsess, id, l.logMaster, url, func(err error) error { return err })
+	conn, err := chrome.NewConn(ctx, l.Devsess, id, l.logAggregator, url, func(err error) error { return err })
 	if err != nil {
 		return nil, err
 	}

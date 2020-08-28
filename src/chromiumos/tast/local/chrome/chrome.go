@@ -340,8 +340,8 @@ type Chrome struct {
 	signinExtDir  string // dir containing signin test profile extension
 	signinExtConn *Conn  // connection to signin profile test extension
 
-	watcher   *browserWatcher // tries to catch Chrome restarts
-	logMaster *jslog.Master   // collects JS console output
+	watcher       *browserWatcher   // tries to catch Chrome restarts
+	logAggregator *jslog.Aggregator // collects JS console output
 }
 
 // User returns the username that was used to log in to Chrome.
@@ -382,7 +382,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		policyEnabled:      false,
 		enroll:             false,
 		breakpadTestMode:   true,
-		logMaster:          jslog.NewMaster(),
+		logAggregator:      jslog.NewAggregator(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -531,9 +531,9 @@ func (c *Chrome) Close(ctx context.Context) error {
 	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
-		c.logMaster.Save(filepath.Join(dir, "jslog.txt"))
+		c.logAggregator.Save(filepath.Join(dir, "jslog.txt"))
 	}
-	c.logMaster.Close()
+	c.logAggregator.Close()
 
 	// As the chronos home directory is cleared during chrome.New(), we
 	// should manually move these crashes from the user crash directory to
@@ -949,7 +949,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 // newConnInternal is a convenience function that creates a new Conn connected to the specified target.
 // url is only used for logging JavaScript console messages.
 func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
-	return NewConn(ctx, c.devsess, id, c.logMaster, url, c.chromeErr)
+	return NewConn(ctx, c.devsess, id, c.logAggregator, url, c.chromeErr)
 }
 
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
