@@ -101,6 +101,30 @@
     },
     {
       "key": {
+        "uuid": "bb13d817_a45583a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T19:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a832e7_2d8f0f01",
+      "range": {
+        "startLine": 105,
+        "startChar": 63,
+        "endLine": 105,
+        "endChar": 73
+      },
+      "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a201360_bdecbe3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 2
@@ -150,6 +174,24 @@
       "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa4d4be_1822dab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-28T19:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "125c4126_5fa6e119",
+      "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
