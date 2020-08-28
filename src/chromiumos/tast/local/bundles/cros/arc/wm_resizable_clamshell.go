@@ -92,7 +92,7 @@ func wmRC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	// serves as the lower bound of launch bounds.
 	var launchBoundsThreshold coords.Rect
 
-	// Start with ordinary case where we are launching apps not in the whitelist.
+	// Start with ordinary case where we are launching apps not in the allowlist.
 	for activityName, desiredOrientation := range map[string]string{
 		wm.ResizablePortraitActivity:  wm.Portrait,
 		wm.ResizableLandscapeActivity: wm.Landscape,
@@ -145,7 +145,7 @@ func wmRC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		}
 	}
 
-	// Then we verify the launch logic for whitelisted apps is correct.
+	// Then we verify the launch logic for allowed apps is correct.
 	apkPath := map[string]string{
 		pkgMaximized:  "ArcWMTestApp_24_InMaximizedList.apk",
 		pkgPhoneSize:  "ArcWMTestApp_24_InPhoneSizeList.apk",

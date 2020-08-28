@@ -8,7 +8,7 @@
 // Measurements processed by this package are stored in
 // tests/<test-name>/results-chart.json in the Tast results dir.  The data is
 // typically read by the Autotest TKO parser. In order to have metrics
-// uploaded, they have to be whitelisted here:
+// uploaded, they have to be allowed here:
 // src/third_party/autotest/files/tko/perf_upload/perf_dashboard_config.json
 //
 // Chrome Performance Dashboard docs can be found here:

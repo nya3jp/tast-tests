@@ -117,10 +117,10 @@ func pushToNSS(ctx context.Context, user, p12Path string) error {
 // setupOwnerKey creates /var/lib/whitelist/owner.key file with given DER.
 func setupOwnerKey(der []byte) error {
 	// Ensure parent dir exists.
-	const whitelistDir = "/var/lib/whitelist"
-	if _, err := os.Stat(whitelistDir); err != nil {
+	const allowlistDir = "/var/lib/whitelist"
+	if _, err := os.Stat(allowlistDir); err != nil {
 		if !os.IsNotExist(err) {
-			return errors.Wrapf(err, "failed to stat %s", whitelistDir)
+			return errors.Wrapf(err, "failed to stat %s", allowlistDir)
 		}
 		group, err := user.LookupGroup("policy-readers")
 		if err != nil {
@@ -148,13 +148,13 @@ func setupOwnerKey(der []byte) error {
 		if err = os.Chown(dir, -1, gid); err != nil {
 			return errors.Wrap(err, "failed to chown")
 		}
-		if err = os.Rename(dir, whitelistDir); err != nil {
+		if err = os.Rename(dir, allowlistDir); err != nil {
 			return errors.Wrap(err, "failed to rename a temporaly dir")
 		}
 		dir = "" // Not to fire os.Remove(dir) in defer.
 	}
 
-	ownerKeyPath := filepath.Join(whitelistDir, "owner.key")
+	ownerKeyPath := filepath.Join(allowlistDir, "owner.key")
 	if err := ioutil.WriteFile(ownerKeyPath, der, 0604); err != nil {
 		return errors.Wrapf(err, "failed to write to %s", ownerKeyPath)
 	}

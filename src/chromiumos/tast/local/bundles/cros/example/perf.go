@@ -21,9 +21,9 @@ func init() {
 }
 
 func Perf(ctx context.Context, s *testing.State) {
-	// In order to upload metrics, they should be whitelisted in:
+	// In order to upload metrics, they should be allowed in:
 	// src/third_party/autotest/files/tko/perf_upload/perf_dashboard_config.json
-	// Example metrics below are not whitelisted, thus ignored.
+	// Example metrics below are not allowed, thus ignored.
 	var (
 		bootTime    = perf.Metric{Name: "example_boot_time", Unit: "ms", Direction: perf.SmallerIsBetter}
 		refreshRate = perf.Metric{Name: "example_refresh_rate", Unit: "fps", Direction: perf.BiggerIsBetter, Multiple: true}
