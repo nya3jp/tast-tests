@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e358d5ed_7390fbb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-08-28T02:55:07Z",
+      "side": 1,
+      "message": "ihf@ PTAL. A draft to implement the border you suggested yesterday.\n\nOthers: FWI",
+      "revId": "b47be731a11b0a1627930311249644c86c9eb1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
