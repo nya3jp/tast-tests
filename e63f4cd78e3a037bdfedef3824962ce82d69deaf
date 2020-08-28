@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "49d6b7ef_cc180183",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1133035
+      },
+      "writtenOn": "2020-08-28T04:05:44Z",
+      "side": 1,
+      "message": "function",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8b10293_5c0c5424",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -16,6 +39,97 @@
       "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d6bc4e5_1f6a1631",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133035
+      },
+      "writtenOn": "2020-08-28T04:05:44Z",
+      "side": 1,
+      "message": "Very nice!",
+      "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c726252e_5f8f85f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1133035
+      },
+      "writtenOn": "2020-08-28T04:05:44Z",
+      "side": 1,
+      "message": "Tabs 😮",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85c77740_32ccd652",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1133035
+      },
+      "writtenOn": "2020-08-28T04:05:44Z",
+      "side": 1,
+      "message": "let\u0027s use chrome-apps-platform-rationalization@google.com",
+      "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a238bb78_4d09bcc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1133035
+      },
+      "writtenOn": "2020-08-28T04:05:44Z",
+      "side": 1,
+      "message": "I don\u0027t think this is used?",
+      "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bcf0e36_2195fbcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1133035
+      },
+      "writtenOn": "2020-08-28T04:05:44Z",
+      "side": 1,
+      "message": "Can we have two tests here? One that just installs enabled apps and another one that installs all apps?",
+      "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
