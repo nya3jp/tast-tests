@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2826df7e_3a21901c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "The tests are pretty different, so maybe I can just use testing.State.Run to run all the tests independently, without for loop?\n\nI don\u0027t know if it could be more conventional to do something like\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/clipboard.go;l\u003d119?q\u003d%22s.run%22%20tast\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public",
+      "parentUuid": "47b85cfe_164281e4",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cecfa880_d8532ee0",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "35ed1cec_daee20ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cecfa880_d8532ee0",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 83
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e968ad8_4b2f85c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2020-08-25T22:17:30Z",
       "side": 1,
       "message": "if you copy files before opening files app/downloads, I believe you should be able to skip waiting for location changes.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "417a9343_9d09f8e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "The reason I added this was the following error, when trying to click \"Name\" to order the files by name:\n\"Cannot click \u0027Name\u0027 button to order files alphabetically: This node doesn\u0027t have a location on the screen and can\u0027t be clicked\".\n\nI\u0027m still having this error occasionally, maybe every 5 runs, I\u0027m not sure what another solution could be for that.",
+      "parentUuid": "2e968ad8_4b2f85c8",
       "range": {
         "startLine": 77,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "392a76e3_f061ac9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "Good to know, I thought it wouldn\u0027t be enough.",
+      "parentUuid": "7c38e06a_50b2d410",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfe315d1_91fbb348",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
@@ -114,6 +210,30 @@
       "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "087c608a_693271ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfe315d1_91fbb348",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 98
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "a25e58a3_5d1191bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d014059e_8ae7001c",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 18
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27d72d8a_7bb8be11",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "e42c6ae5_ce51f144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27d72d8a_7bb8be11",
+      "range": {
+        "startLine": 132,
+        "startChar": 3,
+        "endLine": 132,
+        "endChar": 20
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4f64598_844ac909",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
@@ -174,6 +342,30 @@
       "writtenOn": "2020-08-25T22:17:30Z",
       "side": 1,
       "message": "This would probably be worth adding directly to chrome/ui/filesapp. It would just take some minor changes:\n - return error instead of passing testing.State\n - put the method on filesapp.FilesApp instead of passing it in\n - create a new keyboard event writer in the method instead of passing one in\n - rename zipFiles to fileNames",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 141
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c020afb2_a50ffbf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "If I move this function to chrome/ui/filesapp, I\u0027m just not sure what to do about the selection label\nvar selectionLabel \u003d fmt.Sprintf(\"%d files selected\", len(zipFiles))\nInstead of \"X files selected\", it could be \"X folders selected\", we also see \"X items selected\".",
+      "parentUuid": "b4f64598_844ac909",
       "range": {
         "startLine": 148,
         "startChar": 0,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "3483c5c5_b3067931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a62f7120_e6b357dc",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 32
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19fa92e5_5a73f6e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "510493b6_a5568fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19fa92e5_5a73f6e1",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 122
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91812a80_6b941fd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
@@ -252,6 +492,30 @@
       "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b1d642_fc350e69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91812a80_6b941fd7",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 59
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
