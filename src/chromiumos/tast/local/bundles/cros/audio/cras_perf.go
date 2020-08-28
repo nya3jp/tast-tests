@@ -86,8 +86,8 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 	}
 
 	s.Log("start audio")
-	playbackCommand := crastestclient.CRASPlaybackCommand(runCtx, (int64)(commandDuration.Seconds()), blocksize)
-	captureCommand := crastestclient.CRASCaptureCommand(runCtx, (int64)(commandDuration.Seconds()), blocksize)
+	playbackCommand := crastestclient.PlaybackCommand(runCtx, int(commandDuration.Seconds()), blocksize)
+	captureCommand := crastestclient.CaptureCommand(runCtx, int(commandDuration.Seconds()), blocksize)
 
 	if param.Playback {
 		playbackCommand.Start()
