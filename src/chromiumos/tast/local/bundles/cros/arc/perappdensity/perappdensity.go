@@ -9,6 +9,7 @@ import (
 	"context"
 	"image/color"
 	"math"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -79,6 +80,14 @@ func ConfirmBlackPixelCount(ctx context.Context, cr *chrome.Chrome, wantPixelCou
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		// Save a screenshot.
+		screenshotFilename := "screenshot-uniform-scale-factor.png"
+		path := filepath.Join(s.OutDir(), screenshotFilename)
+		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+			return errors.Wrap(err, "failed to capture screenshot")
+		}
+
+		testing.ContextLogf(ctx, "Saved screenshot to %s", screenshotFileName)
 		return errors.Wrap(err, "timed out waiting for updated screen")
 	}
 	return nil
