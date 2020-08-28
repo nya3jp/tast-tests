@@ -16,6 +16,80 @@
       "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1a20046_7e93cff3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-28T18:58:50Z",
+      "side": 1,
+      "message": "Use \"tcp4\" here to make sure it\u0027s IPv4?\n\nhttp://go/godoc/net/#Listen",
+      "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fb5821a_162c7bd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-28T18:58:50Z",
+      "side": 1,
+      "message": "\"address / port not available\"?",
+      "range": {
+        "startLine": 105,
+        "startChar": 63,
+        "endLine": 105,
+        "endChar": 73
+      },
+      "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a201360_bdecbe3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-28T18:58:50Z",
+      "side": 1,
+      "message": "I noticed once you use goroutine, this error isn\u0027t logged or handled.\n\nOptions:\n1. channels: https://www.atatus.com/blog/goroutines-error-handling/\n2. WaitGroup: https://golangcode.com/errors-in-waitgroups/\n3. Other suggestions?\n\nhttps://forum.golangbridge.org/t/how-to-propagate-errors-in-goroutines-to-main/8472",
+      "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125c4126_5fa6e119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-28T18:58:50Z",
+      "side": 1,
+      "message": "nit: specify that it\u0027s \"file system buffer\"?\n\nBy order of operations: \"Flushed file system buffer, cleared caches, dentries and inodes\".",
+      "revId": "57fa24fc315637e34d15626f83b2f9e87b7617ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
