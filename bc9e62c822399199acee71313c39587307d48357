@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "2cb8f148_a65f765d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T00:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc4a69ba_63a636c9",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "bc9e62c822399199acee71313c39587307d48357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cdbab61_769183a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 7
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "41d03055_17375589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T00:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cdbab61_769183a2",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "bc9e62c822399199acee71313c39587307d48357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec9a4d97_defa37a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 7
@@ -85,6 +133,30 @@
       "revId": "bc9e62c822399199acee71313c39587307d48357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a5edaa_649d5b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T00:51:06Z",
+      "side": 1,
+      "message": "I tried to update unmountZipFile to checkAndUnmountZipFile, so that we can systematically check the content of the mounted zip file before unmounting them. Useful I think for the other tests.",
+      "parentUuid": "ec9a4d97_defa37a3",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 39
+      },
+      "revId": "bc9e62c822399199acee71313c39587307d48357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
