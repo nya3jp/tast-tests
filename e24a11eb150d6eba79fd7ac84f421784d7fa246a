@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "c68765f1_1e718d43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-28T05:47:51Z",
+      "side": 1,
+      "message": "Hymm. Haven\u0027t researched this.\n\nWe can use chromn.GuestLogin to get a guest profile. But IIUC, SWA won\u0027t be reinstalled in that.\n\nI assume you mean adding a test for SWA installation in guest profile?",
+      "parentUuid": "e65b7486_279981d8",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b0a2df7_a8b79c84",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
