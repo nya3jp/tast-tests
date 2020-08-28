@@ -33,6 +33,24 @@
       "revId": "b0b158c05c7c6cd73b3fcc2b382839e646730db3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c771f758_87fabe11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-08-28T22:50:45Z",
+      "side": 1,
+      "message": "For earlier comment about callback support, I can also add during AppLoadingPerf network test integration and ignore for this CL.  Lmk,thanks.",
+      "parentUuid": "d9f4089b_4b32c5a8",
+      "revId": "b0b158c05c7c6cd73b3fcc2b382839e646730db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
