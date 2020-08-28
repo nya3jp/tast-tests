@@ -144,6 +144,31 @@ func (c *Cras) GetNodeByType(ctx context.Context, t string) (*CrasNode, error) {
 	return nil, errors.Errorf("failed to find a node with type %s", t)
 }
 
+// GetNodesByType returns all nodes in a slice with given type.
+func (c *Cras) GetNodesByType(ctx context.Context, t string) ([]*CrasNode, error) {
+	allNodes, err := c.GetNodes(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	nodes := make([]*CrasNode, 0)
+	for _, n := range allNodes {
+		if n.Type == t {
+			nodes = append(nodes, &n)
+		}
+		// Regard the front mic as the internal mic.
+		if t == "INTERNAL_MIC" && n.Type == "FRONT_MIC" {
+			nodes = append(nodes, &n)
+		}
+	}
+
+	if len(nodes) == 0 {
+		return nil, errors.Errorf("failed to find any node with type %s", t)
+	}
+
+	return nodes, nil
+}
+
 // call is a wrapper around CallWithContext for convenience.
 func (c *Cras) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return c.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)

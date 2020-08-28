@@ -7,6 +7,7 @@ package audio
 
 import (
 	"context"
+	"fmt"
 	"math"
 	"regexp"
 	"strconv"
@@ -16,6 +17,26 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
+
+// TestRawData is used to specify parameters of the audio test data, which should be raw, signed, and little-endian.
+type TestRawData struct {
+	// Path specifies the file path of audio data.
+	Path string
+	// BitsPerSample specifies bits per data sample.
+	BitsPerSample int
+	// Channels specifies the channel count of audio data.
+	Channels int
+	// Rate specifies the sampling rate.
+	Rate int
+	// Frequencies specifies the frequency of each channel, whose length should be equal to Channels.
+	// This is only used in the sine tone generation of sox.
+	Frequencies []int
+	// Volume specifies the volume scale of sox, e.g. 0.5 to scale volume by half. -1.0 to invert.
+	// This is only used in the sine tone generation of sox.
+	Volume float32
+	// Duration specifies the duration of audio data in seconds.
+	Duration int
+}
 
 // ConvertRawToWav converts the audio raw file to wav file.
 func ConvertRawToWav(ctx context.Context, rawFileName, wavFileName string, rate, channels int) error {
@@ -82,5 +103,63 @@ func CheckRecordingQuality(ctx context.Context, fileName string) error {
 		return errors.New("the samples are all zeros")
 	}
 
+	return nil
+}
+
+// GetRmsAmplitude gets signal RMS of testData by sox.
+func GetRmsAmplitude(ctx context.Context, testData TestRawData) (float64, error) {
+	out, err := testexec.CommandContext(
+		ctx, "sox",
+		"-b", strconv.Itoa(testData.BitsPerSample),
+		"-c", strconv.Itoa(testData.Channels),
+		"-r", strconv.Itoa(testData.Rate),
+		"-e", "signed",
+		"-t", "raw",
+		testData.Path, "-n", "stat").CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		return 0.0, errors.Wrap(err, "sox failed")
+	}
+
+	re := regexp.MustCompile("RMS\\s+amplitude:\\s+(\\S+)")
+	match := re.FindStringSubmatch(string(out))
+
+	if match == nil {
+		testing.ContextLog(ctx, "sox stat: ", string(out))
+		return 0.0, errors.New("could not find RMS info from the sox result")
+	}
+
+	rms, err := strconv.ParseFloat(match[1], 64)
+	if err != nil {
+		return 0.0, errors.Wrap(err, "atof failed")
+	}
+
+	return rms, nil
+}
+
+// GenerateTestRawData generates sine raw data by sox with specified parameters in testData, and stores in testData.Path.
+func GenerateTestRawData(ctx context.Context, testData TestRawData) error {
+	if len(testData.Frequencies) != testData.Channels {
+		return errors.Errorf("frequencies should have %d value(s)", testData.Channels)
+	}
+
+	args := []string{
+		"-n",
+		"-b", strconv.Itoa(testData.BitsPerSample),
+		"-c", strconv.Itoa(testData.Channels),
+		"-r", strconv.Itoa(testData.Rate),
+		"-e", "signed",
+		"-t", "raw",
+		testData.Path,
+		"synth", strconv.Itoa(testData.Duration),
+	}
+	for _, f := range testData.Frequencies {
+		args = append(args, "sine", strconv.Itoa(f))
+	}
+	args = append(args, "vol", fmt.Sprintf("%f", testData.Volume))
+
+	err := testexec.CommandContext(ctx, "sox", args...).Run(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "sox failed")
+	}
 	return nil
 }
