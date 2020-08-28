@@ -67,7 +67,7 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
 	wantPixelCount := (int)((dd * squareSidePx) * (dd * squareSidePx))
-	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateFullscreen, wantPixelCount); err != nil {
+	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateFullscreen, wantPixelCount, s.OutDir()); err != nil {
 		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
 	}
 }

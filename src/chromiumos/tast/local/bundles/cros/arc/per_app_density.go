@@ -82,7 +82,7 @@ func PerAppDensity(ctx context.Context, s *testing.State) {
 		// Start each activity, and execute the density changes for each activity.
 		testing.ContextLogf(ctx, "Running %q", activity)
 
-		if err := perappdensity.RunTest(ctx, cr, a, packageName, testSteps, activity, expectedInitialPixelCount); err != nil {
+		if err := perappdensity.RunTest(ctx, cr, a, packageName, s.OutDir(), testSteps, activity, expectedInitialPixelCount); err != nil {
 			s.Fatalf("On %q, failed to run density test: %v", activity, err)
 		}
 	}
