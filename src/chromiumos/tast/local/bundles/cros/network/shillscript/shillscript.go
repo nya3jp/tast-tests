@@ -211,13 +211,13 @@ func dbusCallMember(dbusMessage *dbus.Message) (string, error) {
 		return "", errors.Errorf("failed dbus message doesn't have field member: %s", dbusMessage)
 	}
 	msg := fmt.Sprintf(v.String()[1 : len(v.String())-1])
-	whitelistDbusCmd := []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile, dummyEndSignal}
-	for _, cmd := range whitelistDbusCmd {
+	allowlistDbusCmd := []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile, dummyEndSignal}
+	for _, cmd := range allowlistDbusCmd {
 		if msg == cmd {
 			return cmd, nil
 		}
 	}
-	return "", errors.Errorf("failed found unexpected call: got %s, want %v", msg, whitelistDbusCmd)
+	return "", errors.Errorf("failed found unexpected call: got %s, want %v", msg, allowlistDbusCmd)
 }
 
 // AssureMethodCalls assure that the expected methods are called.

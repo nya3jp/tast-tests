@@ -64,7 +64,7 @@ func DumpFDs(ctx context.Context, path string) error {
 // expectType returns whether the given mode is allowed or not for an open
 // file of Chrome.
 func expectType(mode uint32) bool {
-	// This is whitelist fd-type check, suitable for Chrome processes.
+	// This is allowed fd-type check, suitable for Chrome processes.
 	// Notably, this omits S_ISDIR.
 	switch mode & syscall.S_IFMT {
 	case syscall.S_IFCHR, syscall.S_IFSOCK, syscall.S_IFIFO, syscall.S_IFREG:
