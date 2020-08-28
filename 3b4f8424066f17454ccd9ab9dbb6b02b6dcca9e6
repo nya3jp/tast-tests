@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66b88789_8bf161a1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-28T01:01:26Z",
+      "side": 1,
+      "message": "Done, moved it into the PodIconParams function.",
+      "parentUuid": "121d897d_bdcc7442",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 16
+      },
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78012715_fdd13290",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53044b42_082cf63a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-28T01:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78012715_fdd13290",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 18
+      },
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -101,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "f0fe44e4_11dedba4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-28T01:01:26Z",
+      "side": 1,
+      "message": "Added a constants.go file to with the types and FindParams.",
+      "parentUuid": "bd93165e_89c586ce",
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb3f263a_a0d9dd88",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 4
@@ -112,6 +178,30 @@
       "writtenOn": "2020-08-25T21:58:34Z",
       "side": 1,
       "message": "nit: just NotificationsHidden",
+      "range": {
+        "startLine": 381,
+        "startChar": 5,
+        "endLine": 381,
+        "endChar": 27
+      },
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3acba8_67e574ad",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-28T01:01:26Z",
+      "side": 1,
+      "message": "How about for IsShown and IsPodRestricted? I didn\u0027t see any style guidelines for functions returning booleans, but I can remove all the Is/Are if that\u0027s what we\u0027re going with.",
+      "parentUuid": "fb3f263a_a0d9dd88",
       "range": {
         "startLine": 381,
         "startChar": 5,
@@ -144,6 +234,30 @@
       "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceb7a0cb_4f8981a1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-28T01:01:26Z",
+      "side": 1,
+      "message": "It\u0027s about as explicit as we can get without referring to the parent elements. I can also add the \"slider\" role type. If it becomes problematic in the future, we can change all of the UI finding to search from the Quick Settings root instead of the UI root.",
+      "parentUuid": "a8da2c53_d33e89fe",
+      "range": {
+        "startLine": 403,
+        "startChar": 6,
+        "endLine": 404,
+        "endChar": 21
+      },
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab7a89bf_275f94b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-28T01:01:26Z",
+      "side": 1,
+      "message": "Also removed the chrome.LoggedIn precondition, since this test will leave the screen locked and unusable by the next test. Unlocking the screen at the end of the test is possible with the test user\u0027s password, but I didn\u0027t think it was worth it to add extra steps that aren\u0027t really a part of the test. Let me know if you guys have a different opinion though.",
+      "revId": "2cd425cb8859f6ba6d3b27669e59e9ac96ff3ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
