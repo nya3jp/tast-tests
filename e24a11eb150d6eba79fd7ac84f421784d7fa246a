@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7204575b_ba1693e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133035
+      },
+      "writtenOn": "2020-08-28T05:51:11Z",
+      "side": 1,
+      "message": "Yeah, sorry. It would be a slightly different test, where we would only check if apps are installed correctly, since the guest profile is destroyed when logging out.",
+      "parentUuid": "c68765f1_1e718d43",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b0a2df7_a8b79c84",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
