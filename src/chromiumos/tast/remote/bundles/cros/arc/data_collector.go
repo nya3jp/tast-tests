@@ -102,11 +102,23 @@ func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled boo
 		return nil, errors.Errorf("ro.build.version.incremental is not found in %q", buildPropStr)
 	}
 
+	var abiMap = map[string]string{
+		"armeabi-v7a": "arm",
+		"arm64-v8a":   "arm64",
+		"x86":         "x86",
+		"x86_64":      "x86_64",
+	}
+
+	abi, ok := abiMap[mCPUAbi[2]]
+	if !ok {
+		return nil, errors.Errorf("failed to map ABI %q", mCPUAbi[2])
+	}
+
 	desc := buildDescriptor{
 		official:  regexp.MustCompile(`^\d+$`).MatchString(mBuildID[2]),
 		buildID:   mBuildID[2],
 		buildType: mBuildType[2],
-		cpuAbi:    mCPUAbi[2],
+		cpuAbi:    abi,
 	}
 
 	return &desc, nil
