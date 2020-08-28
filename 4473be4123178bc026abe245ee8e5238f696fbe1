@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a6d10be1_779062d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-28T06:33:54Z",
+      "side": 1,
+      "message": "\u003e I\u0027d rather not:\n\u003e 1. They are independent: 2374912 shares Downloads with Crostini. This shares folders under Downloads with Crostini.\n\u003e 2. This typically tests multi folders sharing.\n\u003e 3. Both use the same precondition, so no extra overhead.\n\n1. Not sure how the underlying mechanism is written, I assume we have special code path to share Download folder?\n3, it is partially true. Extra overhead is still exist, e.g. Log collecting, data saving. But I agree, compared to Crostini/VM setup, these are relatively small.",
+      "parentUuid": "2e353a7a_9dc49a5e",
+      "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cc2f7f1_23fc8710",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_multiple_folders.go",
         "patchSetId": 1
@@ -269,6 +287,30 @@
       "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e333204_63873ace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_multiple_folders.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-28T06:33:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "256ff94b_7b3202e5",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

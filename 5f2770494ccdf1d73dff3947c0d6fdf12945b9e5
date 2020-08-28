@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fe649ac_db06c905",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-28T06:33:54Z",
+      "side": 1,
+      "message": "LGTM +2 % the comment to add the reason why sharedFolder3 is here.",
+      "revId": "5f2770494ccdf1d73dff3947c0d6fdf12945b9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0c7186b_cff439a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_folders.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-28T06:33:54Z",
+      "side": 1,
+      "message": "Can you add a comment here to say why sharedFolder3 is not used?",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "5f2770494ccdf1d73dff3947c0d6fdf12945b9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
