@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc2db403_938034a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-28T00:15:02Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f43d6244ea9d1dd6b4b36deb474e37f7b46c8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f36be4f1_9f108cb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-28T00:15:02Z",
+      "side": 1,
+      "message": "I think this would be \u0027nc\u0027 as it is an acronym word (see https://gist.github.com/adamveld12/c0d9f0d5f0e1fba1e551#initialisms; it should be \u0027url\u0027 or \u0027URL\u0027, not \u0027Url\u0027 nor uRL)",
+      "range": {
+        "startLine": 357,
+        "startChar": 5,
+        "endLine": 357,
+        "endChar": 7
+      },
+      "revId": "f43d6244ea9d1dd6b4b36deb474e37f7b46c8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a6e7a88_37ff507b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-28T00:15:02Z",
+      "side": 1,
+      "message": "similarly I think \u0027rc\u0027 would be better",
+      "range": {
+        "startLine": 548,
+        "startChar": 5,
+        "endLine": 548,
+        "endChar": 7
+      },
+      "revId": "f43d6244ea9d1dd6b4b36deb474e37f7b46c8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df4346d7_4dc54ba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-28T00:15:02Z",
+      "side": 1,
+      "message": "nit: is it oz?",
+      "range": {
+        "startLine": 606,
+        "startChar": 51,
+        "endLine": 606,
+        "endChar": 73
+      },
+      "revId": "f43d6244ea9d1dd6b4b36deb474e37f7b46c8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
