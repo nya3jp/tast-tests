@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -56,6 +57,10 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 		s.Fatal("Failed to create new app activity: ", err)
 	}
 	defer act.Close()
+	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Log("Failed to ensure the display is on: ", err)
+	}
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app before test cases: ", err)
 	}
@@ -83,6 +88,10 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			// Save time for cleanup and screenshot.
 			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
 			defer cancel()
+			// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
+			if err := power.TurnOnDisplay(ctx); err != nil {
+				s.Log("Failed to ensure the display is on: ", err)
+			}
 			// Launch the app.
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
@@ -156,6 +165,10 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	}
 
 	s.Log("Installing app")
+	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Log("Failed to ensure the display is on: ", err)
+	}
 	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Fatal("Failed to launch Play Store: ", err)
 	}
