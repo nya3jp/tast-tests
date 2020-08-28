@@ -82,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "380de61e_7fd9e650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-28T05:26:35Z",
+      "side": 1,
+      "message": "`go fmt` wants this, i won\u0027t object. :P",
+      "parentUuid": "c726252e_5f8f85f3",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85c77740_32ccd652",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 3
@@ -96,6 +120,24 @@
       "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ec3b394_943932da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-28T05:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85c77740_32ccd652",
+      "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "edd542fb_9e7f77e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-28T05:26:35Z",
+      "side": 1,
+      "message": "Done. Nice catch :)",
+      "parentUuid": "a238bb78_4d09bcc3",
+      "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bcf0e36_2195fbcc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 3
@@ -130,6 +190,24 @@
       "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36bee3d8_98f78a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-28T05:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bcf0e36_2195fbcc",
+      "revId": "e63f4cd78e3a037bdfedef3824962ce82d69deaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
