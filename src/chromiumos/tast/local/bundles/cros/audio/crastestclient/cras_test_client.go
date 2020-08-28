@@ -12,30 +12,53 @@ import (
 	"chromiumos/tast/local/testexec"
 )
 
-// CRASPlaybackCommand creates a cras_test_client playback command.
-func CRASPlaybackCommand(ctx context.Context, duration, blocksize int64) (cmd *testexec.Cmd) {
-	// Playback function by CRAS.
-	command := testexec.CommandContext(
-		ctx, "cras_test_client",
-		"--playback_file", "/dev/zero",
-		"--duration", strconv.FormatInt(duration, 10),
-		"--num_channels", "2",
-		"--block_size", strconv.FormatInt(blocksize, 10),
-		"--rate", "48000")
+type cmdMode int
 
-	return command
+const (
+	captureMode cmdMode = iota
+	playbackMode
+)
+
+// getBlockSize calculates default block size from rate. This should be aligned as defined in cras_test_client.
+func getBlockSize(rate int) int {
+	const playbackBufferedTimeUs = 5000
+	return rate * playbackBufferedTimeUs / 1000000
 }
 
-// CRASCaptureCommand creates a cras_test_client capture command.
-func CRASCaptureCommand(ctx context.Context, duration, blocksize int64) (cmd *testexec.Cmd) {
-	// Playback function by CRAS.
-	command := testexec.CommandContext(
-		ctx, "cras_test_client",
-		"--capture_file", "/dev/null",
-		"--duration", strconv.FormatInt(duration, 10),
-		"--num_channels", "2",
-		"--block_size", strconv.FormatInt(blocksize, 10),
-		"--rate", "48000")
+// getCommand creates a cras_test_client command.
+func getCommand(ctx context.Context, mode cmdMode, file string, duration, channels, blocksize, rate int) *testexec.Cmd {
+	var runStr string
+	if mode == captureMode {
+		runStr = "--capture_file"
+	} else { // playbackMode
+		runStr = "--playback_file"
+	}
 
-	return command
+	return testexec.CommandContext(
+		ctx, "cras_test_client",
+		runStr, file,
+		"--duration", strconv.Itoa(duration),
+		"--num_channels", strconv.Itoa(channels),
+		"--block_size", strconv.Itoa(blocksize),
+		"--rate", strconv.Itoa(rate))
+}
+
+// PlaybackFileCommand creates a cras_test_client playback-from-file command.
+func PlaybackFileCommand(ctx context.Context, file string, duration, channels, rate int) *testexec.Cmd {
+	return getCommand(ctx, playbackMode, file, duration, channels, getBlockSize(rate), rate)
+}
+
+// PlaybackCommand creates a cras_test_client playback command.
+func PlaybackCommand(ctx context.Context, duration, blocksize int) *testexec.Cmd {
+	return getCommand(ctx, playbackMode, "/dev/zero", duration, 2, blocksize, 48000)
+}
+
+// CaptureFileCommand creates a cras_test_client capture-to-file command.
+func CaptureFileCommand(ctx context.Context, file string, duration, channels, rate int) *testexec.Cmd {
+	return getCommand(ctx, captureMode, file, duration, channels, getBlockSize(rate), rate)
+}
+
+// CaptureCommand creates a cras_test_client capture command.
+func CaptureCommand(ctx context.Context, duration, blocksize int) *testexec.Cmd {
+	return getCommand(ctx, captureMode, "/dev/null", duration, 2, blocksize, 48000)
 }
