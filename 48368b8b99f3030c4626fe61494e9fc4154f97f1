@@ -36,6 +36,115 @@
     },
     {
       "key": {
+        "uuid": "65bec90d_8512de60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-28T07:49:06Z",
+      "side": 1,
+      "message": "Instead of listen, how about listener for consistency?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 7
+      },
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456509b7_a8185f73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-28T07:49:06Z",
+      "side": 1,
+      "message": "Can you add port number here?",
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6af2a9a_d0df3b30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-28T07:49:06Z",
+      "side": 1,
+      "message": "you can use %% to print % symbol.",
+      "range": {
+        "startLine": 86,
+        "startChar": 38,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f825530_3ff01304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-28T07:49:06Z",
+      "side": 1,
+      "message": "tast generally follows google golang style guide. In-band errors is not quite encouraged here. \ngo/go-style/decisions#in-band-errors\n\nSomething like the following would be perfered.\n\nfunc respond(ctx context.Context, conn net.Conn, result string) error {\n\t_, err :\u003d conn.Write([]byte(result + \"\\n\"))\n\tif err !\u003d nil {\n\t\treturn err\n\t}\n\treturn nil\n}\n\n\nAlternatively, how about let handleClient call conn.Write itself and handle the error.",
+      "range": {
+        "startLine": 116,
+        "startChar": 64,
+        "endLine": 116,
+        "endChar": 68
+      },
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498b21d4_3c590367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-28T07:49:06Z",
+      "side": 1,
+      "message": "Instead of nested switch, how about an error check first and do the msg handling later? \n\nmessage, err :\u003d bufio.NewReader(conn).ReadString(\u0027\\n\u0027)\nif err {\n    if err \u003d\u003d io.EOF {\n         ...\n         return\n    }\n    ...\n    return\n}\n\nmsg :\u003d strings.TrimSuffix(string(message), \"\\n\")\nswitch msg {\n    case cmdDropCaches:\n        response :\u003d handleDropCaches(ctx)\n    default:\n        testing.ContextLogf(ctx, \"...\")\n        return\n}\n\nif _, err :\u003d conn.Write([]byte(response + \"\\n\")); err !\u003d nil {\n    testing.ContextLogf(ctx, \"Failed to respond %q to %s: %v\", response, conn.RemoteAddr().String(), err);\n}\n\nNote that I also arranged some logic and make handleClient calls conn.Write directly. WDYT?",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 3
+      },
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6f4a4a8_1b017f4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 1
@@ -86,6 +195,29 @@
       "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20b2a670_e29da622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-08-28T07:49:06Z",
+      "side": 1,
+      "message": "I\u0027m less leaning to the FAILED message here as it represents in-band error. But I can see it is inevitable as we need to transmit it via net.\n\n\nAssume all failures should return \"FAILED\", how about make \"FAILED\"/\"OK\" a const?",
+      "range": {
+        "startLine": 163,
+        "startChar": 9,
+        "endLine": 163,
+        "endChar": 17
+      },
+      "revId": "48368b8b99f3030c4626fe61494e9fc4154f97f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
