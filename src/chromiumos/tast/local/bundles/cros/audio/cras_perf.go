@@ -86,8 +86,8 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 	}
 
 	s.Log("start audio")
-	playbackCommand := crastestclient.CRASPlaybackCommand(runCtx, (int64)(commandDuration.Seconds()), blocksize)
-	captureCommand := crastestclient.CRASCaptureCommand(runCtx, (int64)(commandDuration.Seconds()), blocksize)
+	playbackCommand := crastestclient.PlaybackCommand(runCtx, int(commandDuration.Seconds()), blocksize)
+	captureCommand := crastestclient.CaptureCommand(runCtx, int(commandDuration.Seconds()), blocksize)
 
 	if param.Playback {
 		playbackCommand.Start()
@@ -186,7 +186,7 @@ func CrasPerf(ctx context.Context, s *testing.State) {
 		}
 
 		pid, err := audio.GetCRASPID()
-		s.Log("get PID done: ", pid)
+		s.Log("Get PID done: ", pid)
 
 		if err != nil {
 			s.Fatal("Failed to find PID of cras: ", err)
