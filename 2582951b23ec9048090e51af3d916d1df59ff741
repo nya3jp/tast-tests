@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebc33f5a_d48e9c7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-08-28T00:27:49Z",
+      "side": 1,
+      "message": "I have addressed the review comments, and I have also modified meta/run_tests.go for checking if faillog is saved when there is a failure. I want to know if more tests should be added. Please let me know. Thanks.\n\nAlso, I found meta.RunTests.files and meta.RunTests.files_remotes sometimes failed. However, I can reproduce this problem without my changes on a different host. Maybe I should do more investigation on these two tests. \n\nI still need to figure out and change all the reference to the old API Main. I will do it later.\n\nThanks.\n",
+      "revId": "2582951b23ec9048090e51af3d916d1df59ff741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
