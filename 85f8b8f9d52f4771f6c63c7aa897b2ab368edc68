@@ -22,6 +22,30 @@
       "revId": "85f8b8f9d52f4771f6c63c7aa897b2ab368edc68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8df95241_11064269",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-08-28T19:32:40Z",
+      "side": 1,
+      "message": "It looks like the accessibility team has been making a lot of changes to improve the ChromeVox experience. I think it should be stable now, but if I end up seeing more changes that break this test, I\u0027ll reach out to their team and file a bug.",
+      "parentUuid": "d220095d_d4cf2296",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "85f8b8f9d52f4771f6c63c7aa897b2ab368edc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
