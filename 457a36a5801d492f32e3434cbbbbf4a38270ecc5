@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "834290bc_f0e5f06b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T18:23:18Z",
+      "side": 1,
+      "message": "nit: return a wrapped error if err !\u003d nil, it may give more context for debugging.",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "457a36a5801d492f32e3434cbbbbf4a38270ecc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "9a286c8d_8a01da59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T18:23:18Z",
+      "side": 1,
+      "message": "Instead of making val a string, It might be cleaner in the long term to make it be struct of list of zip files and a function.\n\nie: \n {\n  TestCase: testCancelingMultiplePasswordDialogs,\n  ZipFiles: []string{\"Encrypted..\", \"Encrypted..\"},\n }\n\nThe function interface can be:\ntype TestFunc func(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFiles []string)\n\nThen in testMountingSingleZipFile, you can just always use the first zip file from the list. Maybe even assert it is of length one to avoid misuse, and in testCancelingMultiplePasswordDialogs, you can create a keyboard.",
+      "parentUuid": "1d7a8a91_201c6e56",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cecfa880_d8532ee0",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
@@ -438,6 +462,30 @@
       "side": 1,
       "message": "If I move this function to chrome/ui/filesapp, I\u0027m just not sure what to do about the selection label\nvar selectionLabel \u003d fmt.Sprintf(\"%d files selected\", len(zipFiles))\nInstead of \"X files selected\", it could be \"X folders selected\", we also see \"X items selected\".",
       "parentUuid": "b4f64598_844ac909",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 141
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a14f255_746c18b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T18:23:18Z",
+      "side": 1,
+      "message": "a regex could be used, but it is up to you if you want to add that into this CL. If not, it is fine to just leave this as is.",
+      "parentUuid": "c020afb2_a50ffbf7",
       "range": {
         "startLine": 148,
         "startChar": 0,
