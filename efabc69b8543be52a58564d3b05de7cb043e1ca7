@@ -33,6 +33,24 @@
       "revId": "efabc69b8543be52a58564d3b05de7cb043e1ca7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93ff209f_0ad3e3f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-08-28T00:22:22Z",
+      "side": 1,
+      "message": "Not yet. nverne@\u0027s landed his change to move where vmlogs go, but tast doesn\u0027t yet pull them from the new location.\n\nWhen I have time to add it (ETA: next few days) it will be part of RunCrostiniPostTest though.",
+      "parentUuid": "6c9f1d43_65562e66",
+      "revId": "efabc69b8543be52a58564d3b05de7cb043e1ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
