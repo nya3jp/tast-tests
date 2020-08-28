@@ -16,6 +16,40 @@
       "revId": "c9ab906485cf93459fda549ec445525321986884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a915b862_3f3fbd5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-28T15:37:19Z",
+      "side": 1,
+      "message": "Sorry for the delayed review! LGTM % comment -- if it\u0027s possible to Poll for logcat results, great! If not, LGTM.",
+      "revId": "c9ab906485cf93459fda549ec445525321986884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d47b1e7_c359a72b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-28T15:37:19Z",
+      "side": 1,
+      "message": "From the testing.Sleep documentation, https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#Sleep:\n\n    Please consider using testing.Poll instead. Sleeping without polling for a condition is discouraged, since it makes tests flakier (when the sleep duration isn\u0027t long enough) or slower (when the duration is too long).\n\nIs it possible to poll for the logcat process instead of sleeping?",
+      "revId": "c9ab906485cf93459fda549ec445525321986884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
