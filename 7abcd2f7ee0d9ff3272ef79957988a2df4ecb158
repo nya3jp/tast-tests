@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "59d34481_c2d7b6d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-28T04:02:28Z",
+      "side": 1,
+      "message": "I do not know about aria. We are using the UI tree to test the UI items: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md",
+      "parentUuid": "94d0da60_8095ce4b",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5bf7833_5b6a91f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
         "patchSetId": 1
