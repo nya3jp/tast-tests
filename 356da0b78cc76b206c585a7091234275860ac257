@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d143373_beb4ac1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-28T16:39:14Z",
+      "side": 1,
+      "message": "nit: you can list multiple args in ExtraArgs.\n\noptional: Is it possible to introduce precondition, because there are several tests using the same chrome configuration.",
+      "range": {
+        "startLine": 35,
+        "startChar": 72,
+        "endLine": 35,
+        "endChar": 92
+      },
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49774e69_e6e60e3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-28T16:39:14Z",
+      "side": 1,
+      "message": "Could you use s.Run() so that even one test fails with s.Fatal() another should still run.\nAlso, it\u0027d add some more logging info so that it can help to identify what test is failing.",
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a883aa_458a8727",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-28T16:39:14Z",
+      "side": 1,
+      "message": "Could you use s.Fatalf() instead? Ditto for below.",
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec215930_0e49b0e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-28T16:39:14Z",
+      "side": 1,
+      "message": "nit/style: s/ +/,/",
+      "range": {
+        "startLine": 76,
+        "startChar": 32,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d538e7a7_ff7c5c91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-28T16:39:14Z",
+      "side": 1,
+      "message": "Could you introduce the wrapper to share the code with virtual_keyboard_accessibility.go\n?",
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cfa2efb_e67abc71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-28T16:39:14Z",
+      "side": 1,
+      "message": "Any reason not to use vkb.ShowVirtualKeyboard? If there is, could you comment? If not, how about using it?",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 58
+      },
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41443e6d_c88ef0d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-28T16:39:14Z",
+      "side": 1,
+      "message": "Could you release?",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 20
+      },
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2b897d_d9ece8cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-28T16:39:14Z",
+      "side": 1,
+      "message": "nit/style:\n\n\"failed to input with virtual keyboard: got %s, want %s\"",
+      "range": {
+        "startLine": 124,
+        "startChar": 26,
+        "endLine": 124,
+        "endChar": 82
+      },
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af27036d_be08dd13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-28T16:39:14Z",
+      "side": 1,
+      "message": "Is it intentional to check this multiple times?\nif so, could you comment? If not, could you use testing.PollBreak() ?",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09a0288f_f95c9b6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-28T16:39:14Z",
+      "side": 1,
+      "message": "Could you move this to the defer stmt just after showing VK?",
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
