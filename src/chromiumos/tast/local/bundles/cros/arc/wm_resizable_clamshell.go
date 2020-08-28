@@ -56,6 +56,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			Func: wmRC02,
 		},
 		wm.TestCase{
+			// resizable/clamshell: maximize non-portrait app
+			Name: "RC03_maximize_non_portrait",
+			Func: wmRC03,
+		},
+		wm.TestCase{
 			// resizable/clamshell: user immerse portrait app (pillarbox)
 			Name: "RC04_user_immerse_portrait",
 			Func: wmRC04,
@@ -292,8 +297,30 @@ func wmRC02(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		{"touchCaptionButton", touchCaptionButton},
 		{"leftClickCaptionButton", leftClickCaptionButton},
 	} {
-		if err := runRC02ByEventTypeFunc(ctx, tconn, a, d, eTC.Func); err != nil {
-			return errors.Wrapf(err, "%q event type test case failed", eTC.Name)
+		if err := rcMaxRestoreTestHelper(ctx, tconn, a, d, wm.ResizablePortraitActivity, eTC.Func); err != nil {
+			return errors.Wrapf(err, "%q event type test case for wm.ResizablePortraitActivity failed", eTC.Name)
+		}
+	}
+	return nil
+}
+
+// wmRC03 covers resizable/clamshell: maximize non-portrait app.
+// Expected behavior is defined in: go/arc-wm-r RC02: resizable/clamshell: maximize non-portrait app.
+func wmRC03(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	for _, eTC := range []struct {
+		Name string
+		Func func(context.Context, *chrome.TestConn, string) error
+	}{
+		{"touchCaptionButton", touchCaptionButton},
+		{"leftClickCaptionButton", leftClickCaptionButton},
+	} {
+		for _, actName := range []string{
+			wm.ResizableLandscapeActivity,
+			wm.ResizableUnspecifiedActivity,
+		} {
+			if err := rcMaxRestoreTestHelper(ctx, tconn, a, d, actName, eTC.Func); err != nil {
+				return errors.Wrapf(err, "%q event type test case for %q failed", eTC.Name, actName)
+			}
 		}
 	}
 	return nil
@@ -963,9 +990,9 @@ func leftClickCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName
 	return nil
 }
 
-// runRC02ByEventTypeFunc performs RC02 test either by left clicking or touching the caption button.
-func runRC02ByEventTypeFunc(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, etFunc func(context.Context, *chrome.TestConn, string) error) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizablePortraitActivity)
+// rcMaxRestoreTestHelper performs RC02 test either by left clicking or touching the caption button.
+func rcMaxRestoreTestHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string, etFunc func(context.Context, *chrome.TestConn, string) error) error {
+	act, err := arc.NewActivity(a, wm.Pkg24, actName)
 	if err != nil {
 		return err
 	}
