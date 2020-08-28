@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_resolution_Ricoh_20200827.ppd",
+  "size": 27992,
+  "sha256sum": "71347650efa705b498e68d20141da8ef376705446d08cda98881f33c34a479b1"
+}

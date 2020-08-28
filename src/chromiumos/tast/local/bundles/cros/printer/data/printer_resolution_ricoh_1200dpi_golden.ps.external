@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_resolution_ricoh_1200dpi_golden_20200827.ps",
+  "size": 16247,
+  "sha256sum": "6b45fb4099a52a552b20d6918fe3aa333cd3daa601d32f80ea526b5a213b0a99"
+}
