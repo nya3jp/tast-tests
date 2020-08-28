@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48955b57_0e702c65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-08-28T07:13:39Z",
+      "side": 1,
+      "message": "hey, I added the usage in lacros launcher.go so I wanted to fix it; at the same time it was easy to fix all of the other jslog usages hope it\u0027s okay",
+      "revId": "6e74853a2632955884aeb709ad321e527c638f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
