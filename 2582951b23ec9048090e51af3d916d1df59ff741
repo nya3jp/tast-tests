@@ -39,6 +39,30 @@
       "revId": "2582951b23ec9048090e51af3d916d1df59ff741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e43a8029_8e15ded4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/faillog_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-08-28T18:51:43Z",
+      "side": 1,
+      "message": "I followed your suggestion in\n\nsrc/chromiumos/tast/local/faillog/faillog.go\n#35\n\u003e Can you move the code to create \"faillog\" to Save?\n\nTherefore, SaveToDir no long creates faillog. That\u0027s why I need to create the directory faillog here.\n\n...\n2020/08/28 16:50:33 meta.RemoteFail  [ FAIL ] Failed\n2020/08/28 16:50:33 --------------------------------------------------------------------------------\n2020/08/28 16:50:33 Results saved to /tmp/tast/results/20200828-164954\n$ ls /tmp/tast/results/20200828-164954/tests/meta.RemoteFail/faillog/\ninitctl_list.log  ps.txt  screenshot_chrome.png\n\nPlease let me know if I misunderstood your comments in #35. Thanks.",
+      "parentUuid": "e643ed6c_f6b45da0",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "2582951b23ec9048090e51af3d916d1df59ff741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

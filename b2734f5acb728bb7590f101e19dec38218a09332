@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45c958fa_b8e23147",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-08-28T18:51:43Z",
+      "side": 1,
+      "message": "Hi Shuhei:\n\nSorry, I forgot to save after I put more blank lines. Please review again. Thanks.\n\nSeewai",
+      "revId": "b2734f5acb728bb7590f101e19dec38218a09332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
