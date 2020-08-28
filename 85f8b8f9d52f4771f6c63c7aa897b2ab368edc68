@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d220095d_d4cf2296",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T18:24:47Z",
+      "side": 1,
+      "message": "Do you know why this is happening? Is it worth filing a bug for?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "85f8b8f9d52f4771f6c63c7aa897b2ab368edc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
