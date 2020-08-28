@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ca562b1_14c180b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-08-28T07:19:08Z",
+      "side": 1,
+      "message": "It looks like this is responsible for the difference between this test\u0027s power metric and the power test\u0027s package-0 metric. I think allowing CPU scaling is a more realistic scenario for measuring power/dropped frames. This also enables thermal throttling for the first part of the test, but that shouldn\u0027t impact hardware decode.",
+      "revId": "69d4944a12ed850adae414905e8373e1981426c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
