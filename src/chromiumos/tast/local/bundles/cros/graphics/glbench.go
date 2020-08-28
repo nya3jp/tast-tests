@@ -313,7 +313,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 			// We have triaged the failure and have filed a tracking bug.
 			// Don't throw an exception and remind there is a problem.
 			errMsg = fmt.Sprintf("knownbad [%s]", imageFile)
-			// This failure is whitelisted so don't add to failedTests.
+			// This failure is allowed so don't add to failedTests.
 		case strings.Contains(referenceImageNames, imageFile):
 			// Known good reference images (default).
 		case imageFile == "none":

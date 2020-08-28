@@ -106,6 +106,6 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 		}
 	}
 	if !found {
-		s.Fatal("User is not found in the whitelist")
+		s.Fatal("User is not found in the allowlist")
 	}
 }

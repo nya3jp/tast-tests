@@ -252,9 +252,9 @@ func (r *Runner) PhyByID(ctx context.Context, id int) (*Phy, error) {
 // TimedScan runs a scan on a specified interface and frequencies (if applicable).
 // A channel map for valid frequencies can be found in
 // third_party/autotest/files/server/cros/network/hostap_config.py
-// The frequency slice is used to whitelist which frequencies/bands to scan on.
+// The frequency slice is used to list which frequencies/bands to scan on.
 // The SSIDs slice will filter the results of the scan to those that pertain
-// to the whitelisted SSIDs (although this doesn't seem to work on some devices).
+// to the allowed SSIDs (although this doesn't seem to work on some devices).
 func (r *Runner) TimedScan(ctx context.Context, iface string,
 	frequencies []int, ssids []string) (*TimedScanData, error) {
 	args := []string{"dev", iface, "scan"}
