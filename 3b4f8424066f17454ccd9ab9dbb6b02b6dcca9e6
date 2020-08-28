@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "73200c5e_7eaf9e7d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T18:39:50Z",
+      "side": 1,
+      "message": "I missed that. I would remove all of the is and are prefixes, but there is no official style guide on this. I just feel they fall in the same category as get. Since quicksettings.NotificationsHidden/Shown/PodRestricted all clearly let someone know the intent, there is no need for the Is/Are prefix.",
+      "parentUuid": "ed3acba8_67e574ad",
+      "range": {
+        "startLine": 381,
+        "startChar": 5,
+        "endLine": 381,
+        "endChar": 27
+      },
+      "revId": "3b4f8424066f17454ccd9ab9dbb6b02b6dcca9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8da2c53_d33e89fe",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 4

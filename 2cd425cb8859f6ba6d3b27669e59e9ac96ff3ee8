@@ -16,6 +16,52 @@
       "revId": "2cd425cb8859f6ba6d3b27669e59e9ac96ff3ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d166e53_ad070f5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T18:39:50Z",
+      "side": 1,
+      "message": "why no precondition anymore?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "2cd425cb8859f6ba6d3b27669e59e9ac96ff3ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec9d1bb_c17ccafa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-28T18:39:50Z",
+      "side": 1,
+      "message": "You moved the logic to PodIconParams, but you also didn\u0027t change it here. This if distinction should no longer be needed, right?",
+      "range": {
+        "startLine": 248,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 23
+      },
+      "revId": "2cd425cb8859f6ba6d3b27669e59e9ac96ff3ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
