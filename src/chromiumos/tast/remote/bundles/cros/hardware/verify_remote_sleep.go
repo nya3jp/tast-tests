@@ -18,6 +18,21 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// all clocks from linux.die.net/man/2/clock_gettime are supported at the
+// time of writing this comment. These constants should be kept in sync with
+// the `clocks` array in helpers/local/hardware.VerifyRemoteSleep.timersignal.c,
+// which implements the remote side of this test.
+const (
+	clockRealtime         string = "CLOCK_REALTIME"
+	clockRealtimeCoarse          = "CLOCK_REALTIME_COARSE"
+	clockMonotonic               = "CLOCK_MONOTONIC"
+	clockMonotonicCoarse         = "CLOCK_MONOTONIC_COARSE"
+	clockMonotonicRaw            = "CLOCK_MONOTONIC_RAW"
+	clockBoottime                = "CLOCK_BOOTTIME"
+	clockProcessCPUTimeID        = "CLOCK_PROCESS_CPUTIME_ID"
+	clockThreadCPUTimeID         = "CLOCK_THREAD_CPUTIME_ID"
+)
+
 const (
 	sleepDuration   = 300 * time.Second
 	sleepIterations = 10
@@ -26,11 +41,13 @@ const (
 	// no network or other sources of noise in the test. Heavy load may cause this
 	// to fail sporadically* (albeit I've never managed to make it happen), but if
 	// the test fails repeatably, something is amiss.
-	// *Some theoretical flakiness is sadly introduced simply because of the fact
-	// that this test requires communication between DUT and the testing machine.
+	// *Some theoretical flakiness is necessarily introduced simply because of the
+	// fact that this test requires communication between DUT and the testing machine.
 	sleepTolerance = 20 * time.Millisecond
 	// set to false if you want to run the test to completion even if it fails
 	failEagerly = true
+	// the DUT's clock to validate
+	remoteClock = clockMonotonic
 )
 
 func init() {
@@ -49,7 +66,7 @@ func doRemoteSleep(ctx context.Context, s *testing.State) *ssh.Cmd {
 	sleepArg := strconv.FormatInt(int64(sleepDuration.Milliseconds()), 10)
 	itersArg := strconv.FormatInt(sleepIterations, 10)
 	fileArg := "/dev/ttyS0"
-	testCommand := fmt.Sprintf("sleep 1; %s %s %s %s", exe, sleepArg, itersArg, fileArg)
+	testCommand := fmt.Sprintf("sleep 1; %s %s %s %s %s", exe, sleepArg, itersArg, remoteClock, fileArg)
 
 	dut := s.DUT()
 	cmd := dut.Conn().Command("sh", "-c", testCommand)

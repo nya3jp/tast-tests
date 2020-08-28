@@ -15,7 +15,27 @@
 
 #define SIG SIGRTMIN
 
+typedef struct {
+    const char* name;
+    clockid_t id;
+} named_clock_t;
+
 static int out_desc = STDOUT_FILENO; /* default is stdout, prog param */
+
+// Make sure to keep this array in sync with `clock*` constants in the test
+// hardware.VerifyRemoteSleep.
+static named_clock_t clocks[] = {
+    {"CLOCK_REALTIME", CLOCK_REALTIME},
+    {"CLOCK_REALTIME_COARSE", CLOCK_REALTIME_COARSE},
+    {"CLOCK_MONOTONIC", CLOCK_MONOTONIC},
+    {"CLOCK_MONOTONIC_COARSE", CLOCK_MONOTONIC_COARSE},
+    {"CLOCK_MONOTONIC_RAW", CLOCK_MONOTONIC_RAW},
+    {"CLOCK_BOOTTIME", CLOCK_BOOTTIME},
+    {"CLOCK_PROCESS_CPUTIME_ID", CLOCK_PROCESS_CPUTIME_ID},
+    {"CLOCK_THREAD_CPUTIME_ID", CLOCK_THREAD_CPUTIME_ID}
+};
+static size_t clock_n = sizeof(clocks) / sizeof(named_clock_t);
+static clockid_t clockid;
 
 static void send_msg(const char *msg) {
     if(write(out_desc, msg, strlen(msg)) < 0) {
@@ -30,7 +50,7 @@ static void send_msg(const char *msg) {
 static void handler(int sig) {
     struct timespec ts;
 
-    if (clock_gettime(CLOCK_MONOTONIC_RAW, &ts)) {
+    if (clock_gettime(clockid, &ts)) {
         send_msg("clock_gettimeERR: ping\n");
     } else {
         char msg[256];
@@ -54,21 +74,45 @@ static long long safe_atoll(const char *str) {
     return res;
 }
 
+static void print_help(char* argv[]) {
+  fprintf(stderr, "Usage: %s <time ms> <repetitions> <clock> [out file]\n",
+          argv[0]);
+  fprintf(stderr, "supported clocks: \n");
+  for(size_t i = 0; i < clock_n; ++i) {
+    fprintf(stderr, "- %s\n", clocks[i].name);
+  }
+}
+
 int main(int argc, char* argv[]) {
-    if (argc != 4 && argc != 3) {
-        fprintf(stderr, "Usage: %s <time ms> <repetitions> [out file]\n",
-                argv[0]);
+    if (argc != 5 && argc != 4) {
+        print_help(argv);
         exit(EXIT_FAILURE);
     }
 
     long long msecs = safe_atoll(argv[1]);
     long long iterations = safe_atoll(argv[2]);
 
-    if (argc == 4) {
-        out_desc = open(argv[3], O_WRONLY);
+    // sets the global clockid
+    for(size_t i = 0; i <= clock_n; ++i) {
+        /* found no matching clock */
+        if(i == clock_n) {
+            print_help(argv);
+            fprintf(stderr, "supplied clock: '%s'\n", argv[3]);
+            exit(EXIT_FAILURE);
+        }
+
+        if(strcmp(argv[3], clocks[i].name) == 0) {
+            clockid = clocks[i].id;
+            break;
+        }
+    }
+
+    // change the output descriptor if a 4th argument is supplied
+    if (argc == 5) {
+        out_desc = open(argv[4], O_WRONLY);
         if(out_desc < 0) {
             fprintf(stderr, "Couldn't open file `%s`, errno: %d\n",
-                    argv[3], errno);
+                    argv[4], errno);
             exit(EXIT_FAILURE);
         }
     }
@@ -91,7 +135,7 @@ int main(int argc, char* argv[]) {
     sev.sigev_notify = SIGEV_SIGNAL;
     sev.sigev_signo = SIG;
     sev.sigev_value.sival_ptr = &timerid;
-    if (timer_create(CLOCK_REALTIME, &sev, &timerid) == -1) {
+    if (timer_create(clockid, &sev, &timerid) == -1) {
         fprintf(stderr, "[ERR] Couldn't create the timer: %d\n", errno);
         exit(EXIT_FAILURE);
     }
