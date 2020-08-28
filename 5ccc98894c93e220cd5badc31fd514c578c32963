@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ffb2e154_3f914e49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T01:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2826df7e_3a21901c",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cecfa880_d8532ee0",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
