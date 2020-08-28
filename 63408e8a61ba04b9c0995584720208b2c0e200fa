@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bae42729_95c2af70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-28T04:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b31587c_c4e48eaa",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "63408e8a61ba04b9c0995584720208b2c0e200fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "435e0a0e_a61bc1ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f7a1d3f6_8d5ca5c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-28T04:28:49Z",
+      "side": 1,
+      "message": "pkill also exists at /system/bin. I didn\u0027t notice this. replaced.",
+      "parentUuid": "435e0a0e_a61bc1ad",
+      "range": {
+        "startLine": 68,
+        "startChar": 28,
+        "endLine": 68,
+        "endChar": 45
+      },
+      "revId": "63408e8a61ba04b9c0995584720208b2c0e200fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e1c50fd_5729a204",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2020-08-27T09:19:14Z",
       "side": 1,
       "message": "In a rare race condition, pkill might start before sleep, then this will fail.\n\nSome possible workarounds:\n\n1. Call pkill with testing.Poll.\n2. Make the shell kill itself, e.g. sh -c \u0027kill -SEGV $$\u0027.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "63408e8a61ba04b9c0995584720208b2c0e200fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0336eba7_dae127c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-28T04:28:49Z",
+      "side": 1,
+      "message": "I used testing.Sleep. Of course this is not perfect, but I think this is practically enough. How about this?\n\ntesting.Poll is heavy to implement because it also needs to check the existence of sleep process.\nKilling the shell itself is simple and nice, but it makes difficult to handle errors. We cannot distinguish between err caused by SEGV and other errs.",
+      "parentUuid": "1e1c50fd_5729a204",
       "range": {
         "startLine": 69,
         "startChar": 1,
