@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1d7a8a91_201c6e56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-28T02:55:28Z",
+      "side": 1,
+      "message": "Using testing.State.Run didn\u0027t make the tests independent enough: If a dialog is open while a test is failing, the following test will still run but won\u0027t be able to navigate within the Files app, so the following test would also fail automatically.\n\nI\u0027m updating the tests to parameterized tests. I\u0027m just using the \"Val\" param to determine which test function to run. I\u0027m always loading all the test files and ordering them by name, it makes the file shorter when the 3 tests are written.",
+      "parentUuid": "ffb2e154_3f914e49",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cecfa880_d8532ee0",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
