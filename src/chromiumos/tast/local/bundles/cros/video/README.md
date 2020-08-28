@@ -278,16 +278,36 @@ devices that support NV12 overlays (see `hwdep.SupportsNV12Overlays()`. The
 *_composited_hw tests don't have this restriction: they force hardware overlays
 off so that they have to be composited.
 
-The pixels we check are the centers of each of the four rectangles of the test
-video and the four corners of the video (plus some padding to ignore some
-artifacts which are acceptable).
+To check for color correctness, we sample a few interesting pixels. A video
+frame should have the following structure:
 
-If the color check at the centers fails, video playback is broken in a very
-visible (read major) way.
+```
+*MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*
+M-MM-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-MM-M
+MMMAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBMMM
+M-MA-AAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBB-BM-M
+MMMAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBMMM
+MMMAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBMMM
+MMMAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBMMM
+MMMCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDMMM
+MMMCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDMMM
+MMMCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDMMM
+M-MC-CCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDD-DM-M
+MMMCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDMMM
+M-MM-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-MM-M
+*MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*
+```
 
-If the color check at the centers succeeds, but the check at the corners fails,
-the likely culprit is an incorrect rectangle or size in the Chrome compositing
-pipeline.
+Where M is a magenta border; A, B, C, and D are the colors of the quadrants;
+and - and * are the pixels we sample. * are the "outer corners" and - are the
+"inner corners." Note that for the inner corners, we sample four pixels per
+corner: three of those inside the magenta border and one inside the quadrant.
+These pixels are near each other, so this helps us detect incorrect
+stretching/rotation/mirroring. Sampling the outer corners helps us detect
+leakage of invisible data.
+
+Currently, these tests report the color distance for each sampled pixel as a
+performance measurement. They don't currently fail due to unexpected colors.
 
 To run these tests use:
 
