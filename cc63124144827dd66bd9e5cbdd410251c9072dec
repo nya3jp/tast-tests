@@ -16,6 +16,24 @@
       "revId": "cc63124144827dd66bd9e5cbdd410251c9072dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67039a05_fa841ca4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-29T00:15:22Z",
+      "side": 1,
+      "message": "Sorry I\u0027ve missed this CL for days. Actually, we track the timestamp data for those Timeline data (there\u0027s \"TPS.t\" in the results, that\u0027s the timestamp data for TPS data points), so the previous patchset was just fine actually.\n\nI was still not very confident which degree was the right condition to be considered as thermal throttled -- I just said 75C as an exmaple, but let\u0027s see how it goes with it.",
+      "parentUuid": "d4ff63d8_a852cb50",
+      "revId": "cc63124144827dd66bd9e5cbdd410251c9072dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
