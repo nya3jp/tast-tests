@@ -22,6 +22,30 @@
       "revId": "aa2d2d0da67faf4cd1c66507b4e021bb69c15d9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b04e0717_4ca77a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_input_gain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-29T01:39:53Z",
+      "side": 1,
+      "message": "I have a WIP here for controlling the mic gain slider: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2382909",
+      "parentUuid": "8f477cfe_2f8d9226",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "aa2d2d0da67faf4cd1c66507b4e021bb69c15d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
