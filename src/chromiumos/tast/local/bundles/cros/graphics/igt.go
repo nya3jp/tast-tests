@@ -50,7 +50,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"drm_atomic"},
 			Timeout:           5 * time.Minute,
 		}},
-		Attr: []string{"group:graphics"},
+		Attr: []string{"group:graphics", "graphics_perbuild"},
 	})
 }
 
