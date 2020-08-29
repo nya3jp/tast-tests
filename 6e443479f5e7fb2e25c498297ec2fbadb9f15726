@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dbbb601e_9ea80eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_resolution_Ricoh.ppd.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-08-29T01:46:56Z",
+      "side": 1,
+      "message": "That sounds like a great idea!",
+      "parentUuid": "5d042d28_b1bd410d",
+      "revId": "6e443479f5e7fb2e25c498297ec2fbadb9f15726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2afad7be_69734aa0",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_resolution_ricoh_600dpi_golden.ps.external",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "6e443479f5e7fb2e25c498297ec2fbadb9f15726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03b6d98a_6c0974df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_resolution_ricoh_600dpi_golden.ps.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-08-29T01:46:56Z",
+      "side": 1,
+      "message": "Good catch - the name was missing the _golden suffix.",
+      "parentUuid": "2afad7be_69734aa0",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 106
+      },
+      "revId": "6e443479f5e7fb2e25c498297ec2fbadb9f15726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "6c4e687a_5244d93c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/resolution_ricoh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-08-29T01:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39344d94_568f25ad",
+      "range": {
+        "startLine": 59,
+        "startChar": 37,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "6e443479f5e7fb2e25c498297ec2fbadb9f15726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86bc311d_84f96a28",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/resolution_ricoh.go",
         "patchSetId": 1
@@ -85,6 +151,30 @@
       "revId": "6e443479f5e7fb2e25c498297ec2fbadb9f15726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c9cf399_bdcdbd2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/resolution_ricoh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-08-29T01:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86bc311d_84f96a28",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "6e443479f5e7fb2e25c498297ec2fbadb9f15726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

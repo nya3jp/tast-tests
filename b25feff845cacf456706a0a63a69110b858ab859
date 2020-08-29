@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55265e11_2a2fa1e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-08-29T01:46:56Z",
+      "side": 1,
+      "message": "Thanks for the feedback Brian! I agree it definitely makes sense to refactor some of the existing code and rename the pinprint package to something else. I have called it ippprint for now but am definitely open to changing it if you have something else in mind.",
+      "revId": "b25feff845cacf456706a0a63a69110b858ab859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
