@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e91d2dbb_55e01f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-29T06:47:21Z",
+      "side": 1,
+      "message": "I do agree it is nice to have a precondition now for most vk tests. @Bao, I created a bug b/166878429, can you please add a todo here?",
+      "parentUuid": "0d143373_beb4ac1e",
+      "range": {
+        "startLine": 35,
+        "startChar": 72,
+        "endLine": 35,
+        "endChar": 92
+      },
+      "revId": "356da0b78cc76b206c585a7091234275860ac257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e91cd37_e9145735",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
         "patchSetId": 1
