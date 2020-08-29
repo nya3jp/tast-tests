@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0d06f2b_8bfdfa0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-08-29T01:42:59Z",
+      "side": 1,
+      "message": "Added slider controls (using the keyboard, which is the most straightforward way at the moment), and an example test for the mic gain slider to help with automating the E2E test for it (CL:2380893).",
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
