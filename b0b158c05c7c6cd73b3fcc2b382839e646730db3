@@ -36,6 +36,52 @@
     },
     {
       "key": {
+        "uuid": "dd0e799c_09e42a8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-08-30T14:40:22Z",
+      "side": 1,
+      "message": "Could we not hardcode this port value ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "b0b158c05c7c6cd73b3fcc2b382839e646730db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd530f0a_57815a74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-08-30T14:40:22Z",
+      "side": 1,
+      "message": "FYI arc_eth0 will not exist if there is no ethernet port or no ethernet dongle plugged in the device.",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "b0b158c05c7c6cd73b3fcc2b382839e646730db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "192ae74f_acdfdb25",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 3
@@ -47,6 +93,52 @@
       "writtenOn": "2020-08-28T22:32:24Z",
       "side": 1,
       "message": "Since this is intended for use by other tests, maybe add a comment like:\n\n\"All currently supported commands are listed here (please add more as needed):\"",
+      "revId": "b0b158c05c7c6cd73b3fcc2b382839e646730db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a25b9046_f568c318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-08-30T14:40:22Z",
+      "side": 1,
+      "message": "Ideally it would be better if tast could call the equivalent PortAccess DBus API in PermissionBroker (and extend it if PermissionBroker validation is too strict) so that we keep having a single platform service interacting with iptables.\n\nFor testing code this is probably ok to keep calling iptables directly, but you need to at least take the iptables lock with -w otherwise this could conflict with patchpanel (which is why we would prefer a single service interacting with iptables). We just fixed the same bug in autotest: b/165619751.\n\nAlso, could you add -i/-o arguments to make the rule more specific ? iptables supports prefix matching",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "b0b158c05c7c6cd73b3fcc2b382839e646730db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128040fc_dda2b01e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-08-30T14:40:22Z",
+      "side": 1,
+      "message": "EMAGICCONSTANT: can we move this to a top lvl package constant and explain this name is defined by platform2/patchpanel ?",
+      "range": {
+        "startLine": 73,
+        "startChar": 15,
+        "endLine": 73,
+        "endChar": 25
+      },
       "revId": "b0b158c05c7c6cd73b3fcc2b382839e646730db3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
