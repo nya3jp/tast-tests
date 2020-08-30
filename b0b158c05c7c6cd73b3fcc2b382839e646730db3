@@ -82,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "15ef6d39_7dd4914a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-30T17:35:38Z",
+      "side": 1,
+      "message": "Good point. Frankly speaking my first impl was wlan?/eth? try. It used to work.",
+      "parentUuid": "dd530f0a_57815a74",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "b0b158c05c7c6cd73b3fcc2b382839e646730db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "192ae74f_acdfdb25",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 3

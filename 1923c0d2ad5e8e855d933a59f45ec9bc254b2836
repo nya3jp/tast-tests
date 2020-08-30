@@ -16,6 +16,23 @@
       "revId": "1923c0d2ad5e8e855d933a59f45ec9bc254b2836",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b353959_e87a0381",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-08-30T17:35:38Z",
+      "side": 1,
+      "message": "Thanks Hugo for your comments.\nAlan, could you please count this once you would update it?\nIt might make sense to add Hugo as a reviewer for the next CL\nThanks!",
+      "revId": "1923c0d2ad5e8e855d933a59f45ec9bc254b2836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
