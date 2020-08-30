@@ -126,6 +126,7 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 
 	gmsRootUnderHome := filepath.Join(androidDataDir, gmsRoot)
 	chimeraPath := filepath.Join(gmsRootUnderHome, appChimera)
+
 	for _, e := range []struct {
 		filename string
 		cond     pathCondition
@@ -139,6 +140,10 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 		if err := waitForPath(ctx, filepath.Join(chimeraPath, e.filename), e.cond); err != nil {
 			return err
 		}
+	}
+
+	if err := waitForApksOptimized(ctx, chimeraPath); err != nil {
+		return err
 	}
 
 	targetTar := filepath.Join(outputDir, GMSCoreCacheArchive)
@@ -281,6 +286,45 @@ func waitForPath(ctx context.Context, path string, c pathCondition) error {
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to wait for path %s", path)
+	}
+	return nil
+}
+
+// waitForApksOptimized waits up to 11 minute or ctx deadline for all apks in given root path are
+// optimized, which means no *.flock locks and *.odex/*.vdex exist and matches actual apk count.
+func waitForApksOptimized(ctx context.Context, root string) error {
+	testing.ContextLogf(ctx, "Waiting for apks optimized %q", root)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Calculate number of files per extension.
+		perExtCnt := map[string]int{}
+		err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+			if !info.IsDir() {
+				ext := filepath.Ext(info.Name())
+				perExtCnt[ext] = perExtCnt[ext] + 1
+			}
+			return nil
+		})
+		if err != nil {
+			return testing.PollBreak(errors.Wrapf(err, "failed to walk %q", root))
+		}
+		apkCnt := perExtCnt[".apk"]
+		if perExtCnt[".flock"] != 0 {
+			return errors.Wrapf(err, "file lock detected in %q", root)
+		}
+		if apkCnt == 0 {
+			return testing.PollBreak(errors.Wrapf(err, "no apks found in %q", root))
+		}
+		vdexCnt := perExtCnt[".vdex"]
+		odexCnt := perExtCnt[".odex"]
+		if apkCnt != vdexCnt || apkCnt != odexCnt {
+			return errors.Wrapf(err, "not everything yet optimized in %q. Apk count: %d, vdex: %d, odex %d", root, apkCnt, vdexCnt, odexCnt)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to wait for apks optimized %s", root)
 	}
 	return nil
 }
