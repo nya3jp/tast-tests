@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8cd0e74_1ef96084",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-30T22:38:52Z",
+      "side": 1,
+      "message": "Hi reviewers, this fix provenly works in ToT in last 3 builds. Do you think it is good enough to cherrypick?",
+      "revId": "4b6cb1ee6cf1a0f042e43d811ba387b924ef8538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
