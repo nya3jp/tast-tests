@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bda512b3_856b97c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-08-30T14:40:22Z",
+      "side": 1,
+      "message": "Alan pointed me to this patch because he is trying to do the same thing if I understood this patch correctly.\n\nThis looks very useful in general, but there are a couple of details that can potentially be problematic.\n\nIf you are trying to open a server on the host for Apps to connect to, you should be careful about assuming that the app traffic will go through arc_eth0 all the time. In reality this depends on multiple factors inside Android, mainly 1) which network is Android default network, 2) which Android API is the app using.\n\nIf you have eth0 and wlan0 then it is true that by default the Android default interface is ethernet, and by default any Apps using the non network specific APIs will use the default network. But both points are not guaranteed. For instance if we want to test with a VPN on, nethelper will not work.\n\nInstead I recommend finding all the \"arc\" bridges and starting listening for all these interfaces at the same time. Thanks to go select statement, the change for listenToClients should be trivial. For covering host VPNs, you also need to listen on arcbr0.\n\nYou can test that the server \u003c-\u003e app communication then does not depend on the current default network by forcing shill to change the default network (ARC will track shill automatically):\n  dbus-send --system --dest\u003dorg.chromium.flimflam --print-reply / org.chromium.flimflam.Manager.SetServiceOrder string:\"vpn,wifi,ethernet,cellular\"\n\nAlso you may want to listen on all addresses of a single interface. The ARC networking stack will always configure the IPv4 static subnets assigned to ARC, and IPv6 link local will always be setup by the kernel and work.",
+      "revId": "1923c0d2ad5e8e855d933a59f45ec9bc254b2836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
