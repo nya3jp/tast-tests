@@ -68,6 +68,24 @@
       "revId": "c9ab906485cf93459fda549ec445525321986884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "466a3825_8a373697",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-08-30T23:49:51Z",
+      "side": 1,
+      "message": "resolve",
+      "parentUuid": "a1ec7637_25eb0555",
+      "revId": "c9ab906485cf93459fda549ec445525321986884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
