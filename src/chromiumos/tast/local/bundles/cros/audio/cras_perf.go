@@ -29,7 +29,7 @@ func init() {
 		Func:     CrasPerf,
 		Desc:     "Performance measurement of CRAS",
 		Contacts: []string{"yuhsuan@chromium.org", "cychiang@chromium.org", "paulhsia@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		Timeout:  5 * time.Minute,
 		Params: []testing.Param{
 			{
