@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9bc615e_43079648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-08-30T10:12:03Z",
+      "side": 1,
+      "message": "Should we use crosbolt_nightly?",
+      "range": {
+        "startLine": 32,
+        "startChar": 40,
+        "endLine": 32,
+        "endChar": 57
+      },
+      "revId": "32d53e21be4e36e6445719b483a04ec6182d3af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
