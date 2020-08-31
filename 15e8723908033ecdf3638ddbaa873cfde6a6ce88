@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97425d52_462eb427",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-08-31T08:24:43Z",
+      "side": 1,
+      "message": "+gredelston\n\nBased on your feedback on crrev.com/c/2367576\n\nI rewrote the logcat part as a follow up.\n",
+      "revId": "15e8723908033ecdf3638ddbaa873cfde6a6ce88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
