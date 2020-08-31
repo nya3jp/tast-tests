@@ -409,6 +409,24 @@
     },
     {
       "key": {
+        "uuid": "2c07a01d_a724ea41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-31T22:42:15Z",
+      "side": 1,
+      "message": "okay, let me proceed with about:blank. Will revisit when yjliu land the CL of animated page.",
+      "parentUuid": "5d816846_76eeabb9",
+      "revId": "1fb72d18c5afbef52a04bce8a1647d06d913a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "218ff9a6_4001d091",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 4

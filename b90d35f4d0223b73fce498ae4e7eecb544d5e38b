@@ -16,6 +16,24 @@
       "revId": "b90d35f4d0223b73fce498ae4e7eecb544d5e38b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cae3b256_f9abec55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-08-31T22:42:15Z",
+      "side": 1,
+      "message": "I added you as a reviewer because I put your name as the \"contact\" list of this test -- this is the validity check test for chromium CQ, the test should fail when performance is worsened significantly.  I think in reality I will be the primary person to handle this test case, but I want you to recognize the existence of this test.",
+      "parentUuid": "53d187e6_398c3e52",
+      "revId": "b90d35f4d0223b73fce498ae4e7eecb544d5e38b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
