@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e3fbe41e_60483d74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-08-31T02:14:57Z",
+      "side": 1,
+      "message": "I find it really useful if folks add [Merge M86] or similar to the first part of the cl description (e.g. https://crrev.com/c/2383216)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "4b6cb1ee6cf1a0f042e43d811ba387b924ef8538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8cd0e74_1ef96084",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
