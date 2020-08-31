@@ -63,6 +63,30 @@
       "revId": "bbb6f86b5c48d4a2f0def1d61f3efeb07c2244f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "080e5949_61ed10ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-31T09:33:55Z",
+      "side": 1,
+      "message": "Closing the activity twice can have side-effects (like crashing). Even if the current implementation of Close() support closing twice, it can change in the future.\n\nYou should use the pattern from the part at the end of this file. Create new activity, and defer the Close() after it. Start a new activity, and defer the Stop().\n\nIt is a good idea to limit the scope of the open activity, and you can do it by putting the corresponding part into an anonymous fucntion (or a normal named one if you prefer).",
+      "parentUuid": "e48f059c_97db2cd1",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 12
+      },
+      "revId": "bbb6f86b5c48d4a2f0def1d61f3efeb07c2244f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
