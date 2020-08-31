@@ -52,6 +52,7 @@ func init() {
 			"alanding@chromium.org",
 			"arc-performance@google.com",
 		},
+		Attr: []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
 			"tast.cros.arc.GmsCoreCacheService"},
@@ -62,7 +63,7 @@ func init() {
 		// then disabling this in Android PFQ. At this time missing the data is allowed
 		// for the grace perioid however it will be a build stopper after.
 		Params: []testing.Param{{
-			ExtraAttr:         []string{"group:arc-data-collector"},
+			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				vmEnabled: false,
