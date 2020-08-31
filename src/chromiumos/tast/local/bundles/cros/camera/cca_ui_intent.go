@@ -92,7 +92,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_p", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
-		Pre:          arc.Booted(),
+		Params: []testing.Param{{
+			Pre: arc.Booted(),
+			Val: testutil.PlatformApp,
+		}, {
+			Name: "swa",
+			Pre:  testutil.ARCWithSWA(),
+			Val:  testutil.SWA,
+		}},
 	})
 }
 
@@ -100,7 +107,8 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
-	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
+	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -215,14 +223,14 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.Name, func(ctx context.Context, s *testing.State) {
-			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb, false); err != nil {
+			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb, useSWA); err != nil {
 				s.Error("Failed when checking intent behavior: ", err)
 			}
 		})
 	}
 
 	s.Run(ctx, "instances coexistanece test", func(ctx context.Context, s *testing.State) {
-		if err := checkInstancesCoexistence(ctx, cr, a, scripts, outDir, tb, false); err != nil {
+		if err := checkInstancesCoexistence(ctx, cr, a, scripts, outDir, tb, useSWA); err != nil {
 			s.Error("Failed for instances coexistence test: ", err)
 		}
 	})
@@ -495,6 +503,12 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 		return errors.Wrap(err, "failed to close intent instance")
 	}
 
+	// In SWA, we don't automatically show the original window back.
+	if useSWA {
+		if err := regularApp.Focus(ctx); err != nil {
+			return errors.Wrap(err, "failed to focus the original window")
+		}
+	}
 	// Check if the regular CCA is automatically resumed.
 	if err := regularApp.WaitForState(ctx, "suspend", false); err != nil {
 		return errors.Wrap(err, "regular app instance does not resume after closing intent instance")
