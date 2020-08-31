@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/storage/stress"
 	"chromiumos/tast/testing"
 )
@@ -26,11 +27,16 @@ func init() {
 
 // BaseSoakStress runs disk IO performance tests by running the tool "fio".
 func BaseSoakStress(ctx context.Context, s *testing.State) {
+	perfValues := perf.NewValues()
 	// Below sequence of tests corresponds to a single iteration of the soak test.
-	stress.RunFioStress(ctx, s, "64k_stress", false)
+	stress.RunFioStress(ctx, s, "64k_stress", nil)
 	stress.Suspend(ctx)
-	stress.RunFioStress(ctx, s, "surfing", false)
+	stress.RunFioStress(ctx, s, "surfing", nil)
 	stress.Suspend(ctx)
-	stress.RunFioStress(ctx, s, "8k_async_randwrite", false)
-	stress.RunFioStress(ctx, s, "8k_async_randwrite", true)
+	stress.RunFioStress(ctx, s, "8k_async_randwrite", nil)
+	stress.RunFioStress(ctx, s, "8k_async_randwrite", &stress.TestConfig{
+		VerifyOnly: true,
+		PerfValues: perfValues,
+	})
+	perfValues.Save(s.OutDir())
 }
