@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cabf1d4_80adccb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-08-31T08:21:41Z",
+      "side": 1,
+      "message": "Hi Tan, PTAL.\nAs a preparation of b/148116159, this refactors the test and makes \u0027Move \u0026 Resize Window\u0027 stable.\nThanks!",
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
