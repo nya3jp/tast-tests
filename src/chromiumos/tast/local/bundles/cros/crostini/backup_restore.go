@@ -63,7 +63,9 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 	cr := pre.Chrome
 	tconn := pre.TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	ownerID, err := cryptohome.UserHash(ctx, cr.User())
 	if err != nil {

@@ -52,7 +52,9 @@ func init() {
 func PackageInfo(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	const filePath = "/home/testuser/package.deb"
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	if err := crostini.TransferToContainer(ctx, cont, s.DataPath("package.deb"), filePath); err != nil {
 		s.Fatal("Failed to transfer .deb to the container: ", err)
