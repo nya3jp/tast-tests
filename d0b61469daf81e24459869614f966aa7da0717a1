@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "32beb934_46e1e980",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-08-31T05:19:39Z",
+      "side": 1,
+      "message": "lgtm after addressing hiroki\u0027s comments.\nafter addressing them, you\u0027ll need to add tast-owners@ to reviewers.",
+      "revId": "d0b61469daf81e24459869614f966aa7da0717a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88e29c35_030eb726",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 5
