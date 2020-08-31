@@ -16,6 +16,24 @@
       "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f10d63e_39929c5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-08-31T16:05:14Z",
+      "side": 1,
+      "message": "Test is still failing on a very high percentage of runs.\n\nhttp://screen/5ycBghnxQ2ysGSZ\n\nLet\u0027s disable this test until it can be fixed locally.",
+      "parentUuid": "00fa3ef9_b1b34546",
+      "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
