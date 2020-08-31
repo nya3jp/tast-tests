@@ -42,7 +42,9 @@ func VimCompile(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	var collectTime time.Duration
 	i := 0
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	setupTest(ctx, s, cont)
 

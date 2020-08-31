@@ -50,7 +50,9 @@ func ShareDrive(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
-	defer crostini.RunCrostiniPostTest(cleanupCtx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)

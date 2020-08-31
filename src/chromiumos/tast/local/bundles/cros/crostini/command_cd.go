@@ -55,7 +55,9 @@ func CommandCd(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(crostini.PreData).Chrome
 	keyboard := s.PreValue().(crostini.PreData).Keyboard
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx

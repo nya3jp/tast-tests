@@ -249,7 +249,9 @@ func Launcher(ctx context.Context, s *testing.State) {
 	tconn := pre.TestAPIConn
 	cont := pre.Container
 	ownerID := cont.VM.Concierge.GetOwnerID()
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	// Confirm we don't have the application going-in or leaving.
 	if err := waitForIcon(ctx, ownerID, conf.launcherID, iconAbsent); err != nil {

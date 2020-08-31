@@ -40,7 +40,9 @@ func init() {
 
 func VerifyAppWayland(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	defer crostini.RunCrostiniPostTest(ctx, pre.Container)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, crostini.WaylandDemoConfig())
 }
