@@ -25,7 +25,7 @@ func init() {
 		Func:         VirtualKeyboardFloat,
 		Desc:         "Sanity check on floating virtual keyboard",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Params: []testing.Param{{
 			Name:              "stable",
@@ -33,6 +33,7 @@ func init() {
 		}, {
 			Name:              "unstable",
 			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
