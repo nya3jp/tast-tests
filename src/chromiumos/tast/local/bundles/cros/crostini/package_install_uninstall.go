@@ -52,7 +52,7 @@ func init() {
 func PackageInstallUninstall(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	filePath := "/home/testuser/package.deb"
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	if err := crostini.TransferToContainer(ctx, cont, s.DataPath("package.deb"), filePath); err != nil {
 		s.Fatal("Failed to transfer .deb to the container: ", err)

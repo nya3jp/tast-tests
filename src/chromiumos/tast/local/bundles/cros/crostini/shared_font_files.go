@@ -49,7 +49,7 @@ func init() {
 func SharedFontFiles(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cont := pre.Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	const sharedFonts = "/mnt/chromeos/fonts"
 	s.Log("1. Verifying mounted fonts dir exists")

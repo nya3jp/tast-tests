@@ -54,7 +54,7 @@ func init() {
 func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx

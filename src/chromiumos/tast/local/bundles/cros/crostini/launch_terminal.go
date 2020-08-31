@@ -59,7 +59,7 @@ func LaunchTerminal(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cr := pre.Chrome
 	cont := pre.Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	const terminalURLContains = ".html?command=vmshell"
 

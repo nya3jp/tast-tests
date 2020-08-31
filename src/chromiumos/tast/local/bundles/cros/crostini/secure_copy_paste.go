@@ -255,7 +255,7 @@ func SecureCopyPaste(ctx context.Context, s *testing.State) {
 	cr := pre.Chrome
 	tconn := pre.TestAPIConn
 	cont := pre.Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	// Initialize the clipboard data before the test.
 	if err := forceClipboard(ctx, tconn, ""); err != nil {

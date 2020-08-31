@@ -52,7 +52,7 @@ func NoSharedFolder(ctx context.Context, s *testing.State) {
 	// Use a shortened context for test operations to reserve time for cleanup.
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	// Check list of shared folders in Settings app.
 	sharedFolders := sharedfolders.NewSharedFolders()

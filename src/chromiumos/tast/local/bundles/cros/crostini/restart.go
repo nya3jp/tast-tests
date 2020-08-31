@@ -73,7 +73,7 @@ func Restart(ctx context.Context, s *testing.State) {
 	tconn := pre.TestAPIConn
 	cr := pre.Chrome
 	keyboard := pre.Keyboard
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 

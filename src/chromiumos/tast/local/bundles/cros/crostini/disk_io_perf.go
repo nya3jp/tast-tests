@@ -232,7 +232,7 @@ func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, 
 // DiskIOPerf runs disk IO performance tests by running the tool "fio".
 func DiskIOPerf(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	testing.ContextLog(ctx, "Installing fio")
 	if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "fio").Run(); err != nil {

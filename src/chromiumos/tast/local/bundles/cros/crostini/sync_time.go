@@ -61,7 +61,7 @@ func getTime(ctx context.Context, s *testing.State, cont *vm.Container) (time.Ti
 
 func SyncTime(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	// Set the time back 15 minutes, don't make a huge clock change as that can
 	// cause other odd behaviors with timers.

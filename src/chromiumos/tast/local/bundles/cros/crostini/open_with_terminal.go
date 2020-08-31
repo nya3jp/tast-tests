@@ -58,7 +58,7 @@ func init() {
 
 func OpenWithTerminal(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	defer crostini.RunCrostiniPostTest(ctx, pre.Container)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	// Launch Files app and open Downloads with terminal.
 	filesApp, err := filesapp.Launch(ctx, pre.TestAPIConn)

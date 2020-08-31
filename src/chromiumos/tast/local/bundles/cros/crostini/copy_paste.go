@@ -275,7 +275,7 @@ func CopyPaste(ctx context.Context, s *testing.State) {
 	param := s.Param().(testParameters)
 	tconn := pre.TestAPIConn
 	cont := pre.Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	// Clean up the home directory in the end.
 	defer func() {

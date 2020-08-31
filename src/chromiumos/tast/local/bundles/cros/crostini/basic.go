@@ -54,7 +54,7 @@ func init() {
 
 func Basic(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s)
 
 	if err := crostini.BasicCommandWorks(ctx, cont); err != nil {
 		s.Fatal("Failed to run a command in the container: ", err)
