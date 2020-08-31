@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "7a1e3127_7df1ca38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-08-31T06:37:58Z",
+      "side": 1,
+      "message": "I don\u0027t see any reason why we should have a unique account for this test. What would be a reason for a test to have a unique account?",
+      "parentUuid": "34d9a2e3_1ac1e767",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a99c08ff_4e55be8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
         "patchSetId": 1
@@ -270,6 +294,30 @@
       "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f38abec_1e0e17e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-08-31T06:37:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffbdf216_1139a9ad",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
