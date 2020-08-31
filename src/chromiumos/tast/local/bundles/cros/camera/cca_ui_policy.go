@@ -28,9 +28,17 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Pre: cca.NewPrecondition(cca.ChromeConfig{
-			UseFakeDMS: true,
-		}),
+		Params: []testing.Param{{
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				UseFakeDMS: true,
+			}),
+		}, {
+			Name: "swa",
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				InstallSWA: true,
+				UseFakeDMS: true,
+			}),
+		}},
 	})
 }
 
@@ -46,8 +54,10 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 		s.Error("Failed to test with no policy: ", err)
 	}
 
-	if err := testBlockCCAExtension(ctx, env, cr); err != nil {
-		s.Error("Failed to block CCA extension: ", err)
+	if !env.Config.InstallSWA {
+		if err := testBlockCCAExtension(ctx, env, cr); err != nil {
+			s.Error("Failed to block CCA extension: ", err)
+		}
 	}
 
 	if err := testBlockCameraFeature(ctx, env, cr); err != nil {

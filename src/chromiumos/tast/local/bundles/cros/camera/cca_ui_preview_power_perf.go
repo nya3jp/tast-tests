@@ -19,11 +19,6 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type config struct {
-	ChromeConfig cca.ChromeConfig
-	BatteryMode  setup.BatteryDischargeMode
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIPreviewPowerPerf,
@@ -74,6 +69,56 @@ func init() {
 			}),
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
 			Val:               setup.NoBatteryDischarge,
+		}, {
+			Name:              "noarc_swa",
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				InstallSWA: true,
+			}),
+			Val: setup.ForceBatteryDischarge,
+		}, {
+			Name:              "swa",
+			ExtraSoftwareDeps: []string{"android_p_swa"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				ARCEnabled: true,
+				InstallSWA: true,
+			}),
+			Val: setup.ForceBatteryDischarge,
+		}, {
+			Name:              "vm_swa",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				ARCEnabled: true,
+				InstallSWA: true,
+			}),
+			Val: setup.ForceBatteryDischarge,
+		}, {
+			Name:              "noarc_nobatterymetrics_swa",
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				InstallSWA: true,
+			}),
+			Val: setup.NoBatteryDischarge,
+		}, {
+			Name:              "nobatterymetrics_swa",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				ARCEnabled: true,
+				InstallSWA: true,
+			}),
+			Val: setup.NoBatteryDischarge,
+		}, {
+			Name:              "vm_nobatterymetrics_swa",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				ARCEnabled: true,
+				InstallSWA: true,
+			}),
+			Val: setup.NoBatteryDischarge,
 		}},
 		Timeout: 5 * time.Minute,
 	})
