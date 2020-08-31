@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "211a872a_dcde10ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-31T02:44:10Z",
+      "side": 1,
+      "message": "1. Yes, code path to share Downloads is different.",
+      "parentUuid": "a6d10be1_779062d1",
+      "revId": "4473be4123178bc026abe245ee8e5238f696fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cc2f7f1_23fc8710",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_multiple_folders.go",
         "patchSetId": 1
