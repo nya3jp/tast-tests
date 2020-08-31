@@ -16,6 +16,121 @@
       "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6942047_6ef0aec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-31T21:59:14Z",
+      "side": 1,
+      "message": "Is this necessary, don\u0027t the other method open and close the quick settings?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a00631_436a72ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-31T21:59:14Z",
+      "side": 1,
+      "message": "Should this check be built into the polling of change slider?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ad375c1_88aa4671",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-31T21:59:14Z",
+      "side": 1,
+      "message": "nit: merge lines",
+      "range": {
+        "startLine": 348,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 17
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "686298fb_323189e4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-31T21:59:14Z",
+      "side": 1,
+      "message": "nit: else if",
+      "range": {
+        "startLine": 351,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 13
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48020538_da63ca90",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-31T21:59:14Z",
+      "side": 1,
+      "message": "super nit: merge into if else if chain",
+      "range": {
+        "startLine": 445,
+        "startChar": 2,
+        "endLine": 455,
+        "endChar": 3
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
