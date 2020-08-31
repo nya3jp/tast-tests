@@ -164,6 +164,30 @@
       "revId": "63408e8a61ba04b9c0995584720208b2c0e200fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d59e89a_e466f416",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-08-31T04:43:06Z",
+      "side": 1,
+      "message": "I removed the sleep and used `kill -SEGV $$` instead. The return code is used to check whether it\u0027s crashed or not.",
+      "parentUuid": "ed5a5d68_8e6e48b8",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "63408e8a61ba04b9c0995584720208b2c0e200fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
