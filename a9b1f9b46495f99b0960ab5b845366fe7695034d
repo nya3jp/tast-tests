@@ -22,6 +22,30 @@
       "revId": "a9b1f9b46495f99b0960ab5b845366fe7695034d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d932c72c_1f2e8cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-08-31T03:46:17Z",
+      "side": 1,
+      "message": "Done. Thanks for the review!",
+      "parentUuid": "b788e1f5_3f3fa45b",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "a9b1f9b46495f99b0960ab5b845366fe7695034d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
