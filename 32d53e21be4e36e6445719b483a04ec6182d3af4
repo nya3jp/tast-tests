@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "5977a8ae_1bbfb621",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-08-31T05:41:08Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "32d53e21be4e36e6445719b483a04ec6182d3af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9bc615e_43079648",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 1
