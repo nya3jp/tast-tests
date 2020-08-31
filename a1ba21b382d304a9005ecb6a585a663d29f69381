@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "4e509234_18d1ce7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-08-31T07:07:15Z",
+      "side": 1,
+      "message": "It uses precondition, so it does affect other tests. Please re-enable it by using defer func(). Also, instead of disabling Play Store here, how about Play Store disabled by default (maybe in precondition?), as I imagine only a few tests would require it. Adding bhansknecht@ from ARC Tast.",
+      "parentUuid": "0c002740_3fc42422",
+      "revId": "a1ba21b382d304a9005ecb6a585a663d29f69381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4470a67f_ce2be108",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
         "patchSetId": 3
