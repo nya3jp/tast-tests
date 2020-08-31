@@ -3,11 +3,12 @@
      Use of this source code is governed by a BSD-style license that can be
      found in the LICENSE file.
 -->
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/testlayout"
     tools:context="org.chromium.arc.testapp.pictureinpicturevideo.VideoActivity">
 
   <VideoView
@@ -15,4 +16,4 @@
       android:layout_height="match_parent"
       android:id="@+id/testvideo" />
 
-</FrameLayout>
+</RelativeLayout>
