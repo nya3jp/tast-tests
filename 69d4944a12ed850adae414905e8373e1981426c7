@@ -51,6 +51,24 @@
       "revId": "69d4944a12ed850adae414905e8373e1981426c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b319cb_52af5a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-08-31T04:57:20Z",
+      "side": 1,
+      "message": "I agree that CPU usage is not the most meaningful metric to describe the end-user experience, but it\u0027s still a very valuable metric for us:\n- It can give us an idea of how close a device is running to it\u0027s limits. E.g. 95% CPU usage might give a strong indication that small fluctuations might suddenly cause frames to be dropped.\n- When seeing occasional frame drops pop up I usually cros reference it with CPU utilization, as this graph is usually smoother and easier to understand than spurious spikes in frames dropped.\n\nI also agree that power utilization and frame drop percentage might be more useful in a non-artificial scenario that better reflects the experience users will be seeing. So maybe we could adapt the test a bit to collect power/framedrops without benchmark mode, and CPU and max FPS with benchmark mode enabled.\n\nI still doubt however how much disabling benchmark mode will actually influence the results we see and whether it\u0027s worth the increased flakiness we might be seeing in the results. Maybe we could just add extra power_scaling and framedrop_scaling metrics and run them side by side for a while?\n\nAbout the Chrome tests: These use the same setup and benchmarking mode that is used for ARC testing. The only difference is that they don\u0027t do actual rendering but simulate the rendering, but this shouldn\u0027t make a huge difference.",
+      "parentUuid": "dc592731_22fe4b26",
+      "revId": "69d4944a12ed850adae414905e8373e1981426c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
