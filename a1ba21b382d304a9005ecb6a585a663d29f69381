@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8f3a5f51_979eb277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1125794
+      },
+      "writtenOn": "2020-08-31T13:53:19Z",
+      "side": 1,
+      "message": "Done - re-enable.\nI would not disable Play for many tests without a need as potentially we can catch some Play Store bugs by those tests. As soon there will be several tests that would require disabled Play Store, we always can do some refactoring.",
+      "parentUuid": "4e509234_18d1ce7d",
+      "revId": "a1ba21b382d304a9005ecb6a585a663d29f69381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4470a67f_ce2be108",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
         "patchSetId": 3
@@ -68,6 +86,24 @@
       "revId": "a1ba21b382d304a9005ecb6a585a663d29f69381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833d9c92_3a2fd4db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1125794
+      },
+      "writtenOn": "2020-08-31T13:53:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4470a67f_ce2be108",
+      "revId": "a1ba21b382d304a9005ecb6a585a663d29f69381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
