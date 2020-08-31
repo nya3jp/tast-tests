@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f10f8b7e_2fda14ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2020-08-31T17:26:05Z",
+      "side": 1,
+      "message": "BTW, the executable file name will be longer then before with this change, do we have any hard limitation for it somewhere ?\n\n",
+      "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
