@@ -44,7 +44,9 @@ func RunWithARC(ctx context.Context, s *testing.State) {
 	if err := crostini.BasicCommandWorks(ctx, cont); err != nil {
 		s.Fatal("Failed to run a command in the container: ", err)
 	}
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
