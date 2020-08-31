@@ -36,6 +36,304 @@
     },
     {
       "key": {
+        "uuid": "b8b503d5_8f88be03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00a0c90e_75dc7896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "As you touch this, could you update the comment that this is a blocking function?",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95e4305a_1b4e23be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "This function does not only \"confirming\" but also \"waiting for\" the black pxls to be the number of expectation.\n\nMaybe \"WaitForBlackPixels\" ... or something?",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "703992d3_7376e347",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "style: go prefers shorter name. Maybe \"n\" is enough.",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9954a1d_a83bfe2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "nit/style: how about list the args from bigger scope one to smaller?\n\ncontext.Context, chrome.Chrome, chrome.TestConn, arc.ARC, arc.WindowState.",
+      "range": {
+        "startLine": 118,
+        "startChar": 62,
+        "endLine": 118,
+        "endChar": 144
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3354b05a_c80b72d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4440413_fb259de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "style: you can directly call cleanup here.\n\ndefer cleanup(ctx)",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 127,
+        "endChar": 7
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "909e5639_678e839b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "this acronym looks like not very common, IMHO.\nCould you describe?",
+      "range": {
+        "startLine": 159,
+        "startChar": 41,
+        "endLine": 159,
+        "endChar": 44
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "440b862c_d0274f68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 160,
+        "startChar": 17,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd2bf69_8e96aba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "Looks like the main purpose of this function is to make sure the number of pixels, rather than enabling USF.\n\nMaybe: \"VerifyPixelsWithUSFEnabled\" or something?",
+      "range": {
+        "startLine": 160,
+        "startChar": 5,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7657a94_9893d38a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "Could you describe the meaning of this param in the comment?",
+      "range": {
+        "startLine": 160,
+        "startChar": 140,
+        "endLine": 160,
+        "endChar": 161
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c25f118f_75d41c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "Could you add the reference where this value comes from?",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af212d7e_50b3bb0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "Could you use arc.Command, instead?\nOr if there is very special reason it cannot work, could you describe the details in the comment?",
+      "range": {
+        "startLine": 165,
+        "startChar": 15,
+        "endLine": 165,
+        "endChar": 31
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09b01c7a_ffa1b716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "style: Could you name the variable consistently? wantPixelCount or expectedPixelCount?\n\nCould you define the variable at the latest timing to minimize the scope?\nIn this case, it\u0027s just before L178.\n\nIt looks not trivial why factor is multiplied twice. Could you describe it in the comment?",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cd049a5_52f2d58b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
         "patchSetId": 14
@@ -53,6 +351,46 @@
         "endLine": 31,
         "endChar": 22
       },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "072506df_16e3c9d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "Below, my comments for another file can be applied too.",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb23b90_34845024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T02:38:11Z",
+      "side": 1,
+      "message": "This is not true, because it also stops polling on the second CountBlackPixels success at L61.\n\nIt\u0027s unclear what it is the expected behavior in details to me. Could you explain?",
       "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
