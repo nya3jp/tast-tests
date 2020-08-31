@@ -76,7 +76,7 @@ type cleanupFunc func() error
 // the response by (RTT time)/2 as an estimation to key arrival time on guest.
 func InputLatency(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	perfValues := perf.NewValues()
 	defer perfValues.Save(s.OutDir())
