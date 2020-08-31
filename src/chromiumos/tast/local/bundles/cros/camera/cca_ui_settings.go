@@ -24,7 +24,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Pre:          testutil.NewPrecondition(testutil.ChromeConfig{}),
+		Params: []testing.Param{{
+			Pre: testutil.NewPrecondition(testutil.ChromeConfig{}),
+		}, {
+			Name: "swa",
+			Pre: testutil.NewPrecondition(testutil.ChromeConfig{
+				InstallSWA: true,
+			}),
+		}},
 	})
 }
 
