@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "724c708f_4f8d7fbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-08-31T05:12:03Z",
+      "side": 1,
+      "message": "Would you add b:159971844?",
+      "revId": "d0b61469daf81e24459869614f966aa7da0717a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "effbceb8_aeeb9523",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-08-31T05:12:03Z",
+      "side": 1,
+      "message": "LGTM, thanks!",
+      "revId": "d0b61469daf81e24459869614f966aa7da0717a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e29c35_030eb726",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-08-31T05:12:03Z",
+      "side": 1,
+      "message": "optional: How about removing state description (by changing the apk) from one of these two? So that we can verify both mappings \"stateDescription -\u003e value\" and \"rangeInfo.current -\u003e valueForRange\" in R+.\n\nIt\u0027s okay to do it in future.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "d0b61469daf81e24459869614f966aa7da0717a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a568ba5_dcd5902b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-08-31T05:12:03Z",
+      "side": 1,
+      "message": "In Golang, this is public to all files in this packages. (there is no file scope private)\nTo narrow the visibility, I think moving these declarations inside init() function is better.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "d0b61469daf81e24459869614f966aa7da0717a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
