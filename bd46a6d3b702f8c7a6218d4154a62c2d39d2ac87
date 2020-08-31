@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d5d461c_c6ea9a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-31T21:16:47Z",
+      "side": 1,
+      "message": "nit: add space before 0",
+      "range": {
+        "startLine": 288,
+        "startChar": 21,
+        "endLine": 288,
+        "endChar": 22
+      },
+      "revId": "bd46a6d3b702f8c7a6218d4154a62c2d39d2ac87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

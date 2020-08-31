@@ -546,6 +546,30 @@
     },
     {
       "key": {
+        "uuid": "70f90401_01e500c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-31T21:16:47Z",
+      "side": 1,
+      "message": "Totally not necessary for this CL, especially at this point, but you could do something like:\n\n params :\u003d ui.FindParams{\n   Role: ui.RoleTypeStaticText,\n   Attributes: map[string]interface{}{\n     \"name\": regexp.MustCompile(\"X (files|folders|items) selected\"),\n   },\n }\n\nI think I have my syntax right.\nOf course first using fmt.Sprintf to replace X with the number.",
+      "parentUuid": "baf0a4fe_673f8ee2",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 141
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a62f7120_e6b357dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
