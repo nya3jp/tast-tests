@@ -24,6 +24,11 @@ func init() {
 		Data:         []string{"cca_ui.js"},
 		Params: []testing.Param{{
 			Val: cca.ChromeConfig{},
+		}, {
+			Name: "swa",
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+			},
 		}},
 	})
 }
@@ -69,9 +74,17 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 		}
 	})()
 
-	// When firing the launch event as the app is currently showing, the app should minimize.
-	if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
-		s.Fatal("Failed to launch camera app: ", err)
+	// If CCA is a platform app, when firing the launch event as the app is
+	// currently showing, the app should minimize. But this behavior is not
+	// implemented in SWA to make it consistent with other SWAs.
+	if chromeConfig.InstallSWA {
+		if err := app.MinimizeWindow(ctx); err != nil {
+			s.Fatal("Failed to minimize camera app: ", err)
+		}
+	} else {
+		if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
+			s.Fatal("Failed to launch camera app: ", err)
+		}
 	}
 	if err := app.WaitForMinimized(ctx, true); err != nil {
 		s.Fatal("Failed to wait for app being minimized: ", err)
