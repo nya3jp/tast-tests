@@ -98,6 +98,10 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	// there is a freeform app still open. See: https://crbug.com/1002666
 	defer act.Stop(ctx, tconn)
 
+	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+		s.Fatal("Failed to wait for Setting activity visible: ", err)
+	}
+
 	if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
@@ -132,6 +136,11 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	// TODO(crbug.com/1062920): Wait for bounds here.
 	if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
 		s.Fatal("Failed to sleep: ", err)
+	}
+
+	bounds, err = act.WindowBounds(ctx)
+	if err != nil {
+		s.Fatal("Failed to get activity bounds after initial resizing: ", err)
 	}
 
 	// When the window move too close to the top-left corner of the display, it will be maximized.

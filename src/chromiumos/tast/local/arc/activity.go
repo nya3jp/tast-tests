@@ -357,12 +357,12 @@ func (ac *Activity) ResizeWindow(ctx context.Context, tconn *chrome.TestConn, bo
 
 	switch sdkVer {
 	case SDKP:
-		if err := ac.resizeWindowP(ctx, BorderTopLeft, coords.NewPoint(0, 0), time.Second); err != nil {
+		if err := ac.resizeWindowP(ctx, border, to, time.Second); err != nil {
 			return errors.Wrap(err, "could not resize window")
 		}
 		return nil
 	case SDKR:
-		if err := ac.resizeWindowR(ctx, tconn, BorderTopLeft, coords.NewPoint(0, 0), time.Second); err != nil {
+		if err := ac.resizeWindowR(ctx, tconn, border, to, time.Second); err != nil {
 			return errors.Wrap(err, "could not resize window")
 		}
 		return nil
