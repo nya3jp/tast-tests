@@ -304,6 +304,11 @@ func EnableFeatures(features ...string) Option {
 	return func(c *Chrome) { c.enableFeatures = append(c.enableFeatures, features...) }
 }
 
+// DisableFeatures returns an Option that can be passed to New to disable specific features in Chrome.
+func DisableFeatures(features ...string) Option {
+	return func(c *Chrome) { c.disableFeatures = append(c.disableFeatures, features...) }
+}
+
 // UnpackedExtension returns an Option that can be passed to New to make Chrome load an unpacked
 // extension in the supplied directory.
 // Ownership of the extension directory and its contents may be modified by New.
@@ -343,6 +348,7 @@ type Chrome struct {
 	breakpadTestMode bool
 	extraArgs        []string
 	enableFeatures   []string
+	disableFeatures  []string
 
 	extDirs     []string // directories containing all unpacked extensions to load
 	testExtID   string   // ID for test extension exposing APIs
@@ -883,6 +889,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 
 	if len(c.enableFeatures) != 0 {
 		args = append(args, "--enable-features="+strings.Join(c.enableFeatures, ","))
+	}
+
+	if len(c.disableFeatures) != 0 {
+		args = append(args, "--disable-features="+strings.Join(c.disableFeatures, ","))
 	}
 
 	args = append(args, c.extraArgs...)
