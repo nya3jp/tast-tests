@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76de87d6_68a270a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T17:38:11Z",
+      "side": 1,
+      "message": "LGTM for CP.\nLooks target of go/chromeos-merge-exceptions.",
+      "revId": "5a65f4786e1071fa5ef41bd9c20a092fb0e4cb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
