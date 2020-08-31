@@ -62,7 +62,7 @@ func ShareFolders(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Clean up shared folders in the end.

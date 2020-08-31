@@ -260,7 +260,7 @@ type preImpl struct {
 func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
 
-func (p *preImpl) grabLXCLogs(ctx context.Context) {
+func (p *preImpl) writeLXCLogs(ctx context.Context) {
 	vm, err := vm.GetRunningVM(ctx, p.cr.User())
 	if err != nil {
 		testing.ContextLog(ctx, "No running VM, possibly we failed before staring the VM")
@@ -273,7 +273,7 @@ func (p *preImpl) grabLXCLogs(ctx context.Context) {
 	}
 
 	testing.ContextLog(ctx, "Creating file")
-	path := filepath.Join(dir, "crostini_vm_logs.txt")
+	path := filepath.Join(dir, "crostini_logs.txt")
 	f, err := os.Create(path)
 	if err != nil {
 		testing.ContextLog(ctx, "Error creating file: ", err)
@@ -330,7 +330,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	shouldClose := true
 	defer func() {
 		if shouldClose {
-			p.grabLXCLogs(ctx)
+			p.writeLXCLogs(ctx)
+			TrySaveVMLogs(ctx, p.cr.User())
 			p.cleanUp(ctx, s)
 		}
 	}()
