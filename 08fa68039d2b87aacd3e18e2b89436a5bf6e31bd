@@ -16,6 +16,29 @@
       "revId": "08fa68039d2b87aacd3e18e2b89436a5bf6e31bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edcd301e_b5616b60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-31T21:19:55Z",
+      "side": 1,
+      "message": "Is this used anywhere?",
+      "range": {
+        "startLine": 324,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 2
+      },
+      "revId": "08fa68039d2b87aacd3e18e2b89436a5bf6e31bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
