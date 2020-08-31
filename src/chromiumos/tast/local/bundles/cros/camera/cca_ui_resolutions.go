@@ -32,7 +32,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "arc_camera3", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Pre:          testutil.NewPrecondition(testutil.ChromeConfig{}),
+		Params: []testing.Param{{
+			Pre: testutil.NewPrecondition(testutil.ChromeConfig{}),
+		}, {
+			Name: "swa",
+			Pre: testutil.NewPrecondition(testutil.ChromeConfig{
+				InstallSWA: true,
+			}),
+		}},
 		// Default timeout (i.e. 2 minutes) is not enough for some devices to
 		// exercise all resolutions on all cameras.
 		Timeout: 5 * time.Minute,
