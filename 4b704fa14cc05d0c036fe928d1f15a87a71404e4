@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6acc62b_c1517098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-08-31T20:55:06Z",
+      "side": 1,
+      "message": "It looks like I should have just applied this to all cases after the first time this showed up for libpcre.",
+      "revId": "4b704fa14cc05d0c036fe928d1f15a87a71404e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
