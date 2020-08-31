@@ -41,6 +41,9 @@ const (
 
 const uiTimeout = 30 * time.Second
 
+var installWindowChromebookFP = ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "Set up Linux (Beta) on your Chromebook"}
+var installWindowChromeboxFP = ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "Set up Linux (Beta) on your Chromebox"}
+
 // Image setup mode.
 const (
 	Artifact = "artifact"
@@ -58,7 +61,24 @@ type InstallationOptions struct {
 
 // Installer is a page object for the settings screen of the Crostini Installer.
 type Installer struct {
-	tconn *chrome.TestConn
+	tconn    *chrome.TestConn
+	windowFP ui.FindParams
+}
+
+// New creates a new Installer page object.
+func New(ctx context.Context, tconn *chrome.TestConn) (*Installer, error) {
+	// Chromebooks and ChromeBoxs have different window titles, find the most common one first, then fall back to the less common one.
+	var errBook, errBox error
+	windowFP := installWindowChromebookFP
+	errBook = uig.Do(ctx, tconn, uig.FindWithTimeout(installWindowChromebookFP, 5*time.Second))
+	if errBook != nil {
+		windowFP = installWindowChromeboxFP
+		errBox = uig.Do(ctx, tconn, uig.FindWithTimeout(installWindowChromeboxFP, time.Second))
+		if errBox != nil {
+			return nil, errors.Errorf("could not find installer window for either chromebook or chromebox: chromebook error: %w chromebox error: %v", errBook, errBox)
+		}
+	}
+	return &Installer{tconn, windowFP}, nil
 }
 
 func parseDiskSizeString(str string) (uint64, error) {
@@ -87,8 +107,7 @@ func parseDiskSizeString(str string) (uint64, error) {
 // SetDiskSize uses the slider on the Installer options pane to set the disk
 // size to the smallest slider increment larger than the specified disk size.
 func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
-	// TODO: The name only applies to chromebook but not chromebox. Parse also string for Chromebox.
-	window := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "Set up Linux (Beta) on your Chromebook"}, uiTimeout)
+	window := uig.FindWithTimeout(p.windowFP, uiTimeout)
 	radioGroup := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRadioGroup}, uiTimeout)
 	slider := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeSlider}, uiTimeout)
 
@@ -172,7 +191,7 @@ func (p *Installer) Install(ctx context.Context) error {
 		uig.Steps(
 			install.FocusAndWait(uiTimeout),
 			install.LeftClick(),
-			uig.WaitUntilDescendantGone(ui.FindParams{Role: ui.RoleTypeButton, Name: "Cancel"}, 10*time.Minute)).WithNamef("Install()"))
+			uig.WaitUntilDescendantGone(p.windowFP, 10*time.Minute)).WithNamef("Install()"))
 }
 
 func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerDir, terminaImage string, err error) {
@@ -257,7 +276,10 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 	if err := settings.OpenInstaller(ctx); err != nil {
 		return errors.Wrap(err, "failed to launch crostini installation from Settings")
 	}
-	installer := &Installer{tconn}
+	installer, err := New(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to create installer page object")
+	}
 	if iOptions.MinDiskSize != 0 {
 		if err := installer.SetDiskSize(ctx, iOptions.MinDiskSize); err != nil {
 			return errors.Wrap(err, "failed to set disk size in installation dialog")
