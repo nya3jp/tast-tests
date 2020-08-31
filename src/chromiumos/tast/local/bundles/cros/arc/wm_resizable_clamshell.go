@@ -6,7 +6,10 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"math"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -91,6 +94,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			// resizable/clamshell: display size change
 			Name: "RC15_display_size_change",
 			Func: wmRC15,
+		},
+		wm.TestCase{
+			// resizable/clamshell: font size change
+			Name: "RC17_font_size_change",
+			Func: wmRC17,
 		},
 	})
 }
@@ -542,6 +550,104 @@ func wmRC15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return nil
+}
+
+// wmRC17 covers resizable/clamshell: font size change.
+// Expected behavior is defined in: go/arc-wm-r RC17: resizable/clamshell: font size change.
+func wmRC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// This const should be always different than 1.
+	const fsConst = 1.3
+
+	// Start a new activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+	// Store original window info.
+	owInfo, owiErr := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if owiErr != nil {
+		return owiErr
+	}
+
+	// Change the font size.
+	if err := ensureARCFontSizeChanged(ctx, a, fsConst); err != nil {
+		return errors.Wrap(err, "unable to set font size")
+	}
+
+	// Get the font size.
+	nfs, nfsErr := getARCFontSize(ctx, a)
+	if nfsErr != nil {
+		return errors.Wrap(nfsErr, "unable to get font size")
+	}
+
+	// Get window info after font size change.
+	wInfo, wiErr := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if wiErr != nil {
+		return wiErr
+	}
+	if owInfo.TargetBounds != wInfo.TargetBounds {
+		return errors.Errorf("invalid window bounds after font size is changed. got: %q, want: %q", wInfo.TargetBounds, owInfo.TargetBounds)
+	}
+
+	// Compare font sizes before and after size change.
+	if nfs != fsConst {
+		return errors.Errorf("invalid font size after font size is changed. got: '%.1f', want: '%.1f'", nfs, fsConst)
+	}
+	if nfs == 1 {
+		return errors.Errorf("invalid font size after font size is changed. got: '%.1f', want different than: '1.0'", nfs)
+	}
+
+	// Change the font size back to 1.
+	if err := ensureARCFontSizeChanged(ctx, a, 1); err != nil {
+		return errors.Wrap(err, "unable to set font size")
+	}
+
+	return nil
+}
+
+// ensureARCFontSizeChanged changes the android font size via settings and waits until the font size changes completely.
+func ensureARCFontSizeChanged(ctx context.Context, a *arc.ARC, fontScale float64) error {
+	cmd := a.Command(ctx, "settings", "put", "system", "font_scale", fmt.Sprintf("%f", fontScale))
+	if err := cmd.Run(); err != nil {
+		return errors.Wrap(err, "unable to run adb shell command")
+	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		fs, err := getARCFontSize(ctx, a)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		if fs != fontScale {
+			return testing.PollBreak(errors.Errorf("unable to wait for font size to change. got: %f, want: %f", fs, fontScale))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
+// getARCFontSize gets the font size from the android settings.
+func getARCFontSize(ctx context.Context, a *arc.ARC) (float64, error) {
+	cmd := a.Command(ctx, "settings", "get", "system", "font_scale")
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return .0, errors.Wrap(err, "unable to run adb shell command")
+	}
+	outStr := strings.TrimSpace(string(output))
+	fs, err := strconv.ParseFloat(outStr, 64)
+	if err != nil {
+		return .0, errors.Wrapf(err, "invalid font_sclae: %q", outStr)
+	}
+
+	return fs, nil
 }
 
 // rcDisplaySizeChangeTestsHelper is used for Tast-tests that are testing resolution change and its effects on an activity.
