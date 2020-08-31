@@ -160,16 +160,15 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	if err := WaitAndroidInit(ctx); err != nil {
 		// Try starting logcat just in case logcat is possible. Android might still be up.
-		if logcatCmd, err := startLogcat(ctx, &arc.logcatWriter); err != nil {
+		logcatCmd := BootstrapCommand(ctx, "/system/bin/logcat", "-d")
+		logcatCmd.Stdout = &arc.logcatWriter
+		testing.ContextLog(ctx, "Forcing collection of logcat at early boot")
+		if err := logcatCmd.Run(); err != nil {
 			testing.ContextLog(ctx, "Tried starting logcat anyway but failed: ", err)
 			// Ignore.
 		} else {
-			arc.logcatCmd = logcatCmd
-			testing.ContextLog(ctx, "Forcing collection of logcat at early boot")
-			// Wait for logcat process to fetch some data
-			testing.Sleep(ctx, time.Second)
+			// Successful run.
 		}
-
 		return nil, diagnose(logcatPath, errors.Wrap(err, "Android failed to boot in very early stage"))
 	}
 
