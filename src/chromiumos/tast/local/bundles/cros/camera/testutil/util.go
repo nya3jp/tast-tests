@@ -26,6 +26,16 @@ var (
 	arcWithSWA    = arc.NewPrecondition("cca_swa", nil, "--enable-features=CameraSystemWebApp")
 )
 
+// CCAAppType determines whether CCA is a platform app or an SWA.
+type CCAAppType int
+
+const (
+	// SWA represents the System web app version of CCA
+	SWA CCAAppType = iota
+	// PlatformApp represents the platform app version of CCA
+	PlatformApp
+)
+
 // ChromeWithSWA returns a precondition that Chrome is already logged in and CCA is installed as an SWA when a test is run.
 func ChromeWithSWA() testing.Precondition { return chromeWithSWA }
 
