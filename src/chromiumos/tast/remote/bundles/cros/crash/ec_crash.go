@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,9 +29,28 @@ func init() {
 		// not (yet) support skipping tests if required vars are empty.
 		// TODO(crbug.com/967901): Remove no_qemu dep once servo var is sufficient.
 		SoftwareDeps: []string{"pstore", "reboot", "no_qemu"},
-		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
-		Timeout:      10 * time.Minute,
-		Vars:         []string{"servo"},
+		// The below models have buggy EC firmare and cannot capture
+		// crash reports. See https://crbug.com/1123191
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel(
+			"asuka",
+			"banon",
+			"caroline",
+			"cave",
+			"celes",
+			"chell",
+			"cyan",
+			"edgar",
+			"kefka",
+			"reks",
+			"relm",
+			"sentry",
+			"terra",
+			"ultima",
+			"wizpig",
+		)),
+		ServiceDeps: []string{"tast.cros.crash.FixtureService"},
+		Timeout:     10 * time.Minute,
+		Vars:        []string{"servo"},
 	})
 }
 
