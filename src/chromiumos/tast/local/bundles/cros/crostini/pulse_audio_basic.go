@@ -67,7 +67,7 @@ func controlPulse(ctx context.Context, s *testing.State, cont *vm.Container, cmd
 
 func PulseAudioBasic(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	s.Log("List ALSA output devices")
 	if err := cont.Command(ctx, "aplay", "-l").Run(testexec.DumpLogOnError); err != nil {
