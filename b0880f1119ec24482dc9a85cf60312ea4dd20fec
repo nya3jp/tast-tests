@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e872fc3_4b5d7605",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-08-31T22:59:01Z",
+      "side": 1,
+      "message": "The bug caused the last failures https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1123422 has been fixed.",
+      "revId": "b0880f1119ec24482dc9a85cf60312ea4dd20fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
