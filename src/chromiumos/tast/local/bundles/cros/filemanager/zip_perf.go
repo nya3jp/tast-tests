@@ -286,7 +286,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 	}
 
 	// Enter the new directory.
-	if err := ew.Accel(ctx, "Enter"); err != nil {
+	if err := files.OpenFile(ctx, zipBaseName); err != nil {
 		s.Fatal("Failed navigating to the new directory: ", err)
 	}
 
@@ -321,17 +321,17 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 }
 
 func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipBaseName string) float64 {
-	// Get the Files App listBox.
+	// Get the Files App listBox, which should be in a focused state.
+	params := ui.FindParams{
+		Role:  ui.RoleTypeListBox,
+		State: map[ui.StateType]bool{ui.StateTypeFocused: true},
+	}
+
 	filesBox, err := files.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, 15*time.Second)
 	if err != nil {
 		s.Fatal("Failed getting filesBox: ", err)
 	}
 	defer filesBox.Release(ctx)
-
-	// Move the focus to the file list.
-	if err := filesBox.FocusAndWait(ctx, 15*time.Second); err != nil {
-		s.Fatal("Failed selecting filesBox: ", err)
-	}
 
 	// Select all extracted files.
 	if err := ew.Accel(ctx, "ctrl+A"); err != nil {
@@ -349,7 +349,7 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 	}
 
 	// Zip selection.
-	params := ui.FindParams{
+	params = ui.FindParams{
 		Name: "Zip selection",
 		Role: ui.RoleTypeMenuItem,
 	}
