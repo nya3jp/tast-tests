@@ -50,6 +50,138 @@
       "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f02a5205_5da8407d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T18:54:52Z",
+      "side": 1,
+      "message": "LGTM % nits and comments. Thanks!",
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8375301e_583b1eb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T18:54:52Z",
+      "side": 1,
+      "message": "used only once, so you directly use \"func(...) error\" in the struct and avoid one-time type",
+      "range": {
+        "startLine": 126,
+        "startChar": 6,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "420aca6b_ba24cf02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T18:54:52Z",
+      "side": 1,
+      "message": "nit: please rename to \"tc\", which stands for \"test case\". It\u0027s more common name for table driven tests",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 12
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67460e40_f09674c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T18:54:52Z",
+      "side": 1,
+      "message": "nit: maybe \"and\" instead, because of wierd file name?",
+      "range": {
+        "startLine": 142,
+        "startChar": 9,
+        "endLine": 142,
+        "endChar": 10
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdf79dd_b0f8f858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T18:54:52Z",
+      "side": 1,
+      "message": "s.Fatal will cause routine crash and other defer statements won\u0027t run so you will have resourece leakage. Please use s.Error instead",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 12
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb6ffd1_fb8c591c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T18:54:52Z",
+      "side": 1,
+      "message": "nit: please don\u0027t bind ctx by reference, pass by value, otherwise it may cause wierd errors in the future if you will reassign ctx:\n\n```\n\t\t\tdefer func(ctx context.Context) {\n\t\t\t\tif err :\u003d act.Stop(ctx, tconn); err !\u003d nil {\n\t\t\t\t\ts.Error(\"Failed to stop activity: \", err)\n\t\t\t\t}\n\t\t\t}(ctx)\n```",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
