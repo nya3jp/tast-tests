@@ -24,20 +24,31 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "human_face.y4m"},
+		Params: []testing.Param{{
+			Val: testutil.PlatformApp,
+		}, {
+			Name: "swa",
+			Val:  testutil.SWA,
+		}},
 	})
 }
 
 func CCAUIModes(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(
+	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
+	opts := []chrome.Option{chrome.ExtraArgs(
 		"--use-fake-ui-for-media-stream",
 		"--use-fake-device-for-media-stream",
-		"--use-file-for-fake-video-capture="+s.DataPath("human_face.y4m")))
+		"--use-file-for-fake-video-capture="+s.DataPath("human_face.y4m"))}
+	if useSWA {
+		opts = append(opts, chrome.EnableFeatures("CameraSystemWebApp"))
+	}
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to open chrome: ", err)
 	}
 	defer cr.Close(ctx)
 
-	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -47,7 +58,7 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
