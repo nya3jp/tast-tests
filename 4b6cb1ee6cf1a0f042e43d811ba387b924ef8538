@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b578e5f6_fe3e4210",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-08-31T02:44:59Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, also the example helps a lot.",
+      "parentUuid": "e3fbe41e_60483d74",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "4b6cb1ee6cf1a0f042e43d811ba387b924ef8538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8cd0e74_1ef96084",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
