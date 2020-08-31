@@ -42,6 +42,25 @@ func init() {
 			Val: cca.ChromeConfig{
 				ARCEnabled: true,
 			},
+		}, {
+			Name: "noarc_swa",
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+			},
+		}, {
+			Name:              "swa",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+				ARCEnabled: true,
+			},
+		}, {
+			Name:              "vm_swa",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+				ARCEnabled: true,
+			},
 		}},
 		Timeout: 5 * time.Minute,
 	})
