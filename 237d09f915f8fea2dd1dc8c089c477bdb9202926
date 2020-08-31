@@ -16,6 +16,29 @@
       "revId": "237d09f915f8fea2dd1dc8c089c477bdb9202926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf38c69d_636fabec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-08-31T12:02:12Z",
+      "side": 1,
+      "message": "I think if you return with \"coords.Rect, error\" it could make it easier to read and maintain the function later:\n\tlaunchBoundsThreshold, err :\u003d func() coords.Rect, error {\n\t\t// The function\n\t}()\n\tif err !\u003d nil { // Error handling }",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "237d09f915f8fea2dd1dc8c089c477bdb9202926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
