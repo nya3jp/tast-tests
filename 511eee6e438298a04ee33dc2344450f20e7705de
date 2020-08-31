@@ -16,6 +16,46 @@
       "revId": "511eee6e438298a04ee33dc2344450f20e7705de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb5019af_e3eae66c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T16:27:17Z",
+      "side": 1,
+      "message": "LGTM % nit, thanks!",
+      "revId": "511eee6e438298a04ee33dc2344450f20e7705de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76826f9c_a8ed6f91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T16:27:17Z",
+      "side": 1,
+      "message": "nit: you can skip \"var\":\n\n```\nabiMap :\u003d map[string]string{\n  ...\n}\n```",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "511eee6e438298a04ee33dc2344450f20e7705de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
