@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e5d4a32_0228fae5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-08-31T03:41:13Z",
+      "side": 1,
+      "message": "LGTM, please just remember to update attributes after the discussion in crrev.com/c/2379494 settles.\n",
+      "revId": "e3873fcebc45fc583d66e40856dea844465981b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
