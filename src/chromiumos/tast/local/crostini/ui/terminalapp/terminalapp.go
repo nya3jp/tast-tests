@@ -88,6 +88,29 @@ func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemName string) 
 
 // RestartCrostini shuts down Crostini and launch and exit the Terminal window.
 func (ta *TerminalApp) RestartCrostini(ctx context.Context, keyboard *input.KeyboardEventWriter, cont *vm.Container, userName string) error {
+	if err := ta.ShutdownCrostini(ctx, cont); err != nil {
+		return errors.Wrap(err, "failed to shutdown crostini")
+	}
+
+	// Start the VM and container.
+	ta, err := Launch(ctx, ta.tconn, strings.Split(userName, "@")[0])
+	if err != nil {
+		return errors.Wrap(err, "failed to lauch terminal")
+	}
+
+	if err := cont.Connect(ctx, userName); err != nil {
+		return errors.Wrap(err, "failed to connect to restarted container")
+	}
+
+	if err := ta.clickShelfMenuItem(ctx, "Close"); err != nil {
+		return errors.Wrap(err, "failed to close Terminal app")
+	}
+
+	return nil
+}
+
+// ShutdownCrostini shuts down Crostini.
+func (ta *TerminalApp) ShutdownCrostini(ctx context.Context, cont *vm.Container) error {
 	if err := ta.clickShelfMenuItem(ctx, "Shut down Linux (Beta)"); err != nil {
 		return errors.Wrap(err, "failed to shutdown crostini")
 	}
@@ -101,20 +124,6 @@ func (ta *TerminalApp) RestartCrostini(ctx context.Context, keyboard *input.Keyb
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 	if err != nil {
 		return errors.Wrap(err, "VM failed to stop: ")
-	}
-
-	// Start the VM and container.
-	ta, err = Launch(ctx, ta.tconn, strings.Split(userName, "@")[0])
-	if err != nil {
-		return errors.Wrap(err, "failed to lauch terminal")
-	}
-
-	if err := cont.Connect(ctx, userName); err != nil {
-		return errors.Wrap(err, "failed to connect to restarted container")
-	}
-
-	if err := ta.clickShelfMenuItem(ctx, "Close"); err != nil {
-		return errors.Wrap(err, "failed to close Terminal app")
 	}
 
 	return nil
@@ -158,6 +167,18 @@ func (ta *TerminalApp) Exit(ctx context.Context, keyboard *input.KeyboardEventWr
 
 	if err := ta.RunCommand(ctx, keyboard, "exit"); err != nil {
 		return errors.Wrap(err, "failed to exit Terminal window")
+	}
+
+	// Wait for window to close.
+	return ui.WaitUntilGone(ctx, ta.tconn, ui.FindParams{Name: ta.Root.Name, Role: ta.Root.Role, ClassName: ta.Root.ClassName}, time.Minute)
+}
+
+// Close closes the Terminal App through clicking Close on shelf context menu.
+func (ta *TerminalApp) Close(ctx context.Context) error {
+	defer ta.Root.Release(ctx)
+
+	if err := ta.clickShelfMenuItem(ctx, "Close"); err != nil {
+		return errors.Wrap(err, "failed to close crostini")
 	}
 
 	// Wait for window to close.
