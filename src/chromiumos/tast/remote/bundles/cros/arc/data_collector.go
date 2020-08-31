@@ -54,6 +54,10 @@ func init() {
 		// then disabling this in Android PFQ. At this time missing the data is allowed
 		// for the grace perioid however it will be a build stopper after.
 		Params: []testing.Param{{
+<<<<<<< HEAD   (a2f3d4 network: VPNConnect: Wait for ethernet state.)
+=======
+			ExtraAttr:         []string{"group:mainline"},
+>>>>>>> CHANGE (81583e [DON'T MERGE] arc: try data_collector as critical)
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               false,
 		}, {
