@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "7727fae7_eb97db63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-08-31T05:40:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2463eb09_fd87f6fd",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "0efd4cf99c9dfd76b943d330884e987667ff776b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1417bc95_dabebcab",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
         "patchSetId": 4
@@ -82,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "81cfd461_2b077e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-08-31T05:40:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1417bc95_dabebcab",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 38
+      },
+      "revId": "0efd4cf99c9dfd76b943d330884e987667ff776b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec618535_5f42ed34",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
         "patchSetId": 4
@@ -102,6 +150,30 @@
       "revId": "0efd4cf99c9dfd76b943d330884e987667ff776b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c82e240_df66b03b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-08-31T05:40:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec618535_5f42ed34",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 12
+      },
+      "revId": "0efd4cf99c9dfd76b943d330884e987667ff776b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
