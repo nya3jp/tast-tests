@@ -21,9 +21,11 @@ var (
 	// ID is the app id of CCA.
 	ID = "hfhhnacclhffhdffklopdkcgdhifgngh"
 	// BackgroundURL is the url of the CCA background page.
-	BackgroundURL = fmt.Sprintf("chrome-extension://%s/views/background.html", ID)
-	chromeWithSWA = chrome.NewPrecondition("cca_swa", chrome.EnableFeatures("CameraSystemWebApp"))
-	arcWithSWA    = arc.NewPrecondition("cca_swa", nil, "--enable-features=CameraSystemWebApp")
+	BackgroundURL         = fmt.Sprintf("chrome-extension://%s/views/background.html", ID)
+	chromeWithSWA         = chrome.NewPrecondition("cca_swa", chrome.EnableFeatures("CameraSystemWebApp"))
+	arcWithSWA            = arc.NewPrecondition("arc_cca_swa", nil, "--enable-features=CameraSystemWebApp")
+	chromeWithPlatformApp = chrome.NewPrecondition("cca_platform_app", chrome.DisableFeatures("CameraSystemWebApp"))
+	arcWithPlatformApp    = arc.NewPrecondition("arc_cca_platform_app", nil, "--disable-features=CameraSystemWebApp")
 )
 
 // CCAAppType determines whether CCA is a platform app or an SWA.
@@ -41,6 +43,12 @@ func ChromeWithSWA() testing.Precondition { return chromeWithSWA }
 
 // ARCWithSWA returns a precondition that ARC Container has already booted and CCA is installed as an SWA when a test is run.
 func ARCWithSWA() testing.Precondition { return arcWithSWA }
+
+// ChromeWithPlatformApp returns a precondition that Chrome is already logged in and CCA is installed as a platform app when a test is run.
+func ChromeWithPlatformApp() testing.Precondition { return chromeWithPlatformApp }
+
+// ARCWithPlatformApp returns a precondition that ARC Container has already booted and CCA is installed as a platform app when a test is run.
+func ARCWithPlatformApp() testing.Precondition { return arcWithPlatformApp }
 
 // AppLauncher is used during the launch process of CCA. We could launch CCA
 // by launchApp event, camera intent or any other ways.
