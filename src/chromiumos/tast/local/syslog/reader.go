@@ -17,9 +17,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// lineReader is a common helper for Reader and ChromeReader. It handles getting
+// LineReader is a common helper for Reader and ChromeReader. It handles getting
 // each time and handles issues like log rotation and partially-written lines.
-type lineReader struct {
+type LineReader struct {
 	path     string        // path to the syslog messages file
 	file     *os.File      // currently open file
 	reader   *bufio.Reader // line-oriented reader wrapping file
@@ -27,9 +27,12 @@ type lineReader struct {
 	lineBuf  string        // partially read line
 }
 
-// newLineReader starts a new Reader that reports log messages
-// written after it is started. close must be called after use.
-func newLineReader(ctx context.Context, path string) (r *lineReader, retErr error) {
+// NewLineReader starts a new LineReader that reports log messages.
+// If fromStart is false only reports log messages written after
+// the reader is created. Close must be called after use.
+// opts is used to customise polling for the file to exist e.g. in case the log
+// is being rotated at the time we try to open it. Pass nil to get defaults.
+func NewLineReader(ctx context.Context, path string, fromStart bool, opts *testing.PollOptions) (r *LineReader, retErr error) {
 	var f *os.File
 	// Avoid race conditions around log rotation. If the file doesn't exist at
 	// the moment we try to open it, retry until it does.
@@ -37,7 +40,7 @@ func newLineReader(ctx context.Context, path string) (r *lineReader, retErr erro
 		var err error
 		f, err = os.Open(path)
 		return err
-	}, nil)
+	}, opts)
 	if err != nil {
 		return nil, errors.Wrap(err, "error opening log file")
 	}
@@ -47,31 +50,33 @@ func newLineReader(ctx context.Context, path string) (r *lineReader, retErr erro
 		}
 	}()
 
-	// Seek to 1 byte before the end of the file if the file is not empty.
-	//
-	// We basically want to seek to the end of the file so that we don't
-	// process messages written earlier. Since it is possible that syslogd (or
-	// Chrome) is in the middle of writing a message, we set skipNext to true.
-	// On the other hand, if the last message has been completely written
-	// out, then if we seek to the end, the next thing we read will read
-	// will be the beginning of the nessage message, the one we want. But
-	// since skipNext will be true, we'll discard that message. To avoid
-	// skipping a valid next message, we seek to 1 byte before the end of
-	// the file to ensure that, in that case, we will read the newline of
-	// the last message and clear skipNext.
-	fi, err := f.Stat()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to tell the file size")
-	}
 	skipNext := false
-	if fi.Size() > 0 {
-		if _, err := f.Seek(-1, io.SeekEnd); err != nil {
-			return nil, errors.Wrap(err, "failed to seek to end")
+	if !fromStart {
+		// Seek to 1 byte before the end of the file if the file is not empty.
+		//
+		// We basically want to seek to the end of the file so that we don't
+		// process messages written earlier. Since it is possible that syslogd (or
+		// Chrome) is in the middle of writing a message, we set skipNext to true.
+		// On the other hand, if the last message has been completely written
+		// out, then if we seek to the end, the next thing we read will read
+		// will be the beginning of the nessage message, the one we want. But
+		// since skipNext will be true, we'll discard that message. To avoid
+		// skipping a valid next message, we seek to 1 byte before the end of
+		// the file to ensure that, in that case, we will read the newline of
+		// the last message and clear skipNext.
+		fi, err := f.Stat()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to tell the file size")
 		}
-		skipNext = true
+		if fi.Size() > 0 {
+			if _, err := f.Seek(-1, io.SeekEnd); err != nil {
+				return nil, errors.Wrap(err, "failed to seek to end")
+			}
+			skipNext = true
+		}
 	}
 
-	return &lineReader{
+	return &LineReader{
 		path:     path,
 		file:     f,
 		reader:   bufio.NewReader(f),
@@ -79,14 +84,14 @@ func newLineReader(ctx context.Context, path string) (r *lineReader, retErr erro
 	}, nil
 }
 
-// close closes the lineReader.
-func (r *lineReader) close() error {
+// Close closes the LineReader.
+func (r *LineReader) Close() error {
 	return r.file.Close()
 }
 
-// read returns the next log line. If the next message is not available yet,
+// ReadLine returns the next log line. If the next message is not available yet,
 // io.EOF is returned.
-func (r *lineReader) read() (string, error) {
+func (r *LineReader) ReadLine() (string, error) {
 	for {
 		// ReadString returns err == nil if and only if the returned data
 		// ends with a newline.
@@ -126,7 +131,7 @@ func (r *lineReader) read() (string, error) {
 // moved to /var/log/messages.1 and a new /var/log/messages created). If it has,
 // the Reader is pointed at the new instance, and the caller is told to keep
 // reading.
-func (r *lineReader) handleLogRotation() (keepReading bool, err error) {
+func (r *LineReader) handleLogRotation() (keepReading bool, err error) {
 	stat, err := r.file.Stat()
 	if err != nil {
 		return false, errors.Wrap(err, "error stat'ing existing file")
@@ -149,7 +154,7 @@ func (r *lineReader) handleLogRotation() (keepReading bool, err error) {
 	// File was rotated; open new file. We don't handle the case where a
 	// log file went through multiple rotations during a single test (that is,
 	// we don't handle having /var/log/messages moved all the way to
-	// /var/log/messages.2 in between two Read() calls).
+	// /var/log/messages.2 in between two ReadLine() calls).
 	file, err := os.Open(r.path)
 	if err != nil {
 		return false, errors.Wrap(err, "error opening new log file instance")
@@ -176,7 +181,7 @@ type options struct {
 // TODO(crbug.com/991416): This should also handle messages logged to journal,
 // since someday we will move to journald for everything.
 type Reader struct {
-	lineReader *lineReader
+	lineReader *LineReader
 	filters    []EntryPred // predicates to filter syslog entries
 }
 
@@ -238,7 +243,7 @@ func NewReader(ctx context.Context, opts ...Option) (r *Reader, retErr error) {
 		opt(&o)
 	}
 
-	lineReader, err := newLineReader(ctx, o.path)
+	lineReader, err := NewLineReader(ctx, o.path, false, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -251,7 +256,7 @@ func NewReader(ctx context.Context, opts ...Option) (r *Reader, retErr error) {
 
 // Close closes the Reader.
 func (r *Reader) Close() error {
-	return r.lineReader.close()
+	return r.lineReader.Close()
 }
 
 // Read returns the next log message.
@@ -259,7 +264,7 @@ func (r *Reader) Close() error {
 // line is read successfully but it failed to parse, *ParseError is returned.
 func (r *Reader) Read() (*Entry, error) {
 	for {
-		line, err := r.lineReader.read()
+		line, err := r.lineReader.ReadLine()
 		if err != nil {
 			return nil, err
 		}
@@ -361,7 +366,7 @@ func parseSyslogLine(line string) (*Entry, error) {
 // It also deals with Chrome restart causing /var/log/chrome/chrome to point to
 // a new file.
 type ChromeReader struct {
-	lineReader *lineReader
+	lineReader *LineReader
 }
 
 // ChromeEntry represents a log message entry of a Chrome-format messages.
@@ -378,7 +383,7 @@ type ChromeEntry struct {
 // NewChromeReader starts a new ChromeReader that reports Chrome log messages
 // written after it is started. Close must be called after use.
 func NewChromeReader(ctx context.Context, path string) (r *ChromeReader, retErr error) {
-	lineReader, err := newLineReader(ctx, path)
+	lineReader, err := NewLineReader(ctx, path, false, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -390,14 +395,14 @@ func NewChromeReader(ctx context.Context, path string) (r *ChromeReader, retErr 
 
 // Close closes the ChromeReader.
 func (r *ChromeReader) Close() error {
-	return r.lineReader.close()
+	return r.lineReader.Close()
 }
 
 // Read returns the next log message. If the next message is not available yet,
 // io.EOF is returned.
 func (r *ChromeReader) Read() (*ChromeEntry, error) {
 	for {
-		line, err := r.lineReader.read()
+		line, err := r.lineReader.ReadLine()
 		if err != nil {
 			return nil, err
 		}

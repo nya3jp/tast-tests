@@ -58,6 +58,7 @@ func init() {
 func TraceReplay(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	config := s.Param().(comm.TestGroupConfig)
+	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), pre.Container, &config); err != nil {
 		s.Fatal("Trace replay test failed: ", err)
 	}
