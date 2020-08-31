@@ -77,10 +77,10 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	const (
 		apk = "ArcCompanionLibDemo.apk"
 
-		mainActivity     = ".MainActivity"
-		resizeActivityID = ".MoveResizeActivity"
-		shadowActivityID = ".ShadowActivity"
-		wallpaper        = "white_wallpaper.jpg"
+		mainActivity   = ".MainActivity"
+		resizeActivity = ".MoveResizeActivity"
+		shadowActivity = ".ShadowActivity"
+		wallpaper      = "white_wallpaper.jpg"
 	)
 
 	cr := s.PreValue().(arc.PreData).Chrome
@@ -123,139 +123,66 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Error("Failed to set wallpaper: ", err)
 	}
 
-	// All of tests in this block running on MainActivity.
-	type testFunc func(context.Context, *chrome.TestConn, *arc.Activity, *ui.Device) error
+	type testFunc func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.TestConn, *arc.Activity, *ui.Device) error
 	for _, test := range []struct {
-		name string
-		fn   testFunc
+		name    string
+		actName string
+		fn      testFunc
 	}{
-		{"Window State", testWindowState},
-		{"Workspace Insets", testWorkspaceInsets},
-		{"Caption Button", testCaptionButton},
-		{"Device Mode", testDeviceMode},
-		{"Caption Height", testCaptionHeight},
-		{"Window Bound", testWindowBounds},
-		{"Maximize App-controlled Window", testMaximize},
+		{"Window State", mainActivity, testWindowState},
+		{"Workspace Insets", mainActivity, testWorkspaceInsets},
+		{"Caption Button", mainActivity, testCaptionButton},
+		{"Device Mode", mainActivity, testDeviceMode},
+		{"Caption Height", mainActivity, testCaptionHeight},
+		{"Window Bound", mainActivity, testWindowBounds},
+		{"Maximize App-controlled Window", mainActivity, testMaximize},
+		{"Always on Top Window State", mainActivity, testAlwaysOnTop},
+		{"Popup Window", mainActivity, testPopupWindow},
+		{"Window shadow", shadowActivity, testWindowShadow},
+		{"Move & Resize Window", resizeActivity, testResizeWindow},
 	} {
-		s.Log("Running ", test.name)
-		act, err := arc.NewActivity(a, pkg, mainActivity)
-		if err != nil {
-			s.Fatal("Failed to create new activity: ", err)
-		}
-		defer act.Close()
-
-		if err := act.Start(ctx, tconn); err != nil {
-			s.Fatal("Failed to start activity: ", err)
-		}
-		if err := d.WaitForIdle(ctx, 5*time.Second); err != nil {
-			s.Fatal("Failed to wait device idle: ", err)
-		}
-		if err := test.fn(ctx, tconn, act, d); err != nil {
-			path := fmt.Sprintf("%s/screenshot-companionlib-failed-test-%s.png", s.OutDir(), strings.ReplaceAll(test.name, " ", ""))
-			if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
-				s.Log("Failed to capture screenshot: ", err)
+		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
+			act, err := arc.NewActivity(a, pkg, test.actName)
+			if err != nil {
+				s.Fatal("Failed to create new activity: ", err)
 			}
-			s.Errorf("%s test failed: %v", test.name, err)
-		}
-		if err := act.Stop(ctx, tconn); err != nil {
-			s.Fatal("Failed to stop activity: ", err)
-		}
-	}
+			defer act.Close()
 
-	act, err := arc.NewActivity(a, pkg, mainActivity)
-	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
-	}
-	defer act.Close()
-
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start context: ", err)
-	}
-	type testFunc2 func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.TestConn, *arc.Activity, *ui.Device) error
-	for _, test := range []struct {
-		name string
-		fn   testFunc2
-	}{
-		{"Always on Top Window State", testAlwaysOnTop},
-		{"Popup Window", testPopupWindow},
-	} {
-		s.Log("Running ", test.name)
-		if err := test.fn(ctx, a, cr, tconn, act, d); err != nil {
-			path := fmt.Sprintf("%s/screenshot-companionlib-failed-test-%s.png", s.OutDir(), strings.ReplaceAll(test.name, " ", ""))
-			if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
-				s.Log("Failed to capture screenshot: ", err)
+			if err := act.Start(ctx, tconn); err != nil {
+				s.Fatal("Failed to start activity: ", err)
 			}
-			s.Errorf("%s test failed: %v", test.name, err)
-		}
-	}
-	if err := act.Stop(ctx, tconn); err != nil {
-		s.Fatal("Failed to stop context: ", err)
-	}
+			defer func() {
+				if err := act.Stop(ctx, tconn); err != nil {
+					s.Fatal("Failed to stop activity: ", err)
+				}
+			}()
 
-	// These test running on specific activity.
-	shadowAct, err := arc.NewActivity(a, pkg, shadowActivityID)
-	if err != nil {
-		s.Fatal("Could not create ResizeActivity: ", err)
-	}
-	if err := shadowAct.Start(ctx, tconn); err != nil {
-		s.Fatal("Could not start ResizeActivity: ", err)
-	}
-	s.Log("Running Window shadow")
-	if err := setWindowStateSync(ctx, tconn, shadowAct, arc.WindowStateNormal); err != nil {
-		s.Fatal("Could not set window normal state: ", err)
-	}
-	if err := testWindowShadow(ctx, cr, tconn, shadowAct, d); err != nil {
-		path := filepath.Join(s.OutDir(), "screenshot-companionlib-failed-test-windowshadow.png")
-		if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
-			s.Log("Failed to capture screenshot: ", err)
-		}
-		s.Error("Window shadow test failed: ", err)
-	}
-	if err := shadowAct.Stop(ctx, tconn); err != nil {
-		s.Fatal("Could not stop resize activity: ", err)
-	}
+			if err := d.WaitForIdle(ctx, 5*time.Second); err != nil {
+				s.Fatal("Failed to wait device idle: ", err)
+			}
 
-	resizeAct, err := arc.NewActivity(a, pkg, resizeActivityID)
-	if err != nil {
-		s.Fatal("Could not create ResizeActivity: ", err)
-	}
-	s.Log("Running Window Resize")
-	if err := resizeAct.Start(ctx, tconn); err != nil {
-		s.Fatal("Could not start ResizeActivity: ", err)
-	}
-	defer func() {
-		if err := resizeAct.Stop(ctx, tconn); err != nil {
-			s.Fatal("Could not stop resize activity: ", err)
-		}
-	}()
-	if err := setWindowStateSync(ctx, tconn, resizeAct, arc.WindowStateNormal); err != nil {
-		s.Fatal("Could not set window normal state: ", err)
-	}
-	if err := testResizeWindow(ctx, tconn, resizeAct, d); err != nil {
-		s.Error("Move & Resize Window test failed: ", err)
+			if err := test.fn(ctx, a, cr, tconn, act, d); err != nil {
+				fileName := fmt.Sprintf("screenshot-companionlib-failed-test-%s.png", strings.ReplaceAll(test.name, " ", ""))
+				path := filepath.Join(s.OutDir(), fileName)
+				if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
+					s.Log("Failed to capture screenshot: ", err)
+				}
+				s.Fatalf("%s test failed: %v", test.name, err)
+			}
+		})
 	}
 }
 
 // testWindowShadow verifies that the enable / disable window shadow function from ChromeOS companion library is correct.
-func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+func testWindowShadow(ctx context.Context, _ *arc.ARC, cr *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const (
 		toggleButtonID         = pkg + ":id/toggle_shadow"
 		shadowStatusTextViewID = pkg + ":id/toggle_shadow_status_text_view"
 	)
 
 	// Change the window to normal state for display the shadow out of edge.
-	if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
+	if err := setWindowStateSync(ctx, tconn, act, arc.WindowStateNormal); err != nil {
 		return errors.Wrap(err, "could not set window state to normal")
-	}
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if state, err := act.GetWindowState(ctx); err != nil {
-			return err
-		} else if state != arc.WindowStateNormal {
-			return errors.Errorf("window state has not changed yet: got %s; want %s", state, arc.WindowStateNormal)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 4 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to waiting for change to normal window state")
 	}
 
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
@@ -346,7 +273,7 @@ func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Test
 }
 
 // testCaptionHeight verifies that the caption height length getting from ChromeOS companion library is correct.
-func testCaptionHeight(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+func testCaptionHeight(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getCaptionHeightButtonID = pkg + ":id/get_caption_height"
 
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
@@ -400,7 +327,14 @@ func testCaptionHeight(ctx context.Context, tconn *chrome.TestConn, act *arc.Act
 // testResizeWindow verifies that the resize function in ChromeOS companion library works as expected.
 // ARC companion library demo provide a activity for resize test, there are four draggable hit-boxes in four sides.
 // The test maximizing the window by drag from four side inner hit-boxes. The events will be handled by Companion Library, not Chrome.
-func testResizeWindow(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+func testResizeWindow(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+	if err := setWindowStateSync(ctx, tconn, act, arc.WindowStateNormal); err != nil {
+		return errors.Wrap(err, "could not set window state to normal")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkg, ash.WindowStateNormal); err != nil {
+		return err
+	}
+
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
@@ -488,7 +422,7 @@ func testResizeWindow(ctx context.Context, tconn *chrome.TestConn, act *arc.Acti
 }
 
 // testWorkspaceInsets verifies that the workspace insets info from ChromeOS companion library is correct.
-func testWorkspaceInsets(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+func testWorkspaceInsets(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getWorkspaceInsetsButtonID = pkg + ":id/get_workspace_insets"
 
 	parseRectString := func(rectShortString string, mode *display.DisplayMode) (coords.Rect, error) {
@@ -640,7 +574,7 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.TestConn, act *arc.A
 }
 
 // testCaptionButton verifies that hidden caption button API works as expected.
-func testCaptionButton(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+func testCaptionButton(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const (
 		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
 		checkCaptionButtonMinimizeBox           = pkg + ":id/caption_button_minimize"
@@ -788,7 +722,7 @@ func testCaptionButton(ctx context.Context, tconn *chrome.TestConn, act *arc.Act
 }
 
 // testDeviceMode verifies that the device mode info from ChromeOS companion library is correct.
-func testDeviceMode(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+func testDeviceMode(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getDeviceModeButtonID = pkg + ":id/get_device_mode_button"
 
 	if err := setWindowStateSync(ctx, tconn, act, arc.WindowStateNormal); err != nil {
@@ -951,7 +885,7 @@ func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 	defer settingAct.Stop(ctx, tconn)
 
 	// Make sure the setting window will have an initial maximized state.
-	if err := settingAct.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
+	if err := setWindowStateSync(ctx, tconn, settingAct, arc.WindowStateMaximized); err != nil {
 		return errors.Wrap(err, "failed to set window state of Settings Activity to maximized")
 	}
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, settingPkgName, ash.WindowStateMaximized); err != nil {
@@ -1070,7 +1004,7 @@ func testPopupWindow(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 }
 
 // testWindowState verifies that change window state by ChromeOS companion library works as expected.
-func testWindowState(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+func testWindowState(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const (
 		setWindowStateButtonID = pkg + ":id/set_task_window_state_button"
 		getWindowStateButtonID = pkg + ":id/get_task_window_state_button"
@@ -1098,7 +1032,7 @@ func testWindowState(ctx context.Context, tconn *chrome.TestConn, act *arc.Activ
 }
 
 // testMaximize verifies that the app-controlled window cannot be maximized by double click caption after the maximize button has been hidden.
-func testMaximize(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+func testMaximize(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const (
 		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
 		checkCaptionButtonMaximizeAndRestoreBox = pkg + ":id/caption_button_maximize_and_restore"
@@ -1186,7 +1120,7 @@ func testMaximize(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity
 }
 
 // testWindowBounds verifies that the window bounds related API works as expected in ChromeOS Companion Lib.
-func testWindowBounds(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getWindowBoundsButtonID = pkg + ":id/get_window_bounds_button"
 
 	physicalDisplayDensity, err := act.DisplayDensity(ctx)
