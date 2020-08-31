@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "46258cc8_ade5b4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-31T11:53:28Z",
+      "side": 1,
+      "message": "Oh that\u0027s a nice way of defining the tests. There might be some comments but I\u0027m marking this as resolved.",
+      "parentUuid": "9a286c8d_8a01da59",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 90
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cecfa880_d8532ee0",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
@@ -486,6 +510,30 @@
       "side": 1,
       "message": "a regex could be used, but it is up to you if you want to add that into this CL. If not, it is fine to just leave this as is.",
       "parentUuid": "c020afb2_a50ffbf7",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 141
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf0a4fe_673f8ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-31T11:53:28Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem easy to use a regex... Except if there is a way to find a particular node from a regex, but I didn\u0027t find a direct way to do this.\n\nOtherwise, if I\u0027m not mistaken, the complicated part would be to find the node with the \"X (files|folders|items) selected\" label. The nodes look like\nnode id\u003d5752 role\u003dstaticText state\u003d{} parentID\u003d4322 childIds\u003d[5753] name\u003d2 files selected\nSo I can just query the node by finding its parent first (since the role is not specific enough).\n- I would then need to extract the name and see if it matches with the regex. \n\nBut maybe there is an easier way to do it!",
+      "parentUuid": "3a14f255_746c18b3",
       "range": {
         "startLine": 148,
         "startChar": 0,
