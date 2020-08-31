@@ -23,13 +23,21 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Pre: testutil.ChromeWithPlatformApp(),
+			Val: testutil.PlatformApp,
+		}, {
+			Name: "swa",
+			Pre:  testutil.ChromeWithSWA(),
+			Val:  testutil.SWA,
+		}},
 	})
 }
 
 func CCAUIPreview(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
+	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -39,7 +47,7 @@ func CCAUIPreview(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
@@ -61,7 +69,7 @@ func CCAUIPreview(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := testResize(ctx, app); err != nil {
+	if err := testResize(ctx, app, useSWA); err != nil {
 		s.Error("Failed in testResize(): ", err)
 		restartApp()
 	}
@@ -73,10 +81,17 @@ func CCAUIPreview(ctx context.Context, s *testing.State) {
 	// * Preview active after suspend/resume
 }
 
-func testResize(ctx context.Context, app *cca.App) error {
+func testResize(ctx context.Context, app *cca.App, useSWA bool) error {
 	restore := func() error {
 		if err := app.RestoreWindow(ctx); err != nil {
 			return errors.Wrap(err, "failed to restore window")
+		}
+		// It is expected that the preview will only be active after the window
+		// is focus on SWA.
+		if useSWA {
+			if err := app.Focus(ctx); err != nil {
+				return errors.Wrap(err, "failed to focus window")
+			}
 		}
 		if err := app.WaitForVideoActive(ctx); err != nil {
 			return errors.Wrap(err, "preview is inactive after restoring window")
