@@ -203,7 +203,9 @@ func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.
 func FsCorruption(ctx context.Context, s *testing.State) {
 	data := s.PreValue().(crostini.PreData)
 	cr := data.Chrome
-	defer crostini.RunCrostiniPostTest(ctx, data.Container)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)

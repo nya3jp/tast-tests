@@ -55,7 +55,9 @@ func LaunchBrowser(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cr := pre.Chrome
 	cont := pre.Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	checkLaunch := func(urlTarget string, command ...string) {
 		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)

@@ -38,7 +38,9 @@ func MousePerf(ctx context.Context, s *testing.State) {
 	cr := pre.Chrome
 	tconn := pre.TestAPIConn
 	cont := pre.Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	const appletFile string = "mouse_perf.py"
 
