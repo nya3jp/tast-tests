@@ -69,6 +69,24 @@
       "revId": "69d4944a12ed850adae414905e8373e1981426c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f86b1a8d_14c5ec25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-08-31T06:27:55Z",
+      "side": 1,
+      "message": "In terms of the impact of power usage, running VideoDecodeAccelPerf.h264_1080p_30fps_vm in benchmark mode on my shyvana has package-0 consuming \u003e3 watts, whereas without benchmark mode it consumes \u003c2 watts.",
+      "parentUuid": "f1b319cb_52af5a53",
+      "revId": "69d4944a12ed850adae414905e8373e1981426c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
