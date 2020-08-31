@@ -23,18 +23,7 @@ func getUserPath() (user, path string, err error) {
 		return "crosvm", "/usr/bin/crosvm", nil
 	}
 
-	ver, err := SDKVersion()
-	if err != nil {
-		return "", "", errors.Wrap(err, "failed to get SDK version")
-	}
-
-	var initPath string
-	if ver >= SDKQ {
-		initPath = "/system/bin/init"
-	} else {
-		initPath = "/init"
-	}
-	return "android-root", initPath, nil
+	return "android-root", "/init", nil
 }
 
 // InitPID returns the PID (outside the guest) of the ARC init process.
