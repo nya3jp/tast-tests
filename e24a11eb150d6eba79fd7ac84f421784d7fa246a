@@ -147,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "fab6892e_b761654d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "On my test device (rammus), the time to finish one initial install and one reinstall is 50 seconds.\n- The actual install time is about 2*10 \u003d 20 seconds. \n- Time to prepare chrome and login is about 2*15 \u003d 30 seconds.\n\n90 seconds seems to be pushing on slower devices. We don\u0027t want tests to flake due to timeout.\nPerhaps 2-3 minutes is a safer bet (after parameterizing) ?\n\n- The 99th percentile for one install pass is ~20 seconds [1]\n- Estimate total time:\n  - 2 install passes, 20 seconds each\n  - 2 chrome logins, 15 seconds each, might be slower on certain devices\n  - Total: about 2*20 + 2*15 \u003d 70 seconds (or more)\n\nhttps://uma.googleplex.com/p/chrome/histograms?sid\u003dab9103e0fa711f34d5748461647960c7",
+      "parentUuid": "0156b000_4447839f",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46fbae41_52601f9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -167,6 +191,30 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66e5ec34_79c9be53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46fbae41_52601f9e",
+      "range": {
+        "startLine": 30,
+        "startChar": 54,
+        "endLine": 30,
+        "endChar": 70
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -193,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "5fd26cd6_52cbc891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628c1235_987b3ba5",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06b0f230_1a7889e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -213,6 +285,30 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a548363_1b4b19c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06b0f230_1a7889e6",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -285,6 +381,78 @@
     },
     {
       "key": {
+        "uuid": "3875bf32_252f9899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d3f5bfe_c17caf9e",
+      "range": {
+        "startLine": 61,
+        "startChar": 58,
+        "endLine": 61,
+        "endChar": 74
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8495c8b_f0a4cce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f017f4ee_f1c16028",
+      "range": {
+        "startLine": 61,
+        "startChar": 95,
+        "endLine": 61,
+        "endChar": 98
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a1d8ce6_d19d954b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70ea0477_0dfb2902",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c8bd20d_1bee4214",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -305,6 +473,30 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb80e570_d2a53173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c8bd20d_1bee4214",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -331,6 +523,30 @@
     },
     {
       "key": {
+        "uuid": "00fcac8f_a3389f7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Ack. Changed to return error instead",
+      "parentUuid": "b4960153_7daddd80",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 9
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c66e872_f708b162",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -348,6 +564,24 @@
     },
     {
       "key": {
+        "uuid": "28f0c73c_98c7a452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c66e872_f708b162",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7542db22_e683fb26",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -362,6 +596,24 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f4f3743_ae709a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7542db22_e683fb26",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -453,6 +705,24 @@
     },
     {
       "key": {
+        "uuid": "be269f0c_949774b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c4541cc_71521152",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac482f3f_9112e884",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -473,6 +743,30 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b08bf40c_843e68c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac482f3f_9112e884",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 81
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -499,6 +793,30 @@
     },
     {
       "key": {
+        "uuid": "5ab3c035_070a5322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a678f755_36c2a6b2",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 2
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2540bbc_193e8f3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -519,6 +837,30 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c2a0f40_95b9cd5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2540bbc_193e8f3c",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -545,6 +887,30 @@
     },
     {
       "key": {
+        "uuid": "be555092_2b176367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Nice catch. There should be a waitForSystemWebAppsIntall before this.",
+      "parentUuid": "20297cd2_58d1f1b9",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 0
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3a3f6c2_3c7eac57",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -559,6 +925,24 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e00e56b_c8421067",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3a3f6c2_3c7eac57",
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -585,6 +969,30 @@
     },
     {
       "key": {
+        "uuid": "9f6ffd89_5f6b1d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25e513fd_e9494744",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 27
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "759bd0ca_57c256a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -605,6 +1013,30 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f9a805_f4fd3711",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-08-31T05:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "759bd0ca_57c256a0",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 0
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
