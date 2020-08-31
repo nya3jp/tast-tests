@@ -37,6 +37,8 @@ const (
 
 const uiTimeout = 30 * time.Second
 
+var installWindowFindParams = ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "Set up Linux (Beta) on your Chromebook"}
+
 // Settings is a page object for the Crostini section of the settings app.
 type Settings struct {
 	tconn *chrome.TestConn
@@ -121,7 +123,7 @@ func parseDiskSizeString(str string) (uint64, error) {
 // size to the smallest slider increment larger than the specified disk size.
 func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
 	// TODO: The name only applies to chromebook but not chromebox. Parse also string for Chromebox.
-	window := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "Set up Linux (Beta) on your Chromebook"}, uiTimeout)
+	window := uig.FindWithTimeout(installWindowFindParams, uiTimeout)
 	radioGroup := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRadioGroup}, uiTimeout)
 	slider := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeSlider}, uiTimeout)
 
@@ -205,5 +207,5 @@ func (p *Installer) Install(ctx context.Context) error {
 		uig.Steps(
 			install.FocusAndWait(uiTimeout),
 			install.LeftClick(),
-			uig.WaitUntilDescendantGone(ui.FindParams{Role: ui.RoleTypeButton, Name: "Cancel"}, 10*time.Minute)).WithNamef("Install()"))
+			uig.WaitUntilDescendantGone(installWindowFindParams, 10*time.Minute)).WithNamef("Install()"))
 }
