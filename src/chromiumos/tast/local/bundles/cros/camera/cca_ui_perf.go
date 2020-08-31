@@ -23,7 +23,14 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      4 * time.Minute,
-		Pre:          cca.NewPrecondition(cca.ChromeConfig{}),
+		Params: []testing.Param{{
+			Pre: cca.NewPrecondition(cca.ChromeConfig{}),
+		}, {
+			Name: "swa",
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				InstallSWA: true,
+			}),
+		}},
 	})
 }
 
