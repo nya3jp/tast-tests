@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37e9e526_5d28d730",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-08-31T12:04:01Z",
+      "side": 1,
+      "message": "That\u0027s a bit of a blind guess that this change could remove the source of flakiness...\nI still believe that double clicking on a folder after the rename input box disappears would work consistently.",
+      "revId": "08fa68039d2b87aacd3e18e2b89436a5bf6e31bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
