@@ -205,9 +205,14 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 
 	s.Log("Restoring the window")
-	restoreEvent := ash.WMEventNormal
-	if defaultState == ash.WindowStateFullscreen {
+	var restoreEvent ash.WMEventType
+	switch defaultState {
+	case ash.WindowStateFullscreen:
 		restoreEvent = ash.WMEventFullscreen
+	case ash.WindowStateMaximized:
+		restoreEvent = ash.WMEventMaximize
+	default:
+		restoreEvent = ash.WMEventNormal
 	}
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, restoreEvent); err != nil {
 		s.Error("Failed to restore the window: ", err)
