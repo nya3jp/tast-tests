@@ -154,7 +154,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 		return testCase{
 			name:  name,
 			cmd:   cmd,
-			setup: subdirSetup("c/bin", "c/lib64", "c/lib", "c/usr/lib", "c/usr/local", "c/tmp-rw", "c/tmp-ro", "tmp"),
+			setup: subdirSetup("c/bin", "c/lib64", "c/lib", "c/usr/lib", "c/usr/lib64", "c/usr/local", "c/tmp-rw", "c/tmp-ro", "tmp"),
 			args: append([]string{
 				"-b", "/bin,/bin",
 				"-b", "/lib,/lib",
@@ -164,7 +164,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 				"-b", "%T/tmp,/tmp-ro",
 				"-v",
 			}, extraArgs...),
-			args64: []string{"-b", "/lib64,/lib64"},
+			args64: []string{"-b", "/lib64,/lib64", "-b", "/usr/lib64,/usr/lib64"},
 		}
 	}
 
@@ -276,8 +276,8 @@ func Minijail(ctx context.Context, s *testing.State) {
 				"-C", "%T/c",
 				"-f", "%T/c/pidfile",
 			},
-			args64: []string{"-b", "/lib64,/lib64"},
-			setup:  subdirSetup("c/bin", "c/lib64", "c/lib", "c/usr/bin", "c/usr/lib", "c/usr/local"),
+			args64: []string{"-b", "/lib64,/lib64", "-b", "/usr/lib64,/usr/lib64"},
+			setup:  subdirSetup("c/bin", "c/lib64", "c/lib", "c/usr/bin", "c/usr/lib", "c/usr/lib64", "c/usr/local"),
 		},
 		{
 			name:  "pidns",
