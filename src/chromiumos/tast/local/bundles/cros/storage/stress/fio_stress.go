@@ -14,6 +14,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/storage"
@@ -45,6 +46,21 @@ var (
 		"1m_write",
 	}
 )
+
+// TestConfig provides extra test configuration arguments.
+type TestConfig struct {
+	// Duration is a minimal duration that the stress should be running for.
+	// If single run of the stress takes less than this time, it's going
+	// to be repeated until the total running time is greater than this duration.
+	Duration time.Duration
+
+	// VerifyOnly if true, make benchmark data is collected to result-chart.json
+	// without running the actual stress.
+	VerifyOnly bool
+
+	// PerfValues is a perf values collection to report the results into.
+	PerfValues *perf.Values
+}
 
 // fioResult is a serializable structure representing fio results output.
 type fioResult struct {
@@ -170,7 +186,7 @@ func diskSizePretty(dev string) (sizeGB string, err error) {
 	return strconv.Itoa(int(1024*blocks/math.Pow(10, 9.0)+0.5)) + "G", nil
 }
 
-func reportResults(ctx context.Context, s *testing.State, res *fioResult, dev string, perfValues *perf.Values) {
+func reportResults(ctx context.Context, res *fioResult, dev string, perfValues *perf.Values) {
 	devName := res.DiskUtil[0].Name
 	devSize, err := diskSizePretty(devName)
 	if err != nil {
@@ -219,7 +235,13 @@ func escapeJSONName(name string) string {
 
 // RunFioStress runs a single given storage job. job must be in Configs.
 // If verifyOnly is true, only benchmark data is collected to result-chart.json
-func RunFioStress(ctx context.Context, s *testing.State, job string, verifyOnly bool) {
+func RunFioStress(ctx context.Context, s *testing.State, job string, testConfig *TestConfig) {
+	if testConfig == nil {
+		testConfig = &TestConfig{
+			VerifyOnly: false,
+		}
+	}
+
 	validateTestConfig(ctx, s, job)
 
 	// Get device status/info.
@@ -235,12 +257,20 @@ func RunFioStress(ctx context.Context, s *testing.State, job string, verifyOnly 
 	defer os.RemoveAll(testDataPath)
 
 	testing.ContextLog(ctx, "Running job ", job)
-	res, err := runFIO(ctx, testDataPath, s.DataPath(job), verifyOnly)
-	if err != nil {
-		s.Errorf("%v failed: %v", job, err)
+	var res *fioResult
+	for start := time.Now(); ; {
+		res, err = runFIO(ctx, testDataPath, s.DataPath(job), testConfig.VerifyOnly)
+		if err != nil {
+			s.Errorf("%v failed: %v", job, err)
+		}
+
+		// If duration test parameter is 0, we do a single iteration of a test.
+		if testConfig.Duration == 0 || time.Now().Sub(start) > testConfig.Duration {
+			break
+		}
 	}
 
-	perfValues := perf.NewValues()
-	reportResults(ctx, s, res, devName, perfValues)
-	perfValues.Save(s.OutDir())
+	if testConfig.PerfValues != nil {
+		reportResults(ctx, res, devName, testConfig.PerfValues)
+	}
 }
