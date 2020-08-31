@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e408289_7b1cf104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-31T23:57:55Z",
+      "side": 1,
+      "message": "please comment or use a const for \\x1b",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "0179f8b2679894331ad1d36b8b506d2ac4c44bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
