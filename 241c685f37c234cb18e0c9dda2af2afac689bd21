@@ -16,6 +16,63 @@
       "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "703b9863_c9837107",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-31T01:13:51Z",
+      "side": 1,
+      "message": "Tast Shadow Review: LGTM % nit. ",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cd049a5_52f2d58b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-31T01:13:51Z",
+      "side": 1,
+      "message": "nit: Consider adding a comment.",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7f7fa4d_6c07b227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-08-31T01:13:51Z",
+      "side": 1,
+      "message": "clar: What might be causing the number of black pixels to change, and how do we know that only if the app has finished launching that this number will stop changing?",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
