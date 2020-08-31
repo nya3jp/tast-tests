@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b788e1f5_3f3fa45b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-31T03:42:24Z",
+      "side": 1,
+      "message": "You may want to keep the informational on the parent test so that it applies to both.",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "a9b1f9b46495f99b0960ab5b845366fe7695034d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
