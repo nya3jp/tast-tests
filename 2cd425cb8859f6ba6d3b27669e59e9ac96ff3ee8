@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "b83d0b8c_2eb80210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-08-31T20:57:09Z",
+      "side": 1,
+      "message": "Didn\u0027t realize that. You probably want to leave it without a precondition. If the test fails while the screen is locked. following tests will fail as well. I think it is probably better to air on the side of caution.",
+      "parentUuid": "fdff5053_e50bf6e2",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "2cd425cb8859f6ba6d3b27669e59e9ac96ff3ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bec9d1bb_c17ccafa",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 6
