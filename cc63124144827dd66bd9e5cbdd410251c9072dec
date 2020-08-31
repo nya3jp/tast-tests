@@ -34,6 +34,24 @@
       "revId": "cc63124144827dd66bd9e5cbdd410251c9072dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a87d5db8_2e212036",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-08-31T18:09:00Z",
+      "side": 1,
+      "message": "Ah I see! Thanks for explaining (I was wondering what was TPS.t). This CL will be abandoned in this case.",
+      "parentUuid": "67039a05_fa841ca4",
+      "revId": "cc63124144827dd66bd9e5cbdd410251c9072dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
