@@ -76,7 +76,9 @@ func DisplayDensity(ctx context.Context, s *testing.State) {
 	cont := pre.Container
 	keyboard := pre.Keyboard
 	conf := s.Param().(crostini.DemoConfig)
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	type density int
 

@@ -50,7 +50,9 @@ func init() {
 
 func CPUPerf(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	perfValues := perf.NewValues()
 	defer perfValues.Save(s.OutDir())

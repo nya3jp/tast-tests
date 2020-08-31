@@ -27,9 +27,12 @@ type lineReader struct {
 	lineBuf  string        // partially read line
 }
 
-// newLineReader starts a new Reader that reports log messages
-// written after it is started. close must be called after use.
-func newLineReader(ctx context.Context, path string) (r *lineReader, retErr error) {
+// newLineReader starts a new Reader that reports log messages.
+// If fromStart is false only reports log messages written after
+// the reader is created. Close must be called after use.
+// opts is used to customise polling for the file to exist e.g. in case the log
+// is being rotated at the time we try to open it. Pass nil to get defaults.
+func newLineReader(ctx context.Context, path string, fromStart bool, opts *testing.PollOptions) (r *lineReader, retErr error) {
 	var f *os.File
 	// Avoid race conditions around log rotation. If the file doesn't exist at
 	// the moment we try to open it, retry until it does.
@@ -37,7 +40,7 @@ func newLineReader(ctx context.Context, path string) (r *lineReader, retErr erro
 		var err error
 		f, err = os.Open(path)
 		return err
-	}, nil)
+	}, opts)
 	if err != nil {
 		return nil, errors.Wrap(err, "error opening log file")
 	}
@@ -47,28 +50,30 @@ func newLineReader(ctx context.Context, path string) (r *lineReader, retErr erro
 		}
 	}()
 
-	// Seek to 1 byte before the end of the file if the file is not empty.
-	//
-	// We basically want to seek to the end of the file so that we don't
-	// process messages written earlier. Since it is possible that syslogd (or
-	// Chrome) is in the middle of writing a message, we set skipNext to true.
-	// On the other hand, if the last message has been completely written
-	// out, then if we seek to the end, the next thing we read will read
-	// will be the beginning of the nessage message, the one we want. But
-	// since skipNext will be true, we'll discard that message. To avoid
-	// skipping a valid next message, we seek to 1 byte before the end of
-	// the file to ensure that, in that case, we will read the newline of
-	// the last message and clear skipNext.
-	fi, err := f.Stat()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to tell the file size")
-	}
 	skipNext := false
-	if fi.Size() > 0 {
-		if _, err := f.Seek(-1, io.SeekEnd); err != nil {
-			return nil, errors.Wrap(err, "failed to seek to end")
+	if !fromStart {
+		// Seek to 1 byte before the end of the file if the file is not empty.
+		//
+		// We basically want to seek to the end of the file so that we don't
+		// process messages written earlier. Since it is possible that syslogd (or
+		// Chrome) is in the middle of writing a message, we set skipNext to true.
+		// On the other hand, if the last message has been completely written
+		// out, then if we seek to the end, the next thing we read will read
+		// will be the beginning of the nessage message, the one we want. But
+		// since skipNext will be true, we'll discard that message. To avoid
+		// skipping a valid next message, we seek to 1 byte before the end of
+		// the file to ensure that, in that case, we will read the newline of
+		// the last message and clear skipNext.
+		fi, err := f.Stat()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to tell the file size")
 		}
-		skipNext = true
+		if fi.Size() > 0 {
+			if _, err := f.Seek(-1, io.SeekEnd); err != nil {
+				return nil, errors.Wrap(err, "failed to seek to end")
+			}
+			skipNext = true
+		}
 	}
 
 	return &lineReader{
@@ -238,7 +243,7 @@ func NewReader(ctx context.Context, opts ...Option) (r *Reader, retErr error) {
 		opt(&o)
 	}
 
-	lineReader, err := newLineReader(ctx, o.path)
+	lineReader, err := newLineReader(ctx, o.path, false, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -378,7 +383,7 @@ type ChromeEntry struct {
 // NewChromeReader starts a new ChromeReader that reports Chrome log messages
 // written after it is started. Close must be called after use.
 func NewChromeReader(ctx context.Context, path string) (r *ChromeReader, retErr error) {
-	lineReader, err := newLineReader(ctx, path)
+	lineReader, err := newLineReader(ctx, path, false, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -452,4 +457,34 @@ func parseChromeLine(line string) (*ChromeEntry, bool) {
 		PID:      pid,
 		Content:  ms[3],
 	}, true
+}
+
+// VMLogReader allows tests to read lines from the VM logs.
+type VMLogReader struct {
+	lineReader *lineReader
+}
+
+// NewVMLogReader starts a new Reader that reports vm log messages.
+// Close must be called after use.
+func NewVMLogReader(ctx context.Context, path string, fromStart bool) (r *VMLogReader, retErr error) {
+	// The file may not exist, so only wait a second to see if it turns up.
+	lineReader, err := newLineReader(ctx, path, fromStart, &testing.PollOptions{Timeout: 1 * time.Second})
+	if err != nil {
+		return nil, err
+	}
+
+	return &VMLogReader{
+		lineReader: lineReader,
+	}, nil
+}
+
+// Close closes the Reader.
+func (r *VMLogReader) Close() error {
+	return r.lineReader.close()
+}
+
+// Read returns the next log message.
+// If the next message is not available yet, io.EOF is returned.
+func (r *VMLogReader) Read() (string, error) {
+	return r.lineReader.read()
 }

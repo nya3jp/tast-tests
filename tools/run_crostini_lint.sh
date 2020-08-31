@@ -11,10 +11,13 @@ for file in $files; do
         # Doesn't look like it uses a Crostini precondition, ignore
         continue
     fi
-    if ! grep 'defer crostini.RunCrostiniPostTest' "$file" &>/dev/null; then
-        echo "$file: Missing call to Crostini post-test hooks"
-        echo -n "Try adding e.g. defer crostini.RunCrostiniPostTest(ctx, cont)"
-        echo -n " at the start of your test."
+    if ! grep 'defer crostini.RunCrostiniPostTest' $file; then
+        echo -n "$file: Missing call to Crostini post-test hooks."
+        echo "Try adding e.g.:"
+        echo "  defer crostini.RunCrostiniPostTest(ctx,"
+        echo "  s.PreValue().(crostini.PreData).Container,"
+        echo "  s.PreValue().(crostini.PreData).Chrome.User())"
+        echo "at the start of your test."
         failed=1
     fi
 done

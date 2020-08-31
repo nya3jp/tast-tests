@@ -53,7 +53,9 @@ func IconAndUsername(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cr := s.PreValue().(crostini.PreData).Chrome
 	keyboard := s.PreValue().(crostini.PreData).Keyboard
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData).Container)
+	defer crostini.RunCrostiniPostTest(ctx,
+		s.PreValue().(crostini.PreData).Container,
+		s.PreValue().(crostini.PreData).Chrome.User())
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
