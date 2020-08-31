@@ -97,6 +97,13 @@ func init() {
 			Pre: testutil.NewPrecondition(testutil.ChromeConfig{
 				ARCEnabled: true,
 			}),
+		}, {
+			ExtraSoftwareDeps: []string{"android_p"},
+			Name:              "swa",
+			Pre: testutil.NewPrecondition(testutil.ChromeConfig{
+				ARCEnabled: true,
+				InstallSWA: true,
+			}),
 		}},
 	})
 }
@@ -472,6 +479,12 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 		return errors.Wrap(err, "failed to close intent instance")
 	}
 
+	// In SWA, we don't automatically show the original window back.
+	if isSWA {
+		if err := regularApp.Focus(ctx); err != nil {
+			return errors.Wrap(err, "failed to focus the original window")
+		}
+	}
 	// Check if the regular CCA is automatically resumed.
 	if err := regularApp.WaitForState(ctx, "suspend", false); err != nil {
 		return errors.Wrap(err, "regular app instance does not resume after closing intent instance")

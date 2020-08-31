@@ -23,10 +23,19 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "human_face.y4m"},
-		Pre: testutil.NewPrecondition(testutil.ChromeConfig{
-			UseFakeCamera:           true,
-			UseFakeHumanFaceContent: true,
-		}),
+		Params: []testing.Param{{
+			Pre: testutil.NewPrecondition(testutil.ChromeConfig{
+				UseFakeCamera:           true,
+				UseFakeHumanFaceContent: true,
+			}),
+		}, {
+			Name: "swa",
+			Pre: testutil.NewPrecondition(testutil.ChromeConfig{
+				InstallSWA:              true,
+				UseFakeCamera:           true,
+				UseFakeHumanFaceContent: true,
+			}),
+		}},
 	})
 }
 
