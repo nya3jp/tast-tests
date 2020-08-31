@@ -50,6 +50,10 @@ func init() {
 			"khmel@chromium.org", // Original author.
 			"arc-performance@google.com",
 		},
+<<<<<<< HEAD   (8eb8dc camera: Lengthen CCAUIRecordVideo timeout to 5 mins)
+=======
+		Attr: []string{"group:mainline"},
+>>>>>>> CHANGE (fd9ac0 [DON'T MERGE] arc: try data_collector as critical)
 		// TODO(b/150012956): Stop using 'arc' here and use ExtraSoftwareDeps instead.
 		SoftwareDeps: []string{"arc", "chrome"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
@@ -61,7 +65,11 @@ func init() {
 		// then disabling this in Android PFQ. At this time missing the data is allowed
 		// for the grace perioid however it will be a build stopper after.
 		Params: []testing.Param{{
+<<<<<<< HEAD   (8eb8dc camera: Lengthen CCAUIRecordVideo timeout to 5 mins)
 			ExtraAttr:         []string{"group:arc-data-collector"},
+=======
+			ExtraAttr:         []string{"group:mainline"},
+>>>>>>> CHANGE (fd9ac0 [DON'T MERGE] arc: try data_collector as critical)
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				vmEnabled: false,
