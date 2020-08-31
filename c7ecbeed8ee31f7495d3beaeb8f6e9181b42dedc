@@ -16,6 +16,189 @@
       "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b133396_57ba16ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T07:03:30Z",
+      "side": 1,
+      "message": "Thank you for working on the fix. My initial scan.",
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85401ceb_a04ba6b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T07:03:30Z",
+      "side": 1,
+      "message": "looks unused.",
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e0faddd_968c7898",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T07:03:30Z",
+      "side": 1,
+      "message": "Could you add document?\nAlso, this is not actually copying but instead it returns a function to copy.\nMaybe makeCopyInChromeClosure() or something?\n\nDitto for below.",
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6425267_bfe40250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T07:03:30Z",
+      "side": 1,
+      "message": "hugenit: as you\u0027re here, could you replace leading 16 white spaces by 2 tabs?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da4c4d27_599f8ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T07:03:30Z",
+      "side": 1,
+      "message": "could you use errors.Wrap()? Ditto for below.",
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3ccd82f_8e3e71c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T07:03:30Z",
+      "side": 1,
+      "message": "Could you move some constants which are used only in Clipboard back to L126 block?",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 67
+      },
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec39fab_fb33b5f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T07:03:30Z",
+      "side": 1,
+      "message": "nit: could you keep this line at the bottom of this test?",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 116
+      },
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "180958dc_0de4d89d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T07:03:30Z",
+      "side": 1,
+      "message": "nit: maybe \"name\" of each subtest?",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 6
+      },
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db996ce3_7898f158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-08-31T07:03:30Z",
+      "side": 1,
+      "message": "Could you use testing.Poll() instead?\n\nAlso, could you document the reason why it polls briefly?",
+      "range": {
+        "startLine": 273,
+        "startChar": 3,
+        "endLine": 291,
+        "endChar": 4
+      },
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
