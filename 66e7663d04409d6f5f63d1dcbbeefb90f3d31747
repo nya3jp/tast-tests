@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56ebcf30_df49de98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-31T15:09:05Z",
+      "side": 1,
+      "message": "LGTM % nits, pending Kazuhiro\u0027s CR",
+      "revId": "66e7663d04409d6f5f63d1dcbbeefb90f3d31747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ebe9fbc_57e0209d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-31T15:09:05Z",
+      "side": 1,
+      "message": "I\u0027m guessing this comment is referring to the fact that we\u0027re not returning an error. But, we\u0027re not really \"ignoring\" the error, since L167 logs it. So, I recommend removing this comment.",
+      "revId": "66e7663d04409d6f5f63d1dcbbeefb90f3d31747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f382f298_2d9792ad",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-08-31T15:09:05Z",
+      "side": 1,
+      "message": "Please eliminate the empty else{}:\n\n    if err :\u003d logcatCmd.Run(); err !\u003d nil {\n        testing.ContextLog(ctx, \"Tried starting logcat anyway but failed: \", err)\n    }",
+      "revId": "66e7663d04409d6f5f63d1dcbbeefb90f3d31747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
