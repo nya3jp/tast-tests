@@ -46,6 +46,30 @@
       "revId": "a9b1f9b46495f99b0960ab5b845366fe7695034d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19ad80c4_cb018847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-08-31T06:09:48Z",
+      "side": 1,
+      "message": "Got hit by \u0027multicast_forwarder.go:28: attribute \"informational\" is invalid in current groups; see chromiumos/tast/internal/testing/attr.go for the full list of valid attributes\u0027\n\nLet me try moving informational to ExtraAttr.",
+      "parentUuid": "d932c72c_1f2e8cb7",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "a9b1f9b46495f99b0960ab5b845366fe7695034d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
