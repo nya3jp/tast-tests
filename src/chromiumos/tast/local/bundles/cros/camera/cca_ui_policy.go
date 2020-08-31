@@ -31,6 +31,11 @@ func init() {
 		Data:         []string{"cca_ui.js"},
 		Params: []testing.Param{{
 			Val: cca.ChromeConfig{},
+		}, {
+			Name: "swa",
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+			},
 		}},
 	})
 }
@@ -64,8 +69,10 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 		s.Error("Failed to test with no policy: ", err)
 	}
 
-	if err := testBlockCCAExtension(ctx, env, fdms, cr); err != nil {
-		s.Error("Failed to block CCA extension: ", err)
+	if !env.Config.InstallSWA {
+		if err := testBlockCCAExtension(ctx, env, fdms, cr); err != nil {
+			s.Error("Failed to block CCA extension: ", err)
+		}
 	}
 
 	if err := testBlockCameraFeature(ctx, env, fdms, cr); err != nil {

@@ -25,6 +25,11 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val: cca.ChromeConfig{},
+		}, {
+			Name: "swa",
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+			},
 		}},
 	})
 }
