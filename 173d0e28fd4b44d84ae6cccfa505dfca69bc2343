@@ -16,6 +16,24 @@
       "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a124d37_3af8c3d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-08-31T19:16:08Z",
+      "side": 1,
+      "message": "Yes, we do have limits. The kernel limits to 128 characters; per man(5) core[0]:\n\nThe maximum size of the resulting core filename is 128 bytes\n\nI believe that applies both to core filenames as well as piping to programs.\n\n[0] https://man7.org/linux/man-pages/man5/core.5.html",
+      "parentUuid": "f10f8b7e_2fda14ed",
+      "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
