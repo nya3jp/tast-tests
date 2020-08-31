@@ -39,6 +39,30 @@
       "revId": "bbb6f86b5c48d4a2f0def1d61f3efeb07c2244f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e48f059c_97db2cd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-08-31T08:34:30Z",
+      "side": 1,
+      "message": "I want to delete this activity here because it\u0027s not necessary any more in this function and it\u0027s confusing if it exists.\n\n\"defer act.Close()\" is added to ensure the activity is closed even if this line isn\u0027t executed.",
+      "parentUuid": "9a7c3145_fd4d2a3b",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 12
+      },
+      "revId": "bbb6f86b5c48d4a2f0def1d61f3efeb07c2244f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
