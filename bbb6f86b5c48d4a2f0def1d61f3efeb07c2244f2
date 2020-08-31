@@ -87,6 +87,30 @@
       "revId": "bbb6f86b5c48d4a2f0def1d61f3efeb07c2244f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afde7441_27e10629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds_allowlist.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-08-31T10:27:44Z",
+      "side": 1,
+      "message": "Done. (Pretty good idea, thanks!)",
+      "parentUuid": "080e5949_61ed10ff",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 12
+      },
+      "revId": "bbb6f86b5c48d4a2f0def1d61f3efeb07c2244f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
