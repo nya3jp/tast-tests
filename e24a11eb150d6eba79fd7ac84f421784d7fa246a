@@ -171,6 +171,53 @@
     },
     {
       "key": {
+        "uuid": "68a99ac4_baba4b68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "Thanks for explanation, let\u0027s keep 3 minutes then.",
+      "parentUuid": "fab6892e_b761654d",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2e05e0b_8a4202b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "if you remove it your test will immediately part of CQ. Please put back it and once test itself will be stable, you can nominate it to CQ.",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46fbae41_52601f9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -908,6 +955,30 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e30a34a_ca9f43b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "Just to confirm.\n\nApps cannot be removed after Chrome start?",
+      "parentUuid": "be555092_2b176367",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 0
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76119863_85354dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "Thanks for changes!\n\nThere are few more comments:",
+      "revId": "5138d54cabace7f2dff4a20dfbc6a83cfa56fc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3949ff8a_bcb6de67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "nit: don\u0027t start error with capital\n\nin Go we wrap errors, so you can see smth like:\n\nfailed to safe request: failed to open file /a/b/c: no permissions",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "5138d54cabace7f2dff4a20dfbc6a83cfa56fc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ffab117_14fb6128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "please use Tast errors:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/errors/errors.go;l\u003d130?q\u003dtast%20errors.go",
+      "range": {
+        "startLine": 58,
+        "startChar": 9,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "5138d54cabace7f2dff4a20dfbc6a83cfa56fc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0631152b_fb2538df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "nit: can you please move it right after SystemWebAppsReinstall?",
+      "range": {
+        "startLine": 147,
+        "startChar": 5,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "5138d54cabace7f2dff4a20dfbc6a83cfa56fc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfbe1237_291b79d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "nit: it simply can be like\n\nif err :\u003d cr.Close(ctx); err !\u003d nil {\n ...\n}",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 15
+      },
+      "revId": "5138d54cabace7f2dff4a20dfbc6a83cfa56fc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b21ca60a_c066944c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "As I mentioned before, please give Chrome a bit of time for proper cleanup, so your test won\u0027t affect other tests:\n\n```\n\tcleanupCtx :\u003d ctx\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n\tdefer cancel()\n\n\tcr, err :\u003d chrome.New(ctx, chromeOpts...)\n\tif err !\u003d nil {\n\t\treturn fmt.Errorf(\"Failed to start Chrome: %w\", err)\n\t}\n\n\tdefer func(ctx context.Context) {\n\t\terr :\u003d cr.Close(ctx)\n\t\tif err !\u003d nil {\n\t\t\ttesting.ContextLog(ctx, \"Failed to stop first Chrome instance: \", err)\n\t\t}\n\t}(cleanupCtx)\n```",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "5138d54cabace7f2dff4a20dfbc6a83cfa56fc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bab9f8f_048d4b4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "instead of %w please use errors.Wrap:\n\nerrors.Wrap(err, \"failed to wait system apps install\")",
+      "range": {
+        "startLine": 162,
+        "startChar": 9,
+        "endLine": 162,
+        "endChar": 66
+      },
+      "revId": "5138d54cabace7f2dff4a20dfbc6a83cfa56fc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c2396ac_5f0d038f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-08-31T17:01:48Z",
+      "side": 1,
+      "message": "nit: please use next format for errors, it\u0027s very common in Tast and Go:\n\nunexpected number of installed apps: want %d; got %d",
+      "range": {
+        "startLine": 176,
+        "startChar": 21,
+        "endLine": 176,
+        "endChar": 77
+      },
+      "revId": "5138d54cabace7f2dff4a20dfbc6a83cfa56fc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
