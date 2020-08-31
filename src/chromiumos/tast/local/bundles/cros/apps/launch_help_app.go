@@ -30,7 +30,7 @@ func init() {
 			"showoff-eng@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"apps.LaunchHelpApp.consumer_username", "apps.LaunchHelpApp.consumer_password"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
@@ -44,6 +44,7 @@ func init() {
 			}, {
 				Name:              "clamshell_oobe_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
@@ -58,6 +59,7 @@ func init() {
 			}, {
 				Name:              "tablet_oobe_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
@@ -73,6 +75,7 @@ func init() {
 			}, {
 				Name:              "clamshell_logged_in_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
@@ -88,6 +91,7 @@ func init() {
 			}, {
 				Name:              "tablet_logged_in_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       false,
