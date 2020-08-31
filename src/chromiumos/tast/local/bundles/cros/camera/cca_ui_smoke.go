@@ -31,7 +31,7 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "real",
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
-			Pre:               chrome.LoggedIn(),
+			Pre:               testutil.ChromeWithPlatformApp(),
 			Val: ccaUISmokeParams{
 				appType: testutil.PlatformApp,
 			},
@@ -39,7 +39,7 @@ func init() {
 		}, {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
-			Pre:               chrome.LoggedIn(),
+			Pre:               testutil.ChromeWithPlatformApp(),
 			Val: ccaUISmokeParams{
 				appType: testutil.PlatformApp,
 			},
@@ -97,6 +97,8 @@ func CCAUISmoke(ctx context.Context, s *testing.State) {
 		}
 		if useSWA {
 			opts = append(opts, chrome.EnableFeatures("CameraSystemWebApp"))
+		} else {
+			opts = append(opts, chrome.ExtraArgs("--disable-features=CameraSystemWebApp"))
 		}
 		var err error
 		cr, err = chrome.New(ctx, opts...)
