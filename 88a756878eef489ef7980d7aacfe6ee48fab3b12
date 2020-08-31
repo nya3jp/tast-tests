@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56e2d51b_c882db3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "Some initial comments. I think the test will need different test flow from wifi.CSA as the mechanism of FrameSender and \"hostapd_cli chan_switch\" is quite different.",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1cde9a0_f2d268ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "I\u0027m not totally sure if hostapd_cil chan_switch is sending action or announce this on beacon. In my previous trial when migrating wifi.CSA, hostapd_cli chan_switch will only add CSA on beacons but not sending action frame.\n\nMight need to verify this by capturing packets when calling hostapd_cli chan_switch.",
+      "range": {
+        "startLine": 25,
+        "startChar": 90,
+        "endLine": 25,
+        "endChar": 103
+      },
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce538657_889cf7de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "You can have your name here. :)",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87aff75c_2358f976",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "one possible pitfall: grunt/barla is one special model that has different WiFi chip.",
+      "range": {
+        "startLine": 32,
+        "startChar": 60,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22ef2de7_38dae31c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "This is invalid in the test.",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1f139d4_88e8ae9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "This is not true for this test. And, did you try without this? I think it would probably work, like, when you have the \"cs_count\" larger than DTIM interval as the client will wake up for receiving a beacon and then see the channel switch announcement.",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce720fcc_46c22adf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "The reason here is also not valid now as you\u0027re only testing with DUTs which support CSA.",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eccf864_c7fb17e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "Hmm..., as we already know a race condition for \"iw event\", I\u0027m thinking if we can use something like the gRPC property watcher here? e.g. never reached some disconnected states and expect frequency property updated. \n\nI guess it might not fit the current sequential wait interface, but still some food for thought.",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cb81978_d4c8df77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we need retry here. After one chan_switch call, hostapd will later work on alterChannel, and if you do the operation again, I guess it will probably fail or no-op.\n\nTo provide better tolerance here, I guess increase cs_count might be the \"retry\" you want (more beacons containing CSA).",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d887254e_5094e039",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "You\u0027re only waiting channel switch event here so this can be removed.",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56487f2c_65d67192",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-08-31T10:46:56Z",
+      "side": 1,
+      "message": "I guess this is not really a \"one time send\" operation as hostapd will really move to that channel. So ChannelSwitch might be a more suitable name.\n\nAlso I\u0027m thinking if it worth to have cs_count as a parameter here. (There are also several options we might want to use like ht, vht, bandwidth ...)",
+      "range": {
+        "startLine": 254,
+        "startChar": 18,
+        "endLine": 254,
+        "endChar": 25
+      },
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
