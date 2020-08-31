@@ -22,6 +22,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type arcPIPEnergyAndPowerTestParams struct {
+	bigPIP       bool
+	layerOverPIP bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PIPEnergyAndPower,
@@ -33,10 +38,16 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "small",
-			Val:  false,
+			Val:  arcPIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: false},
 		}, {
 			Name: "big",
-			Val:  true,
+			Val:  arcPIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: false},
+		}, {
+			Name: "small_blend",
+			Val:  arcPIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: true},
+		}, {
+			Name: "big_blend",
+			Val:  arcPIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: true},
 		}},
 	})
 }
@@ -99,6 +110,17 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer act.Stop(ctx, tconn)
 
+	if err := d.WaitForIdle(ctx, time.Minute); err != nil {
+		s.Fatal("Failed to wait for app to idle: ", err)
+	}
+
+	params := s.Param().(arcPIPEnergyAndPowerTestParams)
+	if params.layerOverPIP {
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_SPACE, 0x0); err != nil {
+			s.Fatal("Failed to send spacebar to app: ", err)
+		}
+	}
+
 	// The test activity enters PIP mode in onUserLeaveHint().
 	if err := act.SetWindowState(ctx, tconn, arc.WindowStateMinimized); err != nil {
 		s.Fatal("Failed to minimize app: ", err)
@@ -116,7 +138,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for PIP window: ", err)
 	}
 
-	if s.Param().(bool) { // Branch for arc.PIPEnergyAndPower.big.
+	if params.bigPIP {
 		if err := mouse.Move(ctx, tconn, pipWindow.TargetBounds.CenterPoint(), time.Second); err != nil {
 			s.Fatal("Failed to move mouse to PIP window: ", err)
 		}
@@ -161,7 +183,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		if 5*pipWindow.TargetBounds.Width <= 2*info.WorkArea.Width && 5*pipWindow.TargetBounds.Height <= 2*info.WorkArea.Height {
 			s.Fatalf("Expected big PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
 		}
-	} else { // Branch for arc.PIPEnergyAndPower.small.
+	} else {
 		if 10*pipWindow.TargetBounds.Width >= 3*info.WorkArea.Width && 10*pipWindow.TargetBounds.Height >= 3*info.WorkArea.Height {
 			s.Fatalf("Expected small PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
 		}

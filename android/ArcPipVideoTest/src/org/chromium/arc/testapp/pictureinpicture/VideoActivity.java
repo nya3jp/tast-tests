@@ -13,18 +13,37 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.R.id;
+import android.util.DisplayMetrics;
 import android.util.Rational;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.VideoView;
 
 /** Test Activity for the PIP Video Tast Test. */
 public class VideoActivity extends Activity {
+
+    private static boolean wantRedSquare = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.video_activity);
+
+        if (wantRedSquare) {
+            final int fiftyDp = (int) (50.f * getResources().getDisplayMetrics().density + 0.5f);
+            RelativeLayout.LayoutParams redSquareLayoutParams =
+                new RelativeLayout.LayoutParams(fiftyDp, fiftyDp);
+            redSquareLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+            View redSquare = new View(this);
+            redSquare.setLayoutParams(redSquareLayoutParams);
+            redSquare.setBackgroundColor(0xffff0000);
+            ((ViewGroup) findViewById(R.id.testlayout)).addView(redSquare);
+        }
 
         final VideoView videoView = findViewById(R.id.testvideo);
         videoView.setVideoURI(Uri.parse(
@@ -48,5 +67,15 @@ public class VideoActivity extends Activity {
             new PictureInPictureParams.Builder()
                 .setAspectRatio(new Rational(videoView.getWidth(), videoView.getHeight()))
                 .build());
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getMetaState() == 0x0 && event.getKeyCode() == KeyEvent.KEYCODE_SPACE) {
+            wantRedSquare = true;
+            return true;
+        }
+
+        return super.dispatchKeyEvent(event);
     }
 }
