@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45fce1a6_b2a22476",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-08-31T01:37:13Z",
+      "side": 0,
+      "message": "Maybe just remove it from group:mainline rather than deleting the test?\n\n(put ExtraAttr: []string{\"group:mainline\"} on the other test)\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/internal/testing/test.go;l\u003d104?q\u003dtast%20extraattr",
+      "revId": "37f0964f220d99e8417b834f84829adddd3fbba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
