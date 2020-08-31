@@ -45,6 +45,11 @@ func WMNonresizableTablet(ctx context.Context, s *testing.State) {
 			Name: "NT_hide_shelf",
 			Func: wmNT12,
 		},
+		wm.TestCase{
+			// non-resizable/tablet: display size change
+			Name: "NT_display_size_change",
+			Func: wmNT15,
+		},
 	})
 }
 
@@ -122,4 +127,29 @@ func wmNT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletShelfHideShowHelper(ctx, tconn, a, d, puActivities, wm.CheckMaximizeNonResizable)
+}
+
+// wmNT15 covers non-resizable/tablet: display size change.
+// Expected behavior is defined in: go/arc-wm-r NT15: non-resizable/tablet: display size change.
+func wmNT15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	ntActivities := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletDisplaySizeChangeHelper(ctx, tconn, a, d, ntActivities)
 }
