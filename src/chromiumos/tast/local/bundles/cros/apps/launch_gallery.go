@@ -31,7 +31,7 @@ func init() {
 			"backlight-swe@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{testFile},
@@ -39,6 +39,7 @@ func init() {
 			{
 				Name:              "clamshell_stable",
 				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraAttr:         []string{"informational"},
 				Val:               false,
 			}, {
 				Name:              "clamshell_unstable",
@@ -47,6 +48,7 @@ func init() {
 			}, {
 				Name:              "tablet_stable",
 				ExtraHardwareDeps: pre.AppsStableModels,
+				ExtraAttr:         []string{"informational"},
 				Val:               true,
 			}, {
 				Name:              "tablet_unstable",
