@@ -24,6 +24,11 @@ func init() {
 		Data:         []string{"cca_ui.js"},
 		Params: []testing.Param{{
 			Val: cca.ChromeConfig{},
+		}, {
+			Name: "swa",
+			Val: cca.ChromeConfig{
+				InstallSWA: true,
+			},
 		}},
 	})
 }

@@ -86,6 +86,68 @@ func init() {
 				},
 				BatteryMode: setup.NoBatteryDischarge,
 			},
+		}, {
+			Name:              "noarc_swa",
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: config{
+				ChromeConfig: cca.ChromeConfig{
+					InstallSWA: true,
+				},
+				BatteryMode: setup.ForceBatteryDischarge,
+			},
+		}, {
+			Name:              "swa",
+			ExtraSoftwareDeps: []string{"android_p_swa"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: config{
+				ChromeConfig: cca.ChromeConfig{
+					ARCEnabled: true,
+					InstallSWA: true,
+				},
+				BatteryMode: setup.ForceBatteryDischarge,
+			},
+		}, {
+			Name:              "vm_swa",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: config{
+				ChromeConfig: cca.ChromeConfig{
+					ARCEnabled: true,
+					InstallSWA: true,
+				},
+				BatteryMode: setup.ForceBatteryDischarge,
+			},
+		}, {
+			Name:              "noarc_nobatterymetrics_swa",
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: config{
+				ChromeConfig: cca.ChromeConfig{
+					InstallSWA: true,
+				},
+				BatteryMode: setup.NoBatteryDischarge,
+			},
+		}, {
+			Name:              "nobatterymetrics_swa",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: config{
+				ChromeConfig: cca.ChromeConfig{
+					ARCEnabled: true,
+					InstallSWA: true,
+				},
+				BatteryMode: setup.NoBatteryDischarge,
+			},
+		}, {
+			Name:              "vm_nobatterymetrics_swa",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: config{
+				ChromeConfig: cca.ChromeConfig{
+					ARCEnabled: true,
+					InstallSWA: true,
+				},
+				BatteryMode: setup.NoBatteryDischarge,
+			},
 		}},
 		Timeout: 5 * time.Minute,
 	})
