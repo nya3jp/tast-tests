@@ -137,6 +137,14 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.launchApp)`, appID)
 }
 
+// LaunchSystemWebApp launches a system web app specifide by its name and URL.
+func LaunchSystemWebApp(ctx context.Context, tconn *chrome.TestConn, appName, url string) error {
+	return tconn.Call(ctx, nil, `async (appName, url) => {
+		await tast.promisify(chrome.autotestPrivate.waitForSystemWebAppsInstall)();
+		await tast.promisify(chrome.autotestPrivate.launchSystemWebApp)(appName, url);
+	}`, appName, url)
+}
+
 // Close closes an app specified by appID.
 func Close(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.closeApp)`, appID)

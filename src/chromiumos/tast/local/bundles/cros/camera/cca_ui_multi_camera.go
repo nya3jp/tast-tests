@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/vm"
@@ -29,12 +30,17 @@ func init() {
 
 func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
+	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	if err != nil {
+		s.Fatal("Failed to construct test bridge: ", err)
+	}
+	defer tb.TearDown(ctx)
 
 	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
@@ -126,7 +132,7 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 		s.Fatal("No camera found")
 	}
 
-	if err := app.Restart(ctx); err != nil {
+	if err := app.Restart(ctx, tb, false); err != nil {
 		var errJS *cca.ErrJS
 		if errors.As(err, &errJS) {
 			s.Error("There are JS errors when running CCA: ", err)

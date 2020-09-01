@@ -19,6 +19,7 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/cryptohome"
@@ -82,9 +83,6 @@ var (
 	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
 	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
-	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
-	// BackgroundURL is the url of the CCA background page.
-	BackgroundURL = fmt.Sprintf("chrome-extension://%s/views/background.html", ID)
 	// ErrVideoNotActive indicates that video is not active.
 	ErrVideoNotActive = "Video is not active within given time"
 )
@@ -170,26 +168,14 @@ const (
 	VideoResolution = "video"
 )
 
-type errorLevel string
-
-const (
-	errorLevelWarning errorLevel = "WARNING"
-	errorLevelError              = "ERROR"
-)
-
-type errorInfo struct {
-	ErrorType string     `json:"type"`
-	Level     errorLevel `json:"level"`
-	Stack     string     `json:"stack"`
-	Time      int64      `json:"time"`
-}
-
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
 	conn        *chrome.Conn
 	cr          *chrome.Chrome
 	scriptPaths []string
 	outDir      string // Output directory to save the execution result
+	appLauncher testutil.AppLauncher
+	appWindow   *testutil.AppWindow
 }
 
 // ErrJS represents an error occurs when executing JavaScript.
@@ -213,19 +199,11 @@ func (r *Resolution) AspectRatio() float64 {
 	return float64(r.Width) / float64(r.Height)
 }
 
-// AppLauncher is used during the launch process of CCA. We could launch CCA
-// by launchApp event, camera intent or any other ways.
-type AppLauncher func(tconn *chrome.TestConn) error
-
-func isMatchCCAPrefix(t *target.Info) bool {
-	return strings.HasPrefix(t.URL, ccaURLPrefix)
-}
-
-// Init launches a CCA instance by appLauncher, evaluates the helper script
-// within it and waits until its AppWindow interactable. The scriptPath should
-// be the data path to the helper script cca_ui.js. The returned App instance
-// must be closed when the test is finished.
-func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher AppLauncher) (*App, error) {
+// Init launches a CCA instance, evaluates the helper script within it and waits
+// until its AppWindow interactable. The scriptPath should be the data path to
+// the helper script cca_ui.js. The returned App instance must be closed when
+// the test is finished.
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher testutil.AppLauncher, tb *testutil.TestBridge, useSWA bool) (*App, error) {
 	// The cros-camera job exists only on boards that use the new camera stack.
 	if upstart.JobExists(ctx, "cros-camera") {
 		// Ensure that cros-camera service is running, because the service
@@ -236,93 +214,52 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		}
 	}
 
-	tconn, err := cr.TestAPIConn(ctx)
+	conn, appWindow, err := testutil.LaunchApp(ctx, cr, tb, appLauncher)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed when launching app")
 	}
 
-	if err := tconn.Call(ctx, nil, `
-		(id) => {
-		  let resolveConnect;
-		  let resolveDisconnect;
-		  const errors = [];
-		  window.CCATestConnection = {
-		    connect: new Promise((resolve) => { resolveConnect = resolve; }),
-		    disconnect: new Promise((resolve) => { resolveDisconnect = resolve; }),
-		    errors,
-		  };
-		  const port = chrome.runtime.connect(id, {name: 'SET_TEST_CONNECTION'});
-		  port.onMessage.addListener((msg) => {
-		    switch(msg.name) {
-		      case 'connect':
-		        resolveConnect(msg.windowUrl);
-		        return;
-		      case 'disconnect':
-		        resolveDisconnect(msg.windowUrl);
-		        return;
-		      case 'error':
-		        errors.push(msg.errorInfo);
-		        return;
-		    }
-		  });
-		}`, ID); err != nil {
-		return nil, err
-	}
-
-	if err := appLauncher(tconn); err != nil {
-		return nil, err
-	}
-
-	var windowURL string
-	if err := tconn.Eval(ctx, `window.CCATestConnection.connect`, &windowURL); err != nil {
-		return nil, err
-	}
-	// The expected windowURL is returned as:
-	//		views/main.html
-	// Or:
-	//		views/main.html?...
-	// And the CCA's URL used in chrome package should be something like:
-	//		chrome-extension://.../views/main.html...
-	// As a result, we should add the "chrome-extension://.../" as prefix.
-	if !strings.HasPrefix(windowURL, "views/main.html") {
-		return nil, errors.Errorf("unexpected window URL is returned: %q", windowURL)
-	}
-	windowURL = ccaURLPrefix + strings.TrimPrefix(windowURL, "views/main.html")
-
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(windowURL))
-	if err != nil {
-		return nil, err
-	}
-
-	conn.StartProfiling(ctx)
-
-	// Let CCA perform some one-time initialization after launched.  Otherwise
-	// the first CheckVideoActive() might timed out because it's still
-	// initializing, especially on low-end devices and when the system is busy.
-	// Fail the test early if it's timed out to make it easier to figure out
-	// the real reason of a test failure.
-	if err := conn.Eval(ctx, `(async () => {
-		  const deadline = await new Promise(
-		      (resolve) => requestIdleCallback(resolve, {timeout: 30000}));
-		  if (deadline.didTimeout) {
-		    throw new Error('Timed out initializing CCA');
-		  }
+	if err := func() error {
+		// Let CCA perform some one-time initialization after launched.  Otherwise
+		// the first CheckVideoActive() might timed out because it's still
+		// initializing, especially on low-end devices and when the system is busy.
+		// Fail the test early if it's timed out to make it easier to figure out
+		// the real reason of a test failure.
+		if err := conn.Eval(ctx, `(async () => {
+			const deadline = await new Promise(
+				(resolve) => requestIdleCallback(resolve, {timeout: 30000}));
+			if (deadline.didTimeout) {
+			throw new Error('Timed out initializing CCA');
+			}
 		})()`, nil); err != nil {
+			return err
+		}
+
+		for _, scriptPath := range scriptPaths {
+			script, err := ioutil.ReadFile(scriptPath)
+			if err != nil {
+				return err
+			}
+			if err := conn.Eval(ctx, string(script), nil); err != nil {
+				return err
+			}
+		}
+		testing.ContextLog(ctx, "CCA launched")
+		return nil
+	}(); err != nil {
+		if closeErr := conn.CloseTarget(ctx); closeErr != nil {
+			testing.ContextLog(ctx, "Failed to close app: ", closeErr)
+		}
+		if closeErr := conn.Close(); closeErr != nil {
+			testing.ContextLog(ctx, "Failed to close app connection: ", closeErr)
+		}
+		if releaseErr := appWindow.Release(ctx); releaseErr != nil {
+			testing.ContextLog(ctx, "Failed to release app window: ", releaseErr)
+		}
 		return nil, err
 	}
 
-	for _, scriptPath := range scriptPaths {
-		script, err := ioutil.ReadFile(scriptPath)
-		if err != nil {
-			return nil, err
-		}
-		if err := conn.Eval(ctx, string(script), nil); err != nil {
-			return nil, err
-		}
-	}
-	testing.ContextLog(ctx, "CCA launched")
-
-	app := &App{conn, cr, scriptPaths, outDir}
+	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow}
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
 			return errors.Wrap(err, ErrVideoNotActive)
@@ -330,51 +267,65 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		return app.WaitForState(ctx, "view-camera", true)
 	}
 	if err := waitForWindowReady(); err != nil {
-		app.Close(ctx)
+		if err2 := app.Close(ctx); err2 != nil {
+			testing.ContextLog(ctx, "Failed to close app: ", err2)
+		}
 		return nil, errors.Wrap(err, "CCA window is not ready after launching app")
 	}
 	testing.ContextLog(ctx, "CCA window is ready")
-
 	return app, nil
 }
 
-// New launches a CCA instance by launchApp event and initialize it. The
-// returned App instance must be closed when the test is finished.
-func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string) (*App, error) {
-	return Init(ctx, cr, scriptPaths, outDir, func(tconn *chrome.TestConn) error {
-		return tconn.Call(ctx, nil, `tast.promisify(chrome.management.launchApp)`, ID)
-	})
+// New launches a CCA instance. The returned App instance must be closed when the test is finished.
+func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge, useSWA bool) (*App, error) {
+	launcher := testutil.PlatformAppLauncher()
+	if useSWA {
+		launcher = testutil.SWALauncher()
+	}
+	return Init(ctx, cr, scriptPaths, outDir, launcher, tb, useSWA)
 }
 
 // InstanceExists checks if there is any running CCA instance.
-func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
-	return cr.IsTargetAvailable(ctx, isMatchCCAPrefix)
+func InstanceExists(ctx context.Context, cr *chrome.Chrome, useSWA bool) (bool, error) {
+	checkPrefix := func(t *target.Info) bool {
+		url := fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
+		if useSWA {
+			url = "chrome://camera-app/views/main.html"
+		}
+		return strings.HasPrefix(t.URL, url)
+	}
+	return cr.IsTargetAvailable(ctx, checkPrefix)
+}
+
+// ClosingItself checks if CCA intends to close itself.
+func (a *App) ClosingItself(ctx context.Context) (bool, error) {
+	return a.appWindow.ClosingItself(ctx)
 }
 
 // checkJSError checks javascript error emitted by CCA error callback.
 func (a *App) checkJSError(ctx context.Context) error {
-	var errorInfos []errorInfo
-	tconn, err := a.cr.TestAPIConn(ctx)
+	if a.appWindow == nil {
+		// It might be closed already. Do nothing.
+		return nil
+	}
+	errorInfos, err := a.appWindow.Errors(ctx)
 	if err != nil {
 		return err
 	}
-	if err := tconn.Eval(ctx, "window.CCATestConnection.errors", &errorInfos); err != nil {
-		return err
-	}
 
-	jsErrors := make([]errorInfo, 0)
-	jsWarnings := make([]errorInfo, 0)
+	jsErrors := make([]testutil.ErrorInfo, 0)
+	jsWarnings := make([]testutil.ErrorInfo, 0)
 	for _, err := range errorInfos {
-		if err.Level == errorLevelWarning {
+		if err.Level == testutil.ErrorLevelWarning {
 			jsWarnings = append(jsWarnings, err)
-		} else if err.Level == errorLevelError {
+		} else if err.Level == testutil.ErrorLevelError {
 			jsErrors = append(jsErrors, err)
 		} else {
 			return errors.Errorf("unknown error level: %v", err.Level)
 		}
 	}
 
-	writeLogFile := func(lv errorLevel, errs []errorInfo) error {
+	writeLogFile := func(lv testutil.ErrorLevel, errs []testutil.ErrorInfo) error {
 		filename := fmt.Sprintf("CCA_JS_%v.log", lv)
 		logPath := filepath.Join(a.outDir, filename)
 		f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
@@ -390,10 +341,10 @@ func (a *App) checkJSError(ctx context.Context) error {
 		return nil
 	}
 
-	if err := writeLogFile(errorLevelWarning, jsWarnings); err != nil {
+	if err := writeLogFile(testutil.ErrorLevelWarning, jsWarnings); err != nil {
 		return err
 	}
-	if err := writeLogFile(errorLevelError, jsErrors); err != nil {
+	if err := writeLogFile(testutil.ErrorLevelError, jsErrors); err != nil {
 		return err
 	}
 	if len(jsErrors) > 0 {
@@ -403,12 +354,42 @@ func (a *App) checkJSError(ctx context.Context) error {
 	return nil
 }
 
-// Close closes the App and the associated connection.
-func (a *App) Close(ctx context.Context) error {
+// Close closes the App and the associated connection.gi
+func (a *App) Close(ctx context.Context) (retErr error) {
 	if a.conn == nil {
 		// It's already closed. Do nothing.
 		return nil
 	}
+
+	defer func(ctx context.Context) {
+		reportOrLogError := func(err error) {
+			if retErr == nil {
+				retErr = err
+			} else {
+				testing.ContextLog(ctx, "Failed to close app: ", err)
+			}
+		}
+
+		if err := a.conn.CloseTarget(ctx); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to CloseTarget()"))
+		}
+		if err := a.conn.Close(); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to Conn.Close()"))
+		}
+		if err := a.appWindow.WaitUntilClosed(ctx); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to wait for appWindow close"))
+		}
+		if err := a.checkJSError(ctx); err != nil {
+			reportOrLogError(errors.Wrap(err, "There are JS errors when running CCA"))
+		}
+		if err := a.appWindow.Release(ctx); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to release app window"))
+		}
+
+		testing.ContextLog(ctx, "CCA closed")
+		a.conn = nil
+		a.appWindow = nil
+	}(ctx)
 
 	if err := a.conn.Eval(ctx, "Tast.removeCacheData()", nil); err != nil {
 		return errors.Wrap(err, "failed to clear cached data in local storage")
@@ -420,43 +401,15 @@ func (a *App) Close(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-
-	var firstErr error
-	if err := a.conn.CloseTarget(ctx); err != nil {
-		firstErr = errors.Wrap(err, "failed to CloseTarget()")
-	}
-	if err := a.conn.Close(); err != nil && firstErr == nil {
-		firstErr = errors.Wrap(err, "failed to Conn.Close()")
-	}
-
-	if firstErr == nil {
-		if tconn, err := a.cr.TestAPIConn(ctx); err != nil {
-			firstErr = errors.Wrap(err, "failed to get test api connection")
-		} else if err := tconn.Eval(ctx, `window.CCATestConnection.disconnect`, nil); err != nil {
-			firstErr = errors.Wrap(err, "failed to wait for disconnect event")
-		}
-	}
-
-	a.conn = nil
-	testing.ContextLog(ctx, "CCA closed")
-
-	if err := a.checkJSError(ctx); err != nil {
-		if firstErr != nil {
-			testing.ContextLog(ctx, "There are JS errors when running CCA: ", err)
-		} else {
-			firstErr = err
-		}
-	}
-
-	return firstErr
+	return nil
 }
 
 // Restart restarts the App and resets the associated connection.
-func (a *App) Restart(ctx context.Context) error {
+func (a *App) Restart(ctx context.Context, tb *testutil.TestBridge, useSWA bool) error {
 	if err := a.Close(ctx); err != nil {
 		return err
 	}
-	newApp, err := New(ctx, a.cr, a.scriptPaths, a.outDir)
+	newApp, err := Init(ctx, a.cr, a.scriptPaths, a.outDir, a.appLauncher, tb, useSWA)
 	if err != nil {
 		return err
 	}
@@ -1172,11 +1125,17 @@ func (a *App) WaitForState(ctx context.Context, state string, active bool) error
 
 // WaitForMinimized waits for app window to be minimized/restored.
 func (a *App) WaitForMinimized(ctx context.Context, minimized bool) error {
-	code := fmt.Sprintf("Tast.isMinimized() === %t", minimized)
-	if err := a.conn.WaitForExpr(ctx, code); err != nil {
-		return errors.Wrap(err, "failed to wait for app window being minimized/restored")
-	}
-	return nil
+	const timeout = 5 * time.Second
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		actual, err := a.IsWindowMinimized(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to check if window is minimized"))
+		}
+		if actual != minimized {
+			return errors.New("failed to wait for window minimized/restored")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
 }
 
 // CheckGridOption checks whether grid option enable state is as expected.
