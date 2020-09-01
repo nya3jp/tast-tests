@@ -118,14 +118,15 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 	p.tconn = tconn
 
-	jsonCredentials := s.RequiredVar("filemanager.drive_credentials")
+	// jsonCredentials := s.RequiredVar("filemanager.drive_credentials")
 
-	// Perform Drive API authentication.
-	APIClient, err := CreateAPIClient(ctx, p.cr, jsonCredentials)
-	if err != nil {
-		s.Fatal("Failed creating a APIClient instance: ", err)
-	}
-	p.APIClient = APIClient
+	// // Perform Drive API authentication.
+	// APIClient, err := CreateAPIClient(ctx, p.cr, jsonCredentials)
+	// if err != nil {
+	// 	s.Fatal("Failed creating a APIClient instance: ", err)
+	// }
+	// p.APIClient = APIClient
+	p.APIClient = nil
 
 	// Lock Chrome and make sure deferred function does not run cleanup.
 	chrome.Lock()
