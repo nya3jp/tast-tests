@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
@@ -22,24 +23,15 @@ import (
 // Duration to wait for CPU to stabalize.
 const stabilizationDuration time.Duration = 5 * time.Second
 
-type perfEvent struct {
-	Event    string  `json:"event"`
-	Duration float64 `json:"duration"`
-	Extras   struct {
-		Facing string `json:"facing"`
-	} `json:"extras"`
-}
-
 // MeasurementOptions contains the information for performance measurement.
 type MeasurementOptions struct {
-	IsColdStart              bool
 	PerfValues               *perf.Values
 	ShouldMeasureUIBehaviors bool
 	OutputDir                string
 }
 
 // MeasurePerformance measures performance for CCA.
-func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, options MeasurementOptions) (retErr error) {
+func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, options MeasurementOptions, tb *testutil.TestBridge, useSWA bool) (retErr error) {
 	// Time reserved for cleanup.
 	const cleanupTime = 10 * time.Second
 
@@ -58,18 +50,10 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to idle")
 	}
 
-	perfEvents := &chrome.JSObject{}
-	app, err := Init(ctx, cr, scripts, options.OutputDir, func(tconn *chrome.TestConn) error {
-		if err := setupPerfListener(ctx, tconn, perfEvents, options.IsColdStart); err != nil {
-			return err
-		}
-		return tconn.Call(ctx, nil, `tast.promisify(chrome.management.launchApp)`, ID)
-	})
-
+	app, err := New(ctx, cr, scripts, options.OutputDir, tb, useSWA)
 	if err != nil {
 		return errors.Wrap(err, "failed to open CCA")
 	}
-	defer perfEvents.Release(ctx)
 	defer func(ctx context.Context) {
 		if err := app.Close(ctx); err != nil {
 			if retErr != nil {
@@ -86,7 +70,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		}
 	}
 
-	if err := app.CollectPerfEvents(ctx, perfEvents, options.PerfValues); err != nil {
+	if err := app.CollectPerfEvents(ctx, options.PerfValues); err != nil {
 		return errors.Wrap(err, "failed to collect perf events")
 	}
 
@@ -198,58 +182,34 @@ func measureTakingPicturePerformance(ctx context.Context, app *App) error {
 	return nil
 }
 
-// setupPerfListener setups the connection to CCA and add a perf event listener.
-func setupPerfListener(ctx context.Context, tconn *chrome.TestConn, perfEvents *chrome.JSObject, isColdStart bool) error {
-	var launchEventName string
-	if isColdStart {
-		launchEventName = "launching-from-launch-app-cold"
-	} else {
-		launchEventName = "launching-from-launch-app-warm"
-	}
-
-	if err := tconn.Call(ctx, perfEvents, `
-		(id, launchEventName) => {
-		  const perfEvents = [];
-		  const port = chrome.runtime.connect(id, {name: 'SET_PERF_CONNECTION'});
-		  port.onMessage.addListener((message) => {
-		    perfEvents.push(message);
-		  });
-		  port.postMessage({name: launchEventName});
-		  return perfEvents;
-		}`, ID, launchEventName); err != nil {
-		return err
-	}
-	return nil
-}
-
 // CollectPerfEvents collects all perf events from launch until now and saves them into given place.
-func (a *App) CollectPerfEvents(ctx context.Context, perfEvents *chrome.JSObject, perfValues *perf.Values) error {
-	var events []perfEvent
-	if err := perfEvents.Call(ctx, &events, "function() { return this; }"); err != nil {
+func (a *App) CollectPerfEvents(ctx context.Context, perfValues *perf.Values) error {
+	entries, err := a.appWindow.Perfs(ctx)
+	if err != nil {
 		return err
 	}
 
-	informativeEventName := func(event perfEvent) string {
-		extras := event.Extras
-		if len(extras.Facing) > 0 {
+	informativeEventName := func(entry testutil.PerfEntry) string {
+		perfInfo := entry.PerfInfo
+		if len(perfInfo.Facing) > 0 {
 			// To avoid containing invalid character in the metrics name, we should remove the non-Alphanumeric characters from the facing.
 			// e.g. When the facing is not set, the corresponding string will be (not-set).
 			reg := regexp.MustCompile("[^a-zA-Z0-9]+")
-			validFacingString := reg.ReplaceAllString(extras.Facing, "")
-			return fmt.Sprintf(`%s-facing-%s`, event.Event, validFacingString)
+			validFacingString := reg.ReplaceAllString(perfInfo.Facing, "")
+			return fmt.Sprintf(`%s-facing-%s`, entry.Event, validFacingString)
 		}
-		return event.Event
+		return entry.Event
 	}
 
 	countMap := make(map[string]int)
-	for _, event := range events {
-		countMap[informativeEventName(event)]++
+	for _, entry := range entries {
+		countMap[informativeEventName(entry)]++
 	}
 
 	resultMap := make(map[string]float64)
-	for _, event := range events {
-		eventName := informativeEventName(event)
-		resultMap[eventName] += event.Duration / float64(countMap[eventName])
+	for _, entry := range entries {
+		eventName := informativeEventName(entry)
+		resultMap[eventName] += entry.Duration / float64(countMap[eventName])
 	}
 
 	for name, value := range resultMap {

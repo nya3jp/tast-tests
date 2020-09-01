@@ -10,7 +10,7 @@ import (
 	"os"
 
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -23,24 +23,23 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "human_face.y4m"},
+		Pre: testutil.Precondition(testutil.ChromeConfig{
+			UseFakeCamera:           true,
+			UseFakeHumanFaceContent: true,
+		}),
 	})
 }
 
 func CCAUIModes(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(
-		"--use-fake-ui-for-media-stream",
-		"--use-fake-device-for-media-stream",
-		"--use-file-for-fake-video-capture="+s.DataPath("human_face.y4m")))
-	if err != nil {
-		s.Fatal("Failed to open chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+	p := s.PreValue().(testutil.PreData)
+	cr := p.Chrome
+	tb := p.TestBridge
+	useSWA := p.Config.InstallSWA
 	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
