@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "873052dd_03db970d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-01T04:48:56Z",
+      "side": 1,
+      "message": "Since the change is huge, I added some diagrams in design doc to help understand proposed structure and communication flow:\nhttps://docs.google.com/document/d/1buSUZa1jE5lmU_Y-JY-8IsD9HHpH-xvRnlJUUKsfVno/edit#bookmark\u003did.3zf2axlxpena\n\nThe implementation of TestBridge is in this CL: (CCA side)\nhttps://chromium-review.googlesource.com/c/chromium/src/+/2362235\n\nPTAL. Thanks!",
+      "revId": "c3e5b906cf0c31960d19ec2d64d42e27bf7ccb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
