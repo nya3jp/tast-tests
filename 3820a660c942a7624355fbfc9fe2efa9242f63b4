@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16c3091a_603f595f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-09-01T23:11:17Z",
+      "side": 1,
+      "message": "This was some build issue related to cups.  Retrying.",
+      "revId": "3820a660c942a7624355fbfc9fe2efa9242f63b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
