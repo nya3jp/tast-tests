@@ -6,19 +6,20 @@ package crostini
 
 import (
 	"context"
+	"strings"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
+	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ShareFilesOK,
-		Desc:     "Test sharing My files with Crostini and clicking OK on the confirm dialog",
+		Func:     ShareFilesRestart,
+		Desc:     "Test shared folders are persistent after restarting Crostini",
 		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Vars:     []string{"keepState"},
@@ -46,14 +47,12 @@ func init() {
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
-func ShareFilesOK(ctx context.Context, s *testing.State) {
+func ShareFilesRestart(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
+	keyboard := s.PreValue().(crostini.PreData).Keyboard
 
-	// Use a shortened context for test operations to reserve time for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
-	defer cancel()
 	defer crostini.RunCrostiniPostTest(ctx, cont)
 
 	// Open Files app.
@@ -61,24 +60,38 @@ func ShareFilesOK(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Files app: ", err)
 	}
-	defer filesApp.Close(cleanupCtx)
+	defer filesApp.Close(ctx)
 
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont); err != nil {
+		if err := sharedFolders.UnshareAll(ctx, tconn, cont); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
 
-	// Share My files, click OK on the confirm dialog.
+	// Share My files.
 	toast, err := sharedFolders.ShareMyFilesOK(ctx, tconn, filesApp)
 	if err != nil {
 		s.Fatal("Failed to share My files: ", err)
 	}
-	defer toast.Release(cleanupCtx)
+	defer toast.Release(ctx)
 
 	if err := sharedFolders.CheckShareMyFilesResults(ctx, tconn, cont); err != nil {
 		s.Fatal("Faied to verify results after sharing My files: ", err)
+	}
+
+	// Restart Crostini.
+	terminalApp, err := terminalapp.Launch(ctx, tconn, strings.Split(cr.User(), "@")[0])
+	if err != nil {
+		s.Fatal("Failed to lauch terminal: ", err)
+	}
+	if err := terminalApp.RestartCrostini(ctx, keyboard, cont, cr.User()); err != nil {
+		s.Fatal("Failed to restart crostini: ", err)
+	}
+
+	// Check the shared folders again after restart Crostini.
+	if err := sharedFolders.CheckShareMyFilesResults(ctx, tconn, cont); err != nil {
+		s.Fatal("Faied to verify results after restarting Crostini: ", err)
 	}
 }
