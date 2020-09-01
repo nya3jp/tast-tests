@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f30d6f50_18a0840f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-09-01T10:12:03Z",
+      "side": 1,
+      "message": "Because change the CL which this CL depended on, and rewrite the logic, we should review it again.",
+      "revId": "5c139e95375b3965822f226299d465e91c1d5255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
