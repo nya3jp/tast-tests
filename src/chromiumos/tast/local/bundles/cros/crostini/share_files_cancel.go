@@ -73,7 +73,7 @@ func ShareFilesCancel(ctx context.Context, s *testing.State) {
 	}()
 
 	// Share My files.
-	scd, err := sharedFolders.ShareMyFiles(ctx, tconn, filesApp, sharedfolders.MyFilesMsg)
+	scd, err := sharedFolders.ShareMyFiles(ctx, tconn, filesApp)
 	if err != nil {
 		s.Fatal("Failed to share My files: ", err)
 	}
