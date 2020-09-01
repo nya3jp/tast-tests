@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "d16a53dd_a06217e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-01T00:27:58Z",
+      "side": 1,
+      "message": "Sounds good, going ahead without the precondition.",
+      "parentUuid": "b83d0b8c_2eb80210",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "2cd425cb8859f6ba6d3b27669e59e9ac96ff3ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bec9d1bb_c17ccafa",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 6
