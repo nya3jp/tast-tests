@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8043d6b9_c7461a40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-01T03:51:56Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027m thinking of replacing .broker with .broker_by_cmdline. Let me send a change soon.\n",
+      "revId": "091f04ccd3b1a6e47284ed4d5f0c2d4eb9f0d524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
