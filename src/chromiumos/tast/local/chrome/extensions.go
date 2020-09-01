@@ -126,6 +126,7 @@ func writeTestExtension(dir, key string) (id string, err error) {
     "accessibilityFeatures.read",
     "audio",
     "autotestPrivate",
+	"bluetoothPrivate",
     "clipboardRead",
     "clipboardWrite",
     "feedbackPrivate",

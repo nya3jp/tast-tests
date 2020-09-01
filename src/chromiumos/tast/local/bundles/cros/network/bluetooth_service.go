@@ -6,7 +6,8 @@ package network
 
 import (
 	"context"
-	"regexp"
+	"fmt"
+	"strconv"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -15,7 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	//"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
@@ -33,67 +34,6 @@ type BluetoothService struct {
 	s *testing.ServiceState
 }
 
-func toggleBluetooth(ctx context.Context, credentials string) error {
-	cr, err := chrome.New(
-		ctx,
-		chrome.KeepState(),
-		chrome.NoLogin(),
-		chrome.DisableNoStartupWindow(),
-		chrome.LoadSigninProfileExtension(credentials),
-	)
-	if err != nil {
-		return errors.Wrap(err, "failed to start Chrome")
-	}
-	defer cr.Close(ctx)
-	tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create login test API connection")
-	}
-	defer tLoginConn.Close()
-
-	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
-	params := ui.FindParams{
-		ClassName: "ash/StatusAreaWidgetDelegate",
-	}
-	statusArea, err := ui.FindWithTimeout(ctx, tLoginConn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the status area (time, battery, etc.)")
-	}
-	defer statusArea.Release(ctx)
-	if err := statusArea.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click status area")
-	}
-
-	// Confirm that the system tray is open by checking for the bluetooth button.
-	params = ui.FindParams{ClassName: "FeaturePodIconButton"}
-	if err := ui.WaitUntilExists(ctx, tLoginConn, params, 10*time.Second); err != nil {
-		return errors.Wrap(err, "could not find tray buttons after click")
-	}
-	elems, err := ui.FindAll(ctx, tLoginConn, params)
-	if err != nil {
-		return errors.Wrap(err, "tray buttons could not be found")
-	}
-	var bluetoothButton *ui.Node
-	nameMatch := regexp.MustCompile(`^Toggle Bluetooth\. Bluetooth is (on|off)+$`)
-	// Find bluetooth button from tray buttons.
-	for _, elem := range elems {
-		if nameMatch.Match([]byte(elem.Name)) {
-			bluetoothButton = elem
-			break
-		}
-	}
-	if bluetoothButton == nil {
-		return errors.New("could not find bluetooth button")
-	}
-	defer bluetoothButton.Release(ctx)
-
-	// Toggle the bluetooth button.
-	if err := bluetoothButton.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click bluetooth button")
-	}
-	return nil
-}
-
 func bluetoothStatus(ctx context.Context) (bool, error) {
 	adapters, err := bluetooth.Adapters(ctx)
 	if err != nil {
@@ -108,16 +48,57 @@ func bluetoothStatus(ctx context.Context) (bool, error) {
 }
 
 func (s *BluetoothService) SetBluetoothStatus(ctx context.Context, req *network.SetBluetoothStatusRequest) (*empty.Empty, error) {
-	state := req.State
-	if status, err := bluetoothStatus(ctx); err != nil {
-		return nil, errors.Wrap(err, "error in querying bluetooth status")
-	} else if status != state {
-		if err := toggleBluetooth(ctx, req.Credentials); err != nil {
-			return nil, errors.Wrap(err, "failed to change bluetooth status")
-		}
-		return &empty.Empty{}, nil
+	cr, err := chrome.New(
+		ctx,
+		chrome.KeepState(),
+		chrome.NoLogin(),
+		chrome.DisableNoStartupWindow(),
+		chrome.LoadSigninProfileExtension(req.Credentials),
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start Chrome")
 	}
-	return &empty.Empty{}, nil
+	defer cr.Close(ctx)
+	tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
+	//tLoginConn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create login test API connection")
+	}
+	defer tLoginConn.Close()
+
+	const pauseDuration = time.Second
+	testing.Sleep(ctx, pauseDuration*10)
+
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.bluetoothPrivate.setAdapterState(
+		      {powered: %s}, function() {
+		    resolve(chrome.runtime.lastError ? chrome.runtime.lastError.message : "");
+		  });
+		})`, strconv.FormatBool(req.State))
+
+	msg := ""
+	if err = tLoginConn.EvalPromise(ctx, expr, &msg); err != nil {
+		return nil, errors.Wrap(err, "failed to get display info")
+	} else if msg != "" {
+		return nil, errors.New(msg)
+	}
+
+	if err := tLoginConn.Call(ctx, nil, `tast.promisify(chrome.settingsPrivate.setPref)`, "ash.user.bluetooth.adapter_enabled", req.State); err != nil {
+		return nil, err
+	}
+	var enabled struct {
+		Value bool `json:"value"`
+	}
+	if err := tLoginConn.Call(ctx, &enabled, "tast.promisify(chrome.settingsPrivate.getPref)", "ash.user.bluetooth.adapter_enabled"); err != nil {
+		return nil, err
+	}
+
+	testing.Sleep(ctx, pauseDuration)
+	if enabled.Value != req.State {
+		return nil, errors.Errorf("BAD VALUE, wanted %s, got %s", strconv.FormatBool(req.State), strconv.FormatBool(enabled.Value))
+	}
+	return &empty.Empty{}, err
 }
 
 func (s *BluetoothService) GetBluetoothStatus(ctx context.Context, _ *empty.Empty) (*network.GetBluetoothStatusResponse, error) {
