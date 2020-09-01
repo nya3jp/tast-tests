@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/media/caps"
@@ -23,12 +22,22 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Val: cca.ChromeConfig{},
+		}},
 	})
 }
 
 func CCAUILauncher(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	chromeConfig := s.Param().(cca.ChromeConfig)
+	env, err := cca.SetupTestEnvironment(ctx, chromeConfig)
+	if err != nil {
+		s.Fatal("Failed to open chrome: ", err)
+	}
+	defer env.TearDown(ctx)
+
+	cr := env.Chrome
+	defer cr.Close(ctx)
 
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
@@ -49,12 +58,7 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetTabletModeEnabled(ctx, tconn, tabletMode)
 
-	app, err := cca.Init(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), func(tconn *chrome.TestConn) error {
-		if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
-			return err
-		}
-		return nil
-	})
+	app, err := cca.New(ctx, env, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to launch camera app: ", err)
 	}
