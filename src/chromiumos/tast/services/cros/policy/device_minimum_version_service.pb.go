@@ -60,7 +60,7 @@ const _ = grpc.SupportPackageIsVersion4
 type DeviceMinimumVersionServiceClient interface {
 	// Creates a new instance of Chrome using the state from the existing one.
 	// Checks that an update required screen with update now button is visible on the login page.
-	// Chrome is closed when function exists.
+	// Chrome is closed when function exists. This is used by the test policy.DeviceMinimumVersion.
 	TestUpdateRequiredScreenIsVisible(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
@@ -85,7 +85,7 @@ func (c *deviceMinimumVersionServiceClient) TestUpdateRequiredScreenIsVisible(ct
 type DeviceMinimumVersionServiceServer interface {
 	// Creates a new instance of Chrome using the state from the existing one.
 	// Checks that an update required screen with update now button is visible on the login page.
-	// Chrome is closed when function exists.
+	// Chrome is closed when function exists. This is used by the test policy.DeviceMinimumVersion.
 	TestUpdateRequiredScreenIsVisible(context.Context, *empty.Empty) (*empty.Empty, error)
 }
 
