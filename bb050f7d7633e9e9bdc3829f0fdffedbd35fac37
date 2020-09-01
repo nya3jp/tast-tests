@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84644729_daf270a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T20:26:06Z",
+      "side": 1,
+      "message": "Created a bug to prevent similar bugs in the future: http://b/167424334",
+      "revId": "bb050f7d7633e9e9bdc3829f0fdffedbd35fac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
