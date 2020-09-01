@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"image"
 	"image/color"
 	"image/png"
@@ -172,7 +173,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 
 	// Leaving room for the touch + extra space to prevent any kind of "resize to fullscreen" gesture.
 	const marginForTouch = 100
-	for _, entry := range []struct {
+	for idx, entry := range []struct {
 		desc     string
 		border   arc.BorderType // resize origin (from which border)
 		dst      coords.Point
@@ -189,7 +190,8 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 
 		// Not waiting on purpose. We have to grab the screenshot as soon as ResizeWindow() returns.
 
-		img, err := screenshot.GrabScreenshot(ctx, cr)
+		path := fmt.Sprintf("%s/screenshot-%d.png", s.OutDir(), idx)
+		img, err := screenshot.GrabScreenshot(ctx, cr, &path)
 		if err != nil {
 			s.Fatal("Failed to grab screenshot: ", err)
 		}
