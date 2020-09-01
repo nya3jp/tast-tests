@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa261a91_4ed8f172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-01T18:22:38Z",
+      "side": 1,
+      "message": "One of the verification steps for the manual test checks that notifications are hidden on the lock screen, so I thought it would be good to check the notification visibility in the UI before and after.",
+      "parentUuid": "cf35db0a_ac94891e",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "3967dcb9c932fec3ac8a745731aae8fd1a8e493d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ab7cabd_9a2c0ac9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b4fb2f78_b636e4c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-01T18:22:38Z",
+      "side": 1,
+      "message": "The params for pod icons aren\u0027t included in constants.go since their Name attributes change dynamically based on state, so they need to be partially matched using regex which requires some error handling to form.",
+      "parentUuid": "3ab7cabd_9a2c0ac9",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 95
+      },
+      "revId": "3967dcb9c932fec3ac8a745731aae8fd1a8e493d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ca16e95_47bfa890",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
         "patchSetId": 12
@@ -68,6 +116,30 @@
       "revId": "3967dcb9c932fec3ac8a745731aae8fd1a8e493d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db56d3e_ea7cc5c6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-01T18:22:38Z",
+      "side": 1,
+      "message": "I tried to group them categorically and somewhat by relative location in Quick Settings which I think makes sense, but I\u0027ve alphabetized each of those categories.",
+      "parentUuid": "9ca16e95_47bfa890",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "3967dcb9c932fec3ac8a745731aae8fd1a8e493d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
