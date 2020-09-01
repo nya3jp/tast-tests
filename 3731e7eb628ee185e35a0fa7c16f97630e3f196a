@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1e76b689_1de813b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-01T17:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be62955e_9fc04340",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef72916e_4099e3af",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -56,6 +74,30 @@
       "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58a29067_48429d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-01T17:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef72916e_4099e3af",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 16
+      },
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "2016891f_acb745d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-01T17:51:15Z",
+      "side": 1,
+      "message": "That\u0027s generated protobuf code. https://github.com/golang/go/wiki/CodeReviewComments#initialisms suggests that for that case it\u0027s alright.",
+      "parentUuid": "a2d715ef_561effae",
+      "range": {
+        "startLine": 125,
+        "startChar": 16,
+        "endLine": 125,
+        "endChar": 20
+      },
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56f1e7a8_870851d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -96,6 +162,24 @@
       "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7717cee8_68fe45e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-01T17:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56f1e7a8_870851d8",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +206,30 @@
     },
     {
       "key": {
+        "uuid": "d178ad8b_2bd83756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-01T17:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8369359_e0367172",
+      "range": {
+        "startLine": 134,
+        "startChar": 22,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad0b1e58_37d84e5b",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -145,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "083e65ab_1bcaaa57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-01T17:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad0b1e58_37d84e5b",
+      "range": {
+        "startLine": 142,
+        "startChar": 20,
+        "endLine": 142,
+        "endChar": 21
+      },
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1813b12f_5d0012e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -162,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "61d0230f_c5d71f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-01T17:51:15Z",
+      "side": 1,
+      "message": "It should only ever be FAILED or IN_PROGRESS, but I\u0027ve rewritten it into a switch statement to handle the case where it\u0027s an unexpected state.",
+      "parentUuid": "1813b12f_5d0012e8",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "373e7cb7_8600ace4",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -176,6 +326,24 @@
       "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47b2bd40_285b03a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-01T17:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "373e7cb7_8600ace4",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -202,6 +370,30 @@
     },
     {
       "key": {
+        "uuid": "c01a7065_a30f9d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-01T17:51:15Z",
+      "side": 1,
+      "message": "Discussed above.",
+      "parentUuid": "16967f69_c6f05f31",
+      "range": {
+        "startLine": 256,
+        "startChar": 6,
+        "endLine": 256,
+        "endChar": 10
+      },
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05f769d5_38f18183",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -216,6 +408,24 @@
       "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b5293b_fe20615a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-01T17:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05f769d5_38f18183",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
