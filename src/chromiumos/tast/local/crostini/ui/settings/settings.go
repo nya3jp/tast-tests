@@ -30,9 +30,29 @@ const (
 	PageNameMSF   = "Settings - " + ManageSharedFolders
 )
 
+// find params for fixed items.
+var (
+	linuxBetaButton         = ui.FindParams{Name: "Linux (Beta)", Role: ui.RoleTypeButton}
+	linuxIntallerNextButton = ui.FindParams{Name: "Next", Role: ui.RoleTypeButton}
+	settingsHeading         = ui.FindParams{Name: "Settings", Role: ui.RoleTypeHeading}
+	sharedFoldersMsg        = ui.FindParams{Name: "Shared folders will appear here", Role: ui.RoleTypeStaticText}
+	sharedFoldersList       = ui.FindParams{Name: "Shared folders", Role: ui.RoleTypeList}
+	unshareFailDlg          = ui.FindParams{Name: "Unshare failed", Role: ui.RoleTypeDialog}
+	okButton                = ui.FindParams{Name: "OK", Role: ui.RoleTypeButton}
+	removeButton            = ui.FindParams{Name: "Remove Linux for Chromebook", Role: ui.RoleTypeButton}
+)
+
 // Settings represents an instance of the Linux settings in Settings App.
 type Settings struct {
 	tconn *chrome.TestConn
+}
+
+// RemoveConfirmDialog represents the confirm dialog of removing Crostini.
+type RemoveConfirmDialog struct {
+	Self   *uig.Action `name:"Delete Linux (Beta)" role:"dialog"`
+	Msg    *uig.Action `name:"Delete all Linux applications and data in your Linux files folder from this Chromebook?" role:"staticText"`
+	Delete *uig.Action `name:"Delete" role:"button"`
+	Cancel *uig.Action `name:"Cancel" role:"button"`
 }
 
 // Open finds or launches Settings app and returns a Settings instance.
@@ -62,7 +82,7 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, subSettings 
 	}()
 
 	// Navigate to Linux settings page.
-	if err = uig.Do(ctx, tconn, uig.Retry(2, uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Linux (Beta)"}, uiTimeout).FocusAndWait(uiTimeout).LeftClick())); err != nil {
+	if err = uig.Do(ctx, tconn, uig.Retry(2, uig.FindWithTimeout(linuxBetaButton, uiTimeout).FocusAndWait(uiTimeout).LeftClick())); err != nil {
 		return nil, errors.Wrap(err, "failed to open Linux settings")
 	}
 
@@ -114,8 +134,8 @@ func (s *Settings) OpenInstaller(ctx context.Context) error {
 	}
 	return uig.Do(ctx, s.tconn,
 		uig.Steps(
-			uig.Retry(2, uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Linux (Beta)"}, uiTimeout).FocusAndWait(uiTimeout).LeftClick()),
-			uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Next"}, uiTimeout).LeftClick()).WithNamef("OpenInstaller()"))
+			uig.Retry(2, uig.FindWithTimeout(linuxBetaButton, uiTimeout).FocusAndWait(uiTimeout).LeftClick()),
+			uig.FindWithTimeout(linuxIntallerNextButton, uiTimeout).LeftClick()).WithNamef("OpenInstaller()"))
 }
 
 // Close closes the Settings App.
@@ -126,7 +146,7 @@ func (s *Settings) Close(ctx context.Context) error {
 	}
 
 	// Wait for the window to close.
-	return ui.WaitUntilGone(ctx, s.tconn, ui.FindParams{Name: "Settings", Role: ui.RoleTypeHeading}, time.Minute)
+	return ui.WaitUntilGone(ctx, s.tconn, settingsHeading, time.Minute)
 }
 
 // GetSharedFolders returns a list of shared folders.
@@ -137,13 +157,13 @@ func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string
 	}
 
 	// Find "Shared folders will appear here". It will be displayed if no folder is shared.
-	msg, textErr := ui.FindWithTimeout(ctx, s.tconn, ui.FindParams{Name: "Shared folders will appear here", Role: ui.RoleTypeStaticText}, uiTimeout)
+	msg, textErr := ui.FindWithTimeout(ctx, s.tconn, sharedFoldersMsg, uiTimeout)
 	if msg != nil {
 		defer msg.Release(ctx)
 	}
 
 	// Find "Shared folders" list. It will be displayed if any folder is shared.
-	list, listErr := ui.FindWithTimeout(ctx, s.tconn, ui.FindParams{Name: "Shared folders", Role: ui.RoleTypeList}, uiTimeout)
+	list, listErr := ui.FindWithTimeout(ctx, s.tconn, sharedFoldersList, uiTimeout)
 	if list != nil {
 		defer list.Release(ctx)
 	}
@@ -179,7 +199,7 @@ func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string
 // UnshareFolder deletes a shared folder from Settings app.
 // Settings must be open at the Linux Manage Shared Folders page.
 func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
-	list := uig.FindWithTimeout(ui.FindParams{Name: "Shared folders", Role: ui.RoleTypeList}, uiTimeout)
+	list := uig.FindWithTimeout(sharedFoldersList, uiTimeout)
 	folderParam := ui.FindParams{Role: ui.RoleTypeButton, Name: folder}
 	if err := uig.Do(ctx, s.tconn, list); err != nil {
 		return errors.Wrap(err, "failed to find shared folder list")
@@ -191,9 +211,9 @@ func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 	}
 
 	// There might be an unshare dialog. Click OK on it.
-	unshareDialog := uig.FindWithTimeout(ui.FindParams{Name: "Unshare failed", Role: ui.RoleTypeDialog}, uiTimeout)
+	unshareDialog := uig.FindWithTimeout(unshareFailDlg, uiTimeout)
 	if err := uig.Do(ctx, s.tconn, unshareDialog); err == nil {
-		if err := uig.Do(ctx, s.tconn, unshareDialog.FindWithTimeout(ui.FindParams{Name: "OK", Role: ui.RoleTypeButton}, uiTimeout).LeftClick()); err != nil {
+		if err := uig.Do(ctx, s.tconn, unshareDialog.FindWithTimeout(okButton, uiTimeout).LeftClick()); err != nil {
 			return errors.Wrap(err, "failed to click OK on Unshare failed dialog")
 		}
 	}
@@ -202,6 +222,60 @@ func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 		if err := uig.Do(ctx, s.tconn, list.WaitUntilDescendantGone(folderParam, uiTimeout)); err != nil {
 			return errors.Wrapf(err, "%s failed to disappear after deleting", folder)
 		}
+	}
+
+	return nil
+}
+
+// ClickRemove clicks Remove to delete Linux and returns an instance of RemoveConfirmDialog
+func (s *Settings) ClickRemove(ctx context.Context, tconn *chrome.TestConn) (*RemoveConfirmDialog, error) {
+	if err := uig.Do(ctx, s.tconn,
+		uig.FindWithTimeout(removeButton, uiTimeout).LeftClick()); err != nil {
+		return nil, errors.Wrap(err, "failed to click Remove")
+	}
+
+	dialog := &RemoveConfirmDialog{}
+	if err := uig.PageObject(dialog); err != nil {
+		return nil, errors.Wrap(err, "failed to create the struct of the remove confirm dialog")
+	}
+
+	// This is necessary, otherwise it fails to find the dialog.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for location on Settings app")
+	}
+
+	if err := uig.Do(ctx, tconn, dialog.Self); err != nil {
+		return nil, errors.Wrap(err, "failed to find the delete dialog")
+	}
+	if err := uig.Do(ctx, tconn, dialog.Msg); err != nil {
+		return nil, errors.Wrap(err, "failed to find the delete msg")
+	}
+
+	return dialog, nil
+}
+
+// ClickDelete clicks Delete on the remove confirm dialog.
+func (rcd *RemoveConfirmDialog) ClickDelete(ctx context.Context, tconn *chrome.TestConn) error {
+	// This is necessary, otherwise fails to click Delete.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location on Settings app")
+	}
+
+	if err := uig.Do(ctx, tconn, rcd.Delete.LeftClick()); err != nil {
+		return errors.Wrap(err, "failed to click Delete")
+	}
+	return nil
+}
+
+// ClickCancel clicks Cancel on the remove confirm dialog.
+func (rcd *RemoveConfirmDialog) ClickCancel(ctx context.Context, tconn *chrome.TestConn) error {
+	// This is necessary, otherwise fails to click Cancel.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location on Settings app")
+	}
+
+	if err := uig.Do(ctx, tconn, rcd.Cancel.LeftClick()); err != nil {
+		return errors.Wrap(err, "failed to click Cancel")
 	}
 
 	return nil
