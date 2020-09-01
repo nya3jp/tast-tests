@@ -103,7 +103,7 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 	if imeID, err := ime.GetCurrentInputMethod(ctx, tconn); err != nil {
 		s.Fatal("Failed to get current ime: ", err)
 	} else if imeID != usIMEID {
-		s.Fatal("Failed to activate US keyboard: ", err)
+		s.Fatalf("Failed to activate US keyboard: got %q; want %q", imeID, usIMEID)
 	}
 
 	kb, err := input.Keyboard(ctx)
