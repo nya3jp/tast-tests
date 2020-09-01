@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "6c67b488_6b9c6fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-01T02:35:29Z",
+      "side": 1,
+      "message": "I agree it\u0027s nicer. I had that in my previous CL and was asked to change it per style guide, but now that we\u0027re taking more parameters I\u0027m happy to run it by tast-owners and see what they say.",
+      "parentUuid": "43c7d795_1f32e108",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fe577a3_c40040a3",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 3
@@ -86,6 +110,30 @@
       "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19637a1e_b58a9efb",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-01T02:35:29Z",
+      "side": 1,
+      "message": "Exported LineReader instead, which is already a descriptive name :).",
+      "parentUuid": "4fe577a3_c40040a3",
+      "range": {
+        "startLine": 463,
+        "startChar": 5,
+        "endLine": 463,
+        "endChar": 7
+      },
+      "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "0d9b5a61_7434ebf4",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-01T02:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3010a6bc_a2372307",
+      "range": {
+        "startLine": 464,
+        "startChar": 1,
+        "endLine": 464,
+        "endChar": 11
+      },
+      "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37cb619a_2a911855",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 3
@@ -132,6 +204,30 @@
       "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc240733_083c6743",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-01T02:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37cb619a_2a911855",
+      "range": {
+        "startLine": 469,
+        "startChar": 54,
+        "endLine": 469,
+        "endChar": 63
+      },
+      "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
