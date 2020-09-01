@@ -16,6 +16,24 @@
       "revId": "2032ec19dc372d5c201bfd479024d5be2e18597b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "957b71a7_81dbbd32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-01T07:10:47Z",
+      "side": 1,
+      "message": "kefka-kernelnext is not stable at the moment. I should have attached this information in the description. (fails on kefka-kernelnext (kefka), this model fails many tests. Bug raised to tast team https://crbug.com/1121461)\n\nAn exmaple like https://crrev.com/c/2383360",
+      "parentUuid": "fae2c2f0_b0a1aa16",
+      "revId": "2032ec19dc372d5c201bfd479024d5be2e18597b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
