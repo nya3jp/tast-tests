@@ -30,9 +30,25 @@ const (
 	PageNameMSF   = "Settings - " + ManageSharedFolders
 )
 
+const (
+	// removeButton is the name of the Remove button.
+	removeButton = "Remove Linux for Chromebook"
+
+	removeConfirmDlgName = "Delete Linux (Beta)"
+	removeConfirmMsg     = "Delete all Linux applications and data in your Linux files folder from this Chromebook?"
+)
+
 // Settings represents an instance of the Linux settings in Settings App.
 type Settings struct {
 	tconn *chrome.TestConn
+}
+
+// RemoveConfirmDialog represents the confirm dialog of removing Crostini.
+type RemoveConfirmDialog struct {
+	dialogNode   *ui.Node
+	msgNode      *ui.Node
+	deleteButton *ui.Node
+	cancelButton *ui.Node
 }
 
 // Open finds or launches Settings app and returns a Settings instance.
@@ -205,4 +221,93 @@ func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 	}
 
 	return nil
+}
+
+// ClickRemove clicks Remove to delete Linux and returns an instance of RemoveConfirmDialog
+func (s *Settings) ClickRemove(ctx context.Context) (*RemoveConfirmDialog, error) {
+	if err := uig.Do(ctx, s.tconn,
+		uig.FindWithTimeout(ui.FindParams{Name: removeButton, Role: ui.RoleTypeButton}, uiTimeout).LeftClick()); err != nil {
+		return nil, errors.Wrap(err, "failed to click Remove")
+	}
+	return s.findRemoveConfirmDialog(ctx)
+}
+
+func (s *Settings) findRemoveConfirmDialog(ctx context.Context) (*RemoveConfirmDialog, error) {
+	// Find the dialog, message, Cancel and Delete button.
+	dialog, err := ui.FindWithTimeout(ctx, s.tconn, ui.FindParams{Name: removeConfirmDlgName, Role: ui.RoleTypeDialog}, uiTimeout)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find confirmation dialog")
+	}
+	defer func() {
+		if err != nil {
+			dialog.Release(ctx)
+		}
+	}()
+
+	msgNd, err := dialog.DescendantWithTimeout(ctx, ui.FindParams{Name: removeConfirmMsg, Role: ui.RoleTypeStaticText}, uiTimeout)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find confirmation message")
+	}
+	defer func() {
+		if err != nil {
+			msgNd.Release(ctx)
+		}
+	}()
+
+	delButton, err := dialog.DescendantWithTimeout(ctx, ui.FindParams{Name: "Delete", Role: ui.RoleTypeButton}, uiTimeout)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find button OK in confimration dialog")
+	}
+	defer func() {
+		if err != nil {
+			delButton.Release(ctx)
+		}
+	}()
+
+	cancel, err := dialog.DescendantWithTimeout(ctx, ui.FindParams{Name: "Cancel", Role: ui.RoleTypeButton}, uiTimeout)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find button Cancel in confimration dialog")
+	}
+	defer func() {
+		if err != nil {
+			cancel.Release(ctx)
+		}
+	}()
+
+	return &RemoveConfirmDialog{dialogNode: dialog, msgNode: msgNd, deleteButton: delButton, cancelButton: cancel}, nil
+}
+
+// ClickDelete clicks Delete on the remove confirm dialog.
+func (rcd *RemoveConfirmDialog) ClickDelete(ctx context.Context, tconn *chrome.TestConn) error {
+	// This is necessary, otherwise fails to click Delete.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location on Settings app")
+	}
+
+	if err := rcd.deleteButton.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click Delete")
+	}
+	return nil
+}
+
+// ClickCancel clicks Cancel on the remove confirm dialog.
+func (rcd *RemoveConfirmDialog) ClickCancel(ctx context.Context, tconn *chrome.TestConn) error {
+	// This is necessary, otherwise fails to click Cancel.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location on Settings app")
+	}
+
+	if err := rcd.cancelButton.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click Cancel")
+	}
+
+	return nil
+}
+
+// Release releases all nodes on the remove confirm dialog.
+func (rcd *RemoveConfirmDialog) Release(ctx context.Context) {
+	rcd.cancelButton.Release(ctx)
+	rcd.deleteButton.Release(ctx)
+	rcd.msgNode.Release(ctx)
+	rcd.dialogNode.Release(ctx)
 }
