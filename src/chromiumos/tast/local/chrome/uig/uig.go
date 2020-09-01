@@ -24,6 +24,7 @@ package uig
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"strings"
 	"time"
 
@@ -389,7 +390,7 @@ func (a *Action) WaitForLocationChangeCompleted() *Action {
 }
 
 // WaitForLocationChangeCompleted is a shortcut for uig.Root().WaitForLocationChangeCompleted()
-func WaitForLocationChangeCompleted(params ui.FindParams, timeout time.Duration) *Action {
+func WaitForLocationChangeCompleted() *Action {
 	return Root().WaitForLocationChangeCompleted().WithNamef("uig.WaitForLocationChangeCompleted()")
 }
 
@@ -441,4 +442,69 @@ func Do(ctx context.Context, tconn *chrome.TestConn, graphs ...*Action) error {
 	}
 	node.release(ctx)
 	return nil
+}
+
+// PageObject creates an Action for each field of Action type from the tags in the structure.
+// For example, a struct of a dialog page with msg, cancel and ok button could be defined as:
+//
+// 		type Dialog struct {
+// 			Self   *uig.Action `name:"name" role:"dialog"`
+// 			Msg    *uig.Action `name:"msg" role:"staticText"`
+// 			OK     *uig.Action `name:"OK" role:"button"`
+// 			Cancel *uig.Action `name:"Cancel" role:"button"`
+// 		}
+//
+// Where Self is the dialog itself and the rest are the content on the page.
+// To create a variable of the dialog page, do this:
+//
+// 		dialog := &Dialog{}
+// 		uig.PageObject(dialog)
+//
+// After this, the variable dialog is like this:
+//
+// 		{
+// 			Self   = uig.FindWithTimeout(ui.FindParams{Name: "name", Role: ui.RoleTypeDialog},15*time.Second)
+// 			Msg    = uig.FindWithTimeout(ui.FindParams{Name: "msg", Role: ui.RoleTypeStaticText},15*time.Second)
+// 			OK     = uig.FindWithTimeout(ui.FindParams{Name: "OK", Role: ui.RoleTypeButton},15*time.Second)
+// 			Cancel = uig.FindWithTimeout(ui.FindParams{Name: "Cancel", Role: ui.RoleTypeButton},15*time.Second)
+// 		}
+//
+// Then the following code will find/click the item on the dialog:
+//		uig.Do(ctx, tconn, dialog.Self)
+//		uig.Do(ctx, tconn, dialog.OK.LeftClick())
+func PageObject(pg interface{}) {
+	v := reflect.ValueOf(pg).Elem()
+	for i := 0; i < v.NumField(); i++ {
+		fieldStruct := v.Type().Field(i)
+		fieldValue := v.FieldByName(fieldStruct.Name)
+		if fieldValue.IsValid() && fieldValue.CanSet() && fieldStruct.Type == reflect.TypeOf(&Action{}) {
+			params := ui.FindParams{}
+			hasParams := false
+
+			// Find tag name.
+			if name, ok := fieldStruct.Tag.Lookup("name"); ok && name != "" {
+				params.Name = name
+				hasParams = true
+			}
+
+			// Find tag role.
+			if role, ok := fieldStruct.Tag.Lookup("role"); ok && role != "" {
+				params.Role = ui.RoleType(role)
+				hasParams = true
+			}
+
+			// Find tag className.
+			if cName, ok := fieldStruct.Tag.Lookup("className"); ok && cName != "" {
+				params.ClassName = cName
+				hasParams = true
+			}
+
+			// TODO(jinrongwu): handle Attributes and State when necessary
+
+			// Set the field value.
+			if hasParams {
+				fieldValue.Set(reflect.ValueOf(FindWithTimeout(params, 15*time.Second)))
+			}
+		}
+	}
 }
