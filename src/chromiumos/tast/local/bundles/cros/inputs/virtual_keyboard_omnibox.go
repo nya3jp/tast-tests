@@ -24,6 +24,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		Pre:          pre.VKEnabled(),
 		Params: []testing.Param{{
 			Name:              "stable",
 			ExtraHardwareDeps: pre.InputsStableModels,
@@ -36,11 +37,7 @@ func init() {
 }
 
 func VirtualKeyboardOmnibox(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(*chrome.Chrome)
 
 	// Start a empty window.
 	if _, err := cr.NewConn(ctx, "chrome://newtab"); err != nil {

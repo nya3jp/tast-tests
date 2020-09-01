@@ -5,7 +5,11 @@
 // Package pre contains preconditions for inputs tests.
 package pre
 
-import "chromiumos/tast/testing/hwdep"
+import (
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
+)
 
 var stableModels = []string{
 	// Top VK usage board in 2020 -- convertible, ARM.
@@ -32,3 +36,8 @@ var InputsStableModels = hwdep.D(hwdep.Model(stableModels...))
 // kevin64 is an experimental board does not support nacl, which fails Canvas installation.
 // To stablize the tests, have to exclude entire kevin model as no distinguish between kevin and kevin64.
 var InputsUnstableModels = hwdep.D(hwdep.SkipOnModel(append(stableModels, "kevin1")...))
+
+var vkEnabledPre = chrome.NewPrecondition("virtual_keyboard_enabled", chrome.ExtraArgs("--enable-virtual-keyboard"))
+
+// VKEnabled creates a new precondition can be shared by tests that require an already-started Chromeobject that enables virtual keyboard.
+func VKEnabled() testing.Precondition { return vkEnabledPre }
