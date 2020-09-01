@@ -16,6 +16,23 @@
       "revId": "f6a11a065a19c2dfce18b5e01f8217e920c6f447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2031dce2_d2ac319e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-01T09:08:19Z",
+      "side": 1,
+      "message": "This test is informational.\nWhat is the reason we want to prioritize making this test pass while the bug in R is not fixed?\n(maybe we need to promote this change to CQ urgently?)",
+      "revId": "f6a11a065a19c2dfce18b5e01f8217e920c6f447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
