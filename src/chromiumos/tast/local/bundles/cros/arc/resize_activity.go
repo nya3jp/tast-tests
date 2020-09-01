@@ -8,8 +8,6 @@ import (
 	"context"
 	"image"
 	"image/color"
-	"image/png"
-	"os"
 	"path/filepath"
 	"time"
 
@@ -214,12 +212,9 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		if percent > 3 {
 			// Save image with black pixels.
 			path := filepath.Join(s.OutDir(), "screenshot_fail.png")
-			fd, err := os.Create(path)
-			if err != nil {
+			if err := screenshot.DumpImageToPNG(ctx, &subImage, path); err != nil {
 				s.Fatal("Failed to create screenshot: ", err)
 			}
-			defer fd.Close()
-			png.Encode(fd, subImage)
 			s.Logf("Image containing the black pixels: %s", path)
 
 			s.Fatalf("Test failed. Contains %d / %d (%d%%) black pixels", blackPixels, totalPixels, percent)

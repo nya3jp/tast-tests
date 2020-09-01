@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"image/color"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -149,11 +150,21 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 			if i%4 == 0 || i%4 == 1 {
 				// Should be black.
 				if !colorcmp.ColorsMatch(img.At(rect.Min.X+j, rect.Min.Y+i), black, colorMaxDiff) {
+					path := filepath.Join(s.OutDir(), "screenshot_fail.png")
+					if err := screenshot.DumpImageToPNG(ctx, &img, path); err != nil {
+						s.Fatal("Failed to create screenshot: ", err)
+					}
+					s.Logf("Screenshot image for failed test created in: %s", path)
 					s.Fatal("Feature does not work properly: expect black but: ", rect.Min.X+j, rect.Min.Y+i, img.At(rect.Min.X+j, rect.Min.Y+i))
 				}
 			} else {
 				// Should be white.
 				if !colorcmp.ColorsMatch(img.At(rect.Min.X+j, rect.Min.Y+i), white, colorMaxDiff) {
+					path := filepath.Join(s.OutDir(), "screenshot_fail.png")
+					if err := screenshot.DumpImageToPNG(ctx, &img, path); err != nil {
+						s.Fatal("Failed to create screenshot: ", err)
+					}
+					s.Logf("Screenshot image for failed test created in: %s", path)
 					s.Fatal("Feature does not work properly: expect white but: ", rect.Min.X+j, rect.Min.Y+i, img.At(rect.Min.X+j, rect.Min.Y+i))
 				}
 			}
