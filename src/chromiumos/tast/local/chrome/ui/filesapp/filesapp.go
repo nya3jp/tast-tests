@@ -117,7 +117,7 @@ func (f *FilesApp) OpenDir(ctx context.Context, dirName, expectedTitle string) e
 		return err
 	}
 
-	if err := dirRow.LeftClick(ctx); err != nil {
+	if err := dirRow.DoDefault(ctx); err != nil {
 		return err
 	}
 
@@ -175,13 +175,15 @@ func (f *FilesApp) WaitForFile(ctx context.Context, filename string, timeout tim
 }
 
 // SelectFile selects a file by clicking on it.
+// DoDefault() is used instead of LeftClick() because of a race condition with pre-generated
+// coordinate. TODO(b/161438238, b/163101239): Fix the race condition in LeftClick() in the tast framework.
 func (f *FilesApp) SelectFile(ctx context.Context, filename string) error {
 	file, err := f.file(ctx, filename, uiTimeout)
 	if err != nil {
 		return err
 	}
 	defer file.Release(ctx)
-	return file.LeftClick(ctx)
+	return file.DoDefault(ctx)
 }
 
 // OpenFile executes double click on a file to open it with default app.
@@ -215,7 +217,7 @@ func (f *FilesApp) OpenQuickView(ctx context.Context, filename string) error {
 		return err
 	}
 	defer getInfo.Release(ctx)
-	return getInfo.LeftClick(ctx)
+	return getInfo.DoDefault(ctx)
 }
 
 // ClickMoreMenuItem opens More menu then clicks on sub menu items.
@@ -232,7 +234,7 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 	}
 	defer more.Release(ctx)
 
-	if err := more.LeftClick(ctx); err != nil {
+	if err := more.DoDefault(ctx); err != nil {
 		return errors.Wrap(err, "failed clicking More menu item")
 	}
 
@@ -248,7 +250,7 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 		}
 		defer menuItemNode.Release(ctx)
 
-		if err := menuItemNode.LeftClick(ctx); err != nil {
+		if err := menuItemNode.DoDefault(ctx); err != nil {
 			return errors.Wrapf(err, "failed clicking menu item: %s", menuItem)
 		}
 	}
@@ -311,7 +313,7 @@ func (f *FilesApp) LeftClickItem(ctx context.Context, itemName string, role ui.R
 		return errors.Wrapf(err, "failed to left click %s", itemName)
 	}
 	defer item.Release(ctx)
-	return item.LeftClick(ctx)
+	return item.DoDefault(ctx)
 }
 
 // DeleteFileOrFolder deletes a file or folder through selecting Delete in context menu.
@@ -337,7 +339,7 @@ func (f *FilesApp) DeleteFileOrFolder(ctx context.Context, fileName string) erro
 	defer deleteButton.Release(ctx)
 
 	// Click button "Delete".
-	if err := deleteButton.LeftClick(ctx); err != nil {
+	if err := deleteButton.DoDefault(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click button Delete on file %s ", fileName)
 	}
 
