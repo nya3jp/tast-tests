@@ -10,6 +10,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -17,6 +19,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/policyutil/externaldata"
 	ppb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
@@ -120,9 +123,12 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 	if user == "" {
 		user = "tast-user@managedchrome.com"
 	}
+	args := req.ExtraArgs
+
 	opts = append(opts, chrome.Auth(user, "test0000", "gaia-id"))
 	opts = append(opts, chrome.DMSPolicy(fdms.URL))
 	opts = append(opts, chrome.EnterpriseEnroll())
+	opts = append(opts, chrome.ExtraArgs(args))
 
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
@@ -319,4 +325,61 @@ func (c *PolicyService) EvalInExtension(ctx context.Context, req *ppb.EvalInExte
 	return &ppb.EvalInExtensionResponse{
 		Result: encoded,
 	}, nil
+}
+
+func (c *PolicyService) VerifyVisibleNotification(ctx context.Context, req *ppb.VerifyVisibleNotificationRequest) (*empty.Empty, error) {
+	if c.chrome == nil {
+		return nil, errors.New("chrome not available")
+	}
+	if req.NotificationId == "" {
+		return nil, errors.New("notification id is empty")
+	}
+
+	tconn, err := c.chrome.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+
+	testing.ContextLogf(ctx, "Waiting for notification with id %s", req.NotificationId)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		notifications, err := ash.VisibleNotifications(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get notifications"))
+		}
+
+		for _, notification := range notifications {
+			// Hardcoded in Chrome.
+			if strings.Contains(notification.ID, req.NotificationId) {
+				return nil
+			}
+		}
+		return errors.New("failed to find notification")
+	}, &testing.PollOptions{
+		Timeout: 5 * time.Second, // Checks for notification run once per five seconds.
+	}); err != nil {
+		return nil, errors.Wrap(err, "failed to show notification")
+	}
+
+	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) EvalExpressionInChromeURL(ctx context.Context, req *ppb.EvalExpressionInChromeUrlRequest) (*empty.Empty, error) {
+	if c.chrome == nil {
+		return nil, errors.New("chrome not available")
+	}
+	if req.Url == "" || req.Expression == "" {
+		return nil, errors.New("request object parameter missing")
+	}
+
+	conn, err := c.chrome.NewConn(ctx, req.Url)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to connect to %s ", req.Url)
+	}
+	defer conn.Close()
+
+	if err := conn.WaitForExprFailOnErr(ctx, req.Expression); err != nil {
+		return nil, errors.Wrapf(err, "failed to evaluate expression on %s ", req.Url)
+	}
+
+	return &empty.Empty{}, nil
 }
