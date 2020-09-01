@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "835f16c4_2d2a2dde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "Style nits.",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be62955e_9fc04340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "nit/style: Combine L85-L86:\n\n    if err \u003d proto.Unmarshal(marshalled, response); err !\u003d nil {\n        return nil, errors.Wrap(err, \"failed to unmarshal StartScanResponse\")\n    }\n\ngo/go-style/guide#concision",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef72916e_4099e3af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "nit/style: Combine L107-108:\n\n    if err \u003d proto.Unmarshal(marshalled, response); err !\u003d nil {\n        return nil, errors.Wrap(err, \"failed to unmarshal GetNextImageResponse\")\n    }\n\ngo/go-style/guide#concision",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 16
+      },
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d715ef_561effae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "For your backlog: Initialisms should have a consistent case. In this case, \"uuid\" or \"UUID\" is acceptable, but \"Uuid\" is not.\n\nBut, this will require updating lorgnette_proto, so I think it is best handled in a separate CL.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments",
+      "range": {
+        "startLine": 125,
+        "startChar": 16,
+        "endLine": 125,
+        "endChar": 20
+      },
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f1e7a8_870851d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "style: You could make L129-139 more concise with a switch statement:\n\n    switch signal.State {\n    case lorgnette.ScanState_SCAN_STATE_FAILED:\n        return errors.Errorf(\"scan failed: %s\", signal.FailureReason)\n    case lorgnette.ScanState_SCAN_STATE_PAGE_COMPLETED:\n        if signal.MorePages {\n            return errors.New(\"Did not expect additional pages for scan\")\n        }\n    case lorgnette.ScanState_SCAN_STATE_COMPLETED {\n        return nil\n    }",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8369359_e0367172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "style: Error strings should not be capitalized (unless beginning with proper nouns or acronyms), since they are usually printed following other context.\n\n    return errors.New(\"did not expect additional pages for scan\")\n\nhttps://github.com/golang/go/wiki/CodeReviewComments",
+      "range": {
+        "startLine": 134,
+        "startChar": 22,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad0b1e58_37d84e5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "style: Error strings should not be capitalized (unless beginning with proper nouns or acronyms), since they are usually printed following other context.\n\n    return errors.New(\"did not receive scan completion signal\")\n\nhttps://github.com/golang/go/wiki/CodeReviewComments",
+      "range": {
+        "startLine": 142,
+        "startChar": 20,
+        "endLine": 142,
+        "endChar": 21
+      },
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1813b12f_5d0012e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "Is there any chance that startScanResponse.State will be something other than ScanState_SCAN_STATE_IN_PROGRESS, yet there will be no startScanResponse.FailureReason? For example, if the scan is still starting up, or if it finished very quickly?",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "373e7cb7_8600ace4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "nit/style: You can combine L248-249:\n\n    if err \u003d conn.AddMatchSignal(\n        dbus.WithMatchObjectPath(dbusPath),\n        dbus.WithMatchInterface(dbusInterface),\n        dbus.WithMatchMember(ScanStatusChanged\"),\n    ); err !\u003d nil {\n\ngo/go-style/guide#concision",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16967f69_c6f05f31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "style: As elsewhere, please change Uuid to UUID in a follow-on CL.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 256,
+        "startChar": 6,
+        "endLine": 256,
+        "endChar": 10
+      },
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f769d5_38f18183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:25:47Z",
+      "side": 1,
+      "message": "nit/style: Please combine L270-271:\n\n    if err \u003d waitForScanCompletion(ctx, signals, startScanResponse.ScanUuid); err !\u003d nil {\n        s.Fatal(\"Failed to wait for scan completion: \", err)\n    }",
+      "revId": "3731e7eb628ee185e35a0fa7c16f97630e3f196a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
