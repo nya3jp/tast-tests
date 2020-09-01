@@ -16,6 +16,69 @@
       "revId": "79ccc57f42d2ccd0d01fab219485ef9617f13337",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6f4ced1_4260d9d2",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-01T16:45:12Z",
+      "side": 1,
+      "message": "I believe testing.State in this location is prohibited, and tast-lint check (in repo upload) will warn you.\n\nPlease consider passing both container and user parameters separately, or passing the PreData, instead of passing testing.State itself.\n\ncf: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 26,
+        "startChar": 46,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "79ccc57f42d2ccd0d01fab219485ef9617f13337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe0a3d16_8cd891c5",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-01T16:45:12Z",
+      "side": 1,
+      "message": "It would be great if you can implement io.Reader interface (https://golang.org/pkg/io/#Reader).  With that, those copying can be written in a single function call of io.Copy (https://golang.org/pkg/io/#Copy).",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "79ccc57f42d2ccd0d01fab219485ef9617f13337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a641c7c6_9587f7c1",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-01T16:45:12Z",
+      "side": 1,
+      "message": "As for exported interface, I believe it\u0027s slightly better to name differently. Possibly ReadLine() would be great, as Read is well known for io.Reader interface.",
+      "revId": "79ccc57f42d2ccd0d01fab219485ef9617f13337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
