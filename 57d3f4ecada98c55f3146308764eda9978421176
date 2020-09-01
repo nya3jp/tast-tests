@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35611304_29d89226",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-01T05:59:07Z",
+      "side": 1,
+      "message": "Generally LGTM, but have one question.",
+      "revId": "57d3f4ecada98c55f3146308764eda9978421176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300a1d59_39914dcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-01T05:59:07Z",
+      "side": 1,
+      "message": "Curious why you have \"artifact\" case inheriting the \"informational\" from Attr and add \"informational\" in ExtraAttr for the others? My guess is: the one in Attr is for this test, the others might be for different Pre-s?\n\nOne downside for the pattern might be: it\u0027s less trivial to review when you promote the test to critical. The diff occurs only in Attr but reviewer has to go through the Params to know which ones are promoted.\n\nIf you have only \"group:mainline\" in Attr, and \"informational\" in every ExtraAttr, it might be easier for later modification. WDYT?",
+      "revId": "57d3f4ecada98c55f3146308764eda9978421176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
