@@ -95,15 +95,15 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 		}, &testing.PollOptions{Timeout: configurationPollTimeout})
 
 		// Verify forwarding rule set up correctly.
-		if err := testexec.CommandContext(ctx, "/sbin/iptables", "-C", "FORWARD", "-o", brIFName, "-j", "ACCEPT").
+		if err := testexec.CommandContext(ctx, "/sbin/iptables", "-C", "FORWARD", "-o", brIFName, "-j", "ACCEPT", "-w").
 			Run(testexec.DumpLogOnError); err != nil {
 			s.Fatalf("Cannot verify iptables -A FORWARD -o %s -j ACCEPT rule: %s", brIFName, err)
 		}
-		if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", ifName, "-o", brIFName, "-j", "ACCEPT").
+		if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", ifName, "-o", brIFName, "-j", "ACCEPT", "-w").
 			Run(testexec.DumpLogOnError); err != nil {
 			s.Fatalf("Cannot verify ip6tables -A FORWARD -i %s -o %s -j ACCEPT rule: %s", ifName, brIFName, err)
 		}
-		if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", brIFName, "-o", ifName, "-j", "ACCEPT").
+		if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", brIFName, "-o", ifName, "-j", "ACCEPT", "-w").
 			Run(testexec.DumpLogOnError); err != nil {
 			s.Fatalf("Cannot verify ip6tables -A FORWARD -i %s -o %s -j ACCEPT rule: %s", brIFName, ifName, err)
 		}
@@ -146,19 +146,19 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: configurationPollTimeout})
 
 	// Verify iptables forwarding rule removed correctly.
-	if err := testexec.CommandContext(ctx, "/sbin/iptables", "-C", "FORWARD", "-o", brIFName, "-j", "ACCEPT").
+	if err := testexec.CommandContext(ctx, "/sbin/iptables", "-C", "FORWARD", "-o", brIFName, "-j", "ACCEPT", "-w").
 		Run(testexec.DumpLogOnError); err == nil {
 		s.Errorf("iptables -A FORWARD -o %s -j ACCEPT rule is not removed", brIFName)
 	} else if _, ok := err.(*exec.ExitError); !ok {
 		s.Error("iptables -C returned unexpected error: ", err)
 	}
-	if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", ifName, "-o", brIFName, "-j", "ACCEPT").
+	if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", ifName, "-o", brIFName, "-j", "ACCEPT", "-w").
 		Run(testexec.DumpLogOnError); err == nil {
 		s.Errorf("ip6tables -A FORWARD -i %s -o %s -j ACCEPT rule is not removed", ifName, brIFName)
 	} else if _, ok := err.(*exec.ExitError); !ok {
 		s.Error("ip6tables -C returned unexpected error: ", err)
 	}
-	if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", brIFName, "-o", ifName, "-j", "ACCEPT").
+	if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", brIFName, "-o", ifName, "-j", "ACCEPT", "-w").
 		Run(testexec.DumpLogOnError); err == nil {
 		s.Errorf("ip6tables -A FORWARD -i %s -o %s -j ACCEPT rule is not removed", brIFName, ifName)
 	} else if _, ok := err.(*exec.ExitError); !ok {
