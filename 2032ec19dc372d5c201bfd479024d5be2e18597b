@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fae2c2f0_b0a1aa16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-01T07:04:14Z",
+      "side": 1,
+      "message": "There is no passing test on the kefka-kernelnext board. I think we should wait for at least 1 passing test there.",
+      "revId": "2032ec19dc372d5c201bfd479024d5be2e18597b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
