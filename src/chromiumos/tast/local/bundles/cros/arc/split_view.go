@@ -130,11 +130,11 @@ func SplitView(ctx context.Context, s *testing.State) {
 	}
 
 	params := s.Param().(splitViewTestParams)
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, params.tabletMode)
+	_, err = ash.EnsureTabletModeEnabled(ctx, tconn, params.tabletMode)
 	if err != nil {
 		s.Fatalf("Failed to ensure tablet-mode status to %t: %v", params.tabletMode, err)
 	}
-	defer cleanup(ctx)
+	// defer cleanup(ctx)
 
 	tew, err := input.Touchscreen(ctx)
 	if err != nil {
