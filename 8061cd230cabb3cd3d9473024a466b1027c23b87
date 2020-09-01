@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "b6607da3_5e692f2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-01T03:10:32Z",
+      "side": 1,
+      "message": "why is this necessary? Is this not a launched feature?",
+      "range": {
+        "startLine": 34,
+        "startChar": 45,
+        "endLine": 34,
+        "endChar": 87
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6942047_6ef0aec8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
         "patchSetId": 3
@@ -58,6 +81,29 @@
         "startChar": 1,
         "endLine": 73,
         "endChar": 2
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da81b44e_a2a939e2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-01T03:10:32Z",
+      "side": 1,
+      "message": "Is all of this slider code specific to the quicksettings or are sliders in other areas (e.g OS Settings) similar?",
+      "range": {
+        "startLine": 343,
+        "startChar": 5,
+        "endLine": 343,
+        "endChar": 15
       },
       "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
