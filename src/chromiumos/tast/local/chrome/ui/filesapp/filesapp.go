@@ -299,7 +299,9 @@ func (f *FilesApp) OpenPath(ctx context.Context, title string, path ...string) e
 	return nil
 }
 
-// LeftClickItem left clicks a target item.
+// LeftClickItem left clicks a target item by calling its DoDefault(). LeftClick() is not used
+// because of a race condition with pre-generated coordinate.
+// TODO(b/161438238, b/163101239): Fix the race condition in LeftClick() in the tast framework.
 // An error is returned if the target item can't be found.
 func (f *FilesApp) LeftClickItem(ctx context.Context, itemName string, role ui.RoleType) error {
 	params := ui.FindParams{
@@ -311,7 +313,7 @@ func (f *FilesApp) LeftClickItem(ctx context.Context, itemName string, role ui.R
 		return errors.Wrapf(err, "failed to left click %s", itemName)
 	}
 	defer item.Release(ctx)
-	return item.LeftClick(ctx)
+	return item.DoDefault(ctx)
 }
 
 // DeleteFileOrFolder deletes a file or folder through selecting Delete in context menu.
