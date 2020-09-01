@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "326a3574_14912c96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-09-01T10:08:27Z",
+      "side": 1,
+      "message": "Affected tast tests using filesapp.go:\ntast/local/bundles/cros/arc/storage/storage.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/arc/downloads_folder.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/apps/launch_gallery.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/policy/download_restrictions.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/ui/hotseat_scroll_perf.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/crostini/no_access_to_drive.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/crostini/home_directory_delete_file.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/crostini/files.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/crostini/copy_files_to_linux_files.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/crostini/home_directory_rename_file.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/crostini/home_directory_in_filesapp.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/crostini/no_access_to_downloads.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/filemanager/image_quick_view.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/filemanager/zip_perf.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/filemanager/smb.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/filemanager/smoke.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/filemanager/drivefs_ui.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\ntast/local/bundles/cros/filemanager/drivefs_google_doc.go:\t\"chromiumos/tast/local/chrome/ui/filesapp\"\n",
+      "revId": "8789d2cad78604cc0110f0d3ce63fce1d72f9618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
