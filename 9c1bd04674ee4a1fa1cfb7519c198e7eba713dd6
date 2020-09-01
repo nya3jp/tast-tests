@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56695d1f_972fe100",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-01T16:04:05Z",
+      "side": 1,
+      "message": "I think it\u0027d be better to wait until https://crrev.com/c/2386039 is submitted and has some successful runs: we haven\u0027t even been _running_ broker_by_cmdline for the logged-in chrome tests, so the stability picture might be misleading right now.",
+      "revId": "9c1bd04674ee4a1fa1cfb7519c198e7eba713dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
