@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0424075_6615abf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-01T02:43:28Z",
+      "side": 1,
+      "message": "Patchset 6 passes testing.State into the Crostini postcondition which is a style violation (should only pass into preconditions), but postcondition probably deserves the same exemption as precondition. It means we don\u0027t need to change every single test when we change the postcondition in future (e.g. collect some logs only on failure).\nPatchset 5 explicitly passes in each of the fields in testing.State we care about.\n\ntast-owners: Please let me know which version you\u0027d prefer.\n\nThanks,\nDave.",
+      "revId": "79ccc57f42d2ccd0d01fab219485ef9617f13337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

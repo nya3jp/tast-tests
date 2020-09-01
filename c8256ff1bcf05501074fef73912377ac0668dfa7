@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "d44dda76_c8ca3c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-01T02:43:28Z",
+      "side": 1,
+      "message": "Patchset 5 is without, patchset 6 is with.",
+      "parentUuid": "6c67b488_6b9c6fad",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fe577a3_c40040a3",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 3
