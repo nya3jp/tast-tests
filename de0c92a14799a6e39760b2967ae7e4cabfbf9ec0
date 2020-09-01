@@ -69,6 +69,24 @@
       "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e02ae0b0_588325dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-01T01:20:31Z",
+      "side": 1,
+      "message": "The official name of the app is `Explore`, Help app is the old app name and I personally think it makes more sense literally 😊\n\nYep. Go ahead with the change and I will take care of the rest. \n\ncced carpenterr@ who is the project tech lead",
+      "parentUuid": "efac05cb_78c3bb86",
+      "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
