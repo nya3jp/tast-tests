@@ -302,6 +302,30 @@
       "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "271a9513_f1917e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-01T08:24:29Z",
+      "side": 1,
+      "message": "You are right. If you will overwrite ctx for example with Shorten, you will use new shorten context in defer statement, because you bind it by reference.\n\nWe had such issues in the past, they are hard to debug. Moreover, Go official documentation for context says: \"pass a Context explicitly to each function that needs it.\"\nhttps://golang.org/pkg/context/",
+      "parentUuid": "acce6bfb_48870c2b",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
