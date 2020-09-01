@@ -16,6 +16,24 @@
       "revId": "82e480a1632e42f4f7e01c647b38b0284c38e9e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9629dae2_2cc94ec1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-01T02:27:40Z",
+      "side": 1,
+      "message": "This failure message is fairly recent, I think it may have started when we cahenged the precondition to use the installer UI.\n\nI am not sure if they are getting worse or better over time.",
+      "parentUuid": "3391ee3b_3b2d57f8",
+      "revId": "82e480a1632e42f4f7e01c647b38b0284c38e9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
