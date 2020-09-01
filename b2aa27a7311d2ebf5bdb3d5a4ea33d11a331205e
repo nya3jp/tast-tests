@@ -93,6 +93,30 @@
     },
     {
       "key": {
+        "uuid": "376469e6_bee6d77a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-01T03:31:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8375301e_583b1eb3",
+      "range": {
+        "startLine": 126,
+        "startChar": 6,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "420aca6b_ba24cf02",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 1
@@ -113,6 +137,30 @@
       "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2497e16b_14956b0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-01T03:31:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "420aca6b_ba24cf02",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 12
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +187,30 @@
     },
     {
       "key": {
+        "uuid": "c8b0c07b_026fd2c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-01T03:31:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67460e40_f09674c3",
+      "range": {
+        "startLine": 142,
+        "startChar": 9,
+        "endLine": 142,
+        "endChar": 10
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bdf79dd_b0f8f858",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 1
@@ -162,6 +234,30 @@
     },
     {
       "key": {
+        "uuid": "f2ef6d68_d559c147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-01T03:31:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bdf79dd_b0f8f858",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 12
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "deb6ffd1_fb8c591c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 1
@@ -182,6 +278,30 @@
       "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acce6bfb_48870c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-01T03:31:12Z",
+      "side": 1,
+      "message": "Done\n\nTBH, I don\u0027t fully understand why this is required. Is this because ctx can be overwritten later (e.g. Shorten function) but this defer still want to use the original one?",
+      "parentUuid": "deb6ffd1_fb8c591c",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
