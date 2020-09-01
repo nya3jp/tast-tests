@@ -21,10 +21,17 @@ func init() {
 		Func:         KeyCharacterMap,
 		Desc:         "Checks KeyCharacterMap working in non-US layouts",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
-		Attr:         []string{"informational", "group:mainline"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
