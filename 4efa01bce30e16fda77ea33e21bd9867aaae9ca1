@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "729a030c_87f1f3e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-01T02:04:39Z",
+      "side": 1,
+      "message": "hitting crbug.com/1123422. Retry CQ.",
+      "revId": "4efa01bce30e16fda77ea33e21bd9867aaae9ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
