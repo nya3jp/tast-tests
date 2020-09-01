@@ -70,12 +70,21 @@ func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemName string) 
 	if err != nil {
 		return errors.Wrap(err, "Unable to switch out of tablet mode")
 	}
-	defer revert(ctx)
+	defer (func() {
+		revert(ctx)
+		if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
+			testing.ContextLog(ctx, "Error waiting for tablet mode reversion transition to complete: ", err)
+		}
+	})()
 
-	shutdown := uig.Steps(
+	if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
+		return errors.Wrap(err, "error waiting for transition out of tablet mode to complete")
+	}
+
+	shutdown := uig.Retry(2, uig.Steps(
 		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Terminal"}, uiTimeout).RightClick(),
 		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeMenuItem, Name: itemName}, uiTimeout).LeftClick(),
-	).WithNamef("TerminalApp.clickShelfMenuItem()")
+	)).WithNamef("TerminalApp.clickShelfMenuItem()")
 	return uig.Do(ctx, ta.tconn, shutdown)
 }
 
