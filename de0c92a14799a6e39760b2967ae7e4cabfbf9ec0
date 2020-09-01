@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51a893fb_fc711208",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-01T00:15:30Z",
+      "side": 1,
+      "message": "What\u0027s New (a.k.a. Release Notes) recently moved to the Explore/Help/Showoff app (shengjun@, what\u0027s the right name to use here?), instead of opening as its own PWA, so the test needs to be updated to get it passing again.\n\nJun, should we also consider moving this to the apps package? I think it might be more appropriate there now that the PWA is gone.",
+      "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
