@@ -28,12 +28,20 @@ service PolicyService {
       returns (google.protobuf.Empty) {}
   rpc EvalInExtension(EvalInExtensionRequest)
       returns (EvalInExtensionResponse) {}
+
+  // Verifies that the notification corresponding to the id in the request is visible.
+  rpc VerifyVisibleNotification(VerifyVisibleNotificationRequest)
+      returns (google.protobuf.Empty) {}
+  // Creates a new connection to the Chrome URL in the request and evaluates the expression in the request on it.
+  rpc EvalExpressionInChromeURL(EvalExpressionInChromeUrlRequest)
+      returns (google.protobuf.Empty) {}
 }
 
 message EnrollUsingChromeRequest {
   bytes policy_json = 1;
   string username = 2;
   repeated Extension extensions = 3;
+  string extra_args = 4;
 }
 
 message UpdatePoliciesRequest {
@@ -66,4 +74,13 @@ message ExtensionFile {
 message Extension {
   string id = 1;
   repeated ExtensionFile files = 2;
+}
+
+message VerifyVisibleNotificationRequest {
+  string notification_id = 1;
+}
+
+message EvalExpressionInChromeUrlRequest {
+  string url = 1;
+  string expression = 2;
 }
