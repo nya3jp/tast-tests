@@ -326,6 +326,30 @@
       "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0339f5b9_a42bcaa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-01T08:26:55Z",
+      "side": 1,
+      "message": "Thanks for explanation! I got it.",
+      "parentUuid": "271a9513_f1917e11",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "b2aa27a7311d2ebf5bdb3d5a4ea33d11a331205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
