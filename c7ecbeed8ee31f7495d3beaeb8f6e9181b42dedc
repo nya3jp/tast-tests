@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e9fed5d8_6b3580f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-01T19:20:11Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "parentUuid": "0b133396_57ba16ea",
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85401ceb_a04ba6b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 2
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "471d1b33_c5a77638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-01T19:20:11Z",
+      "side": 1,
+      "message": "Whoops sorry for the sloppy, this was from an earlier iteration of code.",
+      "parentUuid": "85401ceb_a04ba6b9",
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e0faddd_968c7898",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 2
@@ -67,6 +103,24 @@
       "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c4bc491_2efc7c2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-01T19:20:11Z",
+      "side": 1,
+      "message": "My reasoning for the name was that it makes the declaration of the table test entries read like a sentence, but now that you bring it up the names are more confusing outside of that context than I previously thought. I came up with \"prepareCopyInChrome\" (and similar for the other helpers) and made the return types more self-descriptive to help reduce confusion. (and I added docs, which were at least definitely needed for the Android versions.)\n\nThanks for the comment!",
+      "parentUuid": "8e0faddd_968c7898",
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "868986ef_14bb3a78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-01T19:20:11Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I ended up reflowing both the chrome-copy and chrome-paste functions and I think things look a lot clearer now, PTAL.",
+      "parentUuid": "e6425267_bfe40250",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da4c4d27_599f8ea5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 2
@@ -107,6 +185,24 @@
       "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5b5e01b_20cdaea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-01T19:20:11Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "da4c4d27_599f8ea5",
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +229,30 @@
     },
     {
       "key": {
+        "uuid": "c63a7224_bf1ae75d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-01T19:20:11Z",
+      "side": 1,
+      "message": "Yeah I found a couple before but clearly didn\u0027t look closely enough :)\n\nI actually went a bit further and moved all of the constants into the smallest possible scope, to help avoid a larger-than-needed global const block. Let me know if you think this reorganization is actually net-worse, and I\u0027ll move the code back to using one package-level const block and one func-Clipboard-level const block.",
+      "parentUuid": "e3ccd82f_8e3e71c8",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 67
+      },
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cec39fab_fb33b5f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 2
@@ -153,6 +273,30 @@
       "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff1854b1_4a1ed840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-01T19:20:11Z",
+      "side": 1,
+      "message": "Done. (I was afraid it was going to get lost/ignored under this large table test, but I don\u0027t personally care where it is.)",
+      "parentUuid": "cec39fab_fb33b5f5",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 116
+      },
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +323,30 @@
     },
     {
       "key": {
+        "uuid": "e7859871_d23af285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-01T19:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "180958dc_0de4d89d",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 6
+      },
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db996ce3_7898f158",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 2
@@ -199,6 +367,30 @@
       "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbb39cc0_5d8cd975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-01T19:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db996ce3_7898f158",
+      "range": {
+        "startLine": 273,
+        "startChar": 3,
+        "endLine": 291,
+        "endChar": 4
+      },
+      "revId": "c7ecbeed8ee31f7495d3beaeb8f6e9181b42dedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
