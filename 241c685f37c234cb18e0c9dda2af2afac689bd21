@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "f0157678_76daeaf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00a0c90e_75dc7896",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95e4305a_1b4e23be",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 14
@@ -90,6 +108,30 @@
       "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7ce50e1_1d997c0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95e4305a_1b4e23be",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +158,30 @@
     },
     {
       "key": {
+        "uuid": "964c13fb_bd75fe31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "703992d3_7376e347",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9954a1d_a83bfe2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 14
@@ -139,6 +205,30 @@
     },
     {
       "key": {
+        "uuid": "5751e826_78d48360",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9954a1d_a83bfe2c",
+      "range": {
+        "startLine": 118,
+        "startChar": 62,
+        "endLine": 118,
+        "endChar": 144
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3354b05a_c80b72d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 14
@@ -153,6 +243,24 @@
       "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69f8540a_b6c1dbcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3354b05a_c80b72d2",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "f3a41b9e_8dc7677c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done.\nbtw this was suggested by deanliao@\n(see comment from patchset#9)\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2351349",
+      "parentUuid": "d4440413_fb259de0",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 127,
+        "endChar": 7
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "909e5639_678e839b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 14
@@ -199,6 +331,30 @@
       "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e927aa3e_0897bb74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "I felt having \"uniformScaleFactor\" in function name was a bit long.",
+      "parentUuid": "909e5639_678e839b",
+      "range": {
+        "startLine": 159,
+        "startChar": 41,
+        "endLine": 159,
+        "endChar": 44
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -271,6 +427,78 @@
     },
     {
       "key": {
+        "uuid": "a529f4a7_8d114c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "sorry im not sure which comment youre referring to here.",
+      "parentUuid": "440b862c_d0274f68",
+      "range": {
+        "startLine": 160,
+        "startChar": 17,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "435efa47_44b2c685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done, sgtm",
+      "parentUuid": "8cd2bf69_8e96aba4",
+      "range": {
+        "startLine": 160,
+        "startChar": 5,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770e72cd_bed3a5db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7657a94_9893d38a",
+      "range": {
+        "startLine": 160,
+        "startChar": 140,
+        "endLine": 160,
+        "endChar": 161
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c25f118f_75d41c3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 14
@@ -285,6 +513,24 @@
       "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "588b5f74_a50c9cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c25f118f_75d41c3b",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -311,6 +557,30 @@
     },
     {
       "key": {
+        "uuid": "7a2c447e_270d0728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "I don\u0027t have a good explanation for this.\n\nIIUC, to do setprop, adb needs to be run from root. \n(from https://stackoverflow.com/questions/48329514/setprop-ro-product-model-not-working)\nSo if we use Command, I think we would need to do ` adb root` , first.\n\n(also all of the other setprop commands in tast repo, seem to use BootstrapCommand).\n\nLet me know what suggestions you have to approach this.",
+      "parentUuid": "af212d7e_50b3bb0d",
+      "range": {
+        "startLine": 165,
+        "startChar": 15,
+        "endLine": 165,
+        "endChar": 31
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09b01c7a_ffa1b716",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 14
@@ -331,6 +601,30 @@
       "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "558ef136_67f4bf06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09b01c7a_ffa1b716",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -380,6 +674,54 @@
     },
     {
       "key": {
+        "uuid": "47fa09a8_3c4873e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "072506df_16e3c9d8",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d83c023f_ca8c862b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cd049a5_52f2d58b",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfb23b90_34845024",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
         "patchSetId": 14
@@ -397,6 +739,24 @@
     },
     {
       "key": {
+        "uuid": "396d3e9d_6aeeb048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "answer to Patrick\u0027s comment below should explain.\nalso updated the return consdition.",
+      "parentUuid": "bfb23b90_34845024",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7f7fa4d_6c07b227",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
         "patchSetId": 14
@@ -408,6 +768,24 @@
       "writtenOn": "2020-08-31T01:13:51Z",
       "side": 1,
       "message": "clar: What might be causing the number of black pixels to change, and how do we know that only if the app has finished launching that this number will stop changing?",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bae83bad_945a5873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "hm similar to WaitForBlackPixelCount in perappdensity.go. We need sometime for the updated screen state to occur. So I think we need some polling, somewhere.\n\nHowever, in this instance, we don\u0027t have baseline for what the defaultPixelCount should be. That was the intention of using \"once pixel count stops changing\".\n\nlet me know if you have suggestions on how to approach this.",
+      "parentUuid": "a7f7fa4d_6c07b227",
       "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

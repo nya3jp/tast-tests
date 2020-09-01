@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9e74759_8ff108f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-01T06:04:46Z",
+      "side": 1,
+      "message": "some clarification regarding USF (uniform scale factor), it\u0027s a feature that will enable 1.25 scale factor in arc++. ",
+      "revId": "f7bc39f08edcee443c3cdd147ffeec6a3e07ec1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
