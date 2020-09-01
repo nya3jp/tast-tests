@@ -24,6 +24,7 @@ package uig
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"strings"
 	"time"
 
@@ -415,4 +416,36 @@ func Do(ctx context.Context, tconn *chrome.TestConn, graphs ...*Action) error {
 	}
 	node.release(ctx)
 	return nil
+}
+
+// PageObject creates an Action for each field in the structure.
+func PageObject(pg interface{}) {
+	v := reflect.ValueOf(pg).Elem()
+	for i := 0; i < v.NumField(); i++ {
+		fieldStruct := v.Type().Field(i)
+		fieldValue := v.FieldByName(fieldStruct.Name)
+		if fieldValue.IsValid() && fieldValue.CanSet() && fieldStruct.Type == reflect.TypeOf(&Action{}) {
+			params := ui.FindParams{}
+
+			// Find tag name.
+			if name, ok := fieldStruct.Tag.Lookup("name"); ok && name != "" {
+				params.Name = name
+			}
+
+			// Find tag role.
+			if role, ok := fieldStruct.Tag.Lookup("role"); ok && role != "" {
+				params.Role = ui.RoleType(role)
+			}
+
+			// Find tag ClassName.
+			if cName, ok := fieldStruct.Tag.Lookup("ClassName"); ok && cName != "" {
+				params.ClassName = cName
+			}
+
+			// TODO(jinrongwu): handle Attributes and State when necessary
+
+			// Set the field value.
+			fieldValue.Set(reflect.ValueOf(FindWithTimeout(params, 15*time.Second)))
+		}
+	}
 }
