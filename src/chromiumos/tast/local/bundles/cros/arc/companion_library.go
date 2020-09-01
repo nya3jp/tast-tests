@@ -71,6 +71,10 @@ type companionLibMessage struct {
 	WindowBoundMsg *struct {
 		WindowBound string `json:"window_bound"`
 	} `json:"WindowBoundMsg"`
+	WindowStateMsg *struct {
+		WindowState   string `json:"window_state"`
+		AppControlled bool   `json:"app_managed"`
+	} `json:"WindowStateMsg"`
 }
 
 func CompanionLibrary(ctx context.Context, s *testing.State) {
@@ -1227,6 +1231,29 @@ func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 			return errors.Errorf("unexpectedly changed window resizeability: got %t, want %t", ashWindow.CanResize, initAshWindow.CanResize)
 		}
 	}
+
+	// Check that app-controlled state is not modified by bounds change.
+	if appControlled, err := isAppControlled(ctx, d); err != nil {
+		return err
+	} else if appControlled == true {
+		return errors.New("unexpectedly changed app controlled state to true")
+	}
+
+	// Set app-controlled and resize back to the initial bounds.
+	// This should not change app-controlled state as well.
+	if err := setWindowState(ctx, d, "", true); err != nil {
+		return errors.Wrap(err, "failed to enable app controlled flag")
+	}
+	if err := setWindowBounds(ctx, d, initBounds); err != nil {
+		return errors.Wrap(err, "failed to setting window bound")
+	}
+
+	if appControlled, err := isAppControlled(ctx, d); err != nil {
+		return err
+	} else if appControlled == false {
+		return errors.New("unexpectedly changed app controlled state to true")
+	}
+
 	return nil
 }
 
@@ -1358,6 +1385,38 @@ func setWindowState(ctx context.Context, d *ui.Device, windowStateStr string, is
 	return nil
 }
 
+func isAppControlled(ctx context.Context, d *ui.Device) (bool, error) {
+	const getWindowStateButtonID = companionLibDemoPkg + ":id/get_task_window_state_button"
+
+	lastMsg, err := getLastJSONMessage(ctx, d)
+	if err != nil {
+		return false, errors.Wrap(err, "error on get last JSON message")
+	}
+	if err := d.Object(ui.ID(getWindowStateButtonID)).Click(ctx); err != nil {
+		return false, errors.Wrap(err, "failed to click get window bound button")
+	}
+
+	var msg *companionLibMessage
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		msg, err = getLastJSONMessage(ctx, d)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "error on get new JSON message"))
+		}
+		if msg.MessageID == lastMsg.MessageID {
+			return errors.New("still waiting for a new window state message")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return false, errors.Wrap(err, "failed to get window state")
+	}
+
+	if msg.WindowStateMsg == nil {
+		return false, errors.Errorf("unexpected JSON message format: no WindowStateMsg; got %v", msg)
+	}
+	return msg.WindowStateMsg.AppControlled, nil
+}
+
 // setWindowStateSync returns after the window state changed as expected.
 func setWindowStateSync(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, state arc.WindowState) error {
 	if err := act.SetWindowState(ctx, tconn, state); err != nil {
@@ -1374,20 +1433,6 @@ func setWindowStateSync(ctx context.Context, tconn *chrome.TestConn, act *arc.Ac
 		return errors.Wrap(err, "failed to waiting for window state change")
 	}
 	return nil
-}
-
-// getTextViewContent returns all text in status textview.
-func getTextViewContent(ctx context.Context, d *ui.Device) ([]string, error) {
-	const statusTextViewID = companionLibDemoPkg + ":id/status_text_view"
-	if err := d.Object(ui.ID(statusTextViewID)).WaitForExists(ctx, 5*time.Second); err != nil {
-		return nil, errors.Wrap(err, "failed to wait status textview ready")
-	}
-	text, err := d.Object(ui.ID(statusTextViewID)).GetText(ctx)
-	if err != nil {
-		// It not always success when get object, poll is necessary.
-		return nil, errors.Wrap(err, "StatusTextView not ready yet")
-	}
-	return strings.Split(text, "\n"), nil
 }
 
 // getJSONTextViewContent returns all text in JSON textview.
