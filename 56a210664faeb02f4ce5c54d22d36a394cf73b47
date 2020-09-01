@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62dd4a77_c514f7bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-09-01T06:09:05Z",
+      "side": 1,
+      "message": "Reviewers: fyi - since your LGTM, the only things I changed were a) updating some documentation to make \"color distance\" clearer and b) clearing the exif data out of the generated PNGs so that the checksum of the files doesn\u0027t change every time the bash script is run.\n\nThe changes are trivial so no need to re-review. Sending to CQ.",
+      "revId": "56a210664faeb02f4ce5c54d22d36a394cf73b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
