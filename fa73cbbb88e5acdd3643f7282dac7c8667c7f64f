@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31d9a9fe_5b82ca5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-09-01T02:53:09Z",
+      "side": 1,
+      "message": "can we move them inside IMEBlockingVK, as currently it\u0027s visible from all files under arc/?\n\n    \n    disablePlayStore :\u003d func(ctx context.Context) {\n        ...\n    }\n    enablePlayStore :\u003d func(ctx context.Context) {\n        ...\n    }\n\n    disablePlayStore(ctx)\n    defer enablePlayStore(ctx)\n\nAlso, can we shorten the context so that we can have a time to re-enable play store even if the test timeouts?\n\n    ctx, cancel \u003d ctxutil.Shorten(ctx, 3 * time.Second)\n    defer cancel()",
+      "revId": "fa73cbbb88e5acdd3643f7282dac7c8667c7f64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
