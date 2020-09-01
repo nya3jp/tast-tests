@@ -43,11 +43,10 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:text="Press ESC to finish tracing" />
-            <Button
-                android:id="@+id/clear_btn"
+            <TextView
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="clear"/>
+                android:layout_width="match_parent"
+                android:text="Press DEL to clear UI" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"encoding/json"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -87,64 +86,74 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait until CPU idle: ", err)
 	}
 
-	s.Log("Injecting touch events")
+	s.Log("Injecting touch move events")
 	const numEvents = 50
+	const waitMS = 50
 	eventTimes := make([]int64, 0, numEvents)
 	// Stay in the middle of the screen to avoid activating the titlebar or
 	// taskbar.
 	var x, y input.TouchCoord = ts.Width() / 2, ts.Height() / 2
-	for i := 0; i < numEvents; i++ {
-		eventTimes = append(eventTimes, time.Now().UnixNano()/1000000)
-		if err := stw.Move(x, y); err != nil {
-			s.Fatal("Unable to inject touch event: ", err)
-		}
 
+	// The first touch ACTION_DOWN is not counted when evaluating touch ACTION_MOVE latency.
+	if err := stw.Move(x, y); err != nil {
+		s.Fatal("Unable to inject touch event: ", err)
+	}
+	if err := inputlatency.WaitForClearUI(ctx, d); err != nil {
+		s.Fatal("Failed to clear UI: ", err)
+	}
+
+	for i := 0; i < numEvents; i++ {
 		if (i & 1) == 0 {
 			x += 20
 		} else {
 			x -= 20
 		}
 
-		if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
-			s.Fatal("Failed to sleep between events: ", err)
+		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+			s.Fatal("Failed to generate event time: ", err)
+		}
+
+		if err := stw.Move(x, y); err != nil {
+			s.Fatal("Unable to inject touch event: ", err)
 		}
 	}
 
-	s.Log("Collecting results")
-	txt, err := inputlatency.WaitForEvents(ctx, d, numEvents)
-	if err != nil {
-		s.Fatal("Unable to wait for events: ", err)
-	}
-	var events []inputlatency.InputEvent
-	if err := json.Unmarshal([]byte(txt), &events); err != nil {
-		s.Fatal("Could not unmarshal events from app: ", err)
-	}
-
-	// Add RTCEventTime to inputEvents. We assume the order and number of events in the log
-	// is the same as eventTimes.
-	if len(events) != len(eventTimes) {
-		s.Fatal("There are events missing from the log")
-	}
-	for i := range events {
-		events[i].RTCEventTime = eventTimes[i]
-	}
-
-	mean, median, stdDev, max, min := inputlatency.CalculateMetrics(events, func(i int) float64 {
-		return float64(events[i].Latency)
-	})
-	s.Logf("Touchscreen latency: mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
-
-	rmean, rmedian, rstdDev, rmax, rmin := inputlatency.CalculateMetrics(events, func(i int) float64 {
-		return float64(events[i].RTCRecvTime - events[i].RTCEventTime)
-	})
-	s.Logf("Touchscreen RTC latency: mean %f median %f std %f max %f min %f", rmean, rmedian, rstdDev, rmax, rmin)
-
 	pv := perf.NewValues()
-	pv.Set(perf.Metric{
-		Name:      "avgTouchscreenLatency",
-		Unit:      "milliseconds",
-		Direction: perf.SmallerIsBetter,
-	}, mean)
+
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, &eventTimes, "avgTouchscreenMoveLatency", pv); err != nil {
+		s.Fatal("Failed to evaluate: ", err)
+	}
+
+	// End of touch. The last touch ACTION_UP is not counted when evaluating touch ACTION_MOVE latency.
+	if err := stw.End(); err != nil {
+		s.Fatal("Unable to release touch: ", err)
+	}
+
+	if err := inputlatency.WaitForClearUI(ctx, d); err != nil {
+		s.Fatal("Failed to clear UI: ", err)
+	}
+
+	s.Log("Injecting touch press events")
+	eventTimes = make([]int64, 0, numEvents)
+	for i := 0; i < numEvents/2; i++ {
+		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+			s.Fatal("Failed to generate event time: ", err)
+		}
+		if err := stw.Move(x, y); err != nil {
+			s.Fatal("Unable to touch down: ", err)
+		}
+		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+			s.Fatal("Failed to generate event time: ", err)
+		}
+		if err := stw.End(); err != nil {
+			s.Fatal("Unable to release touch: ", err)
+		}
+	}
+
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, &eventTimes, "avgTouchscreenPressLatency", pv); err != nil {
+		s.Fatal("Failed to evaluate: ", err)
+	}
+
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)
 	}
