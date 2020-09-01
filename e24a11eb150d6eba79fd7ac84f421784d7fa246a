@@ -218,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "0f684d1c_b0e581a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-01T04:54:33Z",
+      "side": 1,
+      "message": "Done. \n\nCurious, what is needed for a test to become stable?",
+      "parentUuid": "d2e05e0b_8a4202b5",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46fbae41_52601f9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -979,6 +1003,30 @@
       "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5eecfaa_0c67e40b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-01T04:54:33Z",
+      "side": 1,
+      "message": "The Apps can\u0027t be removed after they are installed.",
+      "parentUuid": "0e30a34a_ca9f43b5",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 0
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

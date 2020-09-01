@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38251f43_62a2ee19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-01T04:54:33Z",
+      "side": 1,
+      "message": "Note: moved from ui/ to apps/, since we are testing about apps",
+      "revId": "bbb659027aa2f65691e3f791e0fa7c3785054db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
