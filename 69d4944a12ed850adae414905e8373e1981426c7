@@ -105,6 +105,24 @@
       "revId": "69d4944a12ed850adae414905e8373e1981426c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dbbfe92_c5b39193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-01T06:18:57Z",
+      "side": 1,
+      "message": "Yeah, I wasn\u0027t expecting quite that much difference. I don\u0027t know how worthwhile adding a third run to this test just for power would be, given PowerVideoPerf. Perhaps we should just remove power from this test once b/161657911 is resolved, if it\u0027s not going to be a particularly meaningful metric.",
+      "parentUuid": "8fbca438_7f5976a6",
+      "revId": "69d4944a12ed850adae414905e8373e1981426c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
