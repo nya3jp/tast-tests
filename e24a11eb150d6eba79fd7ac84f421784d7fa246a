@@ -266,6 +266,30 @@
     },
     {
       "key": {
+        "uuid": "060e42b8_eac68e9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-01T08:30:04Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "bd5b2207_ab974672",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "e24a11eb150d6eba79fd7ac84f421784d7fa246a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46fbae41_52601f9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_web_apps_reinstall.go",
         "patchSetId": 4
