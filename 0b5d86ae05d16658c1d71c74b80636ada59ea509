@@ -16,6 +16,23 @@
       "revId": "0b5d86ae05d16658c1d71c74b80636ada59ea509",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5adc65dd_d6e4723e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-01T09:02:36Z",
+      "side": 1,
+      "message": "This informational test passed in last 12 builds. Please promote it to the Commit Queue after 20+ consecutive passes (go/tast-add-test).\n\nhttps://cros-health-prod.googleplex.com/test/arc.Gamepad.vm",
+      "revId": "0b5d86ae05d16658c1d71c74b80636ada59ea509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
