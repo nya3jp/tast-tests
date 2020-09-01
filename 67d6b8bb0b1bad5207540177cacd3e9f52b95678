@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "017b6d98_0eaf872e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:30:46Z",
+      "side": 0,
+      "message": "Looks like both PinPrintLexmark tests failed on every board in 13444, with the following error:\n\n    Failed to call CupsAddManuallyConfiguredPrinter: Message recipient disconnected from message bus without replying\n\nhttp://tastboard/test/printer.PinPrintLexmark.pin\n\nCan you please make sure this is resolved before we promote?",
+      "revId": "67d6b8bb0b1bad5207540177cacd3e9f52b95678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

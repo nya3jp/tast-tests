@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab1ec126_714031fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-01T16:30:46Z",
+      "side": 1,
+      "message": "Mostly LGTM, but waiting for resolution on PinPrintLexmark before CR+2.",
+      "revId": "2984d0f4b2e3a4773ed85275243fe92cb2672013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
