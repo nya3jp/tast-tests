@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1097f9b1_43ed47d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_cancel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-01T04:57:15Z",
+      "side": 1,
+      "message": "spelling: linux",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8567d4bb_fdedb2a1",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-01T04:57:15Z",
+      "side": 1,
+      "message": "Why do we keep track of the message node?  It doesn\u0027t seem to be used for anything...",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4288f35_68d4425f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-01T04:57:15Z",
+      "side": 1,
+      "message": "I\u0027m starting to think we should make these findparams a series of vars at the top of the file instead of inline everywhere, especially since you already have the strings at the top.\n\nWhat do you think?",
+      "range": {
+        "startLine": 229,
+        "startChar": 22,
+        "endLine": 229,
+        "endChar": 80
+      },
+      "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7d32ec_48409763",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-01T04:57:15Z",
+      "side": 1,
+      "message": "this is very fragile code, any reason we have to find everything in the initial call?  why not just find cancel when we want to actually click it?",
+      "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
