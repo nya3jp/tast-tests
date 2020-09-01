@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0376fb47_a9bafaa1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-01T12:42:56Z",
+      "side": 1,
+      "message": "I guess the proper term is Grand Mean or Pooled Mean where Mean is Geometric Mean instead of Arithmetic Mean.\n\nhttps://en.wikipedia.org/wiki/Grand_mean",
+      "parentUuid": "e959dcc5_71270e21",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d6dc183_a04ae3b2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -89,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "25416b40_eeb1a260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-01T12:42:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a49adac_92a8f714",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83554677_017f9876",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
         "patchSetId": 5
@@ -109,6 +157,30 @@
       "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29cc4af2_27a7e3c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-01T12:42:56Z",
+      "side": 1,
+      "message": "Originally, I thought there are multiple levels of calculations.  Say FS1, FS2, FS3 and Graphics1, Graphics2 should all be computed at the same level.  For group to work without other attributes, we have to use only 2 levels of computation.  IIUC, everything in a group are computed at level 2 and fed to level 1 for final geometric mean.\n\nPreviously, everything in the same level are computed together, but it won\u0027t work given your example to separate FS vs. Graphics group computations like GM(C1+GM(A2+B2)+GM(C2+D2)) instead of GM(C1+GM(A2+B2+C2+D2+GM(A3+B3))).\n\n                          score\n                           /\\ \\\n                          /  \\ \\\n                         A1  B1 C1\n                         /\\   /\\ \n                       A2 B2 C2 D2\n                       /\\         \n                      A3 B3",
+      "parentUuid": "83554677_017f9876",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "6dae06ea_1f9fe372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-01T12:42:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f9de8c5_0c28d721",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 11
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1566cd5_67c89a3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
         "patchSetId": 5
@@ -158,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "1d7f1c81_943071af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-01T12:42:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1566cd5_67c89a3c",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "189439e8_32d03a54",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
         "patchSetId": 5
@@ -178,6 +298,30 @@
       "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0413a37_6413dbca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-01T12:42:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "189439e8_32d03a54",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
