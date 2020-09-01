@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -28,38 +27,22 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
-// WhatsNewSmoke tests that we can open the What's New PWA from the Settings app entry point.
+// WhatsNewSmoke tests that we can open the What's New page of the Explore (Help) app from the Settings app entry point.
 func WhatsNewSmoke(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.EnableWebAppInstall())
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// Wait for What's New to be available in the list of all Chrome apps.
-	// Without this step, sometimes What's New will launch as a Chrome window instead of a PWA.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		capps, err := ash.ChromeApps(ctx, tconn)
-		if err != nil {
-			testing.PollBreak(err)
-		}
-		for _, capp := range capps {
-			if capp.AppID == apps.WhatsNew.ID {
-				return nil
-			}
-		}
-		return errors.New("App not yet found in available Chrome apps")
-	}, nil); err != nil {
-		s.Fatal("Unable to find What's New in the available Chrome apps: ", err)
+	// Wait for the Help App to be available.
+	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.Help.ID, 10*time.Second); err != nil {
+		s.Fatal("Failed waiting for Help app to be installed: ", err)
 	}
 
 	// Launch the Settings app and wait for it to open
@@ -82,16 +65,21 @@ func WhatsNewSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for Settings app document state to be ready: ", err)
 	}
 
-	// Launch What's New using the Settings page JS functions. The same JS is tied to the UI link's on-click property.
+	// Wait for settings API to be available.
+	if err := settingsConn.WaitForExpr(ctx, `typeof(settings) === "object"`); err != nil {
+		s.Fatal("Failed waiting for settings API to load: ", err)
+	}
+
+	// Show What's New using the Settings page JS functions. The same JS is tied to the UI link's on-click property.
 	if err := settingsConn.Eval(ctx,
 		"settings.AboutPageBrowserProxyImpl.getInstance().launchReleaseNotes()",
 		nil); err != nil {
 		s.Fatal("Failed to run Javascript to launch What's New: ", err)
 	}
 
-	// Wait for What's New to open by checking in the shelf, and looking for something via UI
-	if err := ash.WaitForApp(ctx, tconn, apps.WhatsNew.ID); err != nil {
-		s.Fatal("What's New did not appear in the shelf: ", err)
+	// Wait for the Help app to open.
+	if err := ash.WaitForApp(ctx, tconn, apps.Help.ID); err != nil {
+		s.Fatal(" did not appear in the shelf: ", err)
 	}
 
 	// The large text at the top of the page seems like a natural choice since it's easily
