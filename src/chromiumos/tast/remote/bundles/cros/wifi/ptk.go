@@ -16,27 +16,55 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type ptkParam struct {
+	RekeyPeriod      int
+	PingCount        int
+	PingInterval     float64
+	AllowedLossCount int
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:        PTK,
 		Desc:        "Verifies that pairwise temporal key rotations works as expected",
 		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
+		Params: []testing.Param{
+			{
+				// Default case.
+				ExtraAttr: []string{"wificell_unstable"},
+				// The ping configuration gives us around 75 seconds to ping,
+				// which covers around 15 rekeys with 5 seconds period.
+				Val: ptkParam{
+					RekeyPeriod:      5,
+					PingCount:        150,
+					PingInterval:     0.5,
+					AllowedLossCount: 30, // Allow 20% ping loss.
+				},
+			},
+			{
+				// A stricter case for b/167149633.
+				Name:      "low_ping_loss",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val: ptkParam{
+					RekeyPeriod:  5,
+					PingCount:    150,
+					PingInterval: 0.5,
+					// One rekey contains ~10 pings. Let the threshold=8
+					// so that the test will fail if we have problem in
+					// any rekey.
+					AllowedLossCount: 8,
+				},
+			},
+		},
 	})
 }
 
 func PTK(ctx context.Context, s *testing.State) {
-	// The ping configuration gives us around 75 seconds to ping,
-	// which covers around 15 rekeys with 5 seconds period.
-	const (
-		rekeyPeriod       = 5
-		pingCount         = 150
-		pingLossThreshold = 20.0 // Allow 20% ping loss.
-		pingInterval      = 0.5
-	)
+	param := s.Param().(ptkParam)
 
 	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {
@@ -55,7 +83,7 @@ func PTK(ctx context.Context, s *testing.State) {
 		"chromeos", wpa.Mode(wpa.ModeMixed),
 		wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 		wpa.Ciphers2(wpa.CipherCCMP),
-		wpa.PTKRekeyPeriod(rekeyPeriod),
+		wpa.PTKRekeyPeriod(param.RekeyPeriod),
 	)
 	ap, err := tf.ConfigureAP(ctx, apOps, secConfFac)
 	if err != nil {
@@ -82,17 +110,18 @@ func PTK(ctx context.Context, s *testing.State) {
 	ctx, cancel = tf.ReserveForDisconnect(ctx)
 	defer cancel()
 
-	s.Logf("Pinging with count=%d interval=%g second(s)", pingCount, pingInterval)
+	s.Logf("Pinging with count=%d interval=%g second(s)", param.PingCount, param.PingInterval)
 	// As we need to record ping loss, we cannot use tf.PingFromDUT() here.
 	pr := remoteping.NewRemoteRunner(s.DUT().Conn())
-	res, err := pr.Ping(ctx, ap.ServerIP().String(), ping.Count(pingCount), ping.Interval(pingInterval))
+	res, err := pr.Ping(ctx, ap.ServerIP().String(), ping.Count(param.PingCount), ping.Interval(param.PingInterval))
 	if err != nil {
 		s.Fatal("Failed to ping from DUT: ", err)
 	}
 	s.Logf("Ping result=%+v", res)
 
-	if res.Loss > pingLossThreshold {
-		s.Errorf("Unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
+	lossCount := res.Sent - res.Received
+	if lossCount > param.AllowedLossCount {
+		s.Errorf("Unexpected packet loss: got %d, want <= %d", lossCount, param.AllowedLossCount)
 	}
 
 	pv := perf.NewValues()
