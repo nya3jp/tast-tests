@@ -14,7 +14,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.R.id;
 import android.util.Rational;
-import android.widget.Button;
 import android.widget.VideoView;
 
 /** Test Activity for the PIP Video Tast Test. */
