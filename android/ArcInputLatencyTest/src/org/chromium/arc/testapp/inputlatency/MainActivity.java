@@ -37,7 +37,6 @@ public class MainActivity extends Activity {
     private ArrayList<ReceivedEvent> mRecvEvents = new ArrayList<>();
     private Float mLastMouseX = null;
     private Float mLastMouseY = null;
-    private Button mClrBtn;
 
     // Finish trace and save the events as JSON to TextView UI.
     private void finishTrace() {
@@ -75,15 +74,6 @@ public class MainActivity extends Activity {
         ((ListView) findViewById(R.id.event_list)).setAdapter(mAdapter);
         mEvents = findViewById(R.id.event_json);
         mCount = findViewById(R.id.event_count);
-        mClrBtn = findViewById(R.id.clear_btn);
-
-
-        mClrBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clearUI();
-            }
-        });
     }
 
     @Override
@@ -105,6 +95,10 @@ public class MainActivity extends Activity {
         // ESC key is a sign to finish tracing.
         if(event.getKeyCode() == KeyEvent.KEYCODE_ESCAPE) {
             finishTrace();
+            return false;
+        }
+        if(event.getKeyCode() == KeyEvent.KEYCODE_DEL) {
+            clearUI();
             return false;
         }
         ReceivedEvent recv =
