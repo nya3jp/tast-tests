@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "2f8c5104_9d877422",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-01T22:32:09Z",
+      "side": 1,
+      "message": "See also nya@ reply on https://groups.google.com/a/google.com/g/tast-reviewers/c/QIdIUkBzkm suggesting an interface as an additional option.",
+      "parentUuid": "c6f4ced1_4260d9d2",
+      "range": {
+        "startLine": 26,
+        "startChar": 46,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "79ccc57f42d2ccd0d01fab219485ef9617f13337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe0a3d16_8cd891c5",
         "filename": "src/chromiumos/tast/local/crostini/post.go",
         "patchSetId": 6
