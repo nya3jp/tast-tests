@@ -9,12 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/crostini/listset"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
 	"chromiumos/tast/testing"
 )
@@ -75,43 +71,14 @@ func ShareFilesOK(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := shareMyFilesOK(ctx, sharedFolders, filesApp, tconn); err != nil {
+	// Share My files, click OK on the confirm dialog.
+	toast, err := sharedFolders.ShareMyFilesOK(ctx, tconn, filesApp)
+	if err != nil {
 		s.Fatal("Failed to share My files: ", err)
 	}
+	defer toast.Release(cleanupCtx)
 
-	// Check shared folders on the Settings app.
-	st, err := settings.OpenLinuxSettings(ctx, tconn, settings.ManageSharedFolders)
-	if err != nil {
-		s.Fatal("Failed to open Manage shared folders: ", err)
+	if err := sharedFolders.CheckShareMyFilesResults(ctx, tconn, cont); err != nil {
+		s.Fatal("Faied to verify results after sharing My files: ", err)
 	}
-	defer st.Close(ctx)
-
-	sharedFoldersList, err := st.GetSharedFolders(ctx)
-	if err != nil {
-		s.Fatal("Failed to find the shared folders list: ", err)
-	}
-	if err := listset.CheckListsMatch(sharedFoldersList, sharedfolders.MyFiles); err != nil {
-		s.Fatal("Failed to verify shared folders list: ", err)
-	}
-}
-
-// shareMyFilesOK shares My files and click OK on the confirm dialog.
-func shareMyFilesOK(ctx context.Context, sharedFolders *sharedfolders.SharedFolders, filesApp *filesapp.FilesApp, tconn *chrome.TestConn) error {
-	// Share My files, click OK on the confirm dialog, click Manage on the toast nofication.
-	scd, err := sharedFolders.ShareMyFiles(ctx, tconn, filesApp, sharedfolders.MyFilesMsg)
-	if err != nil {
-		return errors.Wrap(err, "failed to share My files")
-	}
-	defer scd.Release(ctx)
-
-	// Click button OK.
-	toast, err := scd.ClickOK(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to click button OK on share confirm dialog")
-	}
-	defer toast.Release(ctx)
-
-	sharedFolders.AddFolder(sharedfolders.MyFiles)
-
-	return nil
 }
