@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/caps"
@@ -26,7 +27,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera, "tablet_mode"},
 		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          testutil.NewPrecondition(testutil.ChromeConfig{}),
 	})
 }
 
@@ -111,7 +112,10 @@ func (vh *volumeHelper) verifyVolumeChanged(ctx context.Context, doChange func()
 }
 
 func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	p := s.PreValue().(testutil.PreData)
+	cr := p.Chrome
+	tb := p.TestBridge
+	isSWA := p.Config.InstallSWA
 
 	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
@@ -142,7 +146,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, isSWA)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
@@ -150,7 +154,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 
 	restartApp := func(ctx context.Context) {
 		s.Log("Restarts CCA")
-		if err := app.Restart(ctx); err != nil {
+		if err := app.Restart(ctx, tb, isSWA); err != nil {
 			s.Fatal("Failed to restart CCA: ", err)
 		}
 	}
