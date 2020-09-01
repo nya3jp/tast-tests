@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aedab0b8_a493b857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/quick_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "There are several reasons I used parametrization:\n- Different sub-tests will have different additional arguments. For example, right now, the timeout is different for each sub-test, eventually data, dependencies and attributes might/will also be different.\n- Parametrizing test gives the ability to run one/few tests without the need to run all of them , i.e. \"tast run storage.QuickStress.setup\"\n- Test results are structured by folders for each sub-test.\n\nLet me know what you think.",
+      "parentUuid": "6152cfb5_0626e394",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e137eccb_5bb86783",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/quick_stress.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3071775_03cb50cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/quick_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e137eccb_5bb86783",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c23e368d_b53546b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/quick_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da3cf4f_a398bf77",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46f6a79b_dcfae6e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/quick_stress.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f734e7_b7ffd969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/quick_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46f6a79b_dcfae6e3",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0bf4eecb_6f000c7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/quick_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "003d8d10_f9c0381b",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8bc30be_6368690d",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25293508_c1a68bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8bc30be_6368690d",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "2a88a641_5b4a3d4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c42aee3b_8f196c47",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff5f7863_eee6a5ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info_test.go",
         "patchSetId": 3
@@ -183,6 +351,30 @@
       "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "796f6c46_f71638de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff5f7863_eee6a5ab",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "ddd39393_b3e6ddb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12bda74e_947c6f2e",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "170fbe7d_3044a92c",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info_test.go",
         "patchSetId": 3
@@ -229,6 +445,30 @@
       "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f3cdefa_388a1bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "170fbe7d_3044a92c",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 70
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "3fe5e0bf_0902c62e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "277e5959_46006658",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 62
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c103712_5effb0bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
         "patchSetId": 3
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "2d743fb0_ed8ede04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c103712_5effb0bb",
+      "range": {
+        "startLine": 241,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 21
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bbe8010_603922b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
         "patchSetId": 3
@@ -298,6 +586,30 @@
       "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7184df_103a2dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-01T23:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bbe8010_603922b4",
+      "range": {
+        "startLine": 268,
+        "startChar": 38,
+        "endLine": 268,
+        "endChar": 47
+      },
+      "revId": "1a0534b08a41f328b51cfd886de2cdea4b6957ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
