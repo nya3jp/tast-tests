@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf35db0a_ac94891e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-01T02:43:30Z",
+      "side": 1,
+      "message": "Could also have used the autotestprivate/notifications.go to check this since this test is  not about checking the notifications UI",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "3967dcb9c932fec3ac8a745731aae8fd1a8e493d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ab7cabd_9a2c0ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-01T02:43:30Z",
+      "side": 1,
+      "message": "How come you get this one explicitly here with PodIconParams but all the rest in the checkNodes map are read directly from constants.go?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 95
+      },
+      "revId": "3967dcb9c932fec3ac8a745731aae8fd1a8e493d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca16e95_47bfa890",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-01T02:43:30Z",
+      "side": 1,
+      "message": "Could be good to alphabetize the variables in these files",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "3967dcb9c932fec3ac8a745731aae8fd1a8e493d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
