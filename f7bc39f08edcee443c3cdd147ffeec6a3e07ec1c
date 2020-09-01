@@ -16,6 +16,75 @@
       "revId": "f7bc39f08edcee443c3cdd147ffeec6a3e07ec1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "200034ac_383fd9c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-01T16:05:27Z",
+      "side": 1,
+      "message": "Could you document the tolerance, too?",
+      "range": {
+        "startLine": 77,
+        "startChar": 12,
+        "endLine": 77,
+        "endChar": 16
+      },
+      "revId": "f7bc39f08edcee443c3cdd147ffeec6a3e07ec1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4789ce87_8906f106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-01T16:05:27Z",
+      "side": 1,
+      "message": "nit: defer act.Stop(ctx, tconn)",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "f7bc39f08edcee443c3cdd147ffeec6a3e07ec1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2df3a2a_dd4884ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-01T16:05:27Z",
+      "side": 1,
+      "message": "looks zero value?",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "f7bc39f08edcee443c3cdd147ffeec6a3e07ec1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
