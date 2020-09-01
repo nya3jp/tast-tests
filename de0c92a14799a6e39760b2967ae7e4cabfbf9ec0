@@ -87,6 +87,46 @@
       "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152ee2fd_89f66cc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-01T16:28:27Z",
+      "side": 1,
+      "message": "I\u0027ll wait until your refactor to review.",
+      "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4cb2745_3f138779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/whats_new_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-01T16:28:27Z",
+      "side": 1,
+      "message": "nit: man that looks so hacky. Can we just wait for settings to not equal undefined? That would look more natural.",
+      "range": {
+        "startLine": 69,
+        "startChar": 42,
+        "endLine": 69,
+        "endChar": 71
+      },
+      "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
