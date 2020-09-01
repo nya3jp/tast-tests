@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c47bdc74_dc694e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/firewall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-01T05:14:21Z",
+      "side": 0,
+      "message": "Was this intended to be removed ? Technically adding \"/32\" or not should change anything, since any match on a specific address is always implicitly matching for /32 or /128. However having /32 makes it incorrect for IPv6.",
+      "range": {
+        "startLine": 157,
+        "startChar": 39,
+        "endLine": 157,
+        "endChar": 42
+      },
+      "revId": "67d6b8bb0b1bad5207540177cacd3e9f52b95678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
