@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4f1d8aa_38b6646f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-01T08:18:16Z",
+      "side": 1,
+      "message": "Thanks for all changes!\n\nLGTM, but please replace fmt.Errorf before submitions :)",
+      "revId": "938dbc05c250f4296f40b6218fd1c2cceaaa85cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c9d16d7_2c6bb4a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-01T08:18:16Z",
+      "side": 1,
+      "message": "optional: it can be part of \"if\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "938dbc05c250f4296f40b6218fd1c2cceaaa85cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd997f6f_7137d220",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-01T08:18:16Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 46
+      },
+      "revId": "938dbc05c250f4296f40b6218fd1c2cceaaa85cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e833dd65_f8cb9c2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-01T08:18:16Z",
+      "side": 1,
+      "message": "nit: looks like you forgot to replace it by errors.Errorf",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "938dbc05c250f4296f40b6218fd1c2cceaaa85cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
