@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62bad759_c5b25456",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-01T05:32:40Z",
+      "side": 1,
+      "message": "nit: I think it might be nice to have crbug.com/408370 noted somewhere as this test means to test the specific behavior/bug. Otherwise it\u0027ll be hard to trace back the history after the Autotest test counterpart is removed.",
+      "revId": "d12397efe4545f64ae7a6478f0809631422fbf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa591e4b_5ae2287c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-01T05:32:40Z",
+      "side": 1,
+      "message": "nit: I think this is not really \"retry\". Maybe \"numRounds\"?",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 10
+      },
+      "revId": "d12397efe4545f64ae7a6478f0809631422fbf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab897ec0_2f0041d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-01T05:32:40Z",
+      "side": 1,
+      "message": "This does not seem correct. Shouldn\u0027t this be the MAC of DUT? (And then one more question follows: it is necessary to specify BSSID?)",
+      "range": {
+        "startLine": 158,
+        "startChar": 42,
+        "endLine": 158,
+        "endChar": 47
+      },
+      "revId": "d12397efe4545f64ae7a6478f0809631422fbf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
