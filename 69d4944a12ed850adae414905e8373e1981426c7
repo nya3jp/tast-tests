@@ -87,6 +87,24 @@
       "revId": "69d4944a12ed850adae414905e8373e1981426c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fbca438_7f5976a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-01T01:53:28Z",
+      "side": 1,
+      "message": "That\u0027s quite the difference! Maybe we should think about having a separate test for power, just like we have for decoding?",
+      "parentUuid": "f86b1a8d_14c5ec25",
+      "revId": "69d4944a12ed850adae414905e8373e1981426c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
