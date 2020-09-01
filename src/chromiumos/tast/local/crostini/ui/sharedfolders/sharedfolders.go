@@ -116,7 +116,7 @@ func (scd *ShareConfirmDialog) ClickOK(ctx context.Context, tconn *chrome.TestCo
 	if err := scd.okButton.LeftClick(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to click OK")
 	}
-	return FindShareToastNotification(ctx, tconn)
+	return FindToast(ctx, tconn)
 }
 
 // ClickCancel clicks Cancel on the confirm dialog.
@@ -126,7 +126,7 @@ func (scd *ShareConfirmDialog) ClickCancel(ctx context.Context, tconn *chrome.Te
 	}
 
 	// Make sure that there is no sharing toast notification.
-	toast, err := FindShareToastNotification(ctx, tconn)
+	toast, err := FindToast(ctx, tconn)
 	if err == nil {
 		defer toast.Release(ctx)
 		return errors.New("toast notification is displayed unexpectedly after clicking button Cancel")
@@ -142,8 +142,8 @@ func (scd *ShareConfirmDialog) Release(ctx context.Context) {
 	scd.dialogNode.Release(ctx)
 }
 
-// FindShareToastNotification finds the share toast notification and checks its content.
-func FindShareToastNotification(ctx context.Context, tconn *chrome.TestConn) (toast *ShareToastNotification, err error) {
+// FindToast finds the share toast notification and checks its content.
+func FindToast(ctx context.Context, tconn *chrome.TestConn) (toast *ShareToastNotification, err error) {
 	// Find the toast notification, message and button Manage.
 	toastNd, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "container", Role: ui.RoleTypeAlert}, uiTimeout)
 	if err != nil {
@@ -190,8 +190,9 @@ func NewSharedFolders() *SharedFolders {
 	return &SharedFolders{Folders: make(map[string]struct{})}
 }
 
-// ShareMyFiles tests sharing My files.
-func (sf *SharedFolders) ShareMyFiles(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp, msg string) (scd *ShareConfirmDialog, err error) {
+// ShareMyFiles clicks "Share with Linux" on My files.
+// It returns an instance of the confirm dialog.
+func (sf *SharedFolders) ShareMyFiles(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp) (scd *ShareConfirmDialog, err error) {
 	if _, ok := sf.Folders[MyFiles]; ok {
 		return nil, errors.New("My files has already been shared with Linux")
 	}
@@ -201,7 +202,28 @@ func (sf *SharedFolders) ShareMyFiles(ctx context.Context, tconn *chrome.TestCon
 		return nil, errors.Wrapf(err, "failed to click %q on My files ", ShareWithLinux)
 	}
 
-	return findShareConfirmDialog(ctx, tconn, msg)
+	return findShareConfirmDialog(ctx, tconn, MyFilesMsg)
+}
+
+// ShareMyFilesOK shares My files and clicks OK on the confirm dialog.
+func (sf *SharedFolders) ShareMyFilesOK(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp) error {
+	// Share My files, click OK on the confirm dialog, click Manage on the toast nofication.
+	scd, err := sf.ShareMyFiles(ctx, tconn, filesApp)
+	if err != nil {
+		return errors.Wrap(err, "failed to share My files")
+	}
+	defer scd.Release(ctx)
+
+	// Click button OK.
+	toast, err := scd.ClickOK(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to click button OK on share confirm dialog")
+	}
+	defer toast.Release(ctx)
+
+	sf.AddFolder(MyFiles)
+
+	return nil
 }
 
 // ShareDriveOK shares Google Drive with Crostini and clicks OK button on the confirmation dialog.
@@ -229,26 +251,6 @@ func (sf *SharedFolders) ShareDriveOK(ctx context.Context, filesApp *filesapp.Fi
 	defer toast.Release(ctx)
 
 	sf.AddFolder(SharedDrive)
-
-	return nil
-}
-
-// ShareMyFilesOK shares My files and clicks OK button on the confirm dialog.
-func (sf *SharedFolders) ShareMyFilesOK(ctx context.Context, filesApp *filesapp.FilesApp, tconn *chrome.TestConn) error {
-	// Share My files, click OK on the confirm dialog.
-	scd, err := sf.ShareMyFiles(ctx, tconn, filesApp, MyFilesMsg)
-	if err != nil {
-		return errors.Wrap(err, "failed to share My files")
-	}
-	defer scd.Release(ctx)
-
-	// Click button OK.
-	toast, err := scd.ClickOK(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to click button OK on share confirm dialog")
-	}
-	defer toast.Release(ctx)
-	sf.AddFolder(MyFiles)
 
 	return nil
 }

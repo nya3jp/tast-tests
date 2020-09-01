@@ -75,7 +75,7 @@ func ShareFilesManage(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := sharedFolders.ShareMyFilesOK(ctx, filesApp, tconn); err != nil {
+	if err := sharedFolders.ShareMyFilesOK(ctx, tconn, filesApp); err != nil {
 		s.Fatal("Failed to share My files: ", err)
 	}
 
