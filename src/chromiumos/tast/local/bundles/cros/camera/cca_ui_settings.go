@@ -11,7 +11,7 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -24,18 +24,20 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          testutil.NewPrecondition(testutil.ChromeConfig{}),
 	})
 }
 
 func CCAUISettings(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-
+	p := s.PreValue().(testutil.PreData)
+	cr := p.Chrome
+	tb := p.TestBridge
+	isSWA := p.Config.InstallSWA
 	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, isSWA)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
