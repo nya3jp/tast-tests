@@ -65,6 +65,29 @@
     },
     {
       "key": {
+        "uuid": "f079c66b_7f1b04ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-01T08:37:39Z",
+      "side": 1,
+      "message": "err",
+      "range": {
+        "startLine": 61,
+        "startChar": 62,
+        "endLine": 61,
+        "endChar": 93
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36a00631_436a72ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
         "patchSetId": 3
@@ -173,6 +196,29 @@
         "startChar": 2,
         "endLine": 455,
         "endChar": 3
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "745de5fe_0f52a0e7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-01T08:37:39Z",
+      "side": 1,
+      "message": "From my experiment to increase and decrease slider by keyboard have the step value\u003d10, e.g. gain\u003d50 --\u003e IncreaseSlider --\u003e gain\u003d60.\n\nIs this step value guaranteed to be fixed in all versions of Chrome?",
+      "range": {
+        "startLine": 466,
+        "startChar": 5,
+        "endLine": 466,
+        "endChar": 19
       },
       "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
