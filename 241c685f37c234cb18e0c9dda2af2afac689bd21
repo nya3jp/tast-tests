@@ -311,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "f11bb760_e1cd3e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-01T16:05:27Z",
+      "side": 1,
+      "message": "Thanks. I think the key of deanliao@\u0027s comment is somewhat different.\nWrapping the function by another closure does not look the scope.",
+      "parentUuid": "f3a41b9e_8dc7677c",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 127,
+        "endChar": 7
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "909e5639_678e839b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 14
@@ -499,6 +523,30 @@
     },
     {
       "key": {
+        "uuid": "a96be135_218fe225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-01T16:05:27Z",
+      "side": 1,
+      "message": "Sorry for unclear comment. I meant the order of args.",
+      "parentUuid": "a529f4a7_8d114c1a",
+      "range": {
+        "startLine": 160,
+        "startChar": 17,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c25f118f_75d41c3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 14
@@ -569,6 +617,30 @@
       "side": 1,
       "message": "I don\u0027t have a good explanation for this.\n\nIIUC, to do setprop, adb needs to be run from root. \n(from https://stackoverflow.com/questions/48329514/setprop-ro-product-model-not-working)\nSo if we use Command, I think we would need to do ` adb root` , first.\n\n(also all of the other setprop commands in tast repo, seem to use BootstrapCommand).\n\nLet me know what suggestions you have to approach this.",
       "parentUuid": "af212d7e_50b3bb0d",
+      "range": {
+        "startLine": 165,
+        "startChar": 15,
+        "endLine": 165,
+        "endChar": 31
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dc4a315_e80df3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-01T16:05:27Z",
+      "side": 1,
+      "message": "Oh, I see. It\u0027s for setprop. Makes sense.",
+      "parentUuid": "7a2c447e_270d0728",
       "range": {
         "startLine": 165,
         "startChar": 15,
@@ -786,6 +858,24 @@
       "side": 1,
       "message": "hm similar to WaitForBlackPixelCount in perappdensity.go. We need sometime for the updated screen state to occur. So I think we need some polling, somewhere.\n\nHowever, in this instance, we don\u0027t have baseline for what the defaultPixelCount should be. That was the intention of using \"once pixel count stops changing\".\n\nlet me know if you have suggestions on how to approach this.",
       "parentUuid": "a7f7fa4d_6c07b227",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d1d29b2_dcd6a271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-01T16:05:27Z",
+      "side": 1,
+      "message": "(Let me jump in, too).\n\nI may not fully understand your situation. Are you trying to:\n1) Waiting for the stabilization of # of black pixels? Or\n2) Waiting for the change of # of black pixels, and it becomes stable?\n\nIf former, you can check some consecutive frames.\nif latter, first, you can record the initial # of black pixels, trigger some event to change the pixels, and wait for the stabilization at the value different from initial one.",
+      "parentUuid": "bae83bad_945a5873",
       "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
