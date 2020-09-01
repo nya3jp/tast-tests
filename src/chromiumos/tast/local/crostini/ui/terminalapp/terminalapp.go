@@ -172,3 +172,15 @@ func (ta *TerminalApp) Exit(ctx context.Context, keyboard *input.KeyboardEventWr
 	// Wait for window to close.
 	return ui.WaitUntilGone(ctx, ta.tconn, ui.FindParams{Name: ta.Root.Name, Role: ta.Root.Role, ClassName: ta.Root.ClassName}, time.Minute)
 }
+
+// Close closes the Terminal App through clicking Close on shelf context menu.
+func (ta *TerminalApp) Close(ctx context.Context) error {
+	defer ta.Root.Release(ctx)
+
+	if err := ta.clickShelfMenuItem(ctx, "Close"); err != nil {
+		return errors.Wrap(err, "failed to close crostini")
+	}
+
+	// Wait for window to close.
+	return ui.WaitUntilGone(ctx, ta.tconn, ui.FindParams{Name: ta.Root.Name, Role: ta.Root.Role, ClassName: ta.Root.ClassName}, time.Minute)
+}
