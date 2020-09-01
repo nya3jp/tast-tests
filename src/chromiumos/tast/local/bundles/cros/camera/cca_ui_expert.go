@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -22,18 +21,19 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "arc_camera3", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          cca.NewPrecondition(cca.ChromeConfig{}),
 	})
 }
 
 func CCAUIExpert(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	env := s.PreValue().(*cca.TestEnvironment)
+	cr := env.Chrome
 
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, env, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}

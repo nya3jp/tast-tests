@@ -8,15 +8,10 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
-
-type ccaUISmokeParams struct {
-	useFakeDeviceInChrome bool
-}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -29,20 +24,42 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "real",
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
-			Pre:               chrome.LoggedIn(),
-			Val:               ccaUISmokeParams{},
+			Pre:               cca.NewPrecondition(cca.ChromeConfig{}),
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
-			Pre:               chrome.LoggedIn(),
-			Val:               ccaUISmokeParams{},
+			Pre:               cca.NewPrecondition(cca.ChromeConfig{}),
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "fake",
-			Val: ccaUISmokeParams{
-				useFakeDeviceInChrome: true,
-			},
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				UseFakeCamera: true,
+			}),
+			// TODO(crbug.com/1050732): Remove this once the unknown crash on
+			// scarlet is resolved.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("scarlet")),
+		}, {
+			Name:              "real_swa",
+			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				InstallSWA: true,
+			}),
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name:              "vivid_swa",
+			ExtraSoftwareDeps: []string{caps.VividCamera},
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				InstallSWA: true,
+			}),
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name: "fake_swa",
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				UseFakeCamera: true,
+				InstallSWA:    true,
+			}),
+			ExtraAttr: []string{"informational"},
 			// TODO(crbug.com/1050732): Remove this once the unknown crash on
 			// scarlet is resolved.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("scarlet")),
@@ -51,28 +68,14 @@ func init() {
 }
 
 func CCAUISmoke(ctx context.Context, s *testing.State) {
-	var cr *chrome.Chrome
-
-	if s.Param().(ccaUISmokeParams).useFakeDeviceInChrome {
-		var err error
-		cr, err = chrome.New(ctx, chrome.ExtraArgs(
-			"--use-fake-ui-for-media-stream",
-			// The default fps of fake device is 20, but CCA requires fps >= 24.
-			// Set the fps to 30 to avoid OverconstrainedError.
-			"--use-fake-device-for-media-stream=fps=30"))
-		if err != nil {
-			s.Fatal("Failed to open chrome: ", err)
-		}
-		defer cr.Close(ctx)
-	} else {
-		cr = s.PreValue().(*chrome.Chrome)
-	}
+	env := s.PreValue().(*cca.TestEnvironment)
+	cr := env.Chrome
 
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, env, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}

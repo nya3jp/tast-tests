@@ -26,7 +26,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera, "tablet_mode"},
 		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          cca.NewPrecondition(cca.ChromeConfig{}),
 	})
 }
 
@@ -111,7 +111,8 @@ func (vh *volumeHelper) verifyVolumeChanged(ctx context.Context, doChange func()
 }
 
 func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	env := s.PreValue().(*cca.TestEnvironment)
+	cr := env.Chrome
 
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
@@ -142,7 +143,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, env, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
