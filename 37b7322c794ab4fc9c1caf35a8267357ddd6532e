@@ -16,6 +16,23 @@
       "revId": "37b7322c794ab4fc9c1caf35a8267357ddd6532e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c0ff607_2accebca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-01T18:05:01Z",
+      "side": 1,
+      "message": "+2\n\nnote: as the commit description mentions there are a few red in the test history, but they seem infra-related with the exception of this one:\nhttps://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-4e4e70c67c0d0d10/autoserv_test/tast/results/tests/arc.KeyCharacterMap/\n\nwhich doesn\u0027t look an infra issue. It looks more like a reliability issue in Tast I guess.\nIt only appeared once, so +2.\nBut let\u0027s keep a close look at this... ",
+      "revId": "37b7322c794ab4fc9c1caf35a8267357ddd6532e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
