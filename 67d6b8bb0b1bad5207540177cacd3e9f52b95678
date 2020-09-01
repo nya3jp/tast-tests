@@ -16,6 +16,24 @@
       "revId": "67d6b8bb0b1bad5207540177cacd3e9f52b95678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ac7ebd_c73fdefd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/pin_print_lexmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-01T16:37:21Z",
+      "side": 0,
+      "message": "I think this is fallout from last night\u0027s cups 2.3 uprev.  Once we see that revert go through, I\u0027ll confirm.",
+      "parentUuid": "017b6d98_0eaf872e",
+      "revId": "67d6b8bb0b1bad5207540177cacd3e9f52b95678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
