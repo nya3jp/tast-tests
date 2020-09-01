@@ -10,6 +10,7 @@ import (
 	"context"
 	"image"
 	"image/color"
+	"image/png"
 	"io/ioutil"
 	"os"
 
@@ -91,4 +92,17 @@ func GrabScreenshot(ctx context.Context, cr *chrome.Chrome) (image.Image, error)
 		return nil, errors.Wrap(err, "error decoding image file")
 	}
 	return img, nil
+}
+
+// DumpImageToPNG saves the image to path.
+func DumpImageToPNG(ctx context.Context, image *image.Image, path string) error {
+	fd, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer fd.Close()
+	if err := png.Encode(fd, *image); err != nil {
+		return err
+	}
+	return nil
 }
