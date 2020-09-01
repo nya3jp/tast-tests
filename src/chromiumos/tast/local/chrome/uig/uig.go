@@ -24,6 +24,7 @@ package uig
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"strings"
 	"time"
 
@@ -414,5 +415,43 @@ func Do(ctx context.Context, tconn *chrome.TestConn, graphs ...*Action) error {
 		return err
 	}
 	node.release(ctx)
+	return nil
+}
+
+// PageObject creates an Action for each field in the structure.
+func PageObject(pg interface{}) error {
+	v := reflect.ValueOf(pg).Elem()
+	for i := 0; i < v.NumField(); i++ {
+		fieldStruct := v.Type().Field(i)
+		fieldValue := v.FieldByName(fieldStruct.Name)
+		if fieldValue.IsValid() && fieldValue.CanSet() && fieldStruct.Type == reflect.TypeOf(&Action{}) {
+			params := ui.FindParams{}
+
+			// Find tag name.
+			if name, ok := fieldStruct.Tag.Lookup("name"); ok {
+				if name == "" {
+					return errors.Errorf("'name' should not be empty in the tag of %s", fieldStruct.Name)
+				}
+				params.Name = name
+			} else {
+				return errors.Errorf("failed to find 'name' in the tag of %s", fieldStruct.Name)
+			}
+
+			// Find tag role.
+			if role, ok := fieldStruct.Tag.Lookup("role"); ok {
+				if role == "" {
+					return errors.Errorf("'role' should not be empty in the tag of %s", fieldStruct.Name)
+				}
+				params.Role = ui.RoleType(role)
+			} else {
+				return errors.Errorf("failed to find 'role' in the tag of %s", fieldStruct.Name)
+			}
+
+			// Set the field value.
+			fieldValue.Set(reflect.ValueOf(FindWithTimeout(params, 15*time.Second)))
+		} else {
+			return errors.Errorf("the field %s is invalid", fieldStruct.Name)
+		}
+	}
 	return nil
 }
