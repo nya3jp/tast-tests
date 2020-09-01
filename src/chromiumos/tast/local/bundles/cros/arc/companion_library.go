@@ -77,10 +77,11 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	const (
 		apk = "ArcCompanionLibDemo.apk"
 
-		mainActivity   = ".MainActivity"
-		resizeActivity = ".MoveResizeActivity"
-		shadowActivity = ".ShadowActivity"
-		wallpaper      = "white_wallpaper.jpg"
+		mainActivity            = ".MainActivity"
+		resizeActivity          = ".MoveResizeActivity"
+		shadowActivity          = ".ShadowActivity"
+		unresizableMainActivity = ".UnresizableMainActivity"
+		wallpaper               = "white_wallpaper.jpg"
 	)
 
 	cr := s.PreValue().(arc.PreData).Chrome
@@ -134,6 +135,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Device Mode", mainActivity, testDeviceMode},
 		{"Caption Height", mainActivity, testCaptionHeight},
 		{"Window Bound", mainActivity, testWindowBounds},
+		{"Window Bound for Unresizable Activity", unresizableMainActivity, testWindowBounds},
 		{"Maximize App-controlled Window", mainActivity, testMaximize},
 		{"Always on Top Window State", mainActivity, testAlwaysOnTop},
 		{"Popup Window", mainActivity, testPopupWindow},
@@ -1156,6 +1158,11 @@ func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 		return err
 	}
 
+	initAshWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, companionLibDemoPkg)
+	if err != nil {
+		return err
+	}
+
 	initBounds, err := act.WindowBounds(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get window bounds")
@@ -1186,14 +1193,38 @@ func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 			return errors.Wrap(err, "failed to setting window bound")
 		}
 
+		// Because the conversion of DP to PX, we should be lenient with the epsilon.
+		const epsilon = 2
+
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			w, err := ash.GetARCAppWindowInfo(ctx, tconn, companionLibDemoPkg)
+			if err != nil {
+				return err
+			}
+
+			chromeBounds := coords.ConvertBoundsFromDPToPX(w.BoundsInRoot, dispMode.DeviceScaleFactor)
+			chromeBounds.Top += captionHeight
+			chromeBounds.Height -= captionHeight
+			if !isSimilarRect(chromeBounds, test.expectedBound, epsilon) {
+				return errors.Errorf("Chrome bounds are different: got %v, want %v", chromeBounds, test.expectedBound)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed to wait for window bound change")
+		}
+
 		bound, err := windowBounds(ctx, d)
 		if err != nil {
 			return errors.Wrap(err, "failed to get window bound from UI message")
 		}
-		// Because the conversion of DP to PX, we should be lenient with the epsilon.
-		const epsilon = 2
 		if !isSimilarRect(coords.Rect(bound), coords.Rect(test.expectedBound), epsilon) {
 			return errors.Errorf("wrong window bound, set %v: got %v, want %v", test.settingBound, bound, test.expectedBound)
+		}
+
+		if ashWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, companionLibDemoPkg); err != nil {
+			return errors.Wrap(err, "failed to get window info")
+		} else if ashWindow.CanResize != initAshWindow.CanResize {
+			return errors.Errorf("unexpectedly changed window resizeability: got %t, want %t", ashWindow.CanResize, initAshWindow.CanResize)
 		}
 	}
 	return nil
