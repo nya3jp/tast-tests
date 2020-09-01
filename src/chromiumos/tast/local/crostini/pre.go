@@ -45,6 +45,7 @@ var UnstableModels = []string{
 	// Platform celes
 	"celes",
 	// Platform coral
+	"astronaut",
 	"blacktip360",
 	"blacktiplte",
 	"bruce",
@@ -97,6 +98,10 @@ var UnstableModels = []string{
 	"sparky",
 	"vorticon",
 	"vortininja",
+	// Platform reef
+	"electro",
+	// Platform reks
+	"reks",
 	// Platform relm
 	"relm",
 	// Platform sarien
