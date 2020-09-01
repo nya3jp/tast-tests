@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d6dc183_a04ae3b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-01T05:34:53Z",
+      "side": 1,
+      "message": "Thank you for update and sorry for delay.",
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a49adac_92a8f714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-01T05:34:53Z",
+      "side": 1,
+      "message": "please add desc how this used. I spent bit a while to get understanding ... 😊",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83554677_017f9876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-01T05:34:53Z",
+      "side": 1,
+      "message": "Looks like this works in this particular case, when we wrap 3 fs tests into 1. However it might not work for example if we want to do the same trick with others. For example we might want to combine OpenGL and Vulkan.\n\nAs alternative could you please consider adding concept of group?\nIf group is not defined, this should got to geom mean as is. Otherwise results are in group are combined and passed to geom mean computation.\n\nWDYT?",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1566cd5_67c89a3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-01T05:34:53Z",
+      "side": 1,
+      "message": "can we grow array on demand as needed. Then L168 should go away.\nWTYT?",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189439e8_32d03a54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-01T05:34:53Z",
+      "side": 1,
+      "message": "nit: this should be error or fatal.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
