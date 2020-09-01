@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e959dcc5_71270e21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-01T10:34:28Z",
+      "side": 1,
+      "message": "Just curious, is \"hierarchical geometric mean\" a well-known concept? I can\u0027t find a good resources in the wild....",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d6dc183_a04ae3b2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -42,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "15f8bd3d_f8231c51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-01T10:34:28Z",
+      "side": 1,
+      "message": "+1, especially about \"priority\".",
+      "parentUuid": "1a49adac_92a8f714",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83554677_017f9876",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
         "patchSetId": 5
@@ -58,6 +105,29 @@
         "startChar": 12,
         "endLine": 107,
         "endChar": 13
+      },
+      "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f9de8c5_0c28d721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-01T10:34:28Z",
+      "side": 1,
+      "message": "I think it\u0027s more intuitive to use an array instead of a map because elements are ordered.\n\n scoresList :\u003d make([]float64, 2)\n\nPlease note that nil is a valid and preferred empty slice.\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 11
       },
       "revId": "679e89ec232df5c5acfba5ddc9362ee5073ea63e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
