@@ -65,12 +65,21 @@ func (ta *TerminalApp) waitForPrompt(ctx context.Context, userName string) error
 }
 
 // clickShelfMenuItem shuts down crostini by right clicking on the terminal app shelf icon.
-func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemName string) error {
+func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemName string) (retErr error) {
 	revert, err := ash.EnsureTabletModeEnabled(ctx, ta.tconn, false)
 	if err != nil {
 		return errors.Wrap(err, "Unable to switch out of tablet mode")
 	}
-	defer revert(ctx)
+	defer func() {
+		revert(ctx)
+		if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
+			retErr = errors.Wrap(err, "error waiting for tablet mode reversion transition to complete")
+		}
+	}()
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
+		return errors.Wrap(err, "error waiting for transition out of tablet mode to complete")
+	}
 
 	shutdown := uig.Steps(
 		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Terminal"}, uiTimeout).RightClick(),
