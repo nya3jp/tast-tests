@@ -98,8 +98,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 		addArgs   []interface{} // Arguments for add method
 		delMethod string        // Method to remove requested firewall rule
 		delArgs   []interface{} // Arguments for delete method
-		rule      string        // iptables rule created
-		delRule   string        // iptables command to delete created rule
+		rule      []string      // iptables rule created
 		cmds      []string      // Executable paths of firewall
 	}
 
@@ -109,8 +108,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			addArgs:   []interface{}{uint16(accessPort), "", dbus.UnixFD(tcpAccessR.Fd())},
 			delMethod: "ReleaseTcpPort",
 			delArgs:   []interface{}{uint16(accessPort), ""},
-			rule:      "-A INPUT -p tcp -m tcp --dport " + strconv.Itoa(accessPort) + " -j ACCEPT",
-			delRule:   "-D INPUT -p tcp -m tcp --dport " + strconv.Itoa(accessPort) + " -j ACCEPT",
+			rule:      []string{"INPUT", "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
 		testCase{
@@ -118,8 +116,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			addArgs:   []interface{}{uint16(accessPort), iface, dbus.UnixFD(tcpIfaceAccessR.Fd())},
 			delMethod: "ReleaseTcpPort",
 			delArgs:   []interface{}{uint16(accessPort), iface},
-			rule:      "-A INPUT -i " + iface + " -p tcp -m tcp --dport " + strconv.Itoa(accessPort) + " -j ACCEPT",
-			delRule:   "-D INPUT -i " + iface + " -p tcp -m tcp --dport " + strconv.Itoa(accessPort) + " -j ACCEPT",
+			rule:      []string{"INPUT", "-i", iface, "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
 		testCase{
@@ -127,8 +124,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			addArgs:   []interface{}{uint16(forwardPort), iface, ip, uint16(forwardPort), dbus.UnixFD(tcpForwardR.Fd())},
 			delMethod: "ReleaseTcpPortForward",
 			delArgs:   []interface{}{uint16(forwardPort), iface},
-			rule:      "-A FORWARD -d " + ip + "/32 -i " + iface + " -p tcp -m tcp --dport " + strconv.Itoa(forwardPort) + " -j ACCEPT",
-			delRule:   "-D FORWARD -d " + ip + "/32 -i " + iface + " -p tcp -m tcp --dport " + strconv.Itoa(forwardPort) + " -j ACCEPT",
+			rule:      []string{"FORWARD", "-d", ip, "-i", iface, "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(forwardPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd},
 		},
 		testCase{
@@ -136,8 +132,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			addArgs:   []interface{}{uint16(accessPort), "", dbus.UnixFD(udpAccessR.Fd())},
 			delMethod: "ReleaseUdpPort",
 			delArgs:   []interface{}{uint16(accessPort), ""},
-			rule:      "-A INPUT -p udp -m udp --dport " + strconv.Itoa(accessPort) + " -j ACCEPT",
-			delRule:   "-D INPUT -p udp -m udp --dport " + strconv.Itoa(accessPort) + " -j ACCEPT",
+			rule:      []string{"INPUT", "-p", "udp", "-m", "udp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
 		testCase{
@@ -145,8 +140,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			addArgs:   []interface{}{uint16(accessPort), iface, dbus.UnixFD(udpIfaceAccessR.Fd())},
 			delMethod: "ReleaseUdpPort",
 			delArgs:   []interface{}{uint16(accessPort), iface},
-			rule:      "-A INPUT -i " + iface + " -p udp -m udp --dport " + strconv.Itoa(accessPort) + " -j ACCEPT",
-			delRule:   "-D INPUT -i " + iface + " -p udp -m udp --dport " + strconv.Itoa(accessPort) + " -j ACCEPT",
+			rule:      []string{"INPUT", "-i", iface, "-p", "udp", "-m", "udp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
 		testCase{
@@ -154,8 +148,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			addArgs:   []interface{}{uint16(forwardPort), iface, ip, uint16(forwardPort), dbus.UnixFD(udpForwardR.Fd())},
 			delMethod: "ReleaseUdpPortForward",
 			delArgs:   []interface{}{uint16(forwardPort), iface},
-			rule:      "-A FORWARD -d " + ip + "/32 -i " + iface + " -p udp -m udp --dport " + strconv.Itoa(forwardPort) + " -j ACCEPT",
-			delRule:   "-D FORWARD -d " + ip + "/32 -i " + iface + " -p udp -m udp --dport " + strconv.Itoa(forwardPort) + " -j ACCEPT",
+			rule:      []string{"FORWARD", "-d", ip, "-i", iface, "-p", "udp", "-m", "udp", "--dport", strconv.Itoa(forwardPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd},
 		},
 	}
@@ -164,7 +157,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 	defer func() {
 		for _, tc := range testCases {
 			for _, cmd := range tc.cmds {
-				testexec.CommandContext(ctx, cmd, tc.delRule)
+				testexec.CommandContext(ctx, cmd, append([]string{"-D"}, tc.rule...)...).Run()
 			}
 		}
 	}()
@@ -174,41 +167,11 @@ func Firewall(ctx context.Context, s *testing.State) {
 		call(tc.addMethod, tc.addArgs...)
 	}
 
-	// List all active iptables rules.
-	iptablesRules := func(cmd string) []string {
-		out, err := testexec.CommandContext(ctx, cmd, "-S").Output()
-		if err != nil {
-			s.Fatalf("Failed to get iptables rules with %s: %v", cmd, err)
-		}
-		return strings.Split(strings.TrimSpace(string(out)), "\n")
-	}
-
-	// Test whether we expect a query to be found in rules.
-	check := func(query string, rules []string, expected bool, errMsg string) {
-		found := false
-		for _, rule := range rules {
-			if rule == query {
-				found = true
-				break
-			}
-		}
-		if found != expected {
-			s.Error(errMsg)
-		}
-	}
-
-	// Get both IPv4 and IPv6 iptables rules.
-	rules := iptablesRules(iptablesCmd)
-	rules6 := iptablesRules(ip6tablesCmd)
-
 	// Check the result of called DBus APIs by comparing it with iptables active rules.
 	for _, tc := range testCases {
 		for _, cmd := range tc.cmds {
-			if cmd == iptablesCmd {
-				check(tc.rule, rules, true, tc.addMethod+" failed to add IPv4 rule \""+tc.rule+"\"")
-			}
-			if cmd == ip6tablesCmd {
-				check(tc.rule, rules6, true, tc.addMethod+" failed to add IPv6 rule \""+tc.rule+"\"")
+			if err := testexec.CommandContext(ctx, cmd, append([]string{"-C"}, tc.rule...)...).Run(); err != nil {
+				s.Error(tc.addMethod + " failed to add " + cmd + " rule \"" + strings.Join(tc.rule, " ") + "\"")
 			}
 		}
 	}
@@ -218,18 +181,11 @@ func Firewall(ctx context.Context, s *testing.State) {
 		call(tc.delMethod, tc.delArgs...)
 	}
 
-	// Get both IPv4 and IPv6 iptables rules.
-	rules = iptablesRules(iptablesCmd)
-	rules6 = iptablesRules(ip6tablesCmd)
-
 	// Check if the created iptables rules is successfully removed by the DBus API calls.
 	for _, tc := range testCases {
 		for _, cmd := range tc.cmds {
-			if cmd == iptablesCmd {
-				check(tc.rule, rules, false, tc.delMethod+" failed to remove IPv4 rule \""+tc.rule+"\"")
-			}
-			if cmd == ip6tablesCmd {
-				check(tc.rule, rules6, false, tc.delMethod+" failed to remove IPv6 rule \""+tc.rule+"\"")
+			if err := testexec.CommandContext(ctx, cmd, append([]string{"-C"}, tc.rule...)...).Run(); err == nil {
+				s.Error(tc.addMethod + " failed to remove " + cmd + " rule \"" + strings.Join(tc.rule, " ") + "\"")
 			}
 		}
 	}
