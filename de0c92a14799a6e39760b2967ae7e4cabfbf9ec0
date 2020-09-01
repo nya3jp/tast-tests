@@ -33,6 +33,24 @@
       "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dda19e77_7410a528",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-01T00:47:54Z",
+      "side": 1,
+      "message": "Hi Kyle, thanks for doing this. I am already aware of the crash issue. Regarding to this test, that\u0027s more we want to add. \n1. Move the test into apps package.\n2. Parameterize the test with stable \u0026 unstable boards.\n3. Add checks on content rendering after launch (crash usually happens after launch. So app launch is not enough to detect crash issue I suppose).\n\nFor reference: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go\n\nWe have a bug http://b/166510008 to track this. Do you want to continue help finish this test or handover to me? Whatever look good to you.",
+      "parentUuid": "0242bf65_204258c9",
+      "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
