@@ -20,7 +20,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -33,21 +32,31 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "arc_camera3", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
 		// Default timeout (i.e. 2 minutes) is not enough for some devices to
 		// exercise all resolutions on all cameras.
 		Timeout: 5 * time.Minute,
+		Params: []testing.Param{{
+			Val: cca.ChromeConfig{},
+		}},
 	})
 }
 
 func CCAUIResolutions(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	chromeConfig := s.Param().(cca.ChromeConfig)
+	env, err := cca.SetupTestEnvironment(ctx, chromeConfig)
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer env.TearDown(ctx)
+
+	cr := env.Chrome
+	defer cr.Close(ctx)
 
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, env, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}

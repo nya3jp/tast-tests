@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -28,8 +27,10 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Val: cca.ChromeConfig{},
+		}},
 	})
 }
 
@@ -37,7 +38,15 @@ func init() {
 const durationTolerance = 300 * time.Millisecond
 
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	chromeConfig := s.Param().(cca.ChromeConfig)
+	env, err := cca.SetupTestEnvironment(ctx, chromeConfig)
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer env.TearDown(ctx)
+
+	cr := env.Chrome
+	defer cr.Close(ctx)
 
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
@@ -60,7 +69,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 			ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 			defer cancel()
 
-			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+			app, err := cca.New(ctx, env, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 			if err != nil {
 				s.Fatal("Failed to open CCA: ", err)
 			}
@@ -249,8 +258,7 @@ func stopRecordWithDuration(ctx context.Context, app *cca.App, startTime time.Ti
 	}
 
 	if duration > expected+durationTolerance || duration < expected-durationTolerance {
-		return errors.Errorf(
-			"incorrect result video duration get %v; want %v with tolerance %v",
+		return errors.Errorf("incorrect result video duration get %v; want %v with tolerance %v",
 			duration, expected, durationTolerance)
 	}
 	return nil
