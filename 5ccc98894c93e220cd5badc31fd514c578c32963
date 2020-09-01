@@ -570,6 +570,30 @@
     },
     {
       "key": {
+        "uuid": "aa833570_58b06ee1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-09-01T05:00:01Z",
+      "side": 1,
+      "message": "That\u0027s exactly what I was looking for, thank you.",
+      "parentUuid": "70f90401_01e500c0",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 141
+      },
+      "revId": "5ccc98894c93e220cd5badc31fd514c578c32963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a62f7120_e6b357dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 6
