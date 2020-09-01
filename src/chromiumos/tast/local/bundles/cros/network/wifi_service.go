@@ -1397,6 +1397,7 @@ func (s *WifiService) ProfileBasicTest(ctx context.Context, req *network.Profile
 	}); err != nil {
 		return nil, errors.Wrapf(err, "failed to pop profile %q and wait for isConnected", profileTopName)
 	}
+	return &empty.Empty{}, nil
 }
 
 // SetWifiStatus persistently enables/disables Wifi across reboots via shill.

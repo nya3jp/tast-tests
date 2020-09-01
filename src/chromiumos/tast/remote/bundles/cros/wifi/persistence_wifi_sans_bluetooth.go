@@ -52,9 +52,9 @@ func PersistenceWifiSansBluetooth(ctx context.Context, s *testing.State) {
 		}
 
 		// Reboot
-		if err := d.Reboot(ctx); err != nil {
-			s.Log("Reboot failed: ", err)
-		}
+		// if err := d.Reboot(ctx); err != nil {
+		// 	s.Log("Reboot failed: ", err)
+		// }
 	}(ctx)
 
 	// We wrap this section of the test in an inline function so that rpc connection
