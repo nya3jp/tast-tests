@@ -16,6 +16,23 @@
       "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0242bf65_204258c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-01T00:24:17Z",
+      "side": 1,
+      "message": "shengjun@ for some more context about this test, you can take a look at go/whats-new-stable-crash. We added this test in response to that, so we can make sure the What\u0027s New contents load correctly.",
+      "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
