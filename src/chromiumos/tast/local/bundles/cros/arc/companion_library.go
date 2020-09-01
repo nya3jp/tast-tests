@@ -280,7 +280,7 @@ func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Test
 		return errors.New("activity haven't enough space to show shadow")
 	}
 
-	imgWithShadow, err := screenshot.GrabScreenshot(ctx, cr)
+	imgWithShadow, err := screenshot.GrabScreenshot(ctx, cr, nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to grab screenshot")
 	}
@@ -305,7 +305,7 @@ func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Test
 		return errors.Wrap(err, "failed to hidden window shadow")
 	}
 
-	imgWithoutShadow, err := screenshot.GrabScreenshot(ctx, cr)
+	imgWithoutShadow, err := screenshot.GrabScreenshot(ctx, cr, nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to grab screenshot")
 	}
@@ -1471,7 +1471,7 @@ func setWallpaper(ctx context.Context, tconn *chrome.TestConn, wallpaperURL stri
 
 // getWindowCaptionScreenshot returns a screenshot image of window caption bar.
 func getWindowCaptionScreenshot(ctx context.Context, cr *chrome.Chrome, captionTopPX, captionLeftPX, captionHeightPX, captionWidthPX int) (image.Image, error) {
-	img, err := screenshot.GrabScreenshot(ctx, cr)
+	img, err := screenshot.GrabScreenshot(ctx, cr, nil)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to grab screenshot")
 	}

@@ -138,7 +138,7 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 		if err := testing.Sleep(ctx, 150*time.Millisecond); err != nil {
 			s.Fatal("Waiting for finished animation failed: ", err)
 		}
-		img, err := screenshot.GrabScreenshot(ctx, cr)
+		img, err := screenshot.GrabScreenshot(ctx, cr, nil)
 		if err != nil {
 			s.Fatal("Failed to grab screenshot: ", err)
 		}
@@ -163,7 +163,7 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 		if !colorcmp.ColorsMatch(sampleColor, expColor, colorMaxDiff) {
 			s.Logf("Color %v is not close enough to %v, repeating screenshot in case animation is not done", sampleColor, expColor)
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				img, err = screenshot.GrabScreenshot(ctx, cr)
+				img, err = screenshot.GrabScreenshot(ctx, cr, nil)
 				if err != nil {
 					s.Fatal("Failed to grab screenshot: ", err)
 				}
