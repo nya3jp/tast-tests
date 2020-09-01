@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6603ca42_6866dec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125794
+      },
+      "writtenOn": "2020-09-01T19:27:31Z",
+      "side": 1,
+      "message": "Tetsui, thanks a lot four the code hints! They are very useful, especially for the beginners in tast-testing like me ;)",
+      "parentUuid": "31d9a9fe_5b82ca5d",
+      "revId": "fa73cbbb88e5acdd3643f7282dac7c8667c7f64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1889f1a9_bb338780",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "fa73cbbb88e5acdd3643f7282dac7c8667c7f64f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17428298_4e2ac45a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1125794
+      },
+      "writtenOn": "2020-09-01T19:27:31Z",
+      "side": 1,
+      "message": "Actually this happens very often (I can see the notification) and as soon as Phonesky is disabled the notification is also removed.",
+      "parentUuid": "1889f1a9_bb338780",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "fa73cbbb88e5acdd3643f7282dac7c8667c7f64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
