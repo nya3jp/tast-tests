@@ -112,6 +112,9 @@ func (t *TestBridge) Reset(ctx context.Context) error {
 
 // TearDown tears down the connection of test bridge.
 func (t *TestBridge) TearDown(ctx context.Context) error {
-	t.bridge.Release(ctx)
+	if t.bridge != nil {
+		t.bridge.Release(ctx)
+		t.bridge = nil
+	}
 	return tearDownBridgePageConnection(ctx, t.cr, t.pageConn, t.isSWA)
 }
