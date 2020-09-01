@@ -51,6 +51,24 @@
       "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efac05cb_78c3bb86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-01T01:16:21Z",
+      "side": 1,
+      "message": "Thanks for the info Jun. I\u0027ll go ahead and move this to the apps package and add the stable/unstable parameters here. Regarding 3, there\u0027s a small check for content rendering at the end of the test (waiting for the page header text), but more definitely wouldn\u0027t hurt.\n\nCan I turn this test over to you for the remainder of b/166510008? I think you\u0027re in a better position to figure out some of the trickier seeming parts (making sure Explore is always in the suggestion chips, how to show the notification, etc).\n\nAlso, is \u0027Help app\u0027 the official name we\u0027re going with in the tests? Let me know and I\u0027ll make all the comments with the app name consistent.",
+      "parentUuid": "dda19e77_7410a528",
+      "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
