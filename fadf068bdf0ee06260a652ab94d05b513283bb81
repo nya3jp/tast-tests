@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "10294e8b_fb96343c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-09-01T23:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "205adb6b_20f4f0d2",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "347a19b0_cebea49a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
@@ -159,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "6bd5ff97_3b455295",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-09-01T23:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83bec7c5_b64a3579",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f4d25a6_6f59f8dc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
@@ -202,6 +244,54 @@
       "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bff303f_e56a409d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-09-01T23:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8224e88b_9faf11b9",
+      "range": {
+        "startLine": 53,
+        "startChar": 34,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8725038_9c96ea03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-09-01T23:14:27Z",
+      "side": 1,
+      "message": "Ack; per other discussion the perf metrics logging has been removed.",
+      "parentUuid": "7f4d25a6_6f59f8dc",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -252,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "d921e124_349091c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-09-01T23:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0180ee5_72f0fb04",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 107
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8611100a_f397a60b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
@@ -266,6 +380,24 @@
       "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76b9193c_e0c2e2bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-09-01T23:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8611100a_f397a60b",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -286,6 +418,24 @@
     },
     {
       "key": {
+        "uuid": "8dcbba4d_0592ee92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-09-01T23:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9983b75_6fd7ff3f",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "715e7028_8e47a571",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
@@ -300,6 +450,24 @@
       "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31bae5e2_41b576bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-09-01T23:14:27Z",
+      "side": 1,
+      "message": "I couldn\u0027t find a way of doing this via Shill, but I\u0027ve rewritten it using D-Bus.",
+      "parentUuid": "715e7028_8e47a571",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -374,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "d56cab01_bc949aa2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-09-01T23:14:27Z",
+      "side": 1,
+      "message": "I\u0027ve rewritten the code to use D-Bus via WifiService instead of wpa_cli.",
+      "parentUuid": "59cbe4bd_83e8fbb6",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 18
+      },
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21c3b33e_bef87f66",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
         "patchSetId": 2
@@ -388,6 +580,24 @@
       "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4792c54_0c025bf8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-09-01T23:14:27Z",
+      "side": 1,
+      "message": "Done, the RPC handler in wifi_service.go watches the PropertiesChanged signal to determine when reassociation is complete.",
+      "parentUuid": "21c3b33e_bef87f66",
+      "revId": "fadf068bdf0ee06260a652ab94d05b513283bb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
