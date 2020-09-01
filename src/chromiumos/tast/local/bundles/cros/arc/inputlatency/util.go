@@ -7,10 +7,13 @@ package inputlatency
 
 import (
 	"context"
+	"encoding/json"
 	"math"
 	"sort"
 	"strconv"
+	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/testing"
@@ -96,4 +99,77 @@ func WaitForEvents(ctx context.Context, d *ui.Device, count int) (string, error)
 		return "", err
 	}
 	return txt, nil
+}
+
+// WaitForClearUI clears the event data in ArcInputLatencyTest.apk to get ready for next event tracing.
+func WaitForClearUI(ctx context.Context, d *ui.Device) error {
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_DEL, 0x0); err != nil {
+		return err
+	}
+
+	// Check whether events are cleared.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		v := d.Object(ui.ID("org.chromium.arc.testapp.inputlatency:id/event_count"))
+		txt, err := v.GetText(ctx)
+		if err != nil {
+			return err
+		}
+		num, err := strconv.ParseInt(txt, 10, 64)
+		if err != nil {
+			return err
+		}
+		if num != 0 {
+			return errors.Errorf("failed to clean events; got %d, want 0", num)
+		}
+		return nil
+	}, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+// EvaluateLatency gets event data, calculates the latency, and adds the result to performance metrics.
+func EvaluateLatency(ctx context.Context, s *testing.State, d *ui.Device,
+	numEvents int, eventTimes *[]int64, perfName string, pv *perf.Values) error {
+	s.Log("Collecting results")
+	txt, err := WaitForEvents(ctx, d, numEvents)
+	if err != nil {
+		return errors.Wrap(err, "unable to wait for events")
+	}
+	var events []InputEvent
+	if err := json.Unmarshal([]byte(txt), &events); err != nil {
+		return errors.Wrap(err, "could not ummarshal events from app")
+	}
+
+	// Assign event RTC time.
+	for i := range events {
+		events[i].RTCEventTime = (*eventTimes)[i]
+	}
+
+	mean, median, stdDev, max, min := CalculateMetrics(events, func(i int) float64 {
+		return float64(events[i].Latency)
+	})
+	s.Logf("Latency: mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
+
+	rmean, rmedian, rstdDev, rmax, rmin := CalculateMetrics(events, func(i int) float64 {
+		return float64(events[i].RTCRecvTime - events[i].RTCEventTime)
+	})
+	s.Logf("RTC latency: mean %f median %f std %f max %f min %f", rmean, rmedian, rstdDev, rmax, rmin)
+
+	pv.Set(perf.Metric{
+		Name:      perfName,
+		Unit:      "milliseconds",
+		Direction: perf.SmallerIsBetter,
+	}, mean)
+	return nil
+}
+
+// WaitForNextEventTime generates next event time with specific time interval in millisecond.
+func WaitForNextEventTime(ctx context.Context, eventTimes *[]int64, ms time.Duration) error {
+	// Wait to generate next event time.
+	if err := testing.Sleep(ctx, ms*time.Millisecond); err != nil {
+		return errors.Wrap(err, "timeout while waiting to generate next event time")
+	}
+	*eventTimes = append(*eventTimes, time.Now().UnixNano()/1000000)
+	return nil
 }
