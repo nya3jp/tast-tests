@@ -12,13 +12,17 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+type config struct {
+	ChromeConfig cca.ChromeConfig
+	BatteryMode  setup.BatteryDischargeMode
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -31,35 +35,43 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Params: []testing.Param{{
 			Name:              "noarc",
-			Pre:               chrome.LoggedIn(),
+			Pre:               cca.NewPrecondition(cca.ChromeConfig{}),
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val:               setup.ForceBatteryDischarge,
 		}, {
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				ARCEnabled: true,
+			}),
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val:               setup.ForceBatteryDischarge,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.Booted(),
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				ARCEnabled: true,
+			}),
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val:               setup.ForceBatteryDischarge,
 		}, {
 			Name:              "noarc_nobatterymetrics",
-			Pre:               chrome.LoggedIn(),
+			Pre:               cca.NewPrecondition(cca.ChromeConfig{}),
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
 			Val:               setup.NoBatteryDischarge,
 		}, {
 			Name:              "nobatterymetrics",
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				ARCEnabled: true,
+			}),
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
 			Val:               setup.NoBatteryDischarge,
 		}, {
 			Name:              "vm_nobatterymetrics",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.Booted(),
+			Pre: cca.NewPrecondition(cca.ChromeConfig{
+				ARCEnabled: true,
+			}),
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
 			Val:               setup.NoBatteryDischarge,
 		}},
@@ -77,10 +89,23 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr, ok := s.PreValue().(*chrome.Chrome)
-	if !ok {
-		cr = s.PreValue().(arc.PreData).Chrome
+	env := s.PreValue().(*cca.TestEnvironment)
+	cr := env.Chrome
+
+	var a *arc.ARC
+	var err error
+	if env.Config.ARCEnabled {
+		a, err = arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start ARC: ", err)
+		}
 	}
+	closeARC := func(a *arc.ARC) {
+		if a != nil {
+			a.Close()
+		}
+	}
+	defer closeARC(a)
 
 	if err := cca.ClearSavedDir(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
@@ -130,13 +155,7 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Start Chrome Camera App (CCA).
-	app, err := cca.Init(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), func(tconn *chrome.TestConn) error {
-		if err := tconn.Call(ctx, nil, "chrome.management.launchApp", cca.ID); err != nil {
-			return err
-		}
-		return nil
-	})
-
+	app, err := cca.New(ctx, env, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
