@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41bfa2c0_7481ab2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-09-01T04:00:10Z",
+      "side": 1,
+      "message": "I\u0027ll defer to Hugo on this one.",
+      "revId": "f7130532af0f979c7be49fa74d0b7637e2fdf2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
