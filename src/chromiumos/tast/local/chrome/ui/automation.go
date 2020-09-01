@@ -198,6 +198,12 @@ func (n *Node) DoubleClick(ctx context.Context) error {
 	return n.mouseClick(ctx, doubleClick)
 }
 
+// DoDefault does the default action based on the node's role.
+// If the JavaScript fails to execute, an error is returned.
+func (n *Node) DoDefault(ctx context.Context) error {
+	return n.object.Call(ctx, nil, "function() {this.doDefault()}")
+}
+
 // clickType describes how user clicks mouse.
 type clickType int
 
