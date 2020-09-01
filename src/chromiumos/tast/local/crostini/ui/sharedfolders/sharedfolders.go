@@ -7,6 +7,7 @@ package sharedfolders
 
 import (
 	"context"
+	"reflect"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -190,8 +191,9 @@ func NewSharedFolders() *SharedFolders {
 	return &SharedFolders{Folders: make(map[string]struct{})}
 }
 
-// ShareMyFiles tests sharing My files.
-func (sf *SharedFolders) ShareMyFiles(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp, msg string) (scd *ShareConfirmDialog, err error) {
+// ShareMyFiles clicks "Share with Linux" on My files.
+// It returns an instance of the confirm dialog.
+func (sf *SharedFolders) ShareMyFiles(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp) (scd *ShareConfirmDialog, err error) {
 	if _, ok := sf.Folders[MyFiles]; ok {
 		return nil, errors.New("My files has already been shared with Linux")
 	}
@@ -201,7 +203,62 @@ func (sf *SharedFolders) ShareMyFiles(ctx context.Context, tconn *chrome.TestCon
 		return nil, errors.Wrapf(err, "failed to click %q on My files ", ShareWithLinux)
 	}
 
-	return findShareConfirmDialog(ctx, tconn, msg)
+	return findShareConfirmDialog(ctx, tconn, MyFilesMsg)
+}
+
+// ShareMyFilesOK shares My files and clicks OK on the confirm dialog.
+func (sf *SharedFolders) ShareMyFilesOK(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp) (*ShareToastNotification, error) {
+	// Share My files, click OK on the confirm dialog, click Manage on the toast nofication.
+	scd, err := sf.ShareMyFiles(ctx, tconn, filesApp)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to share My files")
+	}
+	defer scd.Release(ctx)
+
+	// Click button OK.
+	toast, err := scd.ClickOK(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to click button OK on share confirm dialog")
+	}
+	sf.AddFolder(MyFiles)
+
+	return toast, nil
+}
+
+// CheckShareMyFilesResults checks the results on Settings page and /mnt/chromes in Container after sharing My files.
+// Note that this only works when only My files is shared.
+// It starts from open the Settings app from beginning. It will closes the Settings app in the end.
+func (sf *SharedFolders) CheckShareMyFilesResults(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container) error {
+	// Check shared folders on the Settings app.
+	st, err := settings.OpenLinuxSettings(ctx, tconn, settings.ManageSharedFolders)
+	if err != nil {
+		return errors.Wrap(err, "failed to open Manage shared folders")
+	}
+	defer st.Close(ctx)
+
+	shared, err := st.GetSharedFolders(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the shared folders list")
+	}
+	if want := []string{MyFiles}; !reflect.DeepEqual(shared, want) {
+		return errors.Errorf("failed to verify shared folders list, got %s, want %s", shared, want)
+	}
+
+	// Check the file list in the container.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		list, err := cont.GetFileList(ctx, MountPath)
+		if err != nil {
+			return err
+		}
+		if want := []string{"fonts", MountFolderMyFiles}; !reflect.DeepEqual(list, want) {
+			return errors.Errorf("failed to verify file list in /mnt/chromeos, got %s, want %s", list, want)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to verify file list in container")
+	}
+
+	return nil
 }
 
 // ShareDriveOK shares Google Drive with Crostini and clicks OK button on the confirmation dialog.
@@ -229,26 +286,6 @@ func (sf *SharedFolders) ShareDriveOK(ctx context.Context, filesApp *filesapp.Fi
 	defer toast.Release(ctx)
 
 	sf.AddFolder(SharedDrive)
-
-	return nil
-}
-
-// ShareMyFilesOK shares My files and clicks OK button on the confirm dialog.
-func (sf *SharedFolders) ShareMyFilesOK(ctx context.Context, filesApp *filesapp.FilesApp, tconn *chrome.TestConn) error {
-	// Share My files, click OK on the confirm dialog.
-	scd, err := sf.ShareMyFiles(ctx, tconn, filesApp, MyFilesMsg)
-	if err != nil {
-		return errors.Wrap(err, "failed to share My files")
-	}
-	defer scd.Release(ctx)
-
-	// Click button OK.
-	toast, err := scd.ClickOK(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to click button OK on share confirm dialog")
-	}
-	defer toast.Release(ctx)
-	sf.AddFolder(MyFiles)
 
 	return nil
 }

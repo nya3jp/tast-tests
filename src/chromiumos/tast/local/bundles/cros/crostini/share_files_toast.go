@@ -26,6 +26,7 @@ func init() {
 		Desc:     "Test sharing My files with Crostini and clicking Manage on toast nofication",
 		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
+		Vars:     []string{"keepState"},
 		Params: []testing.Param{{
 			Name:              "artifact",
 			Pre:               crostini.StartedByArtifact(),
@@ -58,6 +59,7 @@ func ShareFilesToast(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
@@ -89,21 +91,12 @@ func ShareFilesToast(ctx context.Context, s *testing.State) {
 }
 
 func shareMyFilesOKManage(ctx context.Context, sharedFolders *sharedfolders.SharedFolders, filesApp *filesapp.FilesApp, tconn *chrome.TestConn) error {
-	// Share My files, click OK on the confirm dialog, click Manage on the toast nofication.
-	scd, err := sharedFolders.ShareMyFiles(ctx, tconn, filesApp, sharedfolders.MyFilesMsg)
+	// Share My files, click OK on the confirm dialog.
+	toast, err := sharedFolders.ShareMyFilesOK(ctx, tconn, filesApp)
 	if err != nil {
 		return errors.Wrap(err, "failed to share My files")
 	}
-	defer scd.Release(ctx)
-
-	// Click button OK.
-	toast, err := scd.ClickOK(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to click button OK on share confirm dialog")
-	}
 	defer toast.Release(ctx)
-
-	sharedFolders.AddFolder(sharedfolders.MyFiles)
 
 	// Click button Manage.
 	if err := toast.ClickManage(ctx, tconn); err != nil {

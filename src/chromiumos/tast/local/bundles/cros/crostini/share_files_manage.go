@@ -75,9 +75,11 @@ func ShareFilesManage(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := sharedFolders.ShareMyFilesOK(ctx, filesApp, tconn); err != nil {
+	toast, err := sharedFolders.ShareMyFilesOK(ctx, tconn, filesApp)
+	if err != nil {
 		s.Fatal("Failed to share My files: ", err)
 	}
+	defer toast.Release(ctx)
 
 	// This is necessary otherwise the next step will fail because a toast notification appears.
 	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
