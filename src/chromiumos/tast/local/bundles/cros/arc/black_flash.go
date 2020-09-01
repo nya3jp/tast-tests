@@ -133,7 +133,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 			return errors.New("activity is smaller than display yet")
 		}
 
-		img, err := screenshot.GrabScreenshot(ctx, cr)
+		img, err := screenshot.GrabScreenshot(ctx, cr, nil)
 		if err != nil {
 			s.Fatal("Failed to grab screenshot: ", err)
 		}

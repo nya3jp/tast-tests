@@ -73,17 +73,34 @@ func CountDiffPixels(imageA, imageB image.Image, threshold uint8) (int, error) {
 }
 
 // GrabScreenshot creates a screenshot and returns an image.Image.
-// The path of the image is generated ramdomly in /tmp.
-func GrabScreenshot(ctx context.Context, cr *chrome.Chrome) (image.Image, error) {
-	fd, err := ioutil.TempFile("", "screenshot")
-	if err != nil {
-		return nil, errors.Wrap(err, "error opening screenshot file")
+// If the path is nil, the path of the image is generated ramdomly in /tmp and the screenshot will be deleted when the test is finished.
+// If the path is assigned, the screenshot won't be deleted when the test is finished.
+func GrabScreenshot(ctx context.Context, cr *chrome.Chrome, path *string) (image.Image, error) {
+	var fd *os.File
+	var dstPath string
+	var err error
+	if path == nil {
+		fd, err = ioutil.TempFile("", "screenshot")
+		if err != nil {
+			return nil, errors.Wrap(err, "error opening screenshot file")
+		}
+		defer os.Remove(fd.Name())
+		defer fd.Close()
+		dstPath = fd.Name()
+	} else {
+		dstPath = *path
 	}
-	defer os.Remove(fd.Name())
-	defer fd.Close()
 
-	if err := screenshot.CaptureChrome(ctx, cr, fd.Name()); err != nil {
+	if err = screenshot.CaptureChrome(ctx, cr, dstPath); err != nil {
 		return nil, errors.Wrap(err, "failed to capture screenshot")
+	}
+
+	if path != nil {
+		fd, err = os.Open(*path)
+		if err != nil {
+			return nil, errors.Wrap(err, "error opening screenshot file")
+		}
+		defer fd.Close()
 	}
 
 	img, _, err := image.Decode(fd)

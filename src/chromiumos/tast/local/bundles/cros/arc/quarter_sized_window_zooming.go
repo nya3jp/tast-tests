@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"image/color"
 	"time"
 
@@ -122,7 +123,8 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait until tablet-mode animation finished: ", err)
 	}
 
-	img, err := screenshot.GrabScreenshot(ctx, cr)
+	path := fmt.Sprintf("%s/quarter_screenshot.png", s.OutDir())
+	img, err := screenshot.GrabScreenshot(ctx, cr, &path)
 	if err != nil {
 		s.Fatal("Failed to grab screenshot: ", err)
 	}

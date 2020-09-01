@@ -57,7 +57,7 @@ func (dc *DensityChange) ExecuteChange(ctx context.Context, cr *chrome.Chrome, e
 func CountBlackPixels(ctx context.Context, cr *chrome.Chrome, wantPixelCount int) error {
 	// Need to wait for relayout to complete, before grabbing new screenshot.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		img, err := screenshot.GrabScreenshot(ctx, cr)
+		img, err := screenshot.GrabScreenshot(ctx, cr, nil)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
