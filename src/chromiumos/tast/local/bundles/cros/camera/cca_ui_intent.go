@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/testexec"
@@ -26,11 +27,6 @@ type intentOptions struct {
 	Mode         cca.Mode
 	TestBehavior testBehavior
 	ResultInfo   resultInfo
-}
-
-type testCase struct {
-	Name          string
-	IntentOptions intentOptions
 }
 
 type testBehavior struct {
@@ -98,96 +94,19 @@ func init() {
 		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
-			Val: []testCase{{
-				Name: "take photo (no extra)",
-				IntentOptions: intentOptions{
-					Action:       takePhotoAction,
-					URI:          "",
-					Mode:         cca.Photo,
-					TestBehavior: captureConfirmAndDone,
-				},
-			}, {
-				Name: "take photo (has extra)",
-				IntentOptions: intentOptions{
-					Action:       takePhotoAction,
-					URI:          testPhotoURI,
-					Mode:         cca.Photo,
-					TestBehavior: captureConfirmAndDone,
-					ResultInfo: resultInfo{
-						FilePattern: testPhotoPattern,
-					},
-				},
-			}, {
-				Name: "launch camera on photo mode",
-				IntentOptions: intentOptions{
-					Action:       launchOnPhotoModeAction,
-					URI:          "",
-					Mode:         cca.Photo,
-					TestBehavior: captureAndAlive,
-					ResultInfo: resultInfo{
-						FilePattern: cca.PhotoPattern,
-					},
-				},
-			}, {
-				Name: "launch camera on video mode",
-				IntentOptions: intentOptions{
-					Action:       launchOnVideoModeAction,
-					URI:          "",
-					Mode:         cca.Video,
-					TestBehavior: captureAndAlive,
-					ResultInfo: resultInfo{
-						FilePattern: cca.VideoPattern,
-					},
-				},
-			}, {
-				Name: "record video (no extras)",
-				IntentOptions: intentOptions{
-					Action:       recordVideoAction,
-					URI:          "",
-					Mode:         cca.Video,
-					TestBehavior: captureConfirmAndDone,
-					ResultInfo: resultInfo{
-						Dir:         defaultArcCameraPath,
-						FilePattern: cca.VideoPattern,
-					},
-				},
-			}, {
-				Name: "record video (has extras)",
-				IntentOptions: intentOptions{
-					Action:       recordVideoAction,
-					URI:          testVideoURI,
-					Mode:         cca.Video,
-					TestBehavior: captureConfirmAndDone,
-					ResultInfo: resultInfo{
-						FilePattern: testVideoPattern,
-					},
-				},
-			}, {
-				Name: "close app",
-				IntentOptions: intentOptions{
-					Action:       takePhotoAction,
-					URI:          "",
-					Mode:         cca.Photo,
-					TestBehavior: closeApp,
-				},
-			}, {
-				Name: "cancel when review",
-				IntentOptions: intentOptions{
-					Action:       takePhotoAction,
-					URI:          "",
-					Mode:         cca.Photo,
-					TestBehavior: captureCancelAndAlive,
-				},
-			}},
+			Pre: testutil.NewPrecondition(testutil.ChromeConfig{
+				ARCEnabled: true,
+			}),
 		}},
 	})
 }
 
 func CCAUIIntent(ctx context.Context, s *testing.State) {
-	d := s.PreValue().(arc.PreData)
-	a := d.ARC
-	cr := d.Chrome
+	p := s.PreValue().(testutil.PreData)
+	cr := p.Chrome
+	a := p.ARC
+	isSWA := p.Config.InstallSWA
+	tb := p.TestBridge
 
 	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
@@ -211,25 +130,109 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 
 	scripts := []string{s.DataPath("cca_ui.js")}
 	outDir := s.OutDir()
-
-	for _, tc := range s.Param().([]testCase) {
+	for _, tc := range []struct {
+		Name          string
+		IntentOptions intentOptions
+	}{
+		{
+			Name: "take photo (no extra)",
+			IntentOptions: intentOptions{
+				Action:       takePhotoAction,
+				URI:          "",
+				Mode:         cca.Photo,
+				TestBehavior: captureConfirmAndDone,
+			},
+		}, {
+			Name: "take photo (has extra)",
+			IntentOptions: intentOptions{
+				Action:       takePhotoAction,
+				URI:          testPhotoURI,
+				Mode:         cca.Photo,
+				TestBehavior: captureConfirmAndDone,
+				ResultInfo: resultInfo{
+					FilePattern: testPhotoPattern,
+				},
+			},
+		}, {
+			Name: "launch camera on photo mode",
+			IntentOptions: intentOptions{
+				Action:       launchOnPhotoModeAction,
+				URI:          "",
+				Mode:         cca.Photo,
+				TestBehavior: captureAndAlive,
+				ResultInfo: resultInfo{
+					FilePattern: cca.PhotoPattern,
+				},
+			},
+		}, {
+			Name: "launch camera on video mode",
+			IntentOptions: intentOptions{
+				Action:       launchOnVideoModeAction,
+				URI:          "",
+				Mode:         cca.Video,
+				TestBehavior: captureAndAlive,
+				ResultInfo: resultInfo{
+					FilePattern: cca.VideoPattern,
+				},
+			},
+		}, {
+			Name: "record video (no extras)",
+			IntentOptions: intentOptions{
+				Action:       recordVideoAction,
+				URI:          "",
+				Mode:         cca.Video,
+				TestBehavior: captureConfirmAndDone,
+				ResultInfo: resultInfo{
+					Dir:         defaultArcCameraPath,
+					FilePattern: cca.VideoPattern,
+				},
+			},
+		}, {
+			Name: "record video (has extras)",
+			IntentOptions: intentOptions{
+				Action:       recordVideoAction,
+				URI:          testVideoURI,
+				Mode:         cca.Video,
+				TestBehavior: captureConfirmAndDone,
+				ResultInfo: resultInfo{
+					FilePattern: testVideoPattern,
+				},
+			},
+		}, {
+			Name: "close app",
+			IntentOptions: intentOptions{
+				Action:       takePhotoAction,
+				URI:          "",
+				Mode:         cca.Photo,
+				TestBehavior: closeApp,
+			},
+		}, {
+			Name: "cancel when review",
+			IntentOptions: intentOptions{
+				Action:       takePhotoAction,
+				URI:          "",
+				Mode:         cca.Photo,
+				TestBehavior: captureCancelAndAlive,
+			},
+		},
+	} {
 		s.Run(ctx, tc.Name, func(ctx context.Context, s *testing.State) {
-			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir); err != nil {
+			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb, isSWA); err != nil {
 				s.Error("Failed when checking intent behavior: ", err)
 			}
 		})
 	}
 
 	s.Run(ctx, "instances coexistanece test", func(ctx context.Context, s *testing.State) {
-		if err := checkInstancesCoexistence(ctx, cr, a, scripts, outDir); err != nil {
+		if err := checkInstancesCoexistence(ctx, cr, a, scripts, outDir, tb, isSWA); err != nil {
 			s.Error("Failed for instances coexistence test: ", err)
 		}
 	})
 }
 
 // launchIntent launches CCA intent with different options.
-func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options intentOptions, scripts []string, outDir string) (*cca.App, error) {
-	return cca.Init(ctx, cr, scripts, outDir, func(tconn *chrome.TestConn) error {
+func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options intentOptions, scripts []string, outDir string, tb *testutil.TestBridge, isSWA bool) (*cca.App, error) {
+	launchByIntent := func(ctx context.Context, tconn *chrome.TestConn) error {
 		ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
 		defer cancel()
 
@@ -245,7 +248,8 @@ func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options in
 		}
 		testing.ContextLog(ctx, string(output))
 		return nil
-	})
+	}
+	return cca.Init(ctx, cr, scripts, outDir, launchByIntent, tb, isSWA)
 }
 
 func closeCCAAndTestApp(ctx context.Context, a *arc.ARC, app *cca.App, outDir string) error {
@@ -263,8 +267,8 @@ func closeCCAAndTestApp(ctx context.Context, a *arc.ARC, app *cca.App, outDir st
 }
 
 // checkIntentBehavior checks basic control flow for handling intent with different options.
-func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiDevice *ui.Device, options intentOptions, scripts []string, outDir string) (retErr error) {
-	app, err := launchIntent(ctx, cr, a, options, scripts, outDir)
+func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiDevice *ui.Device, options intentOptions, scripts []string, outDir string, tb *testutil.TestBridge, isSWA bool) (retErr error) {
+	app, err := launchIntent(ctx, cr, a, options, scripts, outDir, tb, isSWA)
 	if err != nil {
 		return err
 	}
@@ -296,7 +300,7 @@ func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiD
 		}
 
 		if options.TestBehavior.ShouldReview {
-			if err := checkCaptureResult(ctx, app, cr, options.Mode, startTime, options.TestBehavior.ShouldConfirmAfterCapture, options.ResultInfo); err != nil {
+			if err := checkCaptureResult(ctx, app, options.Mode, startTime, options.TestBehavior.ShouldConfirmAfterCapture, options.ResultInfo); err != nil {
 				return err
 			}
 		} else {
@@ -306,7 +310,7 @@ func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiD
 		}
 
 		shouldAppAutoClose := options.TestBehavior.ShouldReview && options.TestBehavior.ShouldConfirmAfterCapture
-		if err := checkAutoCloseBehavior(ctx, cr, shouldAppAutoClose); err != nil {
+		if err := checkAutoCloseBehavior(ctx, cr, shouldAppAutoClose, isSWA); err != nil {
 			return err
 		}
 	}
@@ -377,7 +381,7 @@ func capture(ctx context.Context, app *cca.App, mode cca.Mode) (time.Time, error
 	return startTime, nil
 }
 
-func checkCaptureResult(ctx context.Context, app *cca.App, cr *chrome.Chrome, mode cca.Mode, startTime time.Time, shouldConfirm bool, info resultInfo) error {
+func checkCaptureResult(ctx context.Context, app *cca.App, mode cca.Mode, startTime time.Time, shouldConfirm bool, info resultInfo) error {
 	if err := app.ConfirmResult(ctx, shouldConfirm, mode); err != nil {
 		return errors.Wrap(err, "failed to confirm result")
 	}
@@ -412,39 +416,48 @@ func checkCaptureResult(ctx context.Context, app *cca.App, cr *chrome.Chrome, mo
 }
 
 // checkAutoCloseBehavior checks closing state of CCA window in intent control flow.
-func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, shouldClose bool) error {
+func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, app *cca.App, shouldClose, isSWA bool) error {
 	// Sleeps for a while after capturing and then ensure CCA instance is
 	// automatically closed or not.
 	testing.ContextLog(ctx, "Checking auto close behavior")
-	if shouldClose {
-		const timeout = 1 * time.Second
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if isExist, err := cca.InstanceExists(ctx, cr); err != nil {
-				return testing.PollBreak(err)
-			} else if !isExist {
-				return nil
+	result := (func() error {
+		if shouldClose {
+			const timeout = 3 * time.Second
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if isClosing, err := app.IsClosingItself(ctx); err != nil {
+					return testing.PollBreak(err)
+				} else if isClosing {
+					return nil
+				}
+				return errors.New("CCA instance is not automatically closed after capturing")
+			}, &testing.PollOptions{Timeout: timeout}); err != nil {
+				return err
 			}
-			return errors.New("CCA instance is not automatically closed after capturing")
-		}, &testing.PollOptions{Timeout: timeout}); err != nil {
-			return err
+		} else {
+			if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+				return err
+			}
+			if isClosing, err := app.IsClosingItself(ctx); err != nil {
+				return err
+			} else if isClosing {
+				return errors.New("CCA instance is automatically closed after capturing")
+			}
 		}
-	} else {
-		if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+		return nil
+	})()
+
+	if err := app.Close(ctx); err != nil {
+		if result == nil {
 			return err
-		}
-		if isExist, err := cca.InstanceExists(ctx, cr); err != nil {
-			return err
-		} else if !isExist {
-			return errors.New("CCA instance is automatically closed after capturing")
 		}
 	}
-	return nil
+	return result
 }
 
 // checkInstancesCoexistence checks number of CCA windows showing in multiple launch request scenario.
-func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, scripts []string, outDir string) (retErr error) {
+func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, scripts []string, outDir string, tb *testutil.TestBridge, isSWA bool) (retErr error) {
 	// Launch regular CCA.
-	regularApp, err := cca.New(ctx, cr, scripts, outDir)
+	regularApp, err := cca.New(ctx, cr, scripts, outDir, tb, isSWA)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA")
 	}
@@ -469,7 +482,7 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 		URI:          "",
 		Mode:         cca.Photo,
 		TestBehavior: captureConfirmAndDone,
-	}, scripts, outDir)
+	}, scripts, outDir, tb, isSWA)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA by intent")
 	}
