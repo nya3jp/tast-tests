@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "43c7d795_1f32e108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2020-09-01T00:50:21Z",
+      "side": 1,
+      "message": "If we always call this method with the same container and user args derived from s, then why not just pass s?",
+      "parentUuid": "36410638_09d6f420",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fe577a3_c40040a3",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 3
