@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a160e6c9_33d29ae3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-09-01T14:30:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b081ac3d_19ce03eb",
+      "range": {
+        "startLine": 26,
+        "startChar": 23,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "75f5ea4fdbd68e393eba22dbfbd21bb833e7bb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20496e9e_bfaef412",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "75f5ea4fdbd68e393eba22dbfbd21bb833e7bb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70757db8_263ef4b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hardware/verify_remote_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1430764
+      },
+      "writtenOn": "2020-09-01T14:30:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20496e9e_bfaef412",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "75f5ea4fdbd68e393eba22dbfbd21bb833e7bb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
