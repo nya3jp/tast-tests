@@ -187,7 +187,7 @@ func (ta *TerminalApp) Close(ctx context.Context) error {
 	defer ta.Root.Release(ctx)
 
 	if err := ta.clickShelfMenuItem(ctx, "Close"); err != nil {
-		return errors.Wrap(err, "failed to close crostini")
+		return errors.Wrap(err, "failed to close Crostini")
 	}
 
 	// Wait for window to close.
