@@ -90,6 +90,12 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to focus a text field: ", err)
 	}
 
+	if imeID, err := ime.GetCurrentInputMethod(ctx, tconn); err != nil {
+		s.Fatal("Failed to get current ime: ", err)
+	} else if imeID != usIMEID {
+		s.Fatalf("US keyboard is not default: got %q; want %q", imeID, usIMEID)
+	}
+
 	s.Log("Enabling US International keyboard")
 	if err := ime.AddInputMethod(ctx, tconn, intlIMEID); err != nil {
 		s.Fatal("Failed to enable US International keyboard: ", err)
@@ -103,7 +109,7 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 	if imeID, err := ime.GetCurrentInputMethod(ctx, tconn); err != nil {
 		s.Fatal("Failed to get current ime: ", err)
 	} else if imeID != usIMEID {
-		s.Fatal("Failed to activate US keyboard: ", err)
+		s.Fatalf("Failed to activate US keyboard: got %q; want %q", imeID, usIMEID)
 	}
 
 	kb, err := input.Keyboard(ctx)
@@ -120,6 +126,6 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 	if imeID, err := ime.GetCurrentInputMethod(ctx, tconn); err != nil {
 		s.Fatal("Failed to get current ime: ", err)
 	} else if imeID != intlIMEID {
-		s.Fatal("Failed to switch international keyboard: ", err)
+		s.Fatalf("Failed to switch international keyboard: got %q; want %q", imeID, intlIMEID)
 	}
 }
