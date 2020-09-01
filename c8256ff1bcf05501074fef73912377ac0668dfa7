@@ -16,6 +16,98 @@
       "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36410638_09d6f420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-01T00:31:32Z",
+      "side": 1,
+      "message": "Are we going to need others later?  maybe we should just pass the PreData?",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe577a3_c40040a3",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-01T00:31:32Z",
+      "side": 1,
+      "message": "Optional: better not to call this after the use case, but rather what it is.  Maybe FullReader, ExistingReader, is there something else?\n\n(I know ChromeReader is already violating this...)",
+      "range": {
+        "startLine": 463,
+        "startChar": 5,
+        "endLine": 463,
+        "endChar": 7
+      },
+      "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3010a6bc_a2372307",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-01T00:31:32Z",
+      "side": 1,
+      "message": "Optional: do we really need a struct/functions to wrap this?  It isn\u0027t adding anything over a normal lineReader.  Perhaps lineReader could just be exported instead?",
+      "range": {
+        "startLine": 464,
+        "startChar": 1,
+        "endLine": 464,
+        "endChar": 11
+      },
+      "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37cb619a_2a911855",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-01T00:31:32Z",
+      "side": 1,
+      "message": "You only ever pass true here, maybe leave the argument out?",
+      "range": {
+        "startLine": 469,
+        "startChar": 54,
+        "endLine": 469,
+        "endChar": 63
+      },
+      "revId": "c8256ff1bcf05501074fef73912377ac0668dfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
