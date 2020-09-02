@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "149655da_4e06cbcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-02T13:45:15Z",
+      "side": 1,
+      "message": "I just rebased on ToT and ran gofmt. Let me submit it to CQ.",
+      "revId": "e003d6bde09bd6dbb9f14e8a8c1d2fc6ce513ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
