@@ -22,6 +22,30 @@
       "revId": "bf35469e8db55d1c31c37ba98a9e352f7add9ff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b225cf3a_b8c9a82d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-02T01:49:42Z",
+      "side": 0,
+      "message": "The old intention is to test vk all in tablet mode. However, it might loss coverage in clamsheel mode. After discussed with inputs team, we reckon it is better to use vk in its orginally ui mode, which covers both clamshell and tablet devices.",
+      "parentUuid": "acd1b0a5_e40a4801",
+      "range": {
+        "startLine": 48,
+        "startChar": 75,
+        "endLine": 48,
+        "endChar": 125
+      },
+      "revId": "bf35469e8db55d1c31c37ba98a9e352f7add9ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
