@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59aaebcd_c67b0bd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2020-09-02T11:40:15Z",
+      "side": 1,
+      "message": "I was told to add myself as an owner. ",
+      "revId": "0a5d18f766cfca23a09678f15a0f7208d08fe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
