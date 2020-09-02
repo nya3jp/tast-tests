@@ -33,6 +33,24 @@
       "revId": "57d3f4ecada98c55f3146308764eda9978421176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da059f66_06e96c62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-02T06:52:34Z",
+      "side": 1,
+      "message": "I think it\u0027s because only the artifact test will ever be promoted, so the idea is explicitly setting all the \u0027unpromoteable\u0027 pres to information. I copied the existing pattern in Crostini tests, but you have a point that it\u0027s more explicit the other way.\n\nThat said, it means that adding a pre and forgetting \"ExtraAttr informational\" means you land your test immediately on the CQ even if none of the others are on?",
+      "parentUuid": "300a1d59_39914dcd",
+      "revId": "57d3f4ecada98c55f3146308764eda9978421176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
