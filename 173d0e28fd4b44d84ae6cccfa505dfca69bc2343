@@ -160,6 +160,24 @@
       "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f4c99e1_0f7d1ac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2020-09-02T22:00:31Z",
+      "side": 1,
+      "message": "Were you using \"%e\" in core_pattern? \"%e\" will be truncated to 15 bytes.That\u0027s still the case. or you mean you have a very long core_pattern?\n\nBTW, I was doing log from usermode_helper, but it should be same with log from crash_reporter.",
+      "parentUuid": "f437911c_8b37cf05",
+      "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
