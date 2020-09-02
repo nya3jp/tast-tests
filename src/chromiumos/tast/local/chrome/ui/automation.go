@@ -207,19 +207,27 @@ const (
 	doubleClick
 )
 
+const clickNode = `
+	async function(button){
+		var loc = this.location;
+		var centerpoint = {"x": loc.left + loc.width/2, "y": loc.top + loc.height/2};
+		await tast.promisify(chrome.autotestPrivate.mouseMove)(centerpoint, 0);
+		await tast.promisify(chrome.autotestPrivate.mouseClick)(button);
+	}`
+
 func (n *Node) mouseClick(ctx context.Context, ct clickType) error {
-	if err := n.Update(ctx); err != nil {
-		return errors.Wrap(err, "failed to update the node's location")
-	}
-	if n.Location.Empty() {
-		return errors.New("This node doesn't have a location on the screen and can't be clicked")
-	}
 	switch ct {
 	case leftClick:
-		return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.LeftButton)
+		return n.object.Call(ctx, nil, clickNode, mouse.LeftButton)
 	case rightClick:
-		return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.RightButton)
+		return n.object.Call(ctx, nil, clickNode, mouse.RightButton)
 	case doubleClick:
+		if err := n.Update(ctx); err != nil {
+			return errors.Wrap(err, "failed to update the node's location")
+		}
+		if n.Location.Empty() {
+			return errors.New("This node doesn't have a location on the screen and can't be clicked")
+		}
 		return mouse.DoubleClick(ctx, n.tconn, n.Location.CenterPoint(), 100*time.Millisecond)
 	default:
 		return errors.New("invalid click type")
