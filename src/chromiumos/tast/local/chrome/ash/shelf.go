@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -446,14 +447,18 @@ func WaitForHotseatAnimatingToIdealState(ctx context.Context, tc *chrome.TestCon
 
 // SwipeUpHotseatAndWaitForCompletion swipes the hotseat up, changing the hotseat state from hidden to extended. The function does not end until the hotseat animation completes.
 func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tcc *input.TouchCoordConverter) error {
-	// Hotseat should be hidden before gesture swipe.
-	if err := WaitForHotseatAnimatingToIdealState(ctx, tconn, ShelfHidden); err != nil {
-		return errors.Wrap(err, "failed to wait for the hotseat to be hidden")
+	if err := WaitForHotseatAnimationToFinish(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for the animation to finish")
 	}
 
 	info, err := FetchHotseatInfo(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain the hotseat info")
+	}
+
+	// If the hotseat is visible and it is not animating to hidden, we can simply return.
+	if info.HotseatState != ShelfHidden {
+		return nil
 	}
 
 	// Convert the gesture locations from screen coordinates to touch screen coordinates.
@@ -524,4 +529,175 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 		}
 		return errors.New("still not overflow")
 	}, nil)
+}
+
+// LaunchAppFromShelf opens an app by name which is currently pinned to the shelf.
+// The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
+func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName, appID string) error {
+	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find app %q", appName)
+	}
+	defer icon.Release(ctx)
+	// Click mouse to launch app.
+	if err := icon.LeftClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to launch app %q", appName)
+	}
+	// Make sure app is launched.
+	if err := WaitForApp(ctx, tconn, appID); err != nil {
+		return errors.Wrap(err, "failed to wait for the app to be launched")
+	}
+	return nil
+}
+
+// LaunchAppFromHotseat opens an app by name which is currently pinned to the hotseat.
+// The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
+func LaunchAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName, appID string) error {
+	// Get touch controller for tablet.
+	tc, err := pointer.NewTouchController(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to create the touch controller")
+	}
+	defer tc.Close()
+	stw := tc.EventWriter()
+	tcc := tc.TouchCoordConverter()
+
+	// Make sure hotseat is shown.
+	if err := SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+		return errors.Wrap(err, "failed to show hotseat")
+	}
+
+	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find app %q", appName)
+	}
+	defer icon.Release(ctx)
+
+	// Press button to launch app.
+	x, y := tcc.ConvertLocation(icon.Location.CenterPoint())
+	if err := stw.Move(x, y); err != nil {
+		return errors.Wrapf(err, "failed to press icon %q", appName)
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrapf(err, "failed to release pressed icon %q", appName)
+	}
+
+	// Make sure app is launched.
+	if err := WaitForApp(ctx, tconn, appID); err != nil {
+		return errors.Wrap(err, "failed to wait for the app to be launched")
+	}
+	return nil
+}
+
+// PinAppFromShelf pins an open app on the shelf using the context menu.
+// The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
+func PinAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+	// Find the icon from shelf.
+	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find app %q", appName)
+	}
+	defer icon.Release(ctx)
+
+	// Open context menu.
+	if err := icon.RightClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to open context menu")
+	}
+	// Find option to pin app to shelf.
+	params = ui.FindParams{Name: "Pin", ClassName: "MenuItemView"}
+	option, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		// The pin to shelf is not available for this icon
+		return errors.Wrap(err, `option "Pin" is not available`)
+	}
+	defer option.Release(ctx)
+	// Pin app to shelf.
+	if err := option.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, `failed to select option "Pin"`)
+	}
+	// Make sure all items on the shelf are done moving.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change to be completed")
+	}
+	return nil
+}
+
+// PinAppFromHotseat pins an open app on the hotseat using the context menu.
+// The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
+func PinAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+	// Get touch controller for tablet.
+	tc, err := pointer.NewTouchController(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to create the touch controller")
+	}
+	defer tc.Close()
+	stw := tc.EventWriter()
+	tcc := tc.TouchCoordConverter()
+
+	// Make sure hotseat is shown.
+	if err := SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+		return errors.Wrap(err, "failed to show hotseat")
+	}
+
+	// Find the icon from hotseat.
+	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find app %q", appName)
+	}
+	defer icon.Release(ctx)
+
+	// Open context menu.
+	x, y := tcc.ConvertLocation(icon.Location.CenterPoint())
+	if err := stw.LongPressAt(ctx, x, y); err != nil {
+		return errors.Wrapf(err, "failed to long press icon %q", appName)
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrapf(err, "failed to release pressed icon %q", appName)
+	}
+
+	// Find option to pin app to shhotseatelf.
+	params = ui.FindParams{Name: "Pin", ClassName: "MenuItemView"}
+	option, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		// The pin option is not available for this icon
+		return errors.Wrap(err, `option "Pin" is not available`)
+	}
+	defer option.Release(ctx)
+
+	// Pin app to hotseat.
+	x, y = tcc.ConvertLocation(option.Location.CenterPoint())
+	if err := stw.Move(x, y); err != nil {
+		return errors.Wrap(err, "failed to press option Pin")
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to release pressed option Pin")
+	}
+	// Make sure all items on the hotseat are done moving.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change to be completed")
+	}
+	return nil
+}
+
+// WaitForHotseatAnimationToFinish waits for the hotseat animation is done.
+func WaitForHotseatAnimationToFinish(ctx context.Context, tc *chrome.TestConn) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := fetchShelfInfoForState(ctx, tc, &ShelfState{})
+		if err != nil {
+			return err
+		}
+		hotseatInfo := info.HotseatInfo
+		if hotseatInfo.IsAnimating || info.ScrollableShelfInfo.IsAnimating {
+			return errors.New("hotseat is animating")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for the hotseat animation to finish")
+	}
+
+	return nil
 }
