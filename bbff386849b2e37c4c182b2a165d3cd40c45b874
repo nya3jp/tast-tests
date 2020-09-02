@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edbe138a_c2f182c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T23:57:32Z",
+      "side": 1,
+      "message": "LGTM. Defer to tranbaoduy@.",
+      "revId": "bbff386849b2e37c4c182b2a165d3cd40c45b874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
