@@ -109,6 +109,70 @@
       "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd60ba67_f23b13a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-02T19:55:12Z",
+      "side": 1,
+      "message": "I already mentioned some the issues with #2... one possible solution is to implement #3... or you have better ideas, let me know.\n\nShould you call DumpImageToPNG in any possible fail step? I guess it depends on the test.\nAs an example, I looked at the resize_activity.go and it has one place (where it is already saving Image to PNG).\nquarter_size has 2 places...\n\n(see my comments on resize_activity.go)",
+      "parentUuid": "81d931c6_932b1194",
+      "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c72ef16_2b6d7eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-02T19:55:12Z",
+      "side": 1,
+      "message": "this shouldn\u0027t be needed... besides it is saving the screenshot twice: once in the newly modified screenshot.GrabScreenshot() and a few lines below where it saves the image to PNG.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 62
+      },
+      "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a859113a_1986cb7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-02T19:55:12Z",
+      "side": 1,
+      "message": "replace this with a call to DumpImageToPNG()",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 27
+      },
+      "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
