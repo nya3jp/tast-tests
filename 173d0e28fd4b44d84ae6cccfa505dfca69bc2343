@@ -178,6 +178,24 @@
       "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba190ae_6fde8e8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-02T22:13:30Z",
+      "side": 1,
+      "message": "At the time, I changed core_pattern to \"|/sbin/crash_reporter --pid\u003d%%P --signal\u003d%%s --uid\u003d%%u --gid\u003d%%g --exe\u003d%%e\" -- which is only 69 characters -- and I ran into trouble. Now that I look back on it again, though, the problem may have just been that I didn\u0027t update usermode-helper\u0027s argument validation logic. \n\nIf you were able to verify that the kernel can pass arguments that are longer than 128 bytes that\u0027s great, and please feel free to update the comment -- as long as that\u0027s not a new behavior (which it doesn\u0027t seem like it is, from looking at the blame layer on the function call you linked).",
+      "parentUuid": "8f4c99e1_0f7d1ac9",
+      "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
