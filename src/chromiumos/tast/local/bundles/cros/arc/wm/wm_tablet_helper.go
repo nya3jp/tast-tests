@@ -88,7 +88,7 @@ func TabletDefaultLaunchHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 
 			// Compare display orientation after activity is ready, it should be equal to activity's desired orientation.
 			if tc.DesiredDO != newDO.Type {
-				return errors.Errorf("invalid display orientation, want: %q, got: %q", tc.DesiredDO, newDO.Type)
+				return errors.Errorf("invalid display orientation: got %q; want %q", newDO.Type, tc.DesiredDO)
 			}
 
 			return nil
@@ -172,6 +172,95 @@ func TabletImmerseViaAPI(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 	return nil
 }
 
+// TabletFontSizeChangeHelper runs test-cases for tablet font size change.
+func TabletFontSizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo) (err error) {
+	defer func() {
+		if clearErr := clearDisplayRotation(ctx, tconn); clearErr != nil {
+			testing.ContextLog(ctx, "Failed to clear display rotation: ", err)
+			if err == nil {
+				err = clearErr
+			}
+		}
+	}()
+
+	for _, tc := range activityInfo {
+		if err := tabletFontScaleChangeHelper(ctx, tconn, a, d, tc); err != nil {
+			return errors.Wrapf(err, "%q test failed", tc)
+		}
+	}
+	return nil
+}
+
+// tabletFontScaleChangeHelper changes the font scale for any given activity.
+func tabletFontScaleChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actInfo TabletLaunchActivityInfo) error {
+	// Font scale, this const must not be 1.
+	const fsc = 1.2
+
+	// Start a new activity.
+	act, err := arc.NewActivity(a, Pkg24, actInfo.ActivityName)
+	if err != nil {
+		return errors.Wrap(err, "unable to create new activity")
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "unable to start new activity")
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return errors.Wrap(err, "unable to wait until activity is ready")
+	}
+
+	// Wait until display rotates to activities desired orientation.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		newDO, err := display.GetOrientation(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if actInfo.DesiredDO != newDO.Type {
+			return errors.Errorf("invalid display orientation: got %q; want %q", newDO.Type, actInfo.DesiredDO)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+
+	// Store original window info.
+	owInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "unable to get arc app window info")
+	}
+
+	// Change the font scale.
+	if err := EnsureARCFontScaleChanged(ctx, a, fsc); err != nil {
+		return errors.Wrap(err, "unable to change font scale")
+	}
+	defer EnsureARCFontScaleChanged(ctx, a, 1)
+
+	// Get the font scale.
+	nfs, err := GetARCFontScale(ctx, a)
+	if err != nil {
+		return errors.Wrap(err, "unable to get font scale")
+	}
+
+	// Get window info after font scale change.
+	wInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "unable to get arc app window info")
+	}
+	if owInfo.TargetBounds != wInfo.TargetBounds {
+		return errors.Errorf("invalid window bounds after font scale is changed: got %q; want %q", wInfo.TargetBounds, owInfo.TargetBounds)
+	}
+
+	// Compare font scale before and after font scale change.
+	if nfs != fsc {
+		return errors.Errorf("invalid font scale after font scale is changed: got %.1f; want %.1f", nfs, fsc)
+	}
+
+	return nil
+}
+
 // tabletImmerseViaAPIHelper clicks on immersive button on the activity and switch it back to normal and assert window bounds accordingly.
 func tabletImmerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo) error {
 	// Start a new activity.
@@ -197,7 +286,7 @@ func tabletImmerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 			return testing.PollBreak(err)
 		}
 		if activityInfo.DesiredDO != newDO.Type {
-			return errors.Errorf("invalid display orientation, got: %q, want: %q", newDO.Type, activityInfo.DesiredDO)
+			return errors.Errorf("invalid display orientation: got %q, want %q", newDO.Type, activityInfo.DesiredDO)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
@@ -250,11 +339,11 @@ func tabletImmerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 		return err
 	}
 	if activityInfo.DesiredDO != newDO.Type {
-		return errors.Errorf("invalid display orientation after normal button is clicked, got: %q, want: %q", newDO.Type, activityInfo.DesiredDO)
+		return errors.Errorf("invalid display orientation after normal button is clicked: got %q; want %q", newDO.Type, activityInfo.DesiredDO)
 	}
 
 	if winBefore.BoundsInRoot != winAfter.BoundsInRoot {
-		return errors.Errorf("invalid window bounds after click on the immersive button, got: %q, want: %q", winAfter.BoundsInRoot, winBefore.BoundsInRoot)
+		return errors.Errorf("invalid window bounds after click on the immersive button: got %q; want %q", winAfter.BoundsInRoot, winBefore.BoundsInRoot)
 	}
 
 	return nil
@@ -292,7 +381,7 @@ func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc
 			return testing.PollBreak(err)
 		}
 		if activityInfo.DesiredDO != newDO.Type {
-			return errors.Errorf("invalid display orientation, got: %q, want: %q", newDO.Type, activityInfo.DesiredDO)
+			return errors.Errorf("invalid display orientation: got %q; want %q", newDO.Type, activityInfo.DesiredDO)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
@@ -314,7 +403,7 @@ func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc
 	}
 
 	if dispInfoBeforeZoom.WorkArea != appWindowInfoBeforeZoom.BoundsInRoot {
-		return errors.Errorf("invalid activity bounds, the activity must cover the display work area. got: %q, want: %q", appWindowInfoBeforeZoom.BoundsInRoot, dispInfoBeforeZoom.WorkArea)
+		return errors.Errorf("invalid activity bounds, the activity must cover the display work area: got %q; want %q", appWindowInfoBeforeZoom.BoundsInRoot, dispInfoBeforeZoom.WorkArea)
 	}
 
 	displayZoomFactors := dispInfoBeforeZoom.AvailableDisplayZoomFactors
@@ -349,15 +438,15 @@ func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc
 	}
 
 	if dispInfoAfterZoom.WorkArea != appWindowInfoAfterZoom.BoundsInRoot {
-		return errors.Errorf("invalid activity bounds, the activity must cover the display work area. got: %q, want: %q", appWindowInfoAfterZoom.BoundsInRoot, dispInfoAfterZoom.WorkArea)
+		return errors.Errorf("invalid activity bounds, the activity must cover the display work area: got %q; want %q", appWindowInfoAfterZoom.BoundsInRoot, dispInfoAfterZoom.WorkArea)
 	}
 
 	// DPI before zoom divided by DPI after zoom should be equal to zoom coefficient. Because of possible roundings, the difference is calculated that should be less than 0.01 to have up to 2 decimal points of precision.
 	if math.Abs(newZoom-dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX) > roundingError {
-		return errors.Errorf("invalid DPIX ratio after resolution changed, got: %.3f, want: %.3f", dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX, newZoom)
+		return errors.Errorf("invalid DPIX ratio after resolution changed: got %.3f; want %.3f", dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX, newZoom)
 	}
 	if math.Abs(newZoom-dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY) > roundingError {
-		return errors.Errorf("invalid DPIY ratio after resolution changed, got: %.3f, want: %.3f", dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY, newZoom)
+		return errors.Errorf("invalid DPIY ratio after resolution changed: got %.3f; want %.3f", dispInfoBeforeZoom.DPIY/dispInfoAfterZoom.DPIY, newZoom)
 	}
 
 	return nil
@@ -420,7 +509,7 @@ func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 
 	// Compare display orientation after activity is ready, it should be equal to activity's desired orientation.
 	if activityInfo.DesiredDO != displayOrientation.Type {
-		return errors.Errorf("invalid display orientation, want: %q, got: %q", activityInfo.DesiredDO, displayOrientation.Type)
+		return errors.Errorf("invalid display orientation: got %q; want %q", displayOrientation.Type, activityInfo.DesiredDO)
 	}
 
 	// Store initial window info to compare with after hiding and showing the shelf.
@@ -446,7 +535,7 @@ func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 			return err
 		}
 		if winInfoShelfHidden.BoundsInRoot.Height <= winInfoInitialState.BoundsInRoot.Height {
-			return errors.Errorf("invalid window bounds when shelf is shown, got: %s, want smaller than: %s", winInfoInitialState.BoundsInRoot, winInfoShelfHidden.BoundsInRoot)
+			return errors.Errorf("invalid window bounds when shelf is shown: got %s; want smaller than %s", winInfoInitialState.BoundsInRoot, winInfoShelfHidden.BoundsInRoot)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
@@ -473,7 +562,7 @@ func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 		}
 
 		if winInfoInitialState.BoundsInRoot != winInfoShelfReShown.BoundsInRoot {
-			return errors.Errorf("invalid window bounds after hiding and showing the shelf, got: %s, want: %s", winInfoShelfReShown.BoundsInRoot, winInfoInitialState.BoundsInRoot)
+			return errors.Errorf("invalid window bounds after hiding and showing the shelf: got %s; want %s", winInfoShelfReShown.BoundsInRoot, winInfoInitialState.BoundsInRoot)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
@@ -526,7 +615,7 @@ func checkUnspecifiedActivityInTabletMode(ctx context.Context, tconn *chrome.Tes
 
 	// Compare display orientation after the activity is ready, it should be equal to the initial display orientation.
 	if orientation != newDO.Type {
-		return errors.Errorf("invalid display orientation for unspecified activity, want: %q, got: %q", orientation, newDO.Type)
+		return errors.Errorf("invalid display orientation for unspecified activity: got %q; want %q", newDO.Type, orientation)
 	}
 
 	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
@@ -537,12 +626,12 @@ func checkUnspecifiedActivityInTabletMode(ctx context.Context, tconn *chrome.Tes
 	if isPortraitRect(windowInfo.BoundsInRoot) {
 		// If app is portrait but the display is not, then return error.
 		if orientation != display.OrientationPortraitPrimary {
-			return errors.New("invalid unspecified activity orientation, want: Landscape, got: Portrait")
+			return errors.New("invalid unspecified activity orientation: got Portrait; want Landscape")
 		}
 	} else { // App is Landscape
 		// If app is Landscape but the display is not, then return error.
 		if orientation != display.OrientationLandscapePrimary {
-			return errors.New("invalid unspecified activity orientation, want: Portrait, got: Landscape")
+			return errors.New("invalid unspecified activity orientation: got Landscape; want Portrait")
 		}
 	}
 
