@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -24,6 +25,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		Pre:          pre.VKEnabled(),
 		Params: []testing.Param{{
 			Name:              "stable",
 			ExtraHardwareDeps: pre.InputsStableModels,
@@ -36,16 +38,7 @@ func init() {
 }
 
 func VirtualKeyboardOmnibox(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	// Start a empty window.
-	if _, err := cr.NewConn(ctx, "chrome://newtab"); err != nil {
-		s.Fatal("Failed to start a new tab: ", err)
-	}
+	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -53,6 +46,17 @@ func VirtualKeyboardOmnibox(ctx context.Context, s *testing.State) {
 	}
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
+	if err != nil {
+		s.Fatal("Failed to ensure in tablet mode: ", err)
+	}
+	defer cleanup(ctx)
+
+	// Start a empty window.
+	if _, err := cr.NewConn(ctx, "chrome://newtab"); err != nil {
+		s.Fatal("Failed to start a new tab: ", err)
+	}
 
 	shown, err := vkb.IsShown(ctx, tconn)
 	if err != nil {
