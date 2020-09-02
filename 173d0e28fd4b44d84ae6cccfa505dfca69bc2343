@@ -142,6 +142,24 @@
       "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f437911c_8b37cf05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-02T21:49:43Z",
+      "side": 1,
+      "message": "Sure, what I did before was (1) modify core_pattern, (2) attempt to invoke crash_reporter, (3) observe that argv as supplied wasn\u0027t correct.\n\nNote that in general crash_reporter will ignore the exec name supplied in argv in favor of /proc/pid/exe, so you may need to explicitly LOG() the `--user` param supplied to crash_reporter from the kernel.",
+      "parentUuid": "c6fd91a6_58312ac8",
+      "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
