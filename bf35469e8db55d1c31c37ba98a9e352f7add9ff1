@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "71f94056_ecfeab0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2020-09-02T06:39:45Z",
+      "side": 0,
+      "message": "Thanks Jun. Just to summarise for posterity: it\u0027s better to explicitly force either tablet or clamshell mode (which affects whether it\u0027s tablet vs a11y VK). The combination of clamshell mode + tablet VK (this is what we may get when using default UI mode with VK enabled) is not a supported realistic scenario. Also, among VK usage, tablet VK (only on tablet mode in practice) is a more critical use case (by default users have no alternatives but the VK).",
+      "parentUuid": "bc7ac39c_2201cd41",
+      "range": {
+        "startLine": 48,
+        "startChar": 75,
+        "endLine": 48,
+        "endChar": 125
+      },
+      "revId": "bf35469e8db55d1c31c37ba98a9e352f7add9ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ae610ce_789ca871",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
         "patchSetId": 1
