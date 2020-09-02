@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6483f87e_5643ec6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-02T03:15:37Z",
+      "side": 1,
+      "message": "Currently video, camera, and audio tests use this API. This change affects video measurements - at least on my shyvana I see a reduction in psys/system power usage (although I\u0027m not exactly sure why). It also likely affects some camera tests, although I only checked that it doesn\u0027t break the camera activity. I doubt it will affect audio measurements, but cc\u0027ing owners for awareness.",
+      "revId": "5591a29c37e88b89ecb3cc3c29eba98ca2c8e70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
