@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13c0750b_f3fbda86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T02:31:54Z",
+      "side": 1,
+      "message": "Mostly LGTM. some more nit-picking.",
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89fcbb7a_5ee6c106",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T02:31:54Z",
+      "side": 1,
+      "message": "small nit: perhaps this should be in the next code block (i.e. move the blank line108 before this log)",
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f87588_286095b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T02:31:54Z",
+      "side": 1,
+      "message": "nit: as the \"Failed to disconnect...\" log is guaranteed to be printed on the good path, it can be kind of noisy. One minor refinement here is: Add a \"disconnected\" boolean which will be set to true around line169 and only do \"DisconnectWifi\" here when not yet disconnected. (Then failure here might be a real error)",
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d157ef3b_ec222188",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T02:31:54Z",
+      "side": 1,
+      "message": "nit: I think this might be real Error.",
+      "range": {
+        "startLine": 126,
+        "startChar": 6,
+        "endLine": 126,
+        "endChar": 10
+      },
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e38f5cb_86c3bacc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T02:31:54Z",
+      "side": 1,
+      "message": "nit: clientHWAddr",
+      "range": {
+        "startLine": 157,
+        "startChar": 9,
+        "endLine": 157,
+        "endChar": 11
+      },
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a69c8f1_f74168cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T02:31:54Z",
+      "side": 1,
+      "message": "nit: Are there expected cases that the service won\u0027t become idle here?",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 10
+      },
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
