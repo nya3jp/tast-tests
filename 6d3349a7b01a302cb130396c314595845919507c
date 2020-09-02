@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e191eb_92276517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-02T23:30:21Z",
+      "side": 1,
+      "message": "submitted earlier to unblock RVC PFQ. Waiting hatch-cq would add nothing. All other boards are green",
+      "revId": "6d3349a7b01a302cb130396c314595845919507c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
