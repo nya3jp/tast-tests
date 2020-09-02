@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "eeb40333_8e52c45d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2020-09-02T01:55:58Z",
+      "side": 0,
+      "message": "What\u0027s the \"original UI mode\"? It\u0027ll default to either clamshell or tablet, right? And we\u0027d like to explicit force either one, as most of the time it matters for VK inputs. I understand the VM is like a convertible device that can switch between the two modes.",
+      "parentUuid": "b225cf3a_b8c9a82d",
+      "range": {
+        "startLine": 48,
+        "startChar": 75,
+        "endLine": 48,
+        "endChar": 125
+      },
+      "revId": "bf35469e8db55d1c31c37ba98a9e352f7add9ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ae610ce_789ca871",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
         "patchSetId": 1
