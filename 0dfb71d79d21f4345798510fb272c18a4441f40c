@@ -16,6 +16,258 @@
       "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f930876_10ab6be5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused. Isn\u0027t it integer calculation? Both wantPixelCount and the result of CountBlackPixels are int. Could you clarify?",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 61
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "868737f0_97330e1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "nit: unused?",
+      "range": {
+        "startLine": 119,
+        "startChar": 62,
+        "endLine": 119,
+        "endChar": 81
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e72e04fa_7f808e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "nit: I think this can be dropped.",
+      "range": {
+        "startLine": 153,
+        "startChar": 111,
+        "endLine": 153,
+        "endChar": 120
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7864034_8be00058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "nit: hmmm.... so what \"default\" means here...?\nsquarePixelCount or boxPixelCount or ... something...?",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 162,
+        "endChar": 16
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75dc0a0f_927d85a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen/screen.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "I know it\u0027s not the regression, but let\u0027s avoid using negative words if possible for simplicity.\n\nSuggestion: WaitForStableFrames()",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36073367_8182e1d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen/screen.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#in-band-errors\n\ncould you avoid inband error?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dec6e497_1186c7b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen/screen.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "As you touch this, could you handle error cases?",
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ad4cf8_82e32bbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen/screen.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "Could you move this out from the function to avoid compiling it multiple times?",
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29bfd0ab_ebea2d2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "unused.",
+      "range": {
+        "startLine": 34,
+        "startChar": 118,
+        "endLine": 34,
+        "endChar": 131
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c7b624_9be3c5dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "overwriting |act| parameter at the first line...?",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 4
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a366a82d_bc6ec70a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b66fdbcc_3817219a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:52:25Z",
+      "side": 1,
+      "message": "Do you need this activity still, though both defaultPixelCount and VerifyPixelsWithUSFEnabled launches another activity?\nIf so, could you comment?",
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
