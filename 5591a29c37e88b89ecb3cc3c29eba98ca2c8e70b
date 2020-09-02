@@ -56,6 +56,30 @@
       "revId": "5591a29c37e88b89ecb3cc3c29eba98ca2c8e70b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3e0ebb_8893b56f",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-02T03:40:42Z",
+      "side": 1,
+      "message": "The two functions use different enums.",
+      "parentUuid": "a25e551d_b7e8ff63",
+      "range": {
+        "startLine": 98,
+        "startChar": 76,
+        "endLine": 98,
+        "endChar": 79
+      },
+      "revId": "5591a29c37e88b89ecb3cc3c29eba98ca2c8e70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
