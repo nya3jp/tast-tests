@@ -92,6 +92,12 @@ func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg,
 	if err := activity.StartWithArgs(ctx, tconn, args.Prefixes, args.Suffixes); err != nil {
 		return nil, errors.Wrapf(err, "failed to start activity %q in package %q", activityName, pkg)
 	}
+	if err := activity.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
+		return nil, errors.Wrapf(err, "failed to make activity %q in package %q fullscreen", activityName, pkg)
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, activity.PackageName(), ash.WindowStateFullscreen); err != nil {
+		return nil, errors.Wrapf(err, "failed to wait for %q in package %q to be fullscreen", activityName, pkg)
+	}
 
 	return func(ctx context.Context) error {
 		defer activity.Close()
