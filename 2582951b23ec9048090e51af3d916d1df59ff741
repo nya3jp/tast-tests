@@ -63,6 +63,30 @@
       "revId": "2582951b23ec9048090e51af3d916d1df59ff741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2cad9a_04a4b8c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/faillog_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-02T08:56:44Z",
+      "side": 1,
+      "message": "Hmm I see. I think it\u0027s slightly better to change the remote side to copy the directory as \"faillog\", but I think it\u0027s not a big deal...",
+      "parentUuid": "e43a8029_8e15ded4",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "2582951b23ec9048090e51af3d916d1df59ff741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
