@@ -33,6 +33,24 @@
       "revId": "88b330288eb54f4654aaf21e92d5dcec2e453568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d4e26f6_0bf3c8f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-02T02:10:12Z",
+      "side": 1,
+      "message": "To add: src/platform/tast-tests/tools/repeat-test.sh might be useful if you\u0027re trying to verify the test is non flaky. \n\nIf you don\u0027t have all the devices in question, you can also lease them from the lab: go/cros-cheat#running-a-tast-test-on-a-lab-device",
+      "parentUuid": "efb7ad46_599919c9",
+      "revId": "88b330288eb54f4654aaf21e92d5dcec2e453568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
