@@ -673,7 +673,9 @@ func DragToShowHomescreen(ctx context.Context, width, height input.TouchCoord, s
 	} else if !inTabletMode {
 		return errors.New("this function does not support clamshell mode")
 	}
-	windows, err := GetAllWindows(ctx, tconn)
+	windows, err := FindAllWindows(ctx, tconn, func(window *Window) bool {
+		return window.IsVisible
+	})
 	if err != nil {
 		return errors.Wrap(err, "failed to get all windows")
 	}
