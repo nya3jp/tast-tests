@@ -34,6 +34,24 @@
       "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c918ee_51621657",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2020-09-02T20:18:02Z",
+      "side": 1,
+      "message": "I checked kernel code and also do a testing, there is no such limitation for expanded core name. I create a file with 250 chars with file name and it crashed, crash reporter correctly handled it and I don\u0027t see any filename truncating. It seems kernel will just dynamically expand to a longer name.\n\nMy main question is: do we have any thing in infra side to expect that this string has a length limitation?  As far as I know, the limitation for filename is 255 bytes. So it could be 240 bytes longer than before.",
+      "parentUuid": "6a124d37_3af8c3d1",
+      "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
