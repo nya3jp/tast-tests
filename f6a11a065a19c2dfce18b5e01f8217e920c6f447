@@ -51,6 +51,24 @@
       "revId": "f6a11a065a19c2dfce18b5e01f8217e920c6f447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2357ea0_b3c77f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-02T05:43:49Z",
+      "side": 1,
+      "message": "What do you mean by \"can\u0027t check other breakage\"? I was thinking that this known error and other errors would appear as a separate tests, or at least distinguishable by a query when querying the logs.\nOne of my concerns is that, in general, if we check in a test that expects the exact wrong output, then, when the main logic is fixed, this test is going to break detecting it. It might be confusing for developers.",
+      "parentUuid": "79b9de04_29f84bcf",
+      "revId": "f6a11a065a19c2dfce18b5e01f8217e920c6f447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
