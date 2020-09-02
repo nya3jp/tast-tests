@@ -33,6 +33,24 @@
       "revId": "37b7322c794ab4fc9c1caf35a8267357ddd6532e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8a19b49_5e2b228c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-09-02T01:00:32Z",
+      "side": 1,
+      "message": "It seems on that test run, arc.InputCompat caused Android to enter an invalid state and arc.KeyCharacterMap was simply affected by that. Will investigate this. Thank you!",
+      "parentUuid": "2c0ff607_2accebca",
+      "revId": "37b7322c794ab4fc9c1caf35a8267357ddd6532e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
