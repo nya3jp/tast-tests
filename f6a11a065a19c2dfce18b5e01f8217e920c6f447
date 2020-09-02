@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "542a3959_81347dd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-02T09:20:51Z",
+      "side": 1,
+      "message": "After off-thread discussion, I got that:\n- The test tests several things serially.\n- The code being tested by this test is ARC, not Android.\n- Some other assertions (expectation verification) cannot run unless this part of the test go through.\n- The test result is watched manullay in the dashboard.\n\nI approve this as a tentative fix, but I recommend to:\n- write TODO comment to make sure not to promote this test to critical before the bug is fixed. (uin place of label:informational)\n, and also suggest to:\n- check if there are Fatal() that could be replaced with Error(), so that other parts can continue regardless of TTS text check\n- splitting test to smaller tests\n",
+      "revId": "f6a11a065a19c2dfce18b5e01f8217e920c6f447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2031dce2_d2ac319e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 6
