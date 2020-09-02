@@ -50,6 +50,11 @@ func WMResizableTablet(ctx context.Context, s *testing.State) {
 			Name: "RT_display_size_change",
 			Func: wmRT15,
 		},
+		wm.TestCase{
+			// resizable/tablet: font size change
+			Name: "RT_font_size_change",
+			Func: wmRT17,
+		},
 	})
 }
 
@@ -152,4 +157,29 @@ func wmRT15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletDisplaySizeChangeHelper(ctx, tconn, a, d, ntActivities)
+}
+
+// wmRT17 covers resizable/tablet: font size change.
+// Expected behavior is defined in: go/arc-wm-r RT17: resizable/tablet: font size change.
+func wmRT17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	acts := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletFontSizeChangeHelper(ctx, tconn, a, d, acts)
 }
