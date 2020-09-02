@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -30,9 +31,23 @@ func init() {
 		Data:         []string{"GoogleCameraArc.apk"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
+		}, {
+			Name:              "vm_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
 		}},
 		Timeout: 45 * time.Minute,
 	})
@@ -71,7 +86,8 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	batteryMode := s.Param().(setup.BatteryDischargeMode)
+	sup.Add(setup.PowerTest(ctx, tconn, batteryMode))
 
 	// Install GCA APK.
 	a := s.PreValue().(arc.PreData).ARC
