@@ -16,6 +16,69 @@
       "revId": "f18cb2e4996dd817e3391b4deb9f90469839e04a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7da7c87_365f594d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-09-02T23:52:46Z",
+      "side": 1,
+      "message": "Thanks for this CL it\u0027s a *promising improvement.\n\n* pun intended. 😊",
+      "revId": "f18cb2e4996dd817e3391b4deb9f90469839e04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8eb294d7_8996aa0b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-09-02T23:52:46Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with all these APIs and objects here, so forgive my basic question. 😊\n\nHere is where the coordinate is calculated or was it calculated previously and we\u0027re just reading it?",
+      "range": {
+        "startLine": 212,
+        "startChar": 12,
+        "endLine": 212,
+        "endChar": 25
+      },
+      "revId": "f18cb2e4996dd817e3391b4deb9f90469839e04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50349e43_0987987d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-09-02T23:52:46Z",
+      "side": 1,
+      "message": "Another potential reduction of latency can be experimented by folding these 2 APIs (mouseMove and mouseClick) to be 1 API so we would avoid the API round-trip + the promise round trip.\n\nSo the code here would be something like:\n  await tast.promisify(chrome.autotestPrivate.mouseMoveAndClick(centerpoint, 0, button);\n\nBut, I expect that greater source of flakiness is the latency between calculating the coordinate and the actual click.\n\nI\u0027m focusing on this \"promise round-trip\" because I understand that this chrome.autotestPrivate runs in the same Browser process that Files app, does it run in the same render process too? I\u0027m thinking if the tast.promisify() and the Files app share the same JS event-loop, if they do share the same event-loop, every promising enqueued here gives more chances for Files app code to run and move things around because promises run after any potential event/callback from browser APIs. [1]  If tast.promisify() and Files app don\u0027t share the same event-loop, then the impact of these 2 promises are expect to be less relevant.\n\nAll that said, these are nothing to stop this CL but to explore for follow up CLs.\n\n[1] - https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/",
+      "range": {
+        "startLine": 215,
+        "startChar": 23,
+        "endLine": 215,
+        "endChar": 56
+      },
+      "revId": "f18cb2e4996dd817e3391b4deb9f90469839e04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
