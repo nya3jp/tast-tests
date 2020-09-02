@@ -127,6 +127,30 @@
       "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "932cf5d2_1aa93567",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/whats_new_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T01:40:50Z",
+      "side": 1,
+      "message": "Oh yeah that seems more obvious haha, changed to wait for settings !\u003d\u003d undefined",
+      "parentUuid": "c4cb2745_3f138779",
+      "range": {
+        "startLine": 69,
+        "startChar": 42,
+        "endLine": 69,
+        "endChar": 71
+      },
+      "revId": "de0c92a14799a6e39760b2967ae7e4cabfbf9ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

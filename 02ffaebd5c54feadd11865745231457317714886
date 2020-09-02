@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4745b05_f687d4e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T01:40:50Z",
+      "side": 1,
+      "message": "*Moved test to apps package\n*Added stable/unstable board parameters that other apps tests have\n*Cleaned up comments to remove PWA references and add periods to sentences that didn\u0027t have them 😊\n\nComparing Base to Patchset 2 lets you see the changes side-by-side, but not with the latest patch for some reason.",
+      "revId": "02ffaebd5c54feadd11865745231457317714886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
