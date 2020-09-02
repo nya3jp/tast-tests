@@ -16,6 +16,92 @@
       "revId": "f4f49d9ba8f1b4d18e7ea181207766f9b42d3594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4bd4248_73919c4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-02T19:06:25Z",
+      "side": 1,
+      "message": "thanks for the quick fix.\n\n+2 % nits",
+      "revId": "f4f49d9ba8f1b4d18e7ea181207766f9b42d3594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8f733db_ec7a5182",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-02T19:06:25Z",
+      "side": 1,
+      "message": "nit:\nreplace with SDKVersion()\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/version.go?l\u003d30",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "f4f49d9ba8f1b4d18e7ea181207766f9b42d3594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c8e652_172a8056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-02T19:06:25Z",
+      "side": 1,
+      "message": "nit:\n\nremove, see comment below",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 2
+      },
+      "revId": "f4f49d9ba8f1b4d18e7ea181207766f9b42d3594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d5b2c8_caf51107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-02T19:06:25Z",
+      "side": 1,
+      "message": "nit:\nreplace with SDKQ\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/version.go;l\u003d22?q\u003dSDKVersion%20lang:go\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)",
+      "range": {
+        "startLine": 337,
+        "startChar": 18,
+        "endLine": 337,
+        "endChar": 29
+      },
+      "revId": "f4f49d9ba8f1b4d18e7ea181207766f9b42d3594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
