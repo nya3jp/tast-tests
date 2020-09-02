@@ -105,6 +105,30 @@
       "revId": "fa73cbbb88e5acdd3643f7282dac7c8667c7f64f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4e10893_b740e496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1125794
+      },
+      "writtenOn": "2020-09-02T19:48:16Z",
+      "side": 1,
+      "message": "After we moved disabling earlier in the code I don\u0027t see the notification at all.\nThere are a lot of things happen prior to the launching of the test app. From the logs: \n2020/09/02 21:07:38 [21:07:37.818] Waiting for test API extension at chrome-extension://behllobkkfkfnphdnhnkndlbkcpglgmj/_generated_background_page.html\n2020/09/02 21:07:38 [21:07:37.822] Connecting to Chrome target 0CD381BC1BBF48F6FE18B6269BDFFE5F\n2020/09/02 21:07:38 [21:07:37.835] Test API extension is ready\n2020/09/02 21:07:38 [21:07:37.835] Starting UI Automator server\n2020/09/02 21:07:43 [21:07:43.288] Installing app\n... Some other steps\nIt takes about 10 seconds between Play Store icon disappears and the test app shows up. It looks like that there is enough time to kill the notification. I feel the test is pretty much race free (at least it makes sense to try).",
+      "parentUuid": "7a4e13f8_8164671d",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "fa73cbbb88e5acdd3643f7282dac7c8667c7f64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

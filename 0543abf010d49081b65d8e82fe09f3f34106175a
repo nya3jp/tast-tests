@@ -120,6 +120,54 @@
     },
     {
       "key": {
+        "uuid": "4b692048_cd2ee55e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1125794
+      },
+      "writtenOn": "2020-09-02T19:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7638477_f836a736",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "0543abf010d49081b65d8e82fe09f3f34106175a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "944ea123_ee4f86a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1125794
+      },
+      "writtenOn": "2020-09-02T19:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7638477_f836a736",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "0543abf010d49081b65d8e82fe09f3f34106175a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ce600d2_1d223177",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
         "patchSetId": 6
@@ -188,6 +236,54 @@
       "revId": "0543abf010d49081b65d8e82fe09f3f34106175a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f50f77_f125d3b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1125794
+      },
+      "writtenOn": "2020-09-02T19:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2c7dc4d_6476310e",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 10
+      },
+      "revId": "0543abf010d49081b65d8e82fe09f3f34106175a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e528804_ec7d1151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1125794
+      },
+      "writtenOn": "2020-09-02T19:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2c7dc4d_6476310e",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 10
+      },
+      "revId": "0543abf010d49081b65d8e82fe09f3f34106175a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
