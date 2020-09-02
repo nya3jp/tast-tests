@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c366c17_a481ea8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-09-02T22:33:19Z",
+      "side": 1,
+      "message": "Note that after the recently landed\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2057988\nwe should use |proprietary_codecs| here to line up with the\nother tests in (webrtc|video). Same for l.49.\nSorry about that!",
+      "range": {
+        "startLine": 43,
+        "startChar": 69,
+        "endLine": 43,
+        "endChar": 84
+      },
+      "revId": "9cf805850d85266014abde0301b0a8c5b2c2335a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
