@@ -93,6 +93,17 @@ func UInt64() validator {
 	}
 }
 
+// MatchValue returns a validator that checks whether |value| is equal to
+// |actual|.
+func MatchValue(value string) validator {
+	return func(actual string) error {
+		if value != actual {
+			return errors.Errorf("values do not match; got %v, want %v", value, actual)
+		}
+		return nil
+	}
+}
+
 // MatchRegexOrNA returns a function that checks whether |actual| matches the
 // regex pattern specified by |regex|. If |actual| is "NA", do not proceed with
 // the pattern matching.
