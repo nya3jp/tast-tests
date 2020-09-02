@@ -39,11 +39,10 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:text="0" />
-            <Button
-                android:id="@+id/finish_btn"
+            <TextView
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="finish trace"/>
+                android:layout_width="match_parent"
+                android:text="Press ESC to finish tracing" />
             <Button
                 android:id="@+id/clear_btn"
                 android:layout_height="wrap_content"

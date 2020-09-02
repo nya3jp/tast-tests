@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
     private ArrayList<ReceivedEvent> mRecvEvents = new ArrayList<>();
     private Float mLastMouseX = null;
     private Float mLastMouseY = null;
-    private Button mClrBtn, mFinishBtn;
+    private Button mClrBtn;
 
     // Finish trace and save the events as JSON to TextView UI.
     private void finishTrace() {
@@ -75,31 +75,8 @@ public class MainActivity extends Activity {
         ((ListView) findViewById(R.id.event_list)).setAdapter(mAdapter);
         mEvents = findViewById(R.id.event_json);
         mCount = findViewById(R.id.event_count);
-        mFinishBtn = findViewById(R.id.finish_btn);
         mClrBtn = findViewById(R.id.clear_btn);
 
-        mFinishBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              finishTrace();
-            }
-        });
-
-        mFinishBtn.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-              // Remove touch event from uiAutomator click().
-              if(mRecvEvents != null && mRecvEvents.size() >= 1){
-                mRecvEvents.remove(mRecvEvents.size() - 1);
-                mAdapter.notifyDataSetChanged();
-                mExecutor.submit(
-                    () -> {
-                      runOnUiThread(() -> setEvents("", mRecvEvents.size()));
-                    });
-              }
-              return false;
-              }
-          });
 
         mClrBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +102,11 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
+        // ESC key is a sign to finish tracing.
+        if(event.getKeyCode() == KeyEvent.KEYCODE_ESCAPE) {
+            finishTrace();
+            return false;
+        }
         ReceivedEvent recv =
                 new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis());
 
