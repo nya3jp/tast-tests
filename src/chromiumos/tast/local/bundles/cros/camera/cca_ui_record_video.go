@@ -29,6 +29,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),
+		Timeout:      5 * time.Minute,
 	})
 }
 
