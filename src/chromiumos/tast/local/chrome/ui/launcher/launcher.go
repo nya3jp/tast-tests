@@ -111,3 +111,33 @@ func SearchAndWaitForApp(ctx context.Context, tconn *chrome.TestConn, appName st
 	}
 	return appNode, err
 }
+
+// OpenExpandedView opens the Launcher to the Apps list page.
+func OpenExpandedView(ctx context.Context, tconn *chrome.TestConn) error {
+	// TODO: Call autotestPrivate API instead after https://bugs.chromium.org/p/chromium/issues/detail?id=1127384 is implemented.
+	if err := OpenLauncher(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open Launcher")
+	}
+	params := ui.FindParams{Name: "Expand to all apps", ClassName: "ExpandArrowView"}
+	expandArrowView, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find ExpandArrowView")
+	}
+	defer expandArrowView.Release(ctx)
+
+	if err := expandArrowView.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to open expanded application list view")
+	}
+	// Make sure items are done moving.
+	ui.WaitForLocationChangeCompleted(ctx, tconn)
+	return nil
+}
+
+// OpenExpandedViewIfNotExists opens the Launcher to the Apps list page if it is not opened already
+func OpenExpandedViewIfNotExists(ctx context.Context, tconn *chrome.TestConn) error {
+	params := ui.FindParams{ClassName: "ui/app_list/AppListItemView"}
+	if exist, err := ui.Exists(ctx, tconn, params); err != nil || exist {
+		return err
+	}
+	return OpenExpandedView(ctx, tconn)
+}
