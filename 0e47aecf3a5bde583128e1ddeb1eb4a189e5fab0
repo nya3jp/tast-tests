@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8db920ec_49a2cd43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-02T20:10:50Z",
+      "side": 1,
+      "message": "Hi Justin, I\u0027m looking to clean up my list of CLs-in-review. Are you planning to move forward with this CL?",
+      "revId": "0e47aecf3a5bde583128e1ddeb1eb4a189e5fab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
