@@ -25,6 +25,8 @@ func init() {
 		Func: RequiredClientCertificateForUser,
 		Desc: "Behavior of RequiredClientCertificateForUser policy, check if a certificate is issued when the policy is set",
 		Contacts: []string{
+			"pmarko@google.com",         // Feature owner
+			"miersh@google.com",         // Feature owner
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},

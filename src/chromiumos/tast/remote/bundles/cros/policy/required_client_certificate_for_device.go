@@ -25,6 +25,8 @@ func init() {
 		Func: RequiredClientCertificateForDevice,
 		Desc: "Behavior of RequiredClientCertificateForDevice policy",
 		Contacts: []string{
+			"pmarko@google.com",         // Feature owner
+			"miersh@google.com",         // Feature owner
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},
