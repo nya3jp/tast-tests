@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a1a14ac_79a99191",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-02T06:14:15Z",
+      "side": 1,
+      "message": "nit: error",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "40ec1d9d665ec881001779bff26362dac217caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
