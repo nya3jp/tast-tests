@@ -51,6 +51,24 @@
       "revId": "57d3f4ecada98c55f3146308764eda9978421176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551ab4f7_7ab8fdad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T07:29:41Z",
+      "side": 1,
+      "message": "\u003e That said, it means that adding a pre and forgetting \"ExtraAttr informational\" means you land your test immediately on the CQ even if none of the others are on?\n\nIf there\u0027s only \"group:mainline\" but no \"informational\" in Attr, yes.",
+      "parentUuid": "da059f66_06e96c62",
+      "revId": "57d3f4ecada98c55f3146308764eda9978421176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
