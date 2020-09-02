@@ -388,20 +388,20 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		if err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}
+	}
 
-		p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
-		if err != nil {
-			s.Fatal("Failed to connect to running container: ", err)
-		}
+	p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
+	if err != nil {
+		s.Fatal("Failed to connect to running container: ", err)
+	}
 
-		if p.keyboard, err = input.Keyboard(ctx); err != nil {
-			s.Fatal("Failed to create keyboard device: ", err)
-		}
+	if p.keyboard, err = input.Keyboard(ctx); err != nil {
+		s.Fatal("Failed to create keyboard device: ", err)
+	}
 
-		// Report disk size again after successful install.
-		if err := reportDiskUsage(ctx); err != nil {
-			s.Log("Failed to gather disk usage: ", err)
-		}
+	// Report disk size again after successful install.
+	if err := reportDiskUsage(ctx); err != nil {
+		s.Log("Failed to gather disk usage: ", err)
 	}
 
 	ret := p.buildPreData(ctx, s)
