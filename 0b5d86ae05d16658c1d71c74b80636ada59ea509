@@ -51,6 +51,41 @@
       "revId": "0b5d86ae05d16658c1d71c74b80636ada59ea509",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8400e368_ec14d0f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T07:53:52Z",
+      "side": 1,
+      "message": "My fault!\n\nThanks for pointing me that it\u0027s pre failure!\n\nI checked that the all failures were precondition related and it passed more than 20 builds.",
+      "parentUuid": "045fb00f_56c88606",
+      "revId": "0b5d86ae05d16658c1d71c74b80636ada59ea509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95e8fded_f0fe9bec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T07:53:52Z",
+      "side": 1,
+      "message": "LGTM, sorry for misunderstanding!",
+      "revId": "0b5d86ae05d16658c1d71c74b80636ada59ea509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
