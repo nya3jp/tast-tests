@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "88840ebd_bb7accc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-09-02T13:31:46Z",
+      "side": 1,
+      "message": "My concern would be less about using an unique user and rather the fact that this is just a random chromium.org account that we happen to use for testing. Hopefully nobody ever removes it from chromium.org.\n\nGiven that this has been used in other tests before, a lot of things would break if this account were ever removed, so I don\u0027t see an immediate concern here. But it would be nice (in the future, not in this CL) to have a better list of all tests accounts used in Chrome OS testing.",
+      "parentUuid": "7a1e3127_7df1ca38",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a99c08ff_4e55be8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
         "patchSetId": 1
