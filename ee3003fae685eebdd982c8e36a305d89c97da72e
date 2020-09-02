@@ -16,6 +16,178 @@
       "revId": "ee3003fae685eebdd982c8e36a305d89c97da72e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "434aac87_8a5e03f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T13:33:14Z",
+      "side": 1,
+      "message": "LGTM % minor comments, thanks!",
+      "revId": "ee3003fae685eebdd982c8e36a305d89c97da72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32d621e1_5f05bc5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T13:33:14Z",
+      "side": 1,
+      "message": "same: for consistency it can be \"request has empty notification id\". WDYT?",
+      "range": {
+        "startLine": 334,
+        "startChar": 26,
+        "endLine": 334,
+        "endChar": 50
+      },
+      "revId": "ee3003fae685eebdd982c8e36a305d89c97da72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e703241d_ece8f8a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T13:33:14Z",
+      "side": 1,
+      "message": "you will spam a lot in logs. Please check guideline when to log:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\n\nhere you can just remove this log",
+      "revId": "ee3003fae685eebdd982c8e36a305d89c97da72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "193ac803_ded2f5c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T13:33:14Z",
+      "side": 1,
+      "message": "nit: let\u0027s add notification id:\n\nerrors.Wrapf(err, \"failed to wait %q notification\", req.NotificationId)",
+      "range": {
+        "startLine": 359,
+        "startChar": 14,
+        "endLine": 359,
+        "endChar": 63
+      },
+      "revId": "ee3003fae685eebdd982c8e36a305d89c97da72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05a6d14_cb370b91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T13:33:14Z",
+      "side": 1,
+      "message": "nit: maybe \"request has empty URL\" ?",
+      "range": {
+        "startLine": 370,
+        "startChar": 26,
+        "endLine": 370,
+        "endChar": 60
+      },
+      "revId": "ee3003fae685eebdd982c8e36a305d89c97da72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f5c7b1_38a37f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T13:33:14Z",
+      "side": 1,
+      "message": "same: remove space",
+      "range": {
+        "startLine": 378,
+        "startChar": 56,
+        "endLine": 378,
+        "endChar": 57
+      },
+      "revId": "ee3003fae685eebdd982c8e36a305d89c97da72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ceba71_f5a0d629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T13:33:14Z",
+      "side": 1,
+      "message": "you also can use Wrap if you put req.Url at the end",
+      "range": {
+        "startLine": 383,
+        "startChar": 21,
+        "endLine": 383,
+        "endChar": 26
+      },
+      "revId": "ee3003fae685eebdd982c8e36a305d89c97da72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b7142c_8bc44bda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version_notifications.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T13:33:14Z",
+      "side": 1,
+      "message": "nit: please add period at the end",
+      "range": {
+        "startLine": 98,
+        "startChar": 36,
+        "endLine": 98,
+        "endChar": 42
+      },
+      "revId": "ee3003fae685eebdd982c8e36a305d89c97da72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
