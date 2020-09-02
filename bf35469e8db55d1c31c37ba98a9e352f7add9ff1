@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "feb43775_0dd88bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2020-09-02T02:01:06Z",
+      "side": 0,
+      "message": "For example, in this particular test, we wanna test the VK (either non-a11y or a11y VK will do, the test applies to both), but I believe in clamshell mode there\u0027s no VK unless you force-enable the \"a11y VK\". In tablet mode, by tapping an input field, you can summon either the non-a11y VK (by default), or if force-enabled, the a11y VK. So it seems we\u0027re getting lucky that the instance is in tablet mode by default?",
+      "parentUuid": "eeb40333_8e52c45d",
+      "range": {
+        "startLine": 48,
+        "startChar": 75,
+        "endLine": 48,
+        "endChar": 125
+      },
+      "revId": "bf35469e8db55d1c31c37ba98a9e352f7add9ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ae610ce_789ca871",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
         "patchSetId": 1
