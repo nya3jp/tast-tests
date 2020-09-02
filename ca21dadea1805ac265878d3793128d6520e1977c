@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dee27c81_ff3cfccd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-02T19:52:15Z",
+      "side": 1,
+      "message": "Thanks for finding time to review today, I hope you didn\u0027t stay up late just for me!",
+      "parentUuid": "f979980e_04a3e89e",
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51a512f0_f4978018",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f0e6eb0_512fe341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-02T19:52:15Z",
+      "side": 1,
+      "message": "Interesting, in my experience it\u0027s pretty uncommon to mix tabs and indents intentionally :)\n\nBut done, thanks for the style knowledge.\n\nNote that this causes mismatched alignment with the remaining Go arguments to the call to tconn.Call (format and data in this helper, just format for the one below) for anyone who doesn\u0027t have tabwidth\u003d2, so I\u0027ve grouped those arguments on the same line as the closing of the raw string to reduce the visual abruptness this use of spaces causes.",
+      "parentUuid": "51a512f0_f4978018",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "e7e92808_507bc952",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-02T19:52:15Z",
+      "side": 1,
+      "message": "(I know it doesn\u0027t mean much for tast code, but as a bit of background/introduction I am on go-readability-approvers (which reviews for Go style in google3). I also know there are various style differences for Tast tests, and I\u0027m constantly learning.)\n\nAcross google3 I\u0027d say there\u0027s no definitive standard, and whether these complex statements are rolled into the \u0027if\u0027 depends on the author/team/codebase. I personally prefer to split them up almost every time because I think that joining it up causes (often-unnecessary) code density, requiring more effort for readers to tease apart what part of the code belongs to which function/control flow structure.\n\nThat said, in this case the code is so simple that It\u0027s not that hard to read. So: Done.",
+      "parentUuid": "ad0cb1e2_b980f4b9",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6a4c87f_49982a15",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 4
@@ -76,6 +142,30 @@
       "writtenOn": "2020-09-02T14:05:29Z",
       "side": 1,
       "message": "off topic: I think it\u0027Ll be nice to get rid of this, instead setting it via uiautomator in the future.",
+      "range": {
+        "startLine": 94,
+        "startChar": 38,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e4f4fed_0ac3b284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-02T19:52:15Z",
+      "side": 1,
+      "message": "It definitely took me some time to figure out what was even happening (which is why I was especially happy you requested docs in an earlier round), so anything that makes this dance simpler would probably have been nicer.",
+      "parentUuid": "b6a4c87f_49982a15",
       "range": {
         "startLine": 94,
         "startChar": 38,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c85d4c6e_29f946af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-02T19:52:15Z",
+      "side": 1,
+      "message": "I had this fleeting thought when I changed the others to actually use the constant, and I should have followed through :) thanks for the comment.",
+      "parentUuid": "05dd5db6_e0dec6b5",
+      "range": {
+        "startLine": 284,
+        "startChar": 43,
+        "endLine": 284,
+        "endChar": 85
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8605b2ba_20c9533f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 4
@@ -131,6 +245,30 @@
       "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3785779_19aa5280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-02T19:52:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8605b2ba_20c9533f",
+      "range": {
+        "startLine": 294,
+        "startChar": 43,
+        "endLine": 294,
+        "endChar": 70
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "6ca1da9a_f75b5838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-02T19:52:15Z",
+      "side": 1,
+      "message": "Good point! Agreed this is spammy, and not needed since we print out the attempt count after we find the expected data.",
+      "parentUuid": "533b0700_b638e3a9",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 116
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e075f211_d5134dbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 4
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "22940eb7_a243cd56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-02T19:52:15Z",
+      "side": 1,
+      "message": "The timespan in which this retry is relevant is indeed within tens of milliseconds (for the Android-to-Chrome case, at least). b/157615371#comment32 has more words about it, but the interesting graph to look at is attached to that comment as `android_to_chrome.png`; in particular, at least for that comment I wanted very fine-grained timings. I suppose I don\u0027t need it to be /that/ fine-grained always.\n\nYour question gets me thinking: the \u0027paste\u0027 operation we are doing for Android-\u003eChrome takes around 3-6ms, and since the issue here is slow processing of an async message maybe it\u0027s not a good idea to only be sleeping for 25% of the time (busy work will make things even slower).\n\nMaybe you meant for me to increase it further, but I settled on changing the interval to 5ms so that we are sleeping for just over 50% of the poll loop (on average) while still having some better precision in the latency measurements.",
+      "parentUuid": "e075f211_d5134dbf",
+      "range": {
+        "startLine": 336,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 31
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7895dbb8_ed467028",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 4
@@ -200,6 +386,30 @@
       "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b4dcedb_1145eff4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-02T19:52:15Z",
+      "side": 1,
+      "message": "In this case, because the call to testing.Poll is pretty complicated I\u0027d prefer to keep the call separate from the associated \u0027if\u0027 statement.\n\n(see also other comment where I talk about my personal preference about keeping complex statements out-of-line with if statements.)",
+      "parentUuid": "7895dbb8_ed467028",
+      "range": {
+        "startLine": 338,
+        "startChar": 3,
+        "endLine": 338,
+        "endChar": 18
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
