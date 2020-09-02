@@ -188,21 +188,28 @@ func testWindowShadow(ctx context.Context, _ *arc.ARC, cr *chrome.Chrome, tconn 
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get internal display info")
+	}
+
+	displayWidthPX := int(float64(dispInfo.Bounds.Width) * dispMode.DeviceScaleFactor)
+	displayHeightPX := int(float64(dispInfo.Bounds.Height) * dispMode.DeviceScaleFactor)
 
 	// Check the pixel in a small width rectangle box from each edge.
 	const shadowWidth = 5
 
 	// TODO(sstan): Using set bound function replace the simple window bounds check.
 	bounds, err := act.WindowBounds(ctx)
-	testing.ContextLogf(ctx, "WindowShadow: bound %v,%v; dispMode W:%v, H:%v", bounds.Width, bounds.Height, dispMode.WidthInNativePixels, dispMode.HeightInNativePixels)
+	testing.ContextLogf(ctx, "WindowShadow: bound %v,%v; display W:%v, H:%v", bounds.Width, bounds.Height, displayWidthPX, displayHeightPX)
 
 	if err != nil {
 		return err
 	}
-	if bounds.Width >= dispMode.WidthInNativePixels || bounds.Height >= dispMode.HeightInNativePixels {
+	if bounds.Width >= displayWidthPX || bounds.Height >= displayHeightPX {
 		return errors.New("activity is larger than screen so that shadow can't be visible")
 	}
-	if bounds.Left < shadowWidth || bounds.Left+bounds.Width+shadowWidth >= dispMode.WidthInNativePixels {
+	if bounds.Left < shadowWidth || bounds.Left+bounds.Width+shadowWidth >= displayWidthPX {
 		return errors.New("activity haven't enough space to show shadow")
 	}
 
@@ -353,6 +360,14 @@ func testResizeWindow(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 	}
 	defer tsw.Close()
 
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if err = tsw.SetRotation(-orientation.Angle); err != nil {
+		return err
+	}
+
 	stw, err := tsw.NewSingleTouchWriter()
 	if err != nil {
 		return errors.Wrap(err, "could not create TouchEventWriter")
@@ -360,8 +375,8 @@ func testResizeWindow(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 	defer stw.Close()
 
 	// Calculate Pixel (screen display) / Tuxel (touch device) ratio.
-	dispW := dispMode.WidthInNativePixels
-	dispH := dispMode.HeightInNativePixels
+	dispW := int(float64(dispInfo.Bounds.Width) * dispMode.DeviceScaleFactor)
+	dispH := int(float64(dispInfo.Bounds.Height) * dispMode.DeviceScaleFactor)
 	pixelToTuxelX := float64(tsw.Width()) / float64(dispW)
 	pixelToTuxelY := float64(tsw.Height()) / float64(dispH)
 
@@ -1146,7 +1161,9 @@ func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 		return err
 	}
 
-	shelfHeightPX := dispMode.HeightInNativePixels - int(math.Round(float64(dispInfo.WorkArea.Height)*dispMode.DeviceScaleFactor))
+	displayWidthPX := int(float64(dispInfo.Bounds.Width) * dispMode.DeviceScaleFactor)
+	displayHeightPX := int(float64(dispInfo.Bounds.Height) * dispMode.DeviceScaleFactor)
+	shelfHeightPX := displayHeightPX - int(math.Round(float64(dispInfo.WorkArea.Height)*dispMode.DeviceScaleFactor))
 
 	// Change the window to normal state for make sure the bounds of window can be set.
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
@@ -1178,7 +1195,7 @@ func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 	}{
 		{"trigger min size limit", coords.NewRect(0, 0, 0, 0), coords.NewRect(0, captionHeight, minimizeSize, minimizeSize)},
 		{"trigger min size limit again", coords.NewRect(0, captionHeight/2, minimizeSize/2, minimizeSize/2), coords.NewRect(0, captionHeight, minimizeSize, minimizeSize)},
-		{"fullscreen size", coords.NewRect(0, 0, dispMode.WidthInNativePixels, dispMode.HeightInNativePixels), coords.NewRect(0, captionHeight, dispMode.WidthInNativePixels, dispMode.HeightInNativePixels-captionHeight-shelfHeightPX)}, // Auto maximize. It means the edge will not over the shelf
+		{"fullscreen size", coords.NewRect(0, 0, displayWidthPX, displayHeightPX), coords.NewRect(0, captionHeight, displayWidthPX, displayHeightPX-captionHeight-shelfHeightPX)}, // Auto maximize. It means the edge will not over the shelf
 	} {
 		// The expected window bound depends on setting window bound and can be
 		// calculated directly, according to the window bound behavior.
