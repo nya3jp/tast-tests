@@ -16,6 +16,23 @@
       "revId": "88b330288eb54f4654aaf21e92d5dcec2e453568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efb7ad46_599919c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-02T02:06:22Z",
+      "side": 1,
+      "message": "Tast Shadow Review: Two observations:\n- Based on the tastboard results, I\u0027m not really sure this in a state that it can be promoted to critical. Tastboard itself is saying \"This informational test passed in last 5 builds. Please promote it to the Commit Queue after 20+ consecutive passes\". \n- If you think the test meets the spirit of the stability criteria, can you provide bugs that show the issues we see so far have been investigated/fixed, and other testing that you\u0027ve done to show the test meets the intent of the 20+ consecutive pass requirement (e.g. \u003c1% flakiness?). You could run the test many times locally on the boards you\u0027re seeking to promote, for example.",
+      "revId": "88b330288eb54f4654aaf21e92d5dcec2e453568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
