@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b151f79f_ad466882",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-02T00:39:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62bad759_c5b25456",
+      "revId": "d12397efe4545f64ae7a6478f0809631422fbf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa591e4b_5ae2287c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 18
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d3658c1c_7ff1fbb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-02T00:39:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa591e4b_5ae2287c",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 10
+      },
+      "revId": "d12397efe4545f64ae7a6478f0809631422fbf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab897ec0_2f0041d2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 18
@@ -53,6 +95,30 @@
       "writtenOn": "2020-09-01T05:32:40Z",
       "side": 1,
       "message": "This does not seem correct. Shouldn\u0027t this be the MAC of DUT? (And then one more question follows: it is necessary to specify BSSID?)",
+      "range": {
+        "startLine": 158,
+        "startChar": 42,
+        "endLine": 158,
+        "endChar": 47
+      },
+      "revId": "d12397efe4545f64ae7a6478f0809631422fbf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0677218f_c19fce95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-02T00:39:09Z",
+      "side": 1,
+      "message": "That\u0027s true I changed it to use the client Addr. It\u0027s not necessary to specify the BSSID and we can get the current BSSID using the iwr.CurrentBSSID() if the service is still connected.",
+      "parentUuid": "ab897ec0_2f0041d2",
       "range": {
         "startLine": 158,
         "startChar": 42,
