@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "2437b8bb_40ddd886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-02T12:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bf5f395_cb961279",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 22
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7129dcc_e079ac7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
         "patchSetId": 2
@@ -79,6 +103,30 @@
       "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e740bbca_3d05e040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-02T12:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7129dcc_e079ac7b",
+      "range": {
+        "startLine": 332,
+        "startChar": 33,
+        "endLine": 332,
+        "endChar": 36
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "b8b7e234_9084bbbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-02T12:21:56Z",
+      "side": 1,
+      "message": "It was meant to indicate that the notification id is hardcoded in Chrome. But I think it makes more sense to have this comment at the function call site where we are actually mentioning the ID while creating the request.",
+      "parentUuid": "af421c09_a0048f14",
+      "range": {
+        "startLine": 351,
+        "startChar": 3,
+        "endLine": 351,
+        "endChar": 26
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30153403_05b2c08f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
         "patchSetId": 2
@@ -125,6 +197,30 @@
       "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "087bc612_272a2af1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-02T12:21:56Z",
+      "side": 1,
+      "message": "The notification.ID is something like \u0027notification-ui-manager#(nil)#policy.update_required\u0027. \nMy guess is that it is related to this code:\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/notifications/profile_notification.cc;l\u003d18;\nI think because of this strings.Contains(...) is being used at other places in the code too.\nLike:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cryptohome/show_low_disk_space_notification.go;l\u003d54?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cryptohome/show_low_disk_space_notification.go;l\u003d61?",
+      "parentUuid": "30153403_05b2c08f",
+      "range": {
+        "startLine": 352,
+        "startChar": 6,
+        "endLine": 352,
+        "endChar": 22
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "49b97fff_68222cb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-02T12:21:56Z",
+      "side": 1,
+      "message": "Thanks for sharing this. I have increased the timeout from 5 secs to 15 secs to be on the safe side to cover the case when for any reason the notification takes longer to get displayed.",
+      "parentUuid": "3fd293b3_1b09ac65",
+      "range": {
+        "startLine": 358,
+        "startChar": 31,
+        "endLine": 358,
+        "endChar": 80
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0ef0fbc_ed9f4638",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
         "patchSetId": 2
@@ -171,6 +291,30 @@
       "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f540b67a_d29d8aa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-02T12:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0ef0fbc_ed9f4638",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 2
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "15266c8c_02d12270",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-02T12:21:56Z",
+      "side": 1,
+      "message": "The official name is \u0027Auto Update Expiration\u0027 but \u0027End of Life\u0027 is being used at a lot of places in the code. Now updated it here for clarity.",
+      "parentUuid": "3534b8b5_acdaf82a",
+      "range": {
+        "startLine": 26,
+        "startChar": 78,
+        "endLine": 26,
+        "endChar": 89
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa26549e_bfd6e5db",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version_notifications.go",
         "patchSetId": 2
@@ -208,6 +376,30 @@
       "writtenOn": "2020-09-02T10:16:28Z",
       "side": 1,
       "message": "Do you have maybe team email?",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f56af852_c0994167",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-02T12:21:56Z",
+      "side": 1,
+      "message": "We use marcgrimme-team@ for internal communication but I am not sure if it should be used here as it does not indicate anything about ChromeOS. The discussion for a new email for the team is under the way. Would it fine if I update the email here once we have one ?",
+      "parentUuid": "fa26549e_bfd6e5db",
       "range": {
         "startLine": 27,
         "startChar": 2,
