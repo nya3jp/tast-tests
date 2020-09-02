@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18840658_6d847299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2020-09-02T06:39:45Z",
+      "side": 1,
+      "message": "Should this be applied to the following as well?\n\nvirtual_keyboard_accent.go\nvirtual_keyboard_suggestions.go\nvirtual_keyboard_change_input.go\n",
+      "revId": "c3a12194b0118a53f75937d609c3e161e7806ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
