@@ -188,21 +188,27 @@ func testWindowShadow(ctx context.Context, _ *arc.ARC, cr *chrome.Chrome, tconn 
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get internal display info")
+	}
+
+	dispBounds := coords.ConvertBoundsFromDPToPX(dispInfo.Bounds, dispMode.DeviceScaleFactor)
 
 	// Check the pixel in a small width rectangle box from each edge.
 	const shadowWidth = 5
 
 	// TODO(sstan): Using set bound function replace the simple window bounds check.
-	bounds, err := act.WindowBounds(ctx)
-	testing.ContextLogf(ctx, "WindowShadow: bound %v,%v; dispMode W:%v, H:%v", bounds.Width, bounds.Height, dispMode.WidthInNativePixels, dispMode.HeightInNativePixels)
+	winBounds, err := act.WindowBounds(ctx)
+	testing.ContextLogf(ctx, "WindowShadow: window = %v, display = %v", winBounds, dispBounds)
 
 	if err != nil {
 		return err
 	}
-	if bounds.Width >= dispMode.WidthInNativePixels || bounds.Height >= dispMode.HeightInNativePixels {
+	if winBounds.Width >= dispBounds.Width || winBounds.Height >= dispBounds.Height {
 		return errors.New("activity is larger than screen so that shadow can't be visible")
 	}
-	if bounds.Left < shadowWidth || bounds.Left+bounds.Width+shadowWidth >= dispMode.WidthInNativePixels {
+	if winBounds.Left < shadowWidth || winBounds.Left+winBounds.Width+shadowWidth >= dispBounds.Width {
 		return errors.New("activity haven't enough space to show shadow")
 	}
 
@@ -241,9 +247,9 @@ func testWindowShadow(ctx context.Context, _ *arc.ARC, cr *chrome.Chrome, tconn 
 		name           string
 		x0, y0, x1, y1 int
 	}{
-		{"left   edge shadow", bounds.Left - shadowWidth, bounds.Top, bounds.Left, bounds.Top + bounds.Height},
-		{"right  edge shadow", bounds.Left + bounds.Width, bounds.Top, bounds.Left + bounds.Width + shadowWidth, bounds.Top + bounds.Height},
-		{"bottom edge shadow", bounds.Left, bounds.Top + bounds.Height, bounds.Left + bounds.Width, bounds.Top + bounds.Height + shadowWidth},
+		{"left   edge shadow", winBounds.Left - shadowWidth, winBounds.Top, winBounds.Left, winBounds.Top + winBounds.Height},
+		{"right  edge shadow", winBounds.Left + winBounds.Width, winBounds.Top, winBounds.Left + winBounds.Width + shadowWidth, winBounds.Top + winBounds.Height},
+		{"bottom edge shadow", winBounds.Left, winBounds.Top + winBounds.Height, winBounds.Left + winBounds.Width, winBounds.Top + winBounds.Height + shadowWidth},
 	} {
 		subImageWithShadow := imgWithShadow.(interface {
 			SubImage(r image.Rectangle) image.Image
@@ -353,6 +359,14 @@ func testResizeWindow(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 	}
 	defer tsw.Close()
 
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if err = tsw.SetRotation(-orientation.Angle); err != nil {
+		return err
+	}
+
 	stw, err := tsw.NewSingleTouchWriter()
 	if err != nil {
 		return errors.Wrap(err, "could not create TouchEventWriter")
@@ -360,10 +374,9 @@ func testResizeWindow(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 	defer stw.Close()
 
 	// Calculate Pixel (screen display) / Tuxel (touch device) ratio.
-	dispW := dispMode.WidthInNativePixels
-	dispH := dispMode.HeightInNativePixels
-	pixelToTuxelX := float64(tsw.Width()) / float64(dispW)
-	pixelToTuxelY := float64(tsw.Height()) / float64(dispH)
+	dispBounds := coords.ConvertBoundsFromDPToPX(dispInfo.Bounds, dispMode.DeviceScaleFactor)
+	pixelToTuxelX := float64(tsw.Width()) / float64(dispBounds.Width)
+	pixelToTuxelY := float64(tsw.Height()) / float64(dispBounds.Height)
 
 	captionHeight := int(math.Round(float64(appWindow.CaptionHeight) * dispMode.DeviceScaleFactor))
 	bounds := coords.ConvertBoundsFromDPToPX(appWindow.BoundsInRoot, dispMode.DeviceScaleFactor)
@@ -380,10 +393,10 @@ func testResizeWindow(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 	for _, test := range []struct {
 		startX, startY, endX, endY int
 	}{
-		{startX: bounds.Left + innerMargin, startY: middleY, endX: 0, endY: middleY},                        //left
-		{startX: bounds.Left + bounds.Width - innerMargin, startY: middleY, endX: dispW - 1, endY: middleY}, //right
-		{startX: middleX, startY: bounds.Top + innerMargin + captionHeight, endX: middleX, endY: 0},         //top
-		{startX: middleX, startY: bounds.Top + bounds.Height - innerMargin, endX: middleX, endY: dispH - 1}, //bottom
+		{startX: bounds.Left + innerMargin, startY: middleY, endX: 0, endY: middleY},                                    //left
+		{startX: bounds.Left + bounds.Width - innerMargin, startY: middleY, endX: dispBounds.Width - 1, endY: middleY},  //right
+		{startX: middleX, startY: bounds.Top + innerMargin + captionHeight, endX: middleX, endY: 0},                     //top
+		{startX: middleX, startY: bounds.Top + bounds.Height - innerMargin, endX: middleX, endY: dispBounds.Height - 1}, //bottom
 	} {
 		// Wait for application's UI ready.
 		x0 := input.TouchCoord(float64(test.startX) * pixelToTuxelX)
@@ -424,18 +437,6 @@ func testResizeWindow(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 func testWorkspaceInsets(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getWorkspaceInsetsButtonID = companionLibDemoPkg + ":id/get_workspace_insets"
 
-	parseRectString := func(rectShortString string, mode *display.DisplayMode) (coords.Rect, error) {
-		// The rectangle short string generated by android /frameworks/base/graphics/java/android/graphics/Rect.java
-		// Parse it to rectangle format with native pixel size.
-		var left, top, right, bottom int
-		if n, err := fmt.Sscanf(rectShortString, "[%d,%d][%d,%d]", &left, &top, &right, &bottom); err != nil {
-			return coords.Rect{}, errors.Wrap(err, "Error on parse Rect text")
-		} else if n != 4 {
-			return coords.Rect{}, errors.Errorf("The format of Rect text is not valid: %q", rectShortString)
-		}
-		return coords.NewRectLTRB(left, top, mode.WidthInNativePixels-right, mode.HeightInNativePixels-bottom), nil
-	}
-
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
@@ -468,6 +469,26 @@ func testWorkspaceInsets(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tcon
 			return errors.Wrap(err, "failed to rotate display")
 		}
 		defer display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, display.Rotate0)
+	}
+
+	dispInfo, err = display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get internal display info")
+	}
+
+	parseRectString := func(s string) (*coords.Rect, error) {
+		// The rectangle short string generated by android /frameworks/base/graphics/java/android/graphics/Rect.java
+		// Parse it to rectangle format with pixel size.
+		var left, top, right, bottom int
+		if n, err := fmt.Sscanf(s, "[%d,%d][%d,%d]", &left, &top, &right, &bottom); err != nil {
+			return nil, errors.Wrapf(err, "error on parse, Rect text %q", s)
+		} else if n != 4 {
+			return nil, errors.Errorf("the format of Rect text %q is not valid", s)
+		}
+
+		dispBounds := coords.ConvertBoundsFromDPToPX(dispInfo.Bounds, dispMode.DeviceScaleFactor)
+		r := coords.NewRectLTRB(left, top, dispBounds.Width-right, dispBounds.Height-bottom)
+		return &r, nil
 	}
 
 	for _, test := range []struct {
@@ -529,12 +550,12 @@ func testWorkspaceInsets(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tcon
 		}
 		// Convert two rectangle to same unit.
 		expectedShelfRectPX := coords.ConvertBoundsFromDPToPX(coords.Rect(expectedShelfRect), dispMode.DeviceScaleFactor)
-		parsedShelfRectFromCallback, err := parseRectString(callbackMessage.WorkspaceInsetMsg.InsetBound, dispMode)
+		parsedShelfRectFromCallback, err := parseRectString(callbackMessage.WorkspaceInsetMsg.InsetBound)
 		if err != nil {
 			return errors.Wrap(err, "failed to parse message")
 		}
 		const epsilon = 2
-		if !isSimilarRect(expectedShelfRectPX, parsedShelfRectFromCallback, epsilon) {
+		if !isSimilarRect(expectedShelfRectPX, *parsedShelfRectFromCallback, epsilon) {
 			return errors.Errorf("Workspace Inset callback is not as expected: got %v, want %v", parsedShelfRectFromCallback, expectedShelfRectPX)
 		}
 		// Read JSON format window insets size from CompanionLib Demo.
@@ -559,13 +580,13 @@ func testWorkspaceInsets(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tcon
 		if msg.WorkspaceInsetMsg == nil {
 			return errors.Errorf("unexpected JSON message format: no WorkspaceInsetMsg; got %v", msg)
 		}
-		parsedShelfRect, err := parseRectString(msg.WorkspaceInsetMsg.InsetBound, dispMode)
+		parsedShelfRect, err := parseRectString(msg.WorkspaceInsetMsg.InsetBound)
 		if err != nil {
 			return errors.Wrap(err, "failed to parse message")
 		}
 
-		// Workspace insets infomation computed by window shelf info need several numeric conversion, which easy cause floating errors.
-		if !isSimilarRect(expectedShelfRectPX, parsedShelfRect, epsilon) {
+		// Workspace insets information computed by window shelf info need several numeric conversion, which easy cause floating errors.
+		if !isSimilarRect(expectedShelfRectPX, *parsedShelfRect, epsilon) {
 			return errors.Errorf("Workspace Inset is not expected: got %v, want %v", parsedShelfRect, expectedShelfRectPX)
 		}
 	}
@@ -938,9 +959,14 @@ func testPopupWindow(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get internal display info")
+	}
 
 	// Set window on the top of the workspace insets. Make sure the framework can ignore the caption bar size of popup window layer. See b/147783396.
-	setWindowBounds(ctx, d, coords.NewRect(0, 0, 0, dispMode.HeightInNativePixels))
+	dispBounds := coords.ConvertBoundsFromDPToPX(dispInfo.Bounds, dispMode.DeviceScaleFactor)
+	setWindowBounds(ctx, d, coords.NewRect(0, 0, dispBounds.Width, dispBounds.Height))
 
 	captionHeight, err := act.CaptionHeight(ctx)
 	if err != nil {
@@ -1146,7 +1172,8 @@ func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 		return err
 	}
 
-	shelfHeightPX := dispMode.HeightInNativePixels - int(math.Round(float64(dispInfo.WorkArea.Height)*dispMode.DeviceScaleFactor))
+	dispBoundsPX := coords.ConvertBoundsFromDPToPX(dispInfo.Bounds, dispMode.DeviceScaleFactor)
+	shelfHeightPX := dispBoundsPX.Height - int(math.Round(float64(dispInfo.WorkArea.Height)*dispMode.DeviceScaleFactor))
 
 	// Change the window to normal state for make sure the bounds of window can be set.
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
@@ -1178,7 +1205,7 @@ func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 	}{
 		{"trigger min size limit", coords.NewRect(0, 0, 0, 0), coords.NewRect(0, captionHeight, minimizeSize, minimizeSize)},
 		{"trigger min size limit again", coords.NewRect(0, captionHeight/2, minimizeSize/2, minimizeSize/2), coords.NewRect(0, captionHeight, minimizeSize, minimizeSize)},
-		{"fullscreen size", coords.NewRect(0, 0, dispMode.WidthInNativePixels, dispMode.HeightInNativePixels), coords.NewRect(0, captionHeight, dispMode.WidthInNativePixels, dispMode.HeightInNativePixels-captionHeight-shelfHeightPX)}, // Auto maximize. It means the edge will not over the shelf
+		{"fullscreen size", coords.NewRect(0, 0, dispBoundsPX.Width, dispBoundsPX.Height), coords.NewRect(0, captionHeight, dispBoundsPX.Width, dispBoundsPX.Height-captionHeight-shelfHeightPX)}, // Auto maximize. It means the edge will not over the shelf
 	} {
 		// The expected window bound depends on setting window bound and can be
 		// calculated directly, according to the window bound behavior.
