@@ -28,34 +28,28 @@ var Chrome = App{
 	Name: "Google Chrome",
 }
 
-// Files has details about the Files app.
-var Files = App{
-	ID:   "hhaomjibdihmijegdhdafkllkbggdgoj",
-	Name: "Files",
-}
-
-// PlayStore has details about the Play Store app.
-var PlayStore = App{
-	ID:   "cnbgggchhmkkdmeppjobngjoejnihlei",
-	Name: "Play Store",
-}
-
-// Settings has details about the Settings app.
-var Settings = App{
-	ID:   "odknhmnlageboeamepcngndbggdpaobj",
-	Name: "Settings",
-}
-
-// WallpaperPicker has details about the Wallpaper Picker app.
-var WallpaperPicker = App{
-	ID:   "obklkkbkpaoaejdabbfldmcfplpdgolj",
-	Name: "Wallpaper Picker",
+// Camera has details about the Camera app.
+var Camera = App{
+	ID:   "hfhhnacclhffhdffklopdkcgdhifgngh",
+	Name: "Camera",
 }
 
 // Canvas has details about the Chrome Canvas app.
 var Canvas = App{
 	ID:   "ieailfmhaghpphfffooibmlghaeopach",
 	Name: "Chrome Canvas",
+}
+
+// Duo has details about the Duo app.
+var Duo = App{
+	ID:   "djkcbcmkefiiphjkonbeknmcgiheajce",
+	Name: "Duo",
+}
+
+// Files has details about the Files app.
+var Files = App{
+	ID:   "hhaomjibdihmijegdhdafkllkbggdgoj",
+	Name: "Files",
 }
 
 // Help (aka Explore) has details about the Help app.
@@ -68,12 +62,6 @@ var Help = App{
 var Gallery = App{
 	ID:   "jhdjimmaggjajfjphpljagpgkidjilnj",
 	Name: "Gallery",
-}
-
-// Duo has details about the Duo app.
-var Duo = App{
-	ID:   "djkcbcmkefiiphjkonbeknmcgiheajce",
-	Name: "Duo",
 }
 
 // PlayBooks has details about the Play Books app.
@@ -94,10 +82,34 @@ var PlayMovies = App{
 	Name: "Play Movies & TV",
 }
 
+// PlayStore has details about the Play Store app.
+var PlayStore = App{
+	ID:   "cnbgggchhmkkdmeppjobngjoejnihlei",
+	Name: "Play Store",
+}
+
+// Settings has details about the Settings app.
+var Settings = App{
+	ID:   "odknhmnlageboeamepcngndbggdpaobj",
+	Name: "Settings",
+}
+
 // Terminal has details about the Crostini Terminal app.
 var Terminal = App{
 	ID:   "fhicihalidkgcimdmhpohldehjmcabcf",
 	Name: "Terminal",
+}
+
+// WallpaperPicker has details about the Wallpaper Picker app.
+var WallpaperPicker = App{
+	ID:   "obklkkbkpaoaejdabbfldmcfplpdgolj",
+	Name: "Wallpaper Picker",
+}
+
+// WebStore has details about the WebStore app.
+var WebStore = App{
+	ID:   "ahfgeienlihckogmohjhadlkjgocpleb",
+	Name: "Web Store",
 }
 
 // Launch launches an app specified by appID.
