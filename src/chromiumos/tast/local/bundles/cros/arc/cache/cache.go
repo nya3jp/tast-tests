@@ -141,7 +141,12 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 		}
 	}
 
-	if err := waitForApksOptimized(ctx, chimeraPath); err != nil {
+	version, err := arc.SDKVersion()
+	if err != nil {
+		return errors.Wrap(err, "failed to get SDK version")
+	}
+
+	if err := waitForApksOptimized(ctx, chimeraPath, version); err != nil {
 		return err
 	}
 
@@ -290,8 +295,9 @@ func waitForPath(ctx context.Context, path string, c pathCondition) error {
 }
 
 // waitForApksOptimized waits up to 1 minute or ctx deadline for all APKs in given root path are
-// optimized, which means no *.flock locks and *.odex/*.vdex exist and matches actual APK count.
-func waitForApksOptimized(ctx context.Context, root string) error {
+// optimized, which means no *.flock locks and *.odex/*.vdex exist and matches actual APK count
+// on PI and below.
+func waitForApksOptimized(ctx context.Context, root string, sdkVersion int) error {
 	testing.ContextLogf(ctx, "Waiting for APKs optimized %q", root)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Calculate number of files per extension.
@@ -314,12 +320,20 @@ func waitForApksOptimized(ctx context.Context, root string) error {
 			return errors.Wrapf(err, "file lock detected in %q", root)
 		}
 		if apkCnt == 0 {
-			return testing.PollBreak(errors.Wrapf(err, "no APK found in %q", root))
+			return testing.PollBreak(errors.Errorf("no APK found in %q", root))
 		}
 		vdexCnt := perExtCnt[".vdex"]
 		odexCnt := perExtCnt[".odex"]
-		if apkCnt != vdexCnt || apkCnt != odexCnt {
-			return errors.Wrapf(err, "not everything yet optimized; APK count: %d, vdex: %d, odex: %d; expected each APK has odex and vdex", apkCnt, vdexCnt, odexCnt)
+		// Match internal GMS Core logic:
+		// https://source.corp.google.com/piper///depot/google3/java/com/google/android/gmscore/integ/libs/chimera/module/src/com/google/android/chimera/container/DexOptUtils.java;l=34
+		if sdkVersion < arc.SDKQ {
+			if apkCnt != vdexCnt || apkCnt != odexCnt {
+				return errors.Wrapf(err, "not everything yet optimized; APK count: %d, vdex: %d, odex: %d; expected each APK has odex and vdex", apkCnt, vdexCnt, odexCnt)
+			}
+		} else {
+			if vdexCnt != 0 || odexCnt != 0 {
+				return testing.PollBreak(errors.Errorf("optimization is not expected in Q+; APK count: %d, vdex: %d, odex: %d", apkCnt, vdexCnt, odexCnt))
+			}
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
