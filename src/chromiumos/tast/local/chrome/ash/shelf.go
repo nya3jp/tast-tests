@@ -525,3 +525,17 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.New("still not overflow")
 	}, nil)
 }
+
+// LaunchByAppName opens an app by name which is currently pinned to the shelf.
+func LaunchByAppName(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	app, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find app "+appName)
+	}
+	defer app.Release(ctx)
+	if err := app.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to launch app "+appName)
+	}
+	return nil
+}
