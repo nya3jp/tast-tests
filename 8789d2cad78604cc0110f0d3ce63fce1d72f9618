@@ -16,6 +16,23 @@
       "revId": "8789d2cad78604cc0110f0d3ce63fce1d72f9618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "771981f3_035f5b09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-09-02T03:06:23Z",
+      "side": 1,
+      "message": "Hi,\n\nFor regression:\nShould I run the affected tast tests manually or is there a way to do so automatically in skylab?\nThanks.\n\nCherie",
+      "revId": "8789d2cad78604cc0110f0d3ce63fce1d72f9618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
