@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
@@ -44,6 +45,81 @@ func OpenLauncher(ctx context.Context, tconn *chrome.TestConn) error {
 	defer keyboard.Close()
 
 	return keyboard.Accel(ctx, "Search")
+}
+
+// OpenExpandedView opens the Launcher and go to Apps list page.
+func OpenExpandedView(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := OpenLauncher(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open Launcher")
+	}
+	params := ui.FindParams{Name: "Expand to all apps", ClassName: "ExpandArrowView"}
+	expandArrowView, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find ExpandArrowView")
+	}
+	defer expandArrowView.Release(ctx)
+
+	if err := expandArrowView.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to open expanded application list view")
+	}
+	return nil
+}
+
+// FindAppFromItemView finds the node handle of an application from the application the expanded launcher.
+// This function assumes the expanded launcher is opened.
+func FindAppFromItemView(ctx context.Context, tconn *chrome.TestConn, app apps.App) (*ui.Node, error) {
+	params := ui.FindParams{Name: app.Name, ClassName: "ui/app_list/AppListItemView"}
+	icon, err := ui.Find(ctx, tconn, params)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find app %q", app.Name)
+	}
+	return icon, nil
+}
+
+// LaunchFromListView runs an app from the expanded launcher.
+// This function assumes the expanded launcher is opened.
+func LaunchFromListView(ctx context.Context, tconn *chrome.TestConn, app apps.App) error {
+	icon, err := FindAppFromItemView(ctx, tconn, app)
+	if err != nil {
+		return err
+	}
+	defer icon.Release(ctx)
+	if err := icon.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to run app")
+	}
+	// Make sure all items on the shelf are done moving.
+	ui.WaitForLocationChangeCompleted(ctx, tconn)
+	return nil
+}
+
+// PinAppToShelf pins an app from the expanded launcher to shelf.
+// This function assumes the expanded launcher is opened.
+func PinAppToShelf(ctx context.Context, tconn *chrome.TestConn, app apps.App) error {
+	// Find the icon from the the expanded launcher.
+	icon, err := FindAppFromItemView(ctx, tconn, app)
+	if err != nil {
+		return err
+	}
+	defer icon.Release(ctx)
+	// Open context menu.
+	if err := icon.RightClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to open context menu")
+	}
+	// Find option to pin app to shelf.
+	params := ui.FindParams{Name: "Pin to shelf"}
+	option, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		// The option pin to shelf is not available for this icon
+		return errors.Wrap(err, `option "Pin to shelf" is not available`)
+	}
+	defer option.Release(ctx)
+	// Pin app to shelf.
+	if err := option.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, `failed to select option "Pin to shelf"`)
+	}
+	// Make sure all items on the shelf are done moving.
+	ui.WaitForLocationChangeCompleted(ctx, tconn)
+	return nil
 }
 
 func search(ctx context.Context, tconn *chrome.TestConn, query string) error {
