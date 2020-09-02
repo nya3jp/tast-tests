@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3531b499_1f797c81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-02T16:46:56Z",
+      "side": 1,
+      "message": "I don\u0027t think that CL is removing the screenshots when the test finished. That CL is from July 2019 and, at least last week, I was able to see the screenshots. e.g:\n\nhttps://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-4e567fdfecb1f010/autoserv_test/tast/results/tests/arc.WindowManagerCUJ.unstable/\n\n\nWhat screenshots are missing? Perhaps there was an infra issue?",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b73f492_3b7b590c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
