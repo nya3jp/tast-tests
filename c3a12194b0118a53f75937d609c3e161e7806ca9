@@ -16,6 +16,24 @@
       "revId": "c3a12194b0118a53f75937d609c3e161e7806ca9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3549f061_856ebd46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-02T07:19:01Z",
+      "side": 1,
+      "message": "Good questions Bao. The reason is that we need to change IME during these tests. When use precondition, it resets chrome session (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d549) but does not revert back IME and settings, etc.\n\nYour suggestion can definitely considerable anyway.",
+      "parentUuid": "18840658_6d847299",
+      "revId": "c3a12194b0118a53f75937d609c3e161e7806ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
