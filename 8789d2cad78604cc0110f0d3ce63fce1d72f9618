@@ -33,6 +33,64 @@
       "revId": "8789d2cad78604cc0110f0d3ce63fce1d72f9618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b14c446_ff806500",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-09-02T06:51:11Z",
+      "side": 1,
+      "message": "To be consistent, I tried extending this CL and by making the following changes, just as experimentation:\n- Changing all the instances of \"(node).LeftClick\" with \"(node).DoDefault\". Otherwise, the SelectFile function mentioned in the bug is unchanged and still using \"LeftClick\", the source of flakiness.\n- Removing the uses of ui.WaitForLocationChangeCompleted, which I believe was a workaround for the bug in question.\n\nIt doesn\u0027t work though, see comment on the OpenDir function (filesapp.go).\n\n- Do you think the two changes that I suggest just above make sense?\n- I didn\u0027t try to understand yet why calling \"DoDefault\" on a node is supposed to work, and why it doesn\u0027t work in \"OpenDir\". What I\u0027m observing is an infinite loop on \"DoDefault\" calls which creates a stack overflow. Any thoughts about this?\n\nThanks!",
+      "revId": "8789d2cad78604cc0110f0d3ce63fce1d72f9618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547ba668_f15dacf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-09-02T06:51:11Z",
+      "side": 1,
+      "message": "I spent a few minutes gathering manually all the tests using filesapp.go for now, maybe there is a faster solution, but it may be useful for now. It\u0027s basically the same as you did but here are the commands (maybe worth adding in the description?):\ntast run \u003cDUT\u003e filemanager.*\ntast run \u003cDUT\u003e crostini.*\ntast run \u003cDUT\u003e arc.DownloadsFolder\ntast run \u003cDUT\u003e apps.LaunchGallery\ntast run \u003cDUT\u003e policy.DownloadRestrictions\ntast run \u003cDUT\u003e ui.HotseatScrollPerf",
+      "parentUuid": "326a3574_14912c96",
+      "revId": "8789d2cad78604cc0110f0d3ce63fce1d72f9618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6ac4c85_df4edf88",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-09-02T06:51:11Z",
+      "side": 1,
+      "message": "In the test filemanager.DrivefsUI, this is an example where replacing \"LeftClick\" with \"DoDefault\" doesn\u0027t work (maybe I\u0027m missing something). But I would think that these lines are doing something similar to the LeftClickItem you changed? The only difference being that DescendantWithTimeout is ran on a specific node instead of f.Root.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "8789d2cad78604cc0110f0d3ce63fce1d72f9618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
