@@ -52,6 +52,24 @@
       "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1c0eab9_46ff01fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-02T21:02:47Z",
+      "side": 1,
+      "message": "Really? that\u0027s strange -- i\u0027ve definitely seen truncation. I had to abandon https://crrev.com/c/1621745/ because the kernel was truncating after expansion. (I later edited documentation to clarify that it truncates after expansion: https://crrev.com/c/1628019)\n\nthe kernel documentation (https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/third_party/kernel/v5.4/fs/coredump.c;l\u003d192?q\u003df:kernel%2Fv5.4%2F%20core_pattern\u0026ss\u003dchromiumos) states that the expansion buffer is limited to CORENAME_MAX_SIZE--aka 128 bytes",
+      "parentUuid": "25c918ee_51621657",
+      "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
