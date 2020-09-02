@@ -46,6 +46,49 @@ func OpenLauncher(ctx context.Context, tconn *chrome.TestConn) error {
 	return keyboard.Accel(ctx, "Search")
 }
 
+// OpenExpandedView opens the Launcher and go to Apps list page.
+func OpenExpandedView(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := OpenLauncher(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open Launcher")
+	}
+	params := ui.FindParams{Name: "Expand to all apps", ClassName: "ExpandArrowView"}
+	expandArrowView, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find ExpandArrowView")
+	}
+	defer expandArrowView.Release(ctx)
+
+	if err := expandArrowView.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to open expanded application list view")
+	}
+	return nil
+}
+
+// FindAppFromItemView finds the node handle of an application from the application list item view.
+// This function assumes list item view is opened.
+func FindAppFromItemView(ctx context.Context, tconn *chrome.TestConn, appName string) (*ui.Node, error) {
+	params := ui.FindParams{Name: appName, ClassName: "ui/app_list/AppListItemView"}
+	app, err := ui.Find(ctx, tconn, params)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find app ")
+	}
+	return app, nil
+}
+
+// LaunchFromListView runs an app from list item view.
+// This function assumes list item view is opened.
+func LaunchFromListView(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+	app, err := FindAppFromItemView(ctx, tconn, appName)
+	if err != nil {
+		return err
+	}
+	defer app.Release(ctx)
+	if err := app.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to run app")
+	}
+	return nil
+}
+
 func search(ctx context.Context, tconn *chrome.TestConn, query string) error {
 	// Click the search box.
 	searchBox, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "SearchBoxView"}, defaultTimeout)
