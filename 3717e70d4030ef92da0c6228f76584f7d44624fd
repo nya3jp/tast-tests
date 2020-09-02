@@ -130,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "42ee4a23_ed74f723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-09-02T20:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd60ba67_f23b13a1",
+      "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c72ef16_2b6d7eaa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 4
@@ -153,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "9a0fa171_d156ff58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-09-02T20:52:43Z",
+      "side": 1,
+      "message": "Got it. Sorry i didn\u0027t notice it also saves image later.",
+      "parentUuid": "0c72ef16_2b6d7eaa",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 62
+      },
+      "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a859113a_1986cb7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 4
@@ -173,6 +215,30 @@
       "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37923db3_3951364e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-09-02T20:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a859113a_1986cb7a",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 27
+      },
+      "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
