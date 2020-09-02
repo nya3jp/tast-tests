@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6a0132f_940e99eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T06:57:12Z",
+      "side": 1,
+      "message": "It looks a little weird that roamTimeout is shorter than this. And then I find that this parameter does not seems to be used anywhere, I might miss this in earlier review...",
+      "range": {
+        "startLine": 141,
+        "startChar": 48,
+        "endLine": 141,
+        "endChar": 62
+      },
+      "revId": "ebec3e63d341ed9386e30fb344ccb6c551398e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "116e492d_c543b47a",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T06:57:12Z",
+      "side": 1,
+      "message": "I haven\u0027t looked into this feature yet. I wonder if we have some other ways to verify this without the need of crawling logs.",
+      "revId": "ebec3e63d341ed9386e30fb344ccb6c551398e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
