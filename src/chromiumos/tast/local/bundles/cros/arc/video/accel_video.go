@@ -180,8 +180,9 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 			}
 		}
 	} else {
+		// TODO(b/152576355) Remove hack once waitForFinished is fixed.
 		s.Log("Waiting for activity to finish")
-		if err := act.WaitForFinished(ctx, 0*time.Second); err != nil {
+		if err := waitForFinishedHack(ctx, a, act); err != nil {
 			s.Fatal("Failed to wait for activity: ", err)
 		}
 
