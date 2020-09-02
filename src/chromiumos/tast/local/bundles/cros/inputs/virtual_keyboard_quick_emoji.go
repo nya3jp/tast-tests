@@ -90,10 +90,8 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for virtual keyboard shown: ", err)
 	}
 
-	if isEmojiPanelShown, err := ui.Exists(ctx, tconn, ui.FindParams{Name: "emoji keyboard shown"}); err != nil {
-		s.Fatal("Failed to check emoji panel: ", err)
-	} else if !isEmojiPanelShown {
-		s.Fatal("Emoji vk container is not quick shown")
+	if _, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "emoji keyboard shown"}, 20*time.Second); err != nil {
+		s.Fatal("Failed to wait for emoji panel shown: ", err)
 	}
 
 	// Hide virtual keyboard and click input field again should not trigger vk.
