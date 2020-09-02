@@ -251,6 +251,30 @@
       "revId": "7732eda7174a38f48598eedefb9c25106753de26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea63c48_6723e4e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-02T06:04:57Z",
+      "side": 1,
+      "message": "That make sense, I changed it to s.Errorf",
+      "parentUuid": "40f018c7_04053b02",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 10
+      },
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
