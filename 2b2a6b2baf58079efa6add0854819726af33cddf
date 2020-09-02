@@ -271,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "4184388e_80044340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T13:33:14Z",
+      "side": 1,
+      "message": "Ack. Maybe we can remove this comment at all, it\u0027s very clear that timeout is 15 seconds and interval is default value. Now it\u0027s one second, but it may change, so your comment won\u0027t be precise.",
+      "parentUuid": "49b97fff_68222cb3",
+      "range": {
+        "startLine": 358,
+        "startChar": 31,
+        "endLine": 358,
+        "endChar": 80
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0ef0fbc_ed9f4638",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
         "patchSetId": 2
@@ -409,6 +433,30 @@
       "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "347a2977_22053141",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T13:33:14Z",
+      "side": 1,
+      "message": "Sure, no problem.\nYou can check other tests, some of them just have team e-mail. But it\u0027s not required.",
+      "parentUuid": "f56af852_c0994167",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
