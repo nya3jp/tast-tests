@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "65e91615_01b6333f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T00:37:10Z",
+      "side": 1,
+      "message": "I think it was necessary up until 86 (https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/flag-metadata.json;l\u003d4269). On 87 it looks like it\u0027s enabled automatically, so I\u0027ll remove this and use a precondition for Chrome.",
+      "parentUuid": "b6607da3_5e692f2b",
+      "range": {
+        "startLine": 34,
+        "startChar": 45,
+        "endLine": 34,
+        "endChar": 87
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6942047_6ef0aec8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e4ec8d_2d772571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T00:37:10Z",
+      "side": 1,
+      "message": "It\u0027s not necessary. Without it, quick settings opens/closes 3 times during the test, but that\u0027s not really a big deal. I\u0027ll go ahead and remove it.",
+      "parentUuid": "b6942047_6ef0aec8",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "f0fe57ed_5a07be4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T00:37:10Z",
+      "side": 1,
+      "message": "good catch, thanks!",
+      "parentUuid": "f079c66b_7f1b04ad",
+      "range": {
+        "startLine": 61,
+        "startChar": 62,
+        "endLine": 61,
+        "endChar": 93
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36a00631_436a72ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
         "patchSetId": 3
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "ad59ba8c_41e1bc07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T00:37:10Z",
+      "side": 1,
+      "message": "Sounds good, that way others can just use it and trust that the slider was adjusted correctly. At first I was thinking to separate assertions about behavior from the UI control, but it makes sense to check it here. I also added some handling for the case of trying to decrease the slider past 0 or above 100.",
+      "parentUuid": "36a00631_436a72ee",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da81b44e_a2a939e2",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 3
@@ -122,6 +218,30 @@
       "writtenOn": "2020-09-01T03:10:32Z",
       "side": 1,
       "message": "Is all of this slider code specific to the quicksettings or are sliders in other areas (e.g OS Settings) similar?",
+      "range": {
+        "startLine": 343,
+        "startChar": 5,
+        "endLine": 343,
+        "endChar": 15
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "416b7bc9_f7651a8b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T00:37:10Z",
+      "side": 1,
+      "message": "The OS settings sliders are similar to an extent (elements have the \"slider\" role, can be focused and changed with the keyboard). The main difference between sliders is how to get the value and process it. Some examples:\n- Quick Settings sliders: node\u0027s \"value\" attribute, strings \"0%\"-\"100%\"\n- OS settings Touchpad speed slider: node\u0027s \"value\" attribute, integers between 1 and 5\n- Gallery\u0027s Exposure/Contrast/Saturation sliders: node\u0027s \"valueForRange\" attribute, integers between -100 and 100.\n\nThe SliderValue function could probably be made generic by checking each case, though (check which of value or valueForRange is defined -\u003e try to convert to int -\u003e check for \u0027%\u0027 and remove it ...).",
+      "parentUuid": "da81b44e_a2a939e2",
       "range": {
         "startLine": 343,
         "startChar": 5,
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "06520837_8b45d120",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T00:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad375c1_88aa4671",
+      "range": {
+        "startLine": 348,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 17
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "686298fb_323189e4",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 3
@@ -177,6 +321,30 @@
       "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d81802b8_a7321e3d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T00:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "686298fb_323189e4",
+      "range": {
+        "startLine": 351,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 13
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +371,30 @@
     },
     {
       "key": {
+        "uuid": "4b76b594_551f1f44",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T00:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48020538_da63ca90",
+      "range": {
+        "startLine": 445,
+        "startChar": 2,
+        "endLine": 455,
+        "endChar": 3
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "745de5fe_0f52a0e7",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 3
@@ -214,6 +406,30 @@
       "writtenOn": "2020-09-01T08:37:39Z",
       "side": 1,
       "message": "From my experiment to increase and decrease slider by keyboard have the step value\u003d10, e.g. gain\u003d50 --\u003e IncreaseSlider --\u003e gain\u003d60.\n\nIs this step value guaranteed to be fixed in all versions of Chrome?",
+      "range": {
+        "startLine": 466,
+        "startChar": 5,
+        "endLine": 466,
+        "endChar": 19
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22634fcd_de391ed5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T00:37:10Z",
+      "side": 1,
+      "message": "I believe so, based on https://source.chromium.org/chromium/chromium/src/+/master:ui/views/controls/slider.h;l\u003d131;drc\u003d43073d2d31ff5537a15ec9d1b56cdd132de66ac2",
+      "parentUuid": "745de5fe_0f52a0e7",
       "range": {
         "startLine": 466,
         "startChar": 5,
