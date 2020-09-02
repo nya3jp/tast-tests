@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "297d6095_5eb54c2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T06:19:24Z",
+      "side": 1,
+      "message": "One final nit.",
+      "revId": "713ac8745b09209295b391eec270be6c48ea365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a3204b8_3448ff81",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T06:19:24Z",
+      "side": 1,
+      "message": "If we reach this line, we might still want to tf.DisconnectWifi in defer. Have this Fatal is one simple solution. Or, you can assign disconnected\u003dtrue only in the else case (and then also need one in clinetInitDisconnect case).",
+      "revId": "713ac8745b09209295b391eec270be6c48ea365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

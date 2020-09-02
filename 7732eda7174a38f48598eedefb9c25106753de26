@@ -275,6 +275,30 @@
       "revId": "7732eda7174a38f48598eedefb9c25106753de26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb395d99_a78b7c46",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T06:19:24Z",
+      "side": 1,
+      "message": "Thanks for the change. Ack.",
+      "parentUuid": "eea63c48_6723e4e8",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 10
+      },
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
