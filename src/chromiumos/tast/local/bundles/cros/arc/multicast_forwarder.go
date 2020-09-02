@@ -173,20 +173,32 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	delete(expectIn, mdnsPrefix+mdnsHostnameInIPv6)
 	delete(expectIn, mdnsPrefix+legacyMDNSHostnameInIPv6)
 
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	}
+
 	s.Log("Starting tcpdump")
 	g, ctx := errgroup.WithContext(ctx)
 	for _, ifname := range ifnames {
 		// Start tcpdump process.
+		// In order to read the received packets directly, below flags are used:
+		// * -l to make stdout line buffered,
+		// * --immediate-mode to disable packet buffering.
 		ifname := ifname // https://golang.org/doc/faq#closures_and_goroutines
 		g.Go(func() error {
-			tcpdump := testexec.CommandContext(ctx, "/usr/local/sbin/tcpdump", "-Ani", ifname, "-Q", "out")
+			tcpdump := testexec.CommandContext(ctx, "/usr/local/sbin/tcpdump", "-Alni", ifname, "port", "5353", "or", "port", "1900", "-Q", "out", "--immediate-mode")
 			if err := streamCmd(ctx, tcpdump, expectOut); err != nil {
 				return errors.Wrap(err, "outbound test failed")
 			}
 			return nil
 		})
+		// Skip testing inbound multicast for ARCVM.
+		if vmEnabled {
+			continue
+		}
 		g.Go(func() error {
-			tcpdump := arc.BootstrapCommand(ctx, "/system/xbin/tcpdump", "-Ani", ifname, "-Q", "in")
+			tcpdump := arc.BootstrapCommand(ctx, "/system/xbin/tcpdump", "-Alni", ifname, "port", "5353", "or", "port", "1900", "-Q", "in", "--immediate-mode")
 			if err := streamCmd(ctx, tcpdump, expectIn); err != nil {
 				return errors.Wrap(err, "inbound test failed")
 			}
