@@ -19,6 +19,69 @@
     },
     {
       "key": {
+        "uuid": "c1f7176e_7e6909ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-02T06:46:17Z",
+      "side": 1,
+      "message": "receiving CSA and disconnect events consecutively.",
+      "range": {
+        "startLine": 24,
+        "startChar": 189,
+        "endLine": 24,
+        "endChar": 205
+      },
+      "revId": "713ac8745b09209295b391eec270be6c48ea365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7956c255_ab552c9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-02T06:46:17Z",
+      "side": 1,
+      "message": "Sort of duplicate with test description in line 24. Let\u0027s just append \"Refer to crbug.com/408370 for more information\" to the test description.",
+      "revId": "713ac8745b09209295b391eec270be6c48ea365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd699cce_0bba9cbe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-02T06:46:17Z",
+      "side": 1,
+      "message": "We can log ithRun before calling csaDisconnectCore() so that we don\u0027t need to pass ithRun, where it is only used here.\n\nWe can log \"Connected. Sending channel switch frame (channel switch to %d)\"",
+      "range": {
+        "startLine": 132,
+        "startChar": 49,
+        "endLine": 132,
+        "endChar": 67
+      },
+      "revId": "713ac8745b09209295b391eec270be6c48ea365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a3204b8_3448ff81",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 21
@@ -30,6 +93,52 @@
       "writtenOn": "2020-09-02T06:19:24Z",
       "side": 1,
       "message": "If we reach this line, we might still want to tf.DisconnectWifi in defer. Have this Fatal is one simple solution. Or, you can assign disconnected\u003dtrue only in the else case (and then also need one in clinetInitDisconnect case).",
+      "revId": "713ac8745b09209295b391eec270be6c48ea365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42764c8c_51fb906a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-02T06:46:17Z",
+      "side": 1,
+      "message": "DUT\u0027s WiFi module might be in power saving mode\n\nA question, we call SetPowersaveMode to disable power saving mode in the beginning, would it still possible that the DUT is unable to get CSA?",
+      "range": {
+        "startLine": 173,
+        "startChar": 36,
+        "endLine": 173,
+        "endChar": 65
+      },
+      "revId": "713ac8745b09209295b391eec270be6c48ea365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96c6b07e_dc8dd08b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-02T06:46:17Z",
+      "side": 1,
+      "message": "Now i means i-th run. Let\u0027s make it 1 based.",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 11
+      },
       "revId": "713ac8745b09209295b391eec270be6c48ea365a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
