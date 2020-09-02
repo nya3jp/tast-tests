@@ -16,6 +16,614 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25e9fbd4_73dcba48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "Hi Seewai, thanks for adding this test! I\u0027ve done a first round of review and the key elements of the test look good. I left a lot of comments, but most of them are related to a few key points:\n\n1. Always defer releasing the Node/NodeSlices returned by Find/FindAll/FindWithTimeout/etc.\n2. All errors should be handled. For functions where you want to return a pointer to an automation node, it\u0027s common practice to return both the pointer and an error, and then handle that error to make sure a valid node was returned. That way you don\u0027t have to mix raising errors and nil-checks for the node.\n3. There are existing UI packages that we might able to use here, and we can also extend them with any new functionality you\u0027re adding here that might be useful for other tests. The launcher and shelf packages have not been extensively fleshed out yet, so a lot of the basic interactions you\u0027ve added here would be great to add to those packages.\n\nLet me know if you have any questions.",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4a9153a_70811f25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "You can add me as a contact as well :)",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a3b75c6_620499cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "I think it would be better to keep these comments next to the actual execution step in the test below, so it\u0027s harder to forget to update the comments when we update the test steps.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 61
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5606ecbb_83cb5d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "Information about apps should be taken from apps.go: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/apps/apps.go\n\nYou can register new entries there for Web Store and Camera, as there don\u0027t appear to be entries for them already.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "720bdb90_6dc90213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "It would be great to add this to launcher.go for other tests to use in the future.",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbb3903c_af042362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "Usually ClassName is good enough, but are there any other strong identifiers for this node we can add here? Just in case some other element shares this attribute.",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c480c3_325a169f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "Is this necessary for expanding the launcher? It\u0027s best to avoid using this function if possible, but it\u0027s OK if it requires it.",
+      "range": {
+        "startLine": 114,
+        "startChar": 27,
+        "endLine": 114,
+        "endChar": 41
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36c2c63_72ecf3d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "This would also be good to include in launcher.go",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d293be33_5e6bd5f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "I think it\u0027s clearer to use \u0027Position\u0027 instead of shortening it. Also should be Shelf instead of Launcher, since this is checking for shelf icons.",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b0ad30c_e9e63041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "The returned node slice should be released",
+      "range": {
+        "startLine": 134,
+        "startChar": 23,
+        "endLine": 134,
+        "endChar": 30
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e221b267_53df8a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "Can we use ShelfItems instead? http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/shelf.go?l\u003d309\u0026rcl\u003d673d09c482ae2d14317d770d1b093023b16bdcdf",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 2
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b74d6aa_1fe0f84e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "Defer releasing app",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d13f2c6e_de32585c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "Does this mean we failed to pin the app? If so, I think this should result in an error.",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 11
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f244e12_c79be96d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "\"pinAppFromShelf\" would be a more descriptive name.",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 17
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9e9691e_a6dbcf6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "release this too",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 7
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f4b58f_686530dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "Instead of checking for nil here, you can handle the error returned from ui\u0027s Find function in findButtonFromShelf. As long as there\u0027s no error, button won\u0027t be nil.",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 19
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b37dd84_f0a49704",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "release these too",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 11
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5862a76b_d494535f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "release these too",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdbdb9f7_5ac85625",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "I think this would be best as a \"Launch\" function in launcher.go",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 19
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a49c740b_26ea2d61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "Similar to above, this would be good to have as a function in shelf.go",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 17
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83d396a6_2ba7365d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "I think this would be good as a function like \"PinAppFromContextMenu\" in shelf.go.",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 239,
+        "endChar": 11
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8630fe_26abbb15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "This is probably fine, but it might make more sense to just do this now instead of deferring it, and then check for the shelf button.",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 52
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ccd539_b4213630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "I think it would be clearer if this was a part of pinApp instead of a standalone function. It wasn\u0027t immediately clear to me that this was for just for opening the context menu and finding the option.",
+      "range": {
+        "startLine": 258,
+        "startChar": 5,
+        "endLine": 258,
+        "endChar": 19
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5ce7425_bff0bb4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "This will probably be more stable using FindWithTimeout. I\u0027d suggest always using FindWithTimeout unless you know the UI state ahead of time. There might be a race condition here between the context menu appearing after right-clicking the app icon and trying to locate the menu option here.",
+      "range": {
+        "startLine": 263,
+        "startChar": 23,
+        "endLine": 263,
+        "endChar": 27
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "511eece9_d864a734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "Typically a function like this should return an error in addition to the node. If there\u0027s a problem finding the node, the function can return an error to let callers know something went wrong. In this case we\u0027re discarding the error information returned from ui.Find, so we don\u0027t actually know what went wrong. I would say return a non-nil pointer to the node if you can find it, otherwise return an error.",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 12
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91feb57a_a403c8dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "This error should be handled: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 286,
+        "startChar": 9,
+        "endLine": 286,
+        "endChar": 10
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150a5edc_0f1d7338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "FindWithTimeout is a safer choice here.",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 21
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ef7bfd_776a7119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-02T23:21:26Z",
+      "side": 1,
+      "message": "release this too",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 11
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
