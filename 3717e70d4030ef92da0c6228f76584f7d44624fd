@@ -56,6 +56,23 @@
       "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "004c72f2_bac3222a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-09-02T17:17:20Z",
+      "side": 1,
+      "message": "If you check carefully, there are \"chromiumos/tast/local/bundles/cros/arc/screenshot\" and \"chromiumos/tast/local/screenshot\". CUJ is using the second one that didn\u0027t remove the screenshot, while others are using the first one which remove the screenshot.",
+      "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
