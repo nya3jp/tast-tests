@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa708e82_9ef73bfa",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-02T05:46:58Z",
+      "side": 1,
+      "message": "You may want to return error in this case.\n\nfunc ... clickShelfMenuItem(...) (retErr error) {\n  ...\n  defer...\n    ...\n    if err :\u003d ... ; err !\u003d nil \u0026\u0026 retErr \u003d\u003d nil {\n      retErr \u003d errors.Wrap(...)\n    }\n  })()\n  ...\n}",
+      "range": {
+        "startLine": 75,
+        "startChar": 62,
+        "endLine": 75,
+        "endChar": 65
+      },
+      "revId": "3b487326423cce90fbbbdaf48539d085af0fbca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb0f1d86_fc799143",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-02T05:46:58Z",
+      "side": 1,
+      "message": "Is it something we can add to EnsureTabletModeEnabled method? (making the callback return an error from WaitForLocationChangeCompleted)\nCould you file a bug is it\u0027s the case?",
+      "range": {
+        "startLine": 75,
+        "startChar": 15,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "3b487326423cce90fbbbdaf48539d085af0fbca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a7a486e_5673d296",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-02T05:46:58Z",
+      "side": 1,
+      "message": "Why this change was made?\nI think the magic number 2 can be confusing to the reader, so could you add comment?",
+      "range": {
+        "startLine": 84,
+        "startChar": 23,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "3b487326423cce90fbbbdaf48539d085af0fbca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
