@@ -33,6 +33,24 @@
       "revId": "0b5d86ae05d16658c1d71c74b80636ada59ea509",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "045fb00f_56c88606",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-09-02T00:52:51Z",
+      "side": 1,
+      "message": "Does that rule strictly apply when the only failure is precondition failure? In theory the same failure can happen for arc.Boot.vm as well. We are unlikely to make any changes to this test even if we keep the test informational.",
+      "parentUuid": "5adc65dd_d6e4723e",
+      "revId": "0b5d86ae05d16658c1d71c74b80636ada59ea509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
