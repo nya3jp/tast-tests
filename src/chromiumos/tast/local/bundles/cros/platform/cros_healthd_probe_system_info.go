@@ -8,9 +8,11 @@ import (
 	"context"
 	"path/filepath"
 	"regexp"
+	"strings"
 
 	"chromiumos/tast/local/bundles/cros/platform/csv"
 	"chromiumos/tast/local/croshealthd"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -64,6 +66,17 @@ func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
 		manufactureDateRegex = regexp.MustCompile("[0-9]{4}-[0-9]{2}-[0-9]{2}")
 	)
 
+	lsbValues, err := lsbrelease.Load()
+	if err != nil {
+		s.Fatal("Failed to get lsb-release info: ", err)
+	}
+	versionComponents := []string{
+		lsbValues[lsbrelease.Milestone],
+		lsbValues[lsbrelease.BuildNumber],
+		lsbValues[lsbrelease.PatchNumber]}
+	osVersion := strings.Join(versionComponents, ".")
+	osReleaseChannel := lsbValues[lsbrelease.ReleaseTrack]
+
 	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategorySystem, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get system info: ", err)
@@ -82,7 +95,10 @@ func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
 		csv.Column("board_name", csv.EqualToFileContentOrNA(boardNamePath)),
 		csv.Column("board_version", csv.EqualToFileContentOrNA(boardVersionPath)),
 		csv.Column("chassis_type", csv.UInt64(), csv.EqualToFileContentOrNA(chassisTypePath)),
-		csv.Column("product_name", csv.EqualToFileContentOrNA(productNamePath)))
+		csv.Column("product_name", csv.EqualToFileContentOrNA(productNamePath)),
+		csv.Column("os_version", csv.MatchValue(osVersion)),
+		csv.Column("os_channel", csv.MatchValue(osReleaseChannel)),
+	)
 
 	if err != nil {
 		s.Error("Failed to validate CSV output: ", err)
