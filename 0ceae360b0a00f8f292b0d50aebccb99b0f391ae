@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e16fefa6_f092afa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-02T20:30:38Z",
+      "side": 1,
+      "message": "Please review new test for testing launcher to pin applications to the shelf. Thanks.",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
