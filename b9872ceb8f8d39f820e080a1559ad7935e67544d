@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a522f1d2_81f58dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_cancel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-02T03:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1097f9b1_43ed47d3",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8567d4bb_fdedb2a1",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9214ce4d_bb639a28",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-02T03:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8567d4bb_fdedb2a1",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0e45d56f_3acbf02e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-02T03:22:50Z",
+      "side": 1,
+      "message": "Let\u0027s give it a try.",
+      "parentUuid": "a4288f35_68d4425f",
+      "range": {
+        "startLine": 229,
+        "startChar": 22,
+        "endLine": 229,
+        "endChar": 80
+      },
+      "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a7d32ec_48409763",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 1
@@ -85,6 +157,24 @@
       "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f48dc5c_9fd52422",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-02T03:22:50Z",
+      "side": 1,
+      "message": "Verify the content of the dialog is also a part of the test.",
+      "parentUuid": "3a7d32ec_48409763",
+      "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
