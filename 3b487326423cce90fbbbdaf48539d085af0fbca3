@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6aec854e_5ccd80d5",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-02T06:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e426315_fa5e17ec",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "3b487326423cce90fbbbdaf48539d085af0fbca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa708e82_9ef73bfa",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 1
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "c2056205_6baa6c88",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-02T06:10:06Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it is a general fix or specific to this case.",
+      "parentUuid": "fb0f1d86_fc799143",
+      "range": {
+        "startLine": 75,
+        "startChar": 15,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "3b487326423cce90fbbbdaf48539d085af0fbca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf58eb9_32462fd6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-02T06:10:06Z",
+      "side": 1,
+      "message": "Thanks, didn\u0027t know that was possible.",
+      "parentUuid": "fa708e82_9ef73bfa",
+      "range": {
+        "startLine": 75,
+        "startChar": 62,
+        "endLine": 75,
+        "endChar": 65
+      },
+      "revId": "3b487326423cce90fbbbdaf48539d085af0fbca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a7a486e_5673d296",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "3b487326423cce90fbbbdaf48539d085af0fbca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "709839d1_9d4bf707",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-02T06:10:06Z",
+      "side": 1,
+      "message": "Sorry, this was an earlier attempt to fix the issue.  It is not needed.",
+      "parentUuid": "2a7a486e_5673d296",
+      "range": {
+        "startLine": 84,
+        "startChar": 23,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "3b487326423cce90fbbbdaf48539d085af0fbca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
