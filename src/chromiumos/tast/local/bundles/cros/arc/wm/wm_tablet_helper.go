@@ -172,6 +172,100 @@ func TabletImmerseViaAPI(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 	return nil
 }
 
+// TabletFontSizeChangeHelper runs test-cases for tablet font size change.
+func TabletFontSizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo []TabletLaunchActivityInfo) (err error) {
+	defer func() {
+		if clearErr := clearDisplayRotation(ctx, tconn); clearErr != nil {
+			testing.ContextLog(ctx, "Failed to clear display rotation: ", err)
+			if err == nil {
+				err = clearErr
+			}
+		}
+	}()
+
+	for _, tc := range activityInfo {
+		if err := tabletFontSizeChangeHelper(ctx, tconn, a, d, tc); err != nil {
+			return errors.Wrapf(err, "%q test failed", tc)
+		}
+	}
+	return nil
+}
+
+// tabletFontSizeChangeHelper changes the font size for any given activity.
+func tabletFontSizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actInfo TabletLaunchActivityInfo) error {
+	// This const should be always different than 1.
+	const fsConst = 1.3
+
+	// Start a new activity.
+	act, err := arc.NewActivity(a, Pkg24, actInfo.ActivityName)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	// Wait until display rotates to activities desired orientation.
+	testing.Poll(ctx, func(ctx context.Context) error {
+		newDO, err := display.GetOrientation(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if actInfo.DesiredDO != newDO.Type {
+			return errors.Errorf("invalid display orientation, got: %q, want: %q", newDO.Type, actInfo.DesiredDO)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+
+	// Store original window info.
+	owInfo, owiErr := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if owiErr != nil {
+		return owiErr
+	}
+
+	// Change the font size.
+	if err := EnsureARCFontSizeChanged(ctx, a, fsConst); err != nil {
+		return errors.Wrap(err, "unable to set font size")
+	}
+
+	// Get the font size.
+	nfs, nfsErr := GetARCFontSize(ctx, a)
+	if nfsErr != nil {
+		return errors.Wrap(nfsErr, "unable to get font size")
+	}
+
+	// Get window info after font size change.
+	wInfo, wiErr := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
+	if wiErr != nil {
+		return wiErr
+	}
+	if owInfo.TargetBounds != wInfo.TargetBounds {
+		return errors.Errorf("invalid window bounds after font size is changed. got: %q, want: %q", wInfo.TargetBounds, owInfo.TargetBounds)
+	}
+
+	// Compare font sizes before and after size change.
+	if nfs != fsConst {
+		return errors.Errorf("invalid font size after font size is changed. got: '%.1f', want: '%.1f'", nfs, fsConst)
+	}
+	if nfs == 1 {
+		return errors.Errorf("invalid font size after font size is changed. got: '%.1f', want different than: '1.0'", nfs)
+	}
+
+	// Change the font size back to 1.
+	if err := EnsureARCFontSizeChanged(ctx, a, 1); err != nil {
+		return errors.Wrap(err, "unable to set font size")
+	}
+
+	return nil
+}
+
 // tabletImmerseViaAPIHelper clicks on immersive button on the activity and switch it back to normal and assert window bounds accordingly.
 func tabletImmerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo) error {
 	// Start a new activity.

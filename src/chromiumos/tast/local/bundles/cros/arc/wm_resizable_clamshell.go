@@ -6,10 +6,7 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"math"
-	"strconv"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -580,12 +577,12 @@ func wmRC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// Change the font size.
-	if err := ensureARCFontSizeChanged(ctx, a, fsConst); err != nil {
+	if err := wm.EnsureARCFontSizeChanged(ctx, a, fsConst); err != nil {
 		return errors.Wrap(err, "unable to set font size")
 	}
 
 	// Get the font size.
-	nfs, nfsErr := getARCFontSize(ctx, a)
+	nfs, nfsErr := wm.GetARCFontSize(ctx, a)
 	if nfsErr != nil {
 		return errors.Wrap(nfsErr, "unable to get font size")
 	}
@@ -608,46 +605,11 @@ func wmRC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// Change the font size back to 1.
-	if err := ensureARCFontSizeChanged(ctx, a, 1); err != nil {
+	if err := wm.EnsureARCFontSizeChanged(ctx, a, 1); err != nil {
 		return errors.Wrap(err, "unable to set font size")
 	}
 
 	return nil
-}
-
-// ensureARCFontSizeChanged changes the android font size via settings and waits until the font size changes completely.
-func ensureARCFontSizeChanged(ctx context.Context, a *arc.ARC, fontScale float64) error {
-	cmd := a.Command(ctx, "settings", "put", "system", "font_scale", fmt.Sprintf("%f", fontScale))
-	if err := cmd.Run(); err != nil {
-		return errors.Wrap(err, "unable to run adb shell command")
-	}
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		fs, err := getARCFontSize(ctx, a)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-
-		if fs != fontScale {
-			return testing.PollBreak(errors.Errorf("unable to wait for font size to change. got: %f, want: %f", fs, fontScale))
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second})
-}
-
-// getARCFontSize gets the font size from the android settings.
-func getARCFontSize(ctx context.Context, a *arc.ARC) (float64, error) {
-	cmd := a.Command(ctx, "settings", "get", "system", "font_scale")
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		return 0, errors.Wrap(err, "unable to run adb shell command")
-	}
-	outStr := strings.TrimSpace(string(output))
-	fs, err := strconv.ParseFloat(outStr, 64)
-	if err != nil {
-		return 0, errors.Wrapf(err, "invalid font_sclae: %q", outStr)
-	}
-
-	return fs, nil
 }
 
 // rcDisplaySizeChangeTestsHelper is used for Tast-tests that are testing resolution change and its effects on an activity.

@@ -9,6 +9,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -572,4 +574,39 @@ func GetButtonBounds(ctx context.Context, d *ui.Device, actPkgName string) (coor
 	}
 
 	return buttonBounds, nil
+}
+
+// EnsureARCFontSizeChanged changes the android font size via settings and waits until the font size changes completely.
+func EnsureARCFontSizeChanged(ctx context.Context, a *arc.ARC, fontScale float64) error {
+	cmd := a.Command(ctx, "settings", "put", "system", "font_scale", fmt.Sprintf("%f", fontScale))
+	if err := cmd.Run(); err != nil {
+		return errors.Wrap(err, "unable to run adb shell command")
+	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		fs, err := GetARCFontSize(ctx, a)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		if fs != fontScale {
+			return testing.PollBreak(errors.Errorf("unable to wait for font size to change. got: %f, want: %f", fs, fontScale))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
+// GetARCFontSize gets the font size from the android settings.
+func GetARCFontSize(ctx context.Context, a *arc.ARC) (float64, error) {
+	cmd := a.Command(ctx, "settings", "get", "system", "font_scale")
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to run adb shell command")
+	}
+	outStr := strings.TrimSpace(string(output))
+	fs, err := strconv.ParseFloat(outStr, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "invalid font_sclae: %q", outStr)
+	}
+
+	return fs, nil
 }
