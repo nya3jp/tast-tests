@@ -547,6 +547,30 @@
     },
     {
       "key": {
+        "uuid": "06e49dc2_6e40cf00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-02T05:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a96be135_218fe225",
+      "range": {
+        "startLine": 160,
+        "startChar": 17,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c25f118f_75d41c3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 14
@@ -879,6 +903,24 @@
       "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d2fef95_b7337b01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-02T05:28:28Z",
+      "side": 1,
+      "message": "1) stabilization of black pixels",
+      "parentUuid": "7d1d29b2_dcd6a271",
+      "revId": "241c685f37c234cb18e0c9dda2af2afac689bd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "68b515b8_79f4fbbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-02T05:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "200034ac_383fd9c9",
+      "range": {
+        "startLine": 77,
+        "startChar": 12,
+        "endLine": 77,
+        "endChar": 16
+      },
+      "revId": "f7bc39f08edcee443c3cdd147ffeec6a3e07ec1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4789ce87_8906f106",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
         "patchSetId": 17
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "b2c0937b_a8a20ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-02T05:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4789ce87_8906f106",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "f7bc39f08edcee443c3cdd147ffeec6a3e07ec1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2df3a2a_dd4884ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
         "patchSetId": 17
@@ -85,6 +133,30 @@
       "revId": "f7bc39f08edcee443c3cdd147ffeec6a3e07ec1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0822626_9569b455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-02T05:28:28Z",
+      "side": 1,
+      "message": "no longer applicable.",
+      "parentUuid": "f2df3a2a_dd4884ea",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "f7bc39f08edcee443c3cdd147ffeec6a3e07ec1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
