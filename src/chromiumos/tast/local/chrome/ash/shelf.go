@@ -525,3 +525,50 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.New("still not overflow")
 	}, nil)
 }
+
+// LaunchAppByName opens an app by name which is currently pinned to the shelf.
+// The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
+func LaunchAppByName(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	app, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find app %q", appName)
+	}
+	defer app.Release(ctx)
+	if err := app.LeftClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to launch app %q", appName)
+	}
+	return nil
+}
+
+// PinAppByName pins an open app on the shelf using the context menu.
+// The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
+func PinAppByName(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+	// Find the icon from shelf.
+	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
+	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find app %q", appName)
+	}
+	defer icon.Release(ctx)
+
+	// Open context menu.
+	if err := icon.RightClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to open context menu")
+	}
+	// Find option to pin app to shelf.
+	params = ui.FindParams{Name: "Pin"}
+	option, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		// The pin to shelf is not available for this icon
+		return errors.Wrap(err, `option "Pin" is not available`)
+	}
+	defer option.Release(ctx)
+	// Pin app to shelf.
+	if err := option.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, `failed to select option "Pin"`)
+	}
+	// Make sure all items on the shelf are done moving.
+	ui.WaitForLocationChangeCompleted(ctx, tconn)
+	return nil
+}
