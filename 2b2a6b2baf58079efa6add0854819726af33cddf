@@ -16,6 +16,207 @@
       "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26f3658_08f79638",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T10:16:28Z",
+      "side": 1,
+      "message": "Hi Saurabh,\n\nThanks for your CL, in general approach looks good, but I have few comments:",
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bf5f395_cb961279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T10:16:28Z",
+      "side": 1,
+      "message": "this variable looks not very useful",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 22
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7129dcc_e079ac7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T10:16:28Z",
+      "side": 1,
+      "message": "nit: is not",
+      "range": {
+        "startLine": 332,
+        "startChar": 33,
+        "endLine": 332,
+        "endChar": 36
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af421c09_a0048f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T10:16:28Z",
+      "side": 1,
+      "message": "What does it mean? What is hardcoded?",
+      "range": {
+        "startLine": 351,
+        "startChar": 3,
+        "endLine": 351,
+        "endChar": 26
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30153403_05b2c08f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T10:16:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t they be equal?",
+      "range": {
+        "startLine": 352,
+        "startChar": 6,
+        "endLine": 352,
+        "endChar": 22
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fd293b3_1b09ac65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T10:16:28Z",
+      "side": 1,
+      "message": "5 seconds it timeout, default interval is 1 second, so you will check notification 5 times",
+      "range": {
+        "startLine": 358,
+        "startChar": 31,
+        "endLine": 358,
+        "endChar": 80
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ef0fbc_ed9f4638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T10:16:28Z",
+      "side": 1,
+      "message": "let\u0027s split it by two different errors:\n1. URL is empty\n2. expression is empty",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 2
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3534b8b5_acdaf82a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T10:16:28Z",
+      "side": 1,
+      "message": "is it \"official\" name for that state? At least it sound like end of device life.\n\nmaybe rephrase it a bit or add few more words to clarify what does it mean",
+      "range": {
+        "startLine": 26,
+        "startChar": 78,
+        "endLine": 26,
+        "endChar": 89
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa26549e_bfd6e5db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T10:16:28Z",
+      "side": 1,
+      "message": "Do you have maybe team email?",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "2b2a6b2baf58079efa6add0854819726af33cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
