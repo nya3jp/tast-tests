@@ -22,6 +22,30 @@
       "revId": "dd489f0a5dd744a68434b6ff8cebbd2d68c36224",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd78720c_fd2d7a9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-02T16:09:21Z",
+      "side": 1,
+      "message": "+1, Fatal might be better.",
+      "parentUuid": "b6d4aaba_e04053ee",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "dd489f0a5dd744a68434b6ff8cebbd2d68c36224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -81,6 +81,30 @@
       "revId": "fa73cbbb88e5acdd3643f7282dac7c8667c7f64f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a4e13f8_8164671d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-02T16:09:21Z",
+      "side": 1,
+      "message": "Please list this in comments.\nFYI, we have visibilty app handler. De-facto we start ARC with PS hidden. Probably reliable way would be using it for this purpose. This might require to create a flag in chrome and pass it to Android.\nAlso notifications are removed during the call or \"soon after\". If latest is true, this might be also the race.\nWDYT?",
+      "parentUuid": "17428298_4e2ac45a",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "fa73cbbb88e5acdd3643f7282dac7c8667c7f64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
