@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f60a4e07_99083c1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-02T17:10:56Z",
+      "side": 1,
+      "message": "When reading this CL: https://crrev.com/c/2386708/\nI realized that this is also an option to make left click work better. I think it mostly resolves b/161438238, but does not truly make the function atomic.",
+      "revId": "b58605c342864a900e2a9e3ffab5fb2039457260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
