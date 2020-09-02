@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fdbd09f_f587a6ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-02T12:21:56Z",
+      "side": 1,
+      "message": "Hi Oleh,\n\nThanks for the review.\nI have updated the patch, PTAL.\n\n",
+      "revId": "ee3003fae685eebdd982c8e36a305d89c97da72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
