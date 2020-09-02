@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3972fa3_dd44a9c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T20:06:52Z",
+      "side": 1,
+      "message": "Tast LGTM, but please make sure to get LGTM from Yuri :)\nThanks!",
+      "revId": "3ee1bad4a1cfd897cf9fe1e246f20bd1eff60e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
