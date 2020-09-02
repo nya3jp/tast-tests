@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f979980e_04a3e89e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:05:29Z",
+      "side": 1,
+      "message": "Thank you for the update!\nAlmost LG. My main comment is too aggressive logging at L328. Others are minor/style/optional comments.",
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51a512f0_f4978018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:05:29Z",
+      "side": 1,
+      "message": "style: this part is often indented by whitespaces (so as a result the indent is mixed with two tabs + two spaces, and so on).",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad0cb1e2_b980f4b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:05:29Z",
+      "side": 1,
+      "message": "style:\n\nif err :\u003d tconn.Call(...\n   ...\n); err !\u003d nil {\n  return ...\n}\n...\n\nis common practice?",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a4c87f_49982a15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:05:29Z",
+      "side": 1,
+      "message": "off topic: I think it\u0027Ll be nice to get rid of this, instead setting it via uiautomator in the future.",
+      "range": {
+        "startLine": 94,
+        "startChar": 38,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05dd5db6_e0dec6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:05:29Z",
+      "side": 1,
+      "message": "To be consistent, could you make this a constant, too? Like expectedTextFromAndroid?",
+      "range": {
+        "startLine": 284,
+        "startChar": 43,
+        "endLine": 284,
+        "endChar": 85
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8605b2ba_20c9533f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:05:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 294,
+        "startChar": 43,
+        "endLine": 294,
+        "endChar": 70
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "533b0700_b638e3a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:05:29Z",
+      "side": 1,
+      "message": "So, in failure case, this line would be printed 5000 times.\n\nCould you remove the logging?",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 116
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e075f211_d5134dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:05:29Z",
+      "side": 1,
+      "message": "Maybe too frequent on polling?",
+      "range": {
+        "startLine": 336,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 31
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7895dbb8_ed467028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-02T14:05:29Z",
+      "side": 1,
+      "message": "optional/style: How about merge with the above line?\n\nif err :\u003d testing.Poll(...\n  ...\n); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 338,
+        "startChar": 3,
+        "endLine": 338,
+        "endChar": 18
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
