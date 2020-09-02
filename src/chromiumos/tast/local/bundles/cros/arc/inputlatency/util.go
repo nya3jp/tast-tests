@@ -75,9 +75,8 @@ func WaitForEvents(ctx context.Context, d *ui.Device, count int) (string, error)
 		return "", err
 	}
 
-	// Click finish button to generate JSON data.
-	finishBtn := d.Object(ui.ID("org.chromium.arc.testapp.inputlatency:id/finish_btn"))
-	if err := finishBtn.Click(ctx); err != nil {
+	// Press ESC key to finish event trace and generate JSON data.
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ESCAPE, 0x0); err != nil {
 		return "", err
 	}
 
