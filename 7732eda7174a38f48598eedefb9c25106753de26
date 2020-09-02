@@ -227,6 +227,30 @@
       "revId": "7732eda7174a38f48598eedefb9c25106753de26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f018c7_04053b02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T05:46:52Z",
+      "side": 1,
+      "message": "If it is not expected and doesn\u0027t have big downside (e.g. causing flake), I personally prefer having the test fail here, because it might catch some test flow problems.\n\nFor example: if some components like DeauthenticateClient are broken, then the test is not really testing the expected behavior. In this case, I think we would expect the test to fail and notify us the problem in this case?\n\nWDYT?",
+      "parentUuid": "487cc62b_a0b4a317",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 10
+      },
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f055301_87bdd418",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T05:46:52Z",
+      "side": 1,
+      "message": "Probably not correct to declare this here as you have multiple calls of csaDisconnectCore, and each will connect/disconnect once.\n\nOne example: If NewFrameSender fails for some reason in the second call of csaDisconnectCore, we will have disconnected \u003d true (set in first call of csaDisconnectCore) and not calling DisconnectWifi in its defer.\n\nYou might have move the declaration inside csaDisconnectCore. (and possibly \"disconnected :\u003d false\" is preferred there)",
+      "revId": "2e937948e014f0495ea0e7a0b0971f755d778466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
