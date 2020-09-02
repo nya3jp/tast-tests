@@ -16,6 +16,40 @@
       "revId": "f7df7791b08cb65341a459b54c3a08b3aedad738",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aee8fe80_3c24a126",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-09-02T11:53:07Z",
+      "side": 1,
+      "message": "Thanks. LGTM with nits",
+      "revId": "f7df7791b08cb65341a459b54c3a08b3aedad738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b881e0d_a6ac91c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-09-02T11:53:07Z",
+      "side": 1,
+      "message": "I\u0027m not sure *InNativePixels should also be update. Could you check it?",
+      "revId": "f7df7791b08cb65341a459b54c3a08b3aedad738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
