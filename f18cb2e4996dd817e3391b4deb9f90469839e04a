@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33b2e6b3_64cbfc23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-02T20:34:43Z",
+      "side": 1,
+      "message": "Turns out I totally messed up how I was timing things, but this CL still seems to greatly reduce the flakiness of arc.Drivefs(maybe fixes it, but I am only running it locally on eve). The first call to click seems to have a long tail, but this overall is definitely lower latency. Still gonna submit it.\n\nalso, my mistake with timing:\n\tstart :\u003d time.Now()\n\tdefer testing.ContextLog(ctx, \"Click Time: \", time.Since(start))\n\nInstead of:\n\tstart :\u003d time.Now()\n\tdefer func() {\n\t\ttesting.ContextLog(ctx, \"Click Time: \", time.Since(start))\n\t}()",
+      "revId": "f18cb2e4996dd817e3391b4deb9f90469839e04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
