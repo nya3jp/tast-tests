@@ -16,6 +16,23 @@
       "revId": "6925c4ef04315150d2c66cb5d348af0ad42b92e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98a9029a_6ab01241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-02T09:03:53Z",
+      "side": 1,
+      "message": "LGTM per Tast review. Please also get LGTM from Yury since I\u0027m not an expert in this area obviously :) ",
+      "revId": "6925c4ef04315150d2c66cb5d348af0ad42b92e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
