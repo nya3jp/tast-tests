@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "980a5544_dcd9bd28",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-02T06:33:13Z",
+      "side": 1,
+      "message": "I opted to pass the PreData in directly, seems nicer to me (since Crostini tests own the struct and so far we only need data from it) than passing everything in individually or creating an interface to expose things as methods.\n\nLet me know if you\u0027d prefer a different approach.",
+      "parentUuid": "2f8c5104_9d877422",
+      "range": {
+        "startLine": 26,
+        "startChar": 46,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "79ccc57f42d2ccd0d01fab219485ef9617f13337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe0a3d16_8cd891c5",
         "filename": "src/chromiumos/tast/local/crostini/post.go",
         "patchSetId": 6
@@ -77,6 +101,30 @@
       "writtenOn": "2020-09-01T16:45:12Z",
       "side": 1,
       "message": "It would be great if you can implement io.Reader interface (https://golang.org/pkg/io/#Reader).  With that, those copying can be written in a single function call of io.Copy (https://golang.org/pkg/io/#Copy).",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "79ccc57f42d2ccd0d01fab219485ef9617f13337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c1a6e5d_435cca3a",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-02T06:33:13Z",
+      "side": 1,
+      "message": "At the moment we only use it in one place, so I reckon a correctly implemented io.Reader is more complicated/more net code than `while ReadLine: WriteLine`.\n\nGiven that I\u0027d rather wait on implementing io.Reader until there are multiple users or this is a perf bottleneck.\n\nThoughts?",
+      "parentUuid": "fe0a3d16_8cd891c5",
       "range": {
         "startLine": 130,
         "startChar": 2,
@@ -103,6 +151,24 @@
       "revId": "79ccc57f42d2ccd0d01fab219485ef9617f13337",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7b1043f_24eb714f",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-02T06:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a641c7c6_9587f7c1",
+      "revId": "79ccc57f42d2ccd0d01fab219485ef9617f13337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
