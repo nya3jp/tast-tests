@@ -10,7 +10,9 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -110,4 +112,127 @@ func SearchAndWaitForApp(ctx context.Context, tconn *chrome.TestConn, appName st
 		return nil, errors.Wrapf(err, "%s app does not exist in search result", appName)
 	}
 	return appNode, err
+}
+
+// OpenExpandedView opens the Launcher to the Apps list page.
+func OpenExpandedView(ctx context.Context, tconn *chrome.TestConn, tsew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter) error {
+	// TODO: Call autotestPrivate API instead after https://bugs.chromium.org/p/chromium/issues/detail?id=1127384 is implemented.
+	if tsew != nil && stw != nil {
+		// If it is in tablet mode, open the home screen instead.
+		if err := ash.DragToShowHomescreen(ctx, tsew.Width(), tsew.Height(), stw, tconn); err != nil {
+			return errors.Wrap(err, "failed to drag from bottom of the screen to show home screen on tablet")
+		}
+		return nil
+	}
+
+	// If the expanded view has already been opened, return.
+	params := ui.FindParams{ClassName: "ui/app_list/AppListItemView"}
+	if exist, err := ui.Exists(ctx, tconn, params); err != nil || exist {
+		return err
+	}
+
+	// If the launcher has already been opened, do not open launcher.
+	params = ui.FindParams{Name: "Expand to all apps", ClassName: "ExpandArrowView"}
+	exist, err := ui.Exists(ctx, tconn, params)
+	if err != nil {
+		return errors.Wrap(err, "failed to check if Launcher is open")
+	}
+	if !exist {
+		if err := OpenLauncher(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to open Launcher")
+		}
+	}
+
+	params = ui.FindParams{Name: "Expand to all apps", ClassName: "ExpandArrowView"}
+	expandArrowView, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find ExpandArrowView")
+	}
+	defer expandArrowView.Release(ctx)
+
+	if err := expandArrowView.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to open expanded application list view")
+	}
+	// Make sure items are done moving.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change to be completed")
+	}
+	return nil
+}
+
+// FindAppFromItemView finds the node handle of an application from the expanded launcher.
+func FindAppFromItemView(ctx context.Context, tconn *chrome.TestConn, tsew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, app apps.App) (*ui.Node, error) {
+	if err := OpenExpandedView(ctx, tconn, tsew, stw); err != nil {
+		return nil, errors.Wrapf(err, "failed to expand launcher while looking for app %q", app.Name)
+	}
+	params := ui.FindParams{Name: app.Name, ClassName: "ui/app_list/AppListItemView"}
+	icon, err := ui.Find(ctx, tconn, params)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find app %q", app.Name)
+	}
+	return icon, nil
+}
+
+// LaunchApp runs an app from the expanded launcher.
+func LaunchApp(ctx context.Context, tconn *chrome.TestConn, tsew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, app apps.App) error {
+	icon, err := FindAppFromItemView(ctx, tconn, tsew, stw, app)
+	if err != nil {
+		return err
+	}
+	defer icon.Release(ctx)
+
+	// To handle the case of icon is off screen, we first make sure the icon is in focus first.
+	if err := icon.FocusAndWait(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to focus on icon")
+	}
+
+	if err := icon.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to run app")
+	}
+	// Make sure app is pinned on the shelf.
+	if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
+		return errors.Wrapf(err, "failed to wait for app %q: ", app.Name)
+	}
+	// Make sure all items on the shelf are done moving.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change to be completed")
+	}
+	return nil
+}
+
+// PinAppToShelf pins an app from the expanded launcher to shelf.
+func PinAppToShelf(ctx context.Context, tconn *chrome.TestConn, tsew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, app apps.App) error {
+	// Find the icon from the the expanded launcher.
+	icon, err := FindAppFromItemView(ctx, tconn, tsew, stw, app)
+	if err != nil {
+		return err
+	}
+	defer icon.Release(ctx)
+
+	// To handle the case of icon is off screen, we first make sure the icon is in focus first.
+	if err := icon.FocusAndWait(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to focus on icon")
+	}
+
+	// Open context menu.
+	if err := icon.RightClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to open context menu")
+	}
+	// Find option to pin app to shelf.
+	params := ui.FindParams{Name: "Pin to shelf", ClassName: "MenuItemView"}
+	option, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		// The option pin to shelf is not available for this icon
+		return errors.Wrap(err, `option "Pin to shelf" is not available`)
+	}
+	defer option.Release(ctx)
+	// Pin app to shelf.
+	if err := option.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, `failed to select option "Pin to shelf"`)
+	}
+	// Make sure all items on the shelf are done moving.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change to be completed")
+	}
+	return nil
 }
