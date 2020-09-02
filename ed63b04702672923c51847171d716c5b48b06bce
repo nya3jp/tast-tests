@@ -16,6 +16,115 @@
       "revId": "ed63b04702672923c51847171d716c5b48b06bce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ee99062_c5d2b44a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-02T00:15:01Z",
+      "side": 1,
+      "message": "I think it is pretty good. Just some minor changes to make things more clear.\n\nAlso I want to run it locally and have not done so yet.",
+      "revId": "ed63b04702672923c51847171d716c5b48b06bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe12b301_75980327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-02T00:15:01Z",
+      "side": 1,
+      "message": "Do you think you could move all the 4 outer in one group?",
+      "range": {
+        "startLine": 407,
+        "startChar": 2,
+        "endLine": 407,
+        "endChar": 33
+      },
+      "revId": "ed63b04702672923c51847171d716c5b48b06bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc618984_c5acb0bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-02T00:15:01Z",
+      "side": 1,
+      "message": "Do yo mind counting from 0 and in binary? So call the strings *_00, _01, _10, 11? I think that way it is easier to remember which point is which?",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 19
+      },
+      "revId": "ed63b04702672923c51847171d716c5b48b06bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d98127d_3b12a168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-02T00:15:01Z",
+      "side": 1,
+      "message": "Can you define 2 new variables\nborderW \u003d 6\nstencilW \u003d 4\nand rewrite all these magic constants like \n\n\"inner_top_right_4\":    {videoW - borderW - 1, borderW + stencilW},",
+      "range": {
+        "startLine": 416,
+        "startChar": 27,
+        "endLine": 416,
+        "endChar": 41
+      },
+      "revId": "ed63b04702672923c51847171d716c5b48b06bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63f9ae60_51fb9446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-02T00:15:01Z",
+      "side": 1,
+      "message": "I thought you would go over all pixels of the image? Or at least a bigger border area, not just the 20 pixels we sample? But if you want we can keep this for now and extend the area later.\n\nAlso, if you do use maximum in the color channels (infinity norm) then you can keep taking the maximum here, no need to switch to summation. (Otherwise we should normalize the summation with the number of pixels.) Basically totalDistance will give us the maximum distance over the color channels of pixel differences.\n\nhttps://scc.ustc.edu.cn/zlsc/sugon/intel/ipp/ipp_manual/IPPI/ippi_ch11/ch11_image_norms.htm\nhttps://medium.com/@montjoile/l0-norm-l1-norm-l2-norm-l-infinity-norm-7a7d18a4f40c",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 27
+      },
+      "revId": "ed63b04702672923c51847171d716c5b48b06bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
