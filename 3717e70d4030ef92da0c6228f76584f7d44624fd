@@ -73,6 +73,24 @@
       "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eda33ee5_e16c97dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-02T18:38:01Z",
+      "side": 1,
+      "message": "ah, good point. Now I understand the problem.\n\nThere are possible 3 scenarios:\n\na) Test passes/fails -\u003e never screenshots  (as it is today).\n\nRegardless whether the test passes or fails, no screenshots are being saved.\n\nDownside: no screenshots are being saved when the test fails.\n\n\nb) Test passes/fails -\u003e always screenshot (this CL)\n\nRegardless whether the test passes or fails, screenshots are always saved (assuming \u0027path\u0027 is passed as argument).\n\nDownside: screenshot is being saved, even if the test passes. Adds disk space, and \"noise\" since the screenshot is not needed when the test passes.\n\n\nc) Test passes -\u003e no screenshot; fails -\u003e screenshot (ideal scenario)\n\nIf the test fails, then the screenshot is saved.\nIf the test passes, no screenshot is saved.\n\nNo possible solution is to add a new function to screenshot/screenshot that dumps an image.Image into png.\n\ne.g:\n\n  func DumpImageToPNG(ctx context.Context, path string) error {\n    ...\n  }\n\nand call this function when you detect an error.",
+      "parentUuid": "004c72f2_bac3222a",
+      "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
