@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d882a317_0d4f58d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-02T05:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89fcbb7a_5ee6c106",
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67f87588_286095b1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 19
@@ -50,6 +68,24 @@
       "revId": "7732eda7174a38f48598eedefb9c25106753de26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77260e2d_6348ac81",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-02T05:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67f87588_286095b1",
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "0253e35b_e435de45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-02T05:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d157ef3b_ec222188",
+      "range": {
+        "startLine": 126,
+        "startChar": 6,
+        "endLine": 126,
+        "endChar": 10
+      },
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e38f5cb_86c3bacc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 19
@@ -99,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "d9a457c1_0a48d98b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-02T05:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e38f5cb_86c3bacc",
+      "range": {
+        "startLine": 157,
+        "startChar": 9,
+        "endLine": 157,
+        "endChar": 11
+      },
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a69c8f1_f74168cf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 19
@@ -110,6 +194,30 @@
       "writtenOn": "2020-09-02T02:31:54Z",
       "side": 1,
       "message": "nit: Are there expected cases that the service won\u0027t become idle here?",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 10
+      },
+      "revId": "7732eda7174a38f48598eedefb9c25106753de26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "487cc62b_a0b4a317",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-02T05:05:06Z",
+      "side": 1,
+      "message": "I haven\u0027t had any case that the DUT won\u0027t disconnect I used Logf instead of s.Errorf because this test should only fail if the DUT fails to connect to the alternate channel.",
+      "parentUuid": "6a69c8f1_f74168cf",
       "range": {
         "startLine": 167,
         "startChar": 6,
