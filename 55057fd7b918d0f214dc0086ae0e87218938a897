@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aafe6b95_a25b1fbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-02T03:17:53Z",
+      "side": 1,
+      "message": "hi reviewers, the previous cherry pick caused compilation issue https://crbug.com/1124115. Do not understand why it was not reported on submit.\n\nI removed the conflicts part in below file:\n\nhttps://crrev.com/c/2387909/1..2/src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+      "revId": "55057fd7b918d0f214dc0086ae0e87218938a897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
