@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28086d11_a5121c62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-02T03:23:02Z",
+      "side": 1,
+      "message": "hi reviewers, \n\nQuickEmoji is a little bit flaky on checking the panel visibility.\n\nBefore this fix, it failed 2/100 on my local.\nAfter this fix, it failed 0. ",
+      "revId": "373fc871051546ebe7df01e9c3222f737acd70b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
