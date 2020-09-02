@@ -33,6 +33,46 @@
       "revId": "0a5d18f766cfca23a09678f15a0f7208d08fe74c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c085c55a_599e0990",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T12:21:12Z",
+      "side": 1,
+      "message": "LGTM, but please wait Pavol response to my comment regarding e-mail.",
+      "revId": "0a5d18f766cfca23a09678f15a0f7208d08fe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "610b12bf_8e04e299",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-02T12:21:12Z",
+      "side": 1,
+      "message": "Pavol, do you prefer google.com email or chromium.org?",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "0a5d18f766cfca23a09678f15a0f7208d08fe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
