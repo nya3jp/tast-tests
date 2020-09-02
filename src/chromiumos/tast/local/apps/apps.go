@@ -100,6 +100,18 @@ var Terminal = App{
 	Name: "Terminal",
 }
 
+// Camera has details about the Camera app.
+var Camera = App{
+	ID:   "hfhhnacclhffhdffklopdkcgdhifgngh",
+	Name: "Camera",
+}
+
+// WebStore has details about the WebStore app.
+var WebStore = App{
+	ID:   "ahfgeienlihckogmohjhadlkjgocpleb",
+	Name: "Web Store",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
