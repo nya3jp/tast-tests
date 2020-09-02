@@ -122,6 +122,30 @@
     },
     {
       "key": {
+        "uuid": "e7728cf8_f4510dd0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-02T07:12:32Z",
+      "side": 1,
+      "message": "\u003e DUT\u0027s WiFi module might be in power saving mode\n\nAh, thanks for catching this. I think we\u0027re not in power-save here so this might be removed.\n\n\u003e A question, we call SetPowersaveMode to disable power saving mode in the beginning, would it still possible that the DUT is unable to get CSA?\n\nI didn\u0027t try wifi.CSA many times in wificell, but in open air in office, I think it is quite probably. I guess for this test, another reason for running multiple times is that crbug.com/408370 looks like a race condition and we\u0027re not sure if we can always hit the timing order. (well, I\u0027m even not sure if we can ever hit it)",
+      "parentUuid": "42764c8c_51fb906a",
+      "range": {
+        "startLine": 173,
+        "startChar": 36,
+        "endLine": 173,
+        "endChar": 65
+      },
+      "revId": "713ac8745b09209295b391eec270be6c48ea365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96c6b07e_dc8dd08b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 21
