@@ -91,6 +91,24 @@
       "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d931c6_932b1194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-09-02T19:31:35Z",
+      "side": 1,
+      "message": "I\u0027m not clear what you wanna me do here. I\u0027m in #2 now. I\u0027m not sure who to implement #3 systematically, or manually add DumpImageToPNG for each possible fail step?",
+      "parentUuid": "eda33ee5_e16c97dc",
+      "revId": "3717e70d4030ef92da0c6228f76584f7d44624fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
