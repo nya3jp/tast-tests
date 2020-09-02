@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbc53e52_f77128f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-02T19:44:12Z",
+      "side": 1,
+      "message": "Mostly nits.",
+      "revId": "8388ca8db18131dd1bcd43aa07019e4a38371869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "505a21d8_b2db9101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-02T19:44:12Z",
+      "side": 1,
+      "message": "nit: tabList -\u003e tabStrip, to be consistent.",
+      "range": {
+        "startLine": 390,
+        "startChar": 3,
+        "endLine": 390,
+        "endChar": 10
+      },
+      "revId": "8388ca8db18131dd1bcd43aa07019e4a38371869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc97fdbd_40fe6941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-02T19:44:12Z",
+      "side": 1,
+      "message": "Should this be 2 ? Otherwise, \"expected 2 tabs\" below should be updated.",
+      "range": {
+        "startLine": 400,
+        "startChar": 19,
+        "endLine": 400,
+        "endChar": 20
+      },
+      "revId": "8388ca8db18131dd1bcd43aa07019e4a38371869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7196223c_ced1720f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-02T19:44:12Z",
+      "side": 1,
+      "message": "Should it be a %d or %v since the arg is an int ?",
+      "range": {
+        "startLine": 401,
+        "startChar": 77,
+        "endLine": 401,
+        "endChar": 79
+      },
+      "revId": "8388ca8db18131dd1bcd43aa07019e4a38371869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
