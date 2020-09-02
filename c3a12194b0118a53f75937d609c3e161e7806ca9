@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ba7f97af_9cf602ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-02T22:42:51Z",
+      "side": 1,
+      "message": "Good catch. Fixed.",
+      "parentUuid": "4538d673_f94f3638",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "c3a12194b0118a53f75937d609c3e161e7806ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8091229c_60f9242a",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_omnibox.go",
         "patchSetId": 2
@@ -80,6 +104,30 @@
       "revId": "c3a12194b0118a53f75937d609c3e161e7806ca9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a5aca1_ab066c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-02T22:42:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8091229c_60f9242a",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 5
+      },
+      "revId": "c3a12194b0118a53f75937d609c3e161e7806ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
