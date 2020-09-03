@@ -241,7 +241,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		}
 		defer mouse.Release(ctx, tconn, mouse.LeftButton)
 		for i, point := range []coords.Point{bounds.CenterPoint(), br} {
-			if err := mouse.Move(ctx, tconn, point, 200*time.Millisecond); err != nil {
+			if err := mouse.Move(ctx, tconn, point, 300*time.Millisecond); err != nil {
 				return errors.Wrapf(err, "failed to move the mouse to %v at step %d", point, i)
 			}
 		}
