@@ -176,6 +176,15 @@ func (m *SessionManager) RetrieveActiveSessions(ctx context.Context) (map[string
 	return ret, nil
 }
 
+// RetrievePrimarySession calls SessionManager.RetrievePrimarySession D-Bus method.
+func (m *SessionManager) RetrievePrimarySession(ctx context.Context) (username, hash string, err error) {
+	c := m.call(ctx, "RetrievePrimarySession")
+	if err := c.Store(&username, &hash); err != nil {
+		return "", "", err
+	}
+	return username, hash, nil
+}
+
 // GetArcStartTimeTicks calls SessionManager.GetArcStartTimeTicks D-Bus method.
 func (m *SessionManager) GetArcStartTimeTicks(ctx context.Context) (time.Time, error) {
 	c := m.call(ctx, "GetArcStartTimeTicks")
