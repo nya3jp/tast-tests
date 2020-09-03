@@ -76,8 +76,11 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 	return nil
 }
 
-// Perform steps through opt-in flow and wait for it to complete.
+// Perform steps through opt-in flow and waits for it to complete.
 func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+	ctx, cancel := context.WithTimeout(ctx, 3*time.Minute)
+	defer cancel()
+
 	SetPlayStoreEnabled(ctx, tconn, true)
 
 	if err := FindOptInExtensionPageAndAcceptTerms(ctx, cr, true); err != nil {
