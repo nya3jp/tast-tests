@@ -21,8 +21,9 @@ func init() {
 		Desc:        "Verifies how fast the DUT detects the link failure and reconnects to the AP when an AP changes its DHCP configuration",
 		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_unstable", "wificell_func"},
-		ServiceDeps: []string{"tast.cros.network.WifiService"},
-		Vars:        []string{"router"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePre(),
+		Vars:        []string{"router", "pcap"},
 	})
 }
 
@@ -33,18 +34,13 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 		reassociateTimeout         = 10 * time.Second
 	)
 
-	s.Log("Setting up the test fixture and AP")
-	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
-	if err != nil {
-		s.Fatal("Failed to set up the test fixture: ", err)
-	}
+	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {
-		if err := tf.Close(ctx); err != nil {
-			s.Log("Failed to tear down test fixture: ", err)
+		if err := tf.CollectLogs(ctx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
 	}(ctx)
-	ctx, cancel := tf.ReserveForClose(ctx)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
 	ap, err := tf.DefaultOpenNetworkAP(ctx)
