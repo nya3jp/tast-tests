@@ -33,6 +33,69 @@
       "revId": "86d5b7bd9212b48613b7a8eacb16eb9450cdff83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "275cb3c6_5e4c3baa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-03T20:29:02Z",
+      "side": 1,
+      "message": "drive-by nits",
+      "revId": "86d5b7bd9212b48613b7a8eacb16eb9450cdff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67b338eb_df780f5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-03T20:29:02Z",
+      "side": 1,
+      "message": "drive-by nits, but I don\u0027t think it\u0027s necessarily a pointer. You can simply use coords.Rect struct.",
+      "range": {
+        "startLine": 229,
+        "startChar": 103,
+        "endLine": 229,
+        "endChar": 122
+      },
+      "revId": "86d5b7bd9212b48613b7a8eacb16eb9450cdff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc34064_6e338d4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-03T20:29:02Z",
+      "side": 1,
+      "message": "nit: it might simplify the interface if returning coords.Size struct instead of width/height.",
+      "range": {
+        "startLine": 255,
+        "startChar": 8,
+        "endLine": 255,
+        "endChar": 49
+      },
+      "revId": "86d5b7bd9212b48613b7a8eacb16eb9450cdff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
