@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "c5da0e32_96af3560",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-03T15:21:05Z",
+      "side": 1,
+      "message": "I am not fully sure when this location is calculated, but it is continually being updated as the screen changes. Since it is built on top of the accessibility layer, and communicating directly with chrome, I would assume that is would be pretty close to in sync, but I think it is an asynchronous update.\n\nWe may need to reach out to the accessibility team to get more details on how the automation api updates and calculates location.\n\nThis is some docs on the api:\nhttps://developer.chrome.com/extensions/automation",
+      "parentUuid": "8eb294d7_8996aa0b",
+      "range": {
+        "startLine": 212,
+        "startChar": 12,
+        "endLine": 212,
+        "endChar": 25
+      },
+      "revId": "f18cb2e4996dd817e3391b4deb9f90469839e04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50349e43_0987987d",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 3
@@ -70,6 +94,30 @@
       "writtenOn": "2020-09-02T23:52:46Z",
       "side": 1,
       "message": "Another potential reduction of latency can be experimented by folding these 2 APIs (mouseMove and mouseClick) to be 1 API so we would avoid the API round-trip + the promise round trip.\n\nSo the code here would be something like:\n  await tast.promisify(chrome.autotestPrivate.mouseMoveAndClick(centerpoint, 0, button);\n\nBut, I expect that greater source of flakiness is the latency between calculating the coordinate and the actual click.\n\nI\u0027m focusing on this \"promise round-trip\" because I understand that this chrome.autotestPrivate runs in the same Browser process that Files app, does it run in the same render process too? I\u0027m thinking if the tast.promisify() and the Files app share the same JS event-loop, if they do share the same event-loop, every promising enqueued here gives more chances for Files app code to run and move things around because promises run after any potential event/callback from browser APIs. [1]  If tast.promisify() and Files app don\u0027t share the same event-loop, then the impact of these 2 promises are expect to be less relevant.\n\nAll that said, these are nothing to stop this CL but to explore for follow up CLs.\n\n[1] - https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/",
+      "range": {
+        "startLine": 215,
+        "startChar": 23,
+        "endLine": 215,
+        "endChar": 56
+      },
+      "revId": "f18cb2e4996dd817e3391b4deb9f90469839e04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d59274dc_c68587fa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-03T15:21:05Z",
+      "side": 1,
+      "message": "A merged api is definitely possible if needed. As a note, I did some timing of these api\u0027s using performance.now() in JS, and they are not very consistent. They can take anywhere from about 1ms to 80ms each. Most of the time, together they take about 10ms. Generally the first call to each api is much slower than follow up calls. Also, generally, moving the mouse is much faster than clicking(about 1 ms to get location and move mouse vs about 9ms for clicking).\n\nAs for event loop/browser process, I don\u0027t think it is shared. The files app and the files app background page run in a separate process from the test api extension process. I believe that means that they must have different event loops.\n\nAlso, one of the hard problems I see is that the click times seem to be so wildly inconsistent. If this stays the case, flakiness is likely to remain an issue for things moving quickly without a separate solution.",
+      "parentUuid": "50349e43_0987987d",
       "range": {
         "startLine": 215,
         "startChar": 23,
