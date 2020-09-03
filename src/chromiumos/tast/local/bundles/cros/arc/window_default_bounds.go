@@ -161,7 +161,7 @@ func checkPhoneSizeRestored(ctx context.Context, tconn *chrome.TestConn, act *ar
 	if err != nil {
 		return err
 	}
-	if err := checkCentered(bounds, workArea); err != nil {
+	if err := checkCentered(bounds, *workArea); err != nil {
 		return err
 	}
 
@@ -189,7 +189,7 @@ func check80PercentRestored(ctx context.Context, tconn *chrome.TestConn, act *ar
 	if err != nil {
 		return err
 	}
-	if err := checkCentered(bounds, workArea); err != nil {
+	if err := checkCentered(bounds, *workArea); err != nil {
 		return err
 	}
 	const (
@@ -226,13 +226,13 @@ func compareWindowState(ctx context.Context, act *arc.Activity, wanted arc.Windo
 }
 
 // getScreenSizeAndInternalWorkArea returns the screen size and the workspace in pixels of the currently selected internal display.
-func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.TestConn) (width, height int, bounds coords.Rect, err error) {
+func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.TestConn) (width, height int, bounds *coords.Rect, err error) {
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		// This could be fizz which does not have an internal screen.
 		infos, err := display.GetInfo(ctx, tconn)
 		if err != nil {
-			return 0, 0, coords.Rect{}, errors.Wrap(err, "failed to get any display info")
+			return 0, 0, nil, errors.Wrap(err, "failed to get any display info")
 		}
 		for i := range infos {
 			if infos[i].IsPrimary {
@@ -241,17 +241,18 @@ func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.TestCon
 			}
 		}
 		if dispInfo == nil {
-			return 0, 0, coords.Rect{}, errors.New("failed to get any display info")
+			return 0, 0, nil, errors.New("failed to get any display info")
 		}
 		testing.ContextLog(ctx, "Could not get an internal display. Trying with the primary one")
 	}
 
-	for _, mode := range dispInfo.Modes {
-		if mode.IsSelected {
-			return mode.WidthInNativePixels, mode.HeightInNativePixels, coords.ConvertBoundsFromDPToPX(dispInfo.WorkArea, mode.DeviceScaleFactor), nil
-		}
+	mode, err := dispInfo.GetSelectedMode()
+	if err != nil {
+		return 0, 0, nil, err
 	}
-	return 0, 0, coords.Rect{}, errors.New("failed to get the selected screen mode")
+	displayBounds := coords.ConvertBoundsFromDPToPX(dispInfo.Bounds, mode.DeviceScaleFactor)
+	workArea := coords.ConvertBoundsFromDPToPX(dispInfo.WorkArea, mode.DeviceScaleFactor)
+	return displayBounds.Width, displayBounds.Height, &workArea, nil
 }
 
 // checkCentered is checking that a given rectangle is (roughly) in the middle of the screen.
