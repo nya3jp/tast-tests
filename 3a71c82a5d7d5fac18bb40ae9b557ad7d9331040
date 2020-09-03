@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47bec1e5_1b993952",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-09-03T08:51:07Z",
+      "side": 1,
+      "message": "Thanks! This is pretty much lgtm.",
+      "revId": "3a71c82a5d7d5fac18bb40ae9b557ad7d9331040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec0ddabc_aa9d5c30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-09-03T08:51:07Z",
+      "side": 1,
+      "message": "How about moving this to the top level? or maybe the whole: \"content://org.chromium.arc.volumeprovider/0...DEADBEEf\" as one constant (removable_uri_prefix or similar name)?",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 56
+      },
+      "revId": "3a71c82a5d7d5fac18bb40ae9b557ad7d9331040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
