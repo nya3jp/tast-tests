@@ -6,8 +6,10 @@ package arc
 
 import (
 	"context"
+	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ime"
@@ -38,9 +40,6 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		pkg = "org.chromium.arc.testapp.keyboard"
 
 		fieldID = "org.chromium.arc.testapp.keyboard:id/text"
-
-		usIMEID   = "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:us::eng"
-		intlIMEID = "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:us:intl:eng"
 	)
 
 	cr := s.PreValue().(arc.PreData).Chrome
@@ -90,11 +89,40 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to focus a text field: ", err)
 	}
 
-	if imeID, err := ime.GetCurrentInputMethod(ctx, tconn); err != nil {
+	var imeID string
+	if imeID, err = ime.GetCurrentInputMethod(ctx, tconn); err != nil {
 		s.Fatal("Failed to get current ime: ", err)
-	} else if imeID != usIMEID {
+	}
+
+	const (
+		chromeExtID   = "jkghodnilhceideoidjikpgommlajknk"
+		chromiumExtID = "fgoepimhcoialccpbmpnnblemnepkkao"
+	)
+
+	extID := chromeExtID
+	if strings.Contains(imeID, chromiumExtID) {
+		extID = chromiumExtID
+	}
+
+	usIMEID := "_comp_ime_" + extID + "xkb:us::eng"
+	intlIMEID := "_comp_ime_" + extID + "xkb:us:intl:eng"
+
+	if imeID != usIMEID {
 		s.Fatalf("US keyboard is not default: got %q; want %q", imeID, usIMEID)
 	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	defer func(ctx context.Context) {
+		if err := ime.SetCurrentInputMethod(ctx, tconn, usIMEID); err != nil {
+			s.Log("Failed to activate US keyboard: ", err)
+		}
+		if err := ime.RemoveInputMethod(ctx, tconn, intlIMEID); err != nil {
+			s.Log("Failed to disable US International keyboard: ", err)
+		}
+	}(cleanupCtx)
 
 	s.Log("Enabling US International keyboard")
 	if err := ime.AddInputMethod(ctx, tconn, intlIMEID); err != nil {
