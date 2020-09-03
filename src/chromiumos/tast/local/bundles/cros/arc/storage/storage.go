@@ -52,9 +52,6 @@ type Directory struct {
 	Path  string
 	Name  string
 	Title string
-	// Optional: If Banner is not nil, openWithReaderApp() will wait for the banner to appear after
-	// navigating to this directory, to make sure that all UI attributes are fully populated.
-	Banner *ui.FindParams
 	// Optional: If CheckFileType is true, wait for file type to appear before opening the file.
 	CheckFileType bool
 }
@@ -121,13 +118,6 @@ func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, dir Direct
 	// Open the directory under testing.
 	if err := files.OpenDir(ctx, dir.Name, dir.Title); err != nil {
 		return errors.Wrapf(err, "could not open %s folder", dir.Name)
-	}
-
-	// Wait for directory banner.
-	if dir.Banner != nil {
-		if err := files.Root.WaitUntilDescendantExists(ctx, *dir.Banner, uiTimeout); err != nil {
-			return errors.Wrap(err, "waiting for directory banner failed")
-		}
 	}
 
 	// Wait for and click the test file.
