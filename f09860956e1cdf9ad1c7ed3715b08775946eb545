@@ -16,6 +16,23 @@
       "revId": "f09860956e1cdf9ad1c7ed3715b08775946eb545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f7aa910_26d9945e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-09-03T07:28:30Z",
+      "side": 1,
+      "message": "Thank you for finding it. Does it mean we cannot write any Tast test which tests functionality available only in the official IME?",
+      "revId": "f09860956e1cdf9ad1c7ed3715b08775946eb545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
