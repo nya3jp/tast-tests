@@ -247,7 +247,7 @@ func wmNC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 }
 
 // wmNC10 covers non-resizable/clamshell: new activity replaces root activity.
-// Expected behavior is defined in: go/arc-wm-r NC10: resizable/clamshell: new activity replaces root activity.
+// Expected behavior is defined in: go/arc-wm-r NC10: non-resizable/clamshell: new activity replaces root activity.
 func wmNC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Start the activity.
 	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
