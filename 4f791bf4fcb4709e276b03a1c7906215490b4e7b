@@ -22,6 +22,30 @@
       "revId": "4f791bf4fcb4709e276b03a1c7906215490b4e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49403f76_5e79b60e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-03T04:18:42Z",
+      "side": 1,
+      "message": "Ran 10 times the test duration vary from 0:02:21~0:02:47 on snappy.",
+      "parentUuid": "96eb4c86_16eea555",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "4f791bf4fcb4709e276b03a1c7906215490b4e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
