@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "259084a7_95d80f1b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-03T08:11:00Z",
+      "side": 1,
+      "message": "Should we check err !\u003d nil, instead. If there\u0027s device file but failed to stat, that means there\u0027s some mysterious things and the test should fail?",
+      "range": {
+        "startLine": 226,
+        "startChar": 35,
+        "endLine": 226,
+        "endChar": 53
+      },
+      "revId": "3ccde77402da1f3fc242e4eba41e0d8d2c1c113e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0cd075c_6031c54a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-03T08:11:00Z",
+      "side": 1,
+      "message": "Could you use errors.Wrap() to wrap original err?",
+      "revId": "3ccde77402da1f3fc242e4eba41e0d8d2c1c113e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
