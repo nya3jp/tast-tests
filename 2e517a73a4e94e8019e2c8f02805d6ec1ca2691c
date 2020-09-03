@@ -156,6 +156,30 @@
     },
     {
       "key": {
+        "uuid": "062d336a_328eac1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-09-03T20:59:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88840ebd_bb7accc2",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "2e517a73a4e94e8019e2c8f02805d6ec1ca2691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a99c08ff_4e55be8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/regular_session.go",
         "patchSetId": 1
