@@ -38,6 +38,7 @@ func init() {
 		Data:         append([]string{crostini.ImageArtifact}, fioFiles()...),
 		Pre:          crostini.StartedTraceVM(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
+		Vars:         []string{"keepState"},
 		Params: []testing.Param{
 			{
 				Name:              "artifact",
