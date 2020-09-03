@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d11d9cea_b895613c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-03T10:50:11Z",
+      "side": 1,
+      "message": "Hi, this CL adds a tast test for vmc. I\u0027m planing to create a different CL for extra disk support later.",
+      "revId": "cdbcc69fda01ce1676db7842e8ac72288317496f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81d75311_656e1270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc/vmc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-03T10:50:11Z",
+      "side": 1,
+      "message": "I added these utility functions in a separate package because I\u0027ll add a test case for extra disk support soon, which will run vmc as well.",
+      "revId": "cdbcc69fda01ce1676db7842e8ac72288317496f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
