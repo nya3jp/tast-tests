@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/testing"
 )
 
@@ -83,40 +84,21 @@ func HelpRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error)
 
 // LaunchFromThreeDotMenu launches Help app from three dot menu.
 func LaunchFromThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) error {
-	clickElement := func(params ui.FindParams) error {
-		element, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-		if err != nil {
-			return errors.Wrapf(err, "failed to find element with %v", params)
-		}
-		defer element.Release(ctx)
-		if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to wait for location change completed")
-		}
-		return element.LeftClick(ctx)
-	}
-
-	// Find and click the three dot menu via UI.
-	if err := clickElement(ui.FindParams{
-		Role:      ui.RoleTypePopUpButton,
-		ClassName: "BrowserAppMenuButton",
-	}); err != nil {
-		return errors.Wrap(err, "failed to click three dot menu")
-	}
-
-	// Find and click Help in three dot menu via UI.
-	if err := clickElement(ui.FindParams{
-		Name:      "Help",
-		ClassName: "MenuItemView",
-	}); err != nil {
-		return errors.Wrap(err, "failed to click help in three dot menu")
-	}
-
-	// Find and click Get Help in three dot menu via UI.
-	if err := clickElement(ui.FindParams{
-		Name:      "Get Help",
-		ClassName: "MenuItemView",
-	}); err != nil {
-		return errors.Wrap(err, "failed to click help in three dot menu")
+	steps := uig.Steps(
+		uig.FindWithTimeout(ui.FindParams{
+			Role:      ui.RoleTypePopUpButton,
+			ClassName: "BrowserAppMenuButton",
+		}, 10*time.Second).LeftClick(),
+		uig.FindWithTimeout(ui.FindParams{
+			Name:      "Help",
+			ClassName: "MenuItemView",
+		}, 10*time.Second).LeftClick(),
+		uig.FindWithTimeout(ui.FindParams{
+			Name:      "Get Help",
+			ClassName: "MenuItemView",
+		}, 10*time.Second).LeftClick())
+	if err := uig.Do(ctx, tconn, steps); err != nil {
+		return errors.Wrap(err, "failed to launch from 3 dot menu")
 	}
 
 	return WaitForApp(ctx, tconn)
