@@ -32,19 +32,19 @@ func init() {
 		SoftwareDeps: []string{"storage_wearout_detect"},
 		Params: []testing.Param{{
 			Name:    "0_setup",
-			Val:     setup,
+			Val:     testFunc(setup),
 			Timeout: 1 * time.Hour,
 		}, {
 			Name:    "1_stress",
-			Val:     testBlock,
+			Val:     testFunc(testBlock),
 			Timeout: 4 * time.Hour,
 		}, {
 			Name:    "2_stress",
-			Val:     testBlock,
+			Val:     testFunc(testBlock),
 			Timeout: 4 * time.Hour,
 		}, {
 			Name:    "3_teardown",
-			Val:     teardown,
+			Val:     testFunc(teardown),
 			Timeout: 1 * time.Hour,
 		}},
 	})
