@@ -23,39 +23,31 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ScanPerf,
-		Desc:     "Measure BSS scan performance in various setup",
-		Contacts: []string{"deanliao@google.com", "chromeos-platform-connectivity@google.com"},
-		// TODO(b/158433447): Run in a group for wificell-dependent perf tests.
+		Func:        ScanPerf,
+		Desc:        "Measure BSS scan performance in various setup",
+		Contacts:    []string{"deanliao@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_perf"},
-		ServiceDeps: []string{"tast.cros.network.WifiService"},
-		Vars:        []string{"router"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePre(),
+		Vars:        []string{"router", "pcap"},
 	})
 }
 
-// Upper bounds for different scan methods.
-const (
-	fgSingleChannelScanTimeout = time.Second
-	fgFullScanTimeout          = 10 * time.Second
-	bgFullScanTimeout          = 15 * time.Second
-)
-
 func ScanPerf(ctx context.Context, s *testing.State) {
-	var tfOps []wificell.TFOption
-	if router, _ := s.Var("router"); router != "" {
-		tfOps = append(tfOps, wificell.TFRouter(router))
-	}
+	// Upper bounds for different scan methods.
+	const (
+		fgSingleChannelScanTimeout = time.Second
+		fgFullScanTimeout          = 10 * time.Second
+		bgFullScanTimeout          = 15 * time.Second
+	)
 
-	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), tfOps...)
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
+	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {
-		if err := tf.Close(ctx); err != nil {
-			s.Error("Failed to tear down test fixture: ", err)
+		if err := tf.CollectLogs(ctx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
 	}(ctx)
-	ctx, cancel := tf.ReserveForClose(ctx)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
 	ap, err := tf.DefaultOpenNetworkAP(ctx)
