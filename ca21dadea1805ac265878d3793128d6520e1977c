@@ -179,6 +179,30 @@
     },
     {
       "key": {
+        "uuid": "d8e5740e_5a8f15df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-03T16:44:31Z",
+      "side": 1,
+      "message": "Thanks for the unofficial invitation :) I have a small list of things I have noticed, and I was planning on mailing tast-users and the tast approver list about it when I had a list of interesting length or content.",
+      "parentUuid": "d24f6e42_97015533",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "ca21dadea1805ac265878d3793128d6520e1977c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6a4c87f_49982a15",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 4
