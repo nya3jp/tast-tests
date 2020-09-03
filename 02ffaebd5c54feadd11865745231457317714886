@@ -39,6 +39,30 @@
       "revId": "02ffaebd5c54feadd11865745231457317714886",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f0a9bc_d5729f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_whats_new_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-03T00:18:19Z",
+      "side": 1,
+      "message": "Good to know! Changed the timeout to 30 seconds.",
+      "parentUuid": "deba454c_fd202b1a",
+      "range": {
+        "startLine": 100,
+        "startChar": 55,
+        "endLine": 100,
+        "endChar": 70
+      },
+      "revId": "02ffaebd5c54feadd11865745231457317714886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
