@@ -7,8 +7,6 @@ package filesapp
 
 import (
 	"context"
-	"fmt"
-	"regexp"
 	"strings"
 	"time"
 
@@ -17,12 +15,15 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // DownloadPath is the location of Downloads for the user.
 const DownloadPath = "/home/chronos/user/Downloads/"
 
 const uiTimeout = 15 * time.Second
+
+var stablePollOpts = testing.PollOptions{Timeout: 5 * time.Second}
 
 // Context menu items for a file.
 const (
@@ -193,44 +194,6 @@ func (f *FilesApp) SelectFile(ctx context.Context, filename string) error {
 	return file.LeftClick(ctx)
 }
 
-// SelectMultipleFiles selects multiple items in the Files app listBox while pressing 'Ctrl'.
-func (f *FilesApp) SelectMultipleFiles(ctx context.Context, fileList []string) error {
-	// Define keyboard to press 'Ctrl'.
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create keyboard")
-	}
-	defer ew.Close()
-
-	// Hold Ctrl during multi selection.
-	if err := ew.AccelPress(ctx, "Ctrl"); err != nil {
-		return errors.Wrap(err, "failed to press Ctrl")
-	}
-	defer ew.AccelRelease(ctx, "Ctrl")
-
-	// Select files.
-	for _, fileName := range fileList {
-		if err := f.SelectFile(ctx, fileName); err != nil {
-			return errors.Wrapf(err, "failed to select %s", fileName)
-		}
-	}
-
-	// Define the label associated to the number of files we are selecting.
-	var selectionLabelRE = regexp.MustCompile(fmt.Sprintf("%d (files|items|folders) selected", len(fileList)))
-
-	params := ui.FindParams{
-		Role: ui.RoleTypeStaticText,
-		Attributes: map[string]interface{}{
-			"name": selectionLabelRE,
-		},
-	}
-
-	if err := f.Root.WaitUntilDescendantExists(ctx, params, 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to find expected selection label")
-	}
-	return nil
-}
-
 // OpenFile executes double click on a file to open it with default app.
 func (f *FilesApp) OpenFile(ctx context.Context, filename string) error {
 	file, err := f.file(ctx, filename, uiTimeout)
@@ -315,11 +278,6 @@ func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuN
 	}
 
 	for _, menuName := range menuNames {
-		// Wait location.
-		if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
-			return errors.Wrap(err, "failed to wait for animation finished")
-		}
-
 		// Left click menuItem.
 		if err := f.LeftClickItem(ctx, menuName, ui.RoleTypeMenuItem); err != nil {
 			return errors.Wrapf(err, "failed to click %s in context menu", menuName)
@@ -360,7 +318,7 @@ func (f *FilesApp) LeftClickItem(ctx context.Context, itemName string, role ui.R
 		return errors.Wrapf(err, "failed to left click %s", itemName)
 	}
 	defer item.Release(ctx)
-	return item.LeftClick(ctx)
+	return item.StableLeftClick(ctx, &stablePollOpts)
 }
 
 // DeleteFileOrFolder deletes a file or folder through selecting Delete in context menu.
@@ -368,10 +326,6 @@ func (f *FilesApp) DeleteFileOrFolder(ctx context.Context, fileName string) erro
 	// Select Delete from context menu of the file / folder.
 	if err := f.SelectContextMenu(ctx, fileName, Delete); err != nil {
 		return errors.Wrapf(err, "failed to right click on %s", fileName)
-	}
-
-	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for animation finished")
 	}
 
 	params := ui.FindParams{
@@ -386,7 +340,7 @@ func (f *FilesApp) DeleteFileOrFolder(ctx context.Context, fileName string) erro
 	defer deleteButton.Release(ctx)
 
 	// Click button "Delete".
-	if err := deleteButton.LeftClick(ctx); err != nil {
+	if err := deleteButton.StableLeftClick(ctx, &stablePollOpts); err != nil {
 		return errors.Wrapf(err, "failed to click button Delete on file %s ", fileName)
 	}
 
@@ -487,11 +441,6 @@ func (f *FilesApp) SelectDirectoryContextMenuItem(ctx context.Context, dirName, 
 
 	if err := dirRow.RightClick(ctx); err != nil {
 		return errors.Wrapf(err, "failed to right click %s", dirName)
-	}
-
-	// Wait location.
-	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for animation finished")
 	}
 
 	// Left click menuItem.
