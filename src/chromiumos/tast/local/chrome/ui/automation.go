@@ -15,6 +15,8 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/google/go-cmp/cmp"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -180,13 +182,13 @@ func (n *Node) Release(ctx context.Context) {
 	n.object.Release(ctx)
 }
 
-// LeftClick executes the default action of the node.
+// LeftClick executes a left click on the node.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) LeftClick(ctx context.Context) error {
 	return n.mouseClick(ctx, leftClick)
 }
 
-// RightClick shows the context menu of the node.
+// RightClick executes a right click on the node.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) RightClick(ctx context.Context) error {
 	return n.mouseClick(ctx, rightClick)
@@ -196,6 +198,24 @@ func (n *Node) RightClick(ctx context.Context) error {
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) DoubleClick(ctx context.Context) error {
 	return n.mouseClick(ctx, doubleClick)
+}
+
+// StableLeftClick waits for the location to be stable and then left clicks the node.
+// The location must be stable for 1 iteration of polling (default 100ms).
+func (n *Node) StableLeftClick(ctx context.Context, pollOpts *testing.PollOptions) error {
+	return n.stableMouseClick(ctx, leftClick, pollOpts)
+}
+
+// StableRightClick waits for the location to be stable and then right clicks the node.
+// The location must be stable for 1 iteration of polling (default 100ms).
+func (n *Node) StableRightClick(ctx context.Context, pollOpts *testing.PollOptions) error {
+	return n.stableMouseClick(ctx, rightClick, pollOpts)
+}
+
+// StableDoubleClick waits for the location to be stable and then double clicks the node.
+// The location must be stable for 1 iteration of polling (default 100ms).
+func (n *Node) StableDoubleClick(ctx context.Context, pollOpts *testing.PollOptions) error {
+	return n.stableMouseClick(ctx, doubleClick, pollOpts)
 }
 
 // clickType describes how user clicks mouse.
@@ -232,6 +252,38 @@ func (n *Node) mouseClick(ctx context.Context, ct clickType) error {
 	default:
 		return errors.New("invalid click type")
 	}
+}
+
+func (n *Node) updateLocation(ctx context.Context) error {
+	return n.object.Call(ctx, &n.Location, `function(){return this.location}`)
+}
+
+// WaitLocationStable waits for the nodes location to be the same for a single iteration of polling.
+// Polling options work the same way as in testing.Poll().
+func (n *Node) WaitLocationStable(ctx context.Context, pollOpts *testing.PollOptions) error {
+	location := coords.Rect{}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := n.updateLocation(ctx); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to update the node's location"))
+		}
+		if !cmp.Equal(n.Location, location) {
+			location = n.Location
+			return errors.New("node location still changing")
+		}
+		return nil
+	}, pollOpts); err != nil {
+		return errors.Wrap(err, "node location unstable")
+	}
+	return nil
+}
+
+// stableMouseClick waits for a nodes location to be stable before attempting to click it.
+// The location must be stable for 1 iteration of polling (default 100ms).
+func (n *Node) stableMouseClick(ctx context.Context, ct clickType, pollOpts *testing.PollOptions) error {
+	if err := n.WaitLocationStable(ctx, pollOpts); err != nil {
+		return err
+	}
+	return n.mouseClick(ctx, ct)
 }
 
 // LeftClickUntil repeatedly left clicks the node until the condition returns true with no error.
