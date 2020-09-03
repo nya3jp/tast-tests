@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "211125ab_3c464af6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-09-03T08:34:22Z",
+      "side": 1,
+      "message": "Tast throws an error for any test which attempts to read a var which is not defined.\n\nAll tests using crostini preconditions must define keepState.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/crostini/pre.go?l\u003d312\u0026rcl\u003d1640f761b1f1ca9d05166eb030b13272c242111f",
+      "parentUuid": "4b4eecf5_d85384ff",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "f88c8fb17a7fc785f2fac96fa61d8846b94fb32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6ce871f_8afcc41b",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_toast.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-03T08:30:37Z",
       "side": 1,
       "message": "How it is related to the commit title and description?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "f88c8fb17a7fc785f2fac96fa61d8846b94fb32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b9be77_09feba4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_toast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-09-03T08:34:22Z",
+      "side": 1,
+      "message": "There is a new presubmit which requires this.  The code cannot be uploaded without adding this line.",
+      "parentUuid": "e6ce871f_8afcc41b",
       "range": {
         "startLine": 57,
         "startChar": 0,
