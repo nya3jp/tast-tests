@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "702176e8_ea25a47f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-09-03T08:50:25Z",
+      "side": 1,
+      "message": "Changed to use:\nreturn n.object.Call(ctx, nil, \"function() {this.doDefault()}\")",
+      "parentUuid": "1dd347b5_60b7d64f",
+      "revId": "8789d2cad78604cc0110f0d3ce63fce1d72f9618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6ac4c85_df4edf88",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 3
@@ -127,6 +145,30 @@
       "revId": "8789d2cad78604cc0110f0d3ce63fce1d72f9618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5d32d80_4c34ace2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-09-03T08:50:25Z",
+      "side": 1,
+      "message": "Changed to use:\nreturn n.object.Call(ctx, nil, \"function() {this.doDefault()}\")\n\nThe stack overflow is fixed.",
+      "parentUuid": "e6ac4c85_df4edf88",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "8789d2cad78604cc0110f0d3ce63fce1d72f9618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
