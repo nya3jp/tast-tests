@@ -6,6 +6,7 @@ package vm
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
 	"io/ioutil"
 	"strings"
@@ -96,6 +97,13 @@ func StopConcierge(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+// GetEncodedName returns the encoded version of the user-chosen name which
+// concierge uses to identify several pieces of the VM (its stateful image, log
+// files, and ssh keys).
+func GetEncodedName(name string) string {
+	return base64.URLEncoding.WithPadding(base64.StdPadding).EncodeToString([]byte(name))
 }
 
 // listVMDisksSize returns the size of the named VM through ListVmDisks.

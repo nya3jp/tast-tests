@@ -70,6 +70,12 @@ func GetRunningVM(ctx context.Context, user string) (*VM, error) {
 	return vm, nil
 }
 
+// Name returns the human-readable name of this VM (as opposed to the
+// encoded one from vm.GetEncodedName()).
+func (vm *VM) Name() string {
+	return vm.name
+}
+
 // Start launches the VM.
 func (vm *VM) Start(ctx context.Context) error {
 	diskPath, err := vm.Concierge.startTerminaVM(ctx, vm)

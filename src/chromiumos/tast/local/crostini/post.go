@@ -14,7 +14,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -38,7 +37,7 @@ func RunCrostiniPostTest(ctx context.Context, p PreData) {
 		return
 	}
 
-	TrySaveVMLogs(ctx, p.Chrome.User())
+	TrySaveVMLogs(ctx, p.Container.VM)
 	trySaveContainerLogs(ctx, dir, p.Container)
 }
 
@@ -90,14 +89,8 @@ func trySaveContainerLogs(ctx context.Context, dir string, cont *vm.Container) {
 // never explicitly close it.
 var logReader *syslog.LineReader
 
-func newLogReader(ctx context.Context, user string) (*syslog.LineReader, error) {
-	hash, err := cryptohome.UserHash(ctx, user)
-	if err != nil {
-		return nil, err
-	}
-	// dGV... is termina. If the name of the VM tests use changes then this will
-	// need to change too.
-	path := "/run/daemon-store/crosvm/" + hash + "/log/dGVybWluYQ.log"
+func newLogReader(ctx context.Context, machine *vm.VM) (*syslog.LineReader, error) {
+	path := "/run/daemon-store/crosvm/" + machine.Concierge.GetOwnerID() + "/log/" + vm.GetEncodedName(machine.Name()) + ".log"
 
 	// Only wait 1 second for the log file to exist, don't want to hang until
 	// timeout if it doesn't exist, instead we continue.
@@ -107,10 +100,10 @@ func newLogReader(ctx context.Context, user string) (*syslog.LineReader, error) 
 
 // TrySaveVMLogs writes logs since the last call to the
 // current test's output folder.
-func TrySaveVMLogs(ctx context.Context, user string) {
+func TrySaveVMLogs(ctx context.Context, machine *vm.VM) {
 	if logReader == nil {
 		var err error
-		logReader, err = newLogReader(ctx, user)
+		logReader, err = newLogReader(ctx, machine)
 		if err != nil {
 			testing.ContextLog(ctx, "Error creating log reader: ", err)
 			return
