@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d205b94c_f4587dc6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-03T15:49:19Z",
+      "side": 1,
+      "message": "I\u0027m not really a fan of this. I don\u0027t think this should be built in to every call to this function. I see the goal, but I think it should only be like this in a specific test that is testing the edge case, but not in the library that anyone can use....I\u0027m not fully sure though.",
+      "range": {
+        "startLine": 443,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 33
+      },
+      "revId": "37c91eba7cee8cc2debb44e5ffc6a1b8f97868a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

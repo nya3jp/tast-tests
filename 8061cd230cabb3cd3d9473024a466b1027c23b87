@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "6fa0a62a_663d378b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-03T15:49:19Z",
+      "side": 1,
+      "message": "ahh, forgot that the other methods don\u0027t close quicksettings unless it starts closed, leaving this in is actually probably better.",
+      "parentUuid": "10e4ec8d_2d772571",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "8061cd230cabb3cd3d9473024a466b1027c23b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f079c66b_7f1b04ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_mic_gain_slider.go",
         "patchSetId": 3
