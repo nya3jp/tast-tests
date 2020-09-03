@@ -50,6 +50,121 @@
       "revId": "c931bb4e29f22c3eb1ef7164fbe42ebe6d458454",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "934418b3_b1eecb85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T03:10:25Z",
+      "side": 1,
+      "message": "error",
+      "range": {
+        "startLine": 486,
+        "startChar": 43,
+        "endLine": 486,
+        "endChar": 48
+      },
+      "revId": "c931bb4e29f22c3eb1ef7164fbe42ebe6d458454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3951fb4_068838fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T03:10:25Z",
+      "side": 1,
+      "message": "optional: How about updating the return value to a pointer and return nil here?",
+      "range": {
+        "startLine": 486,
+        "startChar": 10,
+        "endLine": 486,
+        "endChar": 23
+      },
+      "revId": "c931bb4e29f22c3eb1ef7164fbe42ebe6d458454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b97e16e5_4b17605a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T03:10:25Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 488,
+        "startChar": 40,
+        "endLine": 488,
+        "endChar": 43
+      },
+      "revId": "c931bb4e29f22c3eb1ef7164fbe42ebe6d458454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b7a0128_6d4dd227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T03:10:25Z",
+      "side": 1,
+      "message": "clar: don\u0027t we have to round the number?\nyou may want to add a brief comment.",
+      "range": {
+        "startLine": 491,
+        "startChar": 20,
+        "endLine": 491,
+        "endChar": 23
+      },
+      "revId": "c931bb4e29f22c3eb1ef7164fbe42ebe6d458454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52a9a6f4_fa84509b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T03:10:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure when to use Round and when to use just convertion to int (as above).\nCould you make them consistent?",
+      "range": {
+        "startLine": 1178,
+        "startChar": 45,
+        "endLine": 1178,
+        "endChar": 50
+      },
+      "revId": "c931bb4e29f22c3eb1ef7164fbe42ebe6d458454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
