@@ -239,13 +239,21 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
 			return errors.Wrap(err, "failed to press the left button")
 		}
+		// Mouse button may be released already, but releasing again is actually
+		// harmless.
 		defer mouse.Release(ctx, tconn, mouse.LeftButton)
 		for i, point := range []coords.Point{bounds.CenterPoint(), br} {
 			if err := mouse.Move(ctx, tconn, point, 200*time.Millisecond); err != nil {
 				return errors.Wrapf(err, "failed to move the mouse to %v at step %d", point, i)
 			}
 		}
-		return nil
+		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+			return errors.Wrap(err, "failed to release the mouse")
+		}
+		// After the mouse release, it should wait for some time to stabilize the
+		// window bounds. Otherwise the next iteration may fail to resize the
+		// window.
+		return testing.Sleep(ctx, 100*time.Millisecond)
 	}, "Ash.InteractiveWindowResize.TimeToPresent"),
 		perfutil.StoreLatency)
 
