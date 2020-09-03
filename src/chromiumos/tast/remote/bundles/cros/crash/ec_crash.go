@@ -29,9 +29,9 @@ func init() {
 		// not (yet) support skipping tests if required vars are empty.
 		// TODO(crbug.com/967901): Remove no_qemu dep once servo var is sufficient.
 		SoftwareDeps: []string{"pstore", "reboot", "no_qemu"},
-		// The below models have buggy EC firmware and cannot capture
-		// crash reports. See https://crbug.com/1123191
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel(
+			// The below models have buggy EC firmware and cannot capture
+			// crash reports. See https://crbug.com/1123191
 			"asuka",
 			"banon",
 			"caroline",
@@ -47,6 +47,20 @@ func init() {
 			"terra",
 			"ultima",
 			"wizpig",
+			// The below models do not support the "crash" EC command.
+			// See https://crbug.com/1123716
+			"arcada",
+			"arcada_signed",
+			"drallion",
+			"drallion360",
+			"sarien",
+			"sarien_signed",
+			// The below models do not have an EC.
+			// See https://crbug.com/1123716
+			// TODO(https://crbug.com/1124554): When tast has one, use a separate "EC" hwdep
+			// rather than listing models.
+			"fievel", // veyron_fievel
+			"tiger",  // veyron_tiger
 		)),
 		ServiceDeps: []string{"tast.cros.crash.FixtureService"},
 		Timeout:     10 * time.Minute,
