@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "a57dc700_3deb018a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4a9153a_70811f25",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a3b75c6_620499cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -76,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "36c0c01a_7f1f2ffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a3b75c6_620499cd",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 61
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5606ecbb_83cb5d9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -87,6 +129,30 @@
       "writtenOn": "2020-09-02T23:21:26Z",
       "side": 1,
       "message": "Information about apps should be taken from apps.go: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/apps/apps.go\n\nYou can register new entries there for Web Store and Camera, as there don\u0027t appear to be entries for them already.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ac2546a_adae5a49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Where can I find the ID for \"Web Store\" and Camera? Thanks.",
+      "parentUuid": "5606ecbb_83cb5d9e",
       "range": {
         "startLine": 56,
         "startChar": 0,
@@ -116,6 +182,24 @@
     },
     {
       "key": {
+        "uuid": "f3a1c2a3_1ab19eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "720bdb90_6dc90213",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbb3903c_af042362",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -130,6 +214,24 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4869394_503d59fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbb3903c_af042362",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +258,30 @@
     },
     {
       "key": {
+        "uuid": "e9cbe197_b7d161b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8c480c3_325a169f",
+      "range": {
+        "startLine": 114,
+        "startChar": 27,
+        "endLine": 114,
+        "endChar": 41
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f36c2c63_72ecf3d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -170,6 +296,24 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a3cb78_12973160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f36c2c63_72ecf3d3",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +340,30 @@
     },
     {
       "key": {
+        "uuid": "d99bd944_dbf42b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d293be33_5e6bd5f2",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b0ad30c_e9e63041",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -216,6 +384,30 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d20165_9b423747",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b0ad30c_e9e63041",
+      "range": {
+        "startLine": 134,
+        "startChar": 23,
+        "endLine": 134,
+        "endChar": 30
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -242,6 +434,30 @@
     },
     {
       "key": {
+        "uuid": "ab9ffc0e_5b49e1e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e221b267_53df8a58",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 2
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b74d6aa_1fe0f84e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -256,6 +472,24 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d435498b_39bc2991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b74d6aa_1fe0f84e",
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -282,6 +516,30 @@
     },
     {
       "key": {
+        "uuid": "dbd39b6f_0f03f6e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Sorry, my mistake. I have change the function signature to error out.",
+      "parentUuid": "d13f2c6e_de32585c",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 11
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f244e12_c79be96d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -302,6 +560,30 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42406576_acb5a577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f244e12_c79be96d",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 17
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -328,6 +610,30 @@
     },
     {
       "key": {
+        "uuid": "a105b8c2_7843be25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9e9691e_a6dbcf6b",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 7
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08f4b58f_686530dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -348,6 +654,30 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fede58f2_1afbbad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08f4b58f_686530dd",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 19
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -374,6 +704,30 @@
     },
     {
       "key": {
+        "uuid": "c4e1709e_fdbf308b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b37dd84_f0a49704",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 11
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5862a76b_d494535f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -397,6 +751,30 @@
     },
     {
       "key": {
+        "uuid": "5d0b3d6b_59debde9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5862a76b_d494535f",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdbdb9f7_5ac85625",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -408,6 +786,30 @@
       "writtenOn": "2020-09-02T23:21:26Z",
       "side": 1,
       "message": "I think this would be best as a \"Launch\" function in launcher.go",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 19
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5224e17d_ac0fb335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "I created a new function LaunchFromListView. Please check if it is ok. Thanks.",
+      "parentUuid": "cdbdb9f7_5ac85625",
       "range": {
         "startLine": 213,
         "startChar": 5,
@@ -443,6 +845,30 @@
     },
     {
       "key": {
+        "uuid": "ad9a3005_4e56e570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "I think APIs in shelf.go use appID instead of appName. Should the new function use appID or appName? Thanks.",
+      "parentUuid": "a49c740b_26ea2d61",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 17
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83d396a6_2ba7365d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -463,6 +889,30 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f1d0188_da466ca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "I created a new function selectOptionFromContext to replace pinApp. Please check if it is ok. Thanks.",
+      "parentUuid": "83d396a6_2ba7365d",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 239,
+        "endChar": 11
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -489,6 +939,30 @@
     },
     {
       "key": {
+        "uuid": "f0957737_25787327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc8630fe_26abbb15",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 52
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52ccd539_b4213630",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -509,6 +983,30 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceb257c6_6f3ca35b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "I change the name of the function to selectOptionFromContext. Please check if it is ok. Thanks.",
+      "parentUuid": "52ccd539_b4213630",
+      "range": {
+        "startLine": 258,
+        "startChar": 5,
+        "endLine": 258,
+        "endChar": 19
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -535,6 +1033,30 @@
     },
     {
       "key": {
+        "uuid": "b315ce62_8de4071c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5ce7425_bff0bb4a",
+      "range": {
+        "startLine": 263,
+        "startChar": 23,
+        "endLine": 263,
+        "endChar": 27
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "511eece9_d864a734",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -555,6 +1077,30 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29897329_0bbb4d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "511eece9_d864a734",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 12
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -604,6 +1150,54 @@
     },
     {
       "key": {
+        "uuid": "18eb140c_f208318e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91feb57a_a403c8dd",
+      "range": {
+        "startLine": 286,
+        "startChar": 9,
+        "endLine": 286,
+        "endChar": 10
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c484323a_30761845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "150a5edc_0f1d7338",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 21
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8ef7bfd_776a7119",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1
@@ -624,6 +1218,30 @@
       "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c00ea0b_11942bc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8ef7bfd_776a7119",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 11
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

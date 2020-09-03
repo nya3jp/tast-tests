@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f83d238b_2dccad67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-03T23:18:39Z",
+      "side": 1,
+      "message": "Hi Kyle:\n\nI have addressed most of the your review feedback. I do have questions on a few comments. Please take a look. Thanks.\n\nSeewai\n",
+      "revId": "2e9f5702c586ad17ad2f94fc0d1bd26fc39223a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
