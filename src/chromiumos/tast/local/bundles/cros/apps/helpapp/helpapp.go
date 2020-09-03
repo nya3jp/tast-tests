@@ -83,39 +83,27 @@ func HelpRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error)
 
 // LaunchFromThreeDotMenu launches Help app from three dot menu.
 func LaunchFromThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) error {
-	clickElement := func(params ui.FindParams) error {
-		element, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-		if err != nil {
-			return errors.Wrapf(err, "failed to find element with %v", params)
-		}
-		defer element.Release(ctx)
-		if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to wait for location change completed")
-		}
-		return element.LeftClick(ctx)
-	}
-
 	// Find and click the three dot menu via UI.
-	if err := clickElement(ui.FindParams{
+	if err := ui.FindAndClick(ctx, tconn, ui.FindParams{
 		Role:      ui.RoleTypePopUpButton,
 		ClassName: "BrowserAppMenuButton",
-	}); err != nil {
+	}, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to click three dot menu")
 	}
 
 	// Find and click Help in three dot menu via UI.
-	if err := clickElement(ui.FindParams{
+	if err := ui.FindAndClick(ctx, tconn, ui.FindParams{
 		Name:      "Help",
 		ClassName: "MenuItemView",
-	}); err != nil {
+	}, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to click help in three dot menu")
 	}
 
 	// Find and click Get Help in three dot menu via UI.
-	if err := clickElement(ui.FindParams{
+	if err := ui.FindAndClick(ctx, tconn, ui.FindParams{
 		Name:      "Get Help",
 		ClassName: "MenuItemView",
-	}); err != nil {
+	}, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to click help in three dot menu")
 	}
 
