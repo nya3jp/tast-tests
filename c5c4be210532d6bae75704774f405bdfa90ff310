@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c20fd6d3_af7d7140",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-09-03T19:22:54Z",
+      "side": 1,
+      "message": "Actually, I\u0027m not sure whether we should do this. Just abandoning the old URI support and making the test informational might be better as it\u0027s simpler, although the test will be broken for a while.\nIf we keep the old URI support, then it might be more natural to keep the test critical. It should be safe, since Android side changes for switching to the new URIs will be blocked by this test, which guarantees that this test won\u0027t be broken by the changes.",
+      "range": {
+        "startLine": 12,
+        "startChar": 62,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19cd7616_1958d226",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -13,6 +36,23 @@
       "writtenOn": "2020-09-03T09:51:52Z",
       "side": 1,
       "message": "Confirmed that ToT pi-arc with/without the URI change can pass this test. PTAL.",
+      "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "960a1db7_29c9de79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-09-03T19:22:54Z",
+      "side": 1,
+      "message": "This CL is for unblocking the Android side changes to switch content URIs from content://.../removable/* to content://.../\u003cUUID\u003e/*.\n\nIt adds support for new URIs, while the old URI support is kept as is. It also makes the test informational.\nI\u0027m not sure whether it\u0027s a good practice for such a situation (in which we need to make a change which breaks a critical test). If you have any ideas, please let me know.",
       "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
