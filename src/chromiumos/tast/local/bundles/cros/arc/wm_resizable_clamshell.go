@@ -9,6 +9,7 @@ import (
 	"math"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
@@ -81,6 +82,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			// resizable/clamshell: new activity follows root activity
 			Name: "RC09_new_activity_follows_root_activity",
 			Func: wmRC09,
+		},
+		wm.TestCase{
+			// resizable/clamshell: font size change
+			Name: "RC10_font_size_change",
+			Func: wmRC10,
 		},
 		wm.TestCase{
 			// resizable/clamshell: hide Shelf when app maximized
@@ -337,6 +343,64 @@ func wmRC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	if rootWindowInfo.BoundsInRoot != childWindowInfo.BoundsInRoot {
 		return errors.Errorf("invalid child activity window bounds, got: %q, want: %q", childWindowInfo.BoundsInRoot, rootWindowInfo.BoundsInRoot)
 	}
+	return nil
+}
+
+// wmRC10 covers resizable/clamshell: new activity replaces root activity (springboard).
+// Expected behavior is defined in: go/arc-wm-r NC10: resizable/clamshell: new activity replaces root activity (springboard).
+func wmRC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	timeReservedForStop := 750 * time.Millisecond
+	// Start the activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "unable to create new activity")
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "unable to start new activity")
+	}
+	defer func(ctx context.Context) {
+		act.Stop(ctx, tconn)
+	}(ctx)
+	ctx, cancel := ctxutil.Shorten(ctx, timeReservedForStop)
+	defer cancel()
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return errors.Wrap(err, "unable to wait until activity is ready")
+	}
+
+	// Get the root window info so it could be compared with child window.
+	rootWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "unable to get arc app window info")
+	}
+
+	if err := wm.UIClickRootActivity(ctx, act, d); err != nil {
+		return errors.Wrap(err, "unable to click on root activity button")
+	}
+	if err := wm.UIClickLaunchActivity(ctx, act, d); err != nil {
+		return errors.Wrap(err, "unable to click on launch activity button")
+	}
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return errors.Wrap(err, "unable to wait until activity is ready")
+	}
+
+	if nrActivities, err := wm.UINumberActivities(ctx, act, d); err != nil {
+		return err
+	} else if nrActivities != 1 {
+		return errors.Errorf("invalid number of activities: got %d; want 1", nrActivities)
+	}
+
+	childWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "unable to get arc app window info")
+	}
+
+	if childWindowInfo.BoundsInRoot != rootWindowInfo.BoundsInRoot {
+		return errors.Errorf("invalid child activity window bounds: got %q; want %q", childWindowInfo.BoundsInRoot, rootWindowInfo.BoundsInRoot)
+	}
+
 	return nil
 }
 
