@@ -22,10 +22,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ShareFiles,
-		Desc:         "Checks crostini files sharing",
-		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline"},
+		Func:     ShareFiles,
+		Desc:     "Checks crostini files sharing",
+		Contacts: []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
+		// TODO: Test is disabled until it can be fixed https://crbug.com/1124920
+		// Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
@@ -35,7 +36,8 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				ExtraAttr:         []string{"informational"},
+				// TODO: Test is disabled until it can be fixed https://crbug.com/1124920
+				// ExtraAttr: []string{"informational"},
 			},
 			{
 				Name:              "artifact_unstable",
@@ -43,19 +45,22 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				ExtraAttr:         []string{"informational"},
+				// TODO: Test is disabled until it can be fixed https://crbug.com/1124920
+				// ExtraAttr: []string{"informational"},
 			},
 			{
-				Name:      "download_stretch",
-				Pre:       crostini.StartedByDownloadStretch(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
+				Name:    "download_stretch",
+				Pre:     crostini.StartedByDownloadStretch(),
+				Timeout: 10 * time.Minute,
+				// TODO: Test is disabled until it can be fixed https://crbug.com/1124920
+				// ExtraAttr: []string{"informational"},
 			},
 			{
-				Name:      "download_buster",
-				Pre:       crostini.StartedByDownloadBuster(),
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"informational"},
+				Name:    "download_buster",
+				Pre:     crostini.StartedByDownloadBuster(),
+				Timeout: 10 * time.Minute,
+				// TODO: Test is disabled until it can be fixed https://crbug.com/1124920
+				// ExtraAttr: []string{"informational"},
 			},
 		},
 	})
