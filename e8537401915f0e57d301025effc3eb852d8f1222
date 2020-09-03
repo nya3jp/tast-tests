@@ -93,6 +93,30 @@
       "revId": "e8537401915f0e57d301025effc3eb852d8f1222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9a27bc1_df8c218e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-03T03:16:10Z",
+      "side": 1,
+      "message": "Sure. Being consist has higher priority.",
+      "parentUuid": "d4d0d225_d7ca8b73",
+      "range": {
+        "startLine": 42,
+        "startChar": 23,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "e8537401915f0e57d301025effc3eb852d8f1222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
