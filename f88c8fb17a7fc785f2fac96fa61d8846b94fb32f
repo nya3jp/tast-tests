@@ -49,6 +49,47 @@
     },
     {
       "key": {
+        "uuid": "808eae8f_aad64023",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-03T10:31:49Z",
+      "side": 1,
+      "message": "I see, also send link where Tast actually panic:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/internal/testing/state.go;l\u003d413?q\u003dtesting.PreState\n\nCan you please update description to be more precise, becuase tests itself are not failing, but precondition is failing, because it tries to read variable that was not defined?",
+      "parentUuid": "211125ab_3c464af6",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "f88c8fb17a7fc785f2fac96fa61d8846b94fb32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba810275_d72cae71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-03T10:31:49Z",
+      "side": 1,
+      "message": "LGTM, but please update commit description to make it more precise.",
+      "revId": "f88c8fb17a7fc785f2fac96fa61d8846b94fb32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6ce871f_8afcc41b",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_toast.go",
         "patchSetId": 2
@@ -93,6 +134,30 @@
       "revId": "f88c8fb17a7fc785f2fac96fa61d8846b94fb32f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2651783_625a5ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_toast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-03T10:31:49Z",
+      "side": 1,
+      "message": "Ack\n\nCan you please add it to the commit description?",
+      "parentUuid": "12b9be77_09feba4d",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "f88c8fb17a7fc785f2fac96fa61d8846b94fb32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
