@@ -54,7 +54,7 @@ func init() {
 		SoftwareDeps: []string{"arc", "chrome"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
 			"tast.cros.arc.GmsCoreCacheService"},
-		Timeout: 10 * time.Minute,
+		Timeout: 20 * time.Minute,
 		// Note that arc.DataCollector is not a simple test. It collects data used to
 		// produce test and release images. Not collecting this data leads to performance
 		// regression and failure of other tests. Please consider fixing the issue rather
@@ -178,6 +178,9 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		// Name of gsutil
 		gsUtil = "gsutil"
+
+		// Number of retries for each flow in case of failure.
+		retryCount = 2
 	)
 
 	d := s.DUT()
@@ -266,7 +269,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	genUreadaheadPack := func() {
+	genUreadaheadPack := func() error {
 		service := arc.NewUreadaheadPackServiceClient(cl.Conn)
 		// First boot is needed to be initial boot with removing all user data.
 		request := arcpb.UreadaheadPackRequest{
@@ -283,13 +286,13 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// Due to race condition of using ureadahead in various parts of Chrome,
 		// first generation might be incomplete. Just pass it without analyzing.
 		if _, err := service.Generate(shortCtx, &request); err != nil {
-			s.Fatal("UreadaheadPackService.Generate returned an error for warm-up pass: ", err)
+			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for warm-up pass")
 		}
 
 		// Pass initial boot and capture results.
 		response, err := service.Generate(shortCtx, &request)
 		if err != nil {
-			s.Fatal("UreadaheadPackService.Generate returned an error for initial boot pass: ", err)
+			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for initial boot pass")
 		}
 
 		targetDir := filepath.Join(dataDir, ureadAheadPack)
@@ -305,7 +308,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		request.InitialBoot = false
 		response, err = service.Generate(shortCtx, &request)
 		if err != nil {
-			s.Fatal("UreadaheadPackService.Generate returned an error for second boot pass: ", err)
+			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for second boot pass: ")
 		}
 
 		if err = d.GetFile(shortCtx, response.PackPath, filepath.Join(targetDir, provisionedPack)); err != nil {
@@ -319,12 +322,28 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		if needUpload(ureadAheadPack) {
-			upload(shortCtx, targetTar, ureadAheadPack)
-		}
-	}
-	genUreadaheadPack()
+			if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
+				s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
+			}
 
-	genGmsCoreCache := func() {
+		}
+
+		return nil
+	}
+	attempts := 0
+	for {
+		err := genUreadaheadPack()
+		if err == nil {
+			break
+		}
+		attempts = attempts + 1
+		if attempts > retryCount {
+			s.Fatal("Failed to generate ureadahead packs. No more retries left: ", err)
+		}
+		s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
+	}
+
+	genGmsCoreCache := func() error {
 		service := arc.NewGmsCoreCacheServiceClient(cl.Conn)
 
 		request := arcpb.GmsCoreCacheRequest{
@@ -338,7 +357,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		response, err := service.Generate(shortCtx, &request)
 		if err != nil {
-			s.Fatal("GmsCoreCacheService.Generate returned an error: ", err)
+			return errors.Wrap(err, "failed to generate GMS Core caches")
 		}
 		defer d.Command("rm", "-rf", response.TargetDir).Output(ctx)
 
@@ -360,8 +379,24 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		if needUpload(gmsCoreCache) {
-			upload(shortCtx, targetTar, gmsCoreCache)
+			if err := upload(shortCtx, targetTar, gmsCoreCache); err != nil {
+				s.Fatalf("Failed to upload %q: %v", gmsCoreCache, err)
+			}
 		}
+
+		return nil
 	}
-	genGmsCoreCache()
+	attempts = 0
+	for {
+		err := genGmsCoreCache()
+		if err == nil {
+			break
+		}
+		attempts = attempts + 1
+		if attempts > retryCount {
+			s.Fatal("Failed to generate GMS Core caches. No more retries left: ", err)
+		}
+		s.Log("Retrying generating GMS Core caches, previous attempt failed: ", err)
+	}
+
 }
