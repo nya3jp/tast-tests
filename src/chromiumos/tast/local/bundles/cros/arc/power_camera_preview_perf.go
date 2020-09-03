@@ -15,7 +15,13 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+type testArgsForPowerCameraPreviewPerf struct {
+	targetFPS   string
+	setupOption setup.BatteryDischargeMode
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -32,22 +38,74 @@ func init() {
 			{
 				Name:              "30fps",
 				ExtraSoftwareDeps: []string{"android_p"},
-				Val:               "30",
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+				Val: testArgsForPowerCameraPreviewPerf{
+					targetFPS:   "30",
+					setupOption: setup.ForceBatteryDischarge,
+				},
 			},
 			{
 				Name:              "60fps",
 				ExtraSoftwareDeps: []string{"android_p"},
-				Val:               "60",
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+				Val: testArgsForPowerCameraPreviewPerf{
+					targetFPS:   "60",
+					setupOption: setup.ForceBatteryDischarge,
+				},
 			},
 			{
 				Name:              "30fps_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Val:               "30",
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+				Val: testArgsForPowerCameraPreviewPerf{
+					targetFPS:   "30",
+					setupOption: setup.ForceBatteryDischarge,
+				},
 			},
 			{
 				Name:              "60fps_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Val:               "60",
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+				Val: testArgsForPowerCameraPreviewPerf{
+					targetFPS:   "60",
+					setupOption: setup.ForceBatteryDischarge,
+				},
+			},
+			{
+				Name:              "30fps_nobatterymetrics",
+				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+				Val: testArgsForPowerCameraPreviewPerf{
+					targetFPS:   "30",
+					setupOption: setup.NoBatteryDischarge,
+				},
+			},
+			{
+				Name:              "60fps_nobatterymetrics",
+				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+				Val: testArgsForPowerCameraPreviewPerf{
+					targetFPS:   "60",
+					setupOption: setup.NoBatteryDischarge,
+				},
+			},
+			{
+				Name:              "30fps_vm_nobatterymetrics",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+				Val: testArgsForPowerCameraPreviewPerf{
+					targetFPS:   "30",
+					setupOption: setup.NoBatteryDischarge,
+				},
+			},
+			{
+				Name:              "60fps_vm_nobatterymetrics",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+				Val: testArgsForPowerCameraPreviewPerf{
+					targetFPS:   "60",
+					setupOption: setup.NoBatteryDischarge,
+				},
 			},
 		},
 		Timeout: 5 * time.Minute,
@@ -88,7 +146,8 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	args := s.Param().(testArgsForPowerCameraPreviewPerf)
+	sup.Add(setup.PowerTest(ctx, tconn, args.setupOption))
 
 	// Install camera testing app.
 	a := s.PreValue().(arc.PreData).ARC
@@ -118,9 +177,8 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	targetFps := s.Param().(string)
-	s.Log("Set target FPS: " + targetFps + " FPS")
-	if _, err = a.BroadcastIntent(ctx, intentSetFps, "--ei", "fps", targetFps); err != nil {
+	s.Log("Set target FPS: " + args.targetFPS + " FPS")
+	if _, err = a.BroadcastIntent(ctx, intentSetFps, "--ei", "fps", args.targetFPS); err != nil {
 		s.Fatal("Could not send intent: ", err)
 	}
 
