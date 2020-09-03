@@ -39,6 +39,30 @@
       "revId": "3a71c82a5d7d5fac18bb40ae9b557ad7d9331040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f5e581_52d7b420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-09-03T09:19:55Z",
+      "side": 1,
+      "message": "Thanks! Moved contentURIPrefix (content://.../) and dummyUUID (0000...DEADBEEF) to the top level.",
+      "parentUuid": "ec0ddabc_aa9d5c30",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 56
+      },
+      "revId": "3a71c82a5d7d5fac18bb40ae9b557ad7d9331040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
