@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd3eaa04_0c322f21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T09:21:21Z",
+      "side": 1,
+      "message": "window\n?",
+      "range": {
+        "startLine": 203,
+        "startChar": 41,
+        "endLine": 203,
+        "endChar": 46
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b48fda_5e26c75a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T09:21:21Z",
+      "side": 1,
+      "message": "Could you avoid using :s in single error message? e.g.\nWindowShadow bound \u003d %v, display \u003d %v",
+      "range": {
+        "startLine": 203,
+        "startChar": 46,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f00ef94f_bd12f637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T09:21:21Z",
+      "side": 1,
+      "message": "Could you name it also xxxBounds ? e.g. winBounds",
+      "range": {
+        "startLine": 203,
+        "startChar": 66,
+        "endLine": 203,
+        "endChar": 72
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d495e5c9_b86b09dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T09:21:21Z",
+      "side": 1,
+      "message": "How about naming it s?\nFrom the function name it\u0027s clear that s corresponds to rect string.\n\ncf. https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#variable-names",
+      "range": {
+        "startLine": 479,
+        "startChar": 25,
+        "endLine": 479,
+        "endChar": 40
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acd1ad2a_94393e09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T09:21:21Z",
+      "side": 1,
+      "message": "Sorry I missed it initially, but could you include the string to error? Wrapf(..., Rect text %q\", s)",
+      "range": {
+        "startLine": 484,
+        "startChar": 48,
+        "endLine": 484,
+        "endChar": 59
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ef1068f_f181758b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T09:21:21Z",
+      "side": 1,
+      "message": "Could you remove :?\n:s are usually used to separate different errors\nConsider changing the text to \"...Rect text %q is ...\" to read is naturally.",
+      "range": {
+        "startLine": 486,
+        "startChar": 66,
+        "endLine": 486,
+        "endChar": 67
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f48a90_f0002589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-03T09:21:21Z",
+      "side": 1,
+      "message": "nit: return \u0026coords..., nil\nwould work.",
+      "range": {
+        "startLine": 490,
+        "startChar": 2,
+        "endLine": 490,
+        "endChar": 7
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
