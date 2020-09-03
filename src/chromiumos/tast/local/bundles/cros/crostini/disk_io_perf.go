@@ -30,10 +30,11 @@ func fioFiles() []string {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DiskIOPerf,
-		Desc:         "Tests Crostini Disk IO Performance",
-		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Func:     DiskIOPerf,
+		Desc:     "Tests Crostini Disk IO Performance",
+		Contacts: []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
+		// TODO: Test is disabled until it can be fixed https://crbug.com/1124920
+		// Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      60 * time.Minute,
 		Data:         append([]string{crostini.ImageArtifact}, fioFiles()...),
 		Pre:          crostini.StartedTraceVM(),
