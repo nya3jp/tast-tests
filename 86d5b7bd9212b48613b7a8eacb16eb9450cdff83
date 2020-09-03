@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7448664_073c4cea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-03T09:36:39Z",
+      "side": 1,
+      "message": "yhanda@, takise@, as I started to work on b/148116159, I noticed this. PTAL, thanks!",
+      "revId": "86d5b7bd9212b48613b7a8eacb16eb9450cdff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
