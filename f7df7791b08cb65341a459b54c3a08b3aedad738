@@ -50,6 +50,24 @@
       "revId": "f7df7791b08cb65341a459b54c3a08b3aedad738",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "399771cc_6de0a69e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-03T01:52:27Z",
+      "side": 1,
+      "message": "I skipped updating it because that subtest rotates display if necessary, and there was no need to fix it.\nOn the other hand, for consistency in this test, using displayInfo.Bounds makes sense.\nI\u0027ve updated it.",
+      "parentUuid": "7b881e0d_a6ac91c9",
+      "revId": "f7df7791b08cb65341a459b54c3a08b3aedad738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
