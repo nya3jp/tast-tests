@@ -17,12 +17,15 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // DownloadPath is the location of Downloads for the user.
 const DownloadPath = "/home/chronos/user/Downloads/"
 
 const uiTimeout = 15 * time.Second
+
+var defaultStablePollOpts = testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 5 * time.Second}
 
 // Context menu items for a file.
 const (
@@ -54,8 +57,9 @@ var rootFindParams ui.FindParams = ui.FindParams{
 
 // FilesApp represents an instance of the Files App.
 type FilesApp struct {
-	tconn *chrome.TestConn
-	Root  *ui.Node
+	tconn          *chrome.TestConn
+	Root           *ui.Node
+	stablePollOpts *testing.PollOptions
 }
 
 // Launch launches the Files App and returns it.
@@ -85,12 +89,18 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 		return nil, err
 	}
 
-	return &FilesApp{tconn: tconn, Root: app}, nil
+	return &FilesApp{tconn: tconn, Root: app, stablePollOpts: &defaultStablePollOpts}, nil
 }
 
-// Close closes the Files App.
-func (f *FilesApp) Close(ctx context.Context) error {
+// Release releases the root node held by the Files App.
+func (f *FilesApp) Release(ctx context.Context) {
 	f.Root.Release(ctx)
+}
+
+// Close closes the Files App and releases the root node.
+// Release can be used instead of Close if the goal is just to clean up at the end of a test.
+func (f *FilesApp) Close(ctx context.Context) error {
+	f.Release(ctx)
 
 	// Close the Files App.
 	if err := apps.Close(ctx, f.tconn, apps.Files.ID); err != nil {
@@ -126,7 +136,7 @@ func (f *FilesApp) OpenDir(ctx context.Context, dirName, expectedTitle string) e
 		return err
 	}
 
-	if err := dirRow.LeftClick(ctx); err != nil {
+	if err := dirRow.StableLeftClick(ctx, f.stablePollOpts); err != nil {
 		return err
 	}
 
@@ -196,7 +206,7 @@ func (f *FilesApp) SelectFile(ctx context.Context, filename string) error {
 		return err
 	}
 	defer file.Release(ctx)
-	return file.LeftClick(ctx)
+	return file.StableLeftClick(ctx, f.stablePollOpts)
 }
 
 // SelectMultipleFiles selects multiple items in the Files app listBox while pressing 'Ctrl'.
@@ -244,7 +254,7 @@ func (f *FilesApp) OpenFile(ctx context.Context, filename string) error {
 		return err
 	}
 	defer file.Release(ctx)
-	return file.DoubleClick(ctx)
+	return file.StableDoubleClick(ctx, f.stablePollOpts)
 }
 
 // OpenQuickView opens the QuickView menu for a file.
@@ -254,7 +264,7 @@ func (f *FilesApp) OpenQuickView(ctx context.Context, filename string) error {
 		return err
 	}
 	defer file.Release(ctx)
-	if err := file.RightClick(ctx); err != nil {
+	if err := file.StableRightClick(ctx, f.stablePollOpts); err != nil {
 		return err
 	}
 
@@ -268,7 +278,7 @@ func (f *FilesApp) OpenQuickView(ctx context.Context, filename string) error {
 		return err
 	}
 	defer getInfo.Release(ctx)
-	return getInfo.LeftClick(ctx)
+	return getInfo.StableLeftClick(ctx, f.stablePollOpts)
 }
 
 // ClickMoreMenuItem opens More menu then clicks on sub menu items.
@@ -285,7 +295,7 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 	}
 	defer more.Release(ctx)
 
-	if err := more.LeftClick(ctx); err != nil {
+	if err := more.StableLeftClick(ctx, f.stablePollOpts); err != nil {
 		return errors.Wrap(err, "failed clicking More menu item")
 	}
 
@@ -301,7 +311,7 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 		}
 		defer menuItemNode.Release(ctx)
 
-		if err := menuItemNode.LeftClick(ctx); err != nil {
+		if err := menuItemNode.StableLeftClick(ctx, f.stablePollOpts); err != nil {
 			return errors.Wrapf(err, "failed clicking menu item: %s", menuItem)
 		}
 	}
@@ -316,16 +326,11 @@ func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuN
 		return errors.Wrapf(err, "failed to find %s", fileName)
 	}
 	defer file.Release(ctx)
-	if err := file.RightClick(ctx); err != nil {
+	if err := file.StableRightClick(ctx, f.stablePollOpts); err != nil {
 		return errors.Wrapf(err, "failed to right click on %s", fileName)
 	}
 
 	for _, menuName := range menuNames {
-		// Wait location.
-		if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
-			return errors.Wrap(err, "failed to wait for animation finished")
-		}
-
 		// Left click menuItem.
 		if err := f.LeftClickItem(ctx, menuName, ui.RoleTypeMenuItem); err != nil {
 			return errors.Wrapf(err, "failed to click %s in context menu", menuName)
@@ -412,7 +417,7 @@ func (f *FilesApp) LeftClickItem(ctx context.Context, itemName string, role ui.R
 		return errors.Wrapf(err, "failed to left click %s", itemName)
 	}
 	defer item.Release(ctx)
-	return item.LeftClick(ctx)
+	return item.StableLeftClick(ctx, f.stablePollOpts)
 }
 
 // DeleteFileOrFolder deletes a file or folder through selecting Delete in context menu.
@@ -420,10 +425,6 @@ func (f *FilesApp) DeleteFileOrFolder(ctx context.Context, fileName string) erro
 	// Select Delete from context menu of the file / folder.
 	if err := f.SelectContextMenu(ctx, fileName, Delete); err != nil {
 		return errors.Wrapf(err, "failed to right click on %s", fileName)
-	}
-
-	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for animation finished")
 	}
 
 	params := ui.FindParams{
@@ -438,7 +439,7 @@ func (f *FilesApp) DeleteFileOrFolder(ctx context.Context, fileName string) erro
 	defer deleteButton.Release(ctx)
 
 	// Click button "Delete".
-	if err := deleteButton.LeftClick(ctx); err != nil {
+	if err := deleteButton.StableLeftClick(ctx, f.stablePollOpts); err != nil {
 		return errors.Wrapf(err, "failed to click button Delete on file %s ", fileName)
 	}
 
@@ -537,13 +538,8 @@ func (f *FilesApp) SelectDirectoryContextMenuItem(ctx context.Context, dirName, 
 	}
 	defer dirRow.Release(ctx)
 
-	if err := dirRow.RightClick(ctx); err != nil {
+	if err := dirRow.StableRightClick(ctx, f.stablePollOpts); err != nil {
 		return errors.Wrapf(err, "failed to right click %s", dirName)
-	}
-
-	// Wait location.
-	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for animation finished")
 	}
 
 	// Left click menuItem.
@@ -552,4 +548,13 @@ func (f *FilesApp) SelectDirectoryContextMenuItem(ctx context.Context, dirName, 
 	}
 
 	return nil
+}
+
+// SetStablePollOpts sets the polling options for ensuring that a nodes location is stable before clicking.
+func (f *FilesApp) SetStablePollOpts(opts *testing.PollOptions) {
+	if opts == nil {
+		f.stablePollOpts = &defaultStablePollOpts
+	} else {
+		f.stablePollOpts = opts
+	}
 }

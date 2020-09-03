@@ -52,9 +52,6 @@ type Directory struct {
 	Path  string
 	Name  string
 	Title string
-	// Optional: If Banner is not nil, openWithReaderApp() will wait for the banner to appear after
-	// navigating to this directory, to make sure that all UI attributes are fully populated.
-	Banner *ui.FindParams
 	// Optional: If CheckFileType is true, wait for file type to appear before opening the file.
 	CheckFileType bool
 }
@@ -84,7 +81,7 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 	if err != nil {
 		s.Fatal("Failed to open Files App: ", err)
 	}
-	defer files.Close(ctx)
+	defer files.Release(ctx)
 
 	if err := openWithReaderApp(ctx, files, dir); err != nil {
 		s.Fatal("Could not open file with ArcFileReaderTest: ", err)
@@ -118,16 +115,13 @@ func openFilesApp(ctx context.Context, cr *chrome.Chrome) (*filesapp.FilesApp, e
 func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, dir Directory) error {
 	testing.ContextLog(ctx, "Opening the test file with ArcFileReaderTest")
 
+	// Increase Stable location interval for this function because of async banner loading.
+	files.SetStablePollOpts(&testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second})
+	defer files.SetStablePollOpts(nil)
+
 	// Open the directory under testing.
 	if err := files.OpenDir(ctx, dir.Name, dir.Title); err != nil {
 		return errors.Wrapf(err, "could not open %s folder", dir.Name)
-	}
-
-	// Wait for directory banner.
-	if dir.Banner != nil {
-		if err := files.Root.WaitUntilDescendantExists(ctx, *dir.Banner, uiTimeout); err != nil {
-			return errors.Wrap(err, "waiting for directory banner failed")
-		}
 	}
 
 	// Wait for and click the test file.
