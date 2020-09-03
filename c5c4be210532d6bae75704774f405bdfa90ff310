@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19cd7616_1958d226",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-09-03T09:51:52Z",
+      "side": 1,
+      "message": "Confirmed that ToT pi-arc with/without the URI change can pass this test. PTAL.",
+      "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
