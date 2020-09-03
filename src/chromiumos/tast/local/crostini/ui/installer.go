@@ -9,6 +9,7 @@ package ui
 import (
 	"context"
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -220,6 +221,11 @@ func startLxdServer(ctx context.Context, containerDir string) (server *lxd.Serve
 
 // InstallCrostini prepares image and installs Crostini from UI.
 func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *InstallationOptions) error {
+	// Check for /dev/kvm before we do anything else.
+	// On some boards in the lab the existence of this is flaky crbug.com/1072877
+	if _, err := os.Stat("/dev/kvm"); os.IsNotExist(err) {
+		return errors.New("cannot install crostini: /dev/kvm does not exist")
+	}
 	// Setup lxd server.
 	containerDir, terminaImage, err := prepareImages(ctx, iOptions)
 	if err != nil {
