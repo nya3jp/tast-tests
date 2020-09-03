@@ -28,7 +28,7 @@ func init() {
 			"ddavenport@chromium.org",
 			"chromeos-gfx@google.com",
 		},
-		SoftwareDeps: []string{"drm_atomic"},
+		SoftwareDeps: []string{"drm_atomic", "igt"},
 		Params: []testing.Param{{
 			Name: "kms_atomic",
 			Val: igtTest{
