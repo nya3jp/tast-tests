@@ -81,6 +81,33 @@ func HelpRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error)
 	return ui.FindWithTimeout(ctx, tconn, helpRootNodeParams, 20*time.Second)
 }
 
+// ClickElement waits for and left clicks an element.
+func ClickElement(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) error {
+	element, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find element with %v", params)
+	}
+	defer element.Release(ctx)
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change completed")
+	}
+	return element.LeftClick(ctx)
+}
+
+// LaunchSettings launches the Settings app.
+func LaunchSettings(ctx context.Context, tconn *chrome.TestConn) error {
+	app := apps.Settings
+	if err := apps.Launch(ctx, tconn, app.ID); err != nil {
+		return errors.Wrapf(err, "failed to launch %s", app.Name)
+	}
+
+	testing.ContextLog(ctx, "Wait for settings app shown in shelf")
+	if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
+		return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
+	}
+	return nil
+}
+
 // LaunchFromThreeDotMenu launches Help app from three dot menu.
 func LaunchFromThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) error {
 	clickElement := func(params ui.FindParams) error {
