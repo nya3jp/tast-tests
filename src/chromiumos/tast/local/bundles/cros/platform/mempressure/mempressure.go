@@ -203,17 +203,7 @@ func (t *tab) activate(ctx context.Context) (time.Duration, error) {
 
 	// Sometimes tabs crash and the devtools connection goes away.  To avoid waiting 30 minutes
 	// for this we use a shorter timeout.
-	waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
-	defer cancel()
-
-	// We wait for two calls to requestAnimationFrame. When the first
-	// requestAnimationFrame is called, we know that a frame is in the
-	// pipeline. When the second requestAnimationFrame is called, we know that
-	// the first frame has reached the screen.
-	if err := t.conn.Call(waitCtx, nil, `async () => {
-	  await new Promise(window.requestAnimationFrame);
-	  await new Promise(window.requestAnimationFrame);
-	}`); err != nil {
+	if err := webutil.WaitForRender(ctx, t.conn, 30*time.Second); err != nil {
 		return 0, err
 	}
 

@@ -29,6 +29,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
@@ -93,31 +94,6 @@ func waitUntilAllTabsLoaded(ctx context.Context, tconn *chrome.TestConn, timeout
 		}
 		return errors.Errorf("still %d tabs are loading", len(tabs))
 	}, &testing.PollOptions{Timeout: timeout})
-}
-
-func waitForTabVisible(ctx context.Context, c *chrome.Conn, timeout time.Duration) error {
-	const expr = `
-	new Promise(function (resolve, reject) {
-		// We wait for two calls to requestAnimationFrame. When the first
-		// requestAnimationFrame is called, we know that a frame is in the
-		// pipeline. When the second requestAnimationFrame is called, we know that
-		// the first frame has reached the screen.
-		let frameCount = 0;
-		const waitForRaf = function() {
-			frameCount++;
-			if (frameCount === 2) {
-				resolve();
-			} else {
-				window.requestAnimationFrame(waitForRaf);
-			}
-		};
-		window.requestAnimationFrame(waitForRaf);
-	})
-	`
-
-	waitCtx, cancel := context.WithTimeout(ctx, timeout)
-	defer cancel()
-	return c.EvalPromise(waitCtx, expr, nil)
 }
 
 // Run runs the TabSwitchCUJ test. It is invoked by TabSwitchCujRecorder to
@@ -219,7 +195,7 @@ func Run(ctx context.Context, s *testing.State) {
 						return errors.Wrap(err, "failed to hit ctrl-tab")
 					}
 					currentTab = (currentTab + 1) % len(conns)
-					if err = waitForTabVisible(ctx, conns[currentTab], tabSwitchTimeout); err != nil {
+					if err := webutil.WaitForRender(ctx, conns[currentTab], tabSwitchTimeout); err != nil {
 						s.Log("Failed to wait for the tab to be visible: ", err)
 					}
 				}
