@@ -16,6 +16,24 @@
       "revId": "4b6ecf68d98f42f6721e22e12a28a6df89fe24b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "130fd23f_1a5edc4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-03T21:38:16Z",
+      "side": 1,
+      "message": "Thanks for the comment. As I dug into the details, I\u0027ve got to notice that the mouse click event may have IS_DOUBLE_CLICK or IS_TRIPLE_CLICK flag, therefore it does not start the drag (https://source.chromium.org/chromium/chromium/src/+/master:ash/wm/toplevel_window_event_handler.cc;l\u003d675), and it seems events within 500msecs are considered as double-click (https://source.chromium.org/chromium/chromium/src/+/master:ui/events/event.cc;l\u003d531).\n\nWith that, I changed the CL; simply increasing the drag duration should fix the issue.\n\nMaybe we may want to refactor the detection of double/triple clicks in chromium code base, but I believe that would be a different topic.",
+      "parentUuid": "eab81265_11f6fbb0",
+      "revId": "4b6ecf68d98f42f6721e22e12a28a6df89fe24b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
