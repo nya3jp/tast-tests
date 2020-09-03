@@ -22,6 +22,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	// Prefix of content URIs used by ArcVolumeProvider.
+	contentURIPrefix = "content://org.chromium.arc.volumeprovider/"
+	// Dummy UUID of removable device for testing.
+	// Defined in chromium:components/arc/volume_mounter/arc_volume_mounter_bridge.cc.
+	dummyUUID = "00000000000000000000000000000000DEADBEEF"
+)
+
 // createZeroFile creates a file filled with size bytes of 0.
 func createZeroFile(size int64, name string) (string, error) {
 	f, err := ioutil.TempFile("", name)
@@ -150,16 +158,34 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 	}
 
 	// VolumeProvider should be able to read the file.
-	uri := "content://org.chromium.arc.volumeprovider/" + path.Join("removable", diskName, testFile)
-	out, err := a.Command(ctx, "content", "read", "--uri", uri).Output(testexec.DumpLogOnError)
-	if err != nil {
-		s.Fatal("Failed to read the content: ", err)
+	verify := func(uri, dumpPath string) error {
+		out, err := a.Command(ctx, "content", "read", "--uri", uri).Output(testexec.DumpLogOnError)
+		if err != nil {
+			return errors.Wrap(err, "failed to read the content")
+		}
+
+		if !bytes.Equal(out, expected) {
+			if err := ioutil.WriteFile(dumpPath, out, 0644); err != nil {
+				s.Logf("Failed to dump the read content to %s: %v", dumpPath, err)
+				return errors.New("file content does not match with the original")
+			}
+			return errors.Errorf("file content does not match with the original (see %s for the read content)", dumpPath)
+		}
+		return nil
 	}
 
-	if !bytes.Equal(out, expected) {
-		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), testFile), out, 0644); err != nil {
-			s.Error("Failed to dump: ", err)
-		}
-		s.Fatalf("Failed to share the file (see %s for the read file content)", testFile)
+	// Temporarily accept legacy content URIs until the new URIs are fully supported.
+	// TODO(youkichihosoi): Remove this check for legacy URIs once new URIs get supported.
+	legacyURI := contentURIPrefix + path.Join("removable", diskName, testFile)
+	if err := verify(legacyURI, filepath.Join(s.OutDir(), testFile+"_legacy")); err != nil {
+		s.Logf("Failed to read the file via VolumeProvider using legacy content URI %s: %v", legacyURI, err)
+	} else {
+		// Target device still uses legacy content URIs and has passed the test.
+		return
+	}
+
+	uri := contentURIPrefix + path.Join(dummyUUID, testFile)
+	if err := verify(uri, filepath.Join(s.OutDir(), testFile)); err != nil {
+		s.Fatalf("Failed to read the file via VolumeProvider using content URI %s: %v", uri, err)
 	}
 }
