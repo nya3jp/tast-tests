@@ -244,6 +244,19 @@ func (n *Node) LeftClickUntil(ctx context.Context, condition func(context.Contex
 	}, opts)
 }
 
+// FindAndClick waits for and left clicks the first node matching the params.
+func FindAndClick(ctx context.Context, tconn *chrome.TestConn, params FindParams, timeout time.Duration) error {
+	node, err := FindWithTimeout(ctx, tconn, params, timeout)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find node with %v", params)
+	}
+	defer node.Release(ctx)
+	if err := WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change completed")
+	}
+	return node.LeftClick(ctx)
+}
+
 // FocusAndWait calls the focus() Javascript method of the AutomationNode.
 // This can be used to scroll to nodes which aren't currently visible, enabling them to be clicked.
 // The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
