@@ -19,13 +19,21 @@ import android.widget.VideoView;
 /** Test Activity for the PIP Video Tast Test. */
 public class VideoActivity extends Activity {
 
+    protected int getLayoutResID() {
+        return R.layout.video_activity;
+    }
+
+    protected int getTestVideoResID() {
+        return R.id.testvideo;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.video_activity);
+        setContentView(getLayoutResID());
 
-        final VideoView videoView = findViewById(R.id.testvideo);
+        final VideoView videoView = findViewById(getTestVideoResID());
         videoView.setVideoURI(Uri.parse(
             "android.resource://" + getPackageName() + "/raw/bear-320x240.h264"));
         videoView.setOnPreparedListener(new OnPreparedListener() {
@@ -42,7 +50,7 @@ public class VideoActivity extends Activity {
     protected void onUserLeaveHint() {
         super.onUserLeaveHint();
 
-        final VideoView videoView = findViewById(R.id.testvideo);
+        final VideoView videoView = findViewById(getTestVideoResID());
         enterPictureInPictureMode(
             new PictureInPictureParams.Builder()
                 .setAspectRatio(new Rational(videoView.getWidth(), videoView.getHeight()))
