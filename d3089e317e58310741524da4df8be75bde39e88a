@@ -56,6 +56,30 @@
       "revId": "d3089e317e58310741524da4df8be75bde39e88a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f081b1_adecabd1",
+        "filename": "android/ArcPipVideoTest/src/org/chromium/arc/testapp/pictureinpicture/VideoActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-09-03T16:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bddd5b32_bf22af5a",
+      "range": {
+        "startLine": 44,
+        "startChar": 41,
+        "endLine": 44,
+        "endChar": 51
+      },
+      "revId": "d3089e317e58310741524da4df8be75bde39e88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
