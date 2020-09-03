@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2748577_ed0fc784",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-03T12:09:52Z",
+      "side": 1,
+      "message": "These two parameters look exactly the same. Did you mean to put different preconditions or so?",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3977519_992ef3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-03T12:09:52Z",
+      "side": 1,
+      "message": "How about using :\u003d instead of \u003d here if this is not intended to interact with the outer scope?",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 12
+      },
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e91962_bfab5946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-03T12:09:52Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters\nI think this variable should be declared inside the function instead of a named return parameter.\nerr is only used as a local variable (unadorned return is not used in this function), and the name does not add information to the godoc.",
+      "range": {
+        "startLine": 132,
+        "startChar": 57,
+        "endLine": 132,
+        "endChar": 70
+      },
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94040e35_a8b7ac1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-03T12:09:52Z",
+      "side": 1,
+      "message": "The local variable |cont| is not used after this line. Is it intended?",
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ded1fe05_a157eaa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-03T12:09:52Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ee49e6_9aa06d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-03T12:09:52Z",
+      "side": 1,
+      "message": "I guess cont would be invalid in this case. Is it OK to continue the test in this case?",
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
