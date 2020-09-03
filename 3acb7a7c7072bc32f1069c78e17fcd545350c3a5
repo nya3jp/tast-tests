@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b913181_47232ff2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-03T22:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "336320f3_78c6d9d1",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "3acb7a7c7072bc32f1069c78e17fcd545350c3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ea15f95_145ad655",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -79,6 +103,30 @@
       "revId": "3acb7a7c7072bc32f1069c78e17fcd545350c3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7efa0ae3_40f6903a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-03T22:28:57Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "28d47896_62f1cd64",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 56
+      },
+      "revId": "3acb7a7c7072bc32f1069c78e17fcd545350c3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
