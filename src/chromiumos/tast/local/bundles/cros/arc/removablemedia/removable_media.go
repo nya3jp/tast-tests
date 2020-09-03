@@ -150,8 +150,32 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 	}
 
 	// VolumeProvider should be able to read the file.
-	uri := "content://org.chromium.arc.volumeprovider/" + path.Join("removable", diskName, testFile)
-	out, err := a.Command(ctx, "content", "read", "--uri", uri).Output(testexec.DumpLogOnError)
+	// Temporarily accept legacy content URIs until the new URIs are fully supported.
+	// TODO(youkichihosoi): Remove this check for legacy URIs once new URIs get supported.
+	legacyURI := "content://org.chromium.arc.volumeprovider/" + path.Join("removable", diskName, testFile)
+
+	testing.ContextLogf(ctx, "Reading the file content using legacy content URI %q", legacyURI)
+
+	out, err := a.Command(ctx, "content", "read", "--uri", legacyURI).Output(testexec.DumpLogOnError)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to read the content: ", err)
+	}
+	if !bytes.Equal(out, expected) {
+		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), testFile+"_legacy"), out, 0644); err != nil {
+			s.Error("Failed to dump: ", err)
+		}
+		testing.ContextLogf(ctx, "File content does not match with the original (see %s_legacy for the read content)", testFile)
+	} else {
+		return
+	}
+
+	// Dummy UUID for removable media. Defined in chromium:components/arc/volume_mounter/arc_volume_mounter_bridge.cc.
+	const uuid = "00000000000000000000000000000000DEADBEEF"
+	uri := "content://org.chromium.arc.volumeprovider/" + path.Join(uuid, testFile)
+
+	testing.ContextLogf(ctx, "Reading the file content using content URI %q", uri)
+
+	out, err = a.Command(ctx, "content", "read", "--uri", uri).Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to read the content: ", err)
 	}
@@ -160,6 +184,6 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), testFile), out, 0644); err != nil {
 			s.Error("Failed to dump: ", err)
 		}
-		s.Fatalf("Failed to share the file (see %s for the read file content)", testFile)
+		s.Fatalf("File content does not match with the original (see %s for the read content)", testFile)
 	}
 }
