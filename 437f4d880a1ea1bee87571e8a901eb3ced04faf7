@@ -95,6 +95,78 @@
     },
     {
       "key": {
+        "uuid": "afe58dd1_7df59967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-03T09:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00ef94f_bd12f637",
+      "range": {
+        "startLine": 203,
+        "startChar": 66,
+        "endLine": 203,
+        "endChar": 72
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10306b98_215ca327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-03T09:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd3eaa04_0c322f21",
+      "range": {
+        "startLine": 203,
+        "startChar": 41,
+        "endLine": 203,
+        "endChar": 46
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70cce287_d04ef68f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-03T09:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4cd68de_c0b4b5af",
+      "range": {
+        "startLine": 203,
+        "startChar": 46,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d495e5c9_b86b09dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -115,6 +187,30 @@
       "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df71bc11_99632bb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-03T09:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d495e5c9_b86b09dd",
+      "range": {
+        "startLine": 479,
+        "startChar": 25,
+        "endLine": 479,
+        "endChar": 40
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "3f95a293_4156e46b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-03T09:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd1ad2a_94393e09",
+      "range": {
+        "startLine": 484,
+        "startChar": 48,
+        "endLine": 484,
+        "endChar": 59
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ef1068f_f181758b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "041c2362_b1aa3232",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-03T09:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ef1068f_f181758b",
+      "range": {
+        "startLine": 486,
+        "startChar": 66,
+        "endLine": 486,
+        "endChar": 67
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60f48a90_f0002589",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -184,6 +328,30 @@
       "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437e5cb8_0d2121d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-03T09:53:23Z",
+      "side": 1,
+      "message": "Actually I tried it and it didn\u0027t work.\nApparently this is because the return value from a function call is not addressable.\nhttps://stackoverflow.com/questions/30744965/how-to-get-the-pointer-of-return-value-from-function-call",
+      "parentUuid": "60f48a90_f0002589",
+      "range": {
+        "startLine": 490,
+        "startChar": 2,
+        "endLine": 490,
+        "endChar": 7
+      },
+      "revId": "437f4d880a1ea1bee87571e8a901eb3ced04faf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
