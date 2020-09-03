@@ -46,6 +46,30 @@
       "revId": "c935623a5280f9d31be30065764d9ae5c10ec3f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2379dc48_41fe2c46",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-03T16:55:03Z",
+      "side": 1,
+      "message": "I bet that menu items have the wrong default action. I remember before having using keyboard to interact with menus because we didn\u0027t have mouse control yet. I am not sure what sets the default action for the menu items. It could be something that needs to change in the files app code or in the accessibility layer. I\u0027m not sure.",
+      "parentUuid": "8eb622f4_610a691d",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 24
+      },
+      "revId": "c935623a5280f9d31be30065764d9ae5c10ec3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
