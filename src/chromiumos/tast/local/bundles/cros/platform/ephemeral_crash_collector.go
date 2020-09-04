@@ -211,6 +211,15 @@ func EphemeralCrashCollector(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// The oobe completed marker file is created with a low priority task so it may not show up immediately after login.
+	// Since the ephemeral collector is run at the start of system-services before login, manually creating the file
+	// recreates the conditions expected at boot deterministically.
+	if params.oobeComplete {
+		if err := ioutil.WriteFile("/home/chronos/.oobe_completed", []byte(""), 0644); err != nil {
+			s.Fatal("Could not create OOBE completed marker file")
+		}
+	}
+
 	s.Run(ctx, "PreservationAcrossClobber", testEphemeralPreservationAcrossClobber)
 	s.Run(ctx, "EphemeralCollection", testEphemeralCollection)
 }
