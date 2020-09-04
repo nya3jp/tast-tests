@@ -22,6 +22,30 @@
       "revId": "37c91eba7cee8cc2debb44e5ffc6a1b8f97868a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35e23be5_5dda853b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-04T00:41:45Z",
+      "side": 1,
+      "message": "I could just return immediately after pressing the key in these cases if you\u0027d prefer that. Basically I just didn\u0027t want it to return an error if the slider is at 0 or 100. It seemed better to me to keep it flexible and just have it model the user interaction, but we could get rid of this specific verification step. What do you think?",
+      "parentUuid": "d205b94c_f4587dc6",
+      "range": {
+        "startLine": 443,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 33
+      },
+      "revId": "37c91eba7cee8cc2debb44e5ffc6a1b8f97868a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
