@@ -141,10 +141,12 @@ func (h *Helper) RequirePlatform(ctx context.Context) error {
 	}
 	if h.Model == "" {
 		model, err := h.Reporter.Model(ctx)
-		if err != nil {
-			return errors.Wrap(err, "getting DUT model")
+		// Ignore error, as not all boards have a model
+		if err == nil {
+			h.Model = strings.ToLower(model)
+		} else {
+			testing.ContextLogf(ctx, "Failed to get DUT model for board %s: %+v", h.Board, err)
 		}
-		h.Model = strings.ToLower(model)
 	}
 	return nil
 }
