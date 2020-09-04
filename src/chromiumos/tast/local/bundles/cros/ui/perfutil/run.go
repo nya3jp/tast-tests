@@ -82,6 +82,33 @@ func StoreLatency(ctx context.Context, pv *Values, hists []*metrics.Histogram) e
 	return StoreAll(perf.SmallerIsBetter, "ms", "")(ctx, pv, hists)
 }
 
+// StoreWithHeuristics is  utility function to store all metrics into values. It
+// estimates the direction (bigger-is-better or smaller-is-better) and the unit
+// from the name of the histogram.
+func StoreWithHeuristics(ctx context.Context, pv *Values, hists []*metrics.Histogram) error {
+	for _, hist := range hists {
+		mean, err := hist.Mean()
+		if err != nil {
+			return errors.Wrapf(err, "failed to get mean for histogram %s", hist.Name)
+		}
+
+		testing.ContextLog(ctx, hist.Name, " = ", mean)
+		direction := perf.BiggerIsBetter
+		unit := "percent"
+		if estimateMetricType(ctx, hist.Name) == metricLatency {
+			direction = perf.SmallerIsBetter
+			unit = "ms"
+		}
+
+		pv.Append(perf.Metric{
+			Name:      hist.Name,
+			Unit:      unit,
+			Direction: direction,
+		}, mean)
+	}
+	return nil
+}
+
 // Runner is an entity to manage multiple runs of the test scenario.
 type Runner struct {
 	cr         *chrome.Chrome
