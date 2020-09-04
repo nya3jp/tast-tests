@@ -56,6 +56,52 @@
       "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e5a1cf9_431fd0af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removable_media.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-09-04T01:12:08Z",
+      "side": 1,
+      "message": "Move this from ExtraAttr to Attr if this is always informational.",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 48
+      },
+      "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b6317a_c8a10e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-09-04T01:12:08Z",
+      "side": 1,
+      "message": "early return?\n\nif bytes.Equal(out, expected) {\n  return\n}\nif err:\u003d ioutil ...",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 33
+      },
+      "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
