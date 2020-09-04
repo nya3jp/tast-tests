@@ -22,6 +22,30 @@
       "revId": "ffdb4c5973407f8b8f55b954a12a382137b45cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4bd432_34df2fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-09-04T09:09:43Z",
+      "side": 1,
+      "message": "The reason I\u0027m pressing backspace is that when I type \"password\" just below, the first letter is sometimes skipped... I don\u0027t know why it happens (line 411 should be enough to check that the new dialog is ready), and why it never happens on line 390 when typing \"wrongPassword\" (Name:  \"•••••••••••••\" has the right number of dots), but the test always passes after adding this.",
+      "parentUuid": "0113dabf_11c81178",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 0
+      },
+      "revId": "ffdb4c5973407f8b8f55b954a12a382137b45cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
