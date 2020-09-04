@@ -82,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "75f62ff5_a259d27e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removable_media.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-09-04T04:31:43Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4e5a1cf9_431fd0af",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 48
+      },
+      "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7b6317a_c8a10e46",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
         "patchSetId": 5
@@ -102,6 +126,30 @@
       "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fa44642_97855584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-09-04T04:31:43Z",
+      "side": 1,
+      "message": "Done. I\u0027ve also moved this part into the `else` clause since the content of `out` should be inspected only when the `content read` command succeeds. (The original test fails when the command fails.)",
+      "parentUuid": "a7b6317a_c8a10e46",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 33
+      },
+      "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
