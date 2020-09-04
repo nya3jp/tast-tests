@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0113dabf_11c81178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-09-04T04:54:53Z",
+      "side": 1,
+      "message": "Do we even need to press backspace?",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 0
+      },
+      "revId": "ffdb4c5973407f8b8f55b954a12a382137b45cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
