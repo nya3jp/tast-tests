@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3163b5e8_8ea8c2e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-09-06T06:58:02Z",
+      "side": 0,
+      "message": "Could you please remove the same from src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go?\n\ntype Directory struct {\n        // Optional: If Banner is not nil, openWithReaderApp() will wait for the banner to appear after\n        // navigating to this directory, to make sure that all UI attributes are fully populated.\n        Banner *ui.FindParams\n}",
+      "revId": "71d4670e7fc960f396a4bfa19fa3c542ae121c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
