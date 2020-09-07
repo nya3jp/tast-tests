@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3ec5a7c_39b7e44c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-07T03:03:43Z",
+      "side": 1,
+      "message": "How about create a new function in src/chromiumos/tast/local/chrome/ui/automation.go? Name it as ClickNode for consistence.",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "bc211205b82573219dabe448f693459bcb245446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a1cc01_3ac1d7b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-07T03:03:43Z",
+      "side": 1,
+      "message": "I have not seen any ui interaction with settings app before. Thanks for doing this. I think it would be better to create a new file in parallel to http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go, it can be used not only in showoff.",
+      "revId": "bc211205b82573219dabe448f693459bcb245446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a46590a5_8a152a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-07T03:03:43Z",
+      "side": 1,
+      "message": "This can be refactored with upper change.",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "bc211205b82573219dabe448f693459bcb245446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29fcaff_20d2e036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-07T03:03:43Z",
+      "side": 1,
+      "message": "settings is an entry point to launch help app, much ui interaction adds complexity and dependency. Instead of ui interaction, I would suggest to do it as below:\n\nconn, err :\u003d cr.NewConn(ctx, \"chrome://settings/help\")\nif err !\u003d nil {\n        s.Fatal(\"Failed to open settings help page: \", err)\n}\ndefer conn.Close()\n\nif err :\u003d conn.WaitForExpr(ctx, \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\"); err !\u003d nil {\n\ts.Fatal(\"Waiting load failed: \", err)\n}\n\nif err :\u003d helpapp.ClickElement(ctx, tconn, ui.FindParams{\n\tName: \"Get help with Chrome OS\",\n\tRole: ui.RoleTypeLink,\n}); err !\u003d nil {\n\ts.Fatal(\"Failed to click Get help with Chrome OS: \", err)\n}",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "bc211205b82573219dabe448f693459bcb245446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "753291c5_4a3e7f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-07T03:03:43Z",
+      "side": 1,
+      "message": "Similar to help app. Can you make it a function LaunchFromSystemSettings(appName string) in helpapp.go?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "bc211205b82573219dabe448f693459bcb245446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
