@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1de28118_fc06fcd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-07T12:46:01Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "4370343b68d4cb3ca0e95c6a37baf558a347e4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6f46360_51349676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-07T12:46:01Z",
+      "side": 1,
+      "message": "Defer the cr.Close(ctx) after New().",
+      "revId": "4370343b68d4cb3ca0e95c6a37baf558a347e4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
