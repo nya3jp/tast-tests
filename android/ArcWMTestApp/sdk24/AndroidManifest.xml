@@ -106,6 +106,15 @@
             <meta-data android:name="WindowManagerPreference:FreeformWindowSize" android:value="system-default" />
             <meta-data android:name="WindowManagerPreference:FreeformWindowOrientation" android:value="landscape" />
         </activity>
+        <activity
+            android:name=".SizeSpecifiedActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light">
+            <layout
+                android:defaultWidth="600dp"
+                android:defaultHeight="500dp" />
+        </activity>
     </application>
 
 </manifest>
