@@ -16,6 +16,41 @@
       "revId": "9c1bd04674ee4a1fa1cfb7519c198e7eba713dd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1981d28_9244b04a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-07T04:40:29Z",
+      "side": 1,
+      "message": "I thought just looking at ui.ChromeCrashNotLoggedIn.broker_by_cmdline_crashpad_mock_consent runs is enough to evaluate stability of the logic to find the broker process by cmdline:\nhttps://tastboard.corp.google.com/test/ui.ChromeCrashNotLoggedIn.broker_by_cmdline_crashpad_mock_consent\n\nBut I\u0027m happy to wait for results of ui.ChromeCrashLoggedIn, I\u0027m not in hurry at all.\nhttps://tastboard.corp.google.com/test/ui.ChromeCrashLoggedIn.broker_by_cmdline_crashpad_mock_consent",
+      "parentUuid": "56695d1f_972fe100",
+      "revId": "9c1bd04674ee4a1fa1cfb7519c198e7eba713dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6152195b_a6777fa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-07T04:40:29Z",
+      "side": 1,
+      "message": "Holding off for a while...\n",
+      "revId": "9c1bd04674ee4a1fa1cfb7519c198e7eba713dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
