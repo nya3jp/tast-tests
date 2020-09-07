@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d246a01c_3355eec0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "nit: font",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd6f1536_bda51c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "Hi Armen,\n\nThanks for your CL, in general approach LGTM, but I have some comments.\n\nAlso, please add someone from your team as a reviewer. ",
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7abfbc88_53c6bdfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "nit: scale?",
+      "range": {
+        "startLine": 580,
+        "startChar": 18,
+        "endLine": 580,
+        "endChar": 22
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3778b946_cf0b805e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "Why do you compare font size and font scale?",
+      "range": {
+        "startLine": 591,
+        "startChar": 11,
+        "endLine": 591,
+        "endChar": 20
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1fd31b_01497f0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "nit: \n\nunable to wait for font size to change: got %f; want %f",
+      "range": {
+        "startLine": 592,
+        "startChar": 43,
+        "endLine": 592,
+        "endChar": 100
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0101e159_23b00f6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "Doesn\u0027t it return font scale?",
+      "range": {
+        "startLine": 599,
+        "startChar": 11,
+        "endLine": 599,
+        "endChar": 19
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db5e7aec_bff9c367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "nit: scale",
+      "range": {
+        "startLine": 608,
+        "startChar": 44,
+        "endLine": 608,
+        "endChar": 49
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5714ffc_b9a4c3dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "nit: must be",
+      "range": {
+        "startLine": 196,
+        "startChar": 15,
+        "endLine": 196,
+        "endChar": 31
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "090975be_29e1987e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "nit: please remove this suffix",
+      "range": {
+        "startLine": 197,
+        "startChar": 9,
+        "endLine": 197,
+        "endChar": 14
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0de5f4f_4121e823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "this actually returns error, please handle it",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 13
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d4134f_e01abeb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "nit:\n\ninvalid display orientation: got %q; want %q",
+      "range": {
+        "startLine": 222,
+        "startChar": 25,
+        "endLine": 222,
+        "endChar": 71
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcbd55c6_328642ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "you can just use \"err\" name",
+      "range": {
+        "startLine": 228,
+        "startChar": 9,
+        "endLine": 228,
+        "endChar": 15
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733f558a_d222b8dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "please always wrap error if there is a call to another package",
+      "range": {
+        "startLine": 230,
+        "startChar": 9,
+        "endLine": 230,
+        "endChar": 15
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02dd878c_d3185fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "same about want/got formatting here and in other places",
+      "range": {
+        "startLine": 250,
+        "startChar": 24,
+        "endLine": 250,
+        "endChar": 91
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f2adbd2_83685c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "this looks useless, because if you are in this \"if\" statement, nfs must be equal to fsConst\n\nI think you just wanted to protect yourself from fsConst being equal to 1. But I think you should do it before, right after constant definition. Also, comment is enough in my opinion.",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 14
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6adcb52_50307e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "nit: please use \"want 1\"",
+      "range": {
+        "startLine": 258,
+        "startChar": 83,
+        "endLine": 258,
+        "endChar": 109
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b73cb5_f7f961c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-07T10:00:52Z",
+      "side": 1,
+      "message": "I believe this should be part of cleanup. If so, please put it into defer statement along with cleanup context",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 0
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
