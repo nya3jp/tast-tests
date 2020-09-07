@@ -58,7 +58,7 @@ func ShareFilesManage(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
-	defer crostini.RunCrostiniPostTest(cleanupCtx, cont)
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
