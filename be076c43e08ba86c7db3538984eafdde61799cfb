@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "90d06a98_1b948324",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-07T04:46:10Z",
+      "side": 1,
+      "message": "Added Kyle to reviewer.\n\nHi Kyle, Rachel also added smoke tests on release note based on ui interaction. I reckon it is more E2E real than js function call. Maybe https://crrev.com/c/2386373 is no longer required. WDYT",
+      "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "828a524b_f3e8da89",
         "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
         "patchSetId": 4
