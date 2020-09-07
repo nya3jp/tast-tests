@@ -22,6 +22,8 @@ const (
 // Device property names defined in dbus-constants.h .
 const (
 	// Device property names.
+	DevicePropertyName            = "Name"
+	DevicePropertyPowered         = "Powered"
 	DevicePropertyAddress         = "Address"
 	DevicePropertyInterface       = "Interface"
 	DevicePropertyType            = "Type"

@@ -176,7 +176,7 @@ func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.
 		}
 
 		// Verify perk is shown to default consumer user.
-		isPerkShown, err := helpapp.IsPerkShown(ctx, tconn)
+		isPerkShown, err := helpapp.IsTabShown(ctx, tconn, helpapp.PerksTab)
 		if err != nil {
 			s.Fatal("Failed to check perks visibility: ", err)
 		}

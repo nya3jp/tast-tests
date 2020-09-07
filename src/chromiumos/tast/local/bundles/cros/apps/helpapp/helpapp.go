@@ -9,12 +9,21 @@ import (
 	"context"
 	"time"
 
+	"github.com/mafredri/cdp/protocol/target"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
+)
+
+// Tab names in Help app
+const (
+	OverviewTab = "Overview"
+	PerksTab    = "Perks"
+	HelpTab     = "Help"
 )
 
 var helpRootNodeParams = ui.FindParams{
@@ -29,11 +38,7 @@ func WaitForApp(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to find help app")
 	}
 	// Find Overview tab to verify app rendering.
-	params := ui.FindParams{
-		Name: "Overview",
-		Role: ui.RoleTypeTreeItem,
-	}
-	if _, err := helpRootNode.DescendantWithTimeout(ctx, params, 20*time.Second); err != nil {
+	if _, err := helpRootNode.DescendantWithTimeout(ctx, tabFindParams(OverviewTab), 20*time.Second); err != nil {
 		return errors.Wrap(err, "failed to render help app")
 	}
 	return nil
@@ -58,22 +63,39 @@ func Exists(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	return ui.Exists(ctx, tconn, helpRootNodeParams)
 }
 
-// IsPerkShown checks if the perks tab is displayed or not.
-func IsPerkShown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
-	return isTabShown(ctx, tconn, "Perks")
-}
-
-func isTabShown(ctx context.Context, tconn *chrome.TestConn, tabName string) (bool, error) {
+// IsTabShown checks if the tab is shown or not.
+func IsTabShown(ctx context.Context, tconn *chrome.TestConn, tabName string) (bool, error) {
 	helpRootNode, err := HelpRootNode(ctx, tconn)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to find help app")
 	}
+	defer helpRootNode.Release(ctx)
 
-	params := ui.FindParams{
+	return helpRootNode.DescendantExists(ctx, tabFindParams(tabName))
+}
+
+// ClickTab clicks the tab with given name
+func ClickTab(ctx context.Context, tconn *chrome.TestConn, tabName string) error {
+	helpRootNode, err := HelpRootNode(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to find help app")
+	}
+	defer helpRootNode.Release(ctx)
+
+	tabNode, err := helpRootNode.DescendantWithTimeout(ctx, tabFindParams(tabName), 20*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find %s tab node", tabName)
+	}
+	defer tabNode.Release(ctx)
+
+	return tabNode.LeftClick(ctx)
+}
+
+func tabFindParams(tabName string) ui.FindParams {
+	return ui.FindParams{
 		Name: tabName,
 		Role: ui.RoleTypeTreeItem,
 	}
-	return helpRootNode.DescendantExists(ctx, params)
 }
 
 // HelpRootNode returns the root ui node of Help app.
@@ -120,4 +142,21 @@ func LaunchFromThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return WaitForApp(ctx, tconn)
+}
+
+// DescendantWithTimeout finds a node in help app using params and returns it.
+func DescendantWithTimeout(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) (*ui.Node, error) {
+	helpRootNode, err := HelpRootNode(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find help app")
+	}
+	defer helpRootNode.Release(ctx)
+	return helpRootNode.DescendantWithTimeout(ctx, params, timeout)
+}
+
+// UIConn returns a connection to the Help app,
+// where JavaScript can be executed to simulate interactions with the UI.
+func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
+	f := func(t *target.Info) bool { return t.Title == "Explore" }
+	return c.NewConnForTarget(ctx, f)
 }
