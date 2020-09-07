@@ -36,13 +36,16 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"100000_files_in_one_folder.zip", "500_small_files.zip", "various_documents.zip"},
-		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
 	})
 }
 
 func ZipPerf(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--disable-features=FilesZipMount"))
+	if err != nil {
+		s.Fatal("Cannot start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	// Open the test API.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -118,11 +121,6 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 			Unit:      "ms",
 			Direction: perf.SmallerIsBetter,
 		}, duration)
-
-		// Open the Downloads folder.
-		if err := files.OpenDownloads(ctx); err != nil {
-			s.Fatal("Opening Downloads folder failed: ", err)
-		}
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
@@ -140,12 +138,12 @@ func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.
 
 	// Click zip file and wait for Open button in top bar.
 	if err := files.WaitForFile(ctx, zipFile, 15*time.Second); err != nil {
-		s.Fatal("Waiting for test file failed: ", err)
+		s.Fatalf("Waiting for %s failed: %v", zipFile, err)
 	}
 
 	// Mount zip file.
 	if err := files.SelectFile(ctx, zipFile); err != nil {
-		s.Fatal("Failed to mount zip file: ", err)
+		s.Fatalf("Failed to mount %s: %v", zipFile, err)
 	}
 
 	params := ui.FindParams{
@@ -155,7 +153,7 @@ func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.
 
 	open, err := files.Root.DescendantWithTimeout(ctx, params, 10*time.Second)
 	if err != nil {
-		s.Fatal("Failed to find Open menu item: ", err)
+		s.Fatalf("Failed to find Open menu item for %s: %v", zipFile, err)
 	}
 	defer open.Release(ctx)
 
@@ -174,14 +172,14 @@ func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.
 
 	mountedZipFile, err := files.Root.DescendantWithTimeout(ctx, params, time.Minute)
 	if err != nil {
-		s.Fatal("Waiting for mounted zip file failed: ", err)
+		s.Fatalf("Waiting for %s mounted failed: %v", zipFile, err)
 	}
 	defer mountedZipFile.Release(ctx)
 
 	duration := float64(time.Since(startTime).Milliseconds())
 
 	if err := mountedZipFile.LeftClick(ctx); err != nil {
-		s.Fatal("Selecting mounted zip file failed: ", err)
+		s.Fatalf("Selecting mounted zip file (%s) failed: %v", zipFile, err)
 	}
 
 	// Ensure that the Files App is displaying the content of the mounted zip file.
@@ -191,7 +189,7 @@ func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.
 	}
 
 	if err := files.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
-		s.Fatal("Opening mounted zip file failed: ", err)
+		s.Fatalf("Opening mounted zip file (%s) failed: %v", zipFile, err)
 	}
 
 	return duration
@@ -242,7 +240,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-		s.Fatal("Cannot check that the right number of files is selected: ", err)
+		s.Fatalf("Cannot check that the right number of files is selected in %s: %v", zipBaseName, err)
 	}
 
 	// Copy.
@@ -287,7 +285,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 
 	// Enter the new directory.
 	if err := files.OpenFile(ctx, zipBaseName); err != nil {
-		s.Fatal("Failed navigating to the new directory: ", err)
+		s.Fatalf("Failed navigating to the new directory (%s): %v", zipBaseName, err)
 	}
 
 	// Before pasting, ensure the Files App has switched to the new location.
@@ -340,7 +338,7 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 
 	// Open menu item.
 	if err := filesBox.RightClick(ctx); err != nil {
-		s.Fatal("Failed opening menu item: ", err)
+		s.Fatalf("Failed opening menu item for %s: %v", zipBaseName, err)
 	}
 
 	// Wait for location change events to be propagated (b/161438238).
@@ -379,7 +377,7 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 		}
 		return errors.New("notification does not exist")
 	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-		s.Fatal("Failed to find Zip archiver zipping notification: ", err)
+		s.Fatalf("Failed to find Zip archiver zipping notification for %s: %v", zipBaseName, err)
 	}
 
 	// Start timer for zipping operation.
@@ -399,7 +397,7 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
-		s.Fatal("Failed to wait for the Zip archiver zipping notification to disappear: ", err)
+		s.Fatalf("Failed to wait for the Zip archiver zipping notification to disappear for %s: %v", zipBaseName, err)
 	}
 
 	// Return duration.
