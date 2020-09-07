@@ -70,6 +70,30 @@
       "revId": "c935623a5280f9d31be30065764d9ae5c10ec3f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df999f7d_16dc728c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-09-07T01:06:50Z",
+      "side": 1,
+      "message": "I suspect that the problem is that \"doDefault()\" issues a \"click()\" in the target element, however some elements don\u0027t react to \"click\" event directly but rather  based on other parts of the mouse events like mouse-down and mouse-up.\n\nFor example, see the code for the menus we use here:\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:ui/webui/resources/js/cr/ui/menu.js;l\u003d31-34;drc\u003d4a47103eef5b87d14198448533ab85a27f7fff60\n\n      this.addEventListener(\u0027mouseover\u0027, this.handleMouseOver_);\n      this.addEventListener(\u0027mouseout\u0027, this.handleMouseOut_);\n      this.addEventListener(\u0027mouseup\u0027, this.handleMouseUp_, true);\n\nThat\u0027s the exact problem of not being a \"true E2E\" test.",
+      "parentUuid": "2379dc48_41fe2c46",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 24
+      },
+      "revId": "c935623a5280f9d31be30065764d9ae5c10ec3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
