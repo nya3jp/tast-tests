@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89cd1cf8_fa7dd865",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-09-07T09:58:55Z",
+      "side": 1,
+      "message": "Thank you for the review, Hidehiko-san!\n\nI\u0027ve addressed the comments. PTAL. Thanks!",
+      "revId": "93c8b36ded550675d60fe95b50f6bf171c1764f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

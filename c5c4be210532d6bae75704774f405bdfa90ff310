@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1e8ef85d_1e7b9478",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-09-07T09:58:55Z",
+      "side": 1,
+      "message": "Decided to keep the test critical.",
+      "parentUuid": "c20fd6d3_af7d7140",
+      "range": {
+        "startLine": 12,
+        "startChar": 62,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "c5c4be210532d6bae75704774f405bdfa90ff310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19cd7616_1958d226",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
