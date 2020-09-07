@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -40,9 +41,7 @@ func init() {
 
 func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 	// typingKeys indicates a key series that tapped on virtual keyboard.
-	var typingKeys = []string{"g", "o"}
-
-	const expectedTypingResult = "go"
+	const typingKeys = "go"
 
 	cr := s.PreValue().(*chrome.Chrome)
 
@@ -77,14 +76,14 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		Role: ui.RoleTypeSearchBox,
 		Name: "Search settings",
 	}
-	element, err := ui.FindWithTimeout(ctx, tconn, params, 5*time.Second)
+	searchInputElement, err := ui.FindWithTimeout(ctx, tconn, params, 5*time.Second)
 	if err != nil {
 		s.Fatal("Failed to find searchbox input field in settings: ", err)
 	}
-	defer element.Release(ctx)
+	defer searchInputElement.Release(ctx)
 
 	s.Log("Click searchbox to trigger virtual keyboard")
-	if err := element.LeftClick(ctx); err != nil {
+	if err := searchInputElement.LeftClick(ctx); err != nil {
 		s.Fatal("Failed to click the input element: ", err)
 	}
 
@@ -98,24 +97,22 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
 	}
 
-	if err := vkb.TapKeys(ctx, tconn, typingKeys); err != nil {
+	if err := vkb.TapKeys(ctx, tconn, strings.Split(typingKeys, "")); err != nil {
 		s.Fatal("Failed to input with virtual keyboard: ", err)
 	}
 
-	// Value change can be a bit delayed after input.
+	// Hide virtual keyboard to submit candidate
+	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+		s.Fatal("Failed to hide virtual keyboard: ", err)
+	}
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		element, err := ui.FindWithTimeout(ctx, tconn, params, 2*time.Second)
-		if err != nil {
-			s.Fatal("Failed to find searchbox input field in settings: ", err)
+		if err := searchInputElement.Update(ctx); err != nil {
+			return errors.Wrap(err, "failed to update the node's location")
 		}
-		defer element.Release(ctx)
-		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, 2*time.Second)
-		if err != nil {
-			return err
-		}
-		defer inputValueElement.Release(ctx)
-		if inputValueElement.Name != expectedTypingResult {
-			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, expectedTypingResult)
+
+		if searchInputElement.Value != typingKeys {
+			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", searchInputElement.Value, typingKeys)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
