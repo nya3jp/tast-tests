@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "0a736392_dc2be12e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-07T09:32:21Z",
+      "side": 1,
+      "message": "This is because the value here is integer, but the caller calculates |wantPixelCount| with floating point computations, so I was wondering that in the previous review.\n\nAlso, I think the android framework does floating point computations internally to handle these scale factors and draw the black rectangle. (for example, I\u0027m looking at recent Sara-san\u0027s related CL http://ag/12399691 and it has floating point computations.)",
+      "parentUuid": "dba1d665_4591dbf4",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 61
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "868737f0_97330e1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 19

@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "d4b2b080_f3469e12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-07T09:32:21Z",
+      "side": 1,
+      "message": "replying a question + small drive-by nits.\n\nBTW, quick question, the new test launches an activity with free-form windowing mode, and check the screenshot. Are wallpapers and shelf included in the screenshot? If yes, won\u0027t they make the test flaky?",
+      "revId": "907494259282c6e530a51fe33c7936d482a05913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c840dec8_f1979feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-07T09:32:21Z",
+      "side": 1,
+      "message": "nit: I think these `Density` prefix can be removed. In Go, it is recommended to avoid using prefixes that overlaps with the package name.\nDitto other `Density` appearances in this file.\n\nhttps://blog.golang.org/package-names (see `Naming package contents` \u003e `Avoid stutter`)",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "907494259282c6e530a51fe33c7936d482a05913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c0e3db6_a80d0b7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen/screen.go",
         "patchSetId": 21
@@ -52,6 +92,29 @@
         "startChar": 2,
         "endLine": 58,
         "endChar": 3
+      },
+      "revId": "907494259282c6e530a51fe33c7936d482a05913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2efdc1ab_8d90d4ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-07T09:32:21Z",
+      "side": 1,
+      "message": "nit: no longer used?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 63
       },
       "revId": "907494259282c6e530a51fe33c7936d482a05913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
