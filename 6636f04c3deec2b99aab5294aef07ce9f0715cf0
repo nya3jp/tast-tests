@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb8acc0e_23f59ad6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T05:21:14Z",
+      "side": 1,
+      "message": "nit/optional: how about adding \"^\" at the beginning of the patter so that it matches with prefix.",
+      "revId": "6636f04c3deec2b99aab5294aef07ce9f0715cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e9a9fd9_2ab47fcb",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T05:21:14Z",
+      "side": 1,
+      "message": "Could you remove ctx and error from signatures, which are no longer used?\n# IIUC, this function is used only in this file, so the caller side changes should be reasonably small enough, I think.",
+      "revId": "6636f04c3deec2b99aab5294aef07ce9f0715cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
