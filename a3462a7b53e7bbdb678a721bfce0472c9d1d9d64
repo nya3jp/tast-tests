@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b2e6384_ae35a954",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-07T07:00:03Z",
+      "side": 1,
+      "message": "Sorry for late reply (perf cycle). PTAL.",
+      "revId": "a3462a7b53e7bbdb678a721bfce0472c9d1d9d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58bb0ba7_6b473a00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-07T07:00:03Z",
+      "side": 1,
+      "message": "The comment can be removed as it is the same as the test description.",
+      "revId": "a3462a7b53e7bbdb678a721bfce0472c9d1d9d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

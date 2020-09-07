@@ -230,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "400b6e2c_0df82db1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-07T07:00:03Z",
+      "side": 1,
+      "message": "So the real reason of running it multiple times is to reproduce the race condition that triggers crbug.com/408370. Please update the message. \n\nOtherwise, other developers may have the same question: the test already disables the DUT\u0027s power-saving mode (line 72-90), could it be the case that the DUT misses the CSA packet?",
+      "parentUuid": "e7728cf8_f4510dd0",
+      "range": {
+        "startLine": 173,
+        "startChar": 36,
+        "endLine": 173,
+        "endChar": 65
+      },
+      "revId": "713ac8745b09209295b391eec270be6c48ea365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96c6b07e_dc8dd08b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 21
