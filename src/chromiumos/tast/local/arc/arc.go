@@ -11,12 +11,14 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -318,6 +320,28 @@ func getChromeArgs() ([]string, error) {
 	return proc.CmdlineSlice()
 }
 
+// diagnoseInitfailure extracts significant logs for init failure,
+// such as exit message from crosvm.
+func diagnoseInitfailure(reader *syslog.Reader, observedErr error) error {
+	lastMessage := ""
+	for {
+		entry, err := reader.Read()
+		if err != nil {
+			// End of syslog is reached (io.EOF) or some other error
+			// happened.  Either way, return with last significant
+			// message if available.
+			if lastMessage != "" {
+				return errors.Wrapf(observedErr, "%v", lastMessage)
+			}
+			return observedErr
+		}
+		if strings.HasPrefix(entry.Program, "ARCVM") {
+			// TODO(b/167944318): try a better message
+			lastMessage = entry.Content
+		}
+	}
+}
+
 // WaitAndroidInit waits for Android init process to start.
 //
 // It is very rare you want to call this function from your test; to wait for
@@ -329,13 +353,21 @@ func WaitAndroidInit(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, androidInitTimeout)
 	defer cancel()
 
+	// Start a syslog reader so we can give more useful debug
+	// information waiting for boot.
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
 	// Wait for init or crosvm process to start before checking deeper.
 	testing.ContextLog(ctx, "Waiting for initial ARC process")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := InitPID()
 		return err
 	}, &testing.PollOptions{Interval: time.Second}); err != nil {
-		return errors.Wrap(err, "Init/crosvm process did not start up")
+		return diagnoseInitfailure(reader, errors.Wrap(err, "Init/crosvm process did not start up"))
 	}
 
 	// Wait for an arbitrary property set by Android init very
