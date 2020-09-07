@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e04a38e_9801dd50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-07T21:50:36Z",
+      "side": 1,
+      "message": "then cancelling the removal",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "f5da6bdc861cfc67678f5f25ffa4d49bedb7fb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
