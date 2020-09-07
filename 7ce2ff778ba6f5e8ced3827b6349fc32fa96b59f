@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76dc771c_cf4b5ac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-07T09:40:47Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like gerrit properly handles replacing a symlink with its target, so the \u0027Rewritten\u0027 files just show up as empty. If you look at the diff directly in gitiles, it makes more sense.",
+      "revId": "7ce2ff778ba6f5e8ced3827b6349fc32fa96b59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
