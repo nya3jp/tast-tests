@@ -22,14 +22,15 @@ import (
 )
 
 const (
-	testVideoFile = "1080p_60fps_600frames.vp8.ivf"
-
 	// arcFilePath must be on the sdcard because of android permissions
 	arcFilePath = "/sdcard/Download/c2_e2e_test/"
 
 	iterationCount    = 30
 	iterationDuration = 10 * time.Second
 	warmupDuration    = 10 * time.Second
+	// Mostly consumed by boot timeout and WaitUntilIdle
+	testSlack         = 2 * time.Minute
+	powerTestDuration = iterationCount*iterationDuration + warmupDuration + testSlack
 
 	logFileName = "gtest_logs.txt"
 )
@@ -37,23 +38,77 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: PowerVideoPerf,
-		Desc: "Measures the battery drain during hardware accelerated 1080p@60fps vp8 video playback",
+		Desc: "Measures the battery drain during hardware accelerated video playback",
 		Contacts: []string{
 			"stevensd@chromium.org",
 			"arcvm-eng@google.com",
 		},
-		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8_60},
-		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName, testVideoFile, testVideoFile + ".json"},
+		SoftwareDeps: []string{"chrome"},
+		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		Pre:          arc.Booted(),
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Timeout:      powerTestDuration,
 		Params: []testing.Param{{
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
-			ExtraSoftwareDeps: []string{"android_p"},
+			Name:              "h264_1080p_30fps",
+			Val:               "1080p_30fps_300frames.h264",
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_p"},
+			ExtraData:         []string{"1080p_30fps_300frames.h264", "1080p_30fps_300frames.h264.json"},
 		}, {
-			Name:              "vm",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			Name:              "h264_1080p_30fps_vm",
+			Val:               "1080p_30fps_300frames.h264",
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_vm"},
+			ExtraData:         []string{"1080p_30fps_300frames.h264", "1080p_30fps_300frames.h264.json"},
+		}, {
+			Name:              "vp8_1080p_30fps",
+			Val:               "1080p_30fps_300frames.vp8.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_p"},
+			ExtraData:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json"},
+		}, {
+			Name:              "vp8_1080p_30fps_vm",
+			Val:               "1080p_30fps_300frames.vp8.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_vm"},
+			ExtraData:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json"},
+		}, {
+			Name:              "vp9_1080p_30fps",
+			Val:               "1080p_30fps_300frames.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_p"},
+			ExtraData:         []string{"1080p_30fps_300frames.vp9.ivf", "1080p_30fps_300frames.vp9.ivf.json"},
+		}, {
+			Name:              "vp9_1080p_30fps_vm",
+			Val:               "1080p_30fps_300frames.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm"},
+			ExtraData:         []string{"1080p_30fps_300frames.vp9.ivf", "1080p_30fps_300frames.vp9.ivf.json"},
+		}, {
+			Name:              "vp9_1080p_60fps",
+			Val:               "1080p_60fps_600frames.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "android_p"},
+			ExtraData:         []string{"1080p_60fps_600frames.vp9.ivf", "1080p_60fps_600frames.vp9.ivf.json"},
+		}, {
+			Name:              "vp9_1080p_60fps_vm",
+			Val:               "1080p_60fps_600frames.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "android_vm"},
+			ExtraData:         []string{"1080p_60fps_600frames.vp9.ivf", "1080p_60fps_600frames.vp9.ivf.json"},
+		}, {
+			Name:              "vp9_2160p_30fps",
+			Val:               "2160p_30fps_300frames.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K, "android_p"},
+			ExtraData:         []string{"2160p_30fps_300frames.vp9.ivf", "2160p_30fps_300frames.vp9.ivf.json"},
+		}, {
+			Name:              "vp9_2160p_30fps_vm",
+			Val:               "2160p_30fps_300frames.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K, "android_vm"},
+			ExtraData:         []string{"2160p_30fps_300frames.vp9.ivf", "2160p_30fps_300frames.vp9.ivf.json"},
+		}, {
+			Name:              "vp9_2160p_60fps",
+			Val:               "2160p_60fps_600frames.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "android_p"},
+			ExtraData:         []string{"2160p_60fps_600frames.vp9.ivf", "2160p_60fps_600frames.vp9.ivf.json"},
+		}, {
+			Name:              "vp9_2160p_60fps_vm",
+			Val:               "2160p_60fps_600frames.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "android_vm"},
+			ExtraData:         []string{"2160p_60fps_600frames.vp9.ivf", "2160p_60fps_600frames.vp9.ivf.json"},
 		}},
-		Timeout: 15 * time.Minute,
 	})
 }
 
@@ -72,6 +127,7 @@ func PowerVideoPerf(ctx context.Context, s *testing.State) {
 	}
 
 	a := s.PreValue().(arc.PreData).ARC
+	testVideoFile := s.Param().(string)
 
 	// Parse JSON metadata.
 	md, err := c2e2etest.LoadMetadata(s.DataPath(testVideoFile) + ".json")
