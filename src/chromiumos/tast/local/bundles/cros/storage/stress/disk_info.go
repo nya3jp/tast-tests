@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/local/testexec"
 )
 
+var devRegExp = regexp.MustCompile(`(sda|nvme\dn\d|mmcblk\d)$`)
+
 // Blockdevice represents information about a single storage device as reported by lsblk.
 type Blockdevice struct {
 	Name    string `json:"name"`
@@ -25,20 +27,43 @@ type Blockdevice struct {
 
 // DiskInfo is a serializable structure representing output of lsblk command.
 type DiskInfo struct {
-	Blockdevices []Blockdevice `json:"blockdevices"`
+	Blockdevices []*Blockdevice `json:"blockdevices"`
 }
 
 // MainDevice returns the main storage device from a list of available devices.
-// This method assumes there is only one root disk device that matches naming pattern.
-// Otherwise, the first matching device is returned.
+// The method returns the device with the biggest size if multiple present.
 func (d DiskInfo) MainDevice() (*Blockdevice, error) {
-	mainDevRegExp := regexp.MustCompile(`sda|nvme|mmcblk`)
+	var bestMatch *Blockdevice
 	for _, device := range d.Blockdevices {
-		if mainDevRegExp.MatchString(device.Name) {
-			return &device, nil
+		if bestMatch == nil || bestMatch.Size < device.Size {
+			bestMatch = device
 		}
 	}
-	return nil, errors.Errorf("Unable to identify main storage device from devices: %+v", d)
+	if bestMatch == nil {
+		return nil, errors.Errorf("unable to identify main storage device from devices: %+v", d)
+	}
+	return bestMatch, nil
+}
+
+// SlcDevice returns the slc storage device from a list of available
+// devices. The method assumes at most two devices and returns the device
+// with the smallest size.
+func (d DiskInfo) SlcDevice() (*Blockdevice, error) {
+	if d.DeviceCount() < 2 {
+		return nil, errors.Errorf("no secondary devices present: %+v", d)
+	}
+	var bestMatch *Blockdevice
+	for _, device := range d.Blockdevices {
+		if bestMatch == nil || bestMatch.Size > device.Size {
+			bestMatch = device
+		}
+	}
+	return bestMatch, nil
+}
+
+// DeviceCount returns number of found valid block devices on the system.
+func (d DiskInfo) DeviceCount() int {
+	return len(d.Blockdevices)
 }
 
 // CheckMainDeviceSize verifies that the size of the main storage disk is more than
@@ -50,7 +75,7 @@ func (d DiskInfo) CheckMainDeviceSize(minSize int64) error {
 	}
 
 	if device.Size < minSize {
-		return errors.Errorf("Main storage device size too small: %v", device.Size)
+		return errors.Errorf("main storage device size too small: %v", device.Size)
 	}
 	return nil
 }
@@ -81,21 +106,26 @@ func ReadDiskInfo(ctx context.Context) (*DiskInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	return filterNonDiskDevices(diskInfo), nil
+	return removeDisallowedDevices(diskInfo), nil
 }
 
 func parseDiskInfo(out []byte) (*DiskInfo, error) {
 	var result DiskInfo
+	// TODO(dlunev): make sure the format is the same for all kernel versions.
 	if err := json.Unmarshal(out, &result); err != nil {
 		return nil, errors.Wrap(err, "failed to parse lsblk result")
 	}
 	return &result, nil
 }
 
-func filterNonDiskDevices(diskInfo *DiskInfo) *DiskInfo {
-	var devices []Blockdevice
+// removeDisallowedDevices filters out devices which are not matching the regexp
+// or are not disks
+// TODO(dlunev): We should consider mmc devices only if they are 'root' devices
+// for there is no reliable way to differentiate removable mmc.
+func removeDisallowedDevices(diskInfo *DiskInfo) *DiskInfo {
+	var devices []*Blockdevice
 	for _, device := range diskInfo.Blockdevices {
-		if device.Type == "disk" {
+		if device.Type == "disk" && devRegExp.MatchString(device.Name) {
 			devices = append(devices, device)
 		}
 	}
