@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2e0eb748_5806124c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-07T05:18:53Z",
+      "side": 1,
+      "message": "Is this meant to be run in the lab as a remote/automated test ? If so I don\u0027t think turning down the physical devices is the correct solution.\n\nCould we first continue discussing in https://groups.google.com/a/google.com/g/cros-networking/c/_unvJh54Vpo or in a doc what is actually needed first ? We still don\u0027t know what should be tested in offline mode.",
+      "revId": "8b0f30a261f482e41474777eb54762bb6c969565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ab8769d_94722acf",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
         "patchSetId": 3
