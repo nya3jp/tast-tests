@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78205f86_72853a12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2020-09-07T08:31:41Z",
+      "side": 1,
+      "message": "Thanks all for your reviews. PTAL? Apparently I\u0027m new to both Golang and Tast, so your comments and pro-tips are very helpful.",
+      "revId": "77c51a6f2ec158d12e996c3e1eb886cf3fc5f386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
