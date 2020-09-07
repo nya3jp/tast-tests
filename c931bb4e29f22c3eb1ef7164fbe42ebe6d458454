@@ -171,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "5a2d1f3d_f4891c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-07T09:23:33Z",
+      "side": 1,
+      "message": "Let\u0027s discuss in https://groups.google.com/a/google.com/g/tast-reviewers/c/XC9yGuzykOo",
+      "parentUuid": "67254a54_da567ccf",
+      "range": {
+        "startLine": 486,
+        "startChar": 10,
+        "endLine": 486,
+        "endChar": 23
+      },
+      "revId": "c931bb4e29f22c3eb1ef7164fbe42ebe6d458454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b97e16e5_4b17605a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
