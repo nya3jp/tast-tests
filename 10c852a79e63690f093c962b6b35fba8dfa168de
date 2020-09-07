@@ -16,6 +16,24 @@
       "revId": "10c852a79e63690f093c962b6b35fba8dfa168de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8eb4ab4_49bbab76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-07T04:00:55Z",
+      "side": 1,
+      "message": "Not too familiar with activities framework but looks good as far as I can tell.",
+      "parentUuid": "37958fc8_385379a1",
+      "revId": "10c852a79e63690f093c962b6b35fba8dfa168de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
