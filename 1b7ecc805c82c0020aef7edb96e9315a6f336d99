@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3cff659_df4a6e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T07:52:25Z",
+      "side": 1,
+      "message": "Could you comment package-level struct and constants below?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "1b7ecc805c82c0020aef7edb96e9315a6f336d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25f2af72_f70e5361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T07:52:25Z",
+      "side": 1,
+      "message": "nit/style:\n\nconst (\n  acuteAccent \u003d ...\n  circumflex \u003d ...\n)",
+      "revId": "1b7ecc805c82c0020aef7edb96e9315a6f336d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b17098fc_7c227119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T07:52:25Z",
+      "side": 1,
+      "message": "Maybe: %q\n\nditto for below.",
+      "range": {
+        "startLine": 125,
+        "startChar": 42,
+        "endLine": 125,
+        "endChar": 46
+      },
+      "revId": "1b7ecc805c82c0020aef7edb96e9315a6f336d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d52325_32fa2eb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T07:52:25Z",
+      "side": 1,
+      "message": "Pls release the element if the returned err is nil, otherwise it could cause crashes. I.e., could you move this to betwee L171 and L172?",
+      "revId": "1b7ecc805c82c0020aef7edb96e9315a6f336d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5f870fa_3b30d61a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T07:52:25Z",
+      "side": 1,
+      "message": "We shouldn\u0027t break here?\nOr, Poll itself is not needed (because currently either \"return PollBreak\" or \"return nil\" (\u003d success), so no iteration happens).",
+      "range": {
+        "startLine": 173,
+        "startChar": 10,
+        "endLine": 173,
+        "endChar": 28
+      },
+      "revId": "1b7ecc805c82c0020aef7edb96e9315a6f336d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
