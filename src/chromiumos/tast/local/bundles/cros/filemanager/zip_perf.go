@@ -36,13 +36,33 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"100000_files_in_one_folder.zip", "500_small_files.zip", "various_documents.zip"},
-		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
 	})
 }
 
 func ZipPerf(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--disable-features=FilesZipMount"))
+	if err != nil {
+		s.Fatal("Cannot start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	// Load ZIP files.
+	zipBaseNames := []string{"100000_files_in_one_folder", "500_small_files", "various_documents"}
+	for _, zipBaseName := range zipBaseNames {
+		zipFile := zipBaseName + ".zip"
+		zipFileLocation := filepath.Join(filesapp.DownloadPath, zipFile)
+		if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
+			s.Fatalf("Failed to copy zip file to %s: %s", zipFileLocation, err)
+		}
+
+		// Remove zip files and extraction folders when the test finishes.
+		defer os.Remove(zipFileLocation)
+		defer os.RemoveAll(filepath.Join(filesapp.DownloadPath, zipBaseName))
+
+		// Add reading permission (-rw-r--r--).
+		os.Chmod(zipFileLocation, 0644)
+	}
 
 	// Open the test API.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -74,55 +94,41 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	for _, zipBaseName := range []string{"100000_files_in_one_folder", "500_small_files", "various_documents"} {
-		zipFile := zipBaseName + ".zip"
-		zipFileLocation := filepath.Join(filesapp.DownloadPath, zipFile)
-		if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
-			s.Fatalf("Failed to copy zip file to %s: %s", zipFileLocation, err)
-		}
+	for _, zipBaseName := range zipBaseNames {
+		s.Run(ctx, zipBaseName, func(ctx context.Context, s *testing.State) {
+			zipFile := zipBaseName + ".zip"
 
-		// Remove zip files and extraction folders when the test finishes.
-		defer os.Remove(zipFileLocation)
-		defer os.RemoveAll(filepath.Join(filesapp.DownloadPath, zipBaseName))
+			duration := testMountingZipFile(ctx, s, files, zipFile)
 
-		// Add reading permission (-rw-r--r--).
-		os.Chmod(zipFileLocation, 0644)
+			pv.Set(perf.Metric{
+				Name:      fmt.Sprintf("tast_mount_zip_%s", zipBaseName),
+				Unit:      "ms",
+				Direction: perf.SmallerIsBetter,
+			}, duration)
 
-		duration := testMountingZipFile(ctx, s, files, zipFile)
+			if zipBaseName == "100000_files_in_one_folder" {
+				// Mounting a file is an operation that is much faster than zipping and extracting.
+				// This specific file is created to better test this operation. However zipping and
+				// extracting would not complete within the timeout set for this test.
+				return
+			}
 
-		pv.Set(perf.Metric{
-			Name:      fmt.Sprintf("tast_mount_zip_%s", zipBaseName),
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-		}, duration)
+			duration = testExtractingZipFile(ctx, s, files, ew, zipBaseName)
 
-		if zipBaseName == "100000_files_in_one_folder" {
-			// Mounting a file is an operation that is much faster than zipping and extracting.
-			// This specific file is created to better test this operation. However zipping and
-			// extracting would not complete within the timeout set for this test.
-			continue
-		}
+			pv.Set(perf.Metric{
+				Name:      fmt.Sprintf("tast_unzip_%s", zipBaseName),
+				Unit:      "ms",
+				Direction: perf.SmallerIsBetter,
+			}, duration)
 
-		duration = testExtractingZipFile(ctx, s, files, ew, zipBaseName)
+			duration = testZippingFiles(ctx, tconn, s, files, ew, zipBaseName)
 
-		pv.Set(perf.Metric{
-			Name:      fmt.Sprintf("tast_unzip_%s", zipBaseName),
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-		}, duration)
-
-		duration = testZippingFiles(ctx, tconn, s, files, ew, zipBaseName)
-
-		pv.Set(perf.Metric{
-			Name:      fmt.Sprintf("tast_zip_%s", zipBaseName),
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-		}, duration)
-
-		// Open the Downloads folder.
-		if err := files.OpenDownloads(ctx); err != nil {
-			s.Fatal("Opening Downloads folder failed: ", err)
-		}
+			pv.Set(perf.Metric{
+				Name:      fmt.Sprintf("tast_zip_%s", zipBaseName),
+				Unit:      "ms",
+				Direction: perf.SmallerIsBetter,
+			}, duration)
+		})
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
