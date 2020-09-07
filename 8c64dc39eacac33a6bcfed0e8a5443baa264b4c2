@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "accaa086_31d00a6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-07T23:06:37Z",
+      "side": 0,
+      "message": "Method names in go should not start with get, unless the underlying concept involves the word \u0027get\u0027 (e.g. HTTP GET). See: go/go-style/decisions#getters (also: go/go-style/best-practices#function-names).",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 37
+      },
+      "revId": "8c64dc39eacac33a6bcfed0e8a5443baa264b4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
