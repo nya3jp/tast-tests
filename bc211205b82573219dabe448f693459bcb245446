@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "205c1134_a09052e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-07T04:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3ec5a7c_39b7e44c",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "bc211205b82573219dabe448f693459bcb245446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81a1cc01_3ac1d7b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "bc211205b82573219dabe448f693459bcb245446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edff0c5c_d99694fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-07T04:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a1cc01_3ac1d7b1",
+      "revId": "bc211205b82573219dabe448f693459bcb245446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "9f7cf352_6b97b0e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-07T04:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a46590a5_8a152a42",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "bc211205b82573219dabe448f693459bcb245446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a29fcaff_20d2e036",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_settings.go",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2020-09-07T03:03:43Z",
       "side": 1,
       "message": "settings is an entry point to launch help app, much ui interaction adds complexity and dependency. Instead of ui interaction, I would suggest to do it as below:\n\nconn, err :\u003d cr.NewConn(ctx, \"chrome://settings/help\")\nif err !\u003d nil {\n        s.Fatal(\"Failed to open settings help page: \", err)\n}\ndefer conn.Close()\n\nif err :\u003d conn.WaitForExpr(ctx, \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\"); err !\u003d nil {\n\ts.Fatal(\"Waiting load failed: \", err)\n}\n\nif err :\u003d helpapp.ClickElement(ctx, tconn, ui.FindParams{\n\tName: \"Get help with Chrome OS\",\n\tRole: ui.RoleTypeLink,\n}); err !\u003d nil {\n\ts.Fatal(\"Failed to click Get help with Chrome OS: \", err)\n}",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "bc211205b82573219dabe448f693459bcb245446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00f7b8ae_83ecf21b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-07T04:10:39Z",
+      "side": 1,
+      "message": "I prefer the UI interaction rather than relying on a hack redirect that happens to be implemented through redirects in Chrome. It is also closer to how we would manually test this, which was the whole point of writing tast tests. Is the current abstraction layer sufficient to reduce the complexity that you are worried about?",
+      "parentUuid": "a29fcaff_20d2e036",
       "range": {
         "startLine": 51,
         "startChar": 1,
@@ -108,6 +198,30 @@
       "revId": "bc211205b82573219dabe448f693459bcb245446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7a6afda_2c4d50ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-07T04:10:39Z",
+      "side": 1,
+      "message": "Added a function in ossettings.go",
+      "parentUuid": "753291c5_4a3e7f58",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "bc211205b82573219dabe448f693459bcb245446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
