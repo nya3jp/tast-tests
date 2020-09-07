@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "3a571333_6c07b7ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-07T05:55:08Z",
+      "side": 1,
+      "message": "This is because I was suggested a similar change in a previous tast-owner review:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2389803/2..5/src/chromiumos/tast/local/bundles/cros/arc/companion_library.go#b486",
+      "parentUuid": "67b338eb_df780f5d",
+      "range": {
+        "startLine": 229,
+        "startChar": 103,
+        "endLine": 229,
+        "endChar": 122
+      },
+      "revId": "86d5b7bd9212b48613b7a8eacb16eb9450cdff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffc34064_6e338d4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
         "patchSetId": 2
@@ -96,6 +120,30 @@
       "revId": "86d5b7bd9212b48613b7a8eacb16eb9450cdff83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "423e06a4_0e662be4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-07T05:55:08Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "ffc34064_6e338d4b",
+      "range": {
+        "startLine": 255,
+        "startChar": 8,
+        "endLine": 255,
+        "endChar": 49
+      },
+      "revId": "86d5b7bd9212b48613b7a8eacb16eb9450cdff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
