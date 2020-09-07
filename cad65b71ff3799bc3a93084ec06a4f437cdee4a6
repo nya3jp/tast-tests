@@ -51,6 +51,24 @@
       "revId": "cad65b71ff3799bc3a93084ec06a4f437cdee4a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28751106_283c3362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-07T06:31:04Z",
+      "side": 1,
+      "message": "Good question, I\u0027ll raise this question in Tast owners\u0027 group and if a preference is made, will update in Tast writing document. \n\nFor now, please follow other\u0027s recommendation.",
+      "parentUuid": "37ddb46a_1b7bc423",
+      "revId": "cad65b71ff3799bc3a93084ec06a4f437cdee4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
