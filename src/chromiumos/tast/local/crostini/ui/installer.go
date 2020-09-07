@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/vm"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -41,9 +42,6 @@ const (
 
 const uiTimeout = 30 * time.Second
 
-var installWindowChromebookFP = ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "Set up Linux (Beta) on your Chromebook"}
-var installWindowChromeboxFP = ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "Set up Linux (Beta) on your Chromebox"}
-
 // Image setup mode.
 const (
 	Artifact = "artifact"
@@ -61,24 +59,35 @@ type InstallationOptions struct {
 
 // Installer is a page object for the settings screen of the Crostini Installer.
 type Installer struct {
-	tconn    *chrome.TestConn
-	windowFP ui.FindParams
+	tconn *chrome.TestConn
+}
+
+// installWindowFindParams returns find params that can be used to find the installer window.
+func installWindowFindParams() (ui.FindParams, error) {
+	deviceType, err := deviceType()
+	if err != nil {
+		return ui.FindParams{}, errors.Wrap(err, "error finding device type for installer window title")
+	}
+	return ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: fmt.Sprintf("Set up Linux (Beta) on your %s", deviceType)}, nil
+}
+
+// deviceType returns a string representing the type of device is the same format used in
+// Crostini installer window titles, eg "Chromebook", "Chromebox", "Chromebase"
+func deviceType() (string, error) {
+	lsb, err := lsbrelease.Load()
+	if err != nil {
+		return "", errors.Wrap(err, "unable to load lsbrelease to determine device type")
+	}
+	deviceType, ok := lsb[lsbrelease.DeviceType]
+	if !ok {
+		deviceType = "CHROMEBOOK"
+	}
+	return strings.Title(strings.ToLower(deviceType)), nil
 }
 
 // New creates a new Installer page object.
 func New(ctx context.Context, tconn *chrome.TestConn) (*Installer, error) {
-	// Chromebooks and ChromeBoxs have different window titles, find the most common one first, then fall back to the less common one.
-	var errBook, errBox error
-	windowFP := installWindowChromebookFP
-	errBook = uig.Do(ctx, tconn, uig.FindWithTimeout(installWindowChromebookFP, 5*time.Second))
-	if errBook != nil {
-		windowFP = installWindowChromeboxFP
-		errBox = uig.Do(ctx, tconn, uig.FindWithTimeout(installWindowChromeboxFP, time.Second))
-		if errBox != nil {
-			return nil, errors.Errorf("could not find installer window for either chromebook or chromebox: chromebook error: %w chromebox error: %v", errBook, errBox)
-		}
-	}
-	return &Installer{tconn, windowFP}, nil
+	return &Installer{tconn}, nil
 }
 
 func parseDiskSizeString(str string) (uint64, error) {
@@ -107,7 +116,11 @@ func parseDiskSizeString(str string) (uint64, error) {
 // SetDiskSize uses the slider on the Installer options pane to set the disk
 // size to the smallest slider increment larger than the specified disk size.
 func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
-	window := uig.FindWithTimeout(p.windowFP, uiTimeout)
+	fp, err := installWindowFindParams()
+	if err != nil {
+		return errors.Wrap(err, "error getting window findparams")
+	}
+	window := uig.FindWithTimeout(fp, uiTimeout)
 	radioGroup := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRadioGroup}, uiTimeout)
 	slider := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeSlider}, uiTimeout)
 
@@ -184,6 +197,10 @@ func (p *Installer) Install(ctx context.Context) error {
 			return errors.Errorf("error message in dialog: %s", message)
 		}
 	}
+	fp, err := installWindowFindParams()
+	if err != nil {
+		return errors.Wrap(err, "error getting installer window findparams")
+	}
 	// Focus on the install button to ensure virtual keyboard does not get in the
 	// way and prevent the button from being clicked.
 	install := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Install"}, uiTimeout)
@@ -191,7 +208,7 @@ func (p *Installer) Install(ctx context.Context) error {
 		uig.Steps(
 			install.FocusAndWait(uiTimeout),
 			install.LeftClick(),
-			uig.WaitUntilDescendantGone(p.windowFP, 10*time.Minute)).WithNamef("Install()"))
+			uig.WaitUntilDescendantGone(fp, 10*time.Minute)).WithNamef("Install()"))
 }
 
 func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerDir, terminaImage string, err error) {
