@@ -126,9 +126,9 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 
 		// Click page header to deactive virtualkeyboard.
 		// Note: vkb.HideVirtualKeyboard() will not trigger reloading of setting changes.
-		header, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeInlineTextBox, Name: "日本語入力の設定"}, 10*time.Second)
+		header, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeHeading, Name: "日本語入力の設定"}, 20*time.Second)
 		if err != nil {
-			s.Fatal("Failed to find header: ", err)
+			s.Fatal("Failed to find header 日本語入力の設定: ", err)
 		}
 
 		if err := header.LeftClick(ctx); err != nil {
