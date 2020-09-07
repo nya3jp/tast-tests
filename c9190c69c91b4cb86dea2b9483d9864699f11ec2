@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "6daa790b_34721a54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-07T06:43:09Z",
+      "side": 1,
+      "message": "Right. What do you mean by \"cleaning up\"?\nI was thinking count\u003dnil would void the sole reference to the pointed object, thus GC would be allowed to collect the pointed object, however, since the pointer variable is a local variable, I thought the same thing would happen when the function returns without explicitly putting nil.",
+      "parentUuid": "77746867_854b86a2",
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ded1fe05_a157eaa5",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
         "patchSetId": 1
@@ -207,6 +225,24 @@
       "side": 1,
       "message": "Same as above.",
       "parentUuid": "ded1fe05_a157eaa5",
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c70f61_6ad02f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-07T06:43:09Z",
+      "side": 1,
+      "message": "Commented to the above one.",
+      "parentUuid": "05ced0f4_fa6860e2",
       "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
