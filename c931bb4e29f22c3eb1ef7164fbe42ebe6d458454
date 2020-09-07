@@ -147,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "67254a54_da567ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-07T06:27:40Z",
+      "side": 1,
+      "message": "Keigo, do we have a guideline whether pass-by-value or pass-by-reference is preferred? I thought that if the passing object is meant to be modified or is large, we shall pass-by-reference; otherwise, pass-by-value might be better because it makes better isolation and in Golang it might run faster.\n\nRefer to https://goinbigdata.com/golang-pass-by-pointer-vs-pass-by-value/",
+      "parentUuid": "7eeb81e0_98479a69",
+      "range": {
+        "startLine": 486,
+        "startChar": 10,
+        "endLine": 486,
+        "endChar": 23
+      },
+      "revId": "c931bb4e29f22c3eb1ef7164fbe42ebe6d458454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b97e16e5_4b17605a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
