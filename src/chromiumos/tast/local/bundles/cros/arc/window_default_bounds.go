@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -76,6 +77,14 @@ func WindowDefaultBounds(ctx context.Context, s *testing.State) {
 		}
 		s.Error("Default size test failed: ", err)
 	}
+
+	if err := wmSpecifiedSizeHandling(ctx, tconn, a); err != nil {
+		path := filepath.Join(s.OutDir(), "screenshot-specified-size-failed-test.png")
+		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+			s.Log("Failed to capture screenshot: ", err)
+		}
+		s.Error("Specified size test failed: ", err)
+	}
 }
 
 // wmSystemDefaultHandling verifies that applications which use the metadata flag
@@ -83,9 +92,6 @@ func WindowDefaultBounds(ctx context.Context, s *testing.State) {
 // will restore to 80% of the screen size.
 func wmSystemDefaultHandling(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
 	const (
-		// Apk to test (we use the default WM test app for SDK 24 (N).
-		wmPkg = "org.chromium.arc.testapp.windowmanager24"
-
 		// wmSystemDefaultActivity denotes an activity which follows the 'new system default size style' of 80% screen size.
 		wmSystemDefaultActivity = "org.chromium.arc.testapp.windowmanager.NewDefaultSizeActivity"
 		// wmNormalDefaultActivity denotes an activity which follows the 'normal restore size style' of phone size.
@@ -105,7 +111,7 @@ func wmSystemDefaultHandling(ctx context.Context, tconn *chrome.TestConn, a *arc
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, wmPkg, test.act)
+			act, err := arc.NewActivity(a, wm.Pkg24, test.act)
 			if err != nil {
 				return err
 			}
@@ -212,6 +218,48 @@ func check80PercentRestored(ctx context.Context, tconn *chrome.TestConn, act *ar
 	return nil
 }
 
+// wmSpecifiedSizeHandling verifies that applications which ses the layour parameter
+// <layout android:defaultWidth="XXX" android:defaultHeight="XXX" />
+// will be launched with the specified size.
+func wmSpecifiedSizeHandling(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
+	const (
+		wmSizeSpecifiedActivity = "org.chromium.arc.testapp.windowmanager.SizeSpecifiedActivity"
+		compEpsilon             = 2
+	)
+	want := coords.Size{Width: 600, Height: 500} // in DP.
+
+	act, err := arc.NewActivity(a, wm.Pkg24, wmSizeSpecifiedActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return err
+	}
+	defer act.Stop(ctx, tconn)
+
+	density, err := act.DisplayDensity(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get physical display density")
+	}
+
+	if err := compareWindowState(ctx, act, arc.WindowStateNormal); err != nil {
+		return err
+	}
+
+	bounds, err := act.SurfaceBounds(ctx)
+	if err != nil {
+		return err
+	}
+
+	got := coords.ConvertBoundsFromPXToDP(bounds, density).Size()
+	if !isSimilarSize(got, want, compEpsilon) {
+		return errors.Errorf("the activity doesn't have an expected size: got %+v; want %+v", got, want)
+	}
+	return nil
+}
+
 // compareWindowState compares the activity window state with the wanted one.
 // Returns nil only if they are equal.
 func compareWindowState(ctx context.Context, act *arc.Activity, wanted arc.WindowState) error {
@@ -287,4 +335,9 @@ func checkCentered(bounds, workArea coords.Rect) error {
 	}
 
 	return nil
+}
+
+// isSimilarSize compares two coords.Size whether their similar by epsilon.
+func isSimilarSize(l, r coords.Size, epsilon float64) bool {
+	return math.Abs(float64(l.Width-r.Width)) <= epsilon && math.Abs(float64(l.Height-r.Height)) <= epsilon
 }
