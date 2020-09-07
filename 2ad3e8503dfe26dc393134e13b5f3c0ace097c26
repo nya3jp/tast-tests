@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4376a339_54c38d8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-09-07T01:44:45Z",
+      "side": 1,
+      "message": "Hidehiko-san, could you please take a look as a test owner and one of the Tast reviewers? Thanks!",
+      "revId": "2ad3e8503dfe26dc393134e13b5f3c0ace097c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
