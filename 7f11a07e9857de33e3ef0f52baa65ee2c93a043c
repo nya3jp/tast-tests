@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6e8c219_0623d01b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-07T09:23:00Z",
+      "side": 1,
+      "message": "Verifies that 802.1x authentication (EAP exchange) is bypassed and PMKSA is done using PMK caching when it is available.",
+      "revId": "7f11a07e9857de33e3ef0f52baa65ee2c93a043c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "999d753b_c72c0bf5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-07T09:23:00Z",
+      "side": 1,
+      "message": "As ctx is used to the code before deconfig AP1, it shall use:\n\n// Reserve time for deconfig ap1. Note that ap1 should be created after the waitForRoam property watcher, we borrow ap0 to reserve time for DeconfigAP.\nctx, cancel \u003d tf.ReserveForDeconfigAP(ctx, ap0)",
+      "revId": "7f11a07e9857de33e3ef0f52baa65ee2c93a043c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
