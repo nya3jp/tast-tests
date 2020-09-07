@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "9889246b_f8882d9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-07T23:32:01Z",
+      "side": 1,
+      "message": "By \"cleaning up\", I mean the var is only created and used in this clean up method.",
+      "parentUuid": "6daa790b_34721a54",
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ded1fe05_a157eaa5",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
         "patchSetId": 1
@@ -246,6 +264,24 @@
       "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18064760_b1b92c2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-07T23:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2c70f61_6ad02f47",
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
