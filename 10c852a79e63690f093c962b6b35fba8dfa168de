@@ -52,6 +52,23 @@
       "revId": "10c852a79e63690f093c962b6b35fba8dfa168de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "175f4f15_899ddeb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-07T07:40:55Z",
+      "side": 1,
+      "message": "LGTM per Tast review.",
+      "revId": "10c852a79e63690f093c962b6b35fba8dfa168de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
