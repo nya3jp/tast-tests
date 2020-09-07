@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "dba1d665_4591dbf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T08:26:52Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2033045/comment/ef828a96_21b6059c/\n\nPer offline chat, this was introduced by the recommendation by hirokisato@.\n\nHiroki-san, could you share your concern where the FP error comes from?",
+      "parentUuid": "0772ec90_c6eb3b60",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 61
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "868737f0_97330e1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 19
@@ -195,6 +219,30 @@
       "side": 1,
       "message": "default, means the size (number of pixels) of the square without 1.25 scale factor applied.\n(so, default means the size of the square with 1.0 scale factor).\nMaybe, \"baseline\"PixelCount, naming is better ?\n(because, eventually 1.25 will become the default - once the flag has been flipped)",
       "parentUuid": "a7864034_8be00058",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 162,
+        "endChar": 16
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d67a404_cba86549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T08:26:52Z",
+      "side": 1,
+      "message": "baseline SG. Or, more verbosely nonscaledPixelCount?",
+      "parentUuid": "23cc35c2_f06c3c34",
       "range": {
         "startLine": 161,
         "startChar": 3,
