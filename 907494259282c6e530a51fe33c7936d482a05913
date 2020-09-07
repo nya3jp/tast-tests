@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "ee074ffe_14564b3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-07T23:16:03Z",
+      "side": 1,
+      "message": "Tast Shadow Review: Did another pass. Looking pretty good to me.\n\nLGTM % these nits + Hidehiko\u0027s comments. Please wait for Hidehiko (or another Tast Reviewer as Hidehiko is OOO) to approve before submitting.",
+      "revId": "907494259282c6e530a51fe33c7936d482a05913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c840dec8_f1979feb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 21
@@ -99,6 +116,29 @@
     },
     {
       "key": {
+        "uuid": "63e7a595_5e990d52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen/screen.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-07T23:16:03Z",
+      "side": 1,
+      "message": "nit: Consider wrapping this error to provide additional context, like you do on line 71.",
+      "range": {
+        "startLine": 85,
+        "startChar": 15,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "907494259282c6e530a51fe33c7936d482a05913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2efdc1ab_8d90d4ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
         "patchSetId": 21
@@ -115,6 +155,29 @@
         "startChar": 0,
         "endLine": 30,
         "endChar": 63
+      },
+      "revId": "907494259282c6e530a51fe33c7936d482a05913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8639f15f_64336e77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-07T23:16:03Z",
+      "side": 1,
+      "message": "nit: non-maximised",
+      "range": {
+        "startLine": 23,
+        "startChar": 71,
+        "endLine": 23,
+        "endChar": 72
       },
       "revId": "907494259282c6e530a51fe33c7936d482a05913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
