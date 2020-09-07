@@ -22,6 +22,30 @@
       "revId": "be68680603664f0aa4170baf080fa8a39af3e582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e200d3ca_f0447e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2020-09-07T06:33:07Z",
+      "side": 1,
+      "message": "Done. This was a remnant from before parameterising the test.",
+      "parentUuid": "18e4c9c8_ac8b2722",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "be68680603664f0aa4170baf080fa8a39af3e582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
