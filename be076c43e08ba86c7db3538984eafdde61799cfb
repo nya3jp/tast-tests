@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "828a524b_f3e8da89",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-07T04:42:49Z",
+      "side": 1,
+      "message": "Optional: Only one item in the structure, can be done in one line. But okay to remain it.\n\nRegarding to structure, it might need a bit of code duplication for other tabs. e.g.\n\nNetworkTab \u003d ui.FindParams{\n\tName: \"Network\",\n\tRole: ui.RoleTypeLink,\n}\n\nHow about a private function:\n\nfunc tabNodeParam(tabName string) ui.FindParam{\n    return ui.FindParams{\n\tName: tabName,\n\tRole: ui.RoleTypeLink,\n    }\n}",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
