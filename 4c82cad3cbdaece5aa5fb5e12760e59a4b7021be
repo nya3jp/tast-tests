@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f05ef255_1820daeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-07T05:06:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "163534dc_9cfec0dd",
+      "revId": "4c82cad3cbdaece5aa5fb5e12760e59a4b7021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de6303dc_66dfd3ff",
         "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "4c82cad3cbdaece5aa5fb5e12760e59a4b7021be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23facdfb_3f76f4b9",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-07T05:06:37Z",
+      "side": 1,
+      "message": "Didn\u0027t know it was possible, thanks for showing me.",
+      "parentUuid": "de6303dc_66dfd3ff",
+      "range": {
+        "startLine": 71,
+        "startChar": 70,
+        "endLine": 71,
+        "endChar": 102
+      },
+      "revId": "4c82cad3cbdaece5aa5fb5e12760e59a4b7021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
