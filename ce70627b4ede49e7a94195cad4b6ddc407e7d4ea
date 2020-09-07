@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "095e1d8b_1ca6fcc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-07T13:05:30Z",
+      "side": 1,
+      "message": "rename elemen to make it more meaningful",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 19
+      },
+      "revId": "ce70627b4ede49e7a94195cad4b6ddc407e7d4ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

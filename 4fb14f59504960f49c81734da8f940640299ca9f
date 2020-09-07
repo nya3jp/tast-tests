@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f9558fa_bffcbce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-07T13:05:30Z",
+      "side": 0,
+      "message": "RoleTypeStaticText does not exist on tablet mode. Using Element.Value works for both mode.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 3
+      },
+      "revId": "4fb14f59504960f49c81734da8f940640299ca9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
