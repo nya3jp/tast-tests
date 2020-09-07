@@ -16,6 +16,69 @@
       "revId": "2ad3e8503dfe26dc393134e13b5f3c0ace097c26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c1ba321_05277f9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removable_media.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T08:11:08Z",
+      "side": 1,
+      "message": "It\u0027s your call, but we often keep the test to be critical so the breakage can be captured?\nAlso, if you make this informational, I\u0027d recommend you to add TODO to be moved back to critical with the reason.",
+      "revId": "2ad3e8503dfe26dc393134e13b5f3c0ace097c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0539544f_90c0f156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T08:11:08Z",
+      "side": 1,
+      "message": "nit: could you use s.Log() instead?\nDitto for below.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 20
+      },
+      "revId": "2ad3e8503dfe26dc393134e13b5f3c0ace097c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e73c31d_bb549c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T08:11:08Z",
+      "side": 1,
+      "message": "Clarification:\n\ndo you want/need to check the new URI case, even if the legacyURI returns the data (but unexpected)?\nI.e., is it expect that the legacyURI returns data even after new URI supports?\n\nIf so, could you share the logic for older and newer tests?\n\nverify :\u003d func(uri string) error {\n  out, err :\u003d a.Command(..., uri).Output(...)\n  if err !\u003d nil {\n    return err\n  }\n  if !bytes.Equal(out, expected) {\n    ... // dump to a file.\n    return ... // error\n  }\n  return nil\n}\n\n... verify(legacyURI)\n... verify(newURI)\n\ncallers can choose whether error should be ignored or not?\n\nOr, if it is not expected, could you unify calling \"content read\" part?\n\nout, err :\u003d func() (string, error) {\n  out, err :\u003d a.Command(ctx, ... legacyURI).Output(...)\n  if err \u003d\u003d nil {\n    return out, nil\n  }\n  // fallback to new URI\n  return a.Command(ctx, ... newURI).Output(...)\n}()\nif err !\u003d nil {\n  s.Fatal(...)\n}\n\nWDYT?",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 122
+      },
+      "revId": "2ad3e8503dfe26dc393134e13b5f3c0ace097c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
