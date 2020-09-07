@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // WaitForOnline waits for Internet connectivity, a shorthand which is useful so external packages don't have to worry
@@ -33,4 +34,47 @@ func WaitForOnline(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+// ExecFuncOffline disables all powered devices to turn the device to completely offline,
+// runs given function and then reverts back to the original state.
+// Important note: Turn device offline will also disrupt ssh heartbeat.
+// As a consequence, this function needs to return within 60s.
+func ExecFuncOffline(ctx context.Context, f func(offlineCtx context.Context) error) error {
+	ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+
+	m, err := NewManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed creating shill manager proxy")
+	}
+
+	devices, _ := m.Devices(ctx)
+	for _, device := range devices {
+		properties, err := device.GetProperties(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get device properties")
+		}
+
+		isDevicePowered, err := properties.GetBool(shillconst.DevicePropertyPowered)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get power property of device: %s", device)
+		}
+
+		if isDevicePowered {
+			testing.ContextLogf(ctx, "Disabling device: %s", device)
+			if err := device.Disable(ctx); err != nil {
+				return errors.Wrapf(err, "failed to disable device: %s", device)
+			}
+			defer func() error {
+				testing.ContextLogf(ctx, "Re-enabling device: %s", device)
+				if err := device.Enable(ctx); err != nil {
+					return err
+				}
+				return nil
+			}()
+		}
+	}
+
+	return f(ctx)
 }
