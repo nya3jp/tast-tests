@@ -9,6 +9,7 @@ package ui
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -41,8 +42,10 @@ const (
 
 const uiTimeout = 30 * time.Second
 
-var installWindowChromebookFP = ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "Set up Linux (Beta) on your Chromebook"}
-var installWindowChromeboxFP = ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: "Set up Linux (Beta) on your Chromebox"}
+var installWindowFindParams = ui.FindParams{
+	Role:       ui.RoleTypeRootWebArea,
+	Attributes: map[string]interface{}{"name": regexp.MustCompile(`Set up Linux \(Beta\) on your `)},
+}
 
 // Image setup mode.
 const (
@@ -61,24 +64,12 @@ type InstallationOptions struct {
 
 // Installer is a page object for the settings screen of the Crostini Installer.
 type Installer struct {
-	tconn    *chrome.TestConn
-	windowFP ui.FindParams
+	tconn *chrome.TestConn
 }
 
 // New creates a new Installer page object.
 func New(ctx context.Context, tconn *chrome.TestConn) (*Installer, error) {
-	// Chromebooks and ChromeBoxs have different window titles, find the most common one first, then fall back to the less common one.
-	var errBook, errBox error
-	windowFP := installWindowChromebookFP
-	errBook = uig.Do(ctx, tconn, uig.FindWithTimeout(installWindowChromebookFP, 5*time.Second))
-	if errBook != nil {
-		windowFP = installWindowChromeboxFP
-		errBox = uig.Do(ctx, tconn, uig.FindWithTimeout(installWindowChromeboxFP, time.Second))
-		if errBox != nil {
-			return nil, errors.Errorf("could not find installer window for either chromebook or chromebox: chromebook error: %w chromebox error: %v", errBook, errBox)
-		}
-	}
-	return &Installer{tconn, windowFP}, nil
+	return &Installer{tconn}, nil
 }
 
 func parseDiskSizeString(str string) (uint64, error) {
@@ -107,7 +98,7 @@ func parseDiskSizeString(str string) (uint64, error) {
 // SetDiskSize uses the slider on the Installer options pane to set the disk
 // size to the smallest slider increment larger than the specified disk size.
 func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
-	window := uig.FindWithTimeout(p.windowFP, uiTimeout)
+	window := uig.FindWithTimeout(installWindowFindParams, uiTimeout)
 	radioGroup := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRadioGroup}, uiTimeout)
 	slider := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeSlider}, uiTimeout)
 
@@ -191,7 +182,7 @@ func (p *Installer) Install(ctx context.Context) error {
 		uig.Steps(
 			install.FocusAndWait(uiTimeout),
 			install.LeftClick(),
-			uig.WaitUntilDescendantGone(p.windowFP, 10*time.Minute)).WithNamef("Install()"))
+			uig.WaitUntilDescendantGone(installWindowFindParams, 10*time.Minute)).WithNamef("Install()"))
 }
 
 func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerDir, terminaImage string, err error) {
