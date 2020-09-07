@@ -33,6 +33,24 @@
       "revId": "cad65b71ff3799bc3a93084ec06a4f437cdee4a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37ddb46a_1b7bc423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-07T06:28:01Z",
+      "side": 1,
+      "message": "This is because I was suggested a similar change in another tast-owner review:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2389803/2..5/src/chromiumos/tast/local/bundles/cros/arc/companion_library.go#b486\n\nOn the other hand, Mukai-san also asked the same. (Patchset2 of this CL)\nI\u0027m fine either way.\nAre there any recommendations on this?",
+      "parentUuid": "cb3decbf_b0509344",
+      "revId": "cad65b71ff3799bc3a93084ec06a4f437cdee4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
