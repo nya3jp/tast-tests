@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "163534dc_9cfec0dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T04:23:37Z",
+      "side": 1,
+      "message": "hugenit: \"This\"",
+      "revId": "4c82cad3cbdaece5aa5fb5e12760e59a4b7021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de6303dc_66dfd3ff",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T04:23:37Z",
+      "side": 1,
+      "message": "To be simple and robust, how about matching with prefix?",
+      "range": {
+        "startLine": 71,
+        "startChar": 70,
+        "endLine": 71,
+        "endChar": 102
+      },
+      "revId": "4c82cad3cbdaece5aa5fb5e12760e59a4b7021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
