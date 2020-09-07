@@ -39,6 +39,30 @@
       "revId": "209395144d64471dc4e001dc7df9af198b561a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e8799d_3d8bf8ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1125794
+      },
+      "writtenOn": "2020-09-07T11:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397d7e3c_d6cb9333",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "209395144d64471dc4e001dc7df9af198b561a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
