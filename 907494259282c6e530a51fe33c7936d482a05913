@@ -16,6 +16,46 @@
       "revId": "907494259282c6e530a51fe33c7936d482a05913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c0e3db6_a80d0b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen/screen.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T08:26:52Z",
+      "side": 1,
+      "message": "maybe: prevNumFrames\n\nto be consistent with numFrames below.",
+      "revId": "907494259282c6e530a51fe33c7936d482a05913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ba09dc_dec0030c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen/screen.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-07T08:26:52Z",
+      "side": 1,
+      "message": "in case of !ok, this returns success.\nMaybe\n\nnumFrames, ok :\u003d stats[...]\nif !ok {\n  return testing.PollBreak(...)\n}\nif numFrames !\u003d prevNumFrames {\n  prevNumFrames \u003d numFrames\n  return errors.New(...)\n}\nreturn nil",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 3
+      },
+      "revId": "907494259282c6e530a51fe33c7936d482a05913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
