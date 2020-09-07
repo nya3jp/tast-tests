@@ -11,12 +11,14 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -318,6 +320,24 @@ func getChromeArgs() ([]string, error) {
 	return proc.CmdlineSlice()
 }
 
+func diagnoseSyslog(ctx context.Context, reader *syslog.Reader, msg string) string {
+	lastMessage := ""
+	for {
+		entry, err := reader.Read()
+		if err == io.EOF {
+			// Final line is reached.
+			if lastMessage != "" {
+				return fmt.Sprintf("%v: %v", msg, lastMessage)
+			}
+			return msg
+		}
+		if strings.HasPrefix(entry.Program, "ARCVM") {
+			// TODO(b/167944318): grab significant error message.
+			lastMessage = entry.Content
+		}
+	}
+}
+
 // WaitAndroidInit waits for Android init process to start.
 //
 // It is very rare you want to call this function from your test; to wait for
@@ -329,13 +349,21 @@ func WaitAndroidInit(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, androidInitTimeout)
 	defer cancel()
 
+	// Start a syslog reader so we can give more useful debug
+	// information waiting for boot.
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
 	// Wait for init or crosvm process to start before checking deeper.
 	testing.ContextLog(ctx, "Waiting for initial ARC process")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := InitPID()
 		return err
 	}, &testing.PollOptions{Interval: time.Second}); err != nil {
-		return errors.Wrap(err, "Init/crosvm process did not start up")
+		return errors.Wrap(err, diagnoseSyslog(ctx, reader, "Init/crosvm process did not start up"))
 	}
 
 	// Wait for an arbitrary property set by Android init very
@@ -343,7 +371,7 @@ func WaitAndroidInit(ctx context.Context) error {
 	// process started.
 	const prop = "net.tcp.default_init_rwnd"
 	if err := waitProp(ctx, prop, "60", reportTiming); err != nil {
-		return errors.Wrapf(err, "%s property is not set which shows that Android init did not come up", prop)
+		return errors.Wrap(err, diagnoseSyslog(ctx, reader, fmt.Sprintf("%s property is not set which shows that Android init did not come up", prop)))
 	}
 	return nil
 }
