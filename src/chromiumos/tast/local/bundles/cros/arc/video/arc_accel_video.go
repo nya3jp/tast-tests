@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/c2e2etest"
+	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/testexec"
