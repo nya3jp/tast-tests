@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05e0c19e_f02a3a3d",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-07T21:47:27Z",
+      "side": 1,
+      "message": "Can remove DumpLog, the post-test hook I added grabs the logs already. If you rebase on ToT the presubmit check will tell you what to copy/paste in for the hook.",
+      "revId": "fd4036ccb7cbdfe67b13b6799ab8deaea3fb7fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "537cdf55_d650d266",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-07T21:47:27Z",
+      "side": 1,
+      "message": "No croslog in the container, have to use journalctl. I think I know the code you copied for this, and it was broken a while ago by a find/replace. Yay for booby traps :\u0027(.",
+      "range": {
+        "startLine": 666,
+        "startChar": 24,
+        "endLine": 666,
+        "endChar": 31
+      },
+      "revId": "fd4036ccb7cbdfe67b13b6799ab8deaea3fb7fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
