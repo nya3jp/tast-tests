@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fecac7a_0c2295f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-09-07T09:55:46Z",
+      "side": 0,
+      "message": "Removed because unnecessary, seems to have been left here by mistake.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "4fb14f59504960f49c81734da8f940640299ca9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
