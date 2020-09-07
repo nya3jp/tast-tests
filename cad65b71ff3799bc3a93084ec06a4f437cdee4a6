@@ -16,6 +16,23 @@
       "revId": "cad65b71ff3799bc3a93084ec06a4f437cdee4a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb3decbf_b0509344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-07T06:22:52Z",
+      "side": 1,
+      "message": "A question, why not just return-by-value? You can return empty struct when err !\u003d nil.",
+      "revId": "cad65b71ff3799bc3a93084ec06a4f437cdee4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
