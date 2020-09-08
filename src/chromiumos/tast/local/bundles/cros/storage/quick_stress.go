@@ -73,22 +73,22 @@ func setup(ctx context.Context, s *testing.State) {
 	// Run tests to collect metrics.
 	perfValues := perf.NewValues()
 	testConfig := &stress.TestConfig{PerfValues: perfValues}
-	stress.RunFioStress(ctx, s, "seq_write", testConfig)
-	stress.RunFioStress(ctx, s, "seq_read", testConfig)
-	stress.RunFioStress(ctx, s, "4k_write", testConfig)
-	stress.RunFioStress(ctx, s, "4k_read", testConfig)
-	stress.RunFioStress(ctx, s, "16k_write", testConfig)
-	stress.RunFioStress(ctx, s, "16k_read", testConfig)
+	stress.RunFioStressForBootDevice(ctx, s, "seq_write", testConfig)
+	stress.RunFioStressForBootDevice(ctx, s, "seq_read", testConfig)
+	stress.RunFioStressForBootDevice(ctx, s, "4k_write", testConfig)
+	stress.RunFioStressForBootDevice(ctx, s, "4k_read", testConfig)
+	stress.RunFioStressForBootDevice(ctx, s, "16k_write", testConfig)
+	stress.RunFioStressForBootDevice(ctx, s, "16k_read", testConfig)
 	perfValues.Save(s.OutDir())
 }
 
 func testBlock(ctx context.Context, s *testing.State) {
 	perfValues := perf.NewValues()
-	stress.RunFioStress(ctx, s, "64k_stress", &stress.TestConfig{Duration: 1 * time.Hour})
+	stress.RunFioStressForBootDevice(ctx, s, "64k_stress", &stress.TestConfig{Duration: 1 * time.Hour})
 	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
 		s.Fatal("Sleep failed: ", err)
 	}
-	stress.RunFioStress(ctx, s, "surfing", &stress.TestConfig{
+	stress.RunFioStressForBootDevice(ctx, s, "surfing", &stress.TestConfig{
 		Duration:   1 * time.Hour,
 		VerifyOnly: true,
 		PerfValues: perfValues,
@@ -97,9 +97,9 @@ func testBlock(ctx context.Context, s *testing.State) {
 	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
 		s.Fatal("Sleep failed: ", err)
 	}
-	stress.RunFioStress(ctx, s, "8k_async_randwrite", &stress.TestConfig{Duration: 4 * time.Minute})
+	stress.RunFioStressForBootDevice(ctx, s, "8k_async_randwrite", &stress.TestConfig{Duration: 4 * time.Minute})
 	stress.Suspend(ctx)
-	stress.RunFioStress(ctx, s, "8k_async_randwrite", &stress.TestConfig{
+	stress.RunFioStressForBootDevice(ctx, s, "8k_async_randwrite", &stress.TestConfig{
 		VerifyOnly: true,
 		PerfValues: perfValues,
 	})
