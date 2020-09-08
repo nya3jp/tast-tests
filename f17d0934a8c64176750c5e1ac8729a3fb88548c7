@@ -16,6 +16,29 @@
       "revId": "f17d0934a8c64176750c5e1ac8729a3fb88548c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "665d6817_2264e10c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-08T08:29:40Z",
+      "side": 1,
+      "message": "In table-driven tests, you can use testing.State.Run to automatically prepend subtest names to error messages.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests\n\nThen you don\u0027t need to include zipFile in every error messages.\n\n s.Run(zipBaseName, func(s *testing.State) {\n     s.Error(\"Failed\")  // -\u003e \"500_small_files: Failed\"\n })",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "f17d0934a8c64176750c5e1ac8729a3fb88548c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
