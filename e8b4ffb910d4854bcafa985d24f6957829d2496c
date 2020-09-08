@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fff6fda6_aefc0ece",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-08T09:34:09Z",
+      "side": 1,
+      "message": "lamzin: PTAL",
+      "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
