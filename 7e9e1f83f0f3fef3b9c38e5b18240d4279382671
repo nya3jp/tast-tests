@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "993e437f_abdb38d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-08T15:59:50Z",
+      "side": 1,
+      "message": "nit: replace \"boot\" with \"first login\"? (AIUI this file is only created once, right? Not every boot?)",
+      "range": {
+        "startLine": 214,
+        "startChar": 111,
+        "endLine": 214,
+        "endChar": 115
+      },
+      "revId": "7e9e1f83f0f3fef3b9c38e5b18240d4279382671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
