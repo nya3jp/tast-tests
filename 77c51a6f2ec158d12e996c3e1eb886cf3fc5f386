@@ -16,6 +16,40 @@
       "revId": "77c51a6f2ec158d12e996c3e1eb886cf3fc5f386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27408798_6584c777",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-08T02:13:07Z",
+      "side": 1,
+      "message": "LGTM with one more fix requests.",
+      "revId": "77c51a6f2ec158d12e996c3e1eb886cf3fc5f386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6298ff8a_7d4f6ea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-08T02:13:07Z",
+      "side": 1,
+      "message": "Could you follow the godoc style?\n\nhttps://golang.org/doc/effective_go.html#commentary\n\n\u003d\u003d quote \u003d\u003d\nDoc comments work best as complete sentences, which allow a wide variety of automated presentations. The first sentence should be a one-sentence summary that starts with the name being declared.\n...\n\u003d\u003d quote end \u003d\u003d\n\nAlso, nice to add document for each field, too.\n\nDitto for the below comment for constants. (Recommending to add godoc style comment for each constant).",
+      "revId": "77c51a6f2ec158d12e996c3e1eb886cf3fc5f386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
