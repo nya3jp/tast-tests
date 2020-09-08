@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "bcb0d82f_d8acb7af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T04:29:20Z",
+      "side": 1,
+      "message": "Thanks shengjun@ for adding me.\n\nI wrote a similar test when What\u0027s New was a PWA, that I just recently handed over to Jun in CL:2386373. It\u0027s less E2E than this test, so I\u0027m fine with replacing it in favor of a more UI-heavy approach. The OS Settings \"launchReleaseNotes\" function is pretty reliable and called as part of the corresponding button\u0027s onclick() method so it seems like an acceptable shortcut if you need it, though.\n\nI left some comments for some tricky things that I encountered back when I wrote my test, as I also initially favored doing everything through the UI. You can see some of the history of that in CL:2220790, from PS#3 and onward.",
+      "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df81cb53_7dd95fa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T04:29:20Z",
+      "side": 1,
+      "message": "From what I remember, this step can be flaky on certain boards (banjo, guado, utlima). On those devices, a Powerwash option (https://screenshot.googleplex.com/5b3cG2388uEQm4m.png) shows up after the initial page load, causing the wrong area to receive the click. This was a few milestones ago, so I\u0027m not sure if the behavior is the same. It might be worth it to run the test a few times on one of those boards.\n\nThese kinds of issues might be resolved by CL:2390844 and CL:2392782, but it\u0027s something to consider.",
+      "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "828a524b_f3e8da89",
         "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
         "patchSetId": 4
@@ -36,6 +70,23 @@
         "endLine": 28,
         "endChar": 1
       },
+      "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "377483dd_c8564f3c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T04:29:20Z",
+      "side": 1,
+      "message": "The \u0027About Chrome OS\u0027 link isn\u0027t always immediately visible, for example on a Scarlet device: https://screenshot.googleplex.com/5psxUGvnub45gdT.png\n\nIt tends to be hidden in tablet mode, on small screen devices, or even in clamshell if the settings app happens to be zoomed in. You\u0027ll need to conditionally expand that menu to make this stable across all boards in the lab (or maybe force landscape+clamshell?).",
       "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
