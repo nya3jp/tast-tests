@@ -186,7 +186,7 @@ func diskSizePretty(dev string) (sizeGB string, err error) {
 	return strconv.Itoa(int(1024*blocks/math.Pow(10, 9.0)+0.5)) + "G", nil
 }
 
-func reportResults(ctx context.Context, res *fioResult, dev string, perfValues *perf.Values) {
+func reportResults(ctx context.Context, res *fioResult, dev string, rawDevTest bool, perfValues *perf.Values) {
 	devName := res.DiskUtil[0].Name
 	devSize, err := diskSizePretty(devName)
 	if err != nil {
@@ -195,6 +195,9 @@ func reportResults(ctx context.Context, res *fioResult, dev string, perfValues *
 	}
 	testing.ContextLogf(ctx, "Size of device: %s is: %s", devName, devSize)
 	group := dev + "_" + string(devSize)
+	if rawDevTest {
+		group += "_raw"
+	}
 
 	for _, job := range res.Jobs {
 		if strings.Contains(job.Jobname, "read") || strings.Contains(job.Jobname, "stress") {
@@ -235,10 +238,12 @@ func escapeJSONName(name string) string {
 
 // RunFioStress runs a single given storage job. job must be in Configs.
 // If verifyOnly is true, only benchmark data is collected to result-chart.json
-func RunFioStress(ctx context.Context, s *testing.State, job string, testConfig *TestConfig) {
+func RunFioStress(ctx context.Context, s *testing.State, job, testDataPath string, testConfig *TestConfig) {
 	if testConfig == nil {
 		testConfig = &TestConfig{}
 	}
+
+	rawDev := strings.HasPrefix(testDataPath, "/dev/")
 
 	validateTestConfig(ctx, s, job)
 
@@ -249,10 +254,10 @@ func RunFioStress(ctx context.Context, s *testing.State, job string, testConfig 
 	}
 	devName := escapeJSONName(info.Name)
 
-	// File name the disk I/O test is performed on.
-	const testDataPath = "/mnt/stateful_partition/fio_test_data"
-	// Delete the test data file on host.
-	defer os.RemoveAll(testDataPath)
+	if !rawDev {
+		// Delete the test data file on host.
+		defer os.RemoveAll(testDataPath)
+	}
 
 	testing.ContextLog(ctx, "Running job ", job)
 	var res *fioResult
@@ -269,6 +274,13 @@ func RunFioStress(ctx context.Context, s *testing.State, job string, testConfig 
 	}
 
 	if testConfig.PerfValues != nil {
-		reportResults(ctx, res, devName, testConfig.PerfValues)
+		reportResults(ctx, res, devName, rawDev, testConfig.PerfValues)
 	}
+}
+
+// RunFioStressForBootDevice runs a single given storage job for boot device.
+// job must be in Configs.
+// If verifyOnly is true, only benchmark data is collected to result-chart.json
+func RunFioStressForBootDevice(ctx context.Context, s *testing.State, job string, testConfig *TestConfig) {
+	RunFioStress(ctx, s, job, "/mnt/stateful_partition/fio_test_data", testConfig)
 }
