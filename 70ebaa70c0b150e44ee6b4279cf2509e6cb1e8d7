@@ -22,6 +22,30 @@
       "revId": "70ebaa70c0b150e44ee6b4279cf2509e6cb1e8d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eabfc2a_94417fab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-08T03:26:24Z",
+      "side": 1,
+      "message": "On second thought, I would like to keep both tests. This CL is for green stainless. The container test is flaky and deactivating it is the simplest solution, since we don\u0027t need it anymore. We may want to run it manually when making changes to memory-related stuff.",
+      "parentUuid": "503cb306_dff46277",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "70ebaa70c0b150e44ee6b4279cf2509e6cb1e8d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
