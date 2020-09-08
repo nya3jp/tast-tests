@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "525a87fd_566648aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-09-08T03:54:24Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "0f2673054e903066482bfbe71e6250940dd63bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5ca83c6_d14ce359",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 1
