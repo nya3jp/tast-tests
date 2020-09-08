@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2ff7aa0_8fe7ee8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-08T09:49:21Z",
+      "side": 1,
+      "message": "nit: same as `density` repetition, as the receiver type is Change, how about renaming this to `Execute`?\ngo/go-style/best-practices#function-name-repetition",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "a9018e4b7f6cbb00225b5bcedeb9b69064c0b867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ed4de0c_b9b39277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-08T09:49:21Z",
+      "side": 1,
+      "message": "nit: The apk has two activities now. \u0027the density activity\u0027 sounds ambiguous to me. How about making it clear?",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 38
+      },
+      "revId": "a9018e4b7f6cbb00225b5bcedeb9b69064c0b867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab5d9307_0cac34eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-08T09:49:21Z",
+      "side": 1,
+      "message": "Is it okay that this deferred methods is executed when this function returns?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 19
+      },
+      "revId": "a9018e4b7f6cbb00225b5bcedeb9b69064c0b867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85aba656_69819038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-08T09:49:21Z",
+      "side": 1,
+      "message": "similar to above, this shorten context is used only inside this method.\nThis behavior is different from the current behavior. Is this okay?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "a9018e4b7f6cbb00225b5bcedeb9b69064c0b867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
