@@ -92,12 +92,8 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 		}
 		defer omnibox.Release(ctx)
 
-		if err := omnibox.LeftClick(ctx); err != nil {
+		if err := omnibox.ClickUntilVKShown(ctx); err != nil {
 			s.Fatal("Failed to click the omnibox: ", err)
-		}
-
-		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 		}
 
 		if err := vkb.TapKey(ctx, tconn, mode.typeKey); err != nil {
