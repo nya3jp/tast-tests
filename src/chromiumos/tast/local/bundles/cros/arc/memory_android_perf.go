@@ -27,8 +27,6 @@ func init() {
 		Pre:          arc.Booted(),
 		Data:         memory.AndroidData(),
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
