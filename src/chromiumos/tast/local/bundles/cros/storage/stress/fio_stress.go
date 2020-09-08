@@ -186,7 +186,7 @@ func diskSizePretty(dev string) (sizeGB string, err error) {
 	return strconv.Itoa(int(1024*blocks/math.Pow(10, 9.0)+0.5)) + "G", nil
 }
 
-func reportResults(ctx context.Context, res *fioResult, dev string, rawDevTest bool, perfValues *perf.Values) {
+func resultGroupName(ctx context.Context, res *fioResult, dev, rawDevTest string) string {
 	devName := res.DiskUtil[0].Name
 	devSize, err := diskSizePretty(devName)
 	if err != nil {
@@ -199,6 +199,10 @@ func reportResults(ctx context.Context, res *fioResult, dev string, rawDevTest b
 		group += "_raw"
 	}
 
+	return group
+}
+
+func reportResults(ctx context.Context, res *fioResult, group string, perfValues *perf.Values) {
 	for _, job := range res.Jobs {
 		if strings.Contains(job.Jobname, "read") || strings.Contains(job.Jobname, "stress") {
 			reportJobRWResult(ctx, job.Read, job.Jobname+"_read", group, perfValues)
@@ -274,7 +278,8 @@ func RunFioStress(ctx context.Context, s *testing.State, job, testDataPath strin
 	}
 
 	if testConfig.PerfValues != nil {
-		reportResults(ctx, res, devName, rawDev, testConfig.PerfValues)
+		group := resultGroupName(ctx, res, devName, rawDev)
+		reportResults(ctx, res, group, testConfig.PerfValues)
 	}
 }
 
