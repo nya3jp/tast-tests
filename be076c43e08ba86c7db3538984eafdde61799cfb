@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "702bb218_c0895040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-08T05:33:19Z",
+      "side": 1,
+      "message": "THanks so much for these information. @Kyle, in this case, how about dispatch a click event in js? I think it is better than straightly calling launchapp.",
+      "parentUuid": "df81cb53_7dd95fa2",
+      "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "828a524b_f3e8da89",
         "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
         "patchSetId": 4
@@ -87,6 +105,24 @@
       "writtenOn": "2020-09-08T04:29:20Z",
       "side": 1,
       "message": "The \u0027About Chrome OS\u0027 link isn\u0027t always immediately visible, for example on a Scarlet device: https://screenshot.googleplex.com/5psxUGvnub45gdT.png\n\nIt tends to be hidden in tablet mode, on small screen devices, or even in clamshell if the settings app happens to be zoomed in. You\u0027ll need to conditionally expand that menu to make this stable across all boards in the lab (or maybe force landscape+clamshell?).",
+      "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abc10a06_6c8660f9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-08T05:33:19Z",
+      "side": 1,
+      "message": "My suggestion is to load settings page in browser: chrome://settings/help",
+      "parentUuid": "377483dd_c8564f3c",
       "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
