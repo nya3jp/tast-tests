@@ -39,6 +39,30 @@
       "revId": "f17d0934a8c64176750c5e1ac8729a3fb88548c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b85ed71b_3766c5cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-09-08T09:56:22Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, now using zipBasename to run subtests.",
+      "parentUuid": "665d6817_2264e10c",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "f17d0934a8c64176750c5e1ac8729a3fb88548c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
