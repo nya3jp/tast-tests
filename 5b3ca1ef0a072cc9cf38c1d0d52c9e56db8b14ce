@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "c61b56dd_5d4d7c92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-08T09:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d593551_9af95994",
+      "range": {
+        "startLine": 28,
+        "startChar": 17,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95403612_f05801e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25586c1a_a3d31aa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-08T09:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95403612_f05801e0",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "efce6d94_d9186754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-08T09:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99aabacf_dc3eda57",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0408f604_52c345bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 3
@@ -108,6 +180,30 @@
       "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cffb367_7ab9a877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-08T09:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0408f604_52c345bd",
+      "range": {
+        "startLine": 50,
+        "startChar": 25,
+        "endLine": 50,
+        "endChar": 72
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "647dee77_c6a60c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-08T09:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7cfa389_0a34561e",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 35
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aad08318_3709728b",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 3
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "04f66667_008ca050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-08T09:45:04Z",
+      "side": 1,
+      "message": "I have changed this, but I believe \":\" does not create a diferent sentence.",
+      "parentUuid": "aad08318_3709728b",
+      "range": {
+        "startLine": 130,
+        "startChar": 25,
+        "endLine": 130,
+        "endChar": 81
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65910088_d44e02dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
         "patchSetId": 3
@@ -177,6 +321,30 @@
       "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b32179_bc3effac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-08T09:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65910088_d44e02dd",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
