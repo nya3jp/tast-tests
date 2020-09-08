@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f51d3ad_a085125e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "Hi Rachel,\n\nThanks for your CL! I have few comments:",
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17008e3a_c4967dc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "please put your email first",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9acd3cbe_ac078b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "omit",
+      "range": {
+        "startLine": 26,
+        "startChar": 33,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d978df7_ea584707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "please add period",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 26,
+        "endChar": 53
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "439c5041_d15f24c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "please use a separate cleanup context in defer statements, otherwise you may not have enough time for proper cleanup",
+      "range": {
+        "startLine": 51,
+        "startChar": 33,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc2cb607_61b25027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9bd435_88b86eba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "put period at the end",
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e4a7b01_d38f8f19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "omit",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 7
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee6432ba_26074f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69bb599d_5b8901c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "Why you cannot use SearchAndWaitForApp? Looks like it does the same job",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 0
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64b6f6a_36d4bfc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "same: add error",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc757ff_94021d79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T09:06:29Z",
+      "side": 1,
+      "message": "Please add error as well",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
