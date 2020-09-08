@@ -21,8 +21,6 @@ package tabswitchcuj
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -42,30 +40,27 @@ const (
 	WPRArchiveName = "tab_switch_cuj.wprgo"
 )
 
-func getURLs(ctx context.Context, c *chrome.Conn, expr string, numPages int) ([]string, error) {
-	urls := make([]string, 0, numPages)
-	findURLsExpr := fmt.Sprintf(`(function() {
+// findAnchorURLs returns the unique URLs of the anchors, which matches the pattern.
+// If it finds more than limit, returns the first limit elements.
+func findAnchorURLs(ctx context.Context, c *chrome.Conn, pattern string, limit int) ([]string, error) {
+	var urls []string
+	if err := c.Call(ctx, &urls, `(pattern, limit) => {
 		const anchors = [...document.getElementsByTagName('A')];
 		const founds = new Set();
 		const results = [];
-		for (let i = 0; i < anchors.length && results.length < %d; i++) {
-			const href = anchors[i].href;
-			if (founds.has(href)) {
-				continue;
-			}
-			founds.add(href);
-			try {
-				const url = new URL(href);
-				if ((%s)(url)) {
-					results.push(href);
-				}
-			} catch {
-				// do nothing.
-			}
+		const regexp = new RegExp(pattern);
+		for (let i = 0; i < anchors.length && results.length < limit; i++) {
+		  const href = new URL(anchors[i].href).toString();
+		  if (founds.has(href)) {
+		    continue;
+		  }
+		  founds.add(href);
+		  if (regexp.test(href)) {
+		    results.push(href);
+		  }
 		}
 		return results;
-	})()`, numPages, expr)
-	if err := c.Eval(ctx, findURLsExpr, &urls); err != nil {
+	}`, pattern, limit); err != nil {
 		return nil, err
 	}
 	if len(urls) == 0 {
@@ -79,20 +74,15 @@ func waitUntilAllTabsLoaded(ctx context.Context, tconn *chrome.TestConn, timeout
 		"status":        "loading",
 		"currentWindow": true,
 	}
-	queryData, err := json.Marshal(query)
-	if err != nil {
-		return errors.Wrap(err, "failed to marshal query")
-	}
-	expr := fmt.Sprintf(`tast.promisify(chrome.tabs.query)(%s)`, string(queryData))
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		var tabs []map[string]interface{}
-		if err := tconn.EvalPromise(ctx, expr, &tabs); err != nil {
+		if err := tconn.Call(ctx, &tabs, `tast.promisify(chrome.tabs.query)`, query); err != nil {
 			return testing.PollBreak(err)
 		}
-		if len(tabs) == 0 {
-			return nil
+		if len(tabs) != 0 {
+			return errors.Errorf("still %d tabs are loading", len(tabs))
 		}
-		return errors.Errorf("still %d tabs are loading", len(tabs))
+		return nil
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
@@ -100,7 +90,6 @@ func waitUntilAllTabsLoaded(ctx context.Context, tconn *chrome.TestConn, timeout
 // record web contents via WPR and invoked by TabSwitchCUJ to exercise the tests
 // from the recorded contents.
 func Run(ctx context.Context, s *testing.State) {
-	const numPages = 6
 	cr := s.PreValue().(*chrome.Chrome)
 
 	kw, err := input.Keyboard(ctx)
@@ -137,22 +126,23 @@ func Run(ctx context.Context, s *testing.State) {
 	}
 
 	for _, data := range []struct {
-		name     string
-		startURL string
-		findURLs string
+		name       string
+		startURL   string
+		urlPattern string
 	}{
 		{
 			"CNN",
 			"https://cnn.com",
-			`function(url) { return url.host === 'www.cnn.com' && url.pathname.match(new RegExp("^/\\d\\d\\d\\d/\\d\\d/\\d\\d/")); }`,
+			`^.*://www.cnn.com/\d{4}/\d{2}/\d{2}/`,
 		},
 		{
 			"Reddit",
 			"https://reddit.com",
-			`function(url) { return url.host === 'www.reddit.com' && url.pathname.match(new RegExp("^/r/[^/]+/comments/[^/]+/")); }`,
+			`^.*://www.reddit.com/r/[^/]+/comments/[^/]+/`,
 		},
 	} {
 		s.Run(ctx, data.name, func(ctx context.Context, s *testing.State) {
+			const numPages = 6
 			conns := make([]*chrome.Conn, 0, numPages+1)
 			defer func() {
 				for _, c := range conns {
@@ -170,7 +160,7 @@ func Run(ctx context.Context, s *testing.State) {
 			}
 			conns = append(conns, firstPage)
 
-			urls, err := getURLs(ctx, firstPage, data.findURLs, numPages)
+			urls, err := findAnchorURLs(ctx, firstPage, data.urlPattern, numPages)
 			if err != nil {
 				s.Fatalf("Failed to get URLs for %s: %v", data.startURL, err)
 			}
