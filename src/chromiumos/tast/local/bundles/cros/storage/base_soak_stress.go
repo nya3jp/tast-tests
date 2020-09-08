@@ -29,12 +29,12 @@ func init() {
 func BaseSoakStress(ctx context.Context, s *testing.State) {
 	perfValues := perf.NewValues()
 	// Below sequence of tests corresponds to a single iteration of the soak test.
-	stress.RunFioStress(ctx, s, "64k_stress", nil)
+	stress.RunFioStressForBootDevice(ctx, s, "64k_stress", nil)
 	stress.Suspend(ctx)
-	stress.RunFioStress(ctx, s, "surfing", nil)
+	stress.RunFioStressForBootDevice(ctx, s, "surfing", nil)
 	stress.Suspend(ctx)
-	stress.RunFioStress(ctx, s, "8k_async_randwrite", nil)
-	stress.RunFioStress(ctx, s, "8k_async_randwrite", &stress.TestConfig{
+	stress.RunFioStressForBootDevice(ctx, s, "8k_async_randwrite", nil)
+	stress.RunFioStressForBootDevice(ctx, s, "8k_async_randwrite", &stress.TestConfig{
 		VerifyOnly: true,
 		PerfValues: perfValues,
 	})
