@@ -33,6 +33,24 @@
       "revId": "81963ae79e7f491174917ae11da232f6eb6de4ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb6d5d21_a09a9e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-08T04:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66581d8b_7497837d",
+      "revId": "81963ae79e7f491174917ae11da232f6eb6de4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
