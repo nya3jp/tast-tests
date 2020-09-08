@@ -16,6 +16,46 @@
       "revId": "93c8b36ded550675d60fe95b50f6bf171c1764f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd908003_288203b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-08T02:16:00Z",
+      "side": 1,
+      "message": "LGTM with suggestion.",
+      "revId": "93c8b36ded550675d60fe95b50f6bf171c1764f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48d39efe_000c5c1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-08T02:16:00Z",
+      "side": 1,
+      "message": "style: Unlike other programming languages, go prefers shorter name with surrounding context. How about just \"verify\".",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 32
+      },
+      "revId": "93c8b36ded550675d60fe95b50f6bf171c1764f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
