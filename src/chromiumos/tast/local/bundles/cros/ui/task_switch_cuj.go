@@ -31,7 +31,7 @@ func init() {
 		Desc:         "Measures the performance of tab-switching CUJ",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      8 * time.Minute,
 		Vars: []string{
@@ -43,10 +43,23 @@ func init() {
 		},
 		Pre: cuj.LoggedInToCUJUser(),
 		Params: []testing.Param{
-			{Val: false},
+			{
+				ExtraSoftwareDeps: []string{"android_p"},
+				Val: false,
+			},
+			{
+				Name: "vm",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Val: false,
+			},
 			{
 				Name:              "tablet_mode",
-				ExtraSoftwareDeps: []string{"tablet_mode"},
+				ExtraSoftwareDeps: []string{"tablet_mode", "android_p"},
+				Val:               true,
+			},
+			{
+				Name:              "tablet_mode_vm",
+				ExtraSoftwareDeps: []string{"tablet_mode", "android_vm"},
 				Val:               true,
 			},
 		},
