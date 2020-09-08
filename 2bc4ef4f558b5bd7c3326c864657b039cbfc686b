@@ -42,6 +42,46 @@
     },
     {
       "key": {
+        "uuid": "87eeb354_ab5d8711",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-08T09:59:01Z",
+      "side": 1,
+      "message": "Use shorter names, like \"allow\".",
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81ed1ad4_0bcc10d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-08T09:59:01Z",
+      "side": 1,
+      "message": "disable",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 47
+      },
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9752b8ea_c1733731",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
         "patchSetId": 1
@@ -105,6 +145,47 @@
     },
     {
       "key": {
+        "uuid": "4ad1bbad_1d32d988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-08T09:59:01Z",
+      "side": 1,
+      "message": "Make a varaible from this: \"allowed :\u003d imgwdth \u003e 0\".",
+      "parentUuid": "94bf8a2d_c6ebadd8",
+      "range": {
+        "startLine": 81,
+        "startChar": 6,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab0b1b45_230b5d6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-08T09:59:01Z",
+      "side": 1,
+      "message": "In the params, add a \"wantAllowed\" bool variable, that is true for unset and allow, and check that value here.",
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78e1971b_cacc2029",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
         "patchSetId": 1
@@ -162,6 +243,30 @@
       "writtenOn": "2020-09-08T09:05:23Z",
       "side": 1,
       "message": "maybe write this block like this:\nisBlocked :\u003d imgwdth \u003d\u003d 0\nexpectedBlocked :\u003d param.value.Val \u003d\u003d 2\nif(isBlocked !\u003d expectedBlocked) {\n  s.Error(\"Unexpected blocked behavior: got %t; want %t\" isBlocked, expectedBlocked)\n}",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 4
+      },
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4dee6a_9d925a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-08T09:59:01Z",
+      "side": 1,
+      "message": "I would check for allowed rather than blocked, like:\n\tif allowed :\u003d imgwdth \u003e 0; allowed !\u003d param.wantAllowed { ... }",
+      "parentUuid": "61ae6133_5b79339e",
       "range": {
         "startLine": 81,
         "startChar": 0,
