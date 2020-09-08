@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66929f4f_ead1aff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-08T09:34:19Z",
+      "side": 1,
+      "message": "I thought you could export only one function from a helper file. Have you seen any warnings from the upload checks?",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 284,
+        "endChar": 30
+      },
+      "revId": "7290ffa5d83c65c3f3f2b10176dd79e84b27d396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
