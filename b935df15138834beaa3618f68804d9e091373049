@@ -16,6 +16,29 @@
       "revId": "b935df15138834beaa3618f68804d9e091373049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d19c54c5_089bf9b9",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2020-09-08T23:48:19Z",
+      "side": 1,
+      "message": "Should we exit the loop when we hit other types of errors than io.EOF?",
+      "range": {
+        "startLine": 328,
+        "startChar": 9,
+        "endLine": 328,
+        "endChar": 12
+      },
+      "revId": "b935df15138834beaa3618f68804d9e091373049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
