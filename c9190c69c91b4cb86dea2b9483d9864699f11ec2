@@ -214,6 +214,24 @@
     },
     {
       "key": {
+        "uuid": "47123e90_01425fc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-08T07:27:58Z",
+      "side": 1,
+      "message": "Now I noticed that cont returned from vm.DefaultContainer is always non-nil, because newContainer always returns a pointer to the new object.\nsrc/platform/tast-tests/src/chromiumos/tast/local/vm/container.go\nIn which case was this non-nil check needed?",
+      "parentUuid": "9889246b_f8882d9d",
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ded1fe05_a157eaa5",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
         "patchSetId": 1
