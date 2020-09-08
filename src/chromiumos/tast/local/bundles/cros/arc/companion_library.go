@@ -172,7 +172,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 				if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
 					s.Log("Failed to capture screenshot: ", err)
 				}
-				s.Fatalf("%s test failed: %v", tc.name, err)
+				s.Fatal("Subtest failed: ", err)
 			}
 		})
 	}
@@ -1112,24 +1112,47 @@ func testMaximize(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *chro
 		return errors.Wrap(err, "failed to click the hidden maximize checkbox")
 	}
 
-	// Double click the caption.
+	// Wait for the caption configuration is synchronized to chrome.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		window, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "error while get ARC window"))
+		}
+		if window.CaptionButtonVisibleStatus&ash.CaptionButtonMaximizeAndRestore != 0 {
+			return errors.New("maximize button is still visible")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for caption button sync")
+	}
+
+	// Double click the center of the caption.
 	const doubleClickGap = 100 * time.Millisecond
 	bounds, err := act.WindowBounds(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get activity bounds")
 	}
-	middleCaptionLoc := coords.NewPoint(
-		int(float64(bounds.Top+5)/dispMode.DeviceScaleFactor),
+	appWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window")
+	}
+	clickPos := coords.NewPoint(
+		int(float64(bounds.Top)/dispMode.DeviceScaleFactor)+appWindow.CaptionHeight/2,
 		int(float64(bounds.Left+bounds.Width/2)/dispMode.DeviceScaleFactor))
-	if err := mouse.Click(ctx, tconn, middleCaptionLoc, mouse.LeftButton); err != nil {
+	testing.ContextLogf(ctx, "Maximize App-controlled Window: bounds = %v, click = %v", coords.ConvertBoundsFromPXToDP(bounds, dispMode.DeviceScaleFactor), clickPos)
+
+	if err := mouse.Click(ctx, tconn, clickPos, mouse.LeftButton); err != nil {
 		return errors.Wrap(err, "failed to click window caption the first time")
 	}
-
 	if err := testing.Sleep(ctx, doubleClickGap); err != nil {
 		return errors.Wrap(err, "failed to wait for the gap between the double click")
 	}
-	if err := mouse.Click(ctx, tconn, middleCaptionLoc, mouse.LeftButton); err != nil {
+	if err := mouse.Click(ctx, tconn, clickPos, mouse.LeftButton); err != nil {
 		return errors.Wrap(err, "failed to click window caption the second time")
+	}
+
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, appWindow.ID); err != nil {
+		return errors.Wrap(err, "failed to wait for finishing window animation")
 	}
 
 	if state, err := act.GetWindowState(ctx); err != nil {
