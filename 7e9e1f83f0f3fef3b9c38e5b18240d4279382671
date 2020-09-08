@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c64274ba_c61ec7fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-08T16:00:03Z",
+      "side": 1,
+      "message": "Thanks for tackling this, Sarthak!",
+      "revId": "7e9e1f83f0f3fef3b9c38e5b18240d4279382671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "993e437f_abdb38d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
         "patchSetId": 2
