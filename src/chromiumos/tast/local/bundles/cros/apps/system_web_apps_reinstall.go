@@ -6,6 +6,7 @@ package apps
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -40,25 +41,41 @@ func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 	chromeOpts := s.Param().([]chrome.Option)
 
 	// First run on a clean profile, this is when system web apps are first installed.
-	if err := runChromeSession(ctx, chromeOpts...); err != nil {
+	installedApps, registeredApps, err := runChromeSession(ctx, chromeOpts...)
+	if err != nil {
 		s.Fatal("First time install failed: ", err)
+	}
+
+	if len(installedApps) != len(registeredApps) {
+		s.Logf("Installed apps = %s", strings.Join(installedApps, ", "))
+		s.Logf("Registered apps = %s", strings.Join(registeredApps, ", "))
+		s.Fatalf("Unexpected number of installed apps: want %d; got %d", len(installedApps), len(registeredApps))
 	}
 
 	// Next, run on the previous profile with chrome.KeepState(), and ask system web app manager to reinstall apps.
 	reinstallOpts := append(chromeOpts, chrome.KeepState(), chrome.EnableFeatures("AlwaysReinstallSystemWebApps"))
-	if err := runChromeSession(ctx, reinstallOpts...); err != nil {
+	installedApps, registeredApps, err = runChromeSession(ctx, reinstallOpts...)
+	if err != nil {
 		s.Fatal("Reinstall failed: ", err)
+	}
+
+	if len(installedApps) != len(registeredApps) {
+		s.Logf("Installed apps = %s", strings.Join(installedApps, ", "))
+		s.Logf("Registered apps = %s", strings.Join(registeredApps, ", "))
+		s.Fatalf("Unexpected number of installed apps: want %d; got %d", len(installedApps), len(registeredApps))
 	}
 }
 
-func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) error {
+// runChromeSession runs Chrome based on chromeOpts, and return a list of installed system app names, and a list of
+// registered system app internal names.
+func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) (installedNames, registeredNames []string, err error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
-		return errors.Wrap(err, "failed to start Chrome")
+		return installedNames, registeredNames, errors.Wrap(err, "failed to start Chrome")
 	}
 
 	defer func(ctx context.Context) {
@@ -68,25 +85,25 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) error {
 	}(cleanupCtx)
 
 	if err := waitForSystemWebAppsInstall(ctx, cr); err != nil {
-		return errors.Wrap(err, "failed to wait system apps install")
+		return installedNames, registeredNames, errors.Wrap(err, "failed to wait system apps install")
 	}
 
-	installedAppCount, err := numberOfInstalledSystemApps(ctx, cr)
+	installedApps, err := installedSystemApps(ctx, cr)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the number of installed system apps")
+		return installedNames, registeredNames, errors.Wrap(err, "failed to get installed system apps")
 	}
+	defer installedApps.Release(ctx)
 
-	registeredAppCount, err := numberOfRegisteredSystemApps(ctx, cr)
+	registeredApps, err := registeredSystemApps(ctx, cr)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the number of registered system apps")
+		return installedNames, registeredNames, errors.Wrap(err, "failed to get registered system apps")
 	}
+	defer registeredApps.Release(ctx)
 
-	if installedAppCount != registeredAppCount {
-		return errors.Errorf("unexpected number of installed apps: want %d; got %d",
-			registeredAppCount, installedAppCount)
-	}
+	installedApps.Call(ctx, &installedNames, "function() { return this.map(app => app.name) }")
+	registeredApps.Call(ctx, &registeredNames, "function() { return this.map(systemApp => systemApp.internalName) }")
 
-	return nil
+	return installedNames, registeredNames, nil
 }
 
 func waitForSystemWebAppsInstall(ctx context.Context, cr *chrome.Chrome) error {
@@ -116,15 +133,17 @@ func waitForSystemWebAppsInstall(ctx context.Context, cr *chrome.Chrome) error {
 	return nil
 }
 
-// numberOfRegisteredSystemApps returns the number of system web apps that should be installed,
-// by querying System Web App Manager using the test API.
-func numberOfRegisteredSystemApps(ctx context.Context, cr *chrome.Chrome) (int, error) {
+// registeredSystemApps returns a chrome.JSObject that contains the information (list of SystemApp)
+// about registered System Apps by querying System Web App Manager using the test API. Remember to
+// call Release() on the returned JSObject after use.
+func registeredSystemApps(ctx context.Context, cr *chrome.Chrome) (chrome.JSObject, error) {
+	var result chrome.JSObject
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return -1, errors.Wrap(err, "failed to connect Test API")
+		return result, errors.Wrap(err, "failed to connect Test API")
 	}
 
-	result := 0
 	err = tconn.Eval(
 		ctx,
 		`new Promise((resolve, reject) => {
@@ -134,26 +153,28 @@ func numberOfRegisteredSystemApps(ctx context.Context, cr *chrome.Chrome) (int, 
 					return;
 				}
 
-				resolve(system_apps.length);
+				resolve(system_apps);
 			});
 		});`, &result)
 
 	if err != nil {
-		return -1, errors.Wrap(err, "failed to get result from Test API")
+		return result, errors.Wrap(err, "failed to get result from Test API")
 	}
 
 	return result, nil
 }
 
-// numberOfInstalledSystemApps returns the number of system web apps that are actually
-// installed, by querying the App Service.
-func numberOfInstalledSystemApps(ctx context.Context, cr *chrome.Chrome) (int, error) {
+// installedSystemApps returns a chrome.JSObject that contains the information (list of App)
+// about installed System Apps, by querying App Service. Remember to call Release() on the
+// returned JSObject after use.
+func installedSystemApps(ctx context.Context, cr *chrome.Chrome) (chrome.JSObject, error) {
+	var result chrome.JSObject
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return -1, errors.Wrap(err, "failed to connect Test API")
+		return result, errors.Wrap(err, "failed to connect Test API")
 	}
 
-	result := 0
 	err = tconn.Eval(
 		ctx,
 		`new Promise((resolve, reject) => {
@@ -170,12 +191,12 @@ func numberOfInstalledSystemApps(ctx context.Context, cr *chrome.Chrome) (int, e
 					|| (app.installSource === 'User' && app.type === 'Crostini')
 				)
 
-				resolve(system_web_apps.length);
+				resolve(system_web_apps);
 			});
 		});`, &result)
 
 	if err != nil {
-		return -1, errors.Wrap(err, "failed to get result from Test API")
+		return result, errors.Wrap(err, "failed to get result from Test API")
 	}
 
 	return result, nil
