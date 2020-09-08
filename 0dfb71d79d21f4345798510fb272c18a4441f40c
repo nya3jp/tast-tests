@@ -114,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "aaeb3d6a_d28d3c72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-08T02:52:11Z",
+      "side": 1,
+      "message": "Ah, ok. Thanks for explanation.\n\nSara-san, could you update the comment accordingly?\nAlso, the \"allowing some tolerance\" is visible from caller (rather than just implementation details), so could you describe it in the method document?",
+      "parentUuid": "0a736392_dc2be12e",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 61
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "868737f0_97330e1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 19
