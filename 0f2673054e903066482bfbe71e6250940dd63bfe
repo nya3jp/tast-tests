@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7380aa2e_300c97e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-09-08T02:59:18Z",
+      "side": 1,
+      "message": "How difficult to install a light app customized for testing?\nIdeally we\u0027d like to verify all kinda apps (web apps, arc apps, crostini apps...)",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "0f2673054e903066482bfbe71e6250940dd63bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68cd589c_da59b32f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-09-08T02:59:18Z",
+      "side": 1,
+      "message": "Where is the right config for tast to read image use flags?\nI have set a USE flag (ime_decoder_alpha) for whether to install ime decoder, we can add the dep for these tests, so that they will be auto skipped when the USE flag is not enabled.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "0f2673054e903066482bfbe71e6250940dd63bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
