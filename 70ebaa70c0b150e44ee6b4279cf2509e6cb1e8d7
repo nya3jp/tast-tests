@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "503cb306_dff46277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-08T02:06:36Z",
+      "side": 1,
+      "message": "Clarification: Do you want to keep the \"vm\" suffixed test? Or, you may want to remove this and merge \"android_vm\" to SoftwareDeps.",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "70ebaa70c0b150e44ee6b4279cf2509e6cb1e8d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
