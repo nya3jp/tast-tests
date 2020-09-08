@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "a472a017_290f5609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-08T09:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5ca83c6_d14ce359",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "0f2673054e903066482bfbe71e6250940dd63bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7380aa2e_300c97e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 1
