@@ -22,6 +22,30 @@
       "revId": "7290ffa5d83c65c3f3f2b10176dd79e84b27d396",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e65f6671_8fe4ff89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-08T21:18:10Z",
+      "side": 1,
+      "message": "Nope, no warnings, why would it limit only to one function?",
+      "parentUuid": "66929f4f_ead1aff9",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 284,
+        "endChar": 30
+      },
+      "revId": "7290ffa5d83c65c3f3f2b10176dd79e84b27d396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
