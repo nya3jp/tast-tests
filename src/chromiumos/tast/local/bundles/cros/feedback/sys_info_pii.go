@@ -19,7 +19,7 @@ func init() {
 		Func:         SysInfoPII,
 		Desc:         "Verify that known-sensitive data doesn't show up in feedback reports",
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
