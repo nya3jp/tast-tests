@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d797db9_eec61c97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-08T09:05:23Z",
+      "side": 1,
+      "message": "Thanks for adding the test",
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfcca4d9_d6dfb94c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-08T09:05:23Z",
+      "side": 1,
+      "message": "\"Behavior of DefaultImagesSetting policy, check whether an image is displayed in a website\",",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 50
+      },
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9752b8ea_c1733731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-08T09:05:23Z",
+      "side": 1,
+      "message": "remove logs used for development.",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "596ef304_a6a239ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-08T09:05:23Z",
+      "side": 1,
+      "message": "Add a small comment on why this check like: // If imgwdth is 0 the image was blocked.",
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94bf8a2d_c6ebadd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-08T09:05:23Z",
+      "side": 1,
+      "message": "check for greater 0. That way the test is not dependent on a specific image size.",
+      "range": {
+        "startLine": 81,
+        "startChar": 6,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78e1971b_cacc2029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-08T09:05:23Z",
+      "side": 1,
+      "message": "Unexpected blocked behaviour: got true; want false",
+      "range": {
+        "startLine": 83,
+        "startChar": 13,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2506e830_c1f60de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-08T09:05:23Z",
+      "side": 1,
+      "message": "Unexpected blocked behaviour: got false; want true",
+      "range": {
+        "startLine": 87,
+        "startChar": 13,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ae6133_5b79339e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-08T09:05:23Z",
+      "side": 1,
+      "message": "maybe write this block like this:\nisBlocked :\u003d imgwdth \u003d\u003d 0\nexpectedBlocked :\u003d param.value.Val \u003d\u003d 2\nif(isBlocked !\u003d expectedBlocked) {\n  s.Error(\"Unexpected blocked behavior: got %t; want %t\" isBlocked, expectedBlocked)\n}",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 4
+      },
+      "revId": "2bc4ef4f558b5bd7c3326c864657b039cbfc686b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
