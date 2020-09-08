@@ -16,6 +16,75 @@
       "revId": "546c7830bc285e3d6957d7ee96f0b98d29b33f4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "560fcebc_7652a0ac",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-08T06:04:43Z",
+      "side": 1,
+      "message": "Reassociate re-associates ...",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "546c7830bc285e3d6957d7ee96f0b98d29b33f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d79e2568_e26fc0bf",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-08T06:04:43Z",
+      "side": 1,
+      "message": "within timeout (nanoseconds).",
+      "range": {
+        "startLine": 112,
+        "startChar": 42,
+        "endLine": 112,
+        "endChar": 43
+      },
+      "revId": "546c7830bc285e3d6957d7ee96f0b98d29b33f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5cacd4f_eb05476b",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-08T06:04:43Z",
+      "side": 1,
+      "message": "How about renaming it as \"Reassociate\"?",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 24
+      },
+      "revId": "546c7830bc285e3d6957d7ee96f0b98d29b33f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
