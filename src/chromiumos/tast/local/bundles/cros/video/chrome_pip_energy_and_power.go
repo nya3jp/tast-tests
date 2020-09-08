@@ -34,7 +34,7 @@ func init() {
 		Desc:         "Measures energy and power usage of Chrome PIP",
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"chrome", "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		Data:         []string{"bear-320x240.h264.mp4", "pip.html"},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
