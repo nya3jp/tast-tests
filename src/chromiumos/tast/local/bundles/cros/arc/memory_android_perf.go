@@ -22,14 +22,15 @@ func init() {
 			"cwd@chromium.org",
 			"arcvm-eng@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Data:         memory.AndroidData(),
 		Params: []testing.Param{{
+			// For manual testing only, does not run automatically.
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 10 * time.Minute,
