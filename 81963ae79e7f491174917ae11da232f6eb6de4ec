@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5561b46_f7c190af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-08T04:23:30Z",
+      "side": 1,
+      "message": "slgtm.\n\nThank you for explanation.",
+      "revId": "81963ae79e7f491174917ae11da232f6eb6de4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66581d8b_7497837d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-08T04:23:30Z",
+      "side": 1,
+      "message": "Could you comment that this is for manual run purpose only?",
+      "revId": "81963ae79e7f491174917ae11da232f6eb6de4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
