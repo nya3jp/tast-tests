@@ -46,7 +46,9 @@ func OpenLauncher(ctx context.Context, tconn *chrome.TestConn) error {
 	return keyboard.Accel(ctx, "Search")
 }
 
-func search(ctx context.Context, tconn *chrome.TestConn, query string) error {
+// Search executes a search query.
+// Launcher should be open already.
+func Search(ctx context.Context, tconn *chrome.TestConn, query string) error {
 	// Click the search box.
 	searchBox, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "SearchBoxView"}, defaultTimeout)
 	if err != nil {
@@ -76,14 +78,10 @@ func search(ctx context.Context, tconn *chrome.TestConn, query string) error {
 	return nil
 }
 
-// SearchAndWaitForApp searches for APP name and wait for it to appear.
-// Launcher should be opened already.
+// WaitForAppResult waits for an app to appear as a search result.
+// Launcher should be opened already and search done already.
 // timeout only applies to waiting for the presense of the app.
-func SearchAndWaitForApp(ctx context.Context, tconn *chrome.TestConn, appName string, timeout time.Duration) (*ui.Node, error) {
-	if err := search(ctx, tconn, appName); err != nil {
-		return nil, errors.Wrapf(err, "failed to search app: %s", appName)
-	}
-
+func WaitForAppResult(ctx context.Context, tconn *chrome.TestConn, appName string, timeout time.Duration) (*ui.Node, error) {
 	searchResultView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "SearchResultPageView"}, time.Second)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find Search Result Container")
@@ -93,6 +91,21 @@ func SearchAndWaitForApp(ctx context.Context, tconn *chrome.TestConn, appName st
 	defer cancel()
 
 	appNode, err := searchResultView.DescendantWithTimeout(ctx, ui.FindParams{Name: appName + ", Installed App"}, timeout)
+	if err != nil {
+		return nil, errors.Wrapf(err, "%s app does not exist in search result", appName)
+	}
+	return appNode, err
+}
+
+// SearchAndWaitForApp searches for APP name and wait for it to appear.
+// Launcher should be opened already.
+// timeout only applies to waiting for the presense of the app.
+func SearchAndWaitForApp(ctx context.Context, tconn *chrome.TestConn, appName string, timeout time.Duration) (*ui.Node, error) {
+	if err := Search(ctx, tconn, appName); err != nil {
+		return nil, errors.Wrapf(err, "failed to search app: %s", appName)
+	}
+
+	appNode, err := WaitForAppResult(ctx, tconn, appName, defaultTimeout)
 	if err != nil {
 		return nil, errors.Wrapf(err, "%s app does not exist in search result", appName)
 	}
