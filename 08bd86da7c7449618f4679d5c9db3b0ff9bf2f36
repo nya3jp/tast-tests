@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "e1952e34_ca48b79b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-08T02:07:19Z",
+      "side": 1,
+      "message": "Please split the CL as it contains two isolated topics.",
+      "revId": "08bd86da7c7449618f4679d5c9db3b0ff9bf2f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77e472c8_bf0c8bc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-08T02:07:19Z",
+      "side": 1,
+      "message": "What will tcpdump behave when \"line buffer\" and \"disable buffering\" are applied together? Would like buffer still works?\n\nAlso, please also comment this on the source code.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 60
+      },
+      "revId": "08bd86da7c7449618f4679d5c9db3b0ff9bf2f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ac0a939_98a9d7d2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
