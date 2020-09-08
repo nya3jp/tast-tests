@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51c968a4_a76294c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-08T01:17:37Z",
+      "side": 1,
+      "message": "LGTM\n\nJust in case you have trouble merging this, please consider splitting change that just demotes the test to informational.",
+      "revId": "996292ac2e182ccf5aa6246c226ae5c18f40b1ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaf46729_9bb2e822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-08T01:17:37Z",
+      "side": 1,
+      "message": "[optional] how about having the expected string a const var and use fatalf?",
+      "revId": "996292ac2e182ccf5aa6246c226ae5c18f40b1ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
