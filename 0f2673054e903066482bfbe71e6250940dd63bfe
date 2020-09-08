@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e5ca83c6_d14ce359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-08T03:22:13Z",
+      "side": 1,
+      "message": "This is an experimental test, and no intention to promote. So I think it does not need to be parameterized. Secondly, this test should only run on VM, so how about HardwareDeps: hwdep.D(\"betty\")",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "0f2673054e903066482bfbe71e6250940dd63bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7380aa2e_300c97e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 1
