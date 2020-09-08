@@ -36,7 +36,7 @@ func init() {
 		}, {
 			Name:              "h264",
 			Val:               "H264",
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 		}},
 		Data: []string{"webrtc_video_display_perf_test.html", "third_party/munge_sdp.js"},
 	})

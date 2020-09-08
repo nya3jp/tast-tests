@@ -31,7 +31,6 @@ func init() {
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 5 * time.Minute,
-		// "chrome_internal" is needed for H.264 videos because H.264 is a proprietary codec.
 		Params: []testing.Param{{
 			Name: "h264_144p_30fps_hw",
 			Val: playbackPerfParams{
