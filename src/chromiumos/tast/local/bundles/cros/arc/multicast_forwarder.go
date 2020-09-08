@@ -173,6 +173,11 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	delete(expectIn, mdnsPrefix+mdnsHostnameInIPv6)
 	delete(expectIn, mdnsPrefix+legacyMDNSHostnameInIPv6)
 
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	}
+
 	s.Log("Starting tcpdump")
 	g, ctx := errgroup.WithContext(ctx)
 	for _, ifname := range ifnames {
@@ -185,6 +190,10 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 			}
 			return nil
 		})
+		// Skip testing inbound multicast for ARCVM.
+		if vmEnabled {
+			continue
+		}
 		g.Go(func() error {
 			tcpdump := arc.BootstrapCommand(ctx, "/system/xbin/tcpdump", "-Ani", ifname, "-Q", "in")
 			if err := streamCmd(ctx, tcpdump, expectIn); err != nil {
