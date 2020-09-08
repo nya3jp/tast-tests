@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87dfba39_a0c45d4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-08T17:37:29Z",
+      "side": 1,
+      "message": "I think these Reviewed-by lines should be automatically added by Gerrit, not included in the commit message...",
+      "revId": "bb8b76896f3609b16b7d0e680eba8767584c3bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "543a5ec1_4e447ac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-08T17:37:29Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective, please also get test-owner CR.",
+      "revId": "bb8b76896f3609b16b7d0e680eba8767584c3bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
