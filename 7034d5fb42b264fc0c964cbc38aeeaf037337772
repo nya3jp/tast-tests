@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "99263af4_953f591a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Because initial font size is always 1, font size and font scale are equal and they can be used interchangeably, but in new changes, I will make sure to use same name (preferably font scale) for both cases.",
+      "parentUuid": "7abfbc88_53c6bdfb",
+      "range": {
+        "startLine": 580,
+        "startChar": 18,
+        "endLine": 580,
+        "endChar": 22
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3778b946_cf0b805e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19d386a8_66871ddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "font size changed to font scale.",
+      "parentUuid": "3778b946_cf0b805e",
+      "range": {
+        "startLine": 591,
+        "startChar": 11,
+        "endLine": 591,
+        "endChar": 20
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "4bac1af8_54701a28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df1fd31b_01497f0d",
+      "range": {
+        "startLine": 592,
+        "startChar": 43,
+        "endLine": 592,
+        "endChar": 100
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0101e159_23b00f6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
         "patchSetId": 1
@@ -131,6 +203,30 @@
       "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6b9a40e_8538407b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0101e159_23b00f6c",
+      "range": {
+        "startLine": 599,
+        "startChar": 11,
+        "endLine": 599,
+        "endChar": 19
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "b2524794_57993cc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db5e7aec_bff9c367",
+      "range": {
+        "startLine": 608,
+        "startChar": 44,
+        "endLine": 608,
+        "endChar": 49
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5714ffc_b9a4c3dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
         "patchSetId": 1
@@ -177,6 +297,30 @@
       "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd4ac974_9ead557d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5714ffc_b9a4c3dc",
+      "range": {
+        "startLine": 196,
+        "startChar": 15,
+        "endLine": 196,
+        "endChar": 31
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +347,30 @@
     },
     {
       "key": {
+        "uuid": "ddf74b5d_f039165a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "090975be_29e1987e",
+      "range": {
+        "startLine": 197,
+        "startChar": 9,
+        "endLine": 197,
+        "endChar": 14
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0de5f4f_4121e823",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
         "patchSetId": 1
@@ -223,6 +391,30 @@
       "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bc7fb0f_9b465fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0de5f4f_4121e823",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 13
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +441,30 @@
     },
     {
       "key": {
+        "uuid": "790354d9_fca2d3a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9d4134f_e01abeb3",
+      "range": {
+        "startLine": 222,
+        "startChar": 25,
+        "endLine": 222,
+        "endChar": 71
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcbd55c6_328642ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
         "patchSetId": 1
@@ -269,6 +485,30 @@
       "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "923b4d35_9378c640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcbd55c6_328642ec",
+      "range": {
+        "startLine": 228,
+        "startChar": 9,
+        "endLine": 228,
+        "endChar": 15
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -295,6 +535,30 @@
     },
     {
       "key": {
+        "uuid": "8fd35fa8_913fde16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "733f558a_d222b8dd",
+      "range": {
+        "startLine": 230,
+        "startChar": 9,
+        "endLine": 230,
+        "endChar": 15
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02dd878c_d3185fe4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
         "patchSetId": 1
@@ -315,6 +579,30 @@
       "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc52c6b_b607b799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02dd878c_d3185fe4",
+      "range": {
+        "startLine": 250,
+        "startChar": 24,
+        "endLine": 250,
+        "endChar": 91
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -341,6 +629,30 @@
     },
     {
       "key": {
+        "uuid": "8d45afa3_179756a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f2adbd2_83685c04",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 14
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6adcb52_50307e33",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
         "patchSetId": 1
@@ -364,6 +676,30 @@
     },
     {
       "key": {
+        "uuid": "388d9aa0_9502d5e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6adcb52_50307e33",
+      "range": {
+        "startLine": 258,
+        "startChar": 83,
+        "endLine": 258,
+        "endChar": 109
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5b73cb5_f7f961c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
         "patchSetId": 1
@@ -384,6 +720,30 @@
       "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1da6b559_cc358847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-08T22:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5b73cb5_f7f961c7",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 0
+      },
+      "revId": "7034d5fb42b264fc0c964cbc38aeeaf037337772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
