@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a5627413_ce928424",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-08T05:28:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a35a85d9_7b8b8bf5",
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6da0f02c_df43a818",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d30f99_34481177",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-08T05:28:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6da0f02c_df43a818",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,48 @@
     },
     {
       "key": {
+        "uuid": "296a2438_d33e7c2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-08T05:28:39Z",
+      "side": 1,
+      "message": "Each test does 10 seconds of warmup and 5 minutes of measurement. Currently there\u0027s a bug that present ARC sessions from being reused on ARCVM (b/162768347). Once that\u0027s resolved and sessions can be properly reused, the 1-2 minutes to log in and wait for the device to be idle will only have to be paid for the first test. In other words, the expected runtime for these tests is 32-33 minutes (although it\u0027s ~42 minutes on ARCVM right now).",
+      "parentUuid": "43db3b74_ffc82948",
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00a5a0c6_4e2decb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-08T05:28:39Z",
+      "side": 1,
+      "message": "Oh, that\u0027s left over from before I realized I could move the c2e2e library back and share things directly. Removed.",
+      "parentUuid": "f277fc2b_d34b9ee4",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 15,
+        "endChar": 65
+      },
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40e9938f_e5ded3ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
         "patchSetId": 3
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "b160f84e_4452f3c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-08T05:28:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40e9938f_e5ded3ba",
+      "range": {
+        "startLine": 45,
+        "startChar": 35,
+        "endLine": 45,
+        "endChar": 54
+      },
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bb49c0a_a5c1926a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
         "patchSetId": 3
@@ -125,6 +233,30 @@
       "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44748b60_5e9e7587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-08T05:28:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb49c0a_a5c1926a",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 78
+      },
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
