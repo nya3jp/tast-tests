@@ -25,9 +25,7 @@ type FrameDataTracker struct {
 
 // Start starts the animation data collection.
 func (t *FrameDataTracker) Start(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := tconn.EvalPromise(ctx,
-		`tast.promisify(chrome.autotestPrivate.startThroughputTrackerDataCollection)()`,
-		nil); err != nil {
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.startThroughputTrackerDataCollection)`); err != nil {
 		return errors.Wrap(err, "failed to start data collection")
 	}
 
@@ -37,9 +35,7 @@ func (t *FrameDataTracker) Start(ctx context.Context, tconn *chrome.TestConn) er
 // Stop stops the animation data collection and stores the collected data.
 func (t *FrameDataTracker) Stop(ctx context.Context, tconn *chrome.TestConn) error {
 	var data []AnimationFrameData
-	if err := tconn.EvalPromise(ctx,
-		`tast.promisify(chrome.autotestPrivate.stopThroughputTrackerDataCollection)()`,
-		&data); err != nil {
+	if err := tconn.Call(ctx, &data, `tast.promisify(chrome.autotestPrivate.stopThroughputTrackerDataCollection)`); err != nil {
 		return errors.Wrap(err, "failed to stop data collection")
 	}
 
