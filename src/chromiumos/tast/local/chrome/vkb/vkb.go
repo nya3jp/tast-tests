@@ -29,7 +29,10 @@ func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
 
 // HideVirtualKeyboard forces the virtual keyboard to be hidden.
 func HideVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
-	return tconn.Eval(ctx, `tast.promisify(chrome.inputMethodPrivate.hideInputView)()`, nil)
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.inputMethodPrivate.hideInputView)()`, nil); err != nil {
+		return errors.Wrap(err, "failed to call hide inputview api")
+	}
+	return WaitUntilHidden(ctx, tconn)
 }
 
 // VirtualKeyboard returns a reference to chrome.automation API AutomationNode of virtual keyboard.
@@ -95,7 +98,7 @@ func waitUntil(ctx context.Context, tconn *chrome.TestConn, expected bool) error
 			return errors.Errorf("waiting for virtual keyboard to be %q", expectedState)
 		}
 		return nil
-	}, nil); err != nil {
+	}, &testing.PollOptions{Interval: 3 * time.Second, Timeout: 30 * time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to wait for virtual keyboard to be %q", expectedState)
 	}
 
@@ -308,4 +311,29 @@ func WaitForDecoderEnabled(ctx context.Context, cr *chrome.Chrome, enabled bool)
 		return testing.Sleep(ctx, 3*time.Second)
 	}
 	return nil
+}
+
+// ClickUntilVKShown repeatedly left clicks the node until the condition returns true with no error.
+// This is useful for situations where there is no indication of whether the node is ready to receive clicks.
+// The interval between clicks and the timeout can be specified using testing.PollOptions.
+func ClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, node *ui.Node) error {
+	condition := func(ctx context.Context) (bool, error) {
+		return IsShown(ctx, tconn)
+	}
+	opts := testing.PollOptions{Timeout: 20 * time.Second, Interval: 1 * time.Second}
+	if err := node.LeftClickUntil(ctx, condition, &opts); err != nil {
+		return errors.Wrapf(err, "failed to click %v until vk shown", node)
+	}
+	return nil
+}
+
+// FindAndClickUntilVKShown is similar to ClickUntilVKShown.
+// It finds element first and then perform ClickUntilVKShown.
+func FindAndClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, params, 20*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find node with params %v", params)
+	}
+	defer node.Release(ctx)
+	return ClickUntilVKShown(ctx, tconn, node)
 }
