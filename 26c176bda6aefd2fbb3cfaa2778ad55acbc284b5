@@ -16,6 +16,46 @@
       "revId": "26c176bda6aefd2fbb3cfaa2778ad55acbc284b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd12d061_34618278",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-08T15:29:06Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "26c176bda6aefd2fbb3cfaa2778ad55acbc284b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "236acda3_f3b27227",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-08T15:29:06Z",
+      "side": 1,
+      "message": "Please add a TODO comment to restore SoftwareDeps\u003d[]string{\"tpm\"} with either your username or a bug link.\n\n    // This feature is temporarily unavailable on TPM 1.2.\n    // TODO (b/156326276): When TPM1.2 is stable again, change SoftwareDeps to \"tpm\"\n    SoftwareDeps: []string{\"tpm2\"},",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 56
+      },
+      "revId": "26c176bda6aefd2fbb3cfaa2778ad55acbc284b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
