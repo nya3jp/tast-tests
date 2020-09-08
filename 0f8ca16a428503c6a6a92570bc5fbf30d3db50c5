@@ -16,6 +16,23 @@
       "revId": "0f8ca16a428503c6a6a92570bc5fbf30d3db50c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82795242_b0d4867e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_ps175.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-09-08T04:52:03Z",
+      "side": 1,
+      "message": "You can set cmd.Cmd.Env to update PATH to ensure the target flashrom is the fake one.\n\n    cmd.Cmd.Env \u003d []string{fmt.Sprintf(\"PATH\u003d%s\", s.DataPath(\"fwupd_install_ps175\"))}\n\nAssuming the fake flashrom is `data/fwupd_install_ps175/flashrom` and tast allows you to include subdirectories for data files.",
+      "revId": "0f8ca16a428503c6a6a92570bc5fbf30d3db50c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
