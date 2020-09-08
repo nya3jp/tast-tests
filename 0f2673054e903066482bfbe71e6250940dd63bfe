@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "473eb986_764be834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-08T07:36:48Z",
+      "side": 1,
+      "message": "Sure, we can add more tests as we progress on the implementation.\nOur team with crostini, so I am confident that part can be taken care with some configuration. They have a lot of Tast tests running. Let\u0027s put that on our list for next quarters.",
+      "parentUuid": "7380aa2e_300c97e0",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "0f2673054e903066482bfbe71e6250940dd63bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68cd589c_da59b32f",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "revId": "0f2673054e903066482bfbe71e6250940dd63bfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb39d14_f96c4869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-08T07:36:48Z",
+      "side": 1,
+      "message": "I want this tests mainly for my dev in G3.\nWe can add the use flag reading in another test and land it when you add the CL that adds the libimedecoder.so to the image.",
+      "parentUuid": "68cd589c_da59b32f",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "0f2673054e903066482bfbe71e6250940dd63bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
