@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "3c865106_1a6a6d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-08T07:22:52Z",
+      "side": 1,
+      "message": "It looks like work is being done on the flakiness, so I\u0027d like to see it flake before we change the behaviour of the test.",
+      "parentUuid": "702bb218_c0895040",
+      "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "828a524b_f3e8da89",
         "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
         "patchSetId": 4
@@ -91,6 +109,30 @@
       "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94be606c_eb5480f4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-08T07:22:52Z",
+      "side": 1,
+      "message": "Done the one line. We can optimise for more tabs when more tabs are used.",
+      "parentUuid": "828a524b_f3e8da89",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -126,6 +168,24 @@
       "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a266a91_507525f5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-08T07:22:52Z",
+      "side": 1,
+      "message": "The browser settings page is not os-settings. We can open os settings through chrome://os-settings/help, but that just redirects and opens the app so we would have the same problem.\n\nAdded and verified a conditional open of the sidebar works",
+      "parentUuid": "abc10a06_6c8660f9",
+      "revId": "be076c43e08ba86c7db3538984eafdde61799cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
