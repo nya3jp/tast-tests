@@ -39,6 +39,30 @@
       "revId": "7e9e1f83f0f3fef3b9c38e5b18240d4279382671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23819f01_c1b6a48e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-09-08T18:22:03Z",
+      "side": 1,
+      "message": "Correct, fixed.",
+      "parentUuid": "993e437f_abdb38d1",
+      "range": {
+        "startLine": 214,
+        "startChar": 111,
+        "endLine": 214,
+        "endChar": 115
+      },
+      "revId": "7e9e1f83f0f3fef3b9c38e5b18240d4279382671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
