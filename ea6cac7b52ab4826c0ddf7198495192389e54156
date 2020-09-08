@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51198e84_75382b82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-08T20:35:06Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "ea6cac7b52ab4826c0ddf7198495192389e54156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c7a1cfa_76a8dd4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-08T20:35:06Z",
+      "side": 1,
+      "message": "nit: delayMS ? or waitMS ?",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "ea6cac7b52ab4826c0ddf7198495192389e54156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95ac197b_e381b84f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/touch_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-08T20:35:06Z",
+      "side": 1,
+      "message": "ditto above: delayMS or waitMS ... or something like that",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 14
+      },
+      "revId": "ea6cac7b52ab4826c0ddf7198495192389e54156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
