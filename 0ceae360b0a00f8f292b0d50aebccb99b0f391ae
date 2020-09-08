@@ -189,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "b58af531_ed84d7f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T20:29:31Z",
+      "side": 1,
+      "message": "Yeah, in my experience I have to get them like this or locally on a DUT with the test extension. The app IDs don\u0027t seem to be all kept together anywhere in the code base.",
+      "parentUuid": "40780690_bf165605",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "0ceae360b0a00f8f292b0d50aebccb99b0f391ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "720bdb90_6dc90213",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 1

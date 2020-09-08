@@ -16,6 +16,201 @@
       "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb074972_cb42cdf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T20:29:31Z",
+      "side": 1,
+      "message": "These explicit TestTracker steps can be removed. The TestTracker cases get updated from time to time for various reasons (edited to accommodate new features, general cleanup/clarification, etc.), so these comments may become out of sync with the test case.\n\nI think keeping short comments close to where the test step is about to happen would be easier to understand and maintain.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 51
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc03fbb_e55aac0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T20:29:31Z",
+      "side": 1,
+      "message": "I didn\u0027t quite think about this the first time, but we probably don\u0027t need to explicitly launch these from the Launcher. The main purpose of the test is to check the shelf\u0027s pinned app behavior, so I think it would be fine to just use apps.Launch for these additional apps.\n\nYou already added the function in launcher.go, though, and I think that\u0027ll be a useful function to have in the future, so I guess we can keep this here for now.",
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bbc3cfb_0be6d307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T20:29:31Z",
+      "side": 1,
+      "message": "Maybe one of appButton/appIcon/btn/icon would be a better name here to make it clear we\u0027re talking about something in the UI. Just calling it app is a little confusing to me since sometimes we do iterate through app.go\u0027s app structs.",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 5
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75285a08_aa73afd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T20:29:31Z",
+      "side": 1,
+      "message": "I think this should be a function in launcher.go as well",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20901f31_725294ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T20:29:31Z",
+      "side": 1,
+      "message": "This should be deferred after the call to launcher.FindAppFromItemView to make sure it\u0027s released if any of the above steps fail.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f201561c_9213801b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T20:29:31Z",
+      "side": 1,
+      "message": "This can go in shelf.go",
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a985d1_4738df10",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T20:29:31Z",
+      "side": 1,
+      "message": "Same here, can we use an app struct from apps.go?",
+      "range": {
+        "startLine": 530,
+        "startChar": 66,
+        "endLine": 530,
+        "endChar": 80
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d7d2dd_8e111f80",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T20:29:31Z",
+      "side": 1,
+      "message": "Maybe \"the expanded launcher\" would be clearer here, since it\u0027s less of an internal name.",
+      "range": {
+        "startLine": 78,
+        "startChar": 39,
+        "endLine": 78,
+        "endChar": 53
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f29b8d05_2de0a708",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-08T20:29:31Z",
+      "side": 1,
+      "message": "Is it possible to just pass in an app struct from apps.go? I think it would be best to keep all the app info together if possible.",
+      "range": {
+        "startLine": 80,
+        "startChar": 69,
+        "endLine": 80,
+        "endChar": 83
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
