@@ -45,6 +45,10 @@ func SetBatteryDischarge(ctx context.Context, lowBatteryMargin float64) (Cleanup
 		return nil, err
 	}
 	if lowBatteryCutoff >= capacity {
+		// Set battery to charge if it's low. Some devices report charge status
+		// as normal even when discharging, so try our best to make sure devices
+		// with low battery are charging.
+		setChargeControl(ctx, "normal")
 		return nil, errors.Errorf("battery percent %.2f is too low to start discharging", capacity)
 	}
 	status, err := power.ReadBatteryStatus(devPaths)
