@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6e5d20ee_de55fa95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-08T21:09:41Z",
+      "side": 1,
+      "message": "please make it shorter, ideally no longer than 50 symbols",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 82
+      },
+      "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fff6fda6_aefc0ece",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
