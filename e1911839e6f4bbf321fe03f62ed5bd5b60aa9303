@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "a35a85d9_7b8b8bf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-08T04:19:26Z",
+      "side": 1,
+      "message": "Maybe mention this is both for arc++ and arcvm?",
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da0f02c_df43a818",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-08T04:19:26Z",
+      "side": 1,
+      "message": "vp9?",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f277fc2b_d34b9ee4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-08T04:19:26Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem relevant?",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 15,
+        "endChar": 65
+      },
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43db3b74_ffc82948",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-08T04:19:26Z",
+      "side": 1,
+      "message": "If you ran all the tests, do you have an idea about the total runtime? Might be interesting to leave it here for reference.",
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40e9938f_e5ded3ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
         "patchSetId": 3
