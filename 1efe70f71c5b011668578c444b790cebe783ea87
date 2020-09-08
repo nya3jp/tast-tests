@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd95c4a3_9cb1ccd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-08T07:27:39Z",
+      "side": 1,
+      "message": "ptal.\nMoved \"setwallpaper\" from companionlib to a package. ",
+      "revId": "1efe70f71c5b011668578c444b790cebe783ea87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

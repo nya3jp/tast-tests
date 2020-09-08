@@ -138,6 +138,30 @@
     },
     {
       "key": {
+        "uuid": "9aff748c_93824a0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-08T07:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaeb3d6a_d28d3c72",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 61
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "868737f0_97330e1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 19
@@ -300,6 +324,30 @@
       "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26a8ccb5_168353c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-08T07:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d67a404_cba86549",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 162,
+        "endChar": 16
+      },
+      "revId": "0dfb71d79d21f4345798510fb272c18a4441f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
