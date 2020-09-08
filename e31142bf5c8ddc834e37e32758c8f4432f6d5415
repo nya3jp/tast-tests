@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea7c738a_730e9f68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-08T17:18:33Z",
+      "side": 1,
+      "message": "Hi Miguel and Tast owners, could you take a look? Thanks!",
+      "revId": "e31142bf5c8ddc834e37e32758c8f4432f6d5415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
