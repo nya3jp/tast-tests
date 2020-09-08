@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34cbca03_fd196e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-09-08T17:56:22Z",
+      "side": 1,
+      "message": "That makes sense to me. Done.",
+      "parentUuid": "79e76de7_3002b5aa",
+      "range": {
+        "startLine": 76,
+        "startChar": 35,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "5c2572463fbb0474a526d0603e216be4c1a612c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09c7df96_e43bc1f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5c2572463fbb0474a526d0603e216be4c1a612c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03f28320_bbd22fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-09-08T17:56:22Z",
+      "side": 1,
+      "message": "All of the comments in this file are wrapped at 80 characters so I\u0027ll leave for consistency.",
+      "parentUuid": "09c7df96_e43bc1f0",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "5c2572463fbb0474a526d0603e216be4c1a612c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "326a9423_3a7b4ce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-09-08T17:56:22Z",
+      "side": 1,
+      "message": "Every other validator in this file is using actual instead of want, so I\u0027ll leave it for consistency.",
+      "parentUuid": "026f1d6d_577378fe",
+      "range": {
+        "startLine": 99,
+        "startChar": 13,
+        "endLine": 99,
+        "endChar": 19
+      },
+      "revId": "5c2572463fbb0474a526d0603e216be4c1a612c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e67caa16_76f83110",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "5c2572463fbb0474a526d0603e216be4c1a612c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eaec2e9_321fc642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-09-08T17:56:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67caa16_76f83110",
+      "range": {
+        "startLine": 101,
+        "startChar": 44,
+        "endLine": 101,
+        "endChar": 45
+      },
+      "revId": "5c2572463fbb0474a526d0603e216be4c1a612c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
