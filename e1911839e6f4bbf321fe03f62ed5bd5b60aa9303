@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40e9938f_e5ded3ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-09-08T01:27:49Z",
+      "side": 1,
+      "message": "remove this?",
+      "range": {
+        "startLine": 45,
+        "startChar": 35,
+        "endLine": 45,
+        "endChar": 54
+      },
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bb49c0a_a5c1926a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-09-08T01:27:49Z",
+      "side": 1,
+      "message": "nit: how about move to const?",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 78
+      },
+      "revId": "e1911839e6f4bbf321fe03f62ed5bd5b60aa9303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
