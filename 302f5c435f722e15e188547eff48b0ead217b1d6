@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00b54641_5629f629",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-08T15:25:25Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective, % nits",
+      "revId": "302f5c435f722e15e188547eff48b0ead217b1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3037eef5_46bfe882",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-08T15:25:25Z",
+      "side": 1,
+      "message": "nit/typo: \"disappears\"",
+      "range": {
+        "startLine": 623,
+        "startChar": 36,
+        "endLine": 623,
+        "endChar": 45
+      },
+      "revId": "302f5c435f722e15e188547eff48b0ead217b1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "255aab23_5184fc3a",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-08T15:25:25Z",
+      "side": 1,
+      "message": "nit/typo: \"performs\"",
+      "range": {
+        "startLine": 331,
+        "startChar": 35,
+        "endLine": 331,
+        "endChar": 42
+      },
+      "revId": "302f5c435f722e15e188547eff48b0ead217b1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
