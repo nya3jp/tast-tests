@@ -254,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "8ce9dd26_82b6152d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-08T19:34:12Z",
+      "side": 1,
+      "message": "I updated the comment.",
+      "parentUuid": "400b6e2c_0df82db1",
+      "range": {
+        "startLine": 173,
+        "startChar": 36,
+        "endLine": 173,
+        "endChar": 65
+      },
+      "revId": "713ac8745b09209295b391eec270be6c48ea365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96c6b07e_dc8dd08b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_disconnect.go",
         "patchSetId": 21
