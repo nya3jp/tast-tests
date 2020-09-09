@@ -50,6 +50,7 @@ var optMap = map[string]MountOpt{
 }
 
 // MountInfo is a struct containing mount point info.
+// TODO(chavey): crbug/1126921 - replace master in structure.
 type MountInfo struct {
 	MountID       int
 	ParentID      int
