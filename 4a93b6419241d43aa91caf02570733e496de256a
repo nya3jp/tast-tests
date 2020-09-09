@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69f74f6c_318d37ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_browser.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-09T03:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6386a04c_0ec4db8d",
+      "range": {
+        "startLine": 117,
+        "startChar": 11,
+        "endLine": 117,
+        "endChar": 16
+      },
+      "revId": "4a93b6419241d43aa91caf02570733e496de256a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ed0f83a_e5b092a7",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-09T02:42:57Z",
       "side": 1,
       "message": "I\u0027ve previously noticed that in some cases \"invisible attribute is not present at all rather than just being true.",
+      "range": {
+        "startLine": 628,
+        "startChar": 62,
+        "endLine": 628,
+        "endChar": 71
+      },
+      "revId": "4a93b6419241d43aa91caf02570733e496de256a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87a6dbe8_e55b9971",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-09T03:25:34Z",
+      "side": 1,
+      "message": "Thanks so much for this information. I find an alternative identifer (even better) to check the vk window, not just an invisible node. Tested locally.",
+      "parentUuid": "7ed0f83a_e5b092a7",
       "range": {
         "startLine": 628,
         "startChar": 62,
