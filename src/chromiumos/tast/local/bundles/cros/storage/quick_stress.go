@@ -7,6 +7,7 @@ package storage
 import (
 	"context"
 	"path/filepath"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/storage/stress"
@@ -21,6 +22,29 @@ const (
 // testFunc is the code associated with a sub-test.
 type testFunc func(context.Context, *testing.State)
 
+func isDualQual(ctx context.Context, s *testing.State) bool {
+	if val, ok := s.Var("storage.QuickStress.slcQual"); ok {
+		dual, err := strconv.ParseBool(val)
+		if err != nil {
+			s.Fatal("Cannot parse argumet 'storage.QuickStress.slcQual' of type bool: ", err)
+		}
+		return dual
+	}
+	return false
+}
+
+func getSlcDevice(ctx context.Context, s *testing.State) string {
+	info, err := stress.ReadDiskInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed reading disk info: ", err)
+	}
+	slc, err := info.SlcDevice()
+	if slc == nil {
+		s.Fatal("Dual qual is specified but SLC device is not present: ", err)
+	}
+	return "/dev/" + slc.Name
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         QuickStress,
@@ -29,6 +53,7 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         stress.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
+		Vars:         []string{"storage.QuickStress.slcQual"},
 		Params: []testing.Param{{
 			Name:    "0_setup",
 			Val:     testFunc(setup),
@@ -50,6 +75,34 @@ func init() {
 }
 
 func setup(ctx context.Context, s *testing.State) {
+	check(ctx, s)
+
+	// Run tests to collect metrics.
+	resultWriter := &stress.FioResultWriter{}
+	defer resultWriter.Save(ctx, s.OutDir())
+
+	resultWriter.RunSequential(ctx, s, []stress.FioBlock{{"main", benchmarkMain}, {"slc", benchmarkSlc}})
+}
+
+func testBlock(ctx context.Context, s *testing.State) {
+	resultWriter := &stress.FioResultWriter{}
+	defer resultWriter.Save(ctx, s.OutDir())
+
+	resultWriter.RunParallel(ctx, s, []stress.FioBlock{{"stress_main", testBlockMain}, {"stress_slc", testBlockSlc}})
+	stress.Suspend(ctx)
+
+	resultWriter.RunSequential(ctx, s, []stress.FioBlock{{"verify_main", verifyBlockMain}, {"verify_slc", verifyBlockSlc}})
+}
+
+func teardown(ctx context.Context, s *testing.State) {
+	// Run tests to collect metrics.
+	resultWriter := &stress.FioResultWriter{}
+	defer resultWriter.Save(ctx, s.OutDir())
+
+	resultWriter.RunSequential(ctx, s, []stress.FioBlock{{"after_main", benchmarkMain}, {"after_slc", benchmarkSlc}})
+}
+
+func check(ctx context.Context, s *testing.State) {
 	// Fetching info of all storage devices.
 	info, err := stress.ReadDiskInfo(ctx)
 	if err != nil {
@@ -69,10 +122,15 @@ func setup(ctx context.Context, s *testing.State) {
 		s.Fatal("Error saving disk info: ", err)
 	}
 
-	// Run tests to collect metrics.
-	resultWriter := &stress.FioResultWriter{}
-	defer resultWriter.Save(ctx, s.OutDir())
+	if isDualQual(ctx, s) {
+		slc, err := info.SlcDevice()
+		if slc == nil {
+			s.Fatal("Dual qual is specified but SLC device is not present: ", err)
+		}
+	}
+}
 
+func benchmarkMain(ctx context.Context, s *testing.State, resultWriter *stress.FioResultWriter) {
 	testConfig := &stress.TestConfig{ResultWriter: resultWriter, Path: stress.BootDeviceFioPath}
 	stress.RunFioStress(ctx, s, testConfig.WithJob("seq_write"))
 	stress.RunFioStress(ctx, s, testConfig.WithJob("seq_read"))
@@ -82,10 +140,16 @@ func setup(ctx context.Context, s *testing.State) {
 	stress.RunFioStress(ctx, s, testConfig.WithJob("16k_read"))
 }
 
-func testBlock(ctx context.Context, s *testing.State) {
-	resultWriter := &stress.FioResultWriter{}
-	defer resultWriter.Save(ctx, s.OutDir())
+func benchmarkSlc(ctx context.Context, s *testing.State, resultWriter *stress.FioResultWriter) {
+	if !isDualQual(ctx, s) {
+		return
+	}
+	testConfig := &stress.TestConfig{ResultWriter: resultWriter, Path: getSlcDevice(ctx, s)}
+	stress.RunFioStress(ctx, s, testConfig.WithJob("4k_write"))
+	stress.RunFioStress(ctx, s, testConfig.WithJob("4k_read"))
+}
 
+func testBlockMain(ctx context.Context, s *testing.State, resultWriter *stress.FioResultWriter) {
 	testConfig := &stress.TestConfig{Path: stress.BootDeviceFioPath}
 
 	stress.RunFioStress(ctx, s,
@@ -110,7 +174,38 @@ func testBlock(ctx context.Context, s *testing.State) {
 		testConfig.
 			WithJob("8k_async_randwrite").
 			WithDuration(4*time.Minute))
-	stress.Suspend(ctx)
+}
+
+func testBlockSlc(ctx context.Context, s *testing.State, resultWriter *stress.FioResultWriter) {
+	if !isDualQual(ctx, s) {
+		return
+	}
+	testConfig := &stress.TestConfig{Path: getSlcDevice(ctx, s)}
+
+	stress.RunFioStress(ctx, s,
+		testConfig.
+			WithJob("4k_write").
+			WithDuration(1*time.Hour))
+	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
+		s.Fatal("Sleep failed: ", err)
+	}
+	stress.RunFioStress(ctx, s,
+		testConfig.
+			WithJob("4k_write").
+			WithDuration(1*time.Hour).
+			WithVerifyOnly(true).
+			WithResultWriter(resultWriter))
+	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
+		s.Fatal("Sleep failed: ", err)
+	}
+	stress.RunFioStress(ctx, s,
+		testConfig.
+			WithJob("4k_write").
+			WithDuration(4*time.Minute))
+}
+
+func verifyBlockMain(ctx context.Context, s *testing.State, resultWriter *stress.FioResultWriter) {
+	testConfig := &stress.TestConfig{Path: stress.BootDeviceFioPath}
 	stress.RunFioStress(ctx, s,
 		testConfig.
 			WithJob("8k_async_randwrite").
@@ -118,9 +213,16 @@ func testBlock(ctx context.Context, s *testing.State) {
 			WithResultWriter(resultWriter))
 }
 
-func teardown(ctx context.Context, s *testing.State) {
-	// Teardown is exactly the same as setup.
-	setup(ctx, s)
+func verifyBlockSlc(ctx context.Context, s *testing.State, resultWriter *stress.FioResultWriter) {
+	if !isDualQual(ctx, s) {
+		return
+	}
+	testConfig := &stress.TestConfig{Path: getSlcDevice(ctx, s)}
+	stress.RunFioStress(ctx, s,
+		testConfig.
+			WithJob("4k_write").
+			WithVerifyOnly(true).
+			WithResultWriter(resultWriter))
 }
 
 // QuickStress runs a short version of disk IO performance tests.
