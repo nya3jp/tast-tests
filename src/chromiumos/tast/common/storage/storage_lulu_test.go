@@ -89,7 +89,7 @@ Commands/features:
 		*	Data Set Management TRIM supported (limit 8 blocks)
 		*	Deterministic read data after TRIM
 Security:
-	Master password revision code = 65534
+	Primary password revision code = 65534
 		supported
 	not	enabled
 	not	locked
