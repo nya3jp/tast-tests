@@ -18,9 +18,10 @@ import (
 
 // chromeCrashLoggedInParams contains the test parameters which are different between the various tests.
 type chromeCrashLoggedInParams struct {
-	ptype   chromecrash.ProcessType
-	handler chromecrash.CrashHandler
-	consent crash.ConsentType
+	ptype         chromecrash.ProcessType
+	handler       chromecrash.CrashHandler
+	consent       crash.ConsentType
+	restartChrome bool
 }
 
 func init() {
@@ -71,9 +72,19 @@ func init() {
 				ptype:   chromecrash.GPUProcess,
 				handler: chromecrash.Breakpad,
 				consent: crash.RealConsent,
+				// Breakpad only adds a signal handler to a process if it has consent
+				// at the time the process starts up. There's a special hook in the
+				// browser process to initialize Breakpad if consent is given after
+				// startup
+				// (https://chromium-review.googlesource.com/c/chromium/src/+/2145676);
+				// however, this only works for the browser process. For the GPU
+				// process, we need to set consent and then restart Chrome. The
+				// mock_consent variants use a command-line argument which forces the
+				// 'install a signal handler' behavior, so we only need this for the
+				// real consent variant.
+				restartChrome: true,
 			},
-			// TODO(https://crbug.com/1110025): Figure out why this test is 100%
-			// failing, then move back to mainline / informational.
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
 		}, {
 			Name: "gpu_process_breakpad_mock_consent",
@@ -159,7 +170,11 @@ func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
-	defer cr.Close(ctx)
+	defer func() {
+		if cr != nil {
+			cr.Close(ctx)
+		}
+	}()
 
 	opt := crash.WithMockConsent()
 	if params.consent == crash.RealConsent {
@@ -169,6 +184,16 @@ func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest(ctx)
+
+	if params.restartChrome {
+		cr.Close(ctx)
+		// Need to KeepState to avoid erasing the consent we just set up
+		cr, err = chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(extraArgs...))
+		if err != nil {
+			cr = nil
+			s.Fatal("Chrome login failed: ", err)
+		}
+	}
 
 	files, err := ct.KillAndGetCrashFiles(ctx)
 	if err != nil {
