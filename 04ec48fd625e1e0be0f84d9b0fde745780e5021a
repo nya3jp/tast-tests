@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fc002b5_8354fc08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T22:35:54Z",
+      "side": 1,
+      "message": "I don\u0027t think that this increase is completely necessary, especially not this large of an increase(100ms to 500ms), but I thought it would be better to be extreme here. Hopefully 500ms is enough for even really slow duts. Also, since 500ms delay is only for a few clicks, this shouldn\u0027t effect test execution time too much.\n\nAny suggestions for what the slowest dut is so that I can do some testing?",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 35
+      },
+      "revId": "04ec48fd625e1e0be0f84d9b0fde745780e5021a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
