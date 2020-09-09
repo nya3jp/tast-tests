@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "d78668ee_368615e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-09T10:03:31Z",
+      "side": 1,
+      "message": "Mainline tests are run for every release build. Those test results are monitored by several teams (release TPMs, Green Stainless, ...) to measure health of the product. Thus it is strongly discouraged to add a test not to be stabilized and promoted to CQ (critical).\n\nIf you want to exempt from monitoring, you can create a new test group, and trigger those tests by setting up suite_scheduler.\n\nBTW I saw a CL that adds \"group:essential-inputs\" before. Is the group meant for such manual tests?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2219854",
+      "parentUuid": "3108ae57_4c2f50ab",
+      "range": {
+        "startLine": 28,
+        "startChar": 17,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95403612_f05801e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 3
@@ -313,6 +337,30 @@
       "side": 1,
       "message": "I have changed this, but I believe \":\" does not create a diferent sentence.",
       "parentUuid": "aad08318_3709728b",
+      "range": {
+        "startLine": 130,
+        "startChar": 25,
+        "endLine": 130,
+        "endChar": 81
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58188545_87f61983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-09T10:03:31Z",
+      "side": 1,
+      "message": "I meant to remove a period, which splits sentences. I agree : does not split a sentence.",
+      "parentUuid": "04f66667_008ca050",
       "range": {
         "startLine": 130,
         "startChar": 25,
