@@ -16,6 +16,98 @@
       "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad520d42_9a5dd921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-09T10:03:31Z",
+      "side": 1,
+      "message": "Can you add a comment why we can\u0027t promote this test, or add a pointer to a bug entry?\n\nFirst reaction of readers would be \"why?\" and this comment does not answer the question.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c0553ba_614248ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-09T10:03:31Z",
+      "side": 1,
+      "message": "This name doesn\u0027t explain what happens if we set the variable. And actually I don\u0027t know it after reading the code... Can you name it with some verbs to clarify the purpose of the variable, e.g. \"inputs.checkIMEDecoder\", \"inputs.checkIME\", \"inputs.waitIME\", ...",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 14
+      },
+      "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c672f2ec_467c3400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-09T10:03:31Z",
+      "side": 1,
+      "message": "nit:\n\n keyboard (got: ...",
+      "range": {
+        "startLine": 123,
+        "startChar": 61,
+        "endLine": 123,
+        "endChar": 65
+      },
+      "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70ecc310_ae93eda7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-09T10:03:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
