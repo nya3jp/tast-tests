@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "565d51bc_3c439eb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-09-09T21:48:22Z",
+      "side": 1,
+      "message": "Do we have a separate UMA for this action?",
+      "revId": "359df6b8e96488f1f4267f329b4f27cc79486741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

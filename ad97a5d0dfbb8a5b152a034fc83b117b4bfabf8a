@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2e0e43a_ca886405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-09-09T21:48:22Z",
+      "side": 0,
+      "message": "I guess this change may have impact on the current data?",
+      "revId": "ad97a5d0dfbb8a5b152a034fc83b117b4bfabf8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
