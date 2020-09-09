@@ -207,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "ea17c352_36637fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-09T09:16:23Z",
+      "side": 1,
+      "message": "PTAL on codelab #2:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup\n\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/ctxutil?tab\u003ddoc#Shorten\n\n\nHow your code can look like:\n\n```\ncr :\u003d s.PreValue().(*chrome.Chrome)\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5 * time.Second)\ndefer cancel()\n\ntconn, err :\u003d cr.TestAPIConn(ctx)\nif err !\u003d nil {\n\ts.Fatal(\"Failed to connect Test API: \", err)\n}\ndefer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)\n```\n\nThis is needed, because in case of reaching deadline you won\u0027t have time for proper cleanup and  dumping UI tree.",
+      "parentUuid": "0daac1f3_cea8fef9",
+      "range": {
+        "startLine": 51,
+        "startChar": 33,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc2cb607_61b25027",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
         "patchSetId": 2
