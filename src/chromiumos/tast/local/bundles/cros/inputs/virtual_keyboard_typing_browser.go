@@ -70,24 +70,13 @@ func VirtualKeyboardTypingBrowser(ctx context.Context, s *testing.State) {
 
 	conn, err := cr.NewConn(ctx, server.URL)
 	if err != nil {
-		s.Fatal("Creating renderer for test page failed: ", err)
+		s.Fatal("Failed to connect to test page: ", err)
 	}
 	defer conn.Close()
 
-	inputWithVK := func(inputParams ui.FindParams) error {
-		inputNode, err := ui.FindWithTimeout(ctx, tconn, inputParams, 10*time.Second)
-		if err != nil {
-			return errors.Wrapf(err, "failed to find input node with params %v", inputParams)
-		}
-		defer inputNode.Release(ctx)
-
-		if err := inputNode.LeftClick(ctx); err != nil {
-			return errors.Wrap(err, "failed to click the input node")
-		}
-
-		s.Log("Waiting for the virtual keyboard to show")
-		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to wait for the virtual keyboard to show")
+	inputWithVK := func(inputNode *ui.Node) error {
+		if err := vkb.ClickUntilVKShown(ctx, tconn, inputNode); err != nil {
+			return errors.Wrap(err, "failed to click the input node and wait for vk shown")
 		}
 
 		s.Log("Waiting for the virtual keyboard to render buttons")
@@ -102,6 +91,50 @@ func VirtualKeyboardTypingBrowser(ctx context.Context, s *testing.State) {
 		if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to hide virtual keyboard")
 		}
+		return nil
+	}
+
+	s.Run(ctx, "Omnibox", func(ctx context.Context, s *testing.State) {
+		omniboxInputParams := ui.FindParams{
+			Role:       ui.RoleTypeTextField,
+			Attributes: map[string]interface{}{"inputType": "url"},
+		}
+		inputNode, err := ui.FindWithTimeout(ctx, tconn, omniboxInputParams, 10*time.Second)
+		if err != nil {
+			s.Fatalf("Failed to find Omnibox input with params %v: %v", omniboxInputParams, err)
+		}
+		defer inputNode.Release(ctx)
+		if err := inputWithVK(inputNode); err != nil {
+			s.Fatal("Failed to use virtual keyboard in omnibox: ", err)
+		}
+
+		// Value change can be a bit delayed after input.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := inputNode.Update(ctx); err != nil {
+				return errors.Wrap(err, "failed to update node")
+			}
+
+			// When click Omnibox, on some devices existing text is highlighted and replaced by new input,
+			// while on some other devices, it is not highlighted and inserted new input.
+			// So use contains here to avoid flakiness.
+			if !strings.Contains(inputNode.Value, typingKeys) {
+				return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputNode.Value, typingKeys)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			s.Error("Failed to input with virtual keyboard in Omnibox: ", err)
+		}
+	})
+
+	s.Run(ctx, "InputField", func(ctx context.Context, s *testing.State) {
+		inputNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 10*time.Second)
+		if err != nil {
+			s.Fatalf("Failed to find input node with name %s: %v", identifier, err)
+		}
+		defer inputNode.Release(ctx)
+		if err := inputWithVK(inputNode); err != nil {
+			s.Fatal("Failed to use virtual keyboard in input field: ", err)
+		}
 
 		// Value change can be a bit delayed after input.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -113,23 +146,7 @@ func VirtualKeyboardTypingBrowser(ctx context.Context, s *testing.State) {
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return errors.Wrap(err, "failed to input with virtual keyboard")
-		}
-		return nil
-	}
-
-	s.Run(ctx, "Omnibox", func(ctx context.Context, s *testing.State) {
-		if err := inputWithVK(ui.FindParams{
-			Role:       ui.RoleTypeTextField,
-			Attributes: map[string]interface{}{"inputType": "url"},
-		}); err != nil {
-			s.Error("Failed to use virtual keyboard in omnibox: ", err)
-		}
-	})
-
-	s.Run(ctx, "InputField", func(ctx context.Context, s *testing.State) {
-		if err := inputWithVK(ui.FindParams{Name: identifier}); err != nil {
-			s.Error("Failed to use virtual keyboard in input field: ", err)
+			s.Error("Failed to input with virtual keyboard in input field: ", err)
 		}
 	})
 }
