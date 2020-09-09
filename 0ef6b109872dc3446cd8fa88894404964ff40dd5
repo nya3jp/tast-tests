@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e932611e_68d8e36c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-09-09T19:10:22Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "0ef6b109872dc3446cd8fa88894404964ff40dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "541535c8_27a3628e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/wm_tablet_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-09-09T19:10:22Z",
+      "side": 1,
+      "message": "nit: same nit here.",
+      "revId": "0ef6b109872dc3446cd8fa88894404964ff40dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd8a1ff_4400ae08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-09-09T19:10:22Z",
+      "side": 1,
+      "message": "nit: comment should be\n// Font scale, this const must not be 1.\n\nAlso fsc should be 1.2, the real scale factor we use in the product.",
+      "revId": "0ef6b109872dc3446cd8fa88894404964ff40dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
