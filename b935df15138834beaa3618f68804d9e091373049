@@ -39,6 +39,53 @@
       "revId": "b935df15138834beaa3618f68804d9e091373049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb0e298_2b65feaa",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-09-09T00:29:00Z",
+      "side": 1,
+      "message": "I think io.EOF is the only error it would return but that would make sense.",
+      "parentUuid": "d19c54c5_089bf9b9",
+      "range": {
+        "startLine": 328,
+        "startChar": 9,
+        "endLine": 328,
+        "endChar": 12
+      },
+      "revId": "b935df15138834beaa3618f68804d9e091373049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e7d7708_44d64dad",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-09-09T00:29:00Z",
+      "side": 1,
+      "message": "actually adding this here makes things noisy because it includes successful logs from crosvm/kernel, let me remove this for now.",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 133
+      },
+      "revId": "b935df15138834beaa3618f68804d9e091373049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
