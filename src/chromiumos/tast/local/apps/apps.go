@@ -100,6 +100,12 @@ var PlayMovies = App{
 	Name: "Play Movies & TV",
 }
 
+// TelemetryExtension has details about the TelemetryExtension app.
+var TelemetryExtension = App{
+	ID:   "lhoocnmbcmmbjgdeaallonfplogkcneb",
+	Name: "Telemetry Extension",
+}
+
 // Terminal has details about the Crostini Terminal app.
 var Terminal = App{
 	ID:   "fhicihalidkgcimdmhpohldehjmcabcf",
