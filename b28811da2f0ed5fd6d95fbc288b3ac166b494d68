@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7dbded20_49630bdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-09T05:28:49Z",
+      "side": 1,
+      "message": "The current solution works for my purpose. Good idea and will consider for coming changes.",
+      "parentUuid": "2cf087de_f9f6d433",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "b28811da2f0ed5fd6d95fbc288b3ac166b494d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77328072_3114c243",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
         "patchSetId": 6
@@ -62,6 +86,30 @@
       "revId": "b28811da2f0ed5fd6d95fbc288b3ac166b494d68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc040ae_390a06b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-09T05:28:49Z",
+      "side": 1,
+      "message": "The TAST reviewer asked to remove all Attr since we have no intention to promote the test.",
+      "parentUuid": "77328072_3114c243",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "b28811da2f0ed5fd6d95fbc288b3ac166b494d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
