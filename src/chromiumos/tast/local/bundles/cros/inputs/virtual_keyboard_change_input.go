@@ -95,8 +95,8 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	defer inputFieldElement.Release(ctx)
 
 	s.Log("Click input field to trigger virtual keyboard")
-	if err := inputFieldElement.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
+	if err := vkb.ClickUntilVKShown(ctx, tconn, inputFieldElement); err != nil {
+		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 
 	// Input method changing is done async between front-end ui and background.

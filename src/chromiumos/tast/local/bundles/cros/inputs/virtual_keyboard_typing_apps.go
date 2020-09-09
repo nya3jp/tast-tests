@@ -83,13 +83,13 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 	defer searchInputElement.Release(ctx)
 
 	s.Log("Click searchbox to trigger virtual keyboard")
-	if err := searchInputElement.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
+	if err := vkb.ClickUntilVKShown(ctx, tconn, searchInputElement); err != nil {
+		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 
-	s.Log("Wait for virtual keyboard shown up")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
+	s.Log("Waiting for the virtual keyboard to render buttons")
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
 	s.Log("Wait for decoder running")
