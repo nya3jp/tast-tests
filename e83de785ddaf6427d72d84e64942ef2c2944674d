@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edb01a2e_e033f6ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-09-09T00:29:27Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "e83de785ddaf6427d72d84e64942ef2c2944674d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86a6c91f_b4251248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-09-09T00:29:27Z",
+      "side": 1,
+      "message": "huge nit: extra space",
+      "range": {
+        "startLine": 85,
+        "startChar": 25,
+        "endLine": 85,
+        "endChar": 26
+      },
+      "revId": "e83de785ddaf6427d72d84e64942ef2c2944674d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "221c4bdc_b00f6c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-09-09T00:29:27Z",
+      "side": 1,
+      "message": "Is this to keep the desks bar from showing up which may affect performance? Or does it interfere with trying to drag a window? Could we add a comment?",
+      "revId": "e83de785ddaf6427d72d84e64942ef2c2944674d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a633c40a_ebce263c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-09-09T00:29:27Z",
+      "side": 1,
+      "message": "nit: Move this to above L246.",
+      "revId": "e83de785ddaf6427d72d84e64942ef2c2944674d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
