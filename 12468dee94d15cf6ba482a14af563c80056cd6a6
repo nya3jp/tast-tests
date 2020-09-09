@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3390682c_c8ba4116",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T21:41:03Z",
+      "side": 1,
+      "message": "generally people put something like \"tast run \u003cdut\u003e arc.ArcAvailability\". Just states what tests you ran to confirm this works",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "12468dee94d15cf6ba482a14af563c80056cd6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96083605_bad3631a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T21:41:03Z",
+      "side": 1,
+      "message": "We probably want to wait for all/most of the test cases before submitting this.",
+      "revId": "12468dee94d15cf6ba482a14af563c80056cd6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee11fd5_078ad6b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T21:41:03Z",
+      "side": 1,
+      "message": "Instead of returning a bool, you should just use s.Fatal/s.Error if you run into errors.",
+      "range": {
+        "startLine": 39,
+        "startChar": 98,
+        "endLine": 39,
+        "endChar": 102
+      },
+      "revId": "12468dee94d15cf6ba482a14af563c80056cd6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a945e1_3ced322e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T21:41:03Z",
+      "side": 1,
+      "message": "this is essentially the same as ash.WaitForApp(). You should probably use that instead.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "12468dee94d15cf6ba482a14af563c80056cd6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
