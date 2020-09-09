@@ -65,7 +65,7 @@ func ReadBatteryStatus(devPaths []string) (BatteryStatus, error) {
 		return BatteryStatusUnknown, errors.New("device has multiple batteries")
 	}
 	devPath := devPaths[0]
-	statusStr, err := readLine(path.Join(devPath, "status"))
+	statusStr, err := readFirstLine(path.Join(devPath, "status"))
 	if err != nil {
 		return BatteryStatusUnknown, errors.Errorf("%v lacks status attribute", devPath)
 	}
@@ -132,7 +132,7 @@ func ListSysfsBatteryPaths(ctx context.Context) ([]string, error) {
 	var batteryPaths []string
 	for _, file := range files {
 		devPath := path.Join(sysfsPowerSupplyPath, file.Name())
-		supplyType, err := readLine(path.Join(devPath, "type"))
+		supplyType, err := readFirstLine(path.Join(devPath, "type"))
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to read type of %v", devPath)
 		}
@@ -140,7 +140,7 @@ func ListSysfsBatteryPaths(ctx context.Context) ([]string, error) {
 			testing.ContextLogf(ctx, "%v is not a Battery", devPath)
 			continue
 		}
-		supplyScope, err := readLine(path.Join(devPath, "scope"))
+		supplyScope, err := readFirstLine(path.Join(devPath, "scope"))
 		if err != nil && !os.IsNotExist(err) {
 			// Ignore NotExist error since /sys/class/power_supply/*/scope may not exist
 			return nil, errors.Wrapf(err, "failed to read scope of %v", devPath)

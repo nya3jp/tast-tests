@@ -5,25 +5,32 @@
 package power
 
 import (
-	"io/ioutil"
+	"bufio"
+	"os"
 	"strconv"
 	"strings"
 )
 
-// readLine reads a file with single line content.
+// readFirstLine reads the first line from a file.
 // Line feed character will be removed to ease converting the string
 // into other types.
-func readLine(filePath string) (string, error) {
-	strBytes, err := ioutil.ReadFile(filePath)
+func readFirstLine(filePath string) (string, error) {
+	file, err := os.Open(filePath)
 	if err != nil {
 		return "", err
 	}
-	return strings.TrimSuffix(string(strBytes), "\n"), nil
+	defer file.Close()
+
+	reader := bufio.NewReader(file)
+	// Reader.ReadString returns error iff line does not end in \n. We can
+	// ignore this error.
+	lineContent, _ := reader.ReadString('\n')
+	return strings.TrimSuffix(lineContent, "\n"), nil
 }
 
 // readFloat64 reads a line from a file and converts it into float64.
 func readFloat64(filePath string) (float64, error) {
-	str, err := readLine(filePath)
+	str, err := readFirstLine(filePath)
 	if err != nil {
 		return 0., err
 	}
@@ -32,7 +39,7 @@ func readFloat64(filePath string) (float64, error) {
 
 // readInt64 reads a line from a file and converts it into int64.
 func readInt64(filePath string) (int64, error) {
-	str, err := readLine(filePath)
+	str, err := readFirstLine(filePath)
 	if err != nil {
 		return 0, err
 	}
