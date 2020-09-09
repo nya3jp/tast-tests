@@ -127,7 +127,7 @@ message ShillVal {
     bool bool = 2;
     // Because 'repeated' label is not allowed in oneof type, we define StrArray
     // for repeated string field.
-    StrArray strArray = 3;
+    StrArray str_array = 3;
   }
 }
 
@@ -194,7 +194,7 @@ message GetInterfaceResponse {
 }
 
 message GetIPv4AddrsRequest {
-  string interfaceName = 1;
+  string interface_name = 1;
 }
 
 message GetIPv4AddrsResponse {
@@ -222,8 +222,8 @@ message AssureDisconnectRequest {
 }
 
 message DisableEnableTestRequest {
-  string interfaceName = 1;
-  string servicePath = 2;
+  string interface_name = 1;
+  string service_path = 2;
 }
 
 message RequestScansRequest {
@@ -247,8 +247,8 @@ message ConfigureAndAssertAutoConnectResponse {
 }
 
 message GetCurrentTimeResponse {
-  int64 nowSecond = 1;
-  int64 nowNanosecond = 2;
+  int64 now_second = 1;
+  int64 now_nanosecond = 2;
 }
 
 message SelectedServiceResponse {
@@ -299,7 +299,7 @@ message ProfileBasicTestRequest {
 }
 
 message RequestRoamRequest {
-  string interfaceName = 1;
+  string interface_name = 1;
   string bssid = 2;
   int64 timeout = 3;
 }
