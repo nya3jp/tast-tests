@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae39e601_110e45ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-09T02:04:48Z",
+      "side": 1,
+      "message": "I started at tryjob at https://ci.chromium.org/p/chromeos/builders/general/Try/b8869673663517729376 to confirm this fixes the amd64-generic-full builders.",
+      "revId": "213e149145be83690369ed2822e2f132a9edd628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
