@@ -30,7 +30,7 @@ func init() {
 		Contacts: []string{
 			"essential-inputs-team@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
