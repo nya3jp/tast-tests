@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "6862c34b_42146c2e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-09T22:54:42Z",
+      "side": 1,
+      "message": "I checked the pcap and that\u0027s true I can see that CSA is added to the beacon and there is no action frame.",
+      "parentUuid": "e1cde9a0_f2d268ed",
+      "range": {
+        "startLine": 25,
+        "startChar": 90,
+        "endLine": 25,
+        "endChar": 103
+      },
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce538657_889cf7de",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
         "patchSetId": 7
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "4a432d80_8dbeb12e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-09T22:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce538657_889cf7de",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87aff75c_2358f976",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
         "patchSetId": 7
@@ -76,6 +124,30 @@
       "writtenOn": "2020-08-31T10:46:56Z",
       "side": 1,
       "message": "one possible pitfall: grunt/barla is one special model that has different WiFi chip.",
+      "range": {
+        "startLine": 32,
+        "startChar": 60,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab5dc20_84f7f261",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-09T22:54:42Z",
+      "side": 1,
+      "message": "This should be fixed after adding WiFi hw dependency. I see blooglet (octopus) has RTL8822CE which supports CSA. Also, zork has RTL8822CE and intel (AX200).",
+      "parentUuid": "87aff75c_2358f976",
       "range": {
         "startLine": 32,
         "startChar": 60,
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "4c0a81dc_d117acf9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-09T22:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22ef2de7_38dae31c",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1f139d4_88e8ae9f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
         "patchSetId": 7
@@ -116,6 +206,24 @@
       "writtenOn": "2020-08-31T10:46:56Z",
       "side": 1,
       "message": "This is not true for this test. And, did you try without this? I think it would probably work, like, when you have the \"cs_count\" larger than DTIM interval as the client will wake up for receiving a beacon and then see the channel switch announcement.",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d28b38c_3bcb4269",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-09T22:54:42Z",
+      "side": 1,
+      "message": "I increased the cs_count to 8 and I checked the DTIM period and it was 2. I can add code to set the DTIM period to a low value in case the default value is high.",
+      "parentUuid": "e1f139d4_88e8ae9f",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -136,6 +244,24 @@
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1cc5b0f_aa248c27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-09T22:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce720fcc_46c22adf",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "5df42400_4a99f87c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-09T22:54:42Z",
+      "side": 1,
+      "message": "That\u0027s true, I increased the cs_count and verified that by checking the pcap.",
+      "parentUuid": "4cb81978_d4c8df77",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d887254e_5094e039",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
         "patchSetId": 7
@@ -187,6 +331,24 @@
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "091a9208_dae30205",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-09T22:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d887254e_5094e039",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
