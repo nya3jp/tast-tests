@@ -42,7 +42,7 @@ func ListSysfsThermalSensors(ctx context.Context) (map[string]string, error) {
 			continue
 		}
 
-		name, err := readLine(path.Join(devPath, "type"))
+		name, err := readLine(path.Join(devPath, "type"), 0)
 		if err != nil {
 			testing.ContextLogf(ctx, "%v is not readable", devPath)
 			continue
