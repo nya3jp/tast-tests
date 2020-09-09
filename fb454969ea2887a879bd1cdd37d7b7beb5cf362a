@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a25e593_6c40596b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-09T04:14:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb98e33_68311630",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 89
+      },
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d1ad034_f508e408",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0e63805_60563874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-09T04:14:58Z",
+      "side": 1,
+      "message": "Let me give you a bit of the context. Normally there is only one block device. However we are working on having two namespace nvme devices, each namespace of which represents a separate block device. One of the namespaces is the main one, the boot one, and the other one is an SLC namespace which we are going to use for SWAP. Unfortunately, there is not any good way to differentiate them but by considering the larger one to be the boot and the smaller one to be SLC. If there are more than two devices for some reasons, we have no way to differentiate and returning second largest or smallest can be both wrong. When there is a better way (which may or may not happen in the new NVME standard) we would fix that. Any better naming suggestion?",
+      "parentUuid": "7d1ad034_f508e408",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "e3b51004_c3f0054b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-09T04:14:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c36426b2_f69f5169",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98b855a1_8be6138c",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
         "patchSetId": 2
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "baa0203e_541d0d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-09T04:14:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b855a1_8be6138c",
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3004301b_2ff50fa1",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
         "patchSetId": 2
@@ -119,6 +209,24 @@
       "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45106155_ac397cc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-09T04:14:58Z",
+      "side": 1,
+      "message": "yup, it would just mean the test will see no device and return with an error.",
+      "parentUuid": "3004301b_2ff50fa1",
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
