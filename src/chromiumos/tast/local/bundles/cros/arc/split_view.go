@@ -178,14 +178,6 @@ func SplitView(ctx context.Context, s *testing.State) {
 	}
 	defer leftAct.Close()
 
-	if err := waitForWindowStates(ctx, tconn,
-		windowStateExpectations{
-			{leftAct, ash.WindowStateMaximized, arc.WindowStateMaximized},
-			{rightAct, ash.WindowStateMaximized, arc.WindowStateMaximized},
-		}); err != nil {
-		s.Fatal("Failed to wait until window state change: ", err)
-	}
-
 	stw, err := tew.NewSingleTouchWriter()
 	if err != nil {
 		s.Fatal("Failed to create a single touch writer: ", err)
