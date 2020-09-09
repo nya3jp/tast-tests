@@ -29,13 +29,15 @@ func BaseSoakStress(ctx context.Context, s *testing.State) {
 	resultWriter := &stress.FioResultWriter{}
 	defer resultWriter.Save(ctx, s.OutDir())
 	// Below sequence of tests corresponds to a single iteration of the soak test.
-	stress.RunFioStressForBootDevice(ctx, s, "64k_stress", nil)
+	testConfig := &stress.TestConfig{Path: stress.BootDeviceFioPath}
+	stress.RunFioStress(ctx, s, testConfig.WithJob("64k_stress"))
 	stress.Suspend(ctx)
-	stress.RunFioStressForBootDevice(ctx, s, "surfing", nil)
+	stress.RunFioStress(ctx, s, testConfig.WithJob("surfing"))
 	stress.Suspend(ctx)
-	stress.RunFioStressForBootDevice(ctx, s, "8k_async_randwrite", nil)
-	stress.RunFioStressForBootDevice(ctx, s, "8k_async_randwrite", &stress.TestConfig{
-		VerifyOnly:   true,
-		ResultWriter: resultWriter,
-	})
+	stress.RunFioStress(ctx, s, testConfig.WithJob("8k_async_randwrite"))
+	stress.RunFioStress(ctx, s,
+		testConfig.
+			WithJob("8k_async_randwrite").
+			WithVerifyOnly(true).
+			WithResultWriter(resultWriter))
 }
