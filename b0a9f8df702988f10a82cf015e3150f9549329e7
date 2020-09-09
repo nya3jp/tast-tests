@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35cb5435_2111ec6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-09T01:37:51Z",
+      "side": 1,
+      "message": "Hi reviewers,\n\nI just found another flakiness in VirtualKeyboardTypingBrowser. When input into omnibox, sometimes the existing url is not highlighted, vk input will append / insert rather than replace existing text.\n\nI fix it as well in this cl. Can you please check this cl still LGTY. Thanks a lot.",
+      "revId": "b0a9f8df702988f10a82cf015e3150f9549329e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
