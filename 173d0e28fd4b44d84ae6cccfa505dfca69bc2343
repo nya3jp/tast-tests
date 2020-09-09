@@ -214,6 +214,40 @@
       "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b07f064d_81b03571",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T02:14:43Z",
+      "side": 1,
+      "message": "LGTM with a request.",
+      "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "628bf6d4_43bc0832",
+        "filename": "src/chromiumos/tast/common/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T02:14:43Z",
+      "side": 1,
+      "message": "Could you add a brief comment where %f comes from, since the change is very new and then cherry-picked to CrOS kernels so that it is not (yet) available on man page?",
+      "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
