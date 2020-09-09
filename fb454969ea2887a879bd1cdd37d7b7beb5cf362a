@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fb98e33_68311630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T02:30:36Z",
+      "side": 1,
+      "message": "nit/style: could you negate the condition to make error-guard style?\n\nif bestMatch \u003d\u003d nil {\n  return nil, errors.Errorf(...)\n}\nreturn bestMatch, nil\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 89
+      },
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d1ad034_f508e408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T02:30:36Z",
+      "side": 1,
+      "message": "Hmm... is this proper noun?\nIf not, it sounds a bit strange because it returns not the secondary largest device, but the smallest device. MinSizeDevice() may be more descriptive? (if you\u0027re ok, changing MainDevice -\u003e MaxSizeDevice may be also an option).",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da1d4620_69a019b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T02:30:36Z",
+      "side": 1,
+      "message": "Thanks for the style fix!",
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c36426b2_f69f5169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T02:30:36Z",
+      "side": 1,
+      "message": "How about: \"removeDisallowedDevices\".\n\n- \"filter\" sometimes ambiguous. It may keep the elements satisfying the condition, or it may remove the elements satisfying the condition.\n- nice to avoid \"Not\" in the name if possible. Negation is difficult.",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98b855a1_8be6138c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T02:30:36Z",
+      "side": 1,
+      "message": "nit: could you move this out from the function, so that it wouldn\u0027t need to compile the regexp multiple times.",
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3004301b_2ff50fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T02:30:36Z",
+      "side": 1,
+      "message": "Clarification: is it ok to allow DiskInfo with empty array?",
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
