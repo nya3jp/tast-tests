@@ -180,6 +180,7 @@ func testNoARCSharedLeak(ctx context.Context, s *testing.State, arc, nonARC []sy
 		if m.Shared > 0 {
 			visibles[m.Shared] = struct{}{}
 		}
+		// TODO(chavey): crbug/1126921 - replace master in structure.
 		if m.Master > 0 {
 			visibles[m.Master] = struct{}{}
 		}

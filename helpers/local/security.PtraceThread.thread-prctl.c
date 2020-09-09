@@ -161,7 +161,7 @@ void tracee_main(void) {
     exit(EXIT_TRACEE_PIPE_WRITE);
   }
 
-  printf("tracee waiting for master\n");
+  printf("tracee waiting for primary\n");
   saw = read(notification[0], buf, 1024);
   buf[saw] = '\0';
 
@@ -213,7 +213,7 @@ int main(int argc, char* argv[]) {
   printf("will issue ptrace from tracer %s\n",
          main_does_ptrace ? "main" : "thread");
 
-  printf("master is %d\n", getpid());
+  printf("primary is %d\n", getpid());
 
   if (pipe(notification) < 0) {
     perror("pipe");
@@ -225,7 +225,7 @@ int main(int argc, char* argv[]) {
   }
 
   if (tracee_method != TRACEE_FORKS_FROM_TRACER) {
-    printf("forking tracee from master\n");
+    printf("forking tracee from primary\n");
     start_tracee();
   }
 
@@ -260,11 +260,11 @@ int main(int argc, char* argv[]) {
     exit(EXIT_TRACER_PIPE_WRITE);
   }
 
-  printf("master waiting for tracer to finish\n");
+  printf("primary waiting for tracer to finish\n");
   fflush(NULL);
   waitpid(tracer, &status, 0);
 
-  printf("master waiting for tracee to finish\n");
+  printf("primary waiting for tracee to finish\n");
   fflush(NULL);
   num_written = write(notification[1], "stop", 4);
   if (num_written != 4) {
@@ -275,7 +275,7 @@ int main(int argc, char* argv[]) {
   waitpid(tracee, NULL, 0);
 
   status = WEXITSTATUS(status);
-  printf("master saw rc %d from tracer\n", status);
+  printf("primary saw rc %d from tracer\n", status);
   return status;
 }
 
