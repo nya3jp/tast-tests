@@ -32,6 +32,7 @@ func init() {
 		Func:         VideoEncodeAccel,
 		Desc:         "Verifies ARC++ and ARCVM hardware encode acceleration by running the arcvideoencoder_test binary",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(deviceBlocklist...)),
@@ -47,9 +48,7 @@ func init() {
 			},
 			ExtraData:         []string{video.Bear192P.Name},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
-			// TODO(b/140082257): enable once the virtio video encoder is ready
 			Name: "h264_192p_i420_vm",
 			Val: encoding.TestOptions{
 				Profile:     videotype.H264Prof,
@@ -66,9 +65,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip360P.Name},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
-			// TODO(b/140082257): enable once the virtio video encoder is ready
 			Name: "h264_360p_i420_vm",
 			Val: encoding.TestOptions{
 				Profile:     videotype.H264Prof,
@@ -84,9 +81,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip720P.Name},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
-			// TODO(b/140082257): enable once the virtio video encoder is ready
 			Name: "h264_720p_i420_vm",
 			Val: encoding.TestOptions{
 				Profile:     videotype.H264Prof,
@@ -102,9 +97,7 @@ func init() {
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
-			// TODO(b/140082257): enable once the virtio video encoder is ready
 			Name: "h264_1080p_i420_vm",
 			Val: encoding.TestOptions{
 				Profile:     videotype.H264Prof,
