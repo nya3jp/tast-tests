@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78674041_3aabf0c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-09T04:11:52Z",
+      "side": 1,
+      "message": "Apologies for the late review (\u003e24 hrs). \nTast Shadow Review: LGTM % nits.",
+      "revId": "72bba9ecb83545b7b6c4ebca4aed0214efc56575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f664606_6af8e51c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-09T04:11:52Z",
+      "side": 1,
+      "message": "Can we shorten this name a little, go style normally errs towards shorter names. \nWhat about powerCameraPreviewPerfArgs ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "72bba9ecb83545b7b6c4ebca4aed0214efc56575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3cbec9_06b9a153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-09T04:11:52Z",
+      "side": 1,
+      "message": "Optional: maybe \u0027dischargeMode\u0027 would be beter name?",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "72bba9ecb83545b7b6c4ebca4aed0214efc56575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
