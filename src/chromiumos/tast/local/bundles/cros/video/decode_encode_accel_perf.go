@@ -30,10 +30,20 @@ func init() {
 		Desc:         "Simulates video chat performance by simultaneously decoding and encoding a 30fps 1080p video",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8, caps.HWEncodeVP8},
-		Data:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json", encode.Crowd1080P.Name},
+		SoftwareDeps: []string{"chrome"},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 5 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "vp8_1080p_30fps",
+			Val:               "1080p_30fps_300frames.vp8.ivf",
+			ExtraData:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json", encode.Crowd1080P.Name},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
+		}, {
+			Name:              "h264_1080p_30fps",
+			Val:               "1080p_30fps_300frames.h264",
+			ExtraData:         []string{"1080p_30fps_300frames.h264", "1080p_30fps_300frames.h264.json", encode.Crowd1080P.Name},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, caps.HWEncodeH264},
+		}},
 	})
 }
 
@@ -45,13 +55,13 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		stabilize = 5 * time.Second
 		// Duration of the interval during which CPU usage will be measured.
 		measureDuration = 30 * time.Second
-		// Filename of the video that will be decoded.
-		decodeFilename = "1080p_30fps_300frames.vp8.ivf"
 		// Pixelformat of the video that will be encoded.
 		encodePixelFormat = videotype.I420
 		// Profile used to encode the video.
 		encodeProfile = videotype.VP8Prof
 	)
+	// Filename of the video that will be decoded.
+	decodeFilename := s.Param().(string)
 	// Properties of the video that will be encoded.
 	encodeParams := encode.Crowd1080P
 	encodeParams.FrameRate = 30
