@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "bbf3e22b_c6d18ba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T19:39:47Z",
+      "side": 1,
+      "message": "what about using chrome/ui/uig for this multi step operation?",
+      "range": {
+        "startLine": 87,
+        "startChar": 10,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf2db555_f13fe012",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T19:39:47Z",
+      "side": 1,
+      "message": "I would prefer not to add this here. It is adding unnecessary delay to all clicks that use this. If waitForLocationChangeCompleted is needed, it should probably be called before calling FindAndClick.\n\nAlso, this CL(still a test): https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2392782\nmay remove the need to use waitForLocationChangeCompleted in this style.",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 2
+      },
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f6f79fb_f7ed5f15",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T19:39:47Z",
+      "side": 1,
+      "message": "Is there a difference between \"settings\" and \"ossettings\" if so, should this package be \"ossettings\". If not, should this file just be \"settings\".",
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d16680e4_664a2761",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T19:39:47Z",
+      "side": 1,
+      "message": "nit: Waiting",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4547fc44_63b03935",
         "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
         "patchSetId": 5
@@ -37,6 +123,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "4547fc44_63b03935",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0488a11_1e70e89a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T19:39:47Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "1405a5cf_0f369140",
       "range": {
         "startLine": 52,
         "startChar": 0,
