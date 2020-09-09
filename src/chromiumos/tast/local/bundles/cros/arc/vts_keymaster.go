@@ -19,6 +19,7 @@ import (
 )
 
 func init() {
+	// TODO(edmanp): crbug/1126302. Replace master by principal.
 	testing.AddTest(&testing.Test{
 		Func:         VTSKeymaster,
 		Desc:         "Runs the Android VTS module VtsHalKeymasterV3_0Target",

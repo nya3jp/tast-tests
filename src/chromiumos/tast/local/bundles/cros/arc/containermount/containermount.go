@@ -430,7 +430,7 @@ func testADBD(ctx context.Context, s *testing.State, adbd []sysutil.MountInfo) {
 	re := regexp.MustCompile(`^/run/arc/adbd(/ep[12])?$`)
 	for _, m := range adbd {
 		if m.Master > 0 {
-			s.Error("adbd proxy container has unknown slave mount at ", m.MountPath)
+			s.Error("adbd proxy container has unknown secondary mount at ", m.MountPath)
 			continue
 		}
 		if m.Shared == 0 {
@@ -468,7 +468,7 @@ func testSDCard(ctx context.Context, s *testing.State, sdcard []sysutil.MountInf
 
 	for _, m := range sdcard {
 		if m.Master > 0 {
-			s.Errorf("Unexpected SDCard slave mount at %s", m.MountPath)
+			s.Errorf("Unexpected SDCard secondary mount at %s", m.MountPath)
 			continue
 		}
 		if m.Shared == 0 {
@@ -513,7 +513,7 @@ func testMountShared(ctx context.Context, s *testing.State, arcMs, adbd, sdcard,
 	}
 
 	// In ARC P or later, ignore initial tmpfs mount for /run/arc/sdcard
-	// because it is slave mount but has the initns as its parent.
+	// because it is secondary mount but has the initns as its parent.
 	ignored["/var/run/arc/sdcard"] = struct{}{}
 	// Ignore unix domain socket for ADB communication.
 	ignored["/var/run/arc/adb"] = struct{}{}
@@ -542,13 +542,13 @@ func testMountShared(ctx context.Context, s *testing.State, arcMs, adbd, sdcard,
 		if _, ok := ignored[m.MountPath]; ok {
 			continue
 		}
-		// Masters of all non-allowed SLAVE mount points in ARC
+		// Primaries of all non-allowed SECONDARY mount points in ARC
 		// container must be in containers.
 		if m.Master == 0 {
 			continue
 		}
 		if _, ok := peerGroups[m.Master]; !ok {
-			s.Error("Unexpected slave mount at ", m.MountPath)
+			s.Error("Unexpected secondary mount at ", m.MountPath)
 		}
 	}
 }
