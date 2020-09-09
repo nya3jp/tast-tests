@@ -391,7 +391,7 @@ func (n *Node) Matches(ctx context.Context, params FindParams) (bool, error) {
 func (n *Node) Attribute(ctx context.Context, attributeName string) (interface{}, error) {
 	var out interface{}
 
-	if err := n.object.Call(ctx, &out, "function(attr){return this[attr]}", attributeName); err != nil {
+	if err := n.object.Call(ctx, &out, "function(attr){return this[attr] || {1: 2}}", attributeName); err != nil {
 		return nil, err
 	}
 	return out, nil
