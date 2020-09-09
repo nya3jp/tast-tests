@@ -25,7 +25,7 @@ func init() {
 		Func:         VirtualKeyboardSuggestions,
 		Desc:         "Checks that the virtual keyboard suggestions work for various languages",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
