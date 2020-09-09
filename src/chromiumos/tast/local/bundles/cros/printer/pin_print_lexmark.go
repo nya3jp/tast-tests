@@ -36,6 +36,7 @@ func init() {
 				OutDiffFile:  "no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_lexmark_no_pin_golden.ps"},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "pin",
 			Val: &pinprint.Params{
@@ -46,6 +47,7 @@ func init() {
 				Options:      []pinprint.Option{pinprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_lexmark_pin_golden.ps"},
+			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
