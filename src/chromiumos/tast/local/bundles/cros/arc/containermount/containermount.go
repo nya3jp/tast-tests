@@ -542,7 +542,7 @@ func testMountShared(ctx context.Context, s *testing.State, arcMs, adbd, sdcard,
 		if _, ok := ignored[m.MountPath]; ok {
 			continue
 		}
-		// Masters of all non-allowed SLAVE mount points in ARC
+		// Masters of all non-allowed SLAVES mount points in ARC
 		// container must be in containers.
 		if m.Master == 0 {
 			continue
