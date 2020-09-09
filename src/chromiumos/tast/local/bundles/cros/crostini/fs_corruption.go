@@ -56,11 +56,10 @@ func init() {
 			"cros-telemetry@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "vm_host"},
-		// TODO(https://crbug.com/1040272): Fix this test and reenable it.
-		Attr:    []string{},
-		Vars:    []string{"keepState"},
-		Timeout: 10 * time.Minute,
-		Pre:     crostini.StartedByDownloadBuster(),
+		Attr:         []string{"group:mainline", "informational"},
+		Vars:         []string{"keepState"},
+		Timeout:      10 * time.Minute,
+		Pre:          crostini.StartedByDownloadBuster(),
 	})
 }
 
