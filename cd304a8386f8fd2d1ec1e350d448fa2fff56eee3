@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c55dc5b8_572e338a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T04:51:29Z",
+      "side": 1,
+      "message": "\u003e \"occurences\" is a possible misspelling of \"occurrences\".\n\nPlease fix.",
+      "parentUuid": "06eb0193_50d45004",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "cd304a8386f8fd2d1ec1e350d448fa2fff56eee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ce4ea1_9bfd6336",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T04:51:29Z",
+      "side": 1,
+      "message": "\u003e \"occurences\" is a possible misspelling of \"occurrences\".\n\nPlease fix.",
+      "parentUuid": "617f3347_ac5936b4",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "cd304a8386f8fd2d1ec1e350d448fa2fff56eee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f3aff6_361ae1b1",
+        "filename": "src/chromiumos/tast/common/storage/storage_lulu_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T04:51:29Z",
+      "side": 1,
+      "message": "This is to mimic of the tool\u0027s output for unittesting.\nWas the tool fixed? if not, we have to keep it until it is fixed inside the tool.\nCould you make sure?",
+      "revId": "cd304a8386f8fd2d1ec1e350d448fa2fff56eee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "501808ce_4ff57447",
+        "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-09T04:51:29Z",
+      "side": 1,
+      "message": "This comes from linux kernel.\nWe should not change this unless it is changed.",
+      "revId": "cd304a8386f8fd2d1ec1e350d448fa2fff56eee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
