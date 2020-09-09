@@ -43,6 +43,9 @@ type FioResultWriter struct {
 	results    []fioResultReport
 }
 
+// BlockFunc is a unit of test execution
+type BlockFunc func(context.Context, *testing.State, *FioResultWriter)
+
 // Save processes and saves reported results.
 func (f *FioResultWriter) Save(ctx context.Context, path string) {
 	f.resultLock.Lock()
@@ -63,6 +66,28 @@ func (f *FioResultWriter) Report(group string, result *fioResult) {
 	f.resultLock.Lock()
 	defer f.resultLock.Unlock()
 	f.results = append(f.results, fioResultReport{group, result})
+}
+
+// RunSequential runs result producing blocks in sequence.
+func (f *FioResultWriter) RunSequential(ctx context.Context, s *testing.State, blocks []BlockFunc) {
+	for _, block := range blocks {
+		block(ctx, s, f)
+	}
+}
+
+// RunParallel runs result producing blocks in parallel.
+func (f *FioResultWriter) RunParallel(ctx context.Context, s *testing.State, blocks []BlockFunc) {
+	var wg sync.WaitGroup
+
+	for _, block := range blocks {
+		wg.Add(1)
+		go func(b BlockFunc) {
+			s.Run(ctx, s, func(ctx context.Context, s *testing.State) { b(ctx, s, f) })
+			wg.Done()
+		}(block)
+	}
+
+	wg.Wait()
 }
 
 // reportJobRWResult appends metrics for latency and bandwidth from the current test results
