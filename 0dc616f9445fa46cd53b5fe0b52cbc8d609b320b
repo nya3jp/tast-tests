@@ -50,6 +50,24 @@
       "revId": "0dc616f9445fa46cd53b5fe0b52cbc8d609b320b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e042cc98_d31eca28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-09T08:27:10Z",
+      "side": 1,
+      "message": "I am just a shadow reviewer and I can only give +1, you should wait for a +2 from Greg.",
+      "parentUuid": "1a3412ba_99a5f669",
+      "revId": "0dc616f9445fa46cd53b5fe0b52cbc8d609b320b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
