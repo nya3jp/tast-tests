@@ -22,6 +22,7 @@ func init() {
 		Func:         VideoEncodeAccelPerf,
 		Desc:         "Measures ARC++ and ARCVM hardware video encode performance by running the arcvideoencoder_test binary",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
@@ -35,9 +36,7 @@ func init() {
 			},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		}, {
-			// TODO(b/140082257): enable once the virtio video encoder is ready
 			Name: "h264_1080p_i420_vm",
 			Val: encoding.TestOptions{
 				Profile:     videotype.H264Prof,
