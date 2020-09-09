@@ -50,6 +50,7 @@ var optMap = map[string]MountOpt{
 }
 
 // MountInfo is a struct containing mount point info.
+// TODO(chavey): crbug/1126921 - replace master in structure.
 type MountInfo struct {
 	MountID       int
 	ParentID      int
@@ -141,11 +142,11 @@ func parseLine(line string) (MountInfo, error) {
 		}
 	}
 
-	master := 0
+	primary := 0
 	if matches[9] != "" {
-		master, err = strconv.Atoi(matches[9])
+		primary, err = strconv.Atoi(matches[9])
 		if err != nil {
-			return MountInfo{}, errors.Wrap(err, "failed to parse master")
+			return MountInfo{}, errors.Wrap(err, "failed to parse primary")
 		}
 	}
 
@@ -170,7 +171,7 @@ func parseLine(line string) (MountInfo, error) {
 
 	return MountInfo{
 		mountID, parentID, major, minor, root, mountPath, mountOpts,
-		shared, master, propagated, unbindable, fstype, mountSource,
+		shared, primary, propagated, unbindable, fstype, mountSource,
 		superOpts}, nil
 }
 
