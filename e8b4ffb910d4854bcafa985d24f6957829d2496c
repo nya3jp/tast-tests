@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c0bbe6b0_0be4be53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-09T01:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e5d20ee_de55fa95",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 82
+      },
+      "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fff6fda6_aefc0ece",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "f084f587_4b08c383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-09T01:47:06Z",
+      "side": 1,
+      "message": "This is intentional.\n\nThe names themselves are not comparable: System apps are registered with internal names, they are different from the app\u0027s name. For example, Settings App is called \"OSSettings\" internally, and the app\u0027s name (as shown to the user) is \"Settings\".\n\nThe names are informational, because log files are missing in tast results. So we can\u0027t know which app is failing. Thus we decide to log the names and compare them manually.",
+      "parentUuid": "e33760ab_d5956462",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb32a961_7ad58faa",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
         "patchSetId": 2
@@ -85,6 +133,30 @@
       "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73a742bb_928377a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-09T01:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb32a961_7ad58faa",
+      "range": {
+        "startLine": 71,
+        "startChar": 73,
+        "endLine": 71,
+        "endChar": 124
+      },
+      "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "e50dd518_b335b758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-09T01:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d4d300b_4913d027",
+      "range": {
+        "startLine": 78,
+        "startChar": 9,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50e1bdfb_1afca869",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
         "patchSetId": 2
@@ -131,6 +227,30 @@
       "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc85ea92_918a229b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-09T01:47:06Z",
+      "side": 1,
+      "message": "Removed this call. Return names directly in installedSystemAppsNames.",
+      "parentUuid": "50e1bdfb_1afca869",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "f5215a41_67b894ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-09T01:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0387517e_e61bddfe",
+      "range": {
+        "startLine": 139,
+        "startChar": 67,
+        "endLine": 139,
+        "endChar": 82
+      },
+      "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fca522e_67359018",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
         "patchSetId": 2
@@ -177,6 +321,30 @@
       "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fbd9efe_bf93d401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-09T01:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fca522e_67359018",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 24
+      },
+      "revId": "e8b4ffb910d4854bcafa985d24f6957829d2496c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
