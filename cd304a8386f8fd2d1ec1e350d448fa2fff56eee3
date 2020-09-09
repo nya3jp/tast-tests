@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "beed1d79_3db61221",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-09-09T12:57:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c55dc5b8_572e338a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "cd304a8386f8fd2d1ec1e350d448fa2fff56eee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2ce4ea1_9bfd6336",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -50,6 +74,30 @@
     },
     {
       "key": {
+        "uuid": "21c24ae4_4b25a1ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-09-09T12:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ce4ea1_9bfd6336",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "cd304a8386f8fd2d1ec1e350d448fa2fff56eee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35f3aff6_361ae1b1",
         "filename": "src/chromiumos/tast/common/storage/storage_lulu_test.go",
         "patchSetId": 1
@@ -67,6 +115,24 @@
     },
     {
       "key": {
+        "uuid": "c213301b_df046eca",
+        "filename": "src/chromiumos/tast/common/storage/storage_lulu_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-09-09T12:57:57Z",
+      "side": 1,
+      "message": "will revert that file.",
+      "parentUuid": "35f3aff6_361ae1b1",
+      "revId": "cd304a8386f8fd2d1ec1e350d448fa2fff56eee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "501808ce_4ff57447",
         "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
         "patchSetId": 1
@@ -78,6 +144,24 @@
       "writtenOn": "2020-09-09T04:51:29Z",
       "side": 1,
       "message": "This comes from linux kernel.\nWe should not change this unless it is changed.",
+      "revId": "cd304a8386f8fd2d1ec1e350d448fa2fff56eee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dda0a0e2_28779b92",
+        "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-09-09T12:57:57Z",
+      "side": 1,
+      "message": "are you saying that the structure members\u0027 names have to match the linux /proc/mountinfo names?\n\n\nwe are parsing the information in parseline() below and assigning the \"master:%d\" to MountInfo.primary.",
+      "parentUuid": "501808ce_4ff57447",
       "revId": "cd304a8386f8fd2d1ec1e350d448fa2fff56eee3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
