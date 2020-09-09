@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77dfcf0e_450a4026",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T22:25:46Z",
+      "side": 1,
+      "message": "I have addressed most of the comments. There are a two items I want to do it differently. Please check my comments. Thanks.",
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
