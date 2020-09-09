@@ -95,7 +95,6 @@ func testBlock(ctx context.Context, s *testing.State) {
 		VerifyOnly:   true,
 		ResultWriter: resultWriter,
 	})
-	testing.Sleep(ctx, 5*time.Minute)
 	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
 		s.Fatal("Sleep failed: ", err)
 	}
