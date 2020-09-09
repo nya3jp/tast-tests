@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,9 +32,23 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
+		}, {
+			Name:              "vm_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
 		}},
 		Timeout: 10 * time.Minute,
 	})
@@ -79,7 +94,8 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	batteryMode := s.Param().(setup.BatteryDischargeMode)
+	sup.Add(setup.PowerTest(ctx, tconn, batteryMode))
 
 	// Install camera testing app.
 	a := s.PreValue().(arc.PreData).ARC
