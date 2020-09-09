@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4547fc44_63b03935",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T04:32:06Z",
+      "side": 1,
+      "message": "One last comment from me - this will cause a 15 second delay in the majority of test runs. If you want to avoid this, one strategy is to poll for both elements and click the first one that\u0027s found. Roughly something like:\n\n  if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n    menuFound, _ :\u003d ui.Exists(ctx, tconn, \u003cmenu FindParams\u003e)\n    if menuFound { \n      // Code to click the menu button\n      return nil\n    }\n\n    aboutFound, _ :\u003d ui.Exists(ctx, tconn, \u003cabout link FindParams\u003e)\n    if aboutFound { \n      return nil\n    }\n  }, \u003cpoll options\u003e); err !\u003d nil {...}\n\n  // Code to click the About Chrome OS link",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
