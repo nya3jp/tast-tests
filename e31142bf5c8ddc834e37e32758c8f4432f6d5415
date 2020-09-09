@@ -33,6 +33,24 @@
       "revId": "e31142bf5c8ddc834e37e32758c8f4432f6d5415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "349612fa_894e6c4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362700
+      },
+      "writtenOn": "2020-09-09T15:43:48Z",
+      "side": 1,
+      "message": "I don\u0027t have CQ\u003d2 rights,can you help me with CQ+2?",
+      "parentUuid": "1a441ee4_69b248e9",
+      "revId": "e31142bf5c8ddc834e37e32758c8f4432f6d5415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
