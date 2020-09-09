@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2aaa3487_b41919ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-09T04:13:50Z",
+      "side": 1,
+      "message": "typo: I think this should be \u0027maximized\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "a9018e4b7f6cbb00225b5bcedeb9b69064c0b867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2ff7aa0_8fe7ee8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 25
