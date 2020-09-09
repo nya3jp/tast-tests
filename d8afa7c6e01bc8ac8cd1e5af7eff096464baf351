@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb146df4_87e573b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-09T05:26:12Z",
+      "side": 1,
+      "message": "only one minor issue and nits. Thanks!",
+      "revId": "d8afa7c6e01bc8ac8cd1e5af7eff096464baf351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dcd6862_9161df44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-09T05:26:12Z",
+      "side": 1,
+      "message": "nit: maybe nil here for consistency when error is not nil?",
+      "range": {
+        "startLine": 898,
+        "startChar": 10,
+        "endLine": 898,
+        "endChar": 24
+      },
+      "revId": "d8afa7c6e01bc8ac8cd1e5af7eff096464baf351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f20376_7107386e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-09T05:26:12Z",
+      "side": 1,
+      "message": "nit: might worth defining constants of possible states in wpasupplicant package?",
+      "range": {
+        "startLine": 903,
+        "startChar": 22,
+        "endLine": 903,
+        "endChar": 34
+      },
+      "revId": "d8afa7c6e01bc8ac8cd1e5af7eff096464baf351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c473dadd_6b6d4bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-09T05:26:12Z",
+      "side": 1,
+      "message": "I think this can be removed. (also, \"go vet\" will complain about it)",
+      "revId": "d8afa7c6e01bc8ac8cd1e5af7eff096464baf351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b58e552_20acbf10",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reassociate.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-09T05:26:12Z",
+      "side": 1,
+      "message": "nit: can use tf.ReserveForCollectLogs(ctx) instead.",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "d8afa7c6e01bc8ac8cd1e5af7eff096464baf351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
