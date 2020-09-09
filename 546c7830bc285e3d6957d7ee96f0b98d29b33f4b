@@ -157,6 +157,30 @@
       "revId": "546c7830bc285e3d6957d7ee96f0b98d29b33f4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9e80b39_9b728f2e",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-09T02:47:56Z",
+      "side": 1,
+      "message": "I should give such comment when reviewing RequestRoam CL.",
+      "parentUuid": "a657ab50_b969a187",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 24
+      },
+      "revId": "546c7830bc285e3d6957d7ee96f0b98d29b33f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

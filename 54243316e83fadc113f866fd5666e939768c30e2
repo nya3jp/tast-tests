@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26a6002d_3834e399",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-09T02:47:56Z",
+      "side": 1,
+      "message": "Ah, \"timeout_ns\" reminds me that the proto style requires us to use underscore_separated_names for field names. \nhttps://developers.google.com/protocol-buffers/docs/style#message_and_field_names\n\nI\u0027ll fix the rest in another CL.",
+      "range": {
+        "startLine": 325,
+        "startChar": 9,
+        "endLine": 325,
+        "endChar": 22
+      },
+      "revId": "54243316e83fadc113f866fd5666e939768c30e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e91e9c6_d0dd82c2",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-09T02:47:56Z",
+      "side": 1,
+      "message": "We implicitly pick nanosecond as timeout / duration unit and only state it in service comment. So let\u0027s keep using \"timeout\" as field name.",
+      "range": {
+        "startLine": 326,
+        "startChar": 8,
+        "endLine": 326,
+        "endChar": 18
+      },
+      "revId": "54243316e83fadc113f866fd5666e939768c30e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
