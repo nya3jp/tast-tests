@@ -615,9 +615,26 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	}
 
 	if vkEnabled {
-		// calling the method directly to avoid vkb/chrome circular imports
+		// Calling the method directly to avoid vkb/chrome circular imports.
 		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.inputMethodPrivate.hideInputView)()", nil); err != nil {
 			return errors.Wrap(err, "failed to hide virtual keyboard")
+		}
+
+		// Waiting until virtual keyboard disappears from a11y tree.
+		var isVKHidden bool
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := tconn.Eval(ctx, `
+				tast.promisify(chrome.automation.getDesktop)().then(
+					root => {return !!(root.find({role: 'keyboard', state: {'invisible':true}}))}
+				)`, &isVKHidden); err != nil {
+				return errors.Wrap(err, "failed to hide virtual keyboard")
+			}
+			if !isVKHidden {
+				return errors.New("virtual keyboard is still visible")
+			}
+			return nil
+		}, &testing.PollOptions{Interval: 3 * time.Second, Timeout: 30 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed to wait for virtual keyboard to be invisible")
 		}
 	}
 
