@@ -83,13 +83,9 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 	}
 	defer element.Release(ctx)
 
-	if err := element.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
-	}
-
-	s.Log("Wait for virtual keyboard shown up")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
+	s.Log("Click input to trigger virtual keyboard")
+	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
+		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 
 	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(

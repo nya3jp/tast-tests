@@ -92,12 +92,8 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 		}
 		defer omnibox.Release(ctx)
 
-		if err := omnibox.LeftClick(ctx); err != nil {
-			s.Fatal("Failed to click the omnibox: ", err)
-		}
-
-		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+		if err := vkb.ClickUntilVKShown(ctx, tconn, omnibox); err != nil {
+			s.Fatal("Failed to click the omnibox and wait for vk shown: ", err)
 		}
 
 		if err := vkb.TapKey(ctx, tconn, mode.typeKey); err != nil {
@@ -131,12 +127,13 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to find header 日本語入力の設定: ", err)
 		}
 
-		if err := header.LeftClick(ctx); err != nil {
-			s.Fatal("Failed to click the header: ", err)
+		condition := func(ctx context.Context) (bool, error) {
+			isVKShown, err := vkb.IsShown(ctx, tconn)
+			return !isVKShown, err
 		}
-
-		if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for the virtual keyboard to hide: ", err)
+		opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 2 * time.Second}
+		if err := header.LeftClickUntil(ctx, condition, &opts); err != nil {
+			s.Fatal("Failed to click header until vk hidden: ", err)
 		}
 
 		if err := optionPage.Eval(ctx,

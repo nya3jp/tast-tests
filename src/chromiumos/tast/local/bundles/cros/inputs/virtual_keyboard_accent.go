@@ -77,14 +77,8 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	}
 	defer element.Release(ctx)
 
-	s.Log("Click searchbox to trigger virtual keyboard")
-	if err := element.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
-	}
-
-	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
+		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 
 	s.Log("Waiting for the virtual keyboard to render buttons")
