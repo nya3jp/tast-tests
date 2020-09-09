@@ -16,6 +16,465 @@
       "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27e68f78_9d9ecfa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "Almost there, a few minor things for style/naming/comments, and some ideas for trimming the amount of helper functions in the test. I think we can do away with a couple of them, which will shorten the test and improve readability.",
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06dff906_03100ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "menu",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf04f95_870dca4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "nit: split into a separate sentence",
+      "range": {
+        "startLine": 56,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 57
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcaab592_a0b75d69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "I think it might be simpler to just use the slice from ash.ShelfItems directly and compare the last 2 entries of each slice, since appPositionOnLauncher is just using those indices as values anyways. Like\n  appsBefore, err :\u003d ash.ShelfItems(ctx, tconn)\n  // pin app\n  appsAfter, err :\u003d ash.ShelfItems(ctx, tconn)\n  if !(appsBefore[3].Title \u003d\u003d appsAfter[4].Title \u0026\u0026 appsBefore[4].Title \u003d\u003d appsAfter[3].Title)...\n\nWhat do you think? Renaming the apps to go from app0-app4 would make the connection clearer as well if we go with this.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ff8bf7_26ff4c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "It also does some position verification, let\u0027s mention that in the comment as well.",
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dd59c03_2a5d12c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "Since you\u0027re not using button anywhere else in the function, you can use ui.WaitUntilExists instead.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f8ad3e4_f94fbf97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "Is there a better name for this?",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 6
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a46c5a_e3c34930",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "We should probably handle the !ok case as well, just to be safe and not let any weird issues slip through.",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 7
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877b66a0_5617fe16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "Might be cleaner to get rid of this function, and just call launcher.LaunchFromListView and rightmostButton from the body of the test instead.",
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa27ddad_3aef1777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "app",
+      "range": {
+        "startLine": 176,
+        "startChar": 60,
+        "endLine": 176,
+        "endChar": 64
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10050ae3_62a9f28a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "buttons",
+      "range": {
+        "startLine": 181,
+        "startChar": 29,
+        "endLine": 181,
+        "endChar": 35
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c272d281_f0753c42",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "Let\u0027s add a mention to these functions that appName usually corresponds to the Name field of apps.go app struct. That should give users a clear idea for where to get the app name from, until we can take a look at moving the ChromeApp functions from shelf.go to apps.go.",
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95c18bf5_90b1dd2a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "nit: I think the usual style would be:\n  errors.Wrapf(err, \"failed to find app %v\", appName)\n\nYour way is probably fine, but this is the more common style I\u0027ve seen.",
+      "range": {
+        "startLine": 534,
+        "startChar": 16,
+        "endLine": 534,
+        "endChar": 56
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be94b747_a85bd6b5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 538,
+        "startChar": 16,
+        "endLine": 538,
+        "endChar": 58
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db8034b_5c70c27d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "nit: \"pins an open app in the shelf using the context menu\" might be clearer to describe this function.",
+      "range": {
+        "startLine": 543,
+        "startChar": 16,
+        "endLine": 543,
+        "endChar": 58
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b871dfa3_a20b3735",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "including the app name in the error message would be good",
+      "range": {
+        "startLine": 549,
+        "startChar": 16,
+        "endLine": 549,
+        "endChar": 47
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c9d4ec_660ed40c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "No action required for now, but there\u0027s a chance you\u0027ll need to use LeftClickUntil. We\u0027ve observed that clicking the context menu is a bit flaky, but we can wait and see.",
+      "range": {
+        "startLine": 566,
+        "startChar": 18,
+        "endLine": 566,
+        "endChar": 27
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61289479_fbe51431",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "We can use an apps.App here too",
+      "range": {
+        "startLine": 70,
+        "startChar": 70,
+        "endLine": 70,
+        "endChar": 77
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e796c277_8aa149ce",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "nit: rename this \u0027icon\u0027 to be consistent with the other functions",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 4
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "424d246e_cd47b4dc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "pins",
+      "range": {
+        "startLine": 95,
+        "startChar": 17,
+        "endLine": 95,
+        "endChar": 20
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06233fd2_1d169fd3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "same here: keep in mind LeftClickUntil just in case this is flaky. no action required for now, though.",
+      "range": {
+        "startLine": 117,
+        "startChar": 18,
+        "endLine": 117,
+        "endChar": 27
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

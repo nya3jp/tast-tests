@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "1a9e1009_a3aa1247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "Yeah I think it\u0027s OK to use it, since you\u0027ve already gone through the work to add a new and helpful function. But in general for these tests, we\u0027ll try and get to the main verification as directly and simply as possible. So if we\u0027re not testing the Launcher behavior, we\u0027ll launch apps directly instead.",
+      "parentUuid": "cc734916_3f74d75e",
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1bbc3cfb_0be6d307",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 3
@@ -321,6 +339,30 @@
       "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34827e24_8cbb719f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-09T19:21:18Z",
+      "side": 1,
+      "message": "Ah yeah I remember something like that. I think the code from ash that deals with app installation should probably be moved to the apps package at some point, but this should be OK for now.",
+      "parentUuid": "c9fd4c0a_1848829b",
+      "range": {
+        "startLine": 530,
+        "startChar": 66,
+        "endLine": 530,
+        "endChar": 80
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
