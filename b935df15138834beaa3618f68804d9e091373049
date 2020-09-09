@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "f9d5379d_bb26ba93",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2020-09-09T00:39:45Z",
+      "side": 1,
+      "message": "I thought it after all boils down to file IO that can lead arbitrary IO errors depending on the disk state.\n\nBut anyway, the new patchset lgtm",
+      "parentUuid": "bbb0e298_2b65feaa",
+      "range": {
+        "startLine": 328,
+        "startChar": 9,
+        "endLine": 328,
+        "endChar": 12
+      },
+      "revId": "b935df15138834beaa3618f68804d9e091373049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e7d7708_44d64dad",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 3
@@ -86,6 +110,30 @@
       "revId": "b935df15138834beaa3618f68804d9e091373049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461f84f5_1c4b920c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2020-09-09T00:39:45Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "8e7d7708_44d64dad",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 133
+      },
+      "revId": "b935df15138834beaa3618f68804d9e091373049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
