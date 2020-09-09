@@ -13,6 +13,11 @@ const (
 
 	// ProtocolVersion defines the current version of the communication protocol
 	ProtocolVersion = 1
+
+	// TestFlagDefault is used to select the default replay mode
+	TestFlagDefault = "default"
+	// TestFlagSurfaceless is used to select the surfaceless replay mode
+	TestFlagSurfaceless = "surfaceless"
 )
 
 // VersionInfo is used as a container for the protocol version information
