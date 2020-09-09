@@ -111,6 +111,24 @@
     },
     {
       "key": {
+        "uuid": "1edff68c_451faf56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index_img.jpg",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-09T13:03:42Z",
+      "side": 1,
+      "message": "We should not store images in git. Check Tast guideline:\n\n```\nLarger data files like audio, video, or graphics files should be stored in Google Cloud Storage\n```\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files",
+      "parentUuid": "612831cd_f813dcb6",
+      "revId": "5f97884a3f240f982cdfdc863edc9548232c3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abe7f046_9e7b81c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
         "patchSetId": 3
