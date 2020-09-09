@@ -99,6 +99,24 @@
       "revId": "ebec3e63d341ed9386e30fb344ccb6c551398e9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd497b8_97eb689f",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-09T09:57:14Z",
+      "side": 1,
+      "message": "Took a quick look at this. It seems possible to detect the EAP event from wpa_supplicant. If a normal EAP is established, the signals will be like (some details skipped with \u0027(...)\u0027):\n\n  signal (...) interface\u003dfi.w1.wpa_supplicant1.Interface; member\u003dPropertiesChanged\n     array [\n        dict entry(\n           string \"State\"\n           variant             string \"associated\"\n        )\n        (...)\n     ]\n  signal (...) interface\u003dfi.w1.wpa_supplicant1.Interface; member\u003dEAP\n     string \"started\"\n     string \"\"\n  signal (...) interface\u003dfi.w1.wpa_supplicant1.Interface; member\u003dEAP\n     string \"accept proposed method\"\n     string \"TLS\"\n  (...)\n  signal (...) interface\u003dfi.w1.wpa_supplicant1.Interface; member\u003dEAP\n    string \"completion\"\n    string \"success\"\n  signal (...) interface\u003dfi.w1.wpa_supplicant1.Interface; member\u003dPropertiesChanged\n     array [\n        dict entry(\n           string \"State\"\n           variant             string \"4way_handshake\"\n        )\n     ]\n\nIf EAP is skipped:\n\n  signal (...) interface\u003dfi.w1.wpa_supplicant1.Interface; member\u003dPropertiesChanged\n     array [\n        dict entry(\n           string \"State\"\n           variant             string \"associating\"\n        )\n        (...)\n     ]\n  signal (...) interface\u003dfi.w1.wpa_supplicant1.Interface; member\u003dPropertiesChanged\n     array [\n        dict entry(\n           string \"State\"\n           variant             string \"4way_handshake\"\n        )\n        (...)\n     ]\n\nYou can also collect the events with this command when running this test.:\n  dbus-monitor --system interface\u003dfi.w1.wpa_supplicant1.Interface\n\nI haven\u0027t yet read the detailed codes of this behavior but I guess dbus signal might worth a try.",
+      "parentUuid": "5d6d8f89_b7500821",
+      "revId": "ebec3e63d341ed9386e30fb344ccb6c551398e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
