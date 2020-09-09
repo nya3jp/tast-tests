@@ -71,7 +71,7 @@ func runFIO(ctx context.Context, testDataPath, jobFile string, verifyOnly bool) 
 		"FILENAME=" + testDataPath,
 		"FILESIZE=" + strconv.Itoa(defaultFileSizeBytes),
 		"VERIFY_ONLY=" + verifyFlag,
-		"CONTINUE_ERRORS=verifyOnly",
+		"CONTINUE_ERRORS=verify",
 	}
 	testing.ContextLog(ctx, "Environment: ", cmd.Env)
 	testing.ContextLog(ctx, "Running command: ", cmd)
