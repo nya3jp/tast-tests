@@ -16,6 +16,52 @@
       "revId": "b28811da2f0ed5fd6d95fbc288b3ac166b494d68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cf087de_f9f6d433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-09T03:34:14Z",
+      "side": 1,
+      "message": "https://crrev.com/c/2399752 Since Alex created a new attribute for inputs tests, maybe you can just use it here. Then you do not need to specify HardwareDeps.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "b28811da2f0ed5fd6d95fbc288b3ac166b494d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77328072_3114c243",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-09T03:34:14Z",
+      "side": 1,
+      "message": "Attr is missing.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "b28811da2f0ed5fd6d95fbc288b3ac166b494d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
