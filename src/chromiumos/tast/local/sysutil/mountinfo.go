@@ -59,7 +59,7 @@ type MountInfo struct {
 	MountPath     string
 	MountOpts     MountOpt
 	Shared        int // 0 if not shared
-	Master        int // 0 if not a slave mount
+	Primary       int // 0 if not a secondary mount
 	PropagateFrom int // 0 if propagated_from is unavailable.
 	Unbindable    bool
 	Fstype        string
@@ -141,11 +141,11 @@ func parseLine(line string) (MountInfo, error) {
 		}
 	}
 
-	master := 0
+	primary := 0
 	if matches[9] != "" {
-		master, err = strconv.Atoi(matches[9])
+		primary, err = strconv.Atoi(matches[9])
 		if err != nil {
-			return MountInfo{}, errors.Wrap(err, "failed to parse master")
+			return MountInfo{}, errors.Wrap(err, "failed to parse primary")
 		}
 	}
 
@@ -170,7 +170,7 @@ func parseLine(line string) (MountInfo, error) {
 
 	return MountInfo{
 		mountID, parentID, major, minor, root, mountPath, mountOpts,
-		shared, master, propagated, unbindable, fstype, mountSource,
+		shared, primary, propagated, unbindable, fstype, mountSource,
 		superOpts}, nil
 }
 
