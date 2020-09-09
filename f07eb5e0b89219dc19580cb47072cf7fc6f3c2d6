@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "88d4705b_cdeda483",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-09-09T21:39:35Z",
+      "side": 1,
+      "message": "Updated comment from Edman",
+      "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16a02600_ba67a8c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
         "patchSetId": 3
@@ -13,6 +30,24 @@
       "writtenOn": "2020-09-09T17:34:26Z",
       "side": 1,
       "message": "I left a comment in the bug. This name comes from Android upstream and will be confusing if we rename it only here or within CrOS.",
+      "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd959db_87396baa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-09-09T21:39:35Z",
+      "side": 1,
+      "message": "Edman,\nThank you for updating the bug.\n\nCan you check what the go/coil team suggest in that particular case?\n  ex: For terms that are scoped to the Test, cane we keep \n  them  to maintain \"name coherency\".\n\nThe same would apply to the file names below.",
+      "parentUuid": "16a02600_ba67a8c4",
       "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
