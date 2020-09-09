@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7d276bfa_7d748b6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T00:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb074972_cb42cdf8",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 51
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffc03fbb_e55aac0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 3
@@ -53,6 +77,24 @@
       "writtenOn": "2020-09-08T20:29:31Z",
       "side": 1,
       "message": "I didn\u0027t quite think about this the first time, but we probably don\u0027t need to explicitly launch these from the Launcher. The main purpose of the test is to check the shelf\u0027s pinned app behavior, so I think it would be fine to just use apps.Launch for these additional apps.\n\nYou already added the function in launcher.go, though, and I think that\u0027ll be a useful function to have in the future, so I guess we can keep this here for now.",
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc734916_3f74d75e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T00:41:29Z",
+      "side": 1,
+      "message": "Just want to confirm. It is ok for me to use my current function, right?",
+      "parentUuid": "ffc03fbb_e55aac0f",
       "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -79,6 +121,30 @@
       "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ab3a35a_870408b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T00:41:29Z",
+      "side": 1,
+      "message": "I called icon in launcher.PinAppToShelf.",
+      "parentUuid": "1bbc3cfb_0be6d307",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 5
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +194,54 @@
     },
     {
       "key": {
+        "uuid": "a57e6d39_176904b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T00:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75285a08_aa73afd2",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97e90159_190b9697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T00:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20901f31_725294ac",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f201561c_9213801b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 3
@@ -145,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "50ce9fb1_e40ca601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T00:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f201561c_9213801b",
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8a985d1_4738df10",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 3
@@ -156,6 +288,30 @@
       "writtenOn": "2020-09-08T20:29:31Z",
       "side": 1,
       "message": "Same here, can we use an app struct from apps.go?",
+      "range": {
+        "startLine": 530,
+        "startChar": 66,
+        "endLine": 530,
+        "endChar": 80
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9fd4c0a_1848829b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T00:41:29Z",
+      "side": 1,
+      "message": "It will create a circular dependency. Currently, apps imports ash.",
+      "parentUuid": "d8a985d1_4738df10",
       "range": {
         "startLine": 530,
         "startChar": 66,
@@ -191,6 +347,30 @@
     },
     {
       "key": {
+        "uuid": "6c1ae1da_fc8e918c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T00:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18d7d2dd_8e111f80",
+      "range": {
+        "startLine": 78,
+        "startChar": 39,
+        "endLine": 78,
+        "endChar": 53
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f29b8d05_2de0a708",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 3
@@ -211,6 +391,30 @@
       "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79472b40_57cda98a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T00:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f29b8d05_2de0a708",
+      "range": {
+        "startLine": 80,
+        "startChar": 69,
+        "endLine": 80,
+        "endChar": 83
+      },
+      "revId": "be65912c1faebccbfe65bd9ff1e85631c1cdbaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

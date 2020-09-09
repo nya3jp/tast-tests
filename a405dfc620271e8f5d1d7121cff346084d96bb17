@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb698a2e_443e8f9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-09T00:41:29Z",
+      "side": 1,
+      "message": "Hi Kyle:\n\nThank you for the feedback. It was really helpful. I have addressed almost all of them. I could not use apps.App for parameter for function in ash because ash is imported by apps. Therefore, there is a circular dependency. Otherwise, I think I have addressed everything.\n\nPlease check. Thanks.\n\nSeewai\n",
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
