@@ -21,6 +21,8 @@ import (
 
 const (
 	defaultFileSizeBytes = 1024 * 1024 * 1024
+	// BootDeviceFioPath is the pass to test the boot device with.
+	BootDeviceFioPath = "/mnt/stateful_partition/fio_test_data"
 )
 
 var (
@@ -50,12 +52,54 @@ type TestConfig struct {
 	// to be repeated until the total running time is greater than this duration.
 	Duration time.Duration
 
+	// Job is the name of the fio profile to execute. Must be on of the Configs.
+	Job string
+
+	// Path to the fio target
+	Path string
+
 	// VerifyOnly if true, make benchmark data is collected to result-chart.json
 	// without running the actual stress.
 	VerifyOnly bool
 
 	// ResultWriter references the result processing object.
 	ResultWriter *FioResultWriter
+}
+
+// WithDuration sets Duration in TestConfig.
+func (t TestConfig) WithDuration(duration time.Duration) TestConfig {
+	t.Duration = duration
+	return t
+}
+
+// WithJob sets Job in TestConfig.
+func (t TestConfig) WithJob(job string) TestConfig {
+	t.Job = job
+	return t
+}
+
+// WithPath sets Path in TestConfig.
+func (t TestConfig) WithPath(path string) TestConfig {
+	t.Path = path
+	return t
+}
+
+// WithBootDevice sets Path to BootDeviceFioPath in TestConfig.
+func (t TestConfig) WithBootDevice() TestConfig {
+	t.Path = BootDeviceFioPath
+	return t
+}
+
+// WithVerifyOnly sets VerifyOnly in TestConfig.
+func (t TestConfig) WithVerifyOnly(verifyOnly bool) TestConfig {
+	t.VerifyOnly = verifyOnly
+	return t
+}
+
+// WithResultWriter sets ResultWriter in TestConfig.
+func (t TestConfig) WithResultWriter(resultWriter *FioResultWriter) TestConfig {
+	t.ResultWriter = resultWriter
+	return t
 }
 
 // runFIO runs "fio" storage stress with a given config (jobFile), parses the output JSON and returns the result.
@@ -129,16 +173,11 @@ func resultGroupName(ctx context.Context, res *FioResult, dev string, rawDevTest
 	return group
 }
 
-// RunFioStress runs a single given storage job. job must be in Configs.
-// If verifyOnly is true, only benchmark data is collected to result-chart.json
-func RunFioStress(ctx context.Context, s *testing.State, job, testDataPath string, testConfig *TestConfig) {
-	if testConfig == nil {
-		testConfig = &TestConfig{}
-	}
+// RunFioStress runs an fio job single given path according to testConfig.
+func RunFioStress(ctx context.Context, s *testing.State, testConfig TestConfig) {
+	rawDev := strings.HasPrefix(testConfig.Path, "/dev/")
 
-	rawDev := strings.HasPrefix(testDataPath, "/dev/")
-
-	validateTestConfig(ctx, s, job)
+	validateTestConfig(ctx, s, testConfig.Job)
 
 	// Get device status/info.
 	info, err := getStorageInfo(ctx)
@@ -149,15 +188,15 @@ func RunFioStress(ctx context.Context, s *testing.State, job, testDataPath strin
 
 	if !rawDev {
 		// Delete the test data file on host.
-		defer os.RemoveAll(testDataPath)
+		defer os.RemoveAll(testConfig.Path)
 	}
 
-	testing.ContextLog(ctx, "Running job ", job)
+	testing.ContextLog(ctx, "Running job ", testConfig.Job)
 	var res *FioResult
 	for start := time.Now(); ; {
-		res, err = runFIO(ctx, testDataPath, s.DataPath(job), testConfig.VerifyOnly)
+		res, err = runFIO(ctx, testConfig.Path, s.DataPath(testConfig.Job), testConfig.VerifyOnly)
 		if err != nil {
-			s.Errorf("%v failed: %v", job, err)
+			s.Errorf("%v failed: %v", testConfig.Job, err)
 		}
 
 		// If duration test parameter is 0, we do a single iteration of a test.
@@ -170,11 +209,4 @@ func RunFioStress(ctx context.Context, s *testing.State, job, testDataPath strin
 		group := resultGroupName(ctx, res, devName, rawDev)
 		testConfig.ResultWriter.Report(group, res)
 	}
-}
-
-// RunFioStressForBootDevice runs a single given storage job for boot device.
-// job must be in Configs.
-// If verifyOnly is true, only benchmark data is collected to result-chart.json
-func RunFioStressForBootDevice(ctx context.Context, s *testing.State, job string, testConfig *TestConfig) {
-	RunFioStress(ctx, s, job, "/mnt/stateful_partition/fio_test_data", testConfig)
 }
