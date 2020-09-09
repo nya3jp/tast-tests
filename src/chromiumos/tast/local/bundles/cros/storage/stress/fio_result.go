@@ -43,6 +43,15 @@ type FioResultWriter struct {
 	results    []fioResultReport
 }
 
+// FioBlockFunc is a type of block function for FioBlock
+type FioBlockFunc func(context.Context, *testing.State, *FioResultWriter)
+
+// FioBlock is an fio block to be run a sub-test
+type FioBlock struct {
+	Name string
+	Func FioBlockFunc
+}
+
 // Save processes and saves reported results.
 func (f *FioResultWriter) Save(ctx context.Context, path string) {
 	f.resultLock.Lock()
@@ -63,6 +72,28 @@ func (f *FioResultWriter) Report(group string, result *fioResult) {
 	f.resultLock.Lock()
 	defer f.resultLock.Unlock()
 	f.results = append(f.results, fioResultReport{group, result})
+}
+
+// RunSequential runs result producing blocks in sequence.
+func (f *FioResultWriter) RunSequential(ctx context.Context, s *testing.State, blocks []FioBlock) {
+	for _, block := range blocks {
+		s.Run(ctx, block.Name, func(ctx context.Context, s *testing.State) { block.Func(ctx, s, f) })
+	}
+}
+
+// RunParallel runs result producing blocks in parallel.
+func (f *FioResultWriter) RunParallel(ctx context.Context, s *testing.State, blocks []FioBlock) {
+	var wg sync.WaitGroup
+
+	for _, block := range blocks {
+		wg.Add(1)
+		go func(b FioBlock) {
+			s.Run(ctx, b.Name, func(ctx context.Context, s *testing.State) { b.Func(ctx, s, f) })
+			wg.Done()
+		}(block)
+	}
+
+	wg.Wait()
 }
 
 // reportJobRWResult appends metrics for latency and bandwidth from the current test results
