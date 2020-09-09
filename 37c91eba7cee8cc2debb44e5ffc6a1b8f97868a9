@@ -46,6 +46,30 @@
       "revId": "37c91eba7cee8cc2debb44e5ffc6a1b8f97868a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3327a5cd_39c11735",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-09T16:44:38Z",
+      "side": 1,
+      "message": "I like that better.",
+      "parentUuid": "35e23be5_5dda853b",
+      "range": {
+        "startLine": 443,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 33
+      },
+      "revId": "37c91eba7cee8cc2debb44e5ffc6a1b8f97868a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
