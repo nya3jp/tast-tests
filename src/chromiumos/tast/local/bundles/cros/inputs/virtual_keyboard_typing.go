@@ -27,7 +27,7 @@ func init() {
 		Func:         VirtualKeyboardTyping,
 		Desc:         "Checks that the virtual keyboard works in Chrome",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Pre:          pre.VKEnabled(),
 		Timeout:      5 * time.Minute,
