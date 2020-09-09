@@ -73,37 +73,49 @@ func setup(ctx context.Context, s *testing.State) {
 	resultWriter := &stress.FioResultWriter{}
 	defer resultWriter.Save(ctx, s.OutDir())
 
-	testConfig := &stress.TestConfig{ResultWriter: resultWriter}
-	stress.RunFioStressForBootDevice(ctx, s, "seq_write", testConfig)
-	stress.RunFioStressForBootDevice(ctx, s, "seq_read", testConfig)
-	stress.RunFioStressForBootDevice(ctx, s, "4k_write", testConfig)
-	stress.RunFioStressForBootDevice(ctx, s, "4k_read", testConfig)
-	stress.RunFioStressForBootDevice(ctx, s, "16k_write", testConfig)
-	stress.RunFioStressForBootDevice(ctx, s, "16k_read", testConfig)
+	testConfig := &stress.TestConfig{ResultWriter: resultWriter, Path: stress.BootDeviceFioPath}
+	stress.RunFioStress(ctx, s, testConfig.WithJob("seq_write"))
+	stress.RunFioStress(ctx, s, testConfig.WithJob("seq_read"))
+	stress.RunFioStress(ctx, s, testConfig.WithJob("4k_write"))
+	stress.RunFioStress(ctx, s, testConfig.WithJob("4k_read"))
+	stress.RunFioStress(ctx, s, testConfig.WithJob("16k_write"))
+	stress.RunFioStress(ctx, s, testConfig.WithJob("16k_read"))
 }
 
 func testBlock(ctx context.Context, s *testing.State) {
 	resultWriter := &stress.FioResultWriter{}
 	defer resultWriter.Save(ctx, s.OutDir())
 
-	stress.RunFioStressForBootDevice(ctx, s, "64k_stress", &stress.TestConfig{Duration: 1 * time.Hour})
+	testConfig := &stress.TestConfig{Path: stress.BootDeviceFioPath}
+
+	stress.RunFioStress(ctx, s,
+		testConfig.
+			WithJob("64k_stress").
+			WithDuration(1*time.Hour))
 	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
 		s.Fatal("Sleep failed: ", err)
 	}
-	stress.RunFioStressForBootDevice(ctx, s, "surfing", &stress.TestConfig{
-		Duration:     1 * time.Hour,
-		VerifyOnly:   true,
-		ResultWriter: resultWriter,
-	})
+	stress.RunFioStress(ctx, s,
+		testConfig.
+			WithJob("surfing").
+			WithDuration(1*time.Hour).
+			WithVerifyOnly(true).
+			WithResultWriter(resultWriter))
+
 	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
 		s.Fatal("Sleep failed: ", err)
 	}
-	stress.RunFioStressForBootDevice(ctx, s, "8k_async_randwrite", &stress.TestConfig{Duration: 4 * time.Minute})
+
+	stress.RunFioStress(ctx, s,
+		testConfig.
+			WithJob("8k_async_randwrite").
+			WithDuration(4*time.Minute))
 	stress.Suspend(ctx)
-	stress.RunFioStressForBootDevice(ctx, s, "8k_async_randwrite", &stress.TestConfig{
-		VerifyOnly:   true,
-		ResultWriter: resultWriter,
-	})
+	stress.RunFioStress(ctx, s,
+		testConfig.
+			WithJob("8k_async_randwrite").
+			WithVerifyOnly(true).
+			WithResultWriter(resultWriter))
 }
 
 func teardown(ctx context.Context, s *testing.State) {
