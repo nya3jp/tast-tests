@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "4454cf98_31d13ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-09T01:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86a6c91f_b4251248",
+      "range": {
+        "startLine": 85,
+        "startChar": 25,
+        "endLine": 85,
+        "endChar": 26
+      },
+      "revId": "e83de785ddaf6427d72d84e64942ef2c2944674d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "221c4bdc_b00f6c84",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 1
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "cf366d50_bcc61687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-09T01:22:29Z",
+      "side": 1,
+      "message": "That is for repetition. The main scenario repeats 11 times (10 normal runs and 1 run with tracing) to stabilize the result numbers, and therefore each main scenario needs to be back to the original status.\n\nPreviously it was simply dragging left and right, but with this CL, the test scenario includes the custom prep -- and the custom prep for this specific case is to have another window in overview at right, create a new desk, drag that window into the new desk. The easiest way to make this operation multiple time is to remove the desk at the end of each run -- and that\u0027s what this line is doing.\n\n(note: just keeping the second desk and skipping the operation actually does not satisfy the condition. It is not in the splitview status).  I put those things as a comment.",
+      "parentUuid": "221c4bdc_b00f6c84",
+      "revId": "e83de785ddaf6427d72d84e64942ef2c2944674d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a633c40a_ebce263c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 1
@@ -73,6 +115,24 @@
       "revId": "e83de785ddaf6427d72d84e64942ef2c2944674d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c0ffa78_5693417f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-09T01:22:29Z",
+      "side": 1,
+      "message": "Thanks for catching this.\n\nActually I removed this, directly using a string constant.  Previously this was referred multiple times and I think that\u0027s why I created a const, but now it is only referred once.",
+      "parentUuid": "a633c40a_ebce263c",
+      "revId": "e83de785ddaf6427d72d84e64942ef2c2944674d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
