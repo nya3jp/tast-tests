@@ -22,6 +22,30 @@
       "revId": "84756bab0ee25240476089c010c926e42473e33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4200cabd_fa3feba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/flashrom",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2020-09-09T05:22:58Z",
+      "side": 1,
+      "message": "Sorry the regex part is unclear as you can use fixed strcmp() for the moment. However, later you can use enviroment variables as a way to modify the path of this script to fail to test the contrapositive cases or inject other outputs, in which case you can use a regex. However that is maybe a little too far ahead for now.",
+      "parentUuid": "60d7a593_86b738e8",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "84756bab0ee25240476089c010c926e42473e33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
