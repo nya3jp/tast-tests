@@ -33,6 +33,155 @@
       "revId": "5f97884a3f240f982cdfdc863edc9548232c3ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8921a5ff_597b0f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-09T12:45:50Z",
+      "side": 1,
+      "message": "please add copyright header\n\n```\n\u003c!-- Copyright 2020 The Chromium Authors. All rights reserved.\n     Use of this source code is governed by a BSD-style license that can be\n     found in the LICENSE file. --\u003e\n```",
+      "revId": "5f97884a3f240f982cdfdc863edc9548232c3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f04f749_538c6f2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-09T12:45:50Z",
+      "side": 1,
+      "message": "you don\u0027t really use this variable. Do you want to wait until page will be ready and then request image size?",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "5f97884a3f240f982cdfdc863edc9548232c3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "750223ca_ff226570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index_img.jpg",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-09T12:45:50Z",
+      "side": 1,
+      "message": "Can we use this image?\n\n\nanyway, this file looks big enough to be external, i.e. hosted outside of codebase\n\nPTAL on example: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/scanner/data/scan_escl_ipp_golden.png.external\n\nDocumentation:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files",
+      "revId": "5f97884a3f240f982cdfdc863edc9548232c3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe7f046_9e7b81c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-09T12:45:50Z",
+      "side": 1,
+      "message": "nit: add period at the end if you add period everywhere\n\nAlso, you can remove such comments, they are pretty self documented",
+      "range": {
+        "startLine": 42,
+        "startChar": 80,
+        "endLine": 42,
+        "endChar": 86
+      },
+      "revId": "5f97884a3f240f982cdfdc863edc9548232c3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb9fd683_42feb9e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-09T12:45:50Z",
+      "side": 1,
+      "message": "nit: please use conn, it\u0027s more popular:\n\nhttps://source.chromium.org/search?q\u003dcr.NewConn\u0026start\u003d1",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 8
+      },
+      "revId": "5f97884a3f240f982cdfdc863edc9548232c3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e9c823_f13c8628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-09T12:45:50Z",
+      "side": 1,
+      "message": "Can we actually compare with expected width?",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "5f97884a3f240f982cdfdc863edc9548232c3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab764d96_3d64a0bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-09T12:45:50Z",
+      "side": 1,
+      "message": "nit: please use \"want\" instead",
+      "range": {
+        "startLine": 85,
+        "startChar": 49,
+        "endLine": 85,
+        "endChar": 57
+      },
+      "revId": "5f97884a3f240f982cdfdc863edc9548232c3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
