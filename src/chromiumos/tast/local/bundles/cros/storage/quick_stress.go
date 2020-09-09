@@ -9,7 +9,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/storage/stress"
 	"chromiumos/tast/testing"
 )
@@ -71,27 +70,30 @@ func setup(ctx context.Context, s *testing.State) {
 	}
 
 	// Run tests to collect metrics.
-	perfValues := perf.NewValues()
-	testConfig := &stress.TestConfig{PerfValues: perfValues}
+	resultWriter := &stress.FioResultWriter{}
+	defer resultWriter.Save(ctx, s.OutDir())
+
+	testConfig := &stress.TestConfig{ResultWriter: resultWriter}
 	stress.RunFioStressForBootDevice(ctx, s, "seq_write", testConfig)
 	stress.RunFioStressForBootDevice(ctx, s, "seq_read", testConfig)
 	stress.RunFioStressForBootDevice(ctx, s, "4k_write", testConfig)
 	stress.RunFioStressForBootDevice(ctx, s, "4k_read", testConfig)
 	stress.RunFioStressForBootDevice(ctx, s, "16k_write", testConfig)
 	stress.RunFioStressForBootDevice(ctx, s, "16k_read", testConfig)
-	perfValues.Save(s.OutDir())
 }
 
 func testBlock(ctx context.Context, s *testing.State) {
-	perfValues := perf.NewValues()
+	resultWriter := &stress.FioResultWriter{}
+	defer resultWriter.Save(ctx, s.OutDir())
+
 	stress.RunFioStressForBootDevice(ctx, s, "64k_stress", &stress.TestConfig{Duration: 1 * time.Hour})
 	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
 		s.Fatal("Sleep failed: ", err)
 	}
 	stress.RunFioStressForBootDevice(ctx, s, "surfing", &stress.TestConfig{
-		Duration:   1 * time.Hour,
-		VerifyOnly: true,
-		PerfValues: perfValues,
+		Duration:     1 * time.Hour,
+		VerifyOnly:   true,
+		ResultWriter: resultWriter,
 	})
 	testing.Sleep(ctx, 5*time.Minute)
 	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
@@ -100,10 +102,9 @@ func testBlock(ctx context.Context, s *testing.State) {
 	stress.RunFioStressForBootDevice(ctx, s, "8k_async_randwrite", &stress.TestConfig{Duration: 4 * time.Minute})
 	stress.Suspend(ctx)
 	stress.RunFioStressForBootDevice(ctx, s, "8k_async_randwrite", &stress.TestConfig{
-		VerifyOnly: true,
-		PerfValues: perfValues,
+		VerifyOnly:   true,
+		ResultWriter: resultWriter,
 	})
-	perfValues.Save(s.OutDir())
 }
 
 func teardown(ctx context.Context, s *testing.State) {
