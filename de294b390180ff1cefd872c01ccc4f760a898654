@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e697f1ff_aec49977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-09T09:28:21Z",
+      "side": 1,
+      "message": "IIRC, the golang don\u0027t need to expose symbol, if all its usage are in the same package i.e. package cca.\ns/PlatformAppJSPath/platformAppJSPath/",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3733fd5f_993291f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-09T09:28:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df6e0840_7beb075d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-09T09:28:21Z",
+      "side": 1,
+      "message": "Can we try to wrap this with a tast precondition?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions\nSo that the same precondition can be shared across tests.",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
