@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "3108ae57_4c2f50ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-09-09T00:16:27Z",
+      "side": 1,
+      "message": "Hey Shuhei,\n\nIs it recommended to add many manual tests without promoting them to auto-run in a short term?\nThe tests for input/IME always cross apps/components/languages...\n\nMany factors (tast incomplete keyboard layouts, key event mocking, language set by OEM...) out of our control may break our input tests, which depresses us to submit some useful tests.\nIf we can submit all these tests without promoting them to CQ but run in manual mode, that will help us improve the quality a lot.",
+      "parentUuid": "c61b56dd_5d4d7c92",
+      "range": {
+        "startLine": 28,
+        "startChar": 17,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95403612_f05801e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 3
