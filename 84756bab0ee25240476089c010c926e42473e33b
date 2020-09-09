@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60d7a593_86b738e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/flashrom",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2020-09-09T05:17:47Z",
+      "side": 1,
+      "message": "We probably want to write out the calling args to a log file and get the test to open and tail the log file then apply a Go map of regex that match each step. You fold this map over the log output and if all the regex match you have a total pass.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "84756bab0ee25240476089c010c926e42473e33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
