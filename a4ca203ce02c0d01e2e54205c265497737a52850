@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5fdd26f_5d914aaa",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-09-09T00:10:25Z",
+      "side": 1,
+      "message": "optional: Even though golang allows longer lines, it seems common to keep function comments to 80 lines to make them easier to read.",
+      "revId": "a4ca203ce02c0d01e2e54205c265497737a52850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
