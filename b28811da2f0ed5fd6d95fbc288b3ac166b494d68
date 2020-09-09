@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "05a76b31_1d028ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-09T05:34:18Z",
+      "side": 1,
+      "message": "Then do you want to remove this attr as well? Same as the other test, if I am not missing anything",
+      "parentUuid": "7dbded20_49630bdb",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "b28811da2f0ed5fd6d95fbc288b3ac166b494d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77328072_3114c243",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
         "patchSetId": 6
