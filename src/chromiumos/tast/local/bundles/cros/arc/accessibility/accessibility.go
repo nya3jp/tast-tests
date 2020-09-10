@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -191,10 +191,10 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
 
-	if err := audio.Mute(ctx); err != nil {
+	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute device: ", err)
 	}
-	defer audio.Unmute(fullCtx)
+	defer crastestclient.Unmute(fullCtx)
 
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC

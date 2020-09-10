@@ -138,6 +138,7 @@ func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Start testing activity.
+
 	sup.Add(setup.StartActivity(ctx, tconn, a, audio.Pkg, testActivity, setup.Prefixes("-n"), setup.Suffixes(intentExtras...)))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
