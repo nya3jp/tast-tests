@@ -16,6 +16,195 @@
       "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e50e8c3a_e018aa0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T18:26:51Z",
+      "side": 1,
+      "message": "Almost LG. Mostly minor comments.",
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04b163b_2bdfcdfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_system_languages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T18:26:51Z",
+      "side": 1,
+      "message": "could you add a white space between \"//\" and \"label\" ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 54,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b24f3c10_c80744c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_system_languages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T18:26:51Z",
+      "side": 1,
+      "message": "huge nit. \":\"",
+      "range": {
+        "startLine": 135,
+        "startChar": 41,
+        "endLine": 135,
+        "endChar": 42
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aadb9bdd_2ad811ae",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T18:26:51Z",
+      "side": 1,
+      "message": "could you limit the max history to 2?",
+      "range": {
+        "startLine": 420,
+        "startChar": 2,
+        "endLine": 420,
+        "endChar": 43
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "735405e1_cbf1acd0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T18:26:51Z",
+      "side": 1,
+      "message": "In the error message, we\u0027d use one partial sentence.\nSuggestion: \"node is not located; history was %v\"",
+      "range": {
+        "startLine": 427,
+        "startChar": 47,
+        "endLine": 427,
+        "endChar": 68
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c350d1fd_a8224115",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T18:26:51Z",
+      "side": 1,
+      "message": "style:\n\nif ... {\n  return\n}\nif ... {\n  return\n}\n ...",
+      "range": {
+        "startLine": 422,
+        "startChar": 2,
+        "endLine": 428,
+        "endChar": 3
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70883e86_503f9224",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T18:26:51Z",
+      "side": 1,
+      "message": "I think it is up to caller. Could you make this the param?",
+      "range": {
+        "startLine": 430,
+        "startChar": 59,
+        "endLine": 430,
+        "endChar": 84
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c49e060f_e479db02",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T18:26:51Z",
+      "side": 1,
+      "message": "offtopic/no action required: it may be worth considering to introduce some struct representing VK connection and/or VK UI connections for better encapsulation.",
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e9b3966_2f50ef3a",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T18:26:51Z",
+      "side": 1,
+      "message": "Could you update the commit message, too?",
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
