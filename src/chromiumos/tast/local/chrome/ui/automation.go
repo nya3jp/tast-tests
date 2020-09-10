@@ -15,6 +15,8 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/google/go-cmp/cmp"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -403,6 +405,34 @@ func (n *Node) Attribute(ctx context.Context, attributeName string) (interface{}
 		return nil, err
 	}
 	return out, nil
+}
+
+// WaitForPositioned waits for the node to be positioned.
+// It continuously check the element location, until 3 consecutive check results the same.
+// This function will take at least 2 * Interval duration for 3 checks.
+func (n *Node) WaitForPositioned(ctx context.Context, opts *testing.PollOptions) error {
+	var locations [3]coords.Rect
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := n.Update(ctx); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to update the node's location"))
+		}
+
+		// Throw out error if the node is not present on screen.
+		if n.Location.Empty() {
+			return errors.New("node is not present on screen")
+		}
+
+		// Shift left value
+		// Only check the last 3 locations.
+		locations[0] = locations[1]
+		locations[1] = locations[2]
+		locations[2] = n.Location
+
+		if !cmp.Equal(locations[len(locations)-1], locations[len(locations)-2]) || !cmp.Equal(locations[len(locations)-2], locations[len(locations)-3]) {
+			return errors.Errorf("node is not locationed; history was %v", locations)
+		}
+		return nil
+	}, opts)
 }
 
 // Children returns the children of the node.
