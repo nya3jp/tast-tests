@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "17bb2e85_07aab617",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-09-10T14:27:36Z",
+      "side": 1,
+      "message": "Fix MountInfo comments",
+      "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16a02600_ba67a8c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
         "patchSetId": 3
@@ -83,6 +100,24 @@
       "writtenOn": "2020-09-10T08:47:35Z",
       "side": 1,
       "message": "for the record. As we discussed offline, I do not think we\u0027d like to do this only on tast.\nThis \"Master\" and \"slave\" comes from master mount / slave mount which are the technical term used in linux kernel.\nSo, it sounds like the external dependency, which is kind of exception of COIL effort.\n\nI\u0027m fine with, either\n- Adding TODO to clean up later, following the change in upstream kernel. Maybe nice to record this is the technical term used in linux kernel.\n- Make this change with the consensus within Chrome OS to use \"Primary mount\" and \"Secondary mount\" respecting COIL effort. So, i.e., if we use \"primary mount\" \"secondary mount\" to represent \"master mount\" \"slave mount\" wherever inside Chrome OS, we\u0027d do this.\n- Or more aggressively, because CrOS team has full control of kernel used in Chrome OS, and this code is expected to run only on Chrome OS, another possibility is to have a kernel patch for COIL with the help from platform team.\n\nNote that I wouldn\u0027t care of the order of change. As long as we have consensus, short term mismatching of the word should be just fine.",
+      "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41d5e446_6bc6b18d",
+        "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-09-10T14:27:36Z",
+      "side": 1,
+      "message": "thanks.\n\nwe will go with the TODO and bug for change to the upstream kernel to keep the kernel API / Tast go sysutil intact.",
+      "parentUuid": "cdf7148c_4b9e957b",
       "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
