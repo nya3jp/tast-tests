@@ -125,6 +125,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/sys/fs/cgroup/cpuset":              {nil, "cgroup", defaultRW},
 		"/sys/fs/cgroup/devices":             {nil, "cgroup", defaultRW},
 		"/sys/fs/cgroup/freezer":             {nil, "cgroup", defaultRW},
+		"/sys/fs/cgroup/net_cls":             {nil, "cgroup", defaultRW},
 		"/sys/fs/cgroup/schedtune":           {nil, "cgroup", defaultRW},
 		"/sys/fs/cgroup":                     {nil, "tmpfs", defaultRW + ",mode=755"},
 		"/sys/fs/fuse/connections":           {nil, "fusectl", defaultRW},
