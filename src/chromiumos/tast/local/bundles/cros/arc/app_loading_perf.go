@@ -19,7 +19,10 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-const apkName = "ArcAppLoadingTest.apk"
+const (
+	apkName       = "ArcAppLoadingTest.apk"
+	nethelperPort = 1235
+)
 
 var (
 	arcAppLoadingGaia = &arc.GaiaVars{
@@ -84,11 +87,14 @@ func init() {
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	// Start network helper to serve requests from the app.
-	conn, err := nethelper.Start(ctx)
+	conns, err := nethelper.Start(ctx, nethelperPort)
 	if err != nil {
 		s.Fatal("Failed to start helper: ", err)
 	}
-	defer conn.Close()
+	defer nethelper.Stop(ctx, nethelperPort)
+	for _, conn := range conns {
+		defer conn.Close()
+	}
 
 	finalPerfValues := perf.NewValues()
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
