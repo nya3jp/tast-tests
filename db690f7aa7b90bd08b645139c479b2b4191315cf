@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "a814c513_67af205a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-10T01:52:30Z",
+      "side": 1,
+      "message": "Oops.. Nice catch. Fixed.\n\nRegistration is done when chrome starts. Then we install the apps.",
+      "parentUuid": "cd3d8ecb_903aa921",
+      "range": {
+        "startLine": 52,
+        "startChar": 67,
+        "endLine": 52,
+        "endChar": 116
+      },
+      "revId": "db690f7aa7b90bd08b645139c479b2b4191315cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f0e9df0_663c94fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
         "patchSetId": 4
@@ -62,6 +86,30 @@
       "revId": "db690f7aa7b90bd08b645139c479b2b4191315cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f57726_645a5f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-10T01:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f0e9df0_663c94fe",
+      "range": {
+        "startLine": 63,
+        "startChar": 24,
+        "endLine": 63,
+        "endChar": 26
+      },
+      "revId": "db690f7aa7b90bd08b645139c479b2b4191315cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
