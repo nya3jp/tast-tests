@@ -199,7 +199,7 @@ func checkHistogram(ctx context.Context, tconn *chrome.TestConn, baseline int64)
 // disk from backupPath. outDir is passed to
 // vm.RestartDefaultVMContainer and may be used to store logs from
 // container startup on failure.
-func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.Container, backupPath, outDir string) error {
+func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.Container, diskPath, backupPath, outDir string) error {
 	match := dbusutil.MatchSpec{
 		Type:      "signal",
 		Path:      anomalyEventServicePath,
@@ -213,12 +213,12 @@ func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.
 	defer signalWatcher.Close(ctx)
 
 	// Defer restoring from backup before attempting the write, because if the write fails the disk is in an unknown state.
-	cmd := testexec.CommandContext(ctx, "cp", "--sparse=always", "--backup=off", "--preserve=all", backupPath, container.VM.DiskPath)
+	cmd := testexec.CommandContext(ctx, "cp", "--sparse=always", "--backup=off", "--preserve=all", backupPath, diskPath)
 	defer cmd.Run(testexec.DumpLogOnError)
 
 	// Make edit to disk at these offsets.
 	testing.ContextLog(ctx, "Making changes at offsets ", offsets)
-	if err := writeAtSync(container.VM.DiskPath, []byte(uuidReplacement), offsets); err != nil {
+	if err := writeAtSync(diskPath, []byte(uuidReplacement), offsets); err != nil {
 		return errors.Wrap(err, "failed to make disk edit")
 	}
 
@@ -259,6 +259,11 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test files: ", err)
 	}
 
+	disk, err := data.Container.VM.Concierge.GetVMDiskInfo(ctx, vm.DefaultVMName)
+	if err != nil {
+		s.Fatal("Failed to get VM disk info: ", err)
+	}
+
 	// Stop the VM so it isn't running while we edit its disk.
 	s.Log("Stopping VM")
 	if err := data.Container.VM.Stop(ctx); err != nil {
@@ -268,23 +273,22 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	defer vm.RestartDefaultVMContainer(ctx, s.OutDir(), data.Container)
 
 	s.Log("Searching for pattern in disk image")
-	s.Logf("Disk path: %s", data.Container.VM.DiskPath)
-	smallOffsets, bigOffsets, err := getOffsets(ctx, data.Container.VM.DiskPath, []byte(smallUUID), []byte(bigUUID))
+	smallOffsets, bigOffsets, err := getOffsets(ctx, disk.GetPath(), []byte(smallUUID), []byte(bigUUID))
 	if err != nil || len(smallOffsets) == 0 || len(bigOffsets) == 0 {
 		s.Fatal("Failed to get file offsets: ", err)
 	}
 
 	// BTRFS filesystems are modified on every mount, so we make a backup here of the disk so we can start each corruption from a known state.
 	s.Log("Backing up the current disk image")
-	backupPath := data.Container.VM.DiskPath + ".bak"
-	cmd := testexec.CommandContext(ctx, "cp", "--sparse=always", "--backup=off", "--preserve=all", data.Container.VM.DiskPath, backupPath)
+	backupPath := disk.GetPath() + ".bak"
+	cmd := testexec.CommandContext(ctx, "cp", "--sparse=always", "--backup=off", "--preserve=all", disk.GetPath(), backupPath)
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		testexec.CommandContext(ctx, "rm", "--force", backupPath).Run()
 		s.Fatal("Failed to back up VM disk for editing: ", err)
 	}
 
 	// Always restore the backup disk before ending the test.
-	cmd = testexec.CommandContext(ctx, "mv", "--force", backupPath, data.Container.VM.DiskPath)
+	cmd = testexec.CommandContext(ctx, "mv", "--force", backupPath, disk.GetPath())
 	defer cmd.Run(testexec.DumpLogOnError)
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -297,7 +301,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get baseline for histogram: ", err)
 	}
 
-	if err := testOverwriteAtOffsets(ctx, bigOffsets, data.Container, backupPath, s.OutDir()); err != nil {
+	if err := testOverwriteAtOffsets(ctx, bigOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
 		s.Fatal("Didn't get an error signal for big file: ", err)
 	}
 	histogramCount, err = checkHistogram(ctx, tconn, histogramCount)
@@ -305,7 +309,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check histogram: ", err)
 	}
 
-	if err := testOverwriteAtOffsets(ctx, smallOffsets, data.Container, backupPath, s.OutDir()); err != nil {
+	if err := testOverwriteAtOffsets(ctx, smallOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
 		s.Fatal("Didn't get an error signal for small file: ", err)
 	}
 	if _, err := checkHistogram(ctx, tconn, histogramCount); err != nil {
