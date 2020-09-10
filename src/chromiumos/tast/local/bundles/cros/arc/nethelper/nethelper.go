@@ -4,16 +4,16 @@
 
 // Package nethelper provides functionality to support test execution by handling
 // requests from various tests coming via network in context of ARC TAST test.
-// arc_eth0 on port 1235 is used as communicatin point. This helper supports
-// following commands.
+// arc_eth0 on port 1235 is used as communication point. This helper currently
+// supports the following commands:
 //   * drop_caches - drops system caches, returns OK/FAILED
 //
 // Usage pattern is following:
 // 	conn, err := nethelper.Start(ctx)
 //	if err != nil {
-//		s.Fatal("Failed to start helper", err)
+//		s.Fatal("Failed to start nethelper", err)
 //	}
-//	defer conn.Close()
+//	defer conn.Close(ctx)
 package nethelper
 
 import (
@@ -23,6 +23,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net"
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -34,33 +35,79 @@ import (
 const (
 	okResponse     = "OK"
 	failedResponse = "FAILED"
+
+	iptablesCmd  = "/sbin/iptables"
+	ip6tablesCmd = "/sbin/ip6tables"
 )
 
-// Connection describes running socket server.
+var (
+	cmds      = []string{iptablesCmd, ip6tablesCmd}
+	ifacesArc = []string{"arc_eth+", "arc_mlan+", "arc_wlan+", "arcbr+"}
+)
+
+// Connection describes running socket server context.
 type Connection struct {
-	// Contains network address that could be used by client to connect this server
-	Address  string
-	listener net.Listener
+	// Contains network listeners that could be used by client to connect this server.
+	listeners []net.Listener
+	rules     []string
 }
 
-// Close closes the connection
-func (c *Connection) Close() {
-	c.listener.Close()
+// Close cleans up the connection descriptor.
+func (c *Connection) Close(ctx context.Context) error {
+	var firstErr error
+	for _, listener := range c.listeners {
+		if err := listener.Close(); err != nil && firstErr == nil {
+			firstErr = err
+		}
+	}
+
+	// Delete iptables rules that were created.
+	for _, rule := range c.rules {
+		for _, cmd := range cmds {
+			args := append([]string{"-D"}, strings.Fields(rule)...)
+			if err := testexec.CommandContext(ctx, cmd, args...).Run(testexec.DumpLogOnError); err != nil && firstErr == nil {
+				firstErr = err
+			}
+
+			// Check the previously created iptables rules were successfully removed.
+			args = append([]string{"-C"}, strings.Fields(rule)...)
+			if err := testexec.CommandContext(ctx, cmd, args...).Run(); err == nil && firstErr == nil {
+				firstErr = errors.Errorf("failed to verify removal of iptables rule: %s", rule)
+			}
+		}
+	}
+
+	// Only return the first error as it's usually the most interesting one.
+	return firstErr
 }
 
 // Start starts socket server and returns connection descriptor.
-func Start(ctx context.Context) (*Connection, error) {
-	const (
-		port = 1235
-	)
+func Start(ctx context.Context, port int) (*Connection, error) {
+	result := new(Connection)
+	ifacesArcSet := make(map[string]bool)
 
-	// Make sure ports may accepts connection.
-	if err := testexec.CommandContext(ctx,
-		"/sbin/iptables",
-		"-A", "INPUT", "-p", "tcp",
-		"--dport", strconv.Itoa(port),
-		"-j", "ACCEPT").Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrapf(err, "failed to open port %d", port)
+	// Make sure ARC interfaces can accept connection on port
+	for _, i := range ifacesArc {
+		// For faster search when checking existing net interfaces.
+		key := strings.TrimSuffix(i, "+")
+		if _, ok := ifacesArcSet[key]; !ok {
+			ifacesArcSet[key] = true
+		}
+
+		rule := "INPUT -i " + i + " -p tcp -m tcp --dport " + strconv.Itoa(port) + " -j ACCEPT -w"
+		result.rules = append(result.rules, rule)
+		for _, cmd := range cmds {
+			args := append([]string{"-A"}, strings.Fields(rule)...)
+			if err := testexec.CommandContext(ctx, cmd, args...).Run(testexec.DumpLogOnError); err != nil {
+				return nil, errors.Wrapf(err, "failed to add iptables rule: %s", rule)
+			}
+
+			// Check rules were added in IPv4 and IPv6 iptables.
+			args = append([]string{"-C"}, strings.Fields(rule)...)
+			if err := testexec.CommandContext(ctx, cmd, args...).Run(); err != nil {
+				return nil, errors.Wrapf(err, "failed to verify addition of iptables rule: %s", rule)
+			}
+		}
 	}
 
 	ifaces, err := net.Interfaces()
@@ -68,9 +115,10 @@ func Start(ctx context.Context) (*Connection, error) {
 		return nil, errors.Wrap(err, "failed to enum interfaces")
 	}
 
+	// Handle real addresses that could be accessible for the current DUT.
 	for _, i := range ifaces {
-		// Handle real addresses that could be accessible for the current DUT.
-		if i.Name != "arc_eth0" {
+		// Filter network interfaces using ifacesArc and match non-wildcard lowercase characters.
+		if _, ok := ifacesArcSet[regexp.MustCompile("[^a-z]+(_?[a-z]+)*$").ReplaceAllString(i.Name, "")]; !ok {
 			continue
 		}
 		addrs, err := i.Addrs()
@@ -84,25 +132,31 @@ func Start(ctx context.Context) (*Connection, error) {
 		for _, addr := range addrs {
 			switch v := addr.(type) {
 			case *net.IPNet:
-				result := new(Connection)
+				var address string
 				if v.IP.To4() != nil {
-					result.Address = fmt.Sprintf("%s:%d", v.IP, port)
+					address = fmt.Sprintf("%s:%d", v.IP, port)
 				} else {
-					result.Address = fmt.Sprintf("[%s%%%s]:%d", v.IP, i.Name, port)
+					address = fmt.Sprintf("[%s%%%s]:%d", v.IP, i.Name, port)
 				}
-				result.listener, err = net.Listen("tcp", result.Address)
+				listener, err := net.Listen("tcp", address)
 				if err != nil {
-					testing.ContextLogf(ctx, "Failed to listen on %s", result.Address)
+					testing.ContextLogf(ctx, "Failed to listen on %s", address)
 					continue
 				}
-				testing.ContextLogf(ctx, "Listening on %s", result.Address)
-				go listenForClients(ctx, result.listener)
-				return result, nil
+
+				// Deploy listen goroutine and add new connection listener to result object.
+				testing.ContextLogf(ctx, "Listening on %s", address)
+				go listenForClients(ctx, listener)
+				result.listeners = append(result.listeners, listener)
 			}
 		}
-
 	}
-	return nil, errors.New(fmt.Sprintf("failed to start server at port %d, no address is availables", port))
+
+	if len(result.listeners) > 0 {
+		return result, nil
+	}
+
+	return nil, errors.Errorf("failed to start server at port %d, no address is available", port)
 }
 
 func listenForClients(ctx context.Context, listener net.Listener) {
