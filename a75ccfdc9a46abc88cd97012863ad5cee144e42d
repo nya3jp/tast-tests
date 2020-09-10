@@ -16,6 +16,24 @@
       "revId": "a75ccfdc9a46abc88cd97012863ad5cee144e42d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcba5c7a_921ea431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T23:45:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6833bf5_04e75341",
+      "revId": "a75ccfdc9a46abc88cd97012863ad5cee144e42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
