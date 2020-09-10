@@ -61,8 +61,7 @@ func init() {
 			Name:              "vp9_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP9"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			// TODO(crbug.com/811912): Use pre.ChromeVideoWithFakeWebcam() when VP9 encoder is enabled by default.
-			Pre: pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder(),
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}},
 	})
 }

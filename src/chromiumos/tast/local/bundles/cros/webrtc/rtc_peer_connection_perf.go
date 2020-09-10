@@ -52,12 +52,10 @@ func init() {
 			Val:  rtcPerfTest{enableHWAccel: false, profile: "VP8"},
 			Pre:  pre.ChromeVideoWithFakeWebcamAndSWDecoding(),
 		}, {
-			Name: "vp9_hw",
-			Val:  rtcPerfTest{enableHWAccel: true, profile: "VP9"},
-			// TODO(crbug.com/811912): Remove "vaapi" and use pre.ChromeVideoWithFakeWebcam()
-			// once the feature is enabled by default on VA-API devices.
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
-			Pre:               pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder(),
+			Name:              "vp9_hw",
+			Val:               rtcPerfTest{enableHWAccel: true, profile: "VP9"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name: "vp9_sw",
 			Val:  rtcPerfTest{enableHWAccel: false, profile: "VP9"},
