@@ -99,10 +99,21 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 		s.Fatal("AllowNewUsers should be true")
 	}
 	found := false
-	for _, u := range settings.UserWhitelist.UserWhitelist {
-		if u == user {
-			found = true
-			break
+	// TODO(crbug.com/1103816) - remove whitelist support when no longer
+	// supported by DMServer.
+	if settings.UserWhitelist != nil && settings.UserAllowlist == nil {
+		for _, u := range settings.UserWhitelist.UserWhitelist {
+			if u == user {
+				found = true
+				break
+			}
+		}
+	} else {
+		for _, u := range settings.UserAllowlist.UserAllowlist {
+			if u == user {
+				found = true
+				break
+			}
 		}
 	}
 	if !found {
