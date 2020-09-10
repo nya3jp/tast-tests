@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88e68d63_741950dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_ok.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-10T05:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4a1baf0_ce3a39c4",
+      "range": {
+        "startLine": 81,
+        "startChar": 25,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "3af7efb3410e0a487df5e45cca0da02b77af97fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2d2ec12_74bf6f2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "3af7efb3410e0a487df5e45cca0da02b77af97fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6dd8eb3_dff9ec8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-10T05:54:16Z",
+      "side": 1,
+      "message": "I\u0027ll submit another cl to improve this.",
+      "parentUuid": "c2d2ec12_74bf6f2a",
+      "range": {
+        "startLine": 85,
+        "startChar": 52,
+        "endLine": 85,
+        "endChar": 84
+      },
+      "revId": "3af7efb3410e0a487df5e45cca0da02b77af97fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5bca3297_ddda28b6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-10T05:54:16Z",
+      "side": 1,
+      "message": "Done.\nI leave ClickOK returning a toast because it is displayed after clicking ok while sharing any folder.",
+      "parentUuid": "16b2059e_34ad72d4",
+      "range": {
+        "startLine": 210,
+        "startChar": 116,
+        "endLine": 210,
+        "endChar": 138
+      },
+      "revId": "3af7efb3410e0a487df5e45cca0da02b77af97fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f8f6a23_24c9b84e",
         "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "3af7efb3410e0a487df5e45cca0da02b77af97fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9acd41d4_a264633f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-10T05:54:16Z",
+      "side": 1,
+      "message": "I wrote one func in the test file itself.",
+      "parentUuid": "3f8f6a23_24c9b84e",
+      "range": {
+        "startLine": 231,
+        "startChar": 25,
+        "endLine": 231,
+        "endChar": 49
+      },
+      "revId": "3af7efb3410e0a487df5e45cca0da02b77af97fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
