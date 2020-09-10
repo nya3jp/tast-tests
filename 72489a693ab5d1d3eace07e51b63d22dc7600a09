@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d998f7a2_e74e97a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T21:23:29Z",
+      "side": 1,
+      "message": "I am assuming this is to fix the \"Error restarting container: failed to set up user: Socket closed\" error. Do you have any idea what was going wrong, or did you just switch it over?\n\nThanks for this.",
+      "revId": "72489a693ab5d1d3eace07e51b63d22dc7600a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
