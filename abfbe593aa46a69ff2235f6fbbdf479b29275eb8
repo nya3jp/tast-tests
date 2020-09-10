@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "053a32bc_8f001fe8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-10T18:09:42Z",
+      "side": 1,
+      "message": "Hi Kyle:\n\nThanks for the good advise. Your advise on check button shifting left is much more efficient than my original code. \n\nI think I have addressed all feedback. Please check. Thanks.\n\nSeewai",
+      "revId": "abfbe593aa46a69ff2235f6fbbdf479b29275eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

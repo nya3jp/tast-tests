@@ -401,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "f760a637_25407432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-10T18:09:42Z",
+      "side": 1,
+      "message": "I didn\u0027t think of this case.\n\nHow about I added this check?\n\tif len(appButtons) !\u003d len(prevLocations)+1 {\n\t\ts.Fatalf(\"Have %v buttons on the shelf; want %v\", len(appButtons), len(prevLocations)+1)\n\t}\nThen, we can make sure there is no missing buttons on the shelf. \n\nPlease let me know if it is ok.",
+      "parentUuid": "5bbfc4d9_3461f7a6",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 7
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "877b66a0_5617fe16",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 5

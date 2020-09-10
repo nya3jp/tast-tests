@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "e35e785f_8525044a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-10T18:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b93cab_edb61a5a",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a67d489_bffa8b06",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 6
@@ -79,6 +103,30 @@
       "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d696c1_88b381e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-10T18:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a67d489_bffa8b06",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "d348301f_c5035583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-10T18:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f39910c7_dc7e2656",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70ed6cbf_0a8261ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 6
@@ -128,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "a766ac5a_1e930282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-10T18:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70ed6cbf_0a8261ed",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 74
+      },
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43b318bf_68cc5055",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 6
@@ -148,6 +244,30 @@
       "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a6b061f_78578f7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-10T18:09:42Z",
+      "side": 1,
+      "message": "Thanks for the good idea. My original implement had too many string comparison.",
+      "parentUuid": "43b318bf_68cc5055",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 2
+      },
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
