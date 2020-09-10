@@ -126,18 +126,13 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
-	s.Log("Waiting for the virtual keyboard to render buttons")
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
-
 	keyboard, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeKeyboard}, 3*time.Second)
 	if err != nil {
 		s.Fatal("Virtual keyboard does not show")
 	}
 	defer keyboard.Release(ctx)
 
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: defaultInputMethodLabel}, 1*time.Second); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: defaultInputMethodLabel}, 5*time.Second); err != nil {
 		s.Fatalf("Failed to find %s in language menu on virtual keyboard: %v", defaultInputMethodLabel, err)
 	}
 }
