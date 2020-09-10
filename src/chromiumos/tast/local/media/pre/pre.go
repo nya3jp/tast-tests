@@ -85,31 +85,16 @@ var chromeVideoWithFakeWebcamAndAlternateVideoDecoderPre = chrome.NewPreconditio
 	chromeFakeWebcamArgs,
 	chrome.ExtraArgs("--enable-features=UseAlternateVideoDecoderImplementation"))
 
-// ChromeVideoWithFakeWebcamAndVP9VaapiEncoder returns a precondition equal to
-// ChromeVideoWithFakeWebcam and with VA-API VP9 hardware encoder enabled.
-// TODO(crbug.com/811912): remove when this is enabled by default.
-func ChromeVideoWithFakeWebcamAndVP9VaapiEncoder() testing.Precondition {
-	return chromeVideoWithFakeWebcamAndVP9VaapiEncoder
+// ChromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers returns a precondition equal to
+// ChromeVideoWithFakeWebcam, force webrtc vp9 stream to be three temporal layers.
+func ChromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers() testing.Precondition {
+	return chromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers
 }
 
-var chromeVideoWithFakeWebcamAndVP9VaapiEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndVP9VaapiEncoder",
-	chromeVModuleArgs,
-	chromeUseHwDecoderForSmallResolutions,
-	chromeFakeWebcamArgs,
-	chrome.ExtraArgs("--enable-features=VaapiVP9Encoder"))
-
-// ChromeVideoWithFakeWebcamAndForceThreeTemporalLayersAndVP9VaapiEncoder returns a precondition equal to
-// ChromeVideoWithFakeWebcam, force webrtc vp9 stream to be three temporal layers
-// and with VA-API VP9 hardware encoder enabled.
-func ChromeVideoWithFakeWebcamAndForceThreeTemporalLayersAndVP9VaapiEncoder() testing.Precondition {
-	return chromeVideoWithFakeWebcamAndForceThreeTemporalLayersAndVP9VaapiEncoder
-}
-
-var chromeVideoWithFakeWebcamAndForceThreeTemporalLayersAndVP9VaapiEncoder = chrome.NewPrecondition(
-	"VideoWithFakeWebcamAndForceThreeTemporalLayersAndVP9VaapiEncoder",
+var chromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers = chrome.NewPrecondition(
+	"VideoWithFakeWebcamAndForceVP9ThreeTemporalLayers",
 	chromeVModuleArgs, chromeFakeWebcamArgs,
-	chrome.ExtraArgs("--force-fieldtrials=WebRTC-SupportVP9SVC/EnabledByFlag_1SL3TL/"),
-	chrome.ExtraArgs("--enable-features=VaapiVP9Encoder"))
+	chrome.ExtraArgs("--force-fieldtrials=WebRTC-SupportVP9SVC/EnabledByFlag_1SL3TL/"))
 
 // ChromeVideoWithFakeWebcamAndSWDecoding returns a precondition equal to
 // ChromeVideoWithFakeWebcam and with hardware decoding disabled.
@@ -196,15 +181,6 @@ var chromeFakeWebcamArgs = chrome.ExtraArgs(
 func ChromeCameraPerf() testing.Precondition { return chromeCameraPerfPre }
 
 var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf", chromeBypassPermissionsArgs)
-
-// ChromeCameraPerfWithVP9VaapiEncoder returns a precondition equal to
-// ChromeCameraPerf and with VA-API VP9 hardware encoder enabled.
-// TODO(crbug.com/811912): remove when this is enabled by default.
-func ChromeCameraPerfWithVP9VaapiEncoder() testing.Precondition {
-	return chromeCameraPerfWithVP9VaapiEncoder
-}
-
-var chromeCameraPerfWithVP9VaapiEncoder = chrome.NewPrecondition("cameraPerfWithVP9VaapiEncoder", chromeVModuleArgs, chromeBypassPermissionsArgs, chrome.ExtraArgs("--enable-features=VaapiVP9Encoder"))
 
 // ChromeFakeCameraPerf returns a precondition for Chrome to be started using
 // the fake video/audio capture device (a.k.a. "fake webcam", see

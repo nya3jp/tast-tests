@@ -41,13 +41,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
-			Name:      "vp9",
-			Val:       videotype.VP9,
-			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			// TODO(crbug.com/811912): Remove "vaapi" and pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder()
-			// once the feature is enabled by default on VA-API devices.
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
-			Pre:               pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder(),
+			Name:              "vp9",
+			Val:               videotype.VP9,
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "vp8_cam",
 			Val:               videotype.VP8,
