@@ -16,6 +16,29 @@
       "revId": "72489a693ab5d1d3eace07e51b63d22dc7600a09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c3e5d08_a27e4e0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T21:26:27Z",
+      "side": 1,
+      "message": "You need to release the ui.Node that is stored as part of this return value, at the moment the only way to do so seems to be to call Exit.\n\nCan you either call exit, or otherwise add a new function Release to just release this reference?",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "72489a693ab5d1d3eace07e51b63d22dc7600a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
