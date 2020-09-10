@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44223ac3_b1e0bbbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-10T22:55:51Z",
+      "side": 1,
+      "message": "I\u0027m implementing parallel runner at the test level. The main benefit is the ability to run different types of stress in parallel. For example: during suspend test we want to run FIO + suspend at the same time, not just multiple FIO jobs.",
+      "range": {
+        "startLine": 85,
+        "startChar": 26,
+        "endLine": 85,
+        "endChar": 37
+      },
+      "revId": "51f4450e2a6c3af199455a4968a6a8f1df717a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
