@@ -405,6 +405,29 @@ func (n *Node) Attribute(ctx context.Context, attributeName string) (interface{}
 	return out, nil
 }
 
+// WaitForPositioned waits for the node to be positioned.
+// It continuously check the element location, until 3 consecutive check results the same.
+func (n *Node) WaitForPositioned(ctx context.Context) error {
+	var locations []coords.Rect
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := n.Update(ctx); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to update the node's location"))
+		}
+
+		locations = append(locations, n.Location)
+
+		if len(locations) < 3 {
+			return errors.Errorf("done %d checks, at least 3 checks required to assess location", len(locations))
+		} else if n.Location.Empty() {
+			return errors.New("node is not present on screen")
+		} else if !locations[len(locations)-1].Equals(locations[len(locations)-2]) || !locations[len(locations)-2].Equals(locations[len(locations)-3]) {
+			return errors.Errorf("node is not locationed. Location track: %v", locations)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second})
+}
+
 // Children returns the children of the node.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) Children(ctx context.Context) (NodeSlice, error) {

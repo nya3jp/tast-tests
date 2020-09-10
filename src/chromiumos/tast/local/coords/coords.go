@@ -137,6 +137,11 @@ func (r Rect) Empty() bool {
 	return r == Rect{}
 }
 
+// Equals returns true if the rectangle equals another one.
+func (r Rect) Equals(r2 Rect) bool {
+	return r.Left == r2.Left && r.Top == r2.Top && r.Width == r2.Width && r.Height == r2.Height
+}
+
 // Size returns the size of the rect.
 func (r Rect) Size() Size {
 	return Size{Width: r.Width, Height: r.Height}

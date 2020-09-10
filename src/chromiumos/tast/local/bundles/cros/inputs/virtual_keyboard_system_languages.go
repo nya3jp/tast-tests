@@ -6,11 +6,9 @@ package inputs
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
@@ -39,7 +37,7 @@ func init() {
 				Val: testParameters{
 					regionCode:              "es",
 					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:es::spa",
-					defaultInputMethodLabel: "ES",
+					defaultInputMethodLabel: "abrir menú de teclado",
 				},
 			}, {
 				Name:              "es_unstable",
@@ -48,7 +46,7 @@ func init() {
 				Val: testParameters{
 					regionCode:              "es",
 					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:es::spa",
-					defaultInputMethodLabel: "ES",
+					defaultInputMethodLabel: "abrir menú de teclado",
 				},
 			}, {
 				Name:              "fr_stable",
@@ -56,7 +54,7 @@ func init() {
 				Val: testParameters{
 					regionCode:              "fr",
 					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:fr::fra",
-					defaultInputMethodLabel: "FR",
+					defaultInputMethodLabel: "ouvrir le menu du clavier",
 				},
 			}, {
 				Name:              "fr_unstable",
@@ -65,7 +63,7 @@ func init() {
 				Val: testParameters{
 					regionCode:              "fr",
 					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:fr::fra",
-					defaultInputMethodLabel: "FR",
+					defaultInputMethodLabel: "ouvrir le menu du clavier",
 				},
 			}, {
 				Name:              "jp_stable",
@@ -73,7 +71,7 @@ func init() {
 				Val: testParameters{
 					regionCode:              "jp",
 					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:jp::jpn",
-					defaultInputMethodLabel: "JA",
+					defaultInputMethodLabel: "キーボード メニューを開く",
 				},
 			}, {
 				Name:              "jp_unstable",
@@ -82,7 +80,7 @@ func init() {
 				Val: testParameters{
 					regionCode:              "jp",
 					defaultInputMethodID:    "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:jp::jpn",
-					defaultInputMethodLabel: "JA",
+					defaultInputMethodLabel: "キーボード メニューを開く",
 				},
 			},
 		},
@@ -126,18 +124,7 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
-	s.Log("Waiting for the virtual keyboard to render buttons")
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
-
-	keyboard, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeKeyboard}, 3*time.Second)
-	if err != nil {
-		s.Fatal("Virtual keyboard does not show")
-	}
-	defer keyboard.Release(ctx)
-
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: defaultInputMethodLabel}, 1*time.Second); err != nil {
+	if _, err := vkb.FindKeyNode(ctx, tconn, defaultInputMethodLabel); err != nil {
 		s.Fatalf("Failed to find %s in language menu on virtual keyboard: %v", defaultInputMethodLabel, err)
 	}
 }
