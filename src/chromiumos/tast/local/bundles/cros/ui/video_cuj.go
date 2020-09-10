@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
@@ -68,10 +68,10 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
-	if err := audio.Mute(ctx); err != nil {
+	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute audio: ", err)
 	}
-	defer audio.Unmute(ctx)
+	defer crastestclient.Unmute(ctx)
 
 	tabletMode := s.Param().(bool)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)

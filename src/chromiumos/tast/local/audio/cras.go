@@ -8,7 +8,6 @@ package audio
 import (
 	"context"
 	"fmt"
-	"regexp"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -16,7 +15,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -267,38 +265,4 @@ func GetCRASPID() (int, error) {
 		}
 	}
 	return -1, errors.Errorf("%v process not found", crasPath)
-}
-
-// FirstRunningDevice returns the first input/output device by parsing audio thread logs.
-// A device may not be opened immediately so it will repeat a query until there is a running device or timeout.
-func FirstRunningDevice(ctx context.Context, streamType StreamType) (string, error) {
-	var re *regexp.Regexp
-	if streamType == InputStream {
-		re = regexp.MustCompile("Input dev: (.*)")
-	} else if streamType == OutputStream {
-		re = regexp.MustCompile("Output dev: (.*)")
-	} else {
-		return "", errors.Errorf("unsupported StreamType %d", streamType)
-	}
-
-	var devName string
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		testing.ContextLog(ctx, "Dump audio thread to check running devices")
-		dump, err := testexec.CommandContext(ctx, "cras_test_client", "--dump_audio_thread").Output()
-		if err != nil {
-			return testing.PollBreak(errors.Errorf("failed to dump audio thread: %s", err))
-		}
-
-		dev := re.FindStringSubmatch(string(dump))
-		if dev == nil {
-			return errors.New("no such device")
-		}
-
-		devName = dev[1]
-		return nil
-	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
-		return "", err
-	}
-
-	return devName, nil
 }
