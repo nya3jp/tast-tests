@@ -177,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "e43d7eb5_d254895e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-10T17:23:31Z",
+      "side": 1,
+      "message": "LGTM, maybe even just\n  last :\u003d len(itemsBefore) - 1\n  if itemsBefore[last].Title !\u003d itemsAfter[last-1].Title...\n\nEither way is fine though!",
+      "parentUuid": "533917a4_e75e475d",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06ff8bf7_26ff4c6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 5
@@ -341,6 +365,30 @@
       "side": 1,
       "message": "There will always be one item returning not OK which is the new item on the shelf. This is expected because it has no previous location. The purpose of this function is to check all the previous existed items shifting to left. Therefore, I don\u0027t think we need to worry about items that are not on the previous list. Please let me know if you want to discuss more. Thanks.",
       "parentUuid": "c9a46c5a_e3c34930",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 7
+      },
+      "revId": "a405dfc620271e8f5d1d7121cff346084d96bb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bbfc4d9_3461f7a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-10T17:23:31Z",
+      "side": 1,
+      "message": "Ah okay gotcha, I missed that point. This way should be fine then, but I was thinking about the case where:\n- prevLocations has all the buttons we want to check\n- For some reason, ui.FindParams does not find all of them (maybe an app crashes or the automation API misses one for some reason)\n\nIn that case, I think we wouldn\u0027t catch the fact that a button is missing.\n\nIt\u0027s an unlikely edge case, but I think it could be handled by getting the new positions with buttonLocation (instead of ui.FindAll), ranging over prevLocations, and checking that each entry of prevLocations is in the new location map + the new location is to the left. It might be a little more explicit, too. What do you think?",
+      "parentUuid": "941113b8_35ef8c36",
       "range": {
         "startLine": 157,
         "startChar": 2,

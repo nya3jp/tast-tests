@@ -16,6 +16,138 @@
       "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "672b9219_c961074c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-10T17:23:31Z",
+      "side": 1,
+      "message": "Thanks for making the changes Seewai! Just a few more nits about comment style, and some thoughts on the buttonsShiftLeft and rightmostButton functions. Otherwise LGTM",
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b93cab_edb61a5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-10T17:23:31Z",
+      "side": 1,
+      "message": "nit: one line for this comment.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a67d489_bffa8b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-10T17:23:31Z",
+      "side": 1,
+      "message": "nit: comments should end in periods.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39910c7_dc7e2656",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-10T17:23:31Z",
+      "side": 1,
+      "message": "nit: period at the end.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70ed6cbf_0a8261ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-10T17:23:31Z",
+      "side": 1,
+      "message": "nit: one line is fine for this comment",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 74
+      },
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b318bf_68cc5055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-10T17:23:31Z",
+      "side": 1,
+      "message": "Just an opinion, but I think this could be simpler like:\n  r :\u003d appButtons[0]\n  for _, b :\u003d range appButtons[1:] {\n    if b.Location.Left \u003e r.Location.Left {\n      r \u003d b\n    }\n  }\n  if r.Name !\u003d appName {s.Fatal...}\n\nUnless I\u0027m missing something :) what do you think?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 2
+      },
+      "revId": "464a0ecfacfc1d0fba767f8267a1ca734cbb5e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
