@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acb7a8df_f227a56a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-10T10:14:03Z",
+      "side": 1,
+      "message": "Please include the error, i.e. s.Fatal(\"Failed to wait for virtual keyboard ready: \", err)\nditto in other places.",
+      "range": {
+        "startLine": 70,
+        "startChar": 53,
+        "endLine": 70,
+        "endChar": 54
+      },
+      "revId": "d7c29d032b5f92d6cd0a13d24dbc4d8fb7eb0da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf01f5d7_4465a107",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-10T10:14:03Z",
+      "side": 1,
+      "message": "Are there plans to eventually remove it? If yes, please create a bug.",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "d7c29d032b5f92d6cd0a13d24dbc4d8fb7eb0da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e99b66_14854b91",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-10T10:14:03Z",
+      "side": 1,
+      "message": "You can use:\ncmp.Equal(r, r2)\nfrom \"github.com/google/go-cmp/cmp\" package.",
+      "range": {
+        "startLine": 142,
+        "startChar": 8,
+        "endLine": 142,
+        "endChar": 92
+      },
+      "revId": "d7c29d032b5f92d6cd0a13d24dbc4d8fb7eb0da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
