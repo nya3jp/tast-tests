@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99e626d5_69092290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-10T22:52:36Z",
+      "side": 1,
+      "message": "Hi Kyle:\n\nI just updated the test comment with test commands and results. Please check.\n\nThanks.\n\nSeewai",
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
