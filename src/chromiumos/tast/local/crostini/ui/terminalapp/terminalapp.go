@@ -61,7 +61,12 @@ func Find(ctx context.Context, tconn *chrome.TestConn, userName, cwd string) (*T
 	}
 
 	terminalApp := &TerminalApp{tconn: tconn, Root: app}
-	return terminalApp, terminalApp.waitForPrompt(ctx, title)
+	if err := terminalApp.waitForPrompt(ctx, title); err != nil {
+		app.Release(ctx)
+		return nil, errors.Wrap(err, "failed to wait for terminal prompt")
+	}
+
+	return terminalApp, nil
 }
 
 func (ta *TerminalApp) waitForPrompt(ctx context.Context, title string) error {
