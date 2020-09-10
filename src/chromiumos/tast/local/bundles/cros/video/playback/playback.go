@@ -7,6 +7,7 @@ package playback
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"sync"
@@ -41,9 +42,9 @@ const (
 const (
 	// Time to sleep while collecting data.
 	// The time to wait just after stating to play video so that CPU usage gets stable.
-	stabilizationDuration = 5 * time.Second
+	stabilizationDuration = 4 * time.Second
 	// The time to wait after CPU is stable so as to measure solid metric values.
-	measurementDuration = 25 * time.Second
+	measurementDuration = 12 * time.Second
 
 	// Video Element in the page to play a video.
 	videoElement = "document.getElementsByTagName('video')[0]"
@@ -51,7 +52,7 @@ const (
 
 // RunTest measures a number of performance metrics while playing a video with
 // or without hardware acceleration as per decoderType.
-func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, videoName string, decoderType DecoderType) {
+func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, videoName string, decoderType DecoderType, playTimes int8) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -64,7 +65,7 @@ func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, videoName
 	defer audio.Unmute(ctx)
 
 	testing.ContextLog(ctx, "Measuring performance")
-	if err = measurePerformance(ctx, cr, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, decoderType, s.OutDir()); err != nil {
+	if err = measurePerformance(ctx, cr, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, decoderType, playTimes, s.OutDir()); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
 }
@@ -73,7 +74,7 @@ func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, videoName
 // either SW or HW decoder. utilsJSPath is a path of
 // chrome_media_internals_utils.js
 func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, utilsJSPath, videoName string,
-	decoderType DecoderType, outDir string) error {
+	decoderType DecoderType, playTimes int8, outDir string) error {
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return err
@@ -89,7 +90,8 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 
-	url := server.URL + "/" + videoName
+	url := server.URL + "/playback.html"
+	videoURL := server.URL + "/" + videoName
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		return errors.Wrap(err, "failed to open video page")
@@ -97,13 +99,12 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
+	if err := conn.Eval(ctx, fmt.Sprintf("startPlayVideo(%q, %d)", videoName, playTimes), nil); err != nil {
+		return errors.Wrap(err, "failed to start play video")
+	}
 	// Wait until video element is loaded.
 	if err := conn.WaitForExpr(ctx, "document.getElementsByTagName('video').length > 0"); err != nil {
 		return errors.Wrap(err, "failed to wait for video element loading")
-	}
-
-	if err := conn.Exec(ctx, videoElement+".loop=true"); err != nil {
-		return errors.Wrap(err, "failed to set video loop")
 	}
 
 	// Wait until videoElement has advanced so that chrome:media-internals has
@@ -112,7 +113,7 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 		return errors.Wrap(err, "failed waiting for video to advance playback")
 	}
 
-	usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, url)
+	usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, videoUrl)
 	if err != nil {
 		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
 	}
@@ -126,7 +127,7 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 		}
 	}
 
-	decoderName, err := decode.URLVideoDecoderName(ctx, chromeMediaInternalsConn, url)
+	decoderName, err := decode.URLVideoDecoderName(ctx, chromeMediaInternalsConn, videoUrl)
 	if err != nil {
 		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
 	}
@@ -156,6 +157,9 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 		return errors.Wrap(cpuErr, "failed to measure CPU/Package power")
 	}
 
+	if err := conn.WaitForExpr(ctx, "completeVideoLoop()"); err != nil {
+		return errors.Wrap(err, "failed to wait until video play is complete")
+	}
 	if err := sampleDroppedFrames(ctx, conn, p); err != nil {
 		return errors.Wrap(err, "failed to get dropped frames and percentage")
 	}
