@@ -98,28 +98,37 @@ func StopConcierge(ctx context.Context) error {
 	return nil
 }
 
-// listVMDisksSize returns the size of the named VM through ListVmDisks.
-func (c *Concierge) listVMDisksSize(ctx context.Context, vmName string) (size uint64, err error) {
+// GetVMDiskInfo returns a VmDiskInfo proto for the gived VM via ListVmDisks
+func (c *Concierge) GetVMDiskInfo(ctx context.Context, vmName string) (*vmpb.VmDiskInfo, error) {
 	resp := &vmpb.ListVmDisksResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".ListVmDisks",
+	if err := dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".ListVmDisks",
 		&vmpb.ListVmDisksRequest{
 			CryptohomeId: c.ownerID,
 			AllLocations: true,
 			VmName:       DefaultVMName,
 		}, resp); err != nil {
-		return 0, err
+		return nil, err
 	}
 
 	if !resp.GetSuccess() {
-		return 0, errors.Errorf("could not fetch VM disks info: %v", resp.GetFailureReason())
+		return nil, errors.Errorf("could not fetch VM disks info: %v", resp.GetFailureReason())
 	}
 
 	for _, diskInfo := range resp.GetImages() {
 		if diskInfo.GetName() == vmName {
-			return diskInfo.GetSize(), nil
+			return diskInfo, nil
 		}
 	}
-	return 0, errors.Errorf("could not find vm named %v", vmName)
+	return nil, errors.Errorf("could not find vm named %v", vmName)
+}
+
+// listVMDisksSize returns the size of the named VM through ListVmDisks.
+func (c *Concierge) listVMDisksSize(ctx context.Context, vmName string) (size uint64, err error) {
+	disk, err := c.GetVMDiskInfo(ctx, vmName)
+	if err != nil {
+		return 0, err
+	}
+	return disk.Size, nil
 }
 
 func (c *Concierge) createDiskImage(ctx context.Context, diskSize uint64) (diskPath string, err error) {
