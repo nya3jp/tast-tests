@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80df198b_aff60f34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-10T22:52:14Z",
+      "side": 1,
+      "message": "Ported network_WiFiHECaps to tast.",
+      "revId": "d1565e1d099f8e4a32800460a58983c1f15b1f50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
