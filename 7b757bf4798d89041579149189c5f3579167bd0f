@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7cd420c_fe633289",
+        "filename": "src/chromiumos/tast/local/power/cpu_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-10T09:08:18Z",
+      "side": 1,
+      "message": "How about storing total instead of idle? because idle value is only used to calculate `total` in Snapshot() and we can easily calculate total in readJiffies().",
+      "revId": "7b757bf4798d89041579149189c5f3579167bd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3243349e_3e58999e",
+        "filename": "src/chromiumos/tast/local/power/cpu_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-10T09:08:18Z",
+      "side": 1,
+      "message": "Adding description about what is the first line of /proc/stat may be useful.",
+      "revId": "7b757bf4798d89041579149189c5f3579167bd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "612407e5_03d393d4",
+        "filename": "src/chromiumos/tast/local/power/read_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-10T09:08:18Z",
+      "side": 1,
+      "message": "How about omit `line` arg since it always zero for now? It can also avoid changing the current interface.",
+      "revId": "7b757bf4798d89041579149189c5f3579167bd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c8d45c_d0d17577",
+        "filename": "src/chromiumos/tast/local/power/read_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-10T09:08:18Z",
+      "side": 1,
+      "message": "Following logic can be simplified if we can assume line \u003d\u003d 0",
+      "revId": "7b757bf4798d89041579149189c5f3579167bd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
