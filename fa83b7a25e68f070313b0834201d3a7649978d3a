@@ -16,6 +16,24 @@
       "revId": "fa83b7a25e68f070313b0834201d3a7649978d3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df7dc531_d7d29c8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-09-10T02:42:21Z",
+      "side": 0,
+      "message": "act.Start() internally calls ash.WaitForVisible() so it\u0027s OK:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/arc/activity.go;l\u003d169;drc\u003d1463517a6f0f0a8c87220447d23a879a61126810",
+      "parentUuid": "6a843ee5_5fdd5787",
+      "revId": "fa83b7a25e68f070313b0834201d3a7649978d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
