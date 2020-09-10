@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "60e96466_3e301042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-10T01:22:34Z",
+      "side": 1,
+      "message": "Done (the comment)\nTo answer Leo\u0027s point, this test will disappear and be merged back with the official tests.",
+      "parentUuid": "ad520d42_9a5dd921",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c0553ba_614248ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 7
@@ -113,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "29a1a7f5_b243cf8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-10T01:22:34Z",
+      "side": 1,
+      "message": "Renamed the variable.\nWe still need to be able to test with NaCl, so the var is needed.",
+      "parentUuid": "2684c731_180cc387",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 14
+      },
+      "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c672f2ec_467c3400",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 7
@@ -136,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "f942276e_fe72217e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-10T01:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c672f2ec_467c3400",
+      "range": {
+        "startLine": 123,
+        "startChar": 61,
+        "endLine": 123,
+        "endChar": 65
+      },
+      "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70ecc310_ae93eda7",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
         "patchSetId": 7
@@ -156,6 +228,30 @@
       "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a010ad0_a8c5d839",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-10T01:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70ecc310_ae93eda7",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

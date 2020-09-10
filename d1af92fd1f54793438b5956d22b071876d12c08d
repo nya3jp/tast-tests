@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7699717_8716c650",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-10T01:22:34Z",
+      "side": 1,
+      "message": "Comments addressed.\nThese tests are only temporary for dev work on G3. ",
+      "revId": "d1af92fd1f54793438b5956d22b071876d12c08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

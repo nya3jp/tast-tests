@@ -138,6 +138,30 @@
     },
     {
       "key": {
+        "uuid": "65d8da31_76af7d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-10T01:22:34Z",
+      "side": 1,
+      "message": "That group has been added for all the tests, not only for the manual ones.\nManual ones following first comment by reviewer will not have any attribute so they will not interfere with any metrics taken for the non-dev test cases.",
+      "parentUuid": "f47bf07f_44c5e783",
+      "range": {
+        "startLine": 28,
+        "startChar": 17,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95403612_f05801e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 3
