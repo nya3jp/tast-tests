@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4ef6ef08_71dda315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-09-10T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67dc71fb_a21ec518",
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c86a96ea_c56d7797",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbca4651_37709fff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-09-10T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c86a96ea_c56d7797",
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "64b4392c_0cf137ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-09-10T21:28:05Z",
+      "side": 1,
+      "message": "Good point! Done.",
+      "parentUuid": "bfe29799_4241fe1c",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f548b55_b4bb3f2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
         "patchSetId": 3
@@ -79,6 +139,30 @@
       "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "444a5e59_ac8b9072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-09-10T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f548b55_b4bb3f2c",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -125,6 +209,54 @@
       "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "074d2a76_25386760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-09-10T21:28:05Z",
+      "side": 1,
+      "message": "Sorry could you elaborate on what problem using a cleanup context solves here?\n\nThis is the first time I\u0027ve heard of this but from my brief moma search I found\nhttps://yaqs.corp.google.com/eng/q/6265870159052800\n\nwhich says,\n\n\"You can subtract some time from the overall deadline for the primary task, and use the \"actual\" context for cleanup alone:\"\n\nI don\u0027t think we are going to cancel the contexts here but maybe there\u0027s some subtlety with timeouts and contexts that I don\u0027t know?",
+      "parentUuid": "0b585c26_1cc5c0f5",
+      "range": {
+        "startLine": 63,
+        "startChar": 20,
+        "endLine": 63,
+        "endChar": 23
+      },
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ccc997_771d4963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1303593
+      },
+      "writtenOn": "2020-09-10T21:28:05Z",
+      "side": 1,
+      "message": "Done. I think I need to keep this one here as well since I want to fail the test if Stop doesn\u0027t work correctly.",
+      "parentUuid": "2a7dba4c_f64e3673",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
