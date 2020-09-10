@@ -1,0 +1,59 @@
+<head>
+<meta name="viewport" content="width=device-width">
+<!--
+Cited from Chrome user agent style sheets,
+ https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css
+https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/modules/media_controls/resources/mediaControls.css
+-->
+<style>
+html {
+    display: block
+}
+body {
+    display: block;
+    margin: 8px;
+    background-color: rgb(0, 0, 0)
+}
+video {
+    object-fit: contain;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 100%;
+    max-width: 100%;
+}
+</style>
+</head>
+<video controls autoplay name="media">
+</vido>
+</body>
+<script type="text/javascript">
+
+let play_times = 0;
+let complete = false;
+function startPlayVideo(videoSourcePath, playTimes) {
+  complete = false;
+  play_times = playTimes;
+  let video = document.getElementsByTagName('video')[0];
+  video.addEventListener('ended', function() {
+      play_times -= 1;
+      if (play_times != 0) {
+          this.currentTime = 0;
+          this.play();
+      } else {
+          complete = true;
+      }
+  }, false);
+
+  video.src = videoSourcePath;
+  video.play();
+}
+
+function completeVideoLoop() {
+  return complete;
+}
+</script>
+</html>

@@ -19,6 +19,7 @@ import (
 type playbackPerfParams struct {
 	fileName    string
 	decoderType playback.DecoderType
+	fps         int8
 }
 
 func init() {
@@ -28,7 +29,7 @@ func init() {
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
+		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile, "playback.html"},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 5 * time.Minute,
 		// "chrome_internal" is needed for H.264 videos because H.264 is a proprietary codec.
@@ -37,6 +38,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "144p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -47,6 +49,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "240p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -57,6 +60,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "360p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -67,6 +71,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -77,6 +82,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -87,6 +93,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264.mp4"},
@@ -96,6 +103,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.h264.mp4",
 				decoderType: playback.Hardware,
+				fps:         60,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
@@ -105,6 +113,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K, "proprietary_codecs"},
 			ExtraData:         []string{"2160p_30fps_300frames.h264.mp4"},
@@ -114,6 +123,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.h264.mp4",
 				decoderType: playback.Hardware,
+				fps:         60,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K60, "proprietary_codecs"},
 			ExtraData:         []string{"2160p_60fps_600frames.h264.mp4"},
@@ -123,6 +133,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "144p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"144p_30fps_300frames.vp8.webm"},
@@ -133,6 +144,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "240p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"240p_30fps_300frames.vp8.webm"},
@@ -143,6 +155,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "360p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"360p_30fps_300frames.vp8.webm"},
@@ -153,6 +166,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"480p_30fps_300frames.vp8.webm"},
@@ -163,6 +177,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720p_30fps_300frames.vp8.webm"},
@@ -173,6 +188,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraData:         []string{"1080p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
@@ -182,6 +198,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp8.webm",
 				decoderType: playback.Hardware,
+				fps:         60,
 			},
 			ExtraData:         []string{"1080p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60},
@@ -191,6 +208,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraData:         []string{"2160p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_4K},
@@ -200,6 +218,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.vp8.webm",
 				decoderType: playback.Hardware,
+				fps:         60,
 			},
 			ExtraData:         []string{"2160p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_4K60},
@@ -209,6 +228,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "144p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"144p_30fps_300frames.vp9.webm"},
@@ -219,6 +239,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "240p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"240p_30fps_300frames.vp9.webm"},
@@ -229,6 +250,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "360p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"360p_30fps_300frames.vp9.webm"},
@@ -239,6 +261,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"480p_30fps_300frames.vp9.webm"},
@@ -249,6 +272,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720p_30fps_300frames.vp9.webm"},
@@ -259,6 +283,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraData:         []string{"1080p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
@@ -268,6 +293,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         60,
 			},
 			ExtraData:         []string{"1080p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60},
@@ -277,6 +303,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         30,
 			},
 			ExtraData:         []string{"2160p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K},
@@ -286,6 +313,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         60,
 			},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60},
@@ -295,6 +323,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.h264.mp4",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -305,6 +334,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.h264.mp4",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -315,6 +345,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.h264.mp4",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264.mp4"},
@@ -324,6 +355,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.h264.mp4",
 				decoderType: playback.Software,
+				fps:         60,
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
@@ -333,6 +365,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.vp8.webm",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"480p_30fps_300frames.vp8.webm"},
@@ -342,6 +375,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.vp8.webm",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"720p_30fps_300frames.vp8.webm"},
@@ -351,6 +385,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.vp8.webm",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraData: []string{"1080p_30fps_300frames.vp8.webm"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
@@ -359,6 +394,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp8.webm",
 				decoderType: playback.Software,
+				fps:         60,
 			},
 			ExtraData: []string{"1080p_60fps_600frames.vp8.webm"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
@@ -367,6 +403,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.vp9.webm",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"480p_30fps_300frames.vp9.webm"},
@@ -376,6 +413,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.vp9.webm",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"720p_30fps_300frames.vp9.webm"},
@@ -385,6 +423,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.vp9.webm",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraData: []string{"1080p_30fps_300frames.vp9.webm"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
@@ -393,6 +432,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp9.webm",
 				decoderType: playback.Software,
+				fps:         60,
 			},
 			ExtraData: []string{"1080p_60fps_600frames.vp9.webm"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
@@ -401,6 +441,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.av1.mp4",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraData: []string{"480p_30fps_300frames.av1.mp4"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
@@ -409,6 +450,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.av1.mp4",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraData: []string{"720p_30fps_300frames.av1.mp4"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
@@ -417,6 +459,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_60fps_600frames.av1.mp4",
 				decoderType: playback.Software,
+				fps:         60,
 			},
 			ExtraData: []string{"720p_60fps_600frames.av1.mp4"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
@@ -425,6 +468,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.av1.mp4",
 				decoderType: playback.Software,
+				fps:         30,
 			},
 			ExtraData: []string{"1080p_30fps_300frames.av1.mp4"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
@@ -433,6 +477,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.av1.mp4",
 				decoderType: playback.Software,
+				fps:         60,
 			},
 			ExtraData: []string{"1080p_60fps_600frames.av1.mp4"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
@@ -441,6 +486,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.av1.mp4",
 				decoderType: playback.LibGAV1,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"480p_30fps_300frames.av1.mp4"},
@@ -450,6 +496,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.av1.mp4",
 				decoderType: playback.LibGAV1,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"720p_30fps_300frames.av1.mp4"},
@@ -459,6 +506,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_60fps_600frames.av1.mp4",
 				decoderType: playback.LibGAV1,
+				fps:         60,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"720p_60fps_600frames.av1.mp4"},
@@ -468,6 +516,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.av1.mp4",
 				decoderType: playback.LibGAV1,
+				fps:         30,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"1080p_30fps_300frames.av1.mp4"},
@@ -477,6 +526,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.av1.mp4",
 				decoderType: playback.LibGAV1,
+				fps:         60,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"1080p_60fps_600frames.av1.mp4"},
@@ -486,6 +536,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.h264.mp4",
 				decoderType: playback.Hardware,
+				fps:         60,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
@@ -495,6 +546,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp8.webm",
 				decoderType: playback.Hardware,
+				fps:         60,
 			},
 			ExtraData:         []string{"1080p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60},
@@ -504,6 +556,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         60,
 			},
 			ExtraData:         []string{"1080p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60},
@@ -513,6 +566,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.vp9.webm",
 				decoderType: playback.Hardware,
+				fps:         60,
 			},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60},
@@ -525,5 +579,7 @@ func init() {
 // HW decode acceleration as per DecoderType. The values are reported to the performance dashboard.
 func PlaybackPerf(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(playbackPerfParams)
-	playback.RunTest(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.decoderType)
+	// Play video four times and twice if the test video is 30fps and 60fps, respectively.
+	playTimes := 120 / testOpt.fps
+	playback.RunTest(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.decoderType, playTimes)
 }
