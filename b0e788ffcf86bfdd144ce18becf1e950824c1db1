@@ -231,6 +231,30 @@
     },
     {
       "key": {
+        "uuid": "fc791d1c_bf46569d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-10T00:21:43Z",
+      "side": 1,
+      "message": "Thank you, appreciate the pointers 😊",
+      "parentUuid": "ea17c352_36637fba",
+      "range": {
+        "startLine": 51,
+        "startChar": 33,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "b0e788ffcf86bfdd144ce18becf1e950824c1db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc2cb607_61b25027",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
         "patchSetId": 2
