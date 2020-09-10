@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "76e422d1_70e91459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-10T19:06:27Z",
+      "side": 1,
+      "message": "nit: it should be Chromium OS",
+      "range": {
+        "startLine": 1,
+        "startChar": 24,
+        "endLine": 1,
+        "endChar": 32
+      },
+      "revId": "db597cc9d041cb649aaae9c11b91648ee93d14a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "774e8819_ef375317",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index.html",
         "patchSetId": 4
