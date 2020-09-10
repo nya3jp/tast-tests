@@ -87,6 +87,24 @@
       "revId": "60f28075f788f361044e210e94c13d9d3d6a83fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e82b667d_c2193759",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-09-10T20:31:25Z",
+      "side": 1,
+      "message": "I\u0027m still waiting for tast logs to be fixed.  Please do not remove this since I would only need to reenable it in order to see logs and know why it is failing.",
+      "parentUuid": "9b21e357_b4996930",
+      "revId": "60f28075f788f361044e210e94c13d9d3d6a83fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
