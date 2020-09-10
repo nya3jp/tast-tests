@@ -133,10 +133,6 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 		return 0, errors.Wrap(err, "failed to install apk app")
 	}
 
-	// Grant permissions to activity.
-	sup.Add(setup.GrantAndroidPermission(ctx, a, packageName, "android.permission.READ_EXTERNAL_STORAGE"))
-	sup.Add(setup.GrantAndroidPermission(ctx, a, packageName, "android.permission.WRITE_EXTERNAL_STORAGE"))
-
 	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Prefix(config.Prefix+"_"), perf.Interval(tPowerSnapshotDuration))
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to build metrics")
