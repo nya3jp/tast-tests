@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c86d344_2f398357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_powerpoint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-09-10T23:34:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ce26e65_d5d43399",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 140,
+        "endChar": 49
+      },
+      "revId": "22a79393828eae408c6eadbb07bc23e6201880fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9e61b72_54e5934a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_powerpoint.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "22a79393828eae408c6eadbb07bc23e6201880fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d85d8c_6b4e2993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_powerpoint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-09-10T23:34:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a9e61b72_54e5934a",
+      "range": {
+        "startLine": 143,
+        "startChar": 22,
+        "endLine": 143,
+        "endChar": 23
+      },
+      "revId": "22a79393828eae408c6eadbb07bc23e6201880fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
