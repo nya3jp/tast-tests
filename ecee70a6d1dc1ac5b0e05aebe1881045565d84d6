@@ -19,6 +19,69 @@
     },
     {
       "key": {
+        "uuid": "09f35893_e953d8b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-10T18:06:54Z",
+      "side": 1,
+      "message": "In general I see major drawback here.\nThere is no guaranty which interface would be set-up.\nwlan/mlan or eth?\nThis might affect test results significantly once different media is used.\nCould we have predefined configuration?\n\nAssuming we have eth connection in lab we should enforce using it or otherwise.\n",
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63d65ab6_6c35a3b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-10T18:06:54Z",
+      "side": 1,
+      "message": "do you really need port to stop? What if you pass another port to Stop\nI think right way to do would be associating port with each connection or storing port as global variable in helper and use it to stop. Otherwise this is fragile.\nMoreover, would it be possible just hide port inside helper for simplification. What is the case when port use differently?\nYet another idea:\nnethelper.SetPort() to assign working port if we really need to overwrite.",
+      "range": {
+        "startLine": 94,
+        "startChar": 27,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d9976f_5e3e1e5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-10T18:06:54Z",
+      "side": 1,
+      "message": "do we really need this?",
+      "range": {
+        "startLine": 47,
+        "startChar": 60,
+        "endLine": 47,
+        "endChar": 68
+      },
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71238f68_a804a053",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 5
