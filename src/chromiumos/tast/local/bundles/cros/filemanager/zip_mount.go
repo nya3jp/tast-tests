@@ -61,7 +61,7 @@ func ZipMount(ctx context.Context, s *testing.State) {
 	testParams := s.Param().(testEntry)
 	zipFiles := testParams.ZipFiles
 
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=FilesZipMount"))
+	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesZipMount"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}

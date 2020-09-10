@@ -61,7 +61,7 @@ func init() {
 
 // LaunchGallery verifies launching Gallery on opening supported files.
 func LaunchGallery(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=MediaApp"))
+	cr, err := chrome.New(ctx, chrome.EnableFeatures("MediaApp"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

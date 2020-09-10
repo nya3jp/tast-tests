@@ -156,7 +156,7 @@ func testPreIMEKeyEvent(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 
 func PreIMEKeyEvent(ctx context.Context, s *testing.State) {
 	// TODO(b/148193316): Remove the flag once it's enabled by default.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=ArcPreImeKeyEventSupport"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.EnableFeatures("ArcPreImeKeyEventSupport"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
