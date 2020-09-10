@@ -33,6 +33,23 @@
       "revId": "d1b5c03657b16faa36727b35906cef9316b41722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce61a760_c21f34a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-09-10T08:46:19Z",
+      "side": 1,
+      "message": "Lost in my mail list, sorry. LGTM and please resolve conflict.",
+      "revId": "d1b5c03657b16faa36727b35906cef9316b41722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
