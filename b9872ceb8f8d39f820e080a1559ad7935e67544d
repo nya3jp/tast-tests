@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9322605d_e910c122",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-10T00:48:52Z",
+      "side": 1,
+      "message": "Changed to page object. PTAL!",
+      "parentUuid": "0e45d56f_3acbf02e",
+      "range": {
+        "startLine": 229,
+        "startChar": 22,
+        "endLine": 229,
+        "endChar": 80
+      },
+      "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a7d32ec_48409763",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 1
@@ -190,6 +214,24 @@
       "side": 1,
       "message": "You\u0027ll still test it though, when you go to find cancel before clicking it right?",
       "parentUuid": "9f48dc5c_9fd52422",
+      "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5d207e9_4cf10f3a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-10T00:48:52Z",
+      "side": 1,
+      "message": "Find the dialog and msg at the beginning. Find cancel and delete when need to click them.",
+      "parentUuid": "862bfd45_9f2eb3f6",
       "revId": "b9872ceb8f8d39f820e080a1559ad7935e67544d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
