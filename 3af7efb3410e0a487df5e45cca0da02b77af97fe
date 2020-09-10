@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4a1baf0_ce3a39c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_ok.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T01:58:09Z",
+      "side": 1,
+      "message": "This name doesn\u0027t make it clear what is being checked.  It is also slightly worrying to pass the container in here, I thought sharedfolders had more to do with the filesapp?",
+      "range": {
+        "startLine": 81,
+        "startChar": 25,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "3af7efb3410e0a487df5e45cca0da02b77af97fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d2ec12_74bf6f2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T01:58:09Z",
+      "side": 1,
+      "message": "Not for this CL, but it would be good to remove the need for the username now that we know how to do regex matching on ui element names.",
+      "range": {
+        "startLine": 85,
+        "startChar": 52,
+        "endLine": 85,
+        "endChar": 84
+      },
+      "revId": "3af7efb3410e0a487df5e45cca0da02b77af97fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b2059e_34ad72d4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T01:58:09Z",
+      "side": 1,
+      "message": "Optional: most of the calls I have seen in this cl just release this toast.  What do you thing about not returning it, and just providing a sharedFolders.FindToast() method for the few places that do need it?",
+      "range": {
+        "startLine": 210,
+        "startChar": 116,
+        "endLine": 210,
+        "endChar": 138
+      },
+      "revId": "3af7efb3410e0a487df5e45cca0da02b77af97fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f8f6a23_24c9b84e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T01:58:09Z",
+      "side": 1,
+      "message": "This function does things and has constraints that are not apparent from the name.  This makes it very difficult to understand any test code that uses this function.\n\nI think this would work better as two functions, one in settings, one on container.\n\nThen test code could look like:\n\nshared, err :\u003d settings.IsFolderShared(ctx, sharedfolder.MyFiles)\nif err !\u003d nil {\n    ...\n}\nif !shared {\n    ...\n}\n\nexists, err :\u003d cont.FileExists(ctx, sharedfolders.MountPathMyFiles)\nif err !\u003d nil {\n    ...\n}\nif !exists {\n    ...\n}",
+      "range": {
+        "startLine": 231,
+        "startChar": 25,
+        "endLine": 231,
+        "endChar": 49
+      },
+      "revId": "3af7efb3410e0a487df5e45cca0da02b77af97fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
