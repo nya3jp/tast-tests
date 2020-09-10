@@ -367,11 +367,18 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
+	if p.keyboard, err = input.Keyboard(ctx); err != nil {
+		s.Fatal("Failed to create keyboard device: ", err)
+	}
+
 	if useLocalImage {
 		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
-		_, err := terminalapp.Launch(ctx, p.tconn, strings.Split(p.cr.User(), "@")[0])
+		terminalApp, err := terminalapp.Launch(ctx, p.tconn, strings.Split(p.cr.User(), "@")[0])
 		if err != nil {
 			s.Fatal("keepState failed to launch Terminal. Try again, cryptohome will be cleared on the next run to reset to a good state: ", err)
+		}
+		if err = terminalApp.Exit(ctx, p.keyboard); err != nil {
+			s.Fatal("Failed to exit Terminal window: ", err)
 		}
 	} else {
 		// Install Crostini.
@@ -393,10 +400,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
 	if err != nil {
 		s.Fatal("Failed to connect to running container: ", err)
-	}
-
-	if p.keyboard, err = input.Keyboard(ctx); err != nil {
-		s.Fatal("Failed to create keyboard device: ", err)
 	}
 
 	// Report disk size again after successful install.
