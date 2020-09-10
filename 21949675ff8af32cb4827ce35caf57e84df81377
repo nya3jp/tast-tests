@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62ba8fc6_ad6defa1",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T04:16:03Z",
+      "side": 1,
+      "message": "It would be better if everything here is optional, then we don\u0027t need to return an error.\n\nGiving empty values would be the same as no value for the attribute.\n\nboth name and role should be optional, sometimes one or the other is not needed.\n\nThe user should be allowed to have non uig.Action fields in the struct if they like, this function should just ignore them.",
+      "range": {
+        "startLine": 422,
+        "startChar": 32,
+        "endLine": 422,
+        "endChar": 37
+      },
+      "revId": "21949675ff8af32cb4827ce35caf57e84df81377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3e38b3f_42dd72ca",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T04:16:03Z",
+      "side": 1,
+      "message": "linuxInstallerNextButton (Spelling)\n\nalternatively, just nextButton since this is a fairly generic findparams (like okButton below)",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "21949675ff8af32cb4827ce35caf57e84df81377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a04c781_1ea7a5f4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T04:16:03Z",
+      "side": 1,
+      "message": "maybe emptySharedFoldersMsg?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "21949675ff8af32cb4827ce35caf57e84df81377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1dbba9e_d9daec31",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T04:16:03Z",
+      "side": 1,
+      "message": "removeLinuxButton?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "21949675ff8af32cb4827ce35caf57e84df81377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
