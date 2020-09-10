@@ -33,6 +33,24 @@
       "revId": "940399a08dc817d8cb6a79c92eefb1c0578efe05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44b0c0a6_a37aa751",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-09-10T21:55:07Z",
+      "side": 1,
+      "message": "I\u0027ve updated the description.  It is actually using the FilesApp fileManagerPrivate API rather than autotestPrivate.",
+      "parentUuid": "3620db2e_ff66f0e4",
+      "revId": "940399a08dc817d8cb6a79c92eefb1c0578efe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
