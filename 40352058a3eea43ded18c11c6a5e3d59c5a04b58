@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bdc813c_94f4dc51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:08:42Z",
+      "side": 1,
+      "message": "oops, sorry for crossing. Commented to PS4, but my comments still applicable to the latest PS.",
+      "revId": "40352058a3eea43ded18c11c6a5e3d59c5a04b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
