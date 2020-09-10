@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2ef2296_bea73a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T13:03:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acb7a8df_f227a56a",
+      "range": {
+        "startLine": 70,
+        "startChar": 53,
+        "endLine": 70,
+        "endChar": 54
+      },
+      "revId": "d7c29d032b5f92d6cd0a13d24dbc4d8fb7eb0da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf01f5d7_4465a107",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-10T10:14:03Z",
       "side": 1,
       "message": "Are there plans to eventually remove it? If yes, please create a bug.",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "d7c29d032b5f92d6cd0a13d24dbc4d8fb7eb0da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24853bd2_cec780c1",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T13:03:38Z",
+      "side": 1,
+      "message": "No plan yet. It is used in many places even outside inputs tests. I do not want to touch any unfamiliar tests at the moment.",
+      "parentUuid": "bf01f5d7_4465a107",
       "range": {
         "startLine": 114,
         "startChar": 3,
@@ -68,6 +116,30 @@
       "revId": "d7c29d032b5f92d6cd0a13d24dbc4d8fb7eb0da7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ba2e102_0cee4ffe",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T13:03:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31e99b66_14854b91",
+      "range": {
+        "startLine": 142,
+        "startChar": 8,
+        "endLine": 142,
+        "endChar": 92
+      },
+      "revId": "d7c29d032b5f92d6cd0a13d24dbc4d8fb7eb0da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
