@@ -117,10 +117,10 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
 func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error) {
-	memDiff := newMemoryDiffDataSource("RAM.Diff")
+	memDiff := newMemoryDiffDataSource("RAM.Diff.Absolute")
 	sources := []perf.TimelineDatasource{
 		load.NewCPUUsageSource("CPU", false),
-		load.NewMemoryUsageSource("RAM"),
+		load.NewMemoryUsageSource("RAM.Absolute", "RAM"),
 		newThermalDataSource(ctx),
 		memDiff,
 	}
@@ -174,7 +174,7 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
 func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func(ctx context.Context) error) error {
-	if err := r.memDiff.PrepareBaseline(ctx, diffWait); err != nil {
+	if err := r.memDiff.SetPrevious(ctx); err != nil {
 		return errors.Wrap(err, "failed to prepare baseline for memory diff calcuation")
 	}
 
