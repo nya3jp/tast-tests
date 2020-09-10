@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a843ee5_5fdd5787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-10T01:15:18Z",
+      "side": 0,
+      "message": "I guess there\u0027s a slight chance that a window is not yet visible?\nMaybe having ash.WaitForVisible() for both left/right activity?",
+      "revId": "fa83b7a25e68f070313b0834201d3a7649978d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
