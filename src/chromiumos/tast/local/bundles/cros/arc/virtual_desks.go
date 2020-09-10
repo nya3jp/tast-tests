@@ -49,7 +49,7 @@ func deskContainsWindow(ctx context.Context, tconn *chrome.TestConn, deskContain
 }
 
 func VirtualDesks(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=VirtualDesks"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.EnableFeatures("VirtualDesks"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

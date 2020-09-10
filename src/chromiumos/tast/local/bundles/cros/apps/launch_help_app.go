@@ -121,9 +121,8 @@ func helpAppLaunchDuringOOBE(ctx context.Context, s *testing.State, isTabletMode
 	} else {
 		uiMode = "--force-tablet-mode=clamshell"
 	}
-	const helpAppFirstRun = "--enable-features=HelpAppFirstRun"
 
-	cr, err := chrome.New(ctx, chrome.Auth(username, password, ""), chrome.GAIALogin(), chrome.DontSkipOOBEAfterLogin(), chrome.ExtraArgs(uiMode, helpAppFirstRun))
+	cr, err := chrome.New(ctx, chrome.Auth(username, password, ""), chrome.GAIALogin(), chrome.DontSkipOOBEAfterLogin(), chrome.EnableFeatures("HelpAppFirstRun"), chrome.ExtraArgs(uiMode))
 
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

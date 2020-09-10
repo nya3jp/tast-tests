@@ -80,7 +80,7 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 			ctx,
 			chrome.Auth(policyPre.Username, policyPre.Password, policyPre.GaiaID),
 			chrome.DMSPolicy(fdms.URL), chrome.DontSkipOOBEAfterLogin(),
-			chrome.ExtraArgs("--enable-features=HelpAppFirstRun"),
+			chrome.EnableFeatures("HelpAppFirstRun"),
 		)
 		if err != nil {
 			s.Fatal("Failed to connect to Chrome: ", err)

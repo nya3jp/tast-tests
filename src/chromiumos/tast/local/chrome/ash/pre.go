@@ -40,7 +40,7 @@ func NewDummyAppPrecondition(name string, numApps int, innerPre func(name string
 	}
 	if skiaRenderer {
 		name = name + "_skia_renderer"
-		opts = append(opts, chrome.ExtraArgs("--enable-features=UseSkiaRenderer"))
+		opts = append(opts, chrome.EnableFeatures("UseSkiaRenderer"))
 	}
 	crPre := innerPre(name, opts...)
 	return &preImpl{crPre: crPre, numApps: numApps, extDirBase: tmpDir, prepared: false}
