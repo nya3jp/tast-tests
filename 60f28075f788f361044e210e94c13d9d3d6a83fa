@@ -70,6 +70,23 @@
       "revId": "60f28075f788f361044e210e94c13d9d3d6a83fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b21e357_b4996930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-09-10T15:46:16Z",
+      "side": 1,
+      "message": "This test is still failing on the vast majority of its runs.  Lets disable it until it can be fixed.",
+      "revId": "60f28075f788f361044e210e94c13d9d3d6a83fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
