@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bc4edc4_30f2efb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-10T17:57:35Z",
+      "side": 1,
+      "message": "Thanks, Fergus!",
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec2c8c25_f33a216d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-10T17:57:35Z",
+      "side": 1,
+      "message": "can you please comment this function definition? i\u0027m not sure what the arguments and return values are for",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 114
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "023f1e1b_2fb55c1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-10T17:57:35Z",
+      "side": 1,
+      "message": "nit:  maybe make a constant for 1MiB and reuse throughout the method (e.g. here and when creating the buffer)",
+      "range": {
+        "startLine": 107,
+        "startChar": 27,
+        "endLine": 107,
+        "endChar": 38
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5086f2d_da120fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-10T17:57:35Z",
+      "side": 1,
+      "message": "https://golang.org/pkg/os/#File.ReadAt says that ReadAt will always return a non-nil err if read \u003c len(b), so I don\u0027t think this is necessary",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ece403f_f3ca9cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-10T17:57:35Z",
+      "side": 1,
+      "message": "could you add a comment explaining what accum is for (and/or rename it to be more obvious)? It\u0027s not clear from the name, and I had to read \u0026 think carefully to realize that it was tracking the index into buffer.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66e10b7_1c490c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-10T17:57:35Z",
+      "side": 1,
+      "message": "nit: if you omit the condition, go will treat it as an infinite loop, so just\n\n  for {\n    ...\n  }",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88078484_619f0673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-10T17:57:35Z",
+      "side": 1,
+      "message": "This logic is identical to the previous loop. Can you factor it out into a method?",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
