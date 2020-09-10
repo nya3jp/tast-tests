@@ -250,6 +250,24 @@
     },
     {
       "key": {
+        "uuid": "04f2d6cf_ce013d1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T04:28:47Z",
+      "side": 1,
+      "message": "This is confusing code, I think DefaultContainer should be renamed to GetRunningContainer.\n\nAs yamaguchi says, cont will never be nil, even in the case of error, so an else case should be used instead of the cont check.\n\nThus, I think the code here should be:\n\n        cont, err :\u003d vm.GetRunningContainer(ctx, cr.User())\n\tif err !\u003d nil {\n\t\ttesting.ContextLogf(ctx, \"Failed to connect to the container, it might not exist: %s\", err)\n\t} else {\n                if err :\u003d vm.StopConcierge(ctx); err !\u003d nil {\n\t\t\ttesting.ContextLogf(ctx, \"Failure stopping concierge: %q\", err)\n\t\t}\n        }",
+      "parentUuid": "f9661ebc_73f43154",
+      "revId": "c9190c69c91b4cb86dea2b9483d9864699f11ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ded1fe05_a157eaa5",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/two_users_install.go",
         "patchSetId": 1
