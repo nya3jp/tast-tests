@@ -8,6 +8,9 @@ package audio
 import (
 	"context"
 	"fmt"
+	"regexp"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -15,6 +18,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -265,4 +269,177 @@ func GetCRASPID() (int, error) {
 		}
 	}
 	return -1, errors.Errorf("%v process not found", crasPath)
+}
+
+// StreamInfo holds attributes of an active stream.
+// It contains only test needed fields.
+type StreamInfo struct {
+	Direction   string
+	Effects     uint64
+	FrameRate   uint32
+	NumChannels uint8
+}
+
+var streamInfoRegex = regexp.MustCompile("(.*):(.*)")
+
+func newStreamInfo(s string) (*StreamInfo, error) {
+	data := streamInfoRegex.FindAllStringSubmatch(s, -1)
+	res := make(map[string]string)
+	for _, kv := range data {
+		k := kv[1]
+		v := strings.Trim(kv[2], " ")
+		res[k] = v
+	}
+
+	const (
+		Direction   = "direction"
+		Effects     = "effects"
+		FrameRate   = "frame_rate"
+		NumChannels = "num_channels"
+	)
+
+	// Checks all key exists.
+	for _, k := range []string{Direction, Effects, FrameRate, NumChannels} {
+		if _, ok := res[k]; !ok {
+			return nil, errors.Errorf("missing key: %s in StreamInfo", k)
+		}
+	}
+
+	effects, err := strconv.ParseUint(res[Effects], 0, 64)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse StreamInfo::%s (value: %s)", Effects, res[Effects])
+	}
+
+	frameRate, err := strconv.ParseUint(res[FrameRate], 10, 32)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse StreamInfo::%s (value: %s)", FrameRate, res[FrameRate])
+	}
+	numChannels, err := strconv.ParseUint(res[NumChannels], 10, 8)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse StreamInfo::%s (value: %s)", NumChannels, res[NumChannels])
+	}
+
+	return &StreamInfo{
+		Direction:   res[Direction],
+		Effects:     effects,
+		FrameRate:   uint32(frameRate),
+		NumChannels: uint8(numChannels),
+	}, nil
+}
+
+// PollStreamResult is the CRAS stream polling result.
+type PollStreamResult struct {
+	Streams []StreamInfo
+	Error   error
+}
+
+// StartPollStreamWorker starts a goroutine to poll an active stream.
+func StartPollStreamWorker(ctx context.Context, timeout time.Duration) <-chan PollStreamResult {
+	resCh := make(chan PollStreamResult, 1)
+	go func() {
+		streams, err := WaitForStreams(ctx, timeout)
+		resCh <- PollStreamResult{Streams: streams, Error: err}
+	}()
+	return resCh
+}
+
+// WaitForStreams returns error if it fails to detect any active streams.
+func WaitForStreams(ctx context.Context, timeout time.Duration) ([]StreamInfo, error) {
+	var streams []StreamInfo
+
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Polling active stream")
+		var err error
+		streams, err = dumpActiveStreams(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Errorf("failed to parse audio dumps: %s", err))
+		}
+		if len(streams) == 0 {
+			return &noStreamError{E: errors.New("no stream detected")}
+		}
+		// There is some active streams.
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+	return streams, err
+}
+
+// WaitForNoStream returns error if it fails to wait for all active streams to stop.
+func WaitForNoStream(ctx context.Context, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Wait until there is no active stream")
+		streams, err := dumpActiveStreams(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Errorf("failed to parse audio dumps: %s", err))
+		}
+		if len(streams) > 0 {
+			return errors.New("active stream detected")
+		}
+		// No active stream.
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
+type noStreamError struct {
+	*errors.E
+}
+
+// dumpActiveStreams parses active streams from "cras_test_client --dump_audio_thread" log.
+// The log format is defined in cras_test_client.c.
+// The active streams section begins with: "-------------stream_dump------------" and ends with: "Audio Thread Event Log:"
+// Each stream is separated by "\n\n"
+// An example of "cras_test_client --dump_audio_thread" log is shown as below:
+// -------------stream_dump------------
+// stream: 94437376 dev: 6
+// direction: Output
+// stream_type: CRAS_STREAM_TYPE_DEFAULT
+// client_type: CRAS_CLIENT_TYPE_PCM
+// buffer_frames: 2000
+// cb_threshold: 1000
+// effects: 0x0000
+// frame_rate: 8000
+// num_channels: 1
+// longest_fetch_sec: 0.004927402
+// num_overruns: 0
+// is_pinned: 0
+// pinned_dev_idx: 0
+// num_missed_cb: 0
+// volume: 1.000000
+// runtime: 26.168175600
+// channel map:0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+//
+// stream: 94437379 dev: 2
+// ...
+//
+// Audio Thread Event Log:
+//
+func dumpActiveStreams(ctx context.Context) ([]StreamInfo, error) {
+	dump, err := testexec.CommandContext(ctx, "cras_test_client", "--dump_audio_thread").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Errorf("failed to dump audio thread: %s", err)
+	}
+
+	streamSection := strings.Split(string(dump), "-------------stream_dump------------")
+	if len(streamSection) != 2 {
+		return nil, errors.New("failed to split log by stream_dump")
+	}
+	streamSection = strings.Split(streamSection[1], "Audio Thread Event Log:")
+	if len(streamSection) == 1 {
+		return nil, errors.New("invalid stream_dump")
+	}
+	str := strings.Trim(streamSection[0], " \n\t")
+
+	// No active streams, return nil
+	if str == "" {
+		return nil, nil
+	}
+
+	var streams []StreamInfo
+	for _, streamStr := range strings.Split(str, "\n\n") {
+		stream, err := newStreamInfo(streamStr)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to parse stream")
+		}
+		streams = append(streams, *stream)
+	}
+	return streams, nil
 }

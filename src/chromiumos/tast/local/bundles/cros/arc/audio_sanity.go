@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/audio"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/testing"
 )
 
