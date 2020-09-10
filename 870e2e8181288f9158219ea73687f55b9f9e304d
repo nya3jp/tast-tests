@@ -33,6 +33,24 @@
       "revId": "870e2e8181288f9158219ea73687f55b9f9e304d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e5c093_39354f26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T01:55:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d95d078_56a123f3",
+      "revId": "870e2e8181288f9158219ea73687f55b9f9e304d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
