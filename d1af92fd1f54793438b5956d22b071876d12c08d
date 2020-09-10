@@ -33,6 +33,23 @@
       "revId": "d1af92fd1f54793438b5956d22b071876d12c08d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b28bc1e4_610126c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-09-10T22:19:06Z",
+      "side": 1,
+      "message": "Submitting with LGTM from Tast and team",
+      "revId": "d1af92fd1f54793438b5956d22b071876d12c08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
