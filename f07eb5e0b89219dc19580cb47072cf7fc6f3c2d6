@@ -51,6 +51,24 @@
       "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60090249_0021aaee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2020-09-10T08:15:21Z",
+      "side": 1,
+      "message": "Where can I check that?\n\nLooked around in go/coil and several linked resources but couldn\u0027t find such low-level guidance.",
+      "parentUuid": "8cd959db_87396baa",
+      "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
