@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67dc71fb_a21ec518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-10T14:10:05Z",
+      "side": 1,
+      "message": "nit: please remove this blank line, so you will have block related to variables from precondition",
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c86a96ea_c56d7797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-10T14:10:05Z",
+      "side": 1,
+      "message": "nit: please put blank line before",
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe29799_4241fe1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-10T14:10:05Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we uninstall app at the end of the test? It may affect other tests.\n\nIf so, please put uninstall under defer statement",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f548b55_b4bb3f2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-10T14:10:05Z",
+      "side": 1,
+      "message": "nit: Unexpected window state: want %s; got %s",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a7dba4c_f64e3673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-10T14:10:05Z",
+      "side": 1,
+      "message": "please put it under defer staatement right after act.Start",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b585c26_1cc5c0f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-10T14:10:05Z",
+      "side": 1,
+      "message": "Also use cleanup context in defer. See example:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go;l\u003d60?q\u003dtast-tests%20cleanupCtx\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F",
+      "range": {
+        "startLine": 63,
+        "startChar": 20,
+        "endLine": 63,
+        "endChar": 23
+      },
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
