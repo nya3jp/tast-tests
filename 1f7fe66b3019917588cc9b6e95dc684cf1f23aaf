@@ -33,6 +33,23 @@
       "revId": "1f7fe66b3019917588cc9b6e95dc684cf1f23aaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5391b54d_90a30ee5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-10T23:16:04Z",
+      "side": 1,
+      "message": "putting back in tast-owners gwsq to load-balance to someone with more cycles",
+      "revId": "1f7fe66b3019917588cc9b6e95dc684cf1f23aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
