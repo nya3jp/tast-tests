@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f57db9ba_fe0272e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-09-10T00:13:52Z",
+      "side": 1,
+      "message": "Hi Katherine, PTAL for tast-owners review, thanks!",
+      "revId": "72105c77d6f8ad1998663bb626d2d1c2911417f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
