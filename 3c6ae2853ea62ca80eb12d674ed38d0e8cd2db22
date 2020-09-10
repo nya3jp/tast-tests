@@ -85,6 +85,24 @@
       "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01805cde_4c5d47ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-09-10T17:12:16Z",
+      "side": 1,
+      "message": "I\u0027m fine to let it run if someone is actually actively working on it.  Are you able to fix it in the next few weeks?  Looking back over the last several months this test has never been close to passing even 50% of the time.\n\nFor more information on why having tests run and fail is harmful, please see the \"Why Not Just Let Tests Stay Red?\" section in our Goals document:\n\nhttp://go/cros-green-stainless-goals\n\nIf you have other things you need to work on first, let\u0027s disable it until you can debug it locally.",
+      "parentUuid": "2f3328c1_b053c912",
+      "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
