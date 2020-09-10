@@ -52,6 +52,24 @@
       "revId": "46d1db6b9ddbc42eecc8406f676f1563b357bb01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c016c61a_a1422c11",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/third_party/cts_portrait_scene.jpg",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-10T09:19:49Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "be9a8ba0_eb1199c9",
+      "revId": "46d1db6b9ddbc42eecc8406f676f1563b357bb01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
