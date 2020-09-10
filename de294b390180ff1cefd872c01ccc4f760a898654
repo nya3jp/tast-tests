@@ -68,6 +68,230 @@
       "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6105af6_a136f25c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-10T04:16:02Z",
+      "side": 1,
+      "message": "opts :\u003d []chrome.Option {chrome.ExtraArgs(\"--tast-test\")}",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 53
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa433cff_e27b02b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-10T04:16:02Z",
+      "side": 1,
+      "message": "Since we don\u0027t have tests used different human face.\nI think it\u0027s a little overkill to pass in FileForFakeVideoCapture as a option here.\nHow about just hard-code the only file we used in CCAUIMode test?",
+      "range": {
+        "startLine": 59,
+        "startChar": 47,
+        "endLine": 59,
+        "endChar": 70
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9088641_7f3ae668",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-10T04:16:02Z",
+      "side": 1,
+      "message": "What\u0027s the difference between:\ncr.NewConnForTarget(ctx, chrome.MatchTargetURL(BackgroundURL))\nand\ncr.NewConn(ctx, BackgroundURL)\n?",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 86
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "097f7693_2c8081de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-10T04:16:02Z",
+      "side": 1,
+      "message": "It\u0027s a little weird that |TestEnvironment| returned by |SetupTestEnvironment| still need another call to setup its |appWindow|. Maybe the |appWindow| field should be separate from |TestEnvironment|.",
+      "range": {
+        "startLine": 83,
+        "startChar": 53,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef4a8dde_f03fb28d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-10T04:16:02Z",
+      "side": 1,
+      "message": "Let\u0027s change the signature to \nfunc launchApp(ctx context.Context, env *TestEnvironment, appLauncher AppLauncher) (*chrome.Conn, *chrome.JSObject, error)",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "704fe6fc_f85df6c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-10T04:16:02Z",
+      "side": 1,
+      "message": "Should be the same indent level as previous line.",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cccd0cda_06c4a1ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-10T04:16:02Z",
+      "side": 1,
+      "message": "register test app window",
+      "range": {
+        "startLine": 100,
+        "startChar": 42,
+        "endLine": 100,
+        "endChar": 56
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a483f9f_fe309193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-10T04:16:02Z",
+      "side": 1,
+      "message": "s/LaunchSWA/launchSWA/",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 14
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbee3ef9_703c40dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-10T04:16:02Z",
+      "side": 1,
+      "message": "s/LaunchPlatformApp/launchPlatformApp/",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c51848f_08d0aa0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-10T04:16:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the appWindow should call |Release| right after it\u0027s used.\nWhy all appWindow need to be released together here?",
+      "revId": "de294b390180ff1cefd872c01ccc4f760a898654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
