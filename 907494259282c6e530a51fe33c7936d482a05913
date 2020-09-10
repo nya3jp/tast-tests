@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b9135061_5420aacc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-10T04:49:01Z",
+      "side": 1,
+      "message": "no worries, sgtm!",
+      "parentUuid": "8d9c64aa_c0043db0",
+      "revId": "907494259282c6e530a51fe33c7936d482a05913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c840dec8_f1979feb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 21
