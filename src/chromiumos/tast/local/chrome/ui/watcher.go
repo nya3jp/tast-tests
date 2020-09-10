@@ -124,24 +124,19 @@ func (ew *EventWatcher) Release(ctx context.Context) error {
 	return ew.object.Release(ctx)
 }
 
-// WaitForLocationChangeCompleted waits for any location-change events on the
-// entire desktop to be propagated to the automation API. Because automation API
-// is asynchronous and eventually consistent with the desktop bounds, sometimes
-// the automation API may report the intermediate bounds for an already
-// completed animation. This function waits for such changes to be propagated
-// fully to the automation API.
-func WaitForLocationChangeCompleted(ctx context.Context, tconn *chrome.TestConn) error {
+// WaitForLocationChangeCompletedOnNode waits for any location-change events on
+// the given node to be propagated to the automation API. Because
+// automation API is asynchronous and eventually consistent with the desktop
+// bounds, sometimes the automation API may report the intermediate bounds for
+// an already completed animation. This function waits for such changes to be
+// propagated fully to the automation API.
+func WaitForLocationChangeCompletedOnNode(ctx context.Context, tconn *chrome.TestConn, node *Node) error {
 	const (
 		entireTimeout = 30 * time.Second
 		timeout       = 2 * time.Second
 	)
 
-	root, err := Root(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to access root")
-	}
-	defer root.Release(ctx)
-	ew, err := NewWatcher(ctx, root, EventTypeLocationChanged)
+	ew, err := NewWatcher(ctx, node, EventTypeLocationChanged)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a root watcher")
 	}
@@ -149,4 +144,16 @@ func WaitForLocationChangeCompleted(ctx context.Context, tconn *chrome.TestConn)
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		return ew.EnsureNoEvents(ctx, timeout)
 	}, &testing.PollOptions{Timeout: entireTimeout})
+}
+
+// WaitForLocationChangeCompleted calls WaitForLocationChangeCompletedOnNode
+// on the entire desktop.
+func WaitForLocationChangeCompleted(ctx context.Context, tconn *chrome.TestConn) error {
+	root, err := Root(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to access root")
+	}
+	defer root.Release(ctx)
+
+	return WaitForLocationChangeCompletedOnNode(ctx, tconn, root)
 }

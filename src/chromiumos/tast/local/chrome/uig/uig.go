@@ -367,6 +367,27 @@ func WaitUntilDescendantGone(params ui.FindParams, timeout time.Duration) *Actio
 	return Root().WaitUntilDescendantGone(params, timeout).WithNamef("uig.WaitUntilDescendantGone(%+v, %v)", params, timeout)
 }
 
+// WaitForLocationChangeCompleted waits until there are no LocationChanged
+// events on the node for at least 2 seconds. This is commonly used to wait
+// for the completion of UI animations.
+func (a *Action) WaitForLocationChangeCompleted() *Action {
+	name := fmt.Sprintf("%s.WaitForLocationChangeCompleted()", a.String())
+	return &Action{
+		name: name,
+		do: func(ctx context.Context, tconn *chrome.TestConn, root *nodeRef) (*nodeRef, error) {
+			node, err := a.do(ctx, tconn, root)
+			if err != nil {
+				return nil, err
+			}
+			if err := ui.WaitForLocationChangeCompletedOnNode(ctx, tconn, node.node); err != nil {
+				node.release(ctx)
+				return nil, errors.Wrap(err, name)
+			}
+			return node, nil
+		},
+	}
+}
+
 // Root gets the root node of the context this graph is being executed in.  This is typically the
 // ChromeOS Desktop, although another context root can be specified by calling Steps on it.
 //
