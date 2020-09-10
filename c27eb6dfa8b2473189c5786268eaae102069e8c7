@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9644216_90045b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T06:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dd7acc0_e79e4654",
+      "revId": "c27eb6dfa8b2473189c5786268eaae102069e8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6aa9a580_d72d0b28",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "c27eb6dfa8b2473189c5786268eaae102069e8c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b623134f_a83fe9f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T06:11:48Z",
+      "side": 1,
+      "message": "Done.\nAlso I actually changed things quite a bit and merged this cl with the following which changed the structure quite a bit so it is pretty much a new CL now :)",
+      "parentUuid": "6aa9a580_d72d0b28",
+      "revId": "c27eb6dfa8b2473189c5786268eaae102069e8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
