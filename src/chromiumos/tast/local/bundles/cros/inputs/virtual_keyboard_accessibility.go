@@ -66,14 +66,8 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
 
-	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-
-	s.Log("Waiting for the virtual keyboard to render buttons")
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed to wait for virtual keyboard ready")
 	}
 
 	// Check that the keyboard has modifier and tab keys.
