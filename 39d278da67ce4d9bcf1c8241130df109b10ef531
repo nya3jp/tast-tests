@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "24041e5e_9fca45e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-10T06:38:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure, I\u0027ll ask Matthias, since he was the one who saw it.",
+      "parentUuid": "68ae8c85_c44a635a",
+      "revId": "39d278da67ce4d9bcf1c8241130df109b10ef531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fd912b7_4e64fc37",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -47,6 +65,30 @@
       "writtenOn": "2020-09-08T05:34:10Z",
       "side": 1,
       "message": "Please return any errors from setChargeControl",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "39d278da67ce4d9bcf1c8241130df109b10ef531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17607611_958ae46b",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-10T06:38:24Z",
+      "side": 1,
+      "message": "I\u0027d like to report the main failure, which is that the battery is too low to proceed with the test. This is just an attempt at a partial mitigation.\n\nMaybe I should log any errors?",
+      "parentUuid": "f240c484_7ca656f3",
       "range": {
         "startLine": 51,
         "startChar": 2,
