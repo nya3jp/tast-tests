@@ -21,7 +21,7 @@ const (
 	CacheDir    = "/var/cache/dlc"
 	JobName     = "dlcservice"
 	LibDir      = "/var/lib/dlcservice/dlc"
-	PreloadDir  = "/mnt/stateful_partition/var_overlay/cache/dlc-images"
+	PreloadDir  = "/var/cache/dlc-images"
 	ServiceName = "org.chromium.DlcService"
 	User        = "dlcservice"
 )
