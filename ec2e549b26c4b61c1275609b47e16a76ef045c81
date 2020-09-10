@@ -16,6 +16,24 @@
       "revId": "ec2e549b26c4b61c1275609b47e16a76ef045c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd6498df_f63cb92c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-10T02:29:26Z",
+      "side": 1,
+      "message": "So do I. As it is contradict with Golang\u0027s style and we review Golang code most...",
+      "parentUuid": "48940d6d_9c50c8d1",
+      "revId": "ec2e549b26c4b61c1275609b47e16a76ef045c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
