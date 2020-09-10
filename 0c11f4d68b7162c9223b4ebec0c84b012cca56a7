@@ -229,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "faece286_9e548504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T17:57:57Z",
+      "side": 1,
+      "message": "Clarification: did you mean to run the perf tests in parallel (maybe in the following CL)? Is it possible to measure the performance accurately...?\nIf each case can run in sequence, lock can be removed.",
+      "parentUuid": "5385ba0d_1bb64633",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c19035d_b37f0340",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -346,6 +364,24 @@
     },
     {
       "key": {
+        "uuid": "44a128e6_7e538d5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T17:57:57Z",
+      "side": 1,
+      "message": "Could you add TODO, then?",
+      "parentUuid": "0845f512_1f66a57e",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5bb71f5b_4e42bb0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -378,6 +414,24 @@
       "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3e2b054_087ad0e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T17:57:57Z",
+      "side": 1,
+      "message": "Ditto. Could you add TODO?",
+      "parentUuid": "b56899d2_bd8600a1",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
