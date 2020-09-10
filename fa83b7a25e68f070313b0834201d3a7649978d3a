@@ -34,6 +34,24 @@
       "revId": "fa83b7a25e68f070313b0834201d3a7649978d3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "695973f2_ecdfab4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-10T23:04:04Z",
+      "side": 0,
+      "message": "Great, thanks for the info.",
+      "parentUuid": "df7dc531_d7d29c8a",
+      "revId": "fa83b7a25e68f070313b0834201d3a7649978d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
