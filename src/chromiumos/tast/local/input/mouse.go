@@ -96,3 +96,19 @@ func (mw *MouseEventWriter) Click() error {
 	}
 	return mw.rw.Sync()
 }
+
+// Press presses the mouse left button.
+func (mw *MouseEventWriter) Press() error {
+	if err := mw.rw.Event(EV_KEY, BTN_LEFT, 1); err != nil {
+		return err
+	}
+	return mw.rw.Sync()
+}
+
+// Release releases the mouse right button.
+func (mw *MouseEventWriter) Release() error {
+	if err := mw.rw.Event(EV_KEY, BTN_LEFT, 0); err != nil {
+		return err
+	}
+	return mw.rw.Sync()
+}
