@@ -39,6 +39,30 @@
       "revId": "72489a693ab5d1d3eace07e51b63d22dc7600a09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a02b3a18_20e120cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-09-10T21:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c3e5d08_a27e4e0a",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "72489a693ab5d1d3eace07e51b63d22dc7600a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
