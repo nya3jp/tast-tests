@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "926dcb17_79408538",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-10T18:21:19Z",
+      "side": 1,
+      "message": "Resolved merge conflict. Also, I forgot to mention that I have add a check for missing button on the shelf. Please check. Thanks.",
+      "revId": "fc1649c919f514bcb3887c434d2540a177ff399b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
