@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dd7acc0_e79e4654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:15:47Z",
+      "side": 1,
+      "message": "you have to add \"before starting goroutine on the main thread\".\nOtherwise, wg.Wait() may not find it.",
+      "revId": "c27eb6dfa8b2473189c5786268eaae102069e8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aa9a580_d72d0b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:15:47Z",
+      "side": 1,
+      "message": "You may want to run this in s.Run() to avoid mixing logs/failures.",
+      "revId": "c27eb6dfa8b2473189c5786268eaae102069e8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
