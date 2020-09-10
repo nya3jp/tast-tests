@@ -34,6 +34,23 @@
       "revId": "ec2e549b26c4b61c1275609b47e16a76ef045c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3206303_adc4db03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-10T07:43:44Z",
+      "side": 1,
+      "message": "note: this CL is conflicting with crrev.com/c/2316768 as both changed .proto file.",
+      "revId": "ec2e549b26c4b61c1275609b47e16a76ef045c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
