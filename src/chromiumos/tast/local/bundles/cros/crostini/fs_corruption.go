@@ -10,6 +10,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -19,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
@@ -199,7 +201,7 @@ func checkHistogram(ctx context.Context, tconn *chrome.TestConn, baseline int64)
 // disk from backupPath. outDir is passed to
 // vm.RestartDefaultVMContainer and may be used to store logs from
 // container startup on failure.
-func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.Container, diskPath, backupPath, outDir string) error {
+func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userName string, offsets []int64, container *vm.Container, diskPath, backupPath, outDir string) error {
 	match := dbusutil.MatchSpec{
 		Type:      "signal",
 		Path:      anomalyEventServicePath,
@@ -224,7 +226,8 @@ func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.
 
 	testing.ContextLog(ctx, "Restarting VM")
 	// Discard the error, as this may fail due to corruption.
-	_ = vm.RestartDefaultVMContainer(ctx, outDir, container)
+	_, _ = terminalapp.Launch(ctx, tconn, userName)
+	// Stop the VM by a direct call to concierge since we want to ensure it isn't running even when there may be an error in the startup process.
 	defer container.VM.Stop(ctx)
 
 	// Filesystem corruption doesn't get detected until some process tries to read from the corrupted location. For metadata, this usually happens during container startup, but we read from both files just to be sure.
@@ -247,6 +250,8 @@ func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.
 func FsCorruption(ctx context.Context, s *testing.State) {
 	data := s.PreValue().(crostini.PreData)
 	cr := data.Chrome
+	userName := strings.Split(cr.User(), "@")[0]
+	tconn := data.TestAPIConn
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
@@ -270,7 +275,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to stop VM: ", err)
 	}
 	// Restart everything before finishing so the precondition will be in a good state.
-	defer vm.RestartDefaultVMContainer(ctx, s.OutDir(), data.Container)
+	defer terminalapp.Launch(ctx, tconn, userName)
 
 	s.Log("Searching for pattern in disk image")
 	smallOffsets, bigOffsets, err := getOffsets(ctx, disk.GetPath(), []byte(smallUUID), []byte(bigUUID))
@@ -291,17 +296,12 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	cmd = testexec.CommandContext(ctx, "mv", "--force", backupPath, disk.GetPath())
 	defer cmd.Run(testexec.DumpLogOnError)
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
-
 	histogramCount, err := checkHistogram(ctx, tconn, -1)
 	if err != nil {
 		s.Fatal("Failed to get baseline for histogram: ", err)
 	}
 
-	if err := testOverwriteAtOffsets(ctx, bigOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
+	if err := testOverwriteAtOffsets(ctx, tconn, userName, bigOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
 		s.Fatal("Didn't get an error signal for big file: ", err)
 	}
 	histogramCount, err = checkHistogram(ctx, tconn, histogramCount)
@@ -309,7 +309,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check histogram: ", err)
 	}
 
-	if err := testOverwriteAtOffsets(ctx, smallOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
+	if err := testOverwriteAtOffsets(ctx, tconn, userName, smallOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
 		s.Fatal("Didn't get an error signal for small file: ", err)
 	}
 	if _, err := checkHistogram(ctx, tconn, histogramCount); err != nil {
