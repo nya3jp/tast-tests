@@ -19,7 +19,10 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-const apkName = "ArcAppLoadingTest.apk"
+const (
+	apkName       = "ArcAppLoadingTest.apk"
+	nethelperPort = 1235
+)
 
 var (
 	arcAppLoadingGaia = &arc.GaiaVars{
@@ -48,7 +51,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{apkName},
-		Timeout:      15 * time.Minute,
+		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
@@ -84,11 +87,15 @@ func init() {
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	// Start network helper to serve requests from the app.
-	conn, err := nethelper.Start(ctx)
+	conn, err := nethelper.Start(ctx, nethelperPort)
 	if err != nil {
-		s.Fatal("Failed to start helper: ", err)
+		s.Fatal("Failed to start nethelper: ", err)
 	}
-	defer conn.Close()
+	defer func() {
+		if err := conn.Close(ctx); err != nil {
+			s.Logf("WARNING: Failed to close nethelper connection: %s", err)
+		}
+	}()
 
 	finalPerfValues := perf.NewValues()
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
