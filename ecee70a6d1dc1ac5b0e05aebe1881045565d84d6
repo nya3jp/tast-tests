@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "19be5d4f_d9c2d3f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-10T19:53:34Z",
+      "side": 1,
+      "message": "I am bit worried about \"certain interfaces are not available based on tast infra or board hw spec\"\nI am not sure how boards are connected in lab. My main concern here is to use predictable behavior. How devices are connected does matter I think.\nAt first step I would try to see if strict limitation \"eth\" does work in lab. Once we have results we can decide what to do next.\nTo address this you may pass {\"arc_eth+\"} to start. BTW, arc_eth+ or arc_eth0 to have stricter limitation.\n\"this might not be possible since not every board has ethernet port.\"\nI don\u0027t recall I saw chromebook with ethernet port. In all cases we use dongle.\n\nSo, could we start with stricter rule? You may pass filter for this case. If it does not work we can modify only filter to get everything working\n\nWDYT?",
+      "parentUuid": "45dcc9ea_3e8008e1",
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63d65ab6_6c35a3b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
         "patchSetId": 5
@@ -106,6 +124,30 @@
       "side": 1,
       "message": "```\ndo you really need port to stop? What if you pass another port to Stop\nI think right way to do would be associating port with each connection or storing port as global variable in helper and use it to stop. Otherwise this is fragile.\n```\nGood point.  I\u0027ll abstract away port from Stop().  BTW, is there anything special about port 1235?  I see it used in other tasts.\n\n```\nMoreover, would it be possible just hide port inside helper for simplification. What is the case when port use differently?\nnethelper.SetPort() to assign working port if we really need to overwrite.\n```\nI\u0027m okay with either impl, this was mainly to address hardcoding concern.  hugobenichi@ - Are you ok with using default port in nethelper.go as before and having separate SetPort() function?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2380176/comment/dd0e799c_09e42a8a/",
       "parentUuid": "63d65ab6_6c35a3b9",
+      "range": {
+        "startLine": 94,
+        "startChar": 27,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73382593_07becdd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-10T19:53:34Z",
+      "side": 1,
+      "message": "1235 is just kind of \"random\"",
+      "parentUuid": "4c231be7_0bdefbfb",
       "range": {
         "startLine": 94,
         "startChar": 27,
@@ -165,6 +207,29 @@
     },
     {
       "key": {
+        "uuid": "99f0356f_01514524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-10T19:53:34Z",
+      "side": 1,
+      "message": "I would still recommend you to return one object Connection or name it Connections\nInside you may keep array of listeners or so.\nThen you have to worry only about internal impl here and rely on func (c *Connection(s)) Close() {\n. That makes Stop function not needed. Everything will be handled in in Close()",
+      "range": {
+        "startLine": 63,
+        "startChar": 43,
+        "endLine": 63,
+        "endChar": 56
+      },
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71238f68_a804a053",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 5
@@ -204,6 +269,29 @@
         "startChar": 0,
         "endLine": 83,
         "endChar": 4
+      },
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "425558a5_5e196111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-10T19:53:34Z",
+      "side": 1,
+      "message": "we have ifacesArc filter. Should we use it?",
+      "range": {
+        "startLine": 95,
+        "startChar": 33,
+        "endLine": 95,
+        "endChar": 36
       },
       "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
