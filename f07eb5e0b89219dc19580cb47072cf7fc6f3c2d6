@@ -121,6 +121,24 @@
       "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc29b820_8e535adf",
+        "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T18:13:33Z",
+      "side": 1,
+      "message": "Thank you for update.\n\nSo COIL looks important, I gave it a try to survey a bit more.\nHowever, I couldn\u0027t find a discussion to get rid of \"master mount\" \"slave mount\".\nConsidering COIL effort is for all Chrome OS org, it may be worth trying to come up with a consensus of the proper words to replace \"master mount\" \"slave mount\" inside Chrome OS, to try moving forward. It\u0027s up to you, though.",
+      "parentUuid": "41d5e446_6bc6b18d",
+      "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
