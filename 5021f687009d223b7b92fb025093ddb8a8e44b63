@@ -16,6 +16,29 @@
       "revId": "5021f687009d223b7b92fb025093ddb8a8e44b63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03e4f3be_49947a50",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-10T08:30:35Z",
+      "side": 1,
+      "message": "No action required: I don\u0027t remember why we don\u0027t use Run in Output/CombinedOutput...",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "5021f687009d223b7b92fb025093ddb8a8e44b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
