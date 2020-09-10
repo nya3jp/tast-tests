@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03ead011_b8b8bedd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-10T21:04:48Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "a7fc7026830c536ca8042b78192633cd850501d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb5f52b1_2462e2de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-10T21:04:48Z",
+      "side": 1,
+      "message": "nit:\n\n  const (\n    numEvents \u003d 50\n    waitMS \u003d 50\n  )",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "a7fc7026830c536ca8042b78192633cd850501d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17eeaaa5_498dcaa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-10T21:04:48Z",
+      "side": 1,
+      "message": "nit (see below for context):\n\n  Unable to inject Press mouse event",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 46
+      },
+      "revId": "a7fc7026830c536ca8042b78192633cd850501d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ed8bf66_a1052f7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-10T21:04:48Z",
+      "side": 1,
+      "message": "nit: perhaps adding the word \"Move\" (I\u0027d add it in Capital letter to differentiate it from the vert)\n\ne.g:\n\n  s.Fatal(\"Unable to inject Move mouse event: \", err)",
+      "range": {
+        "startLine": 106,
+        "startChar": 29,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "a7fc7026830c536ca8042b78192633cd850501d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c87ecfe_3627004b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-10T21:04:48Z",
+      "side": 1,
+      "message": "nit, ditto above:\n\n  Unable to inject Release mouse event",
+      "range": {
+        "startLine": 117,
+        "startChar": 10,
+        "endLine": 117,
+        "endChar": 47
+      },
+      "revId": "a7fc7026830c536ca8042b78192633cd850501d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5264dd2f_2ece15ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-10T21:04:48Z",
+      "side": 1,
+      "message": "nit, for consistency with the other error messages:\n\n  Unable to inject Press mouse event",
+      "range": {
+        "startLine": 135,
+        "startChar": 12,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "a7fc7026830c536ca8042b78192633cd850501d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b308c40_a47c718a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-10T21:04:48Z",
+      "side": 1,
+      "message": "ditto above:\n\n  Unable to inject Release mouse event",
+      "range": {
+        "startLine": 144,
+        "startChar": 12,
+        "endLine": 144,
+        "endChar": 40
+      },
+      "revId": "a7fc7026830c536ca8042b78192633cd850501d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34740876_e71a9e6d",
+        "filename": "src/chromiumos/tast/local/input/mouse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-10T21:04:48Z",
+      "side": 1,
+      "message": "left",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 35
+      },
+      "revId": "a7fc7026830c536ca8042b78192633cd850501d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
