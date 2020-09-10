@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -51,7 +52,7 @@ func CrasPlay(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	devName, err := audio.FirstRunningDevice(ctx, audio.OutputStream)
+	devName, err := crastestclient.FirstRunningDevice(ctx, audio.OutputStream)
 	if err != nil {
 		s.Fatal("Failed to detect running output device: ", err)
 	}

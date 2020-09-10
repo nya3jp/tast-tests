@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package audio
+// Package crastestclient provides functions to interact cras_test_client
+package crastestclient
 
 import (
 	"context"
