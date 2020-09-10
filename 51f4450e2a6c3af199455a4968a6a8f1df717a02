@@ -46,6 +46,30 @@
       "revId": "51f4450e2a6c3af199455a4968a6a8f1df717a02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c507a9a_91e89733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-10T23:46:31Z",
+      "side": 1,
+      "message": "During the soak part of the test, FIO stress is interleaved with pauses of suspends sequentially. This is where your SLC stress will be running in parallel to the soak FIO stress. However, during trim and suspend test parts, FIO stress runs in parallel with trim and suspend stresses accordingly. This is why I\u0027m implementing parallel stress execution at the test level. The same mechanism could be reused for your SLC parallel stress.",
+      "parentUuid": "0ba814ef_b458ff55",
+      "range": {
+        "startLine": 85,
+        "startChar": 26,
+        "endLine": 85,
+        "endChar": 37
+      },
+      "revId": "51f4450e2a6c3af199455a4968a6a8f1df717a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
