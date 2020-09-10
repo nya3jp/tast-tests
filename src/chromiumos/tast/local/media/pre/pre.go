@@ -31,7 +31,7 @@ func ChromeAlternateVideoDecoder() testing.Precondition { return chromeAlternate
 var chromeAlternateVideoDecoderPre = chrome.NewPrecondition("alternateVideoDecoder",
 	chromeVModuleArgs,
 	chromeUseHwDecoderForSmallResolutions,
-	chrome.ExtraArgs("--enable-features=UseAlternateVideoDecoderImplementation"))
+	chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"))
 
 // ChromeVideoWithGuestLogin returns a precondition equal to ChromeVideo but
 // forcing login as a guest, which is known to be different from a "normal"
@@ -51,7 +51,7 @@ func ChromeVideoWithHDRScreen() testing.Precondition { return chromeVideoWithHDR
 var chromeVideoWithHDRScreenPre = chrome.NewPrecondition("videoWithHDRScreen",
 	chromeVModuleArgs,
 	chromeUseHwDecoderForSmallResolutions,
-	chrome.ExtraArgs("--enable-features=UseHDRTransferFunction"))
+	chrome.EnableFeatures("UseHDRTransferFunction"))
 
 // ChromeCompositedVideo returns a precondition equal to ChromeVideo but also
 // disabling hardware overlays entirely to force video to be composited.
@@ -83,7 +83,7 @@ var chromeVideoWithFakeWebcamAndAlternateVideoDecoderPre = chrome.NewPreconditio
 	chromeVModuleArgs,
 	chromeUseHwDecoderForSmallResolutions,
 	chromeFakeWebcamArgs,
-	chrome.ExtraArgs("--enable-features=UseAlternateVideoDecoderImplementation"))
+	chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"))
 
 // ChromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers returns a precondition equal to
 // ChromeVideoWithFakeWebcam, force webrtc vp9 stream to be three temporal layers.
@@ -154,7 +154,7 @@ func ChromeVideoWithSWDecodingAndHDRScreen() testing.Precondition {
 }
 
 var chromeVideoWithSWDecodingAndHDRScreen = chrome.NewPrecondition("videoWithSWDecodingAndHDRScreen", chromeVModuleArgs,
-	chrome.ExtraArgs("--disable-accelerated-video-decode"), chrome.ExtraArgs("--enable-features=UseHDRTransferFunction"))
+	chrome.ExtraArgs("--disable-accelerated-video-decode"), chrome.EnableFeatures("UseHDRTransferFunction"))
 
 var chromeVModuleArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for video components.

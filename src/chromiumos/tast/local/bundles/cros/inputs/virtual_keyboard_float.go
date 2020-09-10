@@ -39,7 +39,7 @@ func init() {
 }
 
 func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard", "--force-tablet-mode=touch_view", "--enable-features=VirtualKeyboardFloatingDefault"))
+	cr, err := chrome.New(ctx, chrome.EnableFeatures("VirtualKeyboardFloatingDefault"), chrome.ExtraArgs("--enable-virtual-keyboard", "--force-tablet-mode=touch_view"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
