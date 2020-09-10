@@ -248,6 +248,24 @@
       "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca8a5ad_d173f92a",
+        "filename": "src/chromiumos/tast/common/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2020-09-10T00:36:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628bf6d4_43bc0832",
+      "revId": "173d0e28fd4b44d84ae6cccfa505dfca69bc2343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
