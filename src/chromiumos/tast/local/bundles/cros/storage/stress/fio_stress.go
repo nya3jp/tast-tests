@@ -11,7 +11,6 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-	"sync"
 	"time"
 
 	"chromiumos/tast/common/storage"
@@ -210,19 +209,4 @@ func RunFioStress(ctx context.Context, s *testing.State, testConfig TestConfig) 
 		group := resultGroupName(ctx, res, devName, rawDev)
 		testConfig.ResultWriter.Report(group, res)
 	}
-}
-
-// RunParallelFioStress runs multiple fio jobs in parallel.
-func RunParallelFioStress(ctx context.Context, s *testing.State, configs []TestConfig) {
-	var wg sync.WaitGroup
-
-	for _, config := range configs {
-		go func() {
-			wg.Add(1)
-			RunFioStress(ctx, s, config)
-			wg.Done()
-		}()
-	}
-
-	wg.Wait()
 }
