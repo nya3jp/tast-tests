@@ -5,11 +5,11 @@
 package crostini
 
 import (
+	"bytes"
 	"context"
+	"io"
 	"io/ioutil"
 	"os"
-	"strconv"
-	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -87,26 +87,69 @@ func createTestFiles(ctx context.Context, container *vm.Container) error {
 	return nil
 }
 
-func getOffsets(ctx context.Context, filepath, pattern string) ([]int64, error) {
-	var offsets []int64
-	cmd := testexec.CommandContext(ctx, "grep", "--fixed-strings", "--byte-offset", "--only-matching", "--binary-files=text", pattern, filepath)
-
-	// Grep returns an output like "12345:pattern\n23456:pattern\n". We parse out the offsets here by splitting on "\n" and then ":". We drop the last line because it will always be empty.
-	output, err := cmd.Output(testexec.DumpLogOnError)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to run grep on disk image")
-	}
-
-	lines := strings.Split(string(output), "\n")
-	for _, line := range lines[0 : len(lines)-1] {
-		firstPart := strings.Split(line, ":")[0]
-		i, err := strconv.ParseInt(firstPart, 10, 64)
-		if err != nil {
-			return nil, errors.Wrapf(err, "got non-int offset %s from line %s of grep output", firstPart, line)
+func scanBuffer(baseOffset int64, buffer, pattern []byte) []int64 {
+	var result []int64
+	for {
+		idx := bytes.Index(buffer, pattern)
+		if idx == -1 {
+			break
 		}
-		offsets = append(offsets, i)
+
+		newOffset := baseOffset + int64(idx)
+		result = append(result, newOffset)
+
+		buffer = buffer[idx+1:]
+		baseOffset += int64(idx) + 1
 	}
-	return offsets, nil
+	return result
+}
+
+// getOffsets finds all locations of two patterns (smallPattern and
+// bigPattern) in the given filepath. Returns two slices of offsets
+// into the file, one for each pattern, and an error (if any).
+//
+// We can't use things like Scanner here because we're scanning a
+// binary file with no limit on the spacing between \n characters, and
+// Scanner expects to be operating on a UTF-8 character encoding with
+// reasonably sized lines. Instead we have a hand written loop.
+func getOffsets(ctx context.Context, filepath string, smallPattern, bigPattern []byte) ([]int64, []int64, error) {
+	const oneMiB = 1024 * 1024
+
+	// Buffer size = 1MiB + a small amount of overlap in case one of the UUIDs is split across a boundary
+	overlap := len(smallPattern)
+	if len(bigPattern) > overlap {
+		overlap = len(bigPattern)
+	}
+	buffer := make([]byte, oneMiB+overlap-1)
+
+	file, err := os.Open(filepath)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to open VM disk for reading")
+	}
+	defer file.Close()
+
+	stat, err := file.Stat()
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to stat VM disk")
+	}
+	size := stat.Size()
+
+	var smallOffsets, bigOffsets []int64
+	for i := int64(0); i < size; i += oneMiB {
+		read, err := file.ReadAt(buffer, i)
+		if err != nil && err != io.EOF {
+			return nil, nil, errors.Wrapf(err, "failed to read a full buffer from VM disk at offset %d, got %d bytes, expected %d", i, read, len(buffer))
+		}
+		if err == io.EOF {
+			// We read less then the full buffer because we hit EOF, so truncate the buffer
+			buffer = buffer[:read]
+		}
+
+		smallOffsets = append(smallOffsets, scanBuffer(i, buffer[:oneMiB+len(smallPattern)-1], smallPattern)...)
+		bigOffsets = append(bigOffsets, scanBuffer(i, buffer[:oneMiB+len(bigPattern)-1], bigPattern)...)
+	}
+
+	return smallOffsets, bigOffsets, nil
 }
 
 func writeAtSync(filepath string, b []byte, offsets []int64) error {
@@ -224,14 +267,10 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	defer vm.RestartDefaultVMContainer(ctx, s.OutDir(), data.Container)
 
 	s.Log("Searching for pattern in disk image")
-	bigOffsets, err := getOffsets(ctx, data.Container.VM.DiskPath, bigUUID)
-	if err != nil || len(bigOffsets) == 0 {
-		s.Fatal("Failed to get file offsets: ", err)
-	}
-
-	smallOffsets, err := getOffsets(ctx, data.Container.VM.DiskPath, smallUUID)
-	if err != nil || len(smallOffsets) == 0 {
-		s.Fatal("Failed to get file offsets: ", err)
+	s.Logf("Disk path: %s", data.Container.VM.DiskPath)
+	smallOffsets, bigOffsets, err := getOffsets(ctx, data.Container.VM.DiskPath, []byte(smallUUID), []byte(bigUUID))
+	if err != nil || len(smallOffsets) == 0 || len(bigOffsets) == 0 {
+		s.Fatalf("Failed to get file offsets: %v, %v, %v", err, smallOffsets, bigOffsets)
 	}
 
 	// BTRFS filesystems are modified on every mount, so we make a backup here of the disk so we can start each corruption from a known state.
