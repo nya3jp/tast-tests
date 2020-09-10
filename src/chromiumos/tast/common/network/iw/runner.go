@@ -95,6 +95,8 @@ type Phy struct {
 	Modes, Commands, Features []string
 	RxAntenna, TxAntenna      int
 	MaxScanSSIDs              int
+	SupportHE                 bool
+	SupportHE160              bool
 	SupportVHT                bool
 	SupportHT2040             bool
 	SupportHT20SGI            bool
@@ -127,12 +129,15 @@ type section struct {
 type sectionAttributes struct {
 	bands                 []Band
 	phyModes, phyCommands []string
-	supportVHT            bool
-	supportHT2040         bool
-	supportHT20SGI        bool
-	supportHT40SGI        bool
-	supportVHT80SGI       bool
-	supportMUMIMO         bool
+
+	supportHE       bool
+	supportHE160    bool
+	supportVHT      bool
+	supportHT2040   bool
+	supportHT20SGI  bool
+	supportHT40SGI  bool
+	supportVHT80SGI bool
+	supportMUMIMO   bool
 }
 
 // TimedScanData contains the BSS responses from an `iw scan` and its execution time.
@@ -898,6 +903,8 @@ func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 		RxAntenna:       rxAntenna,
 		TxAntenna:       txAntenna,
 		MaxScanSSIDs:    maxScanSSIDs,
+		SupportHE:       attrs.supportHE,
+		SupportHE160:    attrs.supportHE160,
 		SupportVHT:      attrs.supportVHT,
 		SupportHT2040:   attrs.supportHT2040,
 		SupportHT20SGI:  attrs.supportHT20SGI,
@@ -1038,6 +1045,13 @@ func parseBand(attrs *sectionAttributes, sectionName, contents string) error {
 
 func parseThroughput(attrs *sectionAttributes, sectionName, contents string) error {
 	// This parser evaluates the throughput capabilities of the phy.
+	// HE related.
+	if strings.Contains(contents, "HE MAC Capabilities") {
+		attrs.supportHE = true
+	}
+	if strings.Contains(contents, "HE160/5GHz") {
+		attrs.supportHE160 = true
+	}
 	// HT related.
 	if strings.Contains(contents, "HT20/HT40") {
 		attrs.supportHT2040 = true
