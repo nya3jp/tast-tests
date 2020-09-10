@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "120b578a_6d5b2073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T13:03:38Z",
+      "side": 1,
+      "message": "Thanks for the comment, Alex. Apologies that I changed the assertion part of system language test after review. Instead of throwing out node not found error on test failure, I reckon it is nice to tell what\u0027s the shown text. ",
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
