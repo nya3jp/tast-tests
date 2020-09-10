@@ -48,7 +48,7 @@ func newDataChartPre(name, path string) *chartPre {
 	return &chartPre{name: name, path: path}
 }
 
-var dataChartScene = newDataChartPre("default_scene", "third_party/scene.pdf")
+var dataChartScene = newDataChartPre("cts_portrait_scene", "third_party/cts_portrait_scene.jpg")
 
 // DataChartScene returns test precondition for displaying scene.pdf on chart tablet.
 func DataChartScene() *chartPre {
