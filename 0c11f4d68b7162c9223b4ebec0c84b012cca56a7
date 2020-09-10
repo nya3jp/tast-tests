@@ -1,0 +1,289 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf32d58c_6c7cf90f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ad89e1d_c8a93772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "Could you make this package private (by renaming to fioResult)?",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f67d41a7_0e602d29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0518319b_80792f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "huge nit: missing trailing period to complete the sentence.",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04ef68ad_5bf2288f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "To notify \"done\" message, we often use chan struct{}, and you can just close the channel directly in goroutine, so that reader can be notified.",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c41dd1a_02abfc91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "style:\n\nfor {\n  ... :\u003d \u003c-f.resultCh\n  if !received {\n    break\n  }\n  reportResults(...)\n}\nclose(f.doneCh)\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db7e4337_fcb6e4c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "It\u0027d be nice to have the comment why this needs to aggregate reports in background goroutine.\n\nI.e., I\u0027m wondering if the following works:\n- Collect raw reports in array. In the reporting timing, it just appends to an array, so its cost should be minimum.\n- Then, at the end of the phase (~StopAndSave), post process all entries to flatten into the perf value, and save it.\n\nit\u0027d be simplifies the structure by removing the goroutine.",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c19035d_b37f0340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "Considering the current usage, I\u0027d recommend to use factory method.\n\nfunc StartResultWriting(ctx context.Context) *FioResultWriter {\n  f :\u003d \u0026FioResultWriter{\n    prefValues: pref.NewValues()\n    ...\n  }\n  go f.writerLoop(...)\n  return f\n}",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa4dd1fd_22d0c163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "Do you need a buffer?\nOtherwise, this will be a blocking operation (i.e., until the data is read in the go routine started in Start(), the procedure will be blocked at this line).",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1014400_67387db0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "clarificiation: how many entries are expected?\nIf there\u0027re many maybe it\u0027d be nice to avoid creating map for each nest level.\n\nflattenNestedResults(nested interface{}) (map[string]float64, error) {\n  m :\u003d make(map[string]float64)\n  if err :\u003d flattenNestedResultsInternal(\"\", nested, \u0026m); err !\u003d nil {\n    return nil, err\n  }\n  return m, nil\n}\n\nflattenNestedResultsInternal(prefix string, nested interface{}, out *map[string]float64) error {\n  switch nested :\u003d nested.(type) {\n  case map[string]interface{}:\n    for k, v :\u003d range nested {\n      if err :\u003d flattenNestedResultsInternal(fmt.Sprintf(\"%s_%s\", prefix, k), v); err !\u003d nil {\n        return err\n      }\n    }\n  ...  // ditto.\n  }\n  return nil\n}",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bb71f5b_4e42bb0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "could you use gopsutil instead? (I know it is not the regression, so if you\u0027d like to work on this separately that\u0027s ok, but then could you leave TODO? Ditto for the comments in this function)",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "445cf54f_41d53594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "if you need execute subcommand on DUT, could you use testexec? (but please find my comment just above, too).",
+      "range": {
+        "startLine": 150,
+        "startChar": 13,
+        "endLine": 150,
+        "endChar": 17
+      },
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b4dcc56_2bfb0493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "Note: processing the result of CombinedOutput is the source of flakiness, because stdout/stderr could be interleaved theoretically.",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "055f265c_216093d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "I thought to convert blocks to GB, we just need to devide by 1024*1024?",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "492a517c_a3a35130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:07:49Z",
+      "side": 1,
+      "message": "do you meant \"math.Round\"? Or, rather fmt.Sprintf may be better.\n\nfmt.Sprintf(\"%.fG\", blocks / (1024*1024))",
+      "range": {
+        "startLine": 160,
+        "startChar": 54,
+        "endLine": 160,
+        "endChar": 58
+      },
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
