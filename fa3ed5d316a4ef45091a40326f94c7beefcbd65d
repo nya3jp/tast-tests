@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "578ae4c2_96f70517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-10T03:18:33Z",
+      "side": 1,
+      "message": "Thanks! Wasn\u0027t aware that uig existed.",
+      "parentUuid": "bbf3e22b_c6d18ba8",
+      "range": {
+        "startLine": 87,
+        "startChar": 10,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf2db555_f13fe012",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fc21143c_f632b915",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-10T03:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf2db555_f13fe012",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 2
+      },
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f6f79fb_f7ed5f15",
         "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
         "patchSetId": 5
@@ -62,6 +110,24 @@
       "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "190b5680_ed18d61b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-10T03:18:33Z",
+      "side": 1,
+      "message": "There is a difference, renamed everything to ossettings and added a comment in the file on why.",
+      "parentUuid": "4f6f79fb_f7ed5f15",
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83c1c749_86525692",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-10T03:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d16680e4_664a2761",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +246,30 @@
       "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91447c1_bedca179",
+        "filename": "src/chromiumos/tast/local/chrome/ui/settings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-10T03:18:33Z",
+      "side": 1,
+      "message": "That\u0027s much nicer, I was wondering how to get around that.",
+      "parentUuid": "c0488a11_1e70e89a",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "fa3ed5d316a4ef45091a40326f94c7beefcbd65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
