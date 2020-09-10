@@ -20,7 +20,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -137,7 +137,7 @@ func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks int) e
 			if finishedSeeks == 0 {
 				finishedSeeks = prevFinishedSeeks
 			}
-			return errors.Wrapf(err, "Error while seeking, completed %d/%d seeks", finishedSeeks, numSeeks)
+			return errors.Wrapf(err, "error while seeking, completed %d/%d seeks", finishedSeeks, numSeeks)
 		}
 		if finishedSeeks == numSeeks {
 			break
@@ -215,10 +215,10 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 	defer vl.Close()
 
-	if err := audio.Mute(ctx); err != nil {
+	if err := crastestclient.Mute(ctx); err != nil {
 		return err
 	}
-	defer audio.Unmute(ctx)
+	defer crastestclient.Unmute(ctx)
 
 	var chromeMediaInternalsConn *chrome.Conn
 	if mode != NoVerifyHWAcceleratorUsed {
