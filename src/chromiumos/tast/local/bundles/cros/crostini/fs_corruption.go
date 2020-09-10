@@ -5,11 +5,11 @@
 package crostini
 
 import (
+	"bytes"
 	"context"
+	"io"
 	"io/ioutil"
 	"os"
-	"strconv"
-	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -87,26 +87,70 @@ func createTestFiles(ctx context.Context, container *vm.Container) error {
 	return nil
 }
 
-func getOffsets(ctx context.Context, filepath, pattern string) ([]int64, error) {
-	var offsets []int64
-	cmd := testexec.CommandContext(ctx, "grep", "--fixed-strings", "--byte-offset", "--only-matching", "--binary-files=text", pattern, filepath)
+func getOffsets(ctx context.Context, filepath string, smallPattern, bigPattern []byte) ([]int64, []int64, error) {
+	var smallOffsets, bigOffsets []int64
 
-	// Grep returns an output like "12345:pattern\n23456:pattern\n". We parse out the offsets here by splitting on "\n" and then ":". We drop the last line because it will always be empty.
-	output, err := cmd.Output(testexec.DumpLogOnError)
+	// Buffer size = 1MiB + a small amount of overlap in case one of the UUIDs is split across a boundary
+	buffer := make([]byte, 1024*1024+1024)
+	file, err := os.Open(filepath)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to run grep on disk image")
+		return nil, nil, errors.Wrap(err, "failed to open VM disk for reading")
 	}
 
-	lines := strings.Split(string(output), "\n")
-	for _, line := range lines[0 : len(lines)-1] {
-		firstPart := strings.Split(line, ":")[0]
-		i, err := strconv.ParseInt(firstPart, 10, 64)
-		if err != nil {
-			return nil, errors.Wrapf(err, "got non-int offset %s from line %s of grep output", firstPart, line)
-		}
-		offsets = append(offsets, i)
+	stat, err := file.Stat()
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to stat VM disk")
 	}
-	return offsets, nil
+	size := stat.Size()
+
+	var i int64
+	for i = 0; i < size; i += 1024 * 1024 {
+		read, err := file.ReadAt(buffer, i)
+		if err != nil && err != io.EOF {
+			return nil, nil, errors.Wrapf(err, "failed to read from VM disk at offset %d", i)
+		} else if err == io.EOF {
+			// We read less then the full buffer because we hit EOF, so truncate the buffer
+			buffer = buffer[:read]
+		} else if read < len(buffer) {
+			return nil, nil, errors.Errorf("failed to read a full buffer from VM disk at offset %d, got %d bytes, expected %d", i, read, len(buffer))
+		}
+
+		scan := buffer
+		accum := i
+		for true {
+			idx := bytes.Index(scan, smallPattern)
+			if idx == -1 {
+				break
+			}
+
+			newOffset := accum + int64(idx)
+			if len(smallOffsets) == 0 || smallOffsets[len(smallOffsets)-1] != newOffset {
+				smallOffsets = append(smallOffsets, newOffset)
+			}
+
+			scan = scan[idx+1:]
+			accum += int64(idx) + 1
+		}
+
+		scan = buffer
+		accum = i
+		for true {
+			idx := bytes.Index(scan, bigPattern)
+			if idx == -1 {
+				break
+			}
+
+			newOffset := accum + int64(idx)
+			if len(bigOffsets) == 0 || bigOffsets[len(bigOffsets)-1] != newOffset {
+				bigOffsets = append(bigOffsets, newOffset)
+			}
+
+			scan = scan[idx+1:]
+			accum += int64(idx) + 1
+		}
+	}
+
+	return smallOffsets, bigOffsets, nil
 }
 
 func writeAtSync(filepath string, b []byte, offsets []int64) error {
@@ -224,13 +268,9 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	defer vm.RestartDefaultVMContainer(ctx, s.OutDir(), data.Container)
 
 	s.Log("Searching for pattern in disk image")
-	bigOffsets, err := getOffsets(ctx, data.Container.VM.DiskPath, bigUUID)
-	if err != nil || len(bigOffsets) == 0 {
-		s.Fatal("Failed to get file offsets: ", err)
-	}
-
-	smallOffsets, err := getOffsets(ctx, data.Container.VM.DiskPath, smallUUID)
-	if err != nil || len(smallOffsets) == 0 {
+	s.Logf("Disk path: %s", data.Container.VM.DiskPath)
+	smallOffsets, bigOffsets, err := getOffsets(ctx, data.Container.VM.DiskPath, []byte(smallUUID), []byte(bigUUID))
+	if err != nil || len(smallOffsets) == 0 || len(bigOffsets) == 0 {
 		s.Fatal("Failed to get file offsets: ", err)
 	}
 
