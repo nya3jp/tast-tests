@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "026fee8e_bdcc1c8a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-10T21:20:34Z",
+      "side": 1,
+      "message": "defer menu.Release(ctx)",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "274855735e6ecb00f653c0b07f42e2136b06716c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e09e782_03593f14",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-10T21:20:34Z",
+      "side": 1,
+      "message": "is this needed?",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "274855735e6ecb00f653c0b07f42e2136b06716c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7c9975_75f07ce9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-10T21:20:34Z",
+      "side": 1,
+      "message": "nit: can we shift things around to stop from having err \u003d\u003d nil instead of err !\u003d nil:\n\nie:\n subpageFound, _ :\u003d ui.Exists(ctx, tconn, subpage)\n if subpageFound {\n   return nil\n }\n menu, err :\u003d ui.Find(ctx, tconn, ui.FindParams{\n   Name: \"Main menu\",\n   Role: ui.RoleTypeButton,\n })\n if err !\u003d nil{\n   return errors.New(\"no sidebar item loaded yet\")\n }\n defer menu.Release(ctx)\n return menu.LeftClick(ctx)",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "274855735e6ecb00f653c0b07f42e2136b06716c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
