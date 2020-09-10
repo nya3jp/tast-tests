@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "77abc029_ff7b1cde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-10T22:44:21Z",
+      "side": 1,
+      "message": "It\u0027s good to include the actual test command here in case others want to try and run it",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "fc1649c919f514bcb3887c434d2540a177ff399b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "926dcb17_79408538",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
