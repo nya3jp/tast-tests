@@ -74,6 +74,11 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 			Name: "NC_display_size_change",
 			Func: wmNC15,
 		},
+		wm.TestCase{
+			// non-resizable/clamshell: font size change
+			Name: "NC_font_size_change",
+			Func: wmNC17,
+		},
 	})
 }
 
@@ -406,6 +411,62 @@ func wmNC15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		if err := ncDisplaySizeChangeTestsHelper(ctx, tconn, a, d, actName); err != nil {
 			return err
 		}
+	}
+
+	return nil
+}
+
+// wmNC17 covers non-resizable/clamshell: font size change.
+// Expected behavior is defined in: go/arc-wm-r NC17: non-resizable/clamshell: font size change.
+func wmNC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// Font scale, this const must not be 1.
+	const fsc = 1.2
+
+	// Start a new activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "unable to create new activity")
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "unable to start new activity")
+	}
+	defer act.Stop(ctx, tconn)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return errors.Wrap(err, "unable to wait until activity is ready")
+	}
+	// Store original window info.
+	owInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "unable to get arc app window info")
+	}
+
+	// Change the font scale.
+	if err := wm.EnsureARCFontScaleChanged(ctx, a, fsc); err != nil {
+		return errors.Wrap(err, "unable to set font scale")
+	}
+	defer wm.EnsureARCFontScaleChanged(ctx, a, 1)
+
+	// Get the font scale.
+	nfs, err := wm.GetARCFontScale(ctx, a)
+	if err != nil {
+		return errors.Wrap(err, "unable to get font scale")
+	}
+
+	// Get window info after font size change.
+	wInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "unable to get arc app window info")
+	}
+	if owInfo.TargetBounds != wInfo.TargetBounds {
+		return errors.Errorf("invalid window bounds after font scale is changed: got %q; want %q", wInfo.TargetBounds, owInfo.TargetBounds)
+	}
+
+	// Compare font scale before and after scale change.
+	if nfs != fsc {
+		return errors.Errorf("invalid font scale after font scale is changed: got %.1f; want %.1f", nfs, fsc)
 	}
 
 	return nil
