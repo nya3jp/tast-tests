@@ -35,8 +35,6 @@ public class MainActivity extends Activity {
     private TextView mCount;
     private ExecutorService mExecutor = Executors.newSingleThreadExecutor();
     private ArrayList<ReceivedEvent> mRecvEvents = new ArrayList<>();
-    private Float mLastMouseX = null;
-    private Float mLastMouseY = null;
 
     // Finish trace and save the events as JSON to TextView UI.
     private void finishTrace() {
@@ -149,19 +147,6 @@ public class MainActivity extends Activity {
 
     /** Called to record timing of received input events. */
     private void traceEvent(ReceivedEvent recv) {
-        // Android may sometimes send duplicate MotionEvent events with the same coordinates
-        // and action as the last event. Discard these events.
-        if (recv.source == "Mouse") {
-            MotionEvent event = (MotionEvent) recv.event;
-            if ((mLastMouseX != null && mLastMouseY != null)
-                    && mLastMouseX.equals(event.getX(0))
-                    && mLastMouseY.equals(event.getY(0))) {
-                // ignore this event
-                return;
-            }
-            mLastMouseX = event.getX(0);
-            mLastMouseY = event.getY(0);
-        }
         // Ignore TouchScreen event that is ACTION_CANCEL
         if (recv.source == "Touchscreen" && recv.action == "ACTION_CANCEL") {
             return;

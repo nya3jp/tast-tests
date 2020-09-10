@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"encoding/json"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -82,60 +81,74 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait until CPU idle: ", err)
 	}
 
-	s.Log("Injecting mouse events")
+	// Check latency for mouse ACTION_MOVE events which are generated when moving mouse after left-button pressing down and holding.
+	s.Log("Injecting mouse move events")
 	const numEvents = 50
+	const waitMS = 50
 	eventTimes := make([]int64, 0, numEvents)
 	var x, y int32 = 10, 0
+	if err := m.Press(); err != nil {
+		s.Fatal("Unable to inject mouse press event: ", err)
+	}
+	if err := inputlatency.WaitForClearUI(ctx, d); err != nil {
+		s.Fatal("Failed to clear UI: ", err)
+	}
 	for i := 0; i < numEvents; i++ {
-		eventTimes = append(eventTimes, time.Now().UnixNano()/1000000)
-		if err := m.Move(x, y); err != nil {
-			s.Fatal("Unable to inject mouse event: ", err)
-		}
 		if x == 10 {
 			x = -10
 		} else {
 			x = 10
 		}
-		if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
-			s.Fatal("Failed to sleep between events: ", err)
+		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+			s.Fatal("Failed to generate event time: ", err)
+		}
+		if err := m.Move(x, y); err != nil {
+			s.Fatal("Unable to inject mouse event: ", err)
 		}
 	}
 
-	s.Log("Collecting results")
-	txt, err := inputlatency.WaitForEvents(ctx, d, numEvents)
-	if err != nil {
-		s.Fatal("Unable to wait for events: ", err)
-	}
-	var events []inputlatency.InputEvent
-	if err := json.Unmarshal([]byte(txt), &events); err != nil {
-		s.Fatal("Could not unmarshal events from app: ", err)
-	}
-
-	// Add RTCEventTime to inputEvents. We assume the order and number of events in the log
-	// is the same as eventTimes.
-	if len(events) != len(eventTimes) {
-		s.Fatal("There are events missing from the log")
-	}
-	for i := range events {
-		events[i].RTCEventTime = eventTimes[i]
-	}
-
-	mean, median, stdDev, max, min := inputlatency.CalculateMetrics(events, func(i int) float64 {
-		return float64(events[i].Latency)
-	})
-	s.Logf("Mouse latency: mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
-
-	rmean, rmedian, rstdDev, rmax, rmin := inputlatency.CalculateMetrics(events, func(i int) float64 {
-		return float64(events[i].RTCRecvTime - events[i].RTCEventTime)
-	})
-	s.Logf("Mouse RTC latency: mean %f median %f std %f max %f min %f", rmean, rmedian, rstdDev, rmax, rmin)
-
 	pv := perf.NewValues()
-	pv.Set(perf.Metric{
-		Name:      "avgMouseLatency",
-		Unit:      "milliseconds",
-		Direction: perf.SmallerIsBetter,
-	}, mean)
+
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, &eventTimes, "avgMouseLeftMoveLatency", pv); err != nil {
+		s.Fatal("Failed to evaluate: ", err)
+	}
+
+	if err := m.Release(); err != nil {
+		s.Fatal("Unable to inject mouse press event: ", err)
+	}
+
+	if err := inputlatency.WaitForClearUI(ctx, d); err != nil {
+		s.Fatal("Failed to clear UI: ", err)
+	}
+
+	// Check latency for these four actions.
+	// When left-clicking on mouse, it injects ACTION_DOWN, ACTION_BUTTON_PRESS, ACTION_UP and ACTION_BUTTON_RELEASE events.
+	s.Log("Injecting mouse left-click events")
+	eventTimes = make([]int64, 0, numEvents*2)
+	for i := 0; i < numEvents/2; i++ {
+		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+			s.Fatal("Failed to generate event time: ", err)
+		}
+		// ACTION_DOWN and ACTION_BUTTON_PRESS are generated together.
+		eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
+		if err := m.Press(); err != nil {
+			s.Fatal("Unable to left-click down: ", err)
+		}
+
+		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+			s.Fatal("Failed to generate event time: ", err)
+		}
+		// ACTION_UP and ACTION_BUTTON_RELEASE are generated together.
+		eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
+		if err := m.Release(); err != nil {
+			s.Fatal("Unable to release left-click: ", err)
+		}
+	}
+
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents*2, &eventTimes, "avgMouseLeftClickLatency", pv); err != nil {
+		s.Fatal("Failed to evaluate: ", err)
+	}
+
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)
 	}
