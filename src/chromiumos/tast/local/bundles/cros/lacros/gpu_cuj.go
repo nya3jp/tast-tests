@@ -15,7 +15,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -802,10 +802,10 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	if err := audio.Mute(ctx); err != nil {
+	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute audio: ", err)
 	}
-	defer audio.Unmute(ctx)
+	defer crastestclient.Unmute(ctx)
 
 	if err := quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, true); err != nil {
 		s.Fatal("Failed to disable notifications: ", err)

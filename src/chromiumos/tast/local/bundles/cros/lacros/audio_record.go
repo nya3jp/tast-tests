@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
@@ -65,7 +66,7 @@ func AudioRecord(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start recording: ", err)
 	}
 
-	if _, err = audio.FirstRunningDevice(ctx, audio.InputStream); err != nil {
+	if _, err = crastestclient.FirstRunningDevice(ctx, audio.InputStream); err != nil {
 		s.Error("Failed to detect running input device: ", err)
 	}
 }
