@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a84248a_54cd46e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:09:45Z",
+      "side": 1,
+      "message": "Could you update the commit message?\nremoving testing.Sleep is not fixing the typo :-).",
+      "revId": "c8a10d2a85764c6d3e2a71163191c0940524a819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cde77ef_11130f6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T02:09:45Z",
+      "side": 1,
+      "message": "Could you run test and verify your change works well?",
+      "revId": "c8a10d2a85764c6d3e2a71163191c0940524a819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
