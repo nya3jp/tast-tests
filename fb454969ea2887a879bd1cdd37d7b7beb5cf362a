@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d5c6b7cf_8b25a143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-10T01:32:32Z",
+      "side": 1,
+      "message": "Thank you for sharing the background!\n\nI think it\u0027d be nice to mention the background briefly at least. E.g.:\n\n// This method returns the smallest device heuristically, because we expect at most two devices.\n\noptional: I would either:\n- Rename this MinSizeDevice() or something to match with the behavior as suggested in the previous comment.\n- Rename this to SubDevice() to contrast with \"MainDevice\" above. Secondary sounds like the next following the Main, which is not matched with the current implementation, and a bit confusing (Disclaimer: I\u0027m not native English speaker, so may be \"wrong\" feeling, though).\nE.g.\n\n// SubDevice() returns the sub storage device from a list of available devices.\n// Heuristically, this returns the device with the smallest size. Practically we expect\n// at most two devices so this should ok. Also, if there are more, we have no way to differentiate.\nfunc (...) SubDevice() (*BlockDevice, error) {\n  ...\n}\n\n- Or, change the implementation return \"secondary large\" device to match the function name.",
+      "parentUuid": "d0e63805_60563874",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "fb454969ea2887a879bd1cdd37d7b7beb5cf362a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da1d4620_69a019b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
         "patchSetId": 2
