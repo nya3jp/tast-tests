@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "f50bdcbf_e80defc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_system_languages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T23:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b04b163b_2bdfcdfb",
+      "range": {
+        "startLine": 41,
+        "startChar": 54,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b24f3c10_c80744c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_system_languages.go",
         "patchSetId": 7
@@ -79,6 +103,30 @@
       "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a629b347_e4155c17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_system_languages.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T23:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b24f3c10_c80744c5",
+      "range": {
+        "startLine": 135,
+        "startChar": 41,
+        "endLine": 135,
+        "endChar": 42
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +176,30 @@
     },
     {
       "key": {
+        "uuid": "211ef62d_dc6a6c11",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T23:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "735405e1_cbf1acd0",
+      "range": {
+        "startLine": 427,
+        "startChar": 47,
+        "endLine": 427,
+        "endChar": 68
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c350d1fd_a8224115",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 7
@@ -148,6 +220,30 @@
       "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83683d07_553352fd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T23:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c350d1fd_a8224115",
+      "range": {
+        "startLine": 422,
+        "startChar": 2,
+        "endLine": 428,
+        "endChar": 3
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +270,30 @@
     },
     {
       "key": {
+        "uuid": "d7ac88bc_683d3af3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T23:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70883e86_503f9224",
+      "range": {
+        "startLine": 430,
+        "startChar": 59,
+        "endLine": 430,
+        "endChar": 84
+      },
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c49e060f_e479db02",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 7
@@ -185,6 +305,24 @@
       "writtenOn": "2020-09-10T18:26:51Z",
       "side": 1,
       "message": "offtopic/no action required: it may be worth considering to introduce some struct representing VK connection and/or VK UI connections for better encapsulation.",
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac4c4268_33d481cc",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T23:59:44Z",
+      "side": 1,
+      "message": "Good suggestion. I will think about it.",
+      "parentUuid": "c49e060f_e479db02",
       "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -205,6 +343,24 @@
       "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c10449_f7371199",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-10T23:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e9b3966_2f50ef3a",
+      "revId": "db0bf4316df9700bacb62728d9f315e9910acdec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
