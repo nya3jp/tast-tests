@@ -4,16 +4,16 @@
 
 // Package nethelper provides functionality to support test execution by handling
 // requests from various tests coming via network in context of ARC TAST test.
-// arc_eth0 on port 1235 is used as communicatin point. This helper supports
-// following commands.
+// arc_eth0 on port 1235 is used as communication point. This helper currently
+// supports the following commands:
 //   * drop_caches - drops system caches, returns OK/FAILED
 //
 // Usage pattern is following:
 // 	conn, err := nethelper.Start(ctx)
 //	if err != nil {
-//		s.Fatal("Failed to start helper", err)
+//		s.Fatal("Failed to start nethelper", err)
 //	}
-//	defer conn.Close()
+//	defer conn.Close(ctx)
 package nethelper
 
 import (
@@ -23,6 +23,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net"
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -34,33 +35,78 @@ import (
 const (
 	okResponse     = "OK"
 	failedResponse = "FAILED"
+
+	iptablesCmd  = "/sbin/iptables"
+	ip6tablesCmd = "/sbin/ip6tables"
 )
 
-// Connection describes running socket server.
+var (
+	cmds      = []string{iptablesCmd, ip6tablesCmd}
+	ifacesArc = []string{"arc_eth+", "arc_mlan+", "arc_wlan+", "arcbr+"}
+)
+
+// Connection describes running socket server context.
 type Connection struct {
-	// Contains network address that could be used by client to connect this server
-	Address  string
-	listener net.Listener
+	// Contains network addresses that could be used by client to connect this server
+	addresses []string
+	listeners []net.Listener
+	rules     []string
+	port      int
 }
 
-// Close closes the connection
-func (c *Connection) Close() {
-	c.listener.Close()
+// Close cleans up the connection context
+func (c *Connection) Close(ctx context.Context) error {
+	for _, listener := range c.listeners {
+		if err := listener.Close(); err != nil {
+			return errors.Wrap(err, "failed to close connection")
+		}
+	}
+
+	// Delete iptables rules that were created.
+	for _, rule := range c.rules {
+		for _, cmd := range cmds {
+			args := append([]string{"-w", "-D"}, strings.Fields(rule)...)
+			if err := testexec.CommandContext(ctx, cmd, args...).Run(testexec.DumpLogOnError); err != nil {
+				return errors.Wrapf(err, "failed to close port %d", c.port)
+			}
+
+			// Check the previously created iptables rules were successfully removed.
+			if err := iptablesRuleCheck(ctx, cmd, rule); err == nil {
+				return errors.Errorf("failed remove iptables rule: %s", rule)
+			}
+		}
+	}
+
+	return nil
 }
 
 // Start starts socket server and returns connection descriptor.
-func Start(ctx context.Context) (*Connection, error) {
-	const (
-		port = 1235
-	)
+func Start(ctx context.Context, port int) (*Connection, error) {
+	result := new(Connection)
+	result.port = port
+	ifacesArcSet := make(map[string]bool)
 
 	// Make sure ports may accepts connection.
-	if err := testexec.CommandContext(ctx,
-		"/sbin/iptables",
-		"-A", "INPUT", "-p", "tcp",
-		"--dport", strconv.Itoa(port),
-		"-j", "ACCEPT").Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrapf(err, "failed to open port %d", port)
+	for _, i := range ifacesArc {
+		// For faster search when checking existing net interfaces.
+		key := strings.TrimSuffix(i, "+")
+		if _, ok := ifacesArcSet[key]; !ok {
+			ifacesArcSet[key] = true
+		}
+
+		rule := "INPUT -i " + i + " -p tcp -m tcp --dport " + strconv.Itoa(port) + " -j ACCEPT"
+		result.rules = append(result.rules, rule)
+		for _, cmd := range cmds {
+			args := append([]string{"-w", "-A"}, strings.Fields(rule)...)
+			if err := testexec.CommandContext(ctx, cmd, args...).Run(testexec.DumpLogOnError); err != nil {
+				return nil, errors.Wrapf(err, "failed to open port %d", port)
+			}
+
+			// Check rules were added in IPv4 and IPv6 iptables.
+			if err := iptablesRuleCheck(ctx, cmd, rule); err != nil {
+				return nil, errors.Wrapf(err, "failed add iptables rule: %s", rule)
+			}
+		}
 	}
 
 	ifaces, err := net.Interfaces()
@@ -70,7 +116,7 @@ func Start(ctx context.Context) (*Connection, error) {
 
 	for _, i := range ifaces {
 		// Handle real addresses that could be accessible for the current DUT.
-		if i.Name != "arc_eth0" {
+		if _, ok := ifacesArcSet[regexp.MustCompile("[^a-z]+(_?[a-z]+)*$").ReplaceAllString(i.Name, "")]; !ok {
 			continue
 		}
 		addrs, err := i.Addrs()
@@ -84,25 +130,32 @@ func Start(ctx context.Context) (*Connection, error) {
 		for _, addr := range addrs {
 			switch v := addr.(type) {
 			case *net.IPNet:
-				result := new(Connection)
+				var address string
 				if v.IP.To4() != nil {
-					result.Address = fmt.Sprintf("%s:%d", v.IP, port)
+					address = fmt.Sprintf("%s:%d", v.IP, port)
 				} else {
-					result.Address = fmt.Sprintf("[%s%%%s]:%d", v.IP, i.Name, port)
+					address = fmt.Sprintf("[%s%%%s]:%d", v.IP, i.Name, port)
 				}
-				result.listener, err = net.Listen("tcp", result.Address)
+				listener, err := net.Listen("tcp", address)
 				if err != nil {
-					testing.ContextLogf(ctx, "Failed to listen on %s", result.Address)
+					testing.ContextLogf(ctx, "Failed to listen on %s", address)
 					continue
 				}
-				testing.ContextLogf(ctx, "Listening on %s", result.Address)
-				go listenForClients(ctx, result.listener)
-				return result, nil
+
+				// Deploy listen goroutine and add new connection context to result object.
+				testing.ContextLogf(ctx, "Listening on %s", address)
+				go listenForClients(ctx, listener)
+				result.addresses = append(result.addresses, address)
+				result.listeners = append(result.listeners, listener)
 			}
 		}
-
 	}
-	return nil, errors.New(fmt.Sprintf("failed to start server at port %d, no address is availables", port))
+
+	if len(result.addresses) > 0 {
+		return result, nil
+	}
+
+	return nil, errors.Errorf("failed to start server at port %d, no address is available", port)
 }
 
 func listenForClients(ctx context.Context, listener net.Listener) {
@@ -161,4 +214,24 @@ func handleDropCaches(ctx context.Context) string {
 	}
 	testing.ContextLog(ctx, "Flushed file system buffer, cleared caches, dentries and inodes")
 	return okResponse
+}
+
+func iptablesRuleCheck(ctx context.Context, cmd, rule string) error {
+	args := append([]string{"-w", "-C"}, strings.Fields(rule)...)
+	if err := testexec.CommandContext(ctx, cmd, args...).Run(); err != nil {
+		return errors.Wrapf(err, "failed to check iptables rules: %s", err)
+	}
+
+	// Since "-C" does not return any output by default, check "$?" for result.
+	if out, err := testexec.CommandContext(ctx, "sh", "-c", "echo $?").Output(); err != nil {
+		return errors.Wrap(err, "failed to obtain previous command result")
+	} else if len(out) > 0 {
+		if res, err := strconv.Atoi(strings.TrimSpace(string(out))); err != nil {
+			return errors.Wrap(err, "failed to parse command result")
+		} else if res != 0 {
+			return errors.Errorf("failed to run command: %d", res)
+		}
+	}
+
+	return nil
 }
