@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "4fa3a071_ed1c8df4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ad89e1d_c8a93772",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f67d41a7_0e602d29",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "259b5b3c_d17797a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f67d41a7_0e602d29",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0518319b_80792f08",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -67,6 +103,24 @@
       "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044b24be_1ca489f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0518319b_80792f08",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -90,6 +144,30 @@
       "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d61146_4b178a13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Simplified. irrelevant now.",
+      "parentUuid": "04ef68ad_5bf2288f",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "5385ba0d_1bb64633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "I have simplified the code by making FioResultWriter to append reports to an array under a lock and then process them in bulk on Save. We need the processing serialized because we will have concurrent reporters.",
+      "parentUuid": "db7e4337_fcb6e4c5",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c19035d_b37f0340",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -156,6 +252,30 @@
     },
     {
       "key": {
+        "uuid": "1c350e82_3007c0ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Simplified so there is no need to Start",
+      "parentUuid": "3c19035d_b37f0340",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa4dd1fd_22d0c163",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -170,6 +290,24 @@
       "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82139f5_00434ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Simplified. Adds a report to an array under a lock.",
+      "parentUuid": "aa4dd1fd_22d0c163",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +328,24 @@
     },
     {
       "key": {
+        "uuid": "0845f512_1f66a57e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Can we address it in a separate CL?\nI just moved it around from another file,  abergman@google.com has more context on the data format expected.",
+      "parentUuid": "c1014400_67387db0",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bb71f5b_4e42bb0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -204,6 +360,24 @@
       "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b56899d2_bd8600a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Let us look at it later - the function is moved as is from another file and I don\u0027t want to mix up a lot of things in one cl.",
+      "parentUuid": "5bb71f5b_4e42bb0f",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -230,6 +404,30 @@
     },
     {
       "key": {
+        "uuid": "478d69d1_0d1ce5cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "445cf54f_41d53594",
+      "range": {
+        "startLine": 150,
+        "startChar": 13,
+        "endLine": 150,
+        "endChar": 17
+      },
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b4dcc56_2bfb0493",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -247,6 +445,24 @@
     },
     {
       "key": {
+        "uuid": "ed3a7779_e9ce19bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b4dcc56_2bfb0493",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "055f265c_216093d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -261,6 +477,24 @@
       "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5382cde0_159684cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "055f265c_216093d2",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -284,6 +518,30 @@
       "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a822f73_3c62243f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T03:34:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "492a517c_a3a35130",
+      "range": {
+        "startLine": 160,
+        "startChar": 54,
+        "endLine": 160,
+        "endChar": 58
+      },
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
