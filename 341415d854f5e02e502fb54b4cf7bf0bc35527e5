@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cf5254d_1f1b48af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-10T08:18:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is an over-kill, but as it is mentioned in the bug, I try to have a simple mitigation.",
+      "revId": "341415d854f5e02e502fb54b4cf7bf0bc35527e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
