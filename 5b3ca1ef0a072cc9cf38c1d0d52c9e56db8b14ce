@@ -114,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "f47bf07f_44c5e783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-09-10T00:50:36Z",
+      "side": 1,
+      "message": "Yes, I believe that group is created by Alex to get exempt for our case.  Thanks.",
+      "parentUuid": "d78668ee_368615e7",
+      "range": {
+        "startLine": 28,
+        "startChar": 17,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "5b3ca1ef0a072cc9cf38c1d0d52c9e56db8b14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95403612_f05801e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 3

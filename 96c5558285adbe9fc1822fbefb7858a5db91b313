@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7b3084c2_7cd99b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-09-10T00:50:36Z",
+      "side": 1,
+      "message": "Or instead of why not. Please add //Todo with a bug which tracks the status/progress of promotion.\n\nOnce all its failures are logged in the bug for each try, it will help us figure out what kinda right configs are missing, or what kinda facilities tast could provide to make it more robust.",
+      "parentUuid": "ad520d42_9a5dd921",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "96c5558285adbe9fc1822fbefb7858a5db91b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c0553ba_614248ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
         "patchSetId": 7
