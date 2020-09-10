@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d9d4474_8e8bc929",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/third_party/cts_portrait_scene.jpg",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-10T08:14:19Z",
+      "side": 0,
+      "message": "According to the docs https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files\nbigger graphics files should be stored externaly. Though it is not stated what is consedered bigger, but I would assume bigger than few kB.\n@Shuo-Peng Liao: Do you have any info on what is the size \"limit\"?",
+      "revId": "46d1db6b9ddbc42eecc8406f676f1563b357bb01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
