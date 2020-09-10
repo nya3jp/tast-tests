@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27145557_b684996a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/test-extra-disk.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T00:46:34Z",
+      "side": 1,
+      "message": "external",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "2a5f509bb581e948ad42ced069d6ee1cf5ffd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80ad2de8_e910050d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_extra_disk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T00:46:34Z",
+      "side": 1,
+      "message": "Which VM is this creating?  Where is it getting the image from?  If it is using Termina, can you please make sure it is using the Termina image under test?  ie the one in the artifacts.  There is code in vm/images.go to help locate and extract these images if necessary.",
+      "revId": "2a5f509bb581e948ad42ced069d6ee1cf5ffd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a664cc_1d4013bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_extra_disk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T00:46:34Z",
+      "side": 1,
+      "message": "io.Copy?",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 3
+      },
+      "revId": "2a5f509bb581e948ad42ced069d6ee1cf5ffd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e58f898_d6dc03dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_extra_disk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T00:46:34Z",
+      "side": 1,
+      "message": "Failed",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "2a5f509bb581e948ad42ced069d6ee1cf5ffd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ffe3d4a_b5eb16e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_extra_disk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-10T00:46:34Z",
+      "side": 1,
+      "message": "run",
+      "range": {
+        "startLine": 102,
+        "startChar": 30,
+        "endLine": 102,
+        "endChar": 33
+      },
+      "revId": "2a5f509bb581e948ad42ced069d6ee1cf5ffd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
