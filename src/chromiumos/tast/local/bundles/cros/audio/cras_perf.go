@@ -10,7 +10,7 @@ import (
 
 	perfpkg "chromiumos/tast/common/perf"
 	"chromiumos/tast/local/audio"
-	"chromiumos/tast/local/bundles/cros/audio/crastestclient"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/audio/device"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/local/sysutil"
@@ -186,7 +186,7 @@ func CrasPerf(ctx context.Context, s *testing.State) {
 		}
 
 		pid, err := audio.GetCRASPID()
-		s.Log("get PID done: ", pid)
+		s.Log("Get PID done: ", pid)
 
 		if err != nil {
 			s.Fatal("Failed to find PID of cras: ", err)

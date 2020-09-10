@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
@@ -51,7 +52,7 @@ func AudioPlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for audio to play: ", err)
 	}
 
-	if _, err := audio.FirstRunningDevice(ctx, audio.OutputStream); err != nil {
+	if _, err := crastestclient.FirstRunningDevice(ctx, audio.OutputStream); err != nil {
 		s.Error("Failed to detect running output device: ", err)
 	}
 }

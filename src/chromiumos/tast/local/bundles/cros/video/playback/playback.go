@@ -14,7 +14,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/graphics"
@@ -58,10 +58,10 @@ func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, videoName
 	}
 	defer vl.Close()
 
-	if err := audio.Mute(ctx); err != nil {
+	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute device: ", err)
 	}
-	defer audio.Unmute(ctx)
+	defer crastestclient.Unmute(ctx)
 
 	testing.ContextLog(ctx, "Measuring performance")
 	if err = measurePerformance(ctx, cr, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, decoderType, s.OutDir()); err != nil {
