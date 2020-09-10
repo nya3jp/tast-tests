@@ -69,6 +69,24 @@
       "revId": "e31142bf5c8ddc834e37e32758c8f4432f6d5415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8070179d_ce012033",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-10T01:07:37Z",
+      "side": 1,
+      "message": "(For context: \nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md )",
+      "parentUuid": "788a863d_b551deba",
+      "revId": "e31142bf5c8ddc834e37e32758c8f4432f6d5415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
