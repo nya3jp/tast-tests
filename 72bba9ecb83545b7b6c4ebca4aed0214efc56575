@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "4d71a01f_3bcffaec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-10T10:08:09Z",
+      "side": 1,
+      "message": "+2 modulo other comments.",
+      "revId": "72bba9ecb83545b7b6c4ebca4aed0214efc56575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f664606_6af8e51c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
         "patchSetId": 1
@@ -58,6 +75,29 @@
         "startChar": 1,
         "endLine": 23,
         "endChar": 12
+      },
+      "revId": "72bba9ecb83545b7b6c4ebca4aed0214efc56575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ecb6a1_62f63662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-10T10:08:09Z",
+      "side": 1,
+      "message": "nit: s.Logf(\"... %v ...\", ...) can be used.",
+      "range": {
+        "startLine": 180,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 6
       },
       "revId": "72bba9ecb83545b7b6c4ebca4aed0214efc56575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
