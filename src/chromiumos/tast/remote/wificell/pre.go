@@ -42,11 +42,16 @@ func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.PreState) i
 	defer st.End()
 
 	if p.tf != nil {
-		// Properly re-init.
 		if err := p.tf.Reinit(ctx); err != nil {
-			s.Fatal("Failed to re-initialize TestFixture, err: ", err)
+			// Reinit failed.
+			s.Log("Try recreating the TestFixture as it failed to re-initialize, err: ", err)
+			if err := p.tf.Close(ctx); err != nil {
+				s.Log("Failed to close the broken TestFixture, err: ", err)
+			}
+			p.tf = nil
+		} else {
+			return p.tf
 		}
-		return p.tf
 	}
 
 	// Create TestFixture.
