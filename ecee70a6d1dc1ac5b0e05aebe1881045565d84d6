@@ -36,6 +36,41 @@
     },
     {
       "key": {
+        "uuid": "0889c9c5_52788791",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-10T19:14:15Z",
+      "side": 1,
+      "message": "Adding some comments, thanks for reviewing!",
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45dcc9ea_3e8008e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-10T19:14:15Z",
+      "side": 1,
+      "message": "For App Load Time, it should not affect test metrics / results if arc_eth0 is not available.  Mainly because the communication with nethelper is not profiled.\n\nBut on the APK side, there will be a predefined configuration where it always prefer arc_eth0 unless if it\u0027s not available (see below).  I think by default OS will also choose eth0 if both eth0 and wlan0 are available.\n\n```\nAssuming we have eth connection in lab we should enforce using it or otherwise.\n```\nFrom https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2380176/comment/dd530f0a_57815a74/ this might not be possible since not every board has ethernet port.  In this case, connection with nethelper will likely timeout without additional listeners and test will fail?  https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2380176/comment/dd530f0a_57815a74/\n\nSince all interfaces are being listened including arc_eth0, and assuming no changes to Android App which say was using only arc_eth0, this change should work the same from the perspective of test app.  For other instances mentioned below from https://crrev.com/c/2380176, the change should be more robust if certain interfaces are not available based on tast infra or board hw spec?\n\n```\nIf you are trying to open a server on the host for Apps to connect to, you should be careful about assuming that the app traffic will go through arc_eth0 all the time. In reality this depends on multiple factors inside Android, mainly 1) which network is Android default network, 2) which Android API is the app using.\n\nIf you have eth0 and wlan0 then it is true that by default the Android default interface is ethernet, and by default any Apps using the non network specific APIs will use the default network. But both points are not guaranteed. For instance if we want to test with a VPN on, nethelper will not work.\n```",
+      "parentUuid": "09f35893_e953d8b7",
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63d65ab6_6c35a3b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
         "patchSetId": 5
@@ -47,6 +82,30 @@
       "writtenOn": "2020-09-10T18:06:54Z",
       "side": 1,
       "message": "do you really need port to stop? What if you pass another port to Stop\nI think right way to do would be associating port with each connection or storing port as global variable in helper and use it to stop. Otherwise this is fragile.\nMoreover, would it be possible just hide port inside helper for simplification. What is the case when port use differently?\nYet another idea:\nnethelper.SetPort() to assign working port if we really need to overwrite.",
+      "range": {
+        "startLine": 94,
+        "startChar": 27,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c231be7_0bdefbfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-10T19:14:15Z",
+      "side": 1,
+      "message": "```\ndo you really need port to stop? What if you pass another port to Stop\nI think right way to do would be associating port with each connection or storing port as global variable in helper and use it to stop. Otherwise this is fragile.\n```\nGood point.  I\u0027ll abstract away port from Stop().  BTW, is there anything special about port 1235?  I see it used in other tasts.\n\n```\nMoreover, would it be possible just hide port inside helper for simplification. What is the case when port use differently?\nnethelper.SetPort() to assign working port if we really need to overwrite.\n```\nI\u0027m okay with either impl, this was mainly to address hardcoding concern.  hugobenichi@ - Are you ok with using default port in nethelper.go as before and having separate SetPort() function?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2380176/comment/dd0e799c_09e42a8a/",
+      "parentUuid": "63d65ab6_6c35a3b9",
       "range": {
         "startLine": 94,
         "startChar": 27,
@@ -79,6 +138,30 @@
       "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b834ebf7_1077f9cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-10T19:14:15Z",
+      "side": 1,
+      "message": "This is to address this concern from hugobenechi@ in https://crrev.com/c/2380176.  I can\u0027t comment whether host VPN network support for tast might be needed (now or later). \n\n```\nInstead I recommend finding all the \"arc\" bridges and starting listening for all these interfaces at the same time. Thanks to go select statement, the change for listenToClients should be trivial. For covering host VPNs, you also need to listen on arcbr0.\n```",
+      "parentUuid": "73d9976f_5e3e1e5a",
+      "range": {
+        "startLine": 47,
+        "startChar": 60,
+        "endLine": 47,
+        "endChar": 68
+      },
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
