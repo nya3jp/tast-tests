@@ -8,10 +8,12 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -92,8 +94,12 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 		if err := cont.VM.Stop(ctx); err != nil {
 			s.Fatal("Error stopping VM: ", err)
 		}
-		if err := vm.RestartDefaultVMContainer(ctx, s.OutDir(), cont); err != nil {
+		terminalApp, err := terminalapp.Launch(ctx, tconn, strings.Split(cr.User(), "@")[0])
+		if err != nil {
 			s.Fatal("Error restarting container: ", err)
+		}
+		if err = terminalApp.Exit(ctx, pre.Keyboard); err != nil {
+			s.Fatal("Failed to exit Terminal window: ", err)
 		}
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
