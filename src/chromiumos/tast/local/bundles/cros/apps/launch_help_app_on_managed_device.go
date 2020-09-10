@@ -111,6 +111,27 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to launch help app: ", err)
 		}
 
+		// Establish a Chrome connection to the Help app and wait for it to finish loading.
+		helpAppConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome-untrusted://help-app/"))
+		if err != nil {
+			s.Fatal("Failed to get Chrome connection to Help app: ", err)
+		}
+		defer helpAppConn.Close()
+
+		if err := helpAppConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+			s.Fatal("Failed waiting for Help app document state to be ready: ", err)
+		}
+
+		// Check that loadTimeData is correctly set.
+		isManagedDevice := false
+		if err := helpAppConn.Eval(ctx, "window.loadTimeData.getBoolean('isManagedDevice')", &isManagedDevice); err != nil {
+			s.Fatal("Failed to check loadTimeData: ", err)
+		}
+
+		if !isManagedDevice {
+			s.Error("loadTimeData.getBoolean('isManagedDevice') should return true")
+		}
+
 		isPerkShown, err := helpapp.IsPerkShown(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to check perks visibility: ", err)
