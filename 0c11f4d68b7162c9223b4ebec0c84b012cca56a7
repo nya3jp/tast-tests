@@ -247,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "8f9e9a22_c0805ae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T23:45:16Z",
+      "side": 1,
+      "message": "One of the exact things we want to do is to run tests to main and slc devices in parallel to see how they interfere with each other, thus the lock is necessary.",
+      "parentUuid": "faece286_9e548504",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c19035d_b37f0340",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -382,6 +400,24 @@
     },
     {
       "key": {
+        "uuid": "201e4512_00ec122f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T23:45:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a128e6_7e538d5c",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bb71f5b_4e42bb0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 4
@@ -432,6 +468,24 @@
       "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a39b15f8_28764b5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-10T23:45:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3e2b054_087ad0e4",
+      "revId": "0c11f4d68b7162c9223b4ebec0c84b012cca56a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
