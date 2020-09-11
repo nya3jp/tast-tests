@@ -95,7 +95,7 @@ func ZipMount(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Cannot launch the Files App: ", err)
 	}
-	defer files.Root.Release(ctx)
+	defer files.Release(ctx)
 
 	// Open the Downloads folder.
 	if err := files.OpenDownloads(ctx); err != nil {

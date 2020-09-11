@@ -84,7 +84,7 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 	if err != nil {
 		s.Fatal("Failed to open Files App: ", err)
 	}
-	defer files.Close(ctx)
+	defer files.Release(ctx)
 
 	if err := openWithReaderApp(ctx, files, dir); err != nil {
 		s.Fatal("Could not open file with ArcFileReaderTest: ", err)
