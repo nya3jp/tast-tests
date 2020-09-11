@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17c104f8_2327b016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-09-11T19:19:30Z",
+      "side": 1,
+      "message": "After separating the mouse and touch tests, we should expect the mouse tests to pass on all devices, but the touch test may still be flaky.\n\nPTAL, thanks!",
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
