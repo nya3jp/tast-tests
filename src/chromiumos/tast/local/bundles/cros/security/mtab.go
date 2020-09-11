@@ -87,6 +87,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/dev":                              {nil, "devtmpfs", "rw,nosuid,noexec,mode=755"},
 		"/dev/pts":                          {nil, "devpts", "rw,nosuid,noexec,gid=5,mode=620"},
 		"/dev/shm":                          {nil, "tmpfs", defaultRW},
+		"/etc/hosts.d":                      {regexp.MustCompile("^run$"), "tmpfs", defaultRW},
 		"/home":                             {nil, "ext4", defaultRW},
 		"/home/chronos":                     {nil, "ext4", defaultRW},
 		"/home/root":                        {nil, "ext4", defaultRW}, // TODO(crbug.com/1069501): remove once bug is fixed.
