@@ -56,6 +56,30 @@
       "revId": "e23488705b56652ed4cbe25e78e1356d44f4dcb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9665447c_a1e5164b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2020-09-11T02:23:16Z",
+      "side": 1,
+      "message": "Params of each parameterised test (each item in Test.Params in init()) is passed as s.Param(), but we need to \"cast\" it to the \"deadKeysTestCase\" type first.",
+      "parentUuid": "5101a698_80793767",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 24
+      },
+      "revId": "e23488705b56652ed4cbe25e78e1356d44f4dcb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
