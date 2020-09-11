@@ -58,6 +58,32 @@ func Exists(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	return ui.Exists(ctx, tconn, helpRootNodeParams)
 }
 
+// LoadTimeData struct for the help app.
+// Following fields populated by |ChromeHelpAppUIDelegate::PopulateLoadTimeData|
+// https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/web_applications/chrome_help_app_ui_delegate.cc;l=53;drc=c2c84a5ac7711dedcc0b7ff9e79bf7f2da019537.
+type LoadTimeData struct {
+	IsManagedDevice bool `json:"isManagedDevice"`
+}
+
+// GetLoadTimeData returns some of the LoadTimeData fields from the help app.
+func GetLoadTimeData(ctx context.Context, cr *chrome.Chrome) (*LoadTimeData, error) {
+	// Establish a Chrome connection to the Help app and wait for it to finish loading.
+	helpAppConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome-untrusted://help-app/"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get connection to help app")
+	}
+	defer helpAppConn.Close()
+
+	if err := helpAppConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for help app to finish loading")
+	}
+	data := &LoadTimeData{}
+	if err := helpAppConn.Eval(ctx, "window.loadTimeData.data_", &data); err != nil {
+		return nil, errors.Wrap(err, "failed to evaluate window.loadTimeData.data_")
+	}
+	return data, nil
+}
+
 // IsPerkShown checks if the perks tab is displayed or not.
 func IsPerkShown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	return isTabShown(ctx, tconn, "Perks")
