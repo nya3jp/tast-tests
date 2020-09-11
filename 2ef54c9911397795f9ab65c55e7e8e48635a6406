@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e0b7d22_2440e5fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-11T04:42:23Z",
+      "side": 1,
+      "message": "WaitUntilDescendantExists would be more natural here I think. Also not sure if releasing the node gets taken care of when it\u0027s assigned to _.",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "2ef54c9911397795f9ab65c55e7e8e48635a6406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
