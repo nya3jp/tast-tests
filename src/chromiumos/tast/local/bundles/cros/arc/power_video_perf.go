@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -29,7 +28,7 @@ const (
 	iterationDuration = 10 * time.Second
 	warmupDuration    = 10 * time.Second
 	// Mostly consumed by boot timeout and WaitUntilIdle
-	testSlack         = 2 * time.Minute
+	testSlack         = 5 * time.Minute
 	powerTestDuration = iterationCount*iterationDuration + warmupDuration + testSlack
 
 	logFileName = "gtest_logs.txt"
@@ -172,9 +171,9 @@ func PowerVideoPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to push video stream to ARC: ", err)
 	}
 
-	s.Log("Waiting until CPU is idle")
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed to wait until CPU is idle: ", err)
+	// Wait until CPU is cooled down.
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("CPU failed to cool down: ", err)
 	}
 
 	sup.Add(setup.StartActivity(ctx, tconn, a, c2e2etest.Pkg, c2e2etest.ActivityName, setup.Prefixes("-n"), setup.Suffixes(intentExtras...)))
