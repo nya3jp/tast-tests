@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b99d0056_ab4a50eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-11T15:50:58Z",
+      "side": 1,
+      "message": "Please address the final comment that Kyle brought up before submitting.",
+      "revId": "2ef54c9911397795f9ab65c55e7e8e48635a6406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e0b7d22_2440e5fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
         "patchSetId": 11
@@ -13,6 +30,30 @@
       "writtenOn": "2020-09-11T04:42:23Z",
       "side": 1,
       "message": "WaitUntilDescendantExists would be more natural here I think. Also not sure if releasing the node gets taken care of when it\u0027s assigned to _.",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "2ef54c9911397795f9ab65c55e7e8e48635a6406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae3f21b_13e83809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-11T15:50:58Z",
+      "side": 1,
+      "message": "Good catch. This should also be released. or switced to a different method that doesn\u0027t grab a node.",
+      "parentUuid": "2e0b7d22_2440e5fa",
       "range": {
         "startLine": 76,
         "startChar": 4,
