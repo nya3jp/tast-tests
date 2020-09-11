@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "a3310137_0fab0388",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-11T18:05:00Z",
+      "side": 1,
+      "message": "Just added some clarification about the diff arrays.",
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0e0351e_02b704c5",
         "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
         "patchSetId": 2
@@ -231,6 +248,30 @@
       "writtenOn": "2020-09-11T16:14:47Z",
       "side": 1,
       "message": "I\u0027m don\u0027t know how the host-clock-service works, so perhaps I\u0027m missing something.\nIn my mind, this service should return the diff between host and guest. But that different should be constant, it should never change once the VM is up and running (it my change if the VM is restarted though).\n\nSo, if my assumption is correct, then we don\u0027t need a \"diff array\" since the elements of the array should be the same.\n\nis this correct?",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 50
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a03f9a_a8d685d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-11T18:05:00Z",
+      "side": 1,
+      "message": "You\u0027re right that ideally the diff between host and guest should be constant, but in practice the guest clock tends to drift out of sync with the host (https://b.corp.google.com/issues/123416853#comment27).\narc-host-clock tries to compensate for this (https://googleplex-android-review.git.corp.google.com/c/platform/vendor/google_arc/+/12434082/5/services/arc-host-clock/main.cpp#100), but in practice, the value of ArcHostClock::getBoottimeDifference() changes by as much as ~10^8 every second (as observed by running arc-host-clock-client). I tried using one diff value at first, but this results in either a negative or too large average latency, depending on if the diff is taken at the beginning or end. I think it\u0027s likely because the clock has drifted. Getting a diff value at the time of each event seems to be more accurate, and consistently reports results that are similar to my manual measurements.",
+      "parentUuid": "71b99220_f8bf4151",
       "range": {
         "startLine": 134,
         "startChar": 36,
