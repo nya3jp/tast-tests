@@ -51,6 +51,24 @@
       "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa99206f_6f853bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_start.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-11T14:18:37Z",
+      "side": 1,
+      "message": "On second thought, I realized precondition is needed to clean up `/run/imageloader/cros-termina/*/` after tests.\nI suspect existing preconditions are enough. Although we don\u0027t need some setup for vmc technically, it\u0027d be okay to have it. \nWDYT?",
+      "parentUuid": "6e496483_a63ec908",
+      "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
