@@ -33,6 +33,92 @@
       "revId": "b3b157b43d8f5932af2e88ec0a515f98da471efb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "203880da_c928daf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-09-11T18:14:10Z",
+      "side": 1,
+      "message": "I left some nit to the change. I simply noticed wmRV20 is very similar to wmRV19 atm. Those nits are just be consistent with the variable name in wmRV19.\nI won\u0027t withdraw +2 but if wmRV21, wmRV22, etc. will be added in the future, please consider write a shared function in tast. ",
+      "revId": "b3b157b43d8f5932af2e88ec0a515f98da471efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60975c13_1ae13574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-09-11T18:14:10Z",
+      "side": 1,
+      "message": "nit. windowInfoBeforeTabletMode for consistency with wmRV19",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 3
+      },
+      "revId": "b3b157b43d8f5932af2e88ec0a515f98da471efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71f58181_e0cdbb19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-09-11T18:14:10Z",
+      "side": 1,
+      "message": "nit. windowID",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 4
+      },
+      "revId": "b3b157b43d8f5932af2e88ec0a515f98da471efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11b47fcc_dcf46547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-09-11T18:14:10Z",
+      "side": 1,
+      "message": "nit. windowInfoAtTabletMode",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 3
+      },
+      "revId": "b3b157b43d8f5932af2e88ec0a515f98da471efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
