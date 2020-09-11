@@ -343,20 +343,8 @@ func NotificationsHidden(ctx context.Context, tconn *chrome.TestConn) (bool, err
 func findSlider(ctx context.Context, tconn *chrome.TestConn, slider SliderType) (*ui.Node, error) {
 	// The mic gain slider is on the audio settings page of Quick Settings, so we need to navigate there first.
 	if slider == SliderTypeMicGain {
-		audioParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "Audio settings"}
-
-		if exists, err := ui.Exists(ctx, tconn, audioParams); err != nil {
-			return nil, errors.Wrap(err, "failed to check if audio settings button exists")
-		} else if exists {
-			audioBtn, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, Name: "Audio settings"}, uiTimeout)
-			if err != nil {
-				return nil, errors.Wrap(err, "failed to find audio settings button")
-			}
-			defer audioBtn.Release(ctx)
-
-			if err := audioBtn.LeftClick(ctx); err != nil {
-				return nil, errors.Wrap(err, "failed to click audio settings button")
-			}
+		if err := OpenAudioSettings(ctx, tconn); err != nil {
+			return nil, err
 		}
 	}
 
@@ -365,6 +353,33 @@ func findSlider(ctx context.Context, tconn *chrome.TestConn, slider SliderType) 
 		return nil, errors.Wrapf(err, "failed finding the %v slider", slider)
 	}
 	return s, nil
+}
+
+// OpenAudioSettings opens Quick Settings' audio settings page. It does nothing if the page is already open.
+func OpenAudioSettings(ctx context.Context, tconn *chrome.TestConn) error {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer cleanup(ctx)
+
+	audioParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "Audio settings"}
+
+	if exists, err := ui.Exists(ctx, tconn, audioParams); err != nil {
+		return errors.Wrap(err, "failed to check if audio settings button exists")
+	} else if exists {
+		audioBtn, err := ui.Find(ctx, tconn, audioParams)
+		if err != nil {
+			errors.Wrap(err, "failed to find audio settings button")
+		}
+		defer audioBtn.Release(ctx)
+
+		if err := audioBtn.LeftClick(ctx); err != nil {
+			return errors.Wrap(err, "failed to click audio settings button")
+		}
+	}
+
+	return ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "AudioDetailedView"}, uiTimeout)
 }
 
 // SliderValue returns the slider value as an integer.
@@ -493,4 +508,21 @@ func DecreaseSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 	}
 
 	return SliderValue(ctx, tconn, slider)
+}
+
+// SelectAudioOption selects the audio input or output device with the given name from the audio settings page.
+func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, device string) error {
+	if err := OpenAudioSettings(ctx, tconn); err != nil {
+		return err
+	}
+
+	option, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeCheckBox, Name: device}, uiTimeout)
+	if err != nil {
+		return errors.Wrapf(err, "failed finding node for %v audio option", device)
+	}
+	if err := option.LeftClick(ctx); err != nil {
+		return errors.Wrapf(err, "failed to click %v audio option", device)
+	}
+
+	return nil
 }
