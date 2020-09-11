@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "ae61905c_fa731f3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-09-11T18:10:21Z",
+      "side": 1,
+      "message": "LGTM. Thanks!",
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0e0351e_02b704c5",
         "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
         "patchSetId": 2
@@ -133,6 +150,30 @@
       "writtenOn": "2020-09-11T16:14:47Z",
       "side": 1,
       "message": "nit: add a comment why you need a size of \"repeat * 2\"",
+      "range": {
+        "startLine": 96,
+        "startChar": 27,
+        "endLine": 96,
+        "endChar": 36
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf24941_2fc0cc0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-09-11T18:10:21Z",
+      "side": 1,
+      "message": "Each loop or each simulated operation generates two events. (Sorry I should complete here. Thanks!)",
+      "parentUuid": "7c397cc8_3bdf1dad",
       "range": {
         "startLine": 96,
         "startChar": 27,
@@ -387,6 +428,30 @@
       "writtenOn": "2020-09-11T16:14:47Z",
       "side": 1,
       "message": "nit: ditto above, add comment why numEvents*2 is needed.\n\nalternative, create a new constant with a descriptive name. e.g:\n\n  const (\n     ...\n     someConstName \u003d numEvents*2\n  )",
+      "range": {
+        "startLine": 138,
+        "startChar": 26,
+        "endLine": 138,
+        "endChar": 37
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec2dfd6_9031cf86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-09-11T18:10:21Z",
+      "side": 1,
+      "message": "Each simulated operation generates four events. 50*2/4 doesn\u0027t get remainder.",
+      "parentUuid": "de6b085f_6482244f",
       "range": {
         "startLine": 138,
         "startChar": 26,
