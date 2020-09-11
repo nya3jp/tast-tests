@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "711ccd40_27419704",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-11T06:15:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "716a486c_9bdadc89",
+      "range": {
+        "startLine": 370,
+        "startChar": 3,
+        "endLine": 370,
+        "endChar": 33
+      },
+      "revId": "531fc355a14d62abc87d0ffb392e87e521df4347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29810353_2e9302b7",
         "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
         "patchSetId": 1
