@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "13bec964_a785e7e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T14:56:44Z",
+      "side": 1,
+      "message": "also, you can just simply inline this constant, I don\u0027t see reason for it to be separate from usage",
+      "parentUuid": "de83662b_ccef7299",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d174e56_6c8cb7e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
         "patchSetId": 2
@@ -127,6 +151,29 @@
         "startChar": 4,
         "endLine": 57,
         "endChar": 9
+      },
+      "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d61ac98f_89854f29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T14:56:44Z",
+      "side": 1,
+      "message": "nit: log only before long running operations\ncheck https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 34
       },
       "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
