@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/c2e2etest"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -53,7 +52,7 @@ func init() {
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Timeout: 15 * time.Minute,
+		Timeout: 20 * time.Minute,
 	})
 }
 
@@ -116,10 +115,8 @@ func PowerVideoPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to push video stream to ARC: ", err)
 	}
 
-	s.Log("Waiting until CPU is idle")
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed to wait until CPU is idle: ", err)
-	}
+	// Wait until CPU is idle and cooled down.
+	sup.Add(setup.WaitUntilCPUIdle(ctx, power.CoolDownPreserveUI))
 
 	sup.Add(setup.StartActivity(ctx, tconn, a, c2e2etest.Pkg, c2e2etest.ActivityName, setup.Prefixes("-n"), setup.Suffixes(intentExtras...)))
 
