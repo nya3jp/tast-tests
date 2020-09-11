@@ -10,7 +10,8 @@
         android:targetSdkVersion="28" />
     <application
         android:allowBackup="false"
-        android:label="ARC Motion Input Test">
+        android:label="ARC Motion Input Test"
+        android:theme="@android:style/Theme.NoTitleBar">
 
         <activity
             android:name=".MotionEventReportingActivity"
