@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "a0f16fa7_446e92f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-11T01:19:12Z",
+      "side": 1,
+      "message": "done, thanks!",
+      "parentUuid": "03931d3f_073bc905",
+      "range": {
+        "startLine": 221,
+        "startChar": 60,
+        "endLine": 221,
+        "endChar": 63
+      },
+      "revId": "171f63b75457c530de9e145deccf535e2ff16a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99824f90_2860ff1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
         "patchSetId": 1
@@ -70,6 +94,30 @@
       "writtenOn": "2020-09-11T00:18:50Z",
       "side": 1,
       "message": "qq: is there any reason that act.WindowBounds(ctx) is not working for this test?",
+      "range": {
+        "startLine": 251,
+        "startChar": 16,
+        "endLine": 251,
+        "endChar": 38
+      },
+      "revId": "171f63b75457c530de9e145deccf535e2ff16a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2c2831f_5f779f36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-11T01:19:12Z",
+      "side": 1,
+      "message": "The bounds specified in the manifest is used to decide the window frame bounds in android framework, which doesn\u0027t include caption height.\nact.WindowBounds(ctx) returns the bounds with caption if it exists, and act.SurfaeBounds(ctx) doesn\u0027t include it.",
+      "parentUuid": "99824f90_2860ff1d",
       "range": {
         "startLine": 251,
         "startChar": 16,
