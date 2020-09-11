@@ -116,7 +116,7 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 					Role: ui.RoleTypeButton,
 					Name: "Allow",
 				}
-				node, err := ui.FindWithTimeout(ctx, tconn, params, 15*time.Second)
+				node, err := ui.FindWithTimeout(ctx, tconn, params, 30*time.Second)
 				if err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
 					ch <- errors.Wrap(err, "failed to find allow button node")
 					return
