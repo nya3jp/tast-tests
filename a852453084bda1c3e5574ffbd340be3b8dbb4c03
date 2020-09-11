@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "479cf300_18e7d0f6",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T00:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad6998f_12ca60a8",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 10
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dca6a8e1_97f79439",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 9
@@ -53,6 +77,30 @@
       "writtenOn": "2020-09-10T23:35:08Z",
       "side": 1,
       "message": "Why are you using name instead of id here? I think id will make these future proof when we are testing in different locales?",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 20
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ef2cd0_ff5273ea",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T00:43:30Z",
+      "side": 1,
+      "message": "I do not know how to find the icon by ID. I could not find any reference to the ID in the ui_tree.txt. Please let me know what API I should use. \n\nAnother way is to call apps.Launch instead. If it was what you meant, I can remove this function and call apps.Launch instead. Please let me know.\n\nThanks.",
+      "parentUuid": "dca6a8e1_97f79439",
       "range": {
         "startLine": 531,
         "startChar": 5,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "bcc47714_2bb0cd37",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T00:43:30Z",
+      "side": 1,
+      "message": "I do not know how to find the icon by ID. I could not find any reference to the ID in the ui_tree.txt. Please let me know what API I should use. Thanks.",
+      "parentUuid": "924cf793_4d880f90",
+      "range": {
+        "startLine": 546,
+        "startChar": 5,
+        "endLine": 546,
+        "endChar": 17
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5cf49f4_4e3e2b7f",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 9
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "8607c300_e5507eeb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T00:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5cf49f4_4e3e2b7f",
+      "range": {
+        "startLine": 116,
+        "startChar": 39,
+        "endLine": 116,
+        "endChar": 48
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b7e8190_454aba13",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 9
@@ -122,6 +218,30 @@
       "writtenOn": "2020-09-10T23:35:08Z",
       "side": 1,
       "message": "Could you file a bug to get an autotestprivate function to do this for tests that don\u0027t want to go through the UI",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 21
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d25fb2_5ddf19f2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T00:43:30Z",
+      "side": 1,
+      "message": "What component should I file the bug under? Thanks.",
+      "parentUuid": "8b7e8190_454aba13",
       "range": {
         "startLine": 117,
         "startChar": 5,
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "68442ba3_704f6d5a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T00:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2aeec42_777035d5",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 57
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e07c2415_42f0a542",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 9
@@ -180,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "e898dd14_eb3265e1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T00:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e07c2415_42f0a542",
+      "range": {
+        "startLine": 147,
+        "startChar": 5,
+        "endLine": 147,
+        "endChar": 23
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bace471_135bc858",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 9
@@ -200,6 +368,30 @@
       "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "682a774a_f0cff074",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T00:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bace471_135bc858",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 57
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

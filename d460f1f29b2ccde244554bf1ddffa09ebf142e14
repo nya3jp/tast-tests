@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57267d86_f87b17a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T00:43:30Z",
+      "side": 1,
+      "message": "Hi Dave:\n\nI have addressed some of your concerns. There are a few items that I am not sure how to proceed. Please take a look at my comments and advice. Thanks.\n\nSeewai\n ",
+      "revId": "d460f1f29b2ccde244554bf1ddffa09ebf142e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
