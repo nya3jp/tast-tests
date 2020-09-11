@@ -129,7 +129,7 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
 				Name:      apps.PlayStore.Name,
 				ClassName: "SearchResultSuggestionChipView",
-			}, 10*time.Second); err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
+			}, 20*time.Second); err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
 				s.Fatal("Unexpected error while waiting for Play Store: ", err)
 			} else if enabled := (err == nil); enabled != param.wantEnabled {
 				s.Errorf("Unexpected ARC enabled state: got %t; want %t", enabled, param.wantEnabled)
