@@ -12,26 +12,27 @@ import (
 	"sort"
 	"strconv"
 	"time"
+	_ "unsafe" // required to use //go:linkname
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
 // InputEvent represents a single input event received by the helper app.
 type InputEvent struct {
-	// One of "KeyEvent", "MotionEvent", or "InputEvent".
-	Kind string `json:"type"`
 	// Time (in ms) that the event was sent by the kernel.
-	EventTime int64 `json:"eventTime"`
-	// RTC time that the event was sent by the kernel.
-	RTCEventTime int64
+	EventTimeMs int64 `json:"eventTime"`
+	// Time (in ns) that the event was sent by the kernel (filled by host).
+	EventTimeNs int64
 	// Time (in ms) that the event was received by the app.
-	RecvTime int64 `json:"receiveTime"`
-	// RTC time that the event was received by the app.
-	RTCRecvTime int64 `json:"rtcReceiveTime"`
-	// Difference between eventTime and recvTime.
+	RecvTimeMs int64 `json:"receiveTimeMs"`
+	// Time (in ns) that the event was received by the app.
+	RecvTimeNs int64 `json:"receiveTimeNs"`
+	// Difference between eventTimeMs and recvTimeMs.
 	Latency int64 `json:"latency"`
 }
 
@@ -130,7 +131,7 @@ func WaitForClearUI(ctx context.Context, d *ui.Device) error {
 
 // EvaluateLatency gets event data, calculates the latency, and adds the result to performance metrics.
 func EvaluateLatency(ctx context.Context, s *testing.State, d *ui.Device,
-	numEvents int, eventTimes *[]int64, perfName string, pv *perf.Values) error {
+	numEvents int, eventTimes []int64, diffs []int64, perfName string, pv *perf.Values) error {
 	s.Log("Collecting results")
 	txt, err := WaitForEvents(ctx, d, numEvents)
 	if err != nil {
@@ -143,18 +144,24 @@ func EvaluateLatency(ctx context.Context, s *testing.State, d *ui.Device,
 
 	// Assign event RTC time.
 	for i := range events {
-		events[i].RTCEventTime = (*eventTimes)[i]
+		events[i].EventTimeNs = eventTimes[i]
+	}
+
+	// Adjust receive times for VM.
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Unable to check install type of ARC: ", err)
+	}
+	if vmEnabled {
+		for i := range events {
+			events[i].RecvTimeNs += diffs[i]
+		}
 	}
 
 	mean, median, stdDev, max, min := CalculateMetrics(events, func(i int) float64 {
-		return float64(events[i].Latency)
+		return float64(events[i].RecvTimeNs-events[i].EventTimeNs) / 1000000.
 	})
-	s.Logf("Latency: mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
-
-	rmean, rmedian, rstdDev, rmax, rmin := CalculateMetrics(events, func(i int) float64 {
-		return float64(events[i].RTCRecvTime - events[i].RTCEventTime)
-	})
-	s.Logf("RTC latency: mean %f median %f std %f max %f min %f", rmean, rmedian, rstdDev, rmax, rmin)
+	s.Logf("Latency (ms): mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
 
 	pv.Set(perf.Metric{
 		Name:      perfName,
@@ -164,12 +171,51 @@ func EvaluateLatency(ctx context.Context, s *testing.State, d *ui.Device,
 	return nil
 }
 
+//go:noescape
+//go:linkname nanotime runtime.nanotime
+func nanotime() int64
+
+// Now returns the current time in nanoseconds from a monotonic clock. This uses
+// runtime.nanotime() which uses CLOCK_MONOTONIC on Linux. We must use this since time.Now()
+// does not let us access the raw monotonic time value, which we need to compare to the
+// monotonic time value taken on Android.
+func Now() time.Duration {
+	return time.Duration(nanotime())
+}
+
 // WaitForNextEventTime generates next event time with specific time interval in millisecond.
-func WaitForNextEventTime(ctx context.Context, eventTimes *[]int64, ms time.Duration) error {
+func WaitForNextEventTime(ctx context.Context, a *arc.ARC, eventTimes *[]int64, diffs *[]int64, ms time.Duration) error {
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		return errors.Wrap(err, "unable to check install type of ARC")
+	}
+	if vmEnabled {
+		// Get current boottime diff between guest and host
+		d, err := getVMTimeDiff(ctx, a)
+		if err != nil {
+			return errors.Wrap(err, "unable to get VM time diff")
+		}
+		*diffs = append(*diffs, d)
+	}
+
 	// Wait to generate next event time.
 	if err := testing.Sleep(ctx, ms*time.Millisecond); err != nil {
 		return errors.Wrap(err, "timeout while waiting to generate next event time")
 	}
-	*eventTimes = append(*eventTimes, time.Now().UnixNano()/1000000)
+	*eventTimes = append(*eventTimes, Now().Nanoseconds())
 	return nil
+}
+
+// getVMTimeDiff runs arc-host-clock-client in the VM to determine the time difference
+// between ARCVM and the host.
+func getVMTimeDiff(ctx context.Context, a *arc.ARC) (int64, error) {
+	out, err := a.Command(ctx, "arc-host-clock-client").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to run arc-host-clock-client")
+	}
+	i, err := strconv.ParseInt(string(out), 10, 64)
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to convert arc-host-clock-client output")
+	}
+	return i, nil
 }

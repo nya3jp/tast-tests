@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
             return false;
         }
         ReceivedEvent recv =
-                new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis());
+                new ReceivedEvent(event, SystemClock.uptimeMillis(), SystemClock.elapsedRealtimeNanos());
 
         traceEvent(recv);
         final int source = event.getSource();
@@ -115,7 +115,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         traceEvent(
-                new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis()));
+                new ReceivedEvent(event, SystemClock.uptimeMillis(), SystemClock.elapsedRealtimeNanos()));
         final int source = event.getSource();
         // Stop dispatching gamepad event.
         if ((source & InputDevice.SOURCE_GAMEPAD) != 0
@@ -132,7 +132,7 @@ public class MainActivity extends Activity {
         if ((source & InputDevice.SOURCE_GAMEPAD) == 0
                 && (source & InputDevice.SOURCE_JOYSTICK) == 0) {
             traceEvent(
-                new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis()));
+                new ReceivedEvent(event, SystemClock.uptimeMillis(), SystemClock.elapsedRealtimeNanos()));
             return  super.dispatchGenericMotionEvent(event);
         }
         // It is possible that the InputDevice is already gone when MotionEvent arrives.
@@ -141,7 +141,7 @@ public class MainActivity extends Activity {
             return true;
         }
         traceEvent(
-                new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis()));
+                new ReceivedEvent(event, SystemClock.uptimeMillis(), SystemClock.elapsedRealtimeNanos()));
         return true;
     }
 

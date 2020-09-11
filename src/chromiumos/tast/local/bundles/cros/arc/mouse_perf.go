@@ -25,9 +25,15 @@ func init() {
 		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// TODO(wvk): Once clocks are synced between the host and guest, add
 		// support for ARCVM to this test (b/123416853).
-		SoftwareDeps: []string{"chrome", "android_p"},
-		Pre:          arc.Booted(),
-		Timeout:      2 * time.Minute,
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+		Pre:     arc.Booted(),
+		Timeout: 2 * time.Minute,
 	})
 }
 
@@ -88,6 +94,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		waitMS    = 50
 	)
 	eventTimes := make([]int64, 0, numEvents)
+	diffs := make([]int64, 0, numEvents)
 	var x, y int32 = 10, 0
 	if err := m.Press(); err != nil {
 		s.Fatal("Unable to inject Press mouse event: ", err)
@@ -101,7 +108,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		} else {
 			x = 10
 		}
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, &diffs, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		if err := m.Move(x, y); err != nil {
@@ -111,7 +118,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, &eventTimes, "avgMouseLeftMoveLatency", pv); err != nil {
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, diffs, "avgMouseLeftMoveLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
@@ -121,33 +128,37 @@ func MousePerf(ctx context.Context, s *testing.State) {
 
 	if err := inputlatency.WaitForClearUI(ctx, d); err != nil {
 		s.Fatal("Failed to clear UI: ", err)
+
 	}
 
 	// When left-clicking on mouse, it injects ACTION_DOWN, ACTION_BUTTON_PRESS, ACTION_UP and ACTION_BUTTON_RELEASE events.
 	// Check latency for these four actions.
 	s.Log("Injecting mouse left-click events")
 	eventTimes = make([]int64, 0, numEvents*2)
+	diffs = make([]int64, 0, numEvents*2)
 	for i := 0; i < numEvents/2; i++ {
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, &diffs, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		// ACTION_DOWN and ACTION_BUTTON_PRESS are generated together.
 		eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
+		diffs = append(diffs, diffs[len(diffs)-1])
 		if err := m.Press(); err != nil {
 			s.Fatal("Unable to inject Press mouse event: ", err)
 		}
 
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, &diffs, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		// ACTION_UP and ACTION_BUTTON_RELEASE are generated together.
 		eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
+		diffs = append(diffs, diffs[len(diffs)-1])
 		if err := m.Release(); err != nil {
 			s.Fatal("Unable to inject Release mouse event: ", err)
 		}
 	}
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents*2, &eventTimes, "avgMouseLeftClickLatency", pv); err != nil {
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents*2, eventTimes, diffs, "avgMouseLeftClickLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 

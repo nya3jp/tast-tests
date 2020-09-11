@@ -16,23 +16,23 @@ import org.json.JSONObject;
 
 public class ReceivedEvent {
     public InputEvent event;
-    public Long receiveTime;
-    public Long rtcReceiveTime;
+    public Long receiveTimeMs;
+    public Long receiveTimeNs;
     public Long eventTime;
     public Long latency;
     public String source;
     public String code;
     public String action;
 
-    public ReceivedEvent(InputEvent event, Long receiveTime, Long rtcReceiveTime) {
+    public ReceivedEvent(InputEvent event, Long receiveTimeMs, Long receiveTimeNs) {
         // Note that on ARC++, eventTime is the same as the original (host) kernel
         // timestamp of the event. On ARCVM, the event timestamp is rewritten in the
         // guest kernel due to differing monotonic clocks (b/123416853).
         this.event = event;
         this.eventTime = event.getEventTime();
-        this.receiveTime = receiveTime;
-        this.rtcReceiveTime = rtcReceiveTime;
-        this.latency = receiveTime - eventTime;
+        this.receiveTimeMs = receiveTimeMs;
+        this.receiveTimeNs = receiveTimeNs;
+        this.latency = receiveTimeMs - eventTime;
 
         switch (event.getSource()) {
             case InputDevice.SOURCE_KEYBOARD:
@@ -91,8 +91,8 @@ public class ReceivedEvent {
                 .put("code", code)
                 .put("action", action)
                 .put("eventTime", eventTime)
-                .put("receiveTime", receiveTime)
-                .put("rtcReceiveTime", rtcReceiveTime)
+                .put("receiveTimeMs", receiveTimeMs)
+                .put("receiveTimeNs", receiveTimeNs)
                 .put("latency", latency);
     }
 
@@ -100,6 +100,6 @@ public class ReceivedEvent {
     public String toString() {
         return String.format(
                 "%s:%s:%s:%d:%d:%d:%d",
-                source, code, action, eventTime, receiveTime, rtcReceiveTime, latency);
+                source, code, action, eventTime, receiveTimeMs, receiveTimeNs, latency);
     }
 }
