@@ -23,9 +23,16 @@ func init() {
 		Desc:         "Test ARC gamepad system performance",
 		Contacts:     []string{"arc-performance@google.com", "ruanc@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "android_p"},
-		Pre:          arc.Booted(),
-		Timeout:      2 * time.Minute,
+		SoftwareDeps: []string{"chrome"},
+		Data:         inputlatency.AndroidData(),
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+		Pre:     arc.Booted(),
+		Timeout: 2 * time.Minute,
 	})
 }
 
@@ -56,6 +63,10 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 
 	s.Log("Created a virtual gamepad device ", gp.Device())
 
+	if err := inputlatency.InstallArcHostClockClient(ctx, a, s); err != nil {
+		s.Fatal("Could not install arc-host-clock-client: ", err)
+	}
+
 	const (
 		apk = "ArcInputLatencyTest.apk"
 		pkg = "org.chromium.arc.testapp.inputlatency"
@@ -84,18 +95,21 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Injecting one button key event each time")
-	const repeat = 25
-	const waitMS = 50
+	const (
+		repeat = 25
+		waitMS = 50
+	)
+	// Use repeat*2 because each iteration of the loop generates two events.
 	eventTimes := make([]int64, 0, repeat*2)
 	for i := 0; i < repeat; i++ {
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		if err := gp.PressButton(ctx, input.BTN_EAST); err != nil {
 			s.Fatal("Failed to inject key event: ", err)
 		}
 
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 
@@ -106,7 +120,7 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, repeat*2, &eventTimes, "avgGamepadButtonLatency", pv); err != nil {
+	if err := inputlatency.EvaluateLatency(ctx, s, d, repeat*2, eventTimes, "avgGamepadButtonLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
@@ -115,10 +129,11 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Injecting one joystick event each time")
+	// Use repeat*2 because each iteration of the loop generates two events.
 	eventTimes = make([]int64, 0, repeat*2)
 	axis := gp.Axes()[input.ABS_X]
 	for i := 0; i < repeat; i++ {
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		// Move axis x to maximum.
@@ -126,7 +141,7 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to move axis: ", err)
 		}
 
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		// Move axis x to minimum.
@@ -135,7 +150,7 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, repeat*2, &eventTimes, "avgGamepadStickLatency", pv); err != nil {
+	if err := inputlatency.EvaluateLatency(ctx, s, d, repeat*2, eventTimes, "avgGamepadStickLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
@@ -144,6 +159,7 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Injecting one button key event and one axis event together each time")
+	// Use repeat*4 because each iteration of the loop generates four events.
 	eventTimes = make([]int64, 0, repeat*4)
 	axis = gp.Axes()[input.ABS_X]
 	pressEvents := []input.GamepadEvent{
@@ -154,27 +170,27 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 		{Et: input.EV_KEY, Ec: input.BTN_EAST, Val: 0}}
 	for i := 0; i < repeat; i++ {
 		// Generate event time for pressing button.
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
-		// Same event time for pressing button and moving joystick.
+		// Same event time and diff for pressing button and moving joystick.
 		eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
 		if err := gp.PressButtonsAndAxes(ctx, pressEvents); err != nil {
 			s.Fatal("Failed to inject key event: ", err)
 		}
 
 		// Generate event time for releasing button.
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
-		// Same event time for release button and moving joystick.
+		// Same event time and diff for release button and moving joystick.
 		eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
 		if err := gp.PressButtonsAndAxes(ctx, releaseEvents); err != nil {
 			s.Fatal("Failed to release button: ", err)
 		}
 	}
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, repeat*4, &eventTimes, "avgGamepadMixLatency", pv); err != nil {
+	if err := inputlatency.EvaluateLatency(ctx, s, d, repeat*4, eventTimes, "avgGamepadMixLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 

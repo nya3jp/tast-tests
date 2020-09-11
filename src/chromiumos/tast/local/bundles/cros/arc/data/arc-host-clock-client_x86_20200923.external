@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/arc-host-clock-client_x86_20200923",
+  "size": 6776,
+  "sha256sum": "e8ea771eae70db9087ed9be606c368526961d8821cd48d2a58c6b6e915826213"
+}

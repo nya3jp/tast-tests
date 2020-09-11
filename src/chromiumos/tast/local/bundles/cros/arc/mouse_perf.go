@@ -19,15 +19,20 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     MousePerf,
-		Desc:     "Test ARC mouse system performance",
-		Contacts: []string{"arc-performance@google.com", "wvk@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
-		// TODO(wvk): Once clocks are synced between the host and guest, add
-		// support for ARCVM to this test (b/123416853).
-		SoftwareDeps: []string{"chrome", "android_p"},
-		Pre:          arc.Booted(),
-		Timeout:      2 * time.Minute,
+		Func:         MousePerf,
+		Desc:         "Test ARC mouse system performance",
+		Contacts:     []string{"arc-performance@google.com", "wvk@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		SoftwareDeps: []string{"chrome"},
+		Data:         inputlatency.AndroidData(),
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+		Pre:     arc.Booted(),
+		Timeout: 2 * time.Minute,
 	})
 }
 
@@ -50,6 +55,10 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to create virtual mouse: ", err)
 	}
 	defer m.Close()
+
+	if err := inputlatency.InstallArcHostClockClient(ctx, a, s); err != nil {
+		s.Fatal("Could not install arc-host-clock-client: ", err)
+	}
 
 	const (
 		apkName      = "ArcInputLatencyTest.apk"
@@ -84,7 +93,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 	// Check latency for mouse ACTION_MOVE events which are generated when moving mouse after left-button pressing down and holding.
 	s.Log("Injecting mouse move events")
 	const (
-		numEvents = 50
+		numEvents = 100
 		waitMS    = 50
 	)
 	eventTimes := make([]int64, 0, numEvents)
@@ -101,7 +110,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		} else {
 			x = 10
 		}
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		if err := m.Move(x, y); err != nil {
@@ -111,7 +120,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, &eventTimes, "avgMouseLeftMoveLatency", pv); err != nil {
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgMouseLeftMoveLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
@@ -126,9 +135,9 @@ func MousePerf(ctx context.Context, s *testing.State) {
 	// When left-clicking on mouse, it injects ACTION_DOWN, ACTION_BUTTON_PRESS, ACTION_UP and ACTION_BUTTON_RELEASE events.
 	// Check latency for these four actions.
 	s.Log("Injecting mouse left-click events")
-	eventTimes = make([]int64, 0, numEvents*2)
-	for i := 0; i < numEvents/2; i++ {
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+	eventTimes = make([]int64, 0, numEvents)
+	for i := 0; i < numEvents; i += 4 {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		// ACTION_DOWN and ACTION_BUTTON_PRESS are generated together.
@@ -137,7 +146,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Unable to inject Press mouse event: ", err)
 		}
 
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		// ACTION_UP and ACTION_BUTTON_RELEASE are generated together.
@@ -147,7 +156,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents*2, &eventTimes, "avgMouseLeftClickLatency", pv); err != nil {
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgMouseLeftClickLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
