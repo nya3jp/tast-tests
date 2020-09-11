@@ -35,7 +35,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Timeout: 5 * time.Minute,
+		Timeout: 10 * time.Minute,
 	})
 
 	// TODO(b/153129376): Extend test to record with 30 and 60 FPS.
@@ -90,6 +90,11 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 	sup.Add(setup.GrantAndroidPermission(ctx, a, cameraAppPackage, "android.permission.RECORD_AUDIO"))
 	sup.Add(setup.GrantAndroidPermission(ctx, a, cameraAppPackage, "android.permission.READ_EXTERNAL_STORAGE"))
 	sup.Add(setup.GrantAndroidPermission(ctx, a, cameraAppPackage, "android.permission.WRITE_EXTERNAL_STORAGE"))
+
+	// Wait until CPU is cooled down.
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("CPU failed to cool down: ", err)
+	}
 
 	// Start camera testing app.
 	sup.Add(setup.StartActivity(ctx, tconn, a, cameraAppPackage, cameraAppActivity))

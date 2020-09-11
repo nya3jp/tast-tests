@@ -50,7 +50,7 @@ func init() {
 				Val:               "60",
 			},
 		},
-		Timeout: 5 * time.Minute,
+		Timeout: 10 * time.Minute,
 	})
 }
 
@@ -97,7 +97,11 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 	// Grant permissions to activity.
 	sup.Add(setup.GrantAndroidPermission(ctx, a, cameraAppPackage, "android.permission.CAMERA"))
 
-	// TODO(springerm): WaitUntilCPUCoolDown before starting activity.
+	// Wait until CPU is cooled down.
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("CPU failed to cool down: ", err)
+	}
+
 	// Start camera testing app.
 	sup.Add(setup.StartActivity(ctx, tconn, a, cameraAppPackage, cameraAppActivity))
 
