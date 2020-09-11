@@ -257,6 +257,30 @@
       "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6759320e_94173aeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T08:17:11Z",
+      "side": 1,
+      "message": "In Tast we use Context to manage allocated time for test.\n\nVery often test has few steps:\n1. Preparation\n2. \"Test body\"\n3. Cleanup\n\non the 2 step something may hang or take much more time then you expected, that\u0027s why Tast will stop that step and will start cleanup step (implemented by defer statements). If you will use the same context for cleanup, then cleanup won\u0027t be running, because there will be no allocated time left.\n\n\nSometimes if you won\u0027t cleanup, it may affect other tests.",
+      "parentUuid": "074d2a76_25386760",
+      "range": {
+        "startLine": 63,
+        "startChar": 20,
+        "endLine": 63,
+        "endChar": 23
+      },
+      "revId": "106af8021cb1c869afcc454abbcdc67410fe1e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
