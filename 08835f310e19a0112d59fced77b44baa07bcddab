@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48120dad_bbadad9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-11T20:32:03Z",
+      "side": 1,
+      "message": "Temporarily removing CR+2 while discussion is ongoing and lots of changes are coming in.\n\nI\u0027m not sure how I feel about entirely removing the part of this test where we\u0027re clicking through the launcher.  If we stick with this way, we should at least rename the test and remove the launcher functions, since the test doesn\u0027t actually interact with the launcher anymore.\n\nI think it would be fine as a test that just launches+pins apps and verifies the shelf icon positions. The linked manual test case is the only one that checks pinning apps from the launcher, though, so I think it would be nice to keep that element of the test in here. What do you guys think?",
+      "revId": "08835f310e19a0112d59fced77b44baa07bcddab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
