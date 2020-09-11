@@ -78,7 +78,7 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
 	defer func(ctx context.Context) {
-		files.Root.Release(ctx)
+		files.Release(ctx)
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()

@@ -88,9 +88,16 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	return &FilesApp{tconn: tconn, Root: app}, nil
 }
 
-// Close closes the Files App.
-func (f *FilesApp) Close(ctx context.Context) error {
+// Release releases the root node held by the Files App.
+// This method is better for screenshots at the end of a test than Close.
+func (f *FilesApp) Release(ctx context.Context) {
 	f.Root.Release(ctx)
+}
+
+// Close closes the Files App and releases the root node.
+// Release can be used instead of Close if the goal is just to clean up at the end of a test.
+func (f *FilesApp) Close(ctx context.Context) error {
+	f.Release(ctx)
 
 	// Close the Files App.
 	if err := apps.Close(ctx, f.tconn, apps.Files.ID); err != nil {

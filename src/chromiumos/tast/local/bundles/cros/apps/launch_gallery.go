@@ -99,9 +99,7 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	// Instead of closing the Files App, just release the memory reference.
-	// Otherwise, when this test fails, the screenshot will be of an empty desktop/closing app.
-	defer files.Root.Release(ctx)
+	defer files.Release(ctx)
 
 	// Open the Downloads folder and check for the test file.
 	if err := files.OpenDownloads(ctx); err != nil {

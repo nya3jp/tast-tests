@@ -56,7 +56,7 @@ func SMB(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Root.Release(ctx)
+	defer files.Release(ctx)
 
 	menuItems := []string{"Add new service", "SMB file share"}
 	if err := files.ClickMoreMenuItem(ctx, menuItems); err != nil {

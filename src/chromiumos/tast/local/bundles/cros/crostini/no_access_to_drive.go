@@ -65,7 +65,7 @@ func NoAccessToDrive(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Files app: ", err)
 	}
-	defer filesApp.Root.Release(cleanupCtx)
+	defer filesApp.Release(cleanupCtx)
 
 	// Define keyboard to perform keyboard shortcuts.
 	keyboard, err := input.Keyboard(ctx)
