@@ -139,6 +139,24 @@
       "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "805f7e0f_a1e3e35b",
+        "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-09-11T02:08:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc29b820_8e535adf",
+      "revId": "f07eb5e0b89219dc19580cb47072cf7fc6f3c2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
