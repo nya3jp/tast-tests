@@ -17,12 +17,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Run execs the tast command using supplied arguments.
+// Exec execs the tast command using supplied arguments.
 // subcmd contains the subcommand to use, e.g. "list" or "run".
 // flags contains subcommand-specific flags.
 // patterns contains a list of patterns matching tests.
 // stdout.txt and stderr.txt output files are written unconditionally.
-func Run(ctx context.Context, s *testing.State, subcmd string, flags, patterns []string) (stdout, stderr []byte, err error) {
+func Exec(ctx context.Context, s *testing.State, subcmd string, flags, patterns []string) (stdout, stderr []byte, err error) {
 	meta := s.Meta()
 	if meta == nil {
 		return nil, nil, errors.New("failed to get meta info from context")
