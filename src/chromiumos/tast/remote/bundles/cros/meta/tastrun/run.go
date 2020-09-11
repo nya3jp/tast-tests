@@ -8,7 +8,9 @@ package tastrun
 import (
 	"bytes"
 	"context"
+	"encoding/json"
 	"io/ioutil"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
@@ -48,4 +50,31 @@ func Exec(ctx context.Context, s *testing.State, subcmd string, flags, patterns 
 		s.Error("Failed to save stderr: ", werr)
 	}
 	return stdoutBuf.Bytes(), stderrBuf.Bytes(), runErr
+}
+
+// TestError is a subset of testing.EntityError.
+type TestError struct {
+	Reason string `json:"reason"`
+}
+
+// TestResult is subset of run.EntityResult.
+type TestResult struct {
+	Name       string      `json:"name"`
+	Errors     []TestError `json:"errors"`
+	SkipReason string      `json:"skipReason"`
+}
+
+// ParseResultsJSON parses results.json inside dir.
+func ParseResultsJSON(dir string) ([]TestResult, error) {
+	var results []TestResult
+	rf, err := os.Open(filepath.Join(dir, "results.json"))
+	if err != nil {
+		return nil, errors.Wrap(err, "couldn't open results file")
+	}
+	defer rf.Close()
+
+	if err = json.NewDecoder(rf).Decode(&results); err != nil {
+		return nil, errors.Wrapf(err, "couldn't decode results from %v", rf.Name())
+	}
+	return results, nil
 }
