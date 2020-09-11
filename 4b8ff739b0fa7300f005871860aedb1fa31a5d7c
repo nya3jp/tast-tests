@@ -16,6 +16,29 @@
       "revId": "4b8ff739b0fa7300f005871860aedb1fa31a5d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1082fa01_c12f9e8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-11T05:13:35Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be -i?",
+      "range": {
+        "startLine": 149,
+        "startChar": 76,
+        "endLine": 149,
+        "endChar": 77
+      },
+      "revId": "4b8ff739b0fa7300f005871860aedb1fa31a5d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
