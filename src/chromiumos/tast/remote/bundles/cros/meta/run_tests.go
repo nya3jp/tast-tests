@@ -6,7 +6,6 @@ package meta
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -31,7 +30,7 @@ type testResult struct {
 // runTestsParam is a parameter to the meta.RunTests test.
 type runTestsParam struct {
 	tests       []string
-	wantResults []testResult
+	wantResults []tastrun.TestResult
 	wantFiles   map[string]string // special value exists/notExists is allowed
 }
 
@@ -62,10 +61,10 @@ func init() {
 					"meta.RemoteFail",
 					"meta.RemotePass",
 				},
-				wantResults: []testResult{
-					{Name: "meta.LocalFail", Errors: []testError{{Reason: "Failed"}}},
+				wantResults: []tastrun.TestResult{
+					{Name: "meta.LocalFail", Errors: []tastrun.TestError{{Reason: "Failed"}}},
 					{Name: "meta.LocalPass"},
-					{Name: "meta.RemoteFail", Errors: []testError{{Reason: "Failed"}}},
+					{Name: "meta.RemoteFail", Errors: []tastrun.TestError{{Reason: "Failed"}}},
 					{Name: "meta.RemotePass"},
 				},
 				wantFiles: map[string]string{
@@ -82,7 +81,7 @@ func init() {
 				tests: []string{
 					"meta.LocalFiles",
 				},
-				wantResults: []testResult{
+				wantResults: []tastrun.TestResult{
 					{Name: "meta.LocalFiles"},
 				},
 				wantFiles: map[string]string{
@@ -98,7 +97,7 @@ func init() {
 				tests: []string{
 					"meta.RemoteFiles",
 				},
-				wantResults: []testResult{
+				wantResults: []tastrun.TestResult{
 					{Name: "meta.RemoteFiles"},
 				},
 				wantFiles: map[string]string{
@@ -113,8 +112,8 @@ func init() {
 				tests: []string{
 					"meta.LocalPanic",
 				},
-				wantResults: []testResult{
-					{Name: "meta.LocalPanic", Errors: []testError{{"Panic: intentionally panicking"}}},
+				wantResults: []tastrun.TestResult{
+					{Name: "meta.LocalPanic", Errors: []tastrun.TestError{{"Panic: intentionally panicking"}}},
 				},
 			},
 			ExtraAttr: []string{"group:mainline", "group:meta"},
@@ -125,7 +124,7 @@ func init() {
 					"meta.LocalVars",
 					"meta.RemoteVars",
 				},
-				wantResults: []testResult{
+				wantResults: []tastrun.TestResult{
 					{Name: "meta.LocalVars"},
 					{Name: "meta.RemoteVars"},
 				},
@@ -155,16 +154,11 @@ func RunTests(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
 	}
 
-	var results []testResult
-	rf, err := os.Open(filepath.Join(resultsDir, "results.json"))
+	results, err := tastrun.ParseResultsJSON(resultsDir)
 	if err != nil {
-		s.Fatal("Couldn't open results file: ", err)
+		s.Fatal("Failed to get results for tests ", param.tests)
 	}
-	defer rf.Close()
 
-	if err = json.NewDecoder(rf).Decode(&results); err != nil {
-		s.Fatalf("Couldn't decode results from %v: %v", rf.Name(), err)
-	}
 	if !reflect.DeepEqual(results, param.wantResults) {
 		s.Errorf("Got results %+v; want %+v", results, param.wantResults)
 	}
