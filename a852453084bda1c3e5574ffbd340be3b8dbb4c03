@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "b213a311_cde4714f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T06:04:23Z",
+      "side": 1,
+      "message": "I think I can figure a way do it, but I think I need to modify around 15 tests to do so. Just want to confirm if you all want me to do so. Thanks.",
+      "parentUuid": "6195372f_dcb7bada",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 20
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "924cf793_4d880f90",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 9
@@ -290,6 +314,30 @@
       "side": 1,
       "message": "UI\u003eShell\u003eLauncher should do the trick",
       "parentUuid": "f0d25fb2_5ddf19f2",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 21
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a988962d_ba91c5a2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T06:04:23Z",
+      "side": 1,
+      "message": "Thanks for the information. I will file a bug report in the morning.",
+      "parentUuid": "c33c7982_f62171be",
       "range": {
         "startLine": 117,
         "startChar": 5,
