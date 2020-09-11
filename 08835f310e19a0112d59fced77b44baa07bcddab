@@ -16,6 +16,24 @@
       "revId": "08835f310e19a0112d59fced77b44baa07bcddab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c78e011_f986dd01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-11T20:48:10Z",
+      "side": 1,
+      "message": "Yes I was just thinking the same thing. The recent patches have turned this into a different test.\n\nI don\u0027t think using shelf.go\u0027s pinapps is right because that is not using the launcher at all. And you could call that without even opening the launcher. I vote to revert to a couple of patches ago and let\u0027s work through the comments we had then",
+      "parentUuid": "48120dad_bbadad9c",
+      "revId": "08835f310e19a0112d59fced77b44baa07bcddab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
