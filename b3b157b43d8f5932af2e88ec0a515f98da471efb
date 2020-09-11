@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec2c190e_fa1969db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-09-11T17:21:13Z",
+      "side": 1,
+      "message": "kathrelkeld@ had not reviewed the CL for more than 4 working days so I advise Armen to reassign back to tast owners to pick a new reviewer.",
+      "revId": "b3b157b43d8f5932af2e88ec0a515f98da471efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
