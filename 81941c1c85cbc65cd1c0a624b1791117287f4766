@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "276727a9_1939c4e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_excel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-11T16:00:44Z",
+      "side": 1,
+      "message": "If you just log this error, this function will end up returning nil on L145. This will lead to the polling ending early even though the password field is not focused. This error needs to be returned.",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 140,
+        "endChar": 53
+      },
+      "revId": "81941c1c85cbc65cd1c0a624b1791117287f4766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
