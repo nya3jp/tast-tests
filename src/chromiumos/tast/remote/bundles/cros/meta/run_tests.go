@@ -147,7 +147,7 @@ func RunTests(ctx context.Context, s *testing.State) {
 		"-var=meta.LocalVars.var=" + localVarValue,
 		"-var=meta.RemoteVars.var=" + remoteVarValue,
 	}
-	stdout, _, err := tastrun.Run(ctx, s, "run", flags, param.tests)
+	stdout, _, err := tastrun.Exec(ctx, s, "run", flags, param.tests)
 	if err != nil {
 		lines := strings.Split(strings.TrimSpace(string(stdout)), "\n")
 		s.Fatalf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
