@@ -19,15 +19,19 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     TouchPerf,
-		Desc:     "Test ARC touchscreen system performance",
-		Contacts: []string{"arc-performance@google.com", "wvk@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
-		// TODO(wvk): Once clocks are synced between the host and guest, add
-		// support for ARCVM to this test (b/123416853).
-		SoftwareDeps: []string{"chrome", "android_p"},
-		Pre:          arc.Booted(),
-		Timeout:      2 * time.Minute,
+		Func:         TouchPerf,
+		Desc:         "Test ARC touchscreen system performance",
+		Contacts:     []string{"arc-performance@google.com", "wvk@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+		Pre:     arc.Booted(),
+		Timeout: 2 * time.Minute,
 	})
 }
 
@@ -109,7 +113,7 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 			x -= 20
 		}
 
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 
@@ -120,7 +124,7 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, &eventTimes, "avgTouchscreenMoveLatency", pv); err != nil {
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgTouchscreenMoveLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
@@ -136,13 +140,13 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 	s.Log("Injecting touch press events")
 	eventTimes = make([]int64, 0, numEvents)
 	for i := 0; i < numEvents/2; i++ {
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		if err := stw.Move(x, y); err != nil {
 			s.Fatal("Unable to touch down: ", err)
 		}
-		if err := inputlatency.WaitForNextEventTime(ctx, &eventTimes, waitMS); err != nil {
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
 		if err := stw.End(); err != nil {
@@ -150,7 +154,7 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, &eventTimes, "avgTouchscreenPressLatency", pv); err != nil {
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgTouchscreenPressLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
