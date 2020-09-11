@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14f5b93e_f2d5b1d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-11T09:22:27Z",
+      "side": 1,
+      "message": "I have a few questions, but LGTM.",
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba3b60ea_cf611a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/telemetry_extension.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-11T09:22:27Z",
+      "side": 1,
+      "message": "Do you use this name somewhere?",
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b20480b6_bc922065",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/telemetry_extension.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-11T09:22:27Z",
+      "side": 1,
+      "message": "Do you have a broader email list that could be added here?",
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70811c0d_e571cf1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/telemetry_extension.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-11T09:22:27Z",
+      "side": 1,
+      "message": "I had a look at the node tree you sent me. Can you add this part here as comment, so that it would be easier to understand what is expected here and why?\n  node id\u003d8 role\u003dpre state\u003d{} parentID\u003d1 childIds\u003d[25] className\u003dtelemetryApiStatus\n    node id\u003d25 role\u003dstaticText state\u003d{} parentID\u003d8 childIds\u003d[26] name\u003dSuccess",
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
