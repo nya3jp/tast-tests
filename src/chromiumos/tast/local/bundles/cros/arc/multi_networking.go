@@ -95,9 +95,9 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 		}, &testing.PollOptions{Timeout: configurationPollTimeout})
 
 		// Verify forwarding rule set up correctly.
-		if err := testexec.CommandContext(ctx, "/sbin/iptables", "-C", "FORWARD", "-o", brIFName, "-j", "ACCEPT", "-w").
+		if err := testexec.CommandContext(ctx, "/sbin/iptables", "-C", "FORWARD", "-i", ifName, "-o", brIFName, "-j", "ACCEPT", "-w").
 			Run(testexec.DumpLogOnError); err != nil {
-			s.Fatalf("Cannot verify iptables -A FORWARD -o %s -j ACCEPT -w rule: %s", brIFName, err)
+			s.Fatalf("Cannot verify iptables -A FORWARD -i %s -o %s -j ACCEPT -w rule: %s", ifName, brIFName, err)
 		}
 		if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", ifName, "-o", brIFName, "-j", "ACCEPT", "-w").
 			Run(testexec.DumpLogOnError); err != nil {
@@ -146,9 +146,9 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: configurationPollTimeout})
 
 	// Verify iptables forwarding rule removed correctly.
-	if err := testexec.CommandContext(ctx, "/sbin/iptables", "-C", "FORWARD", "-o", brIFName, "-j", "ACCEPT", "-w").
+	if err := testexec.CommandContext(ctx, "/sbin/iptables", "-C", "FORWARD", "-i", ifName, "-o", brIFName, "-j", "ACCEPT", "-w").
 		Run(testexec.DumpLogOnError); err == nil {
-		s.Errorf("iptables -A FORWARD -o %s -j ACCEPT -w rule is not removed", brIFName)
+		s.Errorf("iptables -A FORWARD -i %s -o %s -j ACCEPT -w rule is not removed", ifName, brIFName)
 	} else if _, ok := err.(*exec.ExitError); !ok {
 		s.Error("iptables -C returned unexpected error: ", err)
 	}
