@@ -19,6 +19,230 @@
     },
     {
       "key": {
+        "uuid": "60424398_11bb124f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "first-pass comments.\n\nIt is not clear to me why a \"diff array\" is needed (assuming that the clock diff between host and guest is constant).\nI left a comment with more details about this.",
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0e0351e_02b704c5",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "(see below)",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b0b9d48_6de919ff",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "it is not clear what the difference between recieveTimeMs and receiveTimeNs (besides that one uses milliseconds and the other nanoseconds).\n\nare both measure the same thing but using different units? if so, can we get rid of the \"ms\" one?",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 81
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56d562f0_9b9fbfc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "nit: while you are here, could you change this to:\n\n  const (\n    repeat \u003d 25\n    waitMS \u003d 25\n  )",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c397cc8_3bdf1dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "nit: add a comment why you need a size of \"repeat * 2\"",
+      "range": {
+        "startLine": 96,
+        "startChar": 27,
+        "endLine": 96,
+        "endChar": 36
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd617950_39508475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "nit: ditto above",
+      "range": {
+        "startLine": 126,
+        "startChar": 25,
+        "endLine": 126,
+        "endChar": 35
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebf4ccc6_1e443a44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 35
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0fa378f_63e449c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "nit:\n\nuse MS / NS instead of Ms / Ns.\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb7d44be_0d45debe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "ditto above:\n\nRecvTimeNs vs RecvTimeMs: do we need both?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b99220_f8bf4151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "I\u0027m don\u0027t know how the host-clock-service works, so perhaps I\u0027m missing something.\nIn my mind, this service should return the diff between host and guest. But that different should be constant, it should never change once the VM is up and running (it my change if the VM is restarted though).\n\nSo, if my assumption is correct, then we don\u0027t need a \"diff array\" since the elements of the array should be the same.\n\nis this correct?",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 50
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0940de78_05c9798a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
         "patchSetId": 2
@@ -35,6 +259,98 @@
         "startChar": 0,
         "endLine": 176,
         "endChar": 21
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f81b5887_c703dc99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "cache this result:\n\nthe reason is that:\n  - WaitForNextEventTime is called multiple times\n  - getVMTimeDiff is expensive: it is calling an external command\n  - value returned by getVMTimeDiff is constant (...well, I guess it shouldn\u0027t change once it the VM boots...)",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 33
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "004f9783_ffab3c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "nit: when applicable, remove \"get\" from getters.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#TOC-Getters\n\n\n  vmTimeDiff() // should be enough",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 8
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6370422a_97baa2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "nit:\n\n  const (\n    numEvents \u003d 50\n    waitMS \u003d 50\n  )",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 18
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de6b085f_6482244f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T16:14:47Z",
+      "side": 1,
+      "message": "nit: ditto above, add comment why numEvents*2 is needed.\n\nalternative, create a new constant with a descriptive name. e.g:\n\n  const (\n     ...\n     someConstName \u003d numEvents*2\n  )",
+      "range": {
+        "startLine": 138,
+        "startChar": 26,
+        "endLine": 138,
+        "endChar": 37
       },
       "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
