@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "176aa108_0a2c7a57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-11T19:02:18Z",
+      "side": 1,
+      "message": "Thank you for the suggestion. But I have a plan to refactor WM tasts once I am done with implementing all tests here go/arc-wm-r.\nFollowing this doc (https://github.com/golang/go/wiki/CodeReviewComments#variable-names), variables will be renamed. So wmRV19 will be modified and will have similar variable names as wmRV20 has.",
+      "parentUuid": "203880da_c928daf0",
+      "revId": "b3b157b43d8f5932af2e88ec0a515f98da471efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60975c13_1ae13574",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
         "patchSetId": 1
