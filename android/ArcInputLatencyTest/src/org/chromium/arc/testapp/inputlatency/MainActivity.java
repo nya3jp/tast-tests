@@ -13,8 +13,6 @@ import android.util.Log;
 import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,28 +38,28 @@ public class MainActivity extends Activity {
     private void finishTrace() {
         // Serialize events to JSON
         mExecutor.submit(
-            () -> {
-              JSONArray arr = new JSONArray();
-              try {
-                for (ReceivedEvent ev : mRecvEvents) {
-                  arr.put(ev.toJSON());
-                }
-                String json = arr.toString();
-                int len = arr.length();
-                runOnUiThread(() -> setEvents(json, len));
-              } catch (JSONException e) {
-                  Log.e(TAG, "Unable to serialize events to JSON: " + e.getMessage());
-              }
-            });
+                () -> {
+                    JSONArray arr = new JSONArray();
+                    try {
+                        for (ReceivedEvent ev : mRecvEvents) {
+                            arr.put(ev.toJSON());
+                        }
+                        String json = arr.toString();
+                        int len = arr.length();
+                        runOnUiThread(() -> setEvents(json, len));
+                    } catch (JSONException e) {
+                        Log.e(TAG, "Unable to serialize events to JSON: " + e.getMessage());
+                    }
+                });
     }
 
     private void clearUI() {
         mRecvEvents.clear();
         mAdapter.notifyDataSetChanged();
         mExecutor.submit(
-            () -> {
-              runOnUiThread(() -> setEvents("", 0));
-            });
+                () -> {
+                    runOnUiThread(() -> setEvents("", 0));
+                });
     }
 
     @Override
@@ -91,16 +89,15 @@ public class MainActivity extends Activity {
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         // ESC key is a sign to finish tracing.
-        if(event.getKeyCode() == KeyEvent.KEYCODE_ESCAPE) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_ESCAPE) {
             finishTrace();
             return false;
         }
-        if(event.getKeyCode() == KeyEvent.KEYCODE_DEL) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_DEL) {
             clearUI();
             return false;
         }
-        ReceivedEvent recv =
-                new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis());
+        ReceivedEvent recv = new ReceivedEvent(event, SystemClock.elapsedRealtimeNanos());
 
         traceEvent(recv);
         final int source = event.getSource();
@@ -114,8 +111,7 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        traceEvent(
-                new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis()));
+        traceEvent(new ReceivedEvent(event, SystemClock.elapsedRealtimeNanos()));
         final int source = event.getSource();
         // Stop dispatching gamepad event.
         if ((source & InputDevice.SOURCE_GAMEPAD) != 0
@@ -131,17 +127,15 @@ public class MainActivity extends Activity {
         // Dispatching non-gamepad event.
         if ((source & InputDevice.SOURCE_GAMEPAD) == 0
                 && (source & InputDevice.SOURCE_JOYSTICK) == 0) {
-            traceEvent(
-                new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis()));
-            return  super.dispatchGenericMotionEvent(event);
+            traceEvent(new ReceivedEvent(event, SystemClock.elapsedRealtimeNanos()));
+            return super.dispatchGenericMotionEvent(event);
         }
         // It is possible that the InputDevice is already gone when MotionEvent arrives.
         InputDevice device = InputDevice.getDevice(event.getDeviceId());
         if (device == null) {
             return true;
         }
-        traceEvent(
-                new ReceivedEvent(event, SystemClock.uptimeMillis(), System.currentTimeMillis()));
+        traceEvent(new ReceivedEvent(event, SystemClock.elapsedRealtimeNanos()));
         return true;
     }
 
@@ -158,9 +152,9 @@ public class MainActivity extends Activity {
 
         // Record the event numbers.
         mExecutor.submit(
-            () -> {
-              runOnUiThread(() -> setEvents("", mRecvEvents.size()));
-            });
+                () -> {
+                    runOnUiThread(() -> setEvents("", mRecvEvents.size()));
+                });
     }
 
     private void setEvents(String json, Integer count) {

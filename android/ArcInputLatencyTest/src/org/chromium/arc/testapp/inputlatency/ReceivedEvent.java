@@ -16,23 +16,17 @@ import org.json.JSONObject;
 
 public class ReceivedEvent {
     public InputEvent event;
-    public Long receiveTime;
-    public Long rtcReceiveTime;
-    public Long eventTime;
-    public Long latency;
+    public Long receiveTimeNs;
     public String source;
     public String code;
     public String action;
 
-    public ReceivedEvent(InputEvent event, Long receiveTime, Long rtcReceiveTime) {
+    public ReceivedEvent(InputEvent event, Long receiveTimeNs) {
         // Note that on ARC++, eventTime is the same as the original (host) kernel
         // timestamp of the event. On ARCVM, the event timestamp is rewritten in the
         // guest kernel due to differing monotonic clocks (b/123416853).
         this.event = event;
-        this.eventTime = event.getEventTime();
-        this.receiveTime = receiveTime;
-        this.rtcReceiveTime = rtcReceiveTime;
-        this.latency = receiveTime - eventTime;
+        this.receiveTimeNs = receiveTimeNs;
 
         switch (event.getSource()) {
             case InputDevice.SOURCE_KEYBOARD:
@@ -90,16 +84,13 @@ public class ReceivedEvent {
                 .put("source", source)
                 .put("code", code)
                 .put("action", action)
-                .put("eventTime", eventTime)
-                .put("receiveTime", receiveTime)
-                .put("rtcReceiveTime", rtcReceiveTime)
-                .put("latency", latency);
+                .put("receiveTimeNs", receiveTimeNs);
     }
 
     @Override
     public String toString() {
         return String.format(
-                "%s:%s:%s:%d:%d:%d:%d",
-                source, code, action, eventTime, receiveTime, rtcReceiveTime, latency);
+                "%s:%s:%s:%d",
+                source, code, action, receiveTimeNs);
     }
 }
