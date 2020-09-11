@@ -111,3 +111,104 @@ func SearchAndWaitForApp(ctx context.Context, tconn *chrome.TestConn, appName st
 	}
 	return appNode, err
 }
+
+// OpenExpandedView opens the Launcher to the Apps list page.
+func OpenExpandedView(ctx context.Context, tconn *chrome.TestConn) error {
+	// TODO: Call autotestPrivate API instead after https://bugs.chromium.org/p/chromium/issues/detail?id=1127384 is implemented.
+
+	// If the expanded view has already been opened, return.
+	params := ui.FindParams{ClassName: "ui/app_list/AppListItemView"}
+	if exist, err := ui.Exists(ctx, tconn, params); err != nil || exist {
+		return err
+	}
+
+	// If the launcher has already been opened, do not open launcher.
+	params = ui.FindParams{Name: "Expand to all apps", ClassName: "ExpandArrowView"}
+	exist, err := ui.Exists(ctx, tconn, params)
+	if err != nil {
+		return errors.Wrap(err, "failed to check if Launcher is open")
+	}
+	if !exist {
+		if err := OpenLauncher(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to open Launcher")
+		}
+	}
+
+	params = ui.FindParams{Name: "Expand to all apps", ClassName: "ExpandArrowView"}
+	expandArrowView, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find ExpandArrowView")
+	}
+	defer expandArrowView.Release(ctx)
+
+	if err := expandArrowView.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to open expanded application list view")
+	}
+	// Make sure items are done moving.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change to be completed")
+	}
+	return nil
+}
+
+// RenameFolder renames a folder to a new name.
+func RenameFolder(ctx context.Context, tconn *chrome.TestConn, from, to string) error {
+	// Make sure expanded launcher view is open.
+
+	if err := OpenExpandedView(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open expanded launcher before renaming folder")
+	}
+
+	// Chrome add prefix "Folder " to all folder names in ui/app_list/AppListItemView.
+	fromFolderSearchName := "Folder " + from
+	toFolderSearchName := "Folder " + to
+
+	// Find folder icon.
+	params := ui.FindParams{Name: fromFolderSearchName, ClassName: "ui/app_list/AppListItemView"}
+	folder, err := ui.FindWithTimeout(ctx, tconn, params, defaultTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find folder")
+	}
+	defer folder.Release(ctx)
+
+	// Select folder icon to open text field.
+	condition := func(ctx context.Context) (bool, error) {
+		return ui.Exists(ctx, tconn, ui.FindParams{Name: from, ClassName: "Textfield"})
+	}
+	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}
+	if err := folder.LeftClickUntil(ctx, condition, &opts); err != nil {
+		return errors.Wrap(err, "failed to left click folder")
+	}
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change to be completed")
+	}
+
+	// Select text field.
+	params = ui.FindParams{Name: from, ClassName: "Textfield"}
+	textField, err := ui.Find(ctx, tconn, params)
+	if err != nil {
+		return errors.Wrap(err, "failed to find text field ")
+	}
+	defer textField.Release(ctx)
+	if err := textField.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to select text field")
+	}
+
+	// Use keyboard to change text field name.
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer kb.Close()
+	if err := kb.Type(ctx, to+"\n"); err != nil {
+		return errors.Wrap(err, "failed to input new folder name")
+	}
+
+	// Make sure folder has the new name.
+	params = ui.FindParams{Name: toFolderSearchName, ClassName: "ui/app_list/AppListItemView"}
+	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to verify name of renamed folder")
+	}
+
+	return nil
+}
