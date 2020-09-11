@@ -1,0 +1,91 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Package arcappcompat will have tast tests for android apps on Chromebooks.
+package arcappcompat
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
+	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
+)
+
+// ClamshellTests are placed here.
+var clamshellTestsForSquid = []testutil.TestCase{
+	{Name: "Launch app in Clamshell", Fn: launchAppForSquid},
+	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
+	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
+	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+}
+
+// TouchviewTests are placed here.
+var touchviewTestsForSquid = []testutil.TestCase{
+	{Name: "Launch app in Touchview", Fn: launchAppForSquid},
+	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+}
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         Squid,
+		Desc:         "Functional test for Squid that install, launch the app and check that the main page is open, also checks Squid correctly changes the window state in both clamshell and touchview mode",
+		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
+		Attr:         []string{"group:appcompat"},
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Val:               clamshellTestsForSquid,
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               pre.AppCompatBooted,
+		}, {
+			Name:              "tablet_mode",
+			Val:               touchviewTestsForSquid,
+			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			Pre:               pre.AppCompatBootedInTabletMode,
+		}, {
+			Name:              "vm",
+			Val:               clamshellTestsForSquid,
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               pre.AppCompatBooted,
+		}, {
+			Name:              "vm_tablet_mode",
+			Val:               touchviewTestsForSquid,
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			Pre:               pre.AppCompatBootedInTabletMode,
+		}},
+		Timeout: 10 * time.Minute,
+		Vars:    []string{"arcappcompat.username", "arcappcompat.password"},
+	})
+}
+
+// Squid test uses library for opting into the playstore and installing app.
+// Checks Squid correctly changes the window states in both clamshell and touchview mode.
+func Squid(ctx context.Context, s *testing.State) {
+	const (
+		appPkgName  = "com.steadfastinnovation.android.projectpapyrus"
+		appActivity = ".application.HeadlessMainActivity"
+	)
+	testCases := s.Param().([]testutil.TestCase)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+}
+
+// launchAppForSquid verifies Squid is launched and
+// verify Squid reached main activity page of the app.
+func launchAppForSquid(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		homeID = "com.steadfastinnovation.android.projectpapyrus:id/action_bar"
+	)
+
+	// Check for home icon.
+	homeIcon := d.Object(ui.ID(homeID))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Error("homeIcon doesn't exist: ", err)
+	}
+}
