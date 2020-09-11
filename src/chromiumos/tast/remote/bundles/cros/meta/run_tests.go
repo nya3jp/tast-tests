@@ -17,10 +17,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// These are subsets of the testing.Error and TestResult structs.
+// testError is a subset of testing.EntityError.
 type testError struct {
 	Reason string `json:"reason"`
 }
+
+// testResult is subset of run.EntityResult.
 type testResult struct {
 	Name   string      `json:"name"`
 	Errors []testError `json:"errors"`
