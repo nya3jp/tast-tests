@@ -133,12 +133,13 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		"--lang=en-US",                              // Language
 		"--breakpad-dump-location=" + BinaryPath,    // Specify location for breakpad dump files.
 		"--window-size=800,600",
-		"--log-file=" + userDataDir + "/logfile", // Specify log file location for debugging.
-		"--enable-logging",                       // This flag is necessary to ensure the log file is written.
-		"--enable-gpu-rasterization",             // Enable GPU rasterization. This is necessary to enable OOP rasterization.
-		"--enable-oop-rasterization",             // Enable OOP rasterization.
-		"--disable-extensions-except=" + extList, // Disable extensions other than the Tast test extension.
-		chrome.BlankURL,                          // Specify first tab to load.
+		"--log-file=" + userDataDir + "/logfile",     // Specify log file location for debugging.
+		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
+		"--enable-gpu-rasterization",                 // Enable GPU rasterization. This is necessary to enable OOP rasterization.
+		"--enable-oop-rasterization",                 // Enable OOP rasterization.
+		"--disable-extensions-except=" + extList,     // Disable extensions other than the Tast test extension.
+		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
+		chrome.BlankURL,                              // Specify first tab to load.
 	}
 
 	l.cmd = testexec.CommandContext(ctx, BinaryPath+"/chrome", args...)
