@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec07e278_fe57fb04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-09-11T13:21:16Z",
+      "side": 1,
+      "message": "Why didn\u0027t this fail in the CQ?",
+      "revId": "3ae2b74930b25413c4439d44c2c2d6f6e0cdc568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
