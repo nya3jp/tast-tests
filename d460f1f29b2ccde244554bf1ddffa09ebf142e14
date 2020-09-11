@@ -50,6 +50,24 @@
       "revId": "d460f1f29b2ccde244554bf1ddffa09ebf142e14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "936eb730_1abd01ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-11T20:32:03Z",
+      "side": 1,
+      "message": "This is reversed actually, I think the right move is to move the ChromeApp functions from ash into apps.\n\nAlso regarding mouse clicks, we\u0027ll use the various APIs when possible to more simply/reliably put the DUT into a state where it\u0027s ready to execute the test. It really depends on the individual test, though. For example, if we\u0027re testing some functionality of the Settings app, it makes more sense to use apps.Launch to prepare the state, instead of clicking through the launcher to open it, since the main thing we\u0027re interested in testing is the Settings app.",
+      "parentUuid": "d5c7ac46_d44f1480",
+      "revId": "d460f1f29b2ccde244554bf1ddffa09ebf142e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
