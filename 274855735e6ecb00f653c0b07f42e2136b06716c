@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3f715997_f214be44",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-11T02:27:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "026fee8e_bdcc1c8a",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "274855735e6ecb00f653c0b07f42e2136b06716c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e09e782_03593f14",
         "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c18bc10e_8a5edc82",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-11T02:27:53Z",
+      "side": 1,
+      "message": "Yes, test doesn\u0027t pass without it",
+      "parentUuid": "3e09e782_03593f14",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "274855735e6ecb00f653c0b07f42e2136b06716c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b7c9975_75f07ce9",
         "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "274855735e6ecb00f653c0b07f42e2136b06716c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e4aa3f_6886877f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-11T02:27:53Z",
+      "side": 1,
+      "message": "Much nicer, thanks!",
+      "parentUuid": "6b7c9975_75f07ce9",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "274855735e6ecb00f653c0b07f42e2136b06716c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
