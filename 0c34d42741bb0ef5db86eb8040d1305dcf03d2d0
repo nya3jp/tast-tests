@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "2dcf5321_51798b8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/telemetry_extension.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a54cd5_47982ce6",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba3b60ea_cf611a6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/telemetry_extension.js",
         "patchSetId": 3
@@ -166,6 +190,30 @@
       "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8130c1a_b7c4666d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/telemetry_extension.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:12:55Z",
+      "side": 1,
+      "message": "Good catch! I think I just forgot about err, because responseFile also should be in s.Error message.\n\nAdded error.",
+      "parentUuid": "fca77dce_e8eefb23",
+      "range": {
+        "startLine": 141,
+        "startChar": 58,
+        "endLine": 141,
+        "endChar": 70
+      },
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
