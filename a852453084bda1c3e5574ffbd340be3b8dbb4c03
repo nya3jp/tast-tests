@@ -185,6 +185,30 @@
     },
     {
       "key": {
+        "uuid": "a77c411b_3b874c07",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T17:03:35Z",
+      "side": 1,
+      "message": "Hi Everybody: \n\nI have removed LaunchAppByName and use apps.Launch. If you think I should keep LaunchAppByName, please let me know. I can it put it back. Thanks.\n\nSeewai",
+      "parentUuid": "48a56554_21a040f2",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 20
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "924cf793_4d880f90",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 9
@@ -253,6 +277,30 @@
       "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e35d4391_d80cabe7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T17:03:35Z",
+      "side": 1,
+      "message": "Hi Everybody: \n\nI have removed PinAppByName and use ash.PinApp. If you think I should keep PinAppByName, please let me know. I can it put it back. Thanks.\n\nSeewai",
+      "parentUuid": "8434fb52_4c4d0499",
+      "range": {
+        "startLine": 546,
+        "startChar": 5,
+        "endLine": 546,
+        "endChar": 17
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -395,6 +443,30 @@
       "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9239d397_5e0c09d0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T17:03:35Z",
+      "side": 1,
+      "message": "I have file a bug report: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1127384\n\nIssue 1127384: Add chrome.autotestPrivate.expandLauncher API\n\nPlease check. Thanks.",
+      "parentUuid": "a988962d_ba91c5a2",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 21
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
