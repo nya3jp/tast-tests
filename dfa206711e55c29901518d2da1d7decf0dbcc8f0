@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95ea72e9_13c91caa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-11T16:05:56Z",
+      "side": 1,
+      "message": "Is this the correct logic we want. If exists, findwithtimeout and click?\n\nAt a minimum, you can just use find instead of findwithtimeout.\nAlso, if it doesn\u0027t exist, maybe we should check for something to confirm the menu is open?\n\nmaybe the overall logic should be:\nfind\nif not err -\u003e click button\nwait for something to confirm the menu is open",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 380,
+        "endChar": 2
+      },
+      "revId": "dfa206711e55c29901518d2da1d7decf0dbcc8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8a3d1d_2408415b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-11T16:05:56Z",
+      "side": 1,
+      "message": "This is duplicate work. it is also done in OpenAudioSettings",
+      "range": {
+        "startLine": 515,
+        "startChar": 1,
+        "endLine": 519,
+        "endChar": 19
+      },
+      "revId": "dfa206711e55c29901518d2da1d7decf0dbcc8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
