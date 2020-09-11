@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "321f5068_fcd8609b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-09-11T02:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a86fb750_a1609f17",
+      "revId": "442dc4d98d92df5e8b2ee67bfb210aa3f94c7b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07da7dc5_d415f02c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -76,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "28c75c46_677fec0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-09-11T02:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d665209_d3f2a038",
+      "range": {
+        "startLine": 97,
+        "startChar": 61,
+        "endLine": 97,
+        "endChar": 66
+      },
+      "revId": "442dc4d98d92df5e8b2ee67bfb210aa3f94c7b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3af1f8f_3ee6ed72",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
         "patchSetId": 2
@@ -96,6 +138,30 @@
       "revId": "442dc4d98d92df5e8b2ee67bfb210aa3f94c7b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1d2ba3_49509e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-09-11T02:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3af1f8f_3ee6ed72",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 10
+      },
+      "revId": "442dc4d98d92df5e8b2ee67bfb210aa3f94c7b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
