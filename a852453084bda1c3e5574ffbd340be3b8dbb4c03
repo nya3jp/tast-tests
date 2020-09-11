@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "6195372f_dcb7bada",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-11T04:52:20Z",
+      "side": 1,
+      "message": "I think we really should make it so ash can import apps, so we can pass in the App structs to these kinds of functions. apps.go uses some functions from shelf.go to check if an app is installed before launching it: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/apps/apps.go?l\u003d106\u0026rcl\u003ddced23a30bd8a3b939628f5948d3b23d3d521d79\n\nThat ChromeApp code (http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/shelf.go?l\u003d260\u0026rcl\u003d673d09c482ae2d14317d770d1b093023b16bdcdf) is probably more appropriate in apps.go anyways.",
+      "parentUuid": "46ef2cd0_ff5273ea",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 20
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "924cf793_4d880f90",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 9
@@ -242,6 +266,30 @@
       "side": 1,
       "message": "What component should I file the bug under? Thanks.",
       "parentUuid": "8b7e8190_454aba13",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 21
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c33c7982_f62171be",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-11T04:52:20Z",
+      "side": 1,
+      "message": "UI\u003eShell\u003eLauncher should do the trick",
+      "parentUuid": "f0d25fb2_5ddf19f2",
       "range": {
         "startLine": 117,
         "startChar": 5,
