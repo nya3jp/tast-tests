@@ -236,3 +236,44 @@ func PinAppToShelf(ctx context.Context, tconn *chrome.TestConn, app apps.App) er
 	}
 	return nil
 }
+
+// RenameFolder renames a folder to a new name.
+func RenameFolder(ctx context.Context, tconn *chrome.TestConn, from, to string, kb *input.KeyboardEventWriter) error {
+	// Make sure expanded launcher view is open.
+	if err := OpenExpandedView(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open expanded launcher before renaming folder")
+	}
+
+	// Chrome add prefix "Folder " to all folder names in ui/app_list/AppListItemView.
+	fromFolderSearchName := "Folder " + from
+	toFolderSearchName := "Folder " + to
+
+	// Find and click folder icon.
+	params := ui.FindParams{Name: fromFolderSearchName, ClassName: ExpandedItemsClass}
+	if err := ui.StableFindAndClick(ctx, tconn, params, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to find folder %q", from)
+	}
+	// Make sure the folder is fully opened before we do the next UI operation.
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change to be completed")
+	}
+
+	// Click label.
+	params = ui.FindParams{Name: from, ClassName: "Label"}
+	if err := ui.StableFindAndClick(ctx, tconn, params, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to find and click label")
+	}
+
+	// Use keyboard to change text field name.
+	if err := kb.Type(ctx, to+"\n"); err != nil {
+		return errors.Wrap(err, "failed to input new folder name")
+	}
+
+	// Make sure folder has the new name.
+	params = ui.FindParams{Name: toFolderSearchName, ClassName: ExpandedItemsClass}
+	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to verify name of renamed folder")
+	}
+
+	return nil
+}
