@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ced424af_9abc8dac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T22:40:06Z",
+      "side": 1,
+      "message": "This is for testing renaming folder in the extended launcher. I need a function launcher.OpenExpandedView from a different CL. I will take care of the merge after one of the CLs is approved. \n\nThanks.",
+      "revId": "cf5dbc0b77474245f4f9f92298f5d8012e294851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
