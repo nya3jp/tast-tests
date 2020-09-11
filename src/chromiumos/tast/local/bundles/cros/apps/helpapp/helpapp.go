@@ -58,6 +58,61 @@ func Exists(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	return ui.Exists(ctx, tconn, helpRootNodeParams)
 }
 
+// LoadTimeData struct for the help app.
+type LoadTimeData struct {
+	AppLocale                       string
+	AppName                         string
+	AssistantAllowed                bool
+	AssistantEnabled                bool
+	BoardName                       string
+	Channel                         int
+	ChromeOSVersion                 string
+	ChromeVersion                   string
+	CustomizationID                 string
+	DeviceName                      string
+	Fontfamily                      string
+	Fontsize                        string
+	HasTouchScreen                  bool
+	HelpAppReleaseNotes             bool
+	HelpAppSearchServiceIntegration bool
+	Hwid                            string
+	IsEphemeralUser                 bool
+	IsManagedDevice                 bool
+	Language                        string
+	MultiDeviceFeaturesAllowed      bool
+	PinEnabled                      bool
+	PlayStoreEnabled                bool
+	ShouldShowGetStarted            bool
+	ShouldShowParentalControl       bool
+	TabletMode                      bool
+	TabletModeDuringOOBE            bool
+	Textdirection                   string
+	UserType                        int
+}
+
+// GetLoadTimeData returns some of the LoadTimeData fields from the help app.
+func GetLoadTimeData(ctx context.Context, cr *chrome.Chrome) (*LoadTimeData, error) {
+	// Establish a Chrome connection to the Help app and wait for it to finish loading.
+	helpAppConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome-untrusted://help-app/"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get connection to help app")
+	}
+	defer helpAppConn.Close()
+
+	if err := helpAppConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for help app to finish loading")
+	}
+	return getLoadTimeData(ctx, helpAppConn)
+}
+
+func getLoadTimeData(ctx context.Context, helpAppConn *chrome.Conn) (*LoadTimeData, error) {
+	data := &LoadTimeData{}
+	if err := helpAppConn.Eval(ctx, "window.loadTimeData.data_", &data); err != nil {
+		return nil, errors.Wrap(err, "failed to evaluate window.loadTimeData.data_")
+	}
+	return data, nil
+}
+
 // IsPerkShown checks if the perks tab is displayed or not.
 func IsPerkShown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	return isTabShown(ctx, tconn, "Perks")
