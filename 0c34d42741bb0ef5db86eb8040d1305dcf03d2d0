@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "da0017a6_0b5c22b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:05:49Z",
+      "side": 1,
+      "message": "Thanks Gabor!",
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44a54cd5_47982ce6",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/telemetry_extension.html",
         "patchSetId": 3
@@ -76,6 +93,24 @@
     },
     {
       "key": {
+        "uuid": "4b4b0da8_d6ccf5a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/telemetry_extension.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:05:49Z",
+      "side": 1,
+      "message": "no, sorry.\n\nIt\u0027s just leftover from debugging",
+      "parentUuid": "ba3b60ea_cf611a6c",
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b20480b6_bc922065",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/telemetry_extension.go",
         "patchSetId": 3
@@ -90,6 +125,24 @@
       "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8830805a_1ef49e4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/telemetry_extension.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:05:49Z",
+      "side": 1,
+      "message": "Unfortunately no, only 2 FTE people are working on it.",
+      "parentUuid": "b20480b6_bc922065",
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +183,24 @@
       "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d69e71_e69a8fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/telemetry_extension.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:05:49Z",
+      "side": 1,
+      "message": "Done, PTAL whether my comment is clear enough.",
+      "parentUuid": "70811c0d_e571cf1f",
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
