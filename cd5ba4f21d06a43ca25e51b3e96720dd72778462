@@ -16,6 +16,29 @@
       "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0940de78_05c9798a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-11T02:38:14Z",
+      "side": 1,
+      "message": "This is based on https://github.com/ScaleFT/monotime/blob/master/clock_runtime_nanotime.go\nI ended up going this route because time.Now() doesn\u0027t let us access raw monotonic time value, which we need for comparison (see below).",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 21
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
