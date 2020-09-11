@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5f8e06b_15ad2448",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-11T08:35:28Z",
+      "side": 1,
+      "message": "This tast is failing now because the LaCrOS binary in tast has not included CRAS. So I changed BinaryPath to /mnt/stateful_partition/lacros-chrome/ in launcher.go in order to test it.  ",
+      "revId": "7872054913f0059c08bad3a0cb753780b526b15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
