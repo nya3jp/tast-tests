@@ -26,7 +26,7 @@ func init() {
 func ListTests(ctx context.Context, s *testing.State) {
 	testNames := []string{"meta.LocalFiles", "meta.RemoteFiles"}
 	// TODO(crbug.com/1106601): Remove -build=false once ensuring that Tast CLI has been upgraded for all users.
-	stdout, stderr, err := tastrun.Run(ctx, s, "list", []string{"-build=false", "-json"}, testNames)
+	stdout, stderr, err := tastrun.Exec(ctx, s, "list", []string{"-build=false", "-json"}, testNames)
 	if err != nil {
 		lines := strings.Split(strings.TrimSpace(string(stderr)), "\n")
 		s.Fatalf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
