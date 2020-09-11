@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "5b3caf8b_8c37593e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-11T11:44:11Z",
+      "side": 1,
+      "message": "It should be tast-tests.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a82bfce_53d7872c",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-11T11:44:11Z",
+      "side": 1,
+      "message": "Function names should not contain get: go/go-style/decisions#getters",
+      "range": {
+        "startLine": 274,
+        "startChar": 5,
+        "endLine": 274,
+        "endChar": 21
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38fa191b_17796a6e",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 1
