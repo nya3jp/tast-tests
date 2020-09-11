@@ -30,6 +30,7 @@ var unhandledFiles = []string{
 
 var testFiles = []string{
 	"audio_basic.go",
+	"audio_playback_configurations.go",
 	"backup_restore.go",
 	"basic.go",
 	"command_cd.go",
