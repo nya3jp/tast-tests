@@ -6,12 +6,10 @@ package audio
 
 import (
 	"context"
-	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -37,26 +35,6 @@ func CrasPlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for output stream: ", err)
 	}
 
-	var devName string
-
-	// Get the first running output device by parsing audio thread logs.
-	// A device may not be opened immediately so it will repeat a query until there is a running output device.
-	re := regexp.MustCompile("Output dev: (.*)")
-	getRunningOutputDevice := func(ctx context.Context) error {
-		s.Log("Dump audio thread to check running devices")
-		dump, err := testexec.CommandContext(ctx, "cras_test_client", "--dump_audio_thread").Output()
-		if err != nil {
-			return errors.Errorf("failed to dump audio thread: %s", err)
-		}
-
-		dev := re.FindStringSubmatch(string(dump))
-		if dev != nil {
-			devName = dev[1]
-			return nil
-		}
-		return errors.New("no such device")
-	}
-
 	// Set timeout to duration + 1s, which is the time buffer to complete the normal execution.
 	runCtx, cancel := context.WithTimeout(ctx, (duration+1)*time.Second)
 	defer cancel()
@@ -76,7 +54,8 @@ func CrasPlay(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := testing.Poll(ctx, getRunningOutputDevice, &testing.PollOptions{Timeout: getDeviceTimeout}); err != nil {
+	devName, err := audio.GetRunningDevice(ctx, audio.OutputStream, getDeviceTimeout)
+	if err != nil {
 		s.Fatal("Failed to detect running output device: ", err)
 	}
 
