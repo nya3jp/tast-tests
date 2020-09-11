@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "210899b1_87723484",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-11T08:26:58Z",
+      "side": 1,
+      "message": "Just a heads-up: I encountered roaming timeout when running this test with DUTs in lab. It worked when changed to 30 seconds. I guess the reason is that this timeout includes AP1 set up which can take more time when SSH is slow.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "7f11a07e9857de33e3ef0f52baa65ee2c93a043c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "999d753b_c72c0bf5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 3
