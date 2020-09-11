@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6885229_8b4de8b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-11T08:08:36Z",
+      "side": 1,
+      "message": "Almost LG. A few more clarifications/minor comments.",
+      "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32ce73cd_5116d002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-11T08:08:36Z",
+      "side": 1,
+      "message": "Could you add the reference of the list of members?",
+      "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a06b9a_d775dc29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-11T08:08:36Z",
+      "side": 1,
+      "message": "clarification: is it ok to use the field name as is, specifically for the capitalization?\nI was guessing it may need `json:...` annotations for each field.",
+      "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51beda5_2ad74219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-11T08:08:36Z",
+      "side": 1,
+      "message": "nit: this is small enough, so you can inline.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 1
+      },
+      "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
