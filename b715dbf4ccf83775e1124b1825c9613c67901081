@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "512c5753_06b7d11d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-11T05:42:16Z",
+      "side": 1,
+      "message": "Will this be only method needs to connect to the page?\nOr, do you have a plan to do more? If latter, I\u0027d recommend to introduce some wrapper of conn for the help-app page, and let Launch returns it on success.",
+      "revId": "b715dbf4ccf83775e1124b1825c9613c67901081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf22576d_25a9074f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-11T05:42:16Z",
+      "side": 1,
+      "message": "nit: since the if-err check at L72 is for L70\u0027s. Could you remove this empty line?",
+      "revId": "b715dbf4ccf83775e1124b1825c9613c67901081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc220397_7307c331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-11T05:42:16Z",
+      "side": 1,
+      "message": "How about returning window.loadTimeData.data() directly, instead of calling getBoolean etc for each field?",
+      "revId": "b715dbf4ccf83775e1124b1825c9613c67901081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0adbdce6_1f4a2d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-11T05:42:16Z",
+      "side": 1,
+      "message": "Let\u0027s get rid of sprintf.\nhelpAppConn.Call(ctx, \u0026val, `window.loadTimeData.getBoolean`, key)",
+      "revId": "b715dbf4ccf83775e1124b1825c9613c67901081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
