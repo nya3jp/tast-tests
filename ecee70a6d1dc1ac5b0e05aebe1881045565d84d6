@@ -296,6 +296,29 @@
       "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f6def9e_bd427a29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-11T09:48:18Z",
+      "side": 1,
+      "message": "It\u0027s nice to deduplicate the rule description here and one in Start because they must always match.",
+      "range": {
+        "startLine": 140,
+        "startChar": 20,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
