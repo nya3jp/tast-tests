@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "7ea5fdeb_9ae4df13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-11T09:59:01Z",
+      "side": 1,
+      "message": "LGTM with a few nits.\n",
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a54cd5_47982ce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/telemetry_extension.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-11T09:59:01Z",
+      "side": 1,
+      "message": "style nit: Please use double-quotes instead of single-quotes.\n\ngo/htmlcssstyle#HTML_Quotation_Marks",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba3b60ea_cf611a6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/telemetry_extension.js",
         "patchSetId": 3
@@ -47,6 +87,29 @@
       "writtenOn": "2020-09-11T09:22:27Z",
       "side": 1,
       "message": "Do you have a broader email list that could be added here?",
+      "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fca77dce_e8eefb23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/telemetry_extension.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-11T09:59:01Z",
+      "side": 1,
+      "message": "I guess you meant err.",
+      "range": {
+        "startLine": 141,
+        "startChar": 58,
+        "endLine": 141,
+        "endChar": 70
+      },
       "revId": "0c34d42741bb0ef5db86eb8040d1305dcf03d2d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
