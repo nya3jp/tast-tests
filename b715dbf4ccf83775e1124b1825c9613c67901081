@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "40f31bfd_501ca986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-09-11T07:39:50Z",
+      "side": 1,
+      "message": "I think this is the only place we would need the connection. We don\u0027t have any other window variables, and have been performing clicks with the ui functions.\nHappy to keep it here for now.",
+      "parentUuid": "512c5753_06b7d11d",
+      "revId": "b715dbf4ccf83775e1124b1825c9613c67901081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf22576d_25a9074f",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "b715dbf4ccf83775e1124b1825c9613c67901081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ed76db_7b396400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-09-11T07:39:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf22576d_25a9074f",
+      "revId": "b715dbf4ccf83775e1124b1825c9613c67901081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4acaeba4_46f7277d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-09-11T07:39:50Z",
+      "side": 1,
+      "message": "Gave this another go, and there is the data_ field we can use. Thanks for the suggestion!",
+      "parentUuid": "cc220397_7307c331",
+      "revId": "b715dbf4ccf83775e1124b1825c9613c67901081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0adbdce6_1f4a2d98",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "b715dbf4ccf83775e1124b1825c9613c67901081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66b27953_8ffe529d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-09-11T07:39:50Z",
+      "side": 1,
+      "message": "Changed it to return window.loadTimeData.data_ instead.",
+      "parentUuid": "0adbdce6_1f4a2d98",
+      "revId": "b715dbf4ccf83775e1124b1825c9613c67901081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
