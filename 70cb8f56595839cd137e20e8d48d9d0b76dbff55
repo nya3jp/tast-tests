@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d767e5c_b9511e25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-11T04:17:41Z",
+      "side": 1,
+      "message": "Last UI controls that we should need for the mic gain slider E2E test.",
+      "revId": "70cb8f56595839cd137e20e8d48d9d0b76dbff55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
