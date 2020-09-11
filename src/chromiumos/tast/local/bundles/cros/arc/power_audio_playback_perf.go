@@ -76,20 +76,19 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_vm"},
 			},
 		},
-		Timeout: 5 * time.Minute,
+		Timeout: 10 * time.Minute,
 	})
 }
 
 // PowerAudioPlaybackPerf measures the battery drain during audio playback with different performance flags.
 func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 	const (
-		testActivity            = "org.chromium.arc.testapp.arcaudiotest.PlaybackPerformanceActivity"
-		afterBootWarmupDuration = 10 * time.Second
-		audioWarmupDuration     = 10 * time.Second
-		measureDuration         = 60 * time.Second
-		keyPerformanceMode      = "perf_mode"
-		keyDuration             = "duration"
-		playbackDurationSecond  = audioWarmupDuration + measureDuration + 10*time.Second // Add 10 seconds buffer.
+		testActivity           = "org.chromium.arc.testapp.arcaudiotest.PlaybackPerformanceActivity"
+		audioWarmupDuration    = 10 * time.Second
+		measureDuration        = 60 * time.Second
+		keyPerformanceMode     = "perf_mode"
+		keyDuration            = "duration"
+		playbackDurationSecond = audioWarmupDuration + measureDuration + 10*time.Second // Add 10 seconds buffer.
 	)
 
 	param := s.Param().(audio.TestParameters)
@@ -124,9 +123,9 @@ func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 	sup.Add(setup.InstallApp(ctx, a, arc.APKPath(audio.Apk), audio.Pkg))
 
-	s.Log("Warmup: Waiting for Android to settle down")
-	if err := testing.Sleep(ctx, afterBootWarmupDuration); err != nil {
-		s.Fatal("Failed to sleep: ", err)
+	// Wait until CPU is cooled down.
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("CPU failed to cool down: ", err)
 	}
 
 	powerMetrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(measureDuration))

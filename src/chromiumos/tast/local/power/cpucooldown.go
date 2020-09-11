@@ -34,15 +34,17 @@ const (
 // without breaking tests in tast-tests-private. This will be removed after the
 // refactoring.
 func WaitUntilCPUCoolDownOld(ctx context.Context, coolDownMode CoolDownMode) error {
-	return WaitUntilCPUCoolDown(ctx, coolDownMode)
+	_, err := WaitUntilCPUCoolDown(ctx, coolDownMode)
+	return err
 }
 
-// WaitUntilCPUCoolDown waits until CPU is cooled down.
+// WaitUntilCPUCoolDown waits until CPU is cooled down and returns the time it
+// took to cool down.
 // Ported from cheets_PerfBoot.wait_cpu_cool_down().
-func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) error {
+func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) (time.Duration, error) {
 	const (
 		pollTimeout  = 300 * time.Second
-		pollInterval = 3 * time.Second
+		pollInterval = 2 * time.Second
 
 		// cpuTemperatureThreshold is the threshold for CPU temperature.
 		cpuTemperatureThreshold = 46000
@@ -55,22 +57,24 @@ func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) error 
 		thermalIgnoreType = "iwlwifi"
 	)
 
+	timeBefore := time.Now()
+
 	switch coolDownMode {
 	case CoolDownPreserveUI:
 	case CoolDownStopUI:
 		// Stop UI in order to cool down CPU faster as Chrome is the heaviest process when
 		// system is idle.
 		if err := upstart.StopJob(ctx, "ui"); err != nil {
-			return errors.Wrap(err, "failed to stop ui")
+			return 0, errors.Wrap(err, "failed to stop ui")
 		}
 		defer upstart.StartJob(ctx, "ui")
 	default:
-		return errors.New("invalid cool down mode")
+		return 0, errors.New("invalid cool down mode")
 	}
 
 	zonePaths, err := filepath.Glob(thermalZonePath)
 	if err != nil || len(zonePaths) == 0 {
-		return errors.Wrapf(err, "failed to glob %s", thermalZonePath)
+		return 0, errors.Wrapf(err, "failed to glob %s", thermalZonePath)
 	}
 
 	testing.ContextLog(ctx, "Waiting until CPU is cooled down")
@@ -114,9 +118,11 @@ func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) error 
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: pollTimeout, Interval: pollInterval}); err != nil {
-		return err
+		return 0, err
 	}
 
-	testing.ContextLog(ctx, "CPU is cooled down")
-	return nil
+	timeAfter := time.Now()
+	duration := timeAfter.Sub(timeBefore)
+	testing.ContextLogf(ctx, "CPU is cooled down (took %f seconds)", duration.Seconds())
+	return duration, nil
 }
