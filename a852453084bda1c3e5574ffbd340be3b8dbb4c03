@@ -161,6 +161,30 @@
     },
     {
       "key": {
+        "uuid": "48a56554_21a040f2",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T16:19:36Z",
+      "side": 1,
+      "message": "I found the API: PinApp in shelf.go. I will use that one. Thanks.",
+      "parentUuid": "b213a311_cde4714f",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 20
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "924cf793_4d880f90",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 9
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "I do not know how to find the icon by ID. I could not find any reference to the ID in the ui_tree.txt. Please let me know what API I should use. Thanks.",
       "parentUuid": "924cf793_4d880f90",
+      "range": {
+        "startLine": 546,
+        "startChar": 5,
+        "endLine": 546,
+        "endChar": 17
+      },
+      "revId": "a852453084bda1c3e5574ffbd340be3b8dbb4c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8434fb52_4c4d0499",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T16:19:36Z",
+      "side": 1,
+      "message": "I found the API: PinApp in shelf.go. I will use that one. Thanks.",
+      "parentUuid": "bcc47714_2bb0cd37",
       "range": {
         "startLine": 546,
         "startChar": 5,
