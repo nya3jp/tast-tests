@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ebb65f30_30d641dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_rename_folder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T23:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e91ff6de_60066a8a",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "cf5dbc0b77474245f4f9f92298f5d8012e294851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c1f75d7_294f4259",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_rename_folder.go",
         "patchSetId": 1
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "7cfb5d12_9e22c9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_rename_folder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T23:34:08Z",
+      "side": 1,
+      "message": "Oh! My bad.",
+      "parentUuid": "5c1f75d7_294f4259",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 82
+      },
+      "revId": "cf5dbc0b77474245f4f9f92298f5d8012e294851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "666c038d_78b0a9e9",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 1
@@ -85,6 +133,30 @@
       "revId": "cf5dbc0b77474245f4f9f92298f5d8012e294851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b5aa57a_fe56d467",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T23:34:08Z",
+      "side": 1,
+      "message": "It should be \"to\". The value of \"to\" is like \"NewName\". The value of toFolderSearchName is like \"Folder NewName\". The end user type and see \"NewName\". The value \"Folder NewName\" is what ui_tree maintains.",
+      "parentUuid": "666c038d_78b0a9e9",
+      "range": {
+        "startLine": 177,
+        "startChar": 24,
+        "endLine": 177,
+        "endChar": 26
+      },
+      "revId": "cf5dbc0b77474245f4f9f92298f5d8012e294851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

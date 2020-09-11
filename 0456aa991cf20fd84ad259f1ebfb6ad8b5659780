@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edb7d578_6bf5d3e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-11T23:34:08Z",
+      "side": 1,
+      "message": "Hi David:\n\nThanks for catching my copy \u0026 paste mistakes. :-)\n\nI have changed the name of the test. \n\nThe name of a folder in the ui_tree is different from the name that end user used. Therefore, the new name input from keyboard does not have \"Folder \" prefix.\n\nThanks for all your help. Have a nice weekend.\n\nSeewai\n",
+      "revId": "0456aa991cf20fd84ad259f1ebfb6ad8b5659780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
