@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0397f9f_65bbfbd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-11T02:29:18Z",
+      "side": 1,
+      "message": "If the timeout is fixed, we don\u0027t need an extra field to save this.\nJust return the const number in\nfunc (p *preImpl) Timeout() time.Duration { return 90 * time.Second }",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aecd24c6_67ac398f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-11T02:29:18Z",
+      "side": 1,
+      "message": "Declare the function in it\u0027s only useage |NewPrecondition| like:\ntoName :\u003d func(config ChromeConfig) string {...}\nOr just inline the logic there.",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89146d43_f4bdb4b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-11T02:29:18Z",
+      "side": 1,
+      "message": "Do we have such comment style in tast-tests codebase?\nThe common style:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go;rcl\u003dcd22c51576006ad908ee9dd4054dcf577ebbf0ca;l\u003d33",
+      "range": {
+        "startLine": 60,
+        "startChar": 26,
+        "endLine": 60,
+        "endChar": 56
+      },
+      "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dee817b_8349bf13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-11T02:29:18Z",
+      "side": 1,
+      "message": "IIUC, you\u0027re trying to reuse the chrome from previous test environment here.\nHow can you ensure the previous chrome can reflect |ChromeConfig| in current |p|?",
+      "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fbf875c_be49a48f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-11T02:29:18Z",
+      "side": 1,
+      "message": "No need to set |nil|, it\u0027s default value is nil",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
