@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "390385b2_2843acc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-11T02:35:38Z",
+      "side": 1,
+      "message": "Hello Ricardo and Cici,\n\nThis change adds support for ARCVM to the input latency tests, using arc-host-clock-client which is (hopefully) added by these changes http://ag/q/topic:%22arc-host-clock-client%22+(status:open%20OR%20status:merged). PTAL, thanks!",
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
