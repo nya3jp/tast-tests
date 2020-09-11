@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38fa191b_17796a6e",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:39:54Z",
+      "side": 1,
+      "message": "nit: declare variable closer to the first use, e.g. right before testing.Poll in your case if you will inline getRunningDevice into testing.Poll",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 19
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d86679de_a85d0e17",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:39:54Z",
+      "side": 1,
+      "message": "nit: unsupported",
+      "range": {
+        "startLine": 282,
+        "startChar": 28,
+        "endLine": 282,
+        "endChar": 37
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a098ce62_ceb2f01b",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:39:54Z",
+      "side": 1,
+      "message": "nit: do you wanna retry dumping audio after this error? if not, please use testing.PollBreak",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 63
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65898cc9_7da707c6",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:39:54Z",
+      "side": 1,
+      "message": "nit: fail fast:\n\n```\ndev :\u003d re.FindStringSubmatch(string(dump))\nif dev \u003d\u003d nil {\n  return errors.New(\"no such device\")\n}\n\ndevName \u003d dev[1]\nreturn nil\n```",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 296,
+        "endChar": 37
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df0dcc8_231ed1b0",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:39:54Z",
+      "side": 1,
+      "message": "nit: it\u0027s quite common when function is inlined here",
+      "range": {
+        "startLine": 299,
+        "startChar": 29,
+        "endLine": 299,
+        "endChar": 45
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fe50b1c_82bd8cd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:39:54Z",
+      "side": 1,
+      "message": "nit: i think it\u0027s more readable if this constant will be inlined in line 57",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e5e9587_54812a95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:39:54Z",
+      "side": 1,
+      "message": "Does it mean that you will have only 3 seconds to catch audio stream? Can you catch audio stream only when cras_test_client is running?",
+      "range": {
+        "startLine": 57,
+        "startChar": 17,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbf44594_04769592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-11T10:39:54Z",
+      "side": 1,
+      "message": "nit: same",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
