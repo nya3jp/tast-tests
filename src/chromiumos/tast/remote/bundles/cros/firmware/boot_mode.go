@@ -39,7 +39,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 	ms := firmware.NewModeSwitcher(h)
 
 	// Ensure that DUT starts in the initial mode.
-	if ok, err := ms.CheckBootMode(ctx, modes[0]); err != nil {
+	if ok, err := h.Reporter.CheckBootMode(ctx, modes[0]); err != nil {
 		s.Fatal("Checking boot mode at beginning of test: ", err)
 	} else if !ok {
 		s.Logf("Setting up DUT to initial boot mode %s", modes[0])

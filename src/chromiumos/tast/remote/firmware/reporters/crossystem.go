@@ -17,13 +17,18 @@ type CrossystemParam string
 
 // Crossystem params used by tests, add more as needed.
 const (
+	CrossystemParamDevswBoot  CrossystemParam = "devsw_boot"
 	CrossystemParamMainfwType CrossystemParam = "mainfw_type"
 	CrossystemParamKernkeyVfy CrossystemParam = "kernkey_vfy"
 )
 
 var (
-	knownCrossystemParams = []CrossystemParam{CrossystemParamMainfwType, CrossystemParamKernkeyVfy}
-	rCrossystemLine       = regexp.MustCompile(`^([^ =]*) *= *(.*[^ ]) *# [^#]*$`)
+	knownCrossystemParams = []CrossystemParam{
+		CrossystemParamDevswBoot,
+		CrossystemParamMainfwType,
+		CrossystemParamKernkeyVfy,
+	}
+	rCrossystemLine = regexp.MustCompile(`^([^ =]*) *= *(.*[^ ]) *# [^#]*$`)
 )
 
 // Crossystem returns crossystem output as a map.
@@ -40,7 +45,7 @@ func (r *Reporter) Crossystem(ctx context.Context, requiredKeys ...CrossystemPar
 	}
 	for _, k := range requiredKeys {
 		if _, found := parsed[k]; !found {
-			return nil, errors.Errorf("Required param %q not found in output: %v", k, parsed)
+			return nil, errors.Errorf("required param %q not found in output: %v", k, parsed)
 		}
 	}
 	return parsed, nil
