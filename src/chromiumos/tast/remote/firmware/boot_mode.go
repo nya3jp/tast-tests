@@ -43,37 +43,23 @@ func NewModeSwitcher(h *Helper) *ModeSwitcher {
 	}
 }
 
-// CheckBootMode forwards to the CheckBootMode RPC to check whether the DUT is in a specified boot mode.
-func (ms *ModeSwitcher) CheckBootMode(ctx context.Context, bootMode fwCommon.BootMode) (bool, error) {
-	h := ms.Helper
-	if err := h.RequireRPCUtils(ctx); err != nil {
-		return false, errors.Wrap(err, "requiring RPC utils")
-	}
-	res, err := h.RPCUtils.CurrentBootMode(ctx, &empty.Empty{})
-	if err != nil {
-		return false, errors.Wrap(err, "calling CurrentBootMode rpc")
-	}
-	return bootMode == fwCommon.BootModeFromProto[res.BootMode], nil
-}
-
 // RebootToMode reboots the DUT into the specified boot mode.
 // This has the side-effect of disconnecting the RPC client.
 func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMode) error {
 	h := ms.Helper
+
+	fromMode, err := h.Reporter.CurrentBootMode(ctx)
+	if err != nil {
+		return errors.Wrap(err, "determining boot mode at the start of RebootToMode")
+	}
+
+	// Perform blocking sync prior to reboot, then close the RPC connection.
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		return errors.Wrap(err, "requiring RPC utils")
 	}
 	if _, err := h.RPCUtils.BlockingSync(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "syncing DUT before reboot")
 	}
-
-	res, err := h.RPCUtils.CurrentBootMode(ctx, &empty.Empty{})
-	if err != nil {
-		return errors.Wrap(err, "calling CurrentBootMode rpc")
-	}
-	fromMode := fwCommon.BootModeFromProto[res.BootMode]
-
-	// Kill RPC client connection before rebooting
 	h.CloseRPCConnection(ctx)
 
 	switch toMode {
@@ -112,7 +98,9 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	default:
 		return errors.Errorf("unsupported firmware boot mode transition: %s to %s", fromMode, toMode)
 	}
-	if ok, err := ms.CheckBootMode(ctx, toMode); err != nil {
+
+	// Verify successful reboot
+	if ok, err := h.Reporter.CheckBootMode(ctx, toMode); err != nil {
 		return errors.Wrapf(err, "checking boot mode after reboot to %s", toMode)
 	} else if !ok {
 		return errors.Errorf("DUT was not in %s after RebootToMode", toMode)

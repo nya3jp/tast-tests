@@ -32,21 +32,6 @@ type UtilsService struct {
 	s *testing.ServiceState
 }
 
-// CurrentBootMode determines the DUT's current firmware boot mode.
-func (*UtilsService) CurrentBootMode(ctx context.Context, req *empty.Empty) (*fwpb.CurrentBootModeResponse, error) {
-	csValsByMode := map[fwpb.BootMode](map[string]string){
-		fwpb.BootMode_BOOT_MODE_NORMAL:   {"devsw_boot": "0", "mainfw_type": "normal"},
-		fwpb.BootMode_BOOT_MODE_DEV:      {"devsw_boot": "1", "mainfw_type": "developer"},
-		fwpb.BootMode_BOOT_MODE_RECOVERY: {"mainfw_type": "recovery"},
-	}
-	for bootMode, csVals := range csValsByMode {
-		if firmware.CheckCrossystemValues(ctx, csVals) {
-			return &fwpb.CurrentBootModeResponse{BootMode: bootMode}, nil
-		}
-	}
-	return nil, errors.New("did not match any known boot mode")
-}
-
 // BlockingSync syncs the root device and internal device.
 func (*UtilsService) BlockingSync(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	// The double calls to sync fakes a blocking call

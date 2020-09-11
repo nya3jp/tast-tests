@@ -12,9 +12,6 @@ option go_package = "chromiumos/tast/services/cros/firmware";
 
 // UtilsService provides some basic operations used by firmware tests.
 service UtilsService {
-  // CurrentBootMode determines which boot mode the DUT is in.
-  rpc CurrentBootMode (google.protobuf.Empty) returns (CurrentBootModeResponse) {}
-
   // BlockingSync syncs the root device and internal device.
   rpc BlockingSync (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
@@ -22,17 +19,6 @@ service UtilsService {
   rpc ReadServoKeyboard (google.protobuf.Empty) returns (ReadServoKeyboardResponse) {}
 }
 
-// BootMode contains values for the three possible modes of a powered-on DUT.
-enum BootMode {
-  BOOT_MODE_UNSPECIFIED = 0;
-  BOOT_MODE_NORMAL = 1;
-  BOOT_MODE_DEV = 2;
-  BOOT_MODE_RECOVERY = 3;
-}
-
-message CurrentBootModeResponse {
-  BootMode boot_mode = 1;
-}
 
 message ReadServoKeyboardResponse {
   bytes keys = 1;
