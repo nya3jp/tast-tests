@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20c0e750_15c2b0bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-11T01:58:55Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "83d72ce7b7af4a0f607e70cc5b95ded70d865768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8deaba4_8e5f4b0c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-11T01:58:55Z",
+      "side": 1,
+      "message": "(optional): to be simpler how about:\n\nvar locations [2]Rect\n\nif !cmp.Equal(locations[0], n.Location) || !cmp.Equal(locations[1], n.Location) {\n  // Push history\n  locations[0] \u003d locations[1]\n  locations[1] \u003d n.Location()\n  return errors.Errorf(...)\n}",
+      "range": {
+        "startLine": 425,
+        "startChar": 2,
+        "endLine": 433,
+        "endChar": 3
+      },
+      "revId": "83d72ce7b7af4a0f607e70cc5b95ded70d865768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
