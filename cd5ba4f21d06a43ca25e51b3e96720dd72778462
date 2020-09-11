@@ -325,6 +325,30 @@
     },
     {
       "key": {
+        "uuid": "f1bf056a_8fee2986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-11T19:55:30Z",
+      "side": 1,
+      "message": "ah... thanks!\n\nYes, adding some comments in WaitForNextEventTime regarding why getVMTimeDiff is called everytime would be great.\n\nAnd knowing that we have to keep the diff, would it be possible to calculate the diff inside \"WaitForNextEventTime\" ?\nSo, instead of returning an diff array, to calculate the diff inside that function and update the eventTimes there?\nI\u0027m suggesting this to avoid passing the \"diffs\" from one place to another.",
+      "parentUuid": "61a03f9a_a8d685d6",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 50
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0940de78_05c9798a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
         "patchSetId": 2
