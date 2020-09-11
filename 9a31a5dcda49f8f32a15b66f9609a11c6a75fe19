@@ -33,6 +33,24 @@
       "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e496483_a63ec908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_start.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-11T10:43:44Z",
+      "side": 1,
+      "message": "I found that it downloads a VM image by \u0027org.chromium.ComponentUpdaterService\u0027 method here:\nhttps://source.corp.google.com/chromeos_public/src/platform2/vm_tools/crostini_client/methods.rs;rcl\u003da790f84930c1cef40e49c2445dc750663a5652b8;l\u003d555\n\nThe method creates /run/imageloader/cros-termina/\u003cversion\u003e/ if it doesn\u0027t exist. \n\nSo, I think we don\u0027t need to push crostini.ImageArtifact when running tests. I removed the Params field. Does it make sense?",
+      "parentUuid": "23078ce9_9dc4fa96",
+      "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
