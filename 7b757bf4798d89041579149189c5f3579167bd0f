@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bd70e7ef_aca775bf",
+        "filename": "src/chromiumos/tast/local/power/cpu_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-11T00:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7cd420c_fe633289",
+      "revId": "7b757bf4798d89041579149189c5f3579167bd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3243349e_3e58999e",
         "filename": "src/chromiumos/tast/local/power/cpu_metrics.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "7b757bf4798d89041579149189c5f3579167bd0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a409b1d_b518d7ad",
+        "filename": "src/chromiumos/tast/local/power/cpu_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-11T00:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3243349e_3e58999e",
+      "revId": "7b757bf4798d89041579149189c5f3579167bd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "32c210c6_3686dae2",
+        "filename": "src/chromiumos/tast/local/power/read_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-11T00:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "612407e5_03d393d4",
+      "revId": "7b757bf4798d89041579149189c5f3579167bd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6c8d45c_d0d17577",
         "filename": "src/chromiumos/tast/local/power/read_utils.go",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "7b757bf4798d89041579149189c5f3579167bd0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b779b2b_9957256f",
+        "filename": "src/chromiumos/tast/local/power/read_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-11T00:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6c8d45c_d0d17577",
+      "revId": "7b757bf4798d89041579149189c5f3579167bd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
