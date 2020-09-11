@@ -236,3 +236,68 @@ func PinAppToShelf(ctx context.Context, tconn *chrome.TestConn, app apps.App) er
 	}
 	return nil
 }
+
+// RenameFolder renames a folder to a new name.
+func RenameFolder(ctx context.Context, tconn *chrome.TestConn, from, to string) error {
+	const textFieldClass = "Textfield"
+
+	// Make sure expanded launcher view is open.
+	if err := OpenExpandedView(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open expanded launcher before renaming folder")
+	}
+
+	// Chrome add prefix "Folder " to all folder names in ui/app_list/AppListItemView.
+	fromFolderSearchName := "Folder " + from
+	toFolderSearchName := "Folder " + to
+
+	// Find folder icon.
+	params := ui.FindParams{Name: fromFolderSearchName, ClassName: ExpandedItemsClass}
+	folder, err := ui.FindWithTimeout(ctx, tconn, params, defaultTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find folder")
+	}
+	defer folder.Release(ctx)
+
+	// Select folder icon to open text field.
+	if err := folder.FocusAndWait(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to call focus() on the text field")
+	}
+	if err := folder.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to left click folder")
+	}
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for location change to be completed")
+	}
+
+	// Select text field.
+	params = ui.FindParams{Name: from, ClassName: textFieldClass}
+	textField, err := ui.Find(ctx, tconn, params)
+	if err != nil {
+		return errors.Wrap(err, "failed to find text field ")
+	}
+	defer textField.Release(ctx)
+	if err := textField.FocusAndWait(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to call focus() on the text field")
+	}
+	if err := textField.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to select text field")
+	}
+
+	// Use keyboard to change text field name.
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer kb.Close()
+	if err := kb.Type(ctx, to+"\n"); err != nil {
+		return errors.Wrap(err, "failed to input new folder name")
+	}
+
+	// Make sure folder has the new name.
+	params = ui.FindParams{Name: toFolderSearchName, ClassName: ExpandedItemsClass}
+	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to verify name of renamed folder")
+	}
+
+	return nil
+}
