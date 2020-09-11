@@ -111,6 +111,17 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to launch help app: ", err)
 		}
 
+		// Check that loadTimeData is correctly set.
+		loadTimeData, err := helpapp.GetLoadTimeData(ctx, cr)
+		if err != nil {
+			s.Fatal("Failed to get help app's load time data")
+		}
+
+		if !loadTimeData.IsManagedDevice {
+			s.Error("Help app incorrectly set isManagedDevice to false")
+		}
+
+		// Check if perks tab is shown.
 		isPerkShown, err := helpapp.IsPerkShown(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to check perks visibility: ", err)
