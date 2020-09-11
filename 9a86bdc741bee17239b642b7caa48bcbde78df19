@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "083609b1_093d42ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-11T01:34:19Z",
+      "side": 1,
+      "message": "minor nit: close the complete sentence with period?",
+      "range": {
+        "startLine": 190,
+        "startChar": 65,
+        "endLine": 190,
+        "endChar": 66
+      },
+      "revId": "9a86bdc741bee17239b642b7caa48bcbde78df19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
