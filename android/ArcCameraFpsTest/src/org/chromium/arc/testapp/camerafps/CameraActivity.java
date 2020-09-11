@@ -147,7 +147,8 @@ public class CameraActivity extends Activity {
                                 int fps = intent.getIntExtra(KEY_FPS, DEFAULT_FPS);
                                 mHistogram.setTargetFrameDuration((int) (1000.0 / fps));
                                 mCameraFragment.setTargetFps(fps);
-                                mCameraFragment.startPreview();
+                                mCameraFragment.onPause();
+                                mCameraFragment.onResume();
                                 break;
                             case ACTION_SET_TARGET_RESOLUTION:
                                 int width = intent.getIntExtra(KEY_WIDTH, DEFAULT_WIDTH);
@@ -157,7 +158,8 @@ public class CameraActivity extends Activity {
                                 } else {
                                     mCameraFragment.setTargetResolution(new Size(width, height));
                                 }
-                                mCameraFragment.startPreview();
+                                mCameraFragment.onPause();
+                                mCameraFragment.onResume();
                                 break;
                             case ACTION_START_RECORDING:
                                 String videoFilename = mCameraFragment.startRecordingVideo();
