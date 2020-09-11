@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "187b9e76_044e15f1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-11T21:29:22Z",
+      "side": 1,
+      "message": "Yeah that sounds better, not sure what I was thinking originally haha.\n\nI went with this flow:\nif exists -\u003e find -\u003e click, then confirm menu is open\n\nsince the error handling when just using find seemed a little weird. Unless it\u0027s fine to something like this?\n  audioBtn, err :\u003d ui.Find(ctx, tconn audioParams)\n  if err \u003d\u003d nil {\n    defer audioBtn.Release(ctx)\n    audioBtn.LeftClick(ctx)...\n  }\n  \n  // Check if menu is open\n\nskipping through the err !\u003d nil case seems weird, though.",
+      "parentUuid": "95ea72e9_13c91caa",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 380,
+        "endChar": 2
+      },
+      "revId": "dfa206711e55c29901518d2da1d7decf0dbcc8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f8a3d1d_2408415b",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "dfa206711e55c29901518d2da1d7decf0dbcc8f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96e00ab9_f8bc5460",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-11T21:29:22Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "6f8a3d1d_2408415b",
+      "range": {
+        "startLine": 515,
+        "startChar": 1,
+        "endLine": 519,
+        "endChar": 19
+      },
+      "revId": "dfa206711e55c29901518d2da1d7decf0dbcc8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
