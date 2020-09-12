@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b9526cd_673aedc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-12T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "076a0d1f_dfa06f8e",
+      "range": {
+        "startLine": 1309,
+        "startChar": 14,
+        "endLine": 1309,
+        "endChar": 28
+      },
+      "revId": "f9d6b345423c9f109c9192b609c5031bfbc60261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eaaa5f6d_c1257d92",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "f9d6b345423c9f109c9192b609c5031bfbc60261",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b220a47c_1b1cf9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-12T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaaa5f6d_c1257d92",
+      "range": {
+        "startLine": 1318,
+        "startChar": 14,
+        "endLine": 1318,
+        "endChar": 23
+      },
+      "revId": "f9d6b345423c9f109c9192b609c5031bfbc60261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "faf6e6fd_fbc726b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-12T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d65d95d_90a7ccb8",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "f9d6b345423c9f109c9192b609c5031bfbc60261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bff6738_d38cd859",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
         "patchSetId": 11
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "59f3d415_31ad761d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/test_environment.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-12T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bff6738_d38cd859",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "f9d6b345423c9f109c9192b609c5031bfbc60261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e276c6fc_3cc6729d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
         "patchSetId": 11
@@ -108,6 +204,24 @@
       "revId": "f9d6b345423c9f109c9192b609c5031bfbc60261",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e0183c_b7cb7d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-12T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e276c6fc_3cc6729d",
+      "revId": "f9d6b345423c9f109c9192b609c5031bfbc60261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
