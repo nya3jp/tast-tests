@@ -20,22 +20,23 @@ type bound struct {
 	height int
 }
 
-// connector identifies the attributes related to display connector.
-type connector struct {
-	cid       int  // connector id
-	connected bool // true if the connector is connected
+// Connector identifies the attributes related to display connector.
+type Connector struct {
+	cid       int    // connector id
+	Connected bool   // true if the connector is connected
+	Name      string // name of the connector
 }
 
 var modesetConnectorPattern = regexp.MustCompile(`^(\d+)\s+\d+\s+(connected|disconnected)\s+(\S+)\s+\d+x\d+\s+\d+\s+\d+`)
 
-// modetestConnectors retrieves a list of connectors using modetest.
-func modetestConnectors(ctx context.Context) ([]*connector, error) {
+// ModetestConnectors retrieves a list of connectors using modetest.
+func ModetestConnectors(ctx context.Context) ([]*Connector, error) {
 	output, err := testexec.CommandContext(ctx, "modetest", "-c").Output()
 	if err != nil {
 		return nil, err
 	}
 
-	var connectors []*connector
+	var connectors []*Connector
 	for _, line := range strings.Split(string(output), "\n") {
 		matches := modesetConnectorPattern.FindStringSubmatch(line)
 		if matches != nil {
@@ -44,7 +45,8 @@ func modetestConnectors(ctx context.Context) ([]*connector, error) {
 				return nil, errors.Wrapf(err, "failed to parse cid %s", matches[1])
 			}
 			connected := (matches[2] == "connected")
-			connectors = append(connectors, &connector{cid: cid, connected: connected})
+			name := matches[3]
+			connectors = append(connectors, &Connector{cid: cid, Connected: connected, Name: name})
 			continue
 		}
 	}
@@ -54,13 +56,13 @@ func modetestConnectors(ctx context.Context) ([]*connector, error) {
 // NumberOfOutputsConnected parses the output of modetest to determine the number of connected displays.
 // And returns the number of connected displays.
 func NumberOfOutputsConnected(ctx context.Context) (int, error) {
-	connectors, err := modetestConnectors(ctx)
+	connectors, err := ModetestConnectors(ctx)
 	if err != nil {
 		return 0, err
 	}
 	connected := 0
 	for _, display := range connectors {
-		if display.connected {
+		if display.Connected {
 			connected++
 		}
 	}
