@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "129f7b64_8d1d173a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-12T06:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0397f9f_65bbfbd6",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aecd24c6_67ac398f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55ff991c_9bb74bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-12T06:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aecd24c6_67ac398f",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fc49d772_dff31912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-12T06:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89146d43_f4bdb4b7",
+      "range": {
+        "startLine": 60,
+        "startChar": 26,
+        "endLine": 60,
+        "endChar": 56
+      },
+      "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dee817b_8349bf13",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
         "patchSetId": 10
@@ -85,6 +157,24 @@
       "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a9f85a_fedbed55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-12T06:14:33Z",
+      "side": 1,
+      "message": "From my understanding, we separate different preconditions using their name. For example, when we test camera.CCAUIPreview, it needs a \"cca\" precondition. So we create a Chrome with no specific command-line switch. And something like camera.CCAUIMojo can reuse it, it just need to ensure Chrome is not crashed and reset it.\n\nHowever, when it goes to camera.CCAUIIntent.swa, it will request a \"cca-swa-arc\" precondition, so it will create a new preImpl instance without reusing the Chrome of \"cca\" precondition and then create a Chrome that enables ARC and SWA.",
+      "parentUuid": "9dee817b_8349bf13",
+      "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -108,6 +198,30 @@
       "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb62210_19b07f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-12T06:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fbf875c_be49a48f",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "0b29a5a2810b56acf1f4fc50f115b3734dc4bb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
