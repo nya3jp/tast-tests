@@ -16,6 +16,23 @@
       "revId": "d685931f98043e02d9ac464b83f32fcdcef3c569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1674b121_cb9b8d88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-13T23:36:56Z",
+      "side": 1,
+      "message": "Tast Shadow Review: LGTM",
+      "revId": "d685931f98043e02d9ac464b83f32fcdcef3c569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
