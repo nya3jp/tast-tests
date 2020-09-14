@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
-	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
@@ -177,18 +176,6 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		if 10*pipWindow.TargetBounds.Width >= 3*info.WorkArea.Width && 10*pipWindow.TargetBounds.Height >= 3*info.WorkArea.Height {
 			s.Fatalf("Expected small PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
 		}
-	}
-
-	conn, err := cr.NewConn(ctx, "chrome://settings")
-	if err != nil {
-		s.Fatal("Failed to load chrome://settings: ", err)
-	}
-	defer conn.Close()
-
-	// Wait for chrome://settings to be quiescent. We want data that we
-	// could extrapolate, as in a steady state that could last for hours.
-	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
 	}
 
 	if err := timeline.Start(ctx); err != nil {
