@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1205ae7c_190d8c45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-14T21:51:14Z",
+      "side": 1,
+      "message": "I need to merge my two branches together to do the test. I will update you after I do the test.",
+      "parentUuid": "33d70232_7d7073e3",
+      "revId": "44178cb07b43504a177b5fe43d3b9d9b60412189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2f6017e_e0669e93",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "cf4c2b48_3c84ea9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-14T21:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2f6017e_e0669e93",
+      "range": {
+        "startLine": 61,
+        "startChar": 50,
+        "endLine": 61,
+        "endChar": 64
+      },
+      "revId": "44178cb07b43504a177b5fe43d3b9d9b60412189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adef3790_e7a561df",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
         "patchSetId": 3
@@ -62,6 +104,30 @@
       "revId": "44178cb07b43504a177b5fe43d3b9d9b60412189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "530a55f6_1e6420f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-14T21:51:14Z",
+      "side": 1,
+      "message": "I have added error handling for calling ui.WaitForLocationChangeCompleted. For other readiness indicators, I changed the code for finding folder in launcher.RenameFolder to \n\n\tfolder, err :\u003d ui.FindWithTimeout(ctx, tconn, params, defaultTimeout)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to find folder\")\n\t}\n\nPlease let me know if it is sufficient. Thanks.",
+      "parentUuid": "adef3790_e7a561df",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 46
+      },
+      "revId": "44178cb07b43504a177b5fe43d3b9d9b60412189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

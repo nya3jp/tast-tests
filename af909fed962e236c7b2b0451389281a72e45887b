@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5435fd52_6ade9fc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-14T21:51:14Z",
+      "side": 1,
+      "message": "I have uploaded my latest change to address comments. For the email alias, I don\u0027t see any cros-ui-te in any of our ui tests. I do see chromeos-ui@google.com. Should I use this instead? Also, what is email alias for Vlad\u0027s team?\n\nI will do\n\n tast run \u003cip\u003e ui.LauncherRenameFolder ui.LauncherPinAppToShelf\n\nlater today and update you all on the result.\n\nThanks.\n",
+      "revId": "af909fed962e236c7b2b0451389281a72e45887b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
