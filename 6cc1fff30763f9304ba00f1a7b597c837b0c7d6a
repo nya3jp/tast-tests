@@ -22,6 +22,30 @@
       "revId": "6cc1fff30763f9304ba00f1a7b597c837b0c7d6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7493a100_46e67ccf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-14T10:29:00Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s strictly needed, but I added a close call to testOverwriteAtOffsets",
+      "parentUuid": "9ccc042c_c2cdabf2",
+      "range": {
+        "startLine": 11,
+        "startChar": 59,
+        "endLine": 13,
+        "endChar": 78
+      },
+      "revId": "6cc1fff30763f9304ba00f1a7b597c837b0c7d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
