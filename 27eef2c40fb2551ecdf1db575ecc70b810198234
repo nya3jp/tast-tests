@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "c37de830_c50dcef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-09-14T01:52:18Z",
+      "side": 1,
+      "message": "Done. Removed majority of the fields except the one I wanted, as per carpenterr@\u0027s comment.",
+      "parentUuid": "32ce73cd_5116d002",
+      "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94a06b9a_d775dc29",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 2
@@ -50,6 +68,24 @@
       "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afee4cba_40c90138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-09-14T01:52:18Z",
+      "side": 1,
+      "message": "You\u0027re right! Wasn\u0027t really familiar with golang tbh. Thanks for mentioning this",
+      "parentUuid": "94a06b9a_d775dc29",
+      "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "3db44792_3de9076e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-09-14T01:52:18Z",
+      "side": 1,
+      "message": "Fair enough, removed the other fields except for `isManagedDevice`.",
+      "parentUuid": "ca18417b_1f3c8cfa",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 1
+      },
+      "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d51beda5_2ad74219",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 2
@@ -96,6 +156,30 @@
       "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a16cc7f5_b8260f30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-09-14T01:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51beda5_2ad74219",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 1
+      },
+      "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
