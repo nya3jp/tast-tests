@@ -14,7 +14,8 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/diff"
+	"github.com/kylelemons/godebug/diff"
+
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/printing/printer"
@@ -132,11 +133,7 @@ func Run(ctx context.Context, s *testing.State, p *Params) {
 		s.Fatal("Fake printer didn't receive a request: ", err)
 	}
 
-	diff, err := diff.Diff(cleanPSContents(string(request)), cleanPSContents(string(expect)))
-	if err != nil {
-		s.Fatal("Unexpected diff output: ", err)
-	}
-	if diff != "" {
+	if diff := diff.Diff(cleanPSContents(string(request)), cleanPSContents(string(expect))); diff != "" {
 		path := filepath.Join(s.OutDir(), p.OutDiffFile)
 		if err := ioutil.WriteFile(path, []byte(diff), 0644); err != nil {
 			s.Error("Failed to dump diff: ", err)
