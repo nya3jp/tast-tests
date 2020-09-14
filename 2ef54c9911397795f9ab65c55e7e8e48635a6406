@@ -63,6 +63,30 @@
       "revId": "2ef54c9911397795f9ab65c55e7e8e48635a6406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae050a5a_b462cb91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-14T00:04:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ae3f21b_13e83809",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "2ef54c9911397795f9ab65c55e7e8e48635a6406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
