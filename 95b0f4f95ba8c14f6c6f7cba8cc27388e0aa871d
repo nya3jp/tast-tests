@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cc6831b_7b31ba6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-14T01:06:48Z",
+      "side": 1,
+      "message": "I don\u0027t know enough about /proc/stat to quickly review.",
+      "revId": "95b0f4f95ba8c14f6c6f7cba8cc27388e0aa871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
