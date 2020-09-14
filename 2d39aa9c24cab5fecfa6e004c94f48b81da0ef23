@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba5588d3_98721504",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-09-14T15:05:46Z",
+      "side": 1,
+      "message": "Why would it be hard? The CPU and Pkg power usage is averaged\namong the playback duration, so they should not be influenced\nby how many times the video is played. The dropped frames would,\nbut what we do in other tests is to log the percentage of \ndropped frames:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go;l\u003d246\n\nIOW this CL might be abandoned in favour of just adding the %\nof dropped frames? (It\u0027d be OK to leave both the actual amount\nand the percentage of dropped frames so they can be compared).",
+      "range": {
+        "startLine": 11,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "2d39aa9c24cab5fecfa6e004c94f48b81da0ef23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35a2c1f9_33c97ed9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-09-14T15:05:46Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand this. Can you elaborate please?",
+      "range": {
+        "startLine": 14,
+        "startChar": 37,
+        "endLine": 15,
+        "endChar": 36
+      },
+      "revId": "2d39aa9c24cab5fecfa6e004c94f48b81da0ef23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0c11e3_9538d16d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-09-14T15:05:46Z",
+      "side": 1,
+      "message": "Why do we do this? Is it because we\u0027re going to reduce the total\nmeasurement time?",
+      "range": {
+        "startLine": 18,
+        "startChar": 36,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "2d39aa9c24cab5fecfa6e004c94f48b81da0ef23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab322e47_ceea173e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/playback.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-09-14T15:05:46Z",
+      "side": 1,
+      "message": "Instead of adding a whole new file, I\u0027d suggest extending playRepeatedly()\nto have a number of play-back iterations (by default 1):\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/video.html;l\u003d25\n\nplayRepeatedly() is async, so you can avoid relying on polling\n(WaitForExpr) completeVideoLoop, and instead wait until the Promise\nis resolved (or rejected).",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 53
+      },
+      "revId": "2d39aa9c24cab5fecfa6e004c94f48b81da0ef23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cd6c55b_26d7623b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-09-14T15:05:46Z",
+      "side": 1,
+      "message": "This should be a named constant, and added by name to the Data\nsection of the test file.",
+      "range": {
+        "startLine": 93,
+        "startChar": 23,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "2d39aa9c24cab5fecfa6e004c94f48b81da0ef23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
