@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "190d04f1_1d7820d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8f3ca7_00da1aed",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cdc06cc_90017891",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2020-09-11T11:57:20Z",
       "side": 1,
       "message": "Which part of the test can take a long time to execute?",
+      "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc36f413_9cb71876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:08:33Z",
+      "side": 1,
+      "message": "I copied it from lacros/basic.go. That test just launches LaCrOS so the timeout of this test should not be less than 7 minutes.",
+      "parentUuid": "6cdc06cc_90017891",
       "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "df8095f8_aff4c8d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13bec964_a785e7e3",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d174e56_6c8cb7e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
         "patchSetId": 2
@@ -109,6 +175,30 @@
       "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30a534be_1767fdd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d174e56_6c8cb7e1",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "bd456590_b4f69116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "577b6b1d_7f7046ae",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 8
+      },
+      "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4045e3b_b2a798af",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
         "patchSetId": 2
@@ -158,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "44d347b9_2fd7c490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4045e3b_b2a798af",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d61ac98f_89854f29",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
         "patchSetId": 2
@@ -178,6 +316,30 @@
       "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "183aa1a9_15b1c4d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61ac98f_89854f29",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "2f56f999fc57d779e5278ade1978c7479f986233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
