@@ -16,6 +16,23 @@
       "revId": "48e95cfe453252144d320db19005d490154fe851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "971c2d90_ac7dea20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-09-14T05:59:48Z",
+      "side": 1,
+      "message": "I checked on both ARCVM and ARC++.",
+      "revId": "48e95cfe453252144d320db19005d490154fe851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
