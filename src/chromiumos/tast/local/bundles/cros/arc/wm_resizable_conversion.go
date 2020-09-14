@@ -42,6 +42,11 @@ func WMResizableConversion(ctx context.Context, s *testing.State) {
 			Name: "RV_conversion_portrait",
 			Func: wmRV20,
 		},
+		wm.TestCase{
+			// resizable/conversion: undefined orientation
+			Name: "RV_undefined_orientation",
+			Func: wmRV21,
+		},
 	})
 }
 
@@ -259,4 +264,166 @@ func wmRV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	// 	}
 	// 	return nil
 	// }, &testing.PollOptions{Timeout: 5 * time.Second})}
+}
+
+// wmRV21 covers resizable/conversion undefined orientation.
+// Expected behavior is defined in: go/arc-wm-r RV21 resizable/conversion: undefined orientation.
+func wmRV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// Start an unspecified activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "failed to create new activity")
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start new activity")
+	}
+	defer func(ctx context.Context) {
+		act.Stop(ctx, tconn)
+	}(ctx)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return errors.Wrap(err, "failed to wait until activity is ready")
+	}
+
+	owInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "failed to get original ARC app window info")
+	}
+	wID := owInfo.ID
+
+	// Enable tablet mode.
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
+	if err != nil {
+		return errors.Wrap(err, "failed to ensure if tablet mode is enabled")
+	}
+	defer func(ctx context.Context) {
+		cleanup(ctx)
+	}(ctx)
+
+	if err := wm.WaitForARCAppWindowState(ctx, tconn, ash.WindowStateMaximized, wID, false); err != nil {
+		return errors.Wrap(err, "failed to wait for ARC app window state to change to maximized 1")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Get activity's window info in landscape tablet mode to make sure it is in Maximized state.
+		lwInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		// Compare activity bounds to make sure it covers the primary display work area.
+		if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *lwInfo); err != nil {
+			return errors.Wrap(err, "failed to check maximize window in tablet mode")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+
+	// Get display orientation in tablet mode.
+	tDO, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display orientation")
+	}
+
+	// Display should be landscape (default).
+	if tDO.Type != display.OrientationLandscapePrimary {
+		return errors.Errorf("invalid display orientation in tablet mode; got: %q, want: landscape-primary", tDO.Type)
+	}
+
+	// Disable tablet mode.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		return errors.Wrap(err, "failed to disable tablet mode")
+	}
+
+	if err := wm.WaitForARCAppWindowState(ctx, tconn, ash.WindowStateMaximized, wID, true); err != nil {
+		return errors.Wrap(err, "failed to wait for ARC app window state to change to maximized 2")
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, wID); err != nil {
+		return errors.Wrap(err, "failed to wait finishing animating")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Get activity's window info after switching back from tablet mode.
+		alwInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		// Activity bounds should be equal to the original bounds.
+		if alwInfo.BoundsInRoot != owInfo.BoundsInRoot {
+			return errors.Errorf("invalid window bounds after switching back from landscape tablet mode; got: %q, want: %q", alwInfo.BoundsInRoot, owInfo.BoundsInRoot)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+
+	// Enable tablet mode.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+		return errors.Wrap(err, "failed to enable tablet mode")
+	}
+
+	if err := wm.WaitForARCAppWindowState(ctx, tconn, ash.WindowStateMaximized, wID, false); err != nil {
+		return errors.Wrap(err, "failed to wait for ARC app window state to change to maximized 3")
+	}
+
+	// Rotate the screen 270 degree.
+	cleanupRotation, err := wm.RotateDisplay(ctx, tconn, display.Rotate270)
+	if err != nil {
+		return errors.Wrap(err, "failed to rotate the display by 270 degrees")
+	}
+	defer cleanupRotation()
+
+	// Display should be portrait.
+	// Wait until display rotates to portrait-primary orientation.
+	if err := wm.WaitForDisplayOrientation(ctx, tconn, display.OrientationPortraitPrimary); err != nil {
+		return errors.Wrap(err, "failed to wait for display orientation")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Get activity's window info in portrait tablet mode to make sure it is in Maximized state.
+		pwInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		// Compare activity bounds to make sure it covers the primary display work area.
+		if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *pwInfo); err != nil {
+			return errors.Wrap(err, "failed to check maximize window in tablet mode")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+
+	// Disable tablet mode.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		return errors.Wrap(err, "failed to disable tablet mode")
+	}
+
+	if err := wm.WaitForARCAppWindowState(ctx, tconn, ash.WindowStateMaximized, wID, true); err != nil {
+		return errors.Wrap(err, "failed to wait for ARC app window state to change to maximized 4")
+	}
+
+	// Display should be landscape.
+	// Wait until display rotates to landscape-primary orientation.
+	if err := wm.WaitForDisplayOrientation(ctx, tconn, display.OrientationLandscapePrimary); err != nil {
+		return errors.Wrap(err, "failed to wait for display orientation")
+	}
+
+	// TODO(b/162387612): After the bug is fixed, compare window bounds.
+	// return testing.Poll(ctx, func(ctx context.Context) error {
+	// 	// Get activity's window info after switching back from tablet mode.
+	// 	apwInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	// 	if err != nil {
+	// 		return testing.PollBreak(err)
+	// 	}
+	// 	// Activity bounds should be equal to the original bounds.
+	// 	if apwInfo.BoundsInRoot != owInfo.BoundsInRoot {
+	// 		return errors.Errorf("invalid window bounds after switching back from portrait tablet mode; got: %q, want: %q", apwInfo.BoundsInRoot, owInfo.BoundsInRoot)
+	// 	}
+	// 	return nil
+	// }, &testing.PollOptions{Timeout: 5 * time.Second})
+
+	return nil
 }
