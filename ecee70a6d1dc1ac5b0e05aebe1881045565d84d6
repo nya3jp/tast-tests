@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a4dc52fd_18e6be63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-14T01:32:12Z",
+      "side": 1,
+      "message": "The APK side should never have to hardcode anything, and it should never have to care which interface is used at the end of the day. It should just be using the default network through ConnectivityManager APIs, get an explicit android.net.Network object, and use the gateway of that network through android.net.LinkProperties.\n\nAs long as the host side listens on the same port on all bridges, the APK should be able to consistently connect to that port on the gateway of the default network regardless of the virtual/physical interface setup.\n\nBTW for ARCVM we are forced to do tap device pooling before the VM start, and the interface names do no map 1to1 with physical devices anymore. So arc_eth0 does not correspond to eth0 anymore.",
+      "parentUuid": "19be5d4f_d9c2d3f4",
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63d65ab6_6c35a3b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
         "patchSetId": 5
