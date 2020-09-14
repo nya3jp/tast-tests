@@ -10,8 +10,10 @@ import (
 	"strings"
 
 	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
 
-	spb "chromiumos/system_api/seneschal_proto" // protobufs for seneschal
+	spb "chromiumos/system_api/seneschal_proto"   // protobufs for seneschal
+	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
@@ -103,6 +105,61 @@ func (vm *VM) Start(ctx context.Context) error {
 // Stop shuts down VM. It can be restarted again later.
 func (vm *VM) Stop(ctx context.Context) error {
 	return vm.Concierge.stopVM(ctx, vm)
+}
+
+// StartLxd starts the LXD daemon inside the VM. This is a required
+// step before performing any container operations.
+func (vm *VM) StartLxd(ctx context.Context) error {
+	lxd, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      ciceronePath,
+		Interface: ciceroneInterface,
+		Member:    "StartLxdProgress",
+	})
+	defer lxd.Close(ctx)
+
+	resp := &cpb.StartLxdResponse{}
+	if err = dbusutil.CallProtoMethod(ctx, vm.Concierge.ciceroneObj, ciceroneInterface+".StartLxd",
+		&cpb.StartLxdRequest{
+			VmName:  vm.name,
+			OwnerId: vm.Concierge.GetOwnerID(),
+		}, resp); err != nil {
+		return err
+	}
+
+	status := resp.GetStatus()
+	if status == cpb.StartLxdResponse_ALREADY_RUNNING {
+		testing.ContextLog(ctx, "LXD is already running")
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Waiting for LXD to start")
+	sigResult := &cpb.StartLxdProgressSignal{}
+	for {
+		select {
+		case sig := <-lxd.Signals:
+			if len(sig.Body) != 1 {
+				return errors.Errorf("StartLxdProgressSignal signal has %d elements, expected 1", len(sig.Body))
+			}
+			buf, ok := sig.Body[0].([]byte)
+			if !ok {
+				return errors.New("StartLxdProgressSignal signal body is not a byte slice")
+			}
+			if err := proto.Unmarshal(buf, sigResult); err != nil {
+				return errors.Wrap(err, "failed unmarshaling StartLxdProgressSignal body")
+			}
+			if sigResult.GetStatus() == cpb.StartLxdProgressSignal_STARTED {
+				testing.ContextLog(ctx, "LXD started successfully")
+				return nil
+			}
+			if sigResult.GetStatus() == cpb.StartLxdProgressSignal_FAILED {
+				return errors.Errorf("failed to start LXD: %s", sigResult.GetFailureReason())
+			}
+			testing.ContextLogf(ctx, "Got StartLxdProgressSignal signal: %s", cpb.StartLxdProgressSignal_Status_name[int32(sigResult.GetStatus())])
+		case <-ctx.Done():
+			return errors.Wrap(ctx.Err(), "didn't get StartLxdProgressSignal D-Bus signal")
+		}
+	}
 }
 
 // Command returns a testexec.Cmd with a vsh command that will run in this VM.

@@ -76,7 +76,6 @@ type Container struct {
 	username           string // username of the container's primary user
 	hostPrivateKey     string // private key to use when doing sftp to container
 	containerPublicKey string // known_hosts for doing sftp to container
-	ciceroneObj        dbus.BusObject
 }
 
 // locked is used to prevent creation of a container while the precondition is being used.
@@ -126,9 +125,6 @@ func (c *Container) Connect(ctx context.Context, user string) error {
 		return err
 	}
 	c.VM = vm
-	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -172,7 +168,7 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 	}
 
 	resp := &cpb.CreateLxdContainerResponse{}
-	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
 		req, resp); err != nil {
 		return err
 	}
@@ -196,7 +192,7 @@ func (c *Container) start(ctx context.Context) error {
 	defer starting.Close(ctx)
 
 	resp := &cpb.StartLxdContainerResponse{}
-	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".StartLxdContainer",
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".StartLxdContainer",
 		&cpb.StartLxdContainerRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -264,7 +260,7 @@ func (c *Container) StartAndWait(ctx context.Context, dir string) error {
 // GetUsername returns the default user in a container.
 func (c *Container) GetUsername(ctx context.Context) (string, error) {
 	resp := &cpb.GetLxdContainerUsernameResponse{}
-	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".GetLxdContainerUsername",
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".GetLxdContainerUsername",
 		&cpb.GetLxdContainerUsernameRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -283,7 +279,7 @@ func (c *Container) GetUsername(ctx context.Context) (string, error) {
 // SetUpUser sets up the default user in a container.
 func (c *Container) SetUpUser(ctx context.Context) error {
 	resp := &cpb.SetUpLxdContainerUserResponse{}
-	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".SetUpLxdContainerUser",
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".SetUpLxdContainerUser",
 		&cpb.SetUpLxdContainerUserRequest{
 			VmName:            c.VM.name,
 			ContainerName:     c.containerName,
@@ -527,7 +523,7 @@ func (c *Container) Cleanup(ctx context.Context, path string) error {
 // 'package_id;version;arch;repository'.
 func (c *Container) LinuxPackageInfo(ctx context.Context, path string) (packageID string, err error) {
 	resp := &cpb.LinuxPackageInfoResponse{}
-	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".GetLinuxPackageInfo",
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".GetLinuxPackageInfo",
 		&cpb.LinuxPackageInfoRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -554,7 +550,7 @@ func (c *Container) InstallPackage(ctx context.Context, path string) error {
 	defer progress.Close(ctx)
 
 	resp := &cpb.InstallLinuxPackageResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".InstallLinuxPackage",
+	if err = dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".InstallLinuxPackage",
 		&cpb.LinuxPackageInfoRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -600,7 +596,7 @@ func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileI
 	defer progress.Close(ctx)
 
 	resp := &cpb.UninstallPackageOwningFileResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".UninstallPackageOwningFile",
+	if err = dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".UninstallPackageOwningFile",
 		&cpb.UninstallPackageOwningFileRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
