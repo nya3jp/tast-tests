@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea37a28e_7611fd01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b3caf8b_8c37593e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a82bfce_53d7872c",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccbd8e71_3c29483f",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a82bfce_53d7872c",
+      "range": {
+        "startLine": 274,
+        "startChar": 5,
+        "endLine": 274,
+        "endChar": 21
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f14e0a1c_32940ed1",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38fa191b_17796a6e",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 19
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d86679de_a85d0e17",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5111be7f_bcdb4d64",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d86679de_a85d0e17",
+      "range": {
+        "startLine": 282,
+        "startChar": 28,
+        "endLine": 282,
+        "endChar": 37
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "fef0a7f7_0992a3fa",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a098ce62_ceb2f01b",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 63
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65898cc9_7da707c6",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc91ebf5_25b29516",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65898cc9_7da707c6",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 296,
+        "endChar": 37
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "9e837a5b_c2eef11c",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df0dcc8_231ed1b0",
+      "range": {
+        "startLine": 299,
+        "startChar": 29,
+        "endLine": 299,
+        "endChar": 45
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fe50b1c_82bd8cd6",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
         "patchSetId": 1
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "a4b5d5a6_a07e1732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fe50b1c_82bd8cd6",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e5e9587_54812a95",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
         "patchSetId": 1
@@ -197,6 +389,30 @@
       "writtenOn": "2020-09-11T10:39:54Z",
       "side": 1,
       "message": "Does it mean that you will have only 3 seconds to catch audio stream? Can you catch audio stream only when cras_test_client is running?",
+      "range": {
+        "startLine": 57,
+        "startChar": 17,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54d15777_f2b0b767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:07:48Z",
+      "side": 1,
+      "message": "Yes, we have 3 seconds to catch audio stream.\nDo you mean use duration as a timeout?",
+      "parentUuid": "6e5e9587_54812a95",
       "range": {
         "startLine": 57,
         "startChar": 17,
@@ -229,6 +445,30 @@
       "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "214d11c5_b742673f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-14T05:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbf44594_04769592",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
