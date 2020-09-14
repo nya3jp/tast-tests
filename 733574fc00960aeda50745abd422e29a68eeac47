@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "af7f866b_e85ee4e3",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-09-14T23:08:37Z",
+      "side": 1,
+      "message": "got it.",
+      "parentUuid": "685b6ab2_ec85f120",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fe10336_56ae36a0",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I would agree if we removed the 1000 scaling factor from the toSeconds conversion. But here, I think that it is preferable to abstract the duplicated code into a function. This reduces the risk of typos and makes it easier to change all the logic at once if needed.",
       "parentUuid": "5fe10336_56ae36a0",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0251011f_bc3d1ed1",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-09-14T23:08:37Z",
+      "side": 1,
+      "message": "Ah I see, do you think renaming the function fromSeconds or toDuration would be more clear?",
+      "parentUuid": "d54bdec1_6c0a44a8",
       "revId": "733574fc00960aeda50745abd422e29a68eeac47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
