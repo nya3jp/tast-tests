@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93db6047_10e4afd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-14T21:22:42Z",
+      "side": 1,
+      "message": "Got it, I\u0027ll use the cros-wifi-reviews bot to distribute my cls in the future. Though I will add you explicitly to the Cq-Depend CL that I just submitted for review.",
+      "parentUuid": "0ad087bb_ad87da59",
+      "revId": "309207d37e1982fffd774d5d1a1f2e98adbd60de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55667fab_33bdabfa",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go",
         "patchSetId": 4
@@ -63,6 +81,30 @@
       "revId": "309207d37e1982fffd774d5d1a1f2e98adbd60de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69dc37d5_ed16d94e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-14T21:22:42Z",
+      "side": 1,
+      "message": "I have kept the allowlist and have moved it into a property in hwdeps. I will add you guys there as reviewers explicitly. We can change the logic of the property when we start adding more HE supported devices.",
+      "parentUuid": "9684be3b_e0e43432",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "309207d37e1982fffd774d5d1a1f2e98adbd60de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
