@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "80b0bf12_a91ae437",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-14T16:04:01Z",
+      "side": 1,
+      "message": "- Do you know what is in-lab connection? Ethernet or wifi?\n\neth in the lab, no wifi atm, but this I would expect for it to come at some point as this is a CTS blocker (some CTS requires wifi and need to be run manually by testers outside the lab). We still need to make sure the test can run locally with just wifi connected.\n\n - Do you expect any performance difference in configurations when DUT is connected via WiFi and via Ethernet? Alan, could you please test this configurations locally if you could see any difference.\n\nYes ethernet will definitely be faster in general. Actual performance on wifi will mostly depend on the AP and congestion (how many clients, ...). eth performance will depend on the speed of the network as well (1GB vs 10GB, cables used, ...).\n\n - You mentioned \"arc_eth0\" does not correspond to \"eth0\" anymore. Would this also apply to eth* networks in broader context? Is your comment above valid for container as well as for VM?\n\nThis is only for the VM. The pooling is defined in ArcService::AllocateAddressConfigs and at the moment yields:\n - arcbr0 \u003c-\u003e eth0\n - arceth0 \u003c-\u003e eth1\n - arceth1 \u003c-\u003e eth2\n - arcwlan0/arcmlan0 \u003c-\u003e eth3\n - arcwlan1/arcmlan1 \u003c-\u003e eth4\n - arcwwan0/arcrmnet0/arcrmnet_data0  \u003c-\u003e eth5\n\nFor the container, we can create and name device dynamically and the names map 1to1.",
+      "parentUuid": "27d21cad_b9aa85e7",
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63d65ab6_6c35a3b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
         "patchSetId": 5
