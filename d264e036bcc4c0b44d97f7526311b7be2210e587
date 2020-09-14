@@ -16,6 +16,23 @@
       "revId": "d264e036bcc4c0b44d97f7526311b7be2210e587",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8675ce1f_bc3e8792",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-14T17:44:47Z",
+      "side": 1,
+      "message": "\u003e Patch Set 4:\n\u003e \n\u003e From chrome_platform/tast/gerrit.gwsq:\n\u003e Note: A shadow reviewer was assigned to this CL.\n\u003e Shadowed: mwarton\n\nI\u0027m going to assign you both to all the CLs in this chain, since they\u0027re really a single group",
+      "revId": "d264e036bcc4c0b44d97f7526311b7be2210e587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
