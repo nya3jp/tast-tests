@@ -16,6 +16,41 @@
       "revId": "502713e1da60db56d32ba44a2df67e908e3ed66b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e29f6b56_632f7037",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-09-14T21:53:47Z",
+      "side": 1,
+      "message": "I think it may still make sense to have a browser window set focus out from the omnibox to make sure\nit won\u0027t cause extra damage. This way, we can catch the issue caused by unnecessary, silent update\nfrom browser window.",
+      "revId": "502713e1da60db56d32ba44a2df67e908e3ed66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff7ae495_3e94ef4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-09-14T21:53:47Z",
+      "side": 1,
+      "message": "I think it may still make sense to have a browser window but set focus out from the omnibox so that it won\u0027t cause extra damage. This way, we can catch the issue caused by unnecessary, silent update from browser window.",
+      "parentUuid": "f99e9f7b_f135996e",
+      "revId": "502713e1da60db56d32ba44a2df67e908e3ed66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
