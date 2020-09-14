@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7a7e7fa_c280be7f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-14T06:42:44Z",
+      "side": 1,
+      "message": "Does this have to be a defer? This makes execution out-of-order compared to the code as written, where you replace the error with a different error.\n\nSomething let blah :\u003d uig.Do(...); if blah !\u003d nil { ... } should work?",
+      "revId": "2094beab8dc460607b06df8ee585660c88e3af26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
