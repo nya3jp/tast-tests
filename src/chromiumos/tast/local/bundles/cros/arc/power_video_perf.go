@@ -28,8 +28,8 @@ const (
 	iterationCount    = 30
 	iterationDuration = 10 * time.Second
 	warmupDuration    = 10 * time.Second
-	// Mostly consumed by boot timeout and WaitUntilIdle
-	testSlack         = 2 * time.Minute
+	// A lenient bound for boot, setup, and cpu cooldown.
+	testSlack         = 5 * time.Minute
 	powerTestDuration = iterationCount*iterationDuration + warmupDuration + testSlack
 
 	logFileName = "gtest_logs.txt"
