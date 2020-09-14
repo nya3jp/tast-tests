@@ -42,13 +42,38 @@ func WMResizableConversion(ctx context.Context, s *testing.State) {
 			Name: "RV_conversion_portrait",
 			Func: wmRV20,
 		},
+		wm.TestCase{
+			// resizable/conversion: undefined orientation
+			Name: "RV_undefined_orientation",
+			Func: wmRV21,
+		},
 	})
 }
 
 // wmRV19 covers resizable/conversion behavior in landscape mode.
 // Expected behavior is defined in: go/arc-wm-r RV19 resizable/conversion: landscape.
 func wmRV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
+	return rv19Helper(ctx, tconn, a, d, wm.ResizableLandscapeActivity)
+}
+
+// wmRV20 covers resizable/conversion behavior in portrait mode.
+// Expected behavior is defined in: go/arc-wm-r RV20 resizable/conversion: portrait.
+func wmRV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	return rv20Helper(ctx, tconn, a, d, wm.ResizablePortraitActivity)
+}
+
+// wmRV21 covers resizable/conversion undefined orientation.
+// Expected behavior is defined in: go/arc-wm-r RV21 resizable/conversion: undefined orientation.
+func wmRV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	if err := rv19Helper(ctx, tconn, a, d, wm.ResizableUnspecifiedActivity); err != nil {
+		return err
+	}
+	return rv20Helper(ctx, tconn, a, d, wm.ResizableUnspecifiedActivity)
+}
+
+// rv19Helper receives an activity name and runs RV19 resizable/conversion: landscape test.
+func rv19Helper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string) error {
+	act, err := arc.NewActivity(a, wm.Pkg24, actName)
 	if err != nil {
 		return err
 	}
@@ -140,9 +165,8 @@ func wmRV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	return nil
 }
 
-// wmRV20 covers resizable/conversion behavior in portrait mode.
-// Expected behavior is defined in: go/arc-wm-r RV20 resizable/conversion: portrait.
-func wmRV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+// rv20Helper receives an activity name and runs RV20 resizable/conversion: portrait test.
+func rv20Helper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string) error {
 	// Store original display orientation.
 	oDO, err := display.GetOrientation(ctx, tconn)
 	if err != nil {
@@ -150,7 +174,7 @@ func wmRV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizablePortraitActivity)
+	act, err := arc.NewActivity(a, wm.Pkg24, actName)
 	if err != nil {
 		return err
 	}
