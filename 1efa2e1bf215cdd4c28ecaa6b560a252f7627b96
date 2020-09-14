@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fa15f66_9e8e8c0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:27:48Z",
+      "side": 1,
+      "message": "LGTM. Up to you whether or not to change to just using find.",
+      "revId": "1efa2e1bf215cdd4c28ecaa6b560a252f7627b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

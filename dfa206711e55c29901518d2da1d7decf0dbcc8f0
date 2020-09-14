@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "12653633_cc0c8ac3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:27:48Z",
+      "side": 1,
+      "message": "skipping err !\u003d nil is weird, but it is ok on occasions.\n\nI would just comment something like:\n if err \u003d\u003d nil { // If the button happens to exist, click it.\n   ...\n }\n\nThat should distinguish the reason for if err \u003d\u003d nil instead of if err !\u003d nil.",
+      "parentUuid": "187b9e76_044e15f1",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 380,
+        "endChar": 2
+      },
+      "revId": "dfa206711e55c29901518d2da1d7decf0dbcc8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f8a3d1d_2408415b",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 2
