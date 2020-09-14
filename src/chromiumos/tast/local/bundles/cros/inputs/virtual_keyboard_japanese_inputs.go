@@ -86,34 +86,45 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 			Role:       ui.RoleTypeTextField,
 			Attributes: map[string]interface{}{"inputType": "url"},
 		}
-		omnibox, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-		if err != nil {
-			s.Fatal("Failed to wait for the omnibox: ", err)
-		}
-		defer omnibox.Release(ctx)
 
-		if err := vkb.ClickUntilVKShown(ctx, tconn, omnibox); err != nil {
+		if err := vkb.FindAndClickUntilVKShown(ctx, tconn, params); err != nil {
 			s.Fatal("Failed to click the omnibox and wait for vk shown: ", err)
+		}
+
+		// Wait until vk fully displayed and positioned.
+		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+			s.Fatal("Failed to wait for virtual keyboard positioned: ", err)
 		}
 
 		if err := vkb.TapKey(ctx, tconn, mode.typeKey); err != nil {
 			s.Fatal("Failed to input with virtual keyboard: ", err)
 		}
 
+		omniboxResultParams := ui.FindParams{ClassName: "OmniboxResultView"}
+
 		// Value change can be a bit delayed after input.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if omniboxValue, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "OmniboxResultView"}, 2*time.Second); err != nil {
-				return err
-			} else if !strings.Contains(omniboxValue.Name, mode.output) {
-				return errors.Errorf("unexpected output found: got %s; want %s", omniboxValue.Name, mode.output)
+			searchResultFirstNode, err := ui.FindWithTimeout(ctx, tconn, omniboxResultParams, 2*time.Second)
+			if err != nil {
+				return errors.Wrap(err, "failed to find omnibox results")
+			}
+			defer searchResultFirstNode.Release(ctx)
+
+			if !strings.Contains(searchResultFirstNode.Name, mode.output) {
+				return errors.Errorf("unexpected output found: got %s; want %s", searchResultFirstNode.Name, mode.output)
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			s.Fatal("Failed to input with virtual keyboard: ", err)
 		}
 
+		// Delete input in omnibox.
 		if err := vkb.TapKey(ctx, tconn, "Backspace"); err != nil {
 			s.Fatal("Failed to delete with virtual keyboard: ", err)
+		}
+
+		if err := ui.WaitUntilGone(ctx, tconn, omniboxResultParams, 10*time.Second); err != nil {
+			s.Fatal("Failed to wait for omnibox search result disappear after deleting input: ", err)
 		}
 	}
 
