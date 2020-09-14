@@ -16,6 +16,207 @@
       "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e036c297_d7586e3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T22:07:26Z",
+      "side": 1,
+      "message": "sorry for the delay.\n\nSome \"struct\"s were doing more than what their names implied.\nPerhaps finding better names, or removing the extra functionality from the struct.\n\nAlternative, split this CL in 2 smaller CLs...? so it is easier to follow. Perhaps adding the \"WmTestRunner\" in a future CL?",
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68efb214_3e7adabe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T22:07:26Z",
+      "side": 1,
+      "message": "nit: (here and in the rest of file).\n\nSince \"Wm\" is an initialism of Window Manager:\n  \"Wm\" -\u003e \"WM\"\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 7
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6943e7ce_cd1f0ae2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T22:07:26Z",
+      "side": 1,
+      "message": "(see my comments below)\ntechnically \"tconn\" is not part of the Test state, but more like an \"object\". I\u0027d also remove it from here.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7eb9ab3_67ce6190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T22:07:26Z",
+      "side": 1,
+      "message": "what\u0027s the meaning of \"Acked\" in this context? Please add a docstring of something that describes what\u0027s the purpose.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f92e94b_91e0ba14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T22:07:26Z",
+      "side": 1,
+      "message": "ditto:  add comment about what \"scale\" is supposed to do.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343e294a_3aa5ed1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T22:07:26Z",
+      "side": 1,
+      "message": "nit: perhaps being a bit more verbose, like \"Window\" or \"Win\" ?\n\"W\" could get confused with \"width\" sometimes.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06c24ae9_ede6fbaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T22:07:26Z",
+      "side": 1,
+      "message": "(see my comments below).\n\nThis seems to be a \"constant\" and not a state. I\u0027d remove it from here, and pass it as an argument.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77f2cee7_d5c0e56a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T22:07:26Z",
+      "side": 1,
+      "message": "nit:\n\nis this \"should\" correct? or actually returns whether it is is visible?\n\noptions:\n  - rename func if \"should\" is correct to something like \"shouldCaptionBeVisible\" (or similar)\n  - or just replace the \"should be\" with \"is\"",
+      "range": {
+        "startLine": 60,
+        "startChar": 48,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f1fb657_994bf8b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T22:07:26Z",
+      "side": 1,
+      "message": "Option A:\nit is not obvious that the APK is being installed in this function.\n\nI\u0027m not against having a setup in a function, but the name of the function should be more or less clear of what it does, it should be explicit. For example, by reading just the test code, it is not clear where the APK gets installed.\n\nAlso, the fact that the APK name is already a const in this module doesn\u0027t help. Otherwise passing the APK name as argument will give a hint.\n\nCurrently I don\u0027t have good name, since this initializes a struct and installs an APK.\n\nOne possible solution is to add a new method to this struct, something like:\n\n  func (r *WmTestRunner) InstallAPK(ctx) ? // \n\n\nOption B: Perhaps for this particular case, I\u0027d put the \"install APK\" outside the \"NewWmTestRunner\" ?",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
