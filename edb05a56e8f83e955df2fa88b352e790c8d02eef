@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "85bd3d15_28f022be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2020-09-14T04:44:08Z",
+      "side": 1,
+      "message": "LGTM, needs an owners approval",
+      "revId": "edb05a56e8f83e955df2fa88b352e790c8d02eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aab058cc_baee698a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system_informational.go",
         "patchSetId": 1
@@ -31,6 +48,24 @@
       "side": 1,
       "message": "Another idea: how about merging the file into selinux_files_system.go by adding another testing.Test?  By doing so, you don\u0027t have to move the logic of FileLabelCheckFilter generator between critical and informational test files.",
       "parentUuid": "aab058cc_baee698a",
+      "revId": "edb05a56e8f83e955df2fa88b352e790c8d02eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7784e4de_4cc889d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system_informational.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2020-09-14T04:44:08Z",
+      "side": 1,
+      "message": "Shuo-Peng - why should this be part of this CL? The owner of the test should or shouldn\u0027t do this irrespective of the CL.\n\nRob - wouldn\u0027t it be better to track this with a bug and not leave crumbs in the code? leaving a TODO in the code is in a way ignoring the problem and waiting for some unknown person to tidy after us in the future.",
+      "parentUuid": "147152fc_054dc6dc",
       "revId": "edb05a56e8f83e955df2fa88b352e790c8d02eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
