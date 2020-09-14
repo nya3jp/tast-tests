@@ -6,15 +6,12 @@ package arc
 
 import (
 	"context"
-	"io/ioutil"
 	"path/filepath"
-	"regexp"
-	"strings"
-	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/arccrash"
 	"chromiumos/tast/local/crash"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -67,56 +64,49 @@ func NativeCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to crash: the process has successfully finished without crashing")
 	}
 
-	s.Log("Getting the crash dir path for native crash dumps in ARCVM")
+	s.Log("Getting crash dir path")
 	user := cr.User()
-	androidDataDir, err := arc.AndroidDataDir(user)
+	path, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
-		s.Fatal("Failed to get android-data dir: ", err)
+		s.Fatal("Couldn't get user path: ", err)
 	}
-	crashDir := filepath.Join(androidDataDir, crashReportsDirPathInAndroid)
+	crashDir := filepath.Join(path, "/crash")
 
 	s.Log("Waiting for crash files to become present")
-	const pollingTimeout = 10 * time.Second // The time to wait for dump files. Typically they appear in a few seconds.
-	// We cannot use `crash.WaitForCrashFiles` because it requires that .meta file has `done=1` as its content.
-	err = testing.Poll(ctx, func(c context.Context) error {
-		// list files in `crashDir`
-		files, err := ioutil.ReadDir(crashDir)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-
-		// check the existence of .dmp file and .meta file
-		expectedFileNameRegexes := []string{
-			`\d+\.\d+\.sh\.dmp`,
-			`\d+\.\d+\.sh\.meta`,
-		}
-		var missingFileNameRegexes []string
-		for _, re := range expectedFileNameRegexes {
-			match := false
-			for _, fi := range files {
-				match, err = regexp.MatchString(re, fi.Name())
-				if err != nil {
-					return testing.PollBreak(errors.Wrapf(err, "invalid regexp %s", re))
-				}
-				if match {
-					break
-				}
-			}
-			if !match {
-				missingFileNameRegexes = append(missingFileNameRegexes, re)
-			}
-		}
-
-		if len(missingFileNameRegexes) != 0 {
-			var filePaths []string
-			for _, fi := range files {
-				filePaths = append(filePaths, filepath.Join(crashDir, fi.Name()))
-			}
-			return errors.Errorf("no file matched %s (found %s)", strings.Join(missingFileNameRegexes, ", "), strings.Join(filePaths, ", "))
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: pollingTimeout})
+	// Wait files like sh.20200420.204845.664107.dmp in crashDir
+	const stem = `sh\.\d{8}\.\d{6}\.\d+`
+	metaFileName := stem + crash.MetadataExt
+	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, []string{
+		stem + crash.MinidumpExt, metaFileName,
+	})
 	if err != nil {
-		s.Fatal("Didn't find files: ", err)
+		s.Fatal("Failed to find files: ", err)
+	}
+	defer crash.RemoveAllFiles(ctx, files)
+
+	metaFiles := files[metaFileName]
+	if len(metaFiles) > 1 {
+		s.Errorf("Unexpectedly saw %d crashes. Saving for debugging", len(metaFiles))
+		crash.MoveFilesToOut(ctx, s.OutDir(), metaFiles...)
+	}
+	// WaitForCrashFiles guarantees that there will be a match for all regexes if it succeeds,
+	// so this must exist.
+	metaFile := metaFiles[0]
+
+	s.Log("Validating the meta file")
+	bp, err := arccrash.GetBuildProp(ctx, a)
+	if err != nil {
+		if err := arccrash.UploadSystemBuildProp(ctx, a, s.OutDir()); err != nil {
+			s.Error("Failed to get build.prop: ", err)
+		}
+		s.Fatal("Failed to get BuildProperty: ", err)
+	}
+	isValid, err := arccrash.ValidateBuildProp(ctx, metaFile, bp)
+	if err != nil {
+		s.Fatal("Failed to validate meta file: ", err)
+	}
+	if !isValid {
+		s.Error("validateBuildProp failed. Saving meta file")
+		crash.MoveFilesToOut(ctx, s.OutDir(), metaFile)
 	}
 }
