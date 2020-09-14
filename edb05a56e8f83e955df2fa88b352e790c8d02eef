@@ -16,6 +16,24 @@
       "revId": "edb05a56e8f83e955df2fa88b352e790c8d02eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147152fc_054dc6dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system_informational.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-14T02:19:54Z",
+      "side": 1,
+      "message": "Another idea: how about merging the file into selinux_files_system.go by adding another testing.Test?  By doing so, you don\u0027t have to move the logic of FileLabelCheckFilter generator between critical and informational test files.",
+      "parentUuid": "aab058cc_baee698a",
+      "revId": "edb05a56e8f83e955df2fa88b352e790c8d02eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
