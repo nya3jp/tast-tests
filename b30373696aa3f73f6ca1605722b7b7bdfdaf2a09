@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b2fa2f4_57e86645",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-09-14T20:33:51Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63434e81_fce92725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-09-14T20:33:51Z",
+      "side": 1,
+      "message": "huge optional nit: alphabetize this list",
+      "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c670d91_ce868253",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-09-14T20:33:51Z",
+      "side": 1,
+      "message": "nit: Can we add some summarized comments for people who are not familiar with the feature (or need refreshing)?\n\ni.e.\n\n// Drag the window so that the app-list/homescreen is visible. The window will now be minimized. Click on the corresponbing app icon button on the app-list to reshow the window for the next run.",
+      "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02a49bf1_cdcda350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-09-14T20:33:51Z",
+      "side": 1,
+      "message": "nit: add comment // Swipe on the splitview divider to exit splitview.",
+      "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be06607_b645e1e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-09-14T20:33:51Z",
+      "side": 1,
+      "message": "I see that Ash.SplitViewResize.PresentationTime was in the first list. SHould that be added here?",
+      "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
