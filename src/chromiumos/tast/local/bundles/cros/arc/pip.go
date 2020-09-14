@@ -88,7 +88,7 @@ func init() {
 		Desc:         "Checks that ARC++ Picture-in-Picture works as expected",
 		Contacts:     []string{"edcourtney@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"tablet_mode", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
