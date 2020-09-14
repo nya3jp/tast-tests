@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "81e35c05_89c1f33c",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-14T22:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88dc67f8_eb4b89b4",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae8cb1c4_69f59785",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "733574fc00960aeda50745abd422e29a68eeac47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "685b6ab2_ec85f120",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-14T22:54:59Z",
+      "side": 1,
+      "message": "Unfortunately not, due to technical limitations on json.Unmarshal. In order to unmarshal the JSON file contents onto this field, json.Unmarshal needs to be able to set the field\u0027s value, so it must be exported.\n\nThis StackOverflow Q\u0026A explains the same phenomenon, and offers a workaround. I think that for our purposes, the workaround is more trouble than it\u0027s worth.\n\nhttps://stackoverflow.com/q/11126793\n\nI have added a comment to the code explaining why they must be exported.",
+      "parentUuid": "ae8cb1c4_69f59785",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d54bdec1_6c0a44a8",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-14T22:54:59Z",
+      "side": 1,
+      "message": "I would agree if we removed the 1000 scaling factor from the toSeconds conversion. But here, I think that it is preferable to abstract the duplicated code into a function. This reduces the risk of typos and makes it easier to change all the logic at once if needed.",
+      "parentUuid": "5fe10336_56ae36a0",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5761203_a73a5a1c",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "733574fc00960aeda50745abd422e29a68eeac47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b34c8e49_d8f1de73",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-14T22:54:59Z",
+      "side": 1,
+      "message": "Here\u0027s how that would look:\n\n    func toSeconds(f float64) time.Duration {\n        return time.Duration(f) * time.Second\n    }\n\nUnfortunately, that will not work. time.Duration is an int field, so casting f to a time.Duration will truncate it to an integer. Thus, toSeconds(0.5) would return 0 seconds.\n\nI have added a comment to the function explaining why this is necessary.",
+      "parentUuid": "f5761203_a73a5a1c",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
