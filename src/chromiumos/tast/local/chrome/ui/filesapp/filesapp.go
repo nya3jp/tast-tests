@@ -22,6 +22,9 @@ import (
 // DownloadPath is the location of Downloads for the user.
 const DownloadPath = "/home/chronos/user/Downloads/"
 
+// MyFilesPath is the location of My files for the user.
+const MyFilesPath = "/home/chronos/user/MyFiles"
+
 const uiTimeout = 15 * time.Second
 
 // Context menu items for a file.
@@ -40,6 +43,7 @@ const (
 
 // Directory names.
 const (
+	MyFiles     = "My files"
 	Downloads   = "Downloads"
 	GoogleDrive = "Google Drive"
 	MyDrive     = "My Drive"
@@ -559,4 +563,35 @@ func (f *FilesApp) SelectDirectoryContextMenuItem(ctx context.Context, dirName, 
 	}
 
 	return nil
+}
+
+// SelectEnclosingFolder clicks the enclosing folder via the breadcrumbs.
+func (f *FilesApp) SelectEnclosingFolder(ctx context.Context) error {
+	// Find the breadcrumbs container.
+	params := ui.FindParams{
+		ClassName: "breadcrumbs",
+		Role:      ui.RoleTypeGenericContainer,
+	}
+	breadcrumbs, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the breadcrumbs container")
+	}
+	defer breadcrumbs.Release(ctx)
+
+	// Find all the clickable folders in the breadcrumbs container.
+	params = ui.FindParams{
+		Role: ui.RoleTypeButton,
+	}
+	folders, err := breadcrumbs.Descendants(ctx, params)
+	if err != nil {
+		return errors.Wrap(err, "failed to find all breadcrumb items")
+	}
+	defer folders.Release(ctx)
+
+	if len(folders) < 2 {
+		return nil
+	}
+
+	enclosingFolder := folders[len(folders)-2]
+	return enclosingFolder.LeftClick(ctx)
 }
