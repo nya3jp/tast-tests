@@ -81,6 +81,23 @@
       "revId": "83481f045a7c20a1535dfac459c6ec6a19c6aad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77845180_73da87f1",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-14T06:30:15Z",
+      "side": 1,
+      "message": "This indentation seems odd. It\u0027s what gofmt wants?",
+      "revId": "83481f045a7c20a1535dfac459c6ec6a19c6aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
