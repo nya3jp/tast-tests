@@ -87,6 +87,24 @@
       "revId": "edb05a56e8f83e955df2fa88b352e790c8d02eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1f23c6_ead3c6c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system_informational.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2020-09-14T04:54:02Z",
+      "side": 1,
+      "message": "great. so it is being tracked. why soil the code with TODO comments that wait for the first saint to actually follow up on?",
+      "parentUuid": "b5bd2da2_45893588",
+      "revId": "edb05a56e8f83e955df2fa88b352e790c8d02eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
