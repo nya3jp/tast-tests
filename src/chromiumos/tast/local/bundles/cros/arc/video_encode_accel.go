@@ -117,5 +117,8 @@ func init() {
 }
 
 func VideoEncodeAccel(ctx context.Context, s *testing.State) {
-	video.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC, s.Param().(encoding.TestOptions))
+	// Enable to download the video file encoded by the test.
+	const pullEncodedVideo = false
+	video.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC,
+		s.Param().(encoding.TestOptions), pullEncodedVideo)
 }
