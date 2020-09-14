@@ -16,6 +16,40 @@
       "revId": "b7c1043d86d462a03f74075261eae4b5f3b7c871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a52c7d15_ca438e2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-14T02:15:09Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "b7c1043d86d462a03f74075261eae4b5f3b7c871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c185096f_bb29d9f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_taken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-14T02:15:09Z",
+      "side": 1,
+      "message": "nit: could you add TODO similar to platform2 CL?",
+      "revId": "b7c1043d86d462a03f74075261eae4b5f3b7c871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
