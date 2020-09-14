@@ -1096,8 +1096,8 @@ func (s *WifiService) wifiDev(ctx context.Context) (*shill.Manager, *shill.Devic
 	return m, dev, nil
 }
 
-func (s *WifiService) GetBgscanMethod(ctx context.Context, e *empty.Empty) (*network.GetBgscanMethodResponse, error) {
-	ctx, st := timing.Start(ctx, "wifi_service.GetBgscanMethod")
+func (s *WifiService) GetBgscanConfig(ctx context.Context, e *empty.Empty) (*network.GetBgscanConfigResponse, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.GetBgscan")
 	defer st.End()
 
 	_, dev, err := s.wifiDev(ctx)
@@ -1113,13 +1113,25 @@ func (s *WifiService) GetBgscanMethod(ctx context.Context, e *empty.Empty) (*net
 	if err != nil {
 		return nil, err
 	}
-	return &network.GetBgscanMethodResponse{
-		Method: method,
+	interval, err := props.GetUint16(shillconst.DevicePropertyWiFiScanInterval)
+	if err != nil {
+		return nil, err
+	}
+	shortInterval, err := props.GetUint16(shillconst.DevicePropertyWiFiBgscanShortInterval)
+	if err != nil {
+		return nil, err
+	}
+	return &network.GetBgscanConfigResponse{
+		Config: &network.BgscanConfig{
+			Method:        method,
+			LongInterval:  uint32(interval),
+			ShortInterval: uint32(shortInterval),
+		},
 	}, nil
 }
 
-func (s *WifiService) SetBgscanMethod(ctx context.Context, method *network.SetBgscanMethodRequest) (*empty.Empty, error) {
-	ctx, st := timing.Start(ctx, "wifi_service.SetBgscanMethod")
+func (s *WifiService) SetBgscanConfig(ctx context.Context, req *network.SetBgscanConfigRequest) (*empty.Empty, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.SetBgscan")
 	defer st.End()
 
 	_, dev, err := s.wifiDev(ctx)
@@ -1127,8 +1139,21 @@ func (s *WifiService) SetBgscanMethod(ctx context.Context, method *network.SetBg
 		return nil, err
 	}
 
-	if err := dev.SetProperty(ctx, shillconst.DevicePropertyWiFiBgscanMethod, method.Method); err != nil {
-		return nil, errors.Wrapf(err, "failed to set the WiFi device property %s with value %s", shillconst.DevicePropertyWiFiBgscanMethod, method.Method)
+	setProp := func(ctx context.Context, key string, val interface{}) error {
+		if err := dev.SetProperty(ctx, key, val); err != nil {
+			return errors.Wrapf(err, "failed to set the WiFi device property %s with value %v", key, val)
+		}
+		return nil
+	}
+
+	if err := setProp(ctx, shillconst.DevicePropertyWiFiBgscanMethod, req.Config.Method); err != nil {
+		return nil, err
+	}
+	if err := setProp(ctx, shillconst.DevicePropertyWiFiScanInterval, uint16(req.Config.LongInterval)); err != nil {
+		return nil, err
+	}
+	if err := setProp(ctx, shillconst.DevicePropertyWiFiBgscanShortInterval, uint16(req.Config.ShortInterval)); err != nil {
+		return nil, err
 	}
 	return &empty.Empty{}, nil
 }
