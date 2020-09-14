@@ -5,6 +5,7 @@
 package setup
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"strconv"
@@ -16,8 +17,13 @@ import (
 )
 
 func noKeyboardBrightness(ctx context.Context) bool {
-	_, stderr, err := testexec.CommandContext(ctx, "backlight_tool", "--keyboard", "--get_brightness").SeparatedOutput()
-	return err != nil && strings.HasPrefix(string(stderr), "No backlight in")
+	cmd := testexec.CommandContext(ctx, "backlight_tool", "--keyboard", "--get_brightness")
+	var stderr bytes.Buffer
+	cmd.Stderr = &stderr
+	if err := cmd.Run(); err != nil && strings.HasPrefix(stderr.String(), "No backlight in") {
+		return true
+	}
+	return false
 }
 
 func keyboardBrightness(ctx context.Context) (uint, error) {

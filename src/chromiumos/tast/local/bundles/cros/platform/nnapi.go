@@ -5,6 +5,7 @@
 package platform
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"os"
@@ -41,12 +42,17 @@ func NNAPI(ctx context.Context, s *testing.State) {
 		{[]string{"--nnapi"}, []string{"Adding 1 and 4 with NNAPI", "Status: OK", "Sum: 5"}},
 	} {
 		cmd := testexec.CommandContext(ctx, "ml_cmdline", tc.args...)
-		o, e, err := cmd.SeparatedOutput()
-		if err != nil {
+		var stderrBytes bytes.Buffer
+		var stdoutBytes bytes.Buffer
+		cmd.Stderr = &stderrBytes
+		cmd.Stdout = &stdoutBytes
+
+		if err := cmd.Run(); err != nil {
 			s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 		}
-		stdout := string(o)
-		stderr := string(e)
+
+		stdout := stdoutBytes.String()
+		stderr := stderrBytes.String()
 
 		logFilename := fmt.Sprintf("nnapi_test-%d.log", i)
 		logOutput(s, logFilename, shutil.EscapeSlice(cmd.Args), stdout, stderr)

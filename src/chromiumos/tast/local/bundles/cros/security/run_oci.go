@@ -5,6 +5,7 @@
 package security
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"io/ioutil"
@@ -101,12 +102,17 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		args = append(args, "--cgroup_parent=chronos_containers")
 		args = append(args, tc.runOCIArgs...)
 		args = append(args, "run", "-c", td, "test_container")
-
 		cmd := testexec.CommandContext(ctx, "/usr/bin/run_oci", args...)
+
+		var stdout, stderr bytes.Buffer
+		cmd.Stdout = &stdout
+		cmd.Stderr = &stderr
+
 		s.Logf("Case %v: running %v", tc.name, shutil.EscapeSlice(cmd.Args))
-		stdout, stderr, err := cmd.SeparatedOutput()
+		err = cmd.Run()
 
 		failed := false
+
 		if err != nil && !tc.expFail {
 			failed = true
 			s.Errorf("Case %v failed: %v", tc.name, err)
@@ -114,13 +120,13 @@ func RunOCI(ctx context.Context, s *testing.State) {
 			failed = true
 			s.Errorf("Case %v unexpectedly succeeded", tc.name)
 		}
-		if string(stdout) != tc.expStdout {
+		if stdout.String() != tc.expStdout {
 			failed = true
-			s.Errorf("Case %v got stdout %q; want %q", tc.name, string(stdout), tc.expStdout)
+			s.Errorf("Case %v got stdout %q; want %q", tc.name, stdout.String(), tc.expStdout)
 		}
-		if string(stderr) != tc.expStderr {
+		if stderr.String() != tc.expStderr {
 			failed = true
-			s.Errorf("Case %v got stderr %q; want %q", tc.name, string(stderr), tc.expStderr)
+			s.Errorf("Case %v got stderr %q; want %q", tc.name, stderr.String(), tc.expStderr)
 		}
 		if failed {
 			// Unfortunately, we can't pass --log_dir to run_oci to tell it to write log messages
