@@ -16,6 +16,75 @@
       "revId": "0456aa991cf20fd84ad259f1ebfb6ad8b5659780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68bee77e_353554ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-14T20:22:26Z",
+      "side": 1,
+      "message": "I wonder if we should be more consistent with all of our UI tests\n\nPerhaps cros-ui-te@ and an alias for vlad\u0027s team",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "0456aa991cf20fd84ad259f1ebfb6ad8b5659780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97af516f_24e668c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-14T20:22:26Z",
+      "side": 1,
+      "message": "in the Launcher",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "0456aa991cf20fd84ad259f1ebfb6ad8b5659780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daebe8bb_4a04e554",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-14T20:22:26Z",
+      "side": 1,
+      "message": "Won\u0027t this close it if the launcher is already open?",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 23
+      },
+      "revId": "0456aa991cf20fd84ad259f1ebfb6ad8b5659780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
