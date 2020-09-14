@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bf63598_814b5d63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-09-14T16:35:43Z",
+      "side": 1,
+      "message": "I wanted to get you guys to review the approach of this test before sending it to the tast-owners. Let me know what you think.\n",
+      "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
