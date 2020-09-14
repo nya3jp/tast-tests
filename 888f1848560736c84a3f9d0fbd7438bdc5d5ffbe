@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cb1bca6_dbd3cb5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-14T01:03:54Z",
+      "side": 1,
+      "message": "Does it makes sense to put this in setup.PowerTest?\n\nWe would want to make sure that the setup.PowerTest is the last setup action, since app install etc. could cause CPU that we want to wait for.\n\nThat doesn\u0027t need to block this commit though.",
+      "revId": "888f1848560736c84a3f9d0fbd7438bdc5d5ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
