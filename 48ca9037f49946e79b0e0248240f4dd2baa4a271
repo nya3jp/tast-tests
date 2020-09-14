@@ -22,6 +22,30 @@
       "revId": "48ca9037f49946e79b0e0248240f4dd2baa4a271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bd1fcbf_df2ba48b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/touch_virtual_keyboard_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-14T17:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5954d106_05bd9f4f",
+      "range": {
+        "startLine": 107,
+        "startChar": 13,
+        "endLine": 107,
+        "endChar": 14
+      },
+      "revId": "48ca9037f49946e79b0e0248240f4dd2baa4a271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
