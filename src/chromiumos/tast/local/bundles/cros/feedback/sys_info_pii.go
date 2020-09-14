@@ -54,11 +54,6 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open a tab: ", err)
 	}
 
-	var title string
-	if err := conn.Eval(ctx, "document.title", &title); err != nil {
-		s.Fatal("Failed to get the tab title: ", err)
-	}
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Could not create test API conn: ", err)
@@ -68,6 +63,11 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not call getSystemInformation: ", err)
 	}
 
+	var title string
+	if err := conn.Eval(ctx, "document.title", &title); err != nil {
+		s.Fatal("Failed to get the tab title: ", err)
+	}
+
 	for _, info := range ret {
 		if info.Key == "mem_usage_with_title" {
 			if !strings.Contains(info.Value, title) {
@@ -75,20 +75,26 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 				if err := saveLog(s.OutDir(), info.Key, info.Value); err != nil {
 					s.Error("Also, failed to save log contents: ", err)
 				}
+				if err := saveLog(s.OutDir(), "tabTitle", title); err != nil {
+					s.Error("Also, failed to save tab title: ", err)
+				}
 			}
 		} else {
 			badContents := []struct {
 				content string
 				desc    string
 			}{
-				{title, "tab title"},
-				{searchQuery, "search query"},
+				{title, "tabTitle"},
+				{searchQuery, "searchQuery"},
 				{sensitiveURLEnd, "URL"}}
 			for _, entry := range badContents {
 				if strings.Contains(info.Value, entry.content) {
-					s.Errorf("Log %q unexpectedly contained the %s", info.Key, entry.desc)
+					s.Errorf("Log %q unexpectedly contained %s", info.Key, entry.desc)
 					if err := saveLog(s.OutDir(), info.Key, info.Value); err != nil {
 						s.Error("Also, failed to save log contents: ", err)
+					}
+					if err := saveLog(s.OutDir(), entry.desc, entry.content); err != nil {
+						s.Errorf("Also, failed to save %s: %v", entry.desc, err)
 					}
 				}
 			}
