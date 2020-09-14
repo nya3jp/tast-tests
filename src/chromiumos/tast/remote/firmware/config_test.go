@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testutil"
@@ -26,13 +27,21 @@ const (
 	withECBatteryName = "withECBattery"
 )
 
-// In order to tell more easily where each value is obtained from, each mock config sets all integer fields to the same value.
+// In order to tell more easily where each value is obtained from, each mock config sets all numeric fields to the same value.
+// Exercise both integers and floats.
 const (
 	defaultValue       = 1
-	myGrandparentValue = 2
-	myParentValue      = 3
-	myBoardValue       = 4
-	myModelValue       = 5
+	myGrandparentValue = 2.2
+	myParentValue      = 3.3
+	myBoardValue       = 4.4
+	myModelValue       = 5.5
+
+	// Duration equivalents of the above
+	defaultDuration       = 1 * time.Second
+	myGrandparentDuration = 2200 * time.Millisecond
+	myParentDuration      = 3300 * time.Millisecond
+	myBoardDuration       = 4400 * time.Millisecond
+	myModelDuration       = 5500 * time.Millisecond
 )
 
 var mockData = map[string][]byte{
@@ -47,23 +56,23 @@ var mockData = map[string][]byte{
 	myBoardName: []byte(fmt.Sprintf(`{
 		"platform": %q,
 		"parent": %q,
-		"firmware_screen": %d,
+		"firmware_screen": %f,
 		"models": {
 			%q: {
-				"firmware_screen": %d
+				"firmware_screen": %f
 			}
 		}
 	}`, myBoardName, myParentName, myBoardValue, myModelName, myModelValue)),
 	myParentName: []byte(fmt.Sprintf(`{
 		"platform": %q,
 		"parent": %q,
-		"confirm_screen": %d,
-		"firmware_screen": %d
+		"confirm_screen": %f,
+		"firmware_screen": %f
 	}`, myParentName, myGrandparentName, myParentValue, myParentValue)),
 	myGrandparentName: []byte(fmt.Sprintf(`{
 		"platform": %q,
-		"usb_plug": %d,
-		"confirm_screen": %d
+		"usb_plug": %f,
+		"confirm_screen": %f
 	}`, myGrandparentName, myGrandparentValue, myGrandparentValue)),
 	withECBatteryName: []byte(fmt.Sprintf(`{
 		"platform": %q,
@@ -115,20 +124,20 @@ func TestNewConfig(t *testing.T) {
 		t.Errorf("unexpected Platform value; got %q, want %q", cfg.Platform, myBoardName)
 	}
 	// Platform and parents do not set values; inherit defaults.
-	if cfg.DelayRebootToPing != defaultValue {
-		t.Errorf("unexpected DelayRebootToPing value; got %d, want %d", cfg.DelayRebootToPing, defaultValue)
+	if cfg.DelayRebootToPing != defaultDuration {
+		t.Errorf("unexpected DelayRebootToPing value; got %s, want %s", cfg.DelayRebootToPing, defaultDuration)
 	}
 	// Platform overwrites defaults (even though parent also sets the value)
-	if cfg.FirmwareScreen != myBoardValue {
-		t.Errorf("unexpected FirmwareScreen value; got %d, want %d", cfg.FirmwareScreen, myBoardValue)
+	if cfg.FirmwareScreen != myBoardDuration {
+		t.Errorf("unexpected FirmwareScreen value; got %s, want %s", cfg.FirmwareScreen, myBoardDuration)
 	}
 	// Platform inherits from parent (even though grandparent also sets the value)
-	if cfg.ConfirmScreen != myParentValue {
-		t.Errorf("unexpected ConfirmScreen value; got %d, want %d", cfg.ConfirmScreen, myParentValue)
+	if cfg.ConfirmScreen != myParentDuration {
+		t.Errorf("unexpected ConfirmScreen value; got %s, want %s", cfg.ConfirmScreen, myParentDuration)
 	}
 	// Platform inherits from grandparent
-	if cfg.USBPlug != myGrandparentValue {
-		t.Errorf("unexpected USBPlug value; got %d, want %d", cfg.USBPlug, myGrandparentValue)
+	if cfg.USBPlug != myGrandparentDuration {
+		t.Errorf("unexpected USBPlug value; got %s, want %s", cfg.USBPlug, myGrandparentDuration)
 	}
 }
 
@@ -147,12 +156,12 @@ func TestNewConfigNoParent(t *testing.T) {
 		t.Errorf("unexpected Platform value; got %q, want %q", cfg.Platform, myGrandparentName)
 	}
 	// mygrandparent has a custom value for USBPlug, overwriting defaults.
-	if cfg.USBPlug != myGrandparentValue {
-		t.Errorf("unexpected USBPlug value; got %d, want %d", cfg.USBPlug, myGrandparentValue)
+	if cfg.USBPlug != myGrandparentDuration {
+		t.Errorf("unexpected USBPlug value; got %s, want %s", cfg.USBPlug, myGrandparentDuration)
 	}
 	// mygrandparent does not set a value for FirmwareScreen, so should inherit defaults.
-	if cfg.FirmwareScreen != defaultValue {
-		t.Errorf("unexpected FirmwareScreen value; got %d, want %d", cfg.FirmwareScreen, defaultValue)
+	if cfg.FirmwareScreen != defaultDuration {
+		t.Errorf("unexpected FirmwareScreen value; got %s, want %s", cfg.FirmwareScreen, defaultDuration)
 	}
 }
 
@@ -165,13 +174,13 @@ func TestNewConfigModelOverride(t *testing.T) {
 	}
 	// Test with model-specific override
 	cfg, err := NewConfig(mockConfigDir, myBoardName, myModelName)
-	if cfg.FirmwareScreen != myModelValue {
-		t.Errorf("unexpected FirmwareScreen value; got %d, want %d // %+v", cfg.FirmwareScreen, myModelValue, cfg)
+	if cfg.FirmwareScreen != myModelDuration {
+		t.Errorf("unexpected FirmwareScreen value; got %s, want %s // %+v", cfg.FirmwareScreen, myModelDuration, cfg)
 	}
 	// Test with no model-specific override
 	cfg, err = NewConfig(mockConfigDir, myBoardName, myOtherModelName)
-	if cfg.FirmwareScreen != myBoardValue {
-		t.Errorf("unexpected FirmwareScreen value; got %d, want %d", cfg.FirmwareScreen, myModelValue)
+	if cfg.FirmwareScreen != myBoardDuration {
+		t.Errorf("unexpected FirmwareScreen value; got %s, want %s", cfg.FirmwareScreen, myModelDuration)
 	}
 }
 

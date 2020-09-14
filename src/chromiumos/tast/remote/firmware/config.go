@@ -179,17 +179,30 @@ func ConfigDatafiles() []string {
 // Config contains platform-specific attributes.
 // Fields are documented in autotest/server/cros/faft/configs/DEFAULTS.json.
 type Config struct {
-	Platform             string                     `json:"platform"`
-	Parent               string                     `json:"parent"`
-	ECCapability         []ECCapability             `json:"ec_capability"`
-	ModeSwitcherType     ModeSwitcherType           `json:"mode_switcher_type"`
-	PowerButtonDevSwitch bool                       `json:"power_button_dev_switch"`
-	RecButtonDevSwitch   bool                       `json:"rec_button_dev_switch"`
-	FirmwareScreen       time.Duration              `json:"firmware_screen"`
-	DelayRebootToPing    time.Duration              `json:"delay_reboot_to_ping"`
-	ConfirmScreen        time.Duration              `json:"confirm_screen"`
-	USBPlug              time.Duration              `json:"usb_plug"`
-	Models               map[string]json.RawMessage `json:"models"`
+	Platform             string           `json:"platform"`
+	Parent               string           `json:"parent"`
+	ECCapability         []ECCapability   `json:"ec_capability"`
+	ModeSwitcherType     ModeSwitcherType `json:"mode_switcher_type"`
+	PowerButtonDevSwitch bool             `json:"power_button_dev_switch"`
+	RecButtonDevSwitch   bool             `json:"rec_button_dev_switch"`
+
+	// Raw duration fields are used to populate actual duration fields, defined below, during NewConfig.
+	// Generally, they should not be accessed by tests and libraries.
+	RawConfirmScreen     float64 `json:"confirm_screen"`
+	RawDelayRebootToPing float64 `json:"delay_reboot_to_ping"`
+	RawECBootToPwrButton float64 `json:"ec_boot_to_pwr_button"`
+	RawFirmwareScreen    float64 `json:"firmware_screen"`
+	RawUSBPlug           float64 `json:"usb_plug"`
+
+	// Actual duration fields are populated during NewConfig based on raw JSON duration values, defined above.
+	ConfirmScreen     time.Duration
+	DelayRebootToPing time.Duration
+	ECBootToPwrButton time.Duration
+	FirmwareScreen    time.Duration
+	USBPlug           time.Duration
+
+	// Models maps DUT model names to overriding config JSON objects.
+	Models map[string]json.RawMessage `json:"models"`
 }
 
 // CfgPlatformFromLSBBoard interprets a board name that would come from /etc/lsb-release, and returns the name of the platform whose config should be loaded.
@@ -259,6 +272,14 @@ func NewConfig(configDataDir, board, model string) (*Config, error) {
 			return nil, errors.Wrapf(err, "failed to unmarshal model-level config for %q", model)
 		}
 	}
+
+	// Populate actual durations based on raw JSON values.
+	cfg.ConfirmScreen = toSeconds(cfg.RawConfirmScreen)
+	cfg.DelayRebootToPing = toSeconds(cfg.RawDelayRebootToPing)
+	cfg.ECBootToPwrButton = toSeconds(cfg.RawECBootToPwrButton)
+	cfg.FirmwareScreen = toSeconds(cfg.RawFirmwareScreen)
+	cfg.USBPlug = toSeconds(cfg.RawUSBPlug)
+
 	return &cfg, nil
 }
 
@@ -270,4 +291,9 @@ func (cfg *Config) HasECCapability(ecc ECCapability) bool {
 		}
 	}
 	return false
+}
+
+// toSeconds casts a float64 to a time.Duration, in seconds.
+func toSeconds(f float64) time.Duration {
+	return time.Duration(1000*f) * time.Millisecond
 }
