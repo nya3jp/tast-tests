@@ -69,6 +69,24 @@
       "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ea853c9_d5b2843c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_start.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-14T00:05:40Z",
+      "side": 1,
+      "message": "The actual issue is that we should test the correct image.  There is even the potential that the component updater won\u0027t work if it has been affected by the previous tests in the same run.\n\nIt is also confusing as you are following the standard artifact/download split of the tests, but not actually loading the artifact or download Termina.\n\nThe existing preconditions get the appropriate image in this function: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/crostini/ui/installer.go;l\u003d189?q\u003dinstaller.go\n\nThen they modify component service to use the correct termina here:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/crostini/ui/installer.go;l\u003d259?q\u003dinstaller.go\n\nIf you need the container, you will also need to start the fake lxd server (a few lines above).\n\nI would strongly prefer that you use the correct images here, otherwise it will confuse anyone trying to debug failures in this test that it is not using the same image that other similarly named tests use.",
+      "parentUuid": "aa99206f_6f853bea",
+      "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
