@@ -50,6 +50,24 @@
       "revId": "f232f12114ee801ecc69ad95c928c82d0d1caf05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10ad2c6e_da32ccc5",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-14T22:57:09Z",
+      "side": 1,
+      "message": "Yeah, but lots of renaming to do that.\n\nWhat I really want is for the open dbus connection to be global so we don\u0027t have to either pass it around (implicitly behind the dbus.BusObject structs) or keep recreating it.",
+      "parentUuid": "7a12d3c2_f3ea1812",
+      "revId": "f232f12114ee801ecc69ad95c928c82d0d1caf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
