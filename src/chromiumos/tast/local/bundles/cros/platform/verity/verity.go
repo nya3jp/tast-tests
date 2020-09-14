@@ -86,15 +86,10 @@ func createImage(ctx context.Context, dir, name string, nBlocks uint) (string, e
 			os.Remove(f.Name())
 		}
 	}()
-	if err := f.Close(); err != nil {
+	if err := f.Truncate(int64(blockSize * nBlocks)); err != nil {
 		return "", err
 	}
-	cmd := testexec.CommandContext(
-		ctx, "dd", "if=/dev/zero", "of="+f.Name(),
-		fmt.Sprintf("bs=%d", blockSize), "count=0",
-		fmt.Sprintf("seek=%d", nBlocks))
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
+	if err := f.Close(); err != nil {
 		return "", err
 	}
 	ret := f.Name()
