@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "131b7042_b9113903",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-14T23:44:30Z",
+      "side": 1,
+      "message": "Thanks for everyone\u0027s feedback. It really helps me understand asynchronous GUI testing.\n\nAlso, thanks for pointing out some app may not be available in certain device. Please let me know what devices I should run my new tests on and how to provision those devices so that I can test. Sorry, I am still learning. Some pointers would be fine. I will figure it out.\n\nThanks.\n\nSeewai\n\n",
+      "revId": "3b2e4743ca8a830ddbd0477801f62c89e80532f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
