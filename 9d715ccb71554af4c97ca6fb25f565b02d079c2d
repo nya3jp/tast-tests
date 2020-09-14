@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fc621c3_c42364e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T17:50:40Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "9d715ccb71554af4c97ca6fb25f565b02d079c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "062f412a_e373f740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_cancel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T17:50:40Z",
+      "side": 1,
+      "message": "nit: perhaps \"Failed to open Linux settings\" ?",
+      "range": {
+        "startLine": 65,
+        "startChar": 18,
+        "endLine": 65,
+        "endChar": 47
+      },
+      "revId": "9d715ccb71554af4c97ca6fb25f565b02d079c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9154c88d_47a70270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_cancel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T17:50:40Z",
+      "side": 1,
+      "message": "huge nit, (here and below):  consistency.\n\nabove messages refers to linux as \"Linux\" (capital L). Keep referring to linux as \"Linux\" then.",
+      "range": {
+        "startLine": 77,
+        "startChar": 51,
+        "endLine": 77,
+        "endChar": 56
+      },
+      "revId": "9d715ccb71554af4c97ca6fb25f565b02d079c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c836d4c6_e08c0029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_cancel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T17:50:40Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 82,
+        "startChar": 85,
+        "endLine": 82,
+        "endChar": 90
+      },
+      "revId": "9d715ccb71554af4c97ca6fb25f565b02d079c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbbf3024_543eff6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_cancel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T17:50:40Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 82,
+        "startChar": 26,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "9d715ccb71554af4c97ca6fb25f565b02d079c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a2008fa_4c0d37ce",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T17:50:40Z",
+      "side": 1,
+      "message": "huge nit: append period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 230,
+        "startChar": 89,
+        "endLine": 230,
+        "endChar": 91
+      },
+      "revId": "9d715ccb71554af4c97ca6fb25f565b02d079c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3ba8aa_cc3b137a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-14T17:50:40Z",
+      "side": 1,
+      "message": "huge nit, consistency:\n\ncrostini -\u003e Crostini",
+      "range": {
+        "startLine": 181,
+        "startChar": 43,
+        "endLine": 181,
+        "endChar": 51
+      },
+      "revId": "9d715ccb71554af4c97ca6fb25f565b02d079c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
