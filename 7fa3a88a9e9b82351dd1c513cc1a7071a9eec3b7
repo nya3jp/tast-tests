@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41f16b2b_e803c85a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-14T02:26:41Z",
+      "side": 1,
+      "message": "Can you please move this down to just above its methods?",
+      "revId": "7fa3a88a9e9b82351dd1c513cc1a7071a9eec3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a182cac0_22fb5e48",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-14T02:26:41Z",
+      "side": 1,
+      "message": "(Not for this CL) If the uig.WaitForLocationChangeCompleted CL goes in, this can become:\n\n\tdialog :\u003d \u0026RemoveConfirmDialog{}\n\tuig.PageObject(dialog)\n\n        if err :\u003d uig.Do(ctx, s.tconn,\n\t\tuig.FindWithTimeout(removeLinuxButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),\n                dialog.Self,\n                dialog.Msg); err !\u003d nil {\n\t\treturn nil, errors.Wrap(err, \"failed in ClickRemove()\")\n\t}",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 0
+      },
+      "revId": "7fa3a88a9e9b82351dd1c513cc1a7071a9eec3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

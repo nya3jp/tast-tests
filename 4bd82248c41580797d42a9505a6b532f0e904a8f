@@ -16,6 +16,80 @@
       "revId": "4bd82248c41580797d42a9505a6b532f0e904a8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16a40f7b_19199d18",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-14T02:26:41Z",
+      "side": 1,
+      "message": "We need a lot more documentation than this.  Also make sure an example is included in the documentation.",
+      "revId": "4bd82248c41580797d42a9505a6b532f0e904a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29769f29_16db2d39",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-14T02:26:41Z",
+      "side": 1,
+      "message": "Why is this capitalized when the others are not?  Please choose a consistent case, probably lower case to match json struct tags.",
+      "range": {
+        "startLine": 467,
+        "startChar": 43,
+        "endLine": 467,
+        "endChar": 52
+      },
+      "revId": "4bd82248c41580797d42a9505a6b532f0e904a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80c98477_f51eac2a",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-14T02:26:41Z",
+      "side": 1,
+      "message": "This should not be called if none of the attributes were provided (ie empty tag)",
+      "revId": "4bd82248c41580797d42a9505a6b532f0e904a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5ee35b5_ceb3c123",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-14T02:26:41Z",
+      "side": 1,
+      "message": "Please move this down to just above it\u0027s methods.",
+      "revId": "4bd82248c41580797d42a9505a6b532f0e904a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
