@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "34b14313_2b9e8aa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-14T10:20:43Z",
+      "side": 1,
+      "message": "oops, accidentally sent the message while writing it.\nI initially thought it would be beneficial to refactor perappdensity package from some aspect, but after thinking again, I think it\u0027s not necessary now.\nplease ignore the last sentence, thanks!",
+      "parentUuid": "977a4b10_253317d7",
+      "revId": "c3b58089c822afcdfd0aea2cf8eab058e97db24d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "483f7af8_b4692124",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 37
