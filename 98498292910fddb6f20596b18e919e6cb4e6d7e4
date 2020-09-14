@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3da95447_813c4b07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-14T07:04:47Z",
+      "side": 1,
+      "message": "Thanks for the review.\n\nAlso cc harpreet.",
+      "revId": "98498292910fddb6f20596b18e919e6cb4e6d7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
