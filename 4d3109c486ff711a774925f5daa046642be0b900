@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e9d52bb_44e8bef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-14T21:25:06Z",
+      "side": 1,
+      "message": "Verified on eve-kernelnext that the revert fixes the failures.",
+      "revId": "4d3109c486ff711a774925f5daa046642be0b900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
