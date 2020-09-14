@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d22984c8_81975f3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-14T22:12:21Z",
+      "side": 1,
+      "message": "Thanks for this! And yay for more granularity in launch times.",
+      "revId": "f232f12114ee801ecc69ad95c928c82d0d1caf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a12d3c2_f3ea1812",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-14T22:12:21Z",
+      "side": 1,
+      "message": "Time for a better name, rather than using Concierge to manage Cicerone?",
+      "revId": "f232f12114ee801ecc69ad95c928c82d0d1caf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
