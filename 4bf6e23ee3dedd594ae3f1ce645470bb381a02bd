@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaf311a4_d1ce89a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T21:06:49Z",
+      "side": 1,
+      "message": "In the future, please have someone on your team review your CL before adding tast-owners@",
+      "revId": "4bf6e23ee3dedd594ae3f1ce645470bb381a02bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68398209_998b06dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T21:06:49Z",
+      "side": 1,
+      "message": "do you need to increase the timeout since you are adding another test case?",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "4bf6e23ee3dedd594ae3f1ce645470bb381a02bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "782a2a07_0b2327b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T21:06:49Z",
+      "side": 1,
+      "message": "nit: remove this. It will likely get stale if the test case changes. The inline comments are enough.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 64
+      },
+      "revId": "4bf6e23ee3dedd594ae3f1ce645470bb381a02bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "896d38c7_fe002b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T21:06:49Z",
+      "side": 1,
+      "message": "nit: remove numbers before comments.",
+      "range": {
+        "startLine": 285,
+        "startChar": 4,
+        "endLine": 285,
+        "endChar": 7
+      },
+      "revId": "4bf6e23ee3dedd594ae3f1ce645470bb381a02bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c1868c3_b0d4f7c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T21:06:49Z",
+      "side": 1,
+      "message": "using ensureTabletModeEnabled multiple times when you are manually disabling tablet mode doesn\u0027t really make sense. You should probably just call SetTabletModeEnabled here. The reason for the cleanup function is to reset the dut state to it\u0027s original state. So only the first call to change tablet mode needs to use it.",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 27
+      },
+      "revId": "4bf6e23ee3dedd594ae3f1ce645470bb381a02bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3420ac6_85dded2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T21:06:49Z",
+      "side": 1,
+      "message": "Why is this need here and not when first changing the display orientation",
+      "range": {
+        "startLine": 413,
+        "startChar": 1,
+        "endLine": 415,
+        "endChar": 2
+      },
+      "revId": "4bf6e23ee3dedd594ae3f1ce645470bb381a02bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a90632c_f77c9690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T21:06:49Z",
+      "side": 1,
+      "message": "Why does this instance need polling but none of the earlier changes need polling?",
+      "range": {
+        "startLine": 417,
+        "startChar": 1,
+        "endLine": 429,
+        "endChar": 51
+      },
+      "revId": "4bf6e23ee3dedd594ae3f1ce645470bb381a02bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
