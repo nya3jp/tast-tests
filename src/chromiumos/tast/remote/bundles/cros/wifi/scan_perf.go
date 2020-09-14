@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remoteiw "chromiumos/tast/remote/network/iw"
@@ -140,17 +141,22 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 	// Background full scan, which means the scan is performed with a established connection.
 	// Disable background scan mode first.
 	s.Log("Disable the DUT's WiFi background scan")
-	method, err := tf.WifiClient().GetBgscanMethod(ctx, &empty.Empty{})
+	bgscanResp, err := tf.WifiClient().GetBgscan(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatal("Unable to get the DUT's WiFi bgscan method: ", err)
 	}
-	if _, err := tf.WifiClient().SetBgscanMethod(ctx, &network.SetBgscanMethodRequest{Method: "none"}); err != nil {
+	bgscanReq := &network.SetBgscanRequest{
+		Config: &network.BgscanConfig{}, // Make a copy as we'll change the value.
+	}
+	*bgscanReq.Config = *bgscanResp.Config
+	bgscanReq.Config.Method = shillconst.DeviceBgscanMethodNone
+	if _, err := tf.WifiClient().SetBgscan(ctx, bgscanReq); err != nil {
 		s.Fatal("Unable to stop the DUT's WiFi bgscan: ", err)
 	}
 	defer func(ctx context.Context) {
-		s.Log("Restore the DUT's WiFi background scan to ", method.Method)
-		if _, err := tf.WifiClient().SetBgscanMethod(ctx, &network.SetBgscanMethodRequest{Method: method.Method}); err != nil {
-			s.Errorf("Failed to restore the DUT's bgscan method to %s: %v", method.Method, err)
+		s.Log("Restore the DUT's WiFi background scan to ", bgscanResp.Config)
+		if _, err := tf.WifiClient().SetBgscan(ctx, &network.SetBgscanRequest{Config: bgscanResp.Config}); err != nil {
+			s.Errorf("Failed to restore the DUT's bgscan to %v: %v", bgscanResp.Config, err)
 		}
 	}(ctx)
 	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)

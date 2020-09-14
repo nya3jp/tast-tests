@@ -45,11 +45,11 @@ service WifiService {
   // ExpectWifiFrequencies checks if the device discovers the given SSID on the specific frequencies.
   rpc ExpectWifiFrequencies(ExpectWifiFrequenciesRequest) returns (google.protobuf.Empty) {}
 
-  // GetBgscanMethod returns the bgscan method the device's WiFi module currently uses.
-  rpc GetBgscanMethod(google.protobuf.Empty) returns (GetBgscanMethodResponse) {}
+  // GetBgscan returns the bgscan configuration the device's WiFi module currently uses.
+  rpc GetBgscan(google.protobuf.Empty) returns (GetBgscanResponse) {}
 
-  // SetBgscanMethod sets the device's WiFi module's bgscan method.
-  rpc SetBgscanMethod(SetBgscanMethodRequest) returns (google.protobuf.Empty) {}
+  // SetBgscan sets the device's WiFi module's bgscan configuration.
+  rpc SetBgscan(SetBgscanRequest) returns (google.protobuf.Empty) {}
 
   // AssureDisconnect assures that the WiFi service has disconnected within timeout (nanoseconds).
   rpc AssureDisconnect(AssureDisconnectRequest) returns (google.protobuf.Empty) {}
@@ -223,12 +223,20 @@ message ExpectWifiFrequenciesRequest {
   repeated uint32 frequencies = 2;
 }
 
-message GetBgscanMethodResponse {
+message BgscanConfig {
   string method = 1;
+  // ShortInterval time in seconds, only value in uint16 range is valid as dbus property type is uint16.
+  uint32 short_interval = 2;
+  // LongInterval time in seconds, only value in uint16 range is valid as dbus property type is uint16.
+  uint32 long_interval = 3;
 }
 
-message SetBgscanMethodRequest {
-  string method = 1;
+message GetBgscanResponse {
+  BgscanConfig config = 1;
+}
+
+message SetBgscanRequest {
+  BgscanConfig config = 1;
 }
 
 message AssureDisconnectRequest {

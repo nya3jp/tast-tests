@@ -35,10 +35,12 @@ const (
 	DevicePropertyEapCompleted      = "EapAuthenticationCompleted"
 
 	// WiFi device property names.
-	DevicePropertyWiFiBgscanMethod       = "BgscanMethod"
-	DevicePropertyMACAddrRandomEnabled   = "MACAddressRandomizationEnabled"
-	DevicePropertyMACAddrRandomSupported = "MACAddressRandomizationSupported"
-	DevicePropertyScanning               = "Scanning" // Also for cellular.
+	DevicePropertyWiFiBgscanMethod        = "BgscanMethod"
+	DevicePropertyWiFiScanInterval        = "ScanInterval"
+	DevicePropertyWiFiBgscanShortInterval = "BgscanShortInterval"
+	DevicePropertyMACAddrRandomEnabled    = "MACAddressRandomizationEnabled"
+	DevicePropertyMACAddrRandomSupported  = "MACAddressRandomizationSupported"
+	DevicePropertyScanning                = "Scanning" // Also for cellular.
 )
 
 // IPConfig property names.
@@ -189,4 +191,15 @@ const dhcpPropertyPrefix = "DHCPProperty."
 const (
 	DHCPPropertyHostname    = dhcpPropertyPrefix + "Hostname"
 	DHCPPropertyVendorClass = dhcpPropertyPrefix + "VendorClass"
+)
+
+// Device background scan methods.
+// The values are from wpa_supplicant + "none" for no background scan.
+// See:
+//   https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+//   platform2/shill/supplicant/wpa_supplicant.cc
+const (
+	DeviceBgscanMethodSimple = "simple"
+	DeviceBgscanMethodLearn  = "learn"
+	DeviceBgscanMethodNone   = "none"
 )
