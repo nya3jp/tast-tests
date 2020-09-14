@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f99e9f7b_f135996e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-14T21:41:32Z",
+      "side": 1,
+      "message": "The change itself looks good but I am not sure what\u0027s the background of this change.\n\nDid you confirm that the existence of browser windows affects the result numbers?  How much was that?\nAlso, even if the existence of browser windows subtract the performance numbers, does that really matter?  The goal of this test was (IIRC) to compare the video performance with and without underlays for PiP.  If browser window affects the performance on both cases uniformly, it wouldn\u0027t matter.",
+      "revId": "502713e1da60db56d32ba44a2df67e908e3ed66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
