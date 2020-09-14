@@ -689,8 +689,11 @@ func (ac *Activity) getTaskInfo(ctx context.Context) (TaskInfo, error) {
 	}
 	for _, task := range tasks {
 		for _, activity := range task.ActivityInfos {
-			if activity.PackageName == ac.pkgName && activity.ActivityName == ac.activityName {
-				return task, nil
+			if activity.PackageName == ac.pkgName {
+				qualifiedName := activity.PackageName + activity.ActivityName
+				if activity.ActivityName == ac.activityName || qualifiedName == ac.activityName {
+					return task, nil
+				}
 			}
 		}
 	}
