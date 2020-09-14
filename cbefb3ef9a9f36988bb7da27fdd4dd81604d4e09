@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10442354_914ad25c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-09-14T12:26:51Z",
+      "side": 1,
+      "message": "Hi Pavol,\n\nThis test verifies that the System-proxy daemon and the sandboxed workers are started by policy.\n\nThis should cover the automated testing gap which we have ATM.\n\nI\u0027ll try to see if we can setup a proxy in the lab network to be used by tast test (having a proxy run on the DUT is not trivial in out case. The network namespaces already have a localhost iface created by minijail, so if we run a proxy on the DUT we would need to create a new network interface).",
+      "revId": "cbefb3ef9a9f36988bb7da27fdd4dd81604d4e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
