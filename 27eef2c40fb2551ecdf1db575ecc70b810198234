@@ -53,6 +53,29 @@
     },
     {
       "key": {
+        "uuid": "ca18417b_1f3c8cfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-14T01:48:29Z",
+      "side": 1,
+      "message": "Please don\u0027t redefine every field that is in loadtimedata here. It will always be out of date as we add new fields to our code. Just look at the fields that you are actively testing, and the fields come from so many different places, both in our own code and the shared loadtimedata code.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 1
+      },
+      "revId": "27eef2c40fb2551ecdf1db575ecc70b810198234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d51beda5_2ad74219",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 2
