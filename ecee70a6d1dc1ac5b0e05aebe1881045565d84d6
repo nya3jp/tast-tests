@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "27d21cad_b9aa85e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-14T15:49:47Z",
+      "side": 1,
+      "message": "Hi Hugo,\n\nThank you for adding your thoughts.\n\nCould you please help to clarify some extra questions?\n\n* Do you know what is in-lab connection? Ethernet or wifi?\n* Do you expect any performance difference in configurations when DUT is connected via WiFi and via Ethernet? Alan, could you please test this configurations locally if you could see any difference.\n* You mentioned \"arc_eth0\" does not correspond to \"eth0\" anymore. Would this also apply to eth* networks in broader context?\n* Is your comment above valid for container as well as for VM?\n\nThanks!",
+      "parentUuid": "a4dc52fd_18e6be63",
+      "revId": "ecee70a6d1dc1ac5b0e05aebe1881045565d84d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63d65ab6_6c35a3b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
         "patchSetId": 5
