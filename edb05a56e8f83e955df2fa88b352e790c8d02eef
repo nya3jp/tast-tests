@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "718eb510_ae4c6276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-09-14T12:46:40Z",
+      "side": 1,
+      "message": "Thanks! We do have a plan to make these tests less flaky. Stay tuned!",
+      "revId": "edb05a56e8f83e955df2fa88b352e790c8d02eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aab058cc_baee698a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system_informational.go",
         "patchSetId": 1
