@@ -5,6 +5,7 @@
 package wiredhostapd
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -78,13 +79,18 @@ func (s *Server) Stop(ctx context.Context) error {
 // cliCmd runs a hostapd command via hostapd_cli. Returns stdout/stderr for success or error.
 func (s *Server) cliCmd(ctx context.Context, args ...string) (stdout, stderr string, err error) {
 	cliArgs := append([]string{"-p", s.ctrlIface, "-i", s.Iface}, args...)
+	cmd := testexec.CommandContext(ctx, "hostapd_cli", cliArgs...)
 
 	// Don't intermix stdout/stderr for parsing, so we have to capture them separately.
-	o, e, err := testexec.CommandContext(ctx, "hostapd_cli", cliArgs...).SeparatedOutput()
-	if err != nil {
+	var outBuf, errBuf bytes.Buffer
+	cmd.Stdout = &outBuf
+	cmd.Stderr = &errBuf
+
+	// Not all errors are fatal for all callers, so don't use DumpLogOnError.
+	if err = cmd.Run(); err != nil {
 		err = errors.Wrapf(err, "hostapd_cli failed, args: %v", args)
 	}
-	return string(o), string(e), err
+	return outBuf.String(), errBuf.String(), err
 }
 
 // ExpectSTAStatus retrieves the status for the station at 'staAddr', logs it to a file in OutDir, and
