@@ -22,6 +22,30 @@
       "revId": "26e7067cb52d1259bdf462a7fff497d89ef8ac97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc991b97_2143771c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-14T23:46:59Z",
+      "side": 1,
+      "message": "Not sure why this test did not run in each build. Seems it is not selected by `stable` boards. If you check all rest boards, it is pretty stable there too https://tastboard.corp.google.com/test/apps.LaunchHelpAppOnManagedDevice.logged_in_unstable.\n\nSince our app is not really board matter. I think it is ready to be promoted. But it is fine, if you are not comfident with it, I can remove this test at the moment. WDYT",
+      "parentUuid": "28e58897_19821733",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 89
+      },
+      "revId": "26e7067cb52d1259bdf462a7fff497d89ef8ac97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
