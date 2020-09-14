@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82b72c0b_c2048289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:42:01Z",
+      "side": 1,
+      "message": "LGTM with a few minor comments.",
+      "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e441ffc_d5b93a72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_ok.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:42:01Z",
+      "side": 1,
+      "message": "please use cmp over reflect:\n\nYou should just need to import github.com/google/go-cmp/cmp and use cmp.Equal instead.\n\nhttps://pkg.go.dev/github.com/google/go-cmp/cmp?tab\u003ddoc",
+      "range": {
+        "startLine": 91,
+        "startChar": 46,
+        "endLine": 91,
+        "endChar": 63
+      },
+      "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f02a5cd7_c8f8e617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:42:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 113,
+        "startChar": 46,
+        "endLine": 113,
+        "endChar": 64
+      },
+      "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "654bd728_f693ff9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:42:01Z",
+      "side": 1,
+      "message": "should either of the errors in this function use testing.PollBreak? Are either errors expected not to happen?",
+      "range": {
+        "startLine": 121,
+        "startChar": 10,
+        "endLine": 121,
+        "endChar": 13
+      },
+      "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75136612_070d5242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:42:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 123,
+        "startChar": 67,
+        "endLine": 123,
+        "endChar": 84
+      },
+      "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
