@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ad087bb_ad87da59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-14T18:42:58Z",
+      "side": 1,
+      "message": "Two FYIs:\n* Normally, we expect to get \"domain\" (i.e., WiFi) review before Tast review [1]\n* We have cros-wifi-reviews@ (a gwsq bot) for distributing WiFi test reviews\n\nThis one\u0027s pretty simple, so no big deal.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#summary",
+      "revId": "309207d37e1982fffd774d5d1a1f2e98adbd60de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55667fab_33bdabfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-14T18:42:58Z",
+      "side": 1,
+      "message": "We might have longer-term questions about how this kind of thing is supposed to work (possibly related to https://crbug.com/1070299) -- this doesn\u0027t really seem to be the best way to get reliable testing for future devices. It seems like a \"skip\" list would have a better chance of catching new devices. Otherwise, if we don\u0027t remember to update this every time we onboard new systems, we\u0027ll be missing useful coverage.\n\nA skip list would be a lot more work, of course. Maybe that would need to move into the hwdep package, abstracted as a useful property like \"Has HE support\".\n\nOr we just go with this solution for now, and work out the rest as we figure out how hwdeps are supposed to work later.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "309207d37e1982fffd774d5d1a1f2e98adbd60de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
