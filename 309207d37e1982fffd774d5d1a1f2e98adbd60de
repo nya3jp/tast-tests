@@ -39,6 +39,30 @@
       "revId": "309207d37e1982fffd774d5d1a1f2e98adbd60de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9684be3b_e0e43432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1307891
+      },
+      "writtenOn": "2020-09-14T20:43:02Z",
+      "side": 1,
+      "message": "A skiplist will be a lot of work (and probably a few oops updates).  hwdep property, when doable, will be nice (more scaleable?).",
+      "parentUuid": "55667fab_33bdabfa",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "309207d37e1982fffd774d5d1a1f2e98adbd60de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
