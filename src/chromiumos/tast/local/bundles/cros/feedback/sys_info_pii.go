@@ -36,28 +36,25 @@ type systemInformation struct {
 	Value string `json:"value"`
 }
 
+// SysInfoPII loads an external website URL to verify that the logs that the
+// feedback system sends do not contain sensitive and hard-to-redact
+// information, such as tab names.
 func SysInfoPII(ctx context.Context, s *testing.State) {
 	const (
+		// Don't use a localhost URL or local file:// url because those
+		// are not as sensitive and redaction pipelines treat them
+		// differently.
 		sensitiveURL    = "https://www.google.com/search?q=qwertyuiopasdfghjkl+sensitive"
 		sensitiveURLEnd = "www.google.com/search?q=qwertyuiopasdfghjkl+sensitive"
 		searchQuery     = "qwertyuiopasdfghjkl sensitive"
 	)
 
 	cr := s.PreValue().(*chrome.Chrome)
-	conn, err := cr.NewConn(ctx, "")
+	conn, err := cr.NewConn(ctx, sensitiveURL)
 	if err != nil {
 		s.Fatal("Failed to establish a chrome renderer connection: ", err)
 	}
 	defer conn.Close()
-
-	if err := conn.Navigate(ctx, sensitiveURL); err != nil {
-		s.Fatal("Failed to open a tab: ", err)
-	}
-
-	var title string
-	if err := conn.Eval(ctx, "document.title", &title); err != nil {
-		s.Fatal("Failed to get the tab title: ", err)
-	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -68,12 +65,23 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not call getSystemInformation: ", err)
 	}
 
+	var title string
+	if err := conn.Eval(ctx, "document.title", &title); err != nil {
+		s.Fatal("Failed to get the tab title: ", err)
+	}
+
 	for _, info := range ret {
 		if info.Key == "mem_usage_with_title" {
+			// mem_usage_with_title is only included if the user
+			// explicitly opts to send tab titles, so it's
+			// acceptable for it to contain titles.
 			if !strings.Contains(info.Value, title) {
 				s.Errorf("Log %q unexpectedly did not contain tab title", info.Key)
 				if err := saveLog(s.OutDir(), info.Key, info.Value); err != nil {
 					s.Error("Also, failed to save log contents: ", err)
+				}
+				if err := saveLog(s.OutDir(), "tabTitle", title); err != nil {
+					s.Error("Also, failed to save tab title: ", err)
 				}
 			}
 		} else {
@@ -81,19 +89,25 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 				content string
 				desc    string
 			}{
-				{title, "tab title"},
-				{searchQuery, "search query"},
+				{title, "tabTitle"},
+				{searchQuery, "searchQuery"},
 				{sensitiveURLEnd, "URL"}}
 			for _, entry := range badContents {
 				if strings.Contains(info.Value, entry.content) {
-					s.Errorf("Log %q unexpectedly contained the %s", info.Key, entry.desc)
+					s.Errorf("Log %q unexpectedly contained %s", info.Key, entry.desc)
 					if err := saveLog(s.OutDir(), info.Key, info.Value); err != nil {
 						s.Error("Also, failed to save log contents: ", err)
+					}
+					if err := saveLog(s.OutDir(), entry.desc, entry.content); err != nil {
+						s.Errorf("Also, failed to save %s: %v", entry.desc, err)
 					}
 				}
 			}
 		}
-		// Trim "@gmail.com" to look for both username and full email (which PII redaction should eliminate)
+		// Trim "@gmail.com" to look for both username and full email
+		// (The PII redaction should eliminate the email, so looking
+		// for the full email would not be as useful as looking for the
+		// username.)
 		user := strings.TrimSuffix(chrome.DefaultUser, "@gmail.com")
 		if strings.Contains(info.Value, user) {
 			// DO NOT actually log the username here -- if we do, and the test fails,
