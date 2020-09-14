@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "3e431fde_06ee5c8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-14T22:49:24Z",
+      "side": 1,
+      "message": "Thanks Fergus",
+      "revId": "f232f12114ee801ecc69ad95c928c82d0d1caf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a12d3c2_f3ea1812",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 2
