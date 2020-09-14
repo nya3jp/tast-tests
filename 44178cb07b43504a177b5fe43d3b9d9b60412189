@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33d70232_7d7073e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:12:37Z",
+      "side": 1,
+      "message": "Can you try and run your other launcher test immediately after this one? i.e. tast run \u003cip\u003e ui.LauncherRenameFolder ui.LauncherPinAppToShelf\n\nI\u0027m wondering if the launcher state is preserved between tests sharing a Chrome precondition. If so, there\u0027s a chance that this test could end up moving one of the apps used by ui.LauncherPinAppToShelf into a folder which would cause it to fail.",
+      "revId": "44178cb07b43504a177b5fe43d3b9d9b60412189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2f6017e_e0669e93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:12:37Z",
+      "side": 1,
+      "message": "Isn\u0027t this the duration for the mouse drag? 10 seconds seems really long, can we shorten it?",
+      "range": {
+        "startLine": 61,
+        "startChar": 50,
+        "endLine": 61,
+        "endChar": 64
+      },
+      "revId": "44178cb07b43504a177b5fe43d3b9d9b60412189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adef3790_e7a561df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:12:37Z",
+      "side": 1,
+      "message": "Error should be handled, and also are there any other readiness indicators here?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 46
+      },
+      "revId": "44178cb07b43504a177b5fe43d3b9d9b60412189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
