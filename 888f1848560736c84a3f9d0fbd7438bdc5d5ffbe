@@ -16,6 +16,24 @@
       "revId": "888f1848560736c84a3f9d0fbd7438bdc5d5ffbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d16f0d_8b8c2a84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-14T01:22:00Z",
+      "side": 1,
+      "message": "In the case of the camera tests (maybe others as well), we would have to make sure that it runs after installing the test app but before starting the test app. Otherwise, the CPU would never cool down. Since starting the test app is another setup action, waiting for CPU cooldown cannot be the last setup action.",
+      "parentUuid": "9cb1bca6_dbd3cb5a",
+      "revId": "888f1848560736c84a3f9d0fbd7438bdc5d5ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
