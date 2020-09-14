@@ -38,6 +38,7 @@ const (
 type Concierge struct {
 	ownerID      string // cryptohome hash for the logged-in user
 	conciergeObj dbus.BusObject
+	ciceroneObj  dbus.BusObject
 }
 
 // GetRunningConcierge returns a concierge instance without restarting concierge service.
@@ -58,8 +59,9 @@ func GetRunningConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, errors.Wrapf(err, "%s is not owned", conciergeName)
 	}
 
-	obj := conn.Object(conciergeName, conciergePath)
-	return &Concierge{h, obj}, nil
+	concierge := conn.Object(conciergeName, conciergePath)
+	cicerone := conn.Object(ciceroneName, ciceronePath)
+	return &Concierge{h, concierge, cicerone}, nil
 }
 
 // NewConcierge restarts the vm_concierge service, which stops all running VMs.
@@ -73,10 +75,11 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 	if err = upstart.RestartJob(ctx, conciergeJob); err != nil {
 		return nil, errors.Wrapf(err, "%v Upstart job failed", conciergeJob)
 	}
-	bus, obj, err := dbusutil.Connect(ctx, conciergeName, conciergePath)
+	bus, concierge, err := dbusutil.Connect(ctx, conciergeName, conciergePath)
 	if err != nil {
 		return nil, err
 	}
+	cicerone := bus.Object(ciceroneName, ciceronePath)
 
 	testing.ContextLogf(ctx, "Restarting %v job", ciceroneJob)
 	if err = upstart.RestartJob(ctx, ciceroneJob); err != nil {
@@ -86,7 +89,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, errors.Wrapf(err, "%v D-Bus service unavailable", ciceroneName)
 	}
 
-	return &Concierge{h, obj}, nil
+	return &Concierge{h, concierge, cicerone}, nil
 }
 
 // StopConcierge stops the vm_concierge service, which stops all running VMs.
