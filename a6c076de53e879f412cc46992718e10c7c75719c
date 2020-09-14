@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7253bf7a_494ecfbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "I think it\u0027s fine to keep ash.PinAppByName. Pinning the app from the shelf is more natural when you consider the flow of the test case.",
+      "parentUuid": "69bf359c_e975e321",
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82efce63_8eab4893",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 15
@@ -59,6 +77,63 @@
     },
     {
       "key": {
+        "uuid": "c947c346_4432b666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "I think we can shorten and merge this with the comment above in 71, especially since this is the second time we\u0027re repeating this action.",
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d166ca3_cd64221e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s cleaner to just do\n  last :\u003d len(itemsBefore)-1\n\nand just use last-1 directly instead of secondLastIndex. It\u0027s pretty clear that it\u0027s an index so I think we can get away with shortening it a bit.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 68
+      },
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a8a1c7_ab360d73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "Error should be handled. Also is this necessary for the test to pass? I think we try to avoid using this whenever possible since it adds a couple seconds even in the best case.",
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa311c79_1aff5281",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 15
@@ -75,6 +150,121 @@
         "startChar": 40,
         "endLine": 529,
         "endChar": 79
+      },
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "814e612e_1ccf67a0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "To continue the discussion on this, this is probably OK for now, but I think it would be best to follow up and move the app-related code out of shelf.go and into apps.go, so we can import apps and pass in App structs instead of individual names or IDs in these functions.",
+      "range": {
+        "startLine": 531,
+        "startChar": 66,
+        "endLine": 531,
+        "endChar": 80
+      },
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4581d38e_9989c05a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "Error should be handled.",
+      "range": {
+        "startLine": 572,
+        "startChar": 1,
+        "endLine": 572,
+        "endChar": 46
+      },
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24dd5c0b_ce57602b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "Error should be handled.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 46
+      },
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5224ff27_484c15ba",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "How about adding this to the beginning of OpenExpandedView? If the launcher is already in the desired state (expanded view open), OpenExpandedView can simply do nothing. Otherwise it can put it in the correct state. We\u0027re doing something similar to this in quicksettings.go.",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 32
+      },
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7945ef70_e7407230",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "Probably more user-friendly to return nil if it\u0027s already open.",
+      "range": {
+        "startLine": 140,
+        "startChar": 63,
+        "endLine": 140,
+        "endChar": 68
       },
       "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -121,6 +311,52 @@
         "startChar": 5,
         "endLine": 160,
         "endChar": 14
+      },
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80260b41_dbd133d4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "I think WaitForApp would be more useful to confirm that the app was launched.",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 46
+      },
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0392451f_fe907970",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-14T21:00:43Z",
+      "side": 1,
+      "message": "error handling",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 46
       },
       "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
