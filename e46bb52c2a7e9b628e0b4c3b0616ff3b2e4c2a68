@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1e6c98e_fb5ac46d",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-14T04:37:37Z",
+      "side": 1,
+      "message": "Please add blank lines between paragraphs and indent code.  This makes it show up nicer in godoc.\n\nhttps://blog.golang.org/godoc",
+      "revId": "e46bb52c2a7e9b628e0b4c3b0616ff3b2e4c2a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
