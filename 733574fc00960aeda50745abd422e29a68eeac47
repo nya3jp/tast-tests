@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "93bf77cd_137f1198",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-14T23:28:31Z",
+      "side": 1,
+      "message": "I think that toSeconds is clearest out of those three options. \"toDuration\" is ambiguous, because future fw-testing-configs fields might be defined in some other units (e.g. milliseconds). \"toSeconds\" and \"fromSeconds\" share the strange trait that both the float and the duration represent a number of \"seconds\". So at this point I think it\u0027s just personal judgment.\n\nI\u0027ll CQ+2 for now, and if we come up with a brilliant solution we can clean up in a follow-on CL.",
+      "parentUuid": "0251011f_bc3d1ed1",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5761203_a73a5a1c",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 1
