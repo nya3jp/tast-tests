@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "85f0ed6e_ff65dac2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-14T08:16:51Z",
+      "side": 1,
+      "message": "thanks for ongoing offline discussion these past few days!",
+      "parentUuid": "9a97139d_eaae12ed",
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b5ea621_227be353",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 30
@@ -56,6 +74,30 @@
       "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a11da95b_9b8149be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-14T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b5ea621_227be353",
+      "range": {
+        "startLine": 33,
+        "startChar": 39,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "ce8ae055_a4c19c0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-14T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcf7a955_52bed311",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "695e915e_db684df3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 30
@@ -102,6 +168,30 @@
       "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08ae2c6_83196b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-14T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "695e915e_db684df3",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 70
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "b877bf51_98f1aec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-14T08:16:51Z",
+      "side": 1,
+      "message": "my understanding was that, we won\u0027t to restore the density, in the case the test returns early.\nIn that, i\u0027ll move this defer to before changes are iterated.",
+      "parentUuid": "72617a5b_e4265487",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 6
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0bff79d_3854161a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
         "patchSetId": 30
@@ -151,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "bbee95bb_c77cc723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-14T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0bff79d_3854161a",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fcd7dc6_0242dcce",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
         "patchSetId": 30
@@ -171,6 +309,30 @@
       "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "747a2d0a_4b5df873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-14T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fcd7dc6_0242dcce",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
