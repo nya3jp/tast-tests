@@ -189,7 +189,8 @@ func WaitUntilIdle(ctx context.Context) error {
 		timeout := waitIdleCPUTimeout / idleCPUSteps
 		testing.ContextLogf(ctx, "Waiting up to %v for CPU usage to drop below %.1f%% (%d/%d)",
 			timeout.Round(time.Second), idlePercent, i+1, idleCPUSteps)
-		if usage, err := waitUntilIdleStep(ctx, timeout, idlePercent); err == nil {
+		var usage float64
+		if usage, err = waitUntilIdleStep(ctx, timeout, idlePercent); err == nil {
 			testing.ContextLogf(ctx, "Waiting for idle CPU took %v (usage: %.1f%%, threshold: %.1f%%)",
 				time.Now().Sub(startTime).Round(time.Second), usage, idlePercent)
 			return nil
@@ -204,8 +205,10 @@ func WaitUntilIdle(ctx context.Context) error {
 // range [0.0, 100.0].
 func waitUntilIdleStep(ctx context.Context, timeout time.Duration, maxUsage float64) (usage float64, err error) {
 	const measureDuration = time.Second
-	err = testing.Poll(ctx, func(ctx context.Context) error {
+	err = testing.Poll(ctx, func(_ctx context.Context) error {
 		var e error
+		// testing.Poll shortens ctx so that its deadline matches timeout. Use the original ctx to
+		// prevent the Sleep in MeasureCPUUsage from always failing during the last poll iteration.
 		usage, e = MeasureCPUUsage(ctx, measureDuration)
 		if e != nil {
 			return testing.PollBreak(errors.Wrap(e, "failed measuring CPU usage"))
