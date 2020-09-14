@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "b13acc3a_1d59c785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-14T10:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec2c8c25_f33a216d",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 114
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "023f1e1b_2fb55c1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "508323a2_10524986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-14T10:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "023f1e1b_2fb55c1c",
+      "range": {
+        "startLine": 107,
+        "startChar": 27,
+        "endLine": 107,
+        "endChar": 38
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "bcd71a15_f56799ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-14T10:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5086f2d_da120fe1",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ece403f_f3ca9cd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 2
@@ -108,6 +180,30 @@
       "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d188d4a0_a1780bc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-14T10:28:35Z",
+      "side": 1,
+      "message": "I split this out into a helper function, which should be more understandable",
+      "parentUuid": "4ece403f_f3ca9cd7",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "665273f8_4ad67de4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-14T10:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d66e10b7_1c490c7e",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88078484_619f0673",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 2
@@ -154,6 +274,30 @@
       "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d28052_4f7e7d4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-14T10:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88078484_619f0673",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "118adf1a9bb447ecd2e296aa10a2df0f64d21c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
