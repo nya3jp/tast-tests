@@ -16,6 +16,24 @@
       "revId": "5284fbfe3efaf868cc83d5bd749c5753b99e588f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9098cd41_be296847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-09-14T10:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6e6e763_8a123e07",
+      "revId": "5284fbfe3efaf868cc83d5bd749c5753b99e588f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
