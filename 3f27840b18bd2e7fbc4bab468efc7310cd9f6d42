@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43ff326c_ff57a407",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-14T17:14:56Z",
+      "side": 1,
+      "message": "mostly nits",
+      "revId": "3f27840b18bd2e7fbc4bab468efc7310cd9f6d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c7cee38_9e92016b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-14T17:14:56Z",
+      "side": 1,
+      "message": "I think it\u0027s better to be:\n  if err !\u003d nil {\n    return ...\n  }\n  ...\n\nthat way the indent can be reduced.",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 16
+      },
+      "revId": "3f27840b18bd2e7fbc4bab468efc7310cd9f6d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f4b9b23_3c14817d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-14T17:14:56Z",
+      "side": 1,
+      "message": "Is it the right choice to return a nil error here?\nWith the CL, I guess this function (checkErrorMessage) will expect the existence of the status window. If it\u0027s not found, maybe returning an error would be a right thing to do.",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 15
+      },
+      "revId": "3f27840b18bd2e7fbc4bab468efc7310cd9f6d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28521513_003c86cd",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-14T17:14:56Z",
+      "side": 1,
+      "message": "Please do not name the returned value unless it\u0027s necessary.\nhttps://gist.github.com/adamveld12/c0d9f0d5f0e1fba1e551#named-result-parameters",
+      "range": {
+        "startLine": 182,
+        "startChar": 49,
+        "endLine": 182,
+        "endChar": 68
+      },
+      "revId": "3f27840b18bd2e7fbc4bab468efc7310cd9f6d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a02aa06_9aede810",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-14T17:14:56Z",
+      "side": 1,
+      "message": "If messageErr is not nil, I think it\u0027s worthwhile to provide its contents -- that would help the insights on the screen. use of testing.ContextLogf might make sense.",
+      "range": {
+        "startLine": 193,
+        "startChar": 11,
+        "endLine": 193,
+        "endChar": 21
+      },
+      "revId": "3f27840b18bd2e7fbc4bab468efc7310cd9f6d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
