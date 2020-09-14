@@ -16,6 +16,161 @@
       "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a97139d_eaae12ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-14T02:43:53Z",
+      "side": 1,
+      "message": "I\u0027m already talking with sara-san offline, but updating for visibility to others. Sorry for not updating for a while.",
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b5ea621_227be353",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-14T02:43:53Z",
+      "side": 1,
+      "message": "nit: test app? it\u0027s not an activity",
+      "range": {
+        "startLine": 33,
+        "startChar": 39,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf7a955_52bed311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-14T02:43:53Z",
+      "side": 1,
+      "message": "nit: probably name it `Execute`, instead of `Change`?",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "695e915e_db684df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-14T02:43:53Z",
+      "side": 1,
+      "message": "as talked offline, please make sure that the crop bounds is correct and not include caption.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 70
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72617a5b_e4265487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-14T02:43:53Z",
+      "side": 1,
+      "message": "Maybe it\u0027s unrelated to this change... but why it\u0027s deferred? It look unnecessary to defer this call as it\u0027s placed just before the return, or can we defer it before iterating changes?",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 6
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0bff79d_3854161a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-14T02:43:53Z",
+      "side": 1,
+      "message": "nit: GrabAndCrop...?",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fcd7dc6_0242dcce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-14T02:43:53Z",
+      "side": 1,
+      "message": "this ctx is shoten-ed context. I think chorten of the context can be placed after this defer. (another approach might be to keep both shortened and unshortened contexts).",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "706942fbdcdba21824de9c66175e4852d2b775d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
