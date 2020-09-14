@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9abfeb57_5a140cc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-14T22:58:08Z",
+      "side": 1,
+      "message": "Hi Tast Owners,\n\nCan you please review this CL ?\n\nThanks",
+      "revId": "0fba1c2d7755b58f7e319f0dd30311987d5d9e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
