@@ -155,16 +155,15 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
 	return nil
 }
 
-// Install clicks the install button and waits for the Linux installation to complete.
-func (p *Installer) Install(ctx context.Context) error {
-	// First check for an error screen.
+// checkErrorMessage checks to see if an error message is currently displayed in the
+// installer dialog, and returns it if one is present.
+func (p *Installer) checkErrorMessage(ctx context.Context) (string, error) {
 	status, err := ui.Find(ctx, p.tconn, ui.FindParams{Role: ui.RoleTypeStatus})
 	if err == nil {
 		defer status.Release(ctx)
-		// There is an error message, fetch and return it rather than the "can't find Install button" error.
 		nodes, err := status.Descendants(ctx, ui.FindParams{Role: ui.RoleTypeStaticText})
 		if err != nil {
-			return err
+			return "", err
 		}
 		var messages []string
 		for _, node := range nodes {
@@ -173,9 +172,21 @@ func (p *Installer) Install(ctx context.Context) error {
 		}
 		message := strings.Join(messages, ": ")
 		if strings.HasPrefix(message, "Error") {
-			return errors.Errorf("error message in dialog: %s", message)
+			return message, nil
 		}
 	}
+	return "", nil
+}
+
+// Install clicks the install button and waits for the Linux installation to complete.
+func (p *Installer) Install(ctx context.Context) (returnedErr error) {
+	// If the install fails, return any error message from the installer rather than a timeout error.
+	defer func() {
+		message, err := p.checkErrorMessage(ctx)
+		if returnedErr != nil && err == nil && message != "" {
+			returnedErr = errors.Errorf("error in installer dialog: %s", message)
+		}
+	}()
 	// Focus on the install button to ensure virtual keyboard does not get in the
 	// way and prevent the button from being clicked.
 	install := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Install"}, uiTimeout)
