@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88dc67f8_eb4b89b4",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-09-14T22:03:08Z",
+      "side": 1,
+      "message": "Mention that these are in seconds.",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae8cb1c4_69f59785",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-09-14T22:03:08Z",
+      "side": 1,
+      "message": "Can we make these raw values private?",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe10336_56ae36a0",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-09-14T22:03:08Z",
+      "side": 1,
+      "message": "Probably clearer to do conversion directly here instead of toSeconds.",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5761203_a73a5a1c",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-09-14T22:03:08Z",
+      "side": 1,
+      "message": "Use time.Second and remove the 1000 scale factor.",
+      "revId": "733574fc00960aeda50745abd422e29a68eeac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
