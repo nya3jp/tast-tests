@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3268f9b3_ce78ec17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-14T08:33:50Z",
+      "side": 1,
+      "message": "LGMT % nit",
+      "revId": "ce52e701b371c7e48e95245902046f5790b829ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cdeba03_6513cb31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-14T08:33:50Z",
+      "side": 1,
+      "message": "nit: Now that you are not logging the device name, you can call this function from inside the \"if\".",
+      "revId": "ce52e701b371c7e48e95245902046f5790b829ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
