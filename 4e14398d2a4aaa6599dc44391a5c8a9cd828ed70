@@ -16,6 +16,98 @@
       "revId": "4e14398d2a4aaa6599dc44391a5c8a9cd828ed70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5df34f0c_5081d85b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/disney.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:50:29Z",
+      "side": 1,
+      "message": "Instead of merging signout with another testcase from testutil, can we either merge it into launchAppForDisney or make it an individual test case. Since signout depends on login succeeding and other test cases don\u0027t depend on login, I think it would probably be best called at the end of launchAppForDisney.",
+      "range": {
+        "startLine": 28,
+        "startChar": 37,
+        "endLine": 28,
+        "endChar": 68
+      },
+      "revId": "4e14398d2a4aaa6599dc44391a5c8a9cd828ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e9bf86_f38c3e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/disney.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:50:29Z",
+      "side": 1,
+      "message": "no need to make a second keyboard. just reuse kb",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "4e14398d2a4aaa6599dc44391a5c8a9cd828ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969a20d5_8fd5d7d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/disney.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:50:29Z",
+      "side": 1,
+      "message": "I think this logic doesn\u0027t match your comment. This will click on the signin button while the homeIcon button exists and will stop once the home icon button no longer exists. Can you double check the comment/logic?",
+      "range": {
+        "startLine": 155,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 46
+      },
+      "revId": "4e14398d2a4aaa6599dc44391a5c8a9cd828ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec301b9_670b118c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/disney.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-14T20:50:29Z",
+      "side": 1,
+      "message": "please just call this at the end of launch app instead of mixing it with reopen window",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 55
+      },
+      "revId": "4e14398d2a4aaa6599dc44391a5c8a9cd828ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
