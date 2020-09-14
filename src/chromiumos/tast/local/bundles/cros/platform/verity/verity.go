@@ -75,31 +75,17 @@ func releaseDevice(ctx context.Context, c []string, device string) error {
 // createImage creates a temporary file for testing under dir.
 // The size of the file will be nBlocks * blockSize bytes of 0.
 // The path to the created image is returned. Callers have responsibility to
-// delete the file when it gets no longer needed.
+// Image file is deleted at end of test when we remove dir.
 func createImage(ctx context.Context, dir, name string, nBlocks uint) (string, error) {
 	f, err := ioutil.TempFile(dir, name+".img.")
 	if err != nil {
 		return "", err
 	}
-	defer func() {
-		if f != nil {
-			os.Remove(f.Name())
-		}
-	}()
-	if err := f.Close(); err != nil {
+	defer f.Close()
+	if err := f.Truncate(int64(blockSize * nBlocks)); err != nil {
 		return "", err
 	}
-	cmd := testexec.CommandContext(
-		ctx, "dd", "if=/dev/zero", "of="+f.Name(),
-		fmt.Sprintf("bs=%d", blockSize), "count=0",
-		fmt.Sprintf("seek=%d", nBlocks))
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		return "", err
-	}
-	ret := f.Name()
-	f = nil
-	return ret, nil
+	return f.Name(), nil
 }
 
 // createFileSystem creates a file system on path.
