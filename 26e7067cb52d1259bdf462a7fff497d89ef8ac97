@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28e58897_19821733",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-14T23:40:16Z",
+      "side": 1,
+      "message": "This test only seems to have run 9 times so we probably shouldn\u0027t promote it to stable yet?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 89
+      },
+      "revId": "26e7067cb52d1259bdf462a7fff497d89ef8ac97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
