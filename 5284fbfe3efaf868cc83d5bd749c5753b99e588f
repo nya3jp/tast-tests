@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6e6e763_8a123e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-14T08:45:30Z",
+      "side": 1,
+      "message": "nit: I think you can check it every second.",
+      "revId": "5284fbfe3efaf868cc83d5bd749c5753b99e588f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

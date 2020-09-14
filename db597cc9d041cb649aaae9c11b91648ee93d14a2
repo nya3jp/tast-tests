@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5e07d394_d89ab433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-14T08:45:30Z",
+      "side": 1,
+      "message": "The phrase add tab was a little misleading, one level of indentation should be only 2 spaces.\ngo/htmlcssstyle#Indentation",
+      "parentUuid": "d538aefd_677e2a3a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 35
+      },
+      "revId": "db597cc9d041cb649aaae9c11b91648ee93d14a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9e73913_e095e4b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index.html",
         "patchSetId": 4
