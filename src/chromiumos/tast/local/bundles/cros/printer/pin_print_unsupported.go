@@ -37,7 +37,6 @@ func init() {
 				OutDiffFile:  "no-pin_diff.txt",
 			},
 			ExtraData: []string{},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "pin",
 			Val: &pinprint.Params{
@@ -48,7 +47,6 @@ func init() {
 				Options:      []pinprint.Option{pinprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{},
-			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
