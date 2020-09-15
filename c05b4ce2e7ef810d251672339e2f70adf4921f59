@@ -51,6 +51,24 @@
       "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5a9fba6_3ffcf921",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-09-15T16:40:04Z",
+      "side": 1,
+      "message": "I meant more along the lines of \"Will those three fields always be present?\" - they\u0027re marked optional in the mojom struct. If we know they should always show up, then we could at least expect non-empty strings for those three values.",
+      "parentUuid": "5e057b70_195637ec",
+      "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
