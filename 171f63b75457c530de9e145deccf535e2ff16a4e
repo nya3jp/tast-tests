@@ -127,6 +127,30 @@
       "revId": "171f63b75457c530de9e145deccf535e2ff16a4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92d6dcfc_f57b739d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-09-15T10:33:20Z",
+      "side": 1,
+      "message": "Ack. Thank you for explaining it!",
+      "parentUuid": "e2c2831f_5f779f36",
+      "range": {
+        "startLine": 251,
+        "startChar": 16,
+        "endLine": 251,
+        "endChar": 38
+      },
+      "revId": "171f63b75457c530de9e145deccf535e2ff16a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
