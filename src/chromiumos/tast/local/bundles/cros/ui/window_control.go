@@ -41,7 +41,8 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		"Ash.Window.AnimationSmoothness.CrossFade",
 		"Ash.Window.AnimationSmoothness.CrossFade.DragMaximize",
 		"Ash.Window.AnimationSmoothness.CrossFade.DragUnmaximize",
-		"Ash.WindowCycleView.AnimationSmoothness.Show",
+		// Ash.WindowCycleView.AnimationSmoothness.Show is known bad: https://crbug.com/1111130
+		// "Ash.WindowCycleView.AnimationSmoothness.Show",
 		"Ash.Overview.AnimationSmoothness.Enter.ClamshellMode",
 		"Ash.Overview.AnimationSmoothness.Exit.ClamshellMode",
 		"Ash.InteractiveWindowResize.TimeToPresent",
@@ -241,7 +242,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		}
 		defer mouse.Release(ctx, tconn, mouse.LeftButton)
 		for i, point := range []coords.Point{bounds.CenterPoint(), br} {
-			if err := mouse.Move(ctx, tconn, point, 300*time.Millisecond); err != nil {
+			if err := mouse.Move(ctx, tconn, point, 500*time.Millisecond); err != nil {
 				return errors.Wrapf(err, "failed to move the mouse to %v at step %d", point, i)
 			}
 		}
