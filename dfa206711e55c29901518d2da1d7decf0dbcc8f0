@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d40901d3_1dd76310",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-15T00:15:05Z",
+      "side": 1,
+      "message": "I\u0027ll keep it as is, but keep this in mind for the future. Thanks!",
+      "parentUuid": "12653633_cc0c8ac3",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 380,
+        "endChar": 2
+      },
+      "revId": "dfa206711e55c29901518d2da1d7decf0dbcc8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f8a3d1d_2408415b",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 2
