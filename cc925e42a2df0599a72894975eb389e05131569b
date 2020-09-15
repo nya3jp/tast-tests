@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b006aa8_e4067933",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-15T14:28:18Z",
+      "side": 1,
+      "message": "I need some help to understand the intent behind the test.\n\nIs it necessary to use the Google search in this case?\n- If yes, wouldn\u0027t it be better to enter the \"searchQuery\" in the address bar instead of navigating to the page? As it is right now, I don\u0027t see how could the \"searchQuery\" appear in the system information.\n- if no, I would suggest to create a HTML page, include it into the test as data, and start an HTML server with it, and connect to that page. This way the title of the page is known.\n\nWhat breaks if the username is included in s.Errorf()? Which info.Key will contain the username form that?",
+      "revId": "cc925e42a2df0599a72894975eb389e05131569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
