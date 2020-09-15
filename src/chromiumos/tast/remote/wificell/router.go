@@ -842,3 +842,8 @@ func (r *Router) ChangeAPIfaceSubnetIdx(ctx context.Context, h *APIface) (retErr
 	testing.ContextLogf(ctx, "changing AP subnet index from %d to %d", oldIdx, newIdx)
 	return h.changeSubnetIdx(ctx, newIdx)
 }
+
+// MAC returns the MAC address of iface on this router.
+func (r *Router) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
+	return r.ipr.MAC(ctx, iface)
+}
