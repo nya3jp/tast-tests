@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cac77829_11993f52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-15T01:43:03Z",
+      "side": 1,
+      "message": "I made a major refactoring. After looking at RV19 and RV20 and specs, I realized I can reuse those functions. So I moved their logic out to their own private functions, and reused them in RV21.\nCan you please take a look? ",
+      "revId": "9df00bee90aeacb7db50d12f62162d872080d275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
