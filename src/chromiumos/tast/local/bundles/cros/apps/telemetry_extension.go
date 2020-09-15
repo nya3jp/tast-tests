@@ -39,7 +39,6 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{indexHTML, indexJS},
-		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
