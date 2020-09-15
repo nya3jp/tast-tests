@@ -115,6 +115,14 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to start VM: ", err)
 		}
+		vmRunning := true
+		defer func() {
+			if vmRunning {
+				if err := vmInstance.Stop(ctx); err != nil {
+					s.Error("Failed to stop the VM instance: ", err)
+				}
+			}
+		}()
 		timing.vmStart = time.Since(startTime)
 		s.Log("Elapsed time to start VM ", timing.vmStart.Round(time.Millisecond))
 
@@ -143,6 +151,7 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to close VM: ", err)
 		}
 		timing.vmShutdown = time.Since(startTime)
+		vmRunning = false
 		s.Log("Elapsed time to shut down VM ", timing.vmShutdown.Round(time.Millisecond))
 
 		return timing
