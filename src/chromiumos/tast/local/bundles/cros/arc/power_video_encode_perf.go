@@ -55,6 +55,15 @@ func init() {
 			},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name: "h264_1080p_i420_vm",
+			Val: encoding.TestOptions{
+				Profile:     videotype.H264Prof,
+				Params:      video.Crowd1080P,
+				PixelFormat: videotype.I420,
+			},
+			ExtraData:         []string{video.Crowd1080P.Name},
+			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
 }
