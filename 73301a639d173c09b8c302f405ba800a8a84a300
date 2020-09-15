@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f1933f1_bd7cefda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-15T21:25:13Z",
+      "side": 1,
+      "message": "I had to change the logic again, sorry for several back and forths. Please review it again.",
+      "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
