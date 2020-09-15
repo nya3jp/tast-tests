@@ -16,6 +16,23 @@
       "revId": "0fba1c2d7755b58f7e319f0dd30311987d5d9e53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd369240_fe5adebd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-15T08:20:30Z",
+      "side": 1,
+      "message": "Hi gabormagda@,\n\nCan you please take a look at this test too ?\n\nThanks",
+      "revId": "0fba1c2d7755b58f7e319f0dd30311987d5d9e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
