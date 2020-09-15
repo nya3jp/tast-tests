@@ -33,6 +33,24 @@
       "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e057b70_195637ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-09-15T15:41:54Z",
+      "side": 1,
+      "message": "It\u0027s possible to parse the output of multiple tools to come up with the mac_address, but it\u0027s hard to tell which mac address is associated to each device. The guid and name are all handled inside of Chrome. One of the goals of the network health team in Q4 is to expose some of the lower level information for tast testing, so I imagine we could expand this test when that happens.",
+      "parentUuid": "10f00de2_98e32558",
+      "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
