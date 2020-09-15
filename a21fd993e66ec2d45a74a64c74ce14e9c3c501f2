@@ -22,6 +22,30 @@
       "revId": "a21fd993e66ec2d45a74a64c74ce14e9c3c501f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3194ce7f_10b86eca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arccrash/build_prop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-09-15T08:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8a3fc36_01837d07",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "a21fd993e66ec2d45a74a64c74ce14e9c3c501f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
