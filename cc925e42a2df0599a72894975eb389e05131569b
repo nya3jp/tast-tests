@@ -16,6 +16,24 @@
       "revId": "cc925e42a2df0599a72894975eb389e05131569b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d364becd_4daaedd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-15T18:07:46Z",
+      "side": 1,
+      "message": "It\u0027s not necessary to use google search specifically, but we *do* want to use something that is a non-localhost http(s) page, because the redaction tools we have in place treat file:// (and possibly localhost?) URLs differently from web pages. I chose google search because it\u0027s a fairly reliable service.\n\nI\u0027m looking for the searchQuery in the page as a sort of backstop in case we don\u0027t fetch the title of the page correctly at first. It\u0027s not strictly necessary, but doesn\u0027t hurt to collect.\n\nIf the username is included in s.Errorf, it will go into /var/log/messages, which is one of the logs we retrieve. (info.Key \u003d syslog, I believe).",
+      "parentUuid": "2b006aa8_e4067933",
+      "revId": "cc925e42a2df0599a72894975eb389e05131569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
