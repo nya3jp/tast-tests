@@ -10,7 +10,6 @@ import (
 	"image/jpeg"
 	"math"
 	"os"
-	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -43,7 +42,7 @@ func init() {
 func CCAUIResolutions(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -71,16 +70,11 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 		s.Fatal("Resolution settings menu is not available on device")
 	}
 
-	saveDir, err := app.SavedDir(ctx)
-	if err != nil {
-		s.Fatal("Failed to get save dir: ", err)
-	}
-
-	if err := testPhotoResolution(ctx, app, saveDir); err != nil {
+	if err := testPhotoResolution(ctx, app); err != nil {
 		s.Error("Failed in testPhotoResolution(): ", err)
 		restartApp()
 	}
-	if err := testVideoResolution(ctx, app, saveDir); err != nil {
+	if err := testVideoResolution(ctx, app); err != nil {
 		s.Error("Failed in testVideoResolution(): ", err)
 		restartApp()
 	}
@@ -100,7 +94,7 @@ func getOrientedResolution(ctx context.Context, app *cca.App, r cca.Resolution) 
 	return r, nil
 }
 
-func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) error {
+func testPhotoResolution(ctx context.Context, app *cca.App) error {
 	return app.RunThroughCameras(ctx, func(facing cca.Facing) error {
 		if err := app.SwitchMode(ctx, cca.Photo); err != nil {
 			return errors.Wrap(err, "failed to switch to photo mode")
@@ -129,7 +123,11 @@ func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if err != nil {
 				return errors.Wrap(err, "failed to take photo")
 			}
-			f, err := os.Open(filepath.Join(saveDir, info[0].Name()))
+			path, err := app.FilePathInSavedDirs(ctx, info[0].Name())
+			if err != nil {
+				return errors.Wrap(err, "failed to get file path")
+			}
+			f, err := os.Open(path)
 			if err != nil {
 				return errors.Wrap(err, "failed to open captured file")
 			}
@@ -183,7 +181,7 @@ func videoTrackResolution(path string) (*cca.Resolution, error) {
 	return nil, errors.Errorf("no video track found in the file %v", path)
 }
 
-func testVideoResolution(ctx context.Context, app *cca.App, saveDir string) error {
+func testVideoResolution(ctx context.Context, app *cca.App) error {
 	return app.RunThroughCameras(ctx, func(facing cca.Facing) error {
 		if err := app.SwitchMode(ctx, cca.Video); err != nil {
 			return errors.Wrap(err, "failed to switch to video mode")
@@ -206,7 +204,11 @@ func testVideoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if err != nil {
 				return errors.Wrap(err, "failed to record video")
 			}
-			vr, err := videoTrackResolution(filepath.Join(saveDir, info.Name()))
+			path, err := app.FilePathInSavedDirs(ctx, info.Name())
+			if err != nil {
+				return errors.Wrap(err, "failed to get file path")
+			}
+			vr, err := videoTrackResolution(path)
 			if err != nil {
 				return err
 			}

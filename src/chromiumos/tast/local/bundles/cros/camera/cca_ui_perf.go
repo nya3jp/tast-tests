@@ -36,7 +36,7 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
