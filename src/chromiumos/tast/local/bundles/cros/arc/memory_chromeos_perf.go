@@ -6,12 +6,15 @@ package arc
 
 import (
 	"context"
+	"io/ioutil"
+	"path"
 	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/memory"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -41,6 +44,17 @@ func init() {
 	})
 }
 
+func copyFile(src string, dst string) error {
+	data, err := ioutil.ReadFile(src)
+	if err != nil {
+		return err
+	}
+	if err := ioutil.WriteFile(dst, data, 0644); err != nil {
+		return err
+	}
+	return nil
+}
+
 func MemoryChromeOSPerf(ctx context.Context, s *testing.State) {
 	allocatedMetric := perf.Metric{Name: "allocated", Unit: "MiB", Direction: perf.BiggerIsBetter, Multiple: true}
 	marginMetric := perf.Metric{Name: "critical_margin", Unit: "MiB"}
@@ -66,6 +80,33 @@ func MemoryChromeOSPerf(ctx context.Context, s *testing.State) {
 		const bytesInMiB = 1024 * 1024
 		p.Append(allocatedMetric, float64(a)/bytesInMiB)
 	}
+	// Copy memory logs from host.
+	if err := copyFile("/proc/zoneinfo", path.Join(s.OutDir(), "host_zoneinfo")); err != nil {
+		s.Error("Failed to copy host zoneinfo")
+	}
+	if err := copyFile("/proc/meminfo", path.Join(s.OutDir(), "host_meminfo")); err != nil {
+		s.Error("Failed to copy host meminfo")
+	}
+	// Copy memory logs from arcvm, if it is running.
+	if pre, ok := s.PreValue().(arc.PreData); ok {
+		zoneinfoData, err := pre.ARC.Command(ctx, "cat", "/proc/zoneinfo").Output(testexec.DumpLogOnError)
+		if err != nil {
+			s.Error("Failed to cat arcvm zoneinfo")
+		} else {
+			if err := ioutil.WriteFile(path.Join(s.OutDir(), "arcvm_zoneinfo"), zoneinfoData, 0644); err != nil {
+				s.Error("Failed to write arcvm zoneinfo")
+			}
+		}
+		meminfoData, err := pre.ARC.Command(ctx, "cat", "/proc/meminfo").Output(testexec.DumpLogOnError)
+		if err != nil {
+			s.Error("Failed to cat arcvm meminfo")
+		} else {
+			if err := ioutil.WriteFile(path.Join(s.OutDir(), "arcvm_meminfo"), meminfoData, 0644); err != nil {
+				s.Error("Failed to write arcvm meminfo")
+			}
+		}
+	}
+
 	if _, err := c.FreeAll(); err != nil {
 		s.Fatal("Failed to free allocated memory: ")
 	}
