@@ -15,14 +15,13 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MotionInput,
-		Desc:         "Checks motion input (touch/mouse) works in various window states on Android",
+		Func:         MouseInput,
+		Desc:         "Verifies mouse input in various window states on Android",
 		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
@@ -30,26 +29,12 @@ func init() {
 	})
 }
 
-// singleTouchMatcher returns a motionEventMatcher that matches events from a Touchscreen device.
-func singleTouchMatcher(a motioninput.Action, p coords.Point) motioninput.Matcher {
-	return motioninput.SinglePointerMatcher(a, motioninput.SourceTouchscreen, p, 1)
-}
-
-// mouseMatcher returns a motionEventMatcher that matches events from a Mouse device.
-func mouseMatcher(a motioninput.Action, p coords.Point) motioninput.Matcher {
-	pressure := 0.
-	if a == motioninput.ActionMove || a == motioninput.ActionDown || a == motioninput.ActionButtonPress || a == motioninput.ActionHoverExit {
-		pressure = 1.
-	}
-	return motioninput.SinglePointerMatcher(a, motioninput.SourceMouse, p, pressure)
-}
-
-// MotionInput runs several sub-tests, where each sub-test sets up the Chrome WM environment as
-// specified by the motionInputSubtestParams. Each sub-test installs and runs an Android application
-// (ArcMotionInputTest.apk), injects various input events into ChromeOS through uinput devices,
+// MouseInput runs several sub-tests, where each sub-test sets up the Chrome WM environment as
+// specified by the motioninput.WMTestParams. Each sub-test installs and runs the test application
+// (ArcMotionInputTest.apk), injects various input events into ChromeOS through the test API,
 // and verifies that those events were received by the Android application in the expected screen
 // locations.
-func MotionInput(ctx context.Context, s *testing.State) {
+func MouseInput(ctx context.Context, s *testing.State) {
 	p := s.PreValue().(arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
@@ -83,82 +68,31 @@ func MotionInput(ctx context.Context, s *testing.State) {
 			Name:          "Clamshell Maximized",
 			TabletMode:    false,
 			WmEventToSend: ash.WMEventMaximize,
+		}, {
+			Name:          "Tablet",
+			TabletMode:    true,
+			WmEventToSend: nil,
+		}, {
+			Name:          "Tablet Snapped Left",
+			TabletMode:    true,
+			WmEventToSend: ash.WMEventSnapLeft,
+		}, {
+			Name:          "Tablet Snapped Right",
+			TabletMode:    true,
+			WmEventToSend: ash.WMEventSnapRight,
 		},
-		// TODO(b/155500968): Investigate why a touched location on the touchscreen does not match
-		//   up with the same location on the display for some ChromeOS devices.
 	} {
-		motioninput.RunTestWithWMParams(ctx, s, tconn, d, a, &params, "Verify Touch", verifyTouchscreen)
 		motioninput.RunTestWithWMParams(ctx, s, tconn, d, a, &params, "Verify Mouse", verifyMouse)
 	}
 }
 
-const (
-	// numMotionEventIterations is the number of times certain motion events should be repeated in
-	// a test. For example, it could be the number of times a move event should be injected during
-	// a drag. Increasing this number will increase the time it takes to run the test.
-	numMotionEventIterations = 5
-)
-
-// verifyTouchscreen tests the behavior of events injected from a uinput touchscreen device. It
-// injects a down event, followed by several move events, and finally an up event with a single
-// touch pointer.
-func verifyTouchscreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, t *motioninput.WMTestState, tester *motioninput.Tester) {
-	s.Log("Verifying Touchscreen")
-
-	tew, err := input.Touchscreen(ctx)
-	if err != nil {
-		s.Fatal("Failed to create touchscreen: ", err)
+// mouseMatcher returns a motionEventMatcher that matches events from a Mouse device.
+func mouseMatcher(a motioninput.Action, p coords.Point) motioninput.Matcher {
+	pressure := 0.
+	if a == motioninput.ActionMove || a == motioninput.ActionDown || a == motioninput.ActionButtonPress || a == motioninput.ActionHoverExit {
+		pressure = 1.
 	}
-	defer tew.Close()
-
-	stw, err := tew.NewSingleTouchWriter()
-	if err != nil {
-		s.Fatal("Failed to create SingleTouchEventWriter: ", err)
-	}
-	defer stw.Close()
-
-	tcc := tew.NewTouchCoordConverter(t.DisplayInfo.Bounds.Size())
-
-	pointDP := t.CenterOfWindow()
-	expected := t.ExpectedPoint(pointDP)
-
-	s.Log("Verifying touch down event at ", expected)
-	x, y := tcc.ConvertLocation(pointDP)
-	if err := stw.Move(x, y); err != nil {
-		s.Fatalf("Could not inject move at (%d, %d)", x, y)
-	}
-	if err := tester.ExpectEventsAndClear(ctx, singleTouchMatcher(motioninput.ActionDown, expected)); err != nil {
-		s.Fatal("Failed to expect events and clear: ", err)
-	}
-
-	// deltaDP is the amount we want to move the touch pointer between each successive injected
-	// event. We use an arbitrary value that is not too large so that we can safely assume that
-	// the injected events stay within the bounds of the display.
-	const deltaDP = 5
-
-	for i := 0; i < numMotionEventIterations; i++ {
-		pointDP.X += deltaDP
-		pointDP.Y += deltaDP
-		expected = t.ExpectedPoint(pointDP)
-
-		s.Log("Verifying touch move event at ", expected)
-		x, y := tcc.ConvertLocation(pointDP)
-		if err := stw.Move(x, y); err != nil {
-			s.Fatalf("Could not inject move at (%d, %d): %v", x, y, err)
-		}
-		if err := tester.ExpectEventsAndClear(ctx, singleTouchMatcher(motioninput.ActionMove, expected)); err != nil {
-			s.Fatal("Failed to expect events and clear: ", err)
-		}
-	}
-
-	s.Log("Verifying touch up event at ", expected)
-	x, y = tcc.ConvertLocation(pointDP)
-	if err := stw.End(); err != nil {
-		s.Fatalf("Could not inject end at (%d, %d)", x, y)
-	}
-	if err := tester.ExpectEventsAndClear(ctx, singleTouchMatcher(motioninput.ActionUp, expected)); err != nil {
-		s.Fatal("Failed to expect events and clear: ", err)
-	}
+	return motioninput.SinglePointerMatcher(a, motioninput.SourceMouse, p, pressure)
 }
 
 // verifyMouse tests the behavior of mouse events injected into Ash on Android apps. It tests hover,
@@ -187,13 +121,17 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 		s.Fatal("Failed to clear events: ", err)
 	}
 
+	// numMouseMoveIterations is the number of times certain motion events should be repeated in
+	// a test. Increasing this number will increase the time it takes to run the test.
+	const numMouseMoveIterations = 2
+
 	// deltaDP is the amount we want to move the mouse pointer between each successive injected
 	// event. We use an arbitrary value that is not too large so that we can safely assume that
 	// the injected events stay within the bounds of the application in the various WM states, so
 	// that clicks performed after moving the mouse are still inside the application.
 	const deltaDP = 5
 
-	for i := 0; i < numMotionEventIterations; i++ {
+	for i := 0; i < numMouseMoveIterations; i++ {
 		p.X += deltaDP
 		p.Y += deltaDP
 		e = t.ExpectedPoint(p)
@@ -214,7 +152,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 		s.Fatal("Failed to expect events and clear: ", err)
 	}
 
-	for i := 0; i < numMotionEventIterations; i++ {
+	for i := 0; i < numMouseMoveIterations; i++ {
 		p.X -= deltaDP
 		p.Y -= deltaDP
 		e = t.ExpectedPoint(p)
