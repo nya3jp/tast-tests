@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86133997_5d0c6ba6",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-15T17:01:11Z",
+      "side": 1,
+      "message": "nit: you can omit the name of the parameter to ignore it, i.e. func(context.Context) error { ...",
+      "range": {
+        "startLine": 208,
+        "startChar": 30,
+        "endLine": 208,
+        "endChar": 50
+      },
+      "revId": "eb130242a24ca27959b64bbdbf6f2d75c10236fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
