@@ -37,7 +37,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PowerVideoPerf,
+		Func: PowerVideoDecodePerf,
 		Desc: "Measures the battery drain during hardware accelerated video playback",
 		Contacts: []string{
 			"stevensd@chromium.org",
@@ -112,7 +112,7 @@ func init() {
 	})
 }
 
-func PowerVideoPerf(ctx context.Context, s *testing.State) {
+func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
 	// deadline.
 	cleanupCtx := ctx
