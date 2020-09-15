@@ -43,7 +43,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		Pre:          arc.Booted(),
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      pvepPowerTestDuration,
 		Params: []testing.Param{{
 			Name: "h264_1080p_i420",
@@ -54,6 +53,16 @@ func init() {
 			},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		}, {
+			Name: "h264_1080p_i420_vm",
+			Val: encoding.TestOptions{
+				Profile:     videotype.H264Prof,
+				Params:      video.Crowd1080P,
+				PixelFormat: videotype.I420,
+			},
+			ExtraData:         []string{video.Crowd1080P.Name},
+			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
 }
