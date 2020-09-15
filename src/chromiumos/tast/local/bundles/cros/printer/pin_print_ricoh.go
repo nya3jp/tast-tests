@@ -38,7 +38,6 @@ func init() {
 				OutDiffFile:  "jobpassword_no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_JobPassword_no_pin_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "jobpassword_pin",
 			Val: &pinprint.Params{
@@ -49,7 +48,6 @@ func init() {
 				Options:      []pinprint.Option{pinprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_JobPassword_pin_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "lockedprintpassword_no_pin",
 			Val: &pinprint.Params{
@@ -59,7 +57,6 @@ func init() {
 				OutDiffFile:  "lockedprintpassword_no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_LockedPrintPassword_no_pin_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "lockedprintpassword_pin",
 			Val: &pinprint.Params{
@@ -70,7 +67,6 @@ func init() {
 				Options:      []pinprint.Option{pinprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_LockedPrintPassword_pin_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "password_no_pin",
 			Val: &pinprint.Params{
@@ -80,7 +76,6 @@ func init() {
 				OutDiffFile:  "password_no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_password_no_pin_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "password_pin",
 			Val: &pinprint.Params{
@@ -91,7 +86,6 @@ func init() {
 				Options:      []pinprint.Option{pinprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_password_pin_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
