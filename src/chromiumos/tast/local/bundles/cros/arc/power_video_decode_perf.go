@@ -214,10 +214,4 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
-
-	// TODO(b/152183347): cleanly shut down the test app and parse the logs, to validate that video
-	// actually played. For now, failure will just show up as suspiciously low power consumption.
-	if err := a.PullFile(ctx, filepath.Join(arcFilePath, logFileName), s.OutDir()); err != nil {
-		s.Errorf("Failed fo pull %s: %v", logFileName, err)
-	}
 }
