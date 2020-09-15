@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Audio Record Test Page</title>
+<script>
+let isAudioInputFound = false;
+let enumerateDevicesError = '';
+function checkAudioInput() {
+  navigator.mediaDevices.enumerateDevices().then(findAudioInput).catch(gotEnumerateDevicesError);
+  return isAudioInputFound;
+}
+function findAudioInput(devices) {
+  isAudioInputFound = devices.some((dev) => dev.kind == 'audioinput');
+}
+function gotEnumerateDevicesError(error) {
+  console.log('navigator.mediaDevices.enumerateDevices error: ', error);
+  enumerateDevicesError = error.toString();
+}
+var handleSuccess = function(stream) {
+  const mediaRecorder = new MediaRecorder(stream);
+  mediaRecorder.start();
+}
+function startRecord() {
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(handleSuccess);
+}
+</script>
