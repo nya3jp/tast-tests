@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44ab4a74_15ead2b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/instagram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-15T16:35:30Z",
+      "side": 1,
+      "message": "this should be returning an error.",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 52
+      },
+      "revId": "27cd03233cabf0139f4e2a339d9df64646506944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf70286_d213cf6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/instagram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-15T16:35:30Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 43
+      },
+      "revId": "27cd03233cabf0139f4e2a339d9df64646506944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe419d3_9b7173d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/instagram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-15T16:35:30Z",
+      "side": 1,
+      "message": "why does this need to poll?\n\ncan we just:\nclick the signInButton\nwait for notNowButton to exist\nclick notNowButton\nwait for dismissButton to exist\nclick dismissButton\nwait for profileIcon gone\n\nIf we need polling, can we just poll clicking the signInButton until the notNowButton exists?\nThen put the rest of the logic outside of the poll?",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "27cd03233cabf0139f4e2a339d9df64646506944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
