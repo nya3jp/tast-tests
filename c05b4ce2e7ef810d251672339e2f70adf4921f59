@@ -87,6 +87,24 @@
       "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e160fa68_efaf1e15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-09-15T16:45:18Z",
+      "side": 1,
+      "message": "Under what circumstances will they be N/A vs. having a real value? If, on any given board, we expect some N/As then we probably shouldn\u0027t bother verifying.",
+      "parentUuid": "e1dc7c8f_81448b32",
+      "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
