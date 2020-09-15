@@ -326,7 +326,7 @@ func (r *Reader) Wait(ctx context.Context, timeout time.Duration, f EntryPred) (
 }
 
 var (
-	linePattern = regexp.MustCompile(`^(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}[+-]\d{2}:\d{2}) (?P<severity>\S+) (?P<tag>.*?): (?P<content>.*)\n$`)
+	linePattern = regexp.MustCompile(`^(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}Z) (?P<severity>\S+) (?P<tag>.*?): (?P<content>.*)\n$`)
 	tagPattern  = regexp.MustCompile(`^(?P<program>[^[]*)\[(?P<pid>\d+)\]$`)
 )
 
