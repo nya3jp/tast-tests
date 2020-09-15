@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fd926992_124eeb86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-15T23:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400068cc_d1c71810",
+      "revId": "c3f04fdd3f050e5dc32d0c49b1c17b73d19ebe37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "466ee455_bde75e04",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_ok.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e5cff183_acb8c3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-15T23:48:41Z",
+      "side": 1,
+      "message": "uig does the release.",
+      "parentUuid": "466ee455_bde75e04",
+      "revId": "c3f04fdd3f050e5dc32d0c49b1c17b73d19ebe37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89ae4194_658626cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_ok.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "c3f04fdd3f050e5dc32d0c49b1c17b73d19ebe37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5457caec_ba368b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-15T23:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ae4194_658626cf",
+      "revId": "c3f04fdd3f050e5dc32d0c49b1c17b73d19ebe37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
