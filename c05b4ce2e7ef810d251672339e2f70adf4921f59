@@ -69,6 +69,24 @@
       "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1dc7c8f_81448b32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-09-15T16:43:34Z",
+      "side": 1,
+      "message": "They are filled with N/A by telem if there is no value populated. Do you want to check if each one has something?",
+      "parentUuid": "d5a9fba6_3ffcf921",
+      "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
