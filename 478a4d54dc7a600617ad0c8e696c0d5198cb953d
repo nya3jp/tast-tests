@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7f2c0c0b_06112eb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-09-15T01:40:55Z",
+      "side": 1,
+      "message": "I agree, it would have been easier to review if I split the refactor and the separation of the tests in to separate CLs (sorry!). Hopefully this helps now.",
+      "parentUuid": "e036c297_d7586e3d",
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68efb214_3e7adabe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
         "patchSetId": 2
@@ -56,6 +74,30 @@
       "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb6fe5f_b7f1c93f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-09-15T01:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68efb214_3e7adabe",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 7
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "74b56bb1_55f8fcb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-09-15T01:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6943e7ce_cd1f0ae2",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7eb9ab3_67ce6190",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
         "patchSetId": 2
@@ -102,6 +168,30 @@
       "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c61c4c42_e8019090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-09-15T01:40:55Z",
+      "side": 1,
+      "message": "Changed it to \"Verified\", and added a comment.",
+      "parentUuid": "c7eb9ab3_67ce6190",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "a9267d42_0cf28d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-09-15T01:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f92e94b_91e0ba14",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "343e294a_3aa5ed1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
         "patchSetId": 2
@@ -148,6 +262,30 @@
       "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "521d398e_4b4f6d90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-09-15T01:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "343e294a_3aa5ed1d",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "a5088d19_a45fe1d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-09-15T01:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06c24ae9_ede6fbaa",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77f2cee7_d5c0e56a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
         "patchSetId": 2
@@ -197,6 +359,30 @@
     },
     {
       "key": {
+        "uuid": "65b610ef_6578c6a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-09-15T01:40:55Z",
+      "side": 1,
+      "message": "I prefer \"should\" because it is extrapolating whether the caption should be visible based on the window state, rather than by querying chrome.",
+      "parentUuid": "77f2cee7_d5c0e56a",
+      "range": {
+        "startLine": 60,
+        "startChar": 48,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f1fb657_994bf8b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
         "patchSetId": 2
@@ -217,6 +403,30 @@
       "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c93c9e_1d61a271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_wm_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-09-15T01:40:55Z",
+      "side": 1,
+      "message": "Since another test (arc.PointerCapture) uses the motioninput package without using this WM framework, I decided to make the APK installation a prerequisite instead of doing it here.\n\nAfter doing that, there\u0027s no reason we need the WMTestRunner, so I just removed it for simplicity.",
+      "parentUuid": "9f1fb657_994bf8b2",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "478a4d54dc7a600617ad0c8e696c0d5198cb953d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
