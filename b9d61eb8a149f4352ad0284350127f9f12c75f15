@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "d569a231_cc7e5acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-15T08:05:42Z",
+      "side": 1,
+      "message": "These are the files of a different test (default popups setting). Please make a copy of them, and include those here. These should start with the name of the test.\nThough it is a duplication, it is better to keep the test resources separate, so modifying the resource of one test does not break a different test by accident.",
+      "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547516bd_6a07a254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-15T08:05:42Z",
+      "side": 1,
+      "message": "Please move the testing table to init() like in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/url_check.go;bpv\u003d1\n\nThis way the two policies can be called individually, and the results are displayed separately in the dashboards.",
+      "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2be8ea34_d91dee51",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
         "patchSetId": 5
