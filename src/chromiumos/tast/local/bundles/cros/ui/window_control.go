@@ -47,6 +47,8 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		"Ash.InteractiveWindowResize.TimeToPresent",
 	)
 	// When custom expectation value needs to be set, modify expects here.
+	// Ash.WindowCycleView.AnimationSmoothness.Show is known bad: https://crbug.com/1111130
+	expects["Ash.WindowCycleView.AnimationSmoothness.Show"] = 20
 
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
@@ -241,7 +243,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		}
 		defer mouse.Release(ctx, tconn, mouse.LeftButton)
 		for i, point := range []coords.Point{bounds.CenterPoint(), br} {
-			if err := mouse.Move(ctx, tconn, point, 300*time.Millisecond); err != nil {
+			if err := mouse.Move(ctx, tconn, point, 500*time.Millisecond); err != nil {
 				return errors.Wrapf(err, "failed to move the mouse to %v at step %d", point, i)
 			}
 		}
