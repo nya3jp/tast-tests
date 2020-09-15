@@ -33,6 +33,23 @@
       "revId": "df7fa42dc53c24df8b9eced61b1d47dcccf33659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48175a87_f3218105",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-15T02:08:57Z",
+      "side": 1,
+      "message": "LGTM but please also get CR+2 from your team members before checking in.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
+      "revId": "df7fa42dc53c24df8b9eced61b1d47dcccf33659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
