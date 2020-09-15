@@ -105,6 +105,24 @@
       "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa57baa2_0fad3999",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-09-15T18:56:12Z",
+      "side": 1,
+      "message": "Yeah it depends on if the Wifi network is connected, or a VPN is setup. I think we most boards will always have a few N/A values.",
+      "parentUuid": "e160fa68_efaf1e15",
+      "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
