@@ -46,6 +46,30 @@
       "revId": "26e7067cb52d1259bdf462a7fff497d89ef8ac97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c8fa4b_de304869",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-15T21:42:28Z",
+      "side": 1,
+      "message": "Then you might want to update the change description, as it currently talks about 2 tests that are stable in 20 builds and actually there are 3 tests, one of which hasn\u0027t run 20 times.\n\nIf the standard process is to wait for 20 runs then it is probably worth removing for now, but I don\u0027t know how much wriggle room there is in that process for tests that are split across different boards like these.",
+      "parentUuid": "fc991b97_2143771c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 89
+      },
+      "revId": "26e7067cb52d1259bdf462a7fff497d89ef8ac97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
