@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "71bcacfe_32369038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-09-15T23:36:45Z",
+      "side": 1,
+      "message": "That makes sense! Thanks for the suggestion. Will look into doing it as a follow-up.",
+      "parentUuid": "553f1f6a_f6cf444e",
+      "range": {
+        "startLine": 300,
+        "startChar": 46,
+        "endLine": 300,
+        "endChar": 64
+      },
+      "revId": "5119814d4e1848c78bae46ccdc1cfff6ac572bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4944f8cc_71cc594a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 5
@@ -53,6 +77,30 @@
       "writtenOn": "2020-09-15T05:19:19Z",
       "side": 1,
       "message": "It looks this isn\u0027t symmetric with top_left_* above. Shoudn\u0027t it be\n\n\"inner_top_right_00\":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset},\n\"inner_top_right_10\":    {(videoW - 1) - edgeOffset, edgeOffset},\n\"inner_top_right_11\":    {(videoW - 1) - edgeOffset, edgeOffset + stencilW},\n\"inner_top_right_01\":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset + stencilW},\n?\n\nsame for others.",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 439,
+        "endChar": 78
+      },
+      "revId": "5119814d4e1848c78bae46ccdc1cfff6ac572bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c846cd31_f67f5abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-09-15T23:36:45Z",
+      "side": 1,
+      "message": "You\u0027re right. Thanks for catching this!",
+      "parentUuid": "4944f8cc_71cc594a",
       "range": {
         "startLine": 436,
         "startChar": 0,
