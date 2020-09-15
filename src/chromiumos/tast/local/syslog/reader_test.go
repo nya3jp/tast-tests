@@ -20,8 +20,11 @@ import (
 )
 
 const (
-	fakeLine1             = "2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello\n"
-	fakeLine2             = "2019-12-10T11:17:29.123456+09:00 WARN bar[2345]: crashy\n"
+	fakeLine1 = "2019-12-10T11:17:28.123456Z INFO foo[1234]: hello\n"
+	fakeLine2 = "2019-12-10T11:17:29.123456Z WARN bar[2345]: crashy\n"
+	// TODO(crbug.com/1144594): Remove backward compatibility once enough time
+	// has passed after switching to UTC timestamp.
+	// Log with local timestamp for backward compatibility.
 	fakeLine3             = "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n"
 	chromeFakeLine1       = "[9346:9346:1212/160319.316821:VERBOSE1:tablet_mode_controller.cc(536)] lid\n"
 	chromeFakeLine2       = "[9419:1:1212/160319.355476:VERBOSE1:breakpad_linux.cc(2079)] enabled\n"
@@ -35,7 +38,7 @@ var (
 	jst = time.FixedZone("JST", 9*60*60)
 
 	fakeEntry1 = &Entry{
-		Timestamp: time.Date(2019, 12, 10, 11, 17, 28, 123456000, jst),
+		Timestamp: time.Date(2019, 12, 10, 11, 17, 28, 123456000, time.UTC),
 		Severity:  "INFO",
 		Tag:       "foo[1234]",
 		Program:   "foo",
@@ -44,7 +47,7 @@ var (
 		Line:      fakeLine1,
 	}
 	fakeEntry2 = &Entry{
-		Timestamp: time.Date(2019, 12, 10, 11, 17, 29, 123456000, jst),
+		Timestamp: time.Date(2019, 12, 10, 11, 17, 29, 123456000, time.UTC),
 		Severity:  "WARN",
 		Tag:       "bar[2345]",
 		Program:   "bar",
@@ -138,26 +141,26 @@ func TestReaderRead(t *testing.T) {
 		// Parsing tests:
 		{
 			name:   "ParseNoPID",
-			writes: []string{"2019-12-10T11:17:28.123456+09:00 INFO kernel: oops\n"},
+			writes: []string{"2019-12-10T11:17:28.123456Z INFO kernel: oops\n"},
 			want: []*Entry{{
-				Timestamp: time.Date(2019, 12, 10, 11, 17, 28, 123456000, jst),
+				Timestamp: time.Date(2019, 12, 10, 11, 17, 28, 123456000, time.UTC),
 				Severity:  "INFO",
 				Tag:       "kernel",
 				Program:   "kernel",
 				Content:   "oops",
-				Line:      "2019-12-10T11:17:28.123456+09:00 INFO kernel: oops\n",
+				Line:      "2019-12-10T11:17:28.123456Z INFO kernel: oops\n",
 			}},
 		},
 		{
 			name:   "ParseColonInProgram",
-			writes: []string{"2019-12-10T11:17:28.123456+09:00 INFO foo:bar: hi\n"},
+			writes: []string{"2019-12-10T11:17:28.123456Z INFO foo:bar: hi\n"},
 			want: []*Entry{{
-				Timestamp: time.Date(2019, 12, 10, 11, 17, 28, 123456000, jst),
+				Timestamp: time.Date(2019, 12, 10, 11, 17, 28, 123456000, time.UTC),
 				Severity:  "INFO",
 				Tag:       "foo:bar",
 				Program:   "foo:bar",
 				Content:   "hi",
-				Line:      "2019-12-10T11:17:28.123456+09:00 INFO foo:bar: hi\n",
+				Line:      "2019-12-10T11:17:28.123456Z INFO foo:bar: hi\n",
 			}},
 		},
 		// Option tests:
@@ -358,29 +361,29 @@ func TestReaderWait(t *testing.T) {
 			name: "FoundWithOptions",
 			opts: []Option{Program("foo")},
 			pred: func(e *Entry) bool { return e.Content == "world" },
-			write: `2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello
-2019-12-10T11:17:29.123456+09:00 INFO bar[2345]: world
-2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world
-2019-12-10T11:17:31.123456+09:00 INFO bar[2345]: end
-2019-12-10T11:17:32.123456+09:00 INFO foo[1234]: end
+			write: `2019-12-10T11:17:28.123456Z INFO foo[1234]: hello
+2019-12-10T11:17:29.123456Z INFO bar[2345]: world
+2019-12-10T11:17:30.123456Z INFO foo[1234]: world
+2019-12-10T11:17:31.123456Z INFO bar[2345]: end
+2019-12-10T11:17:32.123456Z INFO foo[1234]: end
 `,
 			want: &Entry{
-				Timestamp: time.Date(2019, 12, 10, 11, 17, 30, 123456000, jst),
+				Timestamp: time.Date(2019, 12, 10, 11, 17, 30, 123456000, time.UTC),
 				Severity:  "INFO",
 				Tag:       "foo[1234]",
 				Program:   "foo",
 				PID:       1234,
 				Content:   "world",
-				Line:      "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n",
+				Line:      "2019-12-10T11:17:30.123456Z INFO foo[1234]: world\n",
 			},
 			wantNext: &Entry{
-				Timestamp: time.Date(2019, 12, 10, 11, 17, 32, 123456000, jst),
+				Timestamp: time.Date(2019, 12, 10, 11, 17, 32, 123456000, time.UTC),
 				Severity:  "INFO",
 				Tag:       "foo[1234]",
 				Program:   "foo",
 				PID:       1234,
 				Content:   "end",
-				Line:      "2019-12-10T11:17:32.123456+09:00 INFO foo[1234]: end\n",
+				Line:      "2019-12-10T11:17:32.123456Z INFO foo[1234]: end\n",
 			},
 		},
 	} {
