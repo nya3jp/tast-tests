@@ -33,6 +33,23 @@
       "revId": "4d3109c486ff711a774925f5daa046642be0b900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b471868_d5926f37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-15T03:34:30Z",
+      "side": 1,
+      "message": "Looks like the revert is clean and the builds are still good. Also most tests seem to be passing.",
+      "revId": "4d3109c486ff711a774925f5daa046642be0b900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
