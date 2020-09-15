@@ -185,10 +185,19 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	// Wait for chrome://settings to be quiescent. We want data that we
-	// could extrapolate, as in a steady state that could last for hours.
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
+	}
+
+	webContentsView, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "WebContentsViewAura"})
+	if err != nil {
+		s.Fatal("Failed to get web contents view: ", err)
+	}
+	defer webContentsView.Release(ctx)
+
+	// Ensure that the browser will show no blinking cursor.
+	if err := mouse.Click(ctx, tconn, webContentsView.Location.TopRight().Add(coords.NewPoint(-26, 25)), mouse.LeftButton); err != nil {
+		s.Fatal("Failed to click inside Settings page: ", err)
 	}
 
 	if err := timeline.Start(ctx); err != nil {

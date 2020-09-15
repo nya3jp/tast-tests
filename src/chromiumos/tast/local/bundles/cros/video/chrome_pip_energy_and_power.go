@@ -136,10 +136,9 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to press left mouse button for dragging PIP resize handle: ", err)
 	}
 	params := s.Param().(chromePIPEnergyAndPowerTestParams)
-	workAreaTopLeft := info.WorkArea.TopLeft()
 	var resizeEnd coords.Point
 	if params.bigPIP {
-		resizeEnd = workAreaTopLeft
+		resizeEnd = info.WorkArea.TopLeft()
 	} else {
 		resizeEnd = info.WorkArea.BottomRight().Sub(coords.NewPoint(1, 1))
 	}
@@ -185,6 +184,22 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	extraConn, err := cr.NewConn(ctx, "chrome://settings")
+	if err != nil {
+		s.Fatal("Failed to load chrome://settings: ", err)
+	}
+	defer extraConn.Close()
+
+	if err := webutil.WaitForQuiescence(ctx, extraConn, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
+	}
+
+	// Ensure that the browser will show no blinking cursor, and that
+	// the PIP window will show no controls or resize shadows.
+	if err := mouse.Click(ctx, tconn, webContentsView.Location.TopRight().Add(coords.NewPoint(-26, 25)), mouse.LeftButton); err != nil {
+		s.Fatal("Failed to click inside Settings page: ", err)
+	}
+
 	if params.layerOverPIP {
 		chromeIcon, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Name: "Google Chrome", ClassName: "ash/ShelfAppButton"})
 		if err != nil {
@@ -202,23 +217,6 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		if err := mouse.Move(ctx, tconn, pipWindow.Location.CenterPoint(), time.Second); err != nil {
 			s.Fatal("Failed to move mouse for dragging Chrome icon: ", err)
 		}
-	} else {
-		// Ensure that the PIP window will show no controls or resize shadows.
-		if err := mouse.Move(ctx, tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second); err != nil {
-			s.Fatal("Failed to move mouse: ", err)
-		}
-	}
-
-	extraConn, err := cr.NewConn(ctx, "chrome://settings")
-	if err != nil {
-		s.Fatal("Failed to load chrome://settings: ", err)
-	}
-	defer extraConn.Close()
-
-	// Wait for chrome://settings to be quiescent. We want data that we
-	// could extrapolate, as in a steady state that could last for hours.
-	if err := webutil.WaitForQuiescence(ctx, extraConn, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
 	}
 
 	if err := timeline.Start(ctx); err != nil {
