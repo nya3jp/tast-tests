@@ -98,6 +98,24 @@
       "revId": "83481f045a7c20a1535dfac459c6ec6a19c6aad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc36dc5c_e0e8b193",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-15T00:34:45Z",
+      "side": 1,
+      "message": "I guess so because it stays the same after running \"go fmt\" on it and pre-check did not complain.",
+      "parentUuid": "77845180_73da87f1",
+      "revId": "83481f045a7c20a1535dfac459c6ec6a19c6aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
