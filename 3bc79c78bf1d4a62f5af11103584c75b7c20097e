@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7bf604de_ea1e62b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_ok.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-15T00:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e441ffc_d5b93a72",
+      "range": {
+        "startLine": 91,
+        "startChar": 46,
+        "endLine": 91,
+        "endChar": 63
+      },
+      "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f02a5cd7_c8f8e617",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
         "patchSetId": 6
@@ -62,6 +86,30 @@
       "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0aee2e1_1719a7f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-15T00:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f02a5cd7_c8f8e617",
+      "range": {
+        "startLine": 113,
+        "startChar": 46,
+        "endLine": 113,
+        "endChar": 64
+      },
+      "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "58a6fd91_c5af194e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-15T00:09:47Z",
+      "side": 1,
+      "message": "For the first err, GetFileList fails does not mean this test fails, it might fail because the shared folders are being mounting. As for the second err, it takes a bit time for the shared folders to be mounted to Crostini.",
+      "parentUuid": "654bd728_f693ff9f",
+      "range": {
+        "startLine": 121,
+        "startChar": 10,
+        "endLine": 121,
+        "endChar": 13
+      },
+      "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75136612_070d5242",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
         "patchSetId": 6
@@ -108,6 +180,30 @@
       "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fdb76e6_0f3f52d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_restart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-15T00:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75136612_070d5242",
+      "range": {
+        "startLine": 123,
+        "startChar": 67,
+        "endLine": 123,
+        "endChar": 84
+      },
+      "revId": "3bc79c78bf1d4a62f5af11103584c75b7c20097e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
