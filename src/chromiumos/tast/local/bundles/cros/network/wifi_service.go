@@ -223,19 +223,11 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 // DiscoverBSSID discovers the specified BSSID by running a scan.
 // This is the implementation of network.Wifi/DiscoverBSSID gRPC.
 func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.DiscoverBSSIDRequest) (*network.DiscoverBSSIDResponse, error) {
-	m, err := shill.NewManager(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create shill manager")
-	}
-	ifaceName, err := shill.WifiInterface(ctx, m, 10*time.Second)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get WiFi interface")
-	}
 	supplicant, err := wpasupplicant.NewSupplicant(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
 	}
-	iface, err := supplicant.GetInterface(ctx, ifaceName)
+	iface, err := supplicant.GetInterface(ctx, request.Interface)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get interface object paths")
 	}
@@ -317,6 +309,10 @@ func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.Discov
 		}()
 	}(bgCtx)
 
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager")
+	}
 	// Trigger request scan every 200ms if the expected BSS is not found.
 	// It might be spammy, but shill handles it for us.
 	for {
