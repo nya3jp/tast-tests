@@ -16,6 +16,24 @@
       "revId": "ef60c869c46f989a5de5165ee58bdb353c30b9d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "259bd569_c8d42b0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-15T20:47:57Z",
+      "side": 1,
+      "message": "It is nothing related to the trajectory of the numbers, this is the test condition for CQ.\n\nIt is around 28-45 in kevin64 as far as I checked (and please note that it can\u0027t be promoted to CQ unless it is consistently passing). I can lower the condition to 20 if you like.",
+      "parentUuid": "5e0ec7b3_4e81c8d6",
+      "revId": "ef60c869c46f989a5de5165ee58bdb353c30b9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
