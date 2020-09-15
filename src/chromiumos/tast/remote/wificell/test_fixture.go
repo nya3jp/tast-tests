@@ -49,7 +49,7 @@ type TFOption func(*TestFixture)
 // Format: hostname[:port]
 func TFRouter(target string) TFOption {
 	return func(tf *TestFixture) {
-		tf.routerTarget = target
+		tf.routerTargets = append(tf.routerTargets, target)
 	}
 }
 
@@ -77,17 +77,19 @@ type TestFixture struct {
 	rpc        *rpc.Client
 	wifiClient network.WifiServiceClient
 
-	routerTarget string
-	routerHost   *ssh.Conn
-	router       *Router
+	routerTargets []string
+	routerHosts   []*ssh.Conn
+	routers       []*Router
+	apis          []*APIface
 
 	pcapTarget    string
 	pcapHost      *ssh.Conn
 	pcap          *Router
 	packetCapture bool
 
-	apID      int
-	capturers map[*APIface]*pcap.Capturer
+	apID        int
+	capturers   map[*APIface]*pcap.Capturer
+	apRouterIDs map[*APIface]uint
 
 	// netCertStore is initialized lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests need it.
 	netCertStore *netcertstore.Store
@@ -147,8 +149,9 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	defer st.End()
 
 	tf := &TestFixture{
-		dut:       d,
-		capturers: make(map[*APIface]*pcap.Capturer),
+		dut:         d,
+		capturers:   make(map[*APIface]*pcap.Capturer),
+		apRouterIDs: make(map[*APIface]uint),
 	}
 	for _, op := range ops {
 		op(tf)
@@ -175,17 +178,31 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		return nil, errors.Wrap(err, "failed to InitDUT")
 	}
 
-	if tf.routerTarget == "" {
-		tf.routerHost, err = tf.dut.DefaultWifiRouterHost(ctx)
+	if len(tf.routerTargets) == 0 {
+		testing.ContextLog(ctx, "<<< Using default router name")
+		routerHost, err := tf.dut.DefaultWifiRouterHost(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to connect to the router")
+		}
+
+		tf.routerHosts = append(tf.routerHosts, routerHost)
 	} else {
-		tf.routerHost, err = tf.connectCompanion(ctx, tf.routerTarget)
+		for _, routerTarget := range tf.routerTargets {
+			testing.ContextLogf(ctx, "Adding router %s", routerTarget)
+			routerHost, err := tf.connectCompanion(ctx, routerTarget)
+			if err != nil {
+				return nil, errors.Wrapf(err, "failed to connect to the router %s", routerTarget)
+			}
+			tf.routerHosts = append(tf.routerHosts, routerHost)
+		}
 	}
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to the router")
-	}
-	tf.router, err = NewRouter(ctx, daemonCtx, tf.routerHost, "router")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create a router object")
+
+	for _, routerHost := range tf.routerHosts {
+		router, err := NewRouter(ctx, daemonCtx, routerHost, "router")
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to create a router object")
+		}
+		tf.routers = append(tf.routers, router)
 	}
 
 	// errInvalidHost checks if the error is a wrapped "no such host" error.
@@ -206,10 +223,10 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		tf.pcapHost, err = tf.dut.DefaultWifiPcapHost(ctx)
 		if err != nil && errInvalidHost(err) {
 			testing.ContextLog(ctx, "Use router as pcap because default pcap is not reachable: ", err)
-			tf.pcapHost = tf.routerHost
+			tf.pcapHost = tf.routerHosts[0]
 			err = nil
 		}
-	} else if tf.pcapTarget == tf.routerTarget {
+	} else if tf.pcapTarget == tf.routerTargets[0] {
 		err = errors.New("same target for router and pcap")
 	} else {
 		tf.pcapHost, err = tf.connectCompanion(ctx, tf.pcapTarget)
@@ -217,8 +234,8 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to pcap")
 	}
-	if tf.pcapHost == tf.routerHost {
-		tf.pcap = tf.router
+	if tf.pcapHost == tf.routerHosts[0] {
+		tf.pcap = tf.routers[0]
 	} else {
 		tf.pcap, err = NewRouter(ctx, daemonCtx, tf.pcapHost, "pcap")
 		if err != nil {
@@ -240,7 +257,7 @@ func (tf *TestFixture) ReserveForClose(ctx context.Context) (context.Context, co
 
 // CollectLogs downloads related log files to OutDir.
 func (tf *TestFixture) CollectLogs(ctx context.Context) error {
-	return tf.router.CollectLogs(ctx)
+	return tf.routers[0].CollectLogs(ctx)
 }
 
 // ReserveForCollectLogs returns a shorter ctx and cancel function for tf.CollectLogs.
@@ -259,24 +276,24 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reset the NetCertStore"))
 	}
 
-	if tf.pcap != nil && tf.pcap != tf.router {
+	if tf.pcap != nil && tf.pcap != tf.routers[0] {
 		if err := tf.pcap.Close(ctx); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap"))
 		}
 	}
-	if tf.pcapHost != nil && tf.pcapHost != tf.routerHost {
+	if tf.pcapHost != nil && tf.pcapHost != tf.routerHosts[0] {
 		if err := tf.pcapHost.Close(ctx); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap ssh"))
 		}
 	}
-	if tf.router != nil {
-		if err := tf.router.Close(ctx); err != nil {
-			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close rotuer"))
+	for i, router := range tf.routers {
+		if err := router.Close(ctx); err != nil {
+			collectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close rotuer %s", tf.routerTargets[i]))
 		}
 	}
-	if tf.routerHost != nil {
-		if err := tf.routerHost.Close(ctx); err != nil {
-			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close router ssh"))
+	for i, routerHost := range tf.routerHosts {
+		if err := routerHost.Close(ctx); err != nil {
+			collectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close router %s ssh", tf.routerTargets[i]))
 		}
 	}
 	if tf.wifiClient != nil {
@@ -309,10 +326,9 @@ func (tf *TestFixture) getUniqueAPName() string {
 	return id
 }
 
-// ConfigureAP configures the router to provide a WiFi service with the options specified.
-// Note that after getting an APIface, ap, the caller should defer tf.DeconfigAP(ctx, ap) and
-// use tf.ReserveForClose(ctx, ap) to reserve time for the deferred call.
-func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
+// ConfigureAPExt is an extended version of ConfigureAP, allowing to chose router
+// to establish the AP on.
+func (tf *TestFixture) ConfigureAPExt(ctx context.Context, idx uint, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
 
@@ -331,7 +347,10 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fa
 		return nil, err
 	}
 
-	if err := config.SecurityConfig.InstallRouterCredentials(ctx, tf.routerHost, tf.router.workDir()); err != nil {
+	if uint(len(tf.routerHosts)) <= idx {
+		return nil, errors.New("Index out of range")
+	}
+	if err := config.SecurityConfig.InstallRouterCredentials(ctx, tf.routerHosts[idx], tf.routers[idx].workDir()); err != nil {
 		return nil, err
 	}
 
@@ -352,10 +371,12 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fa
 		}()
 	}
 
-	ap, err := tf.router.StartAPIface(ctx, name, config)
+	ap, err := tf.routers[idx].StartAPIface(ctx, name, config)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
 	}
+	tf.apRouterIDs[ap] = idx
+	tf.apis = append(tf.apis, ap)
 
 	if capturer != nil {
 		tf.capturers[ap] = capturer
@@ -364,12 +385,19 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fa
 	return ap, nil
 }
 
+// ConfigureAP configures the router to provide a WiFi service with the options specified.
+// Note that after getting an APIface, ap, the caller should defer tf.DeconfigAP(ctx, ap) and
+// use tf.ReserveForClose(ctx, ap) to reserve time for the deferred call.
+func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
+	return tf.ConfigureAPExt(ctx, 0, ops, fac)
+}
+
 // ReserveForDeconfigAP returns a shorter ctx and cancel function for tf.DeconfigAP().
 func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, ap *APIface) (context.Context, context.CancelFunc) {
-	if tf.router == nil {
+	if len(tf.routers) == 0 {
 		return ctx, func() {}
 	}
-	ctx, cancel := tf.router.ReserveForStopAPIface(ctx, ap)
+	ctx, cancel := tf.routers[tf.apRouterIDs[ap]].ReserveForStopAPIface(ctx, ap)
 	if capturer, ok := tf.capturers[ap]; ok {
 		// Also reserve time for stopping the capturer if it exists.
 		// Noted that CancelFunc returned here is dropped as we rely on its
@@ -388,7 +416,7 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 
 	capturer := tf.capturers[ap]
 	delete(tf.capturers, ap)
-	if err := tf.router.StopAPIface(ctx, ap); err != nil {
+	if err := tf.routers[tf.apRouterIDs[ap]].StopAPIface(ctx, ap); err != nil {
 		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop APIface"))
 	}
 	if capturer != nil {
@@ -396,7 +424,26 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 		}
 	}
+	delete(tf.apRouterIDs, ap)
+	// Remove ao from apis
+	for i, api := range tf.apis {
+		if ap == api {
+			tf.apis = append(tf.apis[:i], tf.apis[i+1:]...)
+			break
+		}
+	}
 	return firstErr
+}
+
+// DeconfigAllAPs facilitates deconfiguration of all APs established for
+// this test fixture.
+func (tf *TestFixture) DeconfigAllAPs(ctx context.Context) error {
+	for _, ap := range tf.apis {
+		if err := tf.DeconfigAP(ctx, ap); err != nil {
+			return errors.Wrap(err, "failed to deconfig AP")
+		}
+	}
+	return nil
 }
 
 // Capturer returns the auto-spawned Capturer for the APIface instance.
@@ -627,7 +674,8 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 		return errors.Wrap(err, "failed to get the IP address")
 	}
 
-	pr := remoteping.NewRemoteRunner(tf.routerHost)
+	// TODO: chose routerHost?
+	pr := remoteping.NewRemoteRunner(tf.routerHosts[0])
 	res, err := pr.Ping(ctx, addrs[0].String(), opts...)
 	if err != nil {
 		return err
@@ -674,7 +722,8 @@ func (tf *TestFixture) ArpingFromServer(ctx context.Context, serverIface string,
 		return errors.Wrap(err, "failed to get the IP address")
 	}
 
-	runner := remotearping.NewRemoteRunner(tf.routerHost)
+	// TODO: chose routerHost?
+	runner := remotearping.NewRemoteRunner(tf.routerHosts[0])
 	res, err := runner.Arping(ctx, addrs[0].String(), serverIface, ops...)
 	if err != nil {
 		return errors.Wrap(err, "arping failed")
@@ -713,12 +762,9 @@ func (tf *TestFixture) ClientIPv4Addrs(ctx context.Context) ([]net.IP, error) {
 	return ret, nil
 }
 
-// AssertNoDisconnect runs the given routine and verifies that no disconnection event
-// is captured in the same duration.
-func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Context) error) error {
-	ctx, st := timing.Start(ctx, "tf.AssertNoDisconnect")
-	defer st.End()
-
+// verifyRun is a helper for the assertions below. Runs function f() and check
+// Events with checker() function.
+func (tf *TestFixture) verifyRun(ctx context.Context, f func(context.Context) error, checker func(*iw.EventLogger) error) error {
 	el, err := iw.NewEventLogger(ctx, tf.dut)
 	if err != nil {
 		return errors.Wrap(err, "failed to start iw.EventLogger")
@@ -731,21 +777,57 @@ func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Co
 	if errf != nil {
 		return errf
 	}
-	evs := el.EventsByType(iw.EventTypeDisconnect)
-	if len(evs) != 0 {
-		return errors.Errorf("disconnect events captured: %v", evs)
+	return checker(el)
+}
+
+// AssertNoDisconnect runs the given routine and verifies that no disconnection event
+// is captured in the same duration.
+func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Context) error) error {
+	ctx, st := timing.Start(ctx, "tf.AssertNoDisconnect")
+	defer st.End()
+	checker := func(el *iw.EventLogger) error {
+		evs := el.EventsByType(iw.EventTypeDisconnect)
+		if len(evs) != 0 {
+			return errors.Errorf("disconnect events captured: %v", evs)
+		}
+		return nil
 	}
-	return nil
+	return tf.verifyRun(ctx, f, checker)
+}
+
+// AssertDisconnect runs the given routine and verifies that exactly one disconnect event
+// is captured in the same duration.
+func (tf *TestFixture) AssertDisconnect(ctx context.Context, f func(context.Context) error) error {
+	ctx, st := timing.Start(ctx, "tf.AssertDisconnect")
+	defer st.End()
+	checker := func(el *iw.EventLogger) error {
+		evs := el.EventsByType(iw.EventTypeDisconnect)
+		if len(evs) != 1 {
+			return errors.Errorf("disconnect events captured: %v", evs)
+		}
+		return nil
+	}
+	return tf.verifyRun(ctx, f, checker)
 }
 
 // Router returns the Router object in the fixture.
-func (tf *TestFixture) Router() *Router {
-	return tf.router
+func (tf *TestFixture) Router(idx ...int) *Router {
+	// Hack for lack of default arguments in go
+	routerIndex := 0
+	if len(idx) == 1 {
+		routerIndex = idx[0]
+	}
+	return tf.routers[routerIndex]
 }
 
 // Pcap returns the pcap Router object in the fixture.
 func (tf *TestFixture) Pcap() *Router {
 	return tf.pcap
+}
+
+// Dut returns the DUT object in the fixture.
+func (tf *TestFixture) Dut() *dut.DUT {
+	return tf.dut
 }
 
 // WifiClient returns the gRPC WifiServiceClient of the DUT.
@@ -825,6 +907,15 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 		return errors.Wrap(err, "failed to ping from the DUT")
 	}
 
+	return nil
+}
+
+// ReinitTestState facilitates reinitialization of WiFi client.
+func (tf *TestFixture) ReinitTestState(ctx context.Context) error {
+	_, err := tf.wifiClient.ReinitTestState(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "failed to reinint test state")
+	}
 	return nil
 }
 
