@@ -175,6 +175,24 @@
       "revId": "edb05a56e8f83e955df2fa88b352e790c8d02eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea633982_349eb326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system_informational.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-15T07:49:55Z",
+      "side": 1,
+      "message": "Agree to leave my suggestion to the test owner. Bug filed: https://crbug.com/1128287",
+      "parentUuid": "dd778fc9_4865341f",
+      "revId": "edb05a56e8f83e955df2fa88b352e790c8d02eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
