@@ -16,6 +16,23 @@
       "revId": "526c69328eb224f51cae9ab2fca0337a1301bfe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6a43303_892d32c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-09-15T15:53:32Z",
+      "side": 1,
+      "message": "can we call s.Run() outside of the function and do something like:\n\n    motioninput.SetupTestEnv(ctx, s, tconn, d, a, \u0026params)\n    s.Run(...)\n\nBy doing so we can remove several arguments from the method and it will be clearer that s.Run() is called.",
+      "revId": "526c69328eb224f51cae9ab2fca0337a1301bfe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
