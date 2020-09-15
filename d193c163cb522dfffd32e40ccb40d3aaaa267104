@@ -16,6 +16,149 @@
       "revId": "d193c163cb522dfffd32e40ccb40d3aaaa267104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8d22d2a_660249d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-15T11:36:48Z",
+      "side": 1,
+      "message": "Sorry for long response, I head strong headache yesterday.\n\nI have one concern about onerror not being trigerred, PTAL.",
+      "revId": "d193c163cb522dfffd32e40ccb40d3aaaa267104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41f491aa_bc4d4210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-15T11:36:48Z",
+      "side": 1,
+      "message": "actually it does not give you a guarantee that image will be loaded\n\nwe need to have onload for \"img\" tag. And onerror attribute for handling errors and I found that onerror is not trigerred when policy does not allow to load images. I think it\u0027s a bug that we should fix.",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "d193c163cb522dfffd32e40ccb40d3aaaa267104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5695de62_429e6c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-15T11:36:48Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "d193c163cb522dfffd32e40ccb40d3aaaa267104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19710c27_75a0cf2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-15T11:36:48Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "d193c163cb522dfffd32e40ccb40d3aaaa267104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0368e01_bd39f114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-15T11:36:48Z",
+      "side": 1,
+      "message": "isn\u0027t it too long? Mabe 5-10 seconds will be enough?",
+      "range": {
+        "startLine": 94,
+        "startChar": 14,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "d193c163cb522dfffd32e40ccb40d3aaaa267104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d09e64c_e6c17f39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-15T11:36:48Z",
+      "side": 1,
+      "message": "Default interval is also 1 second, so I think it\u0027s a bit useless",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 29
+      },
+      "revId": "d193c163cb522dfffd32e40ccb40d3aaaa267104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d797bf95_e5184e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_images_setting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-15T11:36:48Z",
+      "side": 1,
+      "message": "Does it make sense to continue test after such error? If no, please use s.Fatal",
+      "range": {
+        "startLine": 97,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 11
+      },
+      "revId": "d193c163cb522dfffd32e40ccb40d3aaaa267104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
