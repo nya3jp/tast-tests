@@ -56,6 +56,30 @@
       "revId": "8b2d9623d3f466fc18a5091bc27e5e0507654a5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f863f900_f6b93f97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-09-15T03:04:39Z",
+      "side": 1,
+      "message": "That makes sense, but I think you meant starting with 7 and 1 (if I set edgeOffset \u003d 8, it would fall outside the border; e.g., the left border occupies pixels 0 through 7).\n\nWith 7 and 1, inner_top_left_11 gave me a distance of 168 for 360p_composited. That\u0027s quite large. How about we start with 7 and 2?",
+      "parentUuid": "5546e2aa_a89ee712",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 428,
+        "endChar": 14
+      },
+      "revId": "8b2d9623d3f466fc18a5091bc27e5e0507654a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
