@@ -16,6 +16,46 @@
       "revId": "bcc668abca9d9e3175060365e05444131c30d15f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4c67ca5_4ac41005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-15T16:26:01Z",
+      "side": 1,
+      "message": "Generally you should have someone from your team review your CLs before adding tast-owners@. tast-owners@ is mostly for style and quality reviews.\n\nBesides cleanup comment, LGTM.",
+      "revId": "bcc668abca9d9e3175060365e05444131c30d15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05140777_1fd70687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_native_printers_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-15T16:26:01Z",
+      "side": 1,
+      "message": "are you intentionally performing cleanup at the begin of the test case as opposed to the end? Should this be deferred?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 4
+      },
+      "revId": "bcc668abca9d9e3175060365e05444131c30d15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
