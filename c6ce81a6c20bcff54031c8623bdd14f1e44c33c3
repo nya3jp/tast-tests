@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5175b29_8c2ba115",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-15T05:50:10Z",
+      "side": 1,
+      "message": "WMResizableClamshell",
+      "range": {
+        "startLine": 16,
+        "startChar": 23,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "c6ce81a6c20bcff54031c8623bdd14f1e44c33c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe70ec2_32c702cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-15T05:50:10Z",
+      "side": 1,
+      "message": "If act.Stop() need some time (ctx) to perform cleanup, consider reserving time for it.\n\nPlease refer the document under review: https://crrev.com/c/2366336",
+      "revId": "c6ce81a6c20bcff54031c8623bdd14f1e44c33c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f2f85e1_e720ef77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-15T05:50:10Z",
+      "side": 1,
+      "message": "How about putting \"got\" value in front of \"want\" value?",
+      "range": {
+        "startLine": 382,
+        "startChar": 4,
+        "endLine": 382,
+        "endChar": 63
+      },
+      "revId": "c6ce81a6c20bcff54031c8623bdd14f1e44c33c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
