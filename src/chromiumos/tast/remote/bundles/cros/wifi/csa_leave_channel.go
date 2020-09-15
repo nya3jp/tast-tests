@@ -20,7 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        CSA,
+		Func:        CSALeaveChannel,
 		Desc:        "Verifies that DUT will move off-channel after the AP sends a Spectrum Management action frame with a Channel Move element",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
@@ -30,7 +30,7 @@ func init() {
 	})
 }
 
-func CSA(ctx context.Context, s *testing.State) {
+func CSALeaveChannel(ctx context.Context, s *testing.State) {
 	// Note: Not all clients support CSA, but they generally should at least try
 	// to disconnect from the AP which is what the test expects to see.
 
