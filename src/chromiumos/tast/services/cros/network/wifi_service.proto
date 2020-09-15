@@ -107,6 +107,9 @@ service WifiService {
   // SetDHCPProperties sets the DHCP properties in shill and returns the original
   // values.
   rpc SetDHCPProperties(SetDHCPPropertiesRequest) returns (SetDHCPPropertiesResponse) {}
+
+  // WaitForBSSID waits for a specific BSSID to be found.
+  rpc WaitForBSSID (WaitForBSSIDRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -323,4 +326,9 @@ message SetDHCPPropertiesRequest {
 
 message SetDHCPPropertiesResponse {
   DHCPProperties props = 1;
+}
+
+message WaitForBSSIDRequest {
+  bytes ssid = 1;
+  string bssid = 2;
 }
