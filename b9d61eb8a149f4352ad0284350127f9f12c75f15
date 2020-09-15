@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c969fba7_b14e252e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-15T06:30:07Z",
+      "side": 1,
+      "message": "Please find one of your teammate as a reviewer as well.",
+      "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2be8ea34_d91dee51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-15T06:30:07Z",
+      "side": 1,
+      "message": "After line 41,\ndefaultPopupsURL :\u003d server.URL + \"/default_popups_setting_index.html\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 47,
+        "endLine": 53,
+        "endChar": 96
+      },
+      "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4f8bf2_7a24bd44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-15T06:30:07Z",
+      "side": 1,
+      "message": "What if DefaultPopupsSetting is 1 and defaultPopupsURL is not set in either PopupsBlockedForUrls or PopupsAllowedForUrls?",
+      "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
