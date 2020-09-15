@@ -33,6 +33,24 @@
       "revId": "32b116266fe4f0c3715e2d081867ae5ed1c40750",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2c5e49_aef09a78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-15T08:43:33Z",
+      "side": 1,
+      "message": "Thanks for the catch. I\u0027ll fix it later.",
+      "parentUuid": "2026979f_fd67e929",
+      "revId": "32b116266fe4f0c3715e2d081867ae5ed1c40750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
