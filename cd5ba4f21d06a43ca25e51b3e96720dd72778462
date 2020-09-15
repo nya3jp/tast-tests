@@ -93,6 +93,30 @@
     },
     {
       "key": {
+        "uuid": "0e284e67_82b894c3",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0e0351e_02b704c5",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b0b9d48_6de919ff",
         "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
         "patchSetId": 2
@@ -116,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "050d6b39_aa36c10e",
+        "filename": "android/ArcInputLatencyTest/src/org/chromium/arc/testapp/inputlatency/ReceivedEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Yes, at this point they are the same time in different units. Removed \"ms\" timestamps.",
+      "parentUuid": "7b0b9d48_6de919ff",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 81
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56d562f0_9b9fbfc9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
         "patchSetId": 2
@@ -136,6 +184,30 @@
       "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fdb49e8_f9830b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56d562f0_9b9fbfc9",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +258,30 @@
     },
     {
       "key": {
+        "uuid": "aea78a42_4b8e353b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddf24941_2fc0cc0b",
+      "range": {
+        "startLine": 96,
+        "startChar": 27,
+        "endLine": 96,
+        "endChar": 36
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd617950_39508475",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
         "patchSetId": 2
@@ -206,6 +302,30 @@
       "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6158175_196477a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd617950_39508475",
+      "range": {
+        "startLine": 126,
+        "startChar": 25,
+        "endLine": 126,
+        "endChar": 35
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +352,30 @@
     },
     {
       "key": {
+        "uuid": "d6c2a227_b7578a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebf4ccc6_1e443a44",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 35
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0fa378f_63e449c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
         "patchSetId": 2
@@ -255,6 +399,30 @@
     },
     {
       "key": {
+        "uuid": "832cc572_302e24af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0fa378f_63e449c8",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb7d44be_0d45debe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
         "patchSetId": 2
@@ -275,6 +443,30 @@
       "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d4290d_b0b8e81b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "removed RecvTimeMs",
+      "parentUuid": "bb7d44be_0d45debe",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -349,6 +541,30 @@
     },
     {
       "key": {
+        "uuid": "be50f2b7_79a14c44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Yeah I think that\u0027s much better than passing the diff array around. Updated.",
+      "parentUuid": "f1bf056a_8fee2986",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 50
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0940de78_05c9798a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
         "patchSetId": 2
@@ -369,6 +585,30 @@
       "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "915a2349_6fedf4e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0940de78_05c9798a",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 21
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -395,6 +635,30 @@
     },
     {
       "key": {
+        "uuid": "44cdc450_6151d69b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Added a comment explaining why we need to call this frequently",
+      "parentUuid": "f81b5887_c703dc99",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 33
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "004f9783_ffab3c5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
         "patchSetId": 2
@@ -418,6 +682,30 @@
     },
     {
       "key": {
+        "uuid": "13f4e104_258f864d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "004f9783_ffab3c5a",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 8
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6370422a_97baa2df",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
         "patchSetId": 2
@@ -438,6 +726,30 @@
       "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5706e9b_20aab60c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6370422a_97baa2df",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 18
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -485,6 +797,30 @@
       "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8c9cba_764e317e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-15T19:14:18Z",
+      "side": 1,
+      "message": "Simplified this by changing numEvents to 100, and incrementing i by 4 on each iteration.",
+      "parentUuid": "2ec2dfd6_9031cf86",
+      "range": {
+        "startLine": 138,
+        "startChar": 26,
+        "endLine": 138,
+        "endChar": 37
+      },
+      "revId": "cd5ba4f21d06a43ca25e51b3e96720dd72778462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
