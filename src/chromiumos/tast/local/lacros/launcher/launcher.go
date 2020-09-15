@@ -140,6 +140,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		"--disable-extensions-except=" + extList,     // Disable extensions other than the Tast test extension.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--use-cras",                                 // Use CrAS.
+		"--use-fake-ui-for-media-stream",             // Avoid the need to grant camera/microphone permissions.
 		chrome.BlankURL,                              // Specify first tab to load.
 	}
 
