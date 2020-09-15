@@ -16,6 +16,23 @@
       "revId": "a133c21e1d7166a3db576606a08207145d82671b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e358b255_1628e3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-15T06:56:21Z",
+      "side": 1,
+      "message": "👍",
+      "revId": "a133c21e1d7166a3db576606a08207145d82671b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
