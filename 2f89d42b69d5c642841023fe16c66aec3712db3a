@@ -16,6 +16,52 @@
       "revId": "2f89d42b69d5c642841023fe16c66aec3712db3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0ab859a_048c3212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-15T04:09:14Z",
+      "side": 1,
+      "message": "It might be good to log the error in case it isn\u0027t what you expected.",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 5
+      },
+      "revId": "2f89d42b69d5c642841023fe16c66aec3712db3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6492dd2a_4ebe61c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-15T04:09:14Z",
+      "side": 1,
+      "message": "the first argument has a node reference that should be released.  I think there is a terminal.Close method, if that hasn\u0027t been merged yet you can use terminal.Exit instead.",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 2
+      },
+      "revId": "2f89d42b69d5c642841023fe16c66aec3712db3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
