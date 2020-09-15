@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95364bb5_d380d548",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2020-09-15T19:54:29Z",
+      "side": 1,
+      "message": "\u003e Why would it be hard? The CPU and Pkg power usage is averaged\n\u003e among the playback duration, so they should not be influenced\n\u003e by how many times the video is played. The dropped frames would,\n\u003e but what we do in other tests is to log the percentage of \n\u003e dropped frames:\n\u003e https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go;l\u003d246\n\u003e \n\u003e IOW this CL might be abandoned in favour of just adding the %\n\u003e of dropped frames? (It\u0027d be OK to leave both the actual amount\n\u003e and the percentage of dropped frames so they can be compared).\n\nI agree, the percentage should work too. I\u0027m just looking for consistency between the runs and being able to track the effects of any optimizations.",
+      "parentUuid": "ba5588d3_98721504",
+      "range": {
+        "startLine": 11,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "2d39aa9c24cab5fecfa6e004c94f48b81da0ef23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35a2c1f9_33c97ed9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
