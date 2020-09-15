@@ -30,7 +30,7 @@ func init() {
 func CCAUITakePicture(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 

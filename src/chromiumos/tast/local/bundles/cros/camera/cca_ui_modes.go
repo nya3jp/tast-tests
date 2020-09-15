@@ -8,7 +8,6 @@ import (
 	"context"
 	"image/jpeg"
 	"os"
-	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
@@ -37,7 +36,7 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -62,11 +61,10 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	}
 
 	isSquarePhoto := func(info os.FileInfo, ctx context.Context, app *cca.App) (bool, error) {
-		path, err := app.SavedDir(ctx)
+		path, err := app.FilePathInSavedDirs(ctx, info.Name())
 		if err != nil {
 			return false, err
 		}
-		path = filepath.Join(path, info.Name())
 		file, err := os.Open(path)
 		if err != nil {
 			return false, err

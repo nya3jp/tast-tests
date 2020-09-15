@@ -7,7 +7,6 @@ package camera
 import (
 	"context"
 	"os"
-	"path/filepath"
 	"time"
 
 	"github.com/abema/go-mp4"
@@ -39,7 +38,7 @@ const durationTolerance = 300 * time.Millisecond
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -95,7 +94,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 }
 
 func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
-	dir, err := app.SavedDir(ctx)
+	dirs, err := app.SavedDirs(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get CCA default saved path")
 	}
@@ -128,7 +127,7 @@ func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
 	}
-	if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
+	if _, err := app.WaitForFileSaved(ctx, dirs, cca.VideoPattern, start); err != nil {
 		return errors.Wrap(err, "cannot find result video")
 	}
 	return nil
@@ -179,11 +178,11 @@ func testVideoSnapshot(ctx context.Context, app *cca.App) error {
 	if err := app.Click(ctx, cca.VideoSnapshotButton); err != nil {
 		return err
 	}
-	dir, err := app.SavedDir(ctx)
+	dirs, err := app.SavedDirs(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to get saved directory")
+		return errors.Wrap(err, "failed to get saved directories")
 	}
-	if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, startTime); err != nil {
+	if _, err := app.WaitForFileSaved(ctx, dirs, cca.PhotoPattern, startTime); err != nil {
 		return errors.Wrap(err, "failed find saved video snapshot file")
 	}
 
@@ -213,12 +212,10 @@ func startRecordAndPause(ctx context.Context, app *cca.App) error {
 }
 
 func videoDuration(ctx context.Context, app *cca.App, info os.FileInfo) (time.Duration, error) {
-	dir, err := app.SavedDir(ctx)
+	path, err := app.FilePathInSavedDirs(ctx, info.Name())
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to get CCA default saved path")
+		return 0, errors.Wrap(err, "failed to get file path in saved path")
 	}
-
-	path := filepath.Join(dir, info.Name())
 	f, err := os.Open(path)
 	if err != nil {
 		return 0, errors.Wrapf(err, "failed to open file %v", path)

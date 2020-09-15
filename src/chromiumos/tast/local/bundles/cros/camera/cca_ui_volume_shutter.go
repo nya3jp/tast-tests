@@ -113,7 +113,7 @@ func (vh *volumeHelper) verifyVolumeChanged(ctx context.Context, doChange func()
 func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -198,7 +198,7 @@ func testClamshell(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *inp
 
 // testTakePicture tests scenario of taking a picture by volume button in tablet mode.
 func testTakePicture(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
-	dir, err := app.SavedDir(ctx)
+	dirs, err := app.SavedDirs(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
 	}
@@ -216,7 +216,7 @@ func testTakePicture(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 		if err := kb.Accel(ctx, key); err != nil {
 			return errors.Wrapf(err, "failed to press %v key", key)
 		}
-		if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
+		if _, err := app.WaitForFileSaved(ctx, dirs, cca.PhotoPattern, start); err != nil {
 			return errors.Wrap(err, "cannot find captured result file")
 		}
 		if err := app.WaitForState(ctx, "taking", false); err != nil {
@@ -245,7 +245,7 @@ func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 	}
 	defer cleanup(cleanupCtx)
 
-	dir, err := app.SavedDir(ctx)
+	dirs, err := app.SavedDirs(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
 	}
@@ -278,7 +278,7 @@ func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 		if err := kb.Accel(ctx, key); err != nil {
 			return errors.Wrapf(err, "failed to press %v key", key)
 		}
-		if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
+		if _, err := app.WaitForFileSaved(ctx, dirs, cca.VideoPattern, start); err != nil {
 			return errors.Wrap(err, "cannot find result video")
 		}
 		if err := app.WaitForState(ctx, "taking", false); err != nil {

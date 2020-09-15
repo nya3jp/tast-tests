@@ -189,7 +189,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	a := d.ARC
 	cr := d.Chrome
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -372,17 +372,19 @@ func checkCaptureResult(ctx context.Context, app *cca.App, cr *chrome.Chrome, mo
 		return nil
 	}
 
-	dir := info.Dir
-	if dir == "" {
-		ccaSavedDir, err := app.SavedDir(ctx)
+	var dirs []string
+	var err error
+	if info.Dir == "" {
+		dirs, err = app.SavedDirs(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get CCA default saved path")
 		}
-		dir = ccaSavedDir
+	} else {
+		dirs = []string{info.Dir}
 	}
 	testing.ContextLog(ctx, "Checking capture result")
 	if shouldConfirm {
-		if fileInfo, err := app.WaitForFileSaved(ctx, dir, info.FilePattern, startTime); err != nil {
+		if fileInfo, err := app.WaitForFileSaved(ctx, dirs, info.FilePattern, startTime); err != nil {
 			return err
 		} else if fileInfo.Size() == 0 {
 			return errors.New("capture result is empty")
