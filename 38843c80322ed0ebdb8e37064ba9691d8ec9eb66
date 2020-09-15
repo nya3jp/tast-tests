@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37a16894_aaefff42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-15T22:44:03Z",
+      "side": 1,
+      "message": "Is there a way to check that this error is ESRCH and not some other error before ignoring it?",
+      "revId": "38843c80322ed0ebdb8e37064ba9691d8ec9eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7c9cc4_cd0faa62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-15T22:44:03Z",
+      "side": 1,
+      "message": "ippusb_bridge should be deleting these sockets itself. Are you running os.Remove here without checking error just in case they\u0027re still there?\n\nAn approach similar to this would let you check for errors while ignoring an error due to a non-existent file: https://crrev.com/c/2190853",
+      "revId": "38843c80322ed0ebdb8e37064ba9691d8ec9eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0462307b_e3b39fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-15T22:44:03Z",
+      "side": 1,
+      "message": "Maybe delete this log message? It doesn\u0027t precede a long-running operation so it\u0027s not as useful.",
+      "revId": "38843c80322ed0ebdb8e37064ba9691d8ec9eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
