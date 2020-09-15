@@ -7,6 +7,7 @@ package perfutil
 
 import (
 	"context"
+	"sort"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -56,7 +57,15 @@ func minMaxIndices(vs []float64) (minIndex, maxIndex int) {
 func (v *Values) Values(ctx context.Context) *perf.Values {
 	pv := perf.NewValues()
 
-	for name, metric := range v.metrics {
+	// Ensure that the iteration order is sorted by the name of the metrics, as
+	// this iteration also logs the name/results.
+	names := make([]string, 0, len(v.metrics))
+	for name := range v.metrics {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	for _, name := range names {
+		metric := v.metrics[name]
 		vs := v.values[name]
 		if len(vs) == 0 {
 			continue
