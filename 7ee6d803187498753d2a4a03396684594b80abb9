@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8aecdca9_ccc0224a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-15T09:13:48Z",
+      "side": 1,
+      "message": "Let\u0027s try to decouple |TestEnvironment| and |App| by passing only the necessary parts to App e.g. pass env.Chrome to |App.Restart()|?",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 4
+      },
+      "revId": "7ee6d803187498753d2a4a03396684594b80abb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b95a7e83_5799050e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-15T09:13:48Z",
+      "side": 1,
+      "message": "Remove the new line.",
+      "revId": "7ee6d803187498753d2a4a03396684594b80abb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86139744_0f147814",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_power_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-15T09:13:48Z",
+      "side": 1,
+      "message": "Move the arc.New(), arc.Close() logic into Precondition Prepare()/Close().",
+      "revId": "7ee6d803187498753d2a4a03396684594b80abb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16347967_3ae6fa7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_environment.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-15T09:13:48Z",
+      "side": 1,
+      "message": "I think to prepare the test environment is your test precondition.\nHow about just combine |TestEnvironment| with |preImpl| by moving all methods in |TestEnviroment| into |preImpl| to further simplify the CL?",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "7ee6d803187498753d2a4a03396684594b80abb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
