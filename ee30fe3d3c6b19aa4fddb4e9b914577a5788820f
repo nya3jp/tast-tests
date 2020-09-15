@@ -473,6 +473,30 @@
     },
     {
       "key": {
+        "uuid": "6af5bfd7_f7bbd2af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-15T12:34:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5fb41c1c_c4870570",
+      "range": {
+        "startLine": 57,
+        "startChar": 17,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "ee30fe3d3c6b19aa4fddb4e9b914577a5788820f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbf44594_04769592",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
         "patchSetId": 1
