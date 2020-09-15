@@ -69,6 +69,24 @@
       "revId": "502713e1da60db56d32ba44a2df67e908e3ed66b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c474028_644c6937",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1180289
+      },
+      "writtenOn": "2020-09-15T23:00:23Z",
+      "side": 1,
+      "message": "IIUC, the power consumption due to PiP is low. My concern was thus in measuring any difference which could be affected by noise from any browser activity (chrome://settings is a heavy page). If that is not the case, then it can be left as is. (With the focus out from the omnibox, as Oshima pointed out)",
+      "parentUuid": "2873e6d6_77e6e52e",
+      "revId": "502713e1da60db56d32ba44a2df67e908e3ed66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
