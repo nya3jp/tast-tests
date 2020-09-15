@@ -33,6 +33,23 @@
       "revId": "0fba1c2d7755b58f7e319f0dd30311987d5d9e53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71680d1a_c199c766",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-15T08:21:10Z",
+      "side": 1,
+      "message": "I just noticed that the original autotest is not a real end to end test, so I updated the bug description with some direction on how what should be done in the test to be a real end to end test.",
+      "revId": "0fba1c2d7755b58f7e319f0dd30311987d5d9e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
