@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "120c073a_aad47304",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-15T01:45:03Z",
+      "side": 1,
+      "message": "Thanks for catching the bug. Both tests should not reuse existing chrome login. I could reproduce the problem with your command. I have fixed the code. Please review. Thanks.",
+      "parentUuid": "1205ae7c_190d8c45",
+      "revId": "44178cb07b43504a177b5fe43d3b9d9b60412189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2f6017e_e0669e93",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
         "patchSetId": 3

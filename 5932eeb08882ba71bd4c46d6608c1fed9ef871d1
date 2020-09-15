@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10308026_c66bd286",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-15T01:45:03Z",
+      "side": 1,
+      "message": "Hi Kyle:\n\nThanks for catching the bug. Both tests should not reuse existing chrome login. I could reproduce the problem with your command. I have fixed the code in both branches. Please review. Thanks.\n\nSeewai",
+      "revId": "5932eeb08882ba71bd4c46d6608c1fed9ef871d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
