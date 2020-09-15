@@ -220,6 +220,66 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 	return assocTime, configTime, nil
 }
 
+// waitForBSSID waits for a BSS with specific SSID and BSSID on the
+// given iface. Returns error if it fails to wait for the BSS before
+// ctx.Done.
+func (s *WifiService) waitForBSSID(ctx context.Context, iface *wpasupplicant.Interface, targetSSID, targetBSSID []byte) error {
+	// Create a watcher for BSSAdded signal.
+	sw, err := iface.DBusObject().CreateWatcher(ctx, wpasupplicant.DBusInterfaceSignalBSSAdded)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a signal watcher")
+	}
+	defer sw.Close(ctx)
+
+	// Check if the BSS is already in the table.
+	bsses, err := iface.BSSs(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get BSSs")
+	}
+
+	for _, bss := range bsses {
+		ssid, err := bss.SSID(ctx)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to get SSID for bss: ", err)
+		} else if bytes.Equal(ssid, targetSSID) {
+			bssid, err := bss.BSSID(ctx)
+			if err != nil {
+				testing.ContextLog(ctx, "Failed to get BSSID for bss: ", err)
+			} else if bytes.Equal(bssid, targetBSSID) {
+				return nil
+			}
+		}
+	}
+
+	checkSig := func(sig *dbus.Signal) (bool, error) {
+		bss, err := iface.ParseBSSAddedSignal(ctx, sig)
+		if err != nil {
+			return false, errors.Wrap(err, "failed to parse the BSSAdded signal")
+		}
+		if !bytes.Equal(bss.SSID, targetSSID) {
+			return false, nil
+		}
+		if !bytes.Equal(bss.BSSID, targetBSSID) {
+			return false, errors.Errorf("unexpected BSSID: got %q, want %q", bss.BSSID, targetBSSID)
+		}
+		return true, nil
+	}
+
+	for {
+		select {
+		case <-ctx.Done():
+			return errors.Wrapf(ctx.Err(), "failed to wait for BSSID %q", targetBSSID)
+		case sig := <-sw.Signals:
+			match, err := checkSig(sig)
+			if err != nil {
+				return err
+			} else if match {
+				return nil
+			}
+		}
+	}
+}
+
 // DiscoverBSSID discovers the specified BSSID by running a scan.
 // This is the implementation of network.Wifi/DiscoverBSSID gRPC.
 func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.DiscoverBSSIDRequest) (*network.DiscoverBSSIDResponse, error) {
@@ -240,44 +300,15 @@ func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.Discov
 		return nil, errors.Wrap(err, "failed to get interface object paths")
 	}
 
-	// Create watcher for BSSAdded signal.
-	sw, err := iface.DBusObject().CreateWatcher(ctx, wpasupplicant.DBusInterfaceSignalBSSAdded)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create signal watcher")
-	}
-	defer sw.Close(ctx)
-
-	start := time.Now()
-	// Check if the BSS is already in the table.
-	bsses, err := iface.BSSs(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get BSSs")
-	}
-
 	// Convert BSSID from human readable string to hardware address in bytes.
 	requestBSSID, err := net.ParseMAC(request.Bssid)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to parse the MAC address from %s", request.Bssid)
 	}
 
-	for _, bss := range bsses {
-		ssid, err := bss.SSID(ctx)
-		if err != nil {
-			testing.ContextLog(ctx, "Failed to get SSID for bss: ", err)
-		} else if bytes.Equal(request.Ssid, ssid) {
-			bssid, err := bss.BSSID(ctx)
-			if err != nil {
-				testing.ContextLog(ctx, "Failed to get BSSID for bss: ", err)
-			} else if bytes.Equal(requestBSSID, bssid) {
-				discoveryTime := time.Since(start)
-				return &network.DiscoverBSSIDResponse{
-					DiscoveryTime: discoveryTime.Nanoseconds(),
-				}, nil
-			}
-		}
-	}
+	start := time.Now()
 
-	// Start background routine to wait for BSSAdded signals.
+	// Start background routine to wait for the expected BSS.
 	done := make(chan error, 1)
 	// Wait for bg routine to end.
 	defer func() { <-done }()
@@ -286,35 +317,7 @@ func (s *WifiService) DiscoverBSSID(ctx context.Context, request *network.Discov
 	defer cancel()
 	go func(ctx context.Context) {
 		defer close(done)
-		done <- func() error {
-			checkSig := func(sig *dbus.Signal) (bool, error) {
-				bss, err := iface.ParseBSSAddedSignal(ctx, sig)
-				if err != nil {
-					return false, errors.Wrap(err, "failed to parse the BSSAdded signal")
-				}
-				if !bytes.Equal(bss.SSID, request.Ssid) {
-					return false, nil
-				}
-				if !bytes.Equal(bss.BSSID, requestBSSID) {
-					return false, errors.Errorf("unexpected BSSID: got %q, want %q", bss.BSSID, requestBSSID)
-				}
-				return true, nil
-			}
-
-			for {
-				select {
-				case <-ctx.Done():
-					return ctx.Err()
-				case sig := <-sw.Signals:
-					match, err := checkSig(sig)
-					if err != nil {
-						return err
-					} else if match {
-						return nil
-					}
-				}
-			}
-		}()
+		done <- s.waitForBSSID(ctx, iface, request.Ssid, requestBSSID)
 	}(bgCtx)
 
 	// Trigger request scan every 200ms if the expected BSS is not found.
@@ -1688,4 +1691,32 @@ func (s *WifiService) SetDHCPProperties(ctx context.Context, req *network.SetDHC
 			VendorClass: oldVendor,
 		},
 	}, nil
+}
+
+// WaitForBSSID waits for a specific BSSID to be found.
+func (s *WifiService) WaitForBSSID(ctx context.Context, request *network.WaitForBSSIDRequest) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager")
+	}
+	ifaceName, err := shill.WifiInterface(ctx, m, 10*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi interface")
+	}
+	supplicant, err := wpasupplicant.NewSupplicant(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
+	}
+	iface, err := supplicant.GetInterface(ctx, ifaceName)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the wpa_supplicant's interface's object path")
+	}
+	bssid, err := net.ParseMAC(request.Bssid)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse BSSID")
+	}
+	if err := s.waitForBSSID(ctx, iface, request.Ssid, bssid); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for BSSID")
+	}
+	return &empty.Empty{}, nil
 }
