@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "26dd9bac_a81d5cf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-16T13:45:28Z",
+      "side": 1,
+      "message": "Thanks for the comments.",
+      "revId": "7650e1e04cbab5c9db19e5fd369928ca074855f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b60ce0f6_cdec0417",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/search_suggest_enabled.go",
         "patchSetId": 1
@@ -39,6 +56,30 @@
       "revId": "7650e1e04cbab5c9db19e5fd369928ca074855f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0e044fe_db173411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/search_suggest_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-16T13:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b60ce0f6_cdec0417",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "7650e1e04cbab5c9db19e5fd369928ca074855f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +126,54 @@
       "revId": "7650e1e04cbab5c9db19e5fd369928ca074855f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6d5d452_95f4c532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/search_suggest_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-16T13:45:28Z",
+      "side": 1,
+      "message": "Good point. I added a poll loop.",
+      "parentUuid": "47e3a75d_d5f1249d",
+      "range": {
+        "startLine": 114,
+        "startChar": 20,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "7650e1e04cbab5c9db19e5fd369928ca074855f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dad71dd_33f9a238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/search_suggest_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-16T13:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d60083e0_2db7b18d",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "7650e1e04cbab5c9db19e5fd369928ca074855f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
