@@ -16,6 +16,58 @@
       "revId": "d77e327f4dad61261c72f84671e3271a571e3977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1bbf276_c2c98bce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-16T21:23:47Z",
+      "side": 1,
+      "message": "This is more organized and triggering a scan (in the case that BSSID already in the BSS table) should be fine in my openion.",
+      "parentUuid": "c56546cc_880aa52b",
+      "revId": "d77e327f4dad61261c72f84671e3271a571e3977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5da765b8_37d66487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-16T21:23:47Z",
+      "side": 1,
+      "message": "nit: This will have a conflict with the CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2411991",
+      "revId": "d77e327f4dad61261c72f84671e3271a571e3977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf003c1a_706d1d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1636,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-16T21:23:47Z",
+      "side": 1,
+      "message": "nit: I think this function need a comment at least the:\n// This is the implementation of network.Wifi/WaitForBSSID gRPC.",
+      "revId": "d77e327f4dad61261c72f84671e3271a571e3977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
