@@ -18,9 +18,6 @@ const (
 	minDeviceSizeBytes = 16 * 1024 * 1024 * 1024
 )
 
-// testFunc is the code associated with a sub-test.
-type testFunc func(context.Context, *testing.State)
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         QuickStress,
@@ -30,23 +27,27 @@ func init() {
 		Data:         stress.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
 		Params: []testing.Param{{
-			Name:    "0_setup",
-			Val:     testFunc(setup),
+			Name:    "setup",
+			Val:     setup,
 			Timeout: 1 * time.Hour,
 		}, {
-			Name:    "1_stress",
-			Val:     testFunc(testBlock),
+			Name:    "stress",
+			Val:     testBlock,
 			Timeout: 4 * time.Hour,
 		}, {
-			Name:    "2_stress",
-			Val:     testFunc(testBlock),
-			Timeout: 4 * time.Hour,
-		}, {
-			Name:    "3_teardown",
-			Val:     testFunc(teardown),
+			Name:    "teardown",
+			Val:     teardown,
 			Timeout: 1 * time.Hour,
 		}},
 	})
+}
+
+// fioStress runs an fio job single given path according to testConfig.
+// If fio returns an error, this function will fail the Tast test.
+func fioStress(ctx context.Context, s *testing.State, testConfig stress.TestConfig) {
+	if err := stress.RunFioStress(ctx, testConfig.WithJobFile(s.DataPath(testConfig.Job))); err != nil {
+		s.Fatal("FIO stress failed: ", err)
+	}
 }
 
 func setup(ctx context.Context, s *testing.State) {
@@ -74,12 +75,12 @@ func setup(ctx context.Context, s *testing.State) {
 	defer resultWriter.Save(ctx, s.OutDir())
 
 	testConfig := &stress.TestConfig{ResultWriter: resultWriter, Path: stress.BootDeviceFioPath}
-	stress.RunFioStress(ctx, s, testConfig.WithJob("seq_write"))
-	stress.RunFioStress(ctx, s, testConfig.WithJob("seq_read"))
-	stress.RunFioStress(ctx, s, testConfig.WithJob("4k_write"))
-	stress.RunFioStress(ctx, s, testConfig.WithJob("4k_read"))
-	stress.RunFioStress(ctx, s, testConfig.WithJob("16k_write"))
-	stress.RunFioStress(ctx, s, testConfig.WithJob("16k_read"))
+	fioStress(ctx, s, testConfig.WithJob("seq_write"))
+	fioStress(ctx, s, testConfig.WithJob("seq_read"))
+	fioStress(ctx, s, testConfig.WithJob("4k_write"))
+	fioStress(ctx, s, testConfig.WithJob("4k_read"))
+	fioStress(ctx, s, testConfig.WithJob("16k_write"))
+	fioStress(ctx, s, testConfig.WithJob("16k_read"))
 }
 
 func testBlock(ctx context.Context, s *testing.State) {
@@ -88,14 +89,14 @@ func testBlock(ctx context.Context, s *testing.State) {
 
 	testConfig := &stress.TestConfig{Path: stress.BootDeviceFioPath}
 
-	stress.RunFioStress(ctx, s,
+	fioStress(ctx, s,
 		testConfig.
 			WithJob("64k_stress").
 			WithDuration(1*time.Hour))
 	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
 		s.Fatal("Sleep failed: ", err)
 	}
-	stress.RunFioStress(ctx, s,
+	fioStress(ctx, s,
 		testConfig.
 			WithJob("surfing").
 			WithDuration(1*time.Hour).
@@ -106,12 +107,12 @@ func testBlock(ctx context.Context, s *testing.State) {
 		s.Fatal("Sleep failed: ", err)
 	}
 
-	stress.RunFioStress(ctx, s,
+	fioStress(ctx, s,
 		testConfig.
 			WithJob("8k_async_randwrite").
 			WithDuration(4*time.Minute))
 	stress.Suspend(ctx)
-	stress.RunFioStress(ctx, s,
+	fioStress(ctx, s,
 		testConfig.
 			WithJob("8k_async_randwrite").
 			WithVerifyOnly(true).
@@ -125,5 +126,5 @@ func teardown(ctx context.Context, s *testing.State) {
 
 // QuickStress runs a short version of disk IO performance tests.
 func QuickStress(ctx context.Context, s *testing.State) {
-	s.Param().(testFunc)(ctx, s)
+	s.Param().(func(context.Context, *testing.State))(ctx, s)
 }
