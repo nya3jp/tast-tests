@@ -57,9 +57,9 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	if err := gamePlayButton.LeftClick(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click the game play button (%s)", gamePlay)
 	}
-	if err := webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
-		return errors.Wrap(err, "failed to wait for game page to finish loading")
-	}
+	// if err := webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
+	// 	return errors.Wrap(err, "failed to wait for game page to finish loading")
+	// }
 
 	// Start(enter) the game.
 	gameStartButton, err := n.DescendantWithTimeout(ctx, ui.FindParams{Name: gameStart, Role: ui.RoleTypeButton}, timeout)
@@ -77,16 +77,21 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	}
 	id0 := ws[0].ID
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := gameStartButton.LeftClick(ctx); err != nil {
-			return errors.Wrapf(err, "failed to click the game start button (%s)", gameStart)
-		}
 		w0, err := ash.GetWindow(ctx, tconn, id0)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get the window")
 		}
+		// If the window is already in full screen, the start button is not visible and
+		// no need to press the start button.
+		if w0.State == ash.WindowStateFullscreen {
+			return nil
+		}
+		if err := gameStartButton.LeftClick(ctx); err != nil {
+			return errors.Wrapf(err, "failed to click the game start button (%s)", gameStart)
+		}
 		// The window should turn into fullscreen mode when game starts.
 		if w0.State != ash.WindowStateFullscreen {
-			return errors.New("hasn't entered the game yet")
+			return errors.New("game hasn't started yet")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
@@ -140,4 +145,3 @@ func ExitGame(ctx context.Context, kb *input.KeyboardEventWriter, webpage *ui.No
 	}
 	return nil
 }
-
