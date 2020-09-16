@@ -16,6 +16,23 @@
       "revId": "72105c77d6f8ad1998663bb626d2d1c2911417f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d14bc283_ef83a3be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-09-16T17:11:53Z",
+      "side": 1,
+      "message": "Hi Katherine, Friendly ping! PTAL for owners review.",
+      "revId": "72105c77d6f8ad1998663bb626d2d1c2911417f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
