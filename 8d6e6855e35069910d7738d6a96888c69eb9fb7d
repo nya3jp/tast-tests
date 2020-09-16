@@ -52,6 +52,24 @@
       "revId": "8d6e6855e35069910d7738d6a96888c69eb9fb7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6abb5a5b_39f0770a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-16T07:02:23Z",
+      "side": 1,
+      "message": "Interesting, I did not know about `cq-depend`.\n\nIn my case, I would need to submit two CLs (one in `tast-tests`, one in `tast-tests-private`) at the same time. Then I could put everything in a single CL. I\u0027m not sure if that is possible with `cq-depend`.",
+      "parentUuid": "51e23f46_cd5464f9",
+      "revId": "8d6e6855e35069910d7738d6a96888c69eb9fb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
