@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa7cab73_16ece57c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T15:33:42Z",
+      "side": 1,
+      "message": "For better encapsulation, could you return the slice, instead of appending?\nIt\u0027d be the caller\u0027s responsibility to append the results.",
+      "range": {
+        "startLine": 90,
+        "startChar": 34,
+        "endLine": 90,
+        "endChar": 58
+      },
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd1f84eb_be32ec6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T15:33:42Z",
+      "side": 1,
+      "message": "Instead, let\u0027s pass the slice with minimum overlap, E.g.\n\nscanBuffer(i, buffer[:oneMiB+len(smallOffsets)-1], smallOffsets)\n\nSo, it guarantees the returned offset wouldn\u0027t overlap.",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38d87793_bbb276d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T15:33:42Z",
+      "side": 1,
+      "message": "Thank you for explanation of the background.\nCould you document explicitly why this cannot use Scanner etc. (because it is scanning the byte sequence)?\n\noptional: BTW, can grep --binary-types\u003dbinary work?",
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "312b8e06_db4f2d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T15:33:42Z",
+      "side": 1,
+      "message": "Could you declare the variable when needed? (L131 in this case).",
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f75f5de8_a1c5be62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T15:33:42Z",
+      "side": 1,
+      "message": "Could you use max(len(smallPattern), len(bigPattern)) - 1 to be safer?",
+      "range": {
+        "startLine": 119,
+        "startChar": 31,
+        "endLine": 119,
+        "endChar": 35
+      },
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b9fc12b_7c2bee1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T15:33:42Z",
+      "side": 1,
+      "message": "style: for i :\u003d 0; i \u003c size; i +\u003d oneMiB {",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 35
+      },
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0f0c31_514b0a14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T15:33:42Z",
+      "side": 1,
+      "message": "nit/style\n\nif err !\u003d nil \u0026\u0026 err !\u003d io.EOF {\n  return ...\n}\nif err \u003d\u003d io.EOF {\n  ...\n}",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
