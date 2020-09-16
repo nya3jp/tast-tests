@@ -33,6 +33,40 @@
       "revId": "d264e036bcc4c0b44d97f7526311b7be2210e587",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86933304_21c1398f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T00:19:02Z",
+      "side": 1,
+      "message": "Before entering the detailed review, let me ask a question.",
+      "revId": "d264e036bcc4c0b44d97f7526311b7be2210e587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425a616b_b5862bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T00:19:02Z",
+      "side": 1,
+      "message": "Does this mean a line is extremely long? How many chars does a line have in the case?\nCan Scanner be used here?",
+      "revId": "d264e036bcc4c0b44d97f7526311b7be2210e587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
