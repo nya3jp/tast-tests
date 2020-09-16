@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a8dc67c_50dab5d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/popups_for_url_check_index.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-16T11:49:31Z",
+      "side": 0,
+      "message": "Please add this message to the start of the HTML files:\n\u003e  \u003c!-- Copyright 2020 The Chromium OS Authors. All rights reserved.\n\u003e       Use of this source code is governed by a BSD-style license that can be\n\u003e       found in the LICENSE file. --\u003e",
+      "revId": "a25ffdc7977dfca0117c2d084d8f55b03b805fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
