@@ -49,7 +49,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
 			Val:               setup.NoBatteryDischarge,
 		}},
-		Timeout: 45 * time.Minute,
+		Timeout: 10 * time.Minute,
 	})
 }
 
@@ -101,7 +101,11 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 		sup.Add(setup.GrantAndroidPermission(ctx, a, gcaPackage, fullPermission))
 	}
 
-	// TODO(springerm): WaitUntilCPUCoolDown before starting GCA.
+	// Wait until CPU is cooled down.
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("CPU failed to cool down: ", err)
+	}
+
 	// Start GCA (Google Camera App).
 	sup.Add(setup.StartActivity(ctx, tconn, a, gcaPackage, gcaActivity))
 

@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -52,7 +53,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
 			Val:               setup.NoBatteryDischarge,
 		}},
-		Timeout: 5 * time.Minute,
+		Timeout: 10 * time.Minute,
 	})
 }
 
@@ -99,7 +100,11 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 	// Grant permissions to activity.
 	sup.Add(setup.GrantAndroidPermission(ctx, a, cameraAppPackage, "android.permission.CAMERA"))
 
-	// TODO(springerm): WaitUntilCPUCoolDown before starting activity.
+	// Wait until CPU is cooled down.
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("CPU failed to cool down: ", err)
+	}
+
 	// Start camera testing app.
 	sup.Add(setup.StartActivity(ctx, tconn, a, cameraAppPackage, cameraAppActivity))
 

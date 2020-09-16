@@ -95,7 +95,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to build metrics: ", err)
 	}
 
-	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		s.Fatal("Failed to wait for CPU to cool down: ", err)
 	}
 
@@ -121,7 +121,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		var err error
 		pipWindow, err = ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.State == ash.WindowStatePIP })
 		if err != nil {
-			return errors.Wrap(err, "The PIP window hasn't been created yet")
+			return errors.Wrap(err, "the PIP window hasn't been created yet")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
