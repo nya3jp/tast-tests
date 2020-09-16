@@ -16,6 +16,24 @@
       "revId": "8d6e6855e35069910d7738d6a96888c69eb9fb7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "767ef88b_188c8573",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-16T06:51:44Z",
+      "side": 1,
+      "message": "Unfortunately, it is not possible to submit two commits in different repositories at the same time. I\u0027ll add you as reviewer to the other CLs. (The reviewers in the dependent CL are mostly the original authors of the modified files, not Tast reviewers. They already +1\u0027ed the CL, but for some reason the score disappeared when I made the CL a dependent CL.)",
+      "parentUuid": "ba05fd95_b3f182fe",
+      "revId": "8d6e6855e35069910d7738d6a96888c69eb9fb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
