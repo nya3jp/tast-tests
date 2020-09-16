@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "bcd412eb_caf240e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-16T17:41:26Z",
+      "side": 1,
+      "message": "Yes, the window can be maximized but there are other conditions that will be checked in CheckMaximizeWindowInTabletMode and without giving it enough time, it would be flaky. \nOne thing that I noticed is causing problem is frame visibility.",
+      "parentUuid": "30954723_25417972",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 62
+      },
+      "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9be71f0d_a874f177",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
         "patchSetId": 4
@@ -62,6 +86,30 @@
       "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed0a3f6f_0966779b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-16T17:41:26Z",
+      "side": 1,
+      "message": "Even though the animation ended at this point, but still there is a very short delay between that and window bounds get updated, without polling I saw flakiness here.",
+      "parentUuid": "9be71f0d_a874f177",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 62
+      },
+      "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "cfbb31d8_30ca443f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-16T17:41:26Z",
+      "side": 1,
+      "message": "As explained above.",
+      "parentUuid": "7351ff5a_256fc5d3",
+      "range": {
+        "startLine": 384,
+        "startChar": 1,
+        "endLine": 384,
+        "endChar": 62
+      },
+      "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3eb2a37_6144a45f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
         "patchSetId": 4
@@ -108,6 +180,30 @@
       "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcfaaa8f_59450cdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-16T17:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3eb2a37_6144a45f",
+      "range": {
+        "startLine": 428,
+        "startChar": 1,
+        "endLine": 436,
+        "endChar": 2
+      },
+      "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
