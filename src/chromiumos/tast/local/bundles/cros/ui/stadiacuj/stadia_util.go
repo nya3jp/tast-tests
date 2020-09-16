@@ -18,8 +18,8 @@ import (
 )
 
 const (
-	// StadiaAllGamesUrl is the url of all Stadia games page.
-	StadiaAllGamesUrl = "https://ggp-staging.sandbox.google.com/store/list"
+	// StadiaAllGamesURL is the url of all Stadia games page.
+	StadiaAllGamesURL = "https://ggp-staging.sandbox.google.com/store/list"
 )
 
 // StartGameFromGameListsView locates the game by its name from the game list page
@@ -57,9 +57,6 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	if err := gamePlayButton.LeftClick(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click the game play button (%s)", gamePlay)
 	}
-	if err := webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
-		return errors.Wrap(err, "failed to wait for game page to finish loading")
-	}
 
 	// Start(enter) the game.
 	gameStartButton, err := n.DescendantWithTimeout(ctx, ui.FindParams{Name: gameStart, Role: ui.RoleTypeButton}, timeout)
@@ -77,18 +74,19 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	}
 	id0 := ws[0].ID
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		w0, err := ash.GetWindow(ctx, tconn, id0)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get the window"))
+		}
+		// If the window is already in full screen, the game has already started and
+		// no need to press the start button.
+		if w0.State == ash.WindowStateFullscreen {
+			return nil
+		}
 		if err := gameStartButton.LeftClick(ctx); err != nil {
 			return errors.Wrapf(err, "failed to click the game start button (%s)", gameStart)
 		}
-		w0, err := ash.GetWindow(ctx, tconn, id0)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get the window")
-		}
-		// The window should turn into fullscreen mode when game starts.
-		if w0.State != ash.WindowStateFullscreen {
-			return errors.New("hasn't entered the game yet")
-		}
-		return nil
+		return errors.New("game hasn't started yet")
 	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to start the game %s", name)
 	}
@@ -140,4 +138,3 @@ func ExitGame(ctx context.Context, kb *input.KeyboardEventWriter, webpage *ui.No
 	}
 	return nil
 }
-
