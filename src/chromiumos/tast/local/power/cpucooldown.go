@@ -29,15 +29,6 @@ const (
 	CoolDownStopUI
 )
 
-// WaitUntilCPUCoolDownOld is a wrapper for WaitUntilCPUCoolDown. This wrapper
-// is necessary so that we can change the return type of WaitUntilCPUCoolDown
-// without breaking tests in tast-tests-private. This will be removed after the
-// refactoring.
-func WaitUntilCPUCoolDownOld(ctx context.Context, coolDownMode CoolDownMode) error {
-	_, err := WaitUntilCPUCoolDown(ctx, coolDownMode)
-	return err
-}
-
 // WaitUntilCPUCoolDown waits until CPU is cooled down and returns the time it
 // took to cool down.
 // Ported from cheets_PerfBoot.wait_cpu_cool_down().
