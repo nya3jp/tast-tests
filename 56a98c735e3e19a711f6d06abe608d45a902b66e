@@ -16,6 +16,23 @@
       "revId": "56a98c735e3e19a711f6d06abe608d45a902b66e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79d3015a_1414ac2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T15:43:49Z",
+      "side": 1,
+      "message": "Could you comment the unit, too?",
+      "revId": "56a98c735e3e19a711f6d06abe608d45a902b66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
