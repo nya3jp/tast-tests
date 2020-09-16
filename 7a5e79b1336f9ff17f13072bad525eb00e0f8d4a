@@ -22,6 +22,40 @@
       "revId": "7a5e79b1336f9ff17f13072bad525eb00e0f8d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17e6f017_bdcc2887",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-16T05:34:17Z",
+      "side": 1,
+      "message": "Rename wifi.CSA to wifi.CSALeaveChannel",
+      "revId": "7a5e79b1336f9ff17f13072bad525eb00e0f8d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31466aa4_b6febfc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-16T05:34:17Z",
+      "side": 1,
+      "message": "A nit.",
+      "revId": "7a5e79b1336f9ff17f13072bad525eb00e0f8d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
