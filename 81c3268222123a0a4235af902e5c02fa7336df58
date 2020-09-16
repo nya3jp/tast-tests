@@ -16,6 +16,29 @@
       "revId": "81c3268222123a0a4235af902e5c02fa7336df58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7b28568_bc58a4b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-16T02:44:19Z",
+      "side": 1,
+      "message": "There\u0027s a change out to update the decode tests to use power.WaitUntilCPUCoolDown to match the rest of the power tests. Can you make that change here as well?",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "81c3268222123a0a4235af902e5c02fa7336df58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
