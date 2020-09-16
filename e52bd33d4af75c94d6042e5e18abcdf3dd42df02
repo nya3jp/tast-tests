@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b23ccf8_403d6835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/audio_record_test.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T02:15:28Z",
+      "side": 1,
+      "message": "needs to be async.\n\nBTW, in many cases, we often embed this kind of JS small pieces in Tast.\nWDYT\n\nvar found bool\nif err :\u003d conn.Call(ctx, \u0026found, `async () \u003d\u003e {\n  let devices \u003d await navigator.mediaDevices.enumerateDevices();\n  return devices.some((dev) \u003d\u003e dev.kind \u003d\u003d \u0027audioinput\u0027);\n}`); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
+      "revId": "e52bd33d4af75c94d6042e5e18abcdf3dd42df02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beba0c8e_06789413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/audio_record_test.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T02:15:28Z",
+      "side": 1,
+      "message": "ditto for embedding.",
+      "revId": "e52bd33d4af75c94d6042e5e18abcdf3dd42df02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
