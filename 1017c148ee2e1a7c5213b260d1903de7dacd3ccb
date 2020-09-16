@@ -63,6 +63,30 @@
       "revId": "1017c148ee2e1a7c5213b260d1903de7dacd3ccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f5d6df8_3080b195",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-16T23:35:40Z",
+      "side": 1,
+      "message": "All of the existing tests are following the same pattern but I have a plan to refactor all tasts once I am done with creating WM tests. This is done based on deanliao@ suggestion https://crrev.com/c/2366336.\nFor now I would like to keep the consistency and later I will change them all together.",
+      "parentUuid": "ad614c9c_3515c350",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 7
+      },
+      "revId": "1017c148ee2e1a7c5213b260d1903de7dacd3ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
