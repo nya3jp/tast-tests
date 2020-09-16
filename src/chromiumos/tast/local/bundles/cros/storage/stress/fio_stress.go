@@ -42,6 +42,7 @@ var (
 		"8k_read",
 		"1m_stress",
 		"1m_write",
+		"write_stress",
 	}
 )
 
@@ -54,6 +55,9 @@ type TestConfig struct {
 
 	// Job is the name of the fio profile to execute. Must be on of the Configs.
 	Job string
+
+	// JobFile is the absolute path and filename of the fio profile file corresponding to Job.
+	JobFile string
 
 	// Path to the fio target
 	Path string
@@ -75,6 +79,12 @@ func (t TestConfig) WithDuration(duration time.Duration) TestConfig {
 // WithJob sets Job in TestConfig.
 func (t TestConfig) WithJob(job string) TestConfig {
 	t.Job = job
+	return t
+}
+
+// WithJobFile sets JobFile in TestConfig.
+func (t TestConfig) WithJobFile(jobFile string) TestConfig {
+	t.JobFile = jobFile
 	return t
 }
 
@@ -142,13 +152,13 @@ func getStorageInfo(ctx context.Context) (*storage.Info, error) {
 	return info, nil
 }
 
-func validateJob(ctx context.Context, s *testing.State, job string) {
+func validateJob(ctx context.Context, job string) error {
 	for _, config := range Configs {
 		if job == config {
-			return
+			return nil
 		}
 	}
-	s.Fatalf("job = %q, want one of %q", job, Configs)
+	return errors.Errorf("job = %q, want one of %q", job, Configs)
 }
 
 // escapeJSONName replaces all invalid characters that might be present in the device name to appear
@@ -174,15 +184,18 @@ func resultGroupName(ctx context.Context, res *fioResult, dev string, rawDevTest
 }
 
 // RunFioStress runs an fio job single given path according to testConfig.
-func RunFioStress(ctx context.Context, s *testing.State, testConfig TestConfig) {
+// This function returns an error rather than failing the test.
+func RunFioStress(ctx context.Context, testConfig TestConfig) error {
 	rawDev := strings.HasPrefix(testConfig.Path, "/dev/")
 
-	validateJob(ctx, s, testConfig.Job)
+	if err := validateJob(ctx, testConfig.Job); err != nil {
+		return errors.Wrap(err, "failed validating job")
+	}
 
 	// Get device status/info.
 	info, err := getStorageInfo(ctx)
 	if err != nil {
-		s.Fatal("Failed to get storage info: ", err)
+		return errors.Wrap(err, "failed to get storage info")
 	}
 	devName := escapeJSONName(info.Name)
 
@@ -193,10 +206,10 @@ func RunFioStress(ctx context.Context, s *testing.State, testConfig TestConfig) 
 
 	testing.ContextLog(ctx, "Running job ", testConfig.Job)
 	var res *fioResult
-	for start := time.Now(); ; {
-		res, err = runFIO(ctx, testConfig.Path, s.DataPath(testConfig.Job), testConfig.VerifyOnly)
+	for start := time.Now().Round(0); ; {
+		res, err = runFIO(ctx, testConfig.Path, testConfig.JobFile, testConfig.VerifyOnly)
 		if err != nil {
-			s.Errorf("%v failed: %v", testConfig.Job, err)
+			return errors.Wrapf(err, "%v failed", testConfig.Job)
 		}
 
 		// If duration test parameter is 0, we do a single iteration of a test.
@@ -209,4 +222,6 @@ func RunFioStress(ctx context.Context, s *testing.State, testConfig TestConfig) 
 		group := resultGroupName(ctx, res, devName, rawDev)
 		testConfig.ResultWriter.Report(group, res)
 	}
+
+	return nil
 }
