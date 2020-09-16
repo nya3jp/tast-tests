@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "55adda9d_233a6e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-16T09:25:41Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "f4722c63d5d2d2220731c9948874aad73191cc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17b19485_846220db",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
         "patchSetId": 1
