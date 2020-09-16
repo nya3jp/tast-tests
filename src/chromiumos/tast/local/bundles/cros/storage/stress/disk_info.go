@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
+	"math"
 	"regexp"
 
 	"chromiumos/tast/errors"
@@ -92,6 +93,16 @@ func (d DiskInfo) SaveDiskInfo(fileName string) error {
 		return errors.Wrap(err, "failed saving disk info to file")
 	}
 	return nil
+}
+
+// SizeInGB returns size of the main block device in whole GB's.
+func (d DiskInfo) SizeInGB() (int, error) {
+	device, err := d.MainDevice()
+	if err != nil {
+		return 0, errors.Wrap(err, "failed getting main storage disk")
+	}
+
+	return int(math.Round(float64(device.Size) / 1e9)), nil
 }
 
 // ReadDiskInfo returns storage information as reported by lsblk tool.
