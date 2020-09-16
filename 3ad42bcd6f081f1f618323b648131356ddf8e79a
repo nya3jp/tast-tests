@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c909167_43133b22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-16T07:25:43Z",
+      "side": 1,
+      "message": "Created a circular dependency between this CL and a CL in tast-tests-private, which uses WaitForCPUCoolDown.",
+      "revId": "3ad42bcd6f081f1f618323b648131356ddf8e79a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
