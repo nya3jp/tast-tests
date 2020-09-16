@@ -67,6 +67,24 @@
       "revId": "d264e036bcc4c0b44d97f7526311b7be2210e587",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d78ce08_fff010f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-16T00:24:21Z",
+      "side": 1,
+      "message": "\u003e Package scanner provides a scanner and tokenizer for UTF-8-encoded text.\nWe\u0027re scanning through a raw disk image here, there\u0027s no expectation of frequent line breaks or UTF-8 encoding.\n\nThis is the issue grep had, actually. AFAICT it will only tell us where in the file matches are if we tell it to treat the file like a text file, which also means it tries to keep whole line of text in memory at once. But since the gap between line break characters can be arbitrarily long it ran out of memory.",
+      "parentUuid": "425a616b_b5862bb9",
+      "revId": "d264e036bcc4c0b44d97f7526311b7be2210e587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
