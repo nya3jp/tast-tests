@@ -33,6 +33,23 @@
       "revId": "3ad42bcd6f081f1f618323b648131356ddf8e79a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d05e52b3_c859e801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-16T15:14:03Z",
+      "side": 1,
+      "message": "In cpucooldown.go, the cooldown time is logged metric in seconds; but here, it is logged in milliseconds. I think it would help readers if the two were in the same unit.",
+      "revId": "3ad42bcd6f081f1f618323b648131356ddf8e79a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
