@@ -22,6 +22,30 @@
       "revId": "1017c148ee2e1a7c5213b260d1903de7dacd3ccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad614c9c_3515c350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-16T07:38:10Z",
+      "side": 1,
+      "message": "Well, however, I found act.Stop returns error.\nCould you change the function return value to (retErr error)\nand make the statement\ndefer func(ctx context.Context) {\n  if err :\u003d act.Stop(ctx, tconn); err !\u003d nil \u0026\u0026 retErr \u003d\u003d nil {\n    retErr \u003d err\n  }\n}(ctx)\n?",
+      "parentUuid": "28de1e5e_20357216",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 7
+      },
+      "revId": "1017c148ee2e1a7c5213b260d1903de7dacd3ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
