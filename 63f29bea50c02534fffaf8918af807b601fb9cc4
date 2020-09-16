@@ -22,6 +22,30 @@
       "revId": "63f29bea50c02534fffaf8918af807b601fb9cc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5e73809_ad70deca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_logout_button_in_tray.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-16T10:01:39Z",
+      "side": 1,
+      "message": "Using WaitUntilExists() instead of FindWithTimeout() solves this problem, as it does not lock the node.",
+      "parentUuid": "43d34a44_789d71e7",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 8
+      },
+      "revId": "63f29bea50c02534fffaf8918af807b601fb9cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
