@@ -16,6 +16,24 @@
       "revId": "46fddaa85af75716b31363bcc3d03eb3e0698c21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7130b45_7f60c691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-16T06:45:15Z",
+      "side": 1,
+      "message": "Oops, comment on the wrong CL in the chain.",
+      "parentUuid": "795e9a22_95ce7bf0",
+      "revId": "46fddaa85af75716b31363bcc3d03eb3e0698c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
