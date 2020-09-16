@@ -42,6 +42,7 @@ var (
 		"8k_read",
 		"1m_stress",
 		"1m_write",
+		"write_stress",
 	}
 )
 
@@ -174,7 +175,8 @@ func resultGroupName(ctx context.Context, res *fioResult, dev string, rawDevTest
 }
 
 // RunFioStress runs an fio job single given path according to testConfig.
-func RunFioStress(ctx context.Context, s *testing.State, testConfig TestConfig) {
+// This function returns an error rather than failing the test.
+func RunFioStress(ctx context.Context, s *testing.State, testConfig TestConfig) error {
 	rawDev := strings.HasPrefix(testConfig.Path, "/dev/")
 
 	validateJob(ctx, s, testConfig.Job)
@@ -182,7 +184,7 @@ func RunFioStress(ctx context.Context, s *testing.State, testConfig TestConfig) 
 	// Get device status/info.
 	info, err := getStorageInfo(ctx)
 	if err != nil {
-		s.Fatal("Failed to get storage info: ", err)
+		return errors.Wrap(err, "failed to get storage info")
 	}
 	devName := escapeJSONName(info.Name)
 
@@ -193,10 +195,10 @@ func RunFioStress(ctx context.Context, s *testing.State, testConfig TestConfig) 
 
 	testing.ContextLog(ctx, "Running job ", testConfig.Job)
 	var res *fioResult
-	for start := time.Now(); ; {
+	for start := time.Now().Round(0); ; {
 		res, err = runFIO(ctx, testConfig.Path, s.DataPath(testConfig.Job), testConfig.VerifyOnly)
 		if err != nil {
-			s.Errorf("%v failed: %v", testConfig.Job, err)
+			return errors.Wrapf(err, "%v failed", testConfig.Job)
 		}
 
 		// If duration test parameter is 0, we do a single iteration of a test.
@@ -208,5 +210,16 @@ func RunFioStress(ctx context.Context, s *testing.State, testConfig TestConfig) 
 	if testConfig.ResultWriter != nil {
 		group := resultGroupName(ctx, res, devName, rawDev)
 		testConfig.ResultWriter.Report(group, res)
+	}
+
+	return nil
+}
+
+// RunFioStressCritical runs an fio job single given path according to testConfig.
+// If fio returns an error, this function will fail the Tast test.
+func RunFioStressCritical(ctx context.Context, s *testing.State, testConfig TestConfig) {
+	err := RunFioStress(ctx, s, testConfig)
+	if err != nil {
+		s.Fatal("FIO stress failed: ", err)
 	}
 }
