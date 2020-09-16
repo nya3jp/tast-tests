@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "fece34f1_107e9001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-16T05:18:16Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "d569a231_cc7e5acf",
+      "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "547516bd_6a07a254",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
         "patchSetId": 5
@@ -47,6 +65,24 @@
       "writtenOn": "2020-09-15T08:05:42Z",
       "side": 1,
       "message": "Please move the testing table to init() like in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/url_check.go;bpv\u003d1\n\nThis way the two policies can be called individually, and the results are displayed separately in the dashboards.",
+      "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "798b696b_db11e471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-16T05:18:16Z",
+      "side": 1,
+      "message": "Having parameterized subtests is good for bug triaging. If so, note that URL value need to be composed in test body as server.URL is not known when the init() is called.",
+      "parentUuid": "547516bd_6a07a254",
       "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -132,6 +168,24 @@
       "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633feb74_19eda2a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-16T05:18:16Z",
+      "side": 1,
+      "message": "Thanks for the explanation.",
+      "parentUuid": "3c94e55c_7ca64549",
+      "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
