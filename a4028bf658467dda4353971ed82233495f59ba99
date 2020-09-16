@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "c7d68eae_51116d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-16T23:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43cb69fc_0d8aadab",
+      "revId": "a4028bf658467dda4353971ed82233495f59ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d74b3ded_01983395",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 19
@@ -67,6 +85,24 @@
       "revId": "a4028bf658467dda4353971ed82233495f59ba99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d03e7ad_a948ba5b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-16T23:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d74b3ded_01983395",
+      "revId": "a4028bf658467dda4353971ed82233495f59ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
