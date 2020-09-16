@@ -73,6 +73,30 @@
       "revId": "bcc668abca9d9e3175060365e05444131c30d15f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "649376aa_8954b007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_native_printers_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-16T11:09:25Z",
+      "side": 1,
+      "message": "Each subtest needs to reset the state of Chrome at the beginning of the test. Preconditions don\u0027t apply to subtests to do this automatically.",
+      "parentUuid": "05140777_1fd70687",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 4
+      },
+      "revId": "bcc668abca9d9e3175060365e05444131c30d15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
