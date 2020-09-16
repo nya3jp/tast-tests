@@ -101,6 +101,30 @@
     },
     {
       "key": {
+        "uuid": "2eac7573_39836457",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-16T17:50:01Z",
+      "side": 1,
+      "message": "For testing other boards, leasing lab DUTs using skylab is probably your best bet:\n  (outside of chroot) skylab lease-dut -minutes \u003c# of minutes\u003e -model \u003cmodel name\u003e\n\nYou\u0027ll get a device name like chromeos6-row4-rack12-host5.cros.corp.google.com, and you can pass in chromeos6-row4-rack12-host5.cros to tast run.\n\nTo find which models are chromebox/chromebase, you browse through Goldeneye\u0027s device page: https://cros-goldeneye.corp.google.com/chromeos/console/listDevice",
+      "parentUuid": "5e458cac_f40f2916",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c947c346_4432b666",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 15
