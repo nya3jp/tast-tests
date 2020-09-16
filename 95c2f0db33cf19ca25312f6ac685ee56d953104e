@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "8ff413a2_5ff68523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-16T23:24:36Z",
+      "side": 1,
+      "message": "The reason I am creating the activity here is to make sure every time we start with a new activity and close it after we are done with the test. This way snapping to right or left would become two independent tests and we don\u0027t need to be worry about side effects of one test affecting the other one. For example waiting to finish animating or other things that may delay the activity to get ready for the other test.\nIn future if there are other use-cases we can modify this function, but I know tast-owners are very cautious about making generic or public functions without any existing use-cases. They prefer to keep it simple.",
+      "parentUuid": "698aebfe_c8532515",
+      "range": {
+        "startLine": 536,
+        "startChar": 51,
+        "endLine": 536,
+        "endChar": 54
+      },
+      "revId": "95c2f0db33cf19ca25312f6ac685ee56d953104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c786b573_b9dc72d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "95c2f0db33cf19ca25312f6ac685ee56d953104e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b901e87a_b993d795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-16T23:24:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c786b573_b9dc72d9",
+      "range": {
+        "startLine": 889,
+        "startChar": 5,
+        "endLine": 889,
+        "endChar": 31
+      },
+      "revId": "95c2f0db33cf19ca25312f6ac685ee56d953104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
