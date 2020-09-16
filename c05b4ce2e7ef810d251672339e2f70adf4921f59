@@ -161,6 +161,29 @@
     },
     {
       "key": {
+        "uuid": "9c5b5b63_dc359497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_network_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T02:29:24Z",
+      "side": 1,
+      "message": "huge nit: let\u0027s swap the args to match with the line just below.",
+      "range": {
+        "startLine": 46,
+        "startChar": 23,
+        "endLine": 46,
+        "endChar": 35
+      },
+      "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7579c17c_0cc29c1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_network_info.go",
         "patchSetId": 1
@@ -172,6 +195,30 @@
       "writtenOn": "2020-09-16T01:20:37Z",
       "side": 1,
       "message": "This will probably print the output as a byte array rather than a string (do you want to print lines instead?).\nFor multi-line output, it is also usually preferable to print the result to a file in the test output directory rather than to the log.",
+      "range": {
+        "startLine": 65,
+        "startChar": 45,
+        "endLine": 65,
+        "endChar": 46
+      },
+      "revId": "c05b4ce2e7ef810d251672339e2f70adf4921f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270b1280_e5dd0a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_network_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T02:29:24Z",
+      "side": 1,
+      "message": "It is described here:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\ncould you dump into a file?",
+      "parentUuid": "7579c17c_0cc29c1a",
       "range": {
         "startLine": 65,
         "startChar": 45,
