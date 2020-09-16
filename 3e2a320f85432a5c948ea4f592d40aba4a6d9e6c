@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81c73e0b_65de2770",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "Looks like it would be better served with a single array of structs...",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f830eb6b_ffc58ba9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "Not for all routers?",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 38
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b161e756_078302bb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "What if pcap is equal to any router other than first?",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 48
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dec809f3_9f200f4d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "A more prescriptive message would be helpful",
+      "range": {
+        "startLine": 351,
+        "startChar": 26,
+        "endLine": 351,
+        "endChar": 45
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7bfa1f9_b451011e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "ap",
+      "range": {
+        "startLine": 428,
+        "startChar": 11,
+        "endLine": 428,
+        "endChar": 13
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a04c3e31_ee54bf48",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "Have you run formatting?",
+      "range": {
+        "startLine": 431,
+        "startChar": 41,
+        "endLine": 431,
+        "endChar": 45
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9898e30_a68ef530",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "I guess we\u0027ll need to ping from any router, so again an Ext version of the function?",
+      "range": {
+        "startLine": 686,
+        "startChar": 0,
+        "endLine": 686,
+        "endChar": 27
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dee553d3_050d3414",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "same here...",
+      "range": {
+        "startLine": 734,
+        "startChar": 0,
+        "endLine": 734,
+        "endChar": 27
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07d7bf5_ed288583",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "Is there any functional change to this function?",
+      "range": {
+        "startLine": 810,
+        "startChar": 0,
+        "endLine": 823,
+        "endChar": 1
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62cbd605_73336ddc",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "This does not seem to be related to support of multiple routers, right? Then it shouldn\u0027t be included in this CL",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 859,
+        "endChar": 0
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97480a3e_9e15d451",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-16T06:58:09Z",
+      "side": 1,
+      "message": "Also not related?",
+      "range": {
+        "startLine": 940,
+        "startChar": 0,
+        "endLine": 949,
+        "endChar": 0
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
