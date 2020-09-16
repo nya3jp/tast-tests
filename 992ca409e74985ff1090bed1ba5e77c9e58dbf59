@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "155aca7b_c3cbfce4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T02:19:13Z",
+      "side": 1,
+      "message": "Tast LGTM.",
+      "revId": "992ca409e74985ff1090bed1ba5e77c9e58dbf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2edebe6a_69398f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T02:19:13Z",
+      "side": 1,
+      "message": "nit: setting Started to false looks slightly weird because it is \"started and stopped\".\nHow about \"running\"?",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 19
+      },
+      "revId": "992ca409e74985ff1090bed1ba5e77c9e58dbf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
