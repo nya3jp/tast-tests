@@ -39,6 +39,30 @@
       "revId": "81c3268222123a0a4235af902e5c02fa7336df58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ccc010b_6399326f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-16T02:59:41Z",
+      "side": 1,
+      "message": "Adapted! What is the benefit in using CPU temperature over CPU usage? Why not use both?",
+      "parentUuid": "a7b28568_bc58a4b9",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "81c3268222123a0a4235af902e5c02fa7336df58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
