@@ -73,6 +73,30 @@
       "revId": "b25feff845cacf456706a0a63a69110b858ab859",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccdcacd6_19eacc24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippprint/ippprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-09-16T18:59:47Z",
+      "side": 1,
+      "message": "Output at %s, although given the same file name as the golden file, does contain the actual output and not the expected output. I have modified the diff message to indicate direction.",
+      "parentUuid": "932c386b_3269af1e",
+      "range": {
+        "startLine": 156,
+        "startChar": 19,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "b25feff845cacf456706a0a63a69110b858ab859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
