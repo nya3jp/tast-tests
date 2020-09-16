@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5be5c9fb_cbe9076a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-16T02:34:05Z",
+      "side": 1,
+      "message": "I noticed this workaround is no longer needed while developing the PowerVideoEncodePerf test. Can you take a look? Thanks!",
+      "revId": "2084a88e13e0d2509a3c7bb6d96969a345fe157d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
