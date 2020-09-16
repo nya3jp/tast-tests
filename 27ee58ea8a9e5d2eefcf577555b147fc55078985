@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0011a2bf_5c1a3384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T00:53:52Z",
+      "side": 1,
+      "message": "LGTM with minor comment.",
+      "revId": "27ee58ea8a9e5d2eefcf577555b147fc55078985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e153bf_2b19d0ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T00:53:52Z",
+      "side": 1,
+      "message": "Exec is deprecated. Could you use Eval() instead?",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "27ee58ea8a9e5d2eefcf577555b147fc55078985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
