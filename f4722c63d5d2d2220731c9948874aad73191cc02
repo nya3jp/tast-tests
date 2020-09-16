@@ -16,6 +16,69 @@
       "revId": "f4722c63d5d2d2220731c9948874aad73191cc02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18b56b92_5a094044",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-16T09:08:26Z",
+      "side": 1,
+      "message": "some nits. Please also wait for CR+2 from your team members.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
+      "revId": "f4722c63d5d2d2220731c9948874aad73191cc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17b19485_846220db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-16T09:08:26Z",
+      "side": 1,
+      "message": "nit: Might be nice to have comment to highlight it\u0027s the \"dialog exists\" case.\n\nA simliar example in: https://g3doc.corp.google.com/go/g3doc/style/guide.md?cl\u003dhead#concision",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "f4722c63d5d2d2220731c9948874aad73191cc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d86645a_0b260f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-16T09:08:26Z",
+      "side": 1,
+      "message": "nit: I guess only ErrNodeDoesNotExist is expected error? Not sure if it worth to check it here and only let ErrNodeDoesNotExist continue. If so, this order might be more common:\n\n  if err !\u003d nil \u0026\u0026 !errors.Is(err, ui.ErrNodeDoesNotExist) {\n    s.Fatal(...)\n  }\n  if err \u003d\u003d nil {\n    // Dialog pops up.\n    defer node.Release(ctx)\n    ...\n  }",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 4
+      },
+      "revId": "f4722c63d5d2d2220731c9948874aad73191cc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
