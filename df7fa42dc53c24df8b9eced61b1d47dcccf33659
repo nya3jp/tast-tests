@@ -90,6 +90,30 @@
       "revId": "df7fa42dc53c24df8b9eced61b1d47dcccf33659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "239a050c_cf800c95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_logout_button_in_tray.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-16T08:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14c8a9b4_9e144868",
+      "range": {
+        "startLine": 79,
+        "startChar": 6,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "df7fa42dc53c24df8b9eced61b1d47dcccf33659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
