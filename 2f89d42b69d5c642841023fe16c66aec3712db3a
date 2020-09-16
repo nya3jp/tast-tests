@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "1fa0dd97_0a7e5890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-16T00:11:42Z",
+      "side": 1,
+      "message": "terminal.Exit expects to be able to run the \"exit\" command in the terminal and then have it close, which is only possible if it connected successfully. I can do terminalapp.Root.Release directly though.",
+      "parentUuid": "6492dd2a_4ebe61c8",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 2
+      },
+      "revId": "2f89d42b69d5c642841023fe16c66aec3712db3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63774581_7216a45f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 3
@@ -79,6 +103,24 @@
       "revId": "2f89d42b69d5c642841023fe16c66aec3712db3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d1ee8a8_bcc8665a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-16T00:11:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63774581_7216a45f",
+      "revId": "2f89d42b69d5c642841023fe16c66aec3712db3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
