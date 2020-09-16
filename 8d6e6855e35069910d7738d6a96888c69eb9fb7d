@@ -34,6 +34,24 @@
       "revId": "8d6e6855e35069910d7738d6a96888c69eb9fb7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51e23f46_cd5464f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-16T06:58:17Z",
+      "side": 1,
+      "message": "I have seen this done regularly in other repositories without any real issues... (see crrev.com/i/3259084 and crrev.com/i/3261091 which are co-dependent). While the transactions are notionally not atomic, I believe in any builds (snapshot, postsubmit, release etc.) they should grab a consistent set of changes.\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#cq-depend\n\nAnyway, your way works as well so no real issue here.",
+      "parentUuid": "767ef88b_188c8573",
+      "revId": "8d6e6855e35069910d7738d6a96888c69eb9fb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
