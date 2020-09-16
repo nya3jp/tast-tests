@@ -22,6 +22,30 @@
       "revId": "614a91e06465f16dba449e7c9342323948248f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df4a0a26_d8dcaf33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_network_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-09-16T16:41:44Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Done.",
+      "parentUuid": "0d3ebdd3_ef85d8b6",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 38
+      },
+      "revId": "614a91e06465f16dba449e7c9342323948248f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
