@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78a52778_cd98d690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-16T16:13:50Z",
+      "side": 1,
+      "message": "would it be possible to use something like:\n\n  return time.Now().Sub(0).UnixNano() // I haven\u0027t tried it, but according to the docs it should work\n\nI believe that \"time.Now() was not monotonic before... but since a few years ago it contains both the monotonic and \"Wall\" times.\nIf you do an arithmetic operation then it should return the monotonic one.\n\nhttps://golang.org/pkg/time/#Time.UnixNano",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "revId": "73972d122d03b42e9610aa4339c6193866d37349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aefaef10_1fa0b16a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-16T16:13:50Z",
+      "side": 1,
+      "message": "nit:\n\nMerge the two blocks with something like:\n\n  if vmEnabled, err :\u003d arc.VMEnabled(); err !\u003d nil {\n    ...\n  } else if vmEnabled {\n    ..\n  }",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "73972d122d03b42e9610aa4339c6193866d37349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4a4bba7_a2eba016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-16T16:13:50Z",
+      "side": 1,
+      "message": "nit: remove empty line",
+      "revId": "73972d122d03b42e9610aa4339c6193866d37349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
