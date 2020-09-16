@@ -118,6 +118,30 @@
       "revId": "c935623a5280f9d31be30065764d9ae5c10ec3f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e955fce_4b05a1d7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-09-16T04:43:38Z",
+      "side": 1,
+      "message": "To be able to trigger the \"click\" in the menu item it needs a MouseUp event.\n\nHowever this is fragile, because there is no guarantee that the UI code won\u0027t be refactored to use other Mouse events instead,  like \"click()\" \"MouseDown\" etc. So, I wouldn\u0027t say \"permanently\" 😊",
+      "parentUuid": "5b4d64bd_a5a09651",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 24
+      },
+      "revId": "c935623a5280f9d31be30065764d9ae5c10ec3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
