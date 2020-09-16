@@ -94,6 +94,30 @@
       "revId": "c935623a5280f9d31be30065764d9ae5c10ec3f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4d64bd_a5a09651",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-09-16T04:05:24Z",
+      "side": 1,
+      "message": "Does it mean we have to issue mouseDown() + mouseUp() onto the target, without pre-generating coordinates, to fix it permanently?",
+      "parentUuid": "df999f7d_16dc728c",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 24
+      },
+      "revId": "c935623a5280f9d31be30065764d9ae5c10ec3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
