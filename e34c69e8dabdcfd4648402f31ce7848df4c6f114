@@ -33,6 +33,24 @@
       "revId": "e34c69e8dabdcfd4648402f31ce7848df4c6f114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebd556c8_dee1bbcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-16T07:13:58Z",
+      "side": 1,
+      "message": "Hi Bao, I do not think it requires any re-approvals. It is good for submit, but blocked by an infra issue https://crbug.com/1128634. I am monitoring this cl and re-submit it for you whenever it fails.",
+      "parentUuid": "0d2442ba_459e43d2",
+      "revId": "e34c69e8dabdcfd4648402f31ce7848df4c6f114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
