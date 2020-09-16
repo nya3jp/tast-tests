@@ -16,6 +16,23 @@
       "revId": "fd017dbede84c1de5ddbfda8612190870c67c579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc09c986_969ea1b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-16T10:59:03Z",
+      "side": 1,
+      "message": "File a bug that we test the login screen as well.",
+      "revId": "fd017dbede84c1de5ddbfda8612190870c67c579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
