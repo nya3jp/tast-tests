@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c505f02b_7ddb9333",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-09-16T18:56:39Z",
+      "side": 1,
+      "message": "lgtm but can you try sending \"tab\" to see if it move the focus away fro omnibox?\nIf it works then that\u0027s probably better.",
+      "revId": "371cb2d0c6e1776ae0c9946c4e1cd107b534c3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
