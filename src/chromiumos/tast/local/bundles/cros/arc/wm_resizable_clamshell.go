@@ -17,6 +17,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	crui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -34,67 +36,72 @@ func init() {
 }
 
 func WMResizableClamshell(ctx context.Context, s *testing.State) {
-	wm.SetupAndRunTestCases(ctx, s, false, []wm.TestCase{
-		wm.TestCase{
-			// resizable/clamshell: default launch behavior
-			Name: "RC01_launch",
-			Func: wmRC01,
+	wm.SetupAndRunTestCasesWithLog(ctx, s, false, []wm.TestCaseWithLog{
+		// wm.TestCase{
+		// 	// resizable/clamshell: default launch behavior
+		// 	Name: "RC01_launch",
+		// 	Func: wmRC01,
+		// },
+		// wm.TestCase{
+		// 	// resizable/clamshell: maximize portrait app (pillarbox)
+		// 	Name: "RC02_maximize_portrait",
+		// 	Func: wmRC02,
+		// },
+		// wm.TestCase{
+		// 	// resizable/clamshell: maximize non-portrait app
+		// 	Name: "RC03_maximize_non_portrait",
+		// 	Func: wmRC03,
+		// },
+		// wm.TestCase{
+		// 	// resizable/clamshell: user immerse portrait app (pillarbox)
+		// 	Name: "RC04_user_immerse_portrait",
+		// 	Func: wmRC04,
+		// },
+		// wm.TestCase{
+		// 	// resizable/clamshell: user immerse non-portrait app
+		// 	Name: "RC05_user_immerse_non_portrait",
+		// 	Func: wmRC05,
+		// },
+		// wm.TestCase{
+		// 	// resizable/clamshell: immerse via API ignored if windowed
+		// 	Name: "RC06_immerse_via_API_ignored_if_windowed",
+		// 	Func: wmRC06,
+		// },
+		// wm.TestCase{
+		// 	// resizable/clamshell: immerse via API from maximized portrait (pillarbox)
+		// 	Name: "RC07_immerse_via_API_from_maximized_portrait",
+		// 	Func: wmRC07,
+		// },
+		// wm.TestCase{
+		// 	// resizable/clamshell: immerse via API from maximized non-portrait
+		// 	Name: "RC08_immerse_via_API_from_maximized_non_portrait",
+		// 	Func: wmRC08,
+		// },
+		// wm.TestCase{
+		// 	// resizable/clamshell: new activity follows root activity
+		// 	Name: "RC09_new_activity_follows_root_activity",
+		// 	Func: wmRC09,
+		// },
+		// wm.TestCase{
+		// 	// resizable/clamshell: hide Shelf when app maximized
+		// 	Name: "RC12_hide_Shelf_when_app_maximized",
+		// 	Func: wmRC12,
+		// },
+		wm.TestCaseWithLog{
+			// resizable/clamshell: snap to half screen
+			Name: "RC14_snap_to_half_screen",
+			Func: wmRC14,
 		},
-		wm.TestCase{
-			// resizable/clamshell: maximize portrait app (pillarbox)
-			Name: "RC02_maximize_portrait",
-			Func: wmRC02,
-		},
-		wm.TestCase{
-			// resizable/clamshell: maximize non-portrait app
-			Name: "RC03_maximize_non_portrait",
-			Func: wmRC03,
-		},
-		wm.TestCase{
-			// resizable/clamshell: user immerse portrait app (pillarbox)
-			Name: "RC04_user_immerse_portrait",
-			Func: wmRC04,
-		},
-		wm.TestCase{
-			// resizable/clamshell: user immerse non-portrait app
-			Name: "RC05_user_immerse_non_portrait",
-			Func: wmRC05,
-		},
-		wm.TestCase{
-			// resizable/clamshell: immerse via API ignored if windowed
-			Name: "RC06_immerse_via_API_ignored_if_windowed",
-			Func: wmRC06,
-		},
-		wm.TestCase{
-			// resizable/clamshell: immerse via API from maximized portrait (pillarbox)
-			Name: "RC07_immerse_via_API_from_maximized_portrait",
-			Func: wmRC07,
-		},
-		wm.TestCase{
-			// resizable/clamshell: immerse via API from maximized non-portrait
-			Name: "RC08_immerse_via_API_from_maximized_non_portrait",
-			Func: wmRC08,
-		},
-		wm.TestCase{
-			// resizable/clamshell: new activity follows root activity
-			Name: "RC09_new_activity_follows_root_activity",
-			Func: wmRC09,
-		},
-		wm.TestCase{
-			// resizable/clamshell: hide Shelf when app maximized
-			Name: "RC12_hide_Shelf_when_app_maximized",
-			Func: wmRC12,
-		},
-		wm.TestCase{
-			// resizable/clamshell: display size change
-			Name: "RC15_display_size_change",
-			Func: wmRC15,
-		},
-		wm.TestCase{
-			// resizable/clamshell: font size change
-			Name: "RC17_font_size_change",
-			Func: wmRC17,
-		},
+		// wm.TestCase{
+		// 	// resizable/clamshell: display size change
+		// 	Name: "RC15_display_size_change",
+		// 	Func: wmRC15,
+		// },
+		// wm.TestCase{
+		// 	// resizable/clamshell: font size change
+		// 	Name: "RC17_font_size_change",
+		// 	Func: wmRC17,
+		// },
 	})
 }
 
@@ -426,6 +433,25 @@ func wmRC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
+// wmRC14 covers resizable/clamshell: snap to half screen
+// Expected behavior is defined in: go/arc-wm-r RC14: resizable/clamshell: snap to half screen.
+func wmRC14(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, s *testing.State) error {
+	if err := snapToHalfHelperMaxToSideDrags(ctx, tconn, a, d, true); err != nil {
+		return errors.Wrap(err, "snap to left test failed")
+	}
+	if err := snapToHalfHelperMaxToSideDrags(ctx, tconn, a, d, false); err != nil {
+		return errors.Wrap(err, "snap to right test failed")
+	}
+	if err := snapToHalfHelperCaptionBarSideDrags(ctx, tconn, a, d, true); err != nil {
+		return errors.Wrap(err, "snap to left test failed")
+	}
+	if err := snapToHalfHelperCaptionBarSideDrags(ctx, tconn, a, d, false); err != nil {
+		return errors.Wrap(err, "snap to right test failed")
+	}
+
+	return nil
+}
+
 // wmRC15 covers resizable/clamshell: display size change.
 // Expected behavior is defined in: go/arc-wm-r RC15: resizable/clamshell: display size change.
 func wmRC15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
@@ -496,6 +522,121 @@ func wmRC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return nil
+}
+
+// snapToHalfHelperMaxToSideDrags snaps the activity to left/right side of the screen by long press maximize button and snap to left/right.
+func snapToHalfHelperMaxToSideDrags(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, isLeft bool) error {
+	// Start a new activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "failed to create new activity")
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start new activity")
+	}
+	defer func(ctx context.Context) {
+		act.Stop(ctx, tconn)
+	}(ctx)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return errors.Wrap(err, "failed to wait until activity is ready")
+	}
+
+	dInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get primary display info")
+	}
+	if dInfo == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	if err := leftClickDragCaptionButton(ctx, tconn, "Maximize", isLeft); err != nil {
+		return errors.New("failed to left click and drag Maximize caption button")
+	}
+
+	// Desired left border of activity after snap.
+	left := 0
+	if !isLeft {
+		// if snap to right, left border is the middle of screen.
+		left = dInfo.WorkArea.Width / 2
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		snpInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return errors.Wrap(err, "failed to get arc app window info")
+		}
+
+		if snpInfo.TargetBounds.Top != 0 || snpInfo.TargetBounds.Left != left ||
+			snpInfo.TargetBounds.Width != dInfo.WorkArea.Width/2 || snpInfo.TargetBounds.Height != dInfo.WorkArea.Height {
+			halfBounds := coords.NewRect(0, left, dInfo.WorkArea.Width/2, dInfo.WorkArea.Height)
+			return errors.Errorf("invalid window bounds after snap to half screen; got: %s, want: %s", snpInfo.TargetBounds, halfBounds)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
+// snapToHalfHelperCaptionBarSideDrags snaps the activity to left/right side of the screen by dragging the caption button to left/right corner of screen.
+func snapToHalfHelperCaptionBarSideDrags(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, isLeft bool) error {
+	// Start a new activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "failed to create new activity")
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start new activity")
+	}
+	defer func(ctx context.Context) {
+		act.Stop(ctx, tconn)
+	}(ctx)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return errors.Wrap(err, "failed to wait until activity is ready")
+	}
+
+	dInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get primary display info")
+	}
+	if dInfo == nil {
+		return errors.New("failed to find primary display info")
+	}
+	wInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info")
+	}
+
+	source := coords.NewPoint(wInfo.TargetBounds.Left+wInfo.TargetBounds.Width/2, wInfo.TargetBounds.Top+5)
+	if err := leftClickDragCaptionBar(ctx, tconn, source, dInfo.WorkArea.Width, isLeft); err != nil {
+		return errors.Wrap(err, "failed to drag caption bar to corner of screen")
+	}
+
+	// Desired left border of activity after snap.
+	left := 0
+	if !isLeft {
+		// if snap to right, left border is the middle of screen.
+		left = dInfo.WorkArea.Width / 2
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		snpInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return errors.Wrap(err, "failed to get arc app window info")
+		}
+
+		if snpInfo.TargetBounds.Top != 0 || snpInfo.TargetBounds.Left != left ||
+			snpInfo.TargetBounds.Width != dInfo.WorkArea.Width/2 || snpInfo.TargetBounds.Height != dInfo.WorkArea.Height {
+			halfBounds := coords.NewRect(0, left, dInfo.WorkArea.Width/2, dInfo.WorkArea.Height)
+			return errors.Errorf("invalid window bounds after snap to half screen; got: %s, want: %s", snpInfo.TargetBounds, halfBounds)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
 // rcDisplaySizeChangeTestsHelper is used for Tast-tests that are testing resolution change and its effects on an activity.
@@ -809,6 +950,35 @@ func leftClickCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName
 	}
 
 	return nil
+}
+
+// leftClickDragCaptionButton function will simulate left click long press event on a caption button by button's name.
+func leftClickDragCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string, toLeft bool) error {
+	captionBtn, err := crui.Find(ctx, tconn, crui.FindParams{ClassName: "FrameCaptionButton", Name: btnName})
+	if err != nil {
+		return errors.Errorf("failed to find \"%q\" caption button", btnName)
+	}
+
+	d := 25
+	if toLeft {
+		d = -d
+	}
+
+	destLoc := coords.NewPoint(captionBtn.Location.CenterPoint().X+d, captionBtn.Location.CenterPoint().Y)
+	return mouse.Drag(ctx, tconn, captionBtn.Location.CenterPoint(), destLoc, 500*time.Millisecond)
+}
+
+// leftClickDragCaptionBar function will simulate left click long press event on a caption button by button's name.
+func leftClickDragCaptionBar(ctx context.Context, tconn *chrome.TestConn, source coords.Point, screenWidth int, toLeft bool) error {
+	destX := 0
+	destY := 0
+
+	if !toLeft {
+		destX = screenWidth
+	}
+
+	dest := coords.NewPoint(destX, destY)
+	return mouse.Drag(ctx, tconn, source, dest, 750*time.Millisecond)
 }
 
 // rcMaxRestoreTestHelper performs RC02 test either by left clicking or touching the caption button.
