@@ -16,6 +16,23 @@
       "revId": "e34c69e8dabdcfd4648402f31ce7848df4c6f114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d2442ba_459e43d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2020-09-16T06:52:33Z",
+      "side": 1,
+      "message": "@ reviewers: Apparently Gerrit tells me that this needs re-Approvals again. Could you PTAL? Thanks and sorry for the trouble. On a side note, the CQ is still failing; I may need also another CQ+2 from those with the power to do so.",
+      "revId": "e34c69e8dabdcfd4648402f31ce7848df4c6f114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
