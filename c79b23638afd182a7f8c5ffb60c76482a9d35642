@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04829700_2e13fd3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/file_folder_operations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-16T17:44:26Z",
+      "side": 1,
+      "message": "When it fails, the created subfolders remain.  Please add some defer to ensure that the folders are removed.\n\nIf you worry about the screenshot, maybe you should take a screenshot by yourself (keep in mind that the last defer runs first), i.e.\n\n  var createdFolders []string\n  defer func() {\n    for _, folder :\u003d range createdFolders {\n      if err :\u003d files.DeleteFileOrFolder(ctx, folder); err !\u003d nil {\n        s.Errorf(\"Failed deleting folder %q: %v\", folder, err)\n      }\n    }\n  }()\n\n  defer func() {\n    if s.HasError() {\n      if err :\u003d screenshot.CaptureChrome(ctx, cr, filepath.Join(s.OutDir(), \"screenshot.png\"); err !\u003d nil {\n        testing.ContextLog(ctx, \"Failed to take the screenshot: \", err)\n      }\n    }\n  }()\n\nbefore the for-loop.  That also allows you to close the Files.app window at the end of the test.",
+      "revId": "c79b23638afd182a7f8c5ffb60c76482a9d35642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4282e1a3_3681e01b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-16T17:44:26Z",
+      "side": 1,
+      "message": "defer folders.Release(ctx)",
+      "revId": "c79b23638afd182a7f8c5ffb60c76482a9d35642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
