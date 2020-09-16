@@ -16,6 +16,98 @@
       "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30954723_25417972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-16T16:48:56Z",
+      "side": 1,
+      "message": "Is this polling needed? the last command shouldn\u0027t complete until it is in the maximized state.",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 62
+      },
+      "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be71f0d_a874f177",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-16T16:48:56Z",
+      "side": 1,
+      "message": "ditto, potentially. After waiting for the window state and finished animating, shouldn\u0027t the bounds be correct without polling.",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 62
+      },
+      "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7351ff5a_256fc5d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-16T16:48:56Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 384,
+        "startChar": 1,
+        "endLine": 384,
+        "endChar": 62
+      },
+      "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3eb2a37_6144a45f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-16T16:48:56Z",
+      "side": 1,
+      "message": "This is redundant and should never happen. On L410, you already wait for the display orientation to be landscape.",
+      "range": {
+        "startLine": 428,
+        "startChar": 1,
+        "endLine": 436,
+        "endChar": 2
+      },
+      "revId": "73301a639d173c09b8c302f405ba800a8a84a300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
