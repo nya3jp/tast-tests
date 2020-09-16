@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6fe202_8b518b20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-16T14:08:37Z",
+      "side": 1,
+      "message": "I think this is ready to try again.  I ran a tryjob to confirm that the external builders are fixed: https://ci.chromium.org/p/chromeos/builders/general/Try/b8869070177903678144\n\nIt looks like a few boards are hitting b/153516375 on recent runs, but that\u0027s not related to these tests.",
+      "revId": "07d43bf0b078b23f4ec1aa70765c639b82a0fd84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
