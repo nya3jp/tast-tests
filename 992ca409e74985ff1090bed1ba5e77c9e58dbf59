@@ -39,6 +39,30 @@
       "revId": "992ca409e74985ff1090bed1ba5e77c9e58dbf59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7ad1a66_0c08e79c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-16T17:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2edebe6a_69398f9b",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 19
+      },
+      "revId": "992ca409e74985ff1090bed1ba5e77c9e58dbf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
