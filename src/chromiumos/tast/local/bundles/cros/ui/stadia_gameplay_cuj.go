@@ -53,7 +53,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
-	conn, err := cr.NewConn(ctx, stadiacuj.StadiaAllGamesUrl)
+	conn, err := cr.NewConn(ctx, stadiacuj.StadiaAllGamesURL)
 	if err != nil {
 		s.Fatal("Failed to open the stadia staging instance: ", err)
 	}
