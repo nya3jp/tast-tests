@@ -688,7 +688,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 
 func waitForStableEnvironment(ctx context.Context) error {
 	// Wait for CPU to cool down.
-	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		return errors.Wrap(err, "failed to wait for CPU to cool down")
 	}
 
