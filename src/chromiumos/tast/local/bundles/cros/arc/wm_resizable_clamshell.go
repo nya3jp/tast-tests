@@ -17,6 +17,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	crui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -84,6 +86,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			// resizable/clamshell: hide Shelf when app maximized
 			Name: "RC12_hide_Shelf_when_app_maximized",
 			Func: wmRC12,
+		},
+		wm.TestCase{
+			// resizable/clamshell: snap to half screen
+			Name: "RC14_snap_to_half_screen",
+			Func: wmRC14,
 		},
 		wm.TestCase{
 			// resizable/clamshell: display size change
@@ -426,6 +433,18 @@ func wmRC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
+// wmRC14 covers resizable/clamshell: snap to half screen
+// Expected behavior is defined in: go/arc-wm-r RC14: resizable/clamshell: snap to half screen.
+func wmRC14(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	if err := snapToHalfHelper(ctx, tconn, a, d, true); err != nil {
+		return errors.Wrap(err, "snap to left test failed")
+	}
+	if err := snapToHalfHelper(ctx, tconn, a, d, false); err != nil {
+		return errors.Wrap(err, "snap to right test failed")
+	}
+	return nil
+}
+
 // wmRC15 covers resizable/clamshell: display size change.
 // Expected behavior is defined in: go/arc-wm-r RC15: resizable/clamshell: display size change.
 func wmRC15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
@@ -496,6 +515,61 @@ func wmRC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return nil
+}
+
+// snapToHalfHelper snaps the activity to left or right side of the screen.
+func snapToHalfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, isLeft bool) error {
+	// Start a new activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "failed to create new activity")
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start new activity")
+	}
+	defer func(ctx context.Context) {
+		act.Stop(ctx, tconn)
+	}(ctx)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return errors.Wrap(err, "failed to wait until activity is ready")
+	}
+
+	dInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get primary display info")
+	}
+	if dInfo == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	if err := leftClickDragCaptionButton(ctx, tconn, "Maximize", isLeft); err != nil {
+		return errors.New("failed to left click and drag Maximize caption button")
+	}
+
+	// Desired left border of activity after snap.
+	left := 0
+	if !isLeft {
+		// if snap to right, left border is the middle of screen.
+		left = dInfo.WorkArea.Width / 2
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		snpInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return errors.Wrap(err, "failed to get arc app window info")
+		}
+
+		if snpInfo.TargetBounds.Top != 0 || snpInfo.TargetBounds.Left != left ||
+			snpInfo.TargetBounds.Width != dInfo.WorkArea.Width/2 || snpInfo.TargetBounds.Height != dInfo.WorkArea.Height {
+			halfBounds := coords.NewRect(0, left, dInfo.WorkArea.Width/2, dInfo.WorkArea.Height)
+			return errors.Errorf("invalid window bounds after snap to half screen; got: %s, want: %s", snpInfo.TargetBounds, halfBounds)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
 // rcDisplaySizeChangeTestsHelper is used for Tast-tests that are testing resolution change and its effects on an activity.
@@ -809,6 +883,22 @@ func leftClickCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName
 	}
 
 	return nil
+}
+
+// leftClickDragCaptionButton function will simulate left click long press event on a caption button by button's name.
+func leftClickDragCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string, toLeft bool) error {
+	captionBtn, err := crui.Find(ctx, tconn, crui.FindParams{ClassName: "FrameCaptionButton", Name: btnName})
+	if err != nil {
+		return errors.Errorf("failed to find \"%q\" caption button", btnName)
+	}
+
+	d := 25
+	if toLeft {
+		d = -d
+	}
+
+	destLoc := coords.NewPoint(captionBtn.Location.CenterPoint().X+d, captionBtn.Location.CenterPoint().Y)
+	return mouse.Drag(ctx, tconn, captionBtn.Location.CenterPoint(), destLoc, 500*time.Millisecond)
 }
 
 // rcMaxRestoreTestHelper performs RC02 test either by left clicking or touching the caption button.
