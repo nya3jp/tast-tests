@@ -70,6 +70,24 @@
       "revId": "8d6e6855e35069910d7738d6a96888c69eb9fb7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b58b19_a6ecaacb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-16T07:07:33Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure it should work, as noted we have tried Cq-Depend loops before and the document I link to explicitly permits them.\nThis CL would depend upon e.g. chromium-internal:3272172 and crrev.com/i/3272172 would depend upon this CL (chromium:2412064).",
+      "parentUuid": "6abb5a5b_39f0770a",
+      "revId": "8d6e6855e35069910d7738d6a96888c69eb9fb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
