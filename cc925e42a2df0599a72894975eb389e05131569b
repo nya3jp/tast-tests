@@ -34,6 +34,24 @@
       "revId": "cc925e42a2df0599a72894975eb389e05131569b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee06a7cd_137ec179",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-16T08:47:37Z",
+      "side": 1,
+      "message": "I see, thanks for the answers.\nCan you add a comment somewhere about this reason you use the external URL?\n\nI tried to create the Newconn() with sensitiveURL instead of \"\", and skipped the navigation. The test seemed to worked like this as well. This way the title should be the correct one as soon as the Newconn() is ready. Is there a reason why Navigate() is needed?",
+      "parentUuid": "d364becd_4daaedd9",
+      "revId": "cc925e42a2df0599a72894975eb389e05131569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
