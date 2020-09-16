@@ -120,15 +120,21 @@ func waitAndClickElement(ctx context.Context, conn *chrome.Conn, jsExpr string) 
 // CreateBlankGoogleDoc creates a google doc with supplied filename in the directory path.
 // All paths should start with root unless they are team drives, in which case the drive path.
 func (d *APIClient) CreateBlankGoogleDoc(ctx context.Context, fileName string, dirPath []string) (*drive.File, error) {
-	doc := &drive.File{
-		MimeType: "application/vnd.google-apps.document",
-		Name:     fileName,
-		Parents:  dirPath,
-	}
-	return d.Service.Files.Create(doc).Do()
+	return d.CreateBlankFileWithMimeType(ctx, fileName, "application/vnd.google-apps.document", dirPath)
 }
 
 // RemoveFileByID removes the file by supplied fileID.
 func (d *APIClient) RemoveFileByID(ctx context.Context, fileID string) error {
 	return d.Service.Files.Delete(fileID).Do()
+}
+
+// CreateBlankFileWithMimeType creates a blank file of the supplied mimeType.
+// All paths should start with root unless they are team drives, in which case the drive path.
+func (d *APIClient) CreateBlankFileWithMimeType(ctx context.Context, fileName, mimeType string, dirPath []string) (*drive.File, error) {
+	doc := &drive.File{
+		MimeType: mimeType,
+		Name:     fileName,
+		Parents:  dirPath,
+	}
+	return d.Service.Files.Create(doc).Do()
 }
