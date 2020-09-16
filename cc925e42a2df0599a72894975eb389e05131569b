@@ -52,6 +52,23 @@
       "revId": "cc925e42a2df0599a72894975eb389e05131569b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee2cdcb0_ccda8f4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-16T12:24:07Z",
+      "side": 1,
+      "message": "I tried to run the test a few times, and found a few things I was missing.\nIt would be nice to add a comment about what is the PII redaction, like the email address in the data from \"getSystemInformation\" are changed to e.g. \u003cemail: 18\u003e.\n\nAs I see the test checks for URL and email redactions, but it is not looking for the HASH redactions.\nIs it implemented in another test?\n\nOne more thing I still don\u0027t see: is the tab title sensitive information or not? If it is, why can it be visible under \"mem_usage_with_title\". If it is not, why can\u0027t it be at other places as well?",
+      "revId": "cc925e42a2df0599a72894975eb389e05131569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
