@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -75,6 +76,12 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
 	}
+
+	kw, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard event writer: ", err)
+	}
+	defer kw.Close()
 
 	timeline, err := perf.NewTimeline(ctx, power.TestMetrics())
 	if err != nil {
@@ -215,10 +222,14 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer extraConn.Close()
 
-	// Wait for chrome://settings to be quiescent. We want data that we
-	// could extrapolate, as in a steady state that could last for hours.
 	if err := webutil.WaitForQuiescence(ctx, extraConn, 10*time.Second); err != nil {
 		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
+	}
+
+	// Tab away from the search box of chrome://settings, so that
+	// there will be no blinking cursor.
+	if err := kw.Accel(ctx, "Tab"); err != nil {
+		s.Fatal("Failed to send Tab: ", err)
 	}
 
 	if err := timeline.Start(ctx); err != nil {
