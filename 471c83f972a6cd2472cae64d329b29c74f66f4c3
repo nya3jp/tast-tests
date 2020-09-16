@@ -16,6 +16,23 @@
       "revId": "471c83f972a6cd2472cae64d329b29c74f66f4c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34c13384_20027cdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-16T19:56:40Z",
+      "side": 1,
+      "message": "auto-submit is pesky, as you don\u0027t have OWNERS approval yet...",
+      "revId": "471c83f972a6cd2472cae64d329b29c74f66f4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
