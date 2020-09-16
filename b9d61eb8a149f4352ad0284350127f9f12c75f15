@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e32c1e49_17133039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-16T10:46:55Z",
+      "side": 1,
+      "message": "As discussed offline with gabormagda@, I have merged the tests for the 2 new policies with the existing tests for the DefaultPopupsSetting policy and renamed the test and data files accordingly.\nHope it looks better now.",
+      "parentUuid": "fece34f1_107e9001",
+      "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "547516bd_6a07a254",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
         "patchSetId": 5
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "Having parameterized subtests is good for bug triaging. If so, note that URL value need to be composed in test body as server.URL is not known when the init() is called.",
       "parentUuid": "547516bd_6a07a254",
+      "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb37c7c_4c24781e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-16T10:46:55Z",
+      "side": 1,
+      "message": "Moved the testing table to init().\nThe allow and block list policies accept URLs in a particular format [1].\nI tried using the following formats in the test cases but they do not seem to work :-\n\u0027*\u0027\n\u0027*/popups_for_url_check_index.html\u0027\n\u0027*popups_for_url_check_index.html\u0027\n\u0027*/*popups_for_url_check_index.html*\u0027\n\u0027*://*/popups_for_url_check_index.html\u0027\n\n\u0027*\u0027 works fine when the allow/block list policy is used alone, but seems to fails when used along with the default popup setting policy. As discussed, I have added a TODO to investigate further.\n\n[1] https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns",
+      "parentUuid": "798b696b_db11e471",
       "revId": "b9d61eb8a149f4352ad0284350127f9f12c75f15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
