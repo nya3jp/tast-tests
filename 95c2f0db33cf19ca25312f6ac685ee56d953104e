@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d09b4abb_58834db4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1235784
+      },
+      "writtenOn": "2020-09-16T21:48:46Z",
+      "side": 1,
+      "message": "Thanks for setting this up",
+      "revId": "95c2f0db33cf19ca25312f6ac685ee56d953104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "698aebfe_c8532515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1235784
+      },
+      "writtenOn": "2020-09-16T21:48:46Z",
+      "side": 1,
+      "message": "I feel like this should be passed-in rather than created here. This way we can re-use this \"snap to half\" helper for other tests (eg. maybe we need to eventually test dragging out of snap, or want to test dragging from left snap to right snap).",
+      "range": {
+        "startLine": 536,
+        "startChar": 51,
+        "endLine": 536,
+        "endChar": 54
+      },
+      "revId": "95c2f0db33cf19ca25312f6ac685ee56d953104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c786b573_b9dc72d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1235784
+      },
+      "writtenOn": "2020-09-16T21:48:46Z",
+      "side": 1,
+      "message": "There seems to be 2 drag-into-snap modes. One is this caption-button one, but the other is dragging the window itself far-enough to the side. Do we want to test those?",
+      "range": {
+        "startLine": 889,
+        "startChar": 5,
+        "endLine": 889,
+        "endChar": 31
+      },
+      "revId": "95c2f0db33cf19ca25312f6ac685ee56d953104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
