@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "43f2707b_1934027d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-16T12:41:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc09c986_969ea1b4",
+      "revId": "fd017dbede84c1de5ddbfda8612190870c67c579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d09ad20_1460cc30",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
         "patchSetId": 2
@@ -47,6 +65,30 @@
       "writtenOn": "2020-09-16T11:00:26Z",
       "side": 1,
       "message": "nit: also release this node",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 9
+      },
+      "revId": "fd017dbede84c1de5ddbfda8612190870c67c579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df261d7_bb47e2a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-16T12:41:16Z",
+      "side": 1,
+      "message": "It\u0027s Release is defered in line 106 after checking if the button exists.",
+      "parentUuid": "3d09ad20_1460cc30",
       "range": {
         "startLine": 101,
         "startChar": 3,
