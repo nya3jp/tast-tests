@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c56546cc_880aa52b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-16T09:46:50Z",
+      "side": 1,
+      "message": "This change contains a behavior change in DiscoverBSSID: If the BSSID is already found before calling the gRPC, in the old logic, it will early return without triggering scans, while the new logic might still try to trigger some scans.\n\nI think that does not break anything and the current code is a little more organized (no need of the complicated inline background routine). WDYT?",
+      "revId": "d77e327f4dad61261c72f84671e3271a571e3977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
