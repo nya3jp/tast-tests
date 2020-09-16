@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba05fd95_b3f182fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-16T06:45:37Z",
+      "side": 1,
+      "message": "I don\u0027t think it makes sense for me to review just this CL in isolation, and it looks like there are plenty of eyes on the precursor CL, so maybe just recycle the same reviewers from there?\nIf you do want me to review, I think I\u0027m missing a link to the tast-test-private CL that explains why this three-step process is required.\n\nFor example, is it not possible to submit a pair of CLs to tast-tests-private and tast-tests (Cq-Depends) at the same time (by CQ-Depending the changes)?",
+      "revId": "8d6e6855e35069910d7738d6a96888c69eb9fb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
