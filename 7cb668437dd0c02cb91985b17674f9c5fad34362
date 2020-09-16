@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1189498_3a32aca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-16T01:24:47Z",
+      "side": 1,
+      "message": "Hi reviewers, just noticed that https://crrev.com/c/2405337 is making some changes into managed device testing. So defer pushing LaunchHelpAppOnManagedDevice to CQ",
+      "revId": "7cb668437dd0c02cb91985b17674f9c5fad34362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
