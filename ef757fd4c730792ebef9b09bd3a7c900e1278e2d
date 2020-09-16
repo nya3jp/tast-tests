@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a0da5395_4d9013c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-16T19:18:51Z",
+      "side": 1,
+      "message": "noted. I\u0027ll definitely do this explicitly in the future even if CQ rejects can be noisy.",
+      "parentUuid": "a1007cb0_3248aea0",
+      "revId": "ef757fd4c730792ebef9b09bd3a7c900e1278e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a165a028_e0710954",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go",
         "patchSetId": 5
@@ -74,6 +92,30 @@
       "revId": "ef757fd4c730792ebef9b09bd3a7c900e1278e2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40872fff_4f75f41f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-16T19:18:51Z",
+      "side": 1,
+      "message": "Fixed. I forgot to submit this patch change in tandem with the rename.",
+      "parentUuid": "a165a028_e0710954",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 22,
+        "endChar": 46
+      },
+      "revId": "ef757fd4c730792ebef9b09bd3a7c900e1278e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
