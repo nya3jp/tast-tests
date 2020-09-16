@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "894c93ed_7c9cf30d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/touch_virtual_keyboard_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-16T09:57:42Z",
+      "side": 1,
+      "message": "If you are not using the node, you should use ui.WaitUntilExists(), as ui.FindWithTimeout() returns with the node that should be released.",
+      "revId": "04ca6077e21bdb274df2c4717addbbd52b8f66cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
