@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fa036e2_e0db5c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_record.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T07:41:51Z",
+      "side": 1,
+      "message": "optional: can be online.\nnew MediaRecorder(stream).start();",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "b754de50fce43ba9a4abdbc930a01c914f32e042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
