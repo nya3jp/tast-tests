@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b808d1f1_9753430f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-16T08:55:33Z",
+      "side": 1,
+      "message": "Still LTGM for networking side. Deferring to OWNERs for approval.",
+      "revId": "ca84727298426df0c5009d6430da6810c52938f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ab61711_8581e797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-16T08:55:33Z",
+      "side": 1,
+      "message": "You can\u0027t early return on the first error. For instance if an error happens here, the iptables rules are never removed.\n\nInstead you need to collect errors and make best effort to close all listeners and remove all iptables. And then at the very end maybe return errors as a single big concatenated string of all error msgs ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 56
+      },
+      "revId": "ca84727298426df0c5009d6430da6810c52938f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
