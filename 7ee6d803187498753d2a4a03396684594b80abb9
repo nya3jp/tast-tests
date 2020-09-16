@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8a76c56_a2e9d64d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-16T04:48:26Z",
+      "side": 1,
+      "message": "Hmm, since currently we have already kept a reference of Chrome in App instance, do you mean decouple \"|TestEnvironment| and |App|\" or \"|Chrome| and |App|\"? \nI can do the former one but if we want to decouple |Chrome| and |App| I think it might also be another huge task and we should better do it in another CL.",
+      "parentUuid": "8aecdca9_ccc0224a",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 4
+      },
+      "revId": "7ee6d803187498753d2a4a03396684594b80abb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b95a7e83_5799050e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 12
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "2f8976cd_1153172f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-16T04:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b95a7e83_5799050e",
+      "revId": "7ee6d803187498753d2a4a03396684594b80abb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86139744_0f147814",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_power_perf.go",
         "patchSetId": 12
@@ -56,6 +98,24 @@
       "revId": "7ee6d803187498753d2a4a03396684594b80abb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f78369fe_3e0bcaa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_power_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-16T04:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86139744_0f147814",
+      "revId": "7ee6d803187498753d2a4a03396684594b80abb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -79,6 +139,30 @@
       "revId": "7ee6d803187498753d2a4a03396684594b80abb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee374726_bf5163f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_environment.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-16T04:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16347967_3ae6fa7f",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "7ee6d803187498753d2a4a03396684594b80abb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
