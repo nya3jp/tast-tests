@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -21,6 +22,10 @@ func init() {
 		},
 		SoftwareDeps: []string{"tablet_mode"},
 		Attr:         []string{"group:mainline"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel(
+			"ezkinil", // TODO(b/162258095): Ezkinil lab DUTs have Qualcomm chip
+			"dalboz",  // TODO(b/162258095): Dalboz lab DUTs have Qualcomm chip
+		)),
 	})
 }
 
