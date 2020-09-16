@@ -34,6 +34,46 @@
       "revId": "ef757fd4c730792ebef9b09bd3a7c900e1278e2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1007cb0_3248aea0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-16T18:36:08Z",
+      "side": 1,
+      "message": "protip: read the builder logs before resubmitting. I know there an abundance of reasons that the CQ rejects you for not-your-fault reasons, but you should usually try to make at least a small attempt to look at the reasons before resubmitting",
+      "revId": "ef757fd4c730792ebef9b09bd3a7c900e1278e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a165a028_e0710954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-16T18:36:08Z",
+      "side": 1,
+      "message": "tast-remote-tests-cros-0.0.1-r3779:  * Vetting \"chromiumos/tast/...\"\ntast-remote-tests-cros-0.0.1-r3779: warning: ignoring symlink /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.1-r3779/work/tast-remote-tests-cros-0.0.1/src/chromiumos/tast/remote/bundles/cros/firmware/data/fw-testing-configs\ntast-remote-tests-cros-0.0.1-r3779: # chromiumos/tast/local/bundles/cros/network\ntast-remote-tests-cros-0.0.1-r3779: src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go:22:25: undefined: hwdep.WifiHasHESupport\ntast-remote-tests-cros-0.0.1-r3779: # chromiumos/tast/local/bundles/cros/network\ntast-remote-tests-cros-0.0.1-r3779: vet: src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go:22:31: WifiHasHESupport not declared by package hwdep",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 22,
+        "endChar": 46
+      },
+      "revId": "ef757fd4c730792ebef9b09bd3a7c900e1278e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
