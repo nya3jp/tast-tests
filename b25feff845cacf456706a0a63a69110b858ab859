@@ -33,6 +33,46 @@
       "revId": "b25feff845cacf456706a0a63a69110b858ab859",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d1da932_f2203ab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-16T01:45:55Z",
+      "side": 1,
+      "message": "Tast Shadow Review: LGTM % nits.",
+      "revId": "b25feff845cacf456706a0a63a69110b858ab859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "932c386b_3269af1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippprint/ippprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-16T01:45:55Z",
+      "side": 1,
+      "message": "When printing diffs, it is also nice to print the direction of the diff (see, e.g. go/go-style/decisions#print-diffs). I also understood \"output at %s\" to be be referring to the actual output instead of the expected output.\n\nHow about reducing it to something like: \"Printer output differs from expected: diff saved to %s (-want +got)\"?\n(you may need to swap your arguments to diff.Diff to make the direction of the diff consistent with this message.)",
+      "range": {
+        "startLine": 156,
+        "startChar": 19,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "b25feff845cacf456706a0a63a69110b858ab859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
