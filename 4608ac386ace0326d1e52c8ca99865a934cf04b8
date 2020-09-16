@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "721c1d85_53710f13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T15:37:59Z",
+      "side": 1,
+      "message": "nit: instead, could you check whether error is returned?",
+      "range": {
+        "startLine": 222,
+        "startChar": 64,
+        "endLine": 222,
+        "endChar": 82
+      },
+      "revId": "4608ac386ace0326d1e52c8ca99865a934cf04b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c144ea_cc463a47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-16T15:37:59Z",
+      "side": 1,
+      "message": "nit: SplitN(cr.User(), \"@\", 2)[0], just incase. (Sorry, overlooked in the last iteration).",
+      "range": {
+        "startLine": 250,
+        "startChar": 21,
+        "endLine": 250,
+        "endChar": 26
+      },
+      "revId": "4608ac386ace0326d1e52c8ca99865a934cf04b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
