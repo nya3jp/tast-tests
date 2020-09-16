@@ -151,11 +151,7 @@ func diskSizePretty(dev string) (sizeGB string, err error) {
 
 func reportResults(ctx context.Context, res *fioResult, group string, perfValues *perf.Values) {
 	for _, job := range res.Jobs {
-		if strings.Contains(job.Jobname, "read") || strings.Contains(job.Jobname, "stress") {
-			reportJobRWResult(ctx, job.Read, job.Jobname+"_read", group, perfValues)
-		}
-		if strings.Contains(job.Jobname, "write") || strings.Contains(job.Jobname, "stress") {
-			reportJobRWResult(ctx, job.Write, job.Jobname+"_write", group, perfValues)
-		}
+		reportJobRWResult(ctx, job.Read, job.Jobname+"_read", group, perfValues)
+		reportJobRWResult(ctx, job.Write, job.Jobname+"_write", group, perfValues)
 	}
 }
