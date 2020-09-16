@@ -17,6 +17,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	crui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -84,6 +86,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			// resizable/clamshell: hide Shelf when app maximized
 			Name: "RC12_hide_Shelf_when_app_maximized",
 			Func: wmRC12,
+		},
+		wm.TestCase{
+			// resizable/clamshell: freeform resize
+			Name: "RC13_freeform_resize",
+			Func: wmRC13,
 		},
 		wm.TestCase{
 			// resizable/clamshell: display size change
@@ -424,6 +431,74 @@ func wmRC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
+// wmRC13 covers resizable/clamshell: freeform resize.
+// Expected behavior is defined in: go/arc-wm-r RC13: resizable/clamshell: freeform resize.
+func wmRC13(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// Start a new activity.
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "failed to create new activity")
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start new activity")
+	}
+	defer func(ctx context.Context) {
+		act.Stop(ctx, tconn)
+	}(ctx)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return errors.Wrap(err, "failed to wait until activity is ready")
+	}
+
+	owInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info")
+	}
+
+	dInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get primary display info")
+	}
+	if dInfo == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	// The actual anchor point that the cursor changes to resize icon is not on the activty's frame.
+	// It starts from one pixel out of the activity's frame, adding one pixel is for that reason.
+	bottomRight := coords.NewPoint(owInfo.TargetBounds.Left+owInfo.TargetBounds.Width+1, owInfo.TargetBounds.Top+owInfo.TargetBounds.Height+1)
+
+	// Drag the activty +20% horizontaly.
+	toX := owInfo.TargetBounds.Left + 6*owInfo.TargetBounds.Width/5
+
+	// If it goes out of display work area, take the display work area width as the destination point.
+	if toX > dInfo.WorkArea.Width {
+		toX = dInfo.WorkArea.Width
+	}
+
+	// Drag the activty -20% vertically.
+	toY := owInfo.TargetBounds.Top + 4*owInfo.TargetBounds.Height/5
+
+	// Destination point.
+	to := coords.NewPoint(toX, toY)
+
+	if err := mouse.Drag(ctx, tconn, bottomRight, to, 600*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to drag the mouse")
+	}
+
+	wInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "unable to get arc app window info after freeform resizing")
+	}
+
+	if wInfo.TargetBounds == owInfo.TargetBounds {
+		return errors.Errorf("invalid window bounds after freeform resizing: got %q; want different than %q", wInfo.TargetBounds, owInfo.TargetBounds)
+	}
+
+	return nil
 }
 
 // wmRC15 covers resizable/clamshell: display size change.
