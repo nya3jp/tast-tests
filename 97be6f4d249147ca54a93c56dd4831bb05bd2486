@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e44e6d67_4cbc7800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-16T16:35:48Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "97be6f4d249147ca54a93c56dd4831bb05bd2486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "877548f5_c23e649a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/touch_input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-16T16:35:48Z",
+      "side": 1,
+      "message": "nit: where there are more than one const group them. e.g:\n\n  const (\n    // numTouchIterations...\n    numTouchIterations \u003d 5\n\n    // deltaDP is...\n    deltaDP \u003d 5\n  )",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 18
+      },
+      "revId": "97be6f4d249147ca54a93c56dd4831bb05bd2486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
