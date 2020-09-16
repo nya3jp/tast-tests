@@ -63,6 +63,30 @@
       "revId": "81c3268222123a0a4235af902e5c02fa7336df58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e761eab2_26c10475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-16T03:30:35Z",
+      "side": 1,
+      "message": "Waiting for CPU temperature to go down will help prevent noise in the results due to thermal issues. It looks like the mechanism was ported from the older autotest perf tests.\n\nI think waiting for only the CPU temperature is generally sufficient because this wait is to deal with CPU activity after login. That is typically 100% utilization, and it seems to fall to \u003c10% pretty sharply. Although perhaps it would be beneficial to also wait for the CPU to be idle, and then to wait for the CPU to cool down. I filed b/168667059 to investigate that.",
+      "parentUuid": "0ccc010b_6399326f",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "81c3268222123a0a4235af902e5c02fa7336df58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
