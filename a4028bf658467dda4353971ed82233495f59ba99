@@ -16,6 +16,57 @@
       "revId": "a4028bf658467dda4353971ed82233495f59ba99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc142ca3_1b329824",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-16T17:50:01Z",
+      "side": 1,
+      "message": "Replied to one comment with info about how you can test this on chromebox/chromebase to make sure it works",
+      "revId": "a4028bf658467dda4353971ed82233495f59ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43cb69fc_0d8aadab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-16T17:50:01Z",
+      "side": 1,
+      "message": "remove :)",
+      "revId": "a4028bf658467dda4353971ed82233495f59ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d74b3ded_01983395",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-16T17:50:01Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "a4028bf658467dda4353971ed82233495f59ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
