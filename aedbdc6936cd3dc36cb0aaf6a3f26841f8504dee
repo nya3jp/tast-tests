@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edaf22e8_a576ea29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-16T23:52:01Z",
+      "side": 1,
+      "message": "The nice thing about this test not being in the CQ: if it builds it ships.",
+      "revId": "aedbdc6936cd3dc36cb0aaf6a3f26841f8504dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
