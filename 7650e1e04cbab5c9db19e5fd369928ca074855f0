@@ -16,6 +16,75 @@
       "revId": "7650e1e04cbab5c9db19e5fd369928ca074855f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b60ce0f6_cdec0417",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/search_suggest_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-16T11:07:33Z",
+      "side": 1,
+      "message": "Maybe opening a new window (ctrl+n) is safer",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "7650e1e04cbab5c9db19e5fd369928ca074855f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d60083e0_2db7b18d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/search_suggest_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-16T11:07:33Z",
+      "side": 1,
+      "message": "Do we need to release these?",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "7650e1e04cbab5c9db19e5fd369928ca074855f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e3a75d_d5f1249d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/search_suggest_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-16T11:07:33Z",
+      "side": 1,
+      "message": "Do we want to wait for the results to appear?",
+      "range": {
+        "startLine": 114,
+        "startChar": 20,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "7650e1e04cbab5c9db19e5fd369928ca074855f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
