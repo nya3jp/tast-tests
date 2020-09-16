@@ -29,6 +29,14 @@ const (
 	CoolDownStopUI
 )
 
+// WaitUntilCPUCoolDownOld is a wrapper for WaitUntilCPUCoolDown. This wrapper
+// is necessary so that we can change the return type of WaitUntilCPUCoolDown
+// without breaking tests in tast-tests-private. This will be removed after the
+// refactoring.
+func WaitUntilCPUCoolDownOld(ctx context.Context, coolDownMode CoolDownMode) error {
+	return WaitUntilCPUCoolDown(ctx, coolDownMode)
+}
+
 // WaitUntilCPUCoolDown waits until CPU is cooled down.
 // Ported from cheets_PerfBoot.wait_cpu_cool_down().
 func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) error {
