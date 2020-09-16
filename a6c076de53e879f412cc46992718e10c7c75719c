@@ -125,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "940298ea_707264c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-16T23:30:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2eac7573_39836457",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "a6c076de53e879f412cc46992718e10c7c75719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c947c346_4432b666",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 15

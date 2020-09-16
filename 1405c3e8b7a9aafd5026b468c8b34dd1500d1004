@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d555f707_de2125dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-16T23:30:27Z",
+      "side": 1,
+      "message": "I have updated comments based on Kyle\u0027s feedback. This test is having trouble to run on tablets. I got errors in two different places on two different tablets. I don\u0027t have any tablet with me so I can\u0027t debug it. Katherine told me that I could change one of the DUT to tablet mode. I haven\u0027t tried yet. I will try later.",
+      "revId": "1405c3e8b7a9aafd5026b468c8b34dd1500d1004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
