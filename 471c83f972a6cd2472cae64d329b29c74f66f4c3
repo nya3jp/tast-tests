@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2176cfce_49f374d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-16T19:56:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure dalboz is required, as it should hit line 38 (no SAR configured), but no harm in it",
+      "revId": "471c83f972a6cd2472cae64d329b29c74f66f4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
