@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "704d4b09_29b3fcd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-16T14:48:14Z",
+      "side": 1,
+      "message": "Added a check for ESRCH before printing the error.  We\u0027ll still go into the loop below and potentially time out if the signal can\u0027t be sent, but that\u0027s the same as if ippusb_bridge ignores SIGINT.",
+      "parentUuid": "37a16894_aaefff42",
+      "revId": "38843c80322ed0ebdb8e37064ba9691d8ec9eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc7c9cc4_cd0faa62",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "33ce7e13_17d4cf97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-16T14:48:14Z",
+      "side": 1,
+      "message": "I was removing these just in case.  ippusb_bridge should normally terminate and clean up when the virtual USB printer is removed, but I wanted to make sure we don\u0027t leave around a socket that would mess up ippusb_manager on a future test if it doesn\u0027t.\n\nAdded your suggested check to make sure we log the problem if the sockets can\u0027t be removed for some other reason.",
+      "parentUuid": "cc7c9cc4_cd0faa62",
+      "revId": "38843c80322ed0ebdb8e37064ba9691d8ec9eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0462307b_e3b39fbd",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "38843c80322ed0ebdb8e37064ba9691d8ec9eb66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "777348ac_be78e02f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-16T14:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0462307b_e3b39fbd",
+      "revId": "38843c80322ed0ebdb8e37064ba9691d8ec9eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
