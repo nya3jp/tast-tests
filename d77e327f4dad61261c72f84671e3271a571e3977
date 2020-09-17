@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "54998547_267e214f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-17T02:55:14Z",
+      "side": 1,
+      "message": "Thanks for reminding, I\u0027ll rebase this chain when that CL is merged.",
+      "parentUuid": "5da765b8_37d66487",
+      "revId": "d77e327f4dad61261c72f84671e3271a571e3977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf003c1a_706d1d95",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "writtenOn": "2020-09-16T21:23:47Z",
       "side": 1,
       "message": "nit: I think this function need a comment at least the:\n// This is the implementation of network.Wifi/WaitForBSSID gRPC.",
+      "revId": "d77e327f4dad61261c72f84671e3271a571e3977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d52c891_02897d5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1636,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-17T02:55:14Z",
+      "side": 1,
+      "message": "Oops, not sure why repo hook didn\u0027t catch the missing docstring of a public function. Will add it in next patchset.",
+      "parentUuid": "cf003c1a_706d1d95",
       "revId": "d77e327f4dad61261c72f84671e3271a571e3977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
