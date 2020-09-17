@@ -105,6 +105,24 @@
       "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff9059b_cd9abc66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_start.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-17T21:59:05Z",
+      "side": 1,
+      "message": "I missed that you were using the existing precondition and starting a second VM.  I think what is there should work now, although I am not 100% sure.\n\nMaybe also leave a TODO that this may need to be modified when Termina DLC becomes the default.\n\nThanks",
+      "parentUuid": "3d81ee7b_205fed8f",
+      "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
