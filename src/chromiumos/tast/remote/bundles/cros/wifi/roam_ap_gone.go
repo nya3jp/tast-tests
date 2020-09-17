@@ -134,6 +134,11 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 
 	props := []*wificell.ShillProperty{
 		&wificell.ShillProperty{
+			Property:       shillconst.ServicePropertyIsConnected,
+			ExpectedValues: []interface{}{false},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		},
+		&wificell.ShillProperty{
 			Property:       shillconst.ServicePropertyState,
 			ExpectedValues: []interface{}{shillconst.ServiceStateConfiguration},
 			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,

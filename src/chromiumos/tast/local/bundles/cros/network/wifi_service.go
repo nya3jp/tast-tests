@@ -1386,6 +1386,54 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 	return nil
 }
 
+func (s *WifiService) MonitorShillProperty(req *network.MonitorShillPropertyRequest, sender network.WifiService_MonitorShillPropertyServer) error {
+	ctx := sender.Context()
+
+	service, err := shill.NewService(ctx, dbus.ObjectPath(req.ObjectPath))
+	if err != nil {
+		return errors.Wrap(err, "failed to create a service object")
+	}
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a watcher")
+	}
+	defer pw.Close(ctx)
+
+	if err := sender.Send(&network.MonitorShillPropertyResponse{}); err != nil {
+		return errors.Wrap(err, "failed to send a response")
+	}
+
+	stop, err := pw.Monitor(ctx, req.Property)
+	if err != nil {
+		return errors.Wrap(err, "failed to expect property")
+	}
+
+	go func() {
+		// After receving a signal to stop monitoring.
+		var retPropChanges []*network.ShillVal
+		valid := true
+		ready, err := sender.Recv()
+		if err == nil && ready.Key == "" {
+			propChanges := stop()
+			for _, val := range propChanges {
+				shillVal, err := protoutil.ToShillVal(val)
+				if err != nil {
+					valid = false
+				}
+				retPropChanges = append(retPropChanges, shillVal)
+			}
+		} else {
+			valid = false
+			_ = stop()
+		}
+		if err := sender.Send(&network.MonitorShillPropertyResponse{Valid: valid, Vals: retPropChanges}); err != nil {
+			testing.ContextLogf(ctx, "Failed to send response: %v: ", err)
+		}
+	}()
+
+	return nil
+}
+
 // expectServiceProperty sets up a properties watcher before calling f, and waits for the given property/value.
 func (*WifiService) expectServiceProperty(ctx context.Context, service *shill.Service, prop string, val interface{}, f func() error) (dbus.Sequence, error) {
 	pw, err := service.CreateWatcher(ctx)

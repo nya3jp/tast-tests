@@ -114,6 +114,19 @@ service WifiService {
   // Reassociate triggers reassociation with the current AP and waits until it
   // has reconnected or the timeout (in nanoseconds) expires.
   rpc Reassociate (ReassociateRequest) returns (google.protobuf.Empty) {}
+
+  rpc MonitorShillProperty(MonitorShillPropertyRequest) returns (stream MonitorShillPropertyResponse) {}
+}
+
+message MonitorShillPropertyRequest {
+  // Shill object path (e.g. Service or Device).
+  string object_path = 1;
+  string property = 2;
+}
+
+message MonitorShillPropertyResponse {
+  bool valid = 1;
+  repeated ShillVal vals = 2;
 }
 
 message ConnectRequest {

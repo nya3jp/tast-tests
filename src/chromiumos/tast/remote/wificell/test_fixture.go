@@ -846,6 +846,7 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	if !foundSubnet {
 		return errors.Errorf("subnet does not match, got addrs %v want %s", addrs.Ipv4, serverSubnet)
 	}
+	testing.ContextLogf(ctx, "SUBNET, got addrs %v want %s", addrs.Ipv4, serverSubnet)
 
 	// Perform ping.
 	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
@@ -944,4 +945,45 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 	}
 
 	return waitForProperties, nil
+}
+
+// MonitorShillProperty monitors the property changes.
+func (tf *TestFixture) MonitorShillProperty(ctx context.Context, objectPath, propName string) (func() ([]interface{}, error), error) {
+	req := &network.MonitorShillPropertyRequest{
+		ObjectPath: objectPath,
+		Property:   propName,
+	}
+
+	stream, err := tf.WifiClient().MonitorShillProperty(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+
+	ready, err := stream.Recv()
+	if err != nil || ready.Valid != true {
+		// Error due to expecting an empty response as ready signal.
+		return nil, errors.New("failed to get the ready signal")
+	}
+
+	// Stop the monitor and get the changes of the property.
+	stopMonitor := func() ([]interface{}, error) {
+		// Send message to stop the monitor.
+		stream.Send()
+		resp, err := stream.Recv()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get the property changes")
+		}
+		var propChangeslist []interface{}
+		for _, val := range resp.Vals {
+			stateVal, err := protoutil.FromShillVal(val)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to convert property name to ShillVal")
+			}
+			propChangeslist = append(propChangeslist, val)
+		}
+
+		return propChangeslist, nil
+	}
+
+	return stopMonitor, nil
 }
