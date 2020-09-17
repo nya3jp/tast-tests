@@ -93,6 +93,7 @@ service WifiService {
   // 1. CHECK_ONLY: checks if the criterion is met.
   // 2. ON_CHANGE: waits for the property changes to the expected values.
   // 3. CHECK_WAIT: checks if the criterion is met; if not, waits until the property's value is met.
+  // 4. MONITOR_WAIT: monitors the specified properties until a specific property's value is met.
   rpc ExpectShillProperty(ExpectShillPropertyRequest) returns (stream ExpectShillPropertyResponse) {}
 
   // ProfileBasicTest is the main body of the ProfileBasic test, which creates,
@@ -147,14 +148,20 @@ message ShillVal {
   oneof val {
     string str = 1;
     bool bool = 2;
+    uint32 uint32 = 3;
     // Because 'repeated' label is not allowed in oneof type, we define StrArray
     // for repeated string field.
-    StrArray str_array = 3;
+    StrArray str_array = 4;
+    Uint32Array uint32_array = 5;
   }
 }
 
 message StrArray {
   repeated string vals = 1;
+}
+
+message Uint32Array {
+  repeated uint32 vals = 1;
 }
 
 // ConnectResponse is the response of Connect call which includes the
@@ -302,6 +309,8 @@ message ExpectShillPropertyRequest {
     ON_CHANGE = 1;
     // Check if the property value is expected.
     CHECK_ONLY = 2;
+    // Monitor specified properties until the specified change happens.
+    MONITOR_WAIT = 3;
   }
 
   message Criterion {
@@ -311,7 +320,9 @@ message ExpectShillPropertyRequest {
     repeated ShillVal any_of = 2;
     // The unexpected property values.
     repeated ShillVal none_of = 3;
-    CheckMethod method = 4;
+    // The monitored properties.
+    repeated string monitored_props = 4;
+    CheckMethod method = 5;
   }
 
   // Shill object path (e.g. Service or Device).
@@ -319,9 +330,14 @@ message ExpectShillPropertyRequest {
   repeated Criterion props = 2;
 }
 
+message ListOfShillVals {
+  repeated ShillVal vals = 1;
+}
+
 message ExpectShillPropertyResponse {
   string key = 1;
   ShillVal val = 2;
+  map<string, ListOfShillVals> props = 3;
 }
 
 message ProfileBasicTestRequest {
