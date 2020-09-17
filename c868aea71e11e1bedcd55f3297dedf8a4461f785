@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d831080e_2342b0e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-09-17T05:34:10Z",
+      "side": 1,
+      "message": "Wouldn\u0027t be easier to create a file with a fixed name so you won\u0027t need to cleanup afterwards?\n\nAlso, in this case it might be easier to create file via DriveFS itself because via API there could be non-unique names (which is an interesting edge case, but not for a basic functionality test).",
+      "revId": "c868aea71e11e1bedcd55f3297dedf8a4461f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f49bdc_712e17f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-09-17T05:34:10Z",
+      "side": 1,
+      "message": "nit: The search that happens while you type looks only filenames, but the one after \"enter\" is a full-text search including content, so it may accidentally match something else. I don\u0027t think you are at risk with \"exact-file-drivefs-search\" kind of name, but worth mentioning it in a comment near that name.",
+      "revId": "c868aea71e11e1bedcd55f3297dedf8a4461f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
