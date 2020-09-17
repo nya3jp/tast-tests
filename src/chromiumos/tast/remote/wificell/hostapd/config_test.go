@@ -292,6 +292,23 @@ func TestNewConfig(t *testing.T) {
 			},
 			shouldFail: false,
 		},
+		{
+			ops: []Option{
+				SSID("ssid"),
+				Mode(Mode80211a),
+				Channel(36),
+				OBSSInterval(5),
+			},
+			expected: &Config{
+				SSID:           "ssid",
+				Mode:           Mode80211a,
+				Channel:        36,
+				HTCaps:         0,
+				SecurityConfig: &base.Config{},
+				OBSSInterval:   5,
+			},
+			shouldFail: false,
+		},
 	}
 
 	for i, tc := range testcases {
@@ -580,6 +597,31 @@ func TestConfigFormat(t *testing.T) {
 			},
 			verify: map[string]string{
 				"beacon_int": "", // Let hostapd have its default when not specified.
+			},
+		},
+		// Check OBSS scan interval.
+		{
+			conf: &Config{
+				SSID:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+				OBSSInterval:   5,
+			},
+			verify: map[string]string{
+				"obss_interval": "5",
+			},
+		},
+		{
+			conf: &Config{
+				SSID:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+				OBSSInterval:   0,
+			},
+			verify: map[string]string{
+				"obss_interval": "", // Let hostapd have its default when not specified.
 			},
 		},
 	}
