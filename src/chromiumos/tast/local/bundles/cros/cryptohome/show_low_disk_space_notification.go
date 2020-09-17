@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/cryptohome/cleanup"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -70,4 +71,32 @@ func ShowLowDiskSpaceNotification(ctx context.Context, s *testing.State) {
 	}); err != nil {
 		s.Error("Notification not shown: ", err)
 	}
+
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard: ", err)
+	}
+
+	if err := keyboard.Accel(ctx, "Ctrl+Scale"); err != nil {
+		s.Fatal("Failed to press buttons: ", err)
+	}
+
+	time.Sleep(1 * time.Second)
+
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		s.Fatal("Failed to close notifications: ", err)
+	}
+
+	nots, err := ash.Notifications(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get notifs: ", err)
+	}
+	if len(nots) > 0 {
+		for _, not := range nots {
+			s.Log("Notification: ", not)
+		}
+	} else {
+		s.Log("Not found notifications")
+	}
+
 }
