@@ -16,6 +16,23 @@
       "revId": "46c40ee322d9c416975fb676dd7e887c4d726b9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ccf4dc4_d3631f5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-17T17:17:50Z",
+      "side": 1,
+      "message": "Hi Kyle \u0026 David;\n\nI just turned my octopus to a tablet by flipping the screen. I could not drag and drop icon with my finger. Not sure how I can drag and drop to create a folder. Maybe this test is not relevant to tablet. Should I restrict this test to chromebook, chromebase, and chromebox.\n\nPlease let me know.\n\nThanks.\n\nSeewai",
+      "revId": "46c40ee322d9c416975fb676dd7e887c4d726b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
