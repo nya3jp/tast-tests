@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "904f0fa2_57fc7b45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-17T08:18:51Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "95b0f4f95ba8c14f6c6f7cba8cc27388e0aa871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b143dc9_f8d1cfb0",
         "filename": "src/chromiumos/tast/local/power/cpu_metrics.go",
         "patchSetId": 4
