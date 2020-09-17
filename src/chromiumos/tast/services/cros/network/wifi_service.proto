@@ -117,6 +117,31 @@ service WifiService {
 
   // WaitForBSSID waits for a specific BSSID to be found.
   rpc WaitForBSSID (WaitForBSSIDRequest) returns (google.protobuf.Empty) {}
+
+  // MonitorShillProperty is a bidirectional streaming gRPC. The function
+  // waits for a start signal that has (shill service path and a shill
+  // property name) to start the property monitor. After, a ready signal is
+  // sent to inform the client that the monitor has been set up successfully.
+  rpc MonitorShillProperty(stream MonitorShillPropertyRequest) returns (stream MonitorShillPropertyResponse) {}
+}
+
+enum MonitorSignalType {
+  STOP = 0;
+  START = 1;
+  READY = 2;
+  DONE = 3;
+}
+
+message MonitorShillPropertyRequest {
+  // Shill object path (e.g. Service or Device).
+  string object_path = 1;
+  string property = 2;
+  MonitorSignalType signal = 3;
+}
+
+message MonitorShillPropertyResponse {
+  repeated ShillVal vals = 1;
+  MonitorSignalType signal = 2;
 }
 
 message ConnectRequest {

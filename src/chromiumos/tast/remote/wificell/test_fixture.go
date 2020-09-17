@@ -945,3 +945,54 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 
 	return waitForProperties, nil
 }
+
+// MonitorShillProperty is a wrapper for the streaming gRPC call MonitorShillProperty.
+// It takes a ShillProperty and a shill service path. It returns a function that stops
+// the monitor and return the list of the property changes.
+func (tf *TestFixture) MonitorShillProperty(ctx context.Context, objectPath, propName string) (func() ([]interface{}, error), error) {
+	// Initiate the shill property monitor.
+	stream, err := tf.WifiClient().MonitorShillProperty(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	// Send the shill property request to start the monitoring.
+	req := &network.MonitorShillPropertyRequest{
+		ObjectPath: objectPath,
+		Property:   propName,
+		Signal:     network.MonitorSignalType_START,
+	}
+	if err := stream.Send(req); err != nil {
+		return nil, errors.Wrap(err, "failed to send a request")
+	}
+
+	// Receive a ready signal that indicates the property watcher has started.
+	resp, err := stream.Recv()
+	if err != nil || resp.Signal != network.MonitorSignalType_READY {
+		return nil, errors.New("failed to get the ready signal")
+	}
+
+	// Stop the monitor and get the changes of the property.
+	stopMonitor := func() ([]interface{}, error) {
+		// Send message to stop the monitor.
+		if err := stream.Send(&network.MonitorShillPropertyRequest{Signal: network.MonitorSignalType_STOP}); err != nil {
+			return nil, errors.Wrap(err, "failed to send the stop signal")
+		}
+		resp, err := stream.Recv()
+		if err != nil || resp.Signal != network.MonitorSignalType_DONE {
+			return nil, errors.New("failed to receive the done signal")
+		}
+		var propChangeslist []interface{}
+		for _, val := range resp.Vals {
+			stateVal, err := protoutil.FromShillVal(val)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to convert property name to ShillVal")
+			}
+			propChangeslist = append(propChangeslist, stateVal)
+		}
+
+		return propChangeslist, nil
+	}
+
+	return stopMonitor, nil
+}
