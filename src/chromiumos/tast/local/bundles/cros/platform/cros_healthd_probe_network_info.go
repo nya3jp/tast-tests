@@ -43,7 +43,7 @@ func CrosHealthdProbeNetworkInfo(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify the header keys are correct.
-	header := []string{"type", "state", "guid", "name", "mac_address"}
+	header := []string{"type", "state", "guid", "name", "signal_strength", "mac_address"}
 	got := strings.Split(lines[0], ",")
 	if !reflect.DeepEqual(got, header) {
 		s.Fatalf("Incorrect NetworkInfo keys: got %v; want %v", got, header)
