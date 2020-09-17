@@ -9,13 +9,20 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
+	"image"
+	"image/draw"
+	"image/png"
 	"io"
 	"os"
 	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -27,6 +34,73 @@ func Capture(ctx context.Context, path string) error {
 		return errors.Errorf("failed running %q", strings.Join(cmd.Args, " "))
 	}
 	return nil
+}
+
+// CaptureElementOptions provides all of the ways which you can configure the CaptureElement function.
+type CaptureElementOptions struct {
+	// By default, taking a screenshot will hide any notifications which might be overlaid on top of the element.
+	// Set to true if you don't want this behaviour.
+	LeaveNotifications bool
+
+	// The params used to find the node that we're looking for.
+	Params ui.FindParams
+}
+
+// CaptureElement takes a screenshot of the ui element described by ui.FindParams and saves it as a PNG image to the specified file path.
+func CaptureElement(ctx context.Context, cr *chrome.Chrome, path string, params ui.FindParams) error {
+	return CaptureElementWithOptions(ctx, cr, path, CaptureElementOptions{Params: params})
+}
+
+// CaptureElementWithOptions takes a screenshot of the ui element described by ui.FindParams and saves it as a PNG image to the specified file path.
+func CaptureElementWithOptions(ctx context.Context, cr *chrome.Chrome, path string, options CaptureElementOptions) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	node, err := ui.FindSingleton(ctx, tconn, options.Params)
+	if err != nil {
+		return err
+	}
+	boundsDp := node.Location
+	if !options.LeaveNotifications {
+		ash.HideAllNotificationsAndWait(ctx, tconn)
+	}
+	base64PNG, err := screenshotBase64PNG(func(code string, out interface{}) error {
+		return tconn.EvalPromise(ctx, code, out)
+	})
+	if err != nil {
+		return err
+	}
+
+	src, _, err := image.Decode(base64.NewDecoder(base64.StdEncoding, strings.NewReader(base64PNG)))
+	if err != nil {
+		return err
+	}
+
+	info, err := display.FindInfo(ctx, tconn, func(info *display.Info) bool {
+		return info.Bounds.Contains(boundsDp)
+	})
+	if err != nil {
+		return err
+	}
+	scale, err := info.GetEffectiveDeviceScaleFactor()
+	if err != nil {
+		return err
+	}
+	boundsPx := coords.ConvertBoundsFromDPToPX(boundsDp, scale)
+
+	// The screenshot returned is of the whole screen. Crop it to only contain the element requested by the user.
+	srcOffset := image.Point{X: boundsPx.Left, Y: boundsPx.Top}
+	dstSize := image.Rect(0, 0, boundsPx.Width, boundsPx.Height)
+	cropped := image.NewRGBA(dstSize)
+	draw.Draw(cropped, dstSize, src, srcOffset, draw.Src)
+
+	f, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	return png.Encode(f, cropped)
 }
 
 // CaptureChrome takes a screenshot of the primary display and saves it as a PNG
@@ -53,9 +127,9 @@ func CaptureCDP(ctx context.Context, conn *cdputil.Conn, path string) error {
 	})
 }
 
-func captureInternal(ctx context.Context, path string, eval func(code string, out interface{}) error) error {
+func screenshotBase64PNG(eval func(code string, out interface{}) error) (string, error) {
 	var base64PNG string
-	if err := eval(
+	err := eval(
 		`new Promise(function(resolve, reject) {
 		   chrome.autotestPrivate.takeScreenshot(function(base64PNG) {
 		     if (chrome.runtime.lastError === undefined) {
@@ -64,7 +138,13 @@ func captureInternal(ctx context.Context, path string, eval func(code string, ou
 		       reject(chrome.runtime.lastError.message);
 		     }
 		   });
-		 })`, &base64PNG); err != nil {
+		 })`, &base64PNG)
+	return base64PNG, err
+}
+
+func captureInternal(ctx context.Context, path string, eval func(code string, out interface{}) error) error {
+	base64PNG, err := screenshotBase64PNG(eval)
+	if err != nil {
 		return err
 	}
 
