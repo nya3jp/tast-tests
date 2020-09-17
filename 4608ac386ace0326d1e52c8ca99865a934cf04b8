@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bcb55d48_76f1c34e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:17:39Z",
+      "side": 1,
+      "message": "Oh, then, why not handling the error inside the function and returns nil on error? I think it is common practice in Tast and Go?\n\nIf you think it\u0027d be another CL, then that\u0027s ok, but please add TODO.",
+      "parentUuid": "542a4a2d_389cb279",
+      "range": {
+        "startLine": 222,
+        "startChar": 64,
+        "endLine": 222,
+        "endChar": 82
+      },
+      "revId": "4608ac386ace0326d1e52c8ca99865a934cf04b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0c144ea_cc463a47",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 5
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I don\u0027t see why? We only care about the first component which will be the same (and present) either way.",
       "parentUuid": "e0c144ea_cc463a47",
+      "range": {
+        "startLine": 250,
+        "startChar": 21,
+        "endLine": 250,
+        "endChar": 26
+      },
+      "revId": "4608ac386ace0326d1e52c8ca99865a934cf04b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52872a0_f77b91ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:17:39Z",
+      "side": 1,
+      "message": "just in case, if cr.User() has more than two \"@\"s.\nAnd IIUC that\u0027s what we need in precise logically.\nLet\u0027s avoid the code possibly creating unnecessary pieces.",
+      "parentUuid": "d26322bc_be7f11bd",
       "range": {
         "startLine": 250,
         "startChar": 21,
