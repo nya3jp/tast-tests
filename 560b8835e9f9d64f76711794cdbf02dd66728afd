@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6641d6d4_20bbf29b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-17T02:43:26Z",
+      "side": 1,
+      "message": "This is a cleanup pointed out in the previous review:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2395301/2/src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go#87\n\nPTAL, thanks!",
+      "revId": "560b8835e9f9d64f76711794cdbf02dd66728afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
