@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
@@ -81,16 +82,17 @@ func AmazonPrimeVideo(ctx context.Context, s *testing.State) {
 // verify AmazonPrimeVideo reached main activity page of the app.
 func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		allowButtonText       = "ALLOW"
-		textViewClassName     = "android.widget.TextView"
-		myStuffText           = "My Stuff"
-		enterEmailAddressID   = "ap_email"
-		nextButtonDescription = "Next"
-		passwordClassName     = "android.widget.EditText"
-		passwordID            = "ap_password"
-		passwordText          = "Amazon password"
-		signInText            = "Sign-In"
-		sendOTPText           = "Send OTP"
+		allowButtonText      = "ALLOW"
+		textViewClassName    = "android.widget.TextView"
+		myStuffText          = "My Stuff"
+		enterEmailAddressID  = "ap_email"
+		passwordClassName    = "android.widget.EditText"
+		passwordID           = "ap_password"
+		passwordText         = "Amazon password"
+		signInText           = "Sign-In"
+		sendOTPText          = "Send OTP"
+		notNowID             = "android:id/autofill_save_no"
+		importantMessageText = "Important"
 	)
 
 	// Click on allow button to access your photos, media and files.
@@ -107,6 +109,18 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 		s.Fatal("EnterEmailAddress does not exist: ", err)
 	} else if err := enterEmailAddress.Click(ctx); err != nil {
 		s.Fatal("Failed to click on enterEmailAddress: ", err)
+	}
+	// Click on emailid text field until the emailid text field is focused.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if emailIDFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
+			return errors.New("email text field not focused yet")
+		} else if !emailIDFocused {
+			enterEmailAddress.Click(ctx)
+			return errors.New("email text field not focused yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Fatal("Failed to focus EmailId: ", err)
 	}
 
 	kb, err := input.Keyboard(ctx)
@@ -129,41 +143,62 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 		s.Fatal("Failed to click on enterPassword: ", err)
 	}
 
-	kbp, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
+	// Click on password text field until the password text field is focused.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
+			return errors.New("password text field not focused yet")
+		} else if !pwdFocused {
+			enterPassword.Click(ctx)
+			return errors.New("password text field not focused yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Fatal("Failed to focus password: ", err)
 	}
-	defer kbp.Close()
 
 	password := s.RequiredVar("arcappcompat.AmazonPrimeVideo.password")
-	if err := kbp.Type(ctx, password); err != nil {
+	if err := kb.Type(ctx, password); err != nil {
 		s.Fatal("Failed to enter password: ", err)
 	}
 	s.Log("Entered password")
 
-	// Keep clicking signIn Button until myStuff icon exist in the home page.
 	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
-	myStuffIcon := d.Object(ui.ClassName(textViewClassName), ui.Text(myStuffText))
-	sendOTPButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(sendOTPText))
+	notNowButton := d.Object(ui.ID(notNowID))
 
+	// Click on signIn Button until notNow Button exist.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := myStuffIcon.Exists(ctx); err != nil {
+		if err := notNowButton.Exists(ctx); err != nil {
 			signInButton.Click(ctx)
 			return err
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
-		s.Error("MyStuffIcon doesn't exist: ", err)
-		// Check for send OTP button
+		s.Log(" notNowButtondoesn't exist: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
+	}
+
+	// Check for captcha and OTP.
+	myStuffIcon := d.Object(ui.ClassName(textViewClassName), ui.Text(myStuffText))
+	checkForCaptcha := d.Object(ui.TextStartsWith(importantMessageText))
+	sendOTPButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(sendOTPText))
+
+	if err := checkForCaptcha.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("checkForCaptcha doesn't exists: ", err)
 		if err := sendOTPButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 			s.Log("Send OTP Button doesn't exist")
+			//Check for myStuffIcon.
+			if err := myStuffIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+				s.Error("MyStuffIcon doesn't exist: ", err)
+			} else {
+				signOutAmazonPrimeVideo(ctx, s, a, d, appPkgName, appActivity)
+			}
 		} else {
-			s.Error("Send OTP Button does exist: ", err)
+			s.Log("Send OTP Button does exist")
 		}
 	} else {
-		s.Log("MyStuffIcon does exist ")
+		s.Log("Check for captcha exist")
 	}
-	signOutAmazonPrimeVideo(ctx, s, a, d, appPkgName, appActivity)
 }
 
 // signOutAmazonPrimeVideo verifies app is signed out.
