@@ -60,3 +60,49 @@ func HideAllNotifications(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	return nil
 }
+
+// CloseNotifications clicks on the tray button to show the system tray button,
+// clicks close button on each notification and clicks on the tray button
+// to hide the system tray button.
+func CloseNotifications(ctx context.Context, tconn *chrome.TestConn) error {
+	trayButton, err := ui.Find(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "UnifiedSystemTray"})
+	if err != nil {
+		return errors.Wrap(err, "system tray button not found")
+	}
+	defer trayButton.Release(ctx)
+
+	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
+		return errors.Wrap(err, "failed to click the tray button")
+	}
+
+	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "SettingBubbleContainer"}, 2*time.Second); err != nil {
+		return errors.Wrap(err, "quick settings does not appear")
+	}
+
+	params := ui.FindParams{
+		Name:      "Notification close",
+		ClassName: "ImageButton",
+		Role:      ui.RoleTypeButton,
+	}
+
+	notifications, err := Notifications(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get notifications list")
+	}
+
+	for i := 0; i < len(notifications); i++ {
+		if err := ui.FindAndClick(ctx, tconn, params, 2*time.Second); err != nil {
+			return errors.Wrap(err, "failed to find and click on notification close button")
+		}
+	}
+
+	if err := ui.WaitUntilGone(ctx, tconn, params, 2*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait until there will be no notifications")
+	}
+
+	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
+		return errors.Wrap(err, "failed to click the tray button")
+	}
+
+	return nil
+}
