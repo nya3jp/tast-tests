@@ -50,6 +50,92 @@
       "revId": "131bea3216ea150802758cbd6565dffdb7909727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef52a1fa_a09a3bfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-17T05:21:40Z",
+      "side": 1,
+      "message": "LGTM with a few minor comments, thanks!\n",
+      "revId": "131bea3216ea150802758cbd6565dffdb7909727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b08d29fc_f1848861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-17T05:21:40Z",
+      "side": 1,
+      "message": "addresses looks unused. Can we remove it?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "131bea3216ea150802758cbd6565dffdb7909727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab9cfc58_a2a38e38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-17T05:21:40Z",
+      "side": 1,
+      "message": "style: Please avoid multi-line error messages. Such errors don\u0027t work well with errors.Wrap for example.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\nA typical way is to return the first encountered error. The approach drops some errors, but usually the first error is the most interesting one.\n\n var firstErr error\n ...\n if err :\u003d ...; err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil {\n   firstErr \u003d err\n }\n ...\n return firstErr",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "131bea3216ea150802758cbd6565dffdb7909727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08ea7da9_5c014e4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-17T05:21:40Z",
+      "side": 1,
+      "message": "I couldn\u0027t understand what this regexp does. Can you add a short comment describing the text transform done here?",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 67
+      },
+      "revId": "131bea3216ea150802758cbd6565dffdb7909727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
