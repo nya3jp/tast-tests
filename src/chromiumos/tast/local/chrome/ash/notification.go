@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 )
 
@@ -41,7 +41,7 @@ func Notifications(ctx context.Context, tconn *chrome.TestConn) ([]*Notification
 
 // HideAllNotifications clicks on the tray button to show and hide the system tray button, which should also hide any visible notification.
 func HideAllNotifications(ctx context.Context, tconn *chrome.TestConn) error {
-	trayButton, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeButton, ClassName: "UnifiedSystemTray"})
+	trayButton, err := ui.Find(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "UnifiedSystemTray"})
 	if err != nil {
 		return errors.Wrap(err, "system tray button not found")
 	}
@@ -51,7 +51,7 @@ func HideAllNotifications(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to click the tray button")
 	}
 
-	if err := chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: "SettingBubbleContainer"}, 2*time.Second); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "SettingBubbleContainer"}, 2*time.Second); err != nil {
 		return errors.Wrap(err, "quick settings does not appear")
 	}
 
