@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/pkcs11/netcertstore"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/ctxutil"
@@ -25,7 +26,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/hwsec"
 	remotearping "chromiumos/tast/remote/network/arping"
-	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
@@ -740,31 +740,6 @@ func (tf *TestFixture) ClientHardwareAddr(ctx context.Context) (string, error) {
 	return resp.HwAddr, nil
 }
 
-// AssertNoDisconnect runs the given routine and verifies that no disconnection event
-// is captured in the same duration.
-func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Context) error) error {
-	ctx, st := timing.Start(ctx, "tf.AssertNoDisconnect")
-	defer st.End()
-
-	el, err := iw.NewEventLogger(ctx, tf.dut)
-	if err != nil {
-		return errors.Wrap(err, "failed to start iw.EventLogger")
-	}
-	errf := f(ctx)
-	if err := el.Stop(ctx); err != nil {
-		// Let's also keep errf if available. Wrapf is equivalent to Errorf when errf==nil.
-		return errors.Wrapf(errf, "failed to stop iw.EventLogger, err=%s", err.Error())
-	}
-	if errf != nil {
-		return errf
-	}
-	evs := el.EventsByType(iw.EventTypeDisconnect)
-	if len(evs) != 0 {
-		return errors.Errorf("disconnect events captured: %v", evs)
-	}
-	return nil
-}
-
 // Router returns the Router object in the fixture.
 func (tf *TestFixture) Router() *Router {
 	return tf.router
@@ -944,4 +919,74 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 	}
 
 	return waitForProperties, nil
+}
+
+// MonitorShillProperties is a wrapper for the streaming gRPC call MonitorShillProperties.
+// It takes a shill service path and returns a function that stops the monitor.
+// The returned function, returns a map of the peroperties and their changes.
+func (tf *TestFixture) MonitorShillProperties(ctx context.Context, objectPath string) (func() (map[string][]interface{}, error), error) {
+	// Initiate the shill property monitor.
+	stream, err := tf.WifiClient().MonitorShillProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	// Send the shill property request to start the monitoring.
+	req := &network.MonitorShillPropertiesRequest{
+		ObjectPath: objectPath,
+		Signal:     network.MonitorSignalType_START,
+	}
+	if err := stream.Send(req); err != nil {
+		return nil, errors.Wrap(err, "failed to send a request")
+	}
+
+	// Receive a ready signal that indicates the property watcher has started.
+	resp, err := stream.Recv()
+	if err != nil || resp.Signal != network.MonitorSignalType_READY {
+		return nil, errors.New("failed to get the ready signal")
+	}
+
+	// Stop the monitor and get the changes of the property.
+	stopMonitor := func() (map[string][]interface{}, error) {
+		// Send message to stop the monitor.
+		if err := stream.Send(&network.MonitorShillPropertiesRequest{Signal: network.MonitorSignalType_STOP}); err != nil {
+			return nil, errors.Wrap(err, "failed to send the stop signal")
+		}
+
+		resp, err := stream.Recv()
+		if err != nil || resp.Signal != network.MonitorSignalType_DONE {
+			return nil, errors.New("failed to receive the done signal")
+		}
+
+		propChangeslist, err := protoutil.DecodeFromShillValMapA(resp.Props)
+		if err != nil {
+			return nil, err
+		}
+
+		return propChangeslist, nil
+	}
+
+	return stopMonitor, nil
+}
+
+// AssertNoDisconnect checks the changes in shillconst.ServicePropertyState
+// and returns an error if a disconnection detected.
+func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, propChanges map[string][]interface{}) error {
+	for k, vals := range propChanges {
+		if k == shillconst.ServicePropertyState {
+			for _, v := range vals {
+				connected := false
+				for _, state := range shillconst.ServiceConnectedStates {
+					if v == state {
+						connected = true
+						break
+					}
+				}
+				if !connected {
+					return errors.Errorf("Detected disconnection state %s", v)
+				}
+			}
+		}
+	}
+	return nil
 }

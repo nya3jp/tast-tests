@@ -203,3 +203,9 @@ const (
 	DeviceBgscanMethodLearn  = "learn"
 	DeviceBgscanMethodNone   = "none"
 )
+
+// DBusShillMonitorInterface is the name of the shill monitor D-Bus interface.
+const DBusShillMonitorInterface = "com.dummy.ShillMonitor"
+
+// DBusShillMonitorStopSignal is the name of the shill monitor D-Bus stop signal.
+const DBusShillMonitorStopSignal = "Stop"

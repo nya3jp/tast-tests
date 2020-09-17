@@ -1241,6 +1241,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			}
 		}(ctx)
 
+		var servicePath string
 		resp, err := tf.ConnectWifiAP(ctx, ap)
 		if err != nil {
 			if expectedFailure {
@@ -1249,6 +1250,8 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 				return
 			}
 			s.Fatal("Failed to connect to WiFi, err: ", err)
+		} else {
+			servicePath = resp.ServicePath
 		}
 		defer func(ctx context.Context) {
 			if err := tf.CleanDisconnectWifi(ctx); err != nil {
@@ -1282,12 +1285,23 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			Unit:      "seconds",
 			Direction: perf.SmallerIsBetter,
 		}, float64(resp.ConfigurationTime)/1e9)
-		ping := func(ctx context.Context) error {
-			return tf.PingFromDUT(ctx, ap.ServerIP().String(), pingOps...)
+
+		stopMonitor, err := tf.MonitorShillProperties(ctx, servicePath)
+		if err != nil {
+			s.Fatal("Failed to start shill property monitor: ", err)
 		}
 
-		if err := tf.AssertNoDisconnect(ctx, ping); err != nil {
-			s.Fatal("Failed to ping from DUT, err: ", err)
+		if err := tf.PingFromDUT(ctx, ap.ServerIP().String(), pingOps...); err != nil {
+			s.Fatal("Failed to from the DUT: ", err)
+		}
+
+		propChanges, err := stopMonitor()
+		if err != nil {
+			s.Fatal("DUT: failed to stop shill property monitor, err: ", err)
+		}
+
+		if err := tf.AssertNoDisconnect(ctx, propChanges); err != nil {
+			s.Fatal("DUT: failed to stay connetced during ping, err: ", err)
 		}
 
 		s.Log("Checking the status of the SSID in the DUT")

@@ -6,10 +6,12 @@ package shill
 
 import (
 	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 )
@@ -158,8 +160,24 @@ func (pw *PropertiesWatcher) Close(ctx context.Context) error {
 }
 
 // Wait waits for "PropertyChanged" signal and updates corresponding property value.
+// Also, it waits for the shill monitor stop signal if the monitor is used.
 func (pw *PropertiesWatcher) Wait(ctx context.Context) (string, interface{}, dbus.Sequence, error) {
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      "/",
+		Interface: shillconst.DBusShillMonitorInterface,
+		Member:    shillconst.DBusShillMonitorStopSignal,
+	}
+	watcher, err := dbusutil.NewSignalWatcherForSystemBus(ctx, spec)
+	if err != nil {
+		return "", nil, 0, err
+	}
 	select {
+	case sig := <-watcher.Signals:
+		if sig.Name == fmt.Sprintf("%s.%s", shillconst.DBusShillMonitorInterface, shillconst.DBusShillMonitorStopSignal) {
+			return sig.Name, nil, 0, nil
+		}
+		return "", nil, 0, errors.Wrap(ctx.Err(), "didn't receive monitor stop signal")
 	case sig := <-pw.watcher.Signals:
 		if len(sig.Body) != 2 {
 			return "", nil, 0, errors.Errorf("signal body must contain 2 arguments: %v", sig.Body)
@@ -174,6 +192,45 @@ func (pw *PropertiesWatcher) Wait(ctx context.Context) (string, interface{}, dbu
 	case <-ctx.Done():
 		return "", nil, 0, errors.Errorf("didn't receive PropertyChanged signal: %v", ctx.Err())
 	}
+}
+
+// Monitor monitors the shill properties and returns a stop function that can be called to stop the monitor.
+// The stop function returns map with the properties and their changes.
+func (pw *PropertiesWatcher) Monitor(ctx context.Context) (func() (map[string][]interface{}, error), error) {
+	done := make(chan error, 1)
+	propsChanges := make(map[string][]interface{})
+	stop := func() (map[string][]interface{}, error) {
+		// Send a dummy dbus signal to stop the property monitor.
+		connect, err := dbusutil.SystemBus()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to connect to system bus")
+		}
+		if err := connect.Emit("/", fmt.Sprintf("%s.%s", shillconst.DBusShillMonitorInterface, shillconst.DBusShillMonitorStopSignal)); err != nil {
+			return nil, errors.Wrap(err, "failed sending a dummy signal to stop the property monitor")
+		}
+		if err := <-done; err != nil {
+			return nil, err
+		}
+		return propsChanges, nil
+	}
+
+	go func() {
+		defer close(done)
+		done <- func() error {
+			for {
+				prop, val, _, err := pw.Wait(ctx)
+				if err != nil {
+					return err
+				}
+				if prop == fmt.Sprintf("%s.%s", shillconst.DBusShillMonitorInterface, shillconst.DBusShillMonitorStopSignal) {
+					return nil
+				}
+				propsChanges[prop] = append(propsChanges[prop], val)
+			}
+		}()
+	}()
+
+	return stop, nil
 }
 
 // WaitAll waits for all expected properties were shown on at least one "PropertyChanged" signal and returns the last updated

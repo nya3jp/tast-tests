@@ -26,6 +26,41 @@ func EncodeToShillValMap(conf map[string]interface{}) (ShillValMap, error) {
 	return ret, nil
 }
 
+// ShillValMapA is a type alias of map[string]*network.ShillVal. It can be sent through protobuf.
+type ShillValMapA map[string]*network.ListOfShillVals
+
+// EncodeToShillValMapA converts a map that contains supported value type to protocol buffer network.ShillVal.
+func EncodeToShillValMapA(conf map[string][]interface{}) (ShillValMapA, error) {
+	ret := make(ShillValMapA)
+	for k, vals := range conf {
+		var temp network.ListOfShillVals
+		for _, v := range vals {
+			val, err := ToShillVal(v)
+			if err != nil {
+				return nil, err
+			}
+			temp.Vals = append(temp.Vals, val)
+		}
+		ret[k] = &temp
+	}
+	return ret, nil
+}
+
+// DecodeFromShillValMapA converts a ShillValMap to a (key, value) map.
+func DecodeFromShillValMapA(conf ShillValMapA) (map[string][]interface{}, error) {
+	ret := make(map[string][]interface{})
+	for k, list := range conf {
+		for _, v := range list.Vals {
+			i, err := FromShillVal(v)
+			if err != nil {
+				return nil, err
+			}
+			ret[k] = append(ret[k], i)
+		}
+	}
+	return ret, nil
+}
+
 // ToShillVal converts a common golang type to a ShillVal .
 func ToShillVal(i interface{}) (*network.ShillVal, error) {
 	switch x := i.(type) {
@@ -39,6 +74,34 @@ func ToShillVal(i interface{}) (*network.ShillVal, error) {
 		return &network.ShillVal{
 			Val: &network.ShillVal_Bool{
 				Bool: x,
+			},
+		}, nil
+	case uint32:
+		return &network.ShillVal{
+			Val: &network.ShillVal_Uint32{
+				Uint32: x,
+			},
+		}, nil
+	case []uint32:
+		return &network.ShillVal{
+			Val: &network.ShillVal_Uint32Array{
+				Uint32Array: &network.Uint32Array{Vals: x},
+			},
+		}, nil
+	case uint16:
+		return &network.ShillVal{
+			Val: &network.ShillVal_Uint32{
+				Uint32: uint32(x),
+			},
+		}, nil
+	case []uint16:
+		var temp []uint32
+		for _, val := range x {
+			temp = append(temp, uint32(val))
+		}
+		return &network.ShillVal{
+			Val: &network.ShillVal_Uint32Array{
+				Uint32Array: &network.Uint32Array{Vals: temp},
 			},
 		}, nil
 	case []string:
@@ -72,6 +135,10 @@ func FromShillVal(v *network.ShillVal) (interface{}, error) {
 		return x.Str, nil
 	case *network.ShillVal_Bool:
 		return x.Bool, nil
+	case *network.ShillVal_Uint32:
+		return x.Uint32, nil
+	case *network.ShillVal_Uint32Array:
+		return x.Uint32Array.Vals, nil
 	case *network.ShillVal_StrArray:
 		return x.StrArray.Vals, nil
 	default:

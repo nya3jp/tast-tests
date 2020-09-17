@@ -117,6 +117,36 @@ service WifiService {
 
   // WaitForBSSID waits for a specific BSSID to be found.
   rpc WaitForBSSID (WaitForBSSIDRequest) returns (google.protobuf.Empty) {}
+
+  // MonitorShillProperties is a bidirectional streaming gRPC. The function
+  // waits for a start signal that has (shill service path) to start the
+  // property monitor. After, a ready signal is sent to inform the client
+  // that the monitor has been set up successfully. The function sends a
+  // a map of the properties and their changes when it receive a stop
+  // signal by the client.
+  rpc MonitorShillProperties(stream MonitorShillPropertiesRequest) returns (stream MonitorShillPropertiesResponse) {}
+}
+
+enum MonitorSignalType {
+  STOP = 0;
+  START = 1;
+  READY = 2;
+  DONE = 3;
+}
+
+message MonitorShillPropertiesRequest {
+  // Shill object path (e.g. Service or Device).
+  string object_path = 1;
+  MonitorSignalType signal = 2;
+}
+
+message ListOfShillVals {
+  repeated ShillVal vals = 1;
+}
+
+message MonitorShillPropertiesResponse {
+  map<string, ListOfShillVals> props = 1;
+  MonitorSignalType signal = 2;
 }
 
 message ConnectRequest {
@@ -135,14 +165,20 @@ message ShillVal {
   oneof val {
     string str = 1;
     bool bool = 2;
+    uint32 uint32 = 3;
     // Because 'repeated' label is not allowed in oneof type, we define StrArray
     // for repeated string field.
-    StrArray str_array = 3;
+    StrArray str_array = 4;
+    Uint32Array uint32_array = 5;
   }
 }
 
 message StrArray {
   repeated string vals = 1;
+}
+
+message Uint32Array {
+  repeated uint32 vals = 1;
 }
 
 // ConnectResponse is the response of Connect call which includes the
