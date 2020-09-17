@@ -10,7 +10,6 @@ import (
 	"math/rand"
 	"net"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -48,12 +47,9 @@ type TFOption func(*TestFixture)
 
 // TFRouter sets the router hostname for the test fixture.
 // Format: hostname[:port]
-func TFRouter(targets ...string) TFOption {
+func TFRouter(target string) TFOption {
 	return func(tf *TestFixture) {
-		tf.routers = make([]routerData, len(targets))
-		for i := range targets {
-			tf.routers[i].target = targets[i]
-		}
+		tf.routerTarget = target
 	}
 }
 
@@ -75,19 +71,15 @@ func TFCapture(b bool) TFOption {
 // TFServiceName is the service needed by TestFixture.
 const TFServiceName = "tast.cros.network.WifiService"
 
-type routerData struct {
-	target string
-	host   *ssh.Conn
-	object *Router
-}
-
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
 	dut        *dut.DUT
 	rpc        *rpc.Client
 	wifiClient network.WifiServiceClient
 
-	routers []routerData
+	routerTarget string
+	routerHost   *ssh.Conn
+	router       *Router
 
 	pcapTarget    string
 	pcapHost      *ssh.Conn
@@ -96,13 +88,6 @@ type TestFixture struct {
 
 	apID      int
 	capturers map[*APIface]*pcap.Capturer
-
-	// apRouterIDs is reverse map for router identification for two purposes:
-	// 1) We need to know which router the APIface belongs to deconfigure
-	//    AP on correct device;
-	// 2) We need to know (?) a complete list of APIfaces to deconfigure all APs,
-	//    which some tests require.
-	apRouterIDs map[*APIface]int
 
 	// netCertStore is initialized lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests need it.
 	netCertStore *netcertstore.Store
@@ -162,9 +147,8 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	defer st.End()
 
 	tf := &TestFixture{
-		dut:         d,
-		capturers:   make(map[*APIface]*pcap.Capturer),
-		apRouterIDs: make(map[*APIface]int),
+		dut:       d,
+		capturers: make(map[*APIface]*pcap.Capturer),
 	}
 	for _, op := range ops {
 		op(tf)
@@ -191,34 +175,17 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		return nil, errors.Wrap(err, "failed to InitDUT")
 	}
 
-	if len(tf.routers) == 0 {
-		testing.ContextLog(ctx, "Using default router name")
-		tf.routers = append(tf.routers, routerData{target: "default-router"})
-		routerHost, err := tf.dut.DefaultWifiRouterHost(ctx)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to connect to the default router")
-		}
-		tf.routers[0].host = routerHost
+	if tf.routerTarget == "" {
+		tf.routerHost, err = tf.dut.DefaultWifiRouterHost(ctx)
 	} else {
-		for i := range tf.routers {
-			router := &tf.routers[i]
-			testing.ContextLogf(ctx, "Adding router %s", router.target)
-			routerHost, err := tf.connectCompanion(ctx, router.target)
-			if err != nil {
-				return nil, errors.Wrapf(err, "failed to connect to the router %s", router.target)
-			}
-			router.host = routerHost
-		}
+		tf.routerHost, err = tf.connectCompanion(ctx, tf.routerTarget)
 	}
-
-	for i := range tf.routers {
-		router := &tf.routers[i]
-		routerObj, err := NewRouter(ctx, daemonCtx, router.host,
-			strings.ReplaceAll(router.target, ":", "_"))
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to create a router object")
-		}
-		router.object = routerObj
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to the router")
+	}
+	tf.router, err = NewRouter(ctx, daemonCtx, tf.routerHost, "router")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a router object")
 	}
 
 	// errInvalidHost checks if the error is a wrapped "no such host" error.
@@ -233,29 +200,26 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		return false
 	}
 
-	// TODO(crbug.com/1133855): Handle the case that routerTarget and pcapTarget
+	// TODO(crbug.com/1034875): Handle the case that routerTarget and pcapTarget
 	// is pointing to the same device. Current Router object does not allow this.
 	if tf.pcapTarget == "" {
 		tf.pcapHost, err = tf.dut.DefaultWifiPcapHost(ctx)
 		if err != nil && errInvalidHost(err) {
-			testing.ContextLog(ctx, "Use router 0 as pcap because default pcap is not reachable: ", err)
-			tf.pcapHost = tf.routers[0].host
-			tf.pcap = tf.routers[0].object
+			testing.ContextLog(ctx, "Use router as pcap because default pcap is not reachable: ", err)
+			tf.pcapHost = tf.routerHost
 			err = nil
 		}
+	} else if tf.pcapTarget == tf.routerTarget {
+		err = errors.New("same target for router and pcap")
 	} else {
-		for _, router := range tf.routers {
-			if tf.pcapTarget == router.target {
-				return nil, errors.Errorf("failed to set up pcap: same target for router and pcap: %s", tf.pcapTarget)
-			}
-		}
 		tf.pcapHost, err = tf.connectCompanion(ctx, tf.pcapTarget)
 	}
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to pcap")
 	}
-
-	if tf.pcap == nil {
+	if tf.pcapHost == tf.routerHost {
+		tf.pcap = tf.router
+	} else {
 		tf.pcap, err = NewRouter(ctx, daemonCtx, tf.pcapHost, "pcap")
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to create a router object for pcap")
@@ -276,14 +240,7 @@ func (tf *TestFixture) ReserveForClose(ctx context.Context) (context.Context, co
 
 // CollectLogs downloads related log files to OutDir.
 func (tf *TestFixture) CollectLogs(ctx context.Context) error {
-	var firstErr error
-	for _, router := range tf.routers {
-		err := router.object.CollectLogs(ctx)
-		if err != nil {
-			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect logs"))
-		}
-	}
-	return firstErr
+	return tf.router.CollectLogs(ctx)
 }
 
 // ReserveForCollectLogs returns a shorter ctx and cancel function for tf.CollectLogs.
@@ -302,29 +259,25 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reset the NetCertStore"))
 	}
 
-	// TODO(crbug.com/1133855) Handle proper closing when pcap will be able to be router.
-	if tf.pcap != nil && tf.pcap != tf.routers[0].object {
+	if tf.pcap != nil && tf.pcap != tf.router {
 		if err := tf.pcap.Close(ctx); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap"))
 		}
+	}
+	if tf.pcapHost != nil && tf.pcapHost != tf.routerHost {
 		if err := tf.pcapHost.Close(ctx); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap ssh"))
 		}
 	}
-	for i := range tf.routers {
-		router := &tf.routers[i]
-		if router.object != nil {
-			if err := router.object.Close(ctx); err != nil {
-				collectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close rotuer %s", router.target))
-			}
+	if tf.router != nil {
+		if err := tf.router.Close(ctx); err != nil {
+			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close rotuer"))
 		}
-		router.object = nil
-		if router.host != nil {
-			if err := router.host.Close(ctx); err != nil {
-				collectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close router %s ssh", router.target))
-			}
+	}
+	if tf.routerHost != nil {
+		if err := tf.routerHost.Close(ctx); err != nil {
+			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close router ssh"))
 		}
-		router.host = nil
 	}
 	if tf.wifiClient != nil {
 		if _, err := tf.wifiClient.TearDown(ctx, &empty.Empty{}); err != nil {
@@ -356,9 +309,10 @@ func (tf *TestFixture) getUniqueAPName() string {
 	return id
 }
 
-// ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to chose router
-// to establish the AP on.
-func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
+// ConfigureAP configures the router to provide a WiFi service with the options specified.
+// Note that after getting an APIface, ap, the caller should defer tf.DeconfigAP(ctx, ap) and
+// use tf.ReserveForClose(ctx, ap) to reserve time for the deferred call.
+func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
 
@@ -377,12 +331,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		return nil, err
 	}
 
-	if len(tf.routers) <= idx {
-		return nil, errors.Errorf("Router index (%d) out of range [0, %d)", idx, len(tf.routers))
-	}
-
-	if err := config.SecurityConfig.InstallRouterCredentials(ctx, tf.routers[idx].host,
-		tf.routers[idx].object.workDir()); err != nil {
+	if err := config.SecurityConfig.InstallRouterCredentials(ctx, tf.routerHost, tf.router.workDir()); err != nil {
 		return nil, err
 	}
 
@@ -403,11 +352,10 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		}()
 	}
 
-	ap, err := tf.routers[idx].object.StartAPIface(ctx, name, config)
+	ap, err := tf.router.StartAPIface(ctx, name, config)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
 	}
-	tf.apRouterIDs[ap] = idx
 
 	if capturer != nil {
 		tf.capturers[ap] = capturer
@@ -416,19 +364,12 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 	return ap, nil
 }
 
-// ConfigureAP configures the router to provide a WiFi service with the options specified.
-// Note that after getting an APIface, ap, the caller should defer tf.DeconfigAP(ctx, ap) and
-// use tf.ReserveForClose(ctx, ap) to reserve time for the deferred call.
-func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
-	return tf.ConfigureAPOnRouterID(ctx, 0, ops, fac)
-}
-
 // ReserveForDeconfigAP returns a shorter ctx and cancel function for tf.DeconfigAP().
 func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, ap *APIface) (context.Context, context.CancelFunc) {
-	if len(tf.routers) == 0 {
+	if tf.router == nil {
 		return ctx, func() {}
 	}
-	ctx, cancel := tf.routers[tf.apRouterIDs[ap]].object.ReserveForStopAPIface(ctx, ap)
+	ctx, cancel := tf.router.ReserveForStopAPIface(ctx, ap)
 	if capturer, ok := tf.capturers[ap]; ok {
 		// Also reserve time for stopping the capturer if it exists.
 		// Noted that CancelFunc returned here is dropped as we rely on its
@@ -447,25 +388,12 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 
 	capturer := tf.capturers[ap]
 	delete(tf.capturers, ap)
-	if err := tf.routers[tf.apRouterIDs[ap]].object.StopAPIface(ctx, ap); err != nil {
+	if err := tf.router.StopAPIface(ctx, ap); err != nil {
 		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop APIface"))
 	}
 	if capturer != nil {
 		if err := tf.pcap.StopCapture(ctx, capturer); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
-		}
-	}
-	delete(tf.apRouterIDs, ap)
-	return firstErr
-}
-
-// DeconfigAllAPs facilitates deconfiguration of all APs established for
-// this test fixture.
-func (tf *TestFixture) DeconfigAllAPs(ctx context.Context) error {
-	var firstErr error
-	for ap := range tf.apRouterIDs {
-		if err := tf.DeconfigAP(ctx, ap); err != nil {
-			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to deconfig AP"))
 		}
 	}
 	return firstErr
@@ -698,8 +626,8 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ..
 	return nil
 }
 
-// PingFromRouterID tests the connectivity between DUT and router through currently connected WiFi service.
-func (tf *TestFixture) PingFromRouterID(ctx context.Context, idx int, opts ...ping.Option) error {
+// PingFromServer tests the connectivity between DUT and router through currently connected WiFi service.
+func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) error {
 	ctx, st := timing.Start(ctx, "tf.PingFromServer")
 	defer st.End()
 
@@ -708,7 +636,7 @@ func (tf *TestFixture) PingFromRouterID(ctx context.Context, idx int, opts ...pi
 		return errors.Wrap(err, "failed to get the IP address")
 	}
 
-	pr := remoteping.NewRemoteRunner(tf.routers[idx].host)
+	pr := remoteping.NewRemoteRunner(tf.routerHost)
 	res, err := pr.Ping(ctx, addrs[0].String(), opts...)
 	if err != nil {
 		return err
@@ -720,12 +648,6 @@ func (tf *TestFixture) PingFromRouterID(ctx context.Context, idx int, opts ...pi
 	}
 
 	return nil
-}
-
-// PingFromServer calls PingFromRouterID for router 0.
-// Kept for backwards-compatibility.
-func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) error {
-	return tf.PingFromRouterID(ctx, 0, opts...)
 }
 
 // ArpingFromDUT tests that DUT can send the broadcast packets to server.
@@ -751,8 +673,8 @@ func (tf *TestFixture) ArpingFromDUT(ctx context.Context, serverIP string, ops .
 	return nil
 }
 
-// ArpingFromRouterID tests that DUT can receive the broadcast packets from server.
-func (tf *TestFixture) ArpingFromRouterID(ctx context.Context, idx int, serverIface string, ops ...arping.Option) error {
+// ArpingFromServer tests that DUT can receive the broadcast packets from server.
+func (tf *TestFixture) ArpingFromServer(ctx context.Context, serverIface string, ops ...arping.Option) error {
 	ctx, st := timing.Start(ctx, "tf.ArpingFromServer")
 	defer st.End()
 
@@ -761,7 +683,7 @@ func (tf *TestFixture) ArpingFromRouterID(ctx context.Context, idx int, serverIf
 		return errors.Wrap(err, "failed to get the IP address")
 	}
 
-	runner := remotearping.NewRemoteRunner(tf.routers[idx].host)
+	runner := remotearping.NewRemoteRunner(tf.routerHost)
 	res, err := runner.Arping(ctx, addrs[0].String(), serverIface, ops...)
 	if err != nil {
 		return errors.Wrap(err, "arping failed")
@@ -772,12 +694,6 @@ func (tf *TestFixture) ArpingFromRouterID(ctx context.Context, idx int, serverIf
 	}
 
 	return nil
-}
-
-// ArpingFromServer tests that DUT can receive the broadcast packets from server.
-// Kept for backwards-compatibility.
-func (tf *TestFixture) ArpingFromServer(ctx context.Context, serverIface string, ops ...arping.Option) error {
-	return tf.ArpingFromRouterID(ctx, 0, serverIface, ops...)
 }
 
 // ClientIPv4Addrs returns the IPv4 addresses for the network interface.
@@ -849,14 +765,9 @@ func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Co
 	return nil
 }
 
-// RouterByID returns the respective Router object in the fixture.
-func (tf *TestFixture) RouterByID(idx int) *Router {
-	return tf.routers[idx].object
-}
-
-// Router returns Router 0 object in the fixture.
+// Router returns the Router object in the fixture.
 func (tf *TestFixture) Router() *Router {
-	return tf.RouterByID(0)
+	return tf.router
 }
 
 // Pcap returns the pcap Router object in the fixture.
@@ -956,16 +867,17 @@ func (tf *TestFixture) CurrentClientTime(ctx context.Context) (time.Time, error)
 
 // ShillProperty holds a shill service property with it's expected and unexpected values.
 type ShillProperty struct {
-	Property         string
-	ExpectedValues   []interface{}
-	UnexpectedValues []interface{}
-	Method           network.ExpectShillPropertyRequest_CheckMethod
+	Property            string
+	ExpectedValues      []interface{}
+	UnexpectedValues    []interface{}
+	MonitoredProperties []string
+	Method              network.ExpectShillPropertyRequest_CheckMethod
 }
 
 // ExpectShillProperty is a wrapper for the streaming gRPC call ExpectShillProperty.
 // It takes an array of ShillProperty and a shill service path. It returns a function that
 // waites for the expected property changes.
-func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath string, props []*ShillProperty) (func() error, error) {
+func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath string, props []*ShillProperty) (func() (map[string][]interface{}, error), error) {
 	var expectedProps []*network.ExpectShillPropertyRequest_Criterion
 	for _, prop := range props {
 		var anyOfVals []*network.ShillVal
@@ -987,10 +899,11 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 		}
 
 		shillPropReqCriterion := &network.ExpectShillPropertyRequest_Criterion{
-			Key:    prop.Property,
-			AnyOf:  anyOfVals,
-			NoneOf: noneOfVals,
-			Method: prop.Method,
+			Key:            prop.Property,
+			AnyOf:          anyOfVals,
+			NoneOf:         noneOfVals,
+			MonitoredProps: prop.MonitoredProperties,
+			Method:         prop.Method,
 		}
 		expectedProps = append(expectedProps, shillPropReqCriterion)
 	}
@@ -1012,24 +925,30 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 	}
 
 	// Get the expected properties and values.
-	waitForProperties := func() error {
+	waitForProperties := func() (map[string][]interface{}, error) {
+		var monitorResult map[string]*network.ListOfShillVals
 		for {
 			resp, err := stream.Recv()
 			if err == io.EOF {
 				break
 			}
 			if err != nil {
-				return errors.Wrap(err, "failed to get the expected properties")
+				return nil, errors.Wrap(err, "failed to get the expected properties")
 			}
 			// Now we get the matched state change in resp.
 			stateVal, err := protoutil.FromShillVal(resp.Val)
 			if err != nil {
-				return errors.Wrap(err, "failed to convert property name to ShillVal")
+				return nil, errors.Wrap(err, "failed to convert property name to ShillVal")
 			}
 			testing.ContextLogf(ctx, "The current WiFi service %s: %v", resp.Key, stateVal)
+			monitorResult = resp.Props
+		}
+		propChangeslist, err := protoutil.DecodeFromShillValMapList(monitorResult)
+		if err != nil {
+			return nil, err
 		}
 
-		return nil
+		return propChangeslist, nil
 	}
 
 	return waitForProperties, nil

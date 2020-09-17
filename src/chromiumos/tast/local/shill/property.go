@@ -176,6 +176,32 @@ func (pw *PropertiesWatcher) Wait(ctx context.Context) (string, interface{}, dbu
 	}
 }
 
+// Monitor monitors the shill properties and returns a stop function that can be called to stop the monitor.
+// The stop function returns map with the properties and their changes.
+func (pw *PropertiesWatcher) Monitor(ctx context.Context, monitoredProps []string, stopProperty string, stopValues []interface{}) (interface{}, map[string][]interface{}, error) {
+	propsChanges := make(map[string][]interface{})
+
+	for {
+		prop, val, _, err := pw.Wait(ctx)
+		if err != nil {
+			return "", nil, errors.Wrap(err, "failed to wait for any property")
+		}
+		if prop == stopProperty {
+			for _, stopVal := range stopValues {
+				if reflect.DeepEqual(val, stopVal) {
+					return val, propsChanges, nil
+				}
+			}
+		}
+		for _, p := range monitoredProps {
+			if prop == p {
+				propsChanges[prop] = append(propsChanges[prop], val)
+				break
+			}
+		}
+	}
+}
+
 // WaitAll waits for all expected properties were shown on at least one "PropertyChanged" signal and returns the last updated
 // value of each property.
 func (pw *PropertiesWatcher) WaitAll(ctx context.Context, props ...string) ([]interface{}, error) {
