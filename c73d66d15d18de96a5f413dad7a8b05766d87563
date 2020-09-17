@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e41eaf83_03ae2b68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-17T02:57:08Z",
+      "side": 1,
+      "message": "LGTM with a few nits...\n",
+      "revId": "c73d66d15d18de96a5f413dad7a8b05766d87563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46c69487_e178e0cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-17T02:57:08Z",
+      "side": 1,
+      "message": "Can you \"continue\" here to avoid updating allFiles in this case?\n\nI believe that ioutil.ReadDir returns an empty []os.FileInfo in case of errors, but in general, it is safer to avoid accessing a returned value when an error is returned.",
+      "range": {
+        "startLine": 498,
+        "startChar": 4,
+        "endLine": 498,
+        "endChar": 17
+      },
+      "revId": "c73d66d15d18de96a5f413dad7a8b05766d87563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4986227b_2c21e547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-17T02:57:08Z",
+      "side": 1,
+      "message": "style: nil is a preferred empty slice.\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 802,
+        "startChar": 9,
+        "endLine": 802,
+        "endChar": 19
+      },
+      "revId": "c73d66d15d18de96a5f413dad7a8b05766d87563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7cc12ea_95503ddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-17T02:57:08Z",
+      "side": 1,
+      "message": "This condition is strange --- !os.IsNotExist(err) does not necessarily mean that the file exists. For example, its parent directory might be a dangling symlink, and in this case the desired file does not exist.\n\nInstead I recommend:\n\n _, err :\u003d os.Stat(path)\n if err \u003d\u003d nil {\n   return path, nil\n }\n if !os.IsNotExist(err) {\n   return \"\", err\n }",
+      "range": {
+        "startLine": 864,
+        "startChar": 30,
+        "endLine": 864,
+        "endChar": 51
+      },
+      "revId": "c73d66d15d18de96a5f413dad7a8b05766d87563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
