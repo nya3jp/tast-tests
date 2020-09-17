@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
 )
 
 // Properties wraps shill D-Bus object properties.
@@ -176,6 +177,51 @@ func (pw *PropertiesWatcher) Wait(ctx context.Context) (string, interface{}, dbu
 	}
 }
 
+// Monitor monitors the specified property.
+func (pw *PropertiesWatcher) Monitor(ctx context.Context, property string) (func() []interface{}, error) {
+	ch := make(chan error, 1)
+	var propChanges []interface{}
+	stop := func() []interface{} {
+		ch <- nil
+		return propChanges
+	}
+	checkSig := func(sig *dbus.Signal) (bool, interface{}, error) {
+		if len(sig.Body) != 2 {
+			return false, nil, errors.Errorf("signal body must contain 2 arguments: %v", sig.Body)
+		}
+		prop, ok := sig.Body[0].(string)
+		if !ok {
+			return false, nil, errors.Errorf("signal first argument must be a string: %v", sig.Body[0])
+		}
+		variant, ok := sig.Body[1].(dbus.Variant)
+		if !ok {
+			return false, nil, errors.Errorf("signal second argument must be a variant: %v", sig.Body[1])
+		}
+		if property != prop {
+			return false, nil, errors.New("Not a change on monitored property")
+		}
+		testing.ContextLogf(ctx, "The property %s = %v", prop, variant.Value())
+		return true, variant.Value(), nil
+	}
+	go func() {
+		for {
+			select {
+			case <-ctx.Done():
+				return
+			case <-ch:
+				return
+			case sig := <-pw.watcher.Signals:
+				match, change, err := checkSig(sig)
+				if err == nil && match == true {
+					propChanges = append(propChanges, change)
+				}
+			}
+		}
+	}()
+
+	return stop, nil
+}
+
 // WaitAll waits for all expected properties were shown on at least one "PropertyChanged" signal and returns the last updated
 // value of each property.
 func (pw *PropertiesWatcher) WaitAll(ctx context.Context, props ...string) ([]interface{}, error) {
@@ -231,6 +277,7 @@ func (pw *PropertiesWatcher) ExpectInExclude(ctx context.Context, prop string, a
 		if err != nil {
 			return nil, err
 		}
+
 		for _, e := range anyOf {
 			if reflect.DeepEqual(e, vals[0]) {
 				return vals[0], nil

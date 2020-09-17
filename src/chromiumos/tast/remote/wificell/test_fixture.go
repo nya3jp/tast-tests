@@ -846,6 +846,7 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	if !foundSubnet {
 		return errors.Errorf("subnet does not match, got addrs %v want %s", addrs.Ipv4, serverSubnet)
 	}
+	testing.ContextLogf(ctx, "SUBNET, got addrs %v want %s", addrs.Ipv4, serverSubnet)
 
 	// Perform ping.
 	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
@@ -944,4 +945,54 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 	}
 
 	return waitForProperties, nil
+}
+
+// MonitorShillProperty monitors the property changes.
+func (tf *TestFixture) MonitorShillProperty(ctx context.Context, objectPath, propName string) (func() ([]interface{}, error), error) {
+	// Initiate the shill property monitor.
+	stream, err := tf.WifiClient().MonitorShillProperty(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	// Send the shill property request to start the monitoring.
+	req := &network.MonitorShillPropertyRequest{
+		ObjectPath: objectPath,
+		Property:   propName,
+		Signal:     network.MonitorSignalType_START,
+	}
+	if err := stream.Send(req); err != nil {
+		return nil, errors.Wrap(err, "failed to send a request")
+	}
+
+	// Receive a ready signal that indicate that the property watcher has started.
+	resp, err := stream.Recv()
+	if err != nil || resp.Signal != network.MonitorSignalType_READY {
+		// Error due to expecting an empty response as ready signal.
+		return nil, errors.New("failed to get the ready signal")
+	}
+
+	// Stop the monitor and get the changes of the property.
+	stopMonitor := func() ([]interface{}, error) {
+		// Send message to stop the monitor.
+		if err := stream.Send(&network.MonitorShillPropertyRequest{Signal: network.MonitorSignalType_STOP}); err != nil {
+			return nil, errors.Wrap(err, "failed to get the property changes")
+		}
+		resp, err := stream.Recv()
+		if err != nil || resp.Signal != network.MonitorSignalType_DONE {
+			return nil, errors.New("failed to receive response")
+		}
+		var propChangeslist []interface{}
+		for _, val := range resp.Vals {
+			stateVal, err := protoutil.FromShillVal(val)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to convert property name to ShillVal")
+			}
+			propChangeslist = append(propChangeslist, stateVal)
+		}
+
+		return propChangeslist, nil
+	}
+
+	return stopMonitor, nil
 }
