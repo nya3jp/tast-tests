@@ -25,9 +25,12 @@ type Notification struct {
 	Progress int    `json:"progress"`
 }
 
-// VisibleNotifications returns an array of visible notifications in Chrome.
+// Notifications returns an array of notifications in Chrome.
 // tconn must be the connection returned by chrome.TestAPIConn().
-func VisibleNotifications(ctx context.Context, tconn *chrome.TestConn) ([]*Notification, error) {
+//
+// Note: it uses an autotestPrivate API with the misleading name
+// getVisibleNotifications under the hood.
+func Notifications(ctx context.Context, tconn *chrome.TestConn) ([]*Notification, error) {
 	var ret []*Notification
 	if err := tconn.EvalPromise(ctx,
 		`tast.promisify(chrome.autotestPrivate.getVisibleNotifications)()`, &ret); err != nil {

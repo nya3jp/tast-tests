@@ -105,7 +105,7 @@ func Notification(ctx context.Context, s *testing.State) {
 	}
 
 	findNotification := func() (*ash.Notification, error) {
-		ns, err := ash.VisibleNotifications(ctx, tconn)
+		ns, err := ash.Notifications(ctx, tconn)
 		if err != nil {
 			return nil, err
 		}

@@ -371,7 +371,7 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 
 	// Wait until the Zip Archiver notification exists.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		ns, err := ash.VisibleNotifications(ctx, tconn)
+		ns, err := ash.Notifications(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -391,7 +391,7 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 
 	// Wait until the Zip Archiver notification disappears.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		ns, err := ash.VisibleNotifications(ctx, tconn)
+		ns, err := ash.Notifications(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
 		}

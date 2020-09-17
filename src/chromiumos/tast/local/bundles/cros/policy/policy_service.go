@@ -341,7 +341,7 @@ func (c *PolicyService) VerifyVisibleNotification(ctx context.Context, req *ppb.
 
 	testing.ContextLogf(ctx, "Waiting for notification with id %s", req.NotificationId)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		notifications, err := ash.VisibleNotifications(ctx, tconn)
+		notifications, err := ash.Notifications(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get notifications"))
 		}
