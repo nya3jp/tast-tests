@@ -39,6 +39,30 @@
       "revId": "2365db1b1bf4b2a922ded04f4b3315ec404fd30c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6822985e_0d04eecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-17T10:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "605c6cf3_59492490",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "2365db1b1bf4b2a922ded04f4b3315ec404fd30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
