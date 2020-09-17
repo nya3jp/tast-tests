@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8becc967_9a5cc0e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-09-17T16:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50087e05_6efc814c",
+      "revId": "5b8b76644016233777131671160c142c0970ed59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b58d792b_a862e408",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -50,6 +68,24 @@
       "revId": "5b8b76644016233777131671160c142c0970ed59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70a1da09_79091bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-09-17T16:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17af8e6d_04ffaab8",
+      "revId": "5b8b76644016233777131671160c142c0970ed59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
