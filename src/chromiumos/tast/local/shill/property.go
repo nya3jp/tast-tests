@@ -161,18 +161,23 @@ func (pw *PropertiesWatcher) Close(ctx context.Context) error {
 func (pw *PropertiesWatcher) Wait(ctx context.Context) (string, interface{}, dbus.Sequence, error) {
 	select {
 	case sig := <-pw.watcher.Signals:
-		if len(sig.Body) != 2 {
-			return "", nil, 0, errors.Errorf("signal body must contain 2 arguments: %v", sig.Body)
-		}
-		if prop, ok := sig.Body[0].(string); !ok {
-			return "", nil, 0, errors.Errorf("signal first argument must be a string: %v", sig.Body[0])
-		} else if variant, ok := sig.Body[1].(dbus.Variant); !ok {
-			return "", nil, 0, errors.Errorf("signal second argument must be a variant: %v", sig.Body[1])
-		} else {
-			return prop, variant.Value(), sig.Sequence, nil
-		}
+		return pw.ParsePropertyChangedSignal(sig)
 	case <-ctx.Done():
 		return "", nil, 0, errors.Errorf("didn't receive PropertyChanged signal: %v", ctx.Err())
+	}
+}
+
+// ParsePropertyChangedSignal parses the "PropertyChanged" signal and returns its parameters.
+func (pw *PropertiesWatcher) ParsePropertyChangedSignal(sig *dbus.Signal) (string, interface{}, dbus.Sequence, error) {
+	if len(sig.Body) != 2 {
+		return "", nil, 0, errors.Errorf("signal body must contain 2 arguments: %v", sig.Body)
+	}
+	if prop, ok := sig.Body[0].(string); !ok {
+		return "", nil, 0, errors.Errorf("signal first argument must be a string: %v", sig.Body[0])
+	} else if variant, ok := sig.Body[1].(dbus.Variant); !ok {
+		return "", nil, 0, errors.Errorf("signal second argument must be a variant: %v", sig.Body[1])
+	} else {
+		return prop, variant.Value(), sig.Sequence, nil
 	}
 }
 
@@ -218,27 +223,6 @@ func (pw *PropertiesWatcher) ExpectIn(ctx context.Context, prop string, expected
 		for _, e := range expected {
 			if reflect.DeepEqual(e, vals[0]) {
 				return vals[0], nil
-			}
-		}
-	}
-}
-
-// ExpectInExclude expects the prop's value to become one of the expected values (anyOf) and returns the first matched one.
-// However, this function fails if the prop's value is one of the unexpected values (noneOf).
-func (pw *PropertiesWatcher) ExpectInExclude(ctx context.Context, prop string, anyOf, noneOf []interface{}) (interface{}, error) {
-	for {
-		vals, err := pw.WaitAll(ctx, prop)
-		if err != nil {
-			return nil, err
-		}
-		for _, e := range anyOf {
-			if reflect.DeepEqual(e, vals[0]) {
-				return vals[0], nil
-			}
-		}
-		for _, e := range noneOf {
-			if reflect.DeepEqual(e, vals[0]) {
-				return nil, errors.Wrapf(err, "unexpected property value: %s = %v", prop, vals[0])
 			}
 		}
 	}

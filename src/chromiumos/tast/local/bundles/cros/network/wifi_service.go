@@ -1344,12 +1344,13 @@ func (s *WifiService) GetCurrentTime(ctx context.Context, _ *empty.Empty) (*netw
 	return &network.GetCurrentTimeResponse{NowSecond: now.Unix(), NowNanosecond: int64(now.Nanosecond())}, nil
 }
 
-// ExpectShillProperty is a streaming gRPC, takes a shill service path and expects a list of property
-// criteria in order. When a property's value is expected, it responds the property's (key, value) pair.
-// The method sends an empty response as the property watcher is set. A property matching criterion
-// consists of a property name, a list of expected values, a list of excluded values, and a "CheckType".
-// We say a criterion is met iff the property value is in one of the expected values and not in any of
-// the excluded values. If the property value is one of the excluded values, the method fails immediately.
+// ExpectShillProperty is a streaming gRPC, takes a shill service path, expects a list of property
+// criteria, and takes list of shill properties to monitor in order. When a property's value is expected,
+// it responds the property's (key, value) pair. The method sends an empty response as the property watcher
+// is set. A property matching criterion consists of a property name, a list of expected values, a list of
+// excluded values, and a "CheckType". We say a criterion is met iff the property value is in one of the
+// expected values and not in any of the excluded values. If the property value is one of the excluded values,
+// the method fails immediately.
 // For CheckMethod, it has three methods:
 // 1. CHECK_ONLY: checks if the criterion is met.
 // 2. ON_CHANGE: waits for the property changes to the expected values.
@@ -1381,7 +1382,8 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 		}
 		return false
 	}
-
+	//var stopMonitor func() (map[string][]interface{}, error)
+	monitorResult := make(map[string][]interface{})
 	for _, p := range req.Props {
 		var expectedVals []interface{}
 		for _, sv := range p.AnyOf {
@@ -1402,7 +1404,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 		}
 
 		// Check the current value of the property.
-		if p.Method != network.ExpectShillPropertyRequest_ON_CHANGE {
+		if p.Method == network.ExpectShillPropertyRequest_CHECK_WAIT || p.Method == network.ExpectShillPropertyRequest_CHECK_ONLY {
 			props, err := service.GetProperties(ctx)
 			if err != nil {
 				return err
@@ -1436,18 +1438,54 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 			}
 		}
 
-		val, err := pw.ExpectInExclude(ctx, p.Key, expectedVals, excludedVals)
-		if err != nil {
-			return errors.Wrap(err, "failed to expect property")
-		}
-		shillVal, err := protoutil.ToShillVal(val)
+		propVal, err := func(ctx context.Context) (interface{}, error) {
+			for {
+				prop, val, _, err := pw.Wait(ctx)
+				if err != nil {
+					return nil, err
+				}
+
+				for _, p := range p.MonitoredProps {
+					if p == prop {
+						monitorResult[prop] = append(monitorResult[prop], val)
+						break
+					}
+				}
+				if prop == p.Key {
+					for _, e := range expectedVals {
+						if reflect.DeepEqual(e, val) {
+							return val, nil
+						}
+					}
+					for _, e := range excludedVals {
+						if reflect.DeepEqual(e, val) {
+							return nil, errors.Wrapf(err, "unexpected property value: %s = %v", prop, val)
+						}
+					}
+				}
+			}
+		}(ctx)
 		if err != nil {
 			return err
 		}
+
+		shillVal, err := protoutil.ToShillVal(propVal)
+		if err != nil {
+			return err
+		}
+
 		if err := sender.Send(&network.ExpectShillPropertyResponse{Key: p.Key, Val: shillVal}); err != nil {
 			return errors.Wrap(err, "failed to send response")
 		}
 	}
+	rslt, err := protoutil.EncodeToShillValMapList(monitorResult)
+	if err != nil {
+		return err
+	}
+	if err := sender.Send(&network.ExpectShillPropertyResponse{Props: rslt, MonitorDone: true}); err != nil {
+		return errors.Wrap(err, "failed to send response")
+	}
+
 	return nil
 }
 
