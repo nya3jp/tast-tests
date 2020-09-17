@@ -6,6 +6,7 @@ package shill
 
 import (
 	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/godbus/dbus"
@@ -172,8 +173,48 @@ func (pw *PropertiesWatcher) Wait(ctx context.Context) (string, interface{}, dbu
 			return prop, variant.Value(), sig.Sequence, nil
 		}
 	case <-ctx.Done():
-		return "", nil, 0, errors.Errorf("didn't receive PropertyChanged signal: %v", ctx.Err())
+		return "", nil, 0, errors.Wrap(ctx.Err(), "didn't receive PropertyChanged signal")
 	}
+}
+
+// Monitor monitors the specified property and return a stop function that can be called to stop the monitor.
+// The stop function returns the list of the changes of the peoperty.
+func (pw *PropertiesWatcher) Monitor(ctx context.Context, h *PropertyHolder, property string) (func() ([]interface{}, error), error) {
+	done := make(chan error, 1)
+	const stopMonitor = "StopMonitor"
+	var propChanges []interface{}
+	stop := func() ([]interface{}, error) {
+		// Send a dummy dbus signal to stop the property monitor.
+		connect, err := dbusutil.SystemBus()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to connect to system bus")
+		}
+		if err := connect.Emit(h.dbusObject.obj.Path(), fmt.Sprintf("%s%s%s", h.dbusObject.iface, ".", "PropertyChanged"), property, dbus.MakeVariant(interface{}(stopMonitor))); err != nil {
+			return nil, errors.Wrap(err, "failed sending a dummy signal to stop the property monitor")
+		}
+		if err := <-done; err != nil {
+			return nil, err
+		}
+		return propChanges, nil
+	}
+
+	go func() {
+		defer close(done)
+		done <- func() error {
+			for {
+				val, err := pw.WaitAll(ctx, property)
+				if err != nil {
+					return err
+				}
+				if reflect.DeepEqual(val[0], interface{}(stopMonitor)) {
+					return nil
+				}
+				propChanges = append(propChanges, val[0])
+			}
+		}()
+	}()
+
+	return stop, nil
 }
 
 // WaitAll waits for all expected properties were shown on at least one "PropertyChanged" signal and returns the last updated
@@ -188,6 +229,7 @@ func (pw *PropertiesWatcher) WaitAll(ctx context.Context, props ...string) ([]in
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to wait for any property: %q", props)
 		}
+
 		for i, p := range props {
 			if p != prop {
 				continue

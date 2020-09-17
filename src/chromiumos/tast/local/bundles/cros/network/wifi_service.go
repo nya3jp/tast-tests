@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/hex"
+	"io"
 	"net"
 	"reflect"
 	"sort"
@@ -1407,6 +1408,71 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 			return errors.Wrap(err, "failed to send response")
 		}
 	}
+	return nil
+}
+
+// MonitorShillProperty is a bidirectional streaming gRPC. The function
+// waits for a start signal that has (shill service path and a shill
+// property name) to start the property monitor. After, a ready signal is
+// sent to inform the client that the monitor has been set up successfully.
+// This is the implementation of network.Wifi/ExpectShillProperty gRPC.
+func (s *WifiService) MonitorShillProperty(stream network.WifiService_MonitorShillPropertyServer) error {
+	ctx := stream.Context()
+
+	type stopMonitor func() ([]interface{}, error)
+	var stopM stopMonitor
+
+	for {
+		in, err := stream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+
+		if in.Signal == network.MonitorSignalType_START {
+			service, err := shill.NewService(ctx, dbus.ObjectPath(in.ObjectPath))
+			if err != nil {
+				return errors.Wrap(err, "failed to create a service object")
+			}
+			pw, err := service.CreateWatcher(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to create a watcher")
+			}
+			defer pw.Close(ctx)
+
+			stop, err := pw.Monitor(ctx, &service.PropertyHolder, in.Property)
+			if err != nil {
+				return errors.Wrap(err, "failed to expect property")
+			}
+			stopM = stop
+
+			if err := stream.Send(&network.MonitorShillPropertyResponse{Signal: network.MonitorSignalType_READY}); err != nil {
+				return errors.Wrap(err, "failed to send a response")
+			}
+		}
+
+		if in.Signal == network.MonitorSignalType_STOP {
+			var retPropChanges []*network.ShillVal
+			propChanges, err := stopM()
+			if err != nil {
+				return err
+
+			}
+			for _, val := range propChanges {
+				shillVal, err := protoutil.ToShillVal(val)
+				if err != nil {
+					return errors.Wrap(err, "failed to send response")
+				}
+				retPropChanges = append(retPropChanges, shillVal)
+			}
+			if err := stream.Send(&network.MonitorShillPropertyResponse{Signal: network.MonitorSignalType_DONE, Vals: retPropChanges}); err != nil {
+				return errors.Wrap(err, "failed to send response")
+			}
+		}
+	}
+
 	return nil
 }
 
