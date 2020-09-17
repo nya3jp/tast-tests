@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aaf97886_eb32b89a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-17T03:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7cab73_16ece57c",
+      "range": {
+        "startLine": 90,
+        "startChar": 34,
+        "endLine": 90,
+        "endChar": 58
+      },
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd1f84eb_be32ec6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e4dfd9d9_a0ab2574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-17T03:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1f84eb_be32ec6c",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38d87793_bbb276d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 5
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "a44804f6_4cac0b45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-17T03:54:38Z",
+      "side": 1,
+      "message": "Done\n\nDoing that just gets you a message saying \"Binary file ${file} matches\", even if you add something like \"--byte-offset\" which would normally add output",
+      "parentUuid": "38d87793_bbb276d0",
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "312b8e06_db4f2d1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 5
@@ -79,6 +145,24 @@
       "revId": "9c7378e9363f6932acae61c11895a18df0711893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "544503b2_24e69504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-17T03:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "312b8e06_db4f2d1a",
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "39e506a0_3317a2ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-17T03:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f75f5de8_a1c5be62",
+      "range": {
+        "startLine": 119,
+        "startChar": 31,
+        "endLine": 119,
+        "endChar": 35
+      },
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b9fc12b_7c2bee1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 5
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "0753b5c0_5d250650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-17T03:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b9fc12b_7c2bee1e",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 35
+      },
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b0f0c31_514b0a14",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 5
@@ -148,6 +280,30 @@
       "revId": "9c7378e9363f6932acae61c11895a18df0711893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a42e5b_167d4bdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-17T03:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b0f0c31_514b0a14",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "9c7378e9363f6932acae61c11895a18df0711893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
