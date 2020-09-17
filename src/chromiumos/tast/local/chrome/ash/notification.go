@@ -57,3 +57,14 @@ func HideAllNotifications(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	return nil
 }
+
+// HideAllNotificationsAndWait clicks on the tray button to show and hide the system tray button, which should also hide any visible notification, and then waits for the system tray to actually disappear.
+func HideAllNotificationsAndWait(ctx context.Context, tconn *chrome.TestConn) error {
+	HideAllNotifications(ctx, tconn)
+	if err := chromeui.WaitUntilGone(ctx, tconn, chromeui.FindParams{ClassName: "TrayBubbleView"}, 2*time.Second); err != nil {
+		return errors.Wrap(err, "quick settings does not disappear")
+	}
+	// At this point, the node is gone in the tree, but the animation is still potentially ongoing. Wait for the animation to complete.
+	chromeui.WaitForLocationChangeCompleted(ctx, tconn)
+	return nil
+}
