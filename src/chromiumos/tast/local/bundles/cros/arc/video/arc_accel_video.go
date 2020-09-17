@@ -257,6 +257,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	defer act.Close()
 	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
 		"--esa", "test-args", strings.Join(args, ","),
+		"--ez", "delay-start", "true",
 		"--es", "log-file", arcFilePath + textLogName}); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
 	}
@@ -264,6 +265,12 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	s.Log("Making activity fullscreen")
 	if err := makeActivityFullscreen(ctx, act, tconn); err != nil {
 		s.Fatal("Failed to make activity fullscreen: ", err)
+	}
+
+	s.Log("Starting test")
+	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
+		"-a", "org.chromium.c2.test.START_TEST"}); err != nil {
+		s.Fatal("Failed to start test: ", err)
 	}
 
 	const measureDelay = time.Duration(5) * time.Second
