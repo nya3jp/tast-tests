@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "302e2b2f_bab3064c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-17T22:21:30Z",
+      "side": 1,
+      "message": "Ack. Thanks for the screenshot and clarification.",
+      "parentUuid": "5ec9e0b3_d3b89689",
+      "range": {
+        "startLine": 400,
+        "startChar": 19,
+        "endLine": 400,
+        "endChar": 20
+      },
+      "revId": "8388ca8db18131dd1bcd43aa07019e4a38371869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7196223c_ced1720f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 14
