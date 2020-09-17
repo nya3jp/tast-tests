@@ -61,16 +61,30 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Log("Failed to ensure the display is on: ", err)
 	}
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start app before test cases: ", err)
+
+	if appPkgName == "com.discord" {
+		// Launch the app for Discord.
+		if err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "-c", "android.intent.category.LAUNCHER", "1").Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal("Failed to start app before test cases: ", err)
+		}
+	} else if err := act.Start(ctx, tconn); err != nil {
+		s.Log("Failed to start app before test cases: ", err)
 	}
-	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-		s.Fatal("Failed to get window info: ", err)
-	} else if err := window.CloseWindow(ctx, tconn); err != nil {
-		s.Fatal("Failed to close app window before test cases: ", err)
-	}
-	if err := act.Stop(ctx, tconn); err != nil {
-		s.Fatal("Failed to stop app before test cases: ", err)
+
+	if appPkgName == "com.discord" {
+		// Close the Discord app.
+		if err := act.Stop(ctx, tconn); err != nil {
+			s.Fatal("Failed to stop app before test cases: ", err)
+		}
+	} else {
+		if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+			s.Fatal("Failed to get window info: ", err)
+		} else if err := window.CloseWindow(ctx, tconn); err != nil {
+			s.Fatal("Failed to close app window before test cases: ", err)
+		}
+		if err := act.Stop(ctx, tconn); err != nil {
+			s.Fatal("Failed to stop app before test cases: ", err)
+		}
 	}
 	s.Log("Successfully tested launching and closing the app")
 
@@ -92,23 +106,39 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			if err := power.TurnOnDisplay(ctx); err != nil {
 				s.Log("Failed to ensure the display is on: ", err)
 			}
-			// Launch the app.
-			if err := act.Start(ctx, tconn); err != nil {
+
+			if appPkgName == "com.discord" {
+				// Launch the app for Discord.
+				if err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "-c", "android.intent.category.LAUNCHER", "1").Run(testexec.DumpLogOnError); err != nil {
+					s.Fatal("Failed to start app before test cases: ", err)
+				}
+			} else if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
 			}
 			s.Log("App launched successfully")
 
-			// Close the app between iterations.
-			defer func(ctx context.Context) {
-				if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-					s.Fatal("Failed to get window info: ", err)
-				} else if err := window.CloseWindow(ctx, tconn); err != nil {
-					s.Fatal("Failed to close app window: ", err)
-				}
-				if err := act.Stop(ctx, tconn); err != nil {
-					s.Fatal("Failed to stop app: ", err)
-				}
-			}(cleanupCtx)
+			if appPkgName == "com.discord" {
+				// Perform clean up for Discord
+				// Close the app between iterations.
+				defer func(ctx context.Context) {
+					if err := act.Stop(ctx, tconn); err != nil {
+						s.Fatal("Failed to stop app: ", err)
+					}
+				}(cleanupCtx)
+			} else {
+				// Perform clean up for all apps other than Discord
+				// Close the app between iterations.
+				defer func(ctx context.Context) {
+					if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+						s.Fatal("Failed to get window info: ", err)
+					} else if err := window.CloseWindow(ctx, tconn); err != nil {
+						s.Fatal("Failed to close app window: ", err)
+					}
+					if err := act.Stop(ctx, tconn); err != nil {
+						s.Fatal("Failed to stop app: ", err)
+					}
+				}(cleanupCtx)
+			}
 
 			// Take screenshot on failure.
 			defer func(ctx context.Context) {
