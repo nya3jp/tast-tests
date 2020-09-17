@@ -202,7 +202,7 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 
 	if state == overviewIsVisible {
 		// Hide notifications before testing overview, so notifications are not shown over the hotseat in  tablet mode.
-		if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 			return cleanupAll, errors.Wrap(err, "failed to hide all notifications")
 		}
 
