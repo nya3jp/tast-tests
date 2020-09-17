@@ -16,6 +16,40 @@
       "revId": "560b8835e9f9d64f76711794cdbf02dd66728afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfd92e16_018da376",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-17T07:39:41Z",
+      "side": 1,
+      "message": "Thanks for the commit!\nI think I found 1 more line that can be changed, pleace check it.\n\nI can only add CR +1, you have to add tast-owners for a +2.",
+      "revId": "560b8835e9f9d64f76711794cdbf02dd66728afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19ca05cb_e5f21a99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-17T07:39:41Z",
+      "side": 1,
+      "message": "You can change this one as well.",
+      "revId": "560b8835e9f9d64f76711794cdbf02dd66728afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
