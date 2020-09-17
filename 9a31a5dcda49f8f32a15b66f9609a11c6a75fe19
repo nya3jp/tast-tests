@@ -87,6 +87,24 @@
       "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d81ee7b_205fed8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_start.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-17T10:45:06Z",
+      "side": 1,
+      "message": "Hmm, since the test is using existing preconditions, can\u0027t we assume that a correct image is loaded before the test body VmcStart() is executed?\nSince `InstallCrostini` function, in which `prepareImages()` is called, is called in `Prepare()` function for the preconditions [1], it will be run before each test function according to [2].\n\nSo, I doubt we need to do something special for them in this test. Am I misunderstanding something?\n\n\n[1] https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/crostini/pre.go;drc\u003d63e57ff22a44b2eed3bf8f48a233bd53e06c781a;l\u003d395\n[2] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions",
+      "parentUuid": "2ea853c9_d5b2843c",
+      "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
