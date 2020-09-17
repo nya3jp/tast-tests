@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce08bb02_d8948cbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-17T22:47:03Z",
+      "side": 1,
+      "message": "First pass, just a couple more comments on top of hidehiko@ ones",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8630fa19_631e4c01",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
@@ -30,6 +47,29 @@
       "writtenOn": "2020-09-17T08:03:10Z",
       "side": 1,
       "message": "To minimize the interface, could you avoid passing testing.State as much as possible?\nInstead, could you pass the var string, and return (int, error).",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "731728e5_d57e92fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-17T22:47:03Z",
+      "side": 1,
+      "message": "Make it const?",
+      "range": {
+        "startLine": 233,
+        "startChar": 41,
+        "endLine": 233,
+        "endChar": 42
+      },
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -196,6 +236,29 @@
       "writtenOn": "2020-09-17T08:03:10Z",
       "side": 1,
       "message": "this depends on the naming scheme more. Could you describe the in the document?",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3819bdf3_ac71aaa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-17T22:47:03Z",
+      "side": 1,
+      "message": "I don\u0027t like the inverted logic - if not write then read, if not read, then write..",
+      "range": {
+        "startLine": 154,
+        "startChar": 14,
+        "endLine": 154,
+        "endChar": 22
+      },
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
