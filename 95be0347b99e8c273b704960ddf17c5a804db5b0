@@ -16,6 +16,63 @@
       "revId": "95be0347b99e8c273b704960ddf17c5a804db5b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd116095_118197b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-17T14:06:22Z",
+      "side": 1,
+      "message": "Do you need an actual data file here, can\u0027t you just create an empty one at runtime in a temp dir? The file is not commited.",
+      "revId": "95be0347b99e8c273b704960ddf17c5a804db5b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ff743d_893767f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-17T14:06:22Z",
+      "side": 1,
+      "message": "Clearing the browser data using the UI seems wrong and might be flaky. Is there a programatic way to do it?\n\nIs there a js API usable from this settings page?\nMaybe add a autotestprivate API for this?",
+      "revId": "95be0347b99e8c273b704960ddf17c5a804db5b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83dc1172_f27b9d53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-17T14:06:22Z",
+      "side": 1,
+      "message": "nit: comment is misleading. Maybe: Check if there is no history.",
+      "range": {
+        "startLine": 150,
+        "startChar": 6,
+        "endLine": 150,
+        "endChar": 49
+      },
+      "revId": "95be0347b99e8c273b704960ddf17c5a804db5b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
