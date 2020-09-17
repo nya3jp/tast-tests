@@ -33,6 +33,29 @@
       "revId": "46c40ee322d9c416975fb676dd7e887c4d726b9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cd4918c_47322871",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-17T18:13:28Z",
+      "side": 1,
+      "message": "I think this is good for this test. Going forward if you think there would be more const\u0027s like this, consider making a constants.go file similar to this:\n\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go\n\nIts completely up to you if you want to do that now (ie, make the constangs.go now, and move this there) or leave as is. Either is good with me",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "46c40ee322d9c416975fb676dd7e887c4d726b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
