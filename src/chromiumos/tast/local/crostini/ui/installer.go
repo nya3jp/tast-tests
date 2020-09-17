@@ -11,7 +11,6 @@ import (
 	"fmt"
 	"os"
 	"regexp"
-	"strconv"
 	"strings"
 	"time"
 
@@ -26,19 +25,6 @@ import (
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
-)
-
-const (
-	// SizeB is a multiplier to convert bytes to bytes.
-	SizeB = 1
-	// SizeKB is a multiplier to convert bytes to kilobytes.
-	SizeKB = 1024
-	// SizeMB is a multiplier to convert bytes to megabytes.
-	SizeMB = 1024 * 1024
-	// SizeGB is a multiplier to convert bytes to gigabytes.
-	SizeGB = 1024 * 1024 * 1024
-	// SizeTB is a multiplier to convert bytes to terabytes.
-	SizeTB = 1024 * 1024 * 1024 * 1024
 )
 
 const uiTimeout = 30 * time.Second
@@ -73,31 +59,9 @@ func New(tconn *chrome.TestConn) *Installer {
 	return &Installer{tconn}
 }
 
-func parseDiskSizeString(str string) (uint64, error) {
-	parts := strings.Split(str, " ")
-	if len(parts) != 2 {
-		return 0, errors.Errorf("could not parseDiskSizeString %s: does not have exactly 2 space separated parts", str)
-	}
-	num, err := strconv.ParseFloat(parts[0], 64)
-	if err != nil {
-		return 0, errors.Wrapf(err, "could not parseDiskSizeString %s", str)
-	}
-	unitMap := map[string]float64{
-		"B":  SizeB,
-		"KB": SizeKB,
-		"MB": SizeMB,
-		"GB": SizeGB,
-		"TB": SizeTB,
-	}
-	units, ok := unitMap[parts[1]]
-	if !ok {
-		return 0, errors.Errorf("could not parseDiskSizeString %s: does not have a recognized units string", str)
-	}
-	return uint64(num * units), nil
-}
-
 // SetDiskSize uses the slider on the Installer options pane to set the disk
 // size to the smallest slider increment larger than the specified disk size.
+// If minDiskSize is smaller than the possible minimum disk size, disk size will be the smallest size.
 func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
 	window := uig.FindWithTimeout(installWindowFindParams, uiTimeout)
 	radioGroup := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRadioGroup}, uiTimeout)
@@ -118,39 +82,31 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
 	}
 	defer kb.Close()
 
-	// getSize returns the current size based on the slider text.
-	getSize := func() (uint64, error) {
-		node, err := uig.GetNode(ctx, p.tconn, slider.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText}, uiTimeout))
+	if defaultSize, err := settings.GetDiskSize(ctx, p.tconn, slider); err != nil {
+		return errors.Wrap(err, "failed to get the initial disk size")
+	} else if defaultSize == minDiskSize {
+		return nil
+	} else if defaultSize > minDiskSize {
+		// To make sure that the final disk size is equal or larger than the minDiskSize,
+		// move the slide to the left most first.
+		minimumSize, err := settings.ChangeDiskSize(ctx, p.tconn, kb, slider, false, minDiskSize)
 		if err != nil {
-			return 0, errors.Wrap(err, "error getting disk size setting")
+			return errors.Wrap(err, "failed to move the disk slider to the left most")
 		}
-		defer node.Release(ctx)
-		return parseDiskSizeString(node.Name)
+		if minimumSize == minDiskSize {
+			return nil
+		}
+		if minimumSize > minDiskSize {
+			testing.ContextLogf(ctx,
+				"The target disk size %v is smaller than the minimum disk size %v, using the minimum disk size %v",
+				minDiskSize, minimumSize, minimumSize)
+			return nil
+		}
 	}
 
-	for {
-		size, err := getSize()
-		if err != nil {
-			return errors.Wrap(err, "error getting disk size")
-		}
-		if size >= minDiskSize {
-			break
-		}
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := kb.Accel(ctx, "right"); err != nil {
-				return errors.Wrap(err, "error sending right arrow key")
-			}
-			curSize, err := getSize()
-			if err != nil {
-				return errors.Wrap(err, "error getting disk size")
-			}
-			if size == curSize {
-				return errors.Errorf("could not set disk size to larger than %v", curSize)
-			}
-			return nil
-		}, &testing.PollOptions{Interval: 50 * time.Millisecond, Timeout: 5 * time.Second}); err != nil {
-			return err
-		}
+	size, err := settings.ChangeDiskSize(ctx, p.tconn, kb, slider, true, minDiskSize)
+	if size < minDiskSize {
+		return errors.Errorf("could not set disk size to larger than %v", size)
 	}
 	return nil
 }
