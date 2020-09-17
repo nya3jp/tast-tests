@@ -211,6 +211,14 @@ func BSSID(bssid string) Option {
 	}
 }
 
+// OBSSInterval returns an Option which sets the interval in seconds between
+// overlapping BSS scans. Default value is 0 (disabled).
+func OBSSInterval(interval uint16) Option {
+	return func(c *Config) {
+		c.OBSSInterval = interval
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -246,6 +254,7 @@ type Config struct {
 	PMF                PMFEnum
 	DTIMPeriod         int
 	BSSID              string
+	OBSSInterval       uint16
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -318,6 +327,10 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 
 	if c.BSSID != "" {
 		configure("bssid", c.BSSID)
+	}
+
+	if c.OBSSInterval != 0 {
+		configure("obss_interval", strconv.FormatUint(uint64(c.OBSSInterval), 10))
 	}
 
 	securityConf, err := c.SecurityConfig.HostapdConfig()
