@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8801d1a3_aa375f9f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-17T17:09:34Z",
+      "side": 1,
+      "message": "I have changed the code. Please check if it is ok. Thanks.",
+      "parentUuid": "4e1a4b70_72462890",
+      "range": {
+        "startLine": 120,
+        "startChar": 37,
+        "endLine": 120,
+        "endChar": 64
+      },
+      "revId": "aea893d766029194d793b6576a169120ef144691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2de552f6_58e5b9d8",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 6
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "1636d798_ceeea18a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-17T17:09:34Z",
+      "side": 1,
+      "message": "Yes, it will called after WaitForLocationChangeCompleted. The call that was deferred would be called before the function. Based on what I understand so far, Release function frees the reference to Javascript for expandArrowView. It is not a GUI action.",
+      "parentUuid": "2de552f6_58e5b9d8",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 6
+      },
+      "revId": "aea893d766029194d793b6576a169120ef144691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51aaca6e_5a8e69fc",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 6
@@ -91,6 +139,30 @@
       "revId": "aea893d766029194d793b6576a169120ef144691",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64706731_fbfc5653",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-17T17:09:34Z",
+      "side": 1,
+      "message": "No. According the document for LeftClickUntil,  it repeatedly left clicks the node until the condition returns true with no error. This is useful for situations where there is no indication of whether the node is ready to receive clicks.",
+      "parentUuid": "51aaca6e_5a8e69fc",
+      "range": {
+        "startLine": 179,
+        "startChar": 18,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "aea893d766029194d793b6576a169120ef144691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

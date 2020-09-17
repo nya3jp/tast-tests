@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba737697_942558ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-17T17:09:34Z",
+      "side": 1,
+      "message": "Hi Derek:\n\nThanks for the feedback. I think I have made code change to address your feedback. Please check if it is what you expected.\n\nThanks.\n\nSeewai",
+      "revId": "46c40ee322d9c416975fb676dd7e887c4d726b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
