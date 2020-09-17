@@ -50,7 +50,7 @@ type Settings struct {
 // Open finds or launches Settings app and returns a Settings instance.
 func Open(ctx context.Context, tconn *chrome.TestConn) (*Settings, error) {
 	// Open Settings app.
-	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to hide all notifications in OpenSettings()")
 	}
 	s := &Settings{tconn}
