@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00cf1152_61bf3a02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-17T03:32:26Z",
+      "side": 1,
+      "message": "Can we remove these types now?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 1
+      },
+      "revId": "c0d163e9c84a3c3631bab4ae02f9be23b5fca605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
