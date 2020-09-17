@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "b47c88d6_63d09f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-17T22:47:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63434e81_fce92725",
+      "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c670d91_ce868253",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
         "patchSetId": 3
@@ -67,6 +85,24 @@
       "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a38e983_12a1a700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-17T22:47:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c670d91_ce868253",
+      "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "d881495b_93373f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-17T22:47:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02a49bf1_cdcda350",
+      "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0be06607_b645e1e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
         "patchSetId": 3
@@ -101,6 +155,24 @@
       "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d1f54b2_d9e678ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-17T22:47:49Z",
+      "side": 1,
+      "message": "I think that was my mistake, Ash.SplitViewResize.PresentationTime would be just a prefix, the actual data can only be collected on suffixed one (TabletMode.WithOverview).  I removed that Ash.SplitViewResize.PresentationTime.",
+      "parentUuid": "0be06607_b645e1e1",
+      "revId": "b30373696aa3f73f6ca1605722b7b7bdfdaf2a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
