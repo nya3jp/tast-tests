@@ -93,6 +93,30 @@
     },
     {
       "key": {
+        "uuid": "738e036e_fa225846",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-17T06:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b08d29fc_f1848861",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "131bea3216ea150802758cbd6565dffdb7909727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab9cfc58_a2a38e38",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 10
@@ -116,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "3e07e201_e683b4f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-17T06:58:52Z",
+      "side": 1,
+      "message": "Good to know. Done.",
+      "parentUuid": "ab9cfc58_a2a38e38",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "131bea3216ea150802758cbd6565dffdb7909727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08ea7da9_5c014e4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 10
@@ -136,6 +184,30 @@
       "revId": "131bea3216ea150802758cbd6565dffdb7909727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe7622c_ad8bab6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-17T06:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ea7da9_5c014e4b",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 67
+      },
+      "revId": "131bea3216ea150802758cbd6565dffdb7909727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
