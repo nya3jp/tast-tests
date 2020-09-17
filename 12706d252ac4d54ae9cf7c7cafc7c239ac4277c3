@@ -33,6 +33,69 @@
       "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6f551ab_9ad31a19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-17T08:01:52Z",
+      "side": 1,
+      "message": "Please add a comment on that this value should be last set value before unsetting the policy.",
+      "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0f6308b_2560be6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-17T08:01:52Z",
+      "side": 1,
+      "message": "nit: Maybe paramsBS as Brightness Slider?",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a877ff2_8e562744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-17T08:01:52Z",
+      "side": 1,
+      "message": "If there is a Fatal error between opening the Status tray and closing it here, it wont be closed.\nYou should either defer this part after the opening, or check the Status tray if it needs opening. As I see there are changes in the Status tray when it is open, maybe there is a change in the node that you can check.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 4
+      },
+      "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
