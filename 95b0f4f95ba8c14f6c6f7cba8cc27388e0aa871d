@@ -16,6 +16,46 @@
       "revId": "95b0f4f95ba8c14f6c6f7cba8cc27388e0aa871d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fad7c740_a549668b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-17T04:08:57Z",
+      "side": 1,
+      "message": "LGTM with a nit",
+      "revId": "95b0f4f95ba8c14f6c6f7cba8cc27388e0aa871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b143dc9_f8d1cfb0",
+        "filename": "src/chromiumos/tast/local/power/cpu_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-17T04:08:57Z",
+      "side": 1,
+      "message": "nit: \"and calculates total jiffies\" may be more accurate.",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "95b0f4f95ba8c14f6c6f7cba8cc27388e0aa871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
