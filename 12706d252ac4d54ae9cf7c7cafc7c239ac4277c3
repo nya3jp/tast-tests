@@ -16,6 +16,23 @@
       "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54ef3f4d_c36d14f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-17T07:45:00Z",
+      "side": 1,
+      "message": "The CQ is failing with the following error:\nsrc/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go:109:5: Errorf format %d has arg nodeS.Value of wrong type string",
+      "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
