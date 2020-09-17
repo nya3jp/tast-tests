@@ -7,6 +7,8 @@ package settings
 
 import (
 	"context"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -15,6 +17,20 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/input"
+)
+
+const (
+	// SizeB is a multiplier to convert bytes to bytes.
+	SizeB = 1
+	// SizeKB is a multiplier to convert bytes to kilobytes.
+	SizeKB = 1024
+	// SizeMB is a multiplier to convert bytes to megabytes.
+	SizeMB = 1024 * 1024
+	// SizeGB is a multiplier to convert bytes to gigabytes.
+	SizeGB = 1024 * 1024 * 1024
+	// SizeTB is a multiplier to convert bytes to terabytes.
+	SizeTB = 1024 * 1024 * 1024 * 1024
 )
 
 const uiTimeout = 30 * time.Second
@@ -240,4 +256,73 @@ func (s *Settings) ClickRemove(ctx context.Context, tconn *chrome.TestConn) (*Re
 	}
 
 	return dialog, nil
+}
+
+// GetDiskSize returns the current size based on the disk size slider text.
+func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *uig.Action) (uint64, error) {
+	node, err := uig.GetNode(ctx, tconn, slider.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText}, uiTimeout))
+	if err != nil {
+		return 0, errors.Wrap(err, "error getting disk size setting")
+	}
+	defer node.Release(ctx)
+
+	parts := strings.Split(node.Name, " ")
+	if len(parts) != 2 {
+		return 0, errors.Errorf("failed to parse disk size from %s: does not have exactly 2 space separated parts", node.Name)
+	}
+	num, err := strconv.ParseFloat(parts[0], 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to parse disk size from %s", node.Name)
+	}
+	unitMap := map[string]float64{
+		"B":  SizeB,
+		"KB": SizeKB,
+		"MB": SizeMB,
+		"GB": SizeGB,
+		"TB": SizeTB,
+	}
+	units, ok := unitMap[parts[1]]
+	if !ok {
+		return 0, errors.Errorf("failed to parse disk size from %s: does not have a recognized units string", node.Name)
+	}
+	return uint64(num * units), nil
+}
+
+// ChangeDiskSize changes the disk size to targetDiskSize through moving the slider.
+// If the target disk size is bigger, set increase to true, otherwise set it to false.
+// The method will return if it reaches the target or the end of the slider.
+// The real size might not be exactly equal to the target because the increment changes depending on the range.
+func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slider *uig.Action, increase bool, targetDiskSize uint64) (uint64, error) {
+	direction := "right"
+	if !increase {
+		direction = "left"
+	}
+	if err := uig.Do(ctx, tconn, slider.FocusAndWait(uiTimeout)); err != nil {
+		return 0, errors.Wrap(err, "failed to focus on the slider")
+	}
+
+	for {
+		size, err := GetDiskSize(ctx, tconn, slider)
+		if err != nil {
+			return 0, errors.Wrap(err, "failed to get disk size")
+		}
+		// Check whether it has reached the target.
+		if (increase && size >= targetDiskSize) || (!increase && size <= targetDiskSize) {
+			return size, nil
+		}
+
+		// Move slider.
+		if err := kb.Accel(ctx, direction); err != nil {
+			return 0, errors.Wrapf(err, "failed to move slider to %s", direction)
+		}
+
+		// Check whether it has reached the end.
+		newSize, err := GetDiskSize(ctx, tconn, slider)
+		if err != nil {
+			return 0, errors.Wrap(err, "failed to get disk size")
+		}
+		if size == newSize {
+			return size, nil
+		}
+	}
 }
