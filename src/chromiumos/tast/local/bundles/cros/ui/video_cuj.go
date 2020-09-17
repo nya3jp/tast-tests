@@ -326,7 +326,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to hide ash notification: ", err)
 	}
 
