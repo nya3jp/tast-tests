@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1e02f319_12179e42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/file_folder_operations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-09-17T01:29:22Z",
+      "side": 1,
+      "message": "Ah good pickup, I\u0027ve added a defer to dump UI tree, take a screenshot THEN remove the files and folders. Thanks!",
+      "parentUuid": "04829700_2e13fd3f",
+      "revId": "c79b23638afd182a7f8c5ffb60c76482a9d35642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4282e1a3_3681e01b",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "c79b23638afd182a7f8c5ffb60c76482a9d35642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bc19214_e2b0294a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-09-17T01:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4282e1a3_3681e01b",
+      "revId": "c79b23638afd182a7f8c5ffb60c76482a9d35642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
