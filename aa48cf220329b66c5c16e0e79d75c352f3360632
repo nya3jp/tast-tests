@@ -16,6 +16,29 @@
       "revId": "aa48cf220329b66c5c16e0e79d75c352f3360632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c37f699_57f9eff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/file_folder_operations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-09-17T03:41:59Z",
+      "side": 1,
+      "message": "I may be mistaken, but I thought a screenshot was taken automatically on failure, for tests that are part of local bundles, including cros/filemanager.\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundlemain/main.go?l\u003d156\u0026rcl\u003d55fd26bd58d3b1ebd8a15634ccd28d8ddd7240a3\n\nIn which case all this could just be replaced with\nfaillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)\n\nI\u0027m not entirely sure though :)",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "aa48cf220329b66c5c16e0e79d75c352f3360632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
