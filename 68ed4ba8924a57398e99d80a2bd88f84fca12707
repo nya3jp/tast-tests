@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d97f1274_835875e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-17T06:59:44Z",
+      "side": 1,
+      "message": "Hmm, I prefer still having a FilePathInSavedDirs() since in the original logic we won\u0027t wait for the file creation if there is no such file. Changing it might change the behavior of several tests, which might not be the intention of this CL.",
+      "parentUuid": "c75579d2_c8074f34",
+      "range": {
+        "startLine": 488,
+        "startChar": 102,
+        "endLine": 488,
+        "endChar": 120
+      },
+      "revId": "68ed4ba8924a57398e99d80a2bd88f84fca12707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba1dc0a3_18232fc4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "68ed4ba8924a57398e99d80a2bd88f84fca12707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06f3abf8_f7870889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-17T06:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba1dc0a3_18232fc4",
+      "range": {
+        "startLine": 840,
+        "startChar": 2,
+        "endLine": 842,
+        "endChar": 3
+      },
+      "revId": "68ed4ba8924a57398e99d80a2bd88f84fca12707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
