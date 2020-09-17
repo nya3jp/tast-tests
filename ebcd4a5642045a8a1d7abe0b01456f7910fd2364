@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee320e7d_e758f434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2020-09-17T21:59:16Z",
+      "side": 1,
+      "message": "I wrote a simple html for the tests.\nIt looks like this:\nhttps://www.youtube.com/watch?v\u003dAcuNm5oIzOI",
+      "revId": "ebcd4a5642045a8a1d7abe0b01456f7910fd2364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
