@@ -115,16 +115,12 @@ func createFileSystem(ctx context.Context, path string) error {
 
 // createHash generates the hash for verity. On success, the path to the hash
 // file and the device mapper table are returned.
+// Hash file is deleted at end of test when we remove dir.
 func createHash(ctx context.Context, dir, name, image string, nBlocks uint) (hash, table string, err error) {
 	f, err := ioutil.TempFile(dir, name+".hash.")
 	if err != nil {
 		return "", "", err
 	}
-	defer func() {
-		if f != nil {
-			os.Remove(f.Name())
-		}
-	}()
 	if err := f.Close(); err != nil {
 		return "", "", err
 	}
@@ -137,9 +133,7 @@ func createHash(ctx context.Context, dir, name, image string, nBlocks uint) (has
 		cmd.DumpLog(ctx)
 		return "", "", err
 	}
-	ret := f.Name()
-	f = nil
-	return ret, strings.TrimSpace(string(out)), nil
+	return f.Name(), strings.TrimSpace(string(out)), nil
 }
 
 // appendHash appends the contents of the hash file to the image file.
@@ -152,16 +146,8 @@ func appendHash(image, hash string) error {
 	if err != nil {
 		return err
 	}
-	defer func() {
-		if file != nil {
-			file.Close()
-		}
-	}()
-	if _, err := file.WriteString(string(content)); err != nil {
-		return err
-	}
-	err = file.Close()
-	file = nil
+	defer file.Close()
+	_, err = file.WriteString(string(content))
 	return err
 }
 
