@@ -63,6 +63,30 @@
       "revId": "aa48cf220329b66c5c16e0e79d75c352f3360632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f088f2c2_5c3529e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/file_folder_operations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-09-17T03:46:01Z",
+      "side": 1,
+      "message": "Oh nice that\u0027s actually nice to know, I had this issue in the past.",
+      "parentUuid": "38525018_48bc7444",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "aa48cf220329b66c5c16e0e79d75c352f3360632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
