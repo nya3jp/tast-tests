@@ -90,8 +90,17 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 		allowText              = "ALLOW"
 		okText                 = "OK"
 		hamburgerIconClassName = "android.view.View"
+		notNowText             = "NOT NOW"
+		loginText              = "Log In"
 	)
 	var indexNum = 5
+
+	loginButton := d.Object(ui.Text(loginText))
+	if err := loginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("loginButton doesn't exist: ", err)
+	} else if err := loginButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on loginButton: ", err)
+	}
 
 	// Enter email address.
 	FacebookEmailID := s.RequiredVar("arcappcompat.Facebook.emailid")
@@ -128,6 +137,14 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
 	}
 
+	// Click on not now button.
+	notNowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(notNowText))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exists: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
+	}
+
 	// Click on allow button.
 	clickOnAllowButton := d.Object(ui.Description(allowDes))
 	if err := clickOnAllowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -157,6 +174,7 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 	if err := hambugerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("hambugerIcon doesn't exist: ", err)
 	}
+	//signOutOfFacebook(ctx, s, a, d, appPkgName, appActivity)
 
 }
 
