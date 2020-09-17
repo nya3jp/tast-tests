@@ -16,6 +16,23 @@
       "revId": "0f27003139bee0caa4bc36c66c3c7b880eb21f34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8558b4a0_22651394",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-09-17T07:49:57Z",
+      "side": 1,
+      "message": "oops... retry CQ for only this change.",
+      "revId": "0f27003139bee0caa4bc36c66c3c7b880eb21f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
