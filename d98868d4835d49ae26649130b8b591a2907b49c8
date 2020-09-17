@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "523c4833_39a8a872",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-17T22:02:08Z",
+      "side": 1,
+      "message": "Hi Everybody: \n\nI got it to work with two DUTs with tablet mode. Here is a list of what I have done\n\n1. Call apps.Launch instead of my new launcher.LaunchApp\n2. If the DUT is in tablet mode, call ash.SwipeUpHotseatAndWaitForCompletion\n\nMy test still failed on kodama. I don\u0027t have a kodama at hand so I don\u0027t know how is the GUI looks like in kodama.\n\nI will clean up the code. Right now, it is a bit messy. I don\u0027t really like solution #1 so I will also look at the alternatives. \n\nPlease take a look to see if I am in the right direction. Thanks.\n\nSeewai\n",
+      "revId": "d98868d4835d49ae26649130b8b591a2907b49c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
