@@ -6,7 +6,6 @@ package wificell
 
 import (
 	"context"
-	"io"
 	"math/rand"
 	"net"
 	"strconv"
@@ -963,9 +962,10 @@ type ShillProperty struct {
 }
 
 // ExpectShillProperty is a wrapper for the streaming gRPC call ExpectShillProperty.
-// It takes an array of ShillProperty and a shill service path. It returns a function that
-// waites for the expected property changes.
-func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath string, props []*ShillProperty) (func() error, error) {
+// It takes an array of ShillProperty, an array of shill properties to monitor, and
+// a shill service path. It returns a function that waites for the expected property
+// changes and returns the monitor results.
+func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath string, props []*ShillProperty, monitorProps []string) (func() ([]protoutil.ShillPropertyHolder, error), error) {
 	var expectedProps []*network.ExpectShillPropertyRequest_Criterion
 	for _, prop := range props {
 		var anyOfVals []*network.ShillVal
@@ -996,8 +996,9 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 	}
 
 	req := &network.ExpectShillPropertyRequest{
-		ObjectPath: objectPath,
-		Props:      expectedProps,
+		ObjectPath:   objectPath,
+		Props:        expectedProps,
+		MonitorProps: monitorProps,
 	}
 
 	stream, err := tf.WifiClient().ExpectShillProperty(ctx, req)
@@ -1012,24 +1013,25 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 	}
 
 	// Get the expected properties and values.
-	waitForProperties := func() error {
+	waitForProperties := func() ([]protoutil.ShillPropertyHolder, error) {
+		var monitorResult protoutil.ShillPropertyChangedSignalList
 		for {
 			resp, err := stream.Recv()
-			if err == io.EOF {
-				break
-			}
 			if err != nil {
-				return errors.Wrap(err, "failed to get the expected properties")
+				return nil, errors.Wrap(err, "failed to get the expected properties")
 			}
+
+			if resp.MonitorDone {
+				return protoutil.DecodeFromShillPropertyChangedSignalList(monitorResult)
+			}
+
 			// Now we get the matched state change in resp.
 			stateVal, err := protoutil.FromShillVal(resp.Val)
 			if err != nil {
-				return errors.Wrap(err, "failed to convert property name to ShillVal")
+				return nil, errors.Wrap(err, "failed to convert property name to ShillVal")
 			}
 			testing.ContextLogf(ctx, "The current WiFi service %s: %v", resp.Key, stateVal)
 		}
-
-		return nil
 	}
 
 	return waitForProperties, nil
