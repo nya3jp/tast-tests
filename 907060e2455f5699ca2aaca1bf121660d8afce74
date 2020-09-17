@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdcbf323_c6855a91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-17T08:01:45Z",
+      "side": 1,
+      "message": "this easily could be a separate CL, please don\u0027t mix not related things together next time",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65d7b9a8_1c549ab6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-17T08:01:45Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "688888e7_d837ba25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_resolution_lexmark_1200dpi_golden.ps.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-17T08:01:45Z",
+      "side": 1,
+      "message": "shouldn\u0027t file name be like \"printer_Lexmark_resolution_1200dpi_dolgen.ps\" ?\n\nsame for other file",
+      "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fac5229f_544bcb6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippprint/ippprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-17T08:01:45Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 156,
+        "startChar": 65,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5738b154_001fb3fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippprint/ippprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-17T08:01:45Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 156,
+        "startChar": 92,
+        "endLine": 156,
+        "endChar": 93
+      },
+      "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
