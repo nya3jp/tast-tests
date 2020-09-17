@@ -16,6 +16,40 @@
       "revId": "ebcd4a5642045a8a1d7abe0b01456f7910fd2364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1b891c_229d3ef9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-17T23:48:02Z",
+      "side": 1,
+      "message": "Thank you for doing this!  LGTM.",
+      "revId": "ebcd4a5642045a8a1d7abe0b01456f7910fd2364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32b656b9_25e76449",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/zip.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-17T23:48:02Z",
+      "side": 1,
+      "message": "this file is no longer necessary?",
+      "revId": "ebcd4a5642045a8a1d7abe0b01456f7910fd2364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
