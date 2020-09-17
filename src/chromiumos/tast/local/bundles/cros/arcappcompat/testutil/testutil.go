@@ -123,11 +123,12 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 
 			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 
-			// It is ok if the package is currently equal the the installer package.
+			// It is ok if the package is currently equal the installer package.
+			// It is also ok if the package is currently equal the play service package.
 			// This happens when you need to accept permissions.
 			if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
 				s.Fatal("Failed to get current app package: ", err)
-			} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" {
+			} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" {
 				s.Fatalf("Failed to launch app: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 			}
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
