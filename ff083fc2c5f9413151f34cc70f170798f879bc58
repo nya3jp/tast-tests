@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6923133_74d3d8ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-17T18:34:32Z",
+      "side": 1,
+      "message": "Just want to give you all an update. I turned my octopus DUT to a tablet and ran the test. It did failed. Somehow my new launcher.LaunchApp launched the app but did not add it to the shelf. If I used my finger to click on the icon, the app would be launched and added to the shelf. I will try to figure why there is a discrepancy.\n\nSeewai",
+      "revId": "ff083fc2c5f9413151f34cc70f170798f879bc58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
