@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4f78709_0834b575",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-17T22:19:12Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "2026c070327d9f57e3e29994099281abd6261446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0cc53df7_dbf08ae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/memory_diff.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-17T22:19:12Z",
+      "side": 1,
+      "message": "nit: certain -\u003e previous ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 90,
+        "endLine": 19,
+        "endChar": 97
+      },
+      "revId": "2026c070327d9f57e3e29994099281abd6261446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
