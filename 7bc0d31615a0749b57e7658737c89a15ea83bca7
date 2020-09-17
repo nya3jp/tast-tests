@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0508887_b26d9789",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-09-17T09:00:19Z",
+      "side": 1,
+      "message": "LGTM but I\u0027m absolutely not a tast / go expert so you\u0027ll want someone else to actually check it :-)",
+      "revId": "7bc0d31615a0749b57e7658737c89a15ea83bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "850ddae7_25bd748a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-09-17T09:00:19Z",
+      "side": 1,
+      "message": "Should we also test shutdown after it was turned on (maybe in a follow-up)?",
+      "revId": "7bc0d31615a0749b57e7658737c89a15ea83bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
