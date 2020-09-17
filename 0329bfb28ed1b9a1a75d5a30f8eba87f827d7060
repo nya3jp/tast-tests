@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8630fa19_631e4c01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "There\u0027s no guarantee the order of parameterized tests. Please do not depends on the current implementation details.\n\nI\u0027d recommend the table driven tests, instead.",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01eb4b39_7b5d1e38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "To minimize the interface, could you avoid passing testing.State as much as possible?\nInstead, could you pass the var string, and return (int, error).",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ade2cd0_00d1ef28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d info.CheckMainDeviceSize(...); err !\u003d nil {\n  ...\n}\n\nditto for below.",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 16
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c40ab2e8_33e17d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "could you use testing.Poll instead?",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 297,
+        "endChar": 2
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7cbc92c_f379e455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "Could you elaborate what\u0027s \"suspend\"ing? It looks like a write stress tests...?",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45387503_e280383e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "Could you use sync.WaitGroup() instead?",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "931a434d_30655b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "optional/style:\n\nfor retries :\u003d 0; retries \u003c max; retries++ {\n  ...\n  if passed :\u003d s.Run(...); passed {\n    break\n  }\n}\n\ncan split the concept of retrying and checking the test status clearer.",
+      "range": {
+        "startLine": 398,
+        "startChar": 2,
+        "endLine": 403,
+        "endChar": 3
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2c30ee_cfdd312e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "math.Round() may be more explicit.",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 57
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b31120d_ad47de2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "nit: 1e9",
+      "range": {
+        "startLine": 105,
+        "startChar": 33,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df0619db_ca737944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "this depends on the naming scheme more. Could you describe the in the document?",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7d9ef5_7ef49822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "As you\u0027re switching to returning an error, could you remove this?\nYou can take datapath as an argument or a parameter of testConfig.\nvalidateJob should return an error for consistency, too.",
+      "range": {
+        "startLine": 179,
+        "startChar": 38,
+        "endLine": 179,
+        "endChar": 56
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b86dfad3_94541451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T08:03:10Z",
+      "side": 1,
+      "message": "ditto for style.",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 16
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
