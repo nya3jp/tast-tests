@@ -172,7 +172,7 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 	ap1 = nil
 	s.Log("Deconfigured AP1")
 
-	if err := waitForProps(); err != nil {
+	if _, err := waitForProps(); err != nil {
 		s.Fatal("DUT: failed to wait for the properties, err: ", err)
 	}
 	s.Log("DUT: roamed")

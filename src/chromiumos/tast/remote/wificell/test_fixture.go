@@ -956,16 +956,17 @@ func (tf *TestFixture) CurrentClientTime(ctx context.Context) (time.Time, error)
 
 // ShillProperty holds a shill service property with it's expected and unexpected values.
 type ShillProperty struct {
-	Property         string
-	ExpectedValues   []interface{}
-	UnexpectedValues []interface{}
-	Method           network.ExpectShillPropertyRequest_CheckMethod
+	Property            string
+	ExpectedValues      []interface{}
+	UnexpectedValues    []interface{}
+	MonitoredProperties []string
+	Method              network.ExpectShillPropertyRequest_CheckMethod
 }
 
 // ExpectShillProperty is a wrapper for the streaming gRPC call ExpectShillProperty.
 // It takes an array of ShillProperty and a shill service path. It returns a function that
 // waites for the expected property changes.
-func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath string, props []*ShillProperty) (func() error, error) {
+func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath string, props []*ShillProperty) (func() (map[string][]interface{}, error), error) {
 	var expectedProps []*network.ExpectShillPropertyRequest_Criterion
 	for _, prop := range props {
 		var anyOfVals []*network.ShillVal
@@ -987,10 +988,11 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 		}
 
 		shillPropReqCriterion := &network.ExpectShillPropertyRequest_Criterion{
-			Key:    prop.Property,
-			AnyOf:  anyOfVals,
-			NoneOf: noneOfVals,
-			Method: prop.Method,
+			Key:            prop.Property,
+			AnyOf:          anyOfVals,
+			NoneOf:         noneOfVals,
+			MonitoredProps: prop.MonitoredProperties,
+			Method:         prop.Method,
 		}
 		expectedProps = append(expectedProps, shillPropReqCriterion)
 	}
@@ -1012,24 +1014,30 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 	}
 
 	// Get the expected properties and values.
-	waitForProperties := func() error {
+	waitForProperties := func() (map[string][]interface{}, error) {
+		var monitorResult map[string]*network.ListOfShillVals
 		for {
 			resp, err := stream.Recv()
 			if err == io.EOF {
 				break
 			}
 			if err != nil {
-				return errors.Wrap(err, "failed to get the expected properties")
+				return nil, errors.Wrap(err, "failed to get the expected properties")
 			}
 			// Now we get the matched state change in resp.
 			stateVal, err := protoutil.FromShillVal(resp.Val)
 			if err != nil {
-				return errors.Wrap(err, "failed to convert property name to ShillVal")
+				return nil, errors.Wrap(err, "failed to convert property name to ShillVal")
 			}
 			testing.ContextLogf(ctx, "The current WiFi service %s: %v", resp.Key, stateVal)
+			monitorResult = resp.Props
+		}
+		propChangeslist, err := protoutil.DecodeFromShillValMapList(monitorResult)
+		if err != nil {
+			return nil, err
 		}
 
-		return nil
+		return propChangeslist, nil
 	}
 
 	return waitForProperties, nil

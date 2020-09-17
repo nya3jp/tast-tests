@@ -1402,7 +1402,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 		}
 
 		// Check the current value of the property.
-		if p.Method != network.ExpectShillPropertyRequest_ON_CHANGE {
+		if p.Method != network.ExpectShillPropertyRequest_ON_CHANGE && p.Method != network.ExpectShillPropertyRequest_MONITOR_WAIT {
 			props, err := service.GetProperties(ctx)
 			if err != nil {
 				return err
@@ -1436,17 +1436,36 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 			}
 		}
 
-		val, err := pw.ExpectInExclude(ctx, p.Key, expectedVals, excludedVals)
-		if err != nil {
-			return errors.Wrap(err, "failed to expect property")
+		var retMonitorResult map[string]*network.ListOfShillVals
+		var retVal interface{}
+		if p.Method == network.ExpectShillPropertyRequest_MONITOR_WAIT {
+			val, monitorResult, err := pw.Monitor(ctx, p.MonitoredProps, p.Key, expectedVals)
+			if err != nil {
+				return errors.Wrap(err, "failed to expect property")
+			}
+			retVal = val
+			rslt, err := protoutil.EncodeToShillValMapList(monitorResult)
+			if err != nil {
+				return err
+			}
+			retMonitorResult = rslt
+		} else {
+			val, err := pw.ExpectInExclude(ctx, p.Key, expectedVals, excludedVals)
+			if err != nil {
+				return errors.Wrap(err, "failed to expect property")
+			}
+			retVal = val
 		}
-		shillVal, err := protoutil.ToShillVal(val)
+
+		shillVal, err := protoutil.ToShillVal(retVal)
 		if err != nil {
 			return err
 		}
-		if err := sender.Send(&network.ExpectShillPropertyResponse{Key: p.Key, Val: shillVal}); err != nil {
+
+		if err := sender.Send(&network.ExpectShillPropertyResponse{Key: p.Key, Val: shillVal, Props: retMonitorResult}); err != nil {
 			return errors.Wrap(err, "failed to send response")
 		}
+
 	}
 	return nil
 }
