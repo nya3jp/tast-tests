@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "da6018a2_8f2e0f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-09-17T15:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "505a21d8_b2db9101",
+      "range": {
+        "startLine": 390,
+        "startChar": 3,
+        "endLine": 390,
+        "endChar": 10
+      },
+      "revId": "8388ca8db18131dd1bcd43aa07019e4a38371869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc97fdbd_40fe6941",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 14
@@ -53,6 +77,30 @@
       "writtenOn": "2020-09-02T19:44:12Z",
       "side": 1,
       "message": "Should this be 2 ? Otherwise, \"expected 2 tabs\" below should be updated.",
+      "range": {
+        "startLine": 400,
+        "startChar": 19,
+        "endLine": 400,
+        "endChar": 20
+      },
+      "revId": "8388ca8db18131dd1bcd43aa07019e4a38371869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ec9e0b3_d3b89689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-09-17T15:33:06Z",
+      "side": 1,
+      "message": "I think it should be 3 because it also includes the \u0027New Tab\u0027 button[1]. I will add a comment here.\n\n[1]https://screenshot.googleplex.com/7ApNVzq4g4VCRPh",
+      "parentUuid": "fc97fdbd_40fe6941",
       "range": {
         "startLine": 400,
         "startChar": 19,
@@ -85,6 +133,30 @@
       "revId": "8388ca8db18131dd1bcd43aa07019e4a38371869",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ada3fb4_0e2492cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-09-17T15:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7196223c_ced1720f",
+      "range": {
+        "startLine": 401,
+        "startChar": 77,
+        "endLine": 401,
+        "endChar": 79
+      },
+      "revId": "8388ca8db18131dd1bcd43aa07019e4a38371869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
