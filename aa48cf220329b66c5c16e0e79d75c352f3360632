@@ -39,6 +39,30 @@
       "revId": "aa48cf220329b66c5c16e0e79d75c352f3360632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38525018_48bc7444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/file_folder_operations.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1413244
+      },
+      "writtenOn": "2020-09-17T03:44:20Z",
+      "side": 1,
+      "message": "Yeah it does, the main issue here is the folders and files will get cleaned up before the screenshot is taken leading to a harder time debugging.",
+      "parentUuid": "6c37f699_57f9eff1",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "aa48cf220329b66c5c16e0e79d75c352f3360632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
