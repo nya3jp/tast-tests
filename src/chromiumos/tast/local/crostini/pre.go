@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	cui "chromiumos/tast/local/crostini/ui"
+	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
@@ -215,7 +216,7 @@ var startedTraceVMPre = &preImpl{
 	name:        "crostini_started_trace_vm",
 	timeout:     chrome.LoginTimeout + 10*time.Minute,
 	mode:        artifact,
-	minDiskSize: 16 * cui.SizeGB, // graphics.TraceReplay relies on at least 16GB size.
+	minDiskSize: 16 * settings.SizeGB, // graphics.TraceReplay relies on at least 16GB size.
 }
 
 var startedARCEnabledPre = &preImpl{
