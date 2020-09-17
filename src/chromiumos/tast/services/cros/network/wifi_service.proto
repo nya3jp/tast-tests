@@ -83,12 +83,15 @@ service WifiService {
   // SelectedService returns the object path of selected service of WiFi service.
   rpc SelectedService(google.protobuf.Empty) returns (SelectedServiceResponse) {}
 
-  // ExpectShillProperty is a streaming gRPC, takes a shill service path and expects a list of property
-  // criteria in order. When a property's value is expected, it responds the property's (key, value) pair.
-  // The method sends an empty response as the property watcher is set. A property matching criterion
-  // consists of a property name, a list of expected values, a list of excluded values, and a "CheckType".
-  // We say a criterion is met iff the property value is in one of the expected values and not in any of
-  // the excluded values. If the property value is one of the excluded values, the method fails immediately.
+  // ExpectShillProperty is a streaming gRPC, takes a shill service path, expects a list of property
+  // criteria in order, and takes a list of shill properties to monitor. When a property's value is
+  // expected, it responds the property's (key, value) pair. The method sends an empty response as the
+  // property watcher is set. A property matching criterion consists of a property name, a list of
+  // expected values, a list of excluded values, and a "CheckType". We say a criterion is met iff the
+  // property value is in one of the expected values and not in any of the excluded values. If the
+  // property value is one of the excluded values, the method fails immediately. The call monitors the
+  // specified shill properties and returns the monitor results as a chronological list of pairs
+  // (changed property, changed value) at the end.
   // For CheckMethod, it has three methods:
   // 1. CHECK_ONLY: checks if the criterion is met.
   // 2. ON_CHANGE: waits for the property changes to the expected values.
@@ -147,14 +150,20 @@ message ShillVal {
   oneof val {
     string str = 1;
     bool bool = 2;
+    uint32 uint32 = 3;
     // Because 'repeated' label is not allowed in oneof type, we define StrArray
     // for repeated string field.
-    StrArray str_array = 3;
+    StrArray str_array = 4;
+    Uint32Array uint32_array = 5;
   }
 }
 
 message StrArray {
   repeated string vals = 1;
+}
+
+message Uint32Array {
+  repeated uint32 vals = 1;
 }
 
 // ConnectResponse is the response of Connect call which includes the
@@ -317,11 +326,19 @@ message ExpectShillPropertyRequest {
   // Shill object path (e.g. Service or Device).
   string object_path = 1;
   repeated Criterion props = 2;
+  repeated string monitor_props = 3;
+}
+
+message ShillPropertyChangedSignal {
+  string prop = 1;
+  ShillVal val = 2;
 }
 
 message ExpectShillPropertyResponse {
   string key = 1;
   ShillVal val = 2;
+  repeated ShillPropertyChangedSignal props = 3;
+  bool monitor_done = 4;
 }
 
 message ProfileBasicTestRequest {

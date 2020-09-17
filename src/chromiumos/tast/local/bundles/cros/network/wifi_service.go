@@ -1333,12 +1333,15 @@ func (s *WifiService) GetCurrentTime(ctx context.Context, _ *empty.Empty) (*netw
 	return &network.GetCurrentTimeResponse{NowSecond: now.Unix(), NowNanosecond: int64(now.Nanosecond())}, nil
 }
 
-// ExpectShillProperty is a streaming gRPC, takes a shill service path and expects a list of property
-// criteria in order. When a property's value is expected, it responds the property's (key, value) pair.
-// The method sends an empty response as the property watcher is set. A property matching criterion
-// consists of a property name, a list of expected values, a list of excluded values, and a "CheckType".
-// We say a criterion is met iff the property value is in one of the expected values and not in any of
-// the excluded values. If the property value is one of the excluded values, the method fails immediately.
+// ExpectShillProperty is a streaming gRPC, takes a shill service path, expects a list of property
+// criteria in order, and takes a list of shill properties to monitor. When a property's value is
+// expected, it responds the property's (key, value) pair. The method sends an empty response as the
+// property watcher is set. A property matching criterion consists of a property name, a list of
+// expected values, a list of excluded values, and a "CheckType". We say a criterion is met iff the
+// property value is in one of the expected values and not in any of the excluded values. If the
+// property value is one of the excluded values, the method fails immediately. The call monitors the
+// specified shill properties and returns the monitor results as a chronological list of pairs
+// (changed property, changed value) at the end.
 // For CheckMethod, it has three methods:
 // 1. CHECK_ONLY: checks if the criterion is met.
 // 2. ON_CHANGE: waits for the property changes to the expected values.
@@ -1371,6 +1374,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 		return false
 	}
 
+	var monitorResult []protoutil.ShillPropertyHolder
 	for _, p := range req.Props {
 		var expectedVals []interface{}
 		for _, sv := range p.AnyOf {
@@ -1403,7 +1407,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 			}
 
 			if foundIn(val, excludedVals) {
-				return errors.Errorf("unexpected property %q: got %s, want any of %v", p.Key, val, expectedVals)
+				return errors.Errorf("unexpected property [ %q ] value: got %s, want any of %v", p.Key, val, expectedVals)
 			}
 
 			if foundIn(val, expectedVals) {
@@ -1421,22 +1425,53 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 
 			// Return an error if the method is CHECK_ONLY and the property does not meet the criterion.
 			if p.Method == network.ExpectShillPropertyRequest_CHECK_ONLY {
-				return errors.Errorf("unexpected property %q: got %s, want any of %v", p.Key, val, expectedVals)
+				return errors.Errorf("unexpected property [ %q ] value: got %s, want any of %v", p.Key, val, expectedVals)
 			}
 		}
 
-		val, err := pw.ExpectInExclude(ctx, p.Key, expectedVals, excludedVals)
-		if err != nil {
-			return errors.Wrap(err, "failed to expect property")
+		// Wait for the property to change to an expected or unexpected value. Record the property changes we are monitoring.
+		var propVal interface{}
+		for {
+			prop, val, _, err := pw.Wait(ctx)
+			if err != nil {
+				return errors.Wrapf(err, "failed to wait for the property %s", prop)
+			}
+			for _, mp := range req.MonitorProps {
+				if mp == prop {
+					monitorResult = append(monitorResult, protoutil.ShillPropertyHolder{Name: prop, Value: val})
+					break
+				}
+			}
+			if prop == p.Key {
+				if foundIn(val, expectedVals) {
+					propVal = val
+					break
+				}
+				if foundIn(val, excludedVals) {
+					return errors.Errorf("unexpected property %q: got %s, want any of %v", prop, val, expectedVals)
+				}
+			}
 		}
-		shillVal, err := protoutil.ToShillVal(val)
+
+		shillVal, err := protoutil.ToShillVal(propVal)
 		if err != nil {
 			return err
 		}
+
 		if err := sender.Send(&network.ExpectShillPropertyResponse{Key: p.Key, Val: shillVal}); err != nil {
 			return errors.Wrap(err, "failed to send response")
 		}
 	}
+
+	rslt, err := protoutil.EncodeToShillPropertyChangedSignalList(monitorResult)
+	if err != nil {
+		return err
+	}
+
+	if err := sender.Send(&network.ExpectShillPropertyResponse{Props: rslt, MonitorDone: true}); err != nil {
+		return errors.Wrap(err, "failed to send response")
+	}
+
 	return nil
 }
 

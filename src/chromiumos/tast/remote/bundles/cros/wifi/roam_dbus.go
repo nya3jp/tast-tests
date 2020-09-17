@@ -111,7 +111,7 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 
 	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
-	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props)
+	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, nil)
 	if err != nil {
 		s.Fatal("DUT: failed to create a property watcher, err: ", err)
 	}
@@ -148,7 +148,7 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 		s.Errorf("DUT: failed to roam from %s to %s: %v", ap1BSSID, ap2BSSID, err)
 	}
 
-	if err := waitForProps(); err != nil {
+	if _, err := waitForProps(); err != nil {
 		s.Fatal("DUT: failed to wait for the properties, err: ", err)
 	}
 
