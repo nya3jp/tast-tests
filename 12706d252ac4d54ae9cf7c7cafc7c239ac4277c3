@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "044fd374_9c041c89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-17T08:38:03Z",
+      "side": 1,
+      "message": "Thanks for the comments.",
+      "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6f551ab_9ad31a19",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
         "patchSetId": 1
@@ -50,6 +67,24 @@
       "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43e6c74_7e8836f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-17T08:38:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6f551ab_9ad31a19",
+      "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +111,30 @@
     },
     {
       "key": {
+        "uuid": "8d2f7ab1_587e929e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-17T08:38:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0f6308b_2560be6f",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a877ff2_8e562744",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
         "patchSetId": 1
@@ -96,6 +155,30 @@
       "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d6a8de_698607ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-17T08:38:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a877ff2_8e562744",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 4
+      },
+      "revId": "12706d252ac4d54ae9cf7c7cafc7c239ac4277c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
