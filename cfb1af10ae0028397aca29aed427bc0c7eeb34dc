@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a0be59d_06455cc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-17T19:02:19Z",
+      "side": 1,
+      "message": "APs should be upgraded. If nothing else, this can help flush that out.\n\nrestricted this to just WPA3-mixed (which should work on all DUTs, and even though WPA3 is not yet enabled on our DUTs)\n\nI also move this to an 802.11ac configuration. It probably doesn\u0027t make sense in general to use 802.11g for everything, but especially not for new crypto, which will likely be exclusively on new APs.\n\nPTAL",
+      "revId": "cfb1af10ae0028397aca29aed427bc0c7eeb34dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
