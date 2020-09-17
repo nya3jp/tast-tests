@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	arcscreenshot "chromiumos/tast/local/bundles/cros/arc/screenshot"
+	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -42,19 +43,11 @@ const (
 	// FirstExternalDisplayID represents the display ID for the first external display.
 	firstExternalDisplayID androidDisplayID = 1
 
-	// Apk compiled against target SDK 24 (N).
-	wmPkgMD = "org.chromium.arc.testapp.windowmanager24"
-	wmApkMD = "ArcWMTestApp_24.apk"
-
 	dispPkg = "org.chromium.arc.testapp.multidisplay"
 	dispApk = "ArcMultiDisplayTest.apk"
 
 	settingsPkgMD = "com.android.settings"
 	settingsActMD = ".Settings"
-
-	// Different activities used by the subtests.
-	nonResizeableUnspecifiedActivityMD = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
-	resizeableUnspecifiedActivityMD    = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
 )
 
 // Power state for displays.
@@ -132,7 +125,7 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 		s.Fatalf("Not enough connected displays: got %d; want 2", len(displayInfos))
 	}
 
-	if err := a.Install(ctx, arc.APKPath(wmApkMD)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
@@ -207,22 +200,22 @@ func launchActivityOnExternalDisplay(ctx context.Context, s *testing.State, cr *
 		name    string
 		actName string
 	}{
-		{"Launch resizeable activity on the external display", resizeableUnspecifiedActivityMD},
-		{"Launch unresizeable activity on the external display", nonResizeableUnspecifiedActivityMD},
+		{"Launch resizeable activity on the external display", wm.ResizableUnspecifiedActivity},
+		{"Launch unresizeable activity on the external display", wm.NonResizableUnspecifiedActivity},
 	} {
 		runOrFatal(ctx, s, test.name, func(ctx context.Context, s *testing.State) error {
-			act, err := arc.NewActivity(a, wmPkgMD, test.actName)
+			act, err := arc.NewActivity(a, wm.Pkg24, test.actName)
 			if err != nil {
 				return err
 			}
 			defer act.Close()
 
-			if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, test.actName, firstExternalDisplayID); err != nil {
+			if err := startActivityOnDisplay(ctx, a, tconn, wm.Pkg24, test.actName, firstExternalDisplayID); err != nil {
 				return err
 			}
 			defer act.Stop(ctx, tconn)
 
-			return ensureWindowOnDisplay(ctx, tconn, wmPkgMD, externalDisplayID)
+			return ensureWindowOnDisplay(ctx, tconn, wm.Pkg24, externalDisplayID)
 		})
 	}
 
@@ -253,13 +246,13 @@ func maximizeVisibility(ctx context.Context, s *testing.State, cr *chrome.Chrome
 	}
 
 	// Start WM activity on the external display and set it to normal window state.
-	wmAct, err := arc.NewActivity(a, wmPkgMD, resizeableUnspecifiedActivityMD)
+	wmAct, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
 	defer wmAct.Close()
 
-	if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
+	if err := startActivityOnDisplay(ctx, a, tconn, wm.Pkg24, wm.ResizableUnspecifiedActivity, firstExternalDisplayID); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx, tconn)
@@ -277,16 +270,16 @@ func maximizeVisibility(ctx context.Context, s *testing.State, cr *chrome.Chrome
 		}
 	}
 
-	if err := ensureWindowOnDisplay(ctx, tconn, wmPkgMD, extDispID); err != nil {
+	if err := ensureWindowOnDisplay(ctx, tconn, wm.Pkg24, extDispID); err != nil {
 		return err
 	}
 
-	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, ash.WindowStateNormal); err != nil {
+	if err := ensureSetWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateNormal); err != nil {
 		return err
 	}
 
 	// Preserve WindowInfo.
-	wmWinInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wmPkgMD)
+	wmWinInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 	if err != nil {
 		return err
 	}
@@ -304,8 +297,8 @@ func maximizeVisibility(ctx context.Context, s *testing.State, cr *chrome.Chrome
 		checkPkgName    string
 		checkAppWinInfo *ash.Window
 	}{
-		{"Maximize the activity on primary display", settingsAct, settingsPkgMD, wmPkgMD, wmWinInfo},
-		{"Maximize the activity on external display", wmAct, wmPkgMD, settingsPkgMD, settingsWinInfo},
+		{"Maximize the activity on primary display", settingsAct, settingsPkgMD, wm.Pkg24, wmWinInfo},
+		{"Maximize the activity on external display", wmAct, wm.Pkg24, settingsPkgMD, settingsWinInfo},
 	} {
 		runOrFatal(ctx, s, test.name, func(ctx context.Context, s *testing.State) error {
 			if err := ensureSetWindowState(ctx, tconn, test.maxPkgName, ash.WindowStateMaximized); err != nil {
@@ -364,17 +357,17 @@ func relayoutDisplays(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	}
 
 	// Start wm Activity on external display.
-	wmAct, err := arc.NewActivity(a, wmPkgMD, resizeableUnspecifiedActivityMD)
+	wmAct, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
 	defer wmAct.Close()
 
-	if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
+	if err := startActivityOnDisplay(ctx, a, tconn, wm.Pkg24, wm.ResizableUnspecifiedActivity, firstExternalDisplayID); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx, tconn)
-	if err := ash.WaitForVisible(ctx, tconn, wmPkgMD); err != nil {
+	if err := ash.WaitForVisible(ctx, tconn, wm.Pkg24); err != nil {
 		return err
 	}
 
@@ -394,10 +387,10 @@ func relayoutDisplays(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 				return err
 			}
 
-			if err := ensureSetWindowState(ctx, tconn, wmPkgMD, test.windowState); err != nil {
+			if err := ensureSetWindowState(ctx, tconn, wm.Pkg24, test.windowState); err != nil {
 				return err
 			}
-			wmWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wmPkgMD)
+			wmWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 			if err != nil {
 				return err
 			}
@@ -420,7 +413,7 @@ func relayoutDisplays(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 					if err := ensureWindowStable(ctx, tconn, settingsPkgMD, settingsWindowInfo); err != nil {
 						return err
 					}
-					return ensureWindowStable(ctx, tconn, wmPkgMD, wmWindowInfo)
+					return ensureWindowStable(ctx, tconn, wm.Pkg24, wmWindowInfo)
 				})
 			}
 
@@ -462,13 +455,13 @@ func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	}
 
 	// Start wm Activity on external display.
-	wmAct, err := arc.NewActivity(a, wmPkgMD, resizeableUnspecifiedActivityMD)
+	wmAct, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
 	defer wmAct.Close()
 
-	if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
+	if err := startActivityOnDisplay(ctx, a, tconn, wm.Pkg24, wm.ResizableUnspecifiedActivity, firstExternalDisplayID); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx, tconn)
@@ -484,7 +477,7 @@ func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		return err
 	}
 
-	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, ash.WindowStateNormal); err != nil {
+	if err := ensureSetWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateNormal); err != nil {
 		return err
 	}
 	if err := ensureActivityReady(ctx, tconn, wmAct); err != nil {
@@ -496,7 +489,7 @@ func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		return err
 	}
 
-	wmWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wmPkgMD)
+	wmWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 	if err != nil {
 		return err
 	}

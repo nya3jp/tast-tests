@@ -42,7 +42,7 @@ func WindowDefaultBounds(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	if err := a.Install(ctx, arc.APKPath("ArcWMTestApp_24.apk")); err != nil {
+	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
