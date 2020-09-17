@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7fe5bc3_0b226ad6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-17T04:31:13Z",
+      "side": 1,
+      "message": "I think this increment might change depending on the size of the disk, best not to put a number in the comments.",
+      "range": {
+        "startLine": 259,
+        "startChar": 98,
+        "endLine": 259,
+        "endChar": 103
+      },
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3363f017_1c3faf1f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-17T04:31:13Z",
+      "side": 1,
+      "message": "Not sure these two lines of comment are needed, your call.",
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7039c68_d3e859e0",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-17T04:31:13Z",
+      "side": 1,
+      "message": "Do we need to take this as an argument?  can we just create it inside the function?",
+      "range": {
+        "startLine": 262,
+        "startChar": 65,
+        "endLine": 262,
+        "endChar": 67
+      },
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
