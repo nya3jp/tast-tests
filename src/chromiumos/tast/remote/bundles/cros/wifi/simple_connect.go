@@ -365,6 +365,19 @@ func init() {
 					},
 				},
 			}, {
+				// Verifies that DUT can connect to an AP in WPA2/WPA3 mixed mode. WiFi alliance suggests PMF in this mode.
+				Name:      "wpa3mixed",
+				ExtraAttr: []string{"wificell_unstable"},
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFOptional)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModeMixedWPA3),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
 				// Verifies that DUT can connect to a protected 802.11ac network supporting for WPA.
 				Name: "wpavht80",
 				Val: []simpleConnectTestcase{
