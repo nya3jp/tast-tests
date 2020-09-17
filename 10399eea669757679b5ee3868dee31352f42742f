@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0cb436df_14a28e88",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-17T22:45:08Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether I understand you correctly. getDiskSize first reads the current value of the slider. The value is in GB, e.g, \nnode id\u003d9124 role\u003dslider state\u003d{\"focusable\":true,\"horizontal\":true} parentID\u003d8468 childIds\u003d[9129]\n                                    node id\u003d9129 role\u003dgenericContainer state\u003d{} parentID\u003d9124 childIds\u003d[9131,9135]\n                                      node id\u003d9131 role\u003dgenericContainer state\u003d{} parentID\u003d9129 childIds\u003d[]\n                                      node id\u003d9135 role\u003dgenericContainer state\u003d{} parentID\u003d9129 childIds\u003d[9137]\n                                        node id\u003d9137 role\u003dgenericContainer state\u003d{} parentID\u003d9135 childIds\u003d[9138]\n                                          node id\u003d9138 role\u003dstaticText state\u003d{} parentID\u003d9137 childIds\u003d[9139] name\u003d7.5 GB\n                                            node id\u003d9139 role\u003dinlineTextBox state\u003d{} parentID\u003d9138 childIds\u003d[] name\u003d7.5 GB",
+      "parentUuid": "03dc6375_0c43eeb9",
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7fe5bc3_0b226ad6",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 1
@@ -89,6 +107,78 @@
     },
     {
       "key": {
+        "uuid": "80f9eeb4_380c53ce",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-17T22:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50d38a7e_b99e761b",
+      "range": {
+        "startLine": 259,
+        "startChar": 70,
+        "endLine": 259,
+        "endChar": 81
+      },
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "642cf9d5_80afdb3a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-17T22:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1019b638_6de46a63",
+      "range": {
+        "startLine": 259,
+        "startChar": 98,
+        "endLine": 259,
+        "endChar": 103
+      },
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de209b87_3f7dc820",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-17T22:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1019b638_6de46a63",
+      "range": {
+        "startLine": 259,
+        "startChar": 98,
+        "endLine": 259,
+        "endChar": 103
+      },
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3363f017_1c3faf1f",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 1
@@ -149,6 +239,54 @@
       "revId": "10399eea669757679b5ee3868dee31352f42742f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c37e9296_f808b76c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-17T22:45:08Z",
+      "side": 1,
+      "message": "Added one check. Defining a specific type might be another option, but it will be only used here and needs type cast. I think value check is simple. WDYT?",
+      "parentUuid": "f78cf182_689b2f81",
+      "range": {
+        "startLine": 262,
+        "startChar": 116,
+        "endLine": 262,
+        "endChar": 132
+      },
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90556f26_bdd5b9f6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-17T22:45:08Z",
+      "side": 1,
+      "message": "It is expensive to create a new keyboard inside the method, refer to https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2351346",
+      "parentUuid": "b7039c68_d3e859e0",
+      "range": {
+        "startLine": 262,
+        "startChar": 65,
+        "endLine": 262,
+        "endChar": 67
+      },
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
