@@ -48,12 +48,17 @@ func HideAllNotifications(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to click the tray button")
 	}
 
-	if err := chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: "SettingBubbleContainer"}, 2*time.Second); err != nil {
+	settingsFindParams := chromeui.FindParams{ClassName: "TrayBubbleView"}
+	if err := chromeui.WaitUntilExists(ctx, tconn, settingsFindParams, 2*time.Second); err != nil {
 		return errors.Wrap(err, "quick settings does not appear")
 	}
 
 	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
 		return errors.Wrap(err, "failed to click the tray button")
 	}
+	if err := chromeui.WaitUntilGone(ctx, tconn, settingsFindParams, 2*time.Second); err != nil {
+		return errors.Wrap(err, "quick settings does not disappear")
+	}
+	chromeui.WaitForLocationChangeCompleted(ctx, tconn)
 	return nil
 }
