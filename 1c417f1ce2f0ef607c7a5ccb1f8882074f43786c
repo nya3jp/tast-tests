@@ -16,6 +16,75 @@
       "revId": "1c417f1ce2f0ef607c7a5ccb1f8882074f43786c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1295491a_bddf27d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T14:19:57Z",
+      "side": 1,
+      "message": "The implementation looks almost same. Could you share the code by making screenshot.Grab* injectable via a function?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "1c417f1ce2f0ef607c7a5ccb1f8882074f43786c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "135f31f3_5a558e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T14:19:57Z",
+      "side": 1,
+      "message": "not meaningful. Could you drop?",
+      "range": {
+        "startLine": 251,
+        "startChar": 14,
+        "endLine": 251,
+        "endChar": 20
+      },
+      "revId": "1c417f1ce2f0ef607c7a5ccb1f8882074f43786c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3e71919_fb93559e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-17T14:19:57Z",
+      "side": 1,
+      "message": "unused. Please remove.",
+      "range": {
+        "startLine": 40,
+        "startChar": 100,
+        "endLine": 40,
+        "endChar": 116
+      },
+      "revId": "1c417f1ce2f0ef607c7a5ccb1f8882074f43786c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
