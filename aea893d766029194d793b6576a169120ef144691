@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ce770d3_6ce4ec16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-17T15:22:51Z",
+      "side": 1,
+      "message": "grammar here is a bit confusing. Consider\n\nLauncherCreateAndRenameFolder tests if the launcher handles renaming folders correctly.",
+      "range": {
+        "startLine": 33,
+        "startChar": 33,
+        "endLine": 33,
+        "endChar": 60
+      },
+      "revId": "aea893d766029194d793b6576a169120ef144691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e1a4b70_72462890",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-17T15:22:51Z",
+      "side": 1,
+      "message": "is there a place in tast for param names (ie macros)? From my limited time working with UI tests in tauto, these things can change pretty often, so macro\u0027ing the name out might make it a bit easier to maintain\n\nI see in this CL alone its used 5 times...",
+      "range": {
+        "startLine": 120,
+        "startChar": 37,
+        "endLine": 120,
+        "endChar": 64
+      },
+      "revId": "aea893d766029194d793b6576a169120ef144691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2de552f6_58e5b9d8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-17T15:22:51Z",
+      "side": 1,
+      "message": "quick question, if we are deferring the release, this means it will happen after the `WaitForLocationChangeCompleted`? for my local chromebook the menu won\u0027t expand until after the left click is release...",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 6
+      },
+      "revId": "aea893d766029194d793b6576a169120ef144691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51aaca6e_5a8e69fc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-17T15:22:51Z",
+      "side": 1,
+      "message": "is this saying you will left click and hold until the text field shows up for the folder?",
+      "range": {
+        "startLine": 179,
+        "startChar": 18,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "aea893d766029194d793b6576a169120ef144691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
