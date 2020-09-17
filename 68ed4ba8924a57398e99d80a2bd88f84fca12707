@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c75579d2_c8074f34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-17T06:45:55Z",
+      "side": 1,
+      "message": "How about we also return the directory where the file is found?\ne.g. (string, os.FileInfo, error)\nSo that we don\u0027t need |FilePathInSavedDirs|",
+      "range": {
+        "startLine": 488,
+        "startChar": 102,
+        "endLine": 488,
+        "endChar": 120
+      },
+      "revId": "68ed4ba8924a57398e99d80a2bd88f84fca12707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba1dc0a3_18232fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-17T06:45:55Z",
+      "side": 1,
+      "message": "if _, err :\u003d os.Stat(dir); err !\u003d nil {\n  if os.IsNotExist(err) {\n    continue\n  } else {\n    return err\n  }\n}",
+      "range": {
+        "startLine": 840,
+        "startChar": 2,
+        "endLine": 842,
+        "endChar": 3
+      },
+      "revId": "68ed4ba8924a57398e99d80a2bd88f84fca12707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
