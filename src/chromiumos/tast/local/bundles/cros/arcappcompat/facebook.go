@@ -7,6 +7,7 @@ package arcappcompat
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -14,12 +15,13 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
 // ClamshellTests are placed here.
-var clamshellTestsForFacebook = []testutil.TestCase{
+var clamshellTestsForFacebook = []testutil.TestSuite{
 	{Name: "Launch app in Clamshell", Fn: launchAppForFacebook},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
@@ -28,7 +30,7 @@ var clamshellTestsForFacebook = []testutil.TestCase{
 }
 
 // TouchviewTests are placed here.
-var touchviewTestsForFacebook = []testutil.TestCase{
+var touchviewTestsForFacebook = []testutil.TestSuite{
 	{Name: "Launch app in Touchview", Fn: launchAppForFacebook},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: reOpenWindowForFacebookAndSignout},
@@ -42,22 +44,34 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               clamshellTestsForFacebook,
+			Val: testutil.TestParams{
+				TabletMode: false,
+				Tests:      clamshellTestsForFacebook,
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "tablet_mode",
-			Val:               touchviewTestsForFacebook,
+			Name: "tablet_mode",
+			Val: testutil.TestParams{
+				TabletMode: true,
+				Tests:      touchviewTestsForFacebook,
+			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
-			Name:              "vm",
-			Val:               clamshellTestsForFacebook,
+			Name: "vm",
+			Val: testutil.TestParams{
+				TabletMode: false,
+				Tests:      clamshellTestsForFacebook,
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               pre.AppCompatBooted,
 		}, {
-			Name:              "vm_tablet_mode",
-			Val:               touchviewTestsForFacebook,
+			Name: "vm_tablet_mode",
+			Val: testutil.TestParams{
+				TabletMode: true,
+				Tests:      touchviewTestsForFacebook,
+			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
@@ -74,8 +88,44 @@ func Facebook(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.facebook.katana"
 		appActivity = ".LoginActivity"
 	)
-	testCases := s.Param().([]testutil.TestCase)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+
+	// Step up chrome on Chromebook.
+	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
+	defer d.Close()
+
+	testSet := s.Param().(testutil.TestParams)
+	// Run the different test cases.
+	for idx, test := range testSet.Tests {
+		// Run subtests.
+		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
+			// Launch the app.
+			act, err := arc.NewActivity(a, appPkgName, appActivity)
+			if err != nil {
+				s.Fatal("Failed to create new app activity: ", err)
+			}
+			s.Log("Created new app activity")
+
+			defer act.Close()
+
+			if err := act.Start(ctx, tconn); err != nil {
+				s.Fatal("Failed to start app: ", err)
+			}
+			s.Log("App launched successfully")
+			defer act.Stop(ctx, tconn)
+
+			defer func() {
+				if s.HasError() {
+					path := fmt.Sprintf("%s/screenshot-arcappcompat-failed-test-%d.png", s.OutDir(), idx)
+					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+						s.Log("Failed to capture screenshot: ", err)
+					}
+				}
+			}()
+
+			testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
+		})
+	}
 }
 
 // launchAppForFacebook verifies Facebook is logged in and
@@ -92,6 +142,11 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 		hamburgerIconClassName = "android.view.View"
 	)
 	var indexNum = 5
+
+	if currentAppPkg := testutil.CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
+		s.Fatal("Failed to launch the app: ", currentAppPkg)
+	}
+	s.Log("App is launched successfully in launchAppForFacebook")
 
 	// Enter email address.
 	FacebookEmailID := s.RequiredVar("arcappcompat.Facebook.emailid")
@@ -178,7 +233,7 @@ func reOpenWindowForFacebookAndSignout(ctx context.Context, s *testing.State, tc
 	defer act.Close()
 	// ReLaunch the activity.
 	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start app: ", err)
+		s.Fatal("Failed start app: ", err)
 	}
 	s.Log("App relaunched successfully")
 
