@@ -73,6 +73,30 @@
       "revId": "a115e8345517fe97fc1381cff51a7eab0d74b395",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef241c65_e0feb6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-17T03:40:46Z",
+      "side": 1,
+      "message": "Sorry I missed the Cq-Depend field. The CL is okay.",
+      "parentUuid": "a6c6fc42_154186f7",
+      "range": {
+        "startLine": 31,
+        "startChar": 40,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "a115e8345517fe97fc1381cff51a7eab0d74b395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
