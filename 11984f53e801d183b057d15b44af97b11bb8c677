@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "b411aa70_70e860f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-18T18:27:06Z",
+      "side": 1,
+      "message": "LGTM from a style standpoint",
+      "revId": "11984f53e801d183b057d15b44af97b11bb8c677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "befbfa26_af3d3973",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_network_info.go",
         "patchSetId": 1
