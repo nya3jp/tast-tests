@@ -22,6 +22,7 @@ var stableModels = []string{
 	"bobba",
 	"kefka",
 	"coral",
+	"betty",
 }
 
 // AppsStableModels is a shortlist of models aiming to run critical inputs tests.
