@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d1c962e_343919a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-18T15:53:08Z",
+      "side": 1,
+      "message": "Thanks for the comments.\nI also changed the last check to a check for both if a history exists or doesn\u0027t. That way the test doesn\u0027t need to wait for a ui node that shouldn\u0027t exist anyway.",
+      "revId": "3bbddb10f655dba1e893732a7ce2a1e101f3410e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
