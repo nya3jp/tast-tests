@@ -33,6 +33,24 @@
       "revId": "e11a1c2d901a796904cd1cfe3f994a9b1c258334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e71842f_343f032c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T13:43:58Z",
+      "side": 1,
+      "message": "Where is the boundary what we can keep after test and what cannot? For example, there will be notification in the tray after test. If it still will be visible, then it may break some UI test.\n\nShould be try to close all notifications as well?",
+      "parentUuid": "a4bd3198_f453dd5a",
+      "revId": "e11a1c2d901a796904cd1cfe3f994a9b1c258334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
