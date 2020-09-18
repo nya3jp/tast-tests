@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "34e14c17_b6825bdb",
+        "filename": "src/chromiumos/tast/local/power/cpu_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-18T00:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b143dc9_f8d1cfb0",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "95b0f4f95ba8c14f6c6f7cba8cc27388e0aa871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80ca4ff0_c6f02c4a",
         "filename": "src/chromiumos/tast/local/power/read_utils.go",
         "patchSetId": 4
@@ -90,6 +114,24 @@
       "revId": "95b0f4f95ba8c14f6c6f7cba8cc27388e0aa871d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12688400_322f106d",
+        "filename": "src/chromiumos/tast/local/power/read_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-18T00:38:46Z",
+      "side": 1,
+      "message": "Right. This function should work regardless of whether the line has a \\n or not. (I think some files in sysfs do not end with \\n.) If there is no \\n, then we can just drop the error.",
+      "parentUuid": "80ca4ff0_c6f02c4a",
+      "revId": "95b0f4f95ba8c14f6c6f7cba8cc27388e0aa871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
