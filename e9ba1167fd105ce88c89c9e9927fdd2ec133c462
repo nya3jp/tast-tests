@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af78929b_f9cddf5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-18T09:01:30Z",
+      "side": 1,
+      "message": "such as test environment set-up/tear-down",
+      "range": {
+        "startLine": 20,
+        "startChar": 72,
+        "endLine": 20,
+        "endChar": 96
+      },
+      "revId": "e9ba1167fd105ce88c89c9e9927fdd2ec133c462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1f4b52d_e6f2c98b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-18T09:01:30Z",
+      "side": 1,
+      "message": "s/non-production/test specific/\nOr\ns/for non-production logic/for test purpose/",
+      "range": {
+        "startLine": 20,
+        "startChar": 50,
+        "endLine": 20,
+        "endChar": 64
+      },
+      "revId": "e9ba1167fd105ce88c89c9e9927fdd2ec133c462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfcfa5d1_c45485a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-18T09:01:30Z",
+      "side": 1,
+      "message": "We may be interested in |err| here, because if |err| comes from logic of |IsTargetAvailable| but the testPage still alive. It\u0027s possible that testPage is left after |tearDownBridgePageConnection| finished.",
+      "range": {
+        "startLine": 79,
+        "startChar": 86,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "e9ba1167fd105ce88c89c9e9927fdd2ec133c462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d6b9572_13bc8db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-18T09:01:30Z",
+      "side": 1,
+      "message": "Instead of interact with appWindow by |Call| with arbitrary function. Let\u0027s wrap the appWindow into customized type.",
+      "range": {
+        "startLine": 92,
+        "startChar": 53,
+        "endLine": 92,
+        "endChar": 69
+      },
+      "revId": "e9ba1167fd105ce88c89c9e9927fdd2ec133c462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dea9fc54_89f5673f",
+        "filename": "src/chromiumos/tast/local/drivefs/pre.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-18T09:01:30Z",
+      "side": 1,
+      "message": "Why these codes are being removed?",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "e9ba1167fd105ce88c89c9e9927fdd2ec133c462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
