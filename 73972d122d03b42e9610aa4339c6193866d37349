@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "99403e9f_ebd92884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-18T09:39:29Z",
+      "side": 1,
+      "message": "It\u0027s first time for me to see //go:linkname :) \n\nBut I\u0027m afraid that this approach might be fragile because it depends on an internal symbol name (runtime.nanotime). Also IIUC there can be several monotonic clocks available in the system (e.g. CLOCK_MONOTONIC, CLOCK_MONOTONIC_COARSE, CLOCK_MONOTONIC_RAW) but in this way we don\u0027t have control of the choice.\n\nDoes unix.ClockGettime work for us?\n\nhttps://godoc.org/golang.org/x/sys/unix#ClockGettime",
+      "parentUuid": "15929db4_877a23b4",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "revId": "73972d122d03b42e9610aa4339c6193866d37349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aefaef10_1fa0b16a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
         "patchSetId": 3
