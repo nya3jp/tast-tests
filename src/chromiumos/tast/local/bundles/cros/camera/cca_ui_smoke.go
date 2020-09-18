@@ -46,6 +46,8 @@ func init() {
 			// TODO(crbug.com/1050732): Remove this once the unknown crash on
 			// scarlet is resolved.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("scarlet")),
+			// TODO(crbug.com/1129639): camera.CCAUISmoke.fake is failing.
+			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
