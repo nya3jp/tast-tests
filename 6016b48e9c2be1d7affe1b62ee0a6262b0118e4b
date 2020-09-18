@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4869a650_e40cc0b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-18T03:39:32Z",
+      "side": 1,
+      "message": "Returns error if it fails to wait for the BSS before ctx.Done.",
+      "range": {
+        "startLine": 224,
+        "startChar": 16,
+        "endLine": 225,
+        "endChar": 55
+      },
+      "revId": "6016b48e9c2be1d7affe1b62ee0a6262b0118e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f57e0b5a_3b24044d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-18T03:39:32Z",
+      "side": 1,
+      "message": "a watcher",
+      "range": {
+        "startLine": 227,
+        "startChar": 11,
+        "endLine": 227,
+        "endChar": 18
+      },
+      "revId": "6016b48e9c2be1d7affe1b62ee0a6262b0118e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f787bae_d9433e83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-18T03:39:32Z",
+      "side": 1,
+      "message": "a signal",
+      "range": {
+        "startLine": 230,
+        "startChar": 44,
+        "endLine": 230,
+        "endChar": 50
+      },
+      "revId": "6016b48e9c2be1d7affe1b62ee0a6262b0118e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a69f720_b757a289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-18T03:39:32Z",
+      "side": 1,
+      "message": "errors.Wrapf(ctx.Err(), \"failed to wait for BSSID %q\", targetBSSID)",
+      "revId": "6016b48e9c2be1d7affe1b62ee0a6262b0118e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae8a0c5_3187adef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1712,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-18T03:39:32Z",
+      "side": 1,
+      "message": "the wpa_supplicant\u0027s interface\u0027s object path",
+      "range": {
+        "startLine": 1712,
+        "startChar": 46,
+        "endLine": 1712,
+        "endChar": 68
+      },
+      "revId": "6016b48e9c2be1d7affe1b62ee0a6262b0118e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
