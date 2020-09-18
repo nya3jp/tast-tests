@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ecc8404b_a0ba7f34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-09-18T03:55:27Z",
+      "side": 1,
+      "message": "I see.\ndropped frames percent is already reported in go/crosboltv2.\nLet\u0027s abandon this CL.",
+      "parentUuid": "95364bb5_d380d548",
+      "range": {
+        "startLine": 11,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "2d39aa9c24cab5fecfa6e004c94f48b81da0ef23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35a2c1f9_33c97ed9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
