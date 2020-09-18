@@ -25,39 +25,44 @@ import (
 // Since decoding algorithm is deterministic and the encoding is lossless, MD5 value of video raw data decoded by each webM should always be the same.
 // These values are listed for the safety check to ensure we are always testing the same raw streams for result consistency.
 var md5OfYUV = map[string]string{
-	"bear-320x192.yuv":    "14c9ac6f98573ab27a7ed28da8a909c0",
-	"crowd-1920x1080.yuv": "96f60dd6ff87ba8b129301a0f36efc58",
-	"tulip2-1280x720.yuv": "1b95123232922fe0067869c74e19cd09",
-	"tulip2-640x360.yuv":  "094bd827de18ca196a83cc6442b7b02f",
-	"tulip2-320x180.yuv":  "55be7124b3aec1b72bfb57f433297193",
-	"vidyo1-1280x720.yuv": "b8601dd181bb2921fffce3fbb896351e",
-	"crowd-3840x2160.yuv": "c0cf5576391ec6e2439a8d0fc7207662",
-	"crowd-641x361.yuv":   "124d3e29ea68eaba0dc35243b4dfc27b",
+	"bear-320x192.vp9.webm":    "14c9ac6f98573ab27a7ed28da8a909c0",
+	"crowd-1920x1080.vp9.webm": "96f60dd6ff87ba8b129301a0f36efc58",
+	"tulip2-1280x720.vp9.webm": "1b95123232922fe0067869c74e19cd09",
+	"tulip2-640x360.vp9.webm":  "094bd827de18ca196a83cc6442b7b02f",
+	"tulip2-320x180.vp9.webm":  "55be7124b3aec1b72bfb57f433297193",
+	"vidyo1-1280x720.vp9.webm": "b8601dd181bb2921fffce3fbb896351e",
+	"crowd-3840x2160.vp9.webm": "c0cf5576391ec6e2439a8d0fc7207662",
+	"crowd-641x361.vp9.webm":   "124d3e29ea68eaba0dc35243b4dfc27b",
 	// TODO(hiroh): Add md5sum for NV12.
 }
 
 // PrepareYUV decodes webMFile and creates the associated YUV file for test whose pixel format is pixelFormat.
-// The returned value is the path of the created YUV file. It must be removed in the end of test, because its size is expected to be large.
 // The input WebM files are vp9 codec. They are generated from raw YUV data by libvpx like "vpxenc foo.yuv -o foo.webm --codec=vp9 -w <width> -h <height> --lossless=1"
 // Please use "--lossless=1" option. Lossless compression is required to ensure we are testing streams at the same quality as original raw streams,
 // to test encoder capabilities (performance, bitrate convergence, etc.) correctly and with sufficient complexity/PSNR.
-func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.PixelFormat, size coords.Size) (string, error) {
+func PrepareYUV(ctx context.Context, webMFile, yuvFile string, pixelFormat videotype.PixelFormat, size coords.Size) error {
 	const webMSuffix = ".vp9.webm"
 	if !strings.HasSuffix(webMFile, webMSuffix) {
-		return "", errors.Errorf("source video %v must be VP9 WebM", webMFile)
+		return errors.Errorf("source video %v must be VP9 WebM", webMFile)
 	}
 	webMName := filepath.Base(webMFile)
-	yuvName := strings.TrimSuffix(webMName, webMSuffix) + ".yuv"
+	yuvName := filepath.Base(yuvFile)
 
-	tf, err := publicTempFile(yuvName)
+	_, err := os.Stat(yuvFile)
+	if !os.IsNotExist(err) {
+		testing.ContextLogf(ctx, "Skipping extraction of %s: %s already exists", webMName, yuvName)
+		return nil
+	}
+
+	tf, err := os.Create(yuvFile)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to create a temporary YUV file")
+		return errors.Wrap(err, "failed to create a temporary YUV file")
 	}
 	keep := false
 	defer func() {
 		tf.Close()
 		if !keep {
-			os.Remove(tf.Name())
+			os.Remove(yuvFile)
 		}
 	}()
 
@@ -70,20 +75,20 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 	cmd.Stdout = out
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
-		return "", errors.Wrap(err, "vpxdec failed")
+		return errors.Wrap(err, "vpxdec failed")
 	}
 
 	// This guarantees that the generated yuv file (i.e. input of VEA test) is the same on all platforms.
 	hash := hex.EncodeToString(hasher.Sum(nil))
-	if hash != md5OfYUV[yuvName] {
-		return "", errors.Errorf("unexpected MD5 value of %s (got %s, want %s)", yuvName, hash, md5OfYUV[yuvName])
+	if hash != md5OfYUV[webMName] {
+		return errors.Errorf("unexpected MD5 value of %s (got %s, want %s)", yuvFile, hash, md5OfYUV[webMName])
 	}
 
 	// If pixelFormat is NV12, conversion from I420 to NV12 is performed.
 	if pixelFormat == videotype.NV12 {
 		cf, err := publicTempFile(yuvName)
 		if err != nil {
-			return "", errors.Wrap(err, "failed to create a temporary YUV file")
+			return errors.Wrap(err, "failed to create a temporary YUV file")
 		}
 		defer func() {
 			cf.Close()
@@ -91,18 +96,23 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 		}()
 
 		if _, err := tf.Seek(0, io.SeekStart); err != nil {
-			return "", err
+			return err
 		}
 
 		if err := convertI420ToNV12(cf, tf, size); err != nil {
-			return "", errors.Wrap(err, "failed to convert I420 to NV12")
+			return errors.Wrap(err, "failed to convert I420 to NV12")
 		}
-		// Make tf point to the converted file.
-		tf, cf = cf, tf
+
+		// Rename the temporary file to the yuv output file.
+		tf.Close()
+		cf.Close()
+		if err := os.Rename(cf.Name(), yuvFile); err != nil {
+			return errors.Wrap(err, "failed to rename YUV file")
+		}
 	}
 
 	keep = true
-	return tf.Name(), nil
+	return nil
 }
 
 // publicTempFile creates a world-readable temporary file.

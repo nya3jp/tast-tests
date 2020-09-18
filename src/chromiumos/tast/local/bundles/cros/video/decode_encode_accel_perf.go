@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -39,6 +40,8 @@ func init() {
 
 func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	const (
+		// Enable to cache the extracted raw video to speed up the test.
+		cacheExtractedVideo = true
 		// Time reserved for cleanup.
 		cleanupTime = 10 * time.Second
 		// Time to wait for CPU to stabilize after launching tests.
@@ -76,11 +79,20 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Create a raw YUV video to encode for the video encoder tests.
-	streamPath, err := encoding.PrepareYUV(ctx, s.DataPath(encodeParams.Name), encodePixelFormat, encodeParams.Size)
+	streamPath := strings.TrimSuffix(s.DataPath(encodeParams.Name), ".vp9.webm")
+	switch encodePixelFormat {
+	case videotype.I420:
+		streamPath += ".i420.yuv"
+	case videotype.NV12:
+		streamPath += ".nv12.yuv"
+	}
+	err = encoding.PrepareYUV(ctx, s.DataPath(encodeParams.Name), streamPath, encodePixelFormat, encodeParams.Size)
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
-	defer os.Remove(streamPath)
+	if !cacheExtractedVideo {
+		defer os.Remove(streamPath)
+	}
 
 	// Wait for the CPU to become idle.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {

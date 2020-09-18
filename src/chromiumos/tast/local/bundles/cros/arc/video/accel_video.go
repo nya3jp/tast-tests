@@ -61,7 +61,7 @@ const (
 // pv is optional value, passed when we run performance test and record measurement value.
 // Note: pv must be provided when measureUsage is set at binArgs.
 func runARCVideoEncoderTest(ctx context.Context, s *testing.State, a *arc.ARC,
-	opts encoding.TestOptions, pullEncodedVideo bool, pv *perf.Values, bas ...binArgs) {
+	opts encoding.TestOptions, pullEncodedVideo, cacheExtractedVideo bool, pv *perf.Values, bas ...binArgs) {
 	// Install the test APK and grant permissions
 	apkName, err := c2e2etest.ApkNameForArch(ctx, a)
 	if err != nil {
@@ -80,11 +80,20 @@ func runARCVideoEncoderTest(ctx context.Context, s *testing.State, a *arc.ARC,
 
 	// Prepare video stream.
 	params := opts.Params
-	streamPath, err := encoding.PrepareYUV(ctx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
+	streamPath := strings.TrimSuffix(s.DataPath(params.Name), ".vp9.webm")
+	switch opts.PixelFormat {
+	case videotype.I420:
+		streamPath += ".i420.yuv"
+	case videotype.NV12:
+		streamPath += ".nv12.yuv"
+	}
+	err = encoding.PrepareYUV(ctx, s.DataPath(params.Name), streamPath, opts.PixelFormat, params.Size)
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
-	defer os.Remove(streamPath)
+	if !cacheExtractedVideo {
+		defer os.Remove(streamPath)
+	}
 
 	// Push video stream file to ARC container.
 	if err := a.Command(ctx, "mkdir", arcFilePath).Run(testexec.DumpLogOnError); err != nil {
@@ -218,18 +227,21 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 }
 
 // RunARCVideoTest runs all non-perf tests of arcvideoencoder_test in ARC.
-func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts encoding.TestOptions, pullEncodedVideo bool) {
+func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC,
+	opts encoding.TestOptions, pullEncodedVideo, cacheExtractedVideo bool) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
 	}
 	defer vl.Close()
 
-	runARCVideoEncoderTest(ctx, s, a, opts, pullEncodedVideo, nil, binArgs{testFilter: "C2VideoEncoderE2ETest.Test*"})
+	runARCVideoEncoderTest(ctx, s, a, opts, pullEncodedVideo, cacheExtractedVideo,
+		nil, binArgs{testFilter: "C2VideoEncoderE2ETest.Test*"})
 }
 
 // RunARCPerfVideoTest runs all perf tests of arcvideoencoder_test in ARC.
-func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts encoding.TestOptions) {
+func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC,
+	opts encoding.TestOptions, cacheExtractedVideo bool) {
 	const (
 		// duration of the interval during which CPU usage will be measured.
 		measureDuration = 10 * time.Second
@@ -252,7 +264,7 @@ func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts
 	}
 
 	pv := perf.NewValues()
-	runARCVideoEncoderTest(ctx, s, a, opts, false, pv,
+	runARCVideoEncoderTest(ctx, s, a, opts, false, cacheExtractedVideo, pv,
 		// Measure FPS and latency.
 		binArgs{
 			testFilter: "C2VideoEncoderE2ETest.Perf*",
