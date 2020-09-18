@@ -546,6 +546,30 @@
     },
     {
       "key": {
+        "uuid": "5928001a_980304b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:44:43Z",
+      "side": 1,
+      "message": "Fixed validateJob and removed State argument from there.\n\nRegarding passing state to this function: I would prefer to keep it as close to the RunFioStressCritical signature as possible, since tests use both (sometimes even with the same TestConfig). So it might look nicer if both functions have the same arguments.\n\nLet me know what do you think, I don\u0027t have a strong opinion here.",
+      "parentUuid": "1f7d9ef5_7ef49822",
+      "range": {
+        "startLine": 179,
+        "startChar": 38,
+        "endLine": 179,
+        "endChar": 56
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b86dfad3_94541451",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
         "patchSetId": 1
@@ -566,6 +590,30 @@
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d57812e4_e06f88b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b86dfad3_94541451",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 16
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
