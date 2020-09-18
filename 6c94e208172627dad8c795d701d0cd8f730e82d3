@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fff60892_7903cf4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-18T16:27:19Z",
+      "side": 1,
+      "message": "Style nits",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21565226_d0119264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-18T16:27:19Z",
+      "side": 1,
+      "message": "Per https://github.com/golang/go/wiki/CodeReviewComments#line-length:\n\n    There is no rigid line length limit in Go code, but avoid uncomfortably long lines. Similarly, don\u0027t add line breaks to keep lines short when they are more readable long--for example, if they are repetitive.\n\n    Most of the time when people wrap lines \"unnaturally\" (in the middle of function calls or function declarations, more or less, say, though some exceptions are around), the wrapping would be unnecessary if they had a reasonable number of parameters and reasonably short variable names. Long lines seem to go with long names, and getting rid of the long names helps a lot.\n\nA few thoughts on how you can manage that here:\n\n1. Remove the linebreak, just make L32 long\n\n2. Instead of prefixing each var with \"encode\", how about \"pvep\" asan acronym for PowerVideoEncodePerf?\n\n3. Could abbreviate names:\n\n    IterationCount -\u003e Iters\n    IterationDuration -\u003e IterDur\n    WarmupDuration -\u003e WarmupDur\n    PowerTestDuration -\u003e TestDur\n\nYou might take any or all of these suggestions. If you took all three, L32 would be much shorter:\n\n    pvepTestDur \u003d pvepIters*pvepIterDur + pvepWarmupDur + pvepTestSlack",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ccaee1_4bb01d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-18T16:27:19Z",
+      "side": 1,
+      "message": "As elsewhere, please don\u0027t add line breaks just to keep lines short.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81633a2d_aa2542a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-18T16:27:19Z",
+      "side": 1,
+      "message": "As elsewhere, please don\u0027t add line breaks just to keep lines short.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea4935b8_355b6d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-18T16:27:19Z",
+      "side": 1,
+      "message": "As elsewhere, please don\u0027t add line breaks just to keep lines short.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27d7a31_f9b29c02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-18T16:27:19Z",
+      "side": 1,
+      "message": "As elsewhere, please don\u0027t add line breaks just to keep lines short.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8769d267_f3c9d76f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-18T16:27:19Z",
+      "side": 1,
+      "message": "As elsewhere, please don\u0027t add line breaks just to keep lines short.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f917a35_dad57196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-18T16:27:19Z",
+      "side": 1,
+      "message": "s.Logf, since this is directly in the test body",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
