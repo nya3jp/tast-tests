@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e55b679_3273379f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-09-18T17:23:42Z",
+      "side": 1,
+      "message": "LGTM % question",
+      "revId": "11984f53e801d183b057d15b44af97b11bb8c677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "befbfa26_af3d3973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_network_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-09-18T17:23:42Z",
+      "side": 1,
+      "message": "I\u0027m guessing again this is not always present, so we can\u0027t check the received values?",
+      "range": {
+        "startLine": 46,
+        "startChar": 54,
+        "endLine": 46,
+        "endChar": 69
+      },
+      "revId": "11984f53e801d183b057d15b44af97b11bb8c677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
