@@ -69,6 +69,42 @@
       "revId": "cc925e42a2df0599a72894975eb389e05131569b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda24dcc_c25691bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-18T18:56:02Z",
+      "side": 1,
+      "message": "This isn\u0027t so much testing the redaction as the lack of improper logging. For example, if someone logs just the username of the user it won\u0027t be caught.\n\nAdded commenting to clarify.",
+      "parentUuid": "ee2cdcb0_ccda8f4e",
+      "revId": "cc925e42a2df0599a72894975eb389e05131569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9cfd72e_a5f86646",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-18T18:56:02Z",
+      "side": 1,
+      "message": "Because I didn\u0027t read the documentation of newConn 😉. Thanks for the tip!",
+      "parentUuid": "ee06a7cd_137ec179",
+      "revId": "cc925e42a2df0599a72894975eb389e05131569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
