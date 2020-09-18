@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b5414b05_c06ae78d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T12:02:07Z",
+      "side": 1,
+      "message": "Thanks for the clarification, it makes much more sense now.",
+      "parentUuid": "72b202a6_35e45860",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fbe1d95_275339b2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -183,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "43bdda20_90aa0a3d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T12:02:07Z",
+      "side": 1,
+      "message": "Does resetting the Chrome state clear the notifications? If there\u0027s no easy way to do this we can keep using the UI.",
+      "parentUuid": "8aba75b2_c6f3a8e8",
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9fef52e_aaf17fea",
         "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
         "patchSetId": 4
@@ -265,6 +307,30 @@
       "side": 1,
       "message": "I was thinking about it, but it looks like it only will complicate function and not needed right now. Usually people waiting until notification with ID or title will appear, not ID and title.\n\nIf someone will need AND logic, they can add it and it should not break compatibility, i.e. there will be no need to change callers.\n\nWDYT?",
       "parentUuid": "e04f0c08_cd6f450a",
+      "range": {
+        "startLine": 128,
+        "startChar": 93,
+        "endLine": 128,
+        "endChar": 110
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69773b9a_2eefe2ef",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T12:02:07Z",
+      "side": 1,
+      "message": "I\u0027d keep it consistent with the option pattern. Currently it\u0027s a bit surprising.",
+      "parentUuid": "bf615895_dcb0079a",
       "range": {
         "startLine": 128,
         "startChar": 93,
