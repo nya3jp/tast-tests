@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2b438b1_ea8d2bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/c2_e2e_test_x86.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-09-18T07:37:39Z",
+      "side": 1,
+      "message": "Is the size of the binary not changed?",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
