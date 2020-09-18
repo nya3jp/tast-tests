@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "cf19934b_a1423eab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "I do not assume particular order. Each of these sub-tests will be run by a separate Autotest wrapper. Other reasons for each test to be separate is that different tests have different timeouts and create different output folders, which is later parsed by a result processing pipeline.",
+      "parentUuid": "8630fa19_631e4c01",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01eb4b39_7b5d1e38",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
@@ -50,6 +68,24 @@
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a022efa1_fdda8700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01eb4b39_7b5d1e38",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "ef0bb9fd_ebeec1ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "731728e5_d57e92fe",
+      "range": {
+        "startLine": 233,
+        "startChar": 41,
+        "endLine": 233,
+        "endChar": 42
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ade2cd0_00d1ef28",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
@@ -99,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "41f3cd70_e0d37ca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ade2cd0_00d1ef28",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 16
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c40ab2e8_33e17d1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
@@ -110,6 +194,30 @@
       "writtenOn": "2020-09-17T08:03:10Z",
       "side": 1,
       "message": "could you use testing.Poll instead?",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 297,
+        "endChar": 2
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60fbaeaa_78a4b49a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure how to apply testing.Poll here. In this for loop, Sleep is part of the iteration (interleaved suspends and sleeps) rather than just waiting for suspend to finish.\nAlso, any timeout that I pass to testing.PollOptions is working on monotonic clock, therefore should be affected by the sleeps inside the loop.",
+      "parentUuid": "c40ab2e8_33e17d1a",
       "range": {
         "startLine": 292,
         "startChar": 1,
@@ -139,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "f0a9612c_60c7250d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7cbc92c_f379e455",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45387503_e280383e",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
@@ -150,6 +276,24 @@
       "writtenOn": "2020-09-17T08:03:10Z",
       "side": 1,
       "message": "Could you use sync.WaitGroup() instead?",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b6f92a_48db54e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "What is the recommended way of combining sync.WaitGroup with a timeout for the group? I couldn\u0027t find timeout functionality of a waitgroup.",
+      "parentUuid": "45387503_e280383e",
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -176,6 +320,30 @@
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14f8f37e_ddea1ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "931a434d_30655b7d",
+      "range": {
+        "startLine": 398,
+        "startChar": 2,
+        "endLine": 403,
+        "endChar": 3
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +393,54 @@
     },
     {
       "key": {
+        "uuid": "e405909a_10a2c529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b31120d_ad47de2f",
+      "range": {
+        "startLine": 105,
+        "startChar": 33,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "158c9838_3adfc0ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b2c30ee_cfdd312e",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 57
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df0619db_ca737944",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
         "patchSetId": 1
@@ -262,6 +478,48 @@
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca6be9c_54095deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "Removed these conditions altogether. This logic should live in post-processing anyway.",
+      "parentUuid": "df0619db_ca737944",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a742b82_27dbc2bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_result.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-18T01:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3819bdf3_ac71aaa7",
+      "range": {
+        "startLine": 154,
+        "startChar": 14,
+        "endLine": 154,
+        "endChar": 22
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
