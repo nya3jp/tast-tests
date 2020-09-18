@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -69,7 +69,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
 	}
 
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 

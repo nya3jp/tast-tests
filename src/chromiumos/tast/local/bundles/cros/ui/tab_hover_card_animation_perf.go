@@ -15,7 +15,7 @@ import (
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -86,7 +86,7 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 	} {
 		s.Run(ctx, data.suffix, func(ctx context.Context, s *testing.State) {
 			// Stabilize CPU usage.
-			if err := cpu.WaitUntilIdle(ctx); err != nil {
+			if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 				s.Error("Failed to wait for system UI to be stabilized: ", err)
 			}
 

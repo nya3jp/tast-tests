@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -142,7 +142,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for the animations to complete and for things to settle down.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 

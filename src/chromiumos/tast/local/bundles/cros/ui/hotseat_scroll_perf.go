@@ -18,7 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -259,7 +259,7 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 
 	// The best effort to stabilize CPU usage. This may or
 	// may not be satisfied in time.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		return cleanupAll, errors.Wrap(err, "failed to wait for system UI to be stabilized")
 	}
 	return cleanupAll, nil
