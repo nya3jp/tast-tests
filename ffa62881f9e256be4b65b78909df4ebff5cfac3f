@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11e7553d_8b4008d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-18T00:30:42Z",
+      "side": 1,
+      "message": "nit: looks like it is bit risky. Maybe 20/30 seconds?",
+      "range": {
+        "startLine": 47,
+        "startChar": 34,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1c23a3_24e76403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-18T00:30:42Z",
+      "side": 1,
+      "message": "we should keep previous Chrome session and relogin. Without keep preconditions data we just creates from scratch. Idea of this test on next user login previous ARC could be restored.\n\nIn previous impl we use condition dont_override_profile\n\nhttps://source.corp.google.com/chromeos_internal/src/third_party/autotest-tests-cheets/client/site_tests/cheets_ArcAvailability/cheets_ArcAvailability.py;l\u003d380?q\u003dcheets_A\u0026ss\u003dpiper%2FGoogle%2Fchromeos_internal:src%2F\n\nIn tast we have eq. chrome.Keep... something.",
+      "range": {
+        "startLine": 158,
+        "startChar": 19,
+        "endLine": 158,
+        "endChar": 28
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
