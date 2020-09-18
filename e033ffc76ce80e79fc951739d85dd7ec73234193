@@ -16,6 +16,24 @@
       "revId": "e033ffc76ce80e79fc951739d85dd7ec73234193",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c0e5e9a_12a3bad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-09-18T03:29:10Z",
+      "side": 1,
+      "message": "Hmm I tried \"idleDetection\", \"idle-detector\", \"idle-detection\", \"idle\", but none of it work.\n\nI think we should revert the original CL https://crrev.com/c/2359539 if it\u0027s not trivial fix.\n\ncode: https://source.chromium.org/chromium/chromium/src/+/master:chromeos/components/camera_app_ui/resources/src/manifest.json;l\u003d14;drc\u003db500c2e01b7bb0316b03018cdf52c43c5caec17e",
+      "parentUuid": "0209aeb6_97c45f59",
+      "revId": "e033ffc76ce80e79fc951739d85dd7ec73234193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
