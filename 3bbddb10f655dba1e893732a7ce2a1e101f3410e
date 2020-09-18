@@ -16,6 +16,133 @@
       "revId": "3bbddb10f655dba1e893732a7ce2a1e101f3410e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "288cbd9f_1475faa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T15:59:27Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "8d1c962e_343919a5",
+      "revId": "3bbddb10f655dba1e893732a7ce2a1e101f3410e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e61bfb62_4f086db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T15:59:27Z",
+      "side": 1,
+      "message": "No need to define a function here, you can just say new Promise...",
+      "range": {
+        "startLine": 86,
+        "startChar": 17,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "3bbddb10f655dba1e893732a7ce2a1e101f3410e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a8b520_ec844c3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T15:59:27Z",
+      "side": 1,
+      "message": "Alterlatively you can use tast.promisify",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "3bbddb10f655dba1e893732a7ce2a1e101f3410e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665875a6_0023ea84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T15:59:27Z",
+      "side": 1,
+      "message": "you can pass resolve here directly",
+      "range": {
+        "startLine": 91,
+        "startChar": 66,
+        "endLine": 91,
+        "endChar": 74
+      },
+      "revId": "3bbddb10f655dba1e893732a7ce2a1e101f3410e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "735cb32c_306ff4fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T15:59:27Z",
+      "side": 1,
+      "message": "The .then() serves no purpose and might be wrong.",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "3bbddb10f655dba1e893732a7ce2a1e101f3410e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d7129f8_13ab5ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T15:59:27Z",
+      "side": 1,
+      "message": "nit: be consistent with histFound \u003d false here for readability",
+      "revId": "3bbddb10f655dba1e893732a7ce2a1e101f3410e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
