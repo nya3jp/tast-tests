@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "15929db4_877a23b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-18T00:56:47Z",
+      "side": 1,
+      "message": "nya@ could you help me review this part of the code?\n\nI\u0027m not familiar with //go:linkname",
+      "parentUuid": "2ee3689f_595e8d6d",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "revId": "73972d122d03b42e9610aa4339c6193866d37349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aefaef10_1fa0b16a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
         "patchSetId": 3

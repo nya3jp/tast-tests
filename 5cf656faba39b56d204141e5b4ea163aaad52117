@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f12eed5_ca61b2a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-18T00:56:47Z",
+      "side": 1,
+      "message": "+nya\n\nShuhei, could you help me review the //go:linkname part? Thanks!",
+      "revId": "5cf656faba39b56d204141e5b4ea163aaad52117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
