@@ -132,6 +132,24 @@
       "revId": "95b0f4f95ba8c14f6c6f7cba8cc27388e0aa871d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "871acef7_ec473530",
+        "filename": "src/chromiumos/tast/local/power/read_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-09-18T05:25:29Z",
+      "side": 1,
+      "message": "Thanks for explanation.\n\nNow I could understand it works as desired reading the doc:\n\u003e If ReadString encounters an error before finding a delimiter, it returns the data read before the error and the error itself (often io.EOF).  ReadString returns err !\u003d nil if and only if the returned data does not end in delim.\n\n[optional] I would suggest also explaining in the comment that lineContent is assured to contain the string up to the error location (and thus the wanted result) even when an error is returned so that we can ignore the error.",
+      "parentUuid": "12688400_322f106d",
+      "revId": "95b0f4f95ba8c14f6c6f7cba8cc27388e0aa871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
