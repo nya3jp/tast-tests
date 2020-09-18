@@ -39,6 +39,30 @@
       "revId": "b22683cc6d70caa8c28addac0645836b9756656e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef69df02_9db7c2c5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-09-18T05:12:57Z",
+      "side": 1,
+      "message": "Oops I should\u0027ve unset the value instead of fixing it to 1. Thank you for catching this. Confirmed now it works on both betty and eve.\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:components/exo/wayland/zcr_remote_shell.cc;l\u003d101;drc\u003d677d92872d7b65c8ec15a58f6064cee25817d485",
+      "parentUuid": "8b5342ab_9fe1cab0",
+      "range": {
+        "startLine": 823,
+        "startChar": 3,
+        "endLine": 823,
+        "endChar": 33
+      },
+      "revId": "b22683cc6d70caa8c28addac0645836b9756656e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
