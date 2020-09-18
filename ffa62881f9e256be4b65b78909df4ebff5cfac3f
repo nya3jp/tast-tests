@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "39e2dc89_fbd73d1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-18T18:44:15Z",
+      "side": 1,
+      "message": "delete. It is defined above.",
+      "range": {
+        "startLine": 30,
+        "startChar": 42,
+        "endLine": 30,
+        "endChar": 52
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "843ed514_9cbff28f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-18T18:44:15Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 33,
+        "startChar": 43,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11e7553d_8b4008d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
         "patchSetId": 4
@@ -25,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "5dcbdd48_866db64a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-18T18:44:15Z",
+      "side": 1,
+      "message": "This won\u0027t work as intended since you create another set of these variables later in the test.",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 16
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce1c23a3_24e76403",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
         "patchSetId": 4
@@ -36,6 +105,30 @@
       "writtenOn": "2020-09-18T00:30:42Z",
       "side": 1,
       "message": "we should keep previous Chrome session and relogin. Without keep preconditions data we just creates from scratch. Idea of this test on next user login previous ARC could be restored.\n\nIn previous impl we use condition dont_override_profile\n\nhttps://source.corp.google.com/chromeos_internal/src/third_party/autotest-tests-cheets/client/site_tests/cheets_ArcAvailability/cheets_ArcAvailability.py;l\u003d380?q\u003dcheets_A\u0026ss\u003dpiper%2FGoogle%2Fchromeos_internal:src%2F\n\nIn tast we have eq. chrome.Keep... something.",
+      "range": {
+        "startLine": 158,
+        "startChar": 19,
+        "endLine": 158,
+        "endChar": 28
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93d66cd5_7db51e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-18T18:44:15Z",
+      "side": 1,
+      "message": "You should be able to do something similar to this test:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go;l\u003d59?q\u003dui%2Fexisting_user_login.go\u0026ct\u003dos",
+      "parentUuid": "ce1c23a3_24e76403",
       "range": {
         "startLine": 158,
         "startChar": 19,
