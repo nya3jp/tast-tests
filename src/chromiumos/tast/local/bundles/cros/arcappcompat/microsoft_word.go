@@ -93,6 +93,7 @@ func launchAppForMicrosoftWord(ctx context.Context, s *testing.State, tconn *chr
 		signInClassName       = "android.widget.Button"
 		signInText            = "Sign in"
 		newID                 = "com.microsoft.office.word:id/docsui_landing_pane_header_heading"
+		notNowID              = "android:id/autofill_save_no"
 	)
 
 	// Click on allow button to access your photos, media and files.
@@ -110,10 +111,28 @@ func launchAppForMicrosoftWord(ctx context.Context, s *testing.State, tconn *chr
 	} else if err := enterEmailAddress.Click(ctx); err != nil {
 		s.Fatal("Failed to click on enterEmailAddress: ", err)
 	}
+	// Click on emailid text field until the emailid text field is focused.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if emailIDFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
+			return errors.New("email text field not focused yet")
+		} else if !emailIDFocused {
+			enterEmailAddress.Click(ctx)
+			return errors.New("email text field not focused yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Fatal("Failed to focus EmailId: ", err)
+	}
 
-	emailAddress := s.RequiredVar("arcappcompat.MicrosoftWord.emailid")
-	if err := enterEmailAddress.SetText(ctx, emailAddress); err != nil {
-		s.Fatal("Doesn't enter EmailAddress: ", err)
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+
+	emailID := s.RequiredVar("arcappcompat.MicrosoftWord.emailid")
+	if err := kb.Type(ctx, emailID); err != nil {
+		s.Fatal("Failed to enter emailID: ", err)
 	}
 	s.Log("Entered EmailAddress")
 
@@ -133,10 +152,10 @@ func launchAppForMicrosoftWord(ctx context.Context, s *testing.State, tconn *chr
 		s.Fatal("Failed to click on enterPassword: ", err)
 	}
 
-	// Keep clicking password text field until the password text field is focused.
+	// Click on password text field until the password text field is focused.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
-			s.Log("Password text field is focused ")
+			return errors.New("password text field not focused yet")
 		} else if !pwdFocused {
 			enterPassword.Click(ctx)
 			return errors.New("Password text field not focused yet")
@@ -146,14 +165,8 @@ func launchAppForMicrosoftWord(ctx context.Context, s *testing.State, tconn *chr
 		s.Fatal("Failed to focus password: ", err)
 	}
 
-	kbp, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kbp.Close()
-
 	password := s.RequiredVar("arcappcompat.MicrosoftWord.password")
-	if err := kbp.Type(ctx, password); err != nil {
+	if err := kb.Type(ctx, password); err != nil {
 		s.Fatal("Failed to enter password: ", err)
 	}
 	s.Log("Entered password")
@@ -164,6 +177,14 @@ func launchAppForMicrosoftWord(ctx context.Context, s *testing.State, tconn *chr
 		s.Error("SignInButton doesn't exists: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signInButton: ", err)
+	}
+
+	// Click on notnow button.
+	notNowButton := d.Object(ui.ID(notNowID))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exists: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 
 	// Click on allow button to access your files.
