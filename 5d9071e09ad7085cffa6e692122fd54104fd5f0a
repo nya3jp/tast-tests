@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1147f677_c86e6a68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-18T20:02:08Z",
+      "side": 1,
+      "message": "Please review patchset 4. I merged some of similar functionalities and applied your suggestions. ",
+      "revId": "5d9071e09ad7085cffa6e692122fd54104fd5f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
