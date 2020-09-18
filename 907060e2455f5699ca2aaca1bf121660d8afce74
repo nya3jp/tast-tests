@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5117a0c0_76913eda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-09-18T04:13:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bdcbf323_c6855a91",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65d7b9a8_1c549ab6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -53,6 +77,24 @@
       "writtenOn": "2020-09-17T08:01:45Z",
       "side": 1,
       "message": "shouldn\u0027t file name be like \"printer_Lexmark_resolution_1200dpi_dolgen.ps\" ?\n\nsame for other file",
+      "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e6efc9_573722c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_resolution_lexmark_1200dpi_golden.ps.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-09-18T04:13:21Z",
+      "side": 1,
+      "message": "I think it makes sense to follow the same naming convention as the golden files for the Lexmark pin print tests (\"printer\" followed by the test file name followed by the subtest name followed by \"golden\", eg, \"printer_pin_print_lexmark_pin_golden.ps\" or in this case \"printer_resolution_lexmark_1200dpi_golden.ps\"). How does that sound?",
+      "parentUuid": "688888e7_d837ba25",
       "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -102,6 +144,54 @@
       "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e389554f_654361aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippprint/ippprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-09-18T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fac5229f_544bcb6f",
+      "range": {
+        "startLine": 156,
+        "startChar": 65,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a428c9c_c998f895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippprint/ippprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-09-18T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5738b154_001fb3fd",
+      "range": {
+        "startLine": 156,
+        "startChar": 92,
+        "endLine": 156,
+        "endChar": 93
+      },
+      "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
