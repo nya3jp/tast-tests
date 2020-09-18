@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "6c21c2ee_7f908a29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_resolution_lexmark_1200dpi_golden.ps.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T09:55:32Z",
+      "side": 1,
+      "message": "Ack, but a bit confusing, because after resolution I expected to see resolution, i.e. 1200 dpi",
+      "parentUuid": "94e6efc9_573722c2",
+      "revId": "907060e2455f5699ca2aaca1bf121660d8afce74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fac5229f_544bcb6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippprint/ippprint.go",
         "patchSetId": 3
