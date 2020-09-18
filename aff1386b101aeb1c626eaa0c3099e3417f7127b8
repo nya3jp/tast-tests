@@ -22,6 +22,30 @@
       "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061339cd_1e5fe6b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/c2_e2e_test_x86.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-18T07:47:29Z",
+      "side": 1,
+      "message": "Nope, it didn\u0027t change. I guess there\u0027s probably padding for alignment somewhere that hid the change.",
+      "parentUuid": "d2b438b1_ea8d2bd3",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
