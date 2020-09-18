@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44810c35_51fa76cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T11:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1404b843_0578c70d",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3500f79e_a4d35446",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -48,6 +72,47 @@
     },
     {
       "key": {
+        "uuid": "72b202a6_35e45860",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T11:15:28Z",
+      "side": 1,
+      "message": "Let me rephrase it.\n\n```\nTEST\u003din order to test new test itself, run:\n     tast run localhost:9999 policy.DisableScreenshots\nTEST\u003din order to test that CloseNotifications can close multiple\n     notifications, do:\n     1. rename DisableScreenshots to Screenshots\n     2. run DownloadRestrictions before Screenshots, because\n        DownloadRestrictions lefts 2 notifications in the tray, so \n        we can try close them:\n        tast run localhost:9999 policy.DownloadRestrictions \\\n          policy.Screenshots\n```\n\nLet me know if it\u0027s still unclear 😊",
+      "parentUuid": "3500f79e_a4d35446",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fbe1d95_275339b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T11:15:28Z",
+      "side": 1,
+      "message": "Thanks Victor, PTAL :)",
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "657ec1a9_6ce0d5f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots.go",
         "patchSetId": 4
@@ -65,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "646dd7df_89911236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T11:15:28Z",
+      "side": 1,
+      "message": "Thanks for your comment!\n\nYes, I was able to repro on my DUT, that\u0027s why I handled it.\n\nI actually found that problem was somewhere else. There is minimum inverval between screenshots. See comment in the next patch.\n\nBefore I was thinking that it\u0027s related to races related to policy update, because policy goes from Chrome to ash and it also takes some time.",
+      "parentUuid": "657ec1a9_6ce0d5f8",
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc5a670c_0c51f5b7",
         "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
         "patchSetId": 4
@@ -79,6 +162,24 @@
       "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aba75b2_c6f3a8e8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T11:15:28Z",
+      "side": 1,
+      "message": "IIUC, no. I found only getVisibleNotifications in autotestPrivate, no other methods related to notifications:\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.h?q\u003dnotification\u0026ss\u003dchromium%2Fchromium%2Fsrc:chrome%2Fbrowser%2Fchromeos%2Fextensions%2Fautotest_private%2F",
+      "parentUuid": "bc5a670c_0c51f5b7",
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +206,30 @@
     },
     {
       "key": {
+        "uuid": "5f11d481_9700e40c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T11:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9fef52e_aaf17fea",
+      "range": {
+        "startLine": 127,
+        "startChar": 29,
+        "endLine": 127,
+        "endChar": 33
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e04f0c08_cd6f450a",
         "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
         "patchSetId": 4
@@ -116,6 +241,30 @@
       "writtenOn": "2020-09-18T08:49:44Z",
       "side": 1,
       "message": "nit: allow multiple options for future compatibility",
+      "range": {
+        "startLine": 128,
+        "startChar": 93,
+        "endLine": 128,
+        "endChar": 110
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf615895_dcb0079a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T11:15:28Z",
+      "side": 1,
+      "message": "I was thinking about it, but it looks like it only will complicate function and not needed right now. Usually people waiting until notification with ID or title will appear, not ID and title.\n\nIf someone will need AND logic, they can add it and it should not break compatibility, i.e. there will be no need to change callers.\n\nWDYT?",
+      "parentUuid": "e04f0c08_cd6f450a",
       "range": {
         "startLine": 128,
         "startChar": 93,
