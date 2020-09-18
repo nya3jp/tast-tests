@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a1246e06_b921d8b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T10:57:29Z",
+      "side": 1,
+      "message": "Makes sense now, thanks for the explanation.",
+      "parentUuid": "21ed0b34_ebc8c03a",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "ef4e4a0d7249b9968e69020b36b58061dd83d904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d2c028a_8f8d6e38",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -135,6 +159,30 @@
       "side": 1,
       "message": "Looks like here should be \"an\", see example: https://golang.org/pkg/net/#LookupHost\n\nPlease let me know if you disagree",
       "parentUuid": "0d1b12f3_a6162f24",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "ef4e4a0d7249b9968e69020b36b58061dd83d904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1928a465_193095fa",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T10:57:29Z",
+      "side": 1,
+      "message": "Go style is better than my english 😊",
+      "parentUuid": "ff45bd25_4db425ac",
       "range": {
         "startLine": 28,
         "startChar": 25,
