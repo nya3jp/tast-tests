@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1404b843_0578c70d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T08:49:44Z",
+      "side": 1,
+      "message": "Do you mean DisableScreenshots?",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3500f79e_a4d35446",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T08:49:44Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this. Is it always required to run policy.DownloadRestrictions before this?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "657ec1a9_6ce0d5f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T08:49:44Z",
+      "side": 1,
+      "message": "Did this happen on your DUT?\n\nIt\u0027s \"Dynamic Policy Refresh: Yes\" so it should have been applied after ServeAndVerify. It\u0027s a bug otherwise.",
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc5a670c_0c51f5b7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T08:49:44Z",
+      "side": 1,
+      "message": "Is there no API to clear the notifications?",
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9fef52e_aaf17fea",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T08:49:44Z",
+      "side": 1,
+      "message": "nit: for the first",
+      "range": {
+        "startLine": 127,
+        "startChar": 29,
+        "endLine": 127,
+        "endChar": 33
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e04f0c08_cd6f450a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T08:49:44Z",
+      "side": 1,
+      "message": "nit: allow multiple options for future compatibility",
+      "range": {
+        "startLine": 128,
+        "startChar": 93,
+        "endLine": 128,
+        "endChar": 110
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
