@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a7058f2_9d58d2d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T13:37:50Z",
+      "side": 1,
+      "message": "LGTM % one last nit",
+      "revId": "e11a1c2d901a796904cd1cfe3f994a9b1c258334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4bd3198_f453dd5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T13:37:50Z",
+      "side": 1,
+      "message": "Also defer this once for the entire DisableScreenshots to make sure we don\u0027t leave files behind.",
+      "revId": "e11a1c2d901a796904cd1cfe3f994a9b1c258334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
