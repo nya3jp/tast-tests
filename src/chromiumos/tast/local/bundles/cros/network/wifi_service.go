@@ -260,7 +260,7 @@ func (s *WifiService) waitForBSSID(ctx context.Context, iface *wpasupplicant.Int
 			return false, nil
 		}
 		if !bytes.Equal(bss.BSSID, targetBSSID) {
-			return false, errors.Errorf("unexpected BSSID: got %q, want %q", bss.BSSID, targetBSSID)
+			return false, nil
 		}
 		return true, nil
 	}
