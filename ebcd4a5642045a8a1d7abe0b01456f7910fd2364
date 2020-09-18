@@ -50,6 +50,24 @@
       "revId": "ebcd4a5642045a8a1d7abe0b01456f7910fd2364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78cca54d_25979df7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/zip.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2020-09-18T00:07:48Z",
+      "side": 1,
+      "message": "No, it is no longer needed. I am thinking that it might be a useful utility to keep if someone else needs it in the future. Should I remove this file? or upload it separately in a different CL?",
+      "parentUuid": "32b656b9_25e76449",
+      "revId": "ebcd4a5642045a8a1d7abe0b01456f7910fd2364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
