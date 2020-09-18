@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "591d7ae1_0b6a8f66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2020-09-18T10:38:06Z",
+      "side": 1,
+      "message": "lgtm, but I\u0027m not an expert in Go or Autotests.",
+      "revId": "8a96bb0939bb5873e05b77dd248622b8eb807101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
