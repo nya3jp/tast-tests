@@ -50,6 +50,24 @@
       "revId": "5057e1dc4ebc79bd8b807c424bb44adbeb257da9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7435064_ab7fd144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-09-18T01:09:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "380a2ad4_f2bb5650",
+      "revId": "5057e1dc4ebc79bd8b807c424bb44adbeb257da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
