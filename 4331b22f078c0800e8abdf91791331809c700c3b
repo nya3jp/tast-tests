@@ -16,6 +16,46 @@
       "revId": "4331b22f078c0800e8abdf91791331809c700c3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62b12e67_390afb95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T12:42:38Z",
+      "side": 1,
+      "message": "This has a callback param, it\u0027s async. You will need to wait until it\u0027s done to make sure the test is not racy.",
+      "range": {
+        "startLine": 80,
+        "startChar": 30,
+        "endLine": 80,
+        "endChar": 56
+      },
+      "revId": "4331b22f078c0800e8abdf91791331809c700c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d30dd04_9368ed10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-18T12:42:38Z",
+      "side": 1,
+      "message": "Maybe move this above to be consistent with the other tests?",
+      "revId": "4331b22f078c0800e8abdf91791331809c700c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
