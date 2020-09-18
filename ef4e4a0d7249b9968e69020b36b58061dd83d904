@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "21ed0b34_ebc8c03a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T10:11:07Z",
+      "side": 1,
+      "message": "No, because I created a special test to demonstrate that ash.Notifications will return notification created 20 seconds ago and which is not visible to the user (it will be visible when user will open tray)\n\n```\nfunc Screenshot2(ctx context.Context, s *testing.State) {\n\tcr :\u003d s.PreValue().(*chrome.Chrome)\n\n\t// Connect to Test API.\n\ttconn, err :\u003d cr.TestAPIConn(ctx)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to connect to test API: \", err)\n\t}\n\n\tkeyboard, err :\u003d input.Keyboard(ctx)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to get keyboard: \", err)\n\t}\n\n\tif err :\u003d keyboard.Accel(ctx, \"Ctrl+Scale\"); err !\u003d nil {\n\t\ts.Fatal(\"Failed to press buttons: \", err)\n\t}\n\n\ttime.Sleep(1 * time.Second)\n\n\tnots, err :\u003d ash.Notifications(ctx, tconn)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to get notifs: \", err)\n\t}\n\tif len(nots) \u003e 0 {\n\t\tfor _, not :\u003d range nots {\n\t\t\ts.Log(\"Notification: \", not)\n\t\t}\n\t}\n\n\ttime.Sleep(20 * time.Second)\n\n\tnots, err \u003d ash.Notifications(ctx, tconn)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to get notifs: \", err)\n\t}\n\tif len(nots) \u003e 0 {\n\t\tfor _, not :\u003d range nots {\n\t\t\ts.Log(\"Notification: \", not)\n\t\t}\n\t}\n}\n```",
+      "parentUuid": "4f36552c_66a2beea",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "ef4e4a0d7249b9968e69020b36b58061dd83d904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d2c028a_8f8d6e38",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -59,6 +83,23 @@
     },
     {
       "key": {
+        "uuid": "45cbbf0c_0451198b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T10:11:07Z",
+      "side": 1,
+      "message": "Thanks Victor!",
+      "revId": "ef4e4a0d7249b9968e69020b36b58061dd83d904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d1b12f3_a6162f24",
         "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
         "patchSetId": 5
@@ -79,6 +120,30 @@
       "revId": "ef4e4a0d7249b9968e69020b36b58061dd83d904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff45bd25_4db425ac",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T10:11:07Z",
+      "side": 1,
+      "message": "Looks like here should be \"an\", see example: https://golang.org/pkg/net/#LookupHost\n\nPlease let me know if you disagree",
+      "parentUuid": "0d1b12f3_a6162f24",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "ef4e4a0d7249b9968e69020b36b58061dd83d904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -125,6 +190,54 @@
       "revId": "ef4e4a0d7249b9968e69020b36b58061dd83d904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb577b80_8600b024",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T10:11:07Z",
+      "side": 1,
+      "message": "will use \"an\"",
+      "parentUuid": "35a497ef_a79bd2ef",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "ef4e4a0d7249b9968e69020b36b58061dd83d904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f2f3e9a_6cd16483",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T10:11:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8013963f_6998c52a",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "ef4e4a0d7249b9968e69020b36b58061dd83d904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
