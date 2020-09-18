@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26ba9a8a_2b7ca32b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-18T04:43:18Z",
+      "side": 1,
+      "message": "Be consistent. How about return nil, errors.Wrap(err, \"failed to configure AP1\")\n\nSame below.",
+      "revId": "0e89c605ae3b479c8f20a30085a11abd02edfee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fecec1ac_d9950ed3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-18T04:43:18Z",
+      "side": 1,
+      "message": "Just curious, oldConfig is an alias of bgscanResp.Config, right? Since you use oldConfig for easier to comprehend, why not use oldConfig here?",
+      "range": {
+        "startLine": 151,
+        "startChar": 38,
+        "endLine": 151,
+        "endChar": 55
+      },
+      "revId": "0e89c605ae3b479c8f20a30085a11abd02edfee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab66e6eb_06007670",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-18T04:43:18Z",
+      "side": 1,
+      "message": "Significant increase in RTT due to bgscan: %f ms (bgscan) - %f ms (no bgscan) \u003d %f ms \u003e %f ms (RTT increase margin)",
+      "revId": "0e89c605ae3b479c8f20a30085a11abd02edfee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
