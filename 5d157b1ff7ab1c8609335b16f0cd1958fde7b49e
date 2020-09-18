@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "615f4b19_d6344283",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-18T19:04:01Z",
+      "side": 1,
+      "message": "I just figured out how to click on app icon on launcher when there is another app running. I still have problem running the test on kodama, but it is working fine on other tablets.\n\nPlease review my new changes.\n\nThanks.\n\nSeewai\n",
+      "revId": "5d157b1ff7ab1c8609335b16f0cd1958fde7b49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
