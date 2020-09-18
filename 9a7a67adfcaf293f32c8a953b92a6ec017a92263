@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a2cbc8b_bf5d0c9e",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-18T06:47:41Z",
+      "side": 1,
+      "message": "proxyConn?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6671d64_c2ccae00",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-18T06:47:41Z",
+      "side": 1,
+      "message": "proxyConn",
+      "range": {
+        "startLine": 51,
+        "startChar": 44,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cefc18b6_2fd95dca",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-18T06:47:41Z",
+      "side": 1,
+      "message": "for easier debugging of setup issues: \"invalid channel %d, attenuator model %s\"",
+      "range": {
+        "startLine": 119,
+        "startChar": 21,
+        "endLine": 119,
+        "endChar": 32
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e98e757_fd157a0d",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-18T06:47:41Z",
+      "side": 1,
+      "message": "also print response",
+      "range": {
+        "startLine": 130,
+        "startChar": 21,
+        "endLine": 130,
+        "endChar": 52
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd88563f_88a5eaf5",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-09-18T06:47:41Z",
+      "side": 1,
+      "message": "const please :)",
+      "range": {
+        "startLine": 195,
+        "startChar": 8,
+        "endLine": 195,
+        "endChar": 10
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
