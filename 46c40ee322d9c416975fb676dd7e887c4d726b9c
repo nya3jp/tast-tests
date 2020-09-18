@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "7235287f_a0573d7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-18T17:31:20Z",
+      "side": 1,
+      "message": "Hi Everybody:\n\nShould I add a check like this at the beginning?\n\n\ttabletMode, err :\u003d ash.TabletModeEnabled(ctx, tconn)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to check if it is in tablet mode: \", err)\n\t}\n\tif tableMode {\n\t\ts.Fatal(\"Tablet mode is not supported for this test.\")\n\t}\n\nPlease let me know. Thanks.\n\nSeewai\n",
+      "revId": "46c40ee322d9c416975fb676dd7e887c4d726b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cd4918c_47322871",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 7
