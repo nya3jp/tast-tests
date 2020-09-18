@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2dbcdb9_ae1f4068",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-18T08:49:07Z",
+      "side": 1,
+      "message": "LGTM with nits, thanks!\n",
+      "revId": "6196bc67903ccad798e6cdc10376e8190a2d67a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e901ddd4_3c641730",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-18T08:49:07Z",
+      "side": 1,
+      "message": "nit: Can you clean up the list formatting, i.e.\n\n Contacts: []string{\n    \"a\",\n    \"b\",\n    \"c\",\n    \"d\",\n },",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "6196bc67903ccad798e6cdc10376e8190a2d67a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd89b41b_2630241a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_proxy_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-18T08:49:07Z",
+      "side": 1,
+      "message": "nit: Would you mind dropping \"\u003d\u003d true\"? It\u0027s not explicitly said in style guides but I rarely see \"\u003d\u003d true\" and \"\u003d\u003d false\" in Google...",
+      "range": {
+        "startLine": 124,
+        "startChar": 36,
+        "endLine": 124,
+        "endChar": 45
+      },
+      "revId": "6196bc67903ccad798e6cdc10376e8190a2d67a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
