@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81c246f8_7580ac75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-18T08:19:14Z",
+      "side": 1,
+      "message": "Ah, I forgot to add a dependency to a Portage CL, so CQ build will fail. But this CL is still ready for review.",
+      "revId": "2baced6e64aa482248b268ec5671e27b3bfa29e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
