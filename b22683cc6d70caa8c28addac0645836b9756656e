@@ -16,6 +16,29 @@
       "revId": "b22683cc6d70caa8c28addac0645836b9756656e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b5342ab_9fe1cab0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-09-18T04:07:29Z",
+      "side": 1,
+      "message": "just curious, isn\u0027t it affecting other boards?",
+      "range": {
+        "startLine": 823,
+        "startChar": 3,
+        "endLine": 823,
+        "endChar": 33
+      },
+      "revId": "b22683cc6d70caa8c28addac0645836b9756656e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
