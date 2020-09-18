@@ -69,6 +69,8 @@ func init() {
 
 func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 	const (
+		// Enable to cache the extracted raw video to speed up the test.
+		cacheExtractedVideo = false
 		// arcFilePath must be on the sdcard because of android permissions
 		arcFilePath = "/sdcard/Download/c2_e2e_test/"
 		logFileName = "gtest_logs.txt"
@@ -98,7 +100,9 @@ func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
-	defer os.Remove(rawVideoPath)
+	if !cacheExtractedVideo {
+		defer os.Remove(rawVideoPath)
+	}
 
 	// Set up device for measuring power drain.
 	sup, cleanup := setup.New("video power")
