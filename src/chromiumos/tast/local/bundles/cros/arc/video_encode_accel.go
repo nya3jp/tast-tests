@@ -119,6 +119,8 @@ func init() {
 func VideoEncodeAccel(ctx context.Context, s *testing.State) {
 	// Enable to download the video file encoded by the test.
 	const pullEncodedVideo = false
+	// Enable to cache the extracted raw video to speed up the test.
+	const cacheExtractedVideo = true
 	video.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC,
-		s.Param().(encoding.TestOptions), pullEncodedVideo)
+		s.Param().(encoding.TestOptions), pullEncodedVideo, cacheExtractedVideo)
 }

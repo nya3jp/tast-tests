@@ -149,5 +149,7 @@ func init() {
 }
 
 func EncodeAccelPerf(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoPerfTest(ctx, s, s.Param().(encoding.TestOptions))
+	// Enable to cache the extracted raw video to speed up the test.
+	const cacheExtractedVideo = true
+	encode.RunAccelVideoPerfTest(ctx, s, s.Param().(encoding.TestOptions), cacheExtractedVideo)
 }

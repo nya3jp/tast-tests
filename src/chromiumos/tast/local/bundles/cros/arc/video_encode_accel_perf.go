@@ -51,5 +51,8 @@ func init() {
 }
 
 func VideoEncodeAccelPerf(ctx context.Context, s *testing.State) {
-	video.RunARCPerfVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC, s.Param().(encoding.TestOptions))
+	// Enable to cache the extracted raw video to speed up the test.
+	const cacheExtractedVideo = true
+	video.RunARCPerfVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC,
+		s.Param().(encoding.TestOptions), cacheExtractedVideo)
 }
