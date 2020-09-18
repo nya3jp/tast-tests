@@ -25,14 +25,16 @@ var clamshellTestsForSkype = []testutil.TestCase{
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: reOpenWindowForSkypeAndSignOutOfApp},
+	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Signout app", Fn: signOutOfSkype},
 }
 
 // TouchviewTests are placed here.
 var touchviewTestsForSkype = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForSkype},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: reOpenWindowForSkypeAndSignOutOfApp},
+	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Signout app", Fn: signOutOfSkype},
 }
 
 func init() {
@@ -88,6 +90,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		hamburgerClassName  = "android.widget.ImageButton"
 		hamburgerDes        = "Menu"
 		nextButtonText      = "Next"
+		notNowID            = "android:id/autofill_save_no"
 		passwordID          = "i0118"
 		signInClassName     = "android.widget.Button"
 		signInText          = "Sign in"
@@ -116,9 +119,27 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on enterEmailAddress: ", err)
 	}
 
-	emailAddress := s.RequiredVar("arcappcompat.Skype.emailid")
-	if err := enterEmailAddress.SetText(ctx, emailAddress); err != nil {
-		s.Fatal("Doesn't enter EmailAddress: ", err)
+	// Click on emailid text field until the emailid text field is focused.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if emailIDFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
+			return errors.New("email text field not focused yet")
+		} else if !emailIDFocused {
+			enterEmailAddress.Click(ctx)
+			return errors.New("email text field not focused yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Fatal("Failed to focus EmailId: ", err)
+	}
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+
+	emailID := s.RequiredVar("arcappcompat.Skype.emailid")
+	if err := kb.Type(ctx, emailID); err != nil {
+		s.Fatal("Failed to enter emailID: ", err)
 	}
 	s.Log("Entered EmailAddress")
 
@@ -138,27 +159,21 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on enterPassword: ", err)
 	}
 
-	// Keep clicking password text field until the password text field is focused.
+	// Click on password text field until the password text field is focused.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
-			s.Log("Password text field is focused ")
+			return errors.New("password text field not focused yet")
 		} else if !pwdFocused {
 			enterPassword.Click(ctx)
-			return errors.New("Password text field not focused yet")
+			return errors.New("password text field not focused yet")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
 		s.Fatal("Failed to focus password: ", err)
 	}
 
-	kbp, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kbp.Close()
-
 	password := s.RequiredVar("arcappcompat.Skype.password")
-	if err := kbp.Type(ctx, password); err != nil {
+	if err := kb.Type(ctx, password); err != nil {
 		s.Fatal("Failed to enter password: ", err)
 	}
 	s.Log("Entered password")
@@ -169,6 +184,13 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Error("SignInButton doesn't exists: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signInButton: ", err)
+	}
+	// Click on notnow button.
+	notNowButton := d.Object(ui.ID(notNowID))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exists: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 
 	// Click on allow button to access your files.
@@ -183,42 +205,6 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	if err := hamburgerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("hamburgerIcon doesn't exists: ", err)
 	}
-}
-
-// reOpenWindowForSkypeAndSignOutOfApp Test "close and relaunch the app", verifies app launch successfully without crash or ANR and signout of an app.
-func reOpenWindowForSkypeAndSignOutOfApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-
-	// Launch the app.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
-	if err != nil {
-		s.Fatal("Failed to create new app activity: ", err)
-	}
-	s.Log("Created new app activity")
-
-	defer act.Close()
-
-	s.Log("Stop the current activity of the app")
-	if err := act.Stop(ctx, tconn); err != nil {
-		s.Fatal("Failed to stop app: ", err)
-	}
-
-	testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-	// Create an app activity handle.
-	act, err = arc.NewActivity(a, appPkgName, appActivity)
-	if err != nil {
-		s.Fatal("Failed to create new app activity: ", err)
-	}
-	s.Log("Created new app activity")
-
-	defer act.Close()
-
-	// ReLaunch the activity.
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start app: ", err)
-	}
-	s.Log("App relaunched successfully")
-
-	signOutOfSkype(ctx, s, tconn, a, d, appPkgName, appActivity)
 }
 
 // signOutOfSkype verifies app is signed out.
