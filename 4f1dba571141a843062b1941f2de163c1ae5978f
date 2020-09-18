@@ -16,6 +16,24 @@
       "revId": "4f1dba571141a843062b1941f2de163c1ae5978f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "425eb7a9_60d50a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-09-18T22:26:01Z",
+      "side": 1,
+      "message": "Simplify the defer call by removeing os.Remove, as the underlying directory is remvoed.",
+      "parentUuid": "b1d4d10e_c7d0c582",
+      "revId": "4f1dba571141a843062b1941f2de163c1ae5978f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
