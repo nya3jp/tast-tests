@@ -71,6 +71,23 @@
     },
     {
       "key": {
+        "uuid": "7c2ec44d_9b5a2224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-18T04:47:06Z",
+      "side": 1,
+      "message": "Is it okay to fail fast because of seeing an unexpected BSSID associated with targetSSID? The function only expect to see (SSID, BSSID) pair, right? It should be okay to see (SSID, otherBSSID) pair as a SSID can associate with more than one BSSID.",
+      "revId": "6016b48e9c2be1d7affe1b62ee0a6262b0118e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a69f720_b757a289",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 4
