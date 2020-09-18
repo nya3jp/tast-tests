@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "3efa8442_724f479d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-09-18T22:22:41Z",
+      "side": 1,
+      "message": "I don\u0027t see this id when I dump uiautomator in most recent RVC builds. Could you check that? My board is eve-arc-r. Build is R87-13473.0.0/6838247.",
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11e7553d_8b4008d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
         "patchSetId": 4
