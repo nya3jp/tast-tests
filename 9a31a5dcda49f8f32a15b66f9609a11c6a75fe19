@@ -123,6 +123,24 @@
       "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46c37a5d_3af751fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_start.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-18T00:20:10Z",
+      "side": 1,
+      "message": "Thanks.\n\u003e Maybe also leave a TODO that this may need to be modified when Termina DLC becomes the default.\nI guess this is for not only this test but also most of crostini tests, right? Do we have a crbug I can link in the TODO comment?",
+      "parentUuid": "9ff9059b_cd9abc66",
+      "revId": "9a31a5dcda49f8f32a15b66f9609a11c6a75fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
