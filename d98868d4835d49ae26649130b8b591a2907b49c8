@@ -16,6 +16,23 @@
       "revId": "d98868d4835d49ae26649130b8b591a2907b49c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "876af4c3_dbe95747",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-18T00:24:11Z",
+      "side": 1,
+      "message": "I just figured out what I could not launch an app with my launcher.LaunchApp. It actually worked the first time, but the first app cover the entire screen on the tablet. When launcher.LaunchApp tried to click the second app\u0027s icon, it actually clicked the window of first app running. I probably need a bit more time to figure out how to get this to work on tablet. I will update you all later.\n\nSeewai\n ",
+      "revId": "d98868d4835d49ae26649130b8b591a2907b49c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
