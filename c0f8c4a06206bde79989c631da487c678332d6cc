@@ -225,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "706198b3_084f45f0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T13:19:08Z",
+      "side": 1,
+      "message": "No, chrome.ResetState keeps notifications, looks like it just close all tabs.\n\nIt looks like notifications just live in memory, after sign out I don\u0027t see my notifications.\n\nSo, maybe there is no better way to close them.",
+      "parentUuid": "43bdda20_90aa0a3d",
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9fef52e_aaf17fea",
         "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
         "patchSetId": 4
@@ -340,6 +358,30 @@
       "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a50459_287a4ce0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-18T13:19:08Z",
+      "side": 1,
+      "message": "I think I found very good way to support AND, PTAL 😊",
+      "parentUuid": "69773b9a_2eefe2ef",
+      "range": {
+        "startLine": 128,
+        "startChar": 93,
+        "endLine": 128,
+        "endChar": 110
+      },
+      "revId": "c0f8c4a06206bde79989c631da487c678332d6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
