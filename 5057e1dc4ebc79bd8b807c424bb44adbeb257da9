@@ -16,6 +16,40 @@
       "revId": "5057e1dc4ebc79bd8b807c424bb44adbeb257da9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c852d7c_57a6db66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-18T00:04:54Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "5057e1dc4ebc79bd8b807c424bb44adbeb257da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "380a2ad4_f2bb5650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-18T00:04:54Z",
+      "side": 1,
+      "message": "I guess it\u0027s okay to quit early if the window does not exist anymore; testing.PollBreak() might make sense here.",
+      "revId": "5057e1dc4ebc79bd8b807c424bb44adbeb257da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
