@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -75,7 +75,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	}
 	defer conns.Close()
 
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 

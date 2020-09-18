@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -107,7 +107,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 		currentWindows = windows
 
-		if err = cpu.WaitUntilIdle(ctx); err != nil {
+		if _, err = power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 			s.Error("Failed to wait for system UI to be stabilized: ", err)
 		}
 

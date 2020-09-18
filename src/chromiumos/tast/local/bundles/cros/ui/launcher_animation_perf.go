@@ -18,7 +18,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
 	lacroslauncher "chromiumos/tast/local/lacros/launcher"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -171,7 +171,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		currentWindows = windows
 		// The best effort to stabilize CPU usage. This may or
 		// may not be satisfied in time.
-		if err := cpu.WaitUntilIdle(ctx); err != nil {
+		if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 			s.Error("Failed to wait for system UI to be stabilized: ", err)
 		}
 
