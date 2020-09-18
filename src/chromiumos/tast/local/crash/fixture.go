@@ -196,8 +196,8 @@ func WithMockConsent() Option {
 
 // RebootingTest indicates that this test will reboot the machine, and the crash
 // reporting state files (e.g. crash-test-in-progress) should also be placed in
-// /var/spool/crash/ (so that the persist-crash-test task moves them over to
-// /run/crash_reporter on boot).
+// /mnt/stateful_partition/unencrypted/preserve (so that the persist-crash-test
+// task moves them over to /run/crash_reporter on boot).
 func RebootingTest() Option {
 	return func(p *setUpParams) {
 		p.rebootTest = true
@@ -235,7 +235,7 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	p := setUpParams{
 		inProgDir:        crashTestInProgressDir,
 		crashDirs:        crashDirs,
-		rebootPersistDir: SystemCrashDir,
+		rebootPersistDir: "/mnt/stateful_partition/unencrypted/preserve/",
 		senderPausePath:  senderPausePath,
 		filterInPath:     FilterInPath,
 		senderProcName:   senderProcName,
@@ -463,7 +463,7 @@ func TearDownCrashTest(ctx context.Context, opts ...tearDownOption) error {
 	p := tearDownParams{
 		inProgDir:        crashTestInProgressDir,
 		crashDirs:        crashDirs,
-		rebootPersistDir: SystemCrashDir,
+		rebootPersistDir: "/mnt/stateful_partition/unencrypted/preserve/",
 		senderPausePath:  senderPausePath,
 		mockSendingPath:  mockSendingPath,
 		filterInPath:     FilterInPath,
