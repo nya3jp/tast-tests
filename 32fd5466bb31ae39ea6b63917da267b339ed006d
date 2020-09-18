@@ -16,6 +16,92 @@
       "revId": "32fd5466bb31ae39ea6b63917da267b339ed006d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "505558e6_5c17d378",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-18T19:20:59Z",
+      "side": 1,
+      "message": "in general lgtm. A few minor comments that can be applied throughout the CL\n",
+      "revId": "32fd5466bb31ae39ea6b63917da267b339ed006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5da7076_93f7678a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-18T19:20:59Z",
+      "side": 1,
+      "message": "is the \"...\" the actual \"...\" character (ie, 1 character that is 3 single dots), or 3 single \".\" characters?\nI remember working on this in autotest and the character was actually u\"\\u2026\", not 3 * \".\"",
+      "range": {
+        "startLine": 135,
+        "startChar": 13,
+        "endLine": 135,
+        "endChar": 16
+      },
+      "revId": "32fd5466bb31ae39ea6b63917da267b339ed006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb1dbf02_a09d0ffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-18T19:20:59Z",
+      "side": 1,
+      "message": "15 seems like a really long timeout to see the dropdown menu load",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 7
+      },
+      "revId": "32fd5466bb31ae39ea6b63917da267b339ed006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b8dde4_3a089a9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-18T19:20:59Z",
+      "side": 1,
+      "message": "Does this actually help? Exists and WaitUntilExists both call the same DescendantExists (just waituntil loops...)\n\nCan we not just WaitUntilExists, if it errors, and it shouldn\u0027t (ie, doesn\u0027t exist but it should), raise an test fail error (and vice versa if WaitUntilExists doesn\u0027t error but should)",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 78
+      },
+      "revId": "32fd5466bb31ae39ea6b63917da267b339ed006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
