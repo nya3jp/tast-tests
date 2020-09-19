@@ -84,6 +84,8 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 		cameraDes          = "Camera"
 		loginDes           = "LOG IN"
 		notNowDes          = "NOT NOW"
+		notNowText         = "NOT NOW"
+		notNowID           = "android:id/autofill_save_no"
 		okText             = "OK"
 		passwordDes        = "Password"
 		textClassName      = "android.widget.EditText"
@@ -120,14 +122,29 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Fatal("Failed to click on clickOnLoginButton: ", err)
 	}
 
-	// Click on not now button.
-	clickOnNotNowButton := d.Object(ui.ClassName(viewGroupClassName), ui.Description(notNowDes))
+	// Click on not now button for saving password.
+	notNowButton := d.Object(ui.ID(notNowID))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exist: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
+	}
+
+	// Click on not now button to save info.
+	clickOnNotNowButton := d.Object(ui.Text(notNowText))
 	if err := clickOnNotNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("clickOnNotNowButton doesn't exist: ", err)
 	} else if err := clickOnNotNowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnNotNowButton: ", err)
 	}
 
+	// Click on not now button for adding contacts.
+	clickOnNotNowButton = d.Object(ui.ClassName(viewGroupClassName), ui.Description(notNowDes))
+	if err := clickOnNotNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnNotNowButton doesn't exist: ", err)
+	} else if err := clickOnNotNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnNotNowButton: ", err)
+	}
 	// Click on ok button.
 	clickOnOkButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(okText))
 	if err := clickOnOkButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
