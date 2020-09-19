@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07f84552_0e1c984c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-19T00:29:14Z",
+      "side": 1,
+      "message": "In the latest patch, I got launcher code working with Tablet. The interfaces were changed in order to support tablet. Please review.\n\nAlso, I found a bug in wm.go.\n\nIn DragToShowHomeScreen, it used following code to check if home screen is visible in table\n\twindows, err :\u003d GetAllWindows(ctx, tconn)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to get all windows\")\n\t}\n\t// Do nothing if there are no windows. Homescreen should be there already.\n\tif len(windows) \u003d\u003d 0 {\n\t\treturn nil\n\t}\nHowever, it does not work in the case there is an active window that is minimized. It would mistakenly think that the home screen is not visible and try to wipe up again. Sometimes, it will make the table go to overview mode. This was the case in my test. Therefore I have to fix this in order to get my code to work on tablet mode. Here is my change.\n\n\twindows, err :\u003d FindAllWindows(ctx, tconn, func(window *Window) bool {\n\t\treturn window.IsVisible\n\t})\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to get all windows\")\n\t}\n\t// Do nothing if there are no windows. Homescreen should be there already.\n\tif len(windows) \u003d\u003d 0 {\n\t\treturn nil\n\t}\n\nI fixed it in the current CL. Please let me know I should file a bug for this issue and has a different CL to fix this issue. I think there are a few tests using this functions. Please let me know what I should do to make sure my fix did not break anything.\n\nAlso, my test is still not working for kodama. I think we need to discuss how we should proceed.\n\nThanks.\n\nSeewai\n\n",
+      "revId": "c160aca129bbcd22cffc2fe3691305dd569bd587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
