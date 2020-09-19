@@ -16,6 +16,57 @@
       "revId": "5d9071e09ad7085cffa6e692122fd54104fd5f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d4f5bef_43897354",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-09-19T00:26:45Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "5d9071e09ad7085cffa6e692122fd54104fd5f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3140067a_23678d65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-09-19T00:26:45Z",
+      "side": 1,
+      "message": "left failed",
+      "revId": "5d9071e09ad7085cffa6e692122fd54104fd5f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873aad04_feec6dc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-09-19T00:26:45Z",
+      "side": 1,
+      "message": "Could you add some comment explaining what is dragTheActivity and isLeft?",
+      "revId": "5d9071e09ad7085cffa6e692122fd54104fd5f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
