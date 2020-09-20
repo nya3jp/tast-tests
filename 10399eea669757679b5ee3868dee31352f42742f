@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "56c7a66c_4bf87f5c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-20T13:36:03Z",
+      "side": 1,
+      "message": "can you try printing the Attributes map of each of the nodes here?  I\u0027m not sure that the dump tree toString function prints all of the available attributes (it calls into javascript, so I\u0027m not sure where the source code/documentation is)",
+      "parentUuid": "0cb436df_14a28e88",
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7fe5bc3_0b226ad6",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 1
