@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "0349182d_6bfb7684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T02:25:59Z",
+      "side": 1,
+      "message": "Can you add it in the offline tests then rather than here?",
+      "parentUuid": "da4c3b68_6390edbb",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 1
+      },
+      "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15c42104_25ec920d",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_whats_new_tab.go",
         "patchSetId": 1
