@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7a7280d_4f623788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T03:20:22Z",
+      "side": 1,
+      "message": "nit: you should probably do this before using ctx, ie as the first part of the test.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "ad52e3f711f037daf4e05e63152f65742aac6d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a27d3f7c_d5797545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T03:20:22Z",
+      "side": 1,
+      "message": "nit: Comments should end with full stops (here and below).",
+      "range": {
+        "startLine": 72,
+        "startChar": 42,
+        "endLine": 72,
+        "endChar": 49
+      },
+      "revId": "ad52e3f711f037daf4e05e63152f65742aac6d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
