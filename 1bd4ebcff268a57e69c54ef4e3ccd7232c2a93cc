@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5e1857f_962af40b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T01:28:53Z",
+      "side": 1,
+      "message": "Do we need a seperate function for this vs just calling\n\nIsTabShown(ctx, tconn, helpapp.PerksTab)",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e18157_b3363f18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T01:28:53Z",
+      "side": 1,
+      "message": "Is it easier to just call\nFindAndClick(helpapp.PerkTab) rather than creating another wrapper function?\n\nCould make helpapp.SomeTab return the right params rather than a string",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 1
+      },
+      "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742f8ba9_d5b2fbc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T01:28:53Z",
+      "side": 1,
+      "message": "I can\u0027t see where any of these are being used in tests, why are they needed?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 1
+      },
+      "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15c42104_25ec920d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_whats_new_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T01:28:53Z",
+      "side": 1,
+      "message": "Can we delete this whole test? It\u0027s a duplicate of launch_release_notes_from_settings.go",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
