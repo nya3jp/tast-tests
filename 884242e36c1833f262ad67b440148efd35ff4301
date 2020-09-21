@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5da5fa2_36a919be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-21T21:57:27Z",
+      "side": 1,
+      "message": "Hi Everybody:\n\nI think I finally get it to work. I have tested my new changes with two tablets. Please review new changes. Thanks.\n\nSeewai\n",
+      "revId": "884242e36c1833f262ad67b440148efd35ff4301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
