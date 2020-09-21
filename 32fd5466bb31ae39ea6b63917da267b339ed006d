@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "7f05ab31_df8d02f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-21T09:04:57Z",
+      "side": 1,
+      "message": "It is a single character. You can check it by trying to select it - only 1 character will be selected, not 3.\nI printed the name of the menu item and it was this one.",
+      "parentUuid": "b5da7076_93f7678a",
+      "range": {
+        "startLine": 135,
+        "startChar": 13,
+        "endLine": 135,
+        "endChar": 16
+      },
+      "revId": "32fd5466bb31ae39ea6b63917da267b339ed006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb1dbf02_a09d0ffe",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
         "patchSetId": 2
@@ -82,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "6b694006_70c34604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-21T09:04:57Z",
+      "side": 1,
+      "message": "Adjusted timings. Made 10 seconds for actions when we have to wait for browser to appear and 5 seconds for menus.",
+      "parentUuid": "bb1dbf02_a09d0ffe",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 7
+      },
+      "revId": "32fd5466bb31ae39ea6b63917da267b339ed006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99b8dde4_3a089a9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
         "patchSetId": 2
@@ -102,6 +150,30 @@
       "revId": "32fd5466bb31ae39ea6b63917da267b339ed006d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6971b6c6_7390a095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-21T09:04:57Z",
+      "side": 1,
+      "message": "I believe it does. Imagine that WaitUntilExists fails due to some unknown reason (and not because the dialog did not appear). If we just call WaitUntilExists, we may never find out that the actual reason for failure was not the timeout, and we will mark the test as \"passed\" in case we do not expect the window to appear.\n\nSince Exists, unlike WaitUntilExists, returns both a boolean flag and an error, by calling this method we can definitely say whether the node does not exist or something is wrong with searching procedure.",
+      "parentUuid": "99b8dde4_3a089a9f",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 78
+      },
+      "revId": "32fd5466bb31ae39ea6b63917da267b339ed006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
