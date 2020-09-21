@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bf076592_c5bcc59c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-21T22:39:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a4a1995_c1596db7",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "115289e1_aac4a042",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "3c221714_510e1ede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-21T22:39:36Z",
+      "side": 1,
+      "message": "Yes, once ADB could not be used to read this data.",
+      "parentUuid": "2b84767d_0ce3bb5e",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "785bc7a2_e1757322",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
         "patchSetId": 3
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "f81fb47d_fb078ea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-21T22:39:36Z",
+      "side": 1,
+      "message": "Idea behind was to look into test logs and easy identify boards with stale config. Warn or smaller set would not alert us about this problem.\n\nI am OK if you think it is too much. So we could switch to logging in last case (L123)",
+      "parentUuid": "785bc7a2_e1757322",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00010725_d845a563",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
         "patchSetId": 3
@@ -81,6 +135,24 @@
       "writtenOn": "2020-09-21T21:50:38Z",
       "side": 1,
       "message": "Pardon my ignorance, will this cause the test to be considered \u0027failed\u0027, or will this just result in a warning (as opposed to the s.Fatal\u0027s that happen for other conditions above)?",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d789ae_09cb4ac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-21T22:39:36Z",
+      "side": 1,
+      "message": "Fatal stops test immediately whereas error would print to log and continue execution. Test will be failed anyway once more than one error is detected.",
+      "parentUuid": "00010725_d845a563",
       "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
