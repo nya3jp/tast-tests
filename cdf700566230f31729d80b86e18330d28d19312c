@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "421878cf_7ac45d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T02:22:00Z",
+      "side": 1,
+      "message": "It\u0027s actually the other way around. The ctx to be used here is the long context, the short context should be used in the rest of the test so that there is some time in the long context left for cleanup when the rest of the test has finished",
+      "range": {
+        "startLine": 61,
+        "startChar": 33,
+        "endLine": 61,
+        "endChar": 41
+      },
+      "revId": "cdf700566230f31729d80b86e18330d28d19312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
