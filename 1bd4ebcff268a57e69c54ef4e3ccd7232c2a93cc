@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "80ee1a72_287a284f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T03:10:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0349182d_6bfb7684",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 1
+      },
+      "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15c42104_25ec920d",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_whats_new_tab.go",
         "patchSetId": 1
