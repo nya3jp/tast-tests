@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6594614_1155a717",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-21T19:15:27Z",
+      "side": 1,
+      "message": "IIUC, shill-start-user-session [1] *does* run synchronously with session-manager (see the comments), but the Tast \u0027chrome\u0027 package doesn\u0027t actually wait for that. I\u0027m not totally sure if this is something we should address generically in the chrome package? Or maybe I\u0027m misled? +hidehiko, in case he has ideas in this area (I\u0027m not the most familiar)\n\nAnyway, what I *do* know is that intentionally slowing down shill-start-user-session is enough to cause this to fail.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform2/shill/init/shill-start-user-session.conf?q\u003dfile:shill-start-user-session.conf",
+      "range": {
+        "startLine": 10,
+        "startChar": 64,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "56cbcde76425df87e2aaadadfc0b820ed48375f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
