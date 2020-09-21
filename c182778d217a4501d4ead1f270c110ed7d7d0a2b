@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb3f4d58_e64bff6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_extended.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-09-21T23:53:14Z",
+      "side": 1,
+      "message": "newline is not needed in tast. They don\u0027t follow the 80 line width rule.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "c182778d217a4501d4ead1f270c110ed7d7d0a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
