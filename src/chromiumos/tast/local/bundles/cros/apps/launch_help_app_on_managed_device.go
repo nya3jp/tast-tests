@@ -122,7 +122,7 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 		}
 
 		// Check if perks tab is shown.
-		isPerkShown, err := helpapp.IsPerkShown(ctx, tconn)
+		isPerkShown, err := helpapp.IsTabShown(ctx, tconn, helpapp.PerksTab)
 		if err != nil {
 			s.Fatal("Failed to check perks visibility: ", err)
 		}

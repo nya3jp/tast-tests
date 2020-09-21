@@ -67,16 +67,7 @@ func LaunchReleaseNotesFromSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click See whats new: ", err)
 	}
 
-	// Wait for the Help app to load.
-	helpRootNode, err := helpapp.HelpRootNode(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to find help app: ", err)
-	}
-	// Wait for the heading of What's new to be rendered to verify tab.
-	if err := helpRootNode.WaitUntilDescendantExists(ctx, ui.FindParams{
-		Name: "What’s new with your Chromebook?",
-		Role: ui.RoleTypeHeading,
-	}, 20*time.Second); err != nil {
-		s.Fatal("Failed to find updates page heading: ", err)
+	if err := helpapp.WaitWhatsNewTabRendered(ctx, tconn); err != nil {
+		s.Error(`Failed to verify "what's new" tab rendering: `, err)
 	}
 }
