@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0d680dc9_1ce8f60b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T22:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "801c65d3_8136d2b2",
+      "range": {
+        "startLine": 92,
+        "startChar": 61,
+        "endLine": 92,
+        "endChar": 84
+      },
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff240689_866e0108",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 3
@@ -277,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "41e79d86_141c8e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T22:15:35Z",
+      "side": 1,
+      "message": "A good suggestion. Since this test is almost ready for promotion. I would prefer not to touch this at the moment.",
+      "parentUuid": "8015b85d_d899cb61",
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abffaf7b_d226982a",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
         "patchSetId": 3
@@ -297,6 +339,30 @@
       "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e0a587_865186ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T22:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abffaf7b_d226982a",
+      "range": {
+        "startLine": 71,
+        "startChar": 28,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
