@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9458e80a_66ddedbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T02:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e1857f_962af40b",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03e18157_b3363f18",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-21T01:28:53Z",
       "side": 1,
       "message": "Is it easier to just call\nFindAndClick(helpapp.PerkTab) rather than creating another wrapper function?\n\nCould make helpapp.SomeTab return the right params rather than a string",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 1
+      },
+      "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68615ee_11051099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T02:04:14Z",
+      "side": 1,
+      "message": "ClickTab will limit the element finding inside Help app, while FindAndClick works on global ui, might have conflicts with other apps. Maybe nice to keep it.",
+      "parentUuid": "03e18157_b3363f18",
       "range": {
         "startLine": 109,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "da4c3b68_6390edbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T02:04:14Z",
+      "side": 1,
+      "message": "Removed UIConn. It was used to execute javascript.\nDescendantWithTimeout is used in upcoming offline tests.",
+      "parentUuid": "742f8ba9_d5b2fbc2",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 1
+      },
+      "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15c42104_25ec920d",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_whats_new_tab.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f93280_49184cf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_whats_new_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T02:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c42104_25ec920d",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "1bd4ebcff268a57e69c54ef4e3ccd7232c2a93cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
