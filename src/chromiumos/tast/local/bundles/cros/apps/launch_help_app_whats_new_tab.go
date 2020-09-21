@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
 )
@@ -91,13 +90,7 @@ func LaunchHelpAppWhatsNewTab(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for help app: ", err)
 	}
 
-	// The large text at the top of the page seems like a natural choice since it's easily
-	// recognizable and unlikely to change frequently. It would be better to have a
-	// successful launch indicator that didn't rely on a string, though.
-	// Particularly in this case, the apostrophe in What’s is not actually the normal
-	// apostrophe character, but instead the "right single quotation mark" character (&rsquo;).
-	titleParams := ui.FindParams{Role: ui.RoleTypeStaticText, Name: "What’s new with your Chromebook?"}
-	if err := ui.WaitUntilExists(ctx, tconn, titleParams, 30*time.Second); err != nil {
-		s.Fatal("Failed to find What's New title text in the UI: ", err)
+	if err := helpapp.WaitWhatsNewTabRendered(ctx, tconn); err != nil {
+		s.Error("Failed to verify what's new tab rendering: ", err)
 	}
 }
