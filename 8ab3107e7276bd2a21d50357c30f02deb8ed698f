@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4a12ec6_94432978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-21T12:21:54Z",
+      "side": 1,
+      "message": "nit: add period",
+      "range": {
+        "startLine": 21,
+        "startChar": 21,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e457a01e_3c681bad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-21T12:21:54Z",
+      "side": 1,
+      "message": "nit: whether tab is shown.",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "801c65d3_8136d2b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-21T12:21:54Z",
+      "side": 1,
+      "message": "it\u0027s a bit unclear what client should pass as tabParams if you don\u0027t know about other variable on the top of the package.\n\nTo fix it we can introduce new type and remove tabFindParams method.\n\nFor example:\n\n\n```\ntype tabFindParams string\n\nfunc (t tabFindParams) uiFindParams() ui.FindParams {\n\treturn ui.FindParams{\n\t\tName: string(t),\n\t\tRole: ui.RoleTypeTreeItem,\n\t}\n}\n\nconst (\n\tOverviewTab \u003d tabFindParams(\"Overview\")\n\tPerksTab    \u003d tabFindParams(\"Perks\")\n\tHelpTab     \u003d tabFindParams(\"Help\")\n)\n\n...\n\nfunc IsTabShown(ctx context.Context, tconn *chrome.TestConn, tabParams tabFindParams) (bool, error) {...}\n```",
+      "range": {
+        "startLine": 92,
+        "startChar": 61,
+        "endLine": 92,
+        "endChar": 84
+      },
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff240689_866e0108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-21T12:21:54Z",
+      "side": 1,
+      "message": "Maybe put it in TODO and create a bug?",
+      "range": {
+        "startLine": 138,
+        "startChar": 51,
+        "endLine": 139,
+        "endChar": 68
+      },
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5c47336_67aac0c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-21T12:21:54Z",
+      "side": 1,
+      "message": "nit: doesn\u0027t",
+      "range": {
+        "startLine": 139,
+        "startChar": 36,
+        "endLine": 139,
+        "endChar": 42
+      },
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a53bdb9_b171bbdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-21T12:21:54Z",
+      "side": 1,
+      "message": "I think this piece of comment should be before line 148",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 91
+      },
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8015b85d_d899cb61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-21T12:21:54Z",
+      "side": 1,
+      "message": "not related to this CL: I think that this test should be splitted into 2 parts: \"OOBE\" and \"LoggedIn\"",
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abffaf7b_d226982a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-21T12:21:54Z",
+      "side": 1,
+      "message": "Maybe put it into quotes?",
+      "range": {
+        "startLine": 71,
+        "startChar": 28,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "8ab3107e7276bd2a21d50357c30f02deb8ed698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
