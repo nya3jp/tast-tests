@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "694c7a89_aa721012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T02:17:48Z",
+      "side": 1,
+      "message": "Thanks for this comment. Done.",
+      "parentUuid": "34632ac5_14b4a0a2",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 68
+      },
+      "revId": "c8ccf5b3ebfe156b4766b70d0c37788d341d3761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35162dc5_487b02cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "641c4287_0f0f7d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T02:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35162dc5_487b02cd",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "c8ccf5b3ebfe156b4766b70d0c37788d341d3761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35fba86b_819a7993",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "c8ccf5b3ebfe156b4766b70d0c37788d341d3761",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b8a4219_09ee9857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-21T02:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35fba86b_819a7993",
+      "range": {
+        "startLine": 98,
+        "startChar": 33,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "c8ccf5b3ebfe156b4766b70d0c37788d341d3761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
