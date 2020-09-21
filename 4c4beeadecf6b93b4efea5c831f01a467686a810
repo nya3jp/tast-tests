@@ -16,6 +16,29 @@
       "revId": "4c4beeadecf6b93b4efea5c831f01a467686a810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fd70c3_674a5b4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-21T15:18:23Z",
+      "side": 1,
+      "message": "Why do you find this button if you don\u0027t use it for anything?",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 3
+      },
+      "revId": "4c4beeadecf6b93b4efea5c831f01a467686a810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
