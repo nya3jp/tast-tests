@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a4a1995_c1596db7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2020-09-21T21:50:38Z",
+      "side": 1,
+      "message": "nit/spelling: s/prune/prone",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "115289e1_aac4a042",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -16,6 +33,57 @@
       "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b84767d_0ce3bb5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2020-09-21T21:50:38Z",
+      "side": 1,
+      "message": "Are you trying to convey the fact that we\u0027re reading the file directly from the filesystem rather than via ADB commands?",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "785bc7a2_e1757322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2020-09-21T21:50:38Z",
+      "side": 1,
+      "message": "I\u0027d be a bit worried about having all of these as required ... what if we change the default roster? We\u0027d have to change the test and time landing of the test change to match server-side configs.\n\nMaybe it makes sense for us to have an even smaller set of \"always required\", and a set of \"we just warn if this one isn\u0027t there but don\u0027t consider the test failed\" packages?",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00010725_d845a563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2020-09-21T21:50:38Z",
+      "side": 1,
+      "message": "Pardon my ignorance, will this cause the test to be considered \u0027failed\u0027, or will this just result in a warning (as opposed to the s.Fatal\u0027s that happen for other conditions above)?",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
