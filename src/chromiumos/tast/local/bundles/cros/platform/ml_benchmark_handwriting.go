@@ -13,8 +13,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MLBenchmarkSoDA,
-		Desc: "Verifies that the ML Benchmarks work end to end",
+		Func: MLBenchmarkHandwriting,
+		Desc: "Executes benchmarking of handwriting recognition",
 		Contacts: []string{
 			"jmpollock@google.com",
 			"chromeos-platform-ml@google.com",
@@ -25,17 +25,17 @@ func init() {
 			"group:crosbolt",
 			"crosbolt_nightly",
 		},
-		SoftwareDeps: []string{"ml_benchmark"},
+		SoftwareDeps: []string{"amd64", "ml_benchmark"},
 	})
 }
 
-// MLBenchmarkSoDA benchmarks the 90th percentile latency for SoDA (Speech on Device API)
-func MLBenchmarkSoDA(ctx context.Context, s *testing.State) {
+// MLBenchmarkHandwriting benchmarks the latency for handwriting recognition
+func MLBenchmarkHandwriting(ctx context.Context, s *testing.State) {
 	const (
 		workspacePath = "/usr/local/ml_benchmark"
-		driver        = "libsoda_benchmark_driver.so"
-		configFile    = "soda-scenario-1.config"
-		scenario      = "soda_no_nnapi"
+		driver        = "libhandwriting_benchmark.so"
+		configFile    = "handwriting-scenario-1.config"
+		scenario      = "handwriting_no_nnapi"
 	)
 
 	mlbenchmark.ExecuteScenario(ctx, s, workspacePath, driver, configFile, scenario)
