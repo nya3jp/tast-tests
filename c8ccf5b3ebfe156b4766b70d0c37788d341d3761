@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34632ac5_14b4a0a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T01:44:51Z",
+      "side": 1,
+      "message": "Please create and use a cleanup ctx for this fail log as per go/tast-codelab-2#test-setup, eg http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_settings.go?l\u003d48\u0026rcl\u003df48d81d19b78899c35b495cbf13464bb21614f55",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 68
+      },
+      "revId": "c8ccf5b3ebfe156b4766b70d0c37788d341d3761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35162dc5_487b02cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T01:44:51Z",
+      "side": 1,
+      "message": "Why return a boolean? Why not just error out in the helper function?",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "c8ccf5b3ebfe156b4766b70d0c37788d341d3761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35fba86b_819a7993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-09-21T01:44:51Z",
+      "side": 1,
+      "message": "nit: only",
+      "range": {
+        "startLine": 98,
+        "startChar": 33,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "c8ccf5b3ebfe156b4766b70d0c37788d341d3761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
