@@ -129,3 +129,31 @@ func LaunchFromThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) error {
 
 	return WaitForApp(ctx, tconn)
 }
+
+// DescendantWithTimeout finds a node in help app using params and returns it.
+func DescendantWithTimeout(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) (*ui.Node, error) {
+	helpRootNode, err := HelpRootNode(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find help app")
+	}
+	defer helpRootNode.Release(ctx)
+
+	return helpRootNode.DescendantWithTimeout(ctx, params, timeout)
+}
+
+// DescendantsWithTimeout returns all nodes in help app matching params.
+// It waits for the first element appear and returns all findings immediately.
+// Thus, this function can not be used when elements are shown up one by one.
+func DescendantsWithTimeout(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) (ui.NodeSlice, error) {
+	helpRootNode, err := HelpRootNode(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find help app")
+	}
+	defer helpRootNode.Release(ctx)
+
+	if err := helpRootNode.WaitUntilDescendantExists(ctx, params, timeout); err != nil {
+		return nil, errors.Wrap(err, "failed to find help app")
+	}
+
+	return helpRootNode.Descendants(ctx, params)
+}
