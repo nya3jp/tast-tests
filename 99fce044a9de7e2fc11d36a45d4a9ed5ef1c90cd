@@ -45,6 +45,23 @@
       "revId": "99fce044a9de7e2fc11d36a45d4a9ed5ef1c90cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "401400e6_7829b6ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-09-21T17:12:54Z",
+      "side": 1,
+      "message": "LGTM % Dean comments.",
+      "revId": "99fce044a9de7e2fc11d36a45d4a9ed5ef1c90cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
