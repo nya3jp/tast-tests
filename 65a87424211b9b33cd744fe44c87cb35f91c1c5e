@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "13275fb1_01b9a288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "I apologize that my comments are attached to PS1. They should still apply to PS2.",
+      "revId": "65a87424211b9b33cd744fe44c87cb35f91c1c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea753094_066ef66c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 2

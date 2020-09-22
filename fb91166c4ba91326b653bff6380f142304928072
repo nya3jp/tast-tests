@@ -102,6 +102,63 @@
     },
     {
       "key": {
+        "uuid": "c7017680_679ae0dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "Please rename to \"LatenciesUS\", per https://github.com/golang/go/wiki/CodeReviewComments#initialisms:\n\n    Words in names that are initialisms or acronyms (e.g. \"URL\" or \"NATO\") have a consistent case. For example, \"URL\" should appear as \"URL\" or \"url\" (as in \"urlPony\", or \"URLPony\"), never as \"Url\". As an example: ServeHTTP not ServeHttp. For identifiers with multiple initialized \"words\", use for example \"xmlHTTPRequest\" or \"XMLHTTPRequest\".",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313fa9b8_3811b7f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "Avoid passing testing.State when it\u0027s not actually necessary. In this case, because the state is only used for error-handling, processOutputFile can return the error (or nil upon success).\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a37990_be8b34bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "Would it be useful to report the status code, too?",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12cc0d56_3557a55c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
@@ -137,6 +194,23 @@
     },
     {
       "key": {
+        "uuid": "90589138_bd471b87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "Avoid passing testing.State when it\u0027s not actually necessary. In this case, because the state is only used for error-handling, ExecuteScenario can return the error (or nil upon success).\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d18f276e_4e74ce21",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
@@ -169,6 +243,108 @@
       "revId": "fb91166c4ba91326b653bff6380f142304928072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67af11f1_f3900874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "Include err",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5779b4_473bb9ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "style/nit: Prefer the more concise one-line condition:\n\n    if err \u003d outputFile.Close(); err !\u003d nil {\n\nhttp://go/go-style/guide#concision",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f7ca87b_c45462e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "Report the filename and err:\n\n    s.Fatalf(\"Cannot close output JSON file %s: %+v\", outputFile.Name(), err)",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96903199_d621a3d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "Move this defer to immediately after the file is created. That way, if the test fatally exits at L93, the tempfile isn\u0027t left lying around.",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c713d7_4d3d17de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "Include the err",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae159120_e59ac624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T14:16:31Z",
+      "side": 1,
+      "message": "Include the err",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
