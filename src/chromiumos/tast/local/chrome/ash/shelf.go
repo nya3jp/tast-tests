@@ -479,7 +479,7 @@ func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestC
 // EnterShelfOverflow pins enough shelf icons to enter overflow mode.
 func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 	// Number of pinned apps in each round of loop.
-	const batchNumber = 10
+	const batchNumber = 50
 
 	// Total amount of pinned apps.
 	sum := 0
