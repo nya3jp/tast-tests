@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -24,14 +23,14 @@ var clamshellTestsForFacebook = []testutil.TestCase{
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: reOpenWindowForFacebookAndSignout},
+	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 // TouchviewTests are placed here.
 var touchviewTestsForFacebook = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForFacebook},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: reOpenWindowForFacebookAndSignout},
+	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 func init() {
@@ -82,17 +81,27 @@ func Facebook(ctx context.Context, s *testing.State) {
 // verify Facebook reached main activity page of the app.
 func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		textClassName          = "android.widget.EditText"
-		userNameDes            = "Username"
-		passwordDes            = "Password"
-		noThanksText           = "NO THANKS"
 		allowDes               = "Allow"
 		allowText              = "ALLOW"
-		okText                 = "OK"
+		dismissButtonText      = "Dismiss"
+		loginPageClassName     = "android.view.ViewGroup"
+		loginPageDes           = "•"
 		hamburgerIconClassName = "android.view.View"
+		notNowText             = "Not Now"
+		notNowID               = "android:id/autofill_save_no"
+		okText                 = "OK"
+		passwordDes            = "Password"
+		userNameDes            = "Username"
+		textClassName          = "android.widget.EditText"
 	)
 	var indexNum = 5
 
+	// Check for login page.
+	checkForloginPage := d.Object(ui.ClassName(loginPageClassName), ui.Description(loginPageDes))
+	if err := checkForloginPage.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("checkForloginButtonPage does exist")
+		return
+	}
 	// Enter email address.
 	FacebookEmailID := s.RequiredVar("arcappcompat.Facebook.emailid")
 	enterEmailAddress := d.Object(ui.ClassName(textClassName), ui.Description(userNameDes))
@@ -121,11 +130,27 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 	}
 
 	// Click on no thanks button.
-	clickOnNoThanksButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(noThanksText))
+	clickOnNoThanksButton := d.Object(ui.ID(notNowID))
 	if err := clickOnNoThanksButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("clickOnNoThanksButton doesn't exist: ", err)
 	} else if err := clickOnNoThanksButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
+	}
+
+	// Click on dismiss button.
+	clickOnDismissButton := d.Object(ui.Text(dismissButtonText))
+	if err := clickOnDismissButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnDismissButton doesn't exist: ", err)
+	} else if err := clickOnDismissButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnDismissButton: ", err)
+	}
+
+	// Click on not now button for adding contacts.
+	clickOnNotNowButton := d.Object(ui.Text(notNowText))
+	if err := clickOnNotNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnNotNowButton doesn't exist: ", err)
+	} else if err := clickOnNotNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnNotNowButton: ", err)
 	}
 
 	// Click on allow button.
@@ -156,33 +181,9 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 	hambugerIcon := d.Object(ui.ClassName(hamburgerIconClassName), ui.Index(indexNum))
 	if err := hambugerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("hambugerIcon doesn't exist: ", err)
+	} else {
+		signOutOfFacebook(ctx, s, a, d, appPkgName, appActivity)
 	}
-
-}
-
-// reOpenWindowForFacebookAndSignout Test "close and relaunch the app" and signout from the app.
-func reOpenWindowForFacebookAndSignout(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-
-	s.Log("Close the app")
-	if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to close the app: ", err)
-	}
-	testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-	// Create an app activity handle.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
-	if err != nil {
-		s.Fatal("Failed to create new app activity: ", err)
-	}
-	s.Log("Created new app activity")
-
-	defer act.Close()
-	// ReLaunch the activity.
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start app: ", err)
-	}
-	s.Log("App relaunched successfully")
-
-	signOutOfFacebook(ctx, s, a, d, appPkgName, appActivity)
 }
 
 // signOutOfFacebook verifies app is signed out.
