@@ -24,7 +24,7 @@ func init() {
 		Func:        ProfileGUID,
 		Desc:        "Verifies that shill correctly handles GUIDs (Globally Unique IDentifier) in the context of WiFi services",
 		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
