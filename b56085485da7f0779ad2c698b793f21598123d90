@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01aeb791_80d5fb0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-22T05:43:23Z",
+      "side": 1,
+      "message": "There is no implementation of skiaScreenshotter?  Perhaps you should at least include a dummy implementation, or else leave a TODO.",
+      "revId": "b56085485da7f0779ad2c698b793f21598123d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c2c2bea_35d03ce3",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-22T05:43:23Z",
+      "side": 1,
+      "message": "Please handle the error.",
+      "revId": "b56085485da7f0779ad2c698b793f21598123d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7241e7e5_79adfced",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-22T05:43:23Z",
+      "side": 1,
+      "message": "please handle the error.  You can also use uig to save a couple of lines if you want to.",
+      "revId": "b56085485da7f0779ad2c698b793f21598123d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c0152b_4970fba7",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-22T05:43:23Z",
+      "side": 1,
+      "message": "nit: grammar?",
+      "range": {
+        "startLine": 145,
+        "startChar": 20,
+        "endLine": 145,
+        "endChar": 31
+      },
+      "revId": "b56085485da7f0779ad2c698b793f21598123d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51d4071_7191e48f",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-22T05:43:23Z",
+      "side": 1,
+      "message": "Go single method interfaces are normally named with \"er\", eg io.Reader has only the Read method.\n\nThus this should be the SkiaScreenShotter interface?",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "b56085485da7f0779ad2c698b793f21598123d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383752f9_2c4229a0",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-22T05:43:23Z",
+      "side": 1,
+      "message": "SkiaScreenshot reports a screenshot to a diff tester such as Skia gold.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 93
+      },
+      "revId": "b56085485da7f0779ad2c698b793f21598123d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c628d6d_a773ede7",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-22T05:43:23Z",
+      "side": 1,
+      "message": "Maybe Report is a better method name?  If so the interface can be called screenshot.Reporter which reads better.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 15
+      },
+      "revId": "b56085485da7f0779ad2c698b793f21598123d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1719f6a_20032f94",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-22T05:43:23Z",
+      "side": 1,
+      "message": "Please always use Skia Gold, since skia is a graphics library, not a screendiff tool.",
+      "range": {
+        "startLine": 46,
+        "startChar": 91,
+        "endLine": 46,
+        "endChar": 95
+      },
+      "revId": "b56085485da7f0779ad2c698b793f21598123d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a3f2597_2fd057f9",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-22T05:43:23Z",
+      "side": 1,
+      "message": "I think this type should be exported since it is a paramter to an exported function.",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 56
+      },
+      "revId": "b56085485da7f0779ad2c698b793f21598123d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
