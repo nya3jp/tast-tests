@@ -16,6 +16,63 @@
       "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "675bda96_eea887d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-22T00:27:56Z",
+      "side": 1,
+      "message": "LGTM from a UI perspective, hopefully the audio option selection CL lands soon.",
+      "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0387bfa6_917d52d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-22T00:27:56Z",
+      "side": 1,
+      "message": "Just curious if this is still needed. It seemed like on 86 and 87 it was enabled by default.",
+      "range": {
+        "startLine": 49,
+        "startChar": 46,
+        "endLine": 49,
+        "endChar": 84
+      },
+      "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b333691_309af309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-22T00:27:56Z",
+      "side": 1,
+      "message": "Might be good to defer this after deferring quicksettings.Hide, to make sure quick settings is still open when we get the failure info (ui tree dump, screenshot, etc)",
+      "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
