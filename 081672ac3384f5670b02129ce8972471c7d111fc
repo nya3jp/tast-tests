@@ -16,6 +16,52 @@
       "revId": "081672ac3384f5670b02129ce8972471c7d111fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f105b85_38a26359",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-22T10:43:27Z",
+      "side": 1,
+      "message": "nit: be more explicit",
+      "range": {
+        "startLine": 94,
+        "startChar": 48,
+        "endLine": 94,
+        "endChar": 62
+      },
+      "revId": "081672ac3384f5670b02129ce8972471c7d111fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4210b6dd_219a700a",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-22T10:43:27Z",
+      "side": 1,
+      "message": "tast is already ensuring that the TPM is owned\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/ready/ready.go;l\u003d119\n\nIs that insufficient for this test?",
+      "range": {
+        "startLine": 96,
+        "startChar": 18,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "081672ac3384f5670b02129ce8972471c7d111fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
