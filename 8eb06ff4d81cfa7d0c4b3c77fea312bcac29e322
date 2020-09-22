@@ -63,6 +63,30 @@
       "revId": "8eb06ff4d81cfa7d0c4b3c77fea312bcac29e322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8ca1bdf_744a5550",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-22T21:46:38Z",
+      "side": 1,
+      "message": "This case should be impossible unless someone is ignoring an error. That is why I didn\u0027t include the check. I think it is better to panic on library misuse than to silently swallow the error.\n\nI would prefer if this didn\u0027t get changed.",
+      "parentUuid": "7dae267d_ffbe74fc",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 2
+      },
+      "revId": "8eb06ff4d81cfa7d0c4b3c77fea312bcac29e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
