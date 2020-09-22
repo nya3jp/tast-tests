@@ -16,6 +16,23 @@
       "revId": "3b52743c791772180789d8cdcbc4b2ee7b98a61e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bddad0cb_bdf3c673",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-22T07:06:35Z",
+      "side": 1,
+      "message": "Now imagine we had the test in the CQ!;-)\nIt would have so nicely prevented uprev.",
+      "revId": "3b52743c791772180789d8cdcbc4b2ee7b98a61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
