@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "414b66f5_c8ec2421",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-22T16:58:54Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "9d163469_ac77d83a",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 40
+      },
+      "revId": "693c4ddf426b6c2f395ee71063b3584326c661f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94646841_b5f41c39",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
         "patchSetId": 5
