@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3099c838_b28b8d14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-22T11:51:31Z",
+      "side": 1,
+      "message": "This is the first CL of series providing support for conductive attenuator roaming tests.\nI tried as much as possible to keep backwards-compatibility to facilitate code rebasing.",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efc56fa3_35b13264",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-22T11:51:31Z",
+      "side": 1,
+      "message": "This rather has no effect",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

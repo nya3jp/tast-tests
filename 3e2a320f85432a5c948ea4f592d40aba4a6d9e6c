@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3a97e81_257bdd5e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-22T11:51:31Z",
+      "side": 1,
+      "message": "Routers probably yes, apis not necessarily",
+      "parentUuid": "81c73e0b_65de2770",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f830eb6b_ffc58ba9",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "cd840d9f_8efac905",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-22T11:51:31Z",
+      "side": 1,
+      "message": "It\u0027s impossible by the current design. The only case when pcap can be equal to anything is when it is synthesized by default (from router 0).",
+      "parentUuid": "b161e756_078302bb",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 48
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dec809f3_9f200f4d",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 2
@@ -105,6 +153,30 @@
       "writtenOn": "2020-09-16T06:58:09Z",
       "side": 1,
       "message": "ap",
+      "range": {
+        "startLine": 428,
+        "startChar": 11,
+        "endLine": 428,
+        "endChar": 13
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c396197f_bdc92b45",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-22T11:51:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c7bfa1f9_b451011e",
       "range": {
         "startLine": 428,
         "startChar": 11,
@@ -209,6 +281,30 @@
     },
     {
       "key": {
+        "uuid": "473af2e2_f3950910",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-22T11:51:31Z",
+      "side": 1,
+      "message": "No, only part common between Disconnect and NoDisconnect is moved to a separate func, to avoid code duplication.\nAnyway, this is not a part of \"multiple routers\" feature.",
+      "parentUuid": "a07d7bf5_ed288583",
+      "range": {
+        "startLine": 810,
+        "startChar": 0,
+        "endLine": 823,
+        "endChar": 1
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62cbd605_73336ddc",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 2
@@ -232,6 +328,30 @@
     },
     {
       "key": {
+        "uuid": "60e7c8c2_c218a431",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-22T11:51:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "62cbd605_73336ddc",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 859,
+        "endChar": 0
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97480a3e_9e15d451",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 2
@@ -252,6 +372,30 @@
       "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f2f2d5_75dab501",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-22T11:51:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "97480a3e_9e15d451",
+      "range": {
+        "startLine": 940,
+        "startChar": 0,
+        "endLine": 949,
+        "endChar": 0
+      },
+      "revId": "3e2a320f85432a5c948ea4f592d40aba4a6d9e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
