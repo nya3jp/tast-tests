@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaf69225_8e7dc247",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-22T12:53:12Z",
+      "side": 1,
+      "message": "\u003e \"chnnel\" is a possible misspelling of \"channel\".\n\nPlease fix.",
+      "parentUuid": "321a001c_66db5bda",
+      "range": {
+        "startLine": 29,
+        "startChar": 48,
+        "endLine": 29,
+        "endChar": 54
+      },
+      "revId": "bb949f3371c212b1d666c44dc87fbcfd2569afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
