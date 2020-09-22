@@ -22,6 +22,30 @@
       "revId": "48a475d8d6a2147b63ffe5e010707d23acc8a42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a92a6741_74466bb6",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-09-22T09:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15528083_cf0194fb",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 0
+      },
+      "revId": "48a475d8d6a2147b63ffe5e010707d23acc8a42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
