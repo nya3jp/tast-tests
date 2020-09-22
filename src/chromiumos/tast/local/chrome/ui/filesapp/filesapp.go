@@ -594,3 +594,70 @@ func (f *FilesApp) SetStablePollOpts(opts *testing.PollOptions) {
 		f.stablePollOpts = opts
 	}
 }
+
+// Search clicks the search button, enters search text and presses enter.
+// The search occurs within the currently visible directory root e.g. Downloads.
+func (f *FilesApp) Search(ctx context.Context, searchTerms string) error {
+	// Find and left click the search icon.
+	params := ui.FindParams{
+		Name: "Search",
+		Role: ui.RoleTypeButton,
+	}
+	searchIcon, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the search icon")
+	}
+	defer searchIcon.Release(ctx)
+
+	if err := searchIcon.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the search icon")
+	}
+
+	// Wait for the search box to appear within view.
+	params = ui.FindParams{
+		Name: "Search",
+		Role: ui.RoleTypeSearchBox,
+	}
+	if err := f.Root.WaitUntilDescendantExists(ctx, params, uiTimeout); err != nil {
+		return errors.Wrap(err, "failed waiting for search box to appear")
+	}
+
+	// Get a keyboard handle to type into search box.
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed trying to get the keyboard handle")
+	}
+	defer kb.Close()
+
+	// Search box gets focus so type terms into box and press enter.
+	if err := kb.Type(ctx, searchTerms); err != nil {
+		return errors.Wrap(err, "failed typing the supplied terms")
+	}
+	if err := kb.Accel(ctx, "enter"); err != nil {
+		return errors.Wrap(err, "failed typing the supplied terms")
+	}
+
+	// Get the list box which contains the search results.
+	listBox, err := f.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find listbox")
+	}
+	defer listBox.Release(ctx)
+
+	// Setup a watcher to wait for search results to populate.
+	ew, err := ui.NewWatcher(ctx, listBox, ui.EventTypeActivedescendantchanged)
+	if err != nil {
+		return errors.Wrap(err, "failed getting a watcher for the files listbox")
+	}
+	defer ew.Release(ctx)
+
+	// Check the listbox for any Activedescendantchanged events occurring in a 2 second interval.
+	// If any events are found continue polling until uiTimeout is reached.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return ew.EnsureNoEvents(ctx, 2*time.Second)
+	}, &testing.PollOptions{Timeout: uiTimeout}); err != nil {
+		return errors.Wrapf(err, "failed waiting %v for listbox to stabilize", uiTimeout)
+	}
+
+	return nil
+}
