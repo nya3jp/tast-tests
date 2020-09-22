@@ -73,6 +73,40 @@
       "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b41d42_d7927e64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-22T05:26:53Z",
+      "side": 1,
+      "message": "Not sure whether it is better to reuse CRASPlaybackCommand.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/audio/crastestclient/cras_test_client.go;l\u003d16?q\u003dcrastestclient\u0026sq\u003dpackage:chromeos*\u0026ct\u003dos",
+      "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f9805c_77e39a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-22T05:26:53Z",
+      "side": 1,
+      "message": "Just curious why you calculated all gains if you only need two of them.",
+      "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
