@@ -85,6 +85,35 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
+	// Set up the cuj.Recorder: In clamshell mode, this test will measure the combinations of
+	// input latency of tab dragging and of window resizing and of split view resizing, and
+	// also the percent of dropped frames of video; In tablet mode, this test will measure
+	// the combinations of input latency of split view resizing and the percent of dropped frames
+	// of video.
+	var configs []cuj.MetricConfig
+	if !tabletMode {
+		configs = []cuj.MetricConfig{
+			cuj.NewLatencyMetricConfig("Ash.WorkspaceWindowResizer.TabDragging.PresentationTime.ClamshellMode"),
+			cuj.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
+			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
+			cuj.NewCustomMetricConfig(
+				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
+				"percent", perf.SmallerIsBetter, []int64{50, 80}),
+		}
+	} else {
+		configs = []cuj.MetricConfig{
+			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"),
+			cuj.NewCustomMetricConfig(
+				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
+				"percent", perf.SmallerIsBetter, []int64{50, 80}),
+		}
+	}
+
+	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	if err != nil {
+		s.Fatal("Failed to create a recorder: ", err)
+	}
+
 	if err := audio.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute audio: ", err)
 	}
@@ -121,14 +150,14 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	defer webview.Release(ctx)
 	pipButton, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeButton, Name: "Enter Picture-in-Picture"}, timeout)
 	if err != nil {
-		s.Fatal("Failed to find the pip button ", err)
+		s.Fatal("Failed to find the pip button: ", err)
 	}
 	defer pipButton.Release(ctx)
 	if err := pipButton.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click on the pip button ", err)
+		s.Fatal("Failed to click on the pip button: ", err)
 	}
 	if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
-		s.Fatal("Failed to wait for quiescence ", err)
+		s.Fatal("Failed to wait for quiescence: ", err)
 	}
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
@@ -160,35 +189,6 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 	defer pc.Close()
-
-	// Set up the cuj.Recorder: In clamshell mode, this test will measure the combinations of
-	// input latency of tab dragging and of window resizing and of split view resizing, and
-	// also the percent of dropped frames of video; In tablet mode, this test will measure
-	// the combinations of input latency of split view resizing and the percent of dropped frames
-	// of video.
-	var configs []cuj.MetricConfig
-	if !tabletMode {
-		configs = []cuj.MetricConfig{
-			cuj.NewLatencyMetricConfig("Ash.WorkspaceWindowResizer.TabDragging.PresentationTime.ClamshellMode"),
-			cuj.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
-			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
-			cuj.NewCustomMetricConfig(
-				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-				"percent", perf.SmallerIsBetter, []int64{50, 80}),
-		}
-	} else {
-		configs = []cuj.MetricConfig{
-			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"),
-			cuj.NewCustomMetricConfig(
-				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-				"percent", perf.SmallerIsBetter, []int64{50, 80}),
-		}
-	}
-
-	recorder, err := cuj.NewRecorder(ctx, configs...)
-	if err != nil {
-		s.Fatal("Failed to create a recorder: ", err)
-	}
 
 	splitViewDragPoints := []coords.Point{
 		info.WorkArea.CenterPoint(),
@@ -303,9 +303,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				if (ws[1].State == ash.WindowStateLeftSnapped && ws[0].State == ash.WindowStateRightSnapped) ||
 					(ws[0].State == ash.WindowStateLeftSnapped && ws[1].State == ash.WindowStateRightSnapped) {
 					return nil
-				} else {
-					return errors.New("windows are not snapped yet")
 				}
+				return errors.New("windows are not snapped yet")
 			}, &testing.PollOptions{Timeout: timeout}); err != nil {
 				return errors.Wrap(err, "failed to wait for windows to be snapped correctly")
 			}
@@ -426,9 +425,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				if (ws[1].State == ash.WindowStateLeftSnapped && ws[0].State == ash.WindowStateRightSnapped) ||
 					(ws[0].State == ash.WindowStateLeftSnapped && ws[1].State == ash.WindowStateRightSnapped) {
 					return nil
-				} else {
-					return errors.New("windows are not snapped yet")
 				}
+				return errors.New("windows are not snapped yet")
 			}, &testing.PollOptions{Timeout: timeout}); err != nil {
 				return errors.Wrap(err, "failed to wait for windows to be snapped correctly")
 			}
@@ -455,7 +453,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Run the recorder.
-	if err := recorder.Run(ctx, tconn, f); err != nil {
+	if err := recorder.Run(ctx, f); err != nil {
 		s.Fatal("Failed to conduct the recorder task: ", err)
 	}
 
@@ -466,7 +464,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	// Store perf metrics.
 	pv := perf.NewValues()
-	if err := recorder.Record(pv); err != nil {
+	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}
 	if err := pv.Save(s.OutDir()); err != nil {

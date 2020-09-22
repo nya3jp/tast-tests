@@ -103,6 +103,23 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer pc.Close()
 
+	var configs []cuj.MetricConfig
+	if tabletMode {
+		configs = append(configs,
+			cuj.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
+			cuj.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.TabletMode"),
+			cuj.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit.TabletMode"),
+		)
+	} else {
+		configs = append(configs,
+			cuj.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
+		)
+	}
+	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	if err != nil {
+		s.Fatal("Failed to create a recorder: ", err)
+	}
+
 	webConn, err := cr.NewConn(ctx, ui.PerftestURL)
 	if err != nil {
 		s.Fatal("Failed to open web: ", err)
@@ -318,23 +335,6 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enter fullscreen: ", err)
 	}
 
-	var configs []cuj.MetricConfig
-	if tabletMode {
-		configs = append(configs,
-			cuj.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
-			cuj.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.TabletMode"),
-			cuj.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit.TabletMode"),
-		)
-	} else {
-		configs = append(configs,
-			cuj.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
-		)
-	}
-	recorder, err := cuj.NewRecorder(ctx, configs...)
-	if err != nil {
-		s.Fatal("Failed to create a recorder: ", err)
-	}
-
 	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
@@ -350,7 +350,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer dsTracker.Close(closeCtx, tconn)
 
-	if err = recorder.Run(ctx, tconn, func(ctx context.Context) error {
+	if err = recorder.Run(ctx, func(ctx context.Context) error {
 		s.Log("Switch away from fullscreen video")
 		if tabletMode {
 			if err := tapFullscreenButton(); err != nil {
@@ -466,7 +466,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		Direction: perf.BiggerIsBetter,
 	}, vs)
 
-	if err = recorder.Record(pv); err != nil {
+	if err = recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to report: ", err)
 	}
 	if err := pv.Save(s.OutDir()); err != nil {
