@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8511fb69_61c34975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-22T08:06:31Z",
+      "side": 1,
+      "message": "Regular here means it is not an intent instance. Removed the word regular here since it seems confusing.",
+      "parentUuid": "2f857706_5479e4ad",
+      "range": {
+        "startLine": 254,
+        "startChar": 16,
+        "endLine": 254,
+        "endChar": 23
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66a32f1b_2ae0ee27",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 14
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "73544a59_edb465fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-22T08:06:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66a32f1b_2ae0ee27",
+      "range": {
+        "startLine": 220,
+        "startChar": 20,
+        "endLine": 220,
+        "endChar": 29
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f64be452_94c7af6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 14
@@ -59,6 +107,30 @@
       "writtenOn": "2020-09-22T06:44:14Z",
       "side": 1,
       "message": "Will |closeCCA| be called twice together with |closeCCAAndTestApp|?\nMaybe you need:\napp :\u003d nil\n\nAlso I don\u0027t think it\u0027s a good pattern for developer may forget to reset |app| after |closeCCA|. Is there any way to fix this weird calling convention? (Maybe simply call either |closeCCA| or |closeCCAAndTestApp| but not both)",
+      "range": {
+        "startLine": 292,
+        "startChar": 12,
+        "endLine": 292,
+        "endChar": 20
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae18938c_21fd6136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-22T08:06:31Z",
+      "side": 1,
+      "message": "If a developer is aware that they should not use |app| after it is closed but forget to set it to nil, how about just making it do nothing? Just like what we did when calling app.Close() twice. [1]\n\n[1]: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go;rcl\u003de39857185a33c3fe8837e752e506d661d219cab3;l\u003d399",
+      "parentUuid": "f64be452_94c7af6f",
       "range": {
         "startLine": 292,
         "startChar": 12,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8226dbf4_018aca75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-22T08:06:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7adee5_75c0246a",
+      "range": {
+        "startLine": 42,
+        "startChar": 61,
+        "endLine": 42,
+        "endChar": 62
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9468970_15418f8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
         "patchSetId": 14
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b5846347_8abfddc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-22T08:06:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9468970_15418f8f",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "837edeb9_34e95d08",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
         "patchSetId": 14
@@ -137,6 +257,30 @@
       "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad948520_adaa32c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-22T08:06:31Z",
+      "side": 1,
+      "message": "The reason I want to extract the app launching logic to somewhere else is because I think there are too many things in cca.go. As a result, I think we can move the logic not directly associate to CCA out.\n\nTo avoid confusing method names, maybe we can change LaunchSWA() to  SWALauncher() and LaunchPlatformApp() to PlatformAppLauncher() to make it easier to understand.",
+      "parentUuid": "837edeb9_34e95d08",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
