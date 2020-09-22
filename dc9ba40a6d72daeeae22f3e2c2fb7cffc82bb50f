@@ -69,6 +69,24 @@
       "revId": "dc9ba40a6d72daeeae22f3e2c2fb7cffc82bb50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcb5fc64_29b7d38f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2020-09-22T19:09:05Z",
+      "side": 1,
+      "message": "Yes this makes it much clearer. Thank you for update.",
+      "parentUuid": "bc8387f6_cb5d8752",
+      "revId": "dc9ba40a6d72daeeae22f3e2c2fb7cffc82bb50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "0f844a87_5f813b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2020-09-22T19:09:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3c221714_510e1ede",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "785bc7a2_e1757322",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
         "patchSetId": 3
@@ -124,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "73ea800e_439a03a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2020-09-22T19:09:05Z",
+      "side": 1,
+      "message": "got it, sounds good. thank you for clarification.",
+      "parentUuid": "f81fb47d_fb078ea1",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00010725_d845a563",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
         "patchSetId": 3
@@ -156,6 +192,24 @@
       "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc753b0c_e45ede75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2020-09-22T19:09:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0d789ae_09cb4ac1",
+      "revId": "9924e74a3dadd2ab61a6db14f41594c1c5f8efc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
