@@ -75,6 +75,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
+	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
+		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
+		"percent", perf.SmallerIsBetter, []int64{50, 80})}
+	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
+		configs = append(configs, cuj.NewCustomMetricConfig(
+			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
+			[]int64{50, 80}))
+	}
+	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	if err != nil {
+		s.Fatal("Failed to create the recorder: ", err)
+	}
+
 	conn, err := cr.NewConn(ctx, "https://meet.google.com/")
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
@@ -168,20 +181,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer askToJoin.Release(ctx)
 
-	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
-		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-		"percent", perf.SmallerIsBetter, []int64{50, 80})}
-	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
-		configs = append(configs, cuj.NewCustomMetricConfig(
-			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
-			[]int64{50, 80}))
-	}
-	recorder, err := cuj.NewRecorder(ctx, configs...)
-	if err != nil {
-		s.Fatal("Failed to create the recorder: ", err)
-	}
 	pv := perf.NewValues()
-	if err := recorder.Run(ctx, tconn, func(ctx context.Context) error {
+	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		if err := askToJoin.LeftClick(ctx); err != nil {
 			return errors.Wrap(err, `failed to click "Join now" button`)
 		}
@@ -237,7 +238,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Tab renderer crashed: ", err)
 	}
 
-	if err := recorder.Record(pv); err != nil {
+	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}
 	if pv.Save(s.OutDir()); err != nil {

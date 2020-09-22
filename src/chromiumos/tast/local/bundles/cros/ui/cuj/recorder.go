@@ -79,13 +79,13 @@ type record struct {
 
 // Recorder is a utility to measure various metrics for CUJ-style tests.
 type Recorder struct {
+	tconn *chrome.TestConn
+
 	names   []string
 	records map[string]*record
 
 	memDiff          *memoryDiffDataSource
 	timeline         *perf.Timeline
-	loadValues       []*perf.Values
-	displayInfo      *DisplayInfo
 	frameDataTracker *FrameDataTracker
 	zramInfoTracker  *ZramInfoTracker
 }
@@ -116,7 +116,7 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
-func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error) {
+func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricConfig) (*Recorder, error) {
 	memDiff := newMemoryDiffDataSource("RAM.Diff")
 	sources := []perf.TimelineDatasource{
 		load.NewCPUUsageSource("CPU", false),
@@ -143,6 +143,7 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 	}
 
 	r := &Recorder{
+		tconn:            tconn,
 		names:            make([]string, 0, len(configs)),
 		records:          make(map[string]*record, len(configs)+2),
 		memDiff:          memDiff,
@@ -168,54 +169,29 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 		direction:     perf.BiggerIsBetter,
 	}}
 
+	if err := r.memDiff.PrepareBaseline(ctx, diffWait); err != nil {
+		return nil, errors.Wrap(err, "failed to prepare baseline for memory diff calculation")
+	}
+
+	if err := r.frameDataTracker.Start(ctx, tconn); err != nil {
+		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
+	}
+
+	if err := r.zramInfoTracker.Start(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start ZramInfoTracker")
+	}
+
+	if err := r.timeline.StartRecording(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start recording timeline data")
+	}
+
 	return r, nil
 }
 
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
-func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func(ctx context.Context) error) error {
-	if err := r.memDiff.PrepareBaseline(ctx, diffWait); err != nil {
-		return errors.Wrap(err, "failed to prepare baseline for memory diff calcuation")
-	}
-
-	displayInfo, err := NewDisplayInfo(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get display info")
-	}
-	r.displayInfo = displayInfo
-
-	if err := r.frameDataTracker.Start(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to start FrameDataTracker")
-	}
-	defer func() {
-		err := r.frameDataTracker.Stop(ctx, tconn)
-		if err != nil {
-			testing.ContextLog(ctx, "Failed to stop FrameDataTracker: ", err)
-		}
-	}()
-
-	if err := r.zramInfoTracker.Start(ctx); err != nil {
-		return errors.Wrap(err, "failed to start ZramInfoTracker")
-	}
-	defer func() {
-		err := r.zramInfoTracker.Stop(ctx)
-		if err != nil {
-			testing.ContextLog(ctx, "Failed to stop ZramInfoTracker: ", err)
-		}
-	}()
-
-	if err := r.timeline.StartRecording(ctx); err != nil {
-		return errors.Wrap(err, "failed to start recording timeline data")
-	}
-	defer func() {
-		vs, err := r.timeline.StopRecording()
-		if err != nil {
-			testing.ContextLog(ctx, "Failed to stop timeline: ", err)
-			return
-		}
-		r.loadValues = append(r.loadValues, vs)
-	}()
-	hists, err := metrics.Run(ctx, tconn, f, r.names...)
+func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) error {
+	hists, err := metrics.Run(ctx, r.tconn, f, r.names...)
 	if err != nil {
 		return err
 	}
@@ -245,8 +221,38 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func(ctx c
 
 // Record creates the reporting values from the currently stored data points and
 // sets the values into pv.
-func (r *Recorder) Record(pv *perf.Values) error {
-	pv.Merge(r.loadValues...)
+func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
+	// We want to conduct all of Stop tasks even when some of them fails.  Return
+	// an error when one of them has failed.
+	var stopErr error
+	if err := r.frameDataTracker.Stop(ctx, r.tconn); err != nil {
+		testing.ContextLog(ctx, "Failed to stop FrameDataTracker: ", err)
+		stopErr = errors.Wrap(err, "failed to stop FrameDataTracker")
+	}
+
+	if err := r.zramInfoTracker.Stop(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to stop ZramInfoTracker: ", err)
+		if stopErr == nil {
+			stopErr = errors.Wrap(err, "failed to stop ZramInfoTracker")
+		}
+	}
+
+	vs, err := r.timeline.StopRecording()
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to stop timeline: ", err)
+		if stopErr == nil {
+			stopErr = errors.Wrap(err, "failed to stop timeline")
+		}
+	}
+	if stopErr != nil {
+		return stopErr
+	}
+	pv.Merge(vs)
+
+	displayInfo, err := NewDisplayInfo(ctx, r.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display info")
+	}
 
 	for name, record := range r.records {
 		if record.totalCount == 0 {
@@ -272,7 +278,7 @@ func (r *Recorder) Record(pv *perf.Values) error {
 		}, record.jankCounts[1]/float64(record.totalCount)*100)
 	}
 
-	r.displayInfo.Record(pv)
+	displayInfo.Record(pv)
 	r.frameDataTracker.Record(pv)
 	r.zramInfoTracker.Record(pv)
 

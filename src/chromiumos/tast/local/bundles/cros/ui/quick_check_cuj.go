@@ -53,6 +53,11 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	recorder, err := cuj.NewRecorder(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to create a CUJ recorder: ", err)
+	}
+
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -73,11 +78,6 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx)
-	if err != nil {
-		s.Fatal("Failed to create a CUJ recorder: ", err)
-	}
-
 	dsTracker := perfutil.NewDisplaySmoothnessTracker()
 	if err := dsTracker.Start(ctx, tconn, ""); err != nil {
 		s.Fatal("Failed to start display smoothness tracking: ", err)
@@ -90,7 +90,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	defer dsTracker.Close(closeCtx, tconn)
 
 	var elapsed time.Duration
-	if err := recorder.Run(ctx, tconn, func(ctx context.Context) error {
+	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		start := time.Now()
 
 		s.Log("Unlocking screen by typing password")
@@ -150,7 +150,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		Direction: perf.SmallerIsBetter,
 	}, float64(elapsed.Milliseconds()))
 
-	if err := recorder.Record(pv); err != nil {
+	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to collect the data from the recorder: ", err)
 	}
 	if err := pv.Save(s.OutDir()); err != nil {

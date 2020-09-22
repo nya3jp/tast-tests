@@ -119,7 +119,7 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cuj.NewCustomMetricConfig(
+	recorder, err := cuj.NewRecorder(ctx, tconn, cuj.NewCustomMetricConfig(
 		"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter, []int64{800, 1600}))
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
@@ -179,7 +179,7 @@ func Run(ctx context.Context, s *testing.State) {
 			currentTab := len(conns) - 1
 			const tabSwitchTimeout = 20 * time.Second
 
-			if err = recorder.Run(ctx, tconn, func(ctx context.Context) error {
+			if err = recorder.Run(ctx, func(ctx context.Context) error {
 				for i := 0; i < (numPages+1)*3+1; i++ {
 					if err = kw.Accel(ctx, "Ctrl+Tab"); err != nil {
 						return errors.Wrap(err, "failed to hit ctrl-tab")
@@ -197,7 +197,7 @@ func Run(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	if err = recorder.Record(pv); err != nil {
+	if err = recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to report: ", err)
 	}
 	if err = pv.Save(s.OutDir()); err != nil {
