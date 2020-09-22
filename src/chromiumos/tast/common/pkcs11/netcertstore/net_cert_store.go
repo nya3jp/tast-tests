@@ -77,6 +77,10 @@ var singletonStore *Store
 var singletonStoreLock sync.Mutex
 
 // CreateStore sets up a Store for network testing.
+// Note that rebooting the DUT or restarting the cryptohomed/chapsd daemon will invalidate the
+// store returned by this method. It is the caller's responsibility to call Cleanup() before
+// rebooting or restarting the daemon.
+// NetCertStore only support devices/boards with TPM.
 func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, retErr error) {
 	singletonStoreLock.Lock()
 	defer singletonStoreLock.Unlock()
@@ -89,6 +93,15 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 	cryptohome, err := hwsec.NewUtilityCryptohomeBinary(runner)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create cryptohome utility")
+	}
+
+	// Take ownership first. We need the ownership for chaps keystore to be available after mount.
+	// For local tests, Tast will try to take ownership before the test runs, but that is not
+	// a guarantee for remote tests. Therefore, we take the ownership here anyway in order to
+	// ensure that NetCertStore works well for both local and remote tests.
+	helper := hwsec.NewHelper(cryptohome)
+	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+		return nil, errors.Wrap(err, "failed to ensure TPM is ready for NetCertStore")
 	}
 
 	// Remove the vaults first before the test so we can be sure that the TPM Store returned is empty.
