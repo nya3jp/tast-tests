@@ -33,6 +33,7 @@ func init() {
 		}, {
 			Name:              "unstable",
 			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
@@ -44,6 +45,12 @@ func KeyboardGuest(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	bconn, err := vkb.BackgroundConn(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to connect to virtual keyboard background after guest login: ", err)
+	}
+	defer bconn.Close()
 
 	// Use virtual keyboard to type keywords.
 	kconn, err := vkb.UIConn(ctx, cr)
