@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59965b2d_1d17cd26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2020-09-22T16:20:19Z",
+      "side": 1,
+      "message": "I don\u0027t know if I can remove these too, but I figured it was safer not to since it\u0027s still passing on other platforms.",
+      "revId": "b7cc570f695344b5be36bbcd2882fcbce6244858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
