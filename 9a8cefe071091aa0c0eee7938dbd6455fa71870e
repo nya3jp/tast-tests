@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bec753a_1cfc32b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-22T05:01:10Z",
+      "side": 1,
+      "message": "Tast",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "9a8cefe071091aa0c0eee7938dbd6455fa71870e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6daa6e0f_99b469a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-22T05:01:10Z",
+      "side": 1,
+      "message": "I think name is self-explanatory.",
+      "revId": "9a8cefe071091aa0c0eee7938dbd6455fa71870e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a8f7e01_21e314c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-22T05:01:10Z",
+      "side": 1,
+      "message": "If you name it \"bookmarkPolicy\" then it is self-explanatory.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 7
+      },
+      "revId": "9a8cefe071091aa0c0eee7938dbd6455fa71870e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac76026_00f929b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-22T05:01:10Z",
+      "side": 1,
+      "message": "reset Chrome",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "9a8cefe071091aa0c0eee7938dbd6455fa71870e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ff6fda1_3b2dd06e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-22T05:01:10Z",
+      "side": 1,
+      "message": "As long as you only use it in ui.Find(), how about just inline it?\n\nbookmarkThisButton, err :\u003d ui.Find(ctx, tconn, ui.FindParams{\n\tClassName: \"StarView\",\n\tRole:      ui.RoleTypeButton,\n\t})\n\nSame below.",
+      "revId": "9a8cefe071091aa0c0eee7938dbd6455fa71870e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83233cb6_a21399f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-22T05:01:10Z",
+      "side": 1,
+      "message": "\u0027Bookmark this tab\u0027",
+      "range": {
+        "startLine": 86,
+        "startChar": 28,
+        "endLine": 86,
+        "endChar": 36
+      },
+      "revId": "9a8cefe071091aa0c0eee7938dbd6455fa71870e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e2ce5a_f184c9a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-22T05:01:10Z",
+      "side": 1,
+      "message": "How about moving the JS code into a constant like\nconst displayBookmarkJs \u003d `...\n    ...\n    ...}`",
+      "range": {
+        "startLine": 123,
+        "startChar": 36,
+        "endLine": 123,
+        "endChar": 49
+      },
+      "revId": "9a8cefe071091aa0c0eee7938dbd6455fa71870e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa4f1e69_80915e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-22T05:01:10Z",
+      "side": 1,
+      "message": "How about defining it explicitly in param struct?\nparam.bookmarkEnabled",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 90
+      },
+      "revId": "9a8cefe071091aa0c0eee7938dbd6455fa71870e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfce9fa9_f5a695d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-22T05:01:10Z",
+      "side": 1,
+      "message": "bookmark enabled",
+      "range": {
+        "startLine": 148,
+        "startChar": 25,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "9a8cefe071091aa0c0eee7938dbd6455fa71870e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
