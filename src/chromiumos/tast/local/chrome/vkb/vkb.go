@@ -41,7 +41,7 @@ func VirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, err
 		Role: ui.RoleTypeRootWebArea,
 		Name: "Chrome OS Virtual Keyboard",
 	}
-	return ui.FindWithTimeout(ctx, tconn, params, 5*time.Second)
+	return ui.FindWithTimeout(ctx, tconn, params, 30*time.Second)
 }
 
 // SetCurrentInputMethod sets the current input method used by the virtual
@@ -88,10 +88,10 @@ func IsShown(ctx context.Context, tconn *chrome.TestConn) (shown bool, err error
 // WaitUntilShown waits for the virtual keyboard to appear. It waits keyboard appears in A11y tree and locationed.
 func WaitUntilShown(ctx context.Context, tconn *chrome.TestConn) error {
 	keyboard, err := VirtualKeyboard(ctx, tconn)
-	defer keyboard.Release(ctx)
 	if err != nil {
 		return errors.Wrap(err, "fail to wait for virtual keyboard shown")
 	}
+	defer keyboard.Release(ctx)
 	return keyboard.WaitForPositioned(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 20 * time.Second})
 }
 
