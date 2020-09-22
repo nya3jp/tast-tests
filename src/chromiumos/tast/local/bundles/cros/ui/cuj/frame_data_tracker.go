@@ -63,8 +63,8 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 	}
 
 	for _, data := range t.animationData {
-		pv.Set(feMetric, float64(data.FramesExpected))
-		pv.Set(fpMetric, float64(data.FramesProduced))
+		pv.Append(feMetric, float64(data.FramesExpected))
+		pv.Append(fpMetric, float64(data.FramesProduced))
 	}
 }
 
