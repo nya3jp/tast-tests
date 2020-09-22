@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a72ffcfd_eaa023a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-22T06:29:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ce54029_01f329f2",
+      "revId": "dc9ba40a6d72daeeae22f3e2c2fb7cffc82bb50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e002cb18_e1ce4f3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2020-09-21T23:40:07Z",
       "side": 1,
       "message": "This is really marking that the app is not part of the \"required\" (expected? default?) set of PAI apps, right? If so, maybe we should refer to the boolean as something other than \"verified\" - I think I\u0027d lean toward \u0027default\u0027 but \u0027required\u0027 is ok too, just so long as we are consistent here, in the map name on line 109, and the variable name in lines 128/129.\n\nI think the \u0027verified\u0027 is trying to convey \u0027verified as one of the required apps\u0027, but it can be confused for other meanings of \u0027verified\u0027 IMO, hence my recommendation to refer to the value as something a bit more explicit. WDYT?",
+      "revId": "dc9ba40a6d72daeeae22f3e2c2fb7cffc82bb50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc8387f6_cb5d8752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-22T06:29:43Z",
+      "side": 1,
+      "message": "Refactored here to have default meaning. Could you please check if this is better?",
+      "parentUuid": "e002cb18_e1ce4f3a",
       "revId": "dc9ba40a6d72daeeae22f3e2c2fb7cffc82bb50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
