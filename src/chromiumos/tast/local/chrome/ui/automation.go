@@ -179,7 +179,9 @@ func (n *Node) Update(ctx context.Context) error {
 
 // Release frees the reference to Javascript for this node.
 func (n *Node) Release(ctx context.Context) {
-	n.object.Release(ctx)
+	if n != nil {
+		n.object.Release(ctx)
+	}
 }
 
 // LeftClick executes the default action of the node.
