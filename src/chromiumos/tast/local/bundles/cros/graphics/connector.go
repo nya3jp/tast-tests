@@ -40,7 +40,7 @@ func Connector(ctx context.Context, s *testing.State) {
 // checkHDMIA checks if any connector is named HDMI-A-*
 func checkHDMIA(ctx context.Context, connectors []*graphics.Connector) error {
 	for _, connector := range connectors {
-		if connector.Connected && strings.HasPrefix(connector.Name, "HDMI-A-") {
+		if strings.HasPrefix(connector.Name, "HDMI-A-") {
 			return errors.Errorf("found connector connected to HDMI-A: %v", connector)
 		}
 	}
