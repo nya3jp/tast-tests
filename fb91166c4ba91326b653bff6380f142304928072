@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "6b87896b_0f6a6f5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-22T14:19:54Z",
+      "side": 1,
+      "message": "You can see an example here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+      "parentUuid": "2aabc969_56f1c2a8",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7017680_679ae0dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
