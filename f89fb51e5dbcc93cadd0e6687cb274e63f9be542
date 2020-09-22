@@ -16,6 +16,80 @@
       "revId": "f89fb51e5dbcc93cadd0e6687cb274e63f9be542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "926bea78_f15fbab6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-22T01:41:20Z",
+      "side": 1,
+      "message": "I just realized that you can probably get around the tablet mode issues by using the \"Shift + Search\" shortcut to open the expanded launcher. I think that will make things a lot easier, let me know what you think.",
+      "revId": "f89fb51e5dbcc93cadd0e6687cb274e63f9be542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23ed870c_f7fbea4c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-22T01:41:20Z",
+      "side": 1,
+      "message": "I think we lost a check for ash.WaitForApp somewhere along the way",
+      "revId": "f89fb51e5dbcc93cadd0e6687cb274e63f9be542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2ed2ac_75220087",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-22T01:41:20Z",
+      "side": 1,
+      "message": "I didn\u0027t think about this earlier, but I think we could make this a lot simpler and remove the tablet mode differentiation by using the \"Shift + Search\" shortcut to open the launcher. The current way is definitely more E2E, but I think it might be best to keep the library functions as simple and reliable as possible. The UI code here could probably be repurposed as a standalone test for expanding the launcher.",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 21
+      },
+      "revId": "f89fb51e5dbcc93cadd0e6687cb274e63f9be542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cbc35f6_3c245e14",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-22T01:41:20Z",
+      "side": 1,
+      "message": "nice catch",
+      "revId": "f89fb51e5dbcc93cadd0e6687cb274e63f9be542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
