@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0d743ac2_e17a17a6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-22T05:39:22Z",
+      "side": 1,
+      "message": "I tried printing HTMLAttributes of this node and its Descendants, not attributes.",
+      "parentUuid": "56c7a66c_4bf87f5c",
+      "revId": "10399eea669757679b5ee3868dee31352f42742f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7fe5bc3_0b226ad6",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 1
