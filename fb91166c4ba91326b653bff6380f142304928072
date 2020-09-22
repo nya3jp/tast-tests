@@ -138,6 +138,24 @@
     },
     {
       "key": {
+        "uuid": "1a3646c4_ef57daa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Thanks! Paramterized tests look like the right fit for me, as they will be separate tests in crosbolt and I need the independent timing.",
+      "parentUuid": "3b571394_959da2d5",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7017680_679ae0dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
@@ -161,6 +179,30 @@
     },
     {
       "key": {
+        "uuid": "f1ea6fd9_3260e7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7017680_679ae0dc",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "313fa9b8_3811b7f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
@@ -178,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "0dd9d390_7ae8fd30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "313fa9b8_3811b7f4",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7a37990_be8b34bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
@@ -192,6 +252,24 @@
       "revId": "fb91166c4ba91326b653bff6380f142304928072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e586c07_081ef65e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7a37990_be8b34bf",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -247,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "5db8a219_7dfce971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90589138_bd471b87",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d18f276e_4e74ce21",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
@@ -299,6 +395,24 @@
     },
     {
       "key": {
+        "uuid": "ef07a242_ec423764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67af11f1_f3900874",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c5779b4_473bb9ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
@@ -313,6 +427,24 @@
       "revId": "fb91166c4ba91326b653bff6380f142304928072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "830267f6_8c4422f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5779b4_473bb9ff",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -333,6 +465,24 @@
     },
     {
       "key": {
+        "uuid": "92bb5c4c_7c367811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f7ca87b_c45462e7",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96903199_d621a3d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
@@ -347,6 +497,24 @@
       "revId": "fb91166c4ba91326b653bff6380f142304928072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9808901_add4cad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96903199_d621a3d5",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -367,6 +535,24 @@
     },
     {
       "key": {
+        "uuid": "8a6b1857_8ca2727a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91c713d7_4d3d17de",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae159120_e59ac624",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
@@ -381,6 +567,24 @@
       "revId": "fb91166c4ba91326b653bff6380f142304928072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "052147dc_cddb4856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T15:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae159120_e59ac624",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
