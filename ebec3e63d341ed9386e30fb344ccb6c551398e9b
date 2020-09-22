@@ -135,6 +135,24 @@
       "revId": "ebec3e63d341ed9386e30fb344ccb6c551398e9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "540781ba_a79a68e9",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-22T04:44:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05c0c014_0dd05589",
+      "revId": "ebec3e63d341ed9386e30fb344ccb6c551398e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
