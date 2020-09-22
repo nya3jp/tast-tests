@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "44e31bd4_8c4009f6",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T15:10:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4ea97eb_7b8c7b32",
+      "revId": "0fd0450eddfe5df708f9d4ec21f3224db4fff876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf0462ab_395a1d1b",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 2
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "80ae88ad_50e226a7",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T15:10:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf0462ab_395a1d1b",
+      "range": {
+        "startLine": 135,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 21
+      },
+      "revId": "0fd0450eddfe5df708f9d4ec21f3224db4fff876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8782a2e_b63be9ce",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 2
@@ -79,6 +121,30 @@
       "revId": "0fd0450eddfe5df708f9d4ec21f3224db4fff876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87fac840_4c7aacfb",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T15:10:11Z",
+      "side": 1,
+      "message": "This value came directly from Autotest. I could comment \"the value came from FAFT\", but I wouldn\u0027t want to make people afraid to change a value they don\u0027t understand. So instead I added the following explanation:\n\n    // Delay should be just long enough for the system to acknowledge the change.",
+      "parentUuid": "c8782a2e_b63be9ce",
+      "range": {
+        "startLine": 288,
+        "startChar": 15,
+        "endLine": 288,
+        "endChar": 37
+      },
+      "revId": "0fd0450eddfe5df708f9d4ec21f3224db4fff876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
