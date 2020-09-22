@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc28c1fa_f3d8a68b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-22T10:09:07Z",
+      "side": 1,
+      "message": "rebased and regen pb.go",
+      "revId": "81f7e4f4c6359ae1d37e7c11a3940ec6fb5acdd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
