@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "0df8424b_3161517c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-22T07:59:34Z",
+      "side": 1,
+      "message": "Just commenting here so I can remove the resolved tick, so I can see if you read this comment.",
+      "parentUuid": "991f6858_9f9436fe",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12cc0d56_3557a55c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
