@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ffbeed4_8b52bac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-22T08:55:55Z",
+      "side": 1,
+      "message": "Use WaitUntilExists if you don\u0027t need the node to be returned.",
+      "range": {
+        "startLine": 86,
+        "startChar": 19,
+        "endLine": 86,
+        "endChar": 34
+      },
+      "revId": "88e1a4c3557d225e1f09ce64dd5d74bb9bf6729f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
