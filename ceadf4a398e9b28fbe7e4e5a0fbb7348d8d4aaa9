@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0c75580_07743a34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T16:44:47Z",
+      "side": 1,
+      "message": "nit/typo: \"occurred\"",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "ceadf4a398e9b28fbe7e4e5a0fbb7348d8d4aaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33bdd134_de38179e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-22T16:44:47Z",
+      "side": 1,
+      "message": "nit/style: Colons typically delineate levels of wrapped errors, so this might be confusing. I recommend removing the colon.",
+      "range": {
+        "startLine": 91,
+        "startChar": 71,
+        "endLine": 91,
+        "endChar": 72
+      },
+      "revId": "ceadf4a398e9b28fbe7e4e5a0fbb7348d8d4aaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
