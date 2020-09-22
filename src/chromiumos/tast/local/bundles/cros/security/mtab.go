@@ -162,6 +162,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/home",
 		"/tmp",
 		"/usr/local",
+		"/var/cache/dlc-images",
 		"/var/db/pkg",
 		"/var/lib/portage",
 		// imageloader creates mount point at /run/imageloader/{id}/{package}.

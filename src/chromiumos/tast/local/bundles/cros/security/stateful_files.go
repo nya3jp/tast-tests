@@ -217,6 +217,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 	if _, err := user.Lookup("dlcservice"); err == nil {
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/dlc"), users("dlcservice"), groups("dlcservice"), chk.NotMode(022)))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/dlc-images"), users("dlcservice", "root"), groups("dlcservice", "root"), chk.NotMode(022)))
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/dlcservice"), users("dlcservice"), groups("dlcservice"), chk.NotMode(022)))
 	}
 
