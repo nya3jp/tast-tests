@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "684950ba_c8004882",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-22T18:47:10Z",
+      "side": 1,
+      "message": "cc: bhansknecht for the nil-check in Node.Release method. I think this is fine.",
+      "revId": "8eb06ff4d81cfa7d0c4b3c77fea312bcac29e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf39bc0b_a19b4f34",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 1
