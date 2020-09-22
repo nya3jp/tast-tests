@@ -62,7 +62,7 @@ func init() {
 			{
 				Name: "shelf_with_navigation_widget",
 				Val:  showNavigationWidget,
-				Pre:  chrome.NewPrecondition("ShowNavigationWidget", chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode")),
+				Pre:  chrome.NewPrecondition("ShowNavigationWidget", chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode", "--disable-features=MaintainShelfStateWhenEnteringOverview")),
 			},
 		},
 	})
@@ -183,17 +183,19 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 
 	// Collect metrics data from entering/exiting overview.
 	histogramsName = []string{
+		extendedHotseatWidgetHistogram,
 		shownHotseatHistogram,
 		shownHotseatWidgetHistogram,
 		shownHotseatTranslucentBackgroundHistogram,
-		extendedHotseatHistogram,
-		extendedHotseatWidgetHistogram,
-		extendedHotseatTranslucentBackgroundHistogram,
 		shownHomeLauncherHistogram,
 		hiddenHomeLauncherHistogram}
 	if s.Param().(hotseatTestType) == showNavigationWidget {
 		histogramsName = append(histogramsName,
+			// Data for those three histograms can only be collected when the flag, which maintains the shelf state when entering the overview mode, is disabled.
+			extendedHotseatHistogram,
+			extendedHotseatTranslucentBackgroundHistogram,
 			extendedBackButtonHistogram,
+
 			shownBackButtonHistogram,
 			extendedHomeButtonHistogram,
 			shownHomeButtonHistogram,
@@ -277,6 +279,14 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to wait for animation to finish")
 		}
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
+			return err
+		}
+
+		// Swipe the hotseat up from the hidden state to the extended state.
+		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+			return err
+		}
+		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfExtended); err != nil {
 			return err
 		}
 
