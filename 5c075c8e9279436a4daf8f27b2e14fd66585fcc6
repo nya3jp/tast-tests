@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f857706_5479e4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-22T06:44:14Z",
+      "side": 1,
+      "message": "What\u0027s a non-regular CCA instance and will be launched else where?",
+      "range": {
+        "startLine": 254,
+        "startChar": 16,
+        "endLine": 254,
+        "endChar": 23
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66a32f1b_2ae0ee27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-22T06:44:14Z",
+      "side": 1,
+      "message": "Maybe inline values and |testCase| declaration together here like:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "range": {
+        "startLine": 220,
+        "startChar": 20,
+        "endLine": 220,
+        "endChar": 29
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f64be452_94c7af6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-22T06:44:14Z",
+      "side": 1,
+      "message": "Will |closeCCA| be called twice together with |closeCCAAndTestApp|?\nMaybe you need:\napp :\u003d nil\n\nAlso I don\u0027t think it\u0027s a good pattern for developer may forget to reset |app| after |closeCCA|. Is there any way to fix this weird calling convention? (Maybe simply call either |closeCCA| or |closeCCAAndTestApp| but not both)",
+      "range": {
+        "startLine": 292,
+        "startChar": 12,
+        "endLine": 292,
+        "endChar": 20
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7adee5_75c0246a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-22T06:44:14Z",
+      "side": 1,
+      "message": "missing dot at the end of line",
+      "range": {
+        "startLine": 42,
+        "startChar": 61,
+        "endLine": 42,
+        "endChar": 62
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9468970_15418f8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-22T06:44:14Z",
+      "side": 1,
+      "message": "handles",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "837edeb9_34e95d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-22T06:44:14Z",
+      "side": 1,
+      "message": "If it\u0027s only used in |cca.Init()|, I kind of lean to inline these code there. Because the similar naming like |LaunchApp|, |LaunchSWA|, |LaunchPlatformApp| makes me confused about their usage.",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "5c075c8e9279436a4daf8f27b2e14fd66585fcc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
