@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edb35fe6_96ca6922",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-22T00:12:25Z",
+      "side": 1,
+      "message": "I just found out the root cause of the issue with kodama. For kodama device, each page in the home screen has only three icons. Settings and Web Store are in second page. However, they all showed up in the AppListItemView. To resolve this issue, I first call ui.FocusAndWait first to make the icon in focus first before I click on the icon. The test was successfully run on kodame two out of two times.\n\nPlease review the latest changes.\n\nThanks.\n\nSeewai\n",
+      "revId": "f89fb51e5dbcc93cadd0e6687cb274e63f9be542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
