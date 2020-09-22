@@ -51,6 +51,24 @@
       "revId": "e11a1c2d901a796904cd1cfe3f994a9b1c258334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84034f90_f24d1d11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-22T14:58:53Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\n\nDon\u0027t bother about the state of Chrome after the test, but everything else should be restored to a sane state. Leaving files behind is not great when using a precondition as they will only be deleted when Chrome restarts.",
+      "parentUuid": "3e71842f_343f032c",
+      "revId": "e11a1c2d901a796904cd1cfe3f994a9b1c258334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
