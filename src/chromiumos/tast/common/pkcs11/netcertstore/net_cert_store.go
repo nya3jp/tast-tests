@@ -91,6 +91,12 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 		return nil, errors.Wrap(err, "failed to create cryptohome utility")
 	}
 
+	// Take ownership first, we need ownership for chaps keystore to be available after mount.
+	helper := hwsec.NewHelper(cryptohome)
+	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+		return nil, errors.Wrap(err, "time out waiting for TPM to be ready")
+	}
+
 	// Remove the vaults first before the test so we can be sure that the TPM Store returned is empty.
 	if err := cleanupVault(ctx, cryptohome); err != nil {
 		return nil, errors.Wrap(err, "failed to cleanup vault at the beginning of CreateStore")
