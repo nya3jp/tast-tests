@@ -39,6 +39,23 @@
       "revId": "56cbcde76425df87e2aaadadfc0b820ed48375f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b59eaf5_3cff45aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-22T23:20:17Z",
+      "side": 1,
+      "message": "ping for OWNERS. This is now blocking Chrome uprevs.\n\nI can just mark the test informational instead, if that helps. I\u0027d either need to Exempt from OWNERS or be back in the same position though...",
+      "revId": "56cbcde76425df87e2aaadadfc0b820ed48375f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
