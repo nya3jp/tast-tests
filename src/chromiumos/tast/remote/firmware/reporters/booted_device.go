@@ -51,7 +51,7 @@ func (r *Reporter) BootedDevice(ctx context.Context) (BootedDeviceType, error) {
 		return "", err
 	}
 
-	rootPart, err := getRootPartition(ctx, r)
+	rootPart, err := RootPartition(ctx, r)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get root partition")
 	}
@@ -71,8 +71,8 @@ func (r *Reporter) BootedDevice(ctx context.Context) (BootedDeviceType, error) {
 	return bootedDevice, nil
 }
 
-// getRootPartition gets the root partition as reported by the 'rootdev -s' command.
-func getRootPartition(ctx context.Context, r *Reporter) (string, error) {
+// RootPartition gets the root partition as reported by the 'rootdev -s' command.
+func RootPartition(ctx context.Context, r *Reporter) (string, error) {
 	lines, err := r.CommandOutputLines(ctx, "rootdev", "-s")
 	if err != nil {
 		return "", errors.Wrap(err, "failed to determine root partition")
