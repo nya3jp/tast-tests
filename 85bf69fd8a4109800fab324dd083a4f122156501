@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eacb53b8_cdaba034",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-22T21:21:52Z",
+      "side": 1,
+      "message": "Hi Kyle:\n\nI just removed the check for the tablet mode in launcher. However, I still need it in shelf.go because I could not use launcher.OpenExpandedView in ash because it will cause circular dependency. Please review.\n\nThanks.\n\nSeewai\n",
+      "revId": "85bf69fd8a4109800fab324dd083a4f122156501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

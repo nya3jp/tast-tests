@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "4d7aa391_088a070e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-22T21:21:52Z",
+      "side": 1,
+      "message": "The reason the code is not there because we were still in the discussion how to move apps\u0027 dependency on ash. Anyway, I added one extra parameter for ID. Also, I just realized that this function was not self-contained. It will not work if hotseat is not visible which can be the case in tablet mode. Therefore, I added two more input parameters to handle hotseat. Please review.",
+      "parentUuid": "23ed870c_f7fbea4c",
+      "revId": "f89fb51e5dbcc93cadd0e6687cb274e63f9be542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc2ed2ac_75220087",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 26
@@ -73,6 +91,30 @@
       "revId": "f89fb51e5dbcc93cadd0e6687cb274e63f9be542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a6975bc_11d974fe",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-22T21:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc2ed2ac_75220087",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 21
+      },
+      "revId": "f89fb51e5dbcc93cadd0e6687cb274e63f9be542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
