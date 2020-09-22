@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dbc7e649_082f9ec7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T07:56:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b985b3ec_dbe40327",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "991f6858_9f9436fe",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "f85c0d3c_092c70b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T07:56:25Z",
+      "side": 1,
+      "message": "It is possible, but it \"shouldn\u0027t\" happen. In this situation there would simply be no metrics added, which just leaves an empty results.chart, which is fine.",
+      "parentUuid": "12cc0d56_3557a55c",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d18f276e_4e74ce21",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
         "patchSetId": 1
@@ -73,6 +115,24 @@
       "revId": "fb91166c4ba91326b653bff6380f142304928072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd8d6213_10cce5ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-09-22T07:56:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d18f276e_4e74ce21",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
