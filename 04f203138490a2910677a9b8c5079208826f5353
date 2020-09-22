@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "d16af840_9406b0b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-22T23:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bebed8b_b9d15c43",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "988516fb_33da4435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-22T23:14:39Z",
+      "side": 1,
+      "message": "ippusb_bridge has to be started multiple times with arguments that depend on the connected USB devices, which isn\u0027t easily supported by upstart.  It normally quits after an inactivity timeout, but we\u0027re killing it without waiting here so that the test doesn\u0027t leave lingering processes.",
+      "parentUuid": "4088d56b_4dea243e",
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c65bcf1_a2882863",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "04f203138490a2910677a9b8c5079208826f5353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f238abf_ce75435c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-22T23:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c65bcf1_a2882863",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 65
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "310751fb_c5365bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-22T23:14:39Z",
+      "side": 1,
+      "message": "No, it\u0027s not documented to return any particular error.  The documentation just says \"it will return an error if the process does not exist.\"  Since that\u0027s all we care about here, I didn\u0027t try to dig into anything more specific.",
+      "parentUuid": "358346e3_89dc4b7b",
+      "range": {
+        "startLine": 180,
+        "startChar": 16,
+        "endLine": 180,
+        "endChar": 34
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cb7724a_ca76c6fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -108,6 +198,30 @@
       "revId": "04f203138490a2910677a9b8c5079208826f5353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9df1fbaf_0279abf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-22T23:14:39Z",
+      "side": 1,
+      "message": "Done, but shouldn\u0027t testing.Poll already stop if ctx reaches its deadline?",
+      "parentUuid": "4cb7724a_ca76c6fb",
+      "range": {
+        "startLine": 184,
+        "startChar": 5,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "34b22155_2caf47cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-22T23:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e36ab195_5d7ba25c",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 74
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c523efa_c61cb15c",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "b4efd575_ab168916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-22T23:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c523efa_c61cb15c",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 84
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62bd310d_6d861839",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -177,6 +339,30 @@
       "revId": "04f203138490a2910677a9b8c5079208826f5353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c541e4_2241195e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-22T23:14:39Z",
+      "side": 1,
+      "message": "You\u0027re right, switched.  I didn\u0027t add extra time to the cleanup context because all the cleanup should normally be very fast.",
+      "parentUuid": "62bd310d_6d861839",
+      "range": {
+        "startLine": 263,
+        "startChar": 25,
+        "endLine": 263,
+        "endChar": 28
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
