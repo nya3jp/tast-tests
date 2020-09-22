@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "f68475ae_a29dbdf9",
+        "filename": "src/chromiumos/tast/local/shill/util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-22T06:40:46Z",
+      "side": 1,
+      "message": "It makes sense. Since it only disconnect Chrome, I placed it under chrome.",
+      "parentUuid": "e938ba38_6f3d2445",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "35497d4cfd80d338d139af2e6380bf83b1b78bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80c93492_396b5435",
         "filename": "src/chromiumos/tast/local/shill/util.go",
         "patchSetId": 9
@@ -62,6 +86,30 @@
       "revId": "35497d4cfd80d338d139af2e6380bf83b1b78bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26c17897_4e19c9b3",
+        "filename": "src/chromiumos/tast/local/shill/util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-22T06:40:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80c93492_396b5435",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 120
+      },
+      "revId": "35497d4cfd80d338d139af2e6380bf83b1b78bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
