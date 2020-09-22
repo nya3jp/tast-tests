@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09d8f8ac_5e4a5e31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-22T05:46:21Z",
+      "side": 1,
+      "message": "Looks good for iptables part, but you must add the -w argument to the commands.",
+      "revId": "35497d4cfd80d338d139af2e6380bf83b1b78bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e938ba38_6f3d2445",
+        "filename": "src/chromiumos/tast/local/shill/util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-22T05:46:21Z",
+      "side": 1,
+      "message": "This should not be in local/shill: shill does not interact with iptables at all.\n\nCould you move this to a more general networking util place ?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "35497d4cfd80d338d139af2e6380bf83b1b78bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80c93492_396b5435",
+        "filename": "src/chromiumos/tast/local/shill/util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-22T05:46:21Z",
+      "side": 1,
+      "message": "This iptables command line *must* use \"-w\" to take the iptables lock, otherwise you are going to have some errors when other commands from other platform2/patchpanel are issued at the same time.",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 120
+      },
+      "revId": "35497d4cfd80d338d139af2e6380bf83b1b78bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
