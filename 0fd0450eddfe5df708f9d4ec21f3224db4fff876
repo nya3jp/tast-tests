@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fd78f4c_8ae2b804",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-09-22T14:20:47Z",
+      "side": 1,
+      "message": "Cool to see h.Config.FirmwareScreen and friends come in to play.",
+      "revId": "0fd0450eddfe5df708f9d4ec21f3224db4fff876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4ea97eb_7b8c7b32",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-09-22T14:20:47Z",
+      "side": 1,
+      "message": "add period",
+      "revId": "0fd0450eddfe5df708f9d4ec21f3224db4fff876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf0462ab_395a1d1b",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-09-22T14:20:47Z",
+      "side": 1,
+      "message": "behavior",
+      "range": {
+        "startLine": 135,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 21
+      },
+      "revId": "0fd0450eddfe5df708f9d4ec21f3224db4fff876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8782a2e_b63be9ce",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-09-22T14:20:47Z",
+      "side": 1,
+      "message": "Is this experimentally arrived at?  Comment here as to how this delay was determined could be good.",
+      "range": {
+        "startLine": 288,
+        "startChar": 15,
+        "endLine": 288,
+        "endChar": 37
+      },
+      "revId": "0fd0450eddfe5df708f9d4ec21f3224db4fff876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
