@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42df4c82_cfa12f35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-22T10:03:01Z",
+      "side": 1,
+      "message": "in the image tag",
+      "revId": "66640e70701ce751d68b8a5600b9406fcf13b216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a75a4b9_21ea3aca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/default_images_setting_index.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-22T10:03:01Z",
+      "side": 1,
+      "message": "trailing whitespace",
+      "range": {
+        "startLine": 20,
+        "startChar": 77,
+        "endLine": 20,
+        "endChar": 78
+      },
+      "revId": "66640e70701ce751d68b8a5600b9406fcf13b216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
