@@ -180,8 +180,13 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	propertySuffixes := []string{"fingerprint", "id", "tags", "version.incremental"}
 	for _, propertySuffix := range propertySuffixes {
 		property := fmt.Sprintf("ro.build.%s", propertySuffix)
-		if value := getProperty(property); value == "" {
+		value := getProperty(property)
+		if value == "" {
 			s.Errorf("property %v is not set", property)
+		}
+		// Check that ro.build.fingerprint doesn't contain '_bertha' even when the device uses ARCVM (b/152775858)
+		if propertySuffix == "fingerprint" && !strings.Contains(value, "_cheets") {
+			s.Errorf("%v property is %q; should contain _cheets", property, value)
 		}
 	}
 
