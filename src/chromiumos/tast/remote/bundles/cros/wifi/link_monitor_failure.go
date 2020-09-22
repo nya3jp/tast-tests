@@ -20,7 +20,7 @@ func init() {
 		Func:        LinkMonitorFailure,
 		Desc:        "Verifies how fast the DUT detects the link failure and reconnects to the AP when an AP changes its DHCP configuration",
 		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_unstable", "wificell_func"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
