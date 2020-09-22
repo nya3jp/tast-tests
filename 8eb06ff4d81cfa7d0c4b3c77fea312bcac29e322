@@ -22,6 +22,30 @@
       "revId": "8eb06ff4d81cfa7d0c4b3c77fea312bcac29e322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dae267d_ffbe74fc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-22T01:11:38Z",
+      "side": 1,
+      "message": "This is still valuable for safe purpose to prevent nil access. \nSince Node release is primarily used in cleanup, so ignoring nil makes more sense than throwing out error I believe.",
+      "parentUuid": "bf39bc0b_a19b4f34",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 2
+      },
+      "revId": "8eb06ff4d81cfa7d0c4b3c77fea312bcac29e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
