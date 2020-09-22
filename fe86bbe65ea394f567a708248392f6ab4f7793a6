@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91b246bd_f4cac737",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-22T18:49:30Z",
+      "side": 1,
+      "message": "LGTM % a nit",
+      "revId": "fe86bbe65ea394f567a708248392f6ab4f7793a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d547e98a_dfa4ec3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-22T18:49:30Z",
+      "side": 1,
+      "message": "nit: remove this blank line?",
+      "revId": "fe86bbe65ea394f567a708248392f6ab4f7793a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
