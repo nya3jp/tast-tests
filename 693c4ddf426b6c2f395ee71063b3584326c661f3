@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "9d163469_ac77d83a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-22T10:07:46Z",
+      "side": 1,
+      "message": "The default timeout for a remote test is 5 minutes. Adding the bound (45+5) * 2 seconds for connect/disconnect, it looks insufficient in the worst case.\n\nI run the test a few times in a shielding box and open air, it looks like AP2 can be found in less than 20 seconds. Also sampled a few logs in stainless, they\u0027re all under 20 seconds. Let\u0027s change it to 50 seconds (~7 scan interval, so should have at least 5 scans) and see how it goes.\n\nThen the total time needed + some buffer might be ~5mins, let\u0027s also explicitly assign 6 minutes Timeout.",
+      "parentUuid": "3d62acc5_b127d287",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 40
+      },
+      "revId": "693c4ddf426b6c2f395ee71063b3584326c661f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94646841_b5f41c39",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
         "patchSetId": 5
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "719ecc03_98cd4c26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-22T10:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94646841_b5f41c39",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 231,
+        "endChar": 15
+      },
+      "revId": "693c4ddf426b6c2f395ee71063b3584326c661f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7be6b7ac_fc3bcd7b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
         "patchSetId": 5
@@ -85,6 +133,30 @@
       "revId": "693c4ddf426b6c2f395ee71063b3584326c661f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08fd371_9ad36fb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-22T10:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7be6b7ac_fc3bcd7b",
+      "range": {
+        "startLine": 237,
+        "startChar": 71,
+        "endLine": 237,
+        "endChar": 72
+      },
+      "revId": "693c4ddf426b6c2f395ee71063b3584326c661f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
