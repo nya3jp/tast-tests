@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "486130c8_6911cb06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-22T21:31:22Z",
+      "side": 1,
+      "message": "Do you want any of these args? Obviously you don\u0027t want to disable play auto install, but what about the rest? https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/arc.go;l\u003d48?q\u003ddisablesyncflags\u0026ct\u003dos",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "ceb159087b8e0ea5491e87265454d98ade53b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
