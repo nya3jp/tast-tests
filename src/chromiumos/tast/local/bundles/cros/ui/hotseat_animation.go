@@ -6,6 +6,10 @@ package ui
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -62,7 +66,6 @@ func init() {
 			{
 				Name: "shelf_with_navigation_widget",
 				Val:  showNavigationWidget,
-				Pre:  chrome.NewPrecondition("ShowNavigationWidget", chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode")),
 			},
 		},
 	})
@@ -101,7 +104,36 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		overviewTimeout = 10 * time.Second
 	)
 
-	cr := s.PreValue().(*chrome.Chrome)
+	var cr *chrome.Chrome
+
+	testType := s.Param().(hotseatTestType)
+	if testType == showNavigationWidget {
+		tmpdir, err := ioutil.TempDir("", "dummyApps")
+		if err != nil {
+			s.Fatal("Failed to create temp dir for app installation: ", err)
+		}
+		defer os.RemoveAll(tmpdir)
+
+		const numApps = 100
+		if _, err := ash.PrepareDummyApps(tmpdir, numApps); err != nil {
+			s.Fatalf("Failed to prepare %v dummy apps under %v: %v", numApps, tmpdir, err)
+		}
+		var opts []chrome.Option
+		for i := 0; i < numApps; i++ {
+			opts = append(opts, chrome.UnpackedExtension(filepath.Join(tmpdir, fmt.Sprintf("dummy_%d", i))))
+		}
+		opts = append(opts, chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode", "--disable-features=MaintainShelfStateWhenEnteringOverview"))
+
+		// Install dummy apps and disable flags.
+		cr, err = chrome.New(ctx, opts...)
+		if err != nil {
+			s.Fatal("Failed to connect to Chrome: ", err)
+		}
+
+		defer cr.Close(ctx)
+	} else {
+		cr = s.PreValue().(*chrome.Chrome)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -135,7 +167,8 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
-	if s.Param().(hotseatTestType) == overflow {
+	shouldEnterOverflow := testType != nonOverflow
+	if shouldEnterOverflow {
 		if err := ash.EnterShelfOverflow(ctx, tconn); err != nil {
 			s.Fatal(err, "Failed to enter overflow shelf")
 		}
@@ -185,20 +218,25 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	histogramsName = []string{
 		shownHotseatHistogram,
 		shownHotseatWidgetHistogram,
-		shownHotseatTranslucentBackgroundHistogram,
-		extendedHotseatHistogram,
 		extendedHotseatWidgetHistogram,
-		extendedHotseatTranslucentBackgroundHistogram,
 		shownHomeLauncherHistogram,
 		hiddenHomeLauncherHistogram}
-	if s.Param().(hotseatTestType) == showNavigationWidget {
+	if shouldEnterOverflow {
+		// Record metrics data which can only be collected in overflow shelf.
+		histogramsName = append(histogramsName, shownHotseatTranslucentBackgroundHistogram)
+	}
+	if testType == showNavigationWidget {
+		// Record metrics data which can only be collected with the shelf navigation widget shown.
 		histogramsName = append(histogramsName,
-			extendedBackButtonHistogram,
 			shownBackButtonHistogram,
 			extendedHomeButtonHistogram,
 			shownHomeButtonHistogram,
 			extendedWidgetHistogram,
-			shownWidgetHistogram)
+			shownWidgetHistogram,
+			// Data for those three histograms can only be collected when the flag, which maintains the shelf state when entering the overview mode, is disabled.
+			extendedHotseatHistogram,
+			extendedHotseatTranslucentBackgroundHistogram,
+			extendedBackButtonHistogram)
 	}
 
 	// Histograms for window activation.
@@ -277,6 +315,14 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to wait for animation to finish")
 		}
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
+			return err
+		}
+
+		// Swipe the hotseat up from the hidden state to the extended state.
+		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+			return err
+		}
+		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfExtended); err != nil {
 			return err
 		}
 
