@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91542f79_68c57a17",
+        "filename": "src/chromiumos/tast/local/chrome/network.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-22T13:47:48Z",
+      "side": 1,
+      "message": "Another small details: for IPv4 localhost is actual the whole subnet 127.0.0.0/8 and not just 1 address. In practice most hosts actually uses 127.0.0.1 unless it is configured differently.\n\nI don\u0027t think this will cause issues anyway.\n\nAnother potentially more robust way to do this is to use \"! -i lo\" instead of an explicit dst ip.",
+      "range": {
+        "startLine": 32,
+        "startChar": 93,
+        "endLine": 32,
+        "endChar": 104
+      },
+      "revId": "10165ec152214a31fb5106d7178533975d148821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ae63bf_561eeea0",
+        "filename": "src/chromiumos/tast/local/chrome/network.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-22T13:47:48Z",
+      "side": 1,
+      "message": "Sorry I completely forgot that you also need to add the same rule for ipv6 with ip6tables. Localhost for ipv6 is ::1",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 114
+      },
+      "revId": "10165ec152214a31fb5106d7178533975d148821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
