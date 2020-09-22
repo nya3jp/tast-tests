@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "e3caf86e_c962e8fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-22T14:50:11Z",
+      "side": 1,
+      "message": "Just picked a failing DUT and tried the patch. Thanks for the fix!\n\nLGTM % vsavu\u0027s comments.",
+      "revId": "081672ac3384f5670b02129ce8972471c7d111fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f105b85_38a26359",
         "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
         "patchSetId": 1
