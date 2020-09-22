@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0f57b3a_12b21744",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-22T02:34:23Z",
+      "side": 1,
+      "message": "Sorry for a bit of delay here.",
+      "revId": "693c4ddf426b6c2f395ee71063b3584326c661f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d62acc5_b127d287",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-22T02:34:23Z",
+      "side": 1,
+      "message": "this makes for at least 210 seconds of testing, on the upper bound (hopefully less, since we shouldn\u0027t reach \u0027detectTimeout\u0027) -- what\u0027s the default Tast test length again? Do we need to specify a different timeout in our init()?\n\nI also wonder if we really need to offer 100 seconds for background scanning to pick up AP2, with no traffic. I know that\u0027s in the original test, but it seems a bit long to me -- I don\u0027t have hard evidence though.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 40
+      },
+      "revId": "693c4ddf426b6c2f395ee71063b3584326c661f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94646841_b5f41c39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-22T02:34:23Z",
+      "side": 1,
+      "message": "sp: latency",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 231,
+        "endChar": 15
+      },
+      "revId": "693c4ddf426b6c2f395ee71063b3584326c661f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7be6b7ac_fc3bcd7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-22T02:34:23Z",
+      "side": 1,
+      "message": "nit: end with period. Might be \"background scans\" too?",
+      "range": {
+        "startLine": 237,
+        "startChar": 71,
+        "endLine": 237,
+        "endChar": 72
+      },
+      "revId": "693c4ddf426b6c2f395ee71063b3584326c661f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
