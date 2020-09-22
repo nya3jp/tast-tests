@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac4f487a_5714b334",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-22T16:17:07Z",
+      "side": 1,
+      "message": "I haven\u0027t looked in about a year, but if the enterprise team doesn\u0027t have kiosk enrollment implemented for tast yet, someone is free to takeover this CL (or just use it for reference). \n\nIf it is implemented, LMK and I will abandon it ",
+      "revId": "39b96414c6dcf5f9d0782b5225bf2e3b3639bf95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
