@@ -144,10 +144,10 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	// board that shares the first API level, and moreover they can be truncated
 	// (to -kerneln or -ker etc) and becomes hard to match exactly.
 	device := getProperty(propertyDevice)
-	deviceRegexp := regexp.MustCompile(`^([^-]+).*_(cheets|bertha)$`)
+	deviceRegexp := regexp.MustCompile(`^([^-]+).*_cheets$`)
 	match := deviceRegexp.FindStringSubmatch(device)
 	if match == nil {
-		s.Errorf("%v property is %q; should have _cheets or _bertha suffix",
+		s.Errorf("%v property is %q; should have _cheets suffix",
 			propertyDevice, device)
 	}
 	device = match[1]
