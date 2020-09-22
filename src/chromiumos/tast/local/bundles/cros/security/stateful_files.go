@@ -217,6 +217,9 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 	if _, err := user.Lookup("dlcservice"); err == nil {
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/dlc"), users("dlcservice"), groups("dlcservice"), chk.NotMode(022)))
+		// encrypted dlc-images is created by dev_utils.sh script prior to bind
+		// mounting unencrypted dlc-images directory.
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/dlc-images"), users("root"), groups("root"), chk.NotMode(022)))
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/dlcservice"), users("dlcservice"), groups("dlcservice"), chk.NotMode(022)))
 	}
 
