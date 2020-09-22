@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b985b3ec_dbe40327",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-22T07:40:52Z",
+      "side": 1,
+      "message": "nit: this part is redundant, you can remove it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "991f6858_9f9436fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-22T07:40:52Z",
+      "side": 1,
+      "message": "The 2 test cases are really similar. If you want, you can put them into a testing table in init(), so you can call them like\n\u003e  tast -verbose run \u003cDUT\u003e platform.MLBenchmark.Handwriting\n\u003e  tast -verbose run \u003cDUT\u003e platform.MLBenchmark.SoDA\nif you only want to run one of them, or\n\u003e  tast -verbose run \u003cDUT\u003e platform.MLBenchmark\nif you want to run both.",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12cc0d56_3557a55c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-22T07:40:52Z",
+      "side": 1,
+      "message": "Is it possible that all 4 latencies are 0? Does it worth to check for this case?",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d18f276e_4e74ce21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-22T07:40:52Z",
+      "side": 1,
+      "message": "nit: if it is a JSON file, it might be better to use the \".json\" ending for the output file.",
+      "revId": "fb91166c4ba91326b653bff6380f142304928072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
