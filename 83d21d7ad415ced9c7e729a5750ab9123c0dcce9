@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3614a3ce_ecb68dd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_guest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-23T02:57:47Z",
+      "side": 1,
+      "message": "nit: to be -\u003e is",
+      "range": {
+        "startLine": 49,
+        "startChar": 61,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "83d21d7ad415ced9c7e729a5750ab9123c0dcce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
