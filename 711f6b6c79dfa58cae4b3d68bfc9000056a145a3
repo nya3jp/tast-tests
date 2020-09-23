@@ -22,6 +22,30 @@
       "revId": "711f6b6c79dfa58cae4b3d68bfc9000056a145a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f94e3dd_dcb9b6e5",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-23T03:22:14Z",
+      "side": 1,
+      "message": "We have cases to test resizing smaller to the default size.",
+      "parentUuid": "63b6d387_b4b73e04",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "711f6b6c79dfa58cae4b3d68bfc9000056a145a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
