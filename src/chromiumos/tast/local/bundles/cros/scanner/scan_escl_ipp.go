@@ -193,6 +193,36 @@ func killIPPUSBBridge(ctx context.Context, devInfo usbprinter.DevInfo) error {
 	return nil
 }
 
+func killLorgnette(ctx context.Context) error {
+	ps, err := process.Processes()
+	if err != nil {
+		return err
+	}
+
+	for _, p := range ps {
+		if name, err := p.Name(); err != nil || name != "lorgnette" {
+			continue
+		}
+
+		if err := syscall.Kill(int(p.Pid), syscall.SIGINT); err != nil && err != syscall.ESRCH {
+			return errors.Wrap(err, "failed to kill lorgnette")
+		}
+
+		// Wait for the process to exit so that its sockets can be removed.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// We need a fresh process.Process since it caches attributes.
+			// TODO(crbug.com/1131511): Clean up error handling here when gpsutil has been upreved.
+			if _, err := process.NewProcess(p.Pid); err == nil {
+				return errors.Errorf("pid %d is still running", p.Pid)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed to wait for lorgnette to exit")
+		}
+	}
+	return nil
+}
+
 func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	const (
 		descriptors      = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
@@ -311,6 +341,9 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to call StartScan: ", err)
 	}
+	// Lorgnette was started automatically when we called StartScan, make sure to
+	// close it when we exit.
+	defer killLorgnette(cleanupCtx)
 
 	switch startScanResponse.State {
 	case lorgnette.ScanState_SCAN_STATE_IN_PROGRESS:
