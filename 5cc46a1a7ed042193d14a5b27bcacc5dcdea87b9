@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef5bdad7_ba454d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-09-23T00:51:22Z",
+      "side": 1,
+      "message": "Why is it both? This should be owned by only one user.",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
