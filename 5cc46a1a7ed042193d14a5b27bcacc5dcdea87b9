@@ -117,6 +117,30 @@
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22884c2_dd9d7240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-09-23T01:09:17Z",
+      "side": 1,
+      "message": "Local run is completely after booting.\n\nlocalhost ~ # ps aux | grep dlcservice\ndlcserv+  8761  0.0  0.0  26852  7604 ?        S    16:57   0:00 /usr/sbin/dlcservice\n\nlocalhost ~ # stat /mnt/stateful_partition/var_overlay/cache/dlc-images\n  File: \u0027/mnt/stateful_partition/var_overlay/cache/dlc-images\u0027\n  Size: 4096            Blocks: 8          IO Block: 4096   directory\nDevice: 10301h/66305d   Inode: 30539786    Links: 4\nAccess: (0755/drwxr-xr-x)  Uid: (20118/dlcservice)   Gid: (20118/dlcservice)\nContext: u:object_r:unlabeled:s0\nAccess: 2020-09-22 14:42:06.433137944 -0700\nModify: 2020-09-22 08:11:48.000000000 -0700\nChange: 2020-09-22 16:57:22.345863321 -0700\n Birth: -\n\nlocalhost ~ # stat /mnt/stateful_partition/encrypted/var/cache/dlc-images\n  File: \u0027/mnt/stateful_partition/encrypted/var/cache/dlc-images\u0027\n  Size: 4096            Blocks: 8          IO Block: 4096   directory\nDevice: fd01h/64769d    Inode: 590119      Links: 2\nAccess: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)\nContext: u:object_r:cros_var_cache:s0\nAccess: 2020-09-22 16:22:36.234000083 -0700\nModify: 2020-09-22 16:22:36.234000083 -0700\nChange: 2020-09-22 16:22:36.234000083 -0700\n Birth: -",
+      "parentUuid": "1ef435a0_0cfe6f7d",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
