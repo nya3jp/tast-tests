@@ -79,6 +79,30 @@
       "revId": "081672ac3384f5670b02129ce8972471c7d111fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c6d0b2_8aedd045",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-09-23T01:17:23Z",
+      "side": 1,
+      "message": "This library might be used after TPM clear by the test item itself, so it is necessary.\n\nMy concern is that this function creates a singleton and early-return for the second call; so CreateStore-\u003eclear ownership-\u003eCreateStore still has the problem.\n\nPlease consider not doing it but ensuring TPM ownership right at the same place where we clear TPM.",
+      "parentUuid": "4210b6dd_219a700a",
+      "range": {
+        "startLine": 96,
+        "startChar": 18,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "081672ac3384f5670b02129ce8972471c7d111fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
