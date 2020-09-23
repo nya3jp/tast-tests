@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "88e100fd_c45503cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-09-23T23:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fd6b790_b0784e2e",
+      "revId": "c6ce81a6c20bcff54031c8623bdd14f1e44c33c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f2f85e1_e720ef77",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 2
