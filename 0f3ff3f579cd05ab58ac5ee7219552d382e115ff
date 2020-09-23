@@ -16,6 +16,29 @@
       "revId": "0f3ff3f579cd05ab58ac5ee7219552d382e115ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97287aa4_47d7a849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/facebook.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-23T15:07:57Z",
+      "side": 1,
+      "message": "instead of indenting everything, can we reorder this:\n\n if err :\u003d checkForloginPage.WaitForExists(ctx, testutil.DefaultUITimeout); err !\u003d nil {\n   s.Log(\"checkForloginButtonPage does exist\")\n   return\n }\n\n // everything else without indent",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 88
+      },
+      "revId": "0f3ff3f579cd05ab58ac5ee7219552d382e115ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
