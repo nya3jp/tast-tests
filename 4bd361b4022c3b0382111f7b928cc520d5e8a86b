@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05bae708_06e5c748",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-23T19:08:10Z",
+      "side": 1,
+      "message": "LGTM.  Just one comment.",
+      "revId": "4bd361b4022c3b0382111f7b928cc520d5e8a86b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ca439ad_ec770c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-23T19:08:10Z",
+      "side": 1,
+      "message": "Alternately you could use power.WaitUntilCPUCoolDown if what you want is actually not the CPU load itself but just waiting a bit to stabilize the performance.\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/power#WaitUntilCPUCoolDown",
+      "revId": "4bd361b4022c3b0382111f7b928cc520d5e8a86b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
