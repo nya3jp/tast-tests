@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "3fb9fb15_584e7e39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-23T23:34:38Z",
+      "side": 1,
+      "message": "\u003e Also, IIUC, this isn\u0027t really \"waiting for session manager\" in the way that I meant in my comments on $BUG: I was referring to this upstart event:\n\u003e \n\u003e https://source.chromium.org/search?q\u003d%5Cbstart-user-session%5Cb%20file:.conf$\n\u003e \n\u003e If I\u0027m reading p2/login_manager/ code correctly, this isn\u0027t really something that\u0027s part of a session manager API, apart from the upstart event. So unless we want to teach Tast to watch that event itself, my comment may not be feasible.\n\nIn my understanding, the problem was the session manager to crash but the browser process remains. The precondition of the next test only checks if the browser process is running, so it thinks it is fine. And then the session manager is respawned and it recreates the browser process, which looks like a browser crash.\n\nOne way to solve this problem is your suggestion, checking the session manager status through Upstart (in precondition), but this CL does not take that route.  Since it already monitors the browser process is running or not, it can monitor the session manager in the same manner.\n\nThe benefit of this approach is, it can consistently monitor the session manager status during the test scenario, and once it crashes, it can detect the problem earlier. Also this only checks /proc filesystem so it would be more lightweight.",
+      "parentUuid": "d329d9f6_00f59ad9",
+      "revId": "6c2ae96dfe040d6a575c0f6eeed326ced0323a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c35acfaa_4c49c339",
         "filename": "src/chromiumos/tast/local/chrome/watcher.go",
         "patchSetId": 1
