@@ -16,6 +16,144 @@
       "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72418b24_6835145c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-23T16:50:12Z",
+      "side": 1,
+      "message": "2 questions\n\n1.) How does this differ from the default sleep?\n2.) What \"existing events\" would we be waiting for? What about using the other function WaitForLocationChangeCompleted? \n\nI have a big hatred of blind sleeps in tests, they make long term maintainability difficult and introduce flake. We test across a loooooot of device types. Additionally they add (normally) not needed test duration 😊",
+      "range": {
+        "startLine": 97,
+        "startChar": 11,
+        "endLine": 97,
+        "endChar": 43
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffded0b8_c0f750aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-23T16:50:12Z",
+      "side": 1,
+      "message": "Is this for sure long enough? I am bit curious why some parts of the test will wait for things like this, and others WaitForLocationChangeCompleted",
+      "range": {
+        "startLine": 124,
+        "startChar": 15,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2bbef25_7e7dadb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-23T16:50:12Z",
+      "side": 1,
+      "message": "mostly a question,\n\nIs this being done via the WaitForLocationChangeComplete after each activity?\n\nIs this issue widespread enough to warrant moving the WaitForLocationChangeComplete to be moved into the actual ui lib? (Even if we make it a param with default false)",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 83
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8f44a27_f1c52578",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-23T16:50:12Z",
+      "side": 1,
+      "message": "suggest change to crbug.com/1127384",
+      "range": {
+        "startLine": 122,
+        "startChar": 49,
+        "endLine": 122,
+        "endChar": 110
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e286a157_07c27b8b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-23T16:50:12Z",
+      "side": 1,
+      "message": "is windows used later? I only see the case \"if there are no windows\" (L137). what do we do if there are windows?",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 9
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e4cf1f_ea1b0e76",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-09-23T16:50:12Z",
+      "side": 1,
+      "message": "is this a left click and hold until the folder opens?",
+      "range": {
+        "startLine": 255,
+        "startChar": 18,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
