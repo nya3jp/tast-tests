@@ -56,6 +56,29 @@
       "revId": "56cbcde76425df87e2aaadadfc0b820ed48375f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20e9b94b_b901cb80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-23T04:13:55Z",
+      "side": 1,
+      "message": "could you close on exit with a defer stmt?",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 9
+      },
+      "revId": "56cbcde76425df87e2aaadadfc0b820ed48375f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
