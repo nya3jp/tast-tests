@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57fef82f_f4a69b8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-23T06:43:45Z",
+      "side": 1,
+      "message": "nit: This change looks unintentional?",
+      "revId": "99a945ec07d47b6f76885dacf7a3b4423750e0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
