@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "183ae6cb_63e3cfd6",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Yes, I like the idea of varargs. I\u0027m expecting router list to be passed as comma-separated string, thus passing hostnames slice would shorten the code.",
+      "parentUuid": "93a0e0b1_5c6fa289",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15aeaa45_72a77c22",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -111,6 +129,30 @@
     },
     {
       "key": {
+        "uuid": "a43cd1fd_21d29979",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "No, order should not matter, as any BSSID should be removable randomly.\nIn fact, I see we can get rid of TestFixture.apis entirely and use only map instead.",
+      "parentUuid": "15aeaa45_72a77c22",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 5
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "325d85dc_4d70adbf",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -122,6 +164,30 @@
       "writtenOn": "2020-09-23T03:18:22Z",
       "side": 1,
       "message": "is the reverse map of apis for AP removal.",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 71
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99742913_6a80b94a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Yes, we need to store this mapping for two purposes:\n1) We need to know which router the APIface belongs to deconfigure AP on correct device;\n2) We need to know (?) a complete list of APIfaces to deconfigure all APs, which some tests (e.g. VerifyAttenuator) require.",
+      "parentUuid": "325d85dc_4d70adbf",
       "range": {
         "startLine": 97,
         "startChar": 16,
@@ -154,6 +220,30 @@
       "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df0472fa_3a60d9b8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "376a664a_d8284517",
+      "range": {
+        "startLine": 192,
+        "startChar": 58,
+        "endLine": 192,
+        "endChar": 64
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -192,6 +282,24 @@
     },
     {
       "key": {
+        "uuid": "24ac9e22_2ec0faa9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "I thought about storing pointers, but decided against it. Maybe it\u0027s just a leftover from C, but I kinda avoid juggling raw pointers whenever I can.",
+      "parentUuid": "22f281a2_04e72266",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15a703ea_11dfe0f6",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -206,6 +314,24 @@
       "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "919d2972_a39440a7",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15a703ea_11dfe0f6",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +375,48 @@
     },
     {
       "key": {
+        "uuid": "92e80846_2b21ee04",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Lack of return is obviously error on my part.",
+      "parentUuid": "11c4c14a_ce362a29",
+      "range": {
+        "startLine": 238,
+        "startChar": 4,
+        "endLine": 238,
+        "endChar": 7
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d220cc2f_6c307979",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f01c97f_5ee7f6b9",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5f1fcdb_7102adcd",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -266,6 +434,24 @@
     },
     {
       "key": {
+        "uuid": "ab4a33c0_57b3496a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5f1fcdb_7102adcd",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0b2b609_38599806",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -280,6 +466,24 @@
       "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cbddaa8_289787e9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Resolved according to the suggestion of Yen-lin.",
+      "parentUuid": "a0b2b609_38599806",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -303,6 +507,30 @@
       "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91f646bf_c917c36c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c96c6908_e127c876",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 26
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -341,6 +569,24 @@
     },
     {
       "key": {
+        "uuid": "5cfb7a40_b35d29f6",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "It seems enough to set router name somewhat properly, as its name becomes part of path. Fixed.",
+      "parentUuid": "9c1a6100_07aeaed5",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d5db8a_1571543f",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -355,6 +601,24 @@
       "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb9bacf8_67f1d917",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1d5db8a_1571543f",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -375,6 +639,24 @@
     },
     {
       "key": {
+        "uuid": "af081c1a_2e9bc819",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efc56fa3_35b13264",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e73eb793_8227938d",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -386,6 +668,30 @@
       "writtenOn": "2020-09-23T03:35:34Z",
       "side": 1,
       "message": "nit: I think it is more common to use int as slice indices instead of uint although negative values are not allowed. For example, the language itself use int type [1]. But I don\u0027t have strong opinion.\n\n[1] https://golang.org/ref/spec#Index_expressions",
+      "range": {
+        "startLine": 354,
+        "startChar": 63,
+        "endLine": 354,
+        "endChar": 67
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41071f24_c4adeab4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "uint seem to guarantee `the index x is in range if 0 \u003c\u003d x \u003c len(a)` predicate. But I have not too strong opinion, too.\nLooking throughout the code, I\u0027ve seen a lot of int indexes, but I regarded them as leftover habit from POSIX programming. I think I\u0027d rather rely on your experience as to what is a general rule for golang.",
+      "parentUuid": "e73eb793_8227938d",
       "range": {
         "startLine": 354,
         "startChar": 63,
@@ -415,6 +721,24 @@
     },
     {
       "key": {
+        "uuid": "17b1d69f_ca0d7076",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73c61c71_60c30977",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1f2f4e0_ad81296c",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -429,6 +753,24 @@
       "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2883f1b8_cb84fcc0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-23T20:04:03Z",
+      "side": 1,
+      "message": "Nice catch. It is probably unwise in any language to carelessly remove elements form collection you\u0027re iterating on.\nAlternatively, in this case we could iterate backwards, this should not disturb the iterator. Or, don\u0027t use this slice at all...(see above).",
+      "parentUuid": "c1f2f4e0_ad81296c",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
