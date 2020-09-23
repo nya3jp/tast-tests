@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07168099_2bef6b2b",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-23T02:44:06Z",
+      "side": 1,
+      "message": "Update comment",
+      "range": {
+        "startLine": 161,
+        "startChar": 63,
+        "endLine": 161,
+        "endChar": 66
+      },
+      "revId": "2ac0a9b3ea947c5fe7287786a71398f033c129a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d23bc58c_e79bfbf0",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-23T02:44:06Z",
+      "side": 1,
+      "message": "This will affect all of our performance tests, including Chrome performance tests. Some very old platforms will never go below 10-15% CPU usage, decreasing this value will introduce a lot of flakiness on all these platforms.\nInitially this value was a lot lower, but I gradually had to increase it to fix flaky tests. I introduced a mechanism to gradually loosen the threshold to avoid using a single high threshold for all platforms.\nIncreasing the idle timeout will increase runtime for all performance tests but will give them a bit more time to become idle, so I guess that would be OK if it\u0027s important. But if we reduce the max idle percentage, someone will probably just increase that again after having to waste a lot of time on investigating test flakiness.",
+      "revId": "2ac0a9b3ea947c5fe7287786a71398f033c129a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
