@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "73165868_54d61c64",
+        "filename": "src/chromiumos/tast/local/chrome/network.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-23T20:11:38Z",
+      "side": 1,
+      "message": "this could arguably belong in the .../local/network package. It seems like it has to know more implementation details of networking than it does of chrome.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "10165ec152214a31fb5106d7178533975d148821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9717535_43da25f0",
+        "filename": "src/chromiumos/tast/local/chrome/network.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-23T20:11:38Z",
+      "side": 1,
+      "message": "are you sure you need this? if you\u0027re only firewalling off the chronos user, this won\u0027t affect check_ethernet.hook, which runs as root.\n\nYou can double check this by:\n* `touch /mnt/stateful_partition/.labmachine; start recover_duts`\n* run a long test while in pseudo-offline mode\n* watch /var/log/recover_duts/* logs (ping, etc., should function normally)\n* `stop recover_duts; rm /mnt/stateful_partition/.labmachine` when you\u0027re done (unless it\u0027s really a lab machine / you want Ethernet-recovery checks running periodically)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "10165ec152214a31fb5106d7178533975d148821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91542f79_68c57a17",
         "filename": "src/chromiumos/tast/local/chrome/network.go",
         "patchSetId": 10
