@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "4496ac70_a16e55a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-23T15:27:54Z",
+      "side": 1,
+      "message": "That\u0027s a good point.  We share ippusb_bridge with the printing team, but I\u0027ll discuss with them whether it makes sense to change over to upstart.",
+      "parentUuid": "dc7f7d52_9367b2f0",
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c65bcf1_a2882863",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -220,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "ecd19c4b_346aacd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-23T15:27:54Z",
+      "side": 1,
+      "message": "This wasn\u0027t available in the version of gopsutil we currently have.  I filed crbug.com/1131511 to track updating.  I put a TODO here rather than waiting for that to finish.",
+      "parentUuid": "183d80d5_47cf7e3f",
+      "range": {
+        "startLine": 180,
+        "startChar": 16,
+        "endLine": 180,
+        "endChar": 34
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cb7724a_ca76c6fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -303,6 +345,30 @@
       "side": 1,
       "message": "Yes, it will stop after reaching the deadline.\n\nThe thing is that if something went wrong it does not make sense to waste 90 seconds for operation that normally should finish in milliseconds. CQ can faster run failing tests.",
       "parentUuid": "9df1fbaf_0279abf3",
+      "range": {
+        "startLine": 184,
+        "startChar": 5,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0cbba0f3_e655d7ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-23T15:27:54Z",
+      "side": 1,
+      "message": "I hadn\u0027t considered that.  Thanks.",
+      "parentUuid": "d7d11494_b592a4da",
       "range": {
         "startLine": 184,
         "startChar": 5,
