@@ -74,7 +74,7 @@ func startScan(ctx context.Context, obj dbus.BusObject, request *lorgnette.Start
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to marshal StartScanRequest")
 	}
-	call := obj.CallWithContext(ctx, dbusInterface+".StartScanMultiPage", 0, marshalled)
+	call := obj.CallWithContext(ctx, dbusInterface+".StartScan", 0, marshalled)
 	if call.Err != nil {
 		return nil, errors.Wrap(call.Err, "failed to call StartScan")
 	}
