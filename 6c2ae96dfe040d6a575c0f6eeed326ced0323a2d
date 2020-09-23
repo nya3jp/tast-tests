@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "d329d9f6_00f59ad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-23T22:49:44Z",
+      "side": 1,
+      "message": "Also, IIUC, this isn\u0027t really \"waiting for session manager\" in the way that I meant in my comments on $BUG: I was referring to this upstart event:\n\nhttps://source.chromium.org/search?q\u003d%5Cbstart-user-session%5Cb%20file:.conf$\n\nIf I\u0027m reading p2/login_manager/ code correctly, this isn\u0027t really something that\u0027s part of a session manager API, apart from the upstart event. So unless we want to teach Tast to watch that event itself, my comment may not be feasible.",
+      "revId": "6c2ae96dfe040d6a575c0f6eeed326ced0323a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c35acfaa_4c49c339",
         "filename": "src/chromiumos/tast/local/chrome/watcher.go",
         "patchSetId": 1
