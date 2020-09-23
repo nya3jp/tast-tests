@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b66839f_cef020bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-09-23T01:04:24Z",
+      "side": 1,
+      "message": "Yes only on test images.",
+      "parentUuid": "748232b2_8eef1437",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 26
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef5bdad7_ba454d55",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-23T00:51:22Z",
       "side": 1,
       "message": "Why is it both? This should be owned by only one user.",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b9ab44_e54f45ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-09-23T01:04:24Z",
+      "side": 1,
+      "message": "On my local it is owned by root.\nOn a CQ test run: /mnt/stateful_partition/encrypted/var/cache/dlc-images: UID 20118 (want [0]), GID 20118 (want [0])\nIt seems to be expecting root as the default, but was set to 20118.\n\ndlcservice daemon when it starts up sets this dlc-image directory to be owned by dlcservice.\nWhich should it be set to?",
+      "parentUuid": "ef5bdad7_ba454d55",
       "range": {
         "startLine": 220,
         "startChar": 83,
