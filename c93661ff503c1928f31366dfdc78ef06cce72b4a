@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb23811c_0b5730bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-23T00:03:35Z",
+      "side": 1,
+      "message": "Hi @Matthew, the old cl loops with another one, causing some noises. I re-created this new cl to undo the chain. Can you please review this again?",
+      "revId": "c93661ff503c1928f31366dfdc78ef06cce72b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
