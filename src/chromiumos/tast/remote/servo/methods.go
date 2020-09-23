@@ -28,6 +28,16 @@ const (
 	ECUARTCmd            StringControl = "ec_uart_cmd"
 )
 
+// An IntControl contains the name of a gettable/settable Control which takes an integer value.
+type IntControl string
+
+// These are the Servo controls which can be get/set with an integer value.
+const (
+	VolumeDownHold   IntControl = "volume_down_hold"    // Integer represents a number of milliseconds.
+	VolumeUpHold     IntControl = "volume_up_hold"      // Integer represents a number of milliseconds.
+	VolumeUpDownHold IntControl = "volume_up_down_hold" // Integer represents a number of milliseconds.
+)
+
 // A OnOffControl accepts either "on" or "off" as a value.
 type OnOffControl string
 
@@ -106,6 +116,10 @@ const (
 	V4RoleSrc V4RoleValue = "src"
 )
 
+// ServoKeypressDelay comes from hdctools/servo/drv/keyboard_handlers.py.
+// It is the minimum time interval between 'press' and 'release' keyboard events.
+const ServoKeypressDelay = 100 * time.Millisecond
+
 // Echo calls the Servo echo method.
 func (s *Servo) Echo(ctx context.Context, message string) (string, error) {
 	var val string
@@ -152,13 +166,21 @@ func (s *Servo) GetString(ctx context.Context, control StringControl) (string, e
 	return value, nil
 }
 
-// SetString sets a specified control to a specified value.
+// SetString sets a Servo control to a string value.
 func (s *Servo) SetString(ctx context.Context, control StringControl, value string) error {
 	// Servo's Set method returns a bool stating whether the call succeeded or not.
 	// This is redundant, because a failed call will return an error anyway.
 	// So, we can skip unpacking the output.
 	if err := s.run(ctx, newCall("set", string(control), value)); err != nil {
 		return errors.Wrapf(err, "setting servo control %q to %q", control, value)
+	}
+	return nil
+}
+
+// SetInt sets a Servo control to an integer value.
+func (s *Servo) SetInt(ctx context.Context, control IntControl, value int) error {
+	if err := s.run(ctx, newCall("set", string(control), value)); err != nil {
+		return errors.Wrapf(err, "setting servo control %q to %d", control, value)
 	}
 	return nil
 }
@@ -285,12 +307,10 @@ func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
 
 // ToggleOffOn turns a switch off and on again.
 func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
-	// Delay should be just long enough for the system to acknowledge the change.
-	const delay = 100 * time.Millisecond
 	if err := s.SetString(ctx, StringControl(ctrl), string(Off)); err != nil {
 		return err
 	}
-	if err := testing.Sleep(ctx, delay); err != nil {
+	if err := testing.Sleep(ctx, ServoKeypressDelay); err != nil {
 		return err
 	}
 	if err := s.SetString(ctx, StringControl(ctrl), string(On)); err != nil {
