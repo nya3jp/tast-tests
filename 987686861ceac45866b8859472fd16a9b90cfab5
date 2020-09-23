@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f6871a9_44291af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-09-23T19:17:41Z",
+      "side": 1,
+      "message": "Due to comments on http://ag/12560693, I\u0027ve updated this CL to use arc-host-clock-client as an external data file, instead of relying on it to be present in the system image. Calls to inputlatency.AndroidData() and inputlatency.InstallArcHostClockClient() are added to the tests to implement this. ",
+      "revId": "987686861ceac45866b8859472fd16a9b90cfab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
