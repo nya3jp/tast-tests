@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ef2e2a1_56ce1359",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-23T00:04:01Z",
+      "side": 1,
+      "message": "In latest commit, I merged the launcher.go changes in another CL. Also, somehow I found mouse.Drag sometimes failed in the clamshell mode. I didn\u0027t see this issue until today. Therefore, I wrote a new function for Drag which introduce detail between steps.\n\nPlease review.\n\nThanks.\n",
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
