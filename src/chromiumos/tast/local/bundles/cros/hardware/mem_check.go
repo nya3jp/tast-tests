@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/hardware/memcheck"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,6 +23,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"mosys"},
 		Attr:         []string{"group:mainline"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt")),
 	})
 }
 
