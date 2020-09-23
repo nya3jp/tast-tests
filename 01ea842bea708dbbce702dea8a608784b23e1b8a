@@ -33,6 +33,24 @@
       "revId": "01ea842bea708dbbce702dea8a608784b23e1b8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b30ea73b_6905d3d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-23T01:10:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db5e918_29c5df33",
+      "revId": "01ea842bea708dbbce702dea8a608784b23e1b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
