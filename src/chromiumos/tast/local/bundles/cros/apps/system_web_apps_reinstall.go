@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -67,8 +68,8 @@ func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 }
 
 // runChromeSession runs Chrome based on chromeOpts, and return a list of installed system app names
-// (as shown to users), and a list of registered system app internal names. Note, the app name and
-// internal name are different, thus are not comparable.
+// (as shown to users), and a list of registered system app internal names (that should be available
+// to users). Note, the app name and internal name are different, thus are not comparable.
 func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]string, []string, error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -85,6 +86,8 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]strin
 		}
 	}(cleanupCtx)
 
+	crostiniIsAvailable := determineCrostiniAvailability(ctx, cr)
+
 	if err := waitForSystemWebAppsInstall(ctx, cr); err != nil {
 		return nil, nil, errors.Wrap(err, "failed to wait system apps install")
 	}
@@ -94,12 +97,38 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]strin
 		return nil, nil, errors.Wrap(err, "failed to get installed system apps")
 	}
 
-	registeredInternalNames, err := registeredSystemAppsInternalNames(ctx, cr)
+	allRegisteredInternalNames, err := registeredSystemAppsInternalNames(ctx, cr)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to get registered system apps")
 	}
 
+	// Handle the case where Crostini (Terminal App) is installed, but not shown to the user due to
+	// hardwares not supporting virtualization.
+	var registeredInternalNames []string
+	for _, internalName := range allRegisteredInternalNames {
+		// Exclude Terminal if Crostini is not available.
+		if internalName == "Terminal" && !crostiniIsAvailable {
+			continue
+		}
+		registeredInternalNames = append(registeredInternalNames, internalName)
+	}
+
 	return installedNames, registeredInternalNames, nil
+}
+
+// determineCrostiniAvailability returns true if Crostini is definitely available on the device.
+// This indicates whether the Crostini subsystem will register Terminal App to App Service.
+func determineCrostiniAvailability(ctx context.Context, cr *chrome.Chrome) bool {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return false
+	}
+
+	if err = vm.EnableCrostini(ctx, tconn); err != nil {
+		return false
+	}
+
+	return true
 }
 
 func waitForSystemWebAppsInstall(ctx context.Context, cr *chrome.Chrome) error {
