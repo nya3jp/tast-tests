@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d12da98_724f1f90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-23T05:43:22Z",
+      "side": 1,
+      "message": "Better validation of the sizes (Judy\u0027s comment and my comment) would be nice, but I defer to you and EngProd as to if it\u0027s cost-effective to do here. Otherwise LGTM.",
+      "revId": "d9bf9efc31ed22c5ebc5172945168ace14b5979f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "815aacd2_759a5022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-23T05:43:22Z",
+      "side": 1,
+      "message": "For bonus points, not just checking that it changed in the right direction but that it\u0027s (to within a block size) the value picked.",
+      "revId": "d9bf9efc31ed22c5ebc5172945168ace14b5979f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "87c9a710_d5fc4f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-23T05:43:22Z",
+      "side": 1,
+      "message": "No aria label in Chrome, since the size is a property on the slider which screenreaders know about and read out. The display size (ditto min and max) are to help sighted users, so they\u0027re area-hidden.\n\nIMO the right thing is to get the value from the slider, since if we\u0027re using the accessibility tree as our interface we should interface with it like other accessibility clients. If that doesn\u0027t work then className\u003dsecondary should be fairly stable amongst the node\u0027s children - we\u0027re unlikely to add a second.",
+      "parentUuid": "59d34481_c2d7b6d0",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "7abcd2f7ee0d9ff3272ef79957988a2df4ecb158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5bf7833_5b6a91f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_resizing.go",
         "patchSetId": 1
