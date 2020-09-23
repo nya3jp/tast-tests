@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "dc7f7d52_9367b2f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-23T10:09:23Z",
+      "side": 1,
+      "message": "You can pass ENV variables when starting via upstart. See example:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/wilco/supportd.go;l\u003d27\n\nhere is how we handle ENV variable in conf file:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform2/diagnostics/init/wilco_dtc_supportd.conf;l\u003d181\n\n\nFeel free to close this comment after reading, because probably you won\u0027t change the way how you start IPP USB bridge in this CL",
+      "parentUuid": "988516fb_33da4435",
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c65bcf1_a2882863",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -178,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "183d80d5_47cf7e3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-23T10:09:23Z",
+      "side": 1,
+      "message": "I just found that there is ErrorProcessNotRunning error. Can you please use it?\n\nhttps://pkg.go.dev/github.com/shirou/gopsutil@v0.0.0-20200831221338-9aa2bee419e8/process#pkg-variables",
+      "parentUuid": "310751fb_c5365bdd",
+      "range": {
+        "startLine": 180,
+        "startChar": 16,
+        "endLine": 180,
+        "endChar": 34
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4cb7724a_ca76c6fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
@@ -213,6 +255,54 @@
       "side": 1,
       "message": "Done, but shouldn\u0027t testing.Poll already stop if ctx reaches its deadline?",
       "parentUuid": "4cb7724a_ca76c6fb",
+      "range": {
+        "startLine": 184,
+        "startChar": 5,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7d11494_b592a4da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-23T10:09:23Z",
+      "side": 1,
+      "message": "Yes, it will stop after reaching the deadline.\n\nThe thing is that if something went wrong it does not make sense to waste 90 seconds for operation that normally should finish in milliseconds. CQ can faster run failing tests.",
+      "parentUuid": "9df1fbaf_0279abf3",
+      "range": {
+        "startLine": 184,
+        "startChar": 5,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c806f68_cc0e54e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-23T10:09:23Z",
+      "side": 1,
+      "message": "Yes, it will stop after reaching the deadline.\n\nThe thing is that if something went wrong it does not make sense to waste 90 seconds for operation that normally should finish in milliseconds. CQ can faster run failing tests.",
+      "parentUuid": "9df1fbaf_0279abf3",
       "range": {
         "startLine": 184,
         "startChar": 5,
