@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "989f3cfe_54406fe4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-23T06:39:38Z",
+      "side": 1,
+      "message": "Sending +2, assuming that the comment about //go:linkname was the only blocking one for Ricardo.\n",
+      "revId": "e5e6189d33425fc5c804ab6a8cf6cf7c7c5d9f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
