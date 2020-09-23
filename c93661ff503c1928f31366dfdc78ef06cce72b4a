@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "16395130_9770abc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T02:18:32Z",
+      "side": 1,
+      "message": "Please copy the reason why we need a BackgroundConn to code comment to improve code readability.",
+      "revId": "c93661ff503c1928f31366dfdc78ef06cce72b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb23811c_0b5730bf",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
