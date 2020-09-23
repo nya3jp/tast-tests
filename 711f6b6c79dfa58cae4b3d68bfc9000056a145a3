@@ -46,6 +46,30 @@
       "revId": "711f6b6c79dfa58cae4b3d68bfc9000056a145a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "740e6803_1bb74aa6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-23T06:10:46Z",
+      "side": 1,
+      "message": "In that case you need another variable maxDiskSize, it would be very surprising to me if I called a function with a minDiskSize and I got a disk size that was smaller than the minimum size I had specified.",
+      "parentUuid": "3f94e3dd_dcb9b6e5",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "711f6b6c79dfa58cae4b3d68bfc9000056a145a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
