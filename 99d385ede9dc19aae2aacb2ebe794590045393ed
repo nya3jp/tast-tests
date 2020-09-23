@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a174ff27_6115f1ca",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-23T07:28:24Z",
+      "side": 1,
+      "message": "I think you need to release all the nodes here?",
+      "revId": "99d385ede9dc19aae2aacb2ebe794590045393ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "794c7f97_f3e60c4c",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-23T07:28:24Z",
+      "side": 1,
+      "message": "You need to release the node here.",
+      "revId": "99d385ede9dc19aae2aacb2ebe794590045393ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
