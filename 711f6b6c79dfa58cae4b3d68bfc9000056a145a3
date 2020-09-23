@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63b6d387_b4b73e04",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-23T03:16:38Z",
+      "side": 1,
+      "message": "This is not correct.  If the test asks for 3GB and the default is 5GB, this will reduce the disk space to _less_ than 3GB (eg 2.5 GB)\n\nIf the default disk size is bigger than minDiskSize you can just leave it as is, no need to change it at all.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "711f6b6c79dfa58cae4b3d68bfc9000056a145a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
