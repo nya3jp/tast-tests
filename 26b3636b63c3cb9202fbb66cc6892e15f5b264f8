@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b3916f1_b7bdd4ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-09-23T03:28:46Z",
+      "side": 1,
+      "message": "2. Move functions in cras.go and audio.go related to cras_test_client to cras_test_client.go",
+      "revId": "26b3636b63c3cb9202fbb66cc6892e15f5b264f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
