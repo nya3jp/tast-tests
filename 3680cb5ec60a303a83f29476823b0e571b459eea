@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "bd7dc7ac_3ff70241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2020-09-23T14:55:22Z",
+      "side": 1,
+      "message": "Thanks! I\u0027m new to Tast so I didn\u0027t know about that.",
+      "parentUuid": "3a2e936f_68eb5bff",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "3680cb5ec60a303a83f29476823b0e571b459eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8904e84a_1f8739ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
         "patchSetId": 2
@@ -86,6 +110,30 @@
       "revId": "3680cb5ec60a303a83f29476823b0e571b459eea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d26b8b39_26d6d75b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2020-09-23T14:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8904e84a_1f8739ae",
+      "range": {
+        "startLine": 134,
+        "startChar": 50,
+        "endLine": 134,
+        "endChar": 51
+      },
+      "revId": "3680cb5ec60a303a83f29476823b0e571b459eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
