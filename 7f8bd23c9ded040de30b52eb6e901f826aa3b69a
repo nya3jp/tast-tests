@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d5d5d0c_9daa2a74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-23T23:11:46Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "7f8bd23c9ded040de30b52eb6e901f826aa3b69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae828880_946b22ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-09-23T23:11:46Z",
+      "side": 1,
+      "message": "I\u0027d use the \":\u003d\" because it is more explicit. e.g:\n\n  d :\u003d \u0026net.Dialer{}  // optional, use pass a Timeout.",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 19
+      },
+      "revId": "7f8bd23c9ded040de30b52eb6e901f826aa3b69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
