@@ -67,8 +67,8 @@ func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 }
 
 // runChromeSession runs Chrome based on chromeOpts, and return a list of installed system app names
-// (as shown to users), and a list of registered system app internal names. Note, the app name and
-// internal name are different, thus are not comparable.
+// (as shown to users), and a list of registered system app internal names (that should be available
+// to users). Note, the app name and internal name are different, thus are not comparable.
 func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]string, []string, error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -99,7 +99,38 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]strin
 		return nil, nil, errors.Wrap(err, "failed to get registered system apps")
 	}
 
+	// Handle the case where Crostini (Terminal App) is installed, but not shown to the user due to
+	// hardwares not supporting virtualization.
+	crostiniIsAvailable, err := supportsCrostini(ctx, cr)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to determine crostini support: ")
+	}
+
+	for i, internalName := range registeredInternalNames {
+		if internalName == "Terminal" && !crostiniIsAvailable {
+			registeredInternalNames = append(registeredInternalNames[:i], registeredInternalNames[i+1:]...)
+			break
+		}
+	}
+
 	return installedNames, registeredInternalNames, nil
+}
+
+// supportsCrostini returns a boolean to indicate whether Crostini is allowed to run on device, by
+// checking relevant information with OS Settings.
+func supportsCrostini(ctx context.Context, cr *chrome.Chrome) (bool, error) {
+	osSettingsConn, err := cr.NewConn(ctx, "chrome://os-settings/")
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get connection to os settings")
+	}
+	defer osSettingsConn.Close()
+
+	var allowCrostini bool
+	if err := osSettingsConn.Eval(ctx, "window.loadTimeData.data_.allowCrostini", &allowCrostini); err != nil {
+		return false, errors.Wrap(err, "failed to evaluate window.loadTimeData.data_.allowCrostini")
+	}
+
+	return allowCrostini, nil
 }
 
 func waitForSystemWebAppsInstall(ctx context.Context, cr *chrome.Chrome) error {
