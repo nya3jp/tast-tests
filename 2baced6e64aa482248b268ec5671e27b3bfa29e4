@@ -16,6 +16,75 @@
       "revId": "2baced6e64aa482248b268ec5671e27b3bfa29e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87865aec_2ed22e30",
+        "filename": "src/chromiumos/tast/common/genparams/doc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-23T04:44:12Z",
+      "side": 1,
+      "message": "Is it okay to refer an internal doc?\nMaybe we need to create a public doc for this and refer that here (of course, it can be done afterwards).",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "2baced6e64aa482248b268ec5671e27b3bfa29e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bbb1f9d_39afb365",
+        "filename": "src/chromiumos/tast/common/genparams/params_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-23T04:44:12Z",
+      "side": 1,
+      "message": "How about saving this fakeTestingT and putting an assertion of `len(fakeTestingT.Errors) \u003d\u003d 0` on the next line instead of just discarding this?",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 23
+      },
+      "revId": "2baced6e64aa482248b268ec5671e27b3bfa29e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "712a28b5_f6343624",
+        "filename": "src/chromiumos/tast/common/genparams/params_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-23T04:44:12Z",
+      "side": 1,
+      "message": "`len(errors) !\u003d 0` can replace this condition.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 55
+      },
+      "revId": "2baced6e64aa482248b268ec5671e27b3bfa29e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
