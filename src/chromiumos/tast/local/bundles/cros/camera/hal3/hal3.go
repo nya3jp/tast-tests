@@ -183,7 +183,9 @@ func (t *crosCameraTestConfig) toArgs() []string {
 func runCrosCameraTest(ctx context.Context, cfg crosCameraTestConfig) error {
 	// The test is performance sensitive and frame drops might cause test failures.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for CPU to become idle")
+		// TODO(b/169122360): Find a better way to reduce the flakiness.
+		// Currently it's too flaky so we cannot return an error here.
+		testing.ContextLog(ctx, "Failed to wait for CPU to become idle: ", err)
 	}
 
 	uid, err := ArcCameraUID()
