@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "754024d0_e99ed321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-23T07:18:51Z",
+      "side": 1,
+      "message": "nit: usually better not to shadow the name of a package, as you can\u0027t use it later in the function",
+      "range": {
+        "startLine": 229,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 15
+      },
+      "revId": "e610a1308555c312bb311724532f9f9e79aad514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8fa086_dd4027ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-23T07:18:51Z",
+      "side": 1,
+      "message": "Is there a specific reason you can\u0027t use Close?  It is possible that other resources that need to be freed maybe added to this in the future.\n\nIf Close doesn\u0027t work, maybe you can add a Release() method to the terminalapp type directly?",
+      "revId": "e610a1308555c312bb311724532f9f9e79aad514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
