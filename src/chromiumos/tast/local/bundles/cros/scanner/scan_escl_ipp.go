@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"net"
 	"os"
 	"path/filepath"
 	"strings"
@@ -252,6 +253,19 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 
 		// Defined in src/platform2/ippusb_bridge/src/main.rs
 		const port = 60000
+
+		// Wait for ippusb_bridge to start up.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var d net.Dialer
+			_, err := d.DialContext(ctx, "tcp", fmt.Sprintf("localhost:%d", port))
+			return err
+		}, &testing.PollOptions{
+			Timeout:  10 * time.Second,
+			Interval: 1 * time.Second,
+		}); err != nil {
+			s.Fatal("Failed to wait for ippusb_bridge to start: ", err)
+		}
+
 		deviceName = fmt.Sprintf("airscan:escl:TestScanner:http://localhost:%d/eSCL", port)
 	} else {
 		deviceName = fmt.Sprintf("ippusb:escl:TestScanner:%s_%s/eSCL", devInfo.VID, devInfo.PID)
