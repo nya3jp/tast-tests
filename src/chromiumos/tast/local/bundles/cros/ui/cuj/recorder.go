@@ -85,6 +85,7 @@ type Recorder struct {
 	records map[string]*record
 
 	timeline         *perf.Timeline
+	gpuDataSource    *gpuDataSource
 	frameDataTracker *FrameDataTracker
 	zramInfoTracker  *ZramInfoTracker
 }
@@ -117,10 +118,12 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // the aggregated reports.
 func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricConfig) (*Recorder, error) {
 	memDiff := newMemoryDiffDataSource("RAM.Diff.Absolute")
+	gpuDS := newGPUDataSource(tconn)
 	sources := []perf.TimelineDatasource{
 		load.NewCPUUsageSource("CPU", false),
 		load.NewMemoryUsageSource("RAM.Absolute", "RAM"),
 		newThermalDataSource(ctx),
+		gpuDS,
 		memDiff,
 	}
 	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
@@ -146,6 +149,7 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		names:            make([]string, 0, len(configs)),
 		records:          make(map[string]*record, len(configs)+2),
 		timeline:         timeline,
+		gpuDataSource:    gpuDS,
 		frameDataTracker: frameDataTracker,
 		zramInfoTracker:  zramInfoTracker,
 	}
@@ -225,6 +229,7 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) e
 // Record creates the reporting values from the currently stored data points and
 // sets the values into pv.
 func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
+	r.gpuDataSource.Stop()
 	// We want to conduct all of Stop tasks even when some of them fails.  Return
 	// an error when one of them has failed.
 	var stopErr error
