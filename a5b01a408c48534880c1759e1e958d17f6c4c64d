@@ -16,6 +16,195 @@
       "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a7891cd_e5a0b170",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-23T08:54:50Z",
+      "side": 1,
+      "message": "Might be nice to also have comment for the public function here, although we already have one copy in proto file.",
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50fa2d05_8d5e9c0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-23T08:54:50Z",
+      "side": 1,
+      "message": "nit: might be nice to have a comment saying that this is for noticing the caller that the watcher is ready.",
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2601b61_8e3db12b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-23T08:54:50Z",
+      "side": 1,
+      "message": "kind of awkward that we have to handle this by ourselves here. Not sure if it will be better to have a utility function in wpasupplicant or dbus package.",
+      "range": {
+        "startLine": 1706,
+        "startChar": 0,
+        "endLine": 1707,
+        "endChar": 48
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef25a28_ad7dd06f",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/dbus.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-23T08:54:50Z",
+      "side": 1,
+      "message": "Can possibly split the changes into another CL as they are quite independent.",
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a49f6fc6_a990751d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-23T08:54:50Z",
+      "side": 1,
+      "message": "This part of setup is quite similar the to roamToAP0Props. Can we extract the common logic into a function?\n\nAlso, we have a problem in RoamDbus now [1], I guess this test will hit the same thing.\n\n[1] b/159673983 comment3 to comment5",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453fc7d7_2881b878",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-23T08:54:50Z",
+      "side": 1,
+      "message": "maybe \"AP1 is up\" instead?",
+      "range": {
+        "startLine": 130,
+        "startChar": 101,
+        "endLine": 130,
+        "endChar": 112
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbe5bab5_1de513b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-23T08:54:50Z",
+      "side": 1,
+      "message": "nit: maybe just ctx here as ap1Ctx is feeded as input but ymmv",
+      "range": {
+        "startLine": 135,
+        "startChar": 12,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f61bd9a_1d6d9367",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-23T08:54:50Z",
+      "side": 1,
+      "message": "nit: might be nice to note this is for \"ap1 already closed\"",
+      "range": {
+        "startLine": 136,
+        "startChar": 16,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade5ce5d_6e84e14e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-23T08:54:50Z",
+      "side": 1,
+      "message": "maybe state \"in the next connection\"? (also for several other places)",
+      "range": {
+        "startLine": 950,
+        "startChar": 89,
+        "endLine": 950,
+        "endChar": 90
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
