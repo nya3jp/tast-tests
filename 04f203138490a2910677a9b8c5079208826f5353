@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "d4d1a6fc_62332a16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-23T22:18:00Z",
+      "side": 1,
+      "message": "also huge benefit will be using seccomp files and minijail. I saw that you have such files, but looks like you don\u0027t use them",
+      "parentUuid": "4496ac70_a16e55a8",
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c65bcf1_a2882863",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
