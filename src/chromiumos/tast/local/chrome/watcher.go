@@ -19,16 +19,17 @@ const (
 
 // browserWatcher watches the browser process to attempt to identify situations where Chrome is crashing.
 type browserWatcher struct {
-	initialPID int        // first browser PID that was seen; initially -1
-	browserErr error      // error that was detected, if any
-	mutex      sync.Mutex // protects browserErr
-	done       chan bool  // used to tell the watcher's goroutine to exit
-	closed     chan error // used to wait for the goroutine to exit
+	initialPID        int32      // first browser PID that was seen; initially -1
+	sessionManagerPID int32      // the session manager PID that was seen; initially -1
+	browserErr        error      // error that was detected, if any
+	mutex             sync.Mutex // protects browserErr
+	done              chan bool  // used to tell the watcher's goroutine to exit
+	closed            chan error // used to wait for the goroutine to exit
 }
 
 // newBrowserWatcher creates a new browserWatcher and starts it.
 func newBrowserWatcher() *browserWatcher {
-	bw := &browserWatcher{initialPID: -1, done: make(chan bool, 1), closed: make(chan error, 1)}
+	bw := &browserWatcher{initialPID: -1, sessionManagerPID: -1, done: make(chan bool, 1), closed: make(chan error, 1)}
 	go func() {
 		defer func() {
 			bw.closed <- bw.err()
@@ -71,15 +72,23 @@ func (bw *browserWatcher) check() bool {
 		// valid or not. Note that Process.IsRunning() can't be used since it is not
 		// yet implemented for Linux.
 		// TODO(mukai): update gopsutil package and replace this by IsRunning.
-		_, err := process.NewProcess(int32(bw.initialPID))
-		if err != nil {
+		if _, err := process.NewProcess(bw.initialPID); err != nil {
 			bw.mutex.Lock()
 			defer bw.mutex.Unlock()
 			bw.browserErr = errors.Wrapf(err, "browser process %d exited; Chrome probably crashed", bw.initialPID)
 			return false
 		}
-		// Theoretically, there's a chance that the browser process has finished and
-		// another process comes up with the same PID, though it would be rare.
+		// Next, check the existence of the session manager process by creating an
+		// instance of process.Process.
+		if _, err := process.NewProcess(bw.sessionManagerPID); err != nil {
+			bw.mutex.Lock()
+			defer bw.mutex.Unlock()
+			bw.browserErr = errors.Wrapf(err, "session manager process %d exited; session manager probably crashed", bw.sessionManagerPID)
+			return false
+		}
+		// Theoretically, there's a chance that both browser process and session
+		// manager have finished and new processes come up with the same PID, though
+		// it would be rare.
 		return true
 	}
 
@@ -89,6 +98,21 @@ func (bw *browserWatcher) check() bool {
 		return true
 	}
 
-	bw.initialPID = pid
+	proc, err := process.NewProcess(pid)
+	if err != nil {
+		bw.mutex.Lock()
+		defer bw.mutex.Unlock()
+		bw.browserErr = errors.Wrapf(err, "browser process %d exited; Chrome probably crashed", pid)
+		return false
+	}
+	ppid, err := proc.Ppid()
+	if err != nil {
+		bw.mutex.Lock()
+		defer bw.mutex.Unlock()
+		bw.browserErr = errors.Wrap(err, "failed to find the PID of the session manager")
+	}
+	bw.initialPID = int32(pid)
+	bw.sessionManagerPID = ppid
+
 	return true
 }
