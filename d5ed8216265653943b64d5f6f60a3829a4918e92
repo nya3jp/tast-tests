@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f19bc891_c5d673fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-09-23T15:59:21Z",
+      "side": 1,
+      "message": "Also, another note, normally the recommendation is to flip the Verified flag to Verified+1 once you\u0027ve run the stepst listed in the TEST line.",
+      "revId": "d5ed8216265653943b64d5f6f60a3829a4918e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
