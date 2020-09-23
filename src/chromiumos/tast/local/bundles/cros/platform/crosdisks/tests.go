@@ -145,8 +145,8 @@ func testMountNonExistentDevice(ctx context.Context, s *testing.State, cd *crosd
 	}
 }
 
-func testMountBootDeviceRejected(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks) {
-	s.Log("Running testMountBootDeviceRejected")
+func testBootDeviceRejected(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks) {
+	s.Log("Running testBootDeviceRejected")
 
 	ds, err := cd.EnumerateDevices(ctx)
 	if err != nil {
@@ -168,39 +168,8 @@ func testMountBootDeviceRejected(ctx context.Context, s *testing.State, cd *cros
 			break
 		}
 	}
-	if dev == "" {
-		s.Error("Boot device is not found")
-		return
-	}
-
-	// Try to mount it, and verify it fails.
-	w, err := cd.WatchMountCompleted(ctx)
-	if err != nil {
-		s.Error("Failed to start watching MountCompleted: ", err)
-		return
-	}
-	defer w.Close(ctx)
-
-	if err := cd.Mount(ctx, dev, "" /* filesystem type */, nil /* options */); err != nil {
-		s.Error("Failed to call Mount: ", err)
-		return
-	}
-
-	s.Log("Waiting for MountCompleted D-Bus signal")
-	m, err := w.Wait(ctx)
-	if err != nil {
-		s.Error("Failed to see MountCompleted D-Bus signal: ", err)
-		return
-	}
-
-	if m.Status != crosdisks.MountErrorInvalidDevicePath {
-		s.Errorf("Unexpected MountCompleted status code: got %d; want %d", m.Status, crosdisks.MountErrorInvalidDevicePath)
-	}
-	if m.SourcePath != dev {
-		s.Errorf("Unexpected source_path: got %q; want %q", m.SourcePath, dev)
-	}
-	if m.MountPath != "" {
-		s.Errorf("Unexpected mount_path: got %q; want %q", m.MountPath, "")
+	if dev != "" {
+		s.Errorf("Boot device %s was unexpectedly found", dev)
 	}
 }
 
@@ -229,6 +198,6 @@ func RunTests(ctx context.Context, s *testing.State) {
 	testEnumerateDevices(ctx, s, cd)
 	testNonExistentDeviceProp(ctx, s, cd)
 	testMountNonExistentDevice(ctx, s, cd)
-	testMountBootDeviceRejected(ctx, s, cd)
+	testBootDeviceRejected(ctx, s, cd)
 	testUnmountNonExistentDevice(ctx, s, cd)
 }

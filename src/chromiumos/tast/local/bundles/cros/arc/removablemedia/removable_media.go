@@ -14,7 +14,9 @@ import (
 	"path"
 	"path/filepath"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/crosdisks"
@@ -61,7 +63,19 @@ func formatVFAT(ctx context.Context, devLoop string) error {
 	return nil
 }
 
-func mount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop, name string) (string, error) {
+func mount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop, name string) (mountPath string, retErr error) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
+	sysPath := path.Join("/sys/devices/virtual/block", path.Base(devLoop))
+	if err := cd.AddDeviceToAllowlist(ctx, sysPath); err != nil {
+		return "", errors.Wrapf(err, "failed to add device %s to allowlist", sysPath)
+	}
+	defer func() {
+		if err := cd.RemoveDeviceFromAllowlist(cleanupCtx, sysPath); err != nil && retErr != nil {
+			retErr = errors.Wrapf(err, "failed to remove device %s from allowlist", sysPath)
+		}
+	}()
 	w, err := cd.WatchMountCompleted(ctx)
 	if err != nil {
 		return "", err
