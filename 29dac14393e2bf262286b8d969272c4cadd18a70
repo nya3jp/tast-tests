@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92a4269f_fbd4e9c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-23T06:35:19Z",
+      "side": 1,
+      "message": "Thanks for adding this test. LGTM with nits.",
+      "revId": "29dac14393e2bf262286b8d969272c4cadd18a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70d1f193_22ec562b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_var_deps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-23T06:35:19Z",
+      "side": 1,
+      "message": "Looks unused?",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "29dac14393e2bf262286b8d969272c4cadd18a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57aa1b0a_49cca664",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_var_deps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-23T06:35:19Z",
+      "side": 1,
+      "message": "huge nit: Can you align the formatting with the next parameter? Either format should be fine.",
+      "range": {
+        "startLine": 41,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "29dac14393e2bf262286b8d969272c4cadd18a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4751ffe3_af884117",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_var_deps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-23T06:35:19Z",
+      "side": 1,
+      "message": "Can you add here a comment:\n\n // TODO(crbug.com/1106601): Remove -build\u003dfalse once ensuring that Tast CLI has been upgraded for all users.",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "29dac14393e2bf262286b8d969272c4cadd18a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
