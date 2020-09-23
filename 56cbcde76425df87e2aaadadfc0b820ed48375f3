@@ -79,6 +79,30 @@
       "revId": "56cbcde76425df87e2aaadadfc0b820ed48375f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78fedd84_e029ebde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-23T17:12:08Z",
+      "side": 1,
+      "message": "Oh wow, not sure how I missed that. Done.",
+      "parentUuid": "20e9b94b_b901cb80",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 9
+      },
+      "revId": "56cbcde76425df87e2aaadadfc0b820ed48375f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
