@@ -16,6 +16,52 @@
       "revId": "285198c116d99549c04708d75b28f51cfbdabc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77431cc8_879b684d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-23T22:09:46Z",
+      "side": 1,
+      "message": "you can reuse the same slice variable:\n\n```\nregisteredInternalNames, err :\u003d registeredSystemAppsInternalNames(ctx, cr)\nif err !\u003d nil {\n\treturn nil, nil, errors.Wrap(err, \"failed to get registered system apps\")\n}\n\n\nfor i, name :\u003d range registeredInternalNames {\n\tif internalName \u003d\u003d \"Terminal\" \u0026\u0026 !crostiniIsAvailable {\n\t\tregisteredInternalNames \u003d append(registeredInternalNames[:i], registeredInternalNames[i+1:])\n\t\tbreak\n\t}\n}\n```",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "285198c116d99549c04708d75b28f51cfbdabc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "972a7f5f_3f58c92c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-23T22:09:46Z",
+      "side": 1,
+      "message": "This method can fail and it should return error.\n\nI think we can find better way to determine whether crostini is supported on the device.\n\nfor example, check whether \"/dev/kvm\" is present\nor check whether settings UI has crostini switch (maybe it\u0027s preferred way, because there can be complicated logic to figure out whether crostini is supported)\n\nI think this method can be useful for other usecases, so maybe it makes sense to put it into shared package",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 1
+      },
+      "revId": "285198c116d99549c04708d75b28f51cfbdabc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
