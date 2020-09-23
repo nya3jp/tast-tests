@@ -10,7 +10,9 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"net/http"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -76,6 +78,26 @@ func boolToXMLBoolean(v bool) string {
 	return "0"
 }
 
+// xmlIntegerToInt converts numeric strings such as '-1' into integers.
+func xmlIntegerToInt(xmlInt string) (int, error) {
+	if len(xmlInt) == 0 {
+		return 0, errors.New("xmlIntegerToInt got empty xml value")
+	}
+	i, err := strconv.ParseInt(xmlInt, 10, 32)
+	if err != nil {
+		return 0, err
+	}
+	return int(i), nil
+}
+
+// intToXMLInteger converts a Go integer to an XML-RPC integer string.
+func intToXMLInteger(i int) (string, error) {
+	if i > math.MaxInt32 || i < math.MinInt32 {
+		return "", errors.Errorf("intToXMLInteger needs a value that can fit in an int32: got %d, want between %d and %d", i, math.MinInt32, math.MaxInt32)
+	}
+	return strconv.FormatInt(int64(i), 10), nil
+}
+
 // newValue creates an XML-RPC <value>.
 func newValue(in interface{}) (value, error) {
 	// TODO(jeffcarp): Support more data types.
@@ -84,6 +106,12 @@ func newValue(in interface{}) (value, error) {
 		return value{String: v}, nil
 	case bool:
 		return value{Boolean: boolToXMLBoolean(v)}, nil
+	case int:
+		i, err := intToXMLInteger(v)
+		if err != nil {
+			return value{}, err
+		}
+		return value{Int: i}, nil
 	}
 
 	return value{}, errors.Errorf("%q not of supported type", in)
@@ -145,6 +173,12 @@ func (r *response) unpack(out []interface{}) error {
 				return err
 			}
 			*o = v
+		case *int:
+			i, err := xmlIntegerToInt(p.Value.Int)
+			if err != nil {
+				return err
+			}
+			*o = i
 		}
 	}
 
