@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "2961a990_7850e518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-23T08:45:00Z",
+      "side": 1,
+      "message": "This particular test is a very long one (hours for each subtest) and destructive for the storage device. We want to be sure a single subtest failure is not braking the full test, especially given that we are mainly testing benchmarks, not functionality.",
+      "parentUuid": "ef108911_112edc63",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "95f82989825a4933e55508436e9561c8a7b11b17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e793e176_1607a863",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 4
@@ -62,6 +86,30 @@
       "revId": "95f82989825a4933e55508436e9561c8a7b11b17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f38977ee_33f63eb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-23T08:45:00Z",
+      "side": 1,
+      "message": "Yes, I understand that. In a real production environment each parametrized test is going to be run by a dedicated Autotest wrapper (I\u0027m working on a corresponding CL: crrev.com/c/2417734).",
+      "parentUuid": "e793e176_1607a863",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "95f82989825a4933e55508436e9561c8a7b11b17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "7d739fc6_547555c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-23T08:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e89098e7_174da56e",
+      "range": {
+        "startLine": 293,
+        "startChar": 10,
+        "endLine": 293,
+        "endChar": 15
+      },
+      "revId": "95f82989825a4933e55508436e9561c8a7b11b17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0cc4b01_9b84f311",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
         "patchSetId": 4
@@ -108,6 +180,30 @@
       "revId": "95f82989825a4933e55508436e9561c8a7b11b17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0775d5ef_002a8c8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-23T08:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0cc4b01_9b84f311",
+      "range": {
+        "startLine": 99,
+        "startChar": 24,
+        "endLine": 99,
+        "endChar": 26
+      },
+      "revId": "95f82989825a4933e55508436e9561c8a7b11b17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
