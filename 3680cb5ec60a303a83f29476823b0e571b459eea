@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "3a2e936f_68eb5bff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T02:15:39Z",
+      "side": 1,
+      "message": "Using keyboard package is preferred. If we still need to evaluate JS code, what I mean in the previous comment is to define a JS code as a const in top level of the file to eliminate unnecessary indentation to help reading the code.",
+      "parentUuid": "0dd9b309_bc112c21",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "3680cb5ec60a303a83f29476823b0e571b459eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8904e84a_1f8739ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
         "patchSetId": 2
