@@ -45,6 +45,12 @@ func KeyboardGuest(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	bconn, err := vkb.BackgroundConn(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to connect to virtual keyboard background after guest login: ", err)
+	}
+	defer bconn.Close()
+
 	// Use virtual keyboard to type keywords.
 	kconn, err := vkb.UIConn(ctx, cr)
 	if err != nil {
