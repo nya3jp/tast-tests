@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ae821160_4d83951a",
+        "filename": "src/chromiumos/tast/local/chrome/network.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-23T23:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73165868_54d61c64",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "10165ec152214a31fb5106d7178533975d148821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9717535_43da25f0",
         "filename": "src/chromiumos/tast/local/chrome/network.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "10165ec152214a31fb5106d7178533975d148821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24b385ea_e3cb2f27",
+        "filename": "src/chromiumos/tast/local/chrome/network.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-23T23:41:13Z",
+      "side": 1,
+      "message": "You are right. Removed it.",
+      "parentUuid": "e9717535_43da25f0",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "10165ec152214a31fb5106d7178533975d148821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "23503937_d8088259",
+        "filename": "src/chromiumos/tast/local/chrome/network.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-23T23:41:13Z",
+      "side": 1,
+      "message": "-i lo does not work with OUTPUT. Instead I used ! -o lo and it works.",
+      "parentUuid": "91542f79_68c57a17",
+      "range": {
+        "startLine": 32,
+        "startChar": 93,
+        "endLine": 32,
+        "endChar": 104
+      },
+      "revId": "10165ec152214a31fb5106d7178533975d148821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2ae63bf_561eeea0",
         "filename": "src/chromiumos/tast/local/chrome/network.go",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "10165ec152214a31fb5106d7178533975d148821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae11a4d5_e1797159",
+        "filename": "src/chromiumos/tast/local/chrome/network.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-23T23:41:13Z",
+      "side": 1,
+      "message": "I used ! -o lo for both iptables and ip6tables.",
+      "parentUuid": "b2ae63bf_561eeea0",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 114
+      },
+      "revId": "10165ec152214a31fb5106d7178533975d148821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
