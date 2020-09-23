@@ -70,6 +70,9 @@ func formatVFAT(ctx context.Context, devLoop string) error {
 }
 
 func mount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop, name string) (string, error) {
+	sysPath := path.Join("/sys/devices/virtual/block", path.Base(devLoop))
+	cd.AddDeviceToAllowlist(ctx, sysPath)
+	defer cd.RemoveDeviceFromAllowlist(ctx, sysPath)
 	w, err := cd.WatchMountCompleted(ctx)
 	if err != nil {
 		return "", err
