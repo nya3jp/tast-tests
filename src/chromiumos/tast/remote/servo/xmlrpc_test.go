@@ -5,6 +5,7 @@
 package servo
 
 import (
+	"math"
 	"testing"
 )
 
@@ -48,6 +49,62 @@ func TestBoolToXMLBoolean(t *testing.T) {
 		}
 	}
 }
+
+func TestXMLIntegerToInt(t *testing.T) {
+	for _, tc := range []struct {
+		input     string
+		expected  int
+		expectErr bool
+	}{
+		{"1", 1, false},
+		{"0", 0, false},
+		{"-1", -1, false},
+		{"1.5", 0, true},
+		{"3000000000", 0, true}, // too big for an int32
+		{"easter-egg", 0, true},
+		{"true", 0, true},
+	} {
+		actual, err := xmlIntegerToInt(tc.input)
+		if tc.expectErr {
+			if err == nil {
+				t.Errorf("xmlIntegerToInt(%q) unexpectedly succeeded", tc.input)
+			}
+			continue
+		}
+		if err != nil {
+			t.Errorf("xmlBooleanToBool(%q) failed: %v", tc.input, err)
+			continue
+		}
+		if actual != tc.expected {
+			t.Errorf("xmlBooleanToBool(%q) = %v; want %v", tc.input, actual, tc.expected)
+		}
+	}
+}
+
+func TestIntToXMLInteger(t *testing.T) {
+	for _, tc := range []struct {
+		input     int
+		expected  string
+		expectErr bool
+	}{
+		{1, "1", false},
+		{0, "0", false},
+		{-1, "-1", false},
+		{math.MaxInt64, "", true},
+	} {
+		actual, err := intToXMLInteger(tc.input)
+		if tc.expectErr {
+			if err == nil {
+				t.Errorf("intToXMLInteger(%d) unexpectedly succeeded", tc.input)
+				continue
+			}
+		}
+		if actual != tc.expected {
+			t.Errorf("ntToXMLInteger(%v) = %q; want %q", tc.input, actual, tc.expected)
+		}
+	}
+}
+
 func TestNewValue(t *testing.T) {
 	expectedStr := "rutabaga"
 	v, err := newValue(expectedStr)
@@ -70,7 +127,18 @@ func TestNewValue(t *testing.T) {
 		t.Errorf("got %q; want %q", v.Boolean, expectedBoolStr)
 	}
 
-	expectedUnsupported := 1234
+	expectedInt := -1
+	expectedIntStr := "-1"
+	v, err = newValue(expectedInt)
+	if err != nil {
+		t.Errorf("input %v gave unexpected error: %v", expectedInt, err)
+		return
+	}
+	if v.Int != expectedIntStr {
+		t.Errorf("got %q; want %q", v.Int, expectedIntStr)
+	}
+
+	expectedUnsupported := 1234.56
 	v, err = newValue(expectedUnsupported)
 	if err == nil {
 		t.Errorf("input %v did not throw expected error", expectedUnsupported)
