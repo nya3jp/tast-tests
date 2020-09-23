@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e468baa0_5d9902f9",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-23T03:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07168099_2bef6b2b",
+      "range": {
+        "startLine": 161,
+        "startChar": 63,
+        "endLine": 161,
+        "endChar": 66
+      },
+      "revId": "2ac0a9b3ea947c5fe7287786a71398f033c129a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d23bc58c_e79bfbf0",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "2ac0a9b3ea947c5fe7287786a71398f033c129a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c89d36a_f444e4be",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-23T03:12:19Z",
+      "side": 1,
+      "message": "Set the idle threshold back to 20.\n\nIncreasing the timeout is definitely important. If we\u0027re not properly waiting for the CPU to be idle before starting performance tests, then the metrics from those tests are relatively meaningless. With error propagation fixed in crrev/c/2409612, the noise in performance results became explicit test failures, and it looks like a lot of the time devices were not going idle before the timeout. Hopefully a 2 minute timeout is sufficient.\n\n[1] https://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2020-08-27\u0026last_date\u003d2020-09-23\u0026test\u003d%5Etast.arc.VideoDecodeAccelPerf.vp8_1080p_30fps_vm%24\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026reason\u003dFailed+waiting+for+CPU+to+become+idle%3A*\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "parentUuid": "d23bc58c_e79bfbf0",
+      "revId": "2ac0a9b3ea947c5fe7287786a71398f033c129a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
