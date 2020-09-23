@@ -25,7 +25,8 @@ func init() {
 			"printer_Lexmark.ppd",
 			"to_print.pdf",
 		},
-		Attr: []string{"group:mainline"},
+		// TODO(crbug.com/1131304): Mark as informational until the test can be fixed.
+		Attr: []string{"group:mainline", "informational"},
 		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "no_pin",
