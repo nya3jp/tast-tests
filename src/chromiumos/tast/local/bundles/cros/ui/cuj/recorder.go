@@ -85,6 +85,7 @@ type Recorder struct {
 	records map[string]*record
 
 	timeline         *perf.Timeline
+	gpuDataSource    *gpuDataSource
 	frameDataTracker *FrameDataTracker
 	zramInfoTracker  *ZramInfoTracker
 }
@@ -117,10 +118,12 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // the aggregated reports.
 func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricConfig) (*Recorder, error) {
 	memDiff := newMemoryDiffDataSource("RAM.Diff.Absolute")
+	gpuDS := newGPUDataSource(tconn)
 	sources := []perf.TimelineDatasource{
 		load.NewCPUUsageSource("CPU", false),
 		load.NewMemoryUsageSource("RAM.Absolute", "RAM"),
 		newThermalDataSource(ctx),
+		gpuDS,
 		memDiff,
 	}
 	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
@@ -146,6 +149,7 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		names:            make([]string, 0, len(configs)),
 		records:          make(map[string]*record, len(configs)+2),
 		timeline:         timeline,
+		gpuDataSource:    gpuDS,
 		frameDataTracker: frameDataTracker,
 		zramInfoTracker:  zramInfoTracker,
 	}
@@ -188,6 +192,7 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 
 // Close clears states for all trackers.
 func (r *Recorder) Close(ctx context.Context) error {
+	r.gpuDataSource.Stop()
 	return r.frameDataTracker.Close(ctx, r.tconn)
 }
 
