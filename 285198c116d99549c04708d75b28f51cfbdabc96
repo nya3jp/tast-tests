@@ -62,6 +62,30 @@
       "revId": "285198c116d99549c04708d75b28f51cfbdabc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cea2ac2_95fa6e39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-23T22:14:47Z",
+      "side": 1,
+      "message": "or maybe check /dev/kvm is enough",
+      "parentUuid": "972a7f5f_3f58c92c",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 1
+      },
+      "revId": "285198c116d99549c04708d75b28f51cfbdabc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
