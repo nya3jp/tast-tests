@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e320ee81_04191110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-23T01:05:12Z",
+      "side": 1,
+      "message": "The context here is not the one in testing.Poll, so the timeout wouldn\u0027t work.\nCould you use the one passed via the testing.Poll?",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 38
+      },
+      "revId": "13caddebb0f2f46326d09c4ceba56961f9afa689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bf4e718_34309b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-23T01:05:12Z",
+      "side": 1,
+      "message": "how about let callback take ctx and cr, so that you don\u0027t need to duplicate the closure here and above.",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "13caddebb0f2f46326d09c4ceba56961f9afa689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
