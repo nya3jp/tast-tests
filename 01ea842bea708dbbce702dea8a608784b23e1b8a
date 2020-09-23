@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8e1e8b9_db96e0b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-23T00:57:34Z",
+      "side": 1,
+      "message": "LGTM with one more fix request.",
+      "revId": "01ea842bea708dbbce702dea8a608784b23e1b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7db5e918_29c5df33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-23T00:57:34Z",
+      "side": 1,
+      "message": "Could you add:\n\ndefer file.Close()\n\nhere? (Sorry, I overlooked this in the previous iterations).",
+      "revId": "01ea842bea708dbbce702dea8a608784b23e1b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
