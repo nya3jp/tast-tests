@@ -138,6 +138,24 @@
     },
     {
       "key": {
+        "uuid": "6f2d8c7b_5bc87e42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-23T22:20:19Z",
+      "side": 1,
+      "message": "We use seccomp/minijail on devices for ippusb_bridge, just not in the network version of this test.",
+      "parentUuid": "d4d1a6fc_62332a16",
+      "revId": "04f203138490a2910677a9b8c5079208826f5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c65bcf1_a2882863",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 2
