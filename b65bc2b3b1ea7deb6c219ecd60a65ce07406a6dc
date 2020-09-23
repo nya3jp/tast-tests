@@ -19,6 +19,205 @@
     },
     {
       "key": {
+        "uuid": "ce664678_2447754d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "Partial review.",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "496f565d_4a57b42a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "As the function adds a router to the test fixture with the given hostname, we shall change its name to AddTFRouter. Otherwise, it is easily to get confused that it merely update the hostname of the only router of the test fixture.",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325d85dc_4d70adbf",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "is the reverse map of apis for AP removal.",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 71
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "376a664a_d8284517",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "default router",
+      "range": {
+        "startLine": 192,
+        "startChar": 58,
+        "endLine": 192,
+        "endChar": 64
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "988eddc3_d2ebb4b4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "As golang range copies value instead of giving reference, how about:\n\nfor i :\u003d range tf.routers {\n  r :\u003d \u0026tf.routers[i]\n  ...\n  r.host \u003d routerHost\n}",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a703ea_11dfe0f6",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "Same here:\n\nfor i :\u003d range tf.routers {\n  r :\u003d \u0026tf.routers[i]\n  router, err :\u003d NewRouter(...)\n  ...\n  r.object \u003d router\n}",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f01c97f_5ee7f6b9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "Exit the loop if the condition is met.",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5f1fcdb_7102adcd",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "If tf.pcapTarget \u003d\u003d one of routers\u0027 target, we don\u0027t set tf.pcapHost.\n\nCombined the comment above, we may just \n\nreturn nil, errors.New(\"failed to set up pcap: same target for router and pcap: %s\", tf.pcapTarget)",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b2b609_38599806",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "This is valid only when default pcap is not reachable, i.e. line 232 is executed, right? If so, how about having a flag\n\nuseRouterAsPcap :\u003d false\nif tf.pcapTarget \u003d\u003d \"\" {\n  ...\n  tf.pcapHost \u003d tf.routers[0].host\n  useRouterAsPcap \u003d true\n}\n...\nif useRouterAsPcap {\n  tf.pcap \u003d tf.routers[0].object\n} else {\n  tf.pcap, err \u003d NewRouter...\n  ...\n}",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30f55c12_b1f17d8d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "Is multiple routers\u0027 log collection verified?",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d5db8a_1571543f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-23T03:18:22Z",
+      "side": 1,
+      "message": "To change the list content, you shall\n\nfor i :\u003d range tf.routers {\n  r :\u003d \u0026tf.routers[i]\n  ...\n}",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efc56fa3_35b13264",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
