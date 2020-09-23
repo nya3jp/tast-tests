@@ -16,6 +16,23 @@
       "revId": "2034ad2210ee6d671d1ae7a6ed7fcd812fbc4291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c4f5a8e_623a5c31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181214
+      },
+      "writtenOn": "2020-09-23T23:41:13Z",
+      "side": 1,
+      "message": "Chumping to unblock CQ.",
+      "revId": "2034ad2210ee6d671d1ae7a6ed7fcd812fbc4291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
