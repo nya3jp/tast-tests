@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b62609f8_7365fa58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-09-23T15:59:50Z",
+      "side": 1,
+      "message": "This still needs to be updated to chromium:1129507.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "d5ed8216265653943b64d5f6f60a3829a4918e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f19bc891_c5d673fb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
