@@ -156,6 +156,32 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurPress); err != nil {
 			return errors.Wrap(err, "pressing Enter on confirm screen while disabling dev mode")
 		}
+	case TabletDetachableSwitcher:
+		// 1. Wait until the firmware screen appears.
+		// 2. Hold volume_up for 100ms to highlight the previous menu item (Enable Root Verification).
+		// 3. Sleep for [ConfirmScreen] seconds to confirm keypress.
+		// 4. Press power to select Enable Root Verification.
+		// 5. Sleep for [ConfirmScreen] seconds to confirm keypress.
+		// 6. Wait until the TO_NORM screen appears.
+		// 7. Press power to select Confirm Enabling Verified Boot.
+		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+			return err
+		}
+		if err := h.Servo.SetInt(ctx, servo.VolumeUpHold, 100); err != nil {
+			return errors.Wrap(err, "changing menu selection to 'Enable Root Verification'")
+		}
+		if err := testing.Sleep(ctx, h.Config.ConfirmScreen); err != nil {
+			return errors.Wrap(err, "confirming change of menu selection")
+		}
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+			return errors.Wrap(err, "selecting menu option 'Enable Root Verification'")
+		}
+		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+			return err
+		}
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+			return errors.Wrap(err, "selecting menu option 'Confirm Enabling Verified Boot'")
+		}
 	default:
 		return errors.Errorf("unsupported ModeSwitcherType %s for fwScreenToNormalMode", h.Config.ModeSwitcherType)
 	}
@@ -198,6 +224,39 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurPress); err != nil {
 				return err
 			}
+		}
+	case TabletDetachableSwitcher:
+		// 1. Wait [FirmwareScreen] seconds for the INSERT screen to appear.
+		// 2. Hold both VolumeUp and VolumeDown for 100ms to trigger TO_DEV screen.
+		// 3. Wait [ConfirmScreen] seconds to confirm keypress.
+		// 4. Hold VolumeUp for 100ms to change menu selection to 'Confirm enabling developer mode'.
+		// 5. Wait [ConfirmScreen] seconds to confirm keypress.
+		// 6. Press PowerKey to select menu item.
+		// 7. Wait [ConfirmScreen] seconds to confirm keypress.
+		// 8. Wait [FirmwareScreen] seconds to transition screens.
+		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
+		}
+		if err := h.Servo.SetInt(ctx, servo.VolumeUpDownHold, 100); err != nil {
+			return errors.Wrap(err, "triggering TO_DEV screen")
+		}
+		if err := testing.Sleep(ctx, h.Config.ConfirmScreen); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (ConfirmScreen) to confirm triggering TO_DEV screen", h.Config.ConfirmScreen)
+		}
+		if err := h.Servo.SetInt(ctx, servo.VolumeUpHold, 100); err != nil {
+			return errors.Wrap(err, "changing menu selection to 'Confirm enabling developer mode' on TO_DEV screen")
+		}
+		if err := testing.Sleep(ctx, h.Config.ConfirmScreen); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (ConfirmScreen) to confirm changing menu selection on TO_DEV screen", h.Config.ConfirmScreen)
+		}
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+			return errors.Wrap(err, "selecting menu item 'Confirm enabling developer mode' on TO_DEV screen")
+		}
+		if err := testing.Sleep(ctx, h.Config.ConfirmScreen); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (ConfirmScreen) to confirm selecting menu item on TO_DEV screen", h.Config.ConfirmScreen)
+		}
+		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to transition to dev mode", h.Config.FirmwareScreen)
 		}
 	default:
 		return errors.Errorf("booting to dev mode: unsupported ModeSwitcherType: %s", h.Config.ModeSwitcherType)
