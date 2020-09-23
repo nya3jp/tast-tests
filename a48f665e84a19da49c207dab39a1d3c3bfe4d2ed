@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e02b7fe1_4584a034",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-09-23T14:04:49Z",
+      "side": 1,
+      "message": "Hi stevensd@ and mukai@, could you help advice about the proper fix for this? What should a test do if WaitUntilIdle() failed?\n\nNote that I cannot reproduce the failure locally on my hatch, so I am not sure why the devices in the lab are so busy.",
+      "revId": "a48f665e84a19da49c207dab39a1d3c3bfe4d2ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
