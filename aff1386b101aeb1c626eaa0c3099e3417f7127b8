@@ -212,6 +212,30 @@
       "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8db460a_59aba4d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-24T10:39:50Z",
+      "side": 1,
+      "message": "Hmm, interesting. Not sure what those tests are doing.  Best practices on go/arc++tast-tests is to use arc.Booted().\n\nSo I guess it\u0027s theoretically possible, but honestly not realistic. Feel free to send a separate CL, or file a bug. It\u0027s unrelated to this change.",
+      "parentUuid": "4e2f7b32_23fd1535",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
