@@ -16,6 +16,24 @@
       "revId": "891f466bd9a5b82652e07255f99ff6dcf4e8a811",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ed0718_3ceef7e2",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-24T06:56:42Z",
+      "side": 1,
+      "message": "I think the only tests that would run into that problem are tests where the device isn\u0027t actually going idle within a minute. Previously WaitUntilIdle was silently passing when that happens, but crrev/c/2409612 fixed things so that that failure is now explicit. So I don\u0027t think this should introduce any new failure, it just might change what error a test fails with.",
+      "parentUuid": "000f4ba3_f040e8e3",
+      "revId": "891f466bd9a5b82652e07255f99ff6dcf4e8a811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
