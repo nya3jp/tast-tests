@@ -34,6 +34,11 @@ const (
 	HWDecodeVP9_2_4K   = Prefix + "hw_dec_vp9-2_2160_30"
 	HWDecodeVP9_2_4K60 = Prefix + "hw_dec_vp9-2_2160_60"
 
+	HWDecodeAV1      = Prefix + "hw_dec_av1_1080_30"
+	HWDecodeAV1_60   = Prefix + "hw_dec_av1_1080_60"
+	HWDecodeAV1_4K   = Prefix + "hw_dec_av1_2160_30"
+	HWDecodeAV1_4K60 = Prefix + "hw_dec_av1_2160_60"
+
 	// JPEG Decoding
 	HWDecodeJPEG = Prefix + "hw_dec_jpeg"
 
