@@ -242,6 +242,30 @@
     },
     {
       "key": {
+        "uuid": "7d0839fe_415a6211",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-24T07:45:06Z",
+      "side": 1,
+      "message": "Re-open this thread as the problem of transition states is not yet resolve. Let\u0027s wait for arowa@ to know if he has some thoughts on this when back from OOO. (I think he already started some effort on this)",
+      "parentUuid": "7d11e145_0283c53e",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "453fc7d7_2881b878",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 5
