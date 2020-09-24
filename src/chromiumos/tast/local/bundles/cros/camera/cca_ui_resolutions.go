@@ -50,17 +50,20 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-	defer app.Close(ctx)
-	defer (func() {
-		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-			s.Error("Failed with javascript errors: ", err)
+	defer func(ctx context.Context) {
+		if err := app.Close(ctx); err != nil {
+			s.Error("Failed to close app: ", err)
 		}
-	})()
+	}(ctx)
 
 	restartApp := func() {
 		s.Log("Restarts CCA")
 		if err := app.Restart(ctx); err != nil {
-			s.Fatal("Failed to restart CCA: ", err)
+			if cca.IsJSError(err) {
+				s.Error("There are JS errors when running CCA: ", err)
+			} else {
+				s.Fatal("Failed to restart CCA: ", err)
+			}
 		}
 	}
 
