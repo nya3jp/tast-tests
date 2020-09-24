@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efdb1a4d_b74679a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-24T00:01:58Z",
+      "side": 1,
+      "message": "network stuff seems OK to me, as long as Hugo is happy (or at least, not unhappy 😉)",
+      "revId": "6e43d731ee365e9a9a4d8b0097f6fc2d64ed6776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e36900e_d22776c7",
+        "filename": "src/chromiumos/tast/local/network/utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-24T00:01:58Z",
+      "side": 1,
+      "message": "Not sure if this is preferred, or an alternative: use ctxutil.Shorten(), so that your test functions are called with a reduced deadline, and the cleanup can be called with the original longer deadline. (I\u0027ve seen the latter used more often in Tast.)",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 58
+      },
+      "revId": "6e43d731ee365e9a9a4d8b0097f6fc2d64ed6776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
