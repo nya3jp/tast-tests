@@ -33,6 +33,24 @@
       "revId": "4bd361b4022c3b0382111f7b928cc520d5e8a86b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f5f74d_4824ed9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-09-24T02:49:11Z",
+      "side": 1,
+      "message": "Thanks you guys for the helpful suggestion. I think we would like to keep cpu.WaitUntilIdle() for now, as I finally reproduced the failure locally.\n\nThe previous test audio.Microphone will reset the device to login screen, and for some unknown reason the device is super busy at login screen. I think that\u0027s a bug and I will forward it to the performance team. The recorded flame graph at login screen: https://pprof.corp.google.com/user-profile?id\u003d2316611961c95d4387dbb49adeec1786\u0026tab\u003dflame\n\nI guess I failed to reproduce yesterday because I already logged in to the device and running camera.HAL3*  will not reset the device back to the login screen.",
+      "parentUuid": "6ca439ad_ec770c3b",
+      "revId": "4bd361b4022c3b0382111f7b928cc520d5e8a86b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
