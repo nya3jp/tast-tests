@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34ceb82e_8029bcb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-24T03:52:01Z",
+      "side": 1,
+      "message": "nit: maybe you can use b:166730325 so reviewers can know that this is expected to be used in that test porting.",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "9ce1c741c18bd2ad76545a30064ee6c3386bed0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
