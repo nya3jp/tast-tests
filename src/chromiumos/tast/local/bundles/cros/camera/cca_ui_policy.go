@@ -140,7 +140,9 @@ func testBlockVideoCapture(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrom
 
 	app, err := cca.New(ctx, cr, scripts, outDir, tb, isSWA)
 	if err == nil {
-		if err := app.Close(ctx); err != nil {
+		if err := app.Close(ctx); err != nil && !cca.IsJSError(err) {
+			// It is acceptable that there are errors in CCA since the video
+			// capture is blocked. Reports if the error is not JS error.
 			testing.ContextLog(ctx, "Failed to close app: ", err)
 		}
 		return errors.New("failed to block video capture by policy")

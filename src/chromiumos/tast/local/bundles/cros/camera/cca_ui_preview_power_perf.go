@@ -146,8 +146,11 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-
-	defer app.Close(ctx)
+	defer (func() {
+		if err := app.Close(ctx); err != nil {
+			s.Error("Failed when closing app: ", err)
+		}
+	})()
 
 	if err := app.MaximizeWindow(ctx); err != nil {
 		s.Fatal("Failed to maximize CCA: ", err)

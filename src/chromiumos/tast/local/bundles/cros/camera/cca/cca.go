@@ -178,6 +178,13 @@ type App struct {
 	appWindow   *testutil.AppWindow
 }
 
+var errJS = errors.New("JS errors in CCA")
+
+// IsJSError returns true if the given error is wrapped as an errJS.
+func IsJSError(err error) bool {
+	return errors.Is(err, errJS)
+}
+
 // Resolution represents dimension of video or photo.
 type Resolution struct {
 	Width  int `json:"width"`
@@ -270,8 +277,8 @@ func InstanceExists(ctx context.Context, cr *chrome.Chrome, isSWA bool) (bool, e
 	return cr.IsTargetAvailable(ctx, checkPrefix)
 }
 
-// CheckJSError checks javascript error emitted by CCA error callback.
-func (a *App) CheckJSError(ctx context.Context, logDir string) error {
+// checkJSError checks javascript error emitted by CCA error callback.
+func (a *App) checkJSError(ctx context.Context) error {
 	if a.appWindow == nil {
 		// It might be closed already. Do nothing.
 		return nil
@@ -295,7 +302,7 @@ func (a *App) CheckJSError(ctx context.Context, logDir string) error {
 
 	writeLogFile := func(lv testutil.ErrorLevel, errs []testutil.ErrorInfo) error {
 		filename := fmt.Sprintf("CCA_JS_%v.log", lv)
-		logPath := filepath.Join(logDir, filename)
+		logPath := filepath.Join(a.outDir, filename)
 		f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 		if err != nil {
 			return err
@@ -316,7 +323,7 @@ func (a *App) CheckJSError(ctx context.Context, logDir string) error {
 		return err
 	}
 	if len(jsErrors) > 0 {
-		return errors.Errorf("there are %d errors, first error: %v: %v",
+		return errors.Wrapf(errJS, "there are %d JS errors, first error: %v: %v",
 			len(jsErrors), jsErrors[0].Level, jsErrors[0].ErrorType)
 	}
 	return nil
@@ -355,6 +362,14 @@ func (a *App) Close(ctx context.Context) error {
 	}
 	a.conn = nil
 	testing.ContextLog(ctx, "CCA closed")
+
+	if err := a.checkJSError(ctx); err != nil {
+		if firstErr == nil {
+			firstErr = err
+		} else {
+			testing.ContextLog(ctx, "There are JS errors when running CCA: ", err)
+		}
+	}
 
 	a.appWindow.Release(ctx)
 	a.appWindow = nil

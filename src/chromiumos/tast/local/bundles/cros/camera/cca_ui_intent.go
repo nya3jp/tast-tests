@@ -218,7 +218,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	} {
 		s.Run(ctx, tc.Name, func(ctx context.Context, s *testing.State) {
 			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb, isSWA); err != nil {
-				s.Error("Failed with error: ", err)
+				s.Error("Failed when checking intent behavior: ", err)
 			}
 		})
 	}
@@ -252,32 +252,27 @@ func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options in
 	return cca.Init(ctx, cr, scripts, outDir, launchByIntent, tb, isSWA)
 }
 
-func closeCCA(ctx context.Context, app *cca.App, outDir string) error {
-	if err := app.CheckJSError(ctx, outDir); err != nil {
-		return errors.Wrap(err, "failed with javascript errors")
-	}
-	if err := app.Close(ctx); err != nil {
-		return err
-	}
-	return nil
-}
-
 func closeCCAAndTestApp(ctx context.Context, a *arc.ARC, app *cca.App, outDir string) error {
-	err := closeCCA(ctx, app, outDir)
-	if err != nil {
-		testing.ContextLog(ctx, "Failed to close CCA: ", err)
-	}
+	err := app.Close(ctx)
 	a.Command(ctx, "am", "force-stop", testAppPkg).Run(testexec.DumpLogOnError)
 	return err
 }
 
 // checkIntentBehavior checks basic control flow for handling intent with different options.
-func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiDevice *ui.Device, options intentOptions, scripts []string, outDir string, tb *testutil.TestBridge, isSWA bool) error {
+func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiDevice *ui.Device, options intentOptions, scripts []string, outDir string, tb *testutil.TestBridge, isSWA bool) (retErr error) {
 	app, err := launchIntent(ctx, cr, a, options, scripts, outDir, tb, isSWA)
 	if err != nil {
 		return err
 	}
-	defer closeCCAAndTestApp(ctx, a, app, outDir)
+	defer (func() {
+		if err := closeCCAAndTestApp(ctx, a, app, outDir); err != nil {
+			if retErr != nil {
+				testing.ContextLog(ctx, "Failed when closing CCA and test app: ", err)
+			} else {
+				retErr = err
+			}
+		}
+	})()
 
 	if err := checkUI(ctx, app, options); err != nil {
 		return err
@@ -287,8 +282,8 @@ func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiD
 	}
 
 	if options.TestBehavior.ShouldCloseDirectly {
-		if err := closeCCA(ctx, app, outDir); err != nil {
-			return err
+		if err := app.Close(ctx); err != nil {
+			return errors.Wrap(err, "failed to close app")
 		}
 	} else {
 		startTime, err := capture(ctx, app, options.Mode)
@@ -443,13 +438,21 @@ func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, shouldClose,
 }
 
 // checkInstancesCoexistence checks number of CCA windows showing in multiple launch request scenario.
-func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, scripts []string, outDir string, tb *testutil.TestBridge, isSWA bool) error {
+func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, scripts []string, outDir string, tb *testutil.TestBridge, isSWA bool) (retErr error) {
 	// Launch regular CCA.
 	regularApp, err := cca.New(ctx, cr, scripts, outDir, tb, isSWA)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA")
 	}
-	defer closeCCAAndTestApp(ctx, a, regularApp, outDir)
+	defer (func() {
+		if err := closeCCAAndTestApp(ctx, a, regularApp, outDir); err != nil {
+			if retErr != nil {
+				testing.ContextLog(ctx, "Failed when closing CCA and test app: ", err)
+			} else {
+				retErr = err
+			}
+		}
+	})()
 
 	// Switch to video mode to check if the mode remains the same after resuming.
 	if err := regularApp.SwitchMode(ctx, cca.Video); err != nil {
@@ -466,7 +469,6 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA by intent")
 	}
-	defer closeCCAAndTestApp(ctx, a, intentApp, outDir)
 
 	// Check if the regular CCA is suspeneded.
 	if err := regularApp.WaitForState(ctx, "suspend", true); err != nil {
@@ -474,7 +476,7 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 	}
 
 	// Close intent CCA instance.
-	if err := closeCCA(ctx, intentApp, outDir); err != nil {
+	if err := intentApp.Close(ctx); err != nil {
 		return errors.Wrap(err, "failed to close intent instance")
 	}
 

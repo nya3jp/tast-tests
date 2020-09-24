@@ -54,13 +54,12 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 	if err != nil {
 		return errors.Wrap(err, "failed to open CCA")
 	}
-	defer app.Close(ctx)
 	defer (func() {
-		if err := app.CheckJSError(ctx, options.OutputDir); err != nil {
+		if err := app.Close(ctx); err != nil {
 			if retErr != nil {
-				testing.ContextLog(ctx, "Failed with javascript errors: ", err)
+				testing.ContextLog(ctx, "Failed when closing CCA: ", err)
 			} else {
-				retErr = errors.Wrap(err, "failed with javascript errors")
+				retErr = err
 			}
 		}
 	})()

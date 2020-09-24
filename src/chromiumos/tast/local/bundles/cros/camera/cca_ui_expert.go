@@ -39,10 +39,9 @@ func CCAUIExpert(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-	defer app.Close(ctx)
 	defer (func() {
-		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-			s.Error("Failed with javascript errors: ", err)
+		if err := app.Close(ctx); err != nil {
+			s.Error("Failed when closing app: ", err)
 		}
 	})()
 
