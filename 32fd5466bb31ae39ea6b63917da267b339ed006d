@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a6716c2c_e85e6f44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-24T08:16:44Z",
+      "side": 1,
+      "message": "Ping",
+      "parentUuid": "505558e6_5c17d378",
+      "revId": "32fd5466bb31ae39ea6b63917da267b339ed006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5da7076_93f7678a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
         "patchSetId": 2
