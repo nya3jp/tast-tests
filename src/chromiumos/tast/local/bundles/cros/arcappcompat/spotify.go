@@ -24,14 +24,14 @@ var clamshellTestsForSpotify = []testutil.TestCase{
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
-	{Name: "Clamshell: Reopen app", Fn: reOpenWindowForSpotifyAndSignOutOfApp},
+	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 // TouchviewTests are placed here.
 var touchviewTestsForSpotify = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForSpotify},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: reOpenWindowForSpotifyAndSignOutOfApp},
+	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
 
 func init() {
@@ -82,19 +82,27 @@ func Spotify(ctx context.Context, s *testing.State) {
 // verify Spotify reached main activity page of the app.
 func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		loginText         = "LOG IN"
-		neverButtonID     = "com.google.android.gms:id/credential_save_reject"
-		noThanksText      = "NO THANKS"
-		homeIconClassName = "android.widget.TextView"
-		homeIconText      = "Home"
+		enterEmailAddressText = "Email or username"
+		loginText             = "Log in"
+		loginBtnText          = "LOG IN"
+		notNowID              = "android:id/autofill_save_no"
+		neverButtonID         = "com.google.android.gms:id/credential_save_reject"
+		passwordText          = "Password"
+		homeIconClassName     = "android.widget.TextView"
+		homeIconText          = "Home"
 	)
 
 	// Click on login button.
 	clickOnLoginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(loginText))
 	if err := clickOnLoginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("clickOnLoginButton doesn't exist: ", err)
+		s.Fatal("clickOnLoginButton doesn't exist: ", err)
 	} else if err := clickOnLoginButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnLoginButton: ", err)
+	}
+
+	enterEmailAddress := d.Object(ui.Text(enterEmailAddressText))
+	if err := enterEmailAddress.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("EnterEmailAddress does not exist: ", err)
 	}
 
 	// Press tab twice to click on enter email.
@@ -122,6 +130,11 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 	s.Log("Entered enterEmail")
 
+	enterPassword := d.Object(ui.Text(passwordText))
+	if err := enterPassword.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("EnterPassword does not exist: ", err)
+	}
+
 	// Press tab to click on enter password.
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_TAB: ", err)
@@ -136,7 +149,7 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 	s.Log("Entered password")
 
 	// Click on Login button.
-	loginButton := d.Object(ui.Text(loginText))
+	loginButton := d.Object(ui.Text(loginBtnText))
 	if err := loginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("Login Button doesn't exist: ", err)
 	} else if err := loginButton.Click(ctx); err != nil {
@@ -152,7 +165,7 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 
 	// Click on no thanks button.
-	clickOnNoThanksButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(noThanksText))
+	clickOnNoThanksButton := d.Object(ui.ID(notNowID))
 	if err := clickOnNoThanksButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("clickOnNoThanksButton doesn't exist: ", err)
 	} else if err := clickOnNoThanksButton.Click(ctx); err != nil {
@@ -179,36 +192,10 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 	homeIcon := d.Object(ui.ClassName(homeIconClassName), ui.Text(homeIconText))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("home icon doesn't exist: ", err)
+	} else {
+		signOutOfSpotify(ctx, s, tconn, a, d, appPkgName, appActivity)
 	}
 
-}
-
-// reOpenWindowForSpotifyAndSignOutOfApp Test "close and relaunch the app", verifies app launch successfully without crash or ANR and signout of an app.
-func reOpenWindowForSpotifyAndSignOutOfApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-
-	// Launch the app.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
-	if err != nil {
-		s.Fatal("Failed to create new app activity: ", err)
-	}
-	s.Log("Created new app activity")
-
-	defer act.Close()
-
-	s.Log("Stop the current activity of the app")
-	if err := act.Stop(ctx, tconn); err != nil {
-		s.Fatal("Failed to stop app: ", err)
-	}
-
-	testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-
-	// ReLaunch the activity.
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed start app: ", err)
-	}
-	s.Log("App relaunched successfully")
-
-	signOutOfSpotify(ctx, s, tconn, a, d, appPkgName, appActivity)
 }
 
 // signOutOfSpotify verifies app is signed out.
