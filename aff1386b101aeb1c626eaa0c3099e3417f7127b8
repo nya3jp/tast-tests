@@ -164,6 +164,30 @@
       "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "306b3265_4ff55f99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-24T10:03:45Z",
+      "side": 1,
+      "message": "That won\u0027t happen. arc.Booted() or a derivative is always a precondition for ARC tests. That\u0027s what is responsible for initializing ARC on the device, and it\u0027s what creates the arc.ARC interface which the tast tests use to interact with ARC.",
+      "parentUuid": "7bb86214_a3f1ec84",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
