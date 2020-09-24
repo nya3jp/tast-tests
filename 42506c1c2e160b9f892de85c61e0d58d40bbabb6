@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "601b3e49_db5393a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-24T02:48:40Z",
+      "side": 1,
+      "message": "LGTM with a minor fix",
+      "revId": "42506c1c2e160b9f892de85c61e0d58d40bbabb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de57603a_36e09c7d",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-24T02:48:40Z",
+      "side": 1,
+      "message": "BootedWithDisableSyncFlags? (remove \"Pre\")",
+      "range": {
+        "startLine": 64,
+        "startChar": 48,
+        "endLine": 64,
+        "endChar": 77
+      },
+      "revId": "42506c1c2e160b9f892de85c61e0d58d40bbabb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
