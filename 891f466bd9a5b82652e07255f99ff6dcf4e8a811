@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "000f4ba3_f040e8e3",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-24T04:06:27Z",
+      "side": 1,
+      "message": "I wonder if you\u0027ll also need to change the Timeout of the tests calling this function. e.g. arc.TouchPerf has timeout 2 minutes and then we\u0027ll not really have 120 seconds here. Also, IIRC, default timeout for local tests is also 2 minutes.\n\nMaybe they can be changed later in another CL.",
+      "revId": "891f466bd9a5b82652e07255f99ff6dcf4e8a811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
