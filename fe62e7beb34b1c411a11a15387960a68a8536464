@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00fc123e_4d475133",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-24T00:03:07Z",
+      "side": 1,
+      "message": "LGTM with 1 fix",
+      "revId": "fe62e7beb34b1c411a11a15387960a68a8536464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db32feb0_79d4bed6",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-24T00:03:07Z",
+      "side": 1,
+      "message": "The defer usually goes after the error check to avoid a nil reference.",
+      "revId": "fe62e7beb34b1c411a11a15387960a68a8536464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
