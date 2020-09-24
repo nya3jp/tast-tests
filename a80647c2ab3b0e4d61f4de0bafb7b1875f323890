@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "240dca2e_7df9e352",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-09-24T18:33:55Z",
+      "side": 1,
+      "message": "thanks for the review.\n",
+      "revId": "a80647c2ab3b0e4d61f4de0bafb7b1875f323890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b4d9b99_4048215d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 1
@@ -50,6 +67,24 @@
       "revId": "a80647c2ab3b0e4d61f4de0bafb7b1875f323890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66a793a_78d4bd6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-09-24T18:33:55Z",
+      "side": 1,
+      "message": "No, L187 just explains what L188-190 does actually.",
+      "parentUuid": "6b4d9b99_4048215d",
+      "revId": "a80647c2ab3b0e4d61f4de0bafb7b1875f323890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +108,30 @@
       "revId": "a80647c2ab3b0e4d61f4de0bafb7b1875f323890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8efb4058_9d0e268e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-09-24T18:33:55Z",
+      "side": 1,
+      "message": "It appears in the middle of the fingerprint string.",
+      "parentUuid": "8e3e734d_77a64a7c",
+      "range": {
+        "startLine": 188,
+        "startChar": 40,
+        "endLine": 188,
+        "endChar": 75
+      },
+      "revId": "a80647c2ab3b0e4d61f4de0bafb7b1875f323890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
