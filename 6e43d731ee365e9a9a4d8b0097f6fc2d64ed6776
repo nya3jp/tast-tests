@@ -39,6 +39,30 @@
       "revId": "6e43d731ee365e9a9a4d8b0097f6fc2d64ed6776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acaef37c_346ab06e",
+        "filename": "src/chromiumos/tast/local/network/utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-24T00:22:37Z",
+      "side": 1,
+      "message": "Done. Changed the implementation to follow common practice. Can you please review it again?",
+      "parentUuid": "6e36900e_d22776c7",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 58
+      },
+      "revId": "6e43d731ee365e9a9a4d8b0097f6fc2d64ed6776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
