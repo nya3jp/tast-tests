@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "296b7c30_7fa4118c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1668,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T08:26:13Z",
+      "side": 1,
+      "message": "Linter said that it should be of the form \"EAPAuthSkipped ...\", that is, \"EAPAuthSkipped, \" is invalid.",
+      "parentUuid": "dec5a474_0644e818",
+      "range": {
+        "startLine": 1668,
+        "startChar": 17,
+        "endLine": 1668,
+        "endChar": 89
+      },
+      "revId": "ab456d6f9d1f03b41d582369f0b4a815ebddd37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "224c4807_604269b5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 7
@@ -79,6 +103,48 @@
       "revId": "ab456d6f9d1f03b41d582369f0b4a815ebddd37a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67491025_ea1abf02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T08:26:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9d4454f_3f47b37d",
+      "revId": "ab456d6f9d1f03b41d582369f0b4a815ebddd37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42fcbc9a_046c702e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T08:26:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "224c4807_604269b5",
+      "range": {
+        "startLine": 69,
+        "startChar": 33,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "ab456d6f9d1f03b41d582369f0b4a815ebddd37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
