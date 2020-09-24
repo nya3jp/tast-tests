@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "d3ee6df2_650cebae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2020-09-24T18:29:11Z",
+      "side": 1,
+      "message": "I think that usually responsive Chrome after session_manager restart is enough to assume that session_manager is working. And I think that this covers the case above.",
+      "parentUuid": "3fb9fb15_584e7e39",
+      "revId": "6c2ae96dfe040d6a575c0f6eeed326ced0323a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c35acfaa_4c49c339",
         "filename": "src/chromiumos/tast/local/chrome/watcher.go",
         "patchSetId": 1
