@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf2b931d_46636dd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-24T06:11:39Z",
+      "side": 1,
+      "message": "Thanks for the improvement! I have only a few minor suggestions.\n",
+      "revId": "c0c8470916cf1324517dd46184f8609e5bb4b614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba34cb4e_8d13a320",
+        "filename": "src/chromiumos/tast/local/chrome/watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-24T06:11:39Z",
+      "side": 1,
+      "message": "If we assign initialPID and sessionManagerPID atomically we don\u0027t need check (see my next comment).",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "c0c8470916cf1324517dd46184f8609e5bb4b614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77987a6_3fa84313",
+        "filename": "src/chromiumos/tast/local/chrome/watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-24T06:11:39Z",
+      "side": 1,
+      "message": "Can you move this assignment to the bottom of this function (near sessionManagerPID assignment)? It would guarantee a slightly better invariant, initialPID !\u003d -1 \u003c\u003d\u003e sessionManagerPID !\u003d -1.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "c0c8470916cf1324517dd46184f8609e5bb4b614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27d39802_9a64e5d6",
+        "filename": "src/chromiumos/tast/local/chrome/watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-24T06:11:39Z",
+      "side": 1,
+      "message": "exited?",
+      "range": {
+        "startLine": 113,
+        "startChar": 56,
+        "endLine": 113,
+        "endChar": 63
+      },
+      "revId": "c0c8470916cf1324517dd46184f8609e5bb4b614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
