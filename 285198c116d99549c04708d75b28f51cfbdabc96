@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "b007edde_3ce0f19a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-24T04:21:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77431cc8_879b684d",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "285198c116d99549c04708d75b28f51cfbdabc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "972a7f5f_3f58c92c",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
         "patchSetId": 1
@@ -86,6 +110,30 @@
       "revId": "285198c116d99549c04708d75b28f51cfbdabc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe9eae5_4a55f5cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2020-09-24T04:21:42Z",
+      "side": 1,
+      "message": "Done.\n\nUnfortunately, /dev/kvm is not sufficient. Checking Settings UI seems more appropriate. \n\nFYI On the chrome side, CrostiniFeatures::IsUIAllowed returns whether UIs should be shown for crostini. \n\n---\n\nI don\u0027t think this should be in shared package though.\n\nCrostini support is determined by: hardware support, kernel version, login type, policy, etc. Querying OS Settings implies a dependency on waitForSystemWebAppInstall (might take ~30 seconds depending on hardware performance).\n\nTests relying on crostini support probably would specify Crostini as a pre-condition, instead of using specific if logics in the test code. And they probably want to test for more-specific conditions (e.g. if the device lack hardware support, or if a policy disables crostini).\n\nWe use this if logic here because we need to know if crostini is available to decide the expectation, since system apps are installed on all scenarios (but some might be disabled or hidden).",
+      "parentUuid": "4cea2ac2_95fa6e39",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 1
+      },
+      "revId": "285198c116d99549c04708d75b28f51cfbdabc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
