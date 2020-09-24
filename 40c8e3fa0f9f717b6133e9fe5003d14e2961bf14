@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7d21073_e2f949b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-24T13:28:35Z",
+      "side": 1,
+      "message": "Sorry, I overlooked a few issues in the previous turn. Could you take a look at my inline comments?",
+      "revId": "40c8e3fa0f9f717b6133e9fe5003d14e2961bf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c700e36_0adea136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-24T13:28:35Z",
+      "side": 1,
+      "message": "style: looks redundant.\n\nif err :\u003d WaitForBlackPixelCount(ctx, cr, int(...), screenshot.GrabScreenshot); err !\u003d nil {\n  ...\n\nditto for below.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "40c8e3fa0f9f717b6133e9fe5003d14e2961bf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74e6570c_722015f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-24T13:28:35Z",
+      "side": 1,
+      "message": "redundant, too.",
+      "revId": "40c8e3fa0f9f717b6133e9fe5003d14e2961bf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a639b09a_f5a5d8e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-24T13:28:35Z",
+      "side": 1,
+      "message": "nit: initial",
+      "range": {
+        "startLine": 243,
+        "startChar": 46,
+        "endLine": 243,
+        "endChar": 52
+      },
+      "revId": "40c8e3fa0f9f717b6133e9fe5003d14e2961bf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f3da1e7_36421cf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen/screen.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-24T13:28:35Z",
+      "side": 1,
+      "message": "Could you remove? testing.PollBreak does not make sense outside of the testing.Poll.",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "40c8e3fa0f9f717b6133e9fe5003d14e2961bf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e73b7cdc_66cd7351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen/screen.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-24T13:28:35Z",
+      "side": 1,
+      "message": "this will cause crash, if len(stats) is even.\nCould you check it before the loop?\n\nif len(stats) % 2 !\u003d 1 {\n  return nil, errors.Errorf(...)\n}",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 36
+      },
+      "revId": "40c8e3fa0f9f717b6133e9fe5003d14e2961bf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
