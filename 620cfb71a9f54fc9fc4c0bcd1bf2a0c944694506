@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa9f4d28_440c6f2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-24T23:14:21Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "620cfb71a9f54fc9fc4c0bcd1bf2a0c944694506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecd1d829_1dbe963b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
         "patchSetId": 3
@@ -16,6 +33,24 @@
       "revId": "620cfb71a9f54fc9fc4c0bcd1bf2a0c944694506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d00d493_ba1d11d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-24T23:14:21Z",
+      "side": 1,
+      "message": "Oops. Thanks for finding and fixing.",
+      "parentUuid": "ecd1d829_1dbe963b",
+      "revId": "620cfb71a9f54fc9fc4c0bcd1bf2a0c944694506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
