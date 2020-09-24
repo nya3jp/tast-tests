@@ -290,6 +290,42 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60},
 			Pre:               pre.ChromeVideo(),
 		}, {
+			Name: "av1_1080p_30fps_hw",
+			Val: playbackPerfParams{
+				fileName:    "1080p_30fps_300frames.av1.mp4",
+				decoderType: playback.Hardware,
+			},
+			ExtraData:         []string{"1080p_30fps_300frames.av1.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			Pre:               pre.ChromeVideoWithHWAV1Decoding(),
+		}, {
+			Name: "av1_1080p_60fps_hw",
+			Val: playbackPerfParams{
+				fileName:    "1080p_60fps_600frames.av1.mp4",
+				decoderType: playback.Hardware,
+			},
+			ExtraData:         []string{"1080p_60fps_600frames.av1.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_60},
+			Pre:               pre.ChromeVideoWithHWAV1Decoding(),
+		}, {
+			Name: "av1_2160p_30fps_hw",
+			Val: playbackPerfParams{
+				fileName:    "2160p_30fps_300frames.av1.mp4",
+				decoderType: playback.Hardware,
+			},
+			ExtraData:         []string{"2160p_30fps_300frames.av1.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_4K},
+			Pre:               pre.ChromeVideoWithHWAV1Decoding(),
+		}, {
+			Name: "av1_2160p_60fps_hw",
+			Val: playbackPerfParams{
+				fileName:    "2160p_60fps_600frames.av1.mp4",
+				decoderType: playback.Hardware,
+			},
+			ExtraData:         []string{"2160p_60fps_600frames.av1.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_4K60},
+			Pre:               pre.ChromeVideoWithHWAV1Decoding(),
+		}, {
 			Name: "h264_480p_30fps_sw",
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.h264.mp4",
@@ -434,6 +470,22 @@ func init() {
 				decoderType: playback.Software,
 			},
 			ExtraData: []string{"1080p_60fps_600frames.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
+		}, {
+			Name: "av1_2160p_30fps_sw",
+			Val: playbackPerfParams{
+				fileName:    "2160p_30fps_300frames.av1.mp4",
+				decoderType: playback.Software,
+			},
+			ExtraData: []string{"2160p_30fps_300frames.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
+		}, {
+			Name: "av1_2160p_60fps_sw",
+			Val: playbackPerfParams{
+				fileName:    "2160p_60fps_600frames.av1.mp4",
+				decoderType: playback.Software,
+			},
+			ExtraData: []string{"2160p_60fps_600frames.av1.mp4"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "av1_480p_30fps_sw_gav1",
