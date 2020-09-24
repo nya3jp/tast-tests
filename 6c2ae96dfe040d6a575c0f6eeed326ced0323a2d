@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "012cb2bf_d22c7692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-24T20:14:28Z",
+      "side": 1,
+      "message": "Thanks, that would be a slightly different issue indeed.\n\nI guess, maybe it is worthwhile if chrome waits for session manager\u0027s state change (https://source.corp.google.com/chromeos_public/src/platform2/login_manager/session_manager_impl.cc;l\u003d700 which happens after it emits the start-user-session to Upstart).  That would be something like crrev.com/c/2429805.\n\nHowever, strictly that does not necessarily mean that Upstart already completes starting shill-start-user-session (or other related jobs).\nAlso personally I think it\u0027s better to avoid dependency on shill service from Chrome, as they\u0027re a different subsystem.  Maybe it\u0027s better to have a waiting mechanism on the component which wants to use, as your CL does.",
+      "parentUuid": "e1e5bfe5_254e05fc",
+      "revId": "6c2ae96dfe040d6a575c0f6eeed326ced0323a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c35acfaa_4c49c339",
         "filename": "src/chromiumos/tast/local/chrome/watcher.go",
         "patchSetId": 1
