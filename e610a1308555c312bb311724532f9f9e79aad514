@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70a4d682_023d1fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-24T02:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "754024d0_e99ed321",
+      "range": {
+        "startLine": 229,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 15
+      },
+      "revId": "e610a1308555c312bb311724532f9f9e79aad514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb8fa086_dd4027ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 10
@@ -39,6 +63,24 @@
       "revId": "e610a1308555c312bb311724532f9f9e79aad514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa672a4_c2ac89be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-24T02:00:17Z",
+      "side": 1,
+      "message": "Yeah, Close should be fine. I think I wrote this before that method was added.",
+      "parentUuid": "cb8fa086_dd4027ee",
+      "revId": "e610a1308555c312bb311724532f9f9e79aad514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
