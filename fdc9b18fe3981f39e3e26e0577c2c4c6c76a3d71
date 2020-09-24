@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "7c092987_5fd332a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-09-24T09:59:49Z",
+      "side": 1,
+      "message": "nice!",
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31d38c9e_e7cac37e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
         "patchSetId": 3
@@ -35,6 +52,76 @@
         "startChar": 52,
         "endLine": 23,
         "endChar": 73
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af063ff0_e2ece799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-09-24T09:59:49Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "31d38c9e_e7cac37e",
+      "range": {
+        "startLine": 23,
+        "startChar": 52,
+        "endLine": 23,
+        "endChar": 73
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5f3e1a2_3b1083d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-09-24T09:59:49Z",
+      "side": 1,
+      "message": "you could use EnableFeatures instead. Btw, why do you need the autosubmit for the test? It\u0027s also enabled_by_default now.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608485bc_a56bfece",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-09-24T09:59:49Z",
+      "side": 1,
+      "message": "mind adding a comment on the Chromium side to warn about renaming the class?",
+      "range": {
+        "startLine": 87,
+        "startChar": 54,
+        "endLine": 87,
+        "endChar": 66
       },
       "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
