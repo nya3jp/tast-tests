@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "efef3c59_07dc7823",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-24T08:34:58Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "873db52db08fde3ec582ec68924c859fa23033e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "816cda51_52f1b15c",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
         "patchSetId": 1
