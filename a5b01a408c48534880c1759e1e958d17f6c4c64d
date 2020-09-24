@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "27cf66ca_d587b961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T03:22:02Z",
+      "side": 1,
+      "message": "Nice catch.",
+      "parentUuid": "8a7891cd_e5a0b170",
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50fa2d05_8d5e9c0d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 5
@@ -50,6 +68,24 @@
       "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad0671fa_2d9f8957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T03:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50fa2d05_8d5e9c0d",
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "aba7c38d_e9373689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T03:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2601b61_8e3db12b",
+      "range": {
+        "startLine": 1706,
+        "startChar": 0,
+        "endLine": 1707,
+        "endChar": 48
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bef25a28_ad7dd06f",
         "filename": "src/chromiumos/tast/local/wpasupplicant/dbus.go",
         "patchSetId": 5
@@ -93,6 +153,24 @@
     },
     {
       "key": {
+        "uuid": "646e98d0_e12d194d",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/dbus.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T03:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bef25a28_ad7dd06f",
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a49f6fc6_a990751d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 5
@@ -104,6 +182,30 @@
       "writtenOn": "2020-09-23T08:54:50Z",
       "side": 1,
       "message": "This part of setup is quite similar the to roamToAP0Props. Can we extract the common logic into a function?\n\nAlso, we have a problem in RoamDbus now [1], I guess this test will hit the same thing.\n\n[1] b/159673983 comment3 to comment5",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ebf06a2_1ac59172",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T03:22:02Z",
+      "side": 1,
+      "message": "\u003e This part of setup is quite similar the to roamToAP0Props. Can we extract the common logic into a function?\nDone",
+      "parentUuid": "a49f6fc6_a990751d",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -139,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "7232ce3a_b1d6b03f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T03:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "453fc7d7_2881b878",
+      "range": {
+        "startLine": 130,
+        "startChar": 101,
+        "endLine": 130,
+        "endChar": 112
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbe5bab5_1de513b9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 5
@@ -159,6 +285,30 @@
       "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba53811_af440757",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T03:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbe5bab5_1de513b9",
+      "range": {
+        "startLine": 135,
+        "startChar": 12,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -185,6 +335,30 @@
     },
     {
       "key": {
+        "uuid": "4890c84e_4e4ea59b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T03:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f61bd9a_1d6d9367",
+      "range": {
+        "startLine": 136,
+        "startChar": 16,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ade5ce5d_6e84e14e",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 5
@@ -205,6 +379,30 @@
       "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9491601_2734ed8b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-09-24T03:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ade5ce5d_6e84e14e",
+      "range": {
+        "startLine": 950,
+        "startChar": 89,
+        "endLine": 950,
+        "endChar": 90
+      },
+      "revId": "a5b01a408c48534880c1759e1e958d17f6c4c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
