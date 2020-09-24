@@ -9,6 +9,7 @@ group("all") {
     "ArcAppValidityTest:ArcAppValidityTest",
     "ArcAudioTest:ARCAudioTest",
     "ArcCameraFpsTest:ArcCameraFpsTest",
+    "ArcChromeIntentPickerTest:ArcChromeIntentPickerTest",
     "ArcClipboardTest:ArcClipboardTest",
     "ArcConfigChangesTest:ArcConfigChangesTest",
     "ArcChromeSharesheetTest:ArcChromeSharesheetTest",
