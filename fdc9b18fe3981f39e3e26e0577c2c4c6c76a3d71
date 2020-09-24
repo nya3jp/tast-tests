@@ -146,6 +146,52 @@
     },
     {
       "key": {
+        "uuid": "1c1e4a34_54c46229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "setting a username a password works with the test account and no GAIA login? interesting. Never seen this before.",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 67
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4fa0daf_3728a861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "can you define this as a variable once at the top of the test?",
+      "range": {
+        "startLine": 77,
+        "startChar": 72,
+        "endLine": 77,
+        "endChar": 88
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d1c2ab0_1a722349",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
         "patchSetId": 3
@@ -185,6 +231,213 @@
         "startChar": 54,
         "endLine": 87,
         "endChar": 66
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f4ec921_1078ebe3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "you might want to use this value in the error. That way, if the pin has 2 of the same digit, we will know which one failed.",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e678a4f4_0195517d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "nit: would %q be better?",
+      "range": {
+        "startLine": 93,
+        "startChar": 45,
+        "endLine": 93,
+        "endChar": 47
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3b375b0_442abd9f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "should this be based on pad as well?",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fcc14ba_face6b84",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "Use Call instead of fmt.Sprintf",
+      "range": {
+        "startLine": 99,
+        "startChar": 24,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "528fb274_eb99a0aa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "use tast.promisify. For this one, you will have to change how you get the data. just use a struct with token on it. and then use the token from it.",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28e12958_c89aae61",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152ba42c_b556014f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706877da_2a1c368a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 129,
+        "startChar": 24,
+        "endLine": 129,
+        "endChar": 35
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0055d6e9_24c69f8f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-24T19:36:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 138,
+        "endChar": 5
       },
       "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
