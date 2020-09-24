@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8366b871_f61a4207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-09-24T17:59:15Z",
+      "side": 1,
+      "message": "tast.hardware.MemCheck is a known infra issue:  https://crbug.com/1131064#c19\ntimeout waiting for available DUT is unrelated\n\nI received chump authorization from sheriff and will force submit....",
+      "revId": "08b501a96ff2b3471b1a42e851d0ff5bbd33e89c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
