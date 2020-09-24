@@ -63,12 +63,11 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to open CCA: ", err)
 			}
-			defer app.Close(cleanupCtx)
-			defer func(ctx context.Context) {
-				if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-					s.Error("Failed with javascript errors: ", err)
+			defer (func(ctx context.Context) {
+				if err := app.Close(ctx); err != nil {
+					s.Error("Failed when closing app: ", err)
 				}
-			}(cleanupCtx)
+			})(cleanupCtx)
 
 			testing.ContextLog(ctx, "Switch to video mode")
 			if err := app.SwitchMode(ctx, cca.Video); err != nil {
