@@ -31,7 +31,7 @@ type MeasurementOptions struct {
 }
 
 // MeasurePerformance measures performance for CCA.
-func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, options MeasurementOptions, tb *testutil.TestBridge, isSWA bool) (retErr error) {
+func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, options MeasurementOptions, tb *testutil.TestBridge, isSWA bool) error {
 	// Time reserved for cleanup.
 	const cleanupTime = 10 * time.Second
 
@@ -54,16 +54,6 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 	if err != nil {
 		return errors.Wrap(err, "failed to open CCA")
 	}
-	defer app.Close(ctx)
-	defer (func() {
-		if err := app.CheckJSError(ctx, options.OutputDir); err != nil {
-			if retErr != nil {
-				testing.ContextLog(ctx, "Failed with javascript errors: ", err)
-			} else {
-				retErr = errors.Wrap(err, "failed with javascript errors")
-			}
-		}
-	})()
 
 	if options.ShouldMeasureUIBehaviors {
 		if err := measureUIBehaviors(ctx, cr, app, options.PerfValues); err != nil {
@@ -75,7 +65,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to collect perf events")
 	}
 
-	return nil
+	return app.Close(ctx)
 }
 
 // measureUIBehaviors measures the performance of UI behaviors such as taking picture, recording

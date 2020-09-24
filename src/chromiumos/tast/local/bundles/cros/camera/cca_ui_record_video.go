@@ -11,7 +11,6 @@ import (
 
 	"github.com/abema/go-mp4"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/bundles/cros/camera/testutil"
@@ -57,20 +56,10 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		{"testPauseResume", testPauseResume, cca.TimerOff},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			cleanupCtx := ctx
-			ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
-			defer cancel()
-
 			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, isSWA)
 			if err != nil {
 				s.Fatal("Failed to open CCA: ", err)
 			}
-			defer app.Close(cleanupCtx)
-			defer func(ctx context.Context) {
-				if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-					s.Error("Failed with javascript errors: ", err)
-				}
-			}(cleanupCtx)
 
 			testing.ContextLog(ctx, "Switch to video mode")
 			if err := app.SwitchMode(ctx, cca.Video); err != nil {
@@ -90,6 +79,14 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 				return nil
 			}); err != nil {
 				s.Fatal("Failed to run tests through all cameras: ", err)
+			}
+
+			if err := app.Close(ctx); err != nil {
+				if cca.IsJSError(err) {
+					s.Error("There are JS errors when running CCA: ", err)
+				} else {
+					s.Error("Failed to close CCA: ", err)
+				}
 			}
 		})
 	}

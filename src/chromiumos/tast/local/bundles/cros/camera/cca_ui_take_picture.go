@@ -41,20 +41,15 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-	defer app.Close(ctx)
-	defer (func() {
-		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-			s.Error("Failed with javascript errors: ", err)
-		}
-	})()
 
 	restartApp := func() {
 		s.Log("Restarts CCA")
-		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-			s.Error("Failed with javascript errors: ", err)
-		}
 		if err := app.Restart(ctx, tb, isSWA); err != nil {
-			s.Fatal("Failed to restart CCA: ", err)
+			if cca.IsJSError(err) {
+				s.Error("There are JS errors when running CCA: ", err)
+			} else {
+				s.Fatal("Failed to restart CCA: ", err)
+			}
 		}
 	}
 
@@ -69,6 +64,14 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 		if err := tst.testFunc(ctx, app); err != nil {
 			s.Errorf("Failed in %v(): %v", tst.name, err)
 			restartApp()
+		}
+	}
+
+	if err := app.Close(ctx); err != nil {
+		if cca.IsJSError(err) {
+			s.Error("There are JS errors when running CCA: ", err)
+		} else {
+			s.Error("Failed to close CCA: ", err)
 		}
 	}
 }

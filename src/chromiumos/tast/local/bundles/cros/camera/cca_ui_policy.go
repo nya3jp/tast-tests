@@ -50,7 +50,11 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 	}
 
 	if err := testNoPolicy(ctx, fdms, cr, scripts, outDir, tb, isSWA); err != nil {
-		s.Error("Failed to test with no policy: ", err)
+		if cca.IsJSError(err) {
+			s.Error("There are JS errors when running CCA: ", err)
+		} else {
+			s.Error("Failed to test with no policy: ", err)
+		}
 	}
 
 	if err := testBlockCCAExtension(ctx, fdms, cr, tb); err != nil {
@@ -62,7 +66,11 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 	}
 
 	if err := testBlockVideoCapture(ctx, fdms, cr, scripts, outDir, tb, isSWA); err != nil {
-		s.Error("Failed to block video capture: ", err)
+		if cca.IsJSError(err) {
+			s.Error("There are JS errors when running CCA: ", err)
+		} else {
+			s.Error("Failed to block video capture: ", err)
+		}
 	}
 }
 
@@ -140,7 +148,9 @@ func testBlockVideoCapture(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrom
 
 	app, err := cca.New(ctx, cr, scripts, outDir, tb, isSWA)
 	if err == nil {
-		if err := app.Close(ctx); err != nil {
+		if err := app.Close(ctx); err != nil && !cca.IsJSError(err) {
+			// It is acceptable that there are errors in CCA since the video
+			// capture is blocked. Reports if the error is not JS error.
 			testing.ContextLog(ctx, "Failed to close app: ", err)
 		}
 		return errors.New("failed to block video capture by policy")

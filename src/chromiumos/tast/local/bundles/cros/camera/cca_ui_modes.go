@@ -43,12 +43,6 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-	defer app.Close(ctx)
-	defer (func() {
-		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-			s.Error("Failed with javascript errors: ", err)
-		}
-	})()
 
 	// Switch to square mode and take photo.
 	if err := app.SwitchMode(ctx, cca.Square); err != nil {
@@ -92,6 +86,14 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 		}
 		if _, err = app.TakeSinglePhoto(ctx, cca.TimerOff); err != nil {
 			s.Error("Failed to take portrait photo: ", err)
+		}
+	}
+
+	if err := app.Close(ctx); err != nil {
+		if cca.IsJSError(err) {
+			s.Error("There are JS errors when running CCA: ", err)
+		} else {
+			s.Error("Failed to close CCA: ", err)
 		}
 	}
 }

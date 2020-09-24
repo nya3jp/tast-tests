@@ -147,8 +147,6 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open CCA: ", err)
 	}
 
-	defer app.Close(ctx)
-
 	if err := app.MaximizeWindow(ctx); err != nil {
 		s.Fatal("Failed to maximize CCA: ", err)
 	}
@@ -174,5 +172,13 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 
 	if err := values.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
+	}
+
+	if err := app.Close(ctx); err != nil {
+		if cca.IsJSError(err) {
+			s.Error("There are JS errors when running CCA: ", err)
+		} else {
+			s.Error("Failed to close CCA: ", err)
+		}
 	}
 }
