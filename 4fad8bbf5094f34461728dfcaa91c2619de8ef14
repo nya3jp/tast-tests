@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b00c9b9_c6da24c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-09-24T06:05:15Z",
+      "side": 1,
+      "message": "I would need to shuffle some code around for  dual qual, but nothing that is majorly would get in the way, so LGTM",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
