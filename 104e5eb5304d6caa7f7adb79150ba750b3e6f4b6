@@ -185,6 +185,24 @@
       "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6ce768_fd3a67a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-09-24T05:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2c64ee9_f42dbd4f",
+      "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
