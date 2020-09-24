@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfbf60d6_9f345569",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-24T15:42:22Z",
+      "side": 1,
+      "message": "Latest PS just fixes a minor typo.",
+      "revId": "09f23c15b9abb5e4c1a29dfc2c9dc6cb9a90881b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
