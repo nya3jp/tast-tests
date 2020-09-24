@@ -21,10 +21,6 @@ import (
 )
 
 const (
-	// nocturne and nami are special cases and have "_fp" appended.
-	// Newer FPMCUs have unique names.
-	// See go/cros-fingerprint-firmware-branching-and-signing.
-	fingerprintBoardNameSuffix  = "_fp"
 	fingerprintFirmwarePathBase = "/opt/google/biod/fw/"
 )
 
@@ -64,24 +60,6 @@ func getBoardByCrosConfig(ctx context.Context, d *dut.DUT) (string, error) {
 	return string(out), err
 }
 
-// getFpBoard returns the name of the fingerprint EC on the DUT
-func getFpBoard(ctx context.Context, d *dut.DUT) (string, error) {
-	// For devices that don't have unibuild support (which is required to
-	// use cros_config).
-	// TODO(https://crbug.com/1030862): remove when nocturne has cros_config
-	// support.
-	board, err := getBoardByLsbRelease(ctx, d)
-	if err != nil {
-		return "", err
-	}
-	if board == "nocturne" {
-		return board + fingerprintBoardNameSuffix, nil
-	}
-
-	// Use cros_config to get fingerprint board.
-	return getBoardByCrosConfig(ctx, d)
-}
-
 func getFpFirmwarePath(ctx context.Context, d *dut.DUT, fpBoard string) (string, error) {
 	cmd := "ls " + fingerprintFirmwarePathBase + fpBoard + "*.bin"
 	out, err := d.Command("bash", "-c", cmd).Output(ctx)
@@ -96,7 +74,7 @@ func getFpFirmwarePath(ctx context.Context, d *dut.DUT, fpBoard string) (string,
 }
 
 func flashFpFirmware(ctx context.Context, d *dut.DUT) error {
-	fpBoard, err := getFpBoard(ctx, d)
+	fpBoard, err := getBoardByCrosConfig(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "failed to get fp board")
 	}
