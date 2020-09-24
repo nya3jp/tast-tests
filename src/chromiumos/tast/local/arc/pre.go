@@ -56,6 +56,18 @@ var bootedPre = &preImpl{
 	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
 }
 
+// BootedWithDisableSyncFlags returns a precondition similar to Booted(). The only difference from
+// Booted() is that ARC content sync is disabled to avoid noise during power/performance
+// measurements.
+func BootedWithDisableSyncFlags() testing.Precondition { return bootedWithDisableSyncFlagsPre }
+
+// bootedWithDisableSyncFlagsPre is returned by BootedWithDisableSyncFlagsPre
+var bootedWithDisableSyncFlagsPre = &preImpl{
+	name:      "arc_booted_disable_sync",
+	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
+	extraArgs: DisableSyncFlags(),
+}
+
 // BootedInTabletMode returns a precondition similar to Booted(). The only difference from Booted() is
 // that Chrome is launched in tablet mode in this precondition.
 func BootedInTabletMode() testing.Precondition { return bootedInTabletModePre }
