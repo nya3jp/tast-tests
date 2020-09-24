@@ -16,6 +16,24 @@
       "revId": "99a945ec07d47b6f76885dacf7a3b4423750e0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c594bb73_72ac9d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-09-24T09:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57fef82f_f4a69b8c",
+      "revId": "99a945ec07d47b6f76885dacf7a3b4423750e0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
