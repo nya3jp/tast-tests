@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9fce0f11_79c03da8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-09-24T00:25:26Z",
+      "side": 1,
+      "message": "Yes the ip{,6}tables rules look good to me.",
+      "parentUuid": "efdb1a4d_b74679a8",
+      "revId": "6e43d731ee365e9a9a4d8b0097f6fc2d64ed6776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e36900e_d22776c7",
         "filename": "src/chromiumos/tast/local/network/utils.go",
         "patchSetId": 11
