@@ -48,7 +48,11 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 		ShouldMeasureUIBehaviors: true,
 		OutputDir:                s.OutDir(),
 	}); err != nil {
-		s.Fatal("Failed to measure performance: ", err)
+		if cca.IsJSError(err) {
+			s.Error("There are JS errors when running CCA: ", err)
+		} else {
+			s.Fatal("Failed to measure performance: ", err)
+		}
 	}
 
 	// It is used to measure the warm start time of CCA.
@@ -58,7 +62,11 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 		ShouldMeasureUIBehaviors: false,
 		OutputDir:                s.OutDir(),
 	}); err != nil {
-		s.Fatal("Failed to measure warm start time: ", err)
+		if cca.IsJSError(err) {
+			s.Error("There are JS errors when running CCA: ", err)
+		} else {
+			s.Fatal("Failed to measure warm start time: ", err)
+		}
 	}
 
 	if err := perfValues.Save(s.OutDir()); err != nil {
