@@ -26,7 +26,7 @@ func init() {
 			"showoff-eng@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
@@ -37,6 +37,7 @@ func init() {
 				Name:              "oobe_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
 				Val:               true,
+				ExtraAttr:         []string{"informational"},
 			}, {
 				Name:              "logged_in_stable",
 				ExtraHardwareDeps: pre.AppsStableModels,
@@ -47,6 +48,7 @@ func init() {
 				ExtraHardwareDeps: pre.AppsUnstableModels,
 				Pre:               policyPre.User,
 				Val:               false,
+				ExtraAttr:         []string{"informational"},
 			},
 		}})
 }
