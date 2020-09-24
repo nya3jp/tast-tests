@@ -52,6 +52,24 @@
       "revId": "818ef3e6b4efae32b5e7d1391b66b26c4afdad56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c936156e_83002744",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-09-24T21:44:21Z",
+      "side": 1,
+      "message": "Thanks!\n\nOK, there is now a problem... :-(\n\n@PJL SET HOLDKEY \u003d \"\\1\" should be @PJL SET HOLDKEY \u003d \"1234\" or somesuch. This means that the changes we\u0027re making have broken pin printing...\n\nNow it\u0027s probably not a test issue, but we have a problem.",
+      "parentUuid": "ff6df851_9a0c4a8c",
+      "revId": "818ef3e6b4efae32b5e7d1391b66b26c4afdad56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
