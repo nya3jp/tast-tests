@@ -140,6 +140,30 @@
       "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bb86214_a3f1ec84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-24T09:49:54Z",
+      "side": 1,
+      "message": "What if you will call runARCVideoPerfTest from test without pre condition that stops all activities?",
+      "parentUuid": "2e674031_de083d62",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
