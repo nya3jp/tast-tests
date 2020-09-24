@@ -16,6 +16,24 @@
       "revId": "818ef3e6b4efae32b5e7d1391b66b26c4afdad56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cd914f9_066ee179",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-09-24T17:26:13Z",
+      "side": 1,
+      "message": "Include in the bug description I mean.",
+      "parentUuid": "77a402b3_63cbc8f0",
+      "revId": "818ef3e6b4efae32b5e7d1391b66b26c4afdad56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
