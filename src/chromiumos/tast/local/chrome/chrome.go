@@ -808,7 +808,6 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--ash-disable-system-sounds",                // Disable system startup sound.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
-		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
 		"--no-startup-window",                        // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
@@ -839,6 +838,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	}
 	if len(c.signinExtDir) > 0 {
 		args = append(args, "--load-signin-profile-test-extension="+c.signinExtDir)
+		args = append(args, "--whitelisted-extension-id="+c.signinExtID) // Allowlists the signin profile's test extension to access all Chrome APIs.
+	} else {
+		args = append(args, "--whitelisted-extension-id="+c.testExtID) // Allowlists the test extension to access all Chrome APIs.
 	}
 	if c.policyEnabled {
 		args = append(args, "--profile-requires-policy=true")
