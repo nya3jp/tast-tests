@@ -53,6 +53,29 @@
     },
     {
       "key": {
+        "uuid": "4e473317_4e4f70ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-24T18:45:53Z",
+      "side": 1,
+      "message": "mention the autosubmit case",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31d38c9e_e7cac37e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
         "patchSetId": 3
@@ -116,6 +139,29 @@
         "startChar": 0,
         "endLine": 53,
         "endChar": 2
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d1c2ab0_1a722349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-09-24T18:45:53Z",
+      "side": 1,
+      "message": "chrome.autotestPrivate.lockScreen()",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 0
       },
       "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
