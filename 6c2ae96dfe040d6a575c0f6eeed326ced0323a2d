@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e1e5bfe5_254e05fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-24T01:02:19Z",
+      "side": 1,
+      "message": "Ack.\n\n\u003e In my understanding, the problem was the session manager to crash [...]\n\nI happened to notice a different problem [1]. \"logged in\" (as Tast sees it, even with this CL) still does not mean that \"start-user-session\" is complete [2]. So for tests that care about that, they have to figure out how to wait for that.\n\nDifferent problem, different solution. No worries.\n\n[1] In https://crbug.com/1131219 / crrev.com/c/2421334\n[2] Which somewhat contrasts with the statements made in various comments:\n# We\u0027re a task to ensure that the state change is fully marked\n# before session manager calls this step done.",
+      "parentUuid": "3fb9fb15_584e7e39",
+      "revId": "6c2ae96dfe040d6a575c0f6eeed326ced0323a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c35acfaa_4c49c339",
         "filename": "src/chromiumos/tast/local/chrome/watcher.go",
         "patchSetId": 1
