@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "23ab1f5b_dc2ca53c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-24T04:21:42Z",
+      "side": 1,
+      "message": "Sound reasonable. Let\u0027s keep the name |closeCCAAndTestApp|.",
+      "parentUuid": "bfa1b0f5_f4674256",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 23
+      },
+      "revId": "9d69e8ddd1c98535c400aaf790b0c71940a39353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f6068ca_38ac5ea1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 17
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "If we only need to log it, we can just put |testing.ContextLog()| in closeCCAAndTestApp() since this method is only used for cleanup.\n\nBTW, currently we often check the JS error and close the app in the defer functions. But I think if we want to fail a test if there is any JS error rather than just logging it, we should better move CheckJSError() in app.Close() and including app.Close() as a part of test flow at the end of a test. If you also agree then we can do this in another CL.",
       "parentUuid": "2f6068ca_38ac5ea1",
+      "range": {
+        "startLine": 277,
+        "startChar": 7,
+        "endLine": 277,
+        "endChar": 25
+      },
+      "revId": "9d69e8ddd1c98535c400aaf790b0c71940a39353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18a73830_6442d693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-24T04:21:42Z",
+      "side": 1,
+      "message": "SGTM. We may need the distinguish the error returned from |Restart|.\nI would expect this looks like:\n\nif err :\u003d a.Restart(ctx); err !\u003d nil {\n  if cca.IsJSError(err) {\n    s.Error(\"...\", err)\n  } else {\n    s.Fatal(\"...\", err)\n  }\n}",
+      "parentUuid": "3699c2bb_549f670e",
       "range": {
         "startLine": 277,
         "startChar": 7,
