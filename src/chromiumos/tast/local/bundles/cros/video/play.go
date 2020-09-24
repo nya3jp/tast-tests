@@ -34,10 +34,10 @@ func init() {
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		Params: []testing.Param{{
 			Name:      "av1",
-			Val:       playParams{fileName: "360p_30fps_300frames.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
+			Val:       playParams{fileName: "bear-320x240.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "360p_30fps_300frames.av1.mp4"},
-			Pre:       pre.ChromeVideo(),
+			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
+			Pre:       pre.ChromeVideoWithHWAV1Decoding(),
 		}, {
 			Name:              "h264",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
@@ -63,6 +63,12 @@ func init() {
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
 			Pre:       pre.ChromeVideoWithHDRScreen(),
+		}, {
+			Name:      "av1_sw",
+			Val:       playParams{fileName: "bear-320x240.av1.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name:              "h264_sw",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
@@ -94,6 +100,13 @@ func init() {
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
 			Pre:       pre.ChromeVideoWithSWDecodingAndHDRScreen(),
+		}, {
+			Name:              "av1_hw",
+			Val:               playParams{fileName: "bear-320x240.av1.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "bear-320x240.av1.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			Pre:               pre.ChromeVideoWithHWAV1Decoding(),
 		}, {
 			Name:              "h264_hw",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
@@ -155,10 +168,10 @@ func init() {
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:      "av1_guest",
-			Val:       playParams{fileName: "360p_30fps_300frames.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
+			Val:       playParams{fileName: "bear-320x240.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "360p_30fps_300frames.av1.mp4"},
-			Pre:       pre.ChromeVideoWithGuestLogin(),
+			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
+			Pre:       pre.ChromeVideoWithGuestLoginAndHWAV1Decoding(),
 		}, {
 			Name:              "h264_guest",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
