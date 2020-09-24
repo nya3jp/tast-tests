@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 )
 
 // Limit allows tests to determine if memory use is close to a limit without
@@ -181,6 +182,54 @@ func NewPageReclaimLimit() (*PageReclaimLimit, error) {
 		return nil, errors.New("no large zones found")
 	}
 	return &PageReclaimLimit{largeZones}, nil
+}
+
+// CmdLimit implements the Limit interface by forwarding Distance requests to
+// a remote process.
+type CmdLimit struct {
+	cmdWithPipes
+}
+
+// CmdLimit conforms to Limit interface.
+var _ Limit = (*CmdLimit)(nil)
+
+// Distance sends "distance\n" to the running command, and returns the distance
+// provided.
+func (l *CmdLimit) Distance(ctx context.Context) (int64, error) {
+	if err := l.writeLine("distance"); err != nil {
+		return 0, errors.Wrap(err, "failed to write \"distance\"")
+	}
+	line, err := l.readLine()
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read distance")
+	}
+	distance, err := strconv.ParseInt(line, 10, 64)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to parse distance")
+	}
+	return distance, nil
+}
+
+// AssertNotReached just uses Distance, since we can't provide any more context.
+func (l *CmdLimit) AssertNotReached(ctx context.Context) error {
+	distance, err := l.Distance(ctx)
+	if err != nil {
+		return err
+	}
+	if distance <= 0 {
+		return errors.Errorf("memory is %d bytes past limit", -distance)
+	}
+	return nil
+}
+
+// NewCmdLimit takes a testexec.Cmd, starts it, and hooks up stdin and stdout so
+// that memory limit distance requests can be made.
+func NewCmdLimit(cmd *testexec.Cmd) (*CmdLimit, error) {
+	cmdWithPipes, err := newCmdWithPipes(cmd)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create limit cmd")
+	}
+	return &CmdLimit{cmdWithPipes}, nil
 }
 
 // CompositeLimit combines a set of Limits.

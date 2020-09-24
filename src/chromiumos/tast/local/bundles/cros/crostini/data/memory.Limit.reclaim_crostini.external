@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/crostini/memory.Limit.reclaim_crostini_20201009",
+  "size": 17200,
+  "sha256sum": "39db7e76f8c696245ba4c590791db280c9eca1b4f66b3e52e90c520255dae830"
+}
