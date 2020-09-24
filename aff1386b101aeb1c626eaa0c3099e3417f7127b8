@@ -188,6 +188,30 @@
       "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e2f7b32_23fd1535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-24T10:20:52Z",
+      "side": 1,
+      "message": "pre condition is not required in Tast framework.\n\nHere is arc test without pre: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/boot.go;l\u003d21\n\nanother test without pre: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/cache_perf.go",
+      "parentUuid": "306b3265_4ff55f99",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
