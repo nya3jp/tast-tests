@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "180adf41_a76e0149",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-24T23:52:29Z",
+      "side": 1,
+      "message": "Optional: I think you can pass minDiskSize here, no need to move all the way to the left, just one past minDiskSize.",
+      "range": {
+        "startLine": 92,
+        "startChar": 79,
+        "endLine": 92,
+        "endChar": 81
+      },
+      "revId": "064a9e288aaea16944df28a070b006ca3749fd85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda6d7af_2d04edaf",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-24T23:52:29Z",
+      "side": 1,
+      "message": "The target disk size %v is smaller than the minimum disk size %x, using the minimum disk size %v.",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 112
+      },
+      "revId": "064a9e288aaea16944df28a070b006ca3749fd85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
