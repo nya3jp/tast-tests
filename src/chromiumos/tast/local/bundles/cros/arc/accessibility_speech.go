@@ -27,7 +27,6 @@ type expectedSpeechLog struct {
 }
 
 func init() {
-
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilitySpeech,
 		Desc:         "Checks ChromeVox reads Android elements as expected",
@@ -100,6 +99,9 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 
 	MainActivityTestSteps := []axSpeechTestStep{
 		{
+			"Search+Right",
+			[]string{"Main Activity"},
+		}, {
 			"Search+Right",
 			[]string{"OFF", "Toggle Button", "Not pressed", "Press Search+Space to toggle"},
 		}, {
