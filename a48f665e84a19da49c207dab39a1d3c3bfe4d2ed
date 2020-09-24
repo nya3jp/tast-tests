@@ -16,6 +16,24 @@
       "revId": "a48f665e84a19da49c207dab39a1d3c3bfe4d2ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1229a769_5b6524e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-24T00:57:16Z",
+      "side": 1,
+      "message": "If test results actually depend on CPU load, then ignoring this runs the risk of increasing the flakiness of the results. I have a CL out for review that increases how long WaitUntilIdle will wait, which will hopefully help these failures.\n\nThat being said, the WaitUntilIdle change seems to have affected camera.HAL3* tests much more than the arc video tests I\u0027m looking at. On the arc video tests, only a couple of non arc-r boards have flakiness, and those are \u003c50% flaky. These tests seem to be failing near 100% of the time.\n\nOne possible difference is that the video tests disable CPU throttling. I\u0027m not sure how WaitUntilIdle calculates the idle percentage, but it\u0027s possible throttling isn\u0027t accounted for, in which case high cpu utilization at a low cpu frequency could trigger this failure. Using power.WaitUntilCPUCoolDown that Jun mentioned could address that. Although I\u0027m also not sure what could lead to a difference between your local hatch and devices in the lab.",
+      "parentUuid": "e02b7fe1_4584a034",
+      "revId": "a48f665e84a19da49c207dab39a1d3c3bfe4d2ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
