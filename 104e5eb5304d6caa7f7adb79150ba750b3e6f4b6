@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "8886c28a_279767f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-24T03:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0387bfa6_917d52d0",
+      "range": {
+        "startLine": 49,
+        "startChar": 46,
+        "endLine": 49,
+        "endChar": 84
+      },
+      "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b333691_309af309",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
         "patchSetId": 2
@@ -73,6 +97,24 @@
       "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a68156b5_e79e9804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-24T03:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b333691_309af309",
+      "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +135,24 @@
     },
     {
       "key": {
+        "uuid": "24a825ff_2def228b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-24T03:35:43Z",
+      "side": 1,
+      "message": "Sounds good. I revised cras_test_client.go to make it more generalized.",
+      "parentUuid": "c7b41d42_d7927e64",
+      "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0f9805c_77e39a9b",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
         "patchSetId": 2
@@ -104,6 +164,24 @@
       "writtenOn": "2020-09-22T05:26:53Z",
       "side": 1,
       "message": "Just curious why you calculated all gains if you only need two of them.",
+      "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2c64ee9_f42dbd4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-24T03:35:43Z",
+      "side": 1,
+      "message": "I didn\u0027t calculate all gains. I only calculated these two: highSliderGain, lowSliderGain (see line#110)",
+      "parentUuid": "d0f9805c_77e39a9b",
       "revId": "104e5eb5304d6caa7f7adb79150ba750b3e6f4b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
