@@ -9,7 +9,6 @@ package ready
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -53,12 +52,6 @@ func Wait(ctx context.Context) error {
 
 	killOrphanAutotestd(ctx)
 	clearPolicies(ctx)
-
-	// Disable the periodic log cleanup job to make sure system logs generated during tests are preserved.
-	// We never resume the job so as to make it easier for users to inspect system logs later.
-	if err := disableLogCleanup(); err != nil {
-		return err
-	}
 
 	// Delete all core dumps to free up spaces.
 	if err := crash.DeleteCoreDumps(ctx); err != nil {
@@ -185,14 +178,6 @@ func killOrphanAutotestd(ctx context.Context) {
 			testing.ContextLog(ctx, "Failed to kill autotestd: ", err)
 		}
 	}
-}
-
-// disableLogCleanup stops the periodic log cleanup job permanently.
-func disableLogCleanup() error {
-	if err := ioutil.WriteFile("/var/lib/cleanup_logs_paused", nil, 0666); err != nil {
-		return errors.Wrap(err, "failed to disable the log cleanup job")
-	}
-	return nil
 }
 
 // hasTPM checks whether the DUT has a TPM.
