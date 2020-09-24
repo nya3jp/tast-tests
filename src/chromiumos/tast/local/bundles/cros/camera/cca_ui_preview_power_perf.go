@@ -93,11 +93,11 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 
 	sup, cleanup := setup.New("CCA camera preview power")
 
-	defer func() {
-		if err := cleanup(cleanupCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := cleanup(ctx); err != nil {
 			s.Error("Cleanup failed: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
 	sup.Add(setup.PowerTest(ctx, tconn, batteryMode))
@@ -140,8 +140,11 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-
-	defer app.Close(ctx)
+	defer func(ctx context.Context) {
+		if err := app.Close(ctx); err != nil {
+			s.Error("Failed to close app: ", err)
+		}
+	}(ctx)
 
 	if err := app.MaximizeWindow(ctx); err != nil {
 		s.Fatal("Failed to maximize CCA: ", err)

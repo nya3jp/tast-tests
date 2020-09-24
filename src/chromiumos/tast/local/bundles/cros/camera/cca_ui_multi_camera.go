@@ -38,12 +38,11 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-	defer app.Close(ctx)
-	defer (func() {
-		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-			s.Error("Failed with javascript errors: ", err)
+	defer func(ctx context.Context) {
+		if err := app.Close(ctx); err != nil {
+			s.Error("Failed to close app: ", err)
 		}
-	})()
+	}(ctx)
 
 	numCameras, err := app.GetNumOfCameras(ctx)
 	if err != nil {
@@ -128,7 +127,12 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 	}
 
 	if err := app.Restart(ctx); err != nil {
-		s.Fatal("Failed to restart CCA: ", err)
+		var errJS *cca.ErrJS
+		if errors.As(err, &errJS) {
+			s.Error("There are JS errors when running CCA: ", err)
+		} else {
+			s.Fatal("Failed to restart CCA: ", err)
+		}
 	}
 
 	// CCA should still open default camera regardless of what was opened last
