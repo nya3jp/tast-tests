@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ec930b9_99be2d3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2020-09-24T15:46:40Z",
+      "side": 1,
+      "message": "Hi,\nthis is a former policy autotest (policy_TranslateEnabled/policy_TranslateEnabled.py) migrated to tast.\nPlease review.\nThanks!",
+      "revId": "07920a2bc172c1781ed82a3ba36a201397cbf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
