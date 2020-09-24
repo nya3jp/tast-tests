@@ -32,6 +32,7 @@ const (
 	OverviewTab = tabFindParams("Overview")
 	PerksTab    = tabFindParams("Perks")
 	HelpTab     = tabFindParams("Help")
+	WhatsNewTab = tabFindParams("See what's new")
 )
 
 var helpRootNodeParams = ui.FindParams{
@@ -108,6 +109,23 @@ func IsTabShown(ctx context.Context, tconn *chrome.TestConn, tabParams tabFindPa
 	return helpRootNode.DescendantExists(ctx, tabParams.uiFindParams())
 }
 
+// ClickTab clicks the tab with given name.
+func ClickTab(ctx context.Context, tconn *chrome.TestConn, tabParams tabFindParams) error {
+	helpRootNode, err := HelpRootNode(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to find help app")
+	}
+	defer helpRootNode.Release(ctx)
+
+	tabNode, err := helpRootNode.DescendantWithTimeout(ctx, tabParams.uiFindParams(), 20*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find tab node with %v", tabParams.uiFindParams())
+	}
+	defer tabNode.Release(ctx)
+
+	return tabNode.LeftClick(ctx)
+}
+
 // HelpRootNode returns the root ui node of Help app.
 func HelpRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
 	return ui.FindWithTimeout(ctx, tconn, helpRootNodeParams, 20*time.Second)
@@ -150,4 +168,32 @@ func WaitWhatsNewTabRendered(ctx context.Context, tconn *chrome.TestConn) error 
 	// apostrophe character, but instead the "right single quotation mark" character (&rsquo;).
 	titleParams := ui.FindParams{Role: ui.RoleTypeStaticText, Name: "What’s new with Chromebook?"}
 	return ui.WaitUntilExists(ctx, tconn, titleParams, 30*time.Second)
+}
+
+// DescendantWithTimeout finds a node in help app using params and returns it.
+func DescendantWithTimeout(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) (*ui.Node, error) {
+	helpRootNode, err := HelpRootNode(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find help app")
+	}
+	defer helpRootNode.Release(ctx)
+
+	return helpRootNode.DescendantWithTimeout(ctx, params, timeout)
+}
+
+// DescendantsWithTimeout returns all nodes in help app matching params.
+// It waits for the first element appear and returns all findings immediately.
+// Thus, this function can not be used when elements are shown up one by one.
+func DescendantsWithTimeout(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) (ui.NodeSlice, error) {
+	helpRootNode, err := HelpRootNode(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find help app")
+	}
+	defer helpRootNode.Release(ctx)
+
+	if err := helpRootNode.WaitUntilDescendantExists(ctx, params, timeout); err != nil {
+		return nil, errors.Wrap(err, "failed to find help app")
+	}
+
+	return helpRootNode.Descendants(ctx, params)
 }
