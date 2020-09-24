@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "06c1d8c2_3fcd5ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-24T08:45:47Z",
+      "side": 1,
+      "message": "Just uploaded a CL to move the CheckJSError() into app.Close() and also includes app.Close() as a part of test flow. PTAL, thanks.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2428463",
+      "parentUuid": "18a73830_6442d693",
+      "range": {
+        "startLine": 277,
+        "startChar": 7,
+        "endLine": 277,
+        "endChar": 25
+      },
+      "revId": "9d69e8ddd1c98535c400aaf790b0c71940a39353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7293ad3_dbdc65b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
         "patchSetId": 17
