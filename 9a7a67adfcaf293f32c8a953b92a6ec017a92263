@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "878fc318_71f43fa6",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-24T08:36:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a2cbc8b_bf5d0c9e",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6671d64_c2ccae00",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5dc223dc_cbaac3fe",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-24T08:36:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6671d64_c2ccae00",
+      "range": {
+        "startLine": 51,
+        "startChar": 44,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8853d6d_263dafad",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-09-21T09:25:57Z",
       "side": 1,
       "message": "consider using int instead, as existing code uses int for channel (e.g. hostapd.FrequencyToChannel) and conversions will be required. overall uint seems to be rarely used across the code base",
+      "range": {
+        "startLine": 117,
+        "startChar": 38,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58db0d36_06016e41",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-24T08:36:27Z",
+      "side": 1,
+      "message": "Channel number of attenuator cannot be negative (and is a different entity than WiFi channel). We have error type to convey errors, we don\u0027t need to provide them implicitly by negative int value.",
+      "parentUuid": "a8853d6d_263dafad",
       "range": {
         "startLine": 117,
         "startChar": 38,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "fa790fa0_6cee9773",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-24T08:36:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cefc18b6_2fd95dca",
+      "range": {
+        "startLine": 119,
+        "startChar": 21,
+        "endLine": 119,
+        "endChar": 32
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e98e757_fd157a0d",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f22b527_b31ff4d8",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-24T08:36:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e98e757_fd157a0d",
+      "range": {
+        "startLine": 130,
+        "startChar": 21,
+        "endLine": 130,
+        "endChar": 52
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "08b62357_8b42c3ce",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-24T08:36:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "91c6e16f_804f03b4",
+      "range": {
+        "startLine": 170,
+        "startChar": 21,
+        "endLine": 170,
+        "endChar": 40
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd88563f_88a5eaf5",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
         "patchSetId": 3
@@ -160,6 +304,30 @@
       "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a018597_4c81defa",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-24T08:36:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fd88563f_88a5eaf5",
+      "range": {
+        "startLine": 195,
+        "startChar": 8,
+        "endLine": 195,
+        "endChar": 10
+      },
+      "revId": "9a7a67adfcaf293f32c8a953b92a6ec017a92263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
