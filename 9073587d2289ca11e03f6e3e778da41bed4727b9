@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8462f8e_9e130bff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-24T03:48:59Z",
+      "side": 1,
+      "message": "generally look good except the known roaming transition issue.",
+      "revId": "9073587d2289ca11e03f6e3e778da41bed4727b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "663f58fa_498c9cfb",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-24T03:48:59Z",
+      "side": 1,
+      "message": "nit: I think it might be more related if this is in crrev.com/c/2426209? As when there are multiple matches, the caller will likely need this function.",
+      "revId": "9073587d2289ca11e03f6e3e778da41bed4727b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84ce4d29_f42f5622",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-24T03:48:59Z",
+      "side": 1,
+      "message": "nit: AP? (i.e. all capital) one similar below.",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 125,
+        "endChar": 9
+      },
+      "revId": "9073587d2289ca11e03f6e3e778da41bed4727b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa8b462b_965c5c7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-24T03:48:59Z",
+      "side": 1,
+      "message": "Might be nice to elaborate more for the two cases, e.g. \"is skipped when connecting to a new AP\". Otherwise, one might see Error reasons containing both \"is skipped\" and \"is not skipped\". That will be confusing.",
+      "range": {
+        "startLine": 172,
+        "startChar": 40,
+        "endLine": 172,
+        "endChar": 41
+      },
+      "revId": "9073587d2289ca11e03f6e3e778da41bed4727b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
