@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cad6d989_e8489fdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-09-24T06:22:19Z",
+      "side": 1,
+      "message": "PTAL. board_specific_setup.sh has already been fixed (by Tao).",
+      "revId": "a80647c2ab3b0e4d61f4de0bafb7b1875f323890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
