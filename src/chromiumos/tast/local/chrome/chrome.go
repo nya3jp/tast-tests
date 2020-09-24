@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/shill"
@@ -1278,6 +1279,20 @@ func (c *Chrome) ContinueLogin(ctx context.Context) error {
 
 // logIn performs a user or guest login based on the loginMode.
 func (c *Chrome) logIn(ctx context.Context) error {
+	// Wait for the session manager to be in the "started" state. See:
+	// https://crbug.com/1131219.
+	sw, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      "/org/chromium/SessionManager",
+		Interface: "org.chromium.SessionManagerInterface",
+		Member:    "SessionStateChanged",
+		Arg0:      "started",
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to create a signal watcher")
+	}
+	defer sw.Close(ctx)
+
 	switch c.loginMode {
 	case fakeLogin, gaiaLogin:
 		if err := c.loginUser(ctx); err != nil {
@@ -1288,6 +1303,7 @@ func (c *Chrome) logIn(ctx context.Context) error {
 			return err
 		}
 	}
+	<-sw.Signals
 	return nil
 }
 
