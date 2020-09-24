@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d0aaaaa_a944f1a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-24T16:26:34Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "29b37dabedc4ef8236ad9e6906edd76fd17040a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cd96e8a_18fc526e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_start.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-24T16:26:34Z",
+      "side": 1,
+      "message": "Check for error here",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 14
+      },
+      "revId": "29b37dabedc4ef8236ad9e6906edd76fd17040a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
