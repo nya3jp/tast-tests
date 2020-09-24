@@ -16,6 +16,63 @@
       "revId": "a80647c2ab3b0e4d61f4de0bafb7b1875f323890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdceeed7_bb96efff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-24T15:49:18Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "a80647c2ab3b0e4d61f4de0bafb7b1875f323890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b4d9b99_4048215d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-24T15:49:18Z",
+      "side": 1,
+      "message": "Is this a TODO line? If so, please rephrase as follows to make it obvious:\n\n    // TODO (b/152775858): Check that ro.build.fingerprint doesn\u0027t contain \u0027_bertha\u0027 even when the device uses ARCVM.",
+      "revId": "a80647c2ab3b0e4d61f4de0bafb7b1875f323890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e3e734d_77a64a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-24T15:49:18Z",
+      "side": 1,
+      "message": "Can \"_cheets\" appear anywhere within value, or does it have to be at the end? If it has to be at the end, then please switch to !strings.HasSuffix(value, \"_cheets\").\n\nhttp://go/godoc/strings/#HasSuffix",
+      "range": {
+        "startLine": 188,
+        "startChar": 40,
+        "endLine": 188,
+        "endChar": 75
+      },
+      "revId": "a80647c2ab3b0e4d61f4de0bafb7b1875f323890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
