@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "722b9520_37b6094d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e473317_4e4f70ab",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31d38c9e_e7cac37e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
         "patchSetId": 3
@@ -146,6 +170,30 @@
     },
     {
       "key": {
+        "uuid": "72bcb00a_179e8dcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "Ah okay, no need for this if it\u0027s enabled by default then. Our TestTracker case covers manual submit, but will also be edited to include autosubmit as well since it\u0027s not much effort to check it. It was pretty easy to check it here as well, so I figured might as well include both ways.",
+      "parentUuid": "c5f3e1a2_3b1083d9",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c1e4a34_54c46229",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
         "patchSetId": 3
@@ -157,6 +205,30 @@
       "writtenOn": "2020-09-24T19:36:20Z",
       "side": 1,
       "message": "setting a username a password works with the test account and no GAIA login? interesting. Never seen this before.",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 67
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df83657_439e248a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "Yep, you can do fake logins with arbitrary credentials this way as far as I can tell. There are some conditions though:\n1. Username might need to end with @gmail.com (I tried just \"testuser\" but it didn\u0027t work). I didn\u0027t check with other domains.\n2. gaiaID can\u0027t be empty.",
+      "parentUuid": "1c1e4a34_54c46229",
       "range": {
         "startLine": 55,
         "startChar": 28,
@@ -192,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "e40f41cc_a91681dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4fa0daf_3728a861",
+      "range": {
+        "startLine": 77,
+        "startChar": 72,
+        "endLine": 77,
+        "endChar": 88
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d1c2ab0_1a722349",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
         "patchSetId": 3
@@ -212,6 +308,30 @@
       "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bc592c8_1fbfb9f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "Nice",
+      "parentUuid": "5d1c2ab0_1a722349",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +358,30 @@
     },
     {
       "key": {
+        "uuid": "c75c780c_66d72624",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "I changed it to locate the submit button directly. I\u0027ll keep this in mind if we need to use the class name in the future though.",
+      "parentUuid": "608485bc_a56bfece",
+      "range": {
+        "startLine": 87,
+        "startChar": 54,
+        "endLine": 87,
+        "endChar": 66
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f4ec921_1078ebe3",
         "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
         "patchSetId": 3
@@ -258,6 +402,30 @@
       "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15521e09_c29043b6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f4ec921_1078ebe3",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -284,6 +452,30 @@
     },
     {
       "key": {
+        "uuid": "492bb1ef_08dc9b74",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "Good point, the quotations should make it clearer.",
+      "parentUuid": "e678a4f4_0195517d",
+      "range": {
+        "startLine": 93,
+        "startChar": 45,
+        "endLine": 93,
+        "endChar": 47
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3b375b0_442abd9f",
         "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
         "patchSetId": 3
@@ -304,6 +496,30 @@
       "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3be7da2f_73261aac",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "The submit button has a different parent (LoginPasswordView is the clearest ancestor). Realistically I don\u0027t need to base the other one off of pad either, since the number buttons are distinct on the lock screen. I switched things over to just find the buttons directly instead of relatively, let me know what you think.",
+      "parentUuid": "a3b375b0_442abd9f",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -330,6 +546,30 @@
     },
     {
       "key": {
+        "uuid": "c9096476_8b8460c2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fcc14ba_face6b84",
+      "range": {
+        "startLine": 99,
+        "startChar": 24,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "528fb274_eb99a0aa",
         "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
         "patchSetId": 3
@@ -341,6 +581,30 @@
       "writtenOn": "2020-09-24T19:36:20Z",
       "side": 1,
       "message": "use tast.promisify. For this one, you will have to change how you get the data. just use a struct with token on it. and then use the token from it.",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2afca1ee_1240da75",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "I tried that at first, but the settings app\u0027s Chrome can\u0027t use tast.promisify (\u0027tast\u0027 is undefined).",
+      "parentUuid": "528fb274_eb99a0aa",
       "range": {
         "startLine": 100,
         "startChar": 15,
@@ -373,6 +637,30 @@
       "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b42607c_d6070503",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28e12958_c89aae61",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -419,6 +707,30 @@
       "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2642bba_eb93bd2d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T23:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "706877da_2a1c368a",
+      "range": {
+        "startLine": 129,
+        "startChar": 24,
+        "endLine": 129,
+        "endChar": 35
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
