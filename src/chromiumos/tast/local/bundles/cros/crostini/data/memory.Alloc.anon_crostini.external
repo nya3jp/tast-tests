@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/crostini/memory.Alloc.anon_crostini_20201009",
+  "size": 21552,
+  "sha256sum": "bf42714773a5d4b3b6ede98ae992e74de5897901a6f7b871ac232ce30794a9a5"
+}

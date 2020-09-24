@@ -43,6 +43,18 @@ executable("kernel.PerfCallgraph.graph") {
   ]
 }
 
+executable("memory.Alloc.anon") {
+  sources = [
+    "memory.Alloc.anon.c",
+  ]
+}
+
+executable("memory.Limit.reclaim") {
+  sources = [
+    "memory.Limit.reclaim.c",
+  ]
+}
+
 executable("platform.UserCrash.crasher") {
   sources = [
     "platform.UserCrash.crasher.bomb.cc",
@@ -145,6 +157,8 @@ group("all") {
     ":graphics.GBM.gbmtest",
     ":hardware.VerifyRemoteSleep.timersignal",
     ":kernel.PerfCallgraph.graph",
+    ":memory.Alloc.anon",
+    ":memory.Limit.reclaim",
     ":platform.UserCrash.crasher",
     ":platform.UserCrash.crasher.sym",
     ":security.AltSyscall.adjtimex",
