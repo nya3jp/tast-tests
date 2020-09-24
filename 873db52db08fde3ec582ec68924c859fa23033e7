@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "816cda51_52f1b15c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-24T00:54:56Z",
+      "side": 1,
+      "message": "We have two nearly identical functions now, and codesearch finds a couple more that are similar in other tests.  Maybe this is a good time to extract out a KillProcessByName utility function somewhere?",
+      "revId": "873db52db08fde3ec582ec68924c859fa23033e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
