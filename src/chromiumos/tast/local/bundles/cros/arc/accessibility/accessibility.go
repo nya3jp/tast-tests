@@ -253,9 +253,8 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 
 			if err := func() error {
 				if err = WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
-					ClassName: TextView,
-					Name:      activity.Title,
-					Role:      ui.RoleTypeStaticText,
+					Name: activity.Title,
+					Role: ui.RoleTypeApplication,
 				}, 10*time.Second); err != nil {
 					return errors.Wrap(err, "failed to wait for initial ChromeVox focus")
 				}
