@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad433b0d_6f461eac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T07:09:06Z",
+      "side": 1,
+      "message": "I automated one of our sanity tests for PIN unlock, and also covered the new PIN autosubmit feature that was recently added since it was pretty easy to include. Let me know what you think.\n\nOAC folks, feel free to add/remove reviewers, I wasn\u0027t sure who was best to add.\n\nThank you!",
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31d38c9e_e7cac37e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-24T07:09:06Z",
+      "side": 1,
+      "message": "Let me know if I have the right contact here 😊",
+      "range": {
+        "startLine": 23,
+        "startChar": 52,
+        "endLine": 23,
+        "endChar": 73
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
