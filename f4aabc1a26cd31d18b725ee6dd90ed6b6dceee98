@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0153fb2d_c7d3caf0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-24T04:11:06Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 29,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "f4aabc1a26cd31d18b725ee6dd90ed6b6dceee98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6330020b_d546e217",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -13,6 +36,23 @@
       "writtenOn": "2020-09-24T02:05:28Z",
       "side": 1,
       "message": "PTAL, thanks!",
+      "revId": "f4aabc1a26cd31d18b725ee6dd90ed6b6dceee98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a114f14c_6c5b3d33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-09-24T04:11:06Z",
+      "side": 1,
+      "message": "lgtm!",
       "revId": "f4aabc1a26cd31d18b725ee6dd90ed6b6dceee98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
