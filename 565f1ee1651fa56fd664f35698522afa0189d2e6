@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d674666_da1f2234",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-24T09:32:03Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "565f1ee1651fa56fd664f35698522afa0189d2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18756beb_1ebeaac9",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-24T09:32:03Z",
+      "side": 1,
+      "message": "just curious: what does it mean \"ARC content sync\"?",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "565f1ee1651fa56fd664f35698522afa0189d2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
