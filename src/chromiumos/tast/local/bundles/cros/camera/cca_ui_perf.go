@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
@@ -48,7 +49,12 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 		ShouldMeasureUIBehaviors: true,
 		OutputDir:                s.OutDir(),
 	}); err != nil {
-		s.Fatal("Failed to measure performance: ", err)
+		var errJS *cca.ErrJS
+		if errors.As(err, &errJS) {
+			s.Error("There are JS errors when running CCA: ", err)
+		} else {
+			s.Fatal("Failed to measure performance: ", err)
+		}
 	}
 
 	// It is used to measure the warm start time of CCA.
@@ -58,7 +64,12 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 		ShouldMeasureUIBehaviors: false,
 		OutputDir:                s.OutDir(),
 	}); err != nil {
-		s.Fatal("Failed to measure warm start time: ", err)
+		var errJS *cca.ErrJS
+		if errors.As(err, &errJS) {
+			s.Error("There are JS errors when running CCA: ", err)
+		} else {
+			s.Fatal("Failed to measure warm start time: ", err)
+		}
 	}
 
 	if err := perfValues.Save(s.OutDir()); err != nil {

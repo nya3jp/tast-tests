@@ -146,12 +146,21 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-	defer app.Close(cleanupCtx)
+	defer func(ctx context.Context) {
+		if err := app.Close(ctx); err != nil {
+			s.Error("Failed to close app: ", err)
+		}
+	}(ctx)
 
 	restartApp := func(ctx context.Context) {
 		s.Log("Restarts CCA")
 		if err := app.Restart(ctx); err != nil {
-			s.Fatal("Failed to restart CCA: ", err)
+			var errJS *cca.ErrJS
+			if errors.As(err, &errJS) {
+				s.Error("There are JS errors when running CCA: ", err)
+			} else {
+				s.Fatal("Failed to restart CCA: ", err)
+			}
 		}
 	}
 
