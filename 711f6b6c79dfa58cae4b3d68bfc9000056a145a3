@@ -70,6 +70,30 @@
       "revId": "711f6b6c79dfa58cae4b3d68bfc9000056a145a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24690c62_0d8971a4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-24T00:30:19Z",
+      "side": 1,
+      "message": "Move the slider to the most left first if the minDiskSize is smaller than the default size, then move the slider to the right to increase so that the real disk size is equal or larger than the minDiskSize. PTAL!",
+      "parentUuid": "740e6803_1bb74aa6",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "711f6b6c79dfa58cae4b3d68bfc9000056a145a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
