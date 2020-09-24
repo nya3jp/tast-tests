@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "287eaa94_076bb915",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-24T09:42:52Z",
+      "side": 1,
+      "message": "LGTM % nits, thanks!",
+      "revId": "231e4a140c4e5a09708dc3ea803a3a034aa53c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e73557c3_23ec963c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-24T09:42:52Z",
+      "side": 1,
+      "message": "errors.Wrap already adds \": \", please remove",
+      "range": {
+        "startLine": 106,
+        "startChar": 73,
+        "endLine": 106,
+        "endChar": 75
+      },
+      "revId": "231e4a140c4e5a09708dc3ea803a3a034aa53c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d9b9025_97dca645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-24T09:42:52Z",
+      "side": 1,
+      "message": "nit: looks like you can just delete this part of the comment",
+      "range": {
+        "startLine": 119,
+        "startChar": 28,
+        "endLine": 119,
+        "endChar": 49
+      },
+      "revId": "231e4a140c4e5a09708dc3ea803a3a034aa53c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "434619bb_75998e1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-24T09:42:52Z",
+      "side": 1,
+      "message": "nit: maybe rename it to \"allowCrostini\" / \"supportCrostini\" (I think we shouldn\u0027t put \"s\" at the end of \"support\")?",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 21
+      },
+      "revId": "231e4a140c4e5a09708dc3ea803a3a034aa53c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73d4746_7eaf2107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-24T09:42:52Z",
+      "side": 1,
+      "message": "nit: you can just use \"conn\"",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "231e4a140c4e5a09708dc3ea803a3a034aa53c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
