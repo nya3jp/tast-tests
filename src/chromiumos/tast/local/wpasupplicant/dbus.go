@@ -53,15 +53,18 @@ func (d *DBusObject) Get(ctx context.Context, propName string, val interface{}) 
 	return d.obj.CallWithContext(ctx, dbusGetPropsMethod, 0, d.iface, propName).Store(val)
 }
 
-// CreateWatcher returns a SignalWatcher to observe the specified signal.
-func (d *DBusObject) CreateWatcher(ctx context.Context, signalName string) (*dbusutil.SignalWatcher, error) {
-	spec := dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      d.obj.Path(),
-		Interface: d.iface,
-		Member:    signalName,
+// CreateWatcher returns a SignalWatcher to observe the specified signals.
+func (d *DBusObject) CreateWatcher(ctx context.Context, signalNames ...string) (*dbusutil.SignalWatcher, error) {
+	specs := make([]dbusutil.MatchSpec, len(signalNames))
+	for i, sigName := range signalNames {
+		specs[i] = dbusutil.MatchSpec{
+			Type:      "signal",
+			Path:      d.obj.Path(),
+			Interface: d.iface,
+			Member:    sigName,
+		}
 	}
-	watcher, err := dbusutil.NewSignalWatcher(ctx, d.conn, spec)
+	watcher, err := dbusutil.NewSignalWatcher(ctx, d.conn, specs...)
 	if err != nil {
 		return nil, err
 	}
