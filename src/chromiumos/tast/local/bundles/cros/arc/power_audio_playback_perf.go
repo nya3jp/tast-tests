@@ -30,7 +30,7 @@ func init() {
 			"chromeos-audio-bugs@google.com", // Media team
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Pre:          arc.BootedWithDisableSyncFlags(),
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Params: []testing.Param{
 			{

@@ -44,7 +44,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
-		Pre:          arc.Booted(),
+		Pre:          arc.BootedWithDisableSyncFlags(),
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      powerTestDuration,
 		Params: []testing.Param{{
