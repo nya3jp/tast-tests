@@ -160,7 +160,7 @@ func CryptohomePerf(ctx context.Context, s *testing.State) {
 
 	var userdataauthDbusTime float64
 	if enableUserdataauth {
-		userdataauthDbusTime, err := getTime(ctx, r, userdataauthDbusTimeFile)
+		userdataauthDbusTime, err = getTime(ctx, r, userdataauthDbusTimeFile)
 		if err != nil {
 			s.Fatal("Failed to parse userdataauth D-Bus startup time: ", err)
 		}
