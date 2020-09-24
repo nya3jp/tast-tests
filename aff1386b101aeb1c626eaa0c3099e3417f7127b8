@@ -116,6 +116,30 @@
       "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e674031_de083d62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-24T08:47:05Z",
+      "side": 1,
+      "message": "The activity is singleTop, so these later act.Start calls are processed by Activity#onNewIntent.\n\nThe first StartWithArgs actually starts the activity.\nThe StartWithArgs being added in this CL causes the activity to actually start running the decoder test.\nThis final Start is a signal to the activity to cleanly shut down the media decoder (which was configured to decode the video in an endless loop) and then exit. It needs to be shut down cleanly so that the test/benchmark results are properly written to the log file.\n\nHaving an explicit ac.Stop() call is unnecessary. In success cases, the test shut the activity down the cleanly. In failure cases, arc.preImpl.resetState takes care of uninstalling any extra APKs, and the Android framework force stops any related activities when an APK is uninstalled.",
+      "parentUuid": "1869247e_c8074651",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "aff1386b101aeb1c626eaa0c3099e3417f7127b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
