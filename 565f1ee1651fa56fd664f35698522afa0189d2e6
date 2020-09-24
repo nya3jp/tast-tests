@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "ca823015_21bc7952",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-24T13:01:25Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "565f1ee1651fa56fd664f35698522afa0189d2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18756beb_1ebeaac9",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 4
@@ -39,6 +56,30 @@
       "revId": "565f1ee1651fa56fd664f35698522afa0189d2e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e2e4ef2_661c749e",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-09-24T13:01:25Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure myself (I took it from the existing power tests), but disabling these kind of flags should reduce CPU activity. I think it disables various Play store activities.",
+      "parentUuid": "18756beb_1ebeaac9",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "565f1ee1651fa56fd664f35698522afa0189d2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
