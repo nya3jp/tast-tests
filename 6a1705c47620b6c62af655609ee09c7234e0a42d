@@ -16,6 +16,23 @@
       "revId": "6a1705c47620b6c62af655609ee09c7234e0a42d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8bf183c_f60ad075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-24T16:29:36Z",
+      "side": 1,
+      "message": "Reassigning back to tast-owners to hopefully get someone with more cycles",
+      "revId": "6a1705c47620b6c62af655609ee09c7234e0a42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
