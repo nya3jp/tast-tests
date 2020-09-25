@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "d282686d_ca3c59b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-09-25T17:04:27Z",
+      "side": 1,
+      "message": "nit: we will have duplicate message in error. Could we make a custom JSError struct?",
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a3c69c8_168f01c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 3
@@ -127,6 +144,29 @@
         "startChar": 8,
         "endLine": 143,
         "endChar": 14
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "487e4ea9_148655f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-09-25T17:04:27Z",
+      "side": 1,
+      "message": "nit: not needed",
+      "range": {
+        "startLine": 149,
+        "startChar": 7,
+        "endLine": 149,
+        "endChar": 8
       },
       "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
