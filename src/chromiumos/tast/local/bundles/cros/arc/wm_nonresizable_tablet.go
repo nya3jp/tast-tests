@@ -50,6 +50,11 @@ func WMNonresizableTablet(ctx context.Context, s *testing.State) {
 			Name: "NT_display_size_change",
 			Func: wmNT15,
 		},
+		wm.TestCase{
+			// non-resizable/tablet: font size change
+			Name: "NT_font_size_change",
+			Func: wmNT17,
+		},
 	})
 }
 
@@ -152,4 +157,29 @@ func wmNT15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletDisplaySizeChangeHelper(ctx, tconn, a, d, ntActivities)
+}
+
+// wmNT17 covers non-resizable/tablet: font size change.
+// Expected behavior is defined in: go/arc-wm-r NT17: non-resizable/tablet: font size change.
+func wmNT17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	acts := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletFontSizeChangeHelper(ctx, tconn, a, d, acts)
 }
