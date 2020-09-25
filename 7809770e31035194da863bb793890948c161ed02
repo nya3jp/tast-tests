@@ -16,6 +16,63 @@
       "revId": "7809770e31035194da863bb793890948c161ed02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3170dd6d_7254b585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-25T11:54:02Z",
+      "side": 1,
+      "message": "New approach LGTM",
+      "revId": "7809770e31035194da863bb793890948c161ed02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4509c7d_3fe07e5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_start.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-25T11:54:02Z",
+      "side": 1,
+      "message": "Why not fatal here? I don\u0027t expect Wait to work if this failed.",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "7809770e31035194da863bb793890948c161ed02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b16e5a15_11dd6edf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_start.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-25T11:54:02Z",
+      "side": 1,
+      "message": "nit: keep the testexec.DumpLogOnError",
+      "revId": "7809770e31035194da863bb793890948c161ed02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
