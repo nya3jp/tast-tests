@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1597b83b_8cf270c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-25T11:56:17Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a3c69c8_168f01c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-25T11:56:17Z",
+      "side": 1,
+      "message": "let\u0027s check \"firstErr !\u003d nil\" in if to be consistent with other use cases in this CL",
+      "range": {
+        "startLine": 441,
+        "startChar": 5,
+        "endLine": 441,
+        "endChar": 20
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e70378ed_d8b1adba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-25T11:56:17Z",
+      "side": 1,
+      "message": "nit: not needed",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "910ef8bc_f2de6cba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-25T11:56:17Z",
+      "side": 1,
+      "message": "nit: Let\u0027s rephrase to \"Failed to close app\"",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 35
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08cbec20_9fc52098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-25T11:56:17Z",
+      "side": 1,
+      "message": "same here and in other places",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "753515da_32b49a1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_power_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-25T11:56:17Z",
+      "side": 1,
+      "message": "nit: always pass context by value, don\u0027t bind by reference to the function\n\nhere and in other places",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 14
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
