@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dbd121b_781d548d",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-25T04:05:08Z",
+      "side": 1,
+      "message": "singals.",
+      "range": {
+        "startLine": 56,
+        "startChar": 66,
+        "endLine": 56,
+        "endChar": 72
+      },
+      "revId": "5e44e25ea5380bbbceb9b4b18bf6fa4f4b717d0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbc31adc_ad9bd0f2",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/interface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-25T04:05:08Z",
+      "side": 1,
+      "message": "This should be in a separate CL.",
+      "revId": "5e44e25ea5380bbbceb9b4b18bf6fa4f4b717d0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
