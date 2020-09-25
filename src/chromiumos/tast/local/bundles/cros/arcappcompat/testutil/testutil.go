@@ -247,7 +247,10 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 
 // ClamshellResizeWindow Test "resize and restore back to original state of the app" and verifies app launch successfully without crash or ANR.
 func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const restartButtonResourceID = "android:id/button1"
+	const (
+		restartButtonResourceID = "android:id/button1"
+		restartButtonText       = "RESTART"
+	)
 
 	if !isNApp(ctx, s, tconn, a, d, appPkgName) {
 		s.Log("Maximizing the window")
@@ -260,8 +263,8 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 
 		// Click on restart button.
 		s.Log("It's a pre N-app; Attempting restart")
-		restartButton := d.Object(ui.ResourceID(restartButtonResourceID))
-		if err := restartButton.WaitForExists(ctx, LongUITimeout); err != nil {
+		restartButton := d.Object(ui.ID(restartButtonResourceID))
+		if err := restartButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
 			s.Fatal("Restart button does not exist: ", err)
 		}
 		if err := restartButton.Click(ctx); err != nil {
@@ -288,12 +291,23 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 			s.Log("App is resizable")
 			s.Log("Reseting window to normal size")
 			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
-				s.Error("Failed to reset window to normal size: ", err)
+				s.Log("Failed to reset window to normal size: ", err)
 			}
+			// Click on restart button.
+			restartButton := d.Object(ui.ClassName(AndroidButtonClassName), ui.Text(restartButtonText))
+			if err := restartButton.WaitForExists(ctx, LongUITimeout); err != nil {
+				s.Log("Restart button does not exist: ", err)
+			} else if err := restartButton.Click(ctx); err != nil {
+				s.Fatal("Failed to click on restart button: ", err)
+			} else if _, err := d.WaitForWindowUpdate(ctx, appPkgName, LongUITimeout); err != nil {
+				s.Fatal("Failed to wait window updated: ", err)
+			} else {
+				s.Log("Restart button does exist and clicked")
+			}
+
 			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
 				s.Error("The window is not normalized: ", err)
 			}
-
 			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 
 			s.Log("Setting window back to maximized")
