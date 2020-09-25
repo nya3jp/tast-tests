@@ -258,6 +258,12 @@ func DEQPEnvironment(env []string) []string {
 		nenv = append(nenv, "LD_LIBRARY_PATH="+paths)
 	}
 
+	// Disable Mesa's internal shader disk cache to avoid leaving around
+	// lots of files and confusing performance results.
+	// TODO(b/168540438): This can be removed once our mesa builds default to
+	//                    support but disable shader caching.
+	nenv = append(nenv, "MESA_GLSL_CACHE_DISABLE=true")
+
 	return nenv
 }
 

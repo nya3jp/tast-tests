@@ -109,6 +109,13 @@ func runTest(ctx context.Context, s *testing.State, t time.Duration, exe string,
 	ctx, cancel := context.WithTimeout(ctx, t)
 	defer cancel()
 	cmd := testexec.CommandContext(ctx, exe, args...)
+
+	// Disable Mesa's internal shader disk cache to avoid leaving around
+	// lots of files and confusing performance results.
+	// TODO(b/168540438): This can be removed once our mesa builds default to
+	//                    support but disable shader caching.
+	cmd.Env = append(cmd.Env, "MESA_GLSL_CACHE_DISABLE=true")
+
 	cmd.Stdout = f
 	cmd.Stderr = f
 	if err := cmd.Run(); err != nil {
