@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa1240d3_bf762258",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-09-25T00:53:11Z",
+      "side": 1,
+      "message": "I think go style is to omit the else when you have a return in the if: if blah { return foo } bar instead of if blah { return foo} else { bar}",
+      "revId": "11d0a6e2055b74387bc80f2537cf2211bbd04422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
