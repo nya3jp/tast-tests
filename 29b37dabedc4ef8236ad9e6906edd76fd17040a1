@@ -39,6 +39,30 @@
       "revId": "29b37dabedc4ef8236ad9e6906edd76fd17040a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7da84dcd_360d7300",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_start.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-25T11:30:13Z",
+      "side": 1,
+      "message": "This is no longer needed, as we decided to use cmd.Wait(), which closes it.",
+      "parentUuid": "5cd96e8a_18fc526e",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 14
+      },
+      "revId": "29b37dabedc4ef8236ad9e6906edd76fd17040a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
