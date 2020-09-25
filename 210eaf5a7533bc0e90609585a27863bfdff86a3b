@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b575026_79dd9ce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-09-25T21:58:48Z",
+      "side": 1,
+      "message": "In theory, you could add a new field and do:\n\n  if !k.Required and (!k.Recommended or (time.time() - start_time \u003e 60)):\n\n...or something like that?\n\nThen\n* If every boot takes up to 60 seconds you\u0027ll still catch.\n* If network fails to be found on every boot, you won\u0027t record but won\u0027t fail the test.  Hopefully someone else will notice.\n* If network comes up in \u003e 60 seconds, one would hope that people would notice and yell loudly?",
+      "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
