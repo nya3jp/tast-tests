@@ -16,6 +16,24 @@
       "revId": "4e36825ef6ad602eec90285d4d1ea6d593c28304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cb49b8c_9b128322",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-25T09:23:28Z",
+      "side": 1,
+      "message": "Okay, I switched their order in chain.",
+      "parentUuid": "b9d42191_7f649372",
+      "revId": "4e36825ef6ad602eec90285d4d1ea6d593c28304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
