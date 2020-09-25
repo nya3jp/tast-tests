@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "351fc1e3_295ad9a7",
+        "filename": "src/chromiumos/tast/common/genparams/doc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T09:24:28Z",
+      "side": 1,
+      "message": "Good point. Let me just remove this link at this moment while I consider publishing the doc.",
+      "parentUuid": "87865aec_2ed22e30",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "2baced6e64aa482248b268ec5671e27b3bfa29e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bbb1f9d_39afb365",
         "filename": "src/chromiumos/tast/common/genparams/params_test.go",
         "patchSetId": 6
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "54db5c5e_a547622c",
+        "filename": "src/chromiumos/tast/common/genparams/params_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T09:24:28Z",
+      "side": 1,
+      "message": "That\u0027s a nice idea! Let me do that.",
+      "parentUuid": "5bbb1f9d_39afb365",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 23
+      },
+      "revId": "2baced6e64aa482248b268ec5671e27b3bfa29e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "712a28b5_f6343624",
         "filename": "src/chromiumos/tast/common/genparams/params_test.go",
         "patchSetId": 6
@@ -76,6 +124,30 @@
       "writtenOn": "2020-09-23T04:44:12Z",
       "side": 1,
       "message": "`len(errors) !\u003d 0` can replace this condition.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 55
+      },
+      "revId": "2baced6e64aa482248b268ec5671e27b3bfa29e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3159bfdb_7e9d9887",
+        "filename": "src/chromiumos/tast/common/genparams/params_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T09:24:28Z",
+      "side": 1,
+      "message": "When the test passes, you\u0027re right, but when it fails, cmp.Diff does better job on formatting actual/expected values. In fact I prefer using cmp.Diff for comparing any compound values (e.g. structs, slices, map, ...). WDYT?",
+      "parentUuid": "712a28b5_f6343624",
       "range": {
         "startLine": 110,
         "startChar": 1,

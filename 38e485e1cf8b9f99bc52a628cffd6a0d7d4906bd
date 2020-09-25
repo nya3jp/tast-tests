@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "334b9ef9_90669177",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T09:24:28Z",
+      "side": 1,
+      "message": "Hi Hikaru,\n\nSorry for delayed update!\n",
+      "revId": "38e485e1cf8b9f99bc52a628cffd6a0d7d4906bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
