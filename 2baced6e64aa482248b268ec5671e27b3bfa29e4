@@ -157,6 +157,30 @@
       "revId": "2baced6e64aa482248b268ec5671e27b3bfa29e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54b60549_dd8ea821",
+        "filename": "src/chromiumos/tast/common/genparams/params_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-25T09:30:45Z",
+      "side": 1,
+      "message": "Oh, I completely overlooked that good side effect. Sounds reasonable.",
+      "parentUuid": "3159bfdb_7e9d9887",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 55
+      },
+      "revId": "2baced6e64aa482248b268ec5671e27b3bfa29e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
