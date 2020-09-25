@@ -5,7 +5,10 @@
 package arc
 
 import (
+	"bufio"
 	"context"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -143,6 +146,55 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	p, err := metrics.StopRecording()
 	if err != nil {
 		s.Fatal("Error while recording power metrics: ", err)
+	}
+
+	// Report memory usage.
+	arcPre, ok := s.PreValue().(arc.PreData)
+	if ok {
+		memOut, err := arcPre.ARC.Command(ctx, "cat", "/proc/meminfo").Output()
+		var valMemFree int64
+		var valMemTotal int64
+		if err != nil {
+			s.Fatal("Failed to read from /proc/meminfo: ", err)
+		} else {
+			scanner := bufio.NewScanner(strings.NewReader(string(memOut)))
+			for scanner.Scan() {
+				line := scanner.Text()
+				tokens := strings.Fields(line)
+				memName := tokens[0][:len(tokens[0])-1]
+				metricName := strings.ReplaceAll(strings.ReplaceAll(memName, "(", "_"), ")", "")
+				metricValue := tokens[1]
+				metricUnit := tokens[2]
+
+				if metricUnit != "kB" {
+					s.Fatalf("Invalid metric unit. Found %s, expected kB", metricUnit)
+				}
+
+				valueInt, err := strconv.ParseInt(metricValue, 10, 64)
+				if err != nil {
+					s.Fatal("Invalid metric value: ", err)
+				}
+
+				if memName == "MemFree" {
+					valMemFree = valueInt
+				} else if memName == "MemTotal" {
+					valMemTotal = valueInt
+				}
+
+				memMetric := perf.Metric{Name: "arc_mem_" + metricName, Unit: "kB", Direction: perf.SmallerIsBetter}
+				p.Set(memMetric, float64(valueInt))
+			}
+
+			// TotalUsage = MemTotal - MemFree
+			memMetric := perf.Metric{Name: "arc_mem_TotalUsage", Unit: "kB", Direction: perf.SmallerIsBetter}
+			valMemUsage := valMemTotal - valMemFree
+			if valMemUsage <= 0 {
+				s.Fatalf("Invalid total memory usage: total = %d, free = %d", valMemTotal, valMemFree)
+			}
+			p.Set(memMetric, float64(valMemUsage))
+		}
+	} else {
+		testing.ContextLog(ctx, "ARC not running, skipping memory metrics")
 	}
 
 	if err := p.Save(s.OutDir()); err != nil {
