@@ -6,6 +6,7 @@ package wpasupplicant
 
 import (
 	"context"
+	"strings"
 
 	"github.com/godbus/dbus"
 
@@ -118,4 +119,13 @@ func (iface *Interface) ParseBSSAddedSignal(ctx context.Context, sig *dbus.Signa
 // Reassociate calls the Reassociate method of the interface.
 func (iface *Interface) Reassociate(ctx context.Context) error {
 	return iface.dbus.Call(ctx, dbusInterfaceMethodReassociate).Err
+}
+
+// SignalName returns the name of the dbus.Signal, which may be one of DBusInterfaceSignal*.
+func SignalName(s *dbus.Signal) string {
+	parts := strings.Split(s.Name, ".")
+	if len(parts) == 0 {
+		return ""
+	}
+	return parts[len(parts)-1]
 }
