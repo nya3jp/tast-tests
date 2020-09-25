@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "fc28e266_99ec3c98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-25T16:19:19Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "a057abe85a3366967feb76ea5ee10a520d97bfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8991307c_1b54027f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots.go",
         "patchSetId": 2
