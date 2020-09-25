@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "1960df46_341347e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_ps175.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-25T08:33:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25613d5b_adf9a057",
+      "revId": "5efa91f660d6f67a1a7520899fbd12d469b5fd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c582bc46_da21d0ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_ps175.go",
         "patchSetId": 9
@@ -192,6 +210,30 @@
       "revId": "5efa91f660d6f67a1a7520899fbd12d469b5fd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f940d86d_d784e666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_ps175.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-09-25T08:33:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "736742b2_b8fbcffc",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 131
+      },
+      "revId": "5efa91f660d6f67a1a7520899fbd12d469b5fd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
