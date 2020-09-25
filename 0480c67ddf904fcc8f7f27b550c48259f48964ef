@@ -33,6 +33,201 @@
       "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a5e024f_a89b55fc",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T20:10:16Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d testexec.CommandContext(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59212e0c_5e5bfdfd",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T20:10:16Z",
+      "side": 1,
+      "message": "nit/style: can be one line.\n\nreturn func(...) {\n ...\n}, nil",
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "763b6a5e_4c148be1",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T20:10:16Z",
+      "side": 1,
+      "message": "Searching on the combined output is source of flakiness,\nbecause technically stdout and stderr can be interlaced.\n\nWhich output are you interested in?",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 44
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f000ee00_a8d58b30",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T20:10:16Z",
+      "side": 1,
+      "message": "how about using the common message pattern.\n\nerrors.Errorf(\"unexpected length of frequencies: got %d; want %d\", len(testData.Frequencies), testData.Channels)",
+      "range": {
+        "startLine": 142,
+        "startChar": 24,
+        "endLine": 142,
+        "endChar": 59
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b3b86c_e4e7c0a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T20:10:16Z",
+      "side": 1,
+      "message": "let\u0027s avoid stop words. Can this just named \"blockSize\" ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b507e28_6977eac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T20:10:16Z",
+      "side": 1,
+      "message": "ditto. suggestion \"crasTestClientCommand\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad90b5ba_f88309ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T20:10:16Z",
+      "side": 1,
+      "message": "nit/style:\n\nrunStr :\u003d \"--playback_file\"\nif mode \u003d\u003d captureMode {\n  runStr \u003d \"--capture_file\"\n}",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "881577e3_f9bc3ac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T20:10:16Z",
+      "side": 1,
+      "message": "Can chrome.LoggedIn precondition be used?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f5c2c2_ef6f0e40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T20:10:16Z",
+      "side": 1,
+      "message": "Could you handle error?",
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
