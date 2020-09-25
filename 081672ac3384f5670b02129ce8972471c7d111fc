@@ -82,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "f180f8f3_b5d57dd8",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-09-25T17:47:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f105b85_38a26359",
+      "range": {
+        "startLine": 94,
+        "startChar": 48,
+        "endLine": 94,
+        "endChar": 62
+      },
+      "revId": "081672ac3384f5670b02129ce8972471c7d111fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4210b6dd_219a700a",
         "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
         "patchSetId": 1
@@ -141,6 +165,30 @@
       "side": 1,
       "message": "Claiming TPM ownership right after clearing it sounds better.",
       "parentUuid": "c4c6d0b2_8aedd045",
+      "range": {
+        "startLine": 96,
+        "startChar": 18,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "081672ac3384f5670b02129ce8972471c7d111fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eeb0b49_e1bc5274",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-09-25T17:47:35Z",
+      "side": 1,
+      "message": "If there\u0027s any clear TPM operation during the test, either through the usual reboot cycle or soft-clearing (restarting cryptohomed), will cause the user vault to be unmounted and the chaps keystore to be inaccessible.\n\nTherefore, I would recommend that Cleanup() be called right before clear ownership for the whole thing to work properly. In this case, this function still ensure proper TPM ownership. I can add a CL that properly documents this requirement if we decide to move in this direction.",
+      "parentUuid": "7193346a_7c72278e",
       "range": {
         "startLine": 96,
         "startChar": 18,
