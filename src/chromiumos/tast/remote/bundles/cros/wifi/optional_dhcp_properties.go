@@ -165,7 +165,7 @@ packetLoop:
 			s.Errorf("Unexpected hostname; got %q, want %q", name, hostname)
 		}
 	}
-	if dhcpReqCount != 1 {
-		s.Fatalf("Found %d DHCP Request(s), expect 1", dhcpReqCount)
+	if dhcpReqCount == 0 {
+		s.Fatal("No DHCP Request found")
 	}
 }
