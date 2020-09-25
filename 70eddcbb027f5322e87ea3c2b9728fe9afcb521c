@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b58d104_70718cd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-09-25T23:01:15Z",
+      "side": 1,
+      "message": "There should be a TODO to remove this once this is the default for Mesa.",
+      "revId": "70eddcbb027f5322e87ea3c2b9728fe9afcb521c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1f69a32_ceb2cce2",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-09-25T23:01:15Z",
+      "side": 1,
+      "message": "Ditto: re TODO.",
+      "revId": "70eddcbb027f5322e87ea3c2b9728fe9afcb521c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
