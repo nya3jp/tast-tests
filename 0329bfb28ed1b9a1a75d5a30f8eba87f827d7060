@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d38a7543_033cb3a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "Then why do you need to duplicate tests a lot? 01_stress to 40_stress are just same.\nIf you\u0027ll have different autotest wrapper, the duplication can be handled there.\nIn this approach, updating the test needs both autotest wrapper and Tast test, that\u0027d be more cost.",
+      "parentUuid": "cf19934b_a1423eab",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01eb4b39_7b5d1e38",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
@@ -230,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "2a34a33d_0e476242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "Does:\n\ntesting.Poll(ctx, ...,\n\u0026testing.PollOptions{Timeout: retensionBlockTimeout; Interval: 30*time.Second})\n\nwork for you?",
+      "parentUuid": "60fbaeaa_78a4b49a",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 297,
+        "endChar": 2
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7cbc92c_f379e455",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
@@ -294,6 +336,24 @@
       "side": 1,
       "message": "What is the recommended way of combining sync.WaitGroup with a timeout for the group? I couldn\u0027t find timeout functionality of a waitgroup.",
       "parentUuid": "45387503_e280383e",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296c7127_b074c0ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "Each async task can respect the timeout passed via ctx.\n\nctx, cancel :\u003d context.WithTimeout(ctx, timeout)\ndefer cancel()\n\nwg :\u003d \u0026sync.WaitGroup()\nfor _, subTest in range subtests {\n  wg.Add(1)\n  go func() {\n    ...\n    wg.Done()\n  }()\n}\n\nwg.Wait()",
+      "parentUuid": "13b6f92a_48db54e4",
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -567,6 +627,30 @@
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30092122_8e9f1b57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "I still think we should remove testing.State.\nActually those two functions handle different layers. Even if we keep testing.State, they have different signature (returning error or not).\n\ntesting.State has a lot of things, and Tast is encouraging not to pass it via argument as much as possible.",
+      "parentUuid": "5928001a_980304b7",
+      "range": {
+        "startLine": 179,
+        "startChar": 38,
+        "endLine": 179,
+        "endChar": 56
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

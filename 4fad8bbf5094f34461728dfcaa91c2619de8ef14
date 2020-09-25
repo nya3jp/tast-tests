@@ -33,6 +33,160 @@
       "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c61949e4_1ce20612",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "Oops, sorry I overlooked...",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47d86f49_4c26f621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "nit:\n\nI overlooked in the last iteration, but just \"Val: setupBenchmarks,\" should work? If so, could you for simplicity?\nDitto for other params.",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6490eb7d_5b19068e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "Oh, so this is \"stress test for storage during suspend\" rather than stress test of suspending storage.\n\nHow about runStressOnSuspend or runStressTestOnSuspend() or ... something?",
+      "range": {
+        "startLine": 300,
+        "startChar": 5,
+        "endLine": 300,
+        "endChar": 25
+      },
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0914022_a6e5e96c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "Conflicting with the comment above.\n\"timeout\" in ctx looks not respected.\nCould you exit on timeout?\n\nAlso, in Tast, \"timeout\" is handled as error in general, so what is the expected behavior?\nIs it something exceptional use here?",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 2
+      },
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2499d562_266f4a31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "Hmm... should this be a part of \"storage\" category...? It looks like independent?",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ec721d_48bda852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "# To double check IIUC.\n\nThis is the background job trying to suspend repeatedly,\nwhile the main tests is the current suspendStorageStress, right?\n\nCould you describe details what is the expectation?\nSpecifically, what should be interpreted as \"pass\" and should be interpreted \"fail\". How \"timeout\" should be handled?\n\nAlso, if this function is just a background job, could you write so rather than making this as if a subtest?\n\nE.g.\n\nrunSuspendStressTest(...) {\n  ch :\u003d make(chan strcut{})\n  go func() {\n    ... suspend periodically with random sleep.\n    ... respect channel to terminate the job, too.\n  }()\n  defer close(ch)\n\n  ... mostly the content of the current suspendStorageStress().\n  ... timeout should be respected.\n  ... error should be handled properly, too.\n}",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eaeb7a9_f92c9859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "nit/style\n\nif err :\u003d ioutil.WriteFile(...); err !\u003d nil {\n  ...",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 371,
+        "endChar": 16
+      },
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f625f93d_454f1d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T08:02:52Z",
+      "side": 1,
+      "message": "Looks wrong rounding?\n\nreturn int(math.Round(float64(device.Size)/1e9)), nil\n\nIIUC.",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
