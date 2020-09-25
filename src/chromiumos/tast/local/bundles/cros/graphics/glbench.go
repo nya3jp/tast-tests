@@ -145,6 +145,10 @@ func GLBench(ctx context.Context, s *testing.State) {
 		must(reportTemperature(ctx, pv, "temperature_2_before_test"))
 	}
 
+	// Disable Mesa's internal shader disk cache to avoid leaving around
+	// lots of files and confusing performance results.
+	os.Setenv("MESA_GLSL_CACHE_DISABLE", "true")
+
 	// Run the test, saving is optional and helps with debugging
 	// and reference image management. If unknown images are
 	// encountered one can take them from the outdir and copy
