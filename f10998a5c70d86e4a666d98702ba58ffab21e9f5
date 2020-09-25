@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01703203_48cd9efa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-25T15:44:14Z",
+      "side": 1,
+      "message": "Add the tast library to this:\n settingsConn, err :\u003d cr.NewConnForTarget(ctx, chrome.MatchTargetURL(\"chrome://os-settings/\"))\n if err !\u003d nil{\n   return nil, err\n }\n if err :\u003d chrome.AddTastLibrary(ctx, settingsConn); err !\u003d nil {\n   settingsConn.Close()\n   return nil, errors.Wrap(err, \"failed to introduce tast library\")\n }\n return settingsConn, nil",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 80
+      },
+      "revId": "f10998a5c70d86e4a666d98702ba58ffab21e9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

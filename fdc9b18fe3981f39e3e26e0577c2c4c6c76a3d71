@@ -241,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "5a63ff74_a676e9f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-25T15:44:14Z",
+      "side": 1,
+      "message": "I think that you may be able to do other domains, but you need a domain. so like \"person@person.com\" should work too",
+      "parentUuid": "7df83657_439e248a",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 67
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4fa0daf_3728a861",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
         "patchSetId": 3
@@ -605,6 +629,30 @@
       "side": 1,
       "message": "I tried that at first, but the settings app\u0027s Chrome can\u0027t use tast.promisify (\u0027tast\u0027 is undefined).",
       "parentUuid": "528fb274_eb99a0aa",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56497a58_f61692bc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-25T15:44:14Z",
+      "side": 1,
+      "message": "Added a comment on adding the tast library to this connection\n\nAlso realized that to return the token, you can do tast.promisify(...)().then(authToken \u003d\u003e authToken[\u0027token\u0027])",
+      "parentUuid": "2afca1ee_1240da75",
       "range": {
         "startLine": 100,
         "startChar": 15,
