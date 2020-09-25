@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd29abfc_1d4301ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-25T19:33:48Z",
+      "side": 1,
+      "message": "Thanks Brendan for the pointers on tast.promisify!",
+      "revId": "e52bddd8008f77f5b76283d127c5e3e67802035e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9878e15f_0e3fae96",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-25T19:33:48Z",
+      "side": 1,
+      "message": "I couldn\u0027t get this to work like\n  settingsConn.Call(ctx, \u0026token, `tast.promisify(chrome.quickUnlockPrivate.getAuthToken)().then(...)`, password)\n\nI couldn\u0027t figure out the right way to structure it to get Call working directly, so I just made it an arrow function and it works fine. Is there a better way to do this?",
+      "range": {
+        "startLine": 106,
+        "startChar": 69,
+        "endLine": 106,
+        "endChar": 84
+      },
+      "revId": "e52bddd8008f77f5b76283d127c5e3e67802035e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67eecad4_b9dda78f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-25T19:33:48Z",
+      "side": 1,
+      "message": "I did the arrow function thing here as well due to this argument. I didn\u0027t want to hard-code its value like:\n  settingsConn.Call(ctx, nil, `tast.promisify(chrome.quickUnlockPrivate.setModes)`, token, []string{\"PIN\"}, []string{PIN})\n\nAgain LMK if there\u0027s a nicer way to do this.",
+      "range": {
+        "startLine": 112,
+        "startChar": 77,
+        "endLine": 112,
+        "endChar": 124
+      },
+      "revId": "e52bddd8008f77f5b76283d127c5e3e67802035e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

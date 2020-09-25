@@ -665,6 +665,30 @@
     },
     {
       "key": {
+        "uuid": "57bac6c4_58570587",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-25T19:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56497a58_f61692bc",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28e12958_c89aae61",
         "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
         "patchSetId": 3
@@ -735,6 +759,30 @@
     },
     {
       "key": {
+        "uuid": "434fa8bf_22d4e1d0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-25T19:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "152ba42c_b556014f",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "706877da_2a1c368a",
         "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
         "patchSetId": 3
@@ -802,6 +850,30 @@
       "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a23988_5d6217ca",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-09-25T19:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0055d6e9_24c69f8f",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "fdc9b18fe3981f39e3e26e0577c2c4c6c76a3d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
