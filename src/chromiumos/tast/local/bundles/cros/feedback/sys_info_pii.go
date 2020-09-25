@@ -71,20 +71,10 @@ func SysInfoPII(ctx context.Context, s *testing.State) {
 	}
 
 	for _, info := range ret {
-		if info.Key == "mem_usage_with_title" {
+		if info.Key != "mem_usage_with_title" {
 			// mem_usage_with_title is only included if the user
 			// explicitly opts to send tab titles, so it's
-			// acceptable for it to contain titles.
-			if !strings.Contains(info.Value, title) {
-				s.Errorf("Log %q unexpectedly did not contain tab title", info.Key)
-				if err := saveLog(s.OutDir(), info.Key, info.Value); err != nil {
-					s.Error("Also, failed to save log contents: ", err)
-				}
-				if err := saveLog(s.OutDir(), "tabTitle", title); err != nil {
-					s.Error("Also, failed to save tab title: ", err)
-				}
-			}
-		} else {
+			// acceptable for it to contain titles or possibly URLs.
 			badContents := []struct {
 				content string
 				desc    string
