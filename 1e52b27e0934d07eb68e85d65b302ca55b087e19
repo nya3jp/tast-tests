@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "337ac783_43bd8be9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-25T21:11:41Z",
+      "side": 1,
+      "message": "So, see my notes above (it\u0027s probably nice to not kill all bootperf tests because of a flaky lab DUT), but this also means that WaitUntilBootComplete() (line 96) won\u0027t wait for this file. So if there are bad enough bootperf regressions, we won\u0027t collect the metric at all.\n\nI\u0027m not quite sure if this is a problem. Is there a way to alert on both significant changes, and significant periods of missing data?\n\nOr should I mark this Required?",
+      "range": {
+        "startLine": 78,
+        "startChar": 59,
+        "endLine": 78,
+        "endChar": 64
+      },
+      "revId": "1e52b27e0934d07eb68e85d65b302ca55b087e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
