@@ -33,6 +33,24 @@
       "revId": "d8aa15cfafc1d0b7bc474638324eed19f76cc398",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b228270c_70e2f061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vmc_extra_disk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-25T12:21:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "357e0f6f_1485e67b",
+      "revId": "d8aa15cfafc1d0b7bc474638324eed19f76cc398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
