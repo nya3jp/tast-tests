@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "165b525c_e3c87e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T02:15:11Z",
+      "side": 1,
+      "message": "For file paths please use \"path/filepath\" instead of \"path\".\nhttps://godoc.org/path/filepath",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 20
+      },
+      "revId": "1cce109fdabb549f7c05669a1c156426053ed28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c10054f_0c6c7f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T02:15:11Z",
+      "side": 1,
+      "message": "nit\u0026optional: If you don\u0027t need a file descriptor, ioutil.WriteFile is usually more convenient.\nhttps://godoc.org/io/ioutil#WriteFile",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 61
+      },
+      "revId": "1cce109fdabb549f7c05669a1c156426053ed28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fccba9f4_80453b1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T02:15:11Z",
+      "side": 1,
+      "message": "This deferred statement doesn\u0027t release nodes as you expect.\n\nWhen executing a deferred statement, most of the expression is evaluated (except the final function call). This means that resultsTextContainer is always evaluated to nil even if we assign to it later.\n\nhttps://play.golang.org/p/wVDG-bn3CiX\n\nTo avoid this issue, we can wrap this in an anonymous function call to defer evaluating resultsTextContainer.\n\nhttps://play.golang.org/p/N4IPEwWkdfB",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "1cce109fdabb549f7c05669a1c156426053ed28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76db58e1_75ddbd54",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
         "patchSetId": 12
@@ -42,6 +111,29 @@
     },
     {
       "key": {
+        "uuid": "63dd72d4_c264269b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T02:15:11Z",
+      "side": 1,
+      "message": "In this case resultsTextContainer may keep some nodes (when len(resultsTextContainer) \u003e\u003d 2), and the slice is overwritten in the next iteration of testing.Poll, ending up leaking the nodes.\n\nTo avoid this issue, we should assign to resultsTextContainer only when we\u0027re sure that the polling function is never called again, i.e. in a successful case.\n\n var resultsTextContainer ui.NodeSlice\n defer func() {\n   resultsTextContainer.Release(ctx)\n }()\n\n if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n   rtc, err :\u003d filesApp.Root.Descendants(ctx, params)\n   if err !\u003d nil { ... }\n   defer func() {\n     rtc.Release(ctx)\n   }()\n\n   ...\n\n   resultsTextContainer \u003d rtc\n   rtc \u003d nil\n   return nil\n }, ...); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 27
+      },
+      "revId": "1cce109fdabb549f7c05669a1c156426053ed28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ae94db1_e45303d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
         "patchSetId": 12
@@ -58,6 +150,29 @@
         "startChar": 12,
         "endLine": 119,
         "endChar": 69
+      },
+      "revId": "1cce109fdabb549f7c05669a1c156426053ed28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc201f0_6d688a20",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T02:15:11Z",
+      "side": 1,
+      "message": "We don\u0027t need \"s\" suffix here. time.Duration is formatted nicely with %v.\n\nhttps://play.golang.org/p/G3OQ0Z-Nwt8",
+      "range": {
+        "startLine": 659,
+        "startChar": 43,
+        "endLine": 659,
+        "endChar": 46
       },
       "revId": "1cce109fdabb549f7c05669a1c156426053ed28f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
