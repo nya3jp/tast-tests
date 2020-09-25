@@ -14,10 +14,10 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/power"
@@ -146,7 +146,7 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
@@ -254,21 +254,20 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
 			s.Log("Failed to maximize the window: ", err)
 		}
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
-			s.Log("The window is not maximized: ", err)
-		}
-
 		// Click on restart button.
 		s.Log("It's a pre N-app; Attempting restart")
-		restartButton := d.Object(ui.ResourceID(restartButtonResourceID))
-		if err := restartButton.WaitForExists(ctx, LongUITimeout); err != nil {
+		restartButton := d.Object(ui.ID(restartButtonResourceID))
+		if err := restartButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
 			s.Fatal("Restart button does not exist: ", err)
-		}
-		if err := restartButton.Click(ctx); err != nil {
+		} else if err := restartButton.Click(ctx); err != nil {
 			s.Fatal("Failed to click on restart button: ", err)
 		}
 		if _, err := d.WaitForWindowUpdate(ctx, appPkgName, LongUITimeout); err != nil {
-			s.Fatal("Failed to wait window updated: ", err)
+			s.Fatal("Failed to wait for window update: ", err)
+		}
+
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
+			s.Error("The window is not maximized: ", err)
 		}
 
 		DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
@@ -288,17 +287,40 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 			s.Log("App is resizable")
 			s.Log("Reseting window to normal size")
 			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
-				s.Error("Failed to reset window to normal size: ", err)
+				s.Log("Failed to reset window to normal size: ", err)
 			}
+			// Click on restart button.
+			restartButton := d.Object(ui.ID(restartButtonResourceID))
+			if err := restartButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+				s.Log("Restart button does not exist: ", err)
+			} else if err := restartButton.Click(ctx); err != nil {
+				s.Fatal("Failed to click on restart button: ", err)
+			} else if _, err := d.WaitForWindowUpdate(ctx, appPkgName, LongUITimeout); err != nil {
+				s.Fatal("Failed to wait for window update: ", err)
+			} else {
+				s.Log("Restart button does exist and was clicked")
+			}
+
 			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
 				s.Error("The window is not normalized: ", err)
 			}
-
 			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 
 			s.Log("Setting window back to maximized")
 			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
 				s.Log("Failed to set window to maximized: ", err)
+			}
+
+			// Click on restart button.
+			restartButton = d.Object(ui.ID(restartButtonResourceID))
+			if err := restartButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+				s.Log("Restart button does not exist: ", err)
+			} else if err := restartButton.Click(ctx); err != nil {
+				s.Fatal("Failed to click on restart button: ", err)
+			} else if _, err := d.WaitForWindowUpdate(ctx, appPkgName, LongUITimeout); err != nil {
+				s.Fatal("Failed to wait for window update: ", err)
+			} else {
+				s.Log("Restart button does exist and was clicked")
 			}
 			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
 				s.Log("The window is not maximized: ", err)
