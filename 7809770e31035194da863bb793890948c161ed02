@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a02c8fed_8ab2ab15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-09-25T11:30:13Z",
+      "side": 1,
+      "message": "As per an offline discussion with vsavu@, I changed the code to use cmd.Start() and cmd.Wait() instead of cmd.Run() because we want to write commands into VM\u0027s stdin after the command is started.\n\nvsavu@, PTAL again",
+      "revId": "7809770e31035194da863bb793890948c161ed02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
