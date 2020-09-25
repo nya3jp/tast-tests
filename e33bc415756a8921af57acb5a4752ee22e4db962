@@ -34,6 +34,23 @@
       "revId": "e33bc415756a8921af57acb5a4752ee22e4db962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7de92ade_2576c23f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-25T08:30:57Z",
+      "side": 1,
+      "message": "During the weekend I had a lot of problems with some autotest initialization code/permissions on file system. I was worried this could have been a synchronization issue. After resyncing and using image hatch-release/R87-13487.0.0 I don\u0027t see this anymore. I added hooks in ebuild and changed the suite so we can see if this works fine in the lab. Chances are that we need to move the server test out of the lxc instance.",
+      "revId": "e33bc415756a8921af57acb5a4752ee22e4db962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
