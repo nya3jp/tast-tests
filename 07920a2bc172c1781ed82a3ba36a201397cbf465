@@ -99,6 +99,30 @@
     },
     {
       "key": {
+        "uuid": "a1a3ee12_32e558dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T05:12:42Z",
+      "side": 1,
+      "message": "Also, if ui.Find is used, the returned first element needs to be Release()ed.",
+      "parentUuid": "7a626671_340645e0",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "07920a2bc172c1781ed82a3ba36a201397cbf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc312aa7_4c092309",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
         "patchSetId": 1
@@ -150,6 +174,63 @@
       "writtenOn": "2020-09-24T16:12:29Z",
       "side": 1,
       "message": "Instead of a function, you should add the HTML file into data, and open a server with it. You can see an example for this here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+      "revId": "07920a2bc172c1781ed82a3ba36a201397cbf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee4b5c73_c2a0b052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T05:12:42Z",
+      "side": 1,
+      "message": "This is just an utility, so it is recommended to avoid passing testing.State. Instead, could you return an error, and handle it in the caller?",
+      "range": {
+        "startLine": 83,
+        "startChar": 24,
+        "endLine": 83,
+        "endChar": 40
+      },
+      "revId": "07920a2bc172c1781ed82a3ba36a201397cbf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12acf934_e70473ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T05:12:42Z",
+      "side": 1,
+      "message": "- In case of failure, could you avoid remaining the file?\n- Could you avoid using /tmp directly, which could be leaked to the next tests or even after the Tast run.\nYou can just use ioutil.TempFile(\"\", \"...\") (passing an empty dir at the first argument).",
+      "revId": "07920a2bc172c1781ed82a3ba36a201397cbf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73535ad3_24e16b25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-25T05:12:42Z",
+      "side": 1,
+      "message": "Clarification, just in case. are you intended to dump on the error, iff NewConn or WaitForLocationChangeCompleted failed? Or are you interested in to dump in case of main test body failure?",
       "revId": "07920a2bc172c1781ed82a3ba36a201397cbf465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
