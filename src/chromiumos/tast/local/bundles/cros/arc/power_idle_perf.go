@@ -5,7 +5,11 @@
 package arc
 
 import (
+	"bufio"
 	"context"
+	"regexp"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -149,6 +153,58 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 
 	cooldownTimeMetric := perf.Metric{Name: "cooldown_time", Unit: "ms", Direction: perf.SmallerIsBetter}
 	p.Set(cooldownTimeMetric, float64(cooldownTime.Milliseconds()))
+
+	// Report memory usage.
+	arcPre, ok := s.PreValue().(arc.PreData)
+	metricRegexp := regexp.MustCompile("[^a-zA-Z0-9]")
+	if ok {
+		memOut, err := arcPre.ARC.Command(ctx, "cat", "/proc/meminfo").Output()
+		var valMemFree int64
+		var valMemTotal int64
+		if err != nil {
+			s.Fatal("Failed to read from /proc/meminfo: ", err)
+		} else {
+			scanner := bufio.NewScanner(strings.NewReader(string(memOut)))
+			for scanner.Scan() {
+				// Line format example: MemTotal:      14863104 kB
+				line := scanner.Text()
+				tokens := strings.Fields(line)
+				memName := tokens[0][:len(tokens[0])-1]
+				// No special characters allowed in metric names.
+				metricName := metricRegexp.ReplaceAllString(memName, "_")
+				metricValue := tokens[1]
+				metricUnit := tokens[2]
+
+				if metricUnit != "kB" {
+					s.Fatalf("Invalid metric unit. Found %s, expected kB", metricUnit)
+				}
+
+				valueInt, err := strconv.ParseInt(metricValue, 10, 64)
+				if err != nil {
+					s.Fatal("Invalid metric value: ", err)
+				}
+
+				if memName == "MemFree" {
+					valMemFree = valueInt
+				} else if memName == "MemTotal" {
+					valMemTotal = valueInt
+				}
+
+				memMetric := perf.Metric{Name: "arc_mem_" + metricName, Unit: "kB", Direction: perf.SmallerIsBetter}
+				p.Set(memMetric, float64(valueInt))
+			}
+
+			// TotalUsage = MemTotal - MemFree
+			memMetric := perf.Metric{Name: "arc_mem_TotalUsage", Unit: "kB", Direction: perf.SmallerIsBetter}
+			valMemUsage := valMemTotal - valMemFree
+			if valMemUsage <= 0 {
+				s.Fatalf("Invalid total memory usage: total = %d, free = %d", valMemTotal, valMemFree)
+			}
+			p.Set(memMetric, float64(valMemUsage))
+		}
+	} else {
+		testing.ContextLog(ctx, "ARC not running, skipping memory metrics")
+	}
 
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
