@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec573331_f32d0e46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T03:27:08Z",
+      "side": 1,
+      "message": "LGTM with one comment.\n",
+      "revId": "afef94a1b0060864dfbcf7f582263ea1338b8190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1954b0_1710d9e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-25T03:27:08Z",
+      "side": 1,
+      "message": "I guess you forgot to remove this line.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 40
+      },
+      "revId": "afef94a1b0060864dfbcf7f582263ea1338b8190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
