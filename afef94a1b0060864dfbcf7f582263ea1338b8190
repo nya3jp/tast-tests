@@ -39,6 +39,30 @@
       "revId": "afef94a1b0060864dfbcf7f582263ea1338b8190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a063f2_7e2205b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_search.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1413244
+      },
+      "writtenOn": "2020-09-25T03:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad1954b0_1710d9e0",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 40
+      },
+      "revId": "afef94a1b0060864dfbcf7f582263ea1338b8190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
