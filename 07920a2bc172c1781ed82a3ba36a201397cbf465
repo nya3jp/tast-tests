@@ -402,6 +402,24 @@
       "revId": "07920a2bc172c1781ed82a3ba36a201397cbf465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aae6e9e_e381c8a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2020-09-25T08:49:15Z",
+      "side": 1,
+      "message": "I think the latter. If Chrome is not able to start I don\u0027t think I want to have the dump but if the test fails for validation errors that are different than expected the dump would be helpful.",
+      "parentUuid": "73535ad3_24e16b25",
+      "revId": "07920a2bc172c1781ed82a3ba36a201397cbf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
