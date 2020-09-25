@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "15b6f05c_9a2cf2ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-09-25T05:15:36Z",
+      "side": 1,
+      "message": "I\u0027m not encouraging to pass |testing.State| around. My point is that your call site only differentiate js-error or non js-error for wrapping error with different error message or |s.Error| with different message and those message are not involved any useful information in the scope of call site. Why not just wrap the message in |App.Close| and wrapping error here with some more useful message fitting the call site\u0027s use.",
+      "parentUuid": "17c5d476_19cf3f37",
+      "range": {
+        "startLine": 221,
+        "startChar": 4,
+        "endLine": 225,
+        "endChar": 5
+      },
+      "revId": "acae1e6c925f50ea414eecea0c6de5af45a1cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f51c3214_18d882c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 1
