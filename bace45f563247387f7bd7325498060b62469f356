@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b531785_68a3fef7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-09-25T22:50:37Z",
+      "side": 1,
+      "message": "Difference from the last patch: the sub-test (ShelfWithNavigationWidget) enters overflow mode to collects some metrics data only available in overflow.",
+      "revId": "bace45f563247387f7bd7325498060b62469f356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
