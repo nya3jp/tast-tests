@@ -53,6 +53,12 @@ func DisableScreenshots(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard: ", err)
+	}
+	defer keyboard.Close()
+
 	for _, tc := range []struct {
 		name             string
 		value            []policy.Policy
@@ -105,11 +111,6 @@ func DisableScreenshots(ctx context.Context, s *testing.State) {
 			// Update policies.
 			if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.value); err != nil {
 				s.Fatal("Failed to update policies: ", err)
-			}
-
-			keyboard, err := input.Keyboard(ctx)
-			if err != nil {
-				s.Fatal("Failed to get keyboard: ", err)
 			}
 
 			if err := keyboard.Accel(ctx, "Ctrl+Scale"); err != nil {
