@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55c765b7_7b4bd91a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-09-25T01:26:19Z",
+      "side": 1,
+      "message": "let this land and then exclude all the existing board that are failing. ",
+      "revId": "9f6293c19d2143d999104a0053b4c29e327329fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
