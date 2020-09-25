@@ -103,6 +103,7 @@ func CloseNotifications(ctx context.Context, tconn *chrome.TestConn) error {
 			// will be no close buttons.
 			node.LeftClick(ctx)
 		}
+		nodes.Release(ctx)
 	}
 
 	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
