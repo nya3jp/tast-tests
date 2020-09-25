@@ -54,6 +54,9 @@ var (
 	//     JS code. So V8 is initialized and running, etc...
 	//   kernel_to_login - The moment when user can actually see signin UI.
 	//   kernel_to_android_start - The moment when Android is started.
+	//   kernel_to_cellular_registered - The moment when Shill detects a
+	//     cellular device.
+	//   kernel_to_wifi_registered - The moment when Shill detects a WiFi device.
 	eventMetrics = []struct {
 		MetricName string
 		EventName  string
@@ -72,6 +75,11 @@ var (
 		{"kernel_to_login", "login-prompt-visible", true},
 		// Not all boards support ARC.
 		{"kernel_to_android_start", "android-start", false},
+		// Not all devices have cellular. All should have WiFi, but we
+		// still don't want to fail (e.g., if there are hardware
+		// issues).
+		{"kernel_to_cellular_registered", "network-cellular-registered", false},
+		{"kernel_to_wifi_registered", "network-wifi-registered", false},
 	}
 
 	uptimeFileGlob = filepath.Join("/tmp", uptimePrefix+"*")
@@ -191,15 +199,20 @@ func parseUptime(eventName, bootstatDir string, index int) (float64, error) {
 // GatherTimeMetrics reads and reports boot time metrics. It reads
 // "seconds since kernel startup" from the bootstat files for the events named
 // in |eventMetrics|, and stores the values as perf metrics.  The following
-// metrics are recorded:
+// metrics may be recorded:
 //   * seconds_kernel_to_startup
 //   * seconds_kernel_to_startup_done
 //   * seconds_kernel_to_chrome_exec
 //   * seconds_kernel_to_chrome_main
+//   * seconds_kernel_to_signin_start
+//   * seconds_kernel_to_signin_wait
+//   * seconds_kernel_to_signin_users
 //   * seconds_kernel_to_login
+//   * seconds_kernel_to_android_start
+//   * seconds_kernel_to_cellular_registered
+//   * seconds_kernel_to_wifi_registered
 //   * seconds_kernel_to_network
-// All of these metrics are considered mandatory, except for
-// seconds_kernel_to_network.
+// Not all of these are mandatory.
 func GatherTimeMetrics(ctx context.Context, results *platform.GetBootPerfMetricsResponse) error {
 	for _, k := range eventMetrics {
 		key := "seconds_" + k.MetricName
