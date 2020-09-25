@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "d30739e8_7ac03d24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-25T05:29:16Z",
+      "side": 1,
+      "message": "Yeah, I am just confused by the second example you wrote since the s.Error() is missing and I think maybe you mean we should s.Error() in app.Close(). But it might be just a typo. (Maybe you mean \"s.Error(err)\" ?)\n\nFor cases that we always use s.Error() either it is JS error or not, yes we can just wrap the messages in app.Close(). Please see the latest patch set.\n\nBut for cases like Restart(), we might want to s.Error() for JS errors and s.Fatal() for others. For such cases, I\u0027ll still keep the IsJSError() checks for them.",
+      "parentUuid": "15b6f05c_9a2cf2ce",
+      "range": {
+        "startLine": 221,
+        "startChar": 4,
+        "endLine": 225,
+        "endChar": 5
+      },
+      "revId": "acae1e6c925f50ea414eecea0c6de5af45a1cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f51c3214_18d882c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 1
