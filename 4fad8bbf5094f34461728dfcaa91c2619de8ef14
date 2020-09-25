@@ -16,6 +16,23 @@
       "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64ed3c79_8019eaae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-09-25T04:47:40Z",
+      "side": 1,
+      "message": "Let me defer +2 to hidehiko@.",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
