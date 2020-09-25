@@ -587,6 +587,24 @@
     },
     {
       "key": {
+        "uuid": "c43875d3_2dc7cba4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-25T03:25:05Z",
+      "side": 1,
+      "message": "Oh, yes, that should work. One minor problem of using target as name is: some filesystems don\u0027t allow \u0027:\u0027. e.g. NTFS, FAT32. Not sure if we need to take care of this case.\n\nOr maybe simply let name \u003d fmt.Sprintf(router%d, idx)? It might be simpler to find corresponding logs as we use idx to specify routers in code. WDYT?",
+      "parentUuid": "5cfb7a40_b35d29f6",
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d5db8a_1571543f",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -692,6 +710,30 @@
       "side": 1,
       "message": "uint seem to guarantee `the index x is in range if 0 \u003c\u003d x \u003c len(a)` predicate. But I have not too strong opinion, too.\nLooking throughout the code, I\u0027ve seen a lot of int indexes, but I regarded them as leftover habit from POSIX programming. I think I\u0027d rather rely on your experience as to what is a general rule for golang.",
       "parentUuid": "e73eb793_8227938d",
+      "range": {
+        "startLine": 354,
+        "startChar": 63,
+        "endLine": 354,
+        "endChar": 67
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07bcd5f_87a06551",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-25T03:25:05Z",
+      "side": 1,
+      "message": "Let\u0027s ask Dean if he has some other thoughts. :)\n\nDean@: WDYT about the usage here?",
+      "parentUuid": "41071f24_c4adeab4",
       "range": {
         "startLine": 354,
         "startChar": 63,

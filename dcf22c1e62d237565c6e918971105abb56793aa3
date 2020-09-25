@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c22b7acc_76f9991b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-25T03:25:05Z",
+      "side": 1,
+      "message": "Sorry for the latency, I took a brief look at the network_WiFi_RoamNatural and network_WiFi_RoamDiagnostics tests. I think the usage is not very complicated so probably OK to extend current TestFixture. However, if things start to grow, might need to consider some refactor. e.g. move out the multi-router part and have a special single-router wrapping it.\n\nOne more question that is not inline: Do we care the IP subnet range of each AP in roaming tests? Currently each Router object tracks their own map of busy subnet, so there might be some collision.",
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6ae3c42_d2e0a854",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-25T03:25:05Z",
+      "side": 1,
+      "message": "Will the Tast version also run in current environment? i.e. the env with only router and pcap.\n\nIf the test feeds the hostname of pcap device into the list of routers and no pcap is specified, it will try default pcap here and can wrongly create another Router object for pcap device if the default hostname works.",
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7710374_888d3849",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-25T03:25:05Z",
+      "side": 1,
+      "message": "I\u0027m not really a big fan of \"Ext\" suffix. Do you think something like ArpingFromRouterID might be more readable? (similar for the other Ext functions)",
+      "range": {
+        "startLine": 748,
+        "startChar": 39,
+        "endLine": 748,
+        "endChar": 42
+      },
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f047631_5ee62ceb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-25T03:25:05Z",
+      "side": 1,
+      "message": "I see some similar usage in external repos but I\u0027m not totally sure if this is suggested. One alternative might be introducing another function. e.g. RouterByID",
+      "range": {
+        "startLine": 846,
+        "startChar": 30,
+        "endLine": 846,
+        "endChar": 40
+      },
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
