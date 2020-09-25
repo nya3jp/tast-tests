@@ -33,6 +33,24 @@
       "revId": "873db52db08fde3ec582ec68924c859fa23033e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b3d0368_df8a4f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-25T17:28:54Z",
+      "side": 1,
+      "message": "I think you\u0027re right. I\u0027ve created CL:2431848 to create such a utility, but I\u0027m not going to block this change on it.",
+      "parentUuid": "816cda51_52f1b15c",
+      "revId": "873db52db08fde3ec582ec68924c859fa23033e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
