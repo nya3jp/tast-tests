@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8da8b35e_1df52046",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-09-26T09:48:12Z",
+      "side": 1,
+      "message": "LGTM. Thanks for the change.\nWe still need a tast-owner to look at the change.",
+      "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b575026_79dd9ce7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 2
@@ -13,6 +30,24 @@
       "writtenOn": "2020-09-25T21:58:48Z",
       "side": 1,
       "message": "In theory, you could add a new field and do:\n\n  if !k.Required and (!k.Recommended or (time.time() - start_time \u003e 60)):\n\n...or something like that?\n\nThen\n* If every boot takes up to 60 seconds you\u0027ll still catch.\n* If network fails to be found on every boot, you won\u0027t record but won\u0027t fail the test.  Hopefully someone else will notice.\n* If network comes up in \u003e 60 seconds, one would hope that people would notice and yell loudly?",
+      "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60c5b735_252fc26a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-09-26T09:48:12Z",
+      "side": 1,
+      "message": "This sounds a good idea to implement. We can do it in another change. We just need to be careful not to regress the test execution time.\n\nOne question: are we sure that wifi will always get registered on each devices (I suppose the answer is no to cellular)?\n\nIf we have a device without wifi then the device will always take 60 sec to finish the boot test, and this largely increase the chance that the test runs out of its timeout budget of 15 sec. We don\u0027t want the test to run that slow and even to become flaky in running out of time.\n\nIf we want to use a shorter timeout for recommended events, what would be a good value? Is 30 sec enough for wifi or cellular to get registered? Note that one polling condition is bootchart, which stops collection in ~30 sec after boot. A good run generally takes 7 mins to finish. We don\u0027t want to increase that number too much.",
+      "parentUuid": "2b575026_79dd9ce7",
       "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
