@@ -166,6 +166,30 @@
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa62e45f_8074e955",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-26T02:40:44Z",
+      "side": 1,
+      "message": "Yes I overlook this. wificell_unstable overrides wificell_cq flag, see https://docs.google.com/document/d/1pJjdbL63KbOSdTEM031Oj69FQljt_ze63IWGaDgDGU4/edit",
+      "parentUuid": "74313a95_ce6fb59c",
+      "range": {
+        "startLine": 317,
+        "startChar": 40,
+        "endLine": 317,
+        "endChar": 57
+      },
+      "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
