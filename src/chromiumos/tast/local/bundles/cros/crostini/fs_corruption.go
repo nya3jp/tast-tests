@@ -225,7 +225,7 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 
 	testing.ContextLog(ctx, "Restarting VM")
 	// Discard the error, as this may fail due to corruption.
-	if terminal, err := terminalapp.Launch(ctx, tconn, userName); err != nil {
+	if terminal, _ := terminalapp.Launch(ctx, tconn, userName); terminal != nil {
 		// Make sure the UI node in terminalapp is released.
 		defer terminal.Close(ctx)
 	}
