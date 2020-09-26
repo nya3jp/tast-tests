@@ -16,6 +16,46 @@
       "revId": "3aa330f933515034a6fcb4eb34719dd96fd3b210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d589a063_0fa8b86a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-26T01:54:38Z",
+      "side": 1,
+      "message": "I think it\u0027s better to cc afakhry as you nominated to the contact -- at least he should recognize the existence of the test :-)\n\nLGTM with a nit",
+      "revId": "3aa330f933515034a6fcb4eb34719dd96fd3b210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "813e3d3f_a021e7da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_trackpad_swipe_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-26T01:54:38Z",
+      "side": 1,
+      "message": "Maybe you should add a testing API to query the index of the currently active desk?\n\nI\u0027m afraid that 500msecs could be too short sometimes -- 1 second might be safer?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "3aa330f933515034a6fcb4eb34719dd96fd3b210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
