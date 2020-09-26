@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "fdf7b14c_e118a9b5",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-26T04:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a5e024f_a89b55fc",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59212e0c_5e5bfdfd",
         "filename": "src/chromiumos/tast/local/audio/aloop.go",
         "patchSetId": 3
@@ -76,6 +100,24 @@
     },
     {
       "key": {
+        "uuid": "217d7f16_9d0c813e",
+        "filename": "src/chromiumos/tast/local/audio/aloop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-26T04:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59212e0c_5e5bfdfd",
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "763b6a5e_4c148be1",
         "filename": "src/chromiumos/tast/local/audio/util.go",
         "patchSetId": 3
@@ -87,6 +129,30 @@
       "writtenOn": "2020-09-25T20:10:16Z",
       "side": 1,
       "message": "Searching on the combined output is source of flakiness,\nbecause technically stdout and stderr can be interlaced.\n\nWhich output are you interested in?",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 44
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d4d8dc_5d0e9a13",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-26T04:39:10Z",
+      "side": 1,
+      "message": "Thanks for the information. I found out stderr is what we care about.\nBut, how do we get stderr only? I failed to find an easier way than using StderrPipe()?\nhttps://golang.org/pkg/os/exec/#Cmd.StderrPipe\n\nps. stdout will have nothing in this case.",
+      "parentUuid": "763b6a5e_4c148be1",
       "range": {
         "startLine": 124,
         "startChar": 1,
@@ -122,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "18cc6b18_6b85ff61",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-26T04:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f000ee00_a8d58b30",
+      "range": {
+        "startLine": 142,
+        "startChar": 24,
+        "endLine": 142,
+        "endChar": 59
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6b3b86c_e4e7c0a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestclient/cras_test_client.go",
         "patchSetId": 3
@@ -142,6 +232,30 @@
       "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2666595_89b833aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-26T04:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6b3b86c_e4e7c0a2",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "88413f7f_4e287d80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-26T04:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b507e28_6977eac2",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad90b5ba_f88309ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestclient/cras_test_client.go",
         "patchSetId": 3
@@ -188,6 +326,30 @@
       "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7a4c17_f172ddad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-26T04:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad90b5ba_f88309ac",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "fa69cb26_fa5b1a32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-26T04:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "881577e3_f9bc3ac6",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19f5c2c2_ef6f0e40",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
         "patchSetId": 3
@@ -228,6 +414,24 @@
       "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc25f2e_58592b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-09-26T04:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f5c2c2_ef6f0e40",
+      "revId": "0480c67ddf904fcc8f7f27b550c48259f48964ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
