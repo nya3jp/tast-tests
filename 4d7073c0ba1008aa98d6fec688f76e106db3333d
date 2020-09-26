@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "3881e949_f015cc28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-26T08:04:56Z",
+      "side": 1,
+      "message": "Ah, yes. I did in previous patch set. But I found that it is more common to new an error in Tast repo for custom errors. I guess maybe only this way we can determine if an error is JS error type by calling errors.Is()?",
+      "parentUuid": "d282686d_ca3c59b3",
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a3c69c8_168f01c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 3
@@ -56,6 +74,30 @@
       "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f812343_56512b2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-26T08:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a3c69c8_168f01c1",
+      "range": {
+        "startLine": 441,
+        "startChar": 5,
+        "endLine": 441,
+        "endChar": 20
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "5299a819_da55009a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-26T08:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e70378ed_d8b1adba",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "910ef8bc_f2de6cba",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
         "patchSetId": 3
@@ -102,6 +168,30 @@
       "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e3ba45d_8307ddeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-26T08:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "910ef8bc_f2de6cba",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 35
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "c278523c_5429d94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-26T08:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08cbec20_9fc52098",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "753515da_32b49a1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_power_perf.go",
         "patchSetId": 3
@@ -151,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "68ff7ce0_4f219273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_power_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-26T08:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "753515da_32b49a1a",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 14
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "487e4ea9_148655f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
         "patchSetId": 3
@@ -171,6 +309,30 @@
       "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b06bcc7a_d3df4f30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-26T08:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "487e4ea9_148655f0",
+      "range": {
+        "startLine": 149,
+        "startChar": 7,
+        "endLine": 149,
+        "endChar": 8
+      },
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
