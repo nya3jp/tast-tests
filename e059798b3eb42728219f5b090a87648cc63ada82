@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cee6851a_2f16891b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-09-27T08:18:51Z",
+      "side": 1,
+      "message": "I\u0027m ok to wait for the previous CL to land first, then check dashboard, but this should just work.",
+      "revId": "e059798b3eb42728219f5b090a87648cc63ada82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
