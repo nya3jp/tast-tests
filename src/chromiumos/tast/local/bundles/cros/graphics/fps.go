@@ -30,7 +30,7 @@ func init() {
 		Func:         FPS,
 		Desc:         "Measure frames per second and check it is close to 60 fps",
 		Contacts:     []string{"drinkcat@chromium.org", "chromeos-gfx@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay(),
 			// See crbug.com/1031054, broken on veyron
