@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -28,6 +27,7 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	gameView := "View " + name + "."
 	gamePlay := "Play"
 	gameStart := name + " Play game"
+	pollOpts := testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: timeout}
 
 	// Find the game view from the game list.
 	gameViewButton, err := n.DescendantWithTimeout(ctx, ui.FindParams{Name: gameView, Role: ui.RoleTypeButton}, timeout)
@@ -38,11 +38,8 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	if err := gameViewButton.FocusAndWait(ctx, timeout); err != nil {
 		return errors.Wrapf(err, "failed to focus on the game view button (%s)", gameView)
 	}
-	if err := gameViewButton.LeftClick(ctx); err != nil {
+	if err := gameViewButton.StableLeftClick(ctx, &pollOpts); err != nil {
 		return errors.Wrapf(err, "failed to click the game view button (%s)", gameView)
-	}
-	if err := webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
-		return errors.Wrap(err, "failed to wait for game page to finish loading")
 	}
 
 	// Play the game.
@@ -54,7 +51,11 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	if err := gamePlayButton.FocusAndWait(ctx, timeout); err != nil {
 		return errors.Wrapf(err, "failed to focus on the game play button (%s)", gamePlay)
 	}
-	if err := gamePlayButton.LeftClick(ctx); err != nil {
+	if err := gamePlayButton.LeftClickUntil(ctx,
+		func(ctx context.Context) (bool, error) {
+			exists, err := ui.Exists(ctx, tconn, ui.FindParams{Name: gameStart, Role: ui.RoleTypeButton})
+			return exists, err
+		}, &pollOpts); err != nil {
 		return errors.Wrapf(err, "failed to click the game play button (%s)", gamePlay)
 	}
 
@@ -83,7 +84,7 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 		if w0.State == ash.WindowStateFullscreen {
 			return nil
 		}
-		if err := gameStartButton.LeftClick(ctx); err != nil {
+		if err := gameStartButton.StableLeftClick(ctx, &pollOpts); err != nil {
 			return errors.Wrapf(err, "failed to click the game start button (%s)", gameStart)
 		}
 		return errors.New("game hasn't started yet")
