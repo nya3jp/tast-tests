@@ -107,8 +107,9 @@ func FPS(ctx context.Context, s *testing.State) {
 		trimPercent = 5
 		// Target fps (always 60 fps for now).
 		targetFPS = 60.0
-		// Accept up to 0.2 fps margin over the reference 60 fps.
-		margin = 0.2
+		// Accept up to 0.3 fps margin over the reference 60 fps.
+		// TODO(crbug.com/1031054): Restore to 0.2 after oak switches to 4.19
+		margin = 0.3
 		// Accept up to 0.2 fps standard deviation.
 		maxStddev = 0.2
 	)
