@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "561fb04f_3b5faece",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365161
+      },
+      "writtenOn": "2020-09-27T14:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e874b69_d273d80f",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "45c641709fa8b3015de33064ff7b50c474c4afb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "349c0218_aa57aa12",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -63,6 +87,30 @@
       "revId": "45c641709fa8b3015de33064ff7b50c474c4afb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ada40f_40eaae70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_ps175.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1365161
+      },
+      "writtenOn": "2020-09-27T14:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1639810d_460a8e8a",
+      "range": {
+        "startLine": 64,
+        "startChar": 17,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "45c641709fa8b3015de33064ff7b50c474c4afb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
