@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/testing"
@@ -59,7 +60,10 @@ func LaunchReleaseNotesFromSettings(ctx context.Context, s *testing.State) {
 	}
 
 	// Find and click See what's new.
-	if err := helpapp.ClickTab(ctx, tconn, helpapp.WhatsNewTab); err != nil {
+	if err := ui.FindAndClick(ctx, tconn, ui.FindParams{
+		Name: "See what's new",
+		Role: ui.RoleTypeLink,
+	}, 10*time.Second); err != nil {
 		s.Fatal("Failed to click See whats new: ", err)
 	}
 

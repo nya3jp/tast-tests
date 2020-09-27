@@ -32,7 +32,7 @@ const (
 	OverviewTab = tabFindParams("Overview")
 	PerksTab    = tabFindParams("Perks")
 	HelpTab     = tabFindParams("Help")
-	WhatsNewTab = tabFindParams("See what's new")
+	WhatsNewTab = tabFindParams("What's new")
 )
 
 var helpRootNodeParams = ui.FindParams{
