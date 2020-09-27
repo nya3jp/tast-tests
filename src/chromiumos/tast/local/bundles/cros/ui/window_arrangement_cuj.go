@@ -269,15 +269,22 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			// Snap the window to the left and drag the second tab to snap to the right.
-			if _, err := ash.SetWindowState(ctx, tconn, w0.ID, ash.WMEventNormal); err != nil {
+			if _, err := ash.SetWindowState(ctx, tconn, id0, ash.WMEventNormal); err != nil {
 				return errors.Wrap(err, "failed to set the window state to normal")
 			}
-			if err := ash.WaitWindowFinishAnimating(ctx, tconn, w0.ID); err != nil {
-				return errors.Wrap(err, "failed to wait for top window animation")
+			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+				return w.ID == id0 && w.State == ash.WindowStateNormal
+			}, &testing.PollOptions{Timeout: timeout}); err != nil {
+				return errors.Wrap(err, "failed to wait for window to become normal")
 			}
 			testing.ContextLog(ctx, "Snapping the window to the left")
 			if err := pointer.Drag(ctx, pc, tabStripGapPt, snapLeftPoint, duration); err != nil {
 				return errors.Wrap(err, "failed to snap the window to the left")
+			}
+			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+				return w.ID == id0 && w.State == ash.WindowStateLeftSnapped
+			}, &testing.PollOptions{Timeout: timeout}); err != nil {
+				return errors.Wrap(err, "failed to wait for window to be left snapped")
 			}
 			testing.ContextLog(ctx, "Snapping the second tab to the right")
 			tabs, err = chromeui.FindAll(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeTab, ClassName: "Tab"})
