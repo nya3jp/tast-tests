@@ -393,7 +393,7 @@ func checkEnterpriseOwned(ctx context.Context) {
 	if err != nil {
 		// Don't fail here as install attributes can be missing. Device is not
 		// enterprise owned in that case.
-		testing.ContextLog(ctx, "Failed to check if device is enterprise enrolled: ", err)
+		testing.ContextLog(ctx, "Failed to read install_attributes, assuming not enteprise enrolled: ", err)
 		return
 	}
 
