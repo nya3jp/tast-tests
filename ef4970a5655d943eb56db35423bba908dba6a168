@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "709cfef6_993eb35c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-28T06:02:38Z",
+      "side": 1,
+      "message": "I think this node needs to be freed",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 5
+      },
+      "revId": "ef4970a5655d943eb56db35423bba908dba6a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "990cb8a7_3129a5bb",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-28T06:02:38Z",
+      "side": 1,
+      "message": "Rather than running this inside the container, I think it would make more sense to just ask concierge for the size of the actual raw disk image. You can now do GetVMDiskInfo(ctx, vmName) to get a VmDiskInfo proto with a size field.\n\nAlternatively, VmDiskInfo also has the path to the raw disk image, so you could just examine that file directly.",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 646,
+        "endChar": 1
+      },
+      "revId": "ef4970a5655d943eb56db35423bba908dba6a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
