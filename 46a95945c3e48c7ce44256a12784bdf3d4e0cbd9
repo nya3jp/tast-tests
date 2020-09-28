@@ -16,6 +16,23 @@
       "revId": "46a95945c3e48c7ce44256a12784bdf3d4e0cbd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47dac6e1_221de72e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-09-28T00:55:57Z",
+      "side": 1,
+      "message": "arc.SetBounds has been moved to arc.CompanionLibrary. LGTM",
+      "revId": "46a95945c3e48c7ce44256a12784bdf3d4e0cbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
