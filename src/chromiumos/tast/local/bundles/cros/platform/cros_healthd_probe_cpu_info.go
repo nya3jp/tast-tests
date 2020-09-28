@@ -59,7 +59,7 @@ func verifyPhysicalCPU(lines []string) error {
 	// Verify each logical CPU.
 	for start, i := 3, 4; i <= len(lines); i++ {
 		if i == len(lines) || lines[i] == "Logical CPU:" {
-			if err := verifyLogicalCPU(lines[start : i-1]); err != nil {
+			if err := verifyLogicalCPU(lines[start:i]); err != nil {
 				return errors.Wrap(err, "failed to verify logical CPU")
 			}
 			start = i
@@ -141,7 +141,7 @@ func verifyCStates(lines []string) error {
 			return errors.New("empty name")
 		}
 
-		if i, err := strconv.Atoi(vals[1]); err != nil {
+		if i, err := strconv.ParseInt(vals[1], 10, 64); err != nil {
 			return errors.Wrapf(err, "failed to convert time_in_state_since_last_boot_us to integer: %q", vals[1])
 		} else if i < 0 {
 			return errors.Errorf("invalid time_in_state_since_last_boot_us: %d", i)
@@ -198,7 +198,7 @@ func CrosHealthdProbeCPUInfo(ctx context.Context, s *testing.State) {
 	// assumption.
 	for start, i := 2, 3; i <= len(lines); i++ {
 		if i == len(lines) || lines[i] == "Physical CPU:" {
-			err := verifyPhysicalCPU(lines[start : i-1])
+			err := verifyPhysicalCPU(lines[start:i])
 			if err != nil {
 				s.Error("Failed to verify physical CPU: ", err)
 			}
