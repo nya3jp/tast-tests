@@ -922,6 +922,26 @@ func (s *WifiService) Reassociate(ctx context.Context, req *network.ReassociateR
 	}
 }
 
+// MACRandomizeSupport returns if MAC randomization is supported.
+func (s *WifiService) MACRandomizeSupport(ctx context.Context, _ *empty.Empty) (*network.MACRandomizeSupportResponse, error) {
+	_, dev, err := s.wifiDev(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	prop, err := dev.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi device properties")
+	}
+
+	supported, err := prop.GetBool(shillconst.DevicePropertyMACAddrRandomSupported)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get WiFi device boolean prop %q",
+			shillconst.DevicePropertyMACAddrRandomSupported)
+	}
+	return &network.MACRandomizeSupportResponse{Supported: supported}, nil
+}
+
 // SetMACRandomize sets the MAC randomization setting on the WiFi device.
 // The original setting is returned for ease of restoring.
 func (s *WifiService) SetMACRandomize(ctx context.Context, req *network.SetMACRandomizeRequest) (*network.SetMACRandomizeResponse, error) {

@@ -114,6 +114,10 @@ service WifiService {
   // Reassociate triggers reassociation with the current AP and waits until it
   // has reconnected or the timeout (in nanoseconds) expires.
   rpc Reassociate (ReassociateRequest) returns (google.protobuf.Empty) {}
+
+  // MACRandomizeSupport returns if MAC randomization setting is supported in
+  // shill.
+  rpc MACRandomizeSupport(google.protobuf.Empty) returns (MACRandomizeSupportResponse) {}
 }
 
 message ConnectRequest {
@@ -335,4 +339,8 @@ message SetDHCPPropertiesResponse {
 message ReassociateRequest {
   string interface_name = 1;
   int64 timeout = 2;
+}
+
+message MACRandomizeSupportResponse {
+  bool supported = 1;
 }
