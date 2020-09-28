@@ -117,6 +117,12 @@ service WifiService {
 
   // WaitForBSSID waits for a specific BSSID to be found.
   rpc WaitForBSSID (WaitForBSSIDRequest) returns (google.protobuf.Empty) {}
+
+  // MACRandomizeSupport tells if MAC randomization is supported for the WiFi device.
+  rpc MACRandomizeSupport(google.protobuf.Empty) returns (MACRandomizeSupportResponse) {}
+
+  // GetMACRandomize tells if MAC randomization is enabled for the WiFi device.
+  rpc GetMACRandomize(google.protobuf.Empty) returns (GetMACRandomizeResponse) {}
 }
 
 message ConnectRequest {
@@ -351,4 +357,12 @@ message ReassociateRequest {
 message WaitForBSSIDRequest {
   bytes ssid = 1;
   string bssid = 2;
+}
+
+message MACRandomizeSupportResponse {
+  bool supported = 1;
+}
+
+message GetMACRandomizeResponse {
+  bool enabled = 1;
 }
