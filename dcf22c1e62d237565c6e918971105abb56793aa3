@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25662dd6_29c01904",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-28T20:45:45Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this level of robustness in tests. Moreover, we may wish to connect routers, so the networks would overlap on purpose.",
+      "parentUuid": "c22b7acc_76f9991b",
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6ae3c42_d2e0a854",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "10008009_4a187165",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-28T20:45:45Z",
+      "side": 1,
+      "message": "This also impacts old, single router case as well, though with less routers it\u0027s less likely to use pcap as a router.\n\nAs far as I understand, pcap and AP work on different router interfaces (monitor vs managed), so they should (at least in theory) work correctly using only single Router object for two purposes. At least this seems to be the assumption in line 236. If it\u0027s not due to error, then perhaps we should reuse this logic in every other case of host/name collision. WDYT?",
+      "parentUuid": "d6ae3c42_d2e0a854",
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7710374_888d3849",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -47,6 +83,30 @@
       "writtenOn": "2020-09-25T03:25:05Z",
       "side": 1,
       "message": "I\u0027m not really a big fan of \"Ext\" suffix. Do you think something like ArpingFromRouterID might be more readable? (similar for the other Ext functions)",
+      "range": {
+        "startLine": 748,
+        "startChar": 39,
+        "endLine": 748,
+        "endChar": 42
+      },
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb7774e_6f44d1d8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-28T20:45:45Z",
+      "side": 1,
+      "message": "I also doesn\u0027t like it much, but I couldn\u0027t think of anything better. I will try to think out something that will also cover `ConfigureAPExt` case. `ConfigureAPOnRouterID()?",
+      "parentUuid": "b7710374_888d3849",
       "range": {
         "startLine": 748,
         "startChar": 39,
