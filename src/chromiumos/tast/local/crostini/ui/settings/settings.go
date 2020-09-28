@@ -7,6 +7,7 @@ package settings
 
 import (
 	"context"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -56,6 +57,7 @@ var (
 	unshareFailDlg        = ui.FindParams{Name: "Unshare failed", Role: ui.RoleTypeDialog}
 	okButton              = ui.FindParams{Name: "OK", Role: ui.RoleTypeButton}
 	removeLinuxButton     = ui.FindParams{Name: "Remove Linux for Chromebook", Role: ui.RoleTypeButton}
+	resizeButton          = ui.FindParams{Name: "Change disk size", Role: ui.RoleTypeButton}
 )
 
 // Settings represents an instance of the Linux settings in Settings App.
@@ -256,6 +258,43 @@ func (s *Settings) ClickRemove(ctx context.Context, tconn *chrome.TestConn) (*Re
 	}
 
 	return dialog, nil
+}
+
+// ResizeDiskDialog represents the Resize Linux disk dialog.
+type ResizeDiskDialog struct {
+	Self   *uig.Action `name:"Resize Linux disk" role:"dialog"`
+	Slider *uig.Action `role:"slider"`
+	Resize *uig.Action `name:"Resize" role:"button"`
+	Cancel *uig.Action `name:"Cancel" role:"button"`
+}
+
+// ClickResize clicks Change to resize disk and returns an instance of ResizeDiskDialog.
+func (s *Settings) ClickResize(ctx context.Context) (*ResizeDiskDialog, error) {
+	dialog := &ResizeDiskDialog{}
+	uig.PageObject(dialog)
+
+	if err := uig.Do(ctx, s.tconn,
+		uig.FindWithTimeout(resizeButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
+		dialog.Self); err != nil {
+		return nil, errors.Wrap(err, "failed to find the delete dialog")
+	}
+
+	return dialog, nil
+}
+
+// GetDiskSize returns the disk size on the Settings app.
+func (s *Settings) GetDiskSize(ctx context.Context) (string, error) {
+	diskSizeFindParams := ui.FindParams{
+		Role:       ui.RoleTypeStaticText,
+		Attributes: map[string]interface{}{"name": regexp.MustCompile(`[0-9]+.[0-9]+ GB`)},
+	}
+
+	node, err := ui.FindWithTimeout(ctx, s.tconn, diskSizeFindParams, uiTimeout)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to find disk size information on the Settings app")
+	}
+	defer node.Release(ctx)
+	return node.Name, nil
 }
 
 // GetDiskSize returns the current size based on the disk size slider text.
