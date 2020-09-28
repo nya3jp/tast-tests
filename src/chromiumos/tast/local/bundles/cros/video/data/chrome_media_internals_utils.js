@@ -52,7 +52,10 @@ function checkChromeMediaInternalsIsPlatformVideoDecoderForURL(theURL) {
   return new Promise((resolve, reject) => {
     getChromeMediaInternalsLogTableRowForURL(theURL).then(function(logTableRow)
       {
-        for (const logTableEntry of logTableRow) {
+        // Iterate from the end, since chrome:media-internals might think a
+        // platform decoder works OK only to fall back to software afterwards.
+        for (i = logTableRow.length - 1; i >=0 ; --i) {
+          const logTableEntry = logTableRow[i];
           if (logTableEntry.cells[1].innerHTML == 'is_platform_video_decoder' ||
               // Changed after crrev.com/c/1904341 (Chromium 80.0.3974.0).
               logTableEntry.cells[1].innerHTML == 'kIsPlatformVideoDecoder') {
