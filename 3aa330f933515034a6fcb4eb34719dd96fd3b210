@@ -73,6 +73,30 @@
       "revId": "3aa330f933515034a6fcb4eb34719dd96fd3b210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6d90d4d_d6d26dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_trackpad_swipe_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-09-28T18:54:16Z",
+      "side": 1,
+      "message": "Yeah the plan was for a testing API - I\u0027ve updated the TODO. Also updated to 1 second.",
+      "parentUuid": "813e3d3f_a021e7da",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "3aa330f933515034a6fcb4eb34719dd96fd3b210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
