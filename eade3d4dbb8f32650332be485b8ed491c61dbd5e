@@ -16,6 +16,29 @@
       "revId": "eade3d4dbb8f32650332be485b8ed491c61dbd5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c0bff9_b59364b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-28T16:37:31Z",
+      "side": 1,
+      "message": "nit: you can just write as\n  return ui.Exists(ctx, tconn, ui.FindParams{...})",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "eade3d4dbb8f32650332be485b8ed491c61dbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
