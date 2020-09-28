@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "05b7e165_d126861a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-28T15:19:48Z",
+      "side": 1,
+      "message": "LGTM, do delete the unused keyboard like david mentioned.",
+      "revId": "e52bddd8008f77f5b76283d127c5e3e67802035e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b26c18d3_bbbc78b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unlock.go",
         "patchSetId": 5
@@ -65,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "a8b1f226_30da8bad",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-28T15:19:48Z",
+      "side": 1,
+      "message": "Arrow/regular function probably required because of the parameter being passed to tast.promisify",
+      "parentUuid": "9878e15f_0e3fae96",
+      "range": {
+        "startLine": 106,
+        "startChar": 69,
+        "endLine": 106,
+        "endChar": 84
+      },
+      "revId": "e52bddd8008f77f5b76283d127c5e3e67802035e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67eecad4_b9dda78f",
         "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
         "patchSetId": 5
@@ -85,6 +126,30 @@
       "revId": "e52bddd8008f77f5b76283d127c5e3e67802035e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7e1199_e53f89cc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-28T15:19:48Z",
+      "side": 1,
+      "message": "Not sure, looks fine to me though.",
+      "parentUuid": "67eecad4_b9dda78f",
+      "range": {
+        "startLine": 112,
+        "startChar": 77,
+        "endLine": 112,
+        "endChar": 124
+      },
+      "revId": "e52bddd8008f77f5b76283d127c5e3e67802035e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
