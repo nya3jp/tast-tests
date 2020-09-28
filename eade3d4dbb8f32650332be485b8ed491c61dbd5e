@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "f982a319_b42ac0f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-28T16:45:44Z",
+      "side": 1,
+      "message": "lgtm % mukai",
+      "revId": "eade3d4dbb8f32650332be485b8ed491c61dbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16c0bff9_b59364b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
         "patchSetId": 5
