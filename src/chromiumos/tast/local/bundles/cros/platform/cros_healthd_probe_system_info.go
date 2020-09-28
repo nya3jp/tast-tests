@@ -95,7 +95,7 @@ func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
 		csv.Column("bios_version", csv.EqualToFileContentOrNA(biosVersionPath)),
 		csv.Column("board_name", csv.EqualToFileContentOrNA(boardNamePath)),
 		csv.Column("board_version", csv.EqualToFileContentOrNA(boardVersionPath)),
-		csv.Column("chassis_type", csv.UInt64(), csv.EqualToFileContentOrNA(chassisTypePath)),
+		csv.Column("chassis_type", csv.EqualToFileContentOrNA(chassisTypePath)),
 		csv.Column("product_name", csv.EqualToFileContentOrNA(productNamePath)),
 		csv.Column("os_version", csv.MatchValue(osVersion)),
 		csv.Column("os_channel", csv.MatchValue(osReleaseChannel)),
