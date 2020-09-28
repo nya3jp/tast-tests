@@ -61,6 +61,11 @@ const (
 	// allowed for signin profile (see http://crrev.com/772709 for details).
 	// It corresponds to Var("ui.signinProfileTestExtensionManifestKey").
 	signinProfileTestExtensionID = "mecfefiddjlmabpeilblgegnbioikfmp"
+
+	// guestModeTestExtensionID is an id of the test extension which is
+	// allowed for signin profile (see http://crrev.com/772709 for details).
+	// It corresponds to Var("apps.guestModeTestExtensionManifestKey").
+	guestModeTestExtensionID = "mecfefiddjlmabpeilblgegnbioikfmp"
 )
 
 const (
@@ -304,6 +309,12 @@ func LoadSigninProfileExtension(key string) Option {
 	return func(c *Chrome) { c.signinExtKey = key }
 }
 
+// LoadGuestModeExtension loads the test extension which is allowed to run in the signin profile context.
+// Private manifest key should be passed (see ui.SigninProfileExtension for details).
+func LoadGuestModeExtension(key string) Option {
+	return func(c *Chrome) { c.guestExtKey = key }
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
@@ -339,6 +350,11 @@ type Chrome struct {
 	signinExtID   string // ID for signin profile test extension exposing APIs
 	signinExtDir  string // dir containing signin test profile extension
 	signinExtConn *Conn  // connection to signin profile test extension
+
+	guestExtKey  string
+	guestExtID   string
+	guestExtDir  string
+	guestExtConn *Conn
 
 	watcher       *browserWatcher   // tries to catch Chrome restarts
 	logAggregator *jslog.Aggregator // collects JS console output
@@ -720,6 +736,22 @@ func (c *Chrome) PrepareExtensions(ctx context.Context) error {
 		dirsToChown = append(dirsToChown, c.signinExtDir)
 	}
 
+	if len(c.guestExtKey) > 0 {
+		testing.ContextLog(ctx, "Writing guest mode extension")
+		var err error
+		if c.guestExtDir, err = ioutil.TempDir("", "tast_test_guest_api_extension."); err != nil {
+			return err
+		}
+		testing.ContextLogf(ctx, "writing test extension to %s", c.guestExtDir)
+		if c.guestExtID, err = writeTestExtension(c.guestExtDir, c.guestExtKey); err != nil {
+			return err
+		}
+		if c.guestExtID != guestModeTestExtensionID {
+			return errors.Errorf("unexpected extension ID: got %q; want %q", c.guestExtID, guestModeTestExtensionID)
+		}
+		dirsToChown = append(dirsToChown, c.guestExtDir)
+	}
+
 	for _, dir := range dirsToChown {
 		manifest := filepath.Join(dir, "manifest.json")
 		if _, err = os.Stat(manifest); err != nil {
@@ -790,6 +822,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	}
 	if len(c.signinExtDir) > 0 {
 		args = append(args, "--load-signin-profile-test-extension="+c.signinExtDir)
+	}
+	if len(c.guestExtDir) > 0 {
+		args = append(args, "--load-guest-mode-test-extension="+c.guestExtDir)
 	}
 	if c.policyEnabled {
 		args = append(args, "--profile-requires-policy=true")
@@ -1019,6 +1054,12 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*TestConn, error) {
 // profile test extension.
 func (c *Chrome) SigninProfileTestAPIConn(ctx context.Context) (*TestConn, error) {
 	return c.testAPIConnFor(ctx, &c.signinExtConn, c.signinExtID)
+}
+
+// GuestModeTestAPIConn is the same as TestAPIConn, but for the signin
+// profile test extension.
+func (c *Chrome) GuestModeTestAPIConn(ctx context.Context) (*TestConn, error) {
+	return c.testAPIConnFor(ctx, &c.guestExtConn, c.guestExtID)
 }
 
 // testAPIConnFor builds a test API connection to the extension specified by
