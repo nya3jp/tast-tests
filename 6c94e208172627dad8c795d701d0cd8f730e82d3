@@ -159,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "dd5e7049_6f2e4628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-28T16:21:21Z",
+      "side": 1,
+      "message": "Ack. One thing you might consider is creating a var for whatever arcFilePath+\"/\"+filepath.Base(rawVideoPath) represents, which could cut out 30 characters easily.",
+      "parentUuid": "78e04c02_14ae9d39",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d27d7a31_f9b29c02",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
         "patchSetId": 4
@@ -191,6 +209,24 @@
       "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ba2408_2507e837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-28T16:21:21Z",
+      "side": 1,
+      "message": "Ack. It may be that setup.StartActivity should take fewer parameters.",
+      "parentUuid": "781faf41_708627be",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
