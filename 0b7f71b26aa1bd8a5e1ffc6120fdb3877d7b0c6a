@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74207847_77f68fbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-09-28T22:03:54Z",
+      "side": 1,
+      "message": "This is why I shouldn\u0027t be trusted to write (or review) Go code 😊",
+      "revId": "0b7f71b26aa1bd8a5e1ffc6120fdb3877d7b0c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
