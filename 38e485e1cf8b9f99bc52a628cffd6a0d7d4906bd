@@ -85,6 +85,29 @@
       "revId": "38e485e1cf8b9f99bc52a628cffd6a0d7d4906bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "659acf03_1d5d6693",
+        "filename": "src/chromiumos/tast/common/genparams/params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-28T07:43:44Z",
+      "side": 1,
+      "message": "Playing around with this, I think this should be a fatal error, otherwise it\u0027s easy to enter a path that\u0027s not actually valid without noticing.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "38e485e1cf8b9f99bc52a628cffd6a0d7d4906bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
