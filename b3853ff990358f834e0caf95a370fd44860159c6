@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "707533e0_58753d4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-09-28T01:15:59Z",
+      "side": 1,
+      "message": "This should be ’ (right single quotation mark) and not \u0027.",
+      "range": {
+        "startLine": 35,
+        "startChar": 34,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "b3853ff990358f834e0caf95a370fd44860159c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
