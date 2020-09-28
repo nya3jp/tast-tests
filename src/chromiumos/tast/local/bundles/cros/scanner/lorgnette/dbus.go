@@ -137,3 +137,19 @@ func (l *Lorgnette) WaitForScanCompletion(ctx context.Context, uuid string) erro
 func StopService(ctx context.Context) error {
 	return upstart.StopJob(ctx, "lorgnette")
 }
+
+// ListScanners calls lorgnette's ListScanners() method and returns the
+// (possibly empty) list of ScannerInfo objects from the response.
+func (l *Lorgnette) ListScanners(ctx context.Context) ([]*lpb.ScannerInfo, error) {
+	var buf []byte
+	if err := l.obj.CallWithContext(ctx, dbusInterface+".ListScanners", 0).Store(&buf); err != nil {
+		return nil, errors.Wrap(err, "failed to call ListScanners")
+	}
+
+	response := &lpb.ListScannersResponse{}
+	if err := proto.Unmarshal(buf, response); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal ListScannersResponse")
+	}
+
+	return response.Scanners, nil
+}
