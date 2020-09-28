@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "c442c269_20371e48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-09-28T15:42:51Z",
+      "side": 1,
+      "message": "You can have a customized errors.Is() for the struct. I am ok to land this patchset first with a TODO to unblock other things.\n\nref:\ngo/goerrorscrashcourse\nhttps://blog.golang.org/go1.13-errors",
+      "parentUuid": "0637a64b_605fd5fa",
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a3c69c8_168f01c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 3
