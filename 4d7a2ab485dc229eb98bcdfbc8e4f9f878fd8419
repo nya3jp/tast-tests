@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc9c03fb_3d2cdc8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-09-28T14:41:14Z",
+      "side": 1,
+      "message": "A quick heads-up here.\n\nLooks like this has an unfortunate consequence of taking longer time out of tests.\nThe default timeout for a local Tast test is 2 minutes. If we fail to wait for CPU to become idle, this takes all the time a local test with default timeout has.\n\nYou\u0027ll a clear \"failure transition\" in some tests, e.g., this one: https://tastboard.corp.google.com/test/camera.HAL3JDA",
+      "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
