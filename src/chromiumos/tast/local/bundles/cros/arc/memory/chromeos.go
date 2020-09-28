@@ -12,13 +12,13 @@ import (
 	"container/list"
 	"context"
 	"io/ioutil"
-	"regexp"
 	"strconv"
 	"strings"
 	"syscall"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -51,20 +51,6 @@ func NewChromeOSAllocator() *ChromeOSAllocator {
 		allocated: list.New(),
 		size:      0,
 	}
-}
-
-// ChromeOSAvailable reads available memory from sysfs.
-// Returns available memory in MB.
-func ChromeOSAvailable() (uint, error) {
-	const availableMemorySysFile = "/sys/kernel/mm/chromeos-low_mem/available"
-	return readFirstUint(availableMemorySysFile)
-}
-
-// ChromeOSCriticalMargin reads the critical margin from sysfs.
-// Returns margin in MB.
-func ChromeOSCriticalMargin() (uint, error) {
-	const marginMemorySysFile = "/sys/kernel/mm/chromeos-low_mem/margin"
-	return readFirstUint(marginMemorySysFile)
 }
 
 // Size returns the size of all allocated memory
@@ -128,78 +114,6 @@ func (c *ChromeOSAllocator) FreeAll() (uint, error) {
 	return size, nil
 }
 
-// max returns the larger of two integers.
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
-}
-
-// min returns the smaller of two integers.
-func min(x, y int) int {
-	if x < y {
-		return x
-	}
-	return y
-}
-
-var zoneinfoRE = regexp.MustCompile(`(?m)^Node +\d+, +zone +[^ ]+
-(?:(?: +pages free +(\d+)
- +min +(\d+)
- +low +(\d+)
-)|(?: +.*
-))*`)
-
-// readMinDistanceToZoneMin reads the smallest distance between a zone's free
-// count and its min watermark. Small or empty zones are ignored.
-// returns the distance in MiB.
-func readMinDistanceToZoneMin() (int, error) {
-	const zoneInfoFile = "/proc/zoneinfo"
-	data, err := ioutil.ReadFile(zoneInfoFile)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to open zoneinfo")
-	}
-
-	matches := zoneinfoRE.FindAllStringSubmatch(string(data), -1)
-	if matches == nil {
-		return 0, errors.Wrap(err, "failed to parse zoneinfo")
-	}
-
-	distance := 0
-	found := false
-	for _, match := range matches {
-		free, err := strconv.ParseUint(match[1], 10, 64)
-		if err != nil {
-			return 0, errors.Wrap(err, "failed to parse zone free")
-		}
-		minWatermark, err := strconv.ParseUint(match[2], 10, 64)
-		if err != nil {
-			return 0, errors.Wrap(err, "failed to parse zone min")
-		}
-		lowWatermark, err := strconv.ParseUint(match[3], 10, 64)
-		if err != nil {
-			return 0, errors.Wrap(err, "failed to parse zone low")
-		}
-		// Ignore small or empty zones, we don't want to throttle allocations
-		// based on a small distance from a small or empty zone.
-		const smallZoneLimit = 1000
-		if lowWatermark > smallZoneLimit {
-			if !found {
-				distance = int(free - minWatermark)
-				found = true
-			} else {
-				distance = min(distance, int(free-minWatermark))
-			}
-		}
-	}
-	if !found {
-		return 0, errors.Wrap(err, "no non-empty zones found")
-	}
-	const pagesPerMiB = (1024 * 1024) / 4096
-	return distance / pagesPerMiB, nil
-}
-
 const (
 	oomKillMessage   = "Out of memory: Kill process"
 	oomSyslogTimeout = 10 * time.Second
@@ -228,7 +142,7 @@ func (c *ChromeOSAllocator) AllocateUntil(
 	ctx context.Context,
 	attemptInterval time.Duration,
 	attempts int,
-	margin uint,
+	margin int64,
 ) ([]uint, error) {
 	// Create a reader to scan for OOMs, we can't use syslog.Program tofilter to
 	// a specific process name because ARCVM includes the PID in the process
@@ -239,54 +153,59 @@ func (c *ChromeOSAllocator) AllocateUntil(
 	}
 	defer reader.Close()
 
+	crosCrit, err := memory.NewChromeOSMemLow(margin)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to make ChromeOS critical MemLow")
+	}
+	nearOOM, err := memory.NewNearOOMMemLow()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to make near OOM MemLow")
+	}
+	memLow := memory.NewCompositeMemLow(crosCrit, nearOOM)
+
 	allocated := make([]uint, attempts)
-	for attempt := 0; attempt < attempts; {
-		available, err := ChromeOSAvailable()
-		if err != nil {
-			return nil, errors.Wrap(err, "unable to read available")
-		}
-		aboveMin, err := readMinDistanceToZoneMin()
-		if err != nil {
-			return nil, errors.Wrap(err, "unable to read distance above zone min threshold")
-		}
-		// aboveMinDivisor is the fraction the free memory in zone info above
-		// the min watermark we should try to allocate at once.
-		const aboveMinDivisor = 4
-		// allocAvailableDivisor is the fraction of available memory we should
-		// try to allocate at once.
-		const allocAvailableDivisor = 10
-		const bytesInMiB = 1024 * 1024
-		if available >= margin && aboveMin/aboveMinDivisor > 0 {
-			// Limit buffer size to be a fraction of available memory, and also
-			// a fraction of the free memory in the most depleted zone.
-			bufferSize := max(int(available-margin)/allocAvailableDivisor, 1)
-			bufferSize = min(bufferSize, int(aboveMin/aboveMinDivisor))
-			err = c.Allocate(bufferSize * bytesInMiB)
+	for attempt := 0; attempt < attempts; attempt++ {
+		const bytesInMB = 1024 * 1024
+		for {
+			distance, err := memLow.Distance(ctx)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to read MemLow distance")
+			}
+			if distance <= 0 {
+				break
+			}
+			allocMB := distance / 4
+			if allocMB == 0 {
+				allocMB = 1
+			}
+			err = c.Allocate(int(allocMB * bytesInMB))
 			if err != nil {
 				return nil, errors.Wrap(err, "unable to allocate")
 			}
-		} else {
-			allocated[attempt] = c.Size()
-			attempt++
-			// Available is less than target margin, but it might be much less
-			// if the system becomes unresponsive from the memory pressure we
-			// are applying. Available memory can drop much faster than the
-			// amount allocated, causing us to overshoot and apply much higher
-			// memory pressure than intended. To reduce the risk of having the
-			// linux OOM killer kill anything, we free anything extra we may
-			// have allocated.
-			// NB: margin-available should always be small, so it's safe to use
-			// an int.
-			for toFree := int(margin-available) * bytesInMiB; toFree > 0 && c.Size() > 0; {
-				bufferSize, err := c.FreeLast()
-				if err != nil {
-					return nil, errors.Wrap(err, "unable to free after overshoot")
-				}
-				toFree -= bufferSize
+		}
+		allocated[attempt] = c.Size()
+		testing.ContextLogf(ctx, "Attempt %d: %d MB", attempt, c.Size()/bytesInMB)
+		// Available is less than target margin, but it might be much less
+		// if the system becomes unresponsive from the memory pressure we
+		// are applying. Available memory can drop much faster than the
+		// amount allocated, causing us to overshoot and apply much higher
+		// memory pressure than intended. To reduce the risk of having the
+		// linux OOM killer kill anything, we free anything extra we may
+		// have allocated.
+		for {
+			distance, err := memLow.Distance(ctx)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to read MemLow distance")
 			}
-			if err := testing.Sleep(ctx, attemptInterval); err != nil {
-				return nil, errors.Wrap(err, "failed to sleep after allocation attempt")
+			if distance > 0 {
+				break
 			}
+			if _, err := c.FreeLast(); err != nil {
+				return nil, errors.Wrap(err, "unable to free after overshoot")
+			}
+		}
+		if err := testing.Sleep(ctx, attemptInterval); err != nil {
+			return nil, errors.Wrap(err, "failed to sleep after allocation attempt")
 		}
 	}
 	if err := checkForOOMs(ctx, reader); err != nil {
