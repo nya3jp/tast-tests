@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f741b99c_dc98b797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-09-28T13:14:28Z",
+      "side": 1,
+      "message": "Hi Xiyuan and Mukai, please review this CL. Thanks!\n\nI still can not repro the issue on my local device, does this test work well on your device?",
+      "revId": "eade3d4dbb8f32650332be485b8ed491c61dbd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
