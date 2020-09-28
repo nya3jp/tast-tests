@@ -630,6 +630,21 @@ func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileI
 	}
 }
 
+// GetDiskSize return the disk size of the container.
+func (c *Container) GetDiskSize(ctx context.Context) (uint64, error) {
+	output, err := c.Command(ctx, "df", "--output=size", "--block-size=1", "/").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to run df")
+	}
+	var result uint64
+	var header string
+	_, err = fmt.Sscanf(string(output), "%s\n%d", &header, &result)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to parse df output")
+	}
+	return result, nil
+}
+
 // containerCommand returns a testexec.Cmd with a vsh command that will run in
 // the specified container.
 func containerCommand(ctx context.Context, vmName, containerName, ownerID string, vshArgs ...string) *testexec.Cmd {
