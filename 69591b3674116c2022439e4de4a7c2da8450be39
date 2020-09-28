@@ -16,6 +16,24 @@
       "revId": "69591b3674116c2022439e4de4a7c2da8450be39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5e335f_7ed40bfc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-28T19:01:11Z",
+      "side": 1,
+      "message": "Ugh, yes. At the time, I assumed Realtek was going to re-use the Change-Id when they cherry-picked, but they did not. Updated.",
+      "parentUuid": "265e3e41_493fd159",
+      "revId": "69591b3674116c2022439e4de4a7c2da8450be39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
