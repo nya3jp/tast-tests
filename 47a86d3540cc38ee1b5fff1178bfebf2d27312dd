@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9829c45b_400a9a08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-28T05:47:59Z",
+      "side": 1,
+      "message": "One thing that I\u0027m not totally sure: Is it possible that the driver/firmware still randomizes MAC address when NL80211_SCAN_FLAG_RANDOM_ADDR is not set? The docstring of this option does not really specify the behavior when it\u0027s not set. [1]\n\nI try the test with the devices in hwdep.WifiMACAddrRandomize: mickey for BCM4354, elm for MVL8897. They both have no MAC randomization as expected. (others already have wifi.RandomMACAddress verifying the behavior)\n\n[1] https://elixir.bootlin.com/linux/v5.8.12/source/include/uapi/linux/nl80211.h#L5902",
+      "revId": "47a86d3540cc38ee1b5fff1178bfebf2d27312dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
