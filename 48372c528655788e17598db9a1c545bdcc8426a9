@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01d11484_9dd50ee6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-28T08:43:48Z",
+      "side": 1,
+      "message": "Thanks for taking care of this! One question...\n",
+      "revId": "48372c528655788e17598db9a1c545bdcc8426a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fe94da7_582a9710",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-28T08:43:48Z",
+      "side": 1,
+      "message": "typo: enterprise",
+      "range": {
+        "startLine": 396,
+        "startChar": 75,
+        "endLine": 396,
+        "endChar": 84
+      },
+      "revId": "48372c528655788e17598db9a1c545bdcc8426a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7162931_88fb0ce9",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-28T08:43:48Z",
+      "side": 1,
+      "message": "I\u0027m afraid that this message might still look concerning to users since it says \"failed\". Also, if we assume that the device is not enterprise enrolled in this case, I guess we should continue this function rather than returning early here.\n\nHow about returning (false, nil) in isEnterpriseOwned if the cryptohome command exits with code 1?",
+      "range": {
+        "startLine": 396,
+        "startChar": 27,
+        "endLine": 396,
+        "endChar": 102
+      },
+      "revId": "48372c528655788e17598db9a1c545bdcc8426a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
