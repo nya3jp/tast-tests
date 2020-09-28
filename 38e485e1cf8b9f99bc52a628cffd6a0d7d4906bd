@@ -67,6 +67,24 @@
       "revId": "38e485e1cf8b9f99bc52a628cffd6a0d7d4906bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "635221a3_3f146ff9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-09-28T04:26:51Z",
+      "side": 1,
+      "message": "Oh, Sorry for not having added tast-oweners... (I thought you knew that I haven\u0027t gained CR+2 permission yet...)",
+      "parentUuid": "ee2a2797_627cbfde",
+      "revId": "38e485e1cf8b9f99bc52a628cffd6a0d7d4906bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
