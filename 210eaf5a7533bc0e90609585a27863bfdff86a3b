@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "60b4e006_1f202806",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-28T07:17:30Z",
+      "side": 1,
+      "message": "Tast Shadow Review: LGTM % nit",
+      "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b575026_79dd9ce7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 2
@@ -48,6 +65,29 @@
       "side": 1,
       "message": "This sounds a good idea to implement. We can do it in another change. We just need to be careful not to regress the test execution time.\n\nOne question: are we sure that wifi will always get registered on each devices (I suppose the answer is no to cellular)?\n\nIf we have a device without wifi then the device will always take 60 sec to finish the boot test, and this largely increase the chance that the test runs out of its timeout budget of 15 sec. We don\u0027t want the test to run that slow and even to become flaky in running out of time.\n\nIf we want to use a shorter timeout for recommended events, what would be a good value? Is 30 sec enough for wifi or cellular to get registered? Note that one polling condition is bootchart, which stops collection in ~30 sec after boot. A good run generally takes 7 mins to finish. We don\u0027t want to increase that number too much.",
       "parentUuid": "2b575026_79dd9ce7",
+      "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77bc92f7_00205dc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-28T07:17:30Z",
+      "side": 1,
+      "message": "nit: This last sentence does not seem to be communicating much, now that previous sentence has been updated to \"The following metrics _may_ be recorded:\". \n\nIf the intent is to communicate which metrics are mandatory, maybe add \"(items marked with a ^ are considered mandatory)\" and mark the mandatory items with a \"^\" (or other notation).",
+      "range": {
+        "startLine": 215,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 34
+      },
       "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
