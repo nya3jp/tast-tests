@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab3a8bf_d7a928ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-28T16:40:02Z",
+      "side": 1,
+      "message": "Please check the returned error.\n\n    if err :\u003d cd.AddDeviceToAllowlist(ctx, sysPath); err !\u003d nil {\n        return errors.Wrapf(err, \"adding %s to allowlist\", syspath)\n    }",
+      "revId": "0b1cee1cb1910c703aaed0377570fe0e52bf0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10af2512_2d28719b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-28T16:40:02Z",
+      "side": 1,
+      "message": "Please check the returned error. It\u0027s a little tricky to return the error from a deferred function; the best way I know is to use named return values.\n\n    func mount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop, name string) (path string, retErr error) {\n        ...\n        defer func() {\n            if err :\u003d cd.RemoveDeviceFromAllowlist(ctx, sysPath); err !\u003d nil \u0026\u0026 retErr !\u003d nil {\n                retErr \u003d errors.Wrapf(err, \"removing %s from allowlist\", sysPath)\n            }\n        }()\n        ...\n    }\n\nHere\u0027s an example: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+      "revId": "0b1cee1cb1910c703aaed0377570fe0e52bf0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d508348_ac4ba057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-28T16:40:02Z",
+      "side": 1,
+      "message": "Please create a cleanup context to reserve time for cleanup. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "0b1cee1cb1910c703aaed0377570fe0e52bf0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
