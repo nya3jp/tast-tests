@@ -1,0 +1,32 @@
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+#android_apk("ArcLifecycleTest00") {
+#  manifest = "AndroidManifest00.xml"
+#  source_dirs = ["src"]
+#  resource_dirs = ["res"]
+#  target_sdk_version = "28"
+#}
+#
+#android_apk("ArcLifecycleTest01") {
+#  manifest = "AndroidManifest01.xml"
+#  source_dirs = ["src"]
+#  resource_dirs = ["res"]
+#  target_sdk_version = "28"
+#}
+#
+
+android_apk("ArcLifecycleTestBase") {
+  manifest = "AndroidManifest.xml"
+  source_dirs = ["src"]
+  resource_dirs = ["res"]
+  target_sdk_version = "28"
+}
+
+
+group("ArcLifecycleTest") {
+  deps = [
+    ":ArcLifecycleTestBase",
+  ]
+}
