@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright 2020 The Chromium OS Authors. All rights reserved.
+   Use of this source code is governed by a BSD-style license that can be
+   found in the LICENSE file.
+-->
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:stretchColumns="*">
+   <TableRow>
+      <TextView android:text="requested size" android:padding="3dip" android:gravity="right" />
+      <TextView android:id="@+id/size" android:padding="3dip" />
+   </TableRow>
+   <TableRow>
+      <TextView android:text="compressibility ratio" android:padding="3dip" android:gravity="right" />
+      <TextView android:id="@+id/ratio" android:padding="3dip" />
+   </TableRow>
+   <TableRow>
+      <TextView android:text="allocated" android:padding="3dip" android:gravity="right" />
+      <TextView android:id="@+id/allocated" android:padding="3dip" />
+   </TableRow>
+</TableLayout>
