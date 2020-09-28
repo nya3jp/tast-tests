@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67969581_730ad148",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-28T22:56:31Z",
+      "side": 1,
+      "message": "Looking good, but lets clean up as well.",
+      "revId": "211f247c05f66f0a198a3c7cd78762944c5133c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caf24a69_a3d4bddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-09-28T22:56:31Z",
+      "side": 1,
+      "message": "defer os.Unsetenv(\"MESA_GLSL_CACH_DISABLE\") etc.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 45
+      },
+      "revId": "211f247c05f66f0a198a3c7cd78762944c5133c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
