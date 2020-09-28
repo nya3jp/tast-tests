@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "105d1319_45c982c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "There are few reasons for duplicating the tests:\n- each test produces numbered output dir which is picked up by the data processing pipeline.\n- if test fails, we can manually rerun the remaining test blocks, producing the correct results in the correct output folders (which is also more informative for debugging).\n- Autotest wrapper is a temporary solution until native Tast support is added to Moblab (it\u0027s an active requirement). After Tast support is added, we would be able to run a sequence of the Tast tests, i.e. \"storage.FullQualificationStress.01_setup_benchmarks storage.FullQualificationStress.02_stress storage.FullQualificationStress.03_stress\", etc.\n- The same test could be run outside of Moblab by \"tast\" command, still producing consistent results (even if we have to run 42 tast commands to guarantee the right sequence).\n- Explicitly stating all test blocks required for a test provides better visibility of what the full version of the test looks like. In this case, anyone reading the code understands that the full test contains 42 test blocks.\n- Any change in test blocks will (in most cases) still require update of the Autotest wrapper.\n\nSee https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/2417734 for implementation of the wrapper.",
+      "parentUuid": "d38a7543_033cb3a2",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01eb4b39_7b5d1e38",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
@@ -272,6 +290,30 @@
     },
     {
       "key": {
+        "uuid": "030d0a77_9dd75c17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a34a33d_0e476242",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 297,
+        "endChar": 2
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7cbc92c_f379e455",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
@@ -357,6 +399,24 @@
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edc70fc6_bbd9a6ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "296c7127_b074c0ea",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -651,6 +711,30 @@
       "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b4db555_f0b4d64f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/fio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30092122_8e9f1b57",
+      "range": {
+        "startLine": 179,
+        "startChar": 38,
+        "endLine": 179,
+        "endChar": 56
+      },
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "fa8fc095_70bc2c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47d86f49_4c26f621",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6490eb7d_5b19068e",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 6
@@ -90,6 +108,30 @@
       "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9400dc83_ef1392a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "This function runs a continuous disk stress which is periodically (~every minute) interrupted by a power suspend and resumes after wakeup. I updated the description to make it clearer.",
+      "parentUuid": "6490eb7d_5b19068e",
+      "range": {
+        "startLine": 300,
+        "startChar": 5,
+        "endLine": 300,
+        "endChar": 25
+      },
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +158,30 @@
     },
     {
       "key": {
+        "uuid": "f890ab62_35bc8882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "This function is expected to timeout by the caller, therefore I don\u0027t have any specific timeout handling here.",
+      "parentUuid": "a0914022_a6e5e96c",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 2
+      },
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2499d562_266f4a31",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 6
@@ -133,6 +199,24 @@
     },
     {
       "key": {
+        "uuid": "58d7450c_6f8e46a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "This function doesn\u0027t perform any storage stress, rather running in parallel to the storage stress, hence different name.",
+      "parentUuid": "2499d562_266f4a31",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36ec721d_48bda852",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 6
@@ -147,6 +231,24 @@
       "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d7b3a8_bcd3877c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "The test consist of two parallel subtests: stress and power suspend. The goal for this test is to run for a long period of time without errors, no results are produced by the test itself.\n\nStorage subtest is not a background, it is part of the test, the same is with suspend subtest.\n\nThe reason why I\u0027m using runParallelSubTests and treating all subtests as equal parts of the test is that I\u0027m planning to add more types of parallel tests in addition to the current \"retention\" and \"suspend\", all of them will have multiple parallel subtests. Additionally, there will be more than 2 parallel subtests, for example: the subtest for SWAP partition will be added to the current tests.",
+      "parentUuid": "36ec721d_48bda852",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +275,30 @@
     },
     {
       "key": {
+        "uuid": "eeae952a_bee69640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eaeb7a9_f92c9859",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 371,
+        "endChar": 16
+      },
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f625f93d_454f1d63",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
         "patchSetId": 6
@@ -187,6 +313,24 @@
       "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad0b81b_102af3a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-28T02:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f625f93d_454f1d63",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
