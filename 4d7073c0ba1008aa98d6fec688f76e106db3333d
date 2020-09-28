@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0637a64b_605fd5fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-28T03:36:46Z",
+      "side": 1,
+      "message": "Since Shik is OOO this week, let\u0027s merge this CL first to boost the process. If we prefer creating a struct for custom error after the discussion, we can change it in another CL. Thanks.",
+      "parentUuid": "3881e949_f015cc28",
+      "revId": "4d7073c0ba1008aa98d6fec688f76e106db3333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a3c69c8_168f01c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 3
