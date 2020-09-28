@@ -22,6 +22,7 @@ group("all") {
     "ArcInputMethodTest:ArcInputMethodTest",
     "ArcKeyboardTest:ArcKeyboardTest",
     "ArcKeyCharacterMapTest:ArcKeyCharacterMapTest",
+    "ArcLifecycleTest:ArcLifecycleTest",
     "ArcMidiClientTest:ArcMidiClientTest",
     "ArcMotionInputTest:ArcMotionInputTest",
     "ArcMulticastForwarderTest:ArcMulticastForwarderTest",

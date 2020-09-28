@@ -1,0 +1,37 @@
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# We need enough Lifecycle units to allocate ~2x the physical memory of the
+# largest (16G) Chromebooks. So for a 16G Chromebook, to allocate 32G we need
+# ~82 400M units. The (large) heap limt is 512, so we should allocate well under
+# that.
+
+lifecycle_units = [
+  "00", "01", "02", "03", "04", "05", "06", "07", "08", "09",
+  "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
+  "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+  "30", "31", "32", "33", "34", "35", "36", "37", "38", "39",
+  "40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
+  "50", "51", "52", "53", "54", "55", "56", "57", "58", "59",
+  "60", "61", "62", "63", "64", "65", "66", "67", "68", "69",
+  "70", "71", "72", "73", "74", "75", "76", "77", "78", "79",
+  "80", "81", "82", "83", "84", "85", "86", "87", "88", "89",
+  "90", "91", "92", "93", "94", "95", "96", "97", "98", "99",
+]
+
+lifecycle_deps = []
+foreach(unit, lifecycle_units) {
+  lifecycle_deps += [":ArcLifecycleTest" + unit]
+  android_apk("ArcLifecycleTest" + unit) {
+    manifest = "AndroidManifest.xml"
+    source_dirs = ["src"]
+    resource_dirs = ["res"]
+    target_sdk_version = "28"
+    rename_manifest_package = "org.chromium.arc.testapp.lifecycle" + unit
+  }
+}
+
+group("ArcLifecycleTest") {
+  deps = lifecycle_deps
+}
