@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7653d42a_b527b405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-28T04:58:41Z",
+      "side": 1,
+      "message": "I found that on platform app version, sometimes I will hit an issue with:\n\"Failed to release \u0027this\u0027: cdp.Runtime: ReleaseObject: rpc error: Cannot find context with specified id (code \u003d -32000)\" when running this line.\n\nAdding a testing.Sleep() in front of this line can solve the issue. I suspect we might try to execute codes on background page when v8 inspector has not bound the browser context yet, which is similar to:\nhttps://buganizer.corp.google.com/issues/115747542#comment3\n\nHidehiko (hidehiko@), we might hit this issue since we change to connect to background page at an earlier stage when running tests. Could you suggest if there is anything we can do on Tast side to wait for the readiness of background page before trying to execute codes on it?",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "2abb809ee70e76248fef61e44c4631f3e41b5b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
