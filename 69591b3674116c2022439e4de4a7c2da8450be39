@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "265e3e41_493fd159",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-28T02:35:16Z",
+      "side": 1,
+      "message": "I guess you mean the chromium:2403180 in Cq-Depend. (the change id is different from the commit on 4.14)",
+      "revId": "69591b3674116c2022439e4de4a7c2da8450be39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
