@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "9188a303_cace2073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-28T08:08:27Z",
+      "side": 1,
+      "message": "Thanks for the detailed suggestions! Personally I prefer to have things a bit more verbose to increase readability, definitely in tests. But I agree these variable names are longer than they should be. I changed the prefix to pvep to reduce the length, but kept the variable names as is to keep them in sync with the naming in multiple other tests.",
+      "parentUuid": "21565226_d0119264",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5ccaee1_4bb01d6b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
         "patchSetId": 4
@@ -50,6 +68,24 @@
       "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc8fdc7_1ee5d8f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-28T08:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5ccaee1_4bb01d6b",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "432bbd9f_b8ffd404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-28T08:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81633a2d_aa2542a4",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea4935b8_355b6d76",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
         "patchSetId": 4
@@ -81,6 +135,24 @@
       "writtenOn": "2020-09-18T16:27:19Z",
       "side": 1,
       "message": "As elsewhere, please don\u0027t add line breaks just to keep lines short.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78e04c02_14ae9d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-28T08:08:27Z",
+      "side": 1,
+      "message": "If I don\u0027t break this line the length is 156 characters, which makes it really hard to read. In this case I think adding a line break increases readability so I kept it.",
+      "parentUuid": "ea4935b8_355b6d76",
       "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "781faf41_708627be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-28T08:08:27Z",
+      "side": 1,
+      "message": "Not breaking the line results in 148 characters, requiring me to use the horizontal scroll bar to see the full line in my editor. For readability purposes I really prefer splitting up this line.",
+      "parentUuid": "d27d7a31_f9b29c02",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8769d267_f3c9d76f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
         "patchSetId": 4
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "ab9bcf61_8aa27f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-28T08:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8769d267_f3c9d76f",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f917a35_dad57196",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
         "patchSetId": 4
@@ -135,6 +243,24 @@
       "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1dcdb5f_efcc66ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-28T08:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f917a35_dad57196",
+      "revId": "6c94e208172627dad8c795d701d0cd8f730e82d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
