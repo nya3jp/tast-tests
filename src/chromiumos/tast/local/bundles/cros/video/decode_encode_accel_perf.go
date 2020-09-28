@@ -39,6 +39,8 @@ func init() {
 
 func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	const (
+		// Enable to cache the extracted raw video to speed up the test.
+		cacheExtractedVideo = false
 		// Time reserved for cleanup.
 		cleanupTime = 10 * time.Second
 		// Time to wait for CPU to stabilize after launching tests.
@@ -80,7 +82,9 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
-	defer os.Remove(streamPath)
+	if !cacheExtractedVideo {
+		defer os.Remove(streamPath)
+	}
 
 	// Wait for the CPU to become idle.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
