@@ -7,6 +7,7 @@ package settings
 
 import (
 	"context"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -56,6 +57,7 @@ var (
 	unshareFailDlg        = ui.FindParams{Name: "Unshare failed", Role: ui.RoleTypeDialog}
 	okButton              = ui.FindParams{Name: "OK", Role: ui.RoleTypeButton}
 	removeLinuxButton     = ui.FindParams{Name: "Remove Linux for Chromebook", Role: ui.RoleTypeButton}
+	resizeButton          = ui.FindParams{Name: "Change disk size", Role: ui.RoleTypeButton}
 )
 
 // Settings represents an instance of the Linux settings in Settings App.
@@ -258,6 +260,60 @@ func (s *Settings) ClickRemove(ctx context.Context, tconn *chrome.TestConn) (*Re
 	return dialog, nil
 }
 
+// ResizeDiskDialog represents the Resize Linux disk dialog.
+type ResizeDiskDialog struct {
+	Self   *uig.Action `name:"Resize Linux disk" role:"dialog"`
+	Slider *uig.Action `role:"slider"`
+	Resize *uig.Action `name:"Resize" role:"button"`
+	Cancel *uig.Action `name:"Cancel" role:"button"`
+}
+
+// ClickResize clicks Change to resize disk and returns an instance of ResizeDiskDialog.
+func (s *Settings) ClickResize(ctx context.Context) (*ResizeDiskDialog, error) {
+	dialog := &ResizeDiskDialog{}
+	uig.PageObject(dialog)
+
+	if err := uig.Do(ctx, s.tconn,
+		uig.FindWithTimeout(resizeButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
+		dialog.Self); err != nil {
+		return nil, errors.Wrap(err, "failed to find the delete dialog")
+	}
+
+	return dialog, nil
+}
+
+// GetDiskSize returns the disk size on the Settings app.
+func (s *Settings) GetDiskSize(ctx context.Context) (float64, error) {
+	diskSizeFindParams := ui.FindParams{
+		Role:       ui.RoleTypeStaticText,
+		Attributes: map[string]interface{}{"name": regexp.MustCompile(`[0-9]+.[0-9]+ GB`)},
+	}
+
+	node, err := ui.FindWithTimeout(ctx, s.tconn, diskSizeFindParams, uiTimeout)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to find disk size information on the Settings app")
+	}
+
+	size, _, err := ParseDiskSize(node.Name)
+	if err != nil {
+		return 0, err
+	}
+	return size, nil
+}
+
+// ParseDiskSize parses the disk size from a string like "xx.xx GB".
+func ParseDiskSize(str string) (float64, string, error) {
+	parts := strings.Split(str, " ")
+	if len(parts) != 2 {
+		return 0, "", errors.Errorf("failed to parse disk size from %s: does not have exactly 2 space separated parts", str)
+	}
+	num, err := strconv.ParseFloat(parts[0], 64)
+	if err != nil {
+		return 0, "", errors.Wrapf(err, "failed to parse disk size from %s", str)
+	}
+	return num, parts[1], nil
+}
+
 // GetDiskSize returns the current size based on the disk size slider text.
 func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *uig.Action) (uint64, error) {
 	node, err := uig.GetNode(ctx, tconn, slider.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText}, uiTimeout))
@@ -266,14 +322,7 @@ func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *uig.Action
 	}
 	defer node.Release(ctx)
 
-	parts := strings.Split(node.Name, " ")
-	if len(parts) != 2 {
-		return 0, errors.Errorf("failed to parse disk size from %s: does not have exactly 2 space separated parts", node.Name)
-	}
-	num, err := strconv.ParseFloat(parts[0], 64)
-	if err != nil {
-		return 0, errors.Wrapf(err, "failed to parse disk size from %s", node.Name)
-	}
+	num, matrix, err := ParseDiskSize(node.Name)
 	unitMap := map[string]float64{
 		"B":  SizeB,
 		"KB": SizeKB,
@@ -281,7 +330,7 @@ func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *uig.Action
 		"GB": SizeGB,
 		"TB": SizeTB,
 	}
-	units, ok := unitMap[parts[1]]
+	units, ok := unitMap[matrix]
 	if !ok {
 		return 0, errors.Errorf("failed to parse disk size from %s: does not have a recognized units string", node.Name)
 	}
