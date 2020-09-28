@@ -92,7 +92,7 @@ func WaitUntilShown(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "fail to wait for virtual keyboard shown")
 	}
 	defer keyboard.Release(ctx)
-	return keyboard.WaitForPositioned(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 20 * time.Second})
+	return keyboard.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 20 * time.Second})
 }
 
 // WaitUntilHidden waits for the virtual keyboard to hide. It waits until the node is gone from a11y tree.
