@@ -61,7 +61,8 @@ const (
 
 // runAccelVideoTest runs video_encode_accelerator_unittest for each binArgs.
 // It fails if video_encode_accelerator_unittest fails.
-func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opts encoding.TestOptions, bas ...binArgs) {
+func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode,
+	opts encoding.TestOptions, cacheExtractedVideo bool, bas ...binArgs) {
 	// Reserve time to restart the ui job at the end of the test.
 	// Only a single process can have access to the GPU, so we are required
 	// to call "stop ui" at the start of the test. This will shut down the
@@ -79,7 +80,9 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
-	defer os.Remove(streamPath)
+	if !cacheExtractedVideo {
+		defer os.Remove(streamPath)
+	}
 	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm")
 	switch opts.Profile {
 	case videotype.H264Prof:
@@ -161,7 +164,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 }
 
 // RunAllAccelVideoTests runs all tests in video_encode_accelerator_unittest.
-func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts encoding.TestOptions) {
+func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts encoding.TestOptions, cacheExtractedVideo bool) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -175,11 +178,11 @@ func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts encoding.
 		testFilter = bitrateTestFilter
 	}
 
-	runAccelVideoTest(ctx, s, functionalTest, opts, binArgs{testFilter: testFilter})
+	runAccelVideoTest(ctx, s, functionalTest, opts, cacheExtractedVideo, binArgs{testFilter: testFilter})
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
-func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts encoding.TestOptions) {
+func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts encoding.TestOptions, cacheExtractedVideo bool) {
 	const (
 		// testLogSuffix is the log name suffix of dumping log from test binary.
 		testLogSuffix = "test.log"
@@ -217,7 +220,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts encoding.
 
 	frameStatsPath := getResultFilePath(s.OutDir(), schemaName, "quality", frameStatsSuffix)
 
-	runAccelVideoTest(ctx, s, performanceTest, opts,
+	runAccelVideoTest(ctx, s, performanceTest, opts, cacheExtractedVideo,
 		// Run video_encode_accelerator_unittest to get FPS.
 		binArgs{
 			testFilter: "EncoderPerf/*/0",
