@@ -62,6 +62,54 @@
       "revId": "48372c528655788e17598db9a1c545bdcc8426a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2957e1_f3e87172",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-28T09:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe94da7_582a9710",
+      "range": {
+        "startLine": 396,
+        "startChar": 75,
+        "endLine": 396,
+        "endChar": 84
+      },
+      "revId": "48372c528655788e17598db9a1c545bdcc8426a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9321511_6a796777",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-09-28T09:24:08Z",
+      "side": 1,
+      "message": "Changed the function to simply not return an error. I also removed the log message completely.",
+      "parentUuid": "a7162931_88fb0ce9",
+      "range": {
+        "startLine": 396,
+        "startChar": 27,
+        "endLine": 396,
+        "endChar": 102
+      },
+      "revId": "48372c528655788e17598db9a1c545bdcc8426a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
