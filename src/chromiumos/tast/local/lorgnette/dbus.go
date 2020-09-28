@@ -162,3 +162,21 @@ func Kill(ctx context.Context) error {
 	}
 	return nil
 }
+
+// ListScanners calls lorgnette's ListScanners() method and returns the
+// (possibly empty) list of ScannerInfo objects from the response.
+func (l *Lorgnette) ListScanners(ctx context.Context) ([]*lpb.ScannerInfo, error) {
+	call := l.obj.CallWithContext(ctx, dbusInterface+".ListScanners", 0)
+	if call.Err != nil {
+		return nil, errors.Wrap(call.Err, "failed to call ListScanners")
+	}
+
+	var marshalled []byte
+	call.Store(&marshalled)
+	response := &lpb.ListScannersResponse{}
+	if err := proto.Unmarshal(marshalled, response); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal ListScannersResponse")
+	}
+
+	return response.Scanners, nil
+}
