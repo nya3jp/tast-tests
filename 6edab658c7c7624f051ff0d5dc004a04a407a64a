@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bdf83f8_274add33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-28T07:59:24Z",
+      "side": 1,
+      "message": "Hi Brendan, \n\nI am afraid we added functions at same time point. Obviously your implementation looks much better. So I think there is no reason to keep 2 implementations.",
+      "revId": "6edab658c7c7624f051ff0d5dc004a04a407a64a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
