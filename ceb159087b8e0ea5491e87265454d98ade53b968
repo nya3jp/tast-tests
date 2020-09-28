@@ -22,6 +22,30 @@
       "revId": "ceb159087b8e0ea5491e87265454d98ade53b968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7be5d29_de211da8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-09-28T16:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "486130c8_6911cb06",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "ceb159087b8e0ea5491e87265454d98ade53b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
