@@ -88,6 +88,24 @@
       "revId": "818ef3e6b4efae32b5e7d1391b66b26c4afdad56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231c3461_6ba51e12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-09-28T16:19:34Z",
+      "side": 1,
+      "message": "Go ahead and check this in. I\u0027ll verify with the 2.3 cups on the lexmark printer once everything is in.",
+      "parentUuid": "c936156e_83002744",
+      "revId": "818ef3e6b4efae32b5e7d1391b66b26c4afdad56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
