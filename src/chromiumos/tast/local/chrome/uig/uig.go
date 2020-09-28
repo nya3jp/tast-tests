@@ -429,6 +429,23 @@ func GetNode(ctx context.Context, tconn *chrome.TestConn, graph *Action) (*ui.No
 	return node.node, nil
 }
 
+// GetParams first gets the node of the graph using GetNode.
+// Then composes and returns an instance of ui.FindParams from the node.
+func GetParams(ctx context.Context, tconn *chrome.TestConn, graph *Action) (*ui.FindParams, error) {
+	node, err := GetNode(ctx, tconn, graph)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get node of %q", graph)
+	}
+	defer node.Release(ctx)
+
+	return &ui.FindParams{
+		Role:      node.Role,
+		Name:      node.Name,
+		ClassName: node.ClassName,
+		State:     node.State,
+	}, nil
+}
+
 // Do executes one or more action graphs in sequence.  It automatically releases any resources as required.
 // The graph is executed with the context root of the ChromeOS Desktop.
 func Do(ctx context.Context, tconn *chrome.TestConn, graphs ...*Action) error {
