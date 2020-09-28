@@ -16,6 +16,40 @@
       "revId": "dffcf27707efd5beef611c53bb43a054b5678e32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85f2df8e_c7ada133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-28T16:35:56Z",
+      "side": 1,
+      "message": "nit: \"\u0026\u0026 !w.IsAnimating\"  might be worth added?",
+      "revId": "dffcf27707efd5beef611c53bb43a054b5678e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3250f188_e6a2376d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-28T16:35:56Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "dffcf27707efd5beef611c53bb43a054b5678e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
