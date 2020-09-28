@@ -222,6 +222,30 @@
       "revId": "081672ac3384f5670b02129ce8972471c7d111fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92b33ad2_5a72042c",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-09-28T09:36:04Z",
+      "side": 1,
+      "message": "I understand that it works, like, magically. but to me, for one, it doesn\u0027t necessarily mean a good thing. IMO, just like chaps not taking tpm ownership to make itself work, it doesn\u0027t make sense to see net store to change TPM ownership. What if we wanted to test if an operation that should fail w/o TPM ownership? (BTW, doesn\u0027t wifi team have this kind of test?) and the bug hunting requires engineers to go deeper if EnsureTPMIsReady goes wrong; the function calls jumps between different files.\n\nAnd wifi team has ownership of the very entry-level file of the tests; they should be able to have full control of when/where TPM ownership is taken, no?\n\nso, to make my proposition more specific -- \nJust taking ownership after TPM clear; having a Retake/Clear-then-take helper function at hwsec side seems very reasonable if duplication is concerning (imagine if we have that function -- maybe we thing would just go smoothly w/o this CL.)\n\nI probably should not enforce the decision if wifi team has no objections, though. If the requirement from wifi team is fulfilled even from future-proof perspective, then im fine.",
+      "parentUuid": "2671f49e_d137d0fb",
+      "range": {
+        "startLine": 96,
+        "startChar": 18,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "081672ac3384f5670b02129ce8972471c7d111fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
