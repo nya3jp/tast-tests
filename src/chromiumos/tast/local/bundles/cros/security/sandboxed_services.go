@@ -23,7 +23,6 @@ import (
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -34,8 +33,7 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
-		Attr:         []string{"group:mainline"},
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("eve")), // TODO(crbug.com/1097612): Remove when test fixed on eve.
+		Attr: []string{"group:mainline"},
 	})
 }
 
