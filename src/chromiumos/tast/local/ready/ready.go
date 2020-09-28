@@ -359,14 +359,16 @@ const EnterpriseOwnedLogLocation = "/tmp/ready-enterpriseOwned.err"
 var trueRegex = regexp.MustCompile(`(?m)^\s*[Tt]rue\s*$`)
 
 func checkEnterpriseOwned(ctx context.Context) {
-	isEnterpriseOwned := func(ctx context.Context) (bool, error) {
+	isEnterpriseOwned := func(ctx context.Context) bool {
 		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=install_attributes_get", "--name=enterprise.owned").Output()
 		if err != nil {
-			return false, err
+			// Don't fail as install attributes can be missing. Device is not
+			// enterprise owned in that case.
+			return false
 		}
 
 		owned := trueRegex.Match(out)
-		return owned, nil
+		return owned
 	}
 
 	// Clear error log for this function.
@@ -374,15 +376,7 @@ func checkEnterpriseOwned(ctx context.Context) {
 		testing.ContextLogf(ctx, "Failed to remove error log %q: %v", EnterpriseOwnedLogLocation, err)
 	}
 
-	owned, err := isEnterpriseOwned(ctx)
-	if err != nil {
-		// Don't fail here as install attributes can be missing. Device is not
-		// enterprise owned in that case.
-		testing.ContextLog(ctx, "Failed to check if device is enterprise enrolled: ", err)
-		return
-	}
-
-	if owned {
+	if isEnterpriseOwned(ctx) {
 		if err := errorLogAppendError(EnterpriseOwnedLogLocation, "Device is enterprise owned"); err != nil {
 			testing.ContextLog(ctx, err.Error())
 		}
