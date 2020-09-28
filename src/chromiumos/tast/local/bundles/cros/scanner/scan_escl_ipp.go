@@ -321,11 +321,8 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		DeviceName: deviceName,
 		Settings: &lorgnette.ScanSettings{
 			Resolution: 300,
-			Source: &lorgnette.DocumentSource{
-				Type: lorgnette.SourceType_SOURCE_PLATEN,
-				Name: "Flatbed",
-			},
-			ColorMode: lorgnette.ColorMode_MODE_COLOR,
+			SourceName: "Flatbed",
+			ColorMode:  lorgnette.ColorMode_MODE_COLOR,
 		},
 	}
 
