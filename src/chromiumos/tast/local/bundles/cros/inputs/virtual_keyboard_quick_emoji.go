@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -104,19 +105,29 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for virtual keyboard hidden: ", err)
 	}
 
-	if err := inputElement.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
+	// Verify virtual keyboard status is not persisted on clamshell.
+	// Should not test it on tablet devices. It depends on the physical conditions of the running device.
+	// More details, refers to b/169527206.
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
 	}
 
-	// Check virtual keyboard is not shown in the following 10 seconds
-	testing.Poll(ctx, func(pollCtx context.Context) error {
-		// Note: do not use internal pollCtx but use the external context, as the
-		// last iteration it may hit the context deadline exceeded error.
-		if isVKShown, err := vkb.IsShown(ctx, tconn); err != nil {
-			s.Fatal("Failed to check vk visibility: ", err)
-		} else if isVKShown {
-			s.Fatal("Virtual keyboard is still enabled after quick emoji input")
+	if !tabletModeEnabled {
+		if err := inputElement.LeftClick(ctx); err != nil {
+			s.Fatal("Failed to click the input element: ", err)
 		}
-		return errors.New("continuously check until timeout")
-	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 10 * time.Second})
+
+		// Check virtual keyboard is not shown in the following 10 seconds.
+		testing.Poll(ctx, func(pollCtx context.Context) error {
+			// Note: do not use internal pollCtx but use the external context, as the
+			// last iteration it may hit the context deadline exceeded error.
+			if isVKShown, err := vkb.IsShown(ctx, tconn); err != nil {
+				s.Fatal("Failed to check vk visibility: ", err)
+			} else if isVKShown {
+				s.Fatal("Virtual keyboard is still enabled after quick emoji input")
+			}
+			return errors.New("continuously check until timeout")
+		}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 10 * time.Second})
+	}
 }
