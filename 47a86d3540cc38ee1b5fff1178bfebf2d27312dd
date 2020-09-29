@@ -16,6 +16,63 @@
       "revId": "47a86d3540cc38ee1b5fff1178bfebf2d27312dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f3b6b90_e7ab3736",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-29T03:41:52Z",
+      "side": 1,
+      "message": "If resp.OldSetting \u003d false, we can skip the restoration, right?",
+      "revId": "47a86d3540cc38ee1b5fff1178bfebf2d27312dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6d1b7ed_784517ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-29T03:41:52Z",
+      "side": 1,
+      "message": "Per recent guideline, we shall reserve time before doing something that needs some time for clean-ups. \n\nctxRestore :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, time.Second)\n...\ndefer func(ctx context.Context) {\n  ...\n}(ctxRestore)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "revId": "47a86d3540cc38ee1b5fff1178bfebf2d27312dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa60248_fe295529",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-09-29T03:41:52Z",
+      "side": 1,
+      "message": "tells if MAC randomization is supported for the WiFi device.",
+      "range": {
+        "startLine": 118,
+        "startChar": 25,
+        "endLine": 118,
+        "endChar": 32
+      },
+      "revId": "47a86d3540cc38ee1b5fff1178bfebf2d27312dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
