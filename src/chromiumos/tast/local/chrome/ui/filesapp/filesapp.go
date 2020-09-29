@@ -41,7 +41,7 @@ const (
 	Rename       = "Rename"
 	Delete       = "Delete"
 	ZipSelection = "Zip select"
-	NewFolder    = "New folder"
+	NewFolder    = "New folder.*"
 )
 
 // Directory names.
@@ -414,8 +414,8 @@ func (f *FilesApp) OpenPath(ctx context.Context, title string, path ...string) e
 // An error is returned if the target item can't be found.
 func (f *FilesApp) LeftClickItem(ctx context.Context, itemName string, role ui.RoleType) error {
 	params := ui.FindParams{
-		Name: itemName,
-		Role: role,
+		Role:       role,
+		Attributes: map[string]interface{}{"name": regexp.MustCompile(itemName)},
 	}
 	item, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
 	if err != nil {
