@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26149a9f_b07d1690",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-29T01:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "709cfef6_993eb35c",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 5
+      },
+      "revId": "ef4970a5655d943eb56db35423bba908dba6a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "990cb8a7_3129a5bb",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "ef4970a5655d943eb56db35423bba908dba6a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c9efecb_9e597694",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-29T01:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990cb8a7_3129a5bb",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 646,
+        "endChar": 1
+      },
+      "revId": "ef4970a5655d943eb56db35423bba908dba6a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
