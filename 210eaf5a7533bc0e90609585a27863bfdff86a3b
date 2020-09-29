@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "760a3e90_779c6dbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-09-29T11:37:59Z",
+      "side": 1,
+      "message": "\u003e \n\u003e s/15 sec/ 15 minutes/\n\u003e ?\n\u003e \n\u003e Otherwise, I was really confused reading that sentence!\n\u003e \nYes, I mean 15 minutes.\n\u003e \u003e \n\u003e \u003e If we want to use a shorter timeout for recommended events, what would be a good value? Is 30 sec enough for wifi or cellular to get registered? Note that one polling condition is bootchart, which stops collection in ~30 sec after boot. A good run generally takes 7 mins to finish. We don\u0027t want to increase that number too much.\n\u003e \n\u003e 30 seconds is plenty for any expected case for WiFi.\n\u003e Unexpected cases can include regressions, or hardware failures (per the above).\n\u003e \n\u003e So should I change anything here? It seems like the existing implied minimum of 30 seconds should be OK. But I don\u0027t know if I should force this test to fail (\"Recommended\"), per the above reliability questions.\n\nI think this change is good as-is. The improvement should be done in a separate change.\n\nOr if we can detect whether there will be a wifi device, we can make it a required metric so we can fail the test if the test times out waiting for the metric.",
+      "parentUuid": "4757a4a2_14077efc",
+      "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77bc92f7_00205dc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 2
