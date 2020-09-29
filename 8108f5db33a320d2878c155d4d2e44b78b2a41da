@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d130f1d_4271e3ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T01:31:52Z",
+      "side": 1,
+      "message": "I\u0027m back from paternity leave, and resurrected this CL.\n\nIt\u0027s been refactored to use the new MemLow interface which will be used by the multi-VM memory tests.\n\nSee https://docs.google.com/spreadsheets/d/14rc7YLpSpjUNQA8ONmCVLRhP9D22sHnWnfEjfVbBCRc/edit#gid\u003d1686153711 for result for 10 runs. Run to run variance is 5%, which hopefully can be improved, but is not that bad.",
+      "revId": "8108f5db33a320d2878c155d4d2e44b78b2a41da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

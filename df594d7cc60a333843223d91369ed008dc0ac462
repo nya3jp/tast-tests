@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "b39305cc_63f84195",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/lifecycle_chromeos_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T01:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0651f19e_17bb7caf",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 9
+      },
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "519c7138_23a1240f",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
         "patchSetId": 8
@@ -56,6 +80,24 @@
       "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fd9697f_69e7f818",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T01:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "519c7138_23a1240f",
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "d4871f66_30e09125",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T01:31:52Z",
+      "side": 1,
+      "message": "Bad wording on my part. I meant \u0027pressure\u0027 is below critical to mean that available is above critical. Now that we use the MemLow API and watch both ChromeOS available and /proc/zoneinfo, I\u0027ll reword and it should be more clear.",
+      "parentUuid": "5d340e4f_1a50660c",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e96d8bb_46402de1",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
         "patchSetId": 8
@@ -102,6 +168,30 @@
       "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6edcd6_86902e47",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T01:31:52Z",
+      "side": 1,
+      "message": "You\u0027re right, we should fail the test and then investigate the reason memory stayed high. 10 seconds should be plenty of time for ChromeOS to kill tabs.",
+      "parentUuid": "9e96d8bb_46402de1",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "bd582974_cdaeb0ef",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T01:31:52Z",
+      "side": 1,
+      "message": "I actually forgot to do this in the test I wrote!",
+      "parentUuid": "fa32e123_1394ad00",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 76
+      },
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0bf26dc_6a6bb8af",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
         "patchSetId": 8
@@ -148,6 +262,30 @@
       "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba968d2_2041325d",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T01:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0bf26dc_6a6bb8af",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 54
+      },
+      "revId": "df594d7cc60a333843223d91369ed008dc0ac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
