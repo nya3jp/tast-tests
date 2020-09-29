@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "61016a24_1102483a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-29T07:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f3b6b90_e7ab3736",
+      "revId": "47a86d3540cc38ee1b5fff1178bfebf2d27312dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6d1b7ed_784517ba",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
         "patchSetId": 1
@@ -50,6 +68,24 @@
       "revId": "47a86d3540cc38ee1b5fff1178bfebf2d27312dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd7d736b_5815a90c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-29T07:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d1b7ed_784517ba",
+      "revId": "47a86d3540cc38ee1b5fff1178bfebf2d27312dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +109,30 @@
       "revId": "47a86d3540cc38ee1b5fff1178bfebf2d27312dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e2ef91_4a53e21a",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-29T07:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfa60248_fe295529",
+      "range": {
+        "startLine": 118,
+        "startChar": 25,
+        "endLine": 118,
+        "endChar": 32
+      },
+      "revId": "47a86d3540cc38ee1b5fff1178bfebf2d27312dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
