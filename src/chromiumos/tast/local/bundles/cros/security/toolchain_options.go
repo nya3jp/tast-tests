@@ -34,14 +34,12 @@ func init() {
 				Val: toolchain.CheckNormal,
 			},
 			{
-				Name:      "allowlist",
-				Val:       toolchain.CheckAllowlist,
-				ExtraAttr: []string{"informational"},
+				Name: "allowlist",
+				Val:  toolchain.CheckAllowlist,
 			},
 			{
-				Name:      "dlc",
-				Val:       toolchain.CheckNormalWithDLCs,
-				ExtraAttr: []string{"informational"},
+				Name: "dlc",
+				Val:  toolchain.CheckNormalWithDLCs,
 			},
 		},
 	})
