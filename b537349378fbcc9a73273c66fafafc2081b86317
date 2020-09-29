@@ -16,6 +16,52 @@
       "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "642b2ef8_8393fc2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T08:46:53Z",
+      "side": 1,
+      "message": "You don\u0027t need this part, a \": \" is enough to add before printing the err.",
+      "range": {
+        "startLine": 101,
+        "startChar": 47,
+        "endLine": 101,
+        "endChar": 54
+      },
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31d791bb_052d5cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T08:46:53Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 110,
+        "startChar": 65,
+        "endLine": 110,
+        "endChar": 72
+      },
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
