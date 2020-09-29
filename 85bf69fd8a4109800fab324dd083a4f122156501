@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "1ed870e9_fa157ca5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T05:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4153fd3b_0ce319f7",
+      "revId": "85bf69fd8a4109800fab324dd083a4f122156501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df3b17e4_450ca61f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 27
@@ -64,6 +82,30 @@
       "writtenOn": "2020-09-23T18:02:36Z",
       "side": 1,
       "message": "It would be nice to move these checks inside of the functions that need it, so callers don\u0027t have to worry about setting this up every time.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "85bf69fd8a4109800fab324dd083a4f122156501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b622049d_582e6b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T05:28:35Z",
+      "side": 1,
+      "message": "Right now, pointer is in bundles so it cannot be called by shelf.go. Therefore, I put it here for now. Also, the other function in shelf.go SwipeUpHotseatAndWaitForCompletion also requires user to pass in SingleTouchEventWriter and TouchCoordConverter.",
+      "parentUuid": "df3b17e4_450ca61f",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -90,6 +132,24 @@
       "revId": "85bf69fd8a4109800fab324dd083a4f122156501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d965be6_b53ee179",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T05:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cb0b63c_44880af0",
+      "revId": "85bf69fd8a4109800fab324dd083a4f122156501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
