@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c61da0ce_c92f32e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/enumerate_ipp_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-29T21:40:13Z",
+      "side": 1,
+      "message": "Do we want to kill lorgnette, either at the end of runEnumerationTest, or at the end of the overall test?",
+      "revId": "7ebe6c3b401f915d9abc8a01802aa60ef83a8ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
