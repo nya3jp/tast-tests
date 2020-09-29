@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2642e1b4_07cb429b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T05:28:35Z",
+      "side": 1,
+      "message": "Hi Kyle:\n\nI have addressed most of your comments. However, controller.go is currently in bundles so it cannot be used by shelf.go. It will be a much bigger change if we move controller.go out of the bundles. Let\u0027s discuss when you have time.\n\nThanks.\n\nSeewai\n ",
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
