@@ -648,6 +648,11 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		}
 	}
 
+	// Clear all notifications in case a test generated some but did not close them.
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)", true); err != nil {
+		return errors.Wrap(err, "failed to clear notifications")
+	}
+
 	// Disable the automation feature. Otherwise, automation tree updates and
 	// events will come to the test API, and sometimes it causes significant
 	// performance drawback on low-end devices. See: https://crbug.com/1096719.
