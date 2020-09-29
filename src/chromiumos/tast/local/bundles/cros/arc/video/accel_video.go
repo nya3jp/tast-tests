@@ -46,6 +46,28 @@ type binArgs struct {
 	measureDuration time.Duration
 }
 
+// EncoderType represents the type of video encoders that can be used.
+type EncoderType int
+
+const (
+	// Hardware is the encoder type that uses hardware encoding.
+	Hardware EncoderType = iota
+	// Software is the encoder type that uses software encoding.
+	Software
+)
+
+// ARCTestOptions contains all options for the video encoder test.
+type ARCTestOptions struct {
+	// Profile specifies the codec profile to use when encoding.
+	Profile videotype.CodecProfile
+	// Params contains the test parameters for the e2e video encode test.
+	Params encoding.StreamParams
+	// PixelFormat is the format of the raw input video data.
+	PixelFormat videotype.PixelFormat
+	// EncoderType indicates whether a HW or SW encoder will be used.
+	EncoderType EncoderType
+}
+
 // testMode represents the test's running mode.
 type testMode int
 
@@ -61,7 +83,7 @@ const (
 // pv is optional value, passed when we run performance test and record measurement value.
 // Note: pv must be provided when measureUsage is set at binArgs.
 func runARCVideoEncoderTest(ctx context.Context, s *testing.State, a *arc.ARC,
-	opts encoding.TestOptions, pullEncodedVideo, cacheExtractedVideo bool, pv *perf.Values, bas ...binArgs) {
+	opts ARCTestOptions, pullEncodedVideo, cacheExtractedVideo bool, pv *perf.Values, bas ...binArgs) {
 	// Install the test APK and grant permissions
 	apkName, err := c2e2etest.ApkNameForArch(ctx, a)
 	if err != nil {
@@ -111,6 +133,9 @@ func runARCVideoEncoderTest(ctx context.Context, s *testing.State, a *arc.ARC,
 		encoding.CreateStreamDataArg(params, opts.Profile, opts.PixelFormat, arcFilePath+"/"+filepath.Base(streamPath), outPath),
 	}
 	for _, ba := range bas {
+		if opts.EncoderType == Software {
+			ba.extraArgs = append(ba.extraArgs, "--use_sw_encoder")
+		}
 		if err := runARCBinaryWithArgs(ctx, s, a, commonArgs, ba, pv); err != nil {
 			s.Errorf("Failed to run test with %v: %v", ba, err)
 		}
@@ -221,7 +246,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 
 // RunARCVideoTest runs all non-perf tests of arcvideoencoder_test in ARC.
 func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC,
-	opts encoding.TestOptions, pullEncodedVideo, cacheExtractedVideo bool) {
+	opts ARCTestOptions, pullEncodedVideo, cacheExtractedVideo bool) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
@@ -234,7 +259,7 @@ func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC,
 
 // RunARCPerfVideoTest runs all perf tests of arcvideoencoder_test in ARC.
 func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC,
-	opts encoding.TestOptions, cacheExtractedVideo bool) {
+	opts ARCTestOptions, cacheExtractedVideo bool) {
 	const (
 		// duration of the interval during which CPU usage will be measured.
 		measureDuration = 10 * time.Second
