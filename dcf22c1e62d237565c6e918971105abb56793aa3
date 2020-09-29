@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "87cae294_944f1a34",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-29T21:11:22Z",
+      "side": 1,
+      "message": "OK, it seems the best way to fix that would be with dut modification (in tast repo) to get pcap hostname to recognize. \n\nTherefore, I\u0027d like to defer fixing it to another bug so that we don\u0027t block other development waiting for this CL. I have necessary code already prepared. It is not a new problem anyway, so we won\u0027t be degrading quality by leaving that here. WDYT?",
+      "parentUuid": "0d4fc0c1_679bb58e",
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7710374_888d3849",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
