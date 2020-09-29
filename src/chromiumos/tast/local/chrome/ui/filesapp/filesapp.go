@@ -33,7 +33,7 @@ var defaultStablePollOpts = testing.PollOptions{Interval: 100 * time.Millisecond
 // Context menu items for a file.
 const (
 	Open         = "Open"
-	OpenWith     = "Open with..."
+	OpenWith     = "Open with\\.\\.\\."
 	Cut          = "Cut"
 	Copy         = "Copy"
 	Paste        = "Paste"
@@ -41,7 +41,7 @@ const (
 	Rename       = "Rename"
 	Delete       = "Delete"
 	ZipSelection = "Zip select"
-	NewFolder    = "New folder"
+	NewFolder    = "New folder.*"
 )
 
 // Directory names.
@@ -414,8 +414,9 @@ func (f *FilesApp) OpenPath(ctx context.Context, title string, path ...string) e
 // An error is returned if the target item can't be found.
 func (f *FilesApp) LeftClickItem(ctx context.Context, itemName string, role ui.RoleType) error {
 	params := ui.FindParams{
-		Name: itemName,
 		Role: role,
+		// TODO(jinrongwu): change this back once https://chromium-review.googlesource.com/c/chromium/src/+/2440849 is merged.
+		Attributes: map[string]interface{}{"name": regexp.MustCompile(itemName)},
 	}
 	item, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
 	if err != nil {
