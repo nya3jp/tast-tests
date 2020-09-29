@@ -21,7 +21,7 @@ import (
 // Folder sharing strings.
 const (
 	ManageLinuxSharing     = "Manage Linux sharing"
-	ShareWithLinux         = "Share with Linux"
+	ShareWithLinux         = `Share with Linux.*`
 	DialogName             = "Share folder with Linux"
 	MountPath              = "/mnt/chromeos"
 	MountFolderMyFiles     = "MyFiles"
