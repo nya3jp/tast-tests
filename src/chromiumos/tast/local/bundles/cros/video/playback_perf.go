@@ -489,6 +489,54 @@ func init() {
 			ExtraData: []string{"2160p_60fps_600frames.av1.mp4"},
 			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
+			Name: "av1_hdr_720p_30fps_sw",
+			Val: playbackPerfParams{
+				fileName:    "720p_30fps_300frames_10bpp.av1.mp4",
+				decoderType: playback.Software,
+			},
+			ExtraData: []string{"720p_30fps_300frames_10bpp.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecodingAndHDRScreen(),
+		}, {
+			Name: "av1_hdr_720p_60fps_sw",
+			Val: playbackPerfParams{
+				fileName:    "720p_60fps_600frames_10bpp.av1.mp4",
+				decoderType: playback.Software,
+			},
+			ExtraData: []string{"720p_60fps_600frames_10bpp.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecodingAndHDRScreen(),
+		}, {
+			Name: "av1_hdr_1080p_30fps_sw",
+			Val: playbackPerfParams{
+				fileName:    "1080p_30fps_300frames_10bpp.av1.mp4",
+				decoderType: playback.Software,
+			},
+			ExtraData: []string{"1080p_30fps_300frames_10bpp.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecodingAndHDRScreen(),
+		}, {
+			Name: "av1_hdr_1080p_60fps_sw",
+			Val: playbackPerfParams{
+				fileName:    "1080p_60fps_600frames_10bpp.av1.mp4",
+				decoderType: playback.Software,
+			},
+			ExtraData: []string{"1080p_60fps_600frames_10bpp.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecodingAndHDRScreen(),
+		}, {
+			Name: "av1_hdr_2160p_30fps_sw",
+			Val: playbackPerfParams{
+				fileName:    "2160p_30fps_300frames_10bpp.av1.mp4",
+				decoderType: playback.Software,
+			},
+			ExtraData: []string{"1080p_30fps_300frames_10bpp.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecodingAndHDRScreen(),
+		}, {
+			Name: "av1_hdr_2160p_60fps_sw",
+			Val: playbackPerfParams{
+				fileName:    "2160p_60fps_600frames_10bpp.av1.mp4",
+				decoderType: playback.Software,
+			},
+			ExtraData: []string{"2160p_60fps_600frames_10bpp.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecodingAndHDRScreen(),
+		}, {
 			Name: "av1_480p_30fps_sw_gav1",
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.av1.mp4",
