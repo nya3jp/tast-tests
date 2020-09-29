@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2b733a3_bf150cb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-29T13:15:32Z",
+      "side": 1,
+      "message": "Sorry for long reply, I waited Matthew review. I have few comments:",
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f4ea223_843dd6fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-29T13:15:32Z",
+      "side": 1,
+      "message": "you actually don\u0027t need to wrap function into some structure.\n\nyou can just have \n\n```\ntype printingEnabledFunc func(...)\n\n...\n[]testing.Param{\n   {\n     Val: testPrintingFromThreeDotMenu,\n   },\n},\n\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f4ee530_ed399acc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-29T13:15:32Z",
+      "side": 1,
+      "message": "there is no need to add \"Type\" to the type name 😊",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05af510f_448fdd2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-29T13:15:32Z",
+      "side": 1,
+      "message": "Why it\u0027s needed?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 21
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ebd5d3_2a659e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-29T13:15:32Z",
+      "side": 1,
+      "message": "it\u0027s better to don\u0027t pass testing.State to other functions. It\u0027s preferred to return error and caller should decide how to handle error.",
+      "range": {
+        "startLine": 112,
+        "startChar": 28,
+        "endLine": 112,
+        "endChar": 29
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "770bd89e_d5b8ad91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-29T13:15:32Z",
+      "side": 1,
+      "message": "nit: please add blank line before",
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cbe89f_c3ee4124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-29T13:15:32Z",
+      "side": 1,
+      "message": "nit: let\u0027s start error with \"failed\", it\u0027s more common in Tast\n\nfor example: \"Failed to click on dropdown menu\"",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 51
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36018dcc_f4900c97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-29T13:15:32Z",
+      "side": 1,
+      "message": "this is repeating block, our functions can return whether priting is allowed de facto and caller should compare with expected value",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e22db1e4_a57494f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-29T13:15:32Z",
+      "side": 1,
+      "message": "looks similar to testPrintingFromThreeDotMenu. Can we improve it? Maybe move to a helper method?",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 41
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
