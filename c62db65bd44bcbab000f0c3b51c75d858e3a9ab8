@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "add2442a_418ffc0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2020-09-29T13:42:05Z",
+      "side": 1,
+      "message": "PTAL, thanks! This (at least) enables us to reuse ARC session across tests.",
+      "revId": "c62db65bd44bcbab000f0c3b51c75d858e3a9ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
