@@ -19,6 +19,57 @@
     },
     {
       "key": {
+        "uuid": "cb11ca67_06fd6ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/translate_page_fr.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T08:55:24Z",
+      "side": 1,
+      "message": "Please use the full test name \"translate_enabled\" in the file name. This way the assiciation is better.",
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0749a6a4_e1747a92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/translate_page_fr.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T08:55:24Z",
+      "side": 1,
+      "message": "Please add this at the start of the file:\n\u003e  \u003c!-- Copyright 2020 The Chromium OS Authors. All rights reserved.\n\u003e       Use of this source code is governed by a BSD-style license that can be\n\u003e       found in the LICENSE file. --\u003e",
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2fb0f94_9096dc55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T08:55:24Z",
+      "side": 1,
+      "message": "Please add a more detailed descritpion. You can have a look at the other tests in the folder.",
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "642b2ef8_8393fc2e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
         "patchSetId": 4
