@@ -122,6 +122,29 @@
     },
     {
       "key": {
+        "uuid": "16de0b95_c25b5599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-29T16:08:42Z",
+      "side": 1,
+      "message": "nit: instead of using a comment, these might be better as constants in policy.go. That is assuming there is some standardization of policy 1 and 2 values.\n\nOr even constants local to this test since they are used a lot.",
+      "range": {
+        "startLine": 49,
+        "startChar": 69,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "197fa9b8_3f60a229",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
         "patchSetId": 4
@@ -342,6 +365,75 @@
       "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e7d36d0_3d51ec76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-29T16:08:42Z",
+      "side": 1,
+      "message": "Just a note, this check shouldn\u0027t be needed. It should be fine to make this the same as Chrome and FakeDMS above.",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8fe6dac_2d9c667e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-29T16:08:42Z",
+      "side": 1,
+      "message": "I believe there is conn.WaitForExpr that could potentially be used instead of this polling. Though it might not take a timeout, which would mean you would have to shorten the context to the timeout and then call it.",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 4
+      },
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a555a371_28f30117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-09-29T16:08:42Z",
+      "side": 1,
+      "message": "nit: why errorf over fatalf here? It should make no difference since this is the last call in this test run instance.",
+      "range": {
+        "startLine": 166,
+        "startChar": 6,
+        "endLine": 166,
+        "endChar": 12
+      },
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
