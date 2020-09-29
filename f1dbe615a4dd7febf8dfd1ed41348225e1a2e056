@@ -16,6 +16,24 @@
       "revId": "f1dbe615a4dd7febf8dfd1ed41348225e1a2e056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef418f4b_6179eb7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-29T01:45:07Z",
+      "side": 1,
+      "message": "Resize while shutdown is still needed.",
+      "parentUuid": "7e791288_031ac746",
+      "revId": "f1dbe615a4dd7febf8dfd1ed41348225e1a2e056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
