@@ -16,6 +16,46 @@
       "revId": "182e18a5d412734248a6c7a10fb1909dc76be43d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf99bde0_0b4c6d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T09:25:24Z",
+      "side": 1,
+      "message": "Please add the full names of all the 3 involved policies in the description.",
+      "revId": "182e18a5d412734248a6c7a10fb1909dc76be43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd9c112c_bf10ea84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T09:25:24Z",
+      "side": 1,
+      "message": "nit: although these are bool values, it is better to keep the got, want pattern.",
+      "range": {
+        "startLine": 166,
+        "startChar": 54,
+        "endLine": 166,
+        "endChar": 56
+      },
+      "revId": "182e18a5d412734248a6c7a10fb1909dc76be43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
