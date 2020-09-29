@@ -16,6 +16,322 @@
       "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21ffdae0_cb20f1cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "Just a few comments.",
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1603eb5_b99746d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "nit: stabilize",
+      "range": {
+        "startLine": 136,
+        "startChar": 35,
+        "endLine": 136,
+        "endChar": 44
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c9e22d7_e13a072f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "Can you mention (in the method comment or variable name) what the unit of measure is, e.g. Bytes, Kibibytes?",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 14
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc714913_59b1a3eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "nit: Could you update the variable name or comment to specify what unit this is in? e.g. Bytes/KiB/MiB?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f256f9e_6f7066c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "clar: Why do we need this cast?",
+      "range": {
+        "startLine": 62,
+        "startChar": 57,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cad6f32e_bf7daffa",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "This name reads a little odd to me for a type. What about renaming it to MemoryTarget?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744df036_766c9e11",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "Could you add a comment for this method? In this comment, could you mention the unit (and sign) of the result?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058a11e8_e8a474f5",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "nit: Consider wrapping error, e.g. errors.Wrap(err, \"read file\")",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea1edc85_f4148628",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "reads a bit odd... what about \"failed to read ChromeOS available memory\"?",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 63
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0db31c34_b9debe7e",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "If you renamed MemLow above, this could be renamed to NewChromeOSLowMemoryTarget",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10832d5a_509d9b7c",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "as above, what about renaming this to NewChromeOSCriticalMemoryTarget?",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36de2cf2_c5dadedf",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "as above, what about renaming this to NewLinuxOOMTarget?\n\n(If \"Near\" adds anything to the name, I don\u0027t think I\u0027ve grasped what it is, as this seems no different to the other LowMem objects in measuring how near one is to a desired memory level.)",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f187a850_665aa842",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "as above, what about NewCompositeMemoryTarget?",
+      "range": {
+        "startLine": 161,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 23
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "938d97e1_1bb9d7f2",
+        "filename": "src/chromiumos/tast/local/memory/zone_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-29T04:25:08Z",
+      "side": 1,
+      "message": "nit: can you make this zoneInfoRE to be consistent with your use of camelCase above?",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
