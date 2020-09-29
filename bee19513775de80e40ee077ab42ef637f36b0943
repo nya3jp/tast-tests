@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f4b136e_a7254131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-29T16:24:44Z",
+      "side": 1,
+      "message": "You may want to include the value of dev in this error report.\n\n    s.Errorf(\"Boot device %s was unexpectedly found\", dev)",
+      "revId": "bee19513775de80e40ee077ab42ef637f36b0943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
