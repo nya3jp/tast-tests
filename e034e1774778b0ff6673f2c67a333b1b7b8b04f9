@@ -16,6 +16,23 @@
       "revId": "e034e1774778b0ff6673f2c67a333b1b7b8b04f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b69e90b5_2af98b20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:38:55Z",
+      "side": 1,
+      "message": "Looks green at all!",
+      "revId": "e034e1774778b0ff6673f2c67a333b1b7b8b04f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
