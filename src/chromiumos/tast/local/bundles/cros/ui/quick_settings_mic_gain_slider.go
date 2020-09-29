@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/input"
@@ -37,6 +38,10 @@ func QuickSettingsMicGainSlider(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		s.Fatal("Failed to close open notifications: ", err)
+	}
 
 	// Set up the keyboard, which is used to increment/decrement the slider.
 	// TODO(crbug/1123231): use better slider automation controls if possible, instead of keyboard controls.
