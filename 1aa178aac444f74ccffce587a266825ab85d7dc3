@@ -128,6 +128,30 @@
     },
     {
       "key": {
+        "uuid": "5a58047d_b4124790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T08:35:49Z",
+      "side": 1,
+      "message": "I switched the type of memory.CriticalMargin to int64, to match what\u0027s used in the new MemLow API.\n\nAllocateUntil needs a uint though. Would it be better to push the type change through?",
+      "parentUuid": "9f256f9e_6f7066c5",
+      "range": {
+        "startLine": 62,
+        "startChar": 57,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cad6f32e_bf7daffa",
         "filename": "src/chromiumos/tast/local/memory/mem_low.go",
         "patchSetId": 1
@@ -139,6 +163,30 @@
       "writtenOn": "2020-09-29T04:25:08Z",
       "side": 1,
       "message": "This name reads a little odd to me for a type. What about renaming it to MemoryTarget?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbcd4c57_296d7f47",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T08:35:49Z",
+      "side": 1,
+      "message": "Some tests use this as a way to avoid stability issues from low memory (see the memory_stress_task.go for the arc.LifecycleChromeOSPerf test stacked above), so it\u0027s only a target if the intention is to keep memory low.\n\nMaybe MemoryLimit?",
+      "parentUuid": "cad6f32e_bf7daffa",
       "range": {
         "startLine": 21,
         "startChar": 5,
@@ -174,6 +222,30 @@
     },
     {
       "key": {
+        "uuid": "9c3a0006_49fde95a",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T08:35:49Z",
+      "side": 1,
+      "message": "I\u0027m surprised the linter didn\u0027t make me do this. Fixed.",
+      "parentUuid": "744df036_766c9e11",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "058a11e8_e8a474f5",
         "filename": "src/chromiumos/tast/local/memory/mem_low.go",
         "patchSetId": 1
@@ -197,6 +269,30 @@
     },
     {
       "key": {
+        "uuid": "05097e8f_6a2b0b5b",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T08:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "058a11e8_e8a474f5",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea1edc85_f4148628",
         "filename": "src/chromiumos/tast/local/memory/mem_low.go",
         "patchSetId": 1
@@ -217,6 +313,30 @@
       "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d86bf5f_221d1c47",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T08:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea1edc85_f4148628",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 63
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -289,6 +409,30 @@
     },
     {
       "key": {
+        "uuid": "7d77af5f_558533e5",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T08:35:49Z",
+      "side": 1,
+      "message": "Sorry, comment was not ideal. The intent is to apply enough memory pressure that page reclaim is triggered by having at least one zone\u0027s free page count be below the zone\u0027s low watermark, while at the same time making sure that the free page count is never below the min watermark.\n\nMaybe a name like NewLinuxReclaimAndAvoidOOMMemLow?",
+      "parentUuid": "36de2cf2_c5dadedf",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f187a850_665aa842",
         "filename": "src/chromiumos/tast/local/memory/mem_low.go",
         "patchSetId": 1
@@ -332,6 +476,30 @@
       "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c1f8d2_8c3dfca5",
+        "filename": "src/chromiumos/tast/local/memory/zone_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T08:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "938d97e1_1bb9d7f2",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
