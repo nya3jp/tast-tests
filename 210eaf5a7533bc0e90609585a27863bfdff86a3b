@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "4757a4a2_14077efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-29T01:45:37Z",
+      "side": 1,
+      "message": "\u003e This sounds a good idea to implement. We can do it in another change. We just need to be careful not to regress the test execution time.\n\u003e \n\u003e One question: are we sure that wifi will always get registered on each devices (I suppose the answer is no to cellular)?\n\nCellular: no, not all devices have it.\nWiFi: ~99%. There are occasional weirdo boxes out there that sometimes accidentally get tests run on them (e.g., I never know what the current status of Moblab is), or VMs (Betty, etc.), but there should not be a single proper Chrome OS system out there with no WiFi.\n\nNow, existing tests will show that there is a baseline of hardware (or software?) issues in the lab that mean the device is not registered reliably, even on systems where they should be reliable:\nhttps://tastboard.corp.google.com/test/network.WLANDriver\n(Most (but not all) of the current errors are experimental boards with known issues.)\nThe current exclusions for that test (see \"Deps\") are only for VMs, moblab, and Kitty [which is known to be flaky]\n\n\u003e If we have a device without wifi then the device will always take 60 sec to finish the boot test, and this largely increase the chance that the test runs out of its timeout budget of 15 sec. We don\u0027t want the test to run that slow and even to become flaky in running out of time.\n\ns/15 sec/ 15 minutes/\n?\n\nOtherwise, I was really confused reading that sentence!\n\n\u003e \n\u003e If we want to use a shorter timeout for recommended events, what would be a good value? Is 30 sec enough for wifi or cellular to get registered? Note that one polling condition is bootchart, which stops collection in ~30 sec after boot. A good run generally takes 7 mins to finish. We don\u0027t want to increase that number too much.\n\n30 seconds is plenty for any expected case for WiFi.\nUnexpected cases can include regressions, or hardware failures (per the above).\n\nSo should I change anything here? It seems like the existing implied minimum of 30 seconds should be OK. But I don\u0027t know if I should force this test to fail (\"Recommended\"), per the above reliability questions.",
+      "parentUuid": "60c5b735_252fc26a",
+      "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77bc92f7_00205dc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 2
@@ -91,6 +109,30 @@
       "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "526710d1_12a56ccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-29T01:45:37Z",
+      "side": 1,
+      "message": "I was tempted to delete the entire listing, since there\u0027s a definitive listing a few dozen lines up...\n...but sure, I\u0027ll just delete this sentence.",
+      "parentUuid": "77bc92f7_00205dc6",
+      "range": {
+        "startLine": 215,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 34
+      },
+      "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
