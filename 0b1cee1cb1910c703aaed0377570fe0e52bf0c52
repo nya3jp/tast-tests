@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "997947f4_1ef7da3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-09-29T11:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bab3a8bf_d7a928ea",
+      "revId": "0b1cee1cb1910c703aaed0377570fe0e52bf0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10af2512_2d28719b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
         "patchSetId": 1
@@ -56,6 +74,48 @@
       "revId": "0b1cee1cb1910c703aaed0377570fe0e52bf0c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8acc40e6_27a4e844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-09-29T11:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10af2512_2d28719b",
+      "revId": "0b1cee1cb1910c703aaed0377570fe0e52bf0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef266818_df7c4022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-09-29T11:21:15Z",
+      "side": 1,
+      "message": "Done, though I don\u0027t think it matters in this case.",
+      "parentUuid": "2d508348_ac4ba057",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "0b1cee1cb1910c703aaed0377570fe0e52bf0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
