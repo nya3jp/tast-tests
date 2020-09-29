@@ -382,7 +382,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-			return w.ID == ytWinID && !w.IsActive
+			return w.ID == ytWinID && !w.IsActive && !w.IsAnimating
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed to wait youtube window deactivate")
 		}
