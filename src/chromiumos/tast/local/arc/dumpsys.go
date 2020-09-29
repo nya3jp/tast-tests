@@ -121,8 +121,6 @@ func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error)
 	switch n {
 	case SDKP:
 		return a.dumpsysActivityActivitiesP(ctx)
-	case SDKQ:
-		return a.dumpsysActivityActivitiesQ(ctx)
 	case SDKR:
 		return a.dumpsysActivityActivitiesR(ctx)
 	default:
@@ -193,9 +191,9 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 	return tasks, nil
 }
 
-// dumpsysActivityActivitiesQ returns the "dumpsys activity activities" output as a list of TaskInfo.
-// Should only be called on ARC Q devices.
-func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo, err error) {
+// dumpsysActivityActivitiesR returns the "dumpsys activity activities" output as a list of TaskInfo.
+// Should only be called on ARC R devices.
+func (a *ARC) dumpsysActivityActivitiesR(ctx context.Context) (tasks []TaskInfo, err error) {
 	output, err := a.Command(ctx, "dumpsys", "activity", "--proto", "activities").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not get 'dumpsys activity --proto activities' output")
@@ -218,80 +216,66 @@ func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo,
 		return nil, errors.Wrap(err, "failed to parse activity manager protobuf")
 	}
 
-	super := am.GetActivityStackSupervisor()
-	for _, d := range super.GetDisplays() {
-		for _, stack := range d.GetStacks() {
-			for _, t := range stack.GetTasks() {
-				ti := TaskInfo{}
-				ti.ID = int(t.GetId())
-				ti.StackID = int(stack.GetId())
-				ti.StackSize = len(stack.GetTasks())
-				// Some special activities like arc.Dummy and arc.Home don't have the OrigActivity.
-				// In those cases, just get the RealActivity.
-				name := t.GetOrigActivity()
-				if name == "" {
-					name = t.GetRealActivity()
-				}
-				for _, a := range t.GetActivities() {
-					id := a.GetIdentifier()
-					// Neither package name or activity name are allowed to use "/". Testing for "len != 2" is safe.
-					s := strings.Split(name, "/")
-					if len(s) != 2 {
-						// id is either a component name/string (eg: "com.android.settings/.FallbackHome") or a window title ("NavigationBar").
-						// As we need both package and activity name, we just skip this activity if it has the latter format.
-						testing.ContextLog(ctx, "Skipping this activity as its title doesn't have the format <package name>/<activity name>: ", id.GetTitle())
-						continue
-					}
-					ti.ActivityInfos = append(ti.ActivityInfos, ActivityInfo{s[0], s[1]})
-				}
-				b := t.GetBounds()
-				ti.Bounds = coords.NewRectLTRB(int(b.GetLeft()), int(b.GetTop()), int(b.GetRight()), int(b.GetBottom()))
-				// Any value different than 0 (RESIZE_MODE_UNRESIZEABLE) means it is resizable. Defined in ActivityInfo.java. See:
-				// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/android10-dev/core/java/android/content/pm/ActivityInfo.java
-				ti.resizable = t.GetResizeMode() != 0
+	// dumpsys returns a tree of window containers which we are to traverse in the following.
+	// For each TaskProto node in the tree, we create a TaskInfo item representing it, then add an ActivityInfo for each *immediate* child ActivityRecord node.
+	// (Note that TaskProto can be nested, but each ActivityRecord is only associated to its immediate parent.)
+	// TODO(b/152576355): Task stack info are not provided by TaskProto, we need to use other sources for the information.
 
-				conf := t.GetConfigurationContainer().GetMergedOverrideConfiguration()
-				winConf := conf.GetWindowConfiguration()
-				wm := winConf.GetWindowingMode()
-				// Windowing mode constants taken from WindowConfiguration.java. See:
-				// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/android10-dev/core/java/android/app/WindowConfiguration.java
-				// TODO(crbug.com/1005422) Minimized, Maximized and PIP modes are not supported. Find a replacement.
-				// WINDOWING_MODE_PINNED is an acceptable temporay substitute for PIP.
-				// For Q/R: windowing mode can be undefined (0) or
-				// fullscreen_or_splitscreen_secondary (6), or freeform (7). Temporarily
-				// assign the values.
-				ws := map[int32]WindowState{
-					0: WindowStateNormal,
-					1: WindowStateFullscreen,
-					2: WindowStatePIP, // WINDOWING_MODE_PINNED
-					3: WindowStatePrimarySnapped,
-					4: WindowStateSecondarySnapped,
-					5: WindowStateNormal,
-					6: WindowStateFullscreen,
-					7: WindowStateNormal,
-				}
-				val, ok := ws[wm]
-				if !ok {
-					return nil, errors.Errorf("unsupported window state value: %d", wm)
-				}
-				ti.windowState = val
+	// Helper to represent all window container types.
+	type windowContainer interface {
+		GetWindowContainer() *server.WindowContainerProto
+	}
 
-				// TODO(crbug.com/1005422): Protobuf output does not provide "resumed" information. Find a replacement.
-				ti.resumed = false
+	// Forward declaration for recursive call.
+	var traverse func(windowContainer)
 
-				tasks = append(tasks, ti)
+	traverse = func(wc windowContainer) {
+		if t, ok := wc.(*server.TaskProto); ok && t != nil {
+			b := t.GetBounds()
+			ti := TaskInfo{
+				ID:      int(t.GetId()),
+				Bounds:  coords.NewRectLTRB(int(b.GetLeft()), int(b.GetTop()), int(b.GetRight()), int(b.GetBottom())),
+				resumed: t.GetResumedActivity() != nil,
+				// android.content.pm.ActivityInfo.RESIZE_MODE_UNRESIZEABLE == 0
+				resizable: t.GetResizeMode() != 0,
+				// TODO(b/152576355): StackID, StackSize, windowState
 			}
+
+			// Add all immdiate ActivityRecord children.
+			for _, c := range t.GetWindowContainer().GetChildren() {
+				a := c.GetActivity()
+				if a == nil {
+					continue
+				}
+				// Neither package name or activity name are allowed to use "/". Testing for "len != 2" is safe.
+				s := strings.Split(a.GetName(), "/")
+				if len(s) != 2 {
+					// Name is either a component name/string (eg: "com.android.settings/.FallbackHome") or a window title ("NavigationBar").
+					// As we need both package and activity name, we just skip this activity if it has the latter format.
+					testing.ContextLog(ctx, "Skipping this activity as its title doesn't have the format <package name>/<activity name>: ", a.GetName())
+					continue
+				}
+				ti.ActivityInfos = append(ti.ActivityInfos, ActivityInfo{s[0], s[1]})
+			}
+
+			tasks = append(tasks, ti)
+		}
+
+		// Traverse all child containers. A node can only contain either of these types, others will give nil.
+		// We don't need to check nil as nil nodes simply return no children and terminate the recursion.
+		for _, c := range wc.GetWindowContainer().GetChildren() {
+			traverse(c)
+			traverse(c.GetDisplayArea())
+			traverse(c.GetDisplayContent())
+			traverse(c.GetTask())
+			traverse(c.GetWindow())
+			traverse(c.GetWindowToken())
 		}
 	}
-	return tasks, nil
-}
 
-// dumpsysActivityActivitiesR returns the "dumpsys activity activities" output as a list of TaskInfo.
-// Should only be called on ARC R devices.
-func (a *ARC) dumpsysActivityActivitiesR(ctx context.Context) (tasks []TaskInfo, err error) {
-	// TODO(b/156398025): Update and verify proto parsing for Android R. For now, we use the same
-	//  dumpsys output processing as Q.
-	return a.dumpsysActivityActivitiesQ(ctx)
+	traverse(am.GetRootWindowContainer())
+
+	return tasks, nil
 }
 
 // Helper functions.
