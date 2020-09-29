@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d39c701c_629bb6e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000657
+      },
+      "writtenOn": "2020-09-29T15:34:57Z",
+      "side": 1,
+      "message": "TraceReplay runs via Crostini, right? Once the rest of the shader cache CLs land, Crostini will always use a host-side shader disk cache. We can optionally erase it between runs as long as Crostini VM is stopped first.",
+      "parentUuid": "4110b5c6_f5b31dbe",
+      "revId": "211f247c05f66f0a198a3c7cd78762944c5133c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caf24a69_a3d4bddd",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
         "patchSetId": 2
