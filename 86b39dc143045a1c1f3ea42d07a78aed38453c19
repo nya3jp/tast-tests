@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6ef4e21_2c1d881d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_cancel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-29T04:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5901ff4_d710dfb2",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 7
+      },
+      "revId": "86b39dc143045a1c1f3ea42d07a78aed38453c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9699d96_4dcbf14c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_cancel.go",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2020-09-29T03:40:34Z",
       "side": 1,
       "message": "This is unfortunate, it would be nice to find a better way to do this in uig.",
+      "revId": "86b39dc143045a1c1f3ea42d07a78aed38453c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1632034_f0539352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_cancel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-29T04:53:18Z",
+      "side": 1,
+      "message": "Added GetParams in uig, PTAL!",
+      "parentUuid": "d9699d96_4dcbf14c",
       "revId": "86b39dc143045a1c1f3ea42d07a78aed38453c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -62,6 +104,30 @@
       "revId": "86b39dc143045a1c1f3ea42d07a78aed38453c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df3b3db_d47fad2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_cancel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-29T04:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b4acd4a_a35eafb0",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 10
+      },
+      "revId": "86b39dc143045a1c1f3ea42d07a78aed38453c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
