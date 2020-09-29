@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "9ee72d15_b97d9e35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-09-29T11:15:02Z",
+      "side": 1,
+      "message": "Thanks for explaining!",
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1280810_c0cd2dfb",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
         "patchSetId": 4
