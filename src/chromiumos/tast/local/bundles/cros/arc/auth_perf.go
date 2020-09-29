@@ -238,6 +238,23 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	}
 }
 
+func getResultProp(ctx context.Context, propName string) (float64, error) {
+	// Read sign-in results via property
+	out, err := testexec.CommandContext(ctx,
+		"android-sh", "-c", "getprop "+propName).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return -1.0, errors.Wrap(err, "failed to get the result property")
+	}
+
+	outStr := string(out)
+	m := regexp.MustCompile(`OK,(\d+)`).FindStringSubmatch(outStr)
+	if m == nil {
+		return -1.0, errors.Errorf("Result prop could not be parsed: %q", outStr)
+	}
+
+	return strconv.ParseFloat(m[1], 64)
+}
+
 // bootARC performs one ARC boot iteration, opt-out and opt-in again.
 // It calculates the time when the Play Store appears and set of ARC auth times.
 func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) (measuredValues, error) {
@@ -294,29 +311,17 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 		}
 	}
 
-	// Read sign-in results via property
-	out, err := testexec.CommandContext(ctx,
-		"android-sh", "-c", "getprop dev.arc.signin.result").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return v, errors.Wrap(err, "failed to get signin result property")
-	}
-
-	outStr := string(out)
-	m := regexp.MustCompile(`OK,(\d+),(\d+),(\d+),(\d+)`).FindStringSubmatch(outStr)
-	if m == nil {
-		return v, errors.Errorf("sign-in results could not be parsed: %q", outStr)
-	}
-
-	if v.signInTime, err = strconv.ParseFloat(m[1], 32); err != nil {
+	// Read sign-in results via properties
+	if v.signInTime, err = getResultProp(ctx, "dev.arc.accountsignin.result"); err != nil {
 		return v, err
 	}
-	if v.accountCheckTime, err = strconv.ParseFloat(m[2], 32); err != nil {
+	if v.accountCheckTime, err = getResultProp(ctx, "dev.arc.accountcheck.result"); err != nil {
 		return v, err
 	}
-	if v.networkWaitTime, err = strconv.ParseFloat(m[3], 32); err != nil {
+	if v.networkWaitTime, err = getResultProp(ctx, "dev.arc.networkwait.result"); err != nil {
 		return v, err
 	}
-	if v.checkinTime, err = strconv.ParseFloat(m[4], 32); err != nil {
+	if v.checkinTime, err = getResultProp(ctx, "dev.arc.accountcheckin.result"); err != nil {
 		return v, err
 	}
 
