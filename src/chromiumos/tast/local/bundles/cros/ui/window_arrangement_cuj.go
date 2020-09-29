@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
@@ -60,6 +61,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		duration = 2 * time.Second
 	)
 
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
+
 	tabletMode := s.Param().(bool)
 
 	cr := s.PreValue().(cuj.PreData).Chrome
@@ -73,7 +79,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(closeCtx)
 
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
@@ -113,13 +119,14 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+	defer recorder.Close(closeCtx)
 
 	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute audio: ", err)
 	}
-	defer crastestclient.Unmute(ctx)
+	defer crastestclient.Unmute(closeCtx)
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
 
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
@@ -147,12 +154,12 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to find webview: ", err)
 	}
-	defer webview.Release(ctx)
+	defer webview.Release(closeCtx)
 	pipButton, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeButton, Name: "Enter Picture-in-Picture"}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find the pip button: ", err)
 	}
-	defer pipButton.Release(ctx)
+	defer pipButton.Release(closeCtx)
 	if err := pipButton.LeftClick(ctx); err != nil {
 		s.Fatal("Failed to click on the pip button: ", err)
 	}

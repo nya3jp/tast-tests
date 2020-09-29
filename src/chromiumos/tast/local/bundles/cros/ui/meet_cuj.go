@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/bond"
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome/ash"
@@ -44,6 +45,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		numBots     = 4
 		botDuration = 2 * time.Minute
 	)
+
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
 
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
 	bc, err := bond.NewClient(ctx, bond.WithCredsJSON([]byte(creds)))
@@ -83,17 +89,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
 			[]int64{50, 80}))
 	}
+
 	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
+	defer recorder.Close(closeCtx)
 
 	conn, err := cr.NewConn(ctx, "https://meet.google.com/")
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
 	defer conn.Close()
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
 
 	// Make it into a normal window if it is in clamshell-mode; so that the
 	// desktop needs to compose the browser window with the wallpaper.
@@ -117,14 +125,14 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to find webview: ", err)
 	}
-	defer webview.Release(ctx)
+	defer webview.Release(closeCtx)
 
 	// Assume that the meeting code is the only textfield in the webpage.
 	enter, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeTextField}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find the meeting code: ", err)
 	}
-	defer enter.Release(ctx)
+	defer enter.Release(closeCtx)
 	if err := enter.LeftClick(ctx); err != nil {
 		s.Fatal("Failed to click the input form: ", err)
 	}
@@ -150,19 +158,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to find the container")
 		}
-		defer container.Release(ctx)
+		defer container.Release(closeCtx)
 		for i := 0; i < 5; i++ {
 			bubble, err := container.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "BubbleDialogDelegateView"}, timeout)
 			if err != nil {
 				// It is fine not finding the bubble.
 				return nil
 			}
-			defer bubble.Release(ctx)
+			defer bubble.Release(closeCtx)
 			allowButton, err := bubble.Descendant(ctx, ui.FindParams{Name: "Allow", Role: ui.RoleTypeButton})
 			if err != nil {
 				return errors.Wrap(err, "failed to find the allow button")
 			}
-			defer allowButton.Release(ctx)
+			defer allowButton.Release(closeCtx)
 			if err := allowButton.LeftClick(ctx); err != nil {
 				return errors.Wrap(err, "failed to click the allow button")
 			}
@@ -179,7 +187,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to find join-now button: ", err)
 	}
-	defer askToJoin.Release(ctx)
+	defer askToJoin.Release(closeCtx)
 
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {

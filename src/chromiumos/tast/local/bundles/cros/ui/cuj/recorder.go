@@ -186,6 +186,11 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 	return r, nil
 }
 
+// Close clears states for all trackers.
+func (r *Recorder) Close(ctx context.Context) error {
+	return r.frameDataTracker.Close(ctx, r.tconn)
+}
+
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
 func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) error {

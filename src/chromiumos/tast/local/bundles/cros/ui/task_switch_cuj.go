@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/arc/ui"
@@ -60,6 +61,11 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		gmailPackageName     = "com.google.android.gm"
 		timeout              = 10 * time.Second
 	)
+
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
 
 	cr := s.PreValue().(cuj.PreData).Chrome
 	a := s.PreValue().(cuj.PreData).ARC
@@ -225,7 +231,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 					if err != nil {
 						return errors.Wrap(err, "can't find the menu items")
 					}
-					defer menus.Release(ctx)
+					defer menus.Release(closeCtx)
 					targetMenus := make([]*chromeui.Node, 0, len(menus))
 					for i := 1; i < len(menus); i++ {
 						if !hasYoutubeIcon || !strings.HasPrefix(strings.ToLower(menus[i].Name), "youtube") {
@@ -318,6 +324,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+	defer recorder.Close(closeCtx)
 
 	// Launch arc apps from the app launcher; first open the app-launcher, type
 	// the query and select the first search result, and wait for the app window
