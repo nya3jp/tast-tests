@@ -23,8 +23,6 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
-	localnet "chromiumos/tast/local/network"
 	"chromiumos/tast/local/network/cmd"
 	"chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
@@ -772,16 +770,23 @@ func (s *WifiService) GetHardwareAddr(ctx context.Context, iface *network.GetHar
 // and waits until at least req.Count scans are done.
 func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScansRequest) (*empty.Empty, error) {
 	// Create watcher for ScanDone signal.
-	conn, err := dbusutil.SystemBus()
+	m, err := shill.NewManager(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get system bus")
+		return nil, errors.Wrap(err, "failed to create shill manager")
 	}
-	spec := dbusutil.MatchSpec{
-		Type:      "signal",
-		Interface: localnet.DBusWPASupplicantInterface,
-		Member:    "ScanDone",
+	ifaceName, err := shill.WifiInterface(ctx, m, 10*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi interface")
 	}
-	sw, err := dbusutil.NewSignalWatcher(ctx, conn, spec)
+	supplicant, err := wpasupplicant.NewSupplicant(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
+	}
+	iface, err := supplicant.GetInterface(ctx, ifaceName)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get interface object paths")
+	}
+	sw, err := iface.DBusObject().CreateWatcher(ctx, wpasupplicant.DBusInterfaceSignalScanDone)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create signal watcher")
 	}
@@ -797,28 +802,16 @@ func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScan
 	go func(ctx context.Context) {
 		defer close(done)
 		done <- func() error {
-			checkScanSig := func(sig *dbus.Signal) error {
-				// Checks if it's a successful ScanDone.
-				if len(sig.Body) != 1 {
-					return errors.Errorf("got body length=%d, want 1", len(sig.Body))
-				}
-				b, ok := sig.Body[0].(bool)
-				if !ok {
-					return errors.Errorf("got body %v, want boolean", sig.Body[0])
-				}
-				if !b {
-					return errors.New("scan failed")
-				}
-				return nil
-			}
 			count := int32(0)
 			for count < req.Count {
 				select {
 				case <-ctx.Done():
 					return ctx.Err()
 				case sig := <-sw.Signals:
-					if err := checkScanSig(sig); err != nil {
+					if success, err := iface.ParseScanDoneSignal(ctx, sig); err != nil {
 						testing.ContextLogf(ctx, "Unexpected ScanDone signal %v: %v", sig, err)
+					} else if !success {
+						testing.ContextLog(ctx, "Unexpected ScanDone signal with failed scan")
 					} else {
 						count++
 					}
@@ -828,10 +821,6 @@ func (s *WifiService) RequestScans(ctx context.Context, req *network.RequestScan
 		}()
 	}(bgCtx)
 
-	m, err := shill.NewManager(ctx)
-	if err != nil {
-		return nil, err
-	}
 	// Trigger request scan every 200ms if the expected number of ScanDone is
 	// not yet captured by the background routine and context deadline is not
 	// yet reached.

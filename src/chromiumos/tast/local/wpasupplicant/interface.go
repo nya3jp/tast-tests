@@ -21,6 +21,9 @@ const (
 	DBusInterfaceSignalBSSAdded = "BSSAdded"
 	// DBusInterfaceSignalPropertiesChanged indicates that some properties have changed. Possible properties are: "ApScan", "Scanning", "State", "CurrentBSS", "CurrentNetwork".
 	DBusInterfaceSignalPropertiesChanged = "PropertiesChanged"
+	// DBusInterfaceSignalScanDone indicates that the scanning is finished.
+	DBusInterfaceSignalScanDone = "ScanDone"
+
 	// DBusInterfaceStateAssociated is the value of the State property when the interface is associated.
 	DBusInterfaceStateAssociated = "associated"
 	// DBusInterfaceStateCompleted is the value of the State property when all authentication is completed.
@@ -113,6 +116,20 @@ func (iface *Interface) ParseBSSAddedSignal(ctx context.Context, sig *dbus.Signa
 		SSID:  bSSID,
 		BSSID: bBSSID,
 	}, nil
+}
+
+// ParseScanDoneSignal parses the ScanDone D-Bus signal and return if it is a
+// successful ScanDone.
+func (iface *Interface) ParseScanDoneSignal(ctx context.Context, sig *dbus.Signal) (bool, error) {
+	// Checks if it's a successful ScanDone.
+	if len(sig.Body) != 1 {
+		return false, errors.Errorf("got body length=%d, want 1", len(sig.Body))
+	}
+	b, ok := sig.Body[0].(bool)
+	if !ok {
+		return false, errors.Errorf("got body %v, want boolean", sig.Body[0])
+	}
+	return b, nil
 }
 
 // Reassociate calls the Reassociate method of the interface.
