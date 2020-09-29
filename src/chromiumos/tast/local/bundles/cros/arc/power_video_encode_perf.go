@@ -46,7 +46,7 @@ func init() {
 		Timeout:      pvepPowerTestDuration,
 		Params: []testing.Param{{
 			Name: "h264_1080p_i420",
-			Val: encoding.TestOptions{
+			Val: video.ARCTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420,
@@ -56,7 +56,7 @@ func init() {
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		}, {
 			Name: "h264_1080p_i420_vm",
-			Val: encoding.TestOptions{
+			Val: video.ARCTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420,
@@ -88,7 +88,7 @@ func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 	}
 
 	a := s.PreValue().(arc.PreData).ARC
-	opts := s.Param().(encoding.TestOptions)
+	opts := s.Param().(video.ARCTestOptions)
 
 	// Only H.264 is currently supported.
 	if opts.Profile != videotype.H264Prof {
@@ -144,6 +144,9 @@ func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 		"--run_at_fps",
 		"--num_encoded_frames=1000000",
 		"--gtest_filter=C2VideoEncoderE2ETest.TestSimpleEncode",
+	}
+	if opts.EncoderType == video.Software {
+		testArgs = append(testArgs, "--use_sw_encoder")
 	}
 	intentExtras := []string{
 		"--ez", "do-encode", "true",
