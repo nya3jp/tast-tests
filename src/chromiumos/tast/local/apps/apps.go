@@ -106,6 +106,12 @@ var Terminal = App{
 	Name: "Terminal",
 }
 
+// Stadia has details about the Stadia app.
+var Stadia = App{
+	ID:   "pnkcfpnngfokcnnijgkllghjlhkailce",
+	Name: "Stadia",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
