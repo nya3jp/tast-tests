@@ -70,6 +70,40 @@
     },
     {
       "key": {
+        "uuid": "301f06eb_e9962500",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T12:02:17Z",
+      "side": 1,
+      "message": "What happens if you blocklist and allowlist filterImagesURL? Which onw has priority? Can you add a testcase for it?",
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "197fa9b8_3f60a229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T12:02:17Z",
+      "side": 1,
+      "message": "Do you expect different behaviour for  \"blocklist_unset_default_block\" and \"blocklist_set_default_block\"? I don\u0027t see how blocking \"https://chromium.org\" can change the outcome.",
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1280810_c0cd2dfb",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
         "patchSetId": 4
