@@ -33,6 +33,373 @@
       "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7d4560_c6f344cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "Unless there\u0027s a strong reason to initialize chrome here, I\u0027d recommend to use a precondition.\n  Pre: chrome.LoggedIn()\n  ...\n\n  cr :\u003d s.PreValue().(*chrome.Chrome)",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e970097c_c7ecde7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "ash.EnsureTabletModeEnabled should wait for the UI changes and animations related to the tablet-mode switch.  Is this really necessary?  If so, that would be for a different reason.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9960036_cfda63c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "I\u0027m afraid that this isn\u0027t idiomatic in Go, even in Tast. Unless there\u0027s a specific reason, I recommend to make the function to return an error, and let the test scenario to decide the failure (fatal or error), i.e.\n  if err :\u003d pinApps(...); err !\u003d nil {\n    s.Fatal(...)\n  }",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 53
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae21d29_5ae0d3cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8cc43dc_3cd585ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "This means stw / tcc could be nil in clamshell mode.  I don\u0027t think that is a good interface. It would be probably better to:\n- pass a boolean for tablet-mode or not, and let the function to initialize touchscreen etc\n- or, pass as pointer.Controller interface",
+      "range": {
+        "startLine": 131,
+        "startChar": 39,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "618a8a9e_c5c0a1c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "Make this to return (map[string]int, error).  That\u0027s how Go program is written.",
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "430aa3e8_b6bb2f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "Please retrurn an error instead of boolean.",
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5bcb936_0389f528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "don\u0027t use capital letters in the middle of log messages.",
+      "range": {
+        "startLine": 204,
+        "startChar": 33,
+        "endLine": 204,
+        "endChar": 45
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bc2d5d_acba5f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "Please make this to return an error instead of s.Fatal.  Do not pass testing.State.",
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d317830_56778a91",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "Typically ash can query hotseat bounds and states semantically from the autotest APIs.\nConsider using FetchHotseatInfo() and FetchScrollableShelfInfoForState().",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 24
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f3817e_5fef9740",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "Not happening in the test you added, but strictly speaking, this condition might not be correct.When there are too many app icons in the shelf, the shelf provides the scrolling UI for the overflown items. Those overflown items could be technically \u0027offscreen\u0027.\n\nThat would be another reason why hotseatinfo/scrollableshelfinfo might be better.",
+      "range": {
+        "startLine": 539,
+        "startChar": 4,
+        "endLine": 539,
+        "endChar": 37
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7463c6a5_c9d187bd",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "I think the nil-ness of stw/tcc wouldn\u0027t be a great way to determine the UI state.  Please call TabletModeEnabled function, or use a boolean parameter for the tablet-mode state.",
+      "range": {
+        "startLine": 539,
+        "startChar": 41,
+        "endLine": 539,
+        "endChar": 67
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b73bdd2_14cd4d27",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "IIRC icon.LeftClick emits a mouse event.  On tablet mode, I think it\u0027s slightly better to use a touch event (for now, it would be fine. But we don\u0027t expect mouse events in tablet mode).",
+      "range": {
+        "startLine": 546,
+        "startChar": 11,
+        "endLine": 546,
+        "endChar": 30
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "389fd7b4_9eba772b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "I think you can query like GetAllWindows() to see a new window appears.",
+      "range": {
+        "startLine": 553,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 2
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2115872_1606ce77",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "similarly, hotseatinfo / scrollableshelfinfo would provide enough information, I think.",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 24
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9098180_fbb6428f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "similarly, I don\u0027t think this is a great choice.",
+      "range": {
+        "startLine": 572,
+        "startChar": 41,
+        "endLine": 572,
+        "endChar": 65
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fbe03ce_ed748193",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-29T21:04:10Z",
+      "side": 1,
+      "message": "could you also update here as \u0027no visible windows\u0027 ?",
+      "range": {
+        "startLine": 682,
+        "startChar": 28,
+        "endLine": 682,
+        "endChar": 38
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
