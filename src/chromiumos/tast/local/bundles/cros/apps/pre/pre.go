@@ -25,6 +25,32 @@ var stableModels = []string{
 	"betty",
 }
 
+var stadiaModels = []string{
+	"atlas",
+	"bob",
+	"coral",
+	"elm",
+	"eve",
+	"grunt",
+	"hatch",
+	"jacuzzi",
+	"kukui",
+	"nami",
+	"nautilus",
+	"nocturne",
+	"octopus",
+	"rammus",
+	"sand",
+	"sarien",
+	"scarlet",
+	"soraka",
+	"veyron_jaq",
+	"veyron_jerry",
+	"veyron_mighty",
+	"veyron_minnie",
+	"speedy", // veyron-speedy
+}
+
 // AppsStableModels is a shortlist of models aiming to run critical inputs tests.
 // More information refers to http://b/161415599.
 var AppsStableModels = hwdep.D(hwdep.Model(stableModels...))
@@ -33,3 +59,9 @@ var AppsStableModels = hwdep.D(hwdep.Model(stableModels...))
 // kevin64 is an experimental board does not support nacl, which fails Canvas installation.
 // To stablize the tests, have to exclude entire kevin model as no distinguish between kevin and kevin64.
 var AppsUnstableModels = hwdep.D(hwdep.SkipOnModel(append(stableModels, "kevin1")...))
+
+// StadiaPreloadedModels is the list of models to verify Stadia IS preloaded on.
+var StadiaPreloadedModels = hwdep.D(hwdep.Model(stadiaModels...))
+
+// StadiaUnavailableModels is the list of models to verify Stadia is NOT preloaded on.
+var StadiaUnavailableModels = hwdep.D(hwdep.SkipOnModel(stadiaModels...))
