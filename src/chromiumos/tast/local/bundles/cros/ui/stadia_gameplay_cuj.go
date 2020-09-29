@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
 	"chromiumos/tast/local/chrome/ui"
@@ -41,6 +42,11 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		gameName = "Mortal Kombat 11"
 	)
 
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
+
 	cr := s.PreValue().(cuj.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -61,19 +67,20 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
+	defer recorder.Close(closeCtx)
 
 	conn, err := cr.NewConn(ctx, stadiacuj.StadiaAllGamesURL)
 	if err != nil {
 		s.Fatal("Failed to open the stadia staging instance: ", err)
 	}
 	defer conn.Close()
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
 
 	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find webview: ", err)
 	}
-	defer webview.Release(ctx)
+	defer webview.Release(closeCtx)
 
 	if err := stadiacuj.StartGameFromGameListsView(ctx, tconn, conn, webview, gameName, timeout); err != nil {
 		s.Fatalf("Failed to start the game %s: %s", gameName, err)
