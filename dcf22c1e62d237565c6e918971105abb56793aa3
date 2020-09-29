@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "2f773e47_2dab3f42",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-29T03:24:17Z",
+      "side": 1,
+      "message": "\u003e As far as I understand, pcap and AP work on different router interfaces (monitor vs managed), so they should (at least in theory) work correctly using only single Router object for two purposes.\n\nSorry that my comment might be vague. Yes, this should work, but my point is: For example: Assume we have DUT\u0027s hostname as dut.cros. In the test, we feed dut-router.cros and dut-pcap.cros into TFRouter option and no TFPcap is specified. In NewTestFixture, it first creates two Router objects in line 212. Then, as pcapTarget is empty, we\u0027ll try DefaultWifiPcapHost in line 235, which connects to dut-pcap.cros again. If that works, we\u0027ll have two Router object to the same device which is problematic.\n\nThis will depend on how the options are given in the tests requiring multiple routers, but it is not included in this CL so I\u0027m not sure if this is a real problem. (This also reminds me that I might have to start thinking of how to handle this kind of cases.)",
+      "parentUuid": "10008009_4a187165",
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7710374_888d3849",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
