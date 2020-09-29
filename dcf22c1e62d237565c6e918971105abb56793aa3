@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "0d4fc0c1_679bb58e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-29T07:06:51Z",
+      "side": 1,
+      "message": "Yes, the problem is present even now IMO - nothing prevents giving *-pcap host to router variable.\n\nAnyway, I think I know how to fix it. Let me submit that.",
+      "parentUuid": "2f773e47_2dab3f42",
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7710374_888d3849",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
