@@ -70,6 +70,23 @@
     },
     {
       "key": {
+        "uuid": "d98b53d8_98dc8b5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-29T13:15:37Z",
+      "side": 1,
+      "message": "Thanks for taking a look.\nI have replied to the comments, PTAL.\n",
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "301f06eb_e9962500",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
         "patchSetId": 4
@@ -87,6 +104,24 @@
     },
     {
       "key": {
+        "uuid": "a7218923_493488c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-29T13:15:37Z",
+      "side": 1,
+      "message": "The policy documentation does not mention anything about the expected behaviour in such a conflicting case, so I am not sure what exactly to expect in the test here.\nAt the same time, I can see that some content setting policies mention that the related policies(eg WebUsbAllowDevicesForUrls, SerialBlockedForUrls, CookiesAllowedForUrls etc) should not conflict while some explicitly mentioning(eg URLAllowlist) which one takes priority.",
+      "parentUuid": "301f06eb_e9962500",
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "197fa9b8_3f60a229",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
         "patchSetId": 4
@@ -98,6 +133,24 @@
       "writtenOn": "2020-09-29T12:02:17Z",
       "side": 1,
       "message": "Do you expect different behaviour for  \"blocklist_unset_default_block\" and \"blocklist_set_default_block\"? I don\u0027t see how blocking \"https://chromium.org\" can change the outcome.",
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f9851a_72f250ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-29T13:15:37Z",
+      "side": 1,
+      "message": "In both cases the expected outcome is to allow images for our test URL.\nBut both cases are slightly different in the sense that in the first one, there is no policy for blocklist. The second case helps to test that having the block list policy set does not affect the outcome. Having \"https://chromium.org\" should not affect the outcome and that is what we are testing here. \nDo you think we should keep only one case ?\n\nAnother case that could be considered in allowlist -\n\nImagesBlockedForUrls{Stat: policy.StatusUnset},\nImagesAllowedForUrls{Val: []string{\"https://chromium.org\", \"http://example.org\"}},\nDefaultImagesSetting{Val: 1}, // 1: Images are allowed by default\n\nSimilarly for blocklist.",
+      "parentUuid": "197fa9b8_3f60a229",
       "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
