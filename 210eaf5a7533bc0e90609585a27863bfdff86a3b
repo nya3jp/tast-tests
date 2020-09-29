@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "ea002cc7_6b19124d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-29T18:10:56Z",
+      "side": 1,
+      "message": "\u003e I think this change is good as-is. The improvement should be done in a separate change.\n\nAck.\n\n\u003e Or if we can detect whether there will be a wifi device, we can make it a required metric so we can fail the test if the test times out waiting for the metric.\n\nI guess I was asking: is the additional susceptibility to lab hardware failures (and possibly rare SW failures that we haven\u0027t been able to track down) acceptable to make this \"required\"? Even if we\u0027re entirely precise about which systems *should* have WiFi, that doesn\u0027t mean the HW and SW will actually work reliably. Some of our past problems have literally been as dumb as \"there\u0027s tape stuck in the PCI connector\":\nhttps://b.corp.google.com/issues/117898293#comment6\n\nProblems as obvious as that are easy enough to deal with, but I just wanted to inform about the class of problems this invites. Ideally, we could have independent tests for the hardware-dependent and non-hardware-dependent pieces of this test, but given the ~7 minute timeline, I can understand why we won\u0027t.\n\nAnyway, that\u0027s a problem for a future code review.",
+      "parentUuid": "760a3e90_779c6dbc",
+      "revId": "210eaf5a7533bc0e90609585a27863bfdff86a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77bc92f7_00205dc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 2
