@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35b4771e_d53648f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-29T21:34:31Z",
+      "side": 1,
+      "message": "Looks good apart from comment.",
+      "revId": "2d5f3bdd44731e63f25ee9f25ef22e1affcb4fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4269f39_dd8c437e",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-09-29T21:34:31Z",
+      "side": 1,
+      "message": "Can you enforce the sequencing requirement with ListenForSignals somehow? Maybe track if we\u0027ve called ListenForSignals, and early return an error if not.",
+      "revId": "2d5f3bdd44731e63f25ee9f25ef22e1affcb4fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
