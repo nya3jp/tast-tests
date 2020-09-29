@@ -648,6 +648,11 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		}
 	}
 
+	// Clear all notifications in case a test generated some but did not close them.
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
+		return errors.Wrap(err, "failed to clear notifications")
+	}
+
 	// Disable the automation feature. Otherwise, automation tree updates and
 	// events will come to the test API, and sometimes it causes significant
 	// performance drawback on low-end devices. See: https://crbug.com/1096719.
@@ -1284,6 +1289,15 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	case fakeLogin, gaiaLogin:
 		if err := c.loginUser(ctx); err != nil {
 			return err
+		}
+		// Clear all notifications after logging in so none will be shown at the beginning of tests.
+		// TODO(crbug/1079235): move this outside of the switch once the test API is available in guest mode.
+		tconn, err := c.TestAPIConn(ctx)
+		if err != nil {
+			return err
+		}
+		if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
+			return errors.Wrap(err, "failed to clear notifications")
 		}
 	case guestLogin:
 		if err := c.logInAsGuest(ctx); err != nil {
