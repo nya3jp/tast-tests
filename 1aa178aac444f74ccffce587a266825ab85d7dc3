@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0877f005_acd9bb59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-09-29T01:54:54Z",
+      "side": 1,
+      "message": "Abstract measurements of low memory behind a MelLow interface. This will be used to make changing the implementation of ChromeOS available memory simpler (when we move away from sysfs to @vovoy\u0027s DBUS API).\n\nWill also be used in Multi-VM tests to make it easy to throttle allocations based on memory counters in the host and guest (so we don\u0027t OOM the host if we allocate too much in the guest).\n\nIn the initial implementation, I just ported the arc.MemoryChromeOSPerf test to use MemLow instead of reading sysfs+/proc/meminfo directly.",
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
