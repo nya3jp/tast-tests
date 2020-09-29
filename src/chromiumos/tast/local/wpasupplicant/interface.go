@@ -21,6 +21,9 @@ const (
 	DBusInterfaceSignalBSSAdded = "BSSAdded"
 	// DBusInterfaceSignalPropertiesChanged indicates that some properties have changed. Possible properties are: "ApScan", "Scanning", "State", "CurrentBSS", "CurrentNetwork".
 	DBusInterfaceSignalPropertiesChanged = "PropertiesChanged"
+	// DBusInterfaceSignalScanDone indicates that the scanning is finished.
+	DBusInterfaceSignalScanDone = "ScanDone"
+
 	// DBusInterfaceStateAssociated is the value of the State property when the interface is associated.
 	DBusInterfaceStateAssociated = "associated"
 	// DBusInterfaceStateCompleted is the value of the State property when all authentication is completed.
