@@ -16,6 +16,69 @@
       "revId": "c579702a9b7bd68b6e32f4056be2f0053ddc2620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91b269f3_a7bc3a15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:38:28Z",
+      "side": 1,
+      "message": "LGTM with minor comments.",
+      "revId": "c579702a9b7bd68b6e32f4056be2f0053ddc2620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9fd2bea_0be7c642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:38:28Z",
+      "side": 1,
+      "message": "nit: could you move this out from s.Run(), too?\n\n(Sorry, I overlooked in the previous iteration).",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 4
+      },
+      "revId": "c579702a9b7bd68b6e32f4056be2f0053ddc2620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49f91035_de1e8321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:38:28Z",
+      "side": 1,
+      "message": "nit: maybe \"found\" or something?\n(Note: \"is\" prefix are in general avoided in Go.)",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 14
+      },
+      "revId": "c579702a9b7bd68b6e32f4056be2f0053ddc2620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
