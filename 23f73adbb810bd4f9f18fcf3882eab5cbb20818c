@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cb382b0_644f1d1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-29T06:58:34Z",
+      "side": 1,
+      "message": "cc chharry as this might conflict with his cl crrev.com/c/2380898.",
+      "revId": "23f73adbb810bd4f9f18fcf3882eab5cbb20818c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
