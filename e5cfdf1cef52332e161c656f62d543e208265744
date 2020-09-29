@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "b7b008de_40056983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-29T18:52:26Z",
+      "side": 1,
+      "message": "Makes sense, now using the default values as test local constants.",
+      "parentUuid": "16de0b95_c25b5599",
+      "range": {
+        "startLine": 49,
+        "startChar": 69,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "197fa9b8_3f60a229",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
         "patchSetId": 4
@@ -391,6 +415,30 @@
     },
     {
       "key": {
+        "uuid": "2b39e725_ba6c1186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-29T18:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e7d36d0_3d51ec76",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fe6dac_2d9c667e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
         "patchSetId": 4
@@ -414,6 +462,30 @@
     },
     {
       "key": {
+        "uuid": "03cfb563_e4cf7fa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-29T18:52:26Z",
+      "side": 1,
+      "message": "I agree, it makes sense to use conn.WaitForExpr here as internally it is also using polling.\nI have left 10 secs for the rest of the test. Hope that is enough.",
+      "parentUuid": "e8fe6dac_2d9c667e",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 4
+      },
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a555a371_28f30117",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
         "patchSetId": 4
@@ -434,6 +506,30 @@
       "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaec7fc4_aa9aeae2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-29T18:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a555a371_28f30117",
+      "range": {
+        "startLine": 166,
+        "startChar": 6,
+        "endLine": 166,
+        "endChar": 12
+      },
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
