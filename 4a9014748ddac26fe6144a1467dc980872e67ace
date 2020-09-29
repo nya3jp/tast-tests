@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fc822d7_083b2188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-29T16:42:36Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "4a9014748ddac26fe6144a1467dc980872e67ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26db62eb_3cf9101b",
+        "filename": "src/chromiumos/tast/common/genparams/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-29T16:42:36Z",
+      "side": 1,
+      "message": "Will we need to run gofmt to get proper tabbing?",
+      "revId": "4a9014748ddac26fe6144a1467dc980872e67ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f94f90e6_fa14a48c",
+        "filename": "src/chromiumos/tast/common/genparams/testing.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-29T16:42:36Z",
+      "side": 1,
+      "message": "Is this a typo? It looks like exported functions *do* take TestingT instead of testing.T.",
+      "range": {
+        "startLine": 7,
+        "startChar": 72,
+        "endLine": 7,
+        "endChar": 79
+      },
+      "revId": "4a9014748ddac26fe6144a1467dc980872e67ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
