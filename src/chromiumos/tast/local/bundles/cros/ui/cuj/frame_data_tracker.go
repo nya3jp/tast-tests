@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 )
 
@@ -21,6 +22,13 @@ type AnimationFrameData struct {
 // FrameDataTracker is helper to get animation frame data from Chrome.
 type FrameDataTracker struct {
 	animationData []AnimationFrameData
+	ds            float64
+	dsTracker     *perfutil.DisplaySmoothnessTracker
+}
+
+// Close ensures that the browser state (display smoothness tracking) is cleared.
+func (t *FrameDataTracker) Close(ctx context.Context, tconn *chrome.TestConn) error {
+	return t.dsTracker.Close(ctx, tconn)
 }
 
 // Start starts the animation data collection.
@@ -29,16 +37,26 @@ func (t *FrameDataTracker) Start(ctx context.Context, tconn *chrome.TestConn) er
 		return errors.Wrap(err, "failed to start data collection")
 	}
 
+	if err := t.dsTracker.Start(ctx, tconn, ""); err != nil {
+		return errors.Wrap(err, "failed to start display smoothness tracking: ")
+	}
 	return nil
 }
 
 // Stop stops the animation data collection and stores the collected data.
 func (t *FrameDataTracker) Stop(ctx context.Context, tconn *chrome.TestConn) error {
+	var ds float64
+	var err error
+	if ds, err = t.dsTracker.Stop(ctx, tconn, ""); err != nil {
+		return errors.Wrap(err, "failed to stop display smoothness tracking")
+	}
+
 	var data []AnimationFrameData
 	if err := tconn.Call(ctx, &data, `tast.promisify(chrome.autotestPrivate.stopThroughputTrackerDataCollection)`); err != nil {
 		return errors.Wrap(err, "failed to stop data collection")
 	}
 
+	t.ds = ds
 	t.animationData = append(t.animationData, data...)
 	return nil
 }
@@ -66,9 +84,17 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 		pv.Append(feMetric, float64(data.FramesExpected))
 		pv.Append(fpMetric, float64(data.FramesProduced))
 	}
+
+	pv.Set(perf.Metric{
+		Name:      "TPS.DisplaySmoothness",
+		Unit:      "percent",
+		Direction: perf.BiggerIsBetter,
+	}, t.ds)
 }
 
 // NewFrameDataTracker creates a new instance for FrameDataTracker.
 func NewFrameDataTracker() (*FrameDataTracker, error) {
-	return &FrameDataTracker{}, nil
+	return &FrameDataTracker{
+		dsTracker: perfutil.NewDisplaySmoothnessTracker(),
+	}, nil
 }

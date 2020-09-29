@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/bond"
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome/ash"
@@ -87,6 +88,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
+
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
+	defer recorder.Close(closeCtx)
 
 	conn, err := cr.NewConn(ctx, "https://meet.google.com/")
 	if err != nil {

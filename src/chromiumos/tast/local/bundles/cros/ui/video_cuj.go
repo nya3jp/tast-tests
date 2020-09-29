@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -119,6 +118,12 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
+	defer recorder.Close(closeCtx)
 
 	webConn, err := cr.NewConn(ctx, ui.PerftestURL)
 	if err != nil {
@@ -339,17 +344,6 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	dsTracker := perfutil.NewDisplaySmoothnessTracker()
-	if err := dsTracker.Start(ctx, tconn, ""); err != nil {
-		s.Fatal("Failed to start display smoothness tracking: ", err)
-	}
-
-	// Shorten context a bit to allow for cleanup.
-	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
-	defer cancel()
-	defer dsTracker.Close(closeCtx, tconn)
-
 	if err = recorder.Run(ctx, func(ctx context.Context) error {
 		s.Log("Switch away from fullscreen video")
 		if tabletMode {
@@ -422,14 +416,6 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed: ", err)
 	}
 
-	// Calculate display smoothness.
-	s.Log("Get display smoothness")
-	var ds float64
-	if ds, err = dsTracker.Stop(ctx, tconn, ""); err != nil {
-		s.Fatal("Failed to stop display smoothness tracking: ", err)
-	}
-	s.Log("Display smoothness: ", ds)
-
 	// Get video smoothness.
 	s.Log("Get video smoothness")
 	var vs float64
@@ -455,11 +441,6 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	pv.Set(perf.Metric{
-		Name:      "VideoCUJ.DisplaySmoothness." + metricSuffix,
-		Unit:      "percent",
-		Direction: perf.BiggerIsBetter,
-	}, ds)
 	pv.Set(perf.Metric{
 		Name:      "VideoCUJ.VideoSmoothness." + metricSuffix,
 		Unit:      "percent",

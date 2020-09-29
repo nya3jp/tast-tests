@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/webutil"
@@ -58,6 +57,12 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
 
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
+	defer recorder.Close(closeCtx)
+
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -77,17 +82,6 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
-
-	dsTracker := perfutil.NewDisplaySmoothnessTracker()
-	if err := dsTracker.Start(ctx, tconn, ""); err != nil {
-		s.Fatal("Failed to start display smoothness tracking: ", err)
-	}
-
-	// Shorten context a bit to allow for cleanup.
-	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
-	defer cancel()
-	defer dsTracker.Close(closeCtx, tconn)
 
 	var elapsed time.Duration
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
@@ -130,19 +124,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run the test scenario: ", err)
 	}
 
-	var ds float64
-	if ds, err = dsTracker.Stop(ctx, tconn, ""); err != nil {
-		s.Fatal("Failed to stop display smoothness tracking: ", err)
-	}
-	s.Log("Display smoothness: ", ds)
-
 	pv := perf.NewValues()
-
-	pv.Set(perf.Metric{
-		Name:      "QuickCheckCUJ.DisplaySmoothness",
-		Unit:      "percent",
-		Direction: perf.BiggerIsBetter,
-	}, ds)
 
 	pv.Set(perf.Metric{
 		Name:      "QuickCheckCUJ.ElapsedTime",
