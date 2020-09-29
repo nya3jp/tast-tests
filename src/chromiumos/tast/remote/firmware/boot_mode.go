@@ -121,13 +121,102 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	}
 
 	// Verify successful reboot.
-	if ok, err := h.Reporter.CheckBootMode(ctx, toMode); err != nil {
+	if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
 		return errors.Wrapf(err, "checking boot mode after reboot to %s", toMode)
-	} else if !ok {
-		return errors.Errorf("DUT was not in %s after RebootToMode", toMode)
+	} else if curr != toMode {
+		return errors.Errorf("incorrect boot mode after RebootToMode: got %s; want %s", curr, toMode)
 	}
 	testing.ContextLogf(ctx, "DUT is now in %s mode", toMode)
 	return nil
+}
+
+// ResetType is an enum of ways to reset a DUT: warm and cold.
+type ResetType string
+
+// There are two ResetTypes: warm and cold.
+const (
+	// WarmReset uses the Servo control power_state=warm_reset.
+	WarmReset ResetType = "warm"
+
+	// ColdReset uses the Servo control power_state=reset.
+	// It is identical to setting the power_state to off, then on.
+	// It also resets the EC, as by the 'cold_reset' signal.
+	ColdReset ResetType = "cold"
+)
+
+// Each ResetType is associated with a particular servo.PowerStateValue.
+var resetTypePowerState = map[ResetType]servo.PowerStateValue{
+	WarmReset: servo.PowerStateWarmReset,
+	ColdReset: servo.PowerStateReset,
+}
+
+// ModeAwareReboot resets the DUT with awareness of the DUT boot mode.
+// Dev mode will be retained, but rec mode will default back to normal mode.
+// This has the side-effect of disconnecting the RPC connection.
+func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType) error {
+	h := ms.Helper
+	if err := h.RequireServo(ctx); err != nil {
+		return errors.Wrap(err, "requiring servo")
+	}
+
+	fromMode, err := h.Reporter.CurrentBootMode(ctx)
+	if err != nil {
+		return errors.Wrap(err, "determining boot mode at the start of RebootToMode")
+	}
+
+	// Perform blocking sync prior to reboot, then close the RPC connection.
+	if err := h.RequireRPCUtils(ctx); err != nil {
+		return errors.Wrap(err, "requiring RPC utils")
+	}
+	if _, err := h.RPCUtils.BlockingSync(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "syncing DUT before reboot")
+	}
+	h.CloseRPCConnection(ctx)
+
+	// Reset DUT, and wait for it to be unreachable.
+	powerState, ok := resetTypePowerState[resetType]
+	if !ok {
+		return errors.Errorf("no power state associated with resetType %v", resetType)
+	}
+	if err := h.Servo.SetPowerState(ctx, powerState); err != nil {
+		return err
+	}
+	offCtx, cancel := context.WithTimeout(ctx, offTimeout)
+	defer cancel()
+	if err := h.DUT.WaitUnreachable(offCtx); err != nil {
+		return errors.Wrapf(err, "waiting for DUT to be unreachable after setting power_state to %q", powerState)
+	}
+
+	// If in dev mode, bypass the TO_DEV screen.
+	if fromMode == fwCommon.BootModeDev {
+		if err := ms.fwScreenToDevMode(ctx); err != nil {
+			return errors.Wrap(err, "bypassing fw screen")
+		}
+	}
+
+	// Reconnect to the DUT.
+	testing.ContextLog(ctx, "Reestablishing connection to DUT")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return h.DUT.WaitConnect(ctx)
+	}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
+		return errors.Wrapf(err, "failed to reconnect to DUT after resetting from %s", fromMode)
+	}
+
+	// Verify successful reboot.
+	// Dev mode should be preserved, but recovery mode will be lost in the reset.
+	var expectMode fwCommon.BootMode
+	if fromMode == fwCommon.BootModeRecovery {
+		expectMode = fwCommon.BootModeNormal
+	} else {
+		expectMode = fromMode
+	}
+	if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
+		return errors.Wrapf(err, "checking boot mode after resetting from %s", fromMode)
+	} else if curr != expectMode {
+		return errors.Errorf("incorrect boot mode after resetting DUT: got %s; want %s", curr, expectMode)
+	}
+	return nil
+
 }
 
 // fwScreenToNormalMode moves the DUT from the firmware bootup screen to Normal mode.
