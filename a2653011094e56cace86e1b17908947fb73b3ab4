@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df827c68_94516247",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-29T01:48:10Z",
+      "side": 1,
+      "message": "Pending OWNERS.\n\n(I can take a round-2 stab in a follow-up if we get a good answer the Required vs. Recommended question.)",
+      "revId": "a2653011094e56cace86e1b17908947fb73b3ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
