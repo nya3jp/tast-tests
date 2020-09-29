@@ -23,7 +23,7 @@ func init() {
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "display_backlight"},
 		Attr:         []string{"group:mainline", "informational"},
 		Pre:          pre.User,
 	})
