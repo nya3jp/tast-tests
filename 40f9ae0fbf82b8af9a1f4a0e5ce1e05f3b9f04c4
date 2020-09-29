@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "7b135ff7_c327d979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "I need the chrome to be initial state to make sure all the icons that I need are available. I have tried precondition before. This test may fail when multiple tests are running in the same tast session.",
+      "parentUuid": "1c7d4560_c6f344cc",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e970097c_c7ecde7f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 29
@@ -70,6 +94,30 @@
       "writtenOn": "2020-09-29T21:04:10Z",
       "side": 1,
       "message": "ash.EnsureTabletModeEnabled should wait for the UI changes and animations related to the tablet-mode switch.  Is this really necessary?  If so, that would be for a different reason.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a17d2bd1_6dd7d985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "The function ash.EnsureTabletModeEnabled didn\u0027t happen when I tested it yesterday. It happen when a DUT was initialized as tablet_mode by flipping the keyboard to the back. Then, I run the  test ui.LauncherPinAppToShelf.clamshell_mode. It failed a few times. I have tried it on two different DUTs with the same condition. Please see the following table for test result before I added the sleep. \n\nInitial State       Test                                       Result\ntablet_mode         ui.LauncherPinAppToShelf.clamshell_mode    Failed\ntablet_mode         ui.LauncherPinAppToShelf.tablet_mode       Passed\nclamshell_mode      ui.LauncherPinAppToShelf.clamshell_mode    Passed\nclamshell_mode      ui.LauncherPinAppToShelf.tablet_mode       Passed\n\nPlease advise how to proceed. Thanks.",
+      "parentUuid": "e970097c_c7ecde7f",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "7838f465_24811158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9960036_cfda63c2",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 53
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ae21d29_5ae0d3cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 29
@@ -122,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "35c45ecd_914f5b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ae21d29_5ae0d3cd",
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8cc43dc_3cd585ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 29
@@ -133,6 +223,30 @@
       "writtenOn": "2020-09-29T21:04:10Z",
       "side": 1,
       "message": "This means stw / tcc could be nil in clamshell mode.  I don\u0027t think that is a good interface. It would be probably better to:\n- pass a boolean for tablet-mode or not, and let the function to initialize touchscreen etc\n- or, pass as pointer.Controller interface",
+      "range": {
+        "startLine": 131,
+        "startChar": 39,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6e46b40_c295056a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "I cannot pass pointer.Controller interface or use pointer inside shelf.go because pointer is defined inside the bundles. I think we need a discussion what I need to do for moving pointer out of the bundles because other test cases will be affected by this change.",
+      "parentUuid": "f8cc43dc_3cd585ee",
       "range": {
         "startLine": 131,
         "startChar": 39,
@@ -162,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "afd2f1c5_cfb88799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "618a8a9e_c5c0a1c5",
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "430aa3e8_b6bb2f91",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 29
@@ -176,6 +308,24 @@
       "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74460674_5691c016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "430aa3e8_b6bb2f91",
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -202,6 +352,30 @@
     },
     {
       "key": {
+        "uuid": "9d1b0cdc_aeb24cda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5bcb936_0389f528",
+      "range": {
+        "startLine": 204,
+        "startChar": 33,
+        "endLine": 204,
+        "endChar": 45
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6bc2d5d_acba5f7f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 29
@@ -216,6 +390,24 @@
       "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "202cd54b_44280c38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6bc2d5d_acba5f7f",
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -239,6 +431,30 @@
       "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1da5132_95b300ee",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "I have split it to two functions: one for shelf (clamshell) and one for (tablet). Please let me know if it ok. Thanks.",
+      "parentUuid": "5d317830_56778a91",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 24
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -288,6 +504,54 @@
     },
     {
       "key": {
+        "uuid": "3ff656a6_3712a69b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f3817e_5fef9740",
+      "range": {
+        "startLine": 539,
+        "startChar": 4,
+        "endLine": 539,
+        "endChar": 37
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "309f0270_8f53e4ee",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7463c6a5_c9d187bd",
+      "range": {
+        "startLine": 539,
+        "startChar": 41,
+        "endLine": 539,
+        "endChar": 67
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b73bdd2_14cd4d27",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 29
@@ -308,6 +572,30 @@
       "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ebf1da_6a94ea2b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b73bdd2_14cd4d27",
+      "range": {
+        "startLine": 546,
+        "startChar": 11,
+        "endLine": 546,
+        "endChar": 30
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -334,6 +622,30 @@
     },
     {
       "key": {
+        "uuid": "da0b1dec_65e1dc94",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Does WaitForApp already do this? Also, the WaitFroLocationChangeCompleted is to make sure movement in the shelf or hotseat is done. Please let me know if my understanding is incorrect. Thanks.",
+      "parentUuid": "389fd7b4_9eba772b",
+      "range": {
+        "startLine": 553,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 2
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2115872_1606ce77",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 29
@@ -357,6 +669,30 @@
     },
     {
       "key": {
+        "uuid": "bc0c21b1_10a82f5f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "I have split it to two functions: one for shelf (clamshell) and one for (tablet). Please let me know if it ok. Thanks.",
+      "parentUuid": "c2115872_1606ce77",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 24
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9098180_fbb6428f",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 29
@@ -377,6 +713,30 @@
       "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9685c7aa_3075cdb4",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9098180_fbb6428f",
+      "range": {
+        "startLine": 572,
+        "startChar": 41,
+        "endLine": 572,
+        "endChar": 65
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

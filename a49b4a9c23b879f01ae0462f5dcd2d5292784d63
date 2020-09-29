@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9084e8be_19016268",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-29T23:44:55Z",
+      "side": 1,
+      "message": "Hi Everybody:\n\nI have split each of my new function in shelf.go to two functions: one for shelf (clamshell) and one for (tablet). Please let me know if it ok.\n\nAlso, I think I have addressed most of the comments. Please review.\n\nI did encounter delayed issue with a tablet running in clamshell mode yesterday. I think it is out of scope to fix EnsureTabletModeEnabled for this CL. Therefore, I put a sleep instead yesterday.\n\nAlso, currently controller.go is in bundles. Therefore, shelf.go could not call it. In the long run, I think we should move controller.go out of bundles. However, I am not sure it should be within the scope of this CL.\n\nBTW, I have tested the latest code with the two DUTs at home. I am having trouble getting any machine from skylab this afternoon. I will try to do more testing tomorrow.\n\nThanks.\n\nSeewai\n",
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
