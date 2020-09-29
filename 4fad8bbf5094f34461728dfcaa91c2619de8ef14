@@ -252,6 +252,24 @@
     },
     {
       "key": {
+        "uuid": "7d2727be_9511b2d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:00:14Z",
+      "side": 1,
+      "message": "Hmm... it is still unclear for me.\n\nMy understanding is;\n- You\u0027re testing a task runFioStress, under the condition that stress.Suspend() is periodically called.\n\nAm I correct?\nIf not, could you describe what is the testing main scenario in this function (not in suspendStorageStress), since I cannot find any code that exercises the storage in suspendPowerSuspend()?\n\nIf so, suspendPowerStress look not a subtest, but a part of setting up testing environment for \"suspendTestBlock\" subtest. So, could you update the code to follow the go\u0027s common approach?",
+      "parentUuid": "73d7b3a8_bcd3877c",
+      "revId": "4fad8bbf5094f34461728dfcaa91c2619de8ef14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5eaeb7a9_f92c9859",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 6

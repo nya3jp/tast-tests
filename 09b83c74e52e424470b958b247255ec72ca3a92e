@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57f4c29e_cad332e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:00:14Z",
+      "side": 1,
+      "message": "Hmmm... I still have same concerns with previous PSs, it looks like much different uses from other common Tast tests.\nMaybe VC works better for accelerate the iterations to come up with the concensus?",
+      "revId": "09b83c74e52e424470b958b247255ec72ca3a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ae444a3_f9173c92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:00:14Z",
+      "side": 1,
+      "message": "should error be reported iff it is not the timeout?\nPlease find my comment below, too.",
+      "range": {
+        "startLine": 316,
+        "startChar": 5,
+        "endLine": 316,
+        "endChar": 8
+      },
+      "revId": "09b83c74e52e424470b958b247255ec72ca3a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f23f6724_9f8d8293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:00:14Z",
+      "side": 1,
+      "message": "huge nit: \"Exits\"",
+      "range": {
+        "startLine": 323,
+        "startChar": 3,
+        "endLine": 323,
+        "endChar": 7
+      },
+      "revId": "09b83c74e52e424470b958b247255ec72ca3a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba81de8a_445cf78a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:00:14Z",
+      "side": 1,
+      "message": "hugenit: \":\u003d\"",
+      "range": {
+        "startLine": 388,
+        "startChar": 8,
+        "endLine": 388,
+        "endChar": 9
+      },
+      "revId": "09b83c74e52e424470b958b247255ec72ca3a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f5678c_cd5e13bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:00:14Z",
+      "side": 1,
+      "message": "mixing s.Fatal() and returning error is source of confusion. Let\u0027s avoid it.\n\nrunFioStress() can just s.Fatal().\n\nfor non fatal case can be inlined to suspendStorageStress.\nIf there\u0027s more cases using non-fatal in the future, I\u0027d rather recommend to introduce a utility function to get a new TestConfig from original TestConfig and testing.State, instead.",
+      "range": {
+        "startLine": 399,
+        "startChar": 3,
+        "endLine": 399,
+        "endChar": 38
+      },
+      "revId": "09b83c74e52e424470b958b247255ec72ca3a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44cd9059_fa20c65e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:00:14Z",
+      "side": 1,
+      "message": "this case is \"error is returned from RunFioStress, but it is not timeout\".\nShould this be handled as error in suspendStorageStress?",
+      "range": {
+        "startLine": 403,
+        "startChar": 9,
+        "endLine": 405,
+        "endChar": 3
+      },
+      "revId": "09b83c74e52e424470b958b247255ec72ca3a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a323457_816168ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/quick_stress.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:00:14Z",
+      "side": 1,
+      "message": "optional: how about runFioStress for consistency?",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "revId": "09b83c74e52e424470b958b247255ec72ca3a92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

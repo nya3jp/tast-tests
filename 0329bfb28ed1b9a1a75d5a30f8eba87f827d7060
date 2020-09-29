@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "3bc542f9_192f612a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:00:14Z",
+      "side": 1,
+      "message": "Hmm... they do not make a lot of sense to me, and I still prefer to follow the common Tast approach.\nCommented inline below.\n\n\u003e There are few reasons for duplicating the tests:\n\u003e - each test produces numbered output dir which is picked up by the data processing pipeline.\n\nOutput dir can be handled in autotest wrapper.\n\n\u003e - if test fails, we can manually rerun the remaining test blocks, producing the correct results in the correct output folders (which is also more informative for debugging).\n\nSimilary autotest wrapper can handle this. Or, if you\u0027re meant to run \"tast\" command manually, it means the person needs to run N times sequentially, and they must NOT run e.g. \"tast run ${IP} storage.FullQualificationStress.25_stress storage.FullQualificationStress.26_stress\" etc. because each test should not depends on others.\nConsidering the number of trials, I expect they\u0027d have some wrapper script, and if so, output dir can be handled there.\n\nRather I\u0027m worried about the people\u0027s misuse. Without the knowledge about Tast framework internal, with a quick glance of current Params, people may wrongly guess there\u0027s a guarantee of the test ordering, but actually not. I don\u0027t think it is a good practice to put such a stuff leading to misunderstanding.\n\n\u003e - Autotest wrapper is a temporary solution until native Tast support is added to Moblab (it\u0027s an active requirement). After Tast support is added, we would be able to run a sequence of the Tast tests, i.e. \"storage.FullQualificationStress.01_setup_benchmarks storage.FullQualificationStress.02_stress storage.FullQualificationStress.03_stress\", etc.\n\nSo, the new tast driver for Moblab can handle it.\n\n\u003e - The same test could be run outside of Moblab by \"tast\" command, still producing consistent results (even if we have to run 42 tast commands to guarantee the right sequence).\n\nI also expect there will be some script to drive it, and output can be handled there.\n\n\u003e - Explicitly stating all test blocks required for a test provides better visibility of what the full version of the test looks like. In this case, anyone reading the code understands that the full test contains 42 test blocks.\n\nBecause there needs the driver to run a number of tast commands, I think the driver script is the source of truth for the test blocks.\n\n\u003e - Any change in test blocks will (in most cases) still require update of the Autotest wrapper.\n\nI\u0027m afraid if I understand this correctly.\nSome changes in the test block internally should not affect to autotest wrapper?\n\n\u003e \n\u003e See https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/2417734 for implementation of the wrapper.\n\nHmm... I couldn\u0027t find a way to guarantee the order of test run. Could you help me to understand?",
+      "parentUuid": "105d1319_45c982c7",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01eb4b39_7b5d1e38",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
