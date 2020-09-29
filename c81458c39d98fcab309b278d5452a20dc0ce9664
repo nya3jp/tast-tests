@@ -1,0 +1,267 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73c5867b_c4b7a0cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5b88062_6065979e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "It is not the regression, but as you fix this, could you close conn in case of errors below?",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 6
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129e86a0_9a883188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "style:\ncan this diff be minimized?\n\nlauncher :\u003d testutil.PlatformAppLauncher()\nif swa {\n  testutil.SWALauncher()\n}\nreturn Init(ctx, ..., launcher, ...)",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 85
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe96499c_4cbb573a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "Good fix! But, it look slike there\u0027s more error returning pass. I think it is necessary to Release in those cases, too?\nAlso, could you handle error of Release()?",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5906b2e8_f111b18c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "style: Let\u0027s swap the condition so that errors are handled as a guard if-conditions, and success at the end.\n\nif actual !\u003d minimized {\n  return errors.New(...)\n}\nreturn nil",
+      "range": {
+        "startLine": 1114,
+        "startChar": 2,
+        "endLine": 1117,
+        "endChar": 67
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a25fa2_957b2fb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "\"is\", \"has\" prefixes are often avoided in go.\n\nIn this case, maybe \"useSWA\" or something?",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad152ef8_489e100f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "NewPrecondition sounds like a confusing. Actually it does not create precondition if there\u0027s cached one, which is conflicting with common \"New\" behavior.\nCould you rename them?\nAlso, i\u0027m concerned if there\u0027s precondition used only one test case. Precondition is designed for the performance improvement by sharing multiple tests. Any check to make sure there\u0027s no singleton Precondition?",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f4f561_b5663c15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "Clarification: Should this be executed even if ServeAndVerify fails? If so, could you run in a defer?",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8310df5_696a0eb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "nit: \"waitUntilWindowBound\" should work?\n\nDitto for below.",
+      "range": {
+        "startLine": 50,
+        "startChar": 42,
+        "endLine": 50,
+        "endChar": 92
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ea17df_80aca795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "nit: similar to \"get\" prefix removal, \"Is\", \"Has\" have similar in Go. So, let\u0027s remove.",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b034e2d3_07f28a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "Should this return an error for jsObj.Release()?",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbbcb97f_1c4d2ab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/pre.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "I don\u0027t think this needs to be declared here. Could you remove?",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ba0214_4e1738cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-29T16:22:31Z",
+      "side": 1,
+      "message": "Could you avoid Sprintf? Instead, you can pass arguments to \"Call\".",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
