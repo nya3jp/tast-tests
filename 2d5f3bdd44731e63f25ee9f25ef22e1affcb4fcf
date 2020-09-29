@@ -33,6 +33,24 @@
       "revId": "2d5f3bdd44731e63f25ee9f25ef22e1affcb4fcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5415c031_085e8b06",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-29T21:36:33Z",
+      "side": 1,
+      "message": "What about doing the equivalent of ListenForSignals inside New()?  Then you can\u0027t forget it, but I wasn\u0027t sure if we\u0027d ever want an object that isn\u0027t registered to listen for signals.",
+      "parentUuid": "d4269f39_dd8c437e",
+      "revId": "2d5f3bdd44731e63f25ee9f25ef22e1affcb4fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
