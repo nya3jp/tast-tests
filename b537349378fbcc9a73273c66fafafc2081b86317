@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "83fcd815_cdb5560f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2020-09-29T13:07:45Z",
+      "side": 1,
+      "message": "Done. Could you check again.",
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb11ca67_06fd6ab4",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/translate_page_fr.html",
         "patchSetId": 4
@@ -33,6 +50,24 @@
       "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8978b189_2941b77e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/translate_page_fr.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2020-09-29T13:07:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb11ca67_06fd6ab4",
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "d45c7d55_0d8a47a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/translate_page_fr.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2020-09-29T13:07:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0749a6a4_e1747a92",
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2fb0f94_9096dc55",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
         "patchSetId": 4
@@ -67,6 +120,24 @@
       "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec0c279c_7cf72123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2020-09-29T13:07:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2fb0f94_9096dc55",
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +164,30 @@
     },
     {
       "key": {
+        "uuid": "454a456d_10a84332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2020-09-29T13:07:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "642b2ef8_8393fc2e",
+      "range": {
+        "startLine": 101,
+        "startChar": 47,
+        "endLine": 101,
+        "endChar": 54
+      },
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31d791bb_052d5cd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
         "patchSetId": 4
@@ -113,6 +208,30 @@
       "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1d7bff_08fca5a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/translate_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1380461
+      },
+      "writtenOn": "2020-09-29T13:07:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31d791bb_052d5cd7",
+      "range": {
+        "startLine": 110,
+        "startChar": 65,
+        "endLine": 110,
+        "endChar": 72
+      },
+      "revId": "b537349378fbcc9a73273c66fafafc2081b86317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
