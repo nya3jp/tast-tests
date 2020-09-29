@@ -16,6 +16,46 @@
       "revId": "bf92043615309556c1659da79c65b28dd7f7f4b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1010494c_5d1e5220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T07:37:05Z",
+      "side": 1,
+      "message": "Thanks for the CL.",
+      "revId": "bf92043615309556c1659da79c65b28dd7f7f4b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c73d279_ec611172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-29T07:37:05Z",
+      "side": 1,
+      "message": "Instead of this test table, you should cycle through the test cases you defined in init().",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 3
+      },
+      "revId": "bf92043615309556c1659da79c65b28dd7f7f4b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
