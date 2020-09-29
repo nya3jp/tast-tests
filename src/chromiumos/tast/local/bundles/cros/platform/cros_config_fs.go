@@ -19,7 +19,7 @@ func init() {
 		Func:     CrosConfigFS,
 		Desc:     "Check functionality of cros_config to mount ConfigFS",
 		Contacts: []string{"jrosenth@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
