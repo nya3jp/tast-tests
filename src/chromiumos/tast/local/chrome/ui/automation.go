@@ -336,6 +336,15 @@ func (n *Node) FocusAndWait(ctx context.Context, timeout time.Duration) error {
 	return nil
 }
 
+// MakeVisible calls makeVisible() Javascript method of the AutomationNode to make
+// target node visible.
+func (n *Node) MakeVisible(ctx context.Context) error {
+	if err := n.object.Call(ctx, nil, "function(){return this.makeVisible()}"); err != nil {
+		return errors.Wrap(err, "failed to call makeVisible() on the specified node")
+	}
+	return nil
+}
+
 // Descendant finds the first descendant of this node matching the params and returns it.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) Descendant(ctx context.Context, params FindParams) (*Node, error) {
