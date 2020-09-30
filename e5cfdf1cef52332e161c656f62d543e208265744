@@ -122,6 +122,24 @@
     },
     {
       "key": {
+        "uuid": "51f11a90_9ba87288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-30T07:30:06Z",
+      "side": 1,
+      "message": "Can you check what happens? We can assume it is working correctly now, and test for the current behaviour. This way if there is change, the test catches it.\nAnd I think it is important to test if the allow list or the block list has priority.",
+      "parentUuid": "a7218923_493488c9",
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16de0b95_c25b5599",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
         "patchSetId": 4
@@ -198,6 +216,24 @@
       "side": 1,
       "message": "In both cases the expected outcome is to allow images for our test URL.\nBut both cases are slightly different in the sense that in the first one, there is no policy for blocklist. The second case helps to test that having the block list policy set does not affect the outcome. Having \"https://chromium.org\" should not affect the outcome and that is what we are testing here. \nDo you think we should keep only one case ?\n\nAnother case that could be considered in allowlist -\n\nImagesBlockedForUrls{Stat: policy.StatusUnset},\nImagesAllowedForUrls{Val: []string{\"https://chromium.org\", \"http://example.org\"}},\nDefaultImagesSetting{Val: 1}, // 1: Images are allowed by default\n\nSimilarly for blocklist.",
       "parentUuid": "197fa9b8_3f60a229",
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70b8c68_54dbe801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-30T07:30:06Z",
+      "side": 1,
+      "message": "I think we should only keep one case, where the block list is not set. We don\u0027t need to check for edge cases, that should be done by the unit tests.",
+      "parentUuid": "98f9851a_72f250ba",
       "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
