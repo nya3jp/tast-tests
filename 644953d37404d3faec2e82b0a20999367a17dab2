@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5459ad79_13450a69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T17:12:41Z",
+      "side": 1,
+      "message": "cf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#code-location\n\ntl;dr; if the library is used in one category, it is recommended to put under the category. There\u0027s a automatic check to block depending on the code from other categories.\n\nIf the library is depended by multiple categories, it is nice to consider sharing by putting it outside of bundles/ dir.\nIn this case, it is expected better maintenance, because it will likely more difficult to remove the code. E.g., more encapsulation, detailed error check, and deep thinking of API designs etc. are expected in general.",
+      "parentUuid": "f823827c_b49fbc55",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de644336_d543a6d4",
         "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
         "patchSetId": 3
