@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -22,7 +23,8 @@ func init() {
 		// TODO(shik): Once cros_camera_test supports an external camera,
 		// replace caps.BuiltinCamera with caps.BuiltinOrVividCamera.
 		// Same for other HAL3* tests.
-		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},
+		Pre:          chrome.LoggedIn(),
 		Timeout:      4 * time.Minute,
 	})
 }
