@@ -16,6 +16,52 @@
       "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08eca849_7a92c741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-30T18:14:37Z",
+      "side": 1,
+      "message": "If we _never_ get an error, is that a problem that the test should flag?",
+      "range": {
+        "startLine": 202,
+        "startChar": 9,
+        "endLine": 202,
+        "endChar": 12
+      },
+      "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b334537b_e49c524e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-09-30T18:14:37Z",
+      "side": 1,
+      "message": "How long can this output be? IIUC tast generally tries to keep log lines short, so if this could be more than a few lines, can you instead write it to a file? (in s.OutDir())",
+      "range": {
+        "startLine": 215,
+        "startChar": 105,
+        "endLine": 215,
+        "endChar": 111
+      },
+      "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
