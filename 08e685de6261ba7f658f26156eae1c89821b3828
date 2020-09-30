@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2081b58e_6ee6d860",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T00:19:35Z",
+      "side": 1,
+      "message": "Hi Everybody:\n\nI have added additional parameter so that it have two tests now: one for clamshell mode and one for tablet mode. I addressed most of comments, but I still need to do sleep and wait in the code to get it working. Not sure what else I should do at this moment. Any advice is welcome.\n\nThanks.\n\nSeewai\n",
+      "revId": "08e685de6261ba7f658f26156eae1c89821b3828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

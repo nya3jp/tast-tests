@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7a54de89_318f40b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T00:19:35Z",
+      "side": 1,
+      "message": "I removed this one. However, I added another one because I encountered problem when I change a tablet to clamshell mode. I don\u0027t really have any idea how else I should do it at this moment. I am open to any alternatives. Thanks.",
+      "parentUuid": "72418b24_6835145c",
+      "range": {
+        "startLine": 97,
+        "startChar": 11,
+        "endLine": 97,
+        "endChar": 43
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffded0b8_c0f750aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
         "patchSetId": 11
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "4cd32db6_fa493b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T00:19:35Z",
+      "side": 1,
+      "message": "It is different. LongPressAt generates an event to press on icon. WaitForLocationChangeCompleted simply waits for all pending events finish. It does not generate any event.",
+      "parentUuid": "ffded0b8_c0f750aa",
+      "range": {
+        "startLine": 124,
+        "startChar": 15,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2bbef25_7e7dadb7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
         "patchSetId": 11
@@ -76,6 +124,30 @@
       "writtenOn": "2020-09-23T16:50:12Z",
       "side": 1,
       "message": "mostly a question,\n\nIs this being done via the WaitForLocationChangeComplete after each activity?\n\nIs this issue widespread enough to warrant moving the WaitForLocationChangeComplete to be moved into the actual ui lib? (Even if we make it a param with default false)",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 83
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c601b0_b6ff9c19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T00:19:35Z",
+      "side": 1,
+      "message": "I am not sure. This was the situation that I encountered. Sometimes, event dropped randomly when I did testing yesterday. It was ok after I added WaitForLocationChangeComplete between steps.",
+      "parentUuid": "e2bbef25_7e7dadb7",
       "range": {
         "startLine": 134,
         "startChar": 4,
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "cd6d6c65_255ae426",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T00:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f44a27_f1c52578",
+      "range": {
+        "startLine": 122,
+        "startChar": 49,
+        "endLine": 122,
+        "endChar": 110
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e286a157_07c27b8b",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 11
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "9d4fbc13_f5a16c6a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T00:19:35Z",
+      "side": 1,
+      "message": "If there are any windows that are visible, they may cover the home screen in tablet mode. In other words, mouse click will not work because the active window cover the home screen. Line 142 will open the home screen again.",
+      "parentUuid": "e286a157_07c27b8b",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 9
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8e4cf1f_ea1b0e76",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 11
@@ -154,6 +274,30 @@
       "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996f58c4_a9690e72",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T00:19:35Z",
+      "side": 1,
+      "message": "No, it will try again. The Interval option indicates how often it will try.",
+      "parentUuid": "a8e4cf1f_ea1b0e76",
+      "range": {
+        "startLine": 255,
+        "startChar": 18,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "98604fb8a299a5490010812b5d2bc67e7cc112c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
