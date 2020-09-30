@@ -16,6 +16,109 @@
       "revId": "4f0d4cbc41bbfaacb15f88c212f8f2e4336cfc28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8eb00642_dca60539",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T09:04:31Z",
+      "side": 1,
+      "message": "a few more nit-picks. generally good enough to me.",
+      "revId": "4f0d4cbc41bbfaacb15f88c212f8f2e4336cfc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50d6692e_29fba65a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T09:04:31Z",
+      "side": 1,
+      "message": "nit: maybe \"_\"? It can look a little awkward with IP. e.g. 127.0.0.1:2222 -\u003e 127.0.0.12222.",
+      "range": {
+        "startLine": 213,
+        "startChar": 42,
+        "endLine": 213,
+        "endChar": 44
+      },
+      "revId": "4f0d4cbc41bbfaacb15f88c212f8f2e4336cfc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea86416c_ed01204f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T09:04:31Z",
+      "side": 1,
+      "message": "nit: the bug is probably not very suitable for this as it is introduced in multiple routers case. Maybe also include this part in the one for handling default pcap case?",
+      "range": {
+        "startLine": 301,
+        "startChar": 9,
+        "endLine": 301,
+        "endChar": 26
+      },
+      "revId": "4f0d4cbc41bbfaacb15f88c212f8f2e4336cfc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bba424a_dfd2ae6b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T09:04:31Z",
+      "side": 1,
+      "message": "It might be preferred without early return (e.g. use collectFirstErr) so that we are less likely to leave dirty state to other tests.",
+      "revId": "4f0d4cbc41bbfaacb15f88c212f8f2e4336cfc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dba1d505_d6853c1d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T09:04:31Z",
+      "side": 1,
+      "message": "Should be DUT in golang according to https://github.com/golang/go/wiki/CodeReviewComments#initialisms.",
+      "range": {
+        "startLine": 863,
+        "startChar": 23,
+        "endLine": 863,
+        "endChar": 26
+      },
+      "revId": "4f0d4cbc41bbfaacb15f88c212f8f2e4336cfc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "613bff53_e4868927",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T09:04:31Z",
+      "side": 1,
+      "message": "SGTM and we can move the further discussion to the bug. Feel free to resolve this after the bug is created.",
+      "parentUuid": "d1c84d97_db27fd2f",
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7710374_888d3849",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -206,6 +224,30 @@
       "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "009cceff_1187d224",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T09:04:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3fb7774e_6f44d1d8",
+      "range": {
+        "startLine": 748,
+        "startChar": 39,
+        "endLine": 748,
+        "endChar": 42
+      },
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
