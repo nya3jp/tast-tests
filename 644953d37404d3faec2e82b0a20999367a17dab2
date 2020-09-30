@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f823827c_b49fbc55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-30T15:57:52Z",
+      "side": 1,
+      "message": "Yes, the new test will be under scanner again (added in the next CL).  I moved the lorgnette directory where you suggested, but is there any guidance for how I should decide locations in the future?  I see lots of other system services wrapped in tast/local instead of test/local/bundles/cros.  How do I know which one to pick?",
+      "parentUuid": "1577860a_c373846b",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de644336_d543a6d4",
         "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b370cf3e_59cb298b",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-30T15:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de644336_d543a6d4",
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4e847e40_9d79ec2b",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-30T15:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af638cf5_605abad9",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d08fb8d8_c6ecc88b",
         "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
         "patchSetId": 3
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "24035d32_257fc9ed",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-30T15:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d08fb8d8_c6ecc88b",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5743e0aa_cfb7cf98",
         "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
         "patchSetId": 3
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "2bb80bec_25ba3631",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-30T15:57:52Z",
+      "side": 1,
+      "message": "You\u0027re right.  I hadn\u0027t thought of just telling upstart to stop the service, but that is a cleaner way.  I replaced this function with a call to upstart.  It\u0027s now just a thin wrapper, but I left the Kill() function here so that every caller doesn\u0027t need to know the details of how to stop lorgnette.",
+      "parentUuid": "5743e0aa_cfb7cf98",
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58acd073_5ac496cb",
         "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
         "patchSetId": 3
@@ -119,6 +227,24 @@
       "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27df7e34_a6fae39f",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-30T15:57:52Z",
+      "side": 1,
+      "message": "Resolved by switching to upstart.StopJob().",
+      "parentUuid": "58acd073_5ac496cb",
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
