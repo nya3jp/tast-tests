@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "71296cbf_b7499ad5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-09-30T21:49:02Z",
+      "side": 1,
+      "message": "Thanks, I had missed that section before.",
+      "parentUuid": "5459ad79_13450a69",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de644336_d543a6d4",
         "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
         "patchSetId": 3
