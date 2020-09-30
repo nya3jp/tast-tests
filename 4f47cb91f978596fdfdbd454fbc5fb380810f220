@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "208fcde7_aed9aa05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-09-30T18:43:07Z",
+      "side": 1,
+      "message": "This makes it sound like you added a sleep. I would suggest\n\nI modified the test to also look for a driver error dump.",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "4f47cb91f978596fdfdbd454fbc5fb380810f220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f77c5b_44f8f3e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-09-30T18:43:07Z",
+      "side": 1,
+      "message": "Ideally, there would be a single function that would take multiple groups of regexs and return when one of the groups was satisfied. It\u0027s a bit more complicated, but it would also avoid having this test always wait for a long timeout before looking for the DriverError files. \n\nWhat do you think?",
+      "range": {
+        "startLine": 130,
+        "startChar": 21,
+        "endLine": 130,
+        "endChar": 38
+      },
+      "revId": "4f47cb91f978596fdfdbd454fbc5fb380810f220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84454d10_08857fd3",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
         "patchSetId": 1
