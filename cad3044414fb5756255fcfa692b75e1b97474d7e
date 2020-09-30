@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "be6b22b3_02c12429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-30T10:03:11Z",
+      "side": 1,
+      "message": "I wanted to say \"one place\", but now I see why is it here.",
+      "parentUuid": "c578a529_7dba8a45",
+      "revId": "cad3044414fb5756255fcfa692b75e1b97474d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5dc38d0_a71a6396",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
         "patchSetId": 3
