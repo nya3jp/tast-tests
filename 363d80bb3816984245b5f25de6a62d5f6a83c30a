@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b59ff49c_7acb0054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-30T22:08:30Z",
+      "side": 1,
+      "message": "Good catch.\n\nI wonder whether I should put this into the added Close() in my CL:2439015. I could move it after that CL lands.",
+      "revId": "363d80bb3816984245b5f25de6a62d5f6a83c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3446cbe4_72cdac1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-30T22:08:30Z",
+      "side": 1,
+      "message": "This is not necessary since zramInfoTracker does not actually have a state. Or you want it to be here in case we add state to the tracker later?",
+      "revId": "363d80bb3816984245b5f25de6a62d5f6a83c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
