@@ -22,6 +22,30 @@
       "revId": "1aac0ff9f1260815a344b784bc2aad939e95a4be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f130ede_bf5c35ac",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-09-30T05:55:08Z",
+      "side": 1,
+      "message": "Oh I missed the function comment \"timeout only applies to waiting for the presence of the app.\". Then this looks okay.\n\nBut please keep in mind that this means specifying \u003e10s timeout is not meaningful because it\u0027s capped to 10s.",
+      "parentUuid": "de03b25f_11268437",
+      "range": {
+        "startLine": 105,
+        "startChar": 34,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "1aac0ff9f1260815a344b784bc2aad939e95a4be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
