@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1577860a_c373846b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:10:23Z",
+      "side": 1,
+      "message": "where will the new test be?\nIf it is under chromiumos/tast/local/bundles/cros/scanner, could you introduce chromiumos/tast/local/bundles/cros/scanner/lorgnette, instead of chromiumos/tast/local/lorgnette?",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de644336_d543a6d4",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:10:23Z",
+      "side": 1,
+      "message": "Could you use signal watcher instead?",
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af638cf5_605abad9",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:10:23Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d08fb8d8_c6ecc88b",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:10:23Z",
+      "side": 1,
+      "message": "style;\n\nif err :\u003d l.obj.CallWithContext(...).Store(\u0026r); err !\u003d nil {\n  ...\n}\n\nditto for below.\nNote: Let\u0027s avoid reusing variable in different meaning, in this case \"marshalled\".",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5743e0aa_cfb7cf98",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:10:23Z",
+      "side": 1,
+      "message": "Clarification: is this a collect way to terminate lorgnette?\nIt looks like upstart service, so \"stop lorgnette\" may be a better way?\n\nIf it does not work, could you comment the background in the method\u0027s document?",
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58acd073_5ac496cb",
+        "filename": "src/chromiumos/tast/local/lorgnette/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:10:23Z",
+      "side": 1,
+      "message": "Because this is start being exposed to wider tests, although it is not the regression, could you fix two things for better fix?\n\n- could you move this out from the loop (i.e., send signals first, and then wait all at the end)?\n- there\u0027s a timing issue, because in theory PID could be reused. Practically, it\u0027d be rare, but could you comment it briefly at least?",
+      "revId": "644953d37404d3faec2e82b0a20999367a17dab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
