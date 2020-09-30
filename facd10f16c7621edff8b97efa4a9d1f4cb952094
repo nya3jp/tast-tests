@@ -39,6 +39,139 @@
       "revId": "facd10f16c7621edff8b97efa4a9d1f4cb952094",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "868a0a7d_2f832d46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:15:45Z",
+      "side": 1,
+      "message": "+1.\n\nAlso, could you remove \"get\" prefix, which is common stop-word in go-lang.",
+      "parentUuid": "62d537e3_1bf896b8",
+      "range": {
+        "startLine": 241,
+        "startChar": 5,
+        "endLine": 241,
+        "endChar": 18
+      },
+      "revId": "facd10f16c7621edff8b97efa4a9d1f4cb952094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8718f8_90f11643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:15:45Z",
+      "side": 1,
+      "message": "Could you comment why this needs to directly execute android-sh, rather than via adb or, moreover, *arc.ARC APIs?",
+      "revId": "facd10f16c7621edff8b97efa4a9d1f4cb952094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d58e211d_9ffaccf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:15:45Z",
+      "side": 1,
+      "message": "\"getprop\", propName ?",
+      "range": {
+        "startLine": 244,
+        "startChar": 22,
+        "endLine": 244,
+        "endChar": 41
+      },
+      "revId": "facd10f16c7621edff8b97efa4a9d1f4cb952094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "942abbe3_36eb22e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:15:45Z",
+      "side": 1,
+      "message": "Could you include the property name in the error message? Ditto for below.",
+      "range": {
+        "startLine": 246,
+        "startChar": 32,
+        "endLine": 246,
+        "endChar": 67
+      },
+      "revId": "facd10f16c7621edff8b97efa4a9d1f4cb952094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5b582fb_65002e36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:15:45Z",
+      "side": 1,
+      "message": "0, as zero value. Ditto for below.",
+      "range": {
+        "startLine": 246,
+        "startChar": 9,
+        "endLine": 246,
+        "endChar": 13
+      },
+      "revId": "facd10f16c7621edff8b97efa4a9d1f4cb952094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8979cf25_ca9be0bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T00:15:45Z",
+      "side": 1,
+      "message": "Could you move this out from the function so that it wouldn\u0027t be compiled multiple times.",
+      "range": {
+        "startLine": 250,
+        "startChar": 6,
+        "endLine": 250,
+        "endChar": 36
+      },
+      "revId": "facd10f16c7621edff8b97efa4a9d1f4cb952094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
