@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86c6f676_909ed3fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-30T13:17:01Z",
+      "side": 1,
+      "message": "Have few more comments, but in general LGTM with comments and nits.\n\nThanks!",
+      "revId": "92ca76c794f2c6e6eed5309856d060a517dedc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c15fb142_6291cbf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-30T13:17:01Z",
+      "side": 1,
+      "message": "nit: let\u0027s reshuffle it a bit to be consistent with Tast approach of error message style:\n\ns.Errorf(\"Unexpected printing restriction; got: %t, want: %t\", printingPossible, param.printingAllowed)",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 128
+      },
+      "revId": "92ca76c794f2c6e6eed5309856d060a517dedc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f17d62d9_f7a92a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-30T13:17:01Z",
+      "side": 1,
+      "message": "Maybe it\u0027s safer to add more params to search, for example \"role\" or \"className\". What is there will be some new UI item with the same name?\n\nAlso, maybe move it to a separate variable, because you also use it in line 167",
+      "range": {
+        "startLine": 165,
+        "startChar": 42,
+        "endLine": 165,
+        "endChar": 70
+      },
+      "revId": "92ca76c794f2c6e6eed5309856d060a517dedc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
