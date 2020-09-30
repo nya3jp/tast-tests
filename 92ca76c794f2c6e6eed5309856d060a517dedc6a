@@ -110,6 +110,30 @@
       "revId": "92ca76c794f2c6e6eed5309856d060a517dedc6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7db6f933_a0c0c91a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-30T15:30:56Z",
+      "side": 1,
+      "message": "Do you know which html file responsible for that printing window?",
+      "parentUuid": "3d58cad2_da432b78",
+      "range": {
+        "startLine": 165,
+        "startChar": 42,
+        "endLine": 165,
+        "endChar": 70
+      },
+      "revId": "92ca76c794f2c6e6eed5309856d060a517dedc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
