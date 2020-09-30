@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6f77b5a3_69c4b278",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-30T20:50:50Z",
+      "side": 1,
+      "message": "Thanks Andrew!",
+      "parentUuid": "7db5baee_aabcee36",
+      "revId": "792e114b9083522db3add0d9fd44fc8d3f9fd0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7bee8b5_d433ad49",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c8eead40_ff05fa26",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-30T20:50:50Z",
+      "side": 1,
+      "message": "Done, except it\u0027s not a const, because Go doesn\u0027t allow maps to be consts.",
+      "parentUuid": "c7bee8b5_d433ad49",
+      "revId": "792e114b9083522db3add0d9fd44fc8d3f9fd0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0dd7aa5_e9d1e86f",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "792e114b9083522db3add0d9fd44fc8d3f9fd0d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0720df49_c00209e9",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-09-30T20:50:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0dd7aa5_e9d1e86f",
+      "revId": "792e114b9083522db3add0d9fd44fc8d3f9fd0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
