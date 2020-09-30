@@ -20,7 +20,7 @@ func (a *ARC) Command(ctx context.Context, name string, args ...string) *testexe
 	// adb shell executes the command via /bin/sh, so here it is necessary
 	// to escape.
 	cmd := "exec " + shutil.EscapeSlice(append([]string{name}, args...))
-	return adbCommand(ctx, "shell", cmd)
+	return a.adb.Command(ctx, "shell", cmd)
 }
 
 // BootstrapCommand runs a command with android-sh.
