@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -17,8 +18,9 @@ func init() {
 		Func:         HAL3PortraitMode,
 		Desc:         "Verifies camera portrait mode function with HAL3 interface",
 		Contacts:     []string{"hywu@chromium.org", "chromeos-camera-eng@google.com"},
-		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},
 		Data:         []string{portraitModeTestFile},
+		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name:      "",
 			Val:       false, // generatePerfLog
