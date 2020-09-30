@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "d1c84d97_db27fd2f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-09-30T06:14:10Z",
+      "side": 1,
+      "message": "I\u0027ll open a bug for it then. The tests utilizing multiple routers are yet to be merged, so no worry - as long as bugfix for double-use routers is reviewed without too much delay.\n\nWe can think about multiple corner cases (including two hostnames resolving to one IP), the question is: how robust must we be for tests? I assume people running these tests will be limited in numbers and less likely for making unconventional configurations in their lab.",
+      "parentUuid": "84648920_177f2d1e",
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7710374_888d3849",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
