@@ -117,6 +117,9 @@ service WifiService {
 
   // WaitForBSSID waits for a specific BSSID to be found.
   rpc WaitForBSSID (WaitForBSSIDRequest) returns (google.protobuf.Empty) {}
+
+  // SuspendAndAssertConnect suspends the DUT and wait for connection after resuming.
+  rpc SuspendAndAssertConnect(SuspendAndAssertConnectRequest) returns (SuspendAndAssertConnectResponse) {}
 }
 
 message ConnectRequest {
@@ -351,4 +354,13 @@ message ReassociateRequest {
 message WaitForBSSIDRequest {
   bytes ssid = 1;
   string bssid = 2;
+}
+
+message SuspendAndAssertConnectRequest {
+  int32 wake_up_timeout = 1;
+  string service_path = 2;
+}
+
+message SuspendAndAssertConnectResponse {
+  int64 reconnect_time = 1;
 }
