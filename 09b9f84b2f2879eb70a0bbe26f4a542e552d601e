@@ -16,6 +16,24 @@
       "revId": "09b9f84b2f2879eb70a0bbe26f4a542e552d601e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d294a98_cf7210d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T16:08:40Z",
+      "side": 1,
+      "message": "I thought about this as well. But by default, if there are no printers available, the printing window will show \"Save\" button instead of \"Print\", because it will propose to save as PDF",
+      "parentUuid": "ee4d3c69_65edce0c",
+      "revId": "09b9f84b2f2879eb70a0bbe26f4a542e552d601e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
