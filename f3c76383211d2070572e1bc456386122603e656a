@@ -16,6 +16,24 @@
       "revId": "f3c76383211d2070572e1bc456386122603e656a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a65524e5_fcd900c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-09-30T18:18:11Z",
+      "side": 1,
+      "message": "Makes sense. I moved the shorten call to the start of the test and update \"defer\" call in root test function scope to use closeCtx.",
+      "parentUuid": "8a00d35c_e5294f56",
+      "revId": "f3c76383211d2070572e1bc456386122603e656a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
