@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b10c9640_734d4958",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-09-30T17:44:37Z",
+      "side": 1,
+      "message": "We still have mickey in the WiFi lab, and I believe the AUE policies expect us to keep it around for release testing, emergency fixes, etc., for at least a milestone or two. I could try to find docs if you want.\n\nCL looks fine, I\u0027m just not sure if we should land it yet. +Harpreet for that.",
+      "revId": "b97a71199864b5a1297d18692337e580e425cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
