@@ -1,0 +1,20 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.camerabox;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/camerabox";
+
+// ITSService provides RPC methods to be used by ITS remote test.
+service ITSService {
+  // SetUp sets up required software dependency to run ITS.
+  rpc SetUp(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // TearDown tears down software dependency brought up by |SetUp|.
+  rpc TearDown(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
