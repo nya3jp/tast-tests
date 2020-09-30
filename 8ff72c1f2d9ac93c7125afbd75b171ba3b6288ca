@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "6874bccd_5ed2a57c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T09:47:12Z",
+      "side": 1,
+      "message": "But when I do so, and try to get this parameter in PrintingEnabled with \n`s.Param().(testFuncType)`\n, I am getting the following error:\n`Error at safe.go:26: Panic: interface conversion: interface {} is func(context.Context, *testing.State, *chrome.TestConn, bool), not policy.testFuncType`\nAm I doing this conversion wrong? \n(Pardon my poor knowledge, must be my first experience with Go)",
+      "parentUuid": "0f4ea223_843dd6fd",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f4ee530_ed399acc",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59faac63_47a8d632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T09:47:12Z",
+      "side": 1,
+      "message": "Done, it is just strange that the style guide allows type names with a non-capital first letter. It feels like it\u0027s easy to make a mistake and call this testFunc(), when there is no \"Type\" suffix.",
+      "parentUuid": "5f4ee530_ed399acc",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "1ae76fe3_1223752e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T09:47:12Z",
+      "side": 1,
+      "message": "Because without this, Chrome is not started. Is it a better way to do so explicitly?",
+      "parentUuid": "05af510f_448fdd2e",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 21
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71ebd5d3_2a659e46",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
         "patchSetId": 3
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "11da887c_d39265bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T09:47:12Z",
+      "side": 1,
+      "message": "Done. But could you tell more about why is this a bad practice?",
+      "parentUuid": "71ebd5d3_2a659e46",
+      "range": {
+        "startLine": 112,
+        "startChar": 28,
+        "endLine": 112,
+        "endChar": 29
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "770bd89e_d5b8ad91",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
         "patchSetId": 3
@@ -125,6 +221,24 @@
       "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24fa3670_6acd8e6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T09:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "770bd89e_d5b8ad91",
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "c30c37c9_6aec1ef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T09:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02cbe89f_c3ee4124",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 51
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36018dcc_f4900c97",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
         "patchSetId": 3
@@ -174,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "6eed8aff_a15ef371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T09:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36018dcc_f4900c97",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e22db1e4_a57494f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
         "patchSetId": 3
@@ -194,6 +356,30 @@
       "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "209f6f19_c8283107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T09:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e22db1e4_a57494f0",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 41
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
