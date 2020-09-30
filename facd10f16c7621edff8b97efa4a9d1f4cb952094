@@ -196,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "8e2c3ae9_a4523807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2020-09-30T12:50:00Z",
+      "side": 1,
+      "message": "hmmm, looks like got reverted while editing. Changed it again.",
+      "parentUuid": "6307ebbb_bb620d8a",
+      "range": {
+        "startLine": 244,
+        "startChar": 22,
+        "endLine": 244,
+        "endChar": 41
+      },
+      "revId": "facd10f16c7621edff8b97efa4a9d1f4cb952094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "942abbe3_36eb22e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
         "patchSetId": 1
