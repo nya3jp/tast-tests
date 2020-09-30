@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91b8ec45_13ebe726",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-09-30T20:28:40Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused. Shouldn\u0027t we make this both for ARC++ and ARCVM, and remove the cpuset test from containermount.go? It doesn\u0027t seem like a good idea to have duplicated code.",
+      "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e921083_242613ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-09-30T20:28:40Z",
+      "side": 1,
+      "message": "Does this test still make sense in ARCVM? What do we do for e.g. kukui-arc-r? Please check it with the platform team?",
+      "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
