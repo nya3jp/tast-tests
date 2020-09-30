@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cdc8866a_33cdf42a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T23:49:19Z",
+      "side": 1,
+      "message": "that sounds good to me!",
+      "parentUuid": "b59ff49c_7acb0054",
+      "revId": "363d80bb3816984245b5f25de6a62d5f6a83c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3446cbe4_72cdac1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-09-30T22:08:30Z",
       "side": 1,
       "message": "This is not necessary since zramInfoTracker does not actually have a state. Or you want it to be here in case we add state to the tracker later?",
+      "revId": "363d80bb3816984245b5f25de6a62d5f6a83c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b0a353_fc844aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T23:49:19Z",
+      "side": 1,
+      "message": "I see, thanks for catching.",
+      "parentUuid": "3446cbe4_72cdac1c",
       "revId": "363d80bb3816984245b5f25de6a62d5f6a83c30a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
