@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4bbe843_487c754e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T10:11:15Z",
+      "side": 1,
+      "message": "Is its error harmful? (or do we care the error) If not, I think \"defer act.Stop(ctx, tconn)\" is enough?",
+      "range": {
+        "startLine": 439,
+        "startChar": 6,
+        "endLine": 439,
+        "endChar": 10
+      },
+      "revId": "d798b6f5f1b343b7fd1a9268ceb2de404a446e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cfd51ce_f248026e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T10:11:15Z",
+      "side": 1,
+      "message": "One corner case here is: act.Start takes almost all of the time of ctx and then defer function does not really have its 750ms required. Might be better to also have the shorten-ed ctx for act.Start.\n\nSee: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 15
+      },
+      "revId": "d798b6f5f1b343b7fd1a9268ceb2de404a446e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be041280_98cb029a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T10:11:15Z",
+      "side": 1,
+      "message": "Should we handle the error? And do we have to shorten time for this defer?",
+      "range": {
+        "startLine": 457,
+        "startChar": 10,
+        "endLine": 457,
+        "endChar": 35
+      },
+      "revId": "d798b6f5f1b343b7fd1a9268ceb2de404a446e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
