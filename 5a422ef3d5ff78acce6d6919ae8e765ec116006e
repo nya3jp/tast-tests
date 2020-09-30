@@ -80,6 +80,30 @@
       "revId": "5a422ef3d5ff78acce6d6919ae8e765ec116006e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0879b78c_b9e90dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-30T08:45:58Z",
+      "side": 1,
+      "message": "Using a different name for short Context for this case.\nAs per the function comments [1], FailOnErr means the function returns with an error immediately if Eval returns an error.\nIMO, we should re-try if for some reason Eval returns an error and hence, use keep using WaitForExpr().\nWDYT ?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/conn.go",
+      "parentUuid": "9c88ad69_4cc275d4",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 6
+      },
+      "revId": "5a422ef3d5ff78acce6d6919ae8e765ec116006e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
