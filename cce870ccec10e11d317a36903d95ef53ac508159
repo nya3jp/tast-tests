@@ -16,6 +16,275 @@
       "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9671c9bb_96b9a16d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "mostly nits",
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bc064e2_4056945f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "nit: one space between content and \"//\" for consistency?",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab92b70_70429259",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "IIUC, this is not needed? at least not yet for this CL now.",
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fb26de5_14d9e37c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "nit: maybe also add a group mail? e.g. chromeos-platform-connectivity@google.com",
+      "range": {
+        "startLine": 23,
+        "startChar": 47,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63c76d0_7a18cb88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "nit: WiFi? (similar below)",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efea9a48_5ab8b198",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "nit: Probably should reserve some time for the cleanup defer. e.g.\n\n  ctx, cancel \u003d ctxutil.Shorten(ctx, some * time.Second)\n  defer cancel()",
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5df56a6e_5e410a59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "nit: Kind of awkward in this scope as we already have one RPC session in TestFixture. Not sure if it might be better to export a getter for tf.rpc. Current version is also OK to me.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 3
+      },
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c72e36_8ed1706f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "This should be in ~line77? i.e. outside of defer",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dd0d8fc_9a5b228f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "nit: maybe elaborate that gRPC does not survive after Reboot so we\u0027ll need a new connection here.",
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8009bc1c_d2fdee64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "nit: maybe remove this empty line? I think the comment in line118 is only for this block (line 120 to 125)",
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d36135d8_651b5d96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "The error returned here will be ignored. You might also need something similar to line 25-29.",
+      "range": {
+        "startLine": 39,
+        "startChar": 33,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a6b673_5d149c6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "nit: you can use CleanDisconnectWifi instead which will also delete profile entry for you. (and then the DeleteEntriesForSSID can be removed)",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb69447a_4d9bb520",
+        "filename": "src/chromiumos/tast/services/cros/network/bluetooth_service.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T02:28:14Z",
+      "side": 1,
+      "message": "I think it is through dbus (with bluetooth package) now?",
+      "range": {
+        "startLine": 14,
+        "startChar": 75,
+        "endLine": 14,
+        "endChar": 89
+      },
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
