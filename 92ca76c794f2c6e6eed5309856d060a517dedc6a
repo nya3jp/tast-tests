@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7b07d7ac_5bf6b974",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T14:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c15fb142_6291cbf5",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 128
+      },
+      "revId": "92ca76c794f2c6e6eed5309856d060a517dedc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f17d62d9_f7a92a76",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
         "patchSetId": 4
@@ -62,6 +86,30 @@
       "revId": "92ca76c794f2c6e6eed5309856d060a517dedc6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d58cad2_da432b78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-09-30T14:32:16Z",
+      "side": 1,
+      "message": "Done, although I am not sure if I picked the right ClassName. When the Ctrl+P is pressed, there are in general 4 items in entire UI called print:\nWidget, RootView\nWidget, BrowserRootView\nI picked the RootView one.",
+      "parentUuid": "f17d62d9_f7a92a76",
+      "range": {
+        "startLine": 165,
+        "startChar": 42,
+        "endLine": 165,
+        "endChar": 70
+      },
+      "revId": "92ca76c794f2c6e6eed5309856d060a517dedc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
