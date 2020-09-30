@@ -254,6 +254,30 @@
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2791f894_37bf1167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-09-30T18:54:38Z",
+      "side": 1,
+      "message": "I think I have it narrowed down.\n\nDuring startup, if in dev mode, dev_utils will run:\n\nwhich will bind mount /mnt/stateful_partition/var_overlay/cache/dlc-images \nonto /var/cache/dlc-images\n\nThen, during dlcservice startup (system service) it sets /var/cache/dlc-images with owners dlcservice:dlcservice.\nHowever, at this time /var/cache/dlc-images has the same inode as /mnt/stateful_partition/var_overlay/cache/dlc-images and NOT /mnt/stateful_partition/encrypted/var/cache/dlc-images.\n\n\nA test run I\u0027ve done (with additional dlc-images2 being created and permissions set in the startup conf of dlcservice):\n\nlocalhost ~ # ls -il /var/cache/ | grep dlc-images\n19935971 drwxr-xr-x. 4 dlcservice dlcservice 4096 Sep 16 19:51 dlc-images\n 2179512 drwxr-xr-x. 2 dlcservice dlcservice 4096 Sep 30 11:38 dlc-images2\n\nlocalhost ~ # ls -il /mnt/stateful_partition/var_overlay/cache/ | grep dlc-images\n19935971 drwxr-xr-x. 4 dlcservice dlcservice 4096 Sep 16 19:51 dlc-images\n\nlocalhost ~ # ls -il /mnt/stateful_partition/encrypted/var/cache/ | grep dlc-images\n2179140 drwxr-xr-x. 2 root       root       4096 Sep 30 10:08 dlc-images\n2179512 drwxr-xr-x. 2 dlcservice dlcservice 4096 Sep 30 11:38 dlc-images2\n\n^^^ note the /var/cache/dlc-images2 having the same inode as /mnt/stateful_partition/encrypted/var/cache/dlc-images2, while this isn\u0027t the case for /var/cache/dlc-images.\n\n\nAny insights as to why /mnt/stateful_partition/encrypted/var/cache/dlc-images is \"dangling\"?\nAre there multiple bind mounts to /var that is messing with things?",
+      "parentUuid": "3b1e2fe2_2dd172f6",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
