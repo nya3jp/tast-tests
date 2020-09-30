@@ -16,6 +16,24 @@
       "revId": "d20849b042d1c8e2bd398dbfd5aecd78749a4e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77775632_aaa86042",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-09-30T06:16:55Z",
+      "side": 1,
+      "message": "Reverted to previous code as we discussed.",
+      "parentUuid": "88608a2d_9fab4faf",
+      "revId": "d20849b042d1c8e2bd398dbfd5aecd78749a4e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
