@@ -1085,3 +1085,19 @@ func (tf *TestFixture) EAPAuthSkipped(ctx context.Context) (func() (bool, error)
 		return resp.Skipped, nil
 	}, nil
 }
+
+// SuspendAssertConnect suspends the DUT for wakeUpTimeout seconds through gRPC and returns the duration from resume to connect.
+func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout time.Duration) (time.Duration, error) {
+	service, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get selected service")
+	}
+	resp, err := tf.wifiClient.SuspendAssertConnect(ctx, &network.SuspendAssertConnectRequest{
+		WakeUpTimeout: wakeUpTimeout.Nanoseconds(),
+		ServicePath:   service.ServicePath,
+	})
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to suspend and assert connection")
+	}
+	return time.Duration(resp.ReconnectTime), nil
+}

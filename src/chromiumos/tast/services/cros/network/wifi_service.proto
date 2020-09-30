@@ -139,6 +139,9 @@ service WifiService {
   // completes, and tells that the EAP authentication is skipped (i.e., PMKSA is cached and used) or not.
   // Note that the method sends an empty response as the signal watcher is set.
   rpc EAPAuthSkipped(google.protobuf.Empty) returns (stream EAPAuthSkippedResponse) {}
+
+  // SuspendAssertConnect suspends the DUT and waits for connection after resuming.
+  rpc SuspendAssertConnect(SuspendAssertConnectRequest) returns (SuspendAssertConnectResponse) {}
 }
 
 message ConnectRequest {
@@ -407,4 +410,13 @@ message GetMACRandomizeResponse {
 
 message EAPAuthSkippedResponse {
   bool skipped = 1;
+}
+
+message SuspendAssertConnectRequest {
+  int64 wake_up_timeout = 1;
+  string service_path = 2;
+}
+
+message SuspendAssertConnectResponse {
+  int64 reconnect_time = 1;
 }
