@@ -22,6 +22,18 @@ const (
 	adbHome = "/tmp/adb_home"
 )
 
+// testHost returns whether adb is running on test host in chroot environment.
+func testHost() (bool, error) {
+	_, err := os.Stat("/usr/sbin/arc-setup")
+	if err == nil {
+		return false, nil
+	}
+	if os.IsNotExist(err) {
+		return true, nil
+	}
+	return false, errors.Wrap(err, "failed to check if adb is running on test host")
+}
+
 // LaunchServer installs vendor keys and relaunches the local ADB sever.
 // The server must be relaunched to load the vendor keys.
 func LaunchServer(ctx context.Context) error {
@@ -35,9 +47,15 @@ func LaunchServer(ctx context.Context) error {
 		return errors.Wrap(err, "failed to kill ADB local server")
 	}
 
-	// If using adb to connect to a phone before a CrOS login we need to create the adb home.
-	if err := os.MkdirAll("/run/arc/adb/", 0755); err != nil {
-		return errors.Wrap(err, "failed to create adb home directory")
+	isHost, err := testHost()
+	if err != nil {
+		return err
+	}
+	if !isHost {
+		// If using adb to connect to a phone before a CrOS login we need to create the adb home.
+		if err := os.MkdirAll("/run/arc/adb/", 0755); err != nil {
+			return errors.Wrap(err, "failed to create adb home directory")
+		}
 	}
 
 	testing.ContextLog(ctx, "Starting ADB server")
