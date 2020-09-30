@@ -16,6 +16,23 @@
       "revId": "ed09e94d521e927fdf0178f81628b9c7f41c1e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "781e78dc_598d43db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2020-09-30T15:33:01Z",
+      "side": 1,
+      "message": "Just a side note, if needed, arguments to the animation web page for adjusting computational complexity can be added, such as setting number of geometries, number of render passes, enabling/disabling blending, etc. The current shaders are relatively light - almost no work on CPU except the first frame. We can use the same page/settings for all tast-tests, and I just want to mention it should be possible to use different settings for different boards (if it becomes an issue for certain boards) or tests.\n\n",
+      "revId": "ed09e94d521e927fdf0178f81628b9c7f41c1e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
