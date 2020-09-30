@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7becb8f_6f544356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-30T08:31:57Z",
+      "side": 1,
+      "message": "It is only use once, so giving it a global scope seems much. Is there a reason it was promoted to be here?",
+      "revId": "cad3044414fb5756255fcfa692b75e1b97474d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a1ff29_3217e4c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-30T08:31:57Z",
+      "side": 1,
+      "message": "Using Wrapf(), and adding propName with %q would be more conventional.",
+      "revId": "cad3044414fb5756255fcfa692b75e1b97474d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db5498db_dcd75e3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-30T08:31:57Z",
+      "side": 1,
+      "message": "Same here, add propName with %q.",
+      "revId": "cad3044414fb5756255fcfa692b75e1b97474d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4554aa58_343cbda3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-30T08:31:57Z",
+      "side": 1,
+      "message": "nit: missing . at the end.",
+      "revId": "cad3044414fb5756255fcfa692b75e1b97474d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
