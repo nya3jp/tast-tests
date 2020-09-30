@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f13a154_a741259b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Hi Jun:\n\nI have addressed most of your comments. Please review my latest changes. I have not move pointer package out of the bundle yet. I think I need run a list of tests that using pointer package to make sure I don\u0027t break any existing tests. Please suggests a list of tests for me to run. Thanks.\n\nSeewai",
+      "revId": "f6e0d4fa98a72ed62d76b229c376b055d5bddc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "2f93cec6_db2d9eb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Sorry, I was not clear in my comments. This test, LauncherPinAppToShelf, assumes that the following icons are on the top level of the extended launcher: WebStore, Camera, Settings, Help and Files.\n\nI am writing another test, DragAndRenameFolder, in a different CL to test for dragging icon on top of the other to create a folder. That test drag the \"Chrome\" icon to \"File\" icon to create a new folder.\n\nLet\u0027s say we run these two tests in the same Tast session and DragAndRenameFolder was run first. After DragAndRenameFolder is run, the DUT\u0027s desktop will have Camera, Settings, Help, WebStore and a folder icon. In this case, LauncherPinAppToShelf will not be able to find Files on the top level of the extended launcher. Hence, the test will fail.\n\nTherefore, I use New to make sure the Chrome desktop is in its default layout to avoid unexpected errors.\n\nHope this explain the situation.\n\nThanks.",
+      "parentUuid": "29f9e741_f1a67150",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e970097c_c7ecde7f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 29
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "On which step did it fail for what reason?",
       "parentUuid": "a17d2bd1_6dd7d985",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c640d38_09bcee72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "If I comment out the lines for sleeping, it may fail at line 214 of launcher.go. Not all the time but frequently. I think I see failure 8 out of 10 times.\n\nPin apps to the shelf from the launcher\n\tat chromiumos/tast/local/bundles/cros/ui.LauncherPinAppToShelf (launcher_pin_app_to_shelf.go:98)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3 (run.go:669)\n\tat chromiumos/tast/internal/planner.safeCall.func1 (safe.go:58)\n\tat runtime.goexit (asm_arm.s:868)\nfail to pin app \"Web Store\" to shelf\n\tat chromiumos/tast/local/bundles/cros/ui.pinApps (launcher_pin_app_to_shelf.go:187)\n\tat chromiumos/tast/local/bundles/cros/ui.LauncherPinAppToShelf (launcher_pin_app_to_shelf.go:97)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3 (run.go:669)\n\tat chromiumos/tast/internal/planner.safeCall.func1 (safe.go:58)\n\tat runtime.goexit (asm_arm.s:868)\noption \"Pin to shelf\" is not available\n\tat chromiumos/tast/local/chrome/ui/launcher.PinAppToShelf (launcher.go:214)\n\tat chromiumos/tast/local/bundles/cros/ui.pinApps (launcher_pin_app_to_shelf.go:186)\n\tat chromiumos/tast/local/bundles/cros/ui.LauncherPinAppToShelf (launcher_pin_app_to_shelf.go:97)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3 (run.go:669)\n\tat chromiumos/tast/internal/planner.safeCall.func1 (safe.go:58)\n\tat runtime.goexit (asm_arm.s:868)\ncdp.Runtime: CallFunctionOn: context deadline exceeded\n\tat ???\n\n\nWhen it failed, I have observed that I could not even see the mouse cursor. Again, it only happens when I use ash.EnsureTabletModeEnabled to change the DUT from tablet to clamshell mode.",
+      "parentUuid": "8154c1e1_05ca49f1",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -319,6 +367,30 @@
       "side": 1,
       "message": "pointer package can be moved out from bundles. You can move it somewhere, like chrome/ui/pointer.",
       "parentUuid": "a6e46b40_c295056a",
+      "range": {
+        "startLine": 131,
+        "startChar": 39,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abf63bb8_5db3e209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "In this case, I think I need to run all teststhat use pointer package to make sure I don\u0027t break anything. Do you have a list of tests that you want to run? Thanks.",
+      "parentUuid": "fcd1c724_c95e4b3b",
       "range": {
         "startLine": 131,
         "startChar": 39,

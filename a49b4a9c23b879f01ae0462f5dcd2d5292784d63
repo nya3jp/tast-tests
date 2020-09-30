@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "aa70493e_ea16da5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f6f4c4_eeb9ec38",
+      "range": {
+        "startLine": 178,
+        "startChar": 9,
+        "endLine": 178,
+        "endChar": 19
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e011327e_ed6c0b2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 30
@@ -62,6 +86,30 @@
       "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "416bfe88_bc463bda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e011327e_ed6c0b2b",
+      "range": {
+        "startLine": 197,
+        "startChar": 10,
+        "endLine": 197,
+        "endChar": 20
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "00e9ee3d_4c61338d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0844408_e680b919",
+      "range": {
+        "startLine": 203,
+        "startChar": 31,
+        "endLine": 203,
+        "endChar": 40
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28b1a948_93463629",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 30
@@ -108,6 +180,30 @@
       "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c399c337_f34283a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28b1a948_93463629",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 231,
+        "endChar": 41
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "c28fa269_053586ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebf0f773_fdcea488",
+      "range": {
+        "startLine": 243,
+        "startChar": 55,
+        "endLine": 243,
+        "endChar": 61
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a5bdba_018994ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 30
@@ -148,6 +268,24 @@
       "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b804ad50_e265c9d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47a5bdba_018994ee",
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "881751b6_a9d489b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "185d197a_dedce11b",
+      "range": {
+        "startLine": 253,
+        "startChar": 9,
+        "endLine": 253,
+        "endChar": 78
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2599f02d_ce78bdb7",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 30
@@ -197,6 +359,30 @@
     },
     {
       "key": {
+        "uuid": "e8eb03ac_4b2a2911",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2599f02d_ce78bdb7",
+      "range": {
+        "startLine": 546,
+        "startChar": 4,
+        "endLine": 546,
+        "endChar": 53
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "451faaa3_0e65f052",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 30
@@ -211,6 +397,24 @@
       "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c603b91_731355d1",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "I have removed ui.WaitForLocationChangeCompleted. You were correct. It is not needed. Thanks.",
+      "parentUuid": "451faaa3_0e65f052",
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +441,30 @@
     },
     {
       "key": {
+        "uuid": "9d0eb8de_987b7a9d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2977e60c_0702bd7f",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 2
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63733ab3_fdf0ed32",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 30
@@ -254,6 +482,24 @@
     },
     {
       "key": {
+        "uuid": "7f3ea4bc_85fb7a14",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63733ab3_fdf0ed32",
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "984186c2_ee077838",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 30
@@ -265,6 +511,24 @@
       "writtenOn": "2020-09-30T01:35:00Z",
       "side": 1,
       "message": "if !info.IsAnimating \u0026\u0026 !info.scrollableShelfInfo.IsAnimating \u0026\u0026 info.HotesatState \u003d\u003d ShelfHidden {",
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c102c30_87c7cbe7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-09-30T21:54:54Z",
+      "side": 1,
+      "message": "I have moved the code to SwipeUpHotseatAndWaitForCompletion and changed the logic a little bit. Please check. Also, I am not sure how to handle the condition that the hotseat is currently hidden but animating to the visible. WaitForHotseatAnimatingToIdealState only allow me to wait for one state, but there are three visible conditions. So I am not handling that case right now. Please let me know if it is okay not to handle that case.",
+      "parentUuid": "984186c2_ee077838",
       "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
