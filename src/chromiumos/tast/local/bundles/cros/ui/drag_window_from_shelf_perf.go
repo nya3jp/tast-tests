@@ -6,6 +6,8 @@ package ui
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
@@ -13,8 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
-	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -28,6 +28,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
+		Data:         []string{"animation.html", "animation.js"},
 	})
 }
 
@@ -67,16 +68,17 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
+	// Run an http server to serve the test contents for accessing from the chrome browsers.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+	url := server.URL + "/animation.html"
+
 	const numWindows = 8
-	conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows)
+	conns, err := ash.CreateWindows(ctx, tconn, cr, url, numWindows)
 	if err != nil {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
 	defer conns.Close()
-
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
