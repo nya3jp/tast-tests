@@ -27,12 +27,12 @@ const (
 
 // PullFile copies a file in Android to Chrome OS with adb pull.
 func (a *ARC) PullFile(ctx context.Context, src, dst string) error {
-	return adbCommand(ctx, "pull", src, dst).Run()
+	return a.adb.Command(ctx, "pull", src, dst).Run()
 }
 
 // PushFile copies a file in Chrome OS to Android with adb push.
 func (a *ARC) PushFile(ctx context.Context, src, dst string) error {
-	return adbCommand(ctx, "push", src, dst).Run()
+	return a.adb.Command(ctx, "push", src, dst).Run()
 }
 
 // PushFileToTmpDir copies a file in Chrome OS to Android temp directory.

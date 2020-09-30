@@ -94,6 +94,7 @@ type ARC struct {
 	logcatCmd    *testexec.Cmd // process saving Android logs
 	logcatWriter dynamicWriter // writes output from logcatCmd to logcatFile
 	logcatFile   *os.File      // file currently being written to
+	adb          *ADB          // manipulate adb
 }
 
 // Close releases testing-related resources associated with ARC.
@@ -188,10 +189,15 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	// Android is up. Set up ADB connection in parallel to Android boot since
 	// ADB local server takes a few seconds to start up.
 	testing.ContextLog(ctx, "Setting up ADB connection")
+	adb, err := newAdbForLocalTest(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to new adb instance")
+	}
 	ch = make(chan error, 1)
 	go func() {
-		ch <- setUpADBAuth(ctx)
+		ch <- adb.SetUpADBAuth(ctx)
 	}()
+	arc.adb = adb
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
 	const arcBootProp = "ro.arc.boot_completed"
@@ -205,7 +211,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 
 	// Connect to ADB.
-	if err := connectADB(ctx); err != nil {
+	if err := arc.adb.ConnectADB(ctx); err != nil {
 		return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
 	}
 
