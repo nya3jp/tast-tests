@@ -21,7 +21,7 @@ import (
 const (
 	iwlwifiPath   = "/sys/kernel/debug/iwlwifi"
 	fwnmiPath     = "/iwlmvm/fw_nmi"
-	funcName      = `NMI_INTERRUPT_UNKNOWN`
+	funcName      = `(NMI_INTERRUPT_UNKNOWN|ADVANCED_SYSASSERT)`
 	crashBaseName = `kernel_iwlwifi_error_` + funcName + `\.\d{8}\.\d{6}\.0`
 )
 
@@ -117,7 +117,9 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for files")
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
+	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+	files, err := crash.WaitForCrashFiles(waitCtx, []string{crash.SystemCrashDir}, expectedRegexes)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}
