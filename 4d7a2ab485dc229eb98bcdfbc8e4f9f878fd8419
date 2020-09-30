@@ -88,6 +88,24 @@
       "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ad3be76_95472f0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-30T04:50:36Z",
+      "side": 1,
+      "message": "From what I understand preconditions were introduced to allow state to be shared between tests, e.g. running multiple tests that require ARC to be booted would only result in ARC being set up once. So my fear is that changing WaitUntilIdle to a precondition would cause WaitUntilIdle to only be called once for multiple tests.\n\nThe extraction of the YUV file is synchronous.",
+      "parentUuid": "c9f72dc5_12e85d10",
+      "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
