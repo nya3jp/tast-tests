@@ -382,14 +382,10 @@ func simpleConnectDFS() []simpleConnectParams {
 			"DFS (dynamic frequency selection) channels are channels that may be unavailable if radar interference is detected.",
 			"See: https://en.wikipedia.org/wiki/Dynamic_frequency_selection, https://en.wikipedia.org/wiki/List_of_WLAN_channels"),
 		ExtraAttr: []string{"wificell_cq"},
-		Val:       []simpleConnectParamsVal{{APOpts: "ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40)"}},
-	}, {
-		Name: "dfs_ch120",
-		Doc: append(simpleConnectDocPref("an open network on the DFS channel 120 (5600MHz)."),
-			"TODO(b/154440798): Investigate why this fails on veyron_mickey and consider merge this with",
-			"\"dfs\" case after resolution."),
-		ExtraAttr: []string{"wificell_unstable"},
-		Val:       []simpleConnectParamsVal{{APOpts: "ap.Mode(ap.Mode80211nMixed), ap.Channel(120), ap.HTCaps(ap.HTCapHT40)"}},
+		Val: []simpleConnectParamsVal{
+			{APOpts: "ap.Mode(ap.Mode80211nMixed), ap.Channel(120), ap.HTCaps(ap.HTCapHT40)"},
+			{APOpts: "ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40)"},
+		},
 	}}
 }
 
