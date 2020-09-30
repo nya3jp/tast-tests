@@ -160,6 +160,24 @@
       "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea4be163_2a2d4bb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-09-30T07:27:37Z",
+      "side": 1,
+      "message": "Sorry I haven\u0027t looked into the code to figure out how Tast work underneath, so this might not make much sense. I mean while we\u0027re checking preconditions:\n- Check cpu measurements, if \u003e\u003d 20%, return error and make Tast wait for CPU idle again.\n- if \u003c 20%, reuse the precondition.",
+      "parentUuid": "f5c6f4ea_77c7b24b",
+      "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
