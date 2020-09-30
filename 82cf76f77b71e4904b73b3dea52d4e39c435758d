@@ -16,6 +16,52 @@
       "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1008951b_b71a84bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-30T17:28:43Z",
+      "side": 1,
+      "message": "I think to make it consistent, we should pass meta information in text form, similar we pass command name, for example header may look like\n\nreceive_payload\n102545\nRAW_BINARY_DATA_OF_SIZE_102545\n\nAlso I would suggest you to consider the use case when we send also information about data expected from server.\nfor example\n\ndata_request\n1234\n5676\nRAW_BINARY_DATA_OF_SIZE_1234\n\nthen server reads the data and response:\ndata_response\n5676\nRAW_BINARY_DATA_OF_SIZE_5676\n\nThat would probably ease you to control payload from your test.\n\nWDYT?",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4360a05c_388a8fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-09-30T17:28:43Z",
+      "side": 1,
+      "message": "Are we sure that we could allocate buffer represented by 64 bit uint?\nI think it is much easier to have buffer let say 4K,8K and read all data using this buffer. I doubt that in reality some app/server reads data directly into one huge buffer.",
+      "range": {
+        "startLine": 252,
+        "startChar": 25,
+        "endLine": 252,
+        "endChar": 36
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
