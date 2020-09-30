@@ -34,6 +34,24 @@
       "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "895baae4_c5b618a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-30T01:52:48Z",
+      "side": 1,
+      "message": "Making it a precondition could be useful. One possible concern is that it\u0027s possible some tests rely on WaitUntilIdle to wait for setup work done in the test body (although the tests I work with don\u0027t).",
+      "parentUuid": "6e5db362_34de148f",
+      "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
