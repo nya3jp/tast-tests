@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "cbf7b69f_67adad91",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-30T00:52:55Z",
+      "side": 1,
+      "message": "This change is no longer needed and I have removed it.",
+      "parentUuid": "7d27d994_359846d4",
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4acb4c3_eea8e978",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
         "patchSetId": 7
@@ -56,6 +74,30 @@
       "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1f3db5a_5d311aa5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-30T00:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4acb4c3_eea8e978",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "fdd98126_263a4cd1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-30T00:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e01194_e42b18ed",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 5
+      },
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb0ce269_b8b68056",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
         "patchSetId": 7
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "9b2de1b8_d6d96edd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-30T00:52:55Z",
+      "side": 1,
+      "message": "Done. I moved this to the caller context.",
+      "parentUuid": "cb0ce269_b8b68056",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7158f40_915fb699",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
         "patchSetId": 7
@@ -125,6 +215,30 @@
       "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0610a066_721c7285",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-30T00:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7158f40_915fb699",
+      "range": {
+        "startLine": 24,
+        "startChar": 33,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "cbac90ab6aac9e3e202ad8cc67e6f6035712c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

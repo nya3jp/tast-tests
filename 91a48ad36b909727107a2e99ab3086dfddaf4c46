@@ -388,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "3fac25ff_6f8d2271",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-30T00:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ae0240f_e27d9bbe",
+      "range": {
+        "startLine": 69,
+        "startChar": 6,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "91a48ad36b909727107a2e99ab3086dfddaf4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffc0bfc7_c52c495f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
         "patchSetId": 5

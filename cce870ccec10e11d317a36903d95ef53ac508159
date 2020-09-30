@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ff94b0d_1c19337f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-09-30T00:52:55Z",
+      "side": 1,
+      "message": "Sorry for the delayed update. After experimenting with bluetoothprivate, I was ultimately not able to get the setting to persist across reboots. I decided to only include the bluetooth test that toggles wifi instead. Because of this, I was able to simplify many of the changes I had made previously.",
+      "revId": "cce870ccec10e11d317a36903d95ef53ac508159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
