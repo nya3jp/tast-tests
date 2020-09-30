@@ -52,6 +52,24 @@
       "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e080eb29_de139e3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-09-30T02:56:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure if a precondition would work here. If preconditions are shared between tests, CPU usage might still be high from a previous test run on the same device. Having a separate WaitUntilIdle function also gives test writers more control. This is e.g. useful in encoder tests to wait for the CPU to become Idle only after extracting the input webm video to create the raw YUV input file.",
+      "parentUuid": "895baae4_c5b618a2",
+      "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
