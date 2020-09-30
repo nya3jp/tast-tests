@@ -178,6 +178,23 @@
       "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "352c1183_52419b03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-09-30T08:00:39Z",
+      "side": 1,
+      "message": "As a temporary mitigation, maybe we should let any Android tests have a longer default timeout.",
+      "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
