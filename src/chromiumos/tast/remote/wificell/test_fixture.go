@@ -1062,3 +1062,19 @@ func (tf *TestFixture) ExpectShillProperty(ctx context.Context, objectPath strin
 
 	return waitForProperties, nil
 }
+
+// SuspendAndAssertConnect suspends the DUT for wakeUpTimeout seconds through gRPC and returns the duration from resume to connect.
+func (tf *TestFixture) SuspendAndAssertConnect(ctx context.Context, wakeUpTimeout time.Duration) (time.Duration, error) {
+	service, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get selected service")
+	}
+	resp, err := tf.wifiClient.SuspendAndAssertConnect(ctx, &network.SuspendAndAssertConnectRequest{
+		WakeUpTimeout: wakeUpTimeout.Nanoseconds(),
+		ServicePath:   service.ServicePath,
+	})
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to suspend and assert connection")
+	}
+	return time.Duration(resp.ReconnectTime), nil
+}

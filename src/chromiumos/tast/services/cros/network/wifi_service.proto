@@ -132,6 +132,9 @@ service WifiService {
 
   // GetMACRandomize tells if MAC randomization is enabled for the WiFi device.
   rpc GetMACRandomize(google.protobuf.Empty) returns (GetMACRandomizeResponse) {}
+
+  // SuspendAndAssertConnect suspends the DUT and wait for connection after resuming.
+  rpc SuspendAndAssertConnect(SuspendAndAssertConnectRequest) returns (SuspendAndAssertConnectResponse) {}
 }
 
 message ConnectRequest {
@@ -396,4 +399,13 @@ message MACRandomizeSupportResponse {
 
 message GetMACRandomizeResponse {
   bool enabled = 1;
+}
+
+message SuspendAndAssertConnectRequest {
+  int64 wake_up_timeout = 1;
+  string service_path = 2;
+}
+
+message SuspendAndAssertConnectResponse {
+  int64 reconnect_time = 1;
 }
