@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "4e0b833d_c10ff348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-09-30T02:19:57Z",
+      "side": 1,
+      "message": "I have removed all extra iterations of the same test, moving all test plan execution to Autotest wrapper.\n\nAutotest tests in a suite have priority parameter, which sets the order of execution.",
+      "parentUuid": "3bc542f9_192f612a",
+      "revId": "0329bfb28ed1b9a1a75d5a30f8eba87f827d7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01eb4b39_7b5d1e38",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
