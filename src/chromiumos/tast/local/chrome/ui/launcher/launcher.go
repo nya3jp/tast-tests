@@ -81,20 +81,32 @@ func Search(ctx context.Context, tconn *chrome.TestConn, query string) error {
 // WaitForAppResult waits for an app to appear as a search result.
 // Launcher should be opened already and search done already.
 // timeout only applies to waiting for the presence of the app.
+// Launcher search result window is refreshed sometimes.
+// Regularly check search result window and node until it is positioned.
+// For more details, refer to b/169542037.
 func WaitForAppResult(ctx context.Context, tconn *chrome.TestConn, appName string, timeout time.Duration) (*ui.Node, error) {
-	searchResultView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "SearchResultPageView"}, time.Second)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find Search Result Container")
+	var appNode *ui.Node
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		searchResultView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "SearchResultPageView"}, time.Second)
+		if err != nil {
+			return errors.Wrap(err, "failed to find Search Result Container")
+		}
+		defer searchResultView.Release(ctx)
+
+		appNode, err = searchResultView.DescendantWithTimeout(ctx, ui.FindParams{Name: appName + ", Installed App"}, timeout)
+		if err != nil {
+			return errors.Wrapf(err, "%s app does not exist in search result", appName)
+		}
+		if err := appNode.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 3 * time.Second}); err != nil {
+			appNode.Release(ctx)
+			return errors.Wrap(err, "failed to wait for search result window positioned")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for search result")
 	}
 
-	ctx, cancel := context.WithTimeout(ctx, timeout)
-	defer cancel()
-
-	appNode, err := searchResultView.DescendantWithTimeout(ctx, ui.FindParams{Name: appName + ", Installed App"}, timeout)
-	if err != nil {
-		return nil, errors.Wrapf(err, "%s app does not exist in search result", appName)
-	}
-	return appNode, err
+	return appNode, nil
 }
 
 // SearchAndWaitForApp searches for APP name and wait for it to appear.
