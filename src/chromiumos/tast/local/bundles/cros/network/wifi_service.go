@@ -8,10 +8,15 @@ import (
 	"bytes"
 	"context"
 	"encoding/hex"
+	"fmt"
+	"io/ioutil"
 	"net"
+	"os"
 	"reflect"
 	"sort"
+	"strconv"
 	"strings"
+	"syscall"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -26,6 +31,7 @@ import (
 	"chromiumos/tast/local/network/cmd"
 	"chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/wpasupplicant"
 	"chromiumos/tast/services/cros/network"
@@ -1818,4 +1824,94 @@ func (s *WifiService) WaitForBSSID(ctx context.Context, request *network.WaitFor
 		return nil, errors.Wrap(err, "failed to wait for BSSID")
 	}
 	return &empty.Empty{}, nil
+}
+
+// suspend suspends the DUT for wakeUpTimeout.
+// TODO(b/171280216): Extract these logics from network component.
+func suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
+	const (
+		powerdDBusSuspendPath = "/usr/bin/powerd_dbus_suspend"
+		rtcPath               = "/sys/class/rtc/rtc0/since_epoch"
+		pauseEthernetHookPath = "/run/autotest_pause_ethernet_hook"
+	)
+
+	// FLock the pauseEthernetHookPath to prevent check_ethernet.hook from initiating the recovery actions during test.
+	f, err := os.OpenFile(pauseEthernetHookPath, os.O_WRONLY|os.O_CREATE, 0644)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the fd of %s", pauseEthernetHookPath)
+	}
+	defer f.Close()
+	if err := syscall.Flock(int(f.Fd()), syscall.LOCK_EX); err != nil {
+		return errors.Wrapf(err, "failed to lock the %s", pauseEthernetHookPath)
+	}
+
+	rtcTimeSeconds := func() (int, error) {
+		b, err := ioutil.ReadFile(rtcPath)
+		if err != nil {
+			return 0, errors.Wrapf(err, "failed to read the %s", rtcPath)
+		}
+		return strconv.Atoi(strings.TrimSpace(string(b)))
+	}
+
+	if wakeUpTimeout < 2*time.Second {
+		// May cause DUT not wake from sleep if the suspend time is 1 second.
+		// It happens when the current clock (floating point) is close to the
+		// next integer, as the RTC sysfs interface only accepts integers.
+		// Make sure it is larger than or equal to 2.
+		return errors.Errorf("unexpected wake up timeout: got %s, want >= 2 seconds", wakeUpTimeout)
+	}
+
+	startRTC, err := rtcTimeSeconds()
+	if err != nil {
+		return err
+	}
+
+	wakeUpTimeoutSecond := int(wakeUpTimeout.Seconds())
+	if err := testexec.CommandContext(ctx, powerdDBusSuspendPath,
+		"--delay=0", // By default it delays the start of suspending by a second.
+		fmt.Sprintf("--wakeup_timeout=%d", wakeUpTimeoutSecond),  // Ask the powerd_dbus_suspend to spawn a RTC alarm to wake the DUT up after wakeUpTimeoutSecond.
+		fmt.Sprintf("--suspend_for_sec=%d", wakeUpTimeoutSecond), // Request powerd daemon to suspend for wakeUpTimeoutSecond.
+	).Run(); err != nil {
+		return err
+	}
+
+	finishRTC, err := rtcTimeSeconds()
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLogf(ctx, "RTC suspend time: %d", finishRTC-startRTC)
+
+	if suspendedInterval := finishRTC - startRTC; suspendedInterval < wakeUpTimeoutSecond {
+		return errors.Errorf("the DUT wakes up too early, got %d, want %d", suspendedInterval, wakeUpTimeoutSecond)
+	}
+
+	return nil
+}
+
+// SuspendAssertConnect suspends the DUT and waits for connection after resuming.
+func (s *WifiService) SuspendAssertConnect(ctx context.Context, req *network.SuspendAssertConnectRequest) (*network.SuspendAssertConnectResponse, error) {
+	service, err := shill.NewService(ctx, dbus.ObjectPath(req.ServicePath))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a new shill service")
+	}
+	pw, err := service.CreateWatcher(ctx)
+	defer pw.Close(ctx)
+
+	if err := suspend(ctx, time.Duration(req.WakeUpTimeout)); err != nil {
+		return nil, errors.Wrap(err, "failed to suspend")
+	}
+
+	resumeStartTime := time.Now()
+
+	wCtx, cancel := context.WithTimeout(ctx, time.Second*30)
+	defer cancel()
+	if err := pw.Expect(wCtx, shillconst.ServicePropertyState, shillconst.ServiceStateIdle); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for service to enter idle state")
+	}
+	if err := pw.Expect(wCtx, shillconst.ServicePropertyIsConnected, true); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for connection")
+	}
+
+	return &network.SuspendAssertConnectResponse{ReconnectTime: time.Since(resumeStartTime).Nanoseconds()}, nil
 }
