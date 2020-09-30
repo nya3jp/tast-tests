@@ -16,6 +16,24 @@
       "revId": "b97a71199864b5a1297d18692337e580e425cbd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf5f71ea_05914c69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2020-09-30T17:54:45Z",
+      "side": 1,
+      "message": "Devices are removed from the lab once the N+1 milestone goes stable. So mickey will be removed some time in November.",
+      "parentUuid": "b10c9640_734d4958",
+      "revId": "b97a71199864b5a1297d18692337e580e425cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
