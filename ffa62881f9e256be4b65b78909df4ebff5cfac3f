@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ea0b337_4e39b8ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1265137
+      },
+      "writtenOn": "2020-09-30T21:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39e2dc89_fbd73d1e",
+      "range": {
+        "startLine": 30,
+        "startChar": 42,
+        "endLine": 30,
+        "endChar": 52
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "843ed514_9cbff28f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f3b3442c_b23a7f65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1265137
+      },
+      "writtenOn": "2020-09-30T21:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "843ed514_9cbff28f",
+      "range": {
+        "startLine": 33,
+        "startChar": 43,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3efa8442_724f479d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
         "patchSetId": 4
@@ -59,6 +107,24 @@
       "writtenOn": "2020-09-18T22:22:41Z",
       "side": 1,
       "message": "I don\u0027t see this id when I dump uiautomator in most recent RVC builds. Could you check that? My board is eve-arc-r. Build is R87-13473.0.0/6838247.",
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f21a0f_81815d82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1265137
+      },
+      "writtenOn": "2020-09-30T21:44:26Z",
+      "side": 1,
+      "message": "I just checked on a R87-13485.0.0 build and it seems to be there?",
+      "parentUuid": "3efa8442_724f479d",
       "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "231c3387_00be9f6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1265137
+      },
+      "writtenOn": "2020-09-30T21:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e7553d_8b4008d2",
+      "range": {
+        "startLine": 47,
+        "startChar": 34,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64cdb46e_8875ddf3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
         "patchSetId": 4
@@ -99,6 +189,30 @@
       "writtenOn": "2020-09-18T18:59:30Z",
       "side": 1,
       "message": "Just wondering, is there an advantage of this over apps.Open?",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "900eae81_9ee492c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1265137
+      },
+      "writtenOn": "2020-09-30T21:44:26Z",
+      "side": 1,
+      "message": "There is not. app.Close into apps.Open was not working for me with the Play Store. It could potentially be a bug?",
+      "parentUuid": "64cdb46e_8875ddf3",
       "range": {
         "startLine": 119,
         "startChar": 1,
@@ -131,6 +245,30 @@
       "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df39570_4c3e9db7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1265137
+      },
+      "writtenOn": "2020-09-30T21:44:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5dcbdd48_866db64a",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 16
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -178,6 +316,54 @@
       "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f6644b_d71c2fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1265137
+      },
+      "writtenOn": "2020-09-30T21:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93d66cd5_7db51e37",
+      "range": {
+        "startLine": 158,
+        "startChar": 19,
+        "endLine": 158,
+        "endChar": 28
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4907202e_2c902a22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1265137
+      },
+      "writtenOn": "2020-09-30T21:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93d66cd5_7db51e37",
+      "range": {
+        "startLine": 158,
+        "startChar": 19,
+        "endLine": 158,
+        "endChar": 28
+      },
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
