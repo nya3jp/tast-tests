@@ -22,6 +22,30 @@
       "revId": "88d54ed2f784600bf08483ebff3c014f96a9087f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0097226f_13725b98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-09-30T23:46:13Z",
+      "side": 0,
+      "message": "I think it\u0027s on a popped up view so it should be always visible as far as I observed.",
+      "parentUuid": "d1c482d1_5d1709a6",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 26
+      },
+      "revId": "88d54ed2f784600bf08483ebff3c014f96a9087f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

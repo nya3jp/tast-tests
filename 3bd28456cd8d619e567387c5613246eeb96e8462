@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7e71eb8d_f6a24f1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-09-30T23:46:13Z",
+      "side": 1,
+      "message": "It\u0027s intended. Maybe I should remove the bullet at L9...",
+      "parentUuid": "61730be5_552f908e",
+      "revId": "3bd28456cd8d619e567387c5613246eeb96e8462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ef8dbff_0679fa47",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 13
