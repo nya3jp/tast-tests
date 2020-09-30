@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a00d35c_e5294f56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T00:19:18Z",
+      "side": 1,
+      "message": "Can you move this prior to cuj.NewRecorder?  I\u0027ve read recently about a discussion of this pattern among tast-owners, and it is slightly better to do so, i.e.\n  closeCtx :\u003d ctx\n  ctx, cancel :\u003d ctxutil.Shorten(ctx, 2*time.Second)\n  defer cancel()\n  recorder, err :\u003d cuj.NewRecorder(ctx, tconn, configs...)\n  if err !\u003d nil { ... }\n  defer recorder.Close(closeCtx)\n\nThe justification is:\n- techinically, function like cuj.NewRecorder may take time. After that, \"ctx\" may not have enough time to close.\n- when creating shortened context earlier, this is not the case. It always secures 2 seconds for closing, and if ctx happens to miss enough time, cuj.NewRecorder will fail as expected.\n\nI got to know this pattern recently so some of the existing code does not follow this pattern, but I think this is better.",
+      "revId": "f3c76383211d2070572e1bc456386122603e656a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
