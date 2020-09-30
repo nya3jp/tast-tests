@@ -140,6 +140,24 @@
     },
     {
       "key": {
+        "uuid": "fbb9b89c_1e9f4c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-30T08:45:58Z",
+      "side": 1,
+      "message": "Added test in blocklist.\nThanks.",
+      "parentUuid": "51f11a90_9ba87288",
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16de0b95_c25b5599",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
         "patchSetId": 4
@@ -237,6 +255,24 @@
       "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb40f944_1df8135b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-09-30T08:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70b8c68_54dbe801",
+      "revId": "e5cfdf1cef52332e161c656f62d543e208265744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
