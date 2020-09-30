@@ -54,6 +54,29 @@
     },
     {
       "key": {
+        "uuid": "becd9b91_6ca3a5a4",
+        "filename": "src/chromiumos/tast/common/genparams/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-30T10:38:42Z",
+      "side": 1,
+      "message": "This isn\u0027t correct when you have e.g. one test file covering multiple tests with similar parameters. Maybe you could use testing.T.Name() instead? That will be unique within a package and should be easily searchable.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 57
+      },
+      "revId": "4a9014748ddac26fe6144a1467dc980872e67ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26db62eb_3cf9101b",
         "filename": "src/chromiumos/tast/common/genparams/params.go",
         "patchSetId": 10
@@ -65,6 +88,24 @@
       "writtenOn": "2020-09-29T16:42:36Z",
       "side": 1,
       "message": "Will we need to run gofmt to get proper tabbing?",
+      "revId": "4a9014748ddac26fe6144a1467dc980872e67ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ebb0e5c_8be51e8b",
+        "filename": "src/chromiumos/tast/common/genparams/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-09-30T10:38:42Z",
+      "side": 1,
+      "message": "AFAICT this is done automatically in decorator.Fprint",
+      "parentUuid": "26db62eb_3cf9101b",
       "revId": "4a9014748ddac26fe6144a1467dc980872e67ace",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
