@@ -82,12 +82,12 @@ func DS3(ctx context.Context, s *testing.State) {
 func handleGetReportDS3(ctx context.Context, d *uhid.Device, buf []byte) error {
 	processRNum := func(rnum uhid.RNumType) ([]byte, error) {
 		const (
-			// macAddressRequest documentation can be found here:
-			// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/kernel/v4.4/drivers/hid/hid-sony.c;l=2360
+			// macAddressRequest info can be found in the Kernel's sony_check_add method:
+			// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/third_party/kernel/v4.4/drivers/hid/hid-sony.c;l=2360;drc=06f3916ea36fe570d428a8373ccd49142518545c
 			macAddressRequest uhid.RNumType = 0xf2
-			// operationalModeRequest documentation can be found here:
-			// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/kernel/v4.4/drivers/hid/hid-sony.c;l=1413
-			// this request is made to switch the controller to operational
+			// operationalModeRequest info can be found in the Kernel's sixaxis_set_operational_usb method:
+			// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/third_party/kernel/v4.4/drivers/hid/hid-sony.c;l=1413;drc=06f3916ea36fe570d428a8373ccd49142518545c
+			// This request is made to switch the controller to operational
 			// mode. Only in this mode does the controller report events.
 			operationalModeRequest = 0xf5
 		)
@@ -115,12 +115,12 @@ func handleGetReportDS3(ctx context.Context, d *uhid.Device, buf []byte) error {
 // reply depending on the rnum that was sent.
 func processRNumDS3(rnum uhid.RNumType) ([]byte, error) {
 	const (
-		// macAddressRequest documentation can be found here:
-		// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/kernel/v4.4/drivers/hid/hid-sony.c;l=2360
+		// macAddressRequest info can be found in the Kernel's sony_check_add method:
+		// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/third_party/kernel/v4.4/drivers/hid/hid-sony.c;l=2360;drc=06f3916ea36fe570d428a8373ccd49142518545c
 		macAddressRequest uhid.RNumType = 0xf2
-		// operationalModeRequest documentation can be found here:
-		// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/kernel/v4.4/drivers/hid/hid-sony.c;l=1413
-		// this request is made to switch the controller to operational
+		// operationalModeRequest info can be found in the Kernel's sixaxis_set_operational_usb method:
+		// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/third_party/kernel/v4.4/drivers/hid/hid-sony.c;l=1413;drc=06f3916ea36fe570d428a8373ccd49142518545c
+		// This request is made to switch the controller to operational
 		// mode. Only in this mode does the controller report events.
 		operationalModeRequest = 0xf5
 	)
