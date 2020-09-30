@@ -83,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "29f9e741_f1a67150",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "Please add the comment why precondition can\u0027t be used.\n\nBut that sounds bad.  Maybe we should make a test API for unpinning icons, that way this can use the precondition.  If that\u0027s fine, please file a bug and create a TODO comment. You can assign the bug to me.",
+      "parentUuid": "7b135ff7_c327d979",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e970097c_c7ecde7f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 29
@@ -118,6 +142,30 @@
       "side": 1,
       "message": "The function ash.EnsureTabletModeEnabled didn\u0027t happen when I tested it yesterday. It happen when a DUT was initialized as tablet_mode by flipping the keyboard to the back. Then, I run the  test ui.LauncherPinAppToShelf.clamshell_mode. It failed a few times. I have tried it on two different DUTs with the same condition. Please see the following table for test result before I added the sleep. \n\nInitial State       Test                                       Result\ntablet_mode         ui.LauncherPinAppToShelf.clamshell_mode    Failed\ntablet_mode         ui.LauncherPinAppToShelf.tablet_mode       Passed\nclamshell_mode      ui.LauncherPinAppToShelf.clamshell_mode    Passed\nclamshell_mode      ui.LauncherPinAppToShelf.tablet_mode       Passed\n\nPlease advise how to proceed. Thanks.",
       "parentUuid": "e970097c_c7ecde7f",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8154c1e1_05ca49f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "On which step did it fail for what reason?",
+      "parentUuid": "a17d2bd1_6dd7d985",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -247,6 +295,30 @@
       "side": 1,
       "message": "I cannot pass pointer.Controller interface or use pointer inside shelf.go because pointer is defined inside the bundles. I think we need a discussion what I need to do for moving pointer out of the bundles because other test cases will be affected by this change.",
       "parentUuid": "f8cc43dc_3cd585ee",
+      "range": {
+        "startLine": 131,
+        "startChar": 39,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcd1c724_c95e4b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "pointer package can be moved out from bundles. You can move it somewhere, like chrome/ui/pointer.",
+      "parentUuid": "a6e46b40_c295056a",
       "range": {
         "startLine": 131,
         "startChar": 39,

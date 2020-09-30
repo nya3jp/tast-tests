@@ -16,6 +16,258 @@
       "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f6f4c4_eeb9ec38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "errors.Wrap(err, \"cannot...\")",
+      "range": {
+        "startLine": 178,
+        "startChar": 9,
+        "endLine": 178,
+        "endChar": 19
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e011327e_ed6c0b2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "errors.Wrap(err, \"cannot...\")",
+      "range": {
+        "startLine": 197,
+        "startChar": 10,
+        "endLine": 197,
+        "endChar": 20
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0844408_e680b919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "\"left locations\"?",
+      "range": {
+        "startLine": 203,
+        "startChar": 31,
+        "endLine": 203,
+        "endChar": 40
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28b1a948_93463629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "if leftCoord, ok :\u003d prevLocations[b.Name]; ok \u0026\u0026 leftCoord \u003c\u003d b.Location.Left {\n    ...\n  }",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 231,
+        "endChar": 41
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebf0f773_fdcea488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "maybe \"the shelf\"?",
+      "range": {
+        "startLine": 243,
+        "startChar": 55,
+        "endLine": 243,
+        "endChar": 61
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47a5bdba_018994ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "if len(appButtons) \u003d\u003d 0 {\n    return errors.New(\"no app buttons on the shelf\")\n  }",
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "185d197a_dedce11b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "can you add rightMostButton.Name to the error? I think that helps future debugging.\n  errors.Errorf(\"got %q as the rightmost button on the shelf, want %q\", rightMostButton.Name, appName)",
+      "range": {
+        "startLine": 253,
+        "startChar": 9,
+        "endLine": 253,
+        "endChar": 78
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2599f02d_ce78bdb7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "Does this move items on the shelf?  I guess not.",
+      "range": {
+        "startLine": 546,
+        "startChar": 4,
+        "endLine": 546,
+        "endChar": 53
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451faaa3_0e65f052",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "Does this really have to be ui.WaitForLocationChangeCompleted?   Can it be ash.WaitForCondition for the new window existence + window.IsAnimating to be false?",
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2977e60c_0702bd7f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 2
+      },
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63733ab3_fdf0ed32",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "Can you modify SwipeUpHotseatAndWaitForCompletion rather than adding new?",
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "984186c2_ee077838",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-09-30T01:35:00Z",
+      "side": 1,
+      "message": "if !info.IsAnimating \u0026\u0026 !info.scrollableShelfInfo.IsAnimating \u0026\u0026 info.HotesatState \u003d\u003d ShelfHidden {",
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
