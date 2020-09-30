@@ -230,6 +230,30 @@
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b1e2fe2_2dd172f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-09-30T13:02:08Z",
+      "side": 1,
+      "message": "I\u0027m not comfortable moving forward here. The fact that we need to include two users suggests there is a race somewhere, or that we\u0027re not fully understanding how the system behaves. Not understanding how the system behaves leads to security bugs.\n\nIt sounds to me like the problem here is that the init script is configuring things on the overlay directory, but the test is checking /var/cache/ directly.",
+      "parentUuid": "3bc8b3dd_099ced80",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
