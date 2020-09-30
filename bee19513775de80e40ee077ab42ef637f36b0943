@@ -16,6 +16,24 @@
       "revId": "bee19513775de80e40ee077ab42ef637f36b0943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c64ea3c6_2c00a7d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-09-30T00:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f4b136e_a7254131",
+      "revId": "bee19513775de80e40ee077ab42ef637f36b0943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
