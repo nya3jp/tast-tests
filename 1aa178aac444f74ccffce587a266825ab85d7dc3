@@ -152,6 +152,30 @@
     },
     {
       "key": {
+        "uuid": "50633d19_d14fe5bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-30T04:14:37Z",
+      "side": 1,
+      "message": "Yeah, if it isn\u0027t too hard. For units measured in bytes, int64 is the clear choice, otherwise I don\u0027t really care which you settle on.",
+      "parentUuid": "5a58047d_b4124790",
+      "range": {
+        "startLine": 62,
+        "startChar": 57,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cad6f32e_bf7daffa",
         "filename": "src/chromiumos/tast/local/memory/mem_low.go",
         "patchSetId": 1
@@ -187,6 +211,30 @@
       "side": 1,
       "message": "Some tests use this as a way to avoid stability issues from low memory (see the memory_stress_task.go for the arc.LifecycleChromeOSPerf test stacked above), so it\u0027s only a target if the intention is to keep memory low.\n\nMaybe MemoryLimit?",
       "parentUuid": "cad6f32e_bf7daffa",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02a85322_9bd5bde4",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-30T04:14:37Z",
+      "side": 1,
+      "message": "MemoryLimit sounds good to me",
+      "parentUuid": "bbcd4c57_296d7f47",
       "range": {
         "startLine": 21,
         "startChar": 5,
@@ -363,6 +411,30 @@
     },
     {
       "key": {
+        "uuid": "cb626b5c_54fc2ee4",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-30T04:14:37Z",
+      "side": 1,
+      "message": "now this would be NewChromeOSLowMemoryLimit? (ditto for renaming below cases)",
+      "parentUuid": "0db31c34_b9debe7e",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10832d5a_509d9b7c",
         "filename": "src/chromiumos/tast/local/memory/mem_low.go",
         "patchSetId": 1
@@ -421,6 +493,30 @@
       "side": 1,
       "message": "Sorry, comment was not ideal. The intent is to apply enough memory pressure that page reclaim is triggered by having at least one zone\u0027s free page count be below the zone\u0027s low watermark, while at the same time making sure that the free page count is never below the min watermark.\n\nMaybe a name like NewLinuxReclaimAndAvoidOOMMemLow?",
       "parentUuid": "36de2cf2_c5dadedf",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29d3ec3_0d7aa1b5",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-09-30T04:14:37Z",
+      "side": 1,
+      "message": "Sounds good, maybe NewPageReclaimMemoryLimit? (\u0027AndAvoidOOM\u0027 is probably going a bit over the top in terms of specificity?)",
+      "parentUuid": "7d77af5f_558533e5",
       "range": {
         "startLine": 116,
         "startChar": 5,
