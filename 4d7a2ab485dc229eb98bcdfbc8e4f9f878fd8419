@@ -106,6 +106,24 @@
       "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39659488_c37eb3ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-30T05:11:33Z",
+      "side": 1,
+      "message": "Preconditions were added to reuse state between tests, but they still need to ensure that the state from the previous test is actually valid for the current test. For example, if the arc precondition finds that it can\u0027t reuse the existing session here [1], then it needs to reinitialize everything (p.checkUsable is actually broken on ARCVM, which is why ARCVM sessions never get reused).\n\nIf the extraction of the YUV file is synchronous, then there shouldn\u0027t be any extra CPU usage once the extraction completes.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/pre.go;rcl\u003d55de04c8237747cf48fa0a81c44d3e6e7e7ebc4f;l\u003d142",
+      "parentUuid": "6ad3be76_95472f0d",
+      "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
