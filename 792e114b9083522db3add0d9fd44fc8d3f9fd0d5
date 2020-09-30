@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7db5baee_aabcee36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-09-30T19:10:31Z",
+      "side": 1,
+      "message": "lg, couple of nits.",
+      "revId": "792e114b9083522db3add0d9fd44fc8d3f9fd0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7bee8b5_d433ad49",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-09-30T19:10:31Z",
+      "side": 1,
+      "message": "This map should be declared as a const along with ResetType.",
+      "revId": "792e114b9083522db3add0d9fd44fc8d3f9fd0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0dd7aa5_e9d1e86f",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-09-30T19:10:31Z",
+      "side": 1,
+      "message": "this can be simplified to if fromMode \u003d\u003d recovery { expectMode \u003d normal} else {expectMode \u003d fromMode}",
+      "revId": "792e114b9083522db3add0d9fd44fc8d3f9fd0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
