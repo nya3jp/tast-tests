@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfc09a34_b545dd57",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T16:41:11Z",
+      "side": 1,
+      "message": "nit/sylte: coudl you remove this empty line, because L131 and L132 are conceptually connected?",
+      "revId": "e389ae2c8182dff5a0ee9ec71e9888e1df273855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d15d7d0_f76d42c1",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-09-30T16:41:11Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d testexec.CommandContext(...).Run(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 16
+      },
+      "revId": "e389ae2c8182dff5a0ee9ec71e9888e1df273855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
