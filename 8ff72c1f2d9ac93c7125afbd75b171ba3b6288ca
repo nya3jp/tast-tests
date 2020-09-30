@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "799b1929_9026cf82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-30T12:59:58Z",
+      "side": 1,
+      "message": "You cannot just cast it to policy.testFuncType, because it\u0027s another type.\n\nYou can just cast to \"func(context.Context, *testing.State, *chrome.TestConn, bool)\".\n\nI am OK with both ways.",
+      "parentUuid": "6874bccd_5ed2a57c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f4ee530_ed399acc",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
         "patchSetId": 3
@@ -101,6 +125,30 @@
       "side": 1,
       "message": "Done, it is just strange that the style guide allows type names with a non-capital first letter. It feels like it\u0027s easy to make a mistake and call this testFunc(), when there is no \"Type\" suffix.",
       "parentUuid": "5f4ee530_ed399acc",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eac3f3c7_77e712b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-30T12:59:58Z",
+      "side": 1,
+      "message": "non-capital name in Go means that you don\u0027t export this symbol outside of the package.",
+      "parentUuid": "59faac63_47a8d632",
       "range": {
         "startLine": 26,
         "startChar": 13,
@@ -157,6 +205,30 @@
       "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f25cf098_1c06235c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-09-30T12:59:58Z",
+      "side": 1,
+      "message": "I think Chrome is started when you use pre.User precondition, but does not show UI. Can you please add comment that we need to open some random page to see Chrome UI?",
+      "parentUuid": "1ae76fe3_1223752e",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 21
+      },
+      "revId": "8ff72c1f2d9ac93c7125afbd75b171ba3b6288ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
