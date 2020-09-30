@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "84648920_177f2d1e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-09-30T03:18:28Z",
+      "side": 1,
+      "message": "I think it is OK to fix this in another CL. But the problem might still block the tests depending on this feature as they\u0027ll possibly hit the problem in lab.\n\nOne more case that I\u0027m not sure if we should handle: what if the default pcap is used as router and specified with IP instead of hostname in TFRouter?",
+      "parentUuid": "87cae294_944f1a34",
+      "revId": "dcf22c1e62d237565c6e918971105abb56793aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7710374_888d3849",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
