@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88608a2d_9fab4faf",
+        "filename": "src/chromiumos/tast/local/chrome/uig/uig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-30T05:05:21Z",
+      "side": 1,
+      "message": "Can we get this from the pageobject struct tags instead?  It would be good to find a way to do this such that there is no need for the ctx/tconn/error.\n\nOther things I was considering were storing the findparams on Action or NodeRef so that we could have a dialog.WaitUntilGone(), but there were other problems with this approach.  Another possibility would be uig.WaitUntilGone(graph *action) that would execute the graph until a not found error was returned.",
+      "revId": "d20849b042d1c8e2bd398dbfd5aecd78749a4e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
