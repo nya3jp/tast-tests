@@ -124,6 +124,24 @@
       "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85dfd7ff_4e0be411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-09-30T06:33:21Z",
+      "side": 1,
+      "message": "Dumb question: Can we make WaitUntilIdle conditionally reusable by always checking the current CPU usage?",
+      "parentUuid": "39659488_c37eb3ac",
+      "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
