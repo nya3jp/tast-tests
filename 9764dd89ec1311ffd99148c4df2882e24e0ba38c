@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "867e85b9_220ad8ce",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-30T05:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eb1b9ab_3d82150a",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 15
+      },
+      "revId": "9764dd89ec1311ffd99148c4df2882e24e0ba38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46f0b835_4943a1da",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 1
@@ -53,6 +77,30 @@
       "writtenOn": "2020-09-30T04:17:14Z",
       "side": 1,
       "message": "*ui.Node must be released with Release once we\u0027ve done with it. I\u0027m afraid that this leak existed before this change, but it will become more severe if we repeat the operation with testing.Poll.\n\nCan you make sure searchResultView and appNode are not leaked in error cases?",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "9764dd89ec1311ffd99148c4df2882e24e0ba38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "651cc25f_2c1a20aa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-09-30T05:23:36Z",
+      "side": 1,
+      "message": "Updated the implementation. Do you think it solves your concern?",
+      "parentUuid": "46f0b835_4943a1da",
       "range": {
         "startLine": 93,
         "startChar": 2,
