@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -18,7 +19,8 @@ func init() {
 		Desc:         "Verifies JPEG encode accelerator works in USB HALv3",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"arc", "arc_camera3", caps.HWEncodeJPEG, caps.BuiltinUSBCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.HWEncodeJPEG, caps.BuiltinUSBCamera},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
