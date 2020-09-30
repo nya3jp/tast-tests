@@ -278,6 +278,30 @@
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24e436c2_9958d087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-09-30T19:06:12Z",
+      "side": 1,
+      "message": "```\nlocalhost ~ # mount | grep dlc-images\n/dev/nvme0n1p1 on /var/cache/dlc-images type ext4 (rw,nosuid,nodev,noexec,noatime,seclabel,resgid\u003d20119,commit\u003d600,data\u003dordered)\nlocalhost ~ # ls -il /var/cache/ | grep dlc-images\n19935971 drwxr-xr-x. 4 dlcservice dlcservice 4096 Sep 16 19:51 dlc-images\n\nlocalhost ~ # umount /var/cache/dlc-images\nlocalhost ~ # ls -il /var/cache/ | grep dlc-images\n2179140 drwxr-xr-x. 2 root       root       4096 Sep 30 10:08 dlc-images\n```\n\nIt seems that after unmounting /var/cache/dlc the first time, it ends up having the same inode as the dlc-images dir in encrypted.\n\n[unencrypted] is bind mounted first, then [encrypted].\n\n@jorgelo, should the fix be to skip the encrypted mount for dlc-images? Or is there another approach to take to avoid this double mount.",
+      "parentUuid": "2791f894_37bf1167",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
