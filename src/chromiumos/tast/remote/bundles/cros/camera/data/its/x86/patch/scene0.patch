@@ -1,0 +1,374 @@
+diff --git a/CameraITS/tests/scene0/test_camera_properties.py b/CameraITS/tests/scene0/test_camera_properties.py
+index dbd528d..b289130 100644
+--- a/CameraITS/tests/scene0/test_camera_properties.py
++++ b/CameraITS/tests/scene0/test_camera_properties.py
+@@ -27,15 +27,18 @@ def main():
+         pprint.pprint(props)
+ 
+         # Test that a handful of required keys are present.
+-        assert(props.has_key('android.sensor.info.sensitivityRange'))
+-        assert(props.has_key('android.sensor.orientation'))
+-        assert(props.has_key('android.scaler.streamConfigurationMap'))
+-        assert(props.has_key('android.lens.facing'))
++        assert('android.sensor.info.sensitivityRange' in props)
++        assert('android.sensor.orientation' in props)
++        assert('android.scaler.streamConfigurationMap' in props)
++        assert('android.lens.facing' in props)
++
++        print("JPG sizes:", its.objects.get_available_output_sizes(
++            "jpg", props))
++        print("RAW sizes:", its.objects.get_available_output_sizes(
++            "raw", props))
++        print("YUV sizes:", its.objects.get_available_output_sizes(
++            "yuv", props))
+ 
+-        print "JPG sizes:", its.objects.get_available_output_sizes("jpg", props)
+-        print "RAW sizes:", its.objects.get_available_output_sizes("raw", props)
+-        print "YUV sizes:", its.objects.get_available_output_sizes("yuv", props)
+ 
+ if __name__ == '__main__':
+     main()
+-
+diff --git a/CameraITS/tests/scene0/test_gyro_bias.py b/CameraITS/tests/scene0/test_gyro_bias.py
+index 44be95f..47e8910 100644
+--- a/CameraITS/tests/scene0/test_gyro_bias.py
++++ b/CameraITS/tests/scene0/test_gyro_bias.py
+@@ -42,7 +42,7 @@ def main():
+         its.caps.skip_unless(its.caps.sensor_fusion(props) and
+             cam.get_sensors().get("gyro"))
+ 
+-        print "Collecting gyro events"
++        print("Collecting gyro events")
+         cam.start_sensor_events()
+         time.sleep(5)
+         gyro_events = cam.get_sensor_events()["gyro"]
+diff --git a/CameraITS/tests/scene0/test_jitter.py b/CameraITS/tests/scene0/test_jitter.py
+index 6a156dd..cd071e5 100644
+--- a/CameraITS/tests/scene0/test_jitter.py
++++ b/CameraITS/tests/scene0/test_jitter.py
+@@ -47,9 +47,9 @@ def main():
+         var = sum([d*d for d in deltas_ms]) / len(deltas_ms) - avg * avg
+         range0 = min(deltas_ms) - avg
+         range1 = max(deltas_ms) - avg
+-        print "Average:", avg
+-        print "Variance:", var
+-        print "Jitter range:", range0, "to", range1
++        print("Average:", avg)
++        print("Variance:", var)
++        print("Jitter range:", range0, "to", range1)
+ 
+         # Draw a plot.
+         pylab.plot(range(len(deltas_ms)), deltas_ms)
+diff --git a/CameraITS/tests/scene0/test_metadata.py b/CameraITS/tests/scene0/test_metadata.py
+index b8949b1..5a0b2af 100644
+--- a/CameraITS/tests/scene0/test_metadata.py
++++ b/CameraITS/tests/scene0/test_metadata.py
+@@ -36,18 +36,18 @@ def main():
+         cap = cam.do_capture(auto_req)
+         md = cap["metadata"]
+ 
+-    print "Hardware level"
+-    print "  Legacy:", its.caps.legacy(props)
+-    print "  Limited:", its.caps.limited(props)
+-    print "  Full or better:", its.caps.full_or_better(props)
+-    print "Capabilities"
+-    print "  Manual sensor:", its.caps.manual_sensor(props)
+-    print "  Manual post-proc:", its.caps.manual_post_proc(props)
+-    print "  Raw:", its.caps.raw(props)
+-    print "  Sensor fusion:", its.caps.sensor_fusion(props)
++    print("Hardware level")
++    print("  Legacy:", its.caps.legacy(props))
++    print("  Limited:", its.caps.limited(props))
++    print("  Full or better:", its.caps.full_or_better(props))
++    print("Capabilities")
++    print("  Manual sensor:", its.caps.manual_sensor(props))
++    print("  Manual post-proc:", its.caps.manual_post_proc(props))
++    print("  Raw:", its.caps.raw(props))
++    print("  Sensor fusion:", its.caps.sensor_fusion(props))
+ 
+     # Test: hardware level should be a valid value.
+-    check('props.has_key("android.info.supportedHardwareLevel")')
++    check('"android.info.supportedHardwareLevel" in props')
+     check('props["android.info.supportedHardwareLevel"] is not None')
+     check('props["android.info.supportedHardwareLevel"] in [0,1,2,3]')
+     manual_sensor = its.caps.manual_sensor(props)
+@@ -56,28 +56,28 @@ def main():
+     # and rollingShutterSkew must be greater than zero and smaller than all
+     # of the possible frame durations.
+     if manual_sensor:
+-        check('md.has_key("android.sensor.frameDuration")')
++        check('"android.sensor.frameDuration" in md')
+         check('md["android.sensor.frameDuration"] is not None')
+-    check('md.has_key("android.sensor.rollingShutterSkew")')
++    check('"android.sensor.rollingShutterSkew" in md')
+     check('md["android.sensor.rollingShutterSkew"] is not None')
+     if manual_sensor:
+         check('md["android.sensor.rollingShutterSkew"] > 0')
+         check('md["android.sensor.frameDuration"] > 0')
+ 
+     # Test: timestampSource must be a valid value.
+-    check('props.has_key("android.sensor.info.timestampSource")')
++    check('"android.sensor.info.timestampSource" in props')
+     check('props["android.sensor.info.timestampSource"] is not None')
+     check('props["android.sensor.info.timestampSource"] in [0,1]')
+ 
+     # Test: croppingType must be a valid value, and for full devices, it
+     # must be FREEFORM=1.
+-    check('props.has_key("android.scaler.croppingType")')
++    check('"android.scaler.croppingType" in props')
+     check('props["android.scaler.croppingType"] is not None')
+     check('props["android.scaler.croppingType"] in [0,1]')
+ 
+     # Test: android.sensor.blackLevelPattern exists for RAW and is not None
+     if its.caps.raw(props):
+-        check('props.has_key("android.sensor.blackLevelPattern")')
++        check('"android.sensor.blackLevelPattern" in props')
+         check('props["android.sensor.blackLevelPattern"] is not None')
+ 
+     assert not failed
+@@ -89,8 +89,8 @@ def main():
+         sensor_size = props["android.sensor.info.physicalSize"]
+         pixel_pitch_h = (sensor_size["height"] / fmts[0]["height"] * 1E3)
+         pixel_pitch_w = (sensor_size["width"] / fmts[0]["width"] * 1E3)
+-        print "Assert pixel_pitch WxH: %.2f um, %.2f um" % (pixel_pitch_w,
+-                                                            pixel_pitch_h)
++        print("Assert pixel_pitch WxH: %.2f um, %.2f um" % (pixel_pitch_w,
++                                                            pixel_pitch_h))
+         assert 0.7 <= pixel_pitch_w <= 10
+         assert 0.7 <= pixel_pitch_h <= 10
+         assert 0.333 <= pixel_pitch_w/pixel_pitch_h <= 3.0
+@@ -99,14 +99,14 @@ def main():
+                          sensor_size["width"] ** 2)
+         fl = md["android.lens.focalLength"]
+         fov = 2 * math.degrees(math.atan(diag / (2 * fl)))
+-        print "Assert field of view: %.1f degrees" % fov
++        print("Assert field of view: %.1f degrees" % fov)
+         assert 30 <= fov <= 130
+ 
+         if its.caps.lens_approx_calibrated(props):
+             diopter_hyperfocal = props["android.lens.info.hyperfocalDistance"]
+             if diopter_hyperfocal != 0.0:
+                 hyperfocal = 1.0 / diopter_hyperfocal
+-                print "Assert hyperfocal distance: %.2f m" % hyperfocal
++                print("Assert hyperfocal distance: %.2f m" % hyperfocal)
+                 assert 0.02 <= hyperfocal
+ 
+ 
+@@ -123,14 +123,13 @@ def check(expr):
+     global md, props, failed
+     try:
+         if eval(expr):
+-            print "Passed>", expr
++            print("Passed>", expr)
+         else:
+-            print "Failed>>", expr
++            print("Failed>>", expr)
+             failed = True
+     except:
+-        print "Failed>>", expr
++        print("Failed>>", expr)
+         failed = True
+ 
+ if __name__ == '__main__':
+     main()
+-
+diff --git a/CameraITS/tests/scene0/test_param_sensitivity_burst.py b/CameraITS/tests/scene0/test_param_sensitivity_burst.py
+index b716141..2cf9350 100644
+--- a/CameraITS/tests/scene0/test_param_sensitivity_burst.py
++++ b/CameraITS/tests/scene0/test_param_sensitivity_burst.py
+@@ -34,7 +34,7 @@ def main():
+                              its.caps.per_frame_control(props))
+ 
+         sens_range = props['android.sensor.info.sensitivityRange']
+-        sens_step = (sens_range[1] - sens_range[0]) / NUM_STEPS
++        sens_step = (sens_range[1] - sens_range[0]) // NUM_STEPS
+         sens_list = range(sens_range[0], sens_range[1], sens_step)
+         e = min(props['android.sensor.info.exposureTimeRange'])
+         reqs = [its.objects.manual_capture_request(s, e) for s in sens_list]
+diff --git a/CameraITS/tests/scene0/test_read_write.py b/CameraITS/tests/scene0/test_read_write.py
+index 1b76806..3fdb8ce 100644
+--- a/CameraITS/tests/scene0/test_read_write.py
++++ b/CameraITS/tests/scene0/test_read_write.py
+@@ -44,8 +44,8 @@ def main():
+         # grab exp/gain ranges from camera
+         sensor_exp_range = props['android.sensor.info.exposureTimeRange']
+         sens_range = props['android.sensor.info.sensitivityRange']
+-        print 'sensor e range:', sensor_exp_range
+-        print 'sensor s range:', sens_range
++        print('sensor e range:', sensor_exp_range)
++        print('sensor s range:', sens_range)
+ 
+         # determine if exposure test range is within sensor reported range
+         exp_range = []
+@@ -95,19 +95,21 @@ def main():
+ 
+         # print results
+         if e_failed:
+-            print '\nFAILs for exposure time'
++            print('\nFAILs for exposure time')
+             for fail in e_failed:
+-                print ' e_write: %d, e_read: %d, RTOL: %.2f, ' % (
+-                        fail['e_write'], fail['e_read'], RTOL_EXP_GAIN),
+-                print 's_write: %d, s_read: %d, RTOL: %.2f' % (
+-                        fail['s_write'], fail['s_read'], RTOL_EXP_GAIN)
++                print(' e_write: %d, e_read: %d, RTOL: %.2f, ' %
++                      (fail['e_write'], fail['e_read'], RTOL_EXP_GAIN),
++                      end='')
++                print('s_write: %d, s_read: %d, RTOL: %.2f' %
++                      (fail['s_write'], fail['s_read'], RTOL_EXP_GAIN))
+         if s_failed:
+-            print 'FAILs for sensitivity(ISO)'
++            print('FAILs for sensitivity(ISO)')
+             for fail in s_failed:
+-                print 's_write: %d, s_read: %d, RTOL: %.2f, ' % (
+-                        fail['s_write'], fail['s_read'], RTOL_EXP_GAIN),
+-                print ' e_write: %d, e_read: %d, RTOL: %.2f' % (
+-                        fail['e_write'], fail['e_read'], RTOL_EXP_GAIN)
++                print('s_write: %d, s_read: %d, RTOL: %.2f, ' %
++                      (fail['s_write'], fail['s_read'], RTOL_EXP_GAIN),
++                      end='')
++                print(' e_write: %d, e_read: %d, RTOL: %.2f' %
++                      (fail['e_write'], fail['e_read'], RTOL_EXP_GAIN))
+ 
+         # assert PASS/FAIL
+         assert not e_failed+s_failed
+diff --git a/CameraITS/tests/scene0/test_sensor_events.py b/CameraITS/tests/scene0/test_sensor_events.py
+index d3226b3..e398aab 100644
+--- a/CameraITS/tests/scene0/test_sensor_events.py
++++ b/CameraITS/tests/scene0/test_sensor_events.py
+@@ -32,8 +32,8 @@ def main():
+         cam.start_sensor_events()
+         time.sleep(1)
+         events = cam.get_sensor_events()
+-        print "Events over 1s: %d gyro, %d accel, %d mag"%(
+-                len(events["gyro"]), len(events["accel"]), len(events["mag"]))
++        print("Events over 1s: %d gyro, %d accel, %d mag" %
++              (len(events["gyro"]), len(events["accel"]), len(events["mag"])))
+         for key, existing in sensors.iteritems():
+             if existing:
+                 e_msg = 'Sensor %s has no events!' % key
+@@ -41,4 +41,3 @@ def main():
+ 
+ if __name__ == '__main__':
+     main()
+-
+diff --git a/CameraITS/tests/scene0/test_test_patterns.py b/CameraITS/tests/scene0/test_test_patterns.py
+index a1d9cb8..3614a1a 100644
+--- a/CameraITS/tests/scene0/test_test_patterns.py
++++ b/CameraITS/tests/scene0/test_test_patterns.py
+@@ -40,7 +40,7 @@ def check_solid_color(cap, props):
+     Returns:
+         True/False
+     """
+-    print 'Checking solid TestPattern...'
++    print('Checking solid TestPattern...')
+     r, gr, gb, b = its.image.convert_capture_to_planes(cap, props)
+     r_tile = its.image.get_image_patch(r, 0.0, 0.0, 1.0, 1.0)
+     gr_tile = its.image.get_image_patch(gr, 0.0, 0.0, 1.0, 1.0)
+@@ -51,8 +51,8 @@ def check_solid_color(cap, props):
+     var_min = min(np.amin(r_tile), np.amin(gr_tile), np.amin(gb_tile),
+                   np.amin(b_tile))
+     white_level = int(props['android.sensor.info.whiteLevel'])
+-    print ' pixel min: %.f, pixel max: %.f' % (white_level*var_min,
+-                                               white_level*var_max)
++    print(' pixel min: %.f, pixel max: %.f' % (white_level * var_min,
++                                               white_level * var_max))
+     return np.isclose(var_max, var_min, atol=CH_TOL)
+ 
+ 
+@@ -68,21 +68,21 @@ def check_color_bars(cap, props, mirror=False):
+     Returns:
+         True/False
+     """
+-    print 'Checking color bar TestPattern...'
++    print('Checking color bar TestPattern...')
+     delta = 0.0005
+     num_bars = len(COLOR_BAR_ORDER)
+     color_match = []
+     img = its.image.convert_capture_to_rgb_image(cap, props=props)
+     if mirror:
+-        print ' Image mirrored'
++        print(' Image mirrored')
+         img = np.fliplr(img)
+     for i, color in enumerate(COLOR_BAR_ORDER):
+         tile = its.image.get_image_patch(img, float(i)/num_bars+delta,
+                                          0.0, 1.0/num_bars-2*delta, 1.0)
+         color_match.append(np.allclose(its.image.compute_image_means(tile),
+                                        COLOR_CHECKER[color], atol=CH_TOL))
+-    print COLOR_BAR_ORDER
+-    print color_match
++    print(COLOR_BAR_ORDER)
++    print(color_match)
+     return all(color_match)
+ 
+ 
+@@ -109,7 +109,7 @@ def check_pattern(cap, props, pattern):
+         return striped
+ 
+     else:
+-        print 'No specific test for TestPattern %d' % pattern
++        print('No specific test for TestPattern %d' % pattern)
+         return True
+ 
+ 
+@@ -123,7 +123,7 @@ def test_test_patterns(cam, props, af_fd):
+     """
+ 
+     avail_patterns = props['android.sensor.availableTestPatternModes']
+-    print 'avail_patterns: ', avail_patterns
++    print('avail_patterns: ', avail_patterns)
+     sens_min, _ = props['android.sensor.info.sensitivityRange']
+     exposure = min(props['android.sensor.info.exposureTimeRange'])
+ 
+@@ -143,7 +143,7 @@ def test_test_patterns(cam, props, af_fd):
+             # Check pattern for correctness
+             assert check_pattern(cap, props, pattern)
+         else:
+-            print 'Pattern not in android.sensor.availableTestPatternModes.'
++            print('Pattern not in android.sensor.availableTestPatternModes.')
+ 
+ 
+ def main():
+@@ -159,7 +159,7 @@ def main():
+     4: PN9
+     """
+ 
+-    print '\nStarting %s' % NAME
++    print('\nStarting %s' % NAME)
+     with its.device.ItsSession() as cam:
+         props = cam.get_camera_properties()
+         its.caps.skip_unless(its.caps.raw16(props) and
+diff --git a/CameraITS/tests/scene0/test_unified_timestamps.py b/CameraITS/tests/scene0/test_unified_timestamps.py
+index 5a9228e..27bf347 100644
+--- a/CameraITS/tests/scene0/test_unified_timestamps.py
++++ b/CameraITS/tests/scene0/test_unified_timestamps.py
+@@ -37,7 +37,7 @@ def main():
+         ts_image0 = cap['metadata']['android.sensor.timestamp']
+ 
+         # Get the timestamps of motion events.
+-        print "Reading sensor measurements"
++        print("Reading sensor measurements")
+         sensors = cam.get_sensors()
+         cam.start_sensor_events()
+         time.sleep(2.0)
+@@ -54,16 +54,16 @@ def main():
+         cap = cam.do_capture(req, fmt)
+         ts_image1 = cap['metadata']['android.sensor.timestamp']
+ 
+-        print "Image timestamps:", ts_image0, ts_image1
++        print("Image timestamps:", ts_image0, ts_image1)
+ 
+         # The motion timestamps must be between the two image timestamps.
+         for sensor, existing in sensors.iteritems():
+             if existing:
+-                print "%s timestamps: %d %d" % (sensor, ts_sensor_first[sensor],
+-                                                ts_sensor_last[sensor])
++                print("%s timestamps: %d %d" %
++                      (sensor, ts_sensor_first[sensor],
++                       ts_sensor_last[sensor]))
+                 assert ts_image0 < ts_sensor_first[sensor] < ts_image1
+                 assert ts_image0 < ts_sensor_last[sensor] < ts_image1
+ 
+ if __name__ == '__main__':
+     main()
+-
