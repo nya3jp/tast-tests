@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "a41d101e_8e92118e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "I changed a bit in LaunchApp() to close the connection if any error occurs so that if the |err| is non-nil, it guarantees that the returned |conn| must be nil and it should be already closed in LaunchApp().",
+      "parentUuid": "a5b88062_6065979e",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 6
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "129e86a0_9a883188",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 23
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "70bd8b43_71916a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "129e86a0_9a883188",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 85
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe96499c_4cbb573a",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 23
@@ -79,6 +127,24 @@
       "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd470087_a69513ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe96499c_4cbb573a",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "9931cb89_4ac7440b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5906b2e8_f111b18c",
+      "range": {
+        "startLine": 1114,
+        "startChar": 2,
+        "endLine": 1117,
+        "endChar": 67
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59a25fa2_957b2fb2",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 23
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "22a3f417_b2183580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59a25fa2_957b2fb2",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad152ef8_489e100f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
         "patchSetId": 23
@@ -139,6 +253,24 @@
       "writtenOn": "2020-09-29T16:22:31Z",
       "side": 1,
       "message": "NewPrecondition sounds like a confusing. Actually it does not create precondition if there\u0027s cached one, which is conflicting with common \"New\" behavior.\nCould you rename them?\nAlso, i\u0027m concerned if there\u0027s precondition used only one test case. Precondition is designed for the performance improvement by sharing multiple tests. Any check to make sure there\u0027s no singleton Precondition?",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40ea6a6_87bbd67c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Renamed to Precondition().\n\nIs there any disadvantage to use Precondition for only one test? We also used it to setup bridge which are needed for communication between Tast tests and app.",
+      "parentUuid": "ad152ef8_489e100f",
       "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -162,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "a679be2b_85989ec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3f4f561_b5663c15",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8310df5_696a0eb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
         "patchSetId": 23
@@ -173,6 +323,30 @@
       "writtenOn": "2020-09-29T16:22:31Z",
       "side": 1,
       "message": "nit: \"waitUntilWindowBound\" should work?\n\nDitto for below.",
+      "range": {
+        "startLine": 50,
+        "startChar": 42,
+        "endLine": 50,
+        "endChar": 92
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c09957da_40a43d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Hmm, from my testing, it will hit ReferenceError if I wrote:\n\na.jsObj.Call(ctx, \u0026windowURL, \"waitUntilWindowBound\")\n\nShould it work?",
+      "parentUuid": "d8310df5_696a0eb1",
       "range": {
         "startLine": 50,
         "startChar": 42,
@@ -208,6 +382,30 @@
     },
     {
       "key": {
+        "uuid": "8f0a7822_caafe055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ea17df_80aca795",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b034e2d3_07f28a04",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
         "patchSetId": 23
@@ -225,6 +423,24 @@
     },
     {
       "key": {
+        "uuid": "b8a7c811_3e32cfb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b034e2d3_07f28a04",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbbcb97f_1c4d2ab8",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/pre.go",
         "patchSetId": 23
@@ -239,6 +455,24 @@
       "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09949702_cdbd2dbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/pre.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbbcb97f_1c4d2ab8",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -262,6 +496,30 @@
       "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bc78e7e_529f9073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-09-30T10:31:50Z",
+      "side": 1,
+      "message": "Since we have removed \"src\" folder for SWA, we can use the same JS path for platform app version and SWA version so no Sprintf is needed now.",
+      "parentUuid": "99ba0214_4e1738cf",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
