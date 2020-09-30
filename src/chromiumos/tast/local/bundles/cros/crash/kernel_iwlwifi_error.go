@@ -19,16 +19,21 @@ import (
 )
 
 const (
-	iwlwifiPath   = "/sys/kernel/debug/iwlwifi"
-	fwnmiPath     = "/iwlmvm/fw_nmi"
-	funcName      = `NMI_INTERRUPT_UNKNOWN`
-	crashBaseName = `kernel_iwlwifi_error_` + funcName + `\.\d{8}\.\d{6}\.0`
+	iwlwifiPath              = "/sys/kernel/debug/iwlwifi"
+	fwnmiPath                = "/iwlmvm/fw_nmi"
+	funcName                 = `NMI_INTERRUPT_UNKNOWN`
+	funcNameDriverError      = `ADVANCED_SYSASSERT`
+	crashBaseName            = `kernel_iwlwifi_error_` + funcName + `\.\d{8}\.\d{6}\.0`
+	crashBaseNameDriverError = `kernel_iwlwifi_error_` + funcNameDriverError + `\.\d{8}\.\d{6}\.0`
 )
 
 var (
 	expectedRegexes = []string{crashBaseName + `\.kcrash`,
 		crashBaseName + `\.log\.gz`,
 		crashBaseName + `\.meta`}
+	expectedRegexesDriverError = []string{crashBaseNameDriverError + `\.kcrash`,
+		crashBaseNameDriverError + `\.log\.gz`,
+		crashBaseNameDriverError + `\.meta`}
 )
 
 func init() {
@@ -117,9 +122,15 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for files")
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
+	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+	files, err := crash.WaitForCrashFiles(waitCtx, []string{crash.SystemCrashDir}, expectedRegexes)
 	if err != nil {
-		s.Fatal("Couldn't find expected files: ", err)
+		// Sometimes the DUT will dump a driver error instead of hardware error.
+		files, err = crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexesDriverError)
+		if err != nil {
+			s.Fatal("Couldn't find expected files: ", err)
+		}
 	}
 
 	if err := crash.RemoveAllFiles(ctx, files); err != nil {
