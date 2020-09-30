@@ -64,13 +64,16 @@ yee+dcuGhs9IGBOEEF7lFA==
 	testPublicKey = "QAAAAFt6z0Mt2uLGZef2mgYqun+yAzXyt/L/PeM8G6Hn3I/Kf9CzIW+IyfqmvxUpQDSJuA2EpY5UitmTvtja9Sfy+layAOARANFdY1thUHASmPTlwYQLaoKc0eILqJhzCLS8NU7IZ8Em/XA2uU9nV7dBreexpKf+RQsjsPLz9s3dedwu5nyoJxGXGutIxnoyCZQ9iy66EFz3wBdpDILE/Mdt7yl50y4qz1REDKGPtqOr1KVpE8r5aQQ/6s8kfNZS+/z+J4xJFEvw43C4s3aTtFaE3l1N4J0wvUCRQS2hl43Q7a/IC8LGw/5VPab0VT9CNK33P4mmukpSfSVyahcIukTYiY7u3Byn0Nc9qhPPbSQYNQiofN7w91BWzW46V8CgWzBCKZoKhF7YmTdAm48qmaV0rqMGaf1AtRz5QY0a47seRYCgk9lMx7BeMgIuAZDmYPsUG+mAG+IiQYfvJMIEMBowtc8IlfZv9A7bwLKcs4rRhxFdCzJ7odPgFdgUv7MEAYF+HhnQg6DYEhoqe7YkB98Pb8VbU4f/ZTNkHYtIOxMIb53saW09zop5MlQrR6E7hBeZ5FwMNOK7+yc20ulUlqq38iB6QoHx7lli8dfGpD47J1ETHw7m9uAuxMu75MD4bIxYgmj2Ud1TvmWqXtmg75+E+B1I3osGcw9a2Qxo2ypV1Nkq8b1lmgEAAQA= root@localhost"
 )
 
-// setUpADBAuth sets up ADB auth by installing testPrivateKey for local ADB server.
-func setUpADBAuth(ctx context.Context) error {
-	// Set up the ADB home directory in Chrome OS side.
-	if err := os.MkdirAll(adbHome, 0755); err != nil {
-		return err
-	}
-	if err := ioutil.WriteFile(testPrivateKeyPath, []byte(testPrivateKey), 0600); err != nil {
+// ADB holds information to connect to an ADB daemon.
+type ADB struct {
+	keyPath string
+	home    string
+	addr    string
+}
+
+// SetUpADBAuth sets up ADB auth by installing testPrivateKey for local ADB server.
+func (a *ADB) SetUpADBAuth(ctx context.Context) error {
+	if err := ioutil.WriteFile(a.keyPath, []byte(testPrivateKey), 0600); err != nil {
 		return errors.Wrap(err, "failed installing ADB private key")
 	}
 
@@ -80,17 +83,30 @@ func setUpADBAuth(ctx context.Context) error {
 	}
 
 	testing.ContextLog(ctx, "Starting ADB server")
-	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
+	if err := a.Command(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed starting ADB local server")
 	}
 
 	return nil
 }
 
+func newAdbForLocalTest(ctx context.Context) (*ADB, error) {
+	// Set up the ADB home directory in Chrome OS side.
+	if err := os.MkdirAll(adbHome, 0755); err != nil {
+		return nil, err
+	}
+	return &ADB{keyPath: testPrivateKeyPath, home: adbHome, addr: adbAddr}, nil
+}
+
+// NewAdbForRemoteTest returns |ADB| instance connecting from remote test host to |addr|.
+func NewAdbForRemoteTest(keyPath, addr string) *ADB {
+	return &ADB{keyPath: keyPath, home: os.Getenv("HOME"), addr: addr}
+}
+
 // checkADBConnected checks if ADB is currently connected to a device.
-func checkADBConnected(ctx context.Context) error {
+func (a *ADB) checkADBConnected(ctx context.Context) error {
 	// Run "adb get-state" to get the state of current connected device. "get-state" is used to have an easier output to parse.
-	out, err := adbCommand(ctx, "get-state").Output()
+	out, err := a.Command(ctx, "get-state").Output()
 	if err != nil {
 		return errors.New("failed to get device state")
 	}
@@ -100,30 +116,34 @@ func checkADBConnected(ctx context.Context) error {
 	return nil
 }
 
-// connectADB connects to the remote ADB daemon.
+// ConnectADB connects to the remote ADB daemon.
 // After this function returns successfully, we can assume that ADB connection is ready.
-func connectADB(ctx context.Context) error {
+func (a *ADB) ConnectADB(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "connect_adb")
 	defer st.End()
 
-	// ADBD thinks that there is an Android emulator running because it notices adb-proxy listens on localhost:5555.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return checkADBConnected(ctx)
-	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err == nil {
-		return adbCommand(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
+	if strings.HasSuffix(a.addr, ":5555") {
+		// ADBD thinks that there is an Android emulator running because it notices adb-proxy listens on localhost:5555.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return a.checkADBConnected(ctx)
+		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err == nil {
+			return a.Command(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
+		}
+	} else {
+		testing.ContextLog(ctx, "connect to remote host ", a.addr)
 	}
 
 	// https://developer.android.com/studio/command-line/adb#notlisted shows that on certain conditions emulator may not be listed. For safety, fallback to manually connecting to adb-proxy address.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := adbCommand(ctx, "connect", adbAddr).Run(); err != nil {
+		if err := a.Command(ctx, "connect", a.addr).Run(); err != nil {
 			return err
 		}
-		return checkADBConnected(ctx)
+		return a.checkADBConnected(ctx)
 	}, &testing.PollOptions{Interval: 1 * time.Second}); err != nil {
 		return err
 	}
 
-	return adbCommand(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
+	return a.Command(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
 }
 
 // InstallOption defines possible options to pass to "adb install".
@@ -162,7 +182,7 @@ func (a *ARC) Install(ctx context.Context, path string, installOptions ...Instal
 		commandArgs = append(commandArgs, string(installOption))
 	}
 	commandArgs = append(commandArgs, path)
-	out, err := adbCommand(ctx, commandArgs...).Output(testexec.DumpLogOnError)
+	out, err := a.adb.Command(ctx, commandArgs...).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return err
 	}
@@ -201,7 +221,7 @@ func (a *ARC) InstalledPackages(ctx context.Context) (map[string]struct{}, error
 
 // Uninstall a package from the Android system.
 func (a *ARC) Uninstall(ctx context.Context, pkg string) error {
-	out, err := adbCommand(ctx, "uninstall", pkg).Output(testexec.DumpLogOnError)
+	out, err := a.adb.Command(ctx, "uninstall", pkg).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return err
 	}
@@ -218,14 +238,14 @@ func (a *ARC) Uninstall(ctx context.Context, pkg string) error {
 	return nil
 }
 
-// adbCommand runs an ADB command with appropriate environment variables.
-func adbCommand(ctx context.Context, arg ...string) *testexec.Cmd {
+// Command runs an ADB command with appropriate environment variables.
+func (a *ADB) Command(ctx context.Context, arg ...string) *testexec.Cmd {
 	cmd := testexec.CommandContext(ctx, "adb", arg...)
 	cmd.Env = append(
 		os.Environ(),
-		"ADB_VENDOR_KEYS="+testPrivateKeyPath,
+		"ADB_VENDOR_KEYS="+a.keyPath,
 		// adb expects $HOME to be writable.
-		"HOME="+adbHome)
+		"HOME="+a.home)
 	return cmd
 }
 
