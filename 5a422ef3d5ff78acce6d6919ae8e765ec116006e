@@ -56,6 +56,30 @@
       "revId": "5a422ef3d5ff78acce6d6919ae8e765ec116006e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c88ad69_4cc275d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-09-30T07:30:06Z",
+      "side": 1,
+      "message": "Or you can use conn.WaitForExprFailOnErrWithTimeout().\nThough I am not sure what effect the FailOnErr part has.",
+      "parentUuid": "1424becf_02f2fa02",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 6
+      },
+      "revId": "5a422ef3d5ff78acce6d6919ae8e765ec116006e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
