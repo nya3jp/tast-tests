@@ -70,6 +70,24 @@
       "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9f72dc5_12e85d10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-09-30T03:07:05Z",
+      "side": 1,
+      "message": "What do you mean about preconditions being shared between tests? My impression was that although preconditions are allowed to reuse state from the previous test (e.g. ARC++ session), they are still supposed to guarantee that the appropriate preconditions are met. So WaitUntilIdle as a precondition would wait on any leftover work from the previous test run.\n\nIs extracting the raw YUV file synchronous or asynchronous?",
+      "parentUuid": "e080eb29_de139e3e",
+      "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
