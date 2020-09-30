@@ -1,0 +1,1156 @@
+diff --git a/CameraITS/pymodules/its/caps.py b/CameraITS/pymodules/its/caps.py
+index 87b88e9..4c4eb78 100644
+--- a/CameraITS/pymodules/its/caps.py
++++ b/CameraITS/pymodules/its/caps.py
+@@ -34,7 +34,7 @@ def skip_unless(cond):
+     SKIP_RET_CODE = 101
+ 
+     if not cond:
+-        print "Test skipped"
++        print("Test skipped")
+         sys.exit(SKIP_RET_CODE)
+ 
+ def full_or_better(props):
+@@ -46,9 +46,8 @@ def full_or_better(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.info.supportedHardwareLevel") and \
+-            props["android.info.supportedHardwareLevel"] != 2 and \
+-            props["android.info.supportedHardwareLevel"] >= 1
++    return (props.get('android.info.supportedHardwareLevel') >= 1 and
++            props.get('android.info.supportedHardwareLevel') != 2)
+ 
+ def level3(props):
+     """Returns whether a device is a LEVEL3 capability camera2 device.
+@@ -59,8 +58,7 @@ def level3(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.info.supportedHardwareLevel") and \
+-           props["android.info.supportedHardwareLevel"] == 3
++    return props.get("android.info.supportedHardwareLevel") == 3
+ 
+ def full(props):
+     """Returns whether a device is a FULL capability camera2 device.
+@@ -71,8 +69,7 @@ def full(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.info.supportedHardwareLevel") and \
+-           props["android.info.supportedHardwareLevel"] == 1
++    return props.get("android.info.supportedHardwareLevel") == 1
+ 
+ def limited(props):
+     """Returns whether a device is a LIMITED capability camera2 device.
+@@ -83,8 +80,7 @@ def limited(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.info.supportedHardwareLevel") and \
+-           props["android.info.supportedHardwareLevel"] == 0
++    return props.get("android.info.supportedHardwareLevel") == 0
+ 
+ def legacy(props):
+     """Returns whether a device is a LEGACY capability camera2 device.
+@@ -95,8 +91,7 @@ def legacy(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.info.supportedHardwareLevel") and \
+-           props["android.info.supportedHardwareLevel"] == 2
++    return props.get("android.info.supportedHardwareLevel") == 2
+ 
+ def distortion_correction(props):
+     """Returns whether a device supports DISTORTION_CORRECTION
+@@ -108,8 +103,8 @@ def distortion_correction(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.lens.distortion") and \
+-           props["android.lens.distortion"] is not None
++    return 'android.lens.distortion' in props and props[
++           'android.lens.distortion'] is not None
+ 
+ def manual_sensor(props):
+     """Returns whether a device supports MANUAL_SENSOR capabilities.
+@@ -120,8 +115,7 @@ def manual_sensor(props):
+     Returns:
+         Boolean.
+     """
+-    return    props.has_key("android.request.availableCapabilities") and \
+-              1 in props["android.request.availableCapabilities"]
++    return 1 in props.get("android.request.availableCapabilities", [])
+ 
+ def manual_post_proc(props):
+     """Returns whether a device supports MANUAL_POST_PROCESSING capabilities.
+@@ -132,8 +126,7 @@ def manual_post_proc(props):
+     Returns:
+         Boolean.
+     """
+-    return    props.has_key("android.request.availableCapabilities") and \
+-              2 in props["android.request.availableCapabilities"]
++    return 2 in props.get("android.request.availableCapabilities", [])
+ 
+ def raw(props):
+     """Returns whether a device supports RAW capabilities.
+@@ -144,8 +137,7 @@ def raw(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.request.availableCapabilities") and \
+-           3 in props["android.request.availableCapabilities"]
++    return 3 in props.get("android.request.availableCapabilities", [])
+ 
+ def raw16(props):
+     """Returns whether a device supports RAW16 output.
+@@ -200,8 +192,10 @@ def post_raw_sensitivity_boost(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.control.postRawSensitivityBoostRange") and \
+-            props["android.control.postRawSensitivityBoostRange"] != [100, 100]
++    return props.get("android.control.postRawSensitivityBoostRange") != [
++        100, 100
++    ]
++
+ 
+ def sensor_fusion(props):
+     """Returns whether the camera and motion sensor timestamps for the device
+@@ -213,8 +207,7 @@ def sensor_fusion(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.sensor.info.timestampSource") and \
+-           props["android.sensor.info.timestampSource"] == 1
++    return props.get("android.sensor.info.timestampSource") == 1
+ 
+ def read_3a(props):
+     """Return whether a device supports reading out the following 3A settings:
+@@ -253,7 +246,7 @@ def freeform_crop(props):
+     Return:
+         Boolean.
+     """
+-    return props.has_key("android.scaler.croppingType") and \
++    return "android.scaler.croppingType" in props and \
+            props["android.scaler.croppingType"] == 1
+ 
+ def flash(props):
+@@ -265,7 +258,7 @@ def flash(props):
+     Return:
+         Boolean.
+     """
+-    return props.has_key("android.flash.info.available") and \
++    return "android.flash.info.available" in props and \
+            props["android.flash.info.available"] == 1
+ 
+ def per_frame_control(props):
+@@ -277,7 +270,7 @@ def per_frame_control(props):
+     Return:
+         Boolean.
+     """
+-    return props.has_key("android.sync.maxLatency") and \
++    return "android.sync.maxLatency" in props and \
+            props["android.sync.maxLatency"] == 0
+ 
+ def ev_compensation(props):
+@@ -289,7 +282,7 @@ def ev_compensation(props):
+     Return:
+         Boolean.
+     """
+-    return props.has_key("android.control.aeCompensationRange") and \
++    return "android.control.aeCompensationRange" in props and \
+            props["android.control.aeCompensationRange"] != [0, 0]
+ 
+ def ae_lock(props):
+@@ -301,7 +294,7 @@ def ae_lock(props):
+     Return:
+         Boolean.
+     """
+-    return props.has_key("android.control.aeLockAvailable") and \
++    return "android.control.aeLockAvailable" in props and \
+            props["android.control.aeLockAvailable"] == 1
+ 
+ def awb_lock(props):
+@@ -313,7 +306,7 @@ def awb_lock(props):
+     Return:
+         Boolean.
+     """
+-    return props.has_key("android.control.awbLockAvailable") and \
++    return "android.control.awbLockAvailable" in props and \
+            props["android.control.awbLockAvailable"] == 1
+ 
+ def lsc_map(props):
+@@ -325,9 +318,8 @@ def lsc_map(props):
+     Return:
+         Boolean.
+     """
+-    return props.has_key(
+-            "android.statistics.info.availableLensShadingMapModes") and \
+-        1 in props["android.statistics.info.availableLensShadingMapModes"]
++    return "android.statistics.info.availableLensShadingMapModes" in props and \
++           1 in props["android.statistics.info.availableLensShadingMapModes"]
+ 
+ def lsc_off(props):
+     """Returns whether a device supports disabling lens shading correction
+@@ -338,9 +330,8 @@ def lsc_off(props):
+     Return:
+         Boolean.
+     """
+-    return props.has_key(
+-            "android.shading.availableModes") and \
+-        0 in props["android.shading.availableModes"]
++    return "android.shading.availableModes" in props and \
++           0 in props["android.shading.availableModes"]
+ 
+ def yuv_reprocess(props):
+     """Returns whether a device supports YUV reprocessing.
+@@ -351,7 +342,7 @@ def yuv_reprocess(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.request.availableCapabilities") and \
++    return "android.request.availableCapabilities" in props and \
+            7 in props["android.request.availableCapabilities"]
+ 
+ def private_reprocess(props):
+@@ -363,7 +354,7 @@ def private_reprocess(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.request.availableCapabilities") and \
++    return "android.request.availableCapabilities" in props and \
+            4 in props["android.request.availableCapabilities"]
+ 
+ def noise_reduction_mode(props, mode):
+@@ -377,9 +368,8 @@ def noise_reduction_mode(props, mode):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key(
+-            "android.noiseReduction.availableNoiseReductionModes") and mode \
+-            in props["android.noiseReduction.availableNoiseReductionModes"];
++    return "android.noiseReduction.availableNoiseReductionModes" in props and \
++           mode in props["android.noiseReduction.availableNoiseReductionModes"]
+ 
+ def edge_mode(props, mode):
+     """Returns whether a device supports the edge mode.
+@@ -391,9 +381,8 @@ def edge_mode(props, mode):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key(
+-            "android.edge.availableEdgeModes") and mode \
+-            in props["android.edge.availableEdgeModes"];
++    return "android.edge.availableEdgeModes" in props and \
++           mode in props["android.edge.availableEdgeModes"]
+ 
+ def tonemap_mode(props, mode):
+     """Returns whether a device supports the tonemap mode.
+@@ -405,9 +394,8 @@ def tonemap_mode(props, mode):
+     Return:
+         Boolean.
+     """
+-    return props.has_key(
+-            "android.tonemap.availableToneMapModes") and mode \
+-            in props["android.tonemap.availableToneMapModes"];
++    return "android.tonemap.availableToneMapModes" in props and \
++           mode in props["android.tonemap.availableToneMapModes"]
+ 
+ def lens_calibrated(props):
+     """Returns whether lens position is calibrated or not.
+@@ -423,8 +411,8 @@ def lens_calibrated(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.lens.info.focusDistanceCalibration") and \
+-         props["android.lens.info.focusDistanceCalibration"] == 2
++    return "android.lens.info.focusDistanceCalibration" in props and \
++           props["android.lens.info.focusDistanceCalibration"] == 2
+ 
+ 
+ def lens_approx_calibrated(props):
+@@ -441,9 +429,7 @@ def lens_approx_calibrated(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.lens.info.focusDistanceCalibration") and \
+-        (props["android.lens.info.focusDistanceCalibration"] == 1 or
+-         props["android.lens.info.focusDistanceCalibration"] == 2)
++    return props.get("android.lens.info.focusDistanceCalibration") in [1, 2]
+ 
+ 
+ def fixed_focus(props):
+@@ -457,8 +443,7 @@ def fixed_focus(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.lens.info.minimumFocusDistance") and \
+-        props["android.lens.info.minimumFocusDistance"] == 0
++    return props.get("android.lens.info.minimumFocusDistance") == 0
+ 
+ def logical_multi_camera(props):
+     """Returns whether a device is a logical multi-camera.
+@@ -469,7 +454,7 @@ def logical_multi_camera(props):
+     Return:
+         Boolean.
+     """
+-    return props.has_key("android.request.availableCapabilities") and \
++    return "android.request.availableCapabilities" in props and \
+            11 in props["android.request.availableCapabilities"]
+ 
+ def logical_multi_camera_physical_ids(props):
+@@ -495,7 +480,7 @@ def mono_camera(props):
+     Return:
+         Boolean.
+     """
+-    return props.has_key("android.request.availableCapabilities") and \
++    return "android.request.availableCapabilities" in props and \
+            12 in props["android.request.availableCapabilities"]
+ 
+ 
+@@ -510,8 +495,8 @@ def face_detect(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.statistics.info.availableFaceDetectModes") and \
+-        props["android.statistics.info.availableFaceDetectModes"] != [0]
++    return "android.statistics.info.availableFaceDetectModes" in props and \
++           props["android.statistics.info.availableFaceDetectModes"] != [0]
+ 
+ 
+ def debug_mode():
+@@ -535,8 +520,7 @@ def backward_compatible(props):
+     Returns:
+         Boolean.
+     """
+-    return props.has_key("android.request.availableCapabilities") and \
+-              0 in props["android.request.availableCapabilities"]
++    return 0 in props.get("android.request.availableCapabilities", [])
+ 
+ 
+ class __UnitTest(unittest.TestCase):
+diff --git a/CameraITS/pymodules/its/cv2image.py b/CameraITS/pymodules/its/cv2image.py
+index 2004846..5e58f8f 100644
+--- a/CameraITS/pymodules/its/cv2image.py
++++ b/CameraITS/pymodules/its/cv2image.py
+@@ -76,7 +76,7 @@ class Chart(object):
+                 if its.caps.read_3a(props):
+                     self.locate(cam, props)
+                 else:
+-                    print 'Chart locator skipped.'
++                    print('Chart locator skipped.')
+                     self._set_scale_factors_to_one()
+ 
+     def _set_scale_factors_to_one(self):
+@@ -114,14 +114,14 @@ class Chart(object):
+         focal_l = cap_chart['metadata']['android.lens.focalLength']
+         pixel_pitch = (props['android.sensor.info.physicalSize']['height'] /
+                        img_3a.shape[0])
+-        print ' Chart distance: %.2fcm' % self._distance
+-        print ' Chart height: %.2fcm' % self._height
+-        print ' Focal length: %.2fmm' % focal_l
+-        print ' Pixel pitch: %.2fum' % (pixel_pitch*1E3)
+-        print ' Template height: %dpixels' % template.shape[0]
++        print(' Chart distance: %.2fcm' % self._distance)
++        print(' Chart height: %.2fcm' % self._height)
++        print(' Focal length: %.2fmm' % focal_l)
++        print(' Pixel pitch: %.2fum' % (pixel_pitch*1E3))
++        print(' Template height: %dpixels' % template.shape[0])
+         chart_pixel_h = self._height * focal_l / (self._distance * pixel_pitch)
+         scale_factor = template.shape[0] / chart_pixel_h
+-        print 'Chart/image scale factor = %.2f' % scale_factor
++        print('Chart/image scale factor = %.2f' % scale_factor)
+         return template, img_3a, scale_factor
+ 
+     def locate(self, cam, props):
+@@ -144,7 +144,7 @@ class Chart(object):
+             chart, scene, s_factor = self._calc_scale_factors(cam, props, fmt,
+                                                               s, e, fd)
+         else:
+-            print 'Chart locator skipped.'
++            print('Chart locator skipped.')
+             self._set_scale_factors_to_one()
+             return
+         scale_start = self._scale_start * s_factor
+@@ -156,7 +156,7 @@ class Chart(object):
+         if numpy.amax(scene) <= 1.0:
+             scene = (scene * 255.0).astype(numpy.uint8)
+         scene_gray = gray_scale_img(scene)
+-        print 'Finding chart in scene...'
++        print('Finding chart in scene...')
+         for scale in numpy.arange(scale_start, scale_stop, scale_step):
+             scene_scaled = scale_img(scene_gray, scale)
+             if (scene_scaled.shape[0] < chart.shape[0] or
+@@ -165,7 +165,7 @@ class Chart(object):
+             result = cv2.matchTemplate(scene_scaled, chart, cv2.TM_CCOEFF)
+             _, opt_val, _, top_left_scaled = cv2.minMaxLoc(result)
+             # print out scale and match
+-            print ' scale factor: %.3f, opt val: %.f' % (scale, opt_val)
++            print(' scale factor: %.3f, opt val: %.f' % (scale, opt_val))
+             max_match.append((opt_val, top_left_scaled))
+ 
+         # determine if optimization results are valid
+@@ -174,18 +174,18 @@ class Chart(object):
+             estring = ('Warning: unable to find chart in scene!\n'
+                        'Check camera distance and self-reported '
+                        'pixel pitch, focal length and hyperfocal distance.')
+-            print estring
++            print(estring)
+             self._set_scale_factors_to_one()
+         else:
+             if (max(opt_values) == opt_values[0] or
+                         max(opt_values) == opt_values[len(opt_values)-1]):
+                 estring = ('Warning: chart is at extreme range of locator '
+                            'check.\n')
+-                print estring
++                print(estring)
+             # find max and draw bbox
+             match_index = max_match.index(max(max_match, key=lambda x: x[0]))
+             self.scale = scale_start + scale_step * match_index
+-            print 'Optimum scale factor: %.3f' %  self.scale
++            print('Optimum scale factor: %.3f' %  self.scale)
+             top_left_scaled = max_match[match_index][1]
+             h, w = chart.shape
+             bottom_right_scaled = (top_left_scaled[0] + w,
+diff --git a/CameraITS/pymodules/its/device.py b/CameraITS/pymodules/its/device.py
+index a1de8cf..f38b5cd 100644
+--- a/CameraITS/pymodules/its/device.py
++++ b/CameraITS/pymodules/its/device.py
+@@ -133,7 +133,7 @@ class ItsSession(object):
+ 
+         port = None
+         used_ports = []
+-        for line in output.split(os.linesep):
++        for line in output.decode('utf-8').split(os.linesep):
+             # each line should be formatted as:
+             # "<device_id> tcp:<host_port> tcp:<remote_port>"
+             forward_info = line.split()
+@@ -164,7 +164,7 @@ class ItsSession(object):
+                     output, error = proc.communicate()
+ 
+                     # Check if there is no error
+-                    if error is None or error.find("error") < 0:
++                    if error is None or error.find("error".encode()) < 0:
+                         port = p
+                         break
+ 
+@@ -191,11 +191,11 @@ class ItsSession(object):
+                 duration = 30
+                 if len(s) > 7 and s[6] == "=":
+                     duration = int(s[7:])
+-                print "Rebooting device"
++                print("Rebooting device")
+                 _run("%s reboot" % (self.adb))
+                 _run("%s wait-for-device" % (self.adb))
+                 time.sleep(duration)
+-                print "Reboot complete"
++                print("Reboot complete")
+ 
+         # Flush logcat so following code won't be misled by previous
+         # 'ItsService ready' log.
+@@ -214,7 +214,7 @@ class ItsSession(object):
+         logcat = proc.stdout
+         while True:
+             line = logcat.readline().strip()
+-            if line.find('ItsService ready') >= 0:
++            if line.find(b'ItsService ready') >= 0:
+                 break
+         proc.kill()
+ 
+@@ -243,7 +243,7 @@ class ItsSession(object):
+         # Read a line (newline-terminated) string serialization of JSON object.
+         chars = []
+         while len(chars) == 0 or chars[-1] != '\n':
+-            ch = self.sock.recv(1)
++            ch = self.sock.recv(1).decode('utf-8')
+             if len(ch) == 0:
+                 # Socket was probably closed; otherwise don't get empty strings
+                 raise its.error.Error('Problem with socket on device side')
+@@ -252,7 +252,7 @@ class ItsSession(object):
+         jobj = json.loads(line)
+         # Optionally read a binary buffer of a fixed size.
+         buf = None
+-        if jobj.has_key("bufValueSize"):
++        if "bufValueSize" in jobj:
+             n = jobj["bufValueSize"]
+             buf = bytearray(n)
+             view = memoryview(buf)
+@@ -275,14 +275,14 @@ class ItsSession(object):
+                     if len(camera_ids) == 1:
+                         camera_id = camera_ids[0]
+         cmd = {"cmdName":"open", "cameraId":camera_id}
+-        self.sock.send(json.dumps(cmd) + "\n")
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+         data,_ = self.__read_response_from_socket()
+         if data['tag'] != 'cameraOpened':
+             raise its.error.Error('Invalid command response')
+ 
+     def __close_camera(self):
+         cmd = {"cmdName":"close"}
+-        self.sock.send(json.dumps(cmd) + "\n")
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+         data,_ = self.__read_response_from_socket()
+         if data['tag'] != 'cameraClosed':
+             raise its.error.Error('Invalid command response')
+@@ -305,7 +305,7 @@ class ItsSession(object):
+         cmd = {}
+         cmd["cmdName"] = "doVibrate"
+         cmd["pattern"] = pattern
+-        self.sock.send(json.dumps(cmd) + "\n")
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+         data,_ = self.__read_response_from_socket()
+         if data['tag'] != 'vibrationStarted':
+             raise its.error.Error('Invalid command response')
+@@ -318,7 +318,7 @@ class ItsSession(object):
+         """
+         cmd = {}
+         cmd["cmdName"] = "checkSensorExistence"
+-        self.sock.send(json.dumps(cmd) + "\n")
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+         data,_ = self.__read_response_from_socket()
+         if data['tag'] != 'sensorExistence':
+             raise its.error.Error('Invalid command response')
+@@ -334,7 +334,7 @@ class ItsSession(object):
+         """
+         cmd = {}
+         cmd["cmdName"] = "startSensorEvents"
+-        self.sock.send(json.dumps(cmd) + "\n")
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+         data,_ = self.__read_response_from_socket()
+         if data['tag'] != 'sensorEventsStarted':
+             raise its.error.Error('Invalid command response')
+@@ -362,7 +362,7 @@ class ItsSession(object):
+         """
+         cmd = {}
+         cmd["cmdName"] = "getSensorEvents"
+-        self.sock.send(json.dumps(cmd) + "\n")
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+         timeout = self.SOCK_TIMEOUT + self.EXTRA_SOCK_TIMEOUT
+         self.sock.settimeout(timeout)
+         data,_ = self.__read_response_from_socket()
+@@ -379,7 +379,7 @@ class ItsSession(object):
+         """
+         cmd = {}
+         cmd["cmdName"] = "getCameraIds"
+-        self.sock.send(json.dumps(cmd) + "\n")
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+         data,_ = self.__read_response_from_socket()
+         if data['tag'] != 'cameraIds':
+             raise its.error.Error('Invalid command response')
+@@ -393,7 +393,7 @@ class ItsSession(object):
+         """
+         cmd = {}
+         cmd["cmdName"] = "getCameraProperties"
+-        self.sock.send(json.dumps(cmd) + "\n")
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+         data,_ = self.__read_response_from_socket()
+         if data['tag'] != 'cameraProperties':
+             raise its.error.Error('Invalid command response')
+@@ -414,7 +414,7 @@ class ItsSession(object):
+         cmd = {}
+         cmd["cmdName"] = "getCameraPropertiesById"
+         cmd["cameraId"] = camera_id
+-        self.sock.send(json.dumps(cmd) + "\n")
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+         data,_ = self.__read_response_from_socket()
+         if data['tag'] != 'cameraProperties':
+             raise its.error.Error('Invalid command response')
+@@ -465,7 +465,7 @@ class ItsSession(object):
+             * AF focus position; None if do_af is false
+             Otherwise, it returns five None values.
+         """
+-        print "Running vendor 3A on device"
++        print("Running vendor 3A on device")
+         cmd = {}
+         cmd["cmdName"] = "do3A"
+         cmd["regions"] = {"ae": sum(regions_ae, []),
+@@ -478,7 +478,7 @@ class ItsSession(object):
+             cmd["awbLock"] = True
+         if ev_comp != 0:
+             cmd["evComp"] = ev_comp
+-        self.sock.send(json.dumps(cmd) + "\n")
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+ 
+         # Wait for each specified 3A to converge.
+         ae_sens = None
+@@ -741,7 +741,7 @@ class ItsSession(object):
+                     raise its.error.Error('Camera props are unavailable')
+                 yuv_maxsize_2d = its.objects.get_available_output_sizes(
+                     "yuv", self.props)[0]
+-                yuv_maxsize_1d = yuv_maxsize_2d[0] * yuv_maxsize_2d[1] * 3 / 2
++                yuv_maxsize_1d = yuv_maxsize_2d[0] * yuv_maxsize_2d[1] * 3 // 2
+                 break
+         yuv_sizes = [c["width"]*c["height"]*3/2
+                      if "width" in c and "height" in c
+@@ -753,7 +753,7 @@ class ItsSession(object):
+             raise its.error.Error(
+                     'ITS does not support yuv outputs of same buffer size')
+         if len(logical_cam_formats) > len(set(logical_cam_formats)):
+-          if n_yuv != len(logical_cam_formats) - len(set(logical_cam_formats)) + 1:
++            if n_yuv != len(logical_cam_formats) - len(set(logical_cam_formats)) + 1:
+                 raise its.error.Error('Duplicate format requested')
+ 
+         raw_formats = 0;
+@@ -770,18 +770,18 @@ class ItsSession(object):
+         for req in cmd["captureRequests"]:
+             if "android.sensor.exposureTime" in req and \
+                     req["android.sensor.exposureTime"] > longest_exp_time:
+-                longest_exp_time = req["android.sensor.exposureTime"]
++                longest_exp_time = int(req["android.sensor.exposureTime"])
+ 
+-        extended_timeout = longest_exp_time / self.SEC_TO_NSEC + \
++        extended_timeout = longest_exp_time // self.SEC_TO_NSEC + \
+                 self.SOCK_TIMEOUT
+         if repeat_request:
+             extended_timeout += self.EXTRA_SOCK_TIMEOUT
+         self.sock.settimeout(extended_timeout)
+ 
+-        print "Capturing %d frame%s with %d format%s [%s]" % (
++        print("Capturing %d frame%s with %d format%s [%s]" % (
+                   ncap, "s" if ncap>1 else "", nsurf, "s" if nsurf>1 else "",
+-                  ",".join(formats))
+-        self.sock.send(json.dumps(cmd) + "\n")
++                  ",".join(formats)))
++        self.sock.send(json.dumps(cmd).encode() + "\n".encode())
+ 
+         # Wait for ncap*nsurf images and ncap metadata responses.
+         # Assume that captures come out in the same order as requested in
+@@ -840,7 +840,7 @@ class ItsSession(object):
+                 if j in physical_cam_ids:
+                     obj["data"] = physical_buffers[physical_cam_ids[j]][i]
+                 elif fmt == 'yuv':
+-                    buf_size = widths[j] * heights[j] * 3 / 2
++                    buf_size = (widths[j] * heights[j] * 3) // 2
+                     obj["data"] = yuv_bufs[buf_size][i]
+                 else:
+                     obj["data"] = bufs[fmt][i]
+@@ -882,7 +882,7 @@ def get_device_id():
+     command = "adb devices"
+     proc = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+     output, error = proc.communicate()
+-    for line in output.split(os.linesep):
++    for line in output.decode('utf-8').split(os.linesep):
+         device_info = line.split()
+         if len(device_info) == 2 and device_info[1] == "device":
+             devices.append(device_info[0])
+@@ -942,7 +942,7 @@ def report_result(device_id, camera_id, results):
+             ItsSession.EXTRA_CAMERA_ID, camera_id,
+             ItsSession.EXTRA_RESULTS, json_results)
+     if len(cmd) > 4095:
+-        print "ITS command string might be too long! len:", len(cmd)
++        print("ITS command string might be too long! len:", len(cmd))
+     _run(cmd)
+ 
+ def adb_log(device_id, msg):
+@@ -972,14 +972,11 @@ def get_device_fingerprint(device_id):
+     com = ('adb -s %s shell getprop | grep ro.build.fingerprint' % device_id)
+     proc = subprocess.Popen(com.split(), stdout=subprocess.PIPE)
+     output, error = proc.communicate()
++    output = output.decode('utf-8')
+     assert error is None
+ 
+-    lst = string.split( \
+-            string.replace( \
+-            string.replace( \
+-            string.replace(output,
+-            '\n', ''), '[', ''), ']', ''), \
+-            ' ')
++
++    lst = output.replace('\n', '').replace('[', '').replace(']', '').split(' ')
+ 
+     if lst[0].find('ro.build.fingerprint') != -1:
+         device_bfp = lst[1]
+@@ -1014,4 +1011,3 @@ class __UnitTest(unittest.TestCase):
+ 
+ if __name__ == '__main__':
+     unittest.main()
+-
+diff --git a/CameraITS/pymodules/its/image.py b/CameraITS/pymodules/its/image.py
+index 3ea6fa3..5c78bcf 100644
+--- a/CameraITS/pymodules/its/image.py
++++ b/CameraITS/pymodules/its/image.py
+@@ -21,7 +21,7 @@ from PIL import Image
+ import numpy
+ import math
+ import unittest
+-import cStringIO
++import io
+ import copy
+ import random
+ 
+@@ -34,11 +34,11 @@ DEFAULT_YUV_OFFSETS = numpy.array([0, 128, 128])
+ 
+ DEFAULT_GAMMA_LUT = numpy.array(
+         [math.floor(65535 * math.pow(i/65535.0, 1/2.2) + 0.5)
+-         for i in xrange(65536)])
++         for i in range(65536)])
+ 
+ DEFAULT_INVGAMMA_LUT = numpy.array(
+         [math.floor(65535 * math.pow(i/65535.0, 2.2) + 0.5)
+-         for i in xrange(65536)])
++         for i in range(65536)])
+ 
+ MAX_LUT_SIZE = 65536
+ 
+@@ -140,7 +140,7 @@ def unpack_raw10_image(img):
+     """
+     if img.shape[1] % 5 != 0:
+         raise its.error.Error('Invalid raw-10 buffer width')
+-    w = img.shape[1]*4/5
++    w = img.shape[1]*4//5
+     h = img.shape[0]
+     # Cut out the 4x8b MSBs and shift to bits [9:2] in 16b words.
+     msbs = numpy.delete(img, numpy.s_[4::5], 1)
+@@ -148,11 +148,11 @@ def unpack_raw10_image(img):
+     msbs = numpy.left_shift(msbs, 2)
+     msbs = msbs.reshape(h,w)
+     # Cut out the 4x2b LSBs and put each in bits [1:0] of their own 8b words.
+-    lsbs = img[::, 4::5].reshape(h,w/4)
++    lsbs = img[::, 4::5].reshape(h,w//4)
+     lsbs = numpy.right_shift(
+-            numpy.packbits(numpy.unpackbits(lsbs).reshape(h,w/4,4,2),3), 6)
++            numpy.packbits(numpy.unpackbits(lsbs).reshape(h,w//4,4,2),3), 6)
+     # Pair the LSB bits group to 0th pixel instead of 3rd pixel
+-    lsbs = lsbs.reshape(h,w/4,4)[:,:,::-1]
++    lsbs = lsbs.reshape(h,w//4,4)[:,:,::-1]
+     lsbs = lsbs.reshape(h,w)
+     # Fuse the MSBs and LSBs back together
+     img16 = numpy.bitwise_or(msbs, lsbs).reshape(h,w)
+@@ -194,7 +194,7 @@ def unpack_raw12_image(img):
+     """
+     if img.shape[1] % 3 != 0:
+         raise its.error.Error('Invalid raw-12 buffer width')
+-    w = img.shape[1]*2/3
++    w = img.shape[1]*2//3
+     h = img.shape[0]
+     # Cut out the 2x8b MSBs and shift to bits [11:4] in 16b words.
+     msbs = numpy.delete(img, numpy.s_[2::3], 1)
+@@ -202,11 +202,11 @@ def unpack_raw12_image(img):
+     msbs = numpy.left_shift(msbs, 4)
+     msbs = msbs.reshape(h,w)
+     # Cut out the 2x4b LSBs and put each in bits [3:0] of their own 8b words.
+-    lsbs = img[::, 2::3].reshape(h,w/2)
++    lsbs = img[::, 2::3].reshape(h,w//2)
+     lsbs = numpy.right_shift(
+-            numpy.packbits(numpy.unpackbits(lsbs).reshape(h,w/2,2,4),3), 4)
++            numpy.packbits(numpy.unpackbits(lsbs).reshape(h,w//2,2,4),3), 4)
+     # Pair the LSB bits group to pixel 0 instead of pixel 1
+-    lsbs = lsbs.reshape(h,w/2,2)[:,:,::-1]
++    lsbs = lsbs.reshape(h,w//2,2)[:,:,::-1]
+     lsbs = lsbs.reshape(h,w)
+     # Fuse the MSBs and LSBs back together
+     img16 = numpy.bitwise_or(msbs, lsbs).reshape(h,w)
+@@ -250,11 +250,11 @@ def convert_capture_to_planes(cap, props=None):
+         cap = unpack_raw12_capture(cap, props)
+     if cap["format"] == "yuv":
+         y = cap["data"][0:w*h]
+-        u = cap["data"][w*h:w*h*5/4]
+-        v = cap["data"][w*h*5/4:w*h*6/4]
++        u = cap["data"][w*h:w*h*5//4]
++        v = cap["data"][w*h*5//4:w*h*6//4]
+         return ((y.astype(numpy.float32) / 255.0).reshape(h, w, 1),
+-                (u.astype(numpy.float32) / 255.0).reshape(h/2, w/2, 1),
+-                (v.astype(numpy.float32) / 255.0).reshape(h/2, w/2, 1))
++                (u.astype(numpy.float32) / 255.0).reshape(h//2, w//2, 1),
++                (v.astype(numpy.float32) / 255.0).reshape(h//2, w//2, 1))
+     elif cap["format"] == "jpeg":
+         rgb = decompress_jpeg_to_rgb_image(cap["data"]).reshape(w*h*3)
+         return (rgb[::3].reshape(h,w,1),
+@@ -267,9 +267,9 @@ def convert_capture_to_planes(cap, props=None):
+                             buffer=cap["data"][0:w*h*2])
+         img = img.astype(numpy.float32).reshape(h,w) / white_level
+         # Crop the raw image to the active array region.
+-        if props.has_key("android.sensor.info.preCorrectionActiveArraySize") \
++        if "android.sensor.info.preCorrectionActiveArraySize" in props \
+                 and props["android.sensor.info.preCorrectionActiveArraySize"] is not None \
+-                and props.has_key("android.sensor.info.pixelArraySize") \
++                and "android.sensor.info.pixelArraySize" in props \
+                 and props["android.sensor.info.pixelArraySize"] is not None:
+             # Note that the Rect class is defined such that the left,top values
+             # are "inside" while the right,bottom values are "outside"; that is,
+@@ -296,10 +296,10 @@ def convert_capture_to_planes(cap, props=None):
+             else:
+                 raise its.error.Error('Invalid image size metadata')
+         # Separate the image planes.
+-        imgs = [img[::2].reshape(w*h/2)[::2].reshape(h/2,w/2,1),
+-                img[::2].reshape(w*h/2)[1::2].reshape(h/2,w/2,1),
+-                img[1::2].reshape(w*h/2)[::2].reshape(h/2,w/2,1),
+-                img[1::2].reshape(w*h/2)[1::2].reshape(h/2,w/2,1)]
++        imgs = [img[::2].reshape(w*h//2)[::2].reshape(h//2,w//2,1),
++                img[::2].reshape(w*h//2)[1::2].reshape(h//2,w//2,1),
++                img[1::2].reshape(w*h//2)[::2].reshape(h//2,w//2,1),
++                img[1::2].reshape(w*h//2)[1::2].reshape(h//2,w//2,1)]
+         idxs = get_canonical_cfa_order(props)
+         return [imgs[i] for i in idxs]
+     elif cap["format"] == "rawStats":
+@@ -428,7 +428,7 @@ def get_black_level(chan, props, cap_res=None):
+     Returns:
+         The black level value for the specified channel.
+     """
+-    if (cap_res is not None and cap_res.has_key('android.sensor.dynamicBlackLevel') and
++    if (cap_res is not None and 'android.sensor.dynamicBlackLevel' in cap_resand and
+             cap_res['android.sensor.dynamicBlackLevel'] is not None):
+         black_levels = cap_res['android.sensor.dynamicBlackLevel']
+     else:
+@@ -459,8 +459,8 @@ def convert_yuv420_planar_to_rgb_image(y_plane, u_plane, v_plane,
+     y = numpy.subtract(y_plane, yuv_off[0])
+     u = numpy.subtract(u_plane, yuv_off[1]).view(numpy.int8)
+     v = numpy.subtract(v_plane, yuv_off[2]).view(numpy.int8)
+-    u = u.reshape(h/2, w/2).repeat(2, axis=1).repeat(2, axis=0)
+-    v = v.reshape(h/2, w/2).repeat(2, axis=1).repeat(2, axis=0)
++    u = u.reshape(h//2, w//2).repeat(2, axis=1).repeat(2, axis=0)
++    v = v.reshape(h//2, w//2).repeat(2, axis=1).repeat(2, axis=0)
+     yuv = numpy.dstack([y, u.reshape(w*h), v.reshape(w*h)])
+     flt = numpy.empty([h, w, 3], dtype=numpy.float32)
+     flt.reshape(w*h*3)[:] = yuv.reshape(h*w*3)[:]
+@@ -552,8 +552,8 @@ def load_yuv420_planar_to_yuv_planes(yuv_fname, w, h):
+         v = numpy.fromfile(f, numpy.uint8, w*h/4, "")
+         u = numpy.fromfile(f, numpy.uint8, w*h/4, "")
+         return ((y.astype(numpy.float32) / 255.0).reshape(h, w, 1),
+-                (u.astype(numpy.float32) / 255.0).reshape(h/2, w/2, 1),
+-                (v.astype(numpy.float32) / 255.0).reshape(h/2, w/2, 1))
++                (u.astype(numpy.float32) / 255.0).reshape(h//2, w//2, 1),
++                (v.astype(numpy.float32) / 255.0).reshape(h//2, w//2, 1))
+ 
+ 
+ def decompress_jpeg_to_rgb_image(jpeg_buffer):
+@@ -565,7 +565,7 @@ def decompress_jpeg_to_rgb_image(jpeg_buffer):
+     Returns:
+         A numpy array for the RGB image, with pixels in [0,1].
+     """
+-    img = Image.open(cStringIO.StringIO(jpeg_buffer))
++    img = Image.open(io.StringIO(jpeg_buffer))
+     w = img.size[0]
+     h = img.size[1]
+     return numpy.array(img).reshape(h,w,3) / 255.0
+@@ -663,7 +663,7 @@ def compute_image_means(img):
+     """
+     means = []
+     chans = img.shape[2]
+-    for i in xrange(chans):
++    for i in range(chans):
+         means.append(numpy.mean(img[:,:,i], dtype=numpy.float64))
+     return means
+ 
+@@ -679,7 +679,7 @@ def compute_image_variances(img):
+     """
+     variances = []
+     chans = img.shape[2]
+-    for i in xrange(chans):
++    for i in range(chans):
+         variances.append(numpy.var(img[:,:,i], dtype=numpy.float64))
+     return variances
+ 
+@@ -711,7 +711,7 @@ def compute_image_max_gradients(img):
+     """
+     grads = []
+     chans = img.shape[2]
+-    for i in xrange(chans):
++    for i in range(chans):
+         grads.append(numpy.amax(numpy.gradient(img[:, :, i])))
+     return grads
+ 
+@@ -766,16 +766,16 @@ def downscale_image(img, f):
+     h,w,chans = img.shape
+     f = int(f)
+     assert(f >= 1)
+-    h = (h/f)*f
+-    w = (w/f)*f
++    h = (h//f)*f
++    w = (w//f)*f
+     img = img[0:h:,0:w:,::]
+     chs = []
+-    for i in xrange(chans):
++    for i in range(chans):
+         ch = img.reshape(h*w*chans)[i::chans].reshape(h,w)
+-        ch = ch.reshape(h,w/f,f).mean(2).reshape(h,w/f)
+-        ch = ch.T.reshape(w/f,h/f,f).mean(2).T.reshape(h/f,w/f)
+-        chs.append(ch.reshape(h*w/(f*f)))
+-    img = numpy.vstack(chs).T.reshape(h/f,w/f,chans)
++        ch = ch.reshape(h,w//f,f).mean(2).reshape(h,w//f)
++        ch = ch.T.reshape(w//f,h//f,f).mean(2).T.reshape(h//f,w//f)
++        chs.append(ch.reshape(h*w//(f*f)))
++    img = numpy.vstack(chs).T.reshape(h//f,w//f,chans)
+     return img
+ 
+ 
+@@ -858,10 +858,10 @@ def stationary_lens_cap(cam, req, fmt):
+     done = False
+     reqs = [req] * NUM_FRAMES
+     while not done:
+-        print 'Waiting for lens to move to correct location...'
++        print('Waiting for lens to move to correct location...')
+         cap = cam.do_capture(reqs, fmt)
+         done = (cap[NUM_FRAMES-1]['metadata']['android.lens.state'] == 0)
+-        print ' status: ', done
++        print(' status: ', done)
+         trys += 1
+         if trys == NUM_TRYS:
+             raise its.error.Error('Cannot settle lens after %d trys!' % trys)
+@@ -888,7 +888,7 @@ class __UnitTest(unittest.TestCase):
+         x = numpy.array([0.1,0.2,0.3]).reshape(1,1,3)
+         y = apply_matrix_to_image(x, mat).reshape(3).tolist()
+         y_ref = [1.4,3.2,5.0]
+-        passed = all([math.fabs(y[i] - y_ref[i]) < 0.001 for i in xrange(3)])
++        passed = all([math.fabs(y[i] - y_ref[i]) < 0.001 for i in range(3)])
+         self.assertTrue(passed)
+ 
+     def test_apply_lut_to_image(self):
+@@ -899,11 +899,11 @@ class __UnitTest(unittest.TestCase):
+ 
+             lut[x] = 2*x
+         """
+-        lut = numpy.array([2*i for i in xrange(65536)])
++        lut = numpy.array([2*i for i in range(65536)])
+         x = numpy.array([0.1,0.2,0.3]).reshape(1,1,3)
+         y = apply_lut_to_image(x, lut).reshape(3).tolist()
+         y_ref = [0.2,0.4,0.6]
+-        passed = all([math.fabs(y[i] - y_ref[i]) < 0.001 for i in xrange(3)])
++        passed = all([math.fabs(y[i] - y_ref[i]) < 0.001 for i in range(3)])
+         self.assertTrue(passed)
+ 
+     def test_unpack_raw10_image(self):
+diff --git a/CameraITS/pymodules/its/objects.py b/CameraITS/pymodules/its/objects.py
+index a76c7d4..f53e006 100644
+--- a/CameraITS/pymodules/its/objects.py
++++ b/CameraITS/pymodules/its/objects.py
+@@ -117,7 +117,7 @@ def manual_capture_request(
+             req["android.tonemap.mode"] = 3
+             req["android.tonemap.gamma"] = 1.0
+         else:
+-            print "Linear tonemap is not supported"
++            print("Linear tonemap is not supported")
+             assert(False)
+     return req
+ 
+@@ -196,7 +196,7 @@ def set_filter_off_or_fast_if_possible(props, req, available_modes, filter):
+     Returns:
+         Nothing.
+     """
+-    if props.has_key(available_modes):
++    if available_modes in props:
+         if 0 in props[available_modes]:
+             req[filter] = 0
+         elif 1 in props[available_modes]:
+@@ -222,12 +222,12 @@ def turn_slow_filters_off(props, req):
+     set_filter_off_or_fast_if_possible(props, req,
+         "android.colorCorrection.availableAberrationModes",
+         "android.colorCorrection.aberrationMode")
+-    if props.has_key("camera.characteristics.keys"):
++    if "camera.characteristics.keys" in props:
+         chars_keys = props["camera.characteristics.keys"]
+         hot_pixel_modes = \
+                 "android.hotPixel.availableHotPixelModes" in chars_keys
+         edge_modes = "android.edge.availableEdgeModes" in chars_keys
+-    if props.has_key("camera.characteristics.requestKeys"):
++    if "camera.characteristics.requestKeys" in props:
+         req_keys = props["camera.characteristics.requestKeys"]
+         hot_pixel_mode = "android.hotPixel.mode" in req_keys
+         edge_mode = "android.edge.mode" in req_keys
+@@ -345,7 +345,7 @@ def get_max_digital_zoom(props):
+ 
+     maxz = 1.0
+ 
+-    if props.has_key("android.scaler.availableMaxDigitalZoom"):
++    if "android.scaler.availableMaxDigitalZoom" in props:
+         maxz = props["android.scaler.availableMaxDigitalZoom"]
+ 
+     return maxz
+diff --git a/CameraITS/pymodules/its/target.py b/CameraITS/pymodules/its/target.py
+index 01d3c5f..f7bcd1b 100644
+--- a/CameraITS/pymodules/its/target.py
++++ b/CameraITS/pymodules/its/target.py
+@@ -51,7 +51,7 @@ def __do_target_exposure_measurement(its_session):
+         The measured product of sensitivity and exposure time that results in
+             the luma channel of captured shots having an intensity of 0.5.
+     """
+-    print "Measuring target exposure"
++    print("Measuring target exposure")
+ 
+     # Get AE+AWB lock first, so the auto values in the capture result are
+     # populated properly.
+@@ -96,7 +96,7 @@ def __set_cached_target_exposure(exposure):
+     Args:
+         exposure: The value to cache.
+     """
+-    print "Setting cached target exposure"
++    print("Setting cached target exposure")
+     with open(CACHE_FILENAME, "w") as f:
+         f.write(json.dumps({"exposure":exposure}))
+ 
+@@ -154,7 +154,7 @@ def get_target_exposure(its_session=None):
+         if s == "target":
+             cached_exposure = __get_cached_target_exposure()
+     if cached_exposure is not None:
+-        print "Using cached target exposure"
++        print("Using cached target exposure")
+         return cached_exposure
+     if its_session is None:
+         with its.device.ItsSession() as cam:
+diff --git a/CameraITS/tools/run_all_tests.py b/CameraITS/tools/run_all_tests.py
+index b6fdde2..e51d23b 100644
+--- a/CameraITS/tools/run_all_tests.py
++++ b/CameraITS/tools/run_all_tests.py
+@@ -79,7 +79,7 @@ def calc_camera_fov(camera_id):
+         props = cam.get_camera_properties()
+         focal_ls = props['android.lens.info.availableFocalLengths']
+         if len(focal_ls) > 1:
+-            print 'Doing capture to determine logical camera focal length'
++            print('Doing capture to determine logical camera focal length')
+             cap = cam.do_capture(its.objects.auto_capture_request())
+             focal_l = cap['metadata']['android.lens.focalLength']
+         else:
+@@ -91,7 +91,7 @@ def calc_camera_fov(camera_id):
+         fov = str(round(2 * math.degrees(math.atan(diag / (2 * focal_l))), 2))
+     except ValueError:
+         fov = str(0)
+-    print 'Calculated FoV: %s' % fov
++    print('Calculated FoV: %s' % fov)
+     return fov
+ 
+ 
+@@ -228,7 +228,7 @@ def main():
+                     break
+ 
+         if not valid_scenes:
+-            print 'Unknown scene specified:', s
++            print('Unknown scene specified:', s)
+             assert False
+         scenes = temp_scenes
+ 
+@@ -241,11 +241,11 @@ def main():
+     # Make output directories to hold the generated files.
+     topdir = tempfile.mkdtemp(dir=tmp_dir)
+     subprocess.call(['chmod', 'g+rx', topdir])
+-    print "Saving output files to:", topdir, "\n"
++    print("Saving output files to:", topdir, "\n")
+ 
+     device_id = its.device.get_device_id()
+     device_id_arg = "device=" + device_id
+-    print "Testing device " + device_id
++    print("Testing device " + device_id)
+ 
+     # Sanity Check for devices
+     device_bfp = its.device.get_device_fingerprint(device_id)
+@@ -266,15 +266,15 @@ def main():
+         with its.device.ItsSession() as cam:
+             camera_ids = cam.get_camera_ids()
+ 
+-    print "Running ITS on camera: %s, scene %s" % (camera_ids, scenes)
++    print("Running ITS on camera: %s, scene %s" % (camera_ids, scenes))
+ 
+     if auto_scene_switch:
+         # merge_result only supports run_parallel_tests
+         if merge_result_switch and camera_ids[0] == '1':
+-            print 'Skip chart screen'
++            print('Skip chart screen')
+             time.sleep(1)
+         else:
+-            print 'Waking up chart screen: ', chart_host_id
++            print('Waking up chart screen: ', chart_host_id)
+             screen_id_arg = ('screen=%s' % chart_host_id)
+             cmd = ['python', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
+                                           'wake_up_screen.py'), screen_id_arg]
+@@ -285,7 +285,7 @@ def main():
+         camera_fov = calc_camera_fov(camera_id)
+         # Loop capturing images until user confirm test scene is correct
+         camera_id_arg = "camera=" + camera_id
+-        print "Preparing to run ITS on camera", camera_id
++        print("Preparing to run ITS on camera", camera_id)
+ 
+         os.mkdir(os.path.join(topdir, camera_id))
+         for d in scenes:
+@@ -339,7 +339,7 @@ def main():
+                 if cmd is not None:
+                     valid_scene_code = subprocess.call(cmd, cwd=topdir)
+                     assert valid_scene_code == 0
+-            print "Start running ITS on camera %s, %s" % (camera_id, scene)
++            print("Start running ITS on camera %s, %s" % (camera_id, scene))
+             # Extract chart from scene for scene3 once up front
+             chart_loc_arg = ''
+             chart_height = CHART_HEIGHT
+@@ -375,12 +375,12 @@ def main():
+                     if scene == 'sensor_fusion':
+                         if skip_code is not SKIP_RET_CODE:
+                             if rot_rig_id:
+-                                print 'Rotating phone w/ rig %s' % rot_rig_id
++                                print('Rotating phone w/ rig %s' % rot_rig_id)
+                                 rig = ('python tools/rotation_rig.py rotator=%s' %
+                                        rot_rig_id)
+                                 subprocess.Popen(rig.split())
+                             else:
+-                                print 'Rotate phone 15s as shown in SensorFusion.pdf'
++                                print('Rotate phone 15s as shown in SensorFusion.pdf')
+                         else:
+                             test_code = skip_code
+                     if skip_code is not SKIP_RET_CODE:
+@@ -396,7 +396,7 @@ def main():
+                         socket_fail = evaluate_socket_failure(errpath)
+                         if socket_fail:
+                             if num_try != NUM_TRYS-1:
+-                                print ' Retry %s/%s' % (scene, testname)
++                                print(' Retry %s/%s' % (scene, testname))
+                             else:
+                                 break
+                         else:
+@@ -419,7 +419,7 @@ def main():
+                     test_failed = True
+ 
+                 msg = "%s %s/%s [%.1fs]" % (retstr, scene, testname, t1-t0)
+-                print msg
++                print(msg)
+                 its.device.adb_log(device_id, msg)
+                 msg_short = "%s %s [%.1fs]" % (retstr, testname, t1-t0)
+                 if test_failed:
+@@ -439,11 +439,11 @@ def main():
+                 100.0 * float(numpass + num_not_mandated_fail) /
+                 (len(tests) - numskip)
+                 if len(tests) != numskip else 100.0, skipstr)
+-            print test_result
++            print(test_result)
+ 
+             if num_not_mandated_fail > 0:
+                 msg = "(*) tests are not yet mandated"
+-                print msg
++                print(msg)
+ 
+             summary_path = os.path.join(topdir, camera_id, scene, "summary.txt")
+             with open(summary_path, "w") as f:
+@@ -457,7 +457,7 @@ def main():
+             results[scene][ItsSession.END_TIME_KEY] = scene_end_time
+ 
+         msg = "Reporting ITS result to CtsVerifier"
+-        print msg
++        print(msg)
+         its.device.adb_log(device_id, msg)
+         if merge_result_switch:
+             # results are modified by report_result
+@@ -468,23 +468,23 @@ def main():
+ 
+     if auto_scene_switch:
+         if merge_result_switch:
+-            print 'Skip shutting down chart screen'
++            print('Skip shutting down chart screen')
+         else:
+-            print 'Shutting down chart screen: ', chart_host_id
++            print('Shutting down chart screen: ', chart_host_id)
+             screen_id_arg = ('screen=%s' % chart_host_id)
+             cmd = ['python', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
+                                           'turn_off_screen.py'), screen_id_arg]
+             screen_off_code = subprocess.call(cmd)
+             assert screen_off_code == 0
+ 
+-            print 'Shutting down DUT screen: ', device_id
++            print('Shutting down DUT screen: ', device_id)
+             screen_id_arg = ('screen=%s' % device_id)
+             cmd = ['python', os.path.join(os.environ['CAMERA_ITS_TOP'], 'tools',
+                                           'turn_off_screen.py'), screen_id_arg]
+             screen_off_code = subprocess.call(cmd)
+             assert screen_off_code == 0
+ 
+-    print "ITS tests finished. Please go back to CtsVerifier and proceed"
++    print("ITS tests finished. Please go back to CtsVerifier and proceed")
+ 
+ if __name__ == '__main__':
+     main()
