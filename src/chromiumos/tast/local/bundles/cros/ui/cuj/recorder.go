@@ -167,13 +167,31 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		direction:     perf.BiggerIsBetter,
 	}}
 
+	success := false
+
 	if err := r.frameDataTracker.Start(ctx, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
 	}
+	defer func() {
+		if success {
+			return
+		}
+		if err := r.frameDataTracker.Stop(ctx, tconn); err != nil {
+			testing.ContextLog(ctx, "Failed to stop frame data tracker: ", err)
+		}
+	}()
 
 	if err := r.zramInfoTracker.Start(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start ZramInfoTracker")
 	}
+	defer func() {
+		if success {
+			return
+		}
+		if err := r.zramInfoTracker.Stop(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to stop zram info tracker: ", err)
+		}
+	}()
 
 	if err := memDiff.SetPrevious(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to prepare baseline for memory diff calcuation")
@@ -182,6 +200,7 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 	if err := r.timeline.StartRecording(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start recording timeline data")
 	}
+	success = true
 
 	return r, nil
 }
