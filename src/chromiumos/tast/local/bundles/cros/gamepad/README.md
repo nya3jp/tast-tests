@@ -196,5 +196,5 @@ func DS3(ctx context.Context, s *testing.State) {
 
 * hid-tools library: https://gitlab.freedesktop.org/libevdev/hid-tools
 * uhid documentation: https://www.kernel.org/doc/Documentation/hid/uhid.txt
-* uhid code: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/kernel/v4.4/include/uapi/linux/uhid.h
+* uhid code: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/third_party/kernel/v4.4/include/uapi/linux/uhid.h
 * uhid library one-pager: https://docs.google.com/document/d/1QfJoGl5lqThX0rtb4HRsARR0DV-XmNAzwwt5U6q4XLw/edit?ts=5e6fc8ac#heading=h.u9plwznjxhnu
