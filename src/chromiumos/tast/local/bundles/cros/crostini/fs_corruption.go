@@ -7,9 +7,11 @@ package crostini
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"strings"
 	"time"
 
@@ -193,6 +195,31 @@ func checkHistogram(ctx context.Context, tconn *chrome.TestConn, baseline int64)
 	return hist.Sum, nil
 }
 
+func readContainerFile(ctx context.Context, container *vm.Container, path string) error {
+	output, err := container.Command(ctx, "cat", path).CombinedOutput()
+
+	if err == nil {
+		return nil
+	}
+
+	// We expect, at least some of the time, to get an error while
+	// running this command because the file is corrupted. But we
+	// might also get an error from a different source. So we try
+	// our to filter out the expected error from other errors by
+	// matching on the output in stderr, the exit code, and the
+	// concrete type of the error.
+
+	expectedOutput := fmt.Sprintf("cat: %s: Input/output error\n", path)
+	if exitError, ok := err.(*exec.ExitError); ok {
+		if string(output) == expectedOutput && exitError.ExitCode() == 1 {
+			testing.ContextLogf(ctx, "Got expected error while reading file: %v, combined output: %q", exitError, output)
+			return nil
+		}
+		return errors.Wrapf(exitError, "got unexpected error while reading file, combined output: %q", output)
+	}
+	return errors.Wrap(err, "got unexpected error while reading file")
+}
+
 // testOverwriteAtOffsets overwrites the VM disk that stores
 // container at the locations in offsets with uuidReplacement. It
 // then restarts the VM and container and checks that the filesystem
@@ -225,7 +252,8 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 
 	testing.ContextLog(ctx, "Restarting VM")
 	// Discard the error, as this may fail due to corruption.
-	if terminal, _ := terminalapp.Launch(ctx, tconn, userName); terminal != nil {
+	var terminal *terminalapp.TerminalApp
+	if terminal, _ = terminalapp.Launch(ctx, tconn, userName); terminal != nil {
 		// Make sure the UI node in terminalapp is released.
 		defer terminal.Close(ctx)
 	}
@@ -233,11 +261,18 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 	// Stop the VM by a direct call to concierge since we want to ensure it isn't running even when there may be an error in the startup process.
 	defer container.VM.Stop(ctx)
 
-	// Filesystem corruption doesn't get detected until some process tries to read from the corrupted location. For metadata, this usually happens during container startup, but we read from both files just to be sure.
-	testing.ContextLog(ctx, "Attempting to read corrupted files")
-	// Error is expected, ignore it.
-	_ = container.Command(ctx, "cat", bigFileDest).Run()
-	_ = container.Command(ctx, "cat", smallFileDest).Run()
+	// Filesystem corruption doesn't get detected until some process tries to read from the corrupted location. For metadata, this usually happens during container startup, but if the container started successfully then we read from both files just to be sure.
+	if terminal != nil {
+		testing.ContextLog(ctx, "Attempting to read corrupted files")
+		if err := readContainerFile(ctx, container, bigFileDest); err != nil {
+			return errors.Wrap(err, "failed to read big file")
+		}
+		if err := readContainerFile(ctx, container, smallFileDest); err != nil {
+			return errors.Wrap(err, "failed to read small file")
+		}
+	} else {
+		testing.ContextLog(ctx, "Terminal failed to start, not trying to read files")
+	}
 
 	testing.ContextLog(ctx, "Waiting for signal from anomaly_detector")
 	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
