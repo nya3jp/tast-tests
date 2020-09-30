@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -19,7 +20,8 @@ func init() {
 		Desc:         "Verifies camera stream function with HAL3 interface",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},
+		Pre:          chrome.LoggedIn(),
 		Timeout:      4 * time.Minute,
 	})
 }
