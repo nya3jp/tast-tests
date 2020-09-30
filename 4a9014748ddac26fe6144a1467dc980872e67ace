@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "90b88e75_d24e900b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-09-30T02:37:00Z",
+      "side": 1,
+      "message": "Do you have a design doc or some other context for this?\n\nWhilst the code looks fine it seems like a complicated approach vs allowing some parts of the test definition to be generated directly by code.  In particular, the example/many_params_test.go is difficult to read and understand.  It would be good to see the tradeoffs considered in this approach.  ",
+      "revId": "4a9014748ddac26fe6144a1467dc980872e67ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26db62eb_3cf9101b",
         "filename": "src/chromiumos/tast/common/genparams/params.go",
         "patchSetId": 10
