@@ -8,6 +8,8 @@ import (
 	"bytes"
 	"context"
 	"encoding/hex"
+	"fmt"
+	"io/ioutil"
 	"net"
 	"reflect"
 	"sort"
@@ -1719,4 +1721,64 @@ func (s *WifiService) WaitForBSSID(ctx context.Context, request *network.WaitFor
 		return nil, errors.Wrap(err, "failed to wait for BSSID")
 	}
 	return &empty.Empty{}, nil
+}
+
+// suspend suspends the DUT for wakeUpTimeout seconds.
+func suspend(ctx context.Context, wakeUpTimeout int) error {
+	const (
+		wakeUpCountPath       = "/sys/power/wakeup_count"
+		powerdDBusSuspendPath = "/usr/bin/powerd_dbus_suspend"
+	)
+
+	if wakeUpTimeout < 2 {
+		// May cause DUT not wake from sleep if the suspend time is 1 second.
+		// It happens when the current clock (floating point) is close to the
+		// next integer, as the RTC sysfs interface only accepts integers.
+		// Make sure it is larger than or equal to 2.
+		return errors.Errorf("unexpected wake up timeout: got %d, want >= 2", wakeUpTimeout)
+	}
+
+	wcByte, err := ioutil.ReadFile(wakeUpCountPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read the wakeup_count")
+	}
+	wc := strings.TrimSpace(string(wcByte))
+
+	r := &cmd.LocalCmdRunner{}
+	if err := r.Run(ctx, powerdDBusSuspendPath, "--timeout=30",
+		"--delay=0", // By default it delays the start of suspending by a second.
+		fmt.Sprintf("--wakeup_count=%s", wc),
+		fmt.Sprintf("--wakeup_timeout=%d", wakeUpTimeout),
+	); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// SuspendAndAssertConnect suspends the DUT and wait for connection after resuming.
+func (s *WifiService) SuspendAndAssertConnect(ctx context.Context, req *network.SuspendAndAssertConnectRequest) (*network.SuspendAndAssertConnectResponse, error) {
+	service, err := shill.NewService(ctx, dbus.ObjectPath(req.ServicePath))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create new service")
+	}
+	pw, err := service.CreateWatcher(ctx)
+	defer pw.Close(ctx)
+
+	if err := suspend(ctx, int(req.WakeUpTimeout)); err != nil {
+		return nil, errors.Wrap(err, "failed to suspend")
+	}
+
+	resumeStartTime := time.Now()
+
+	wCtx, cancel := context.WithTimeout(ctx, time.Second*30)
+	defer cancel()
+	if err := pw.Expect(wCtx, shillconst.ServicePropertyState, shillconst.ServiceStateIdle); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for service to enter idle state")
+	}
+	if err := pw.Expect(wCtx, shillconst.ServicePropertyIsConnected, true); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for connection")
+	}
+
+	return &network.SuspendAndAssertConnectResponse{ReconnectTime: time.Since(resumeStartTime).Nanoseconds()}, nil
 }
