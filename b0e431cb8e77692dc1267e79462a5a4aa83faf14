@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "195acc0d_9192fb88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-10-01T02:56:30Z",
+      "side": 1,
+      "message": "Hey all, apologies for the long time since touching this CL.\nI have revisited the logic and removed the \"full\" DEQP test suites. Let\u0027s try to land this first as a minimal/partial DEQP with only the critical portion of tests to test.\n\nI also added Android P / Android R CTS variants for the two separate ARC types, and fixed a few bugs.\n\nPTAL",
+      "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
