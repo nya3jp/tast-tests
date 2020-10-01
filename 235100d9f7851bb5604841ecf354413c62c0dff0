@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c0adc4d_903c56aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-10-01T07:32:52Z",
+      "side": 1,
+      "message": "Note: This CL is doing almost the same thing with https://crrev.com/c/2391884 ",
+      "revId": "235100d9f7851bb5604841ecf354413c62c0dff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
