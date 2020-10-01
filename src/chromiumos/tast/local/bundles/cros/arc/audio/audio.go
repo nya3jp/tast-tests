@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -32,9 +33,10 @@ const (
 
 // TestParameters holds the ARC audio tast parameters.
 type TestParameters struct {
-	Permission      string
-	Class           string
-	PerformanceMode PerformanceMode
+	Permission           string
+	Class                string
+	PerformanceMode      PerformanceMode
+	BatteryDischargeMode setup.BatteryDischargeMode
 }
 
 const (
