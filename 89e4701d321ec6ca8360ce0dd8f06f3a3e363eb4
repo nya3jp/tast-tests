@@ -16,6 +16,46 @@
       "revId": "89e4701d321ec6ca8360ce0dd8f06f3a3e363eb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9251a44b_b7bbe582",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-01T07:51:18Z",
+      "side": 1,
+      "message": "LGTM with one minor comment...\n",
+      "revId": "89e4701d321ec6ca8360ce0dd8f06f3a3e363eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f253a89_7e0e111f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-01T07:51:18Z",
+      "side": 1,
+      "message": "Please use ctxutil.MaxTimeout instead of 0 to indicate maximum timeout (\u003d context timeout).",
+      "range": {
+        "startLine": 198,
+        "startChar": 36,
+        "endLine": 198,
+        "endChar": 49
+      },
+      "revId": "89e4701d321ec6ca8360ce0dd8f06f3a3e363eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
