@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -36,44 +37,110 @@ func init() {
 			{
 				Name: "default",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModeNone,
+					PerformanceMode:      audio.PerformanceModeNone,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			},
 			{
 				Name: "default_vm",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModeNone,
+					PerformanceMode:      audio.PerformanceModeNone,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			},
 			{
 				Name: "low_latency",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModeLowLatency,
+					PerformanceMode:      audio.PerformanceModeLowLatency,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			},
 			{
 				Name: "low_latency_vm",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModeLowLatency,
+					PerformanceMode:      audio.PerformanceModeLowLatency,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			},
 			{
 				Name: "power_saving",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModePowerSaving,
+					PerformanceMode:      audio.PerformanceModePowerSaving,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			},
 			{
 				Name: "power_saving_vm",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModePowerSaving,
+					PerformanceMode:      audio.PerformanceModePowerSaving,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			},
+			{
+				Name: "default_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModeNone,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			},
+			{
+				Name: "default_vm_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModeNone,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			},
+			{
+				Name: "low_latency_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModeLowLatency,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			},
+			{
+				Name: "low_latency_vm_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModeLowLatency,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			},
+			{
+				Name: "power_saving_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModePowerSaving,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			},
+			{
+				Name: "power_saving_vm_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModePowerSaving,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
 			},
 		},
 		Timeout: 10 * time.Minute,
@@ -117,7 +184,7 @@ func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	sup.Add(setup.PowerTest(ctx, tconn, param.BatteryDischargeMode))
 
 	// Install testing app.
 	a := s.PreValue().(arc.PreData).ARC
