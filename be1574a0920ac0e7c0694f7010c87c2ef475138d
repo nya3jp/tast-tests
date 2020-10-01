@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e97ba2df_22c80e45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-10-01T08:53:12Z",
+      "side": 1,
+      "message": "I think it\u0027s better to write why this change is needed here (improve stability?). Otherwise, we should add a bug number.",
+      "revId": "be1574a0920ac0e7c0694f7010c87c2ef475138d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "427669e5_a67a7fbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-10-01T08:53:12Z",
+      "side": 1,
+      "message": "Changes LGTM with some nits. I\u0027d like to pass to tast experts.",
+      "revId": "be1574a0920ac0e7c0694f7010c87c2ef475138d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a987e73f_45d64fa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-10-01T08:53:12Z",
+      "side": 1,
+      "message": "nit: we should change this since we no longer wait until the number of black pixel count is satisfied.",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 88
+      },
+      "revId": "be1574a0920ac0e7c0694f7010c87c2ef475138d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "900e3c2f_7a7b9cc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-10-01T08:53:12Z",
+      "side": 1,
+      "message": "nit: ditto",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 27
+      },
+      "revId": "be1574a0920ac0e7c0694f7010c87c2ef475138d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
