@@ -7,7 +7,9 @@
 // local and remote tests.
 package shillconst
 
-import "github.com/godbus/dbus"
+import (
+	"github.com/godbus/dbus"
+)
 
 // Type values defined in dbus-constants.h
 // The values are used both for Service type and Technology type.
@@ -203,3 +205,13 @@ const (
 	DeviceBgscanMethodLearn  = "learn"
 	DeviceBgscanMethodNone   = "none"
 )
+
+// IsConnectedState returns true if the value is equal to one of the shillconst.ServiceConnectedStates, false otherwise.
+func IsConnectedState(value interface{}) bool {
+	for _, state := range ServiceConnectedStates {
+		if value == state {
+			return true
+		}
+	}
+	return false
+}
