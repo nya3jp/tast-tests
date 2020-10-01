@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49563538_3a874ce4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-01T22:37:39Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027m still not too clear on the context here; why is it that this test doesn\u0027t fail 100% of the time on devices that don\u0027t support MAC address randomization (and aren\u0027t these devices covered in the hwdeps anyway)? You mentioned in $BUG that you ran the test 10 times on a sarien and got one failure. What\u0027s the source of the flake?",
+      "revId": "d816cdbd33e570e74c8febcc8cc82cfd060506af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e129a6d_d83c66a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-01T22:37:39Z",
+      "side": 1,
+      "message": "Don\u0027t we only need to do this if we need to restore the property?",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "d816cdbd33e570e74c8febcc8cc82cfd060506af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
