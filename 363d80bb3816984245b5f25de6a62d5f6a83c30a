@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fe3a0b4c_3c94b571",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-01T15:03:52Z",
+      "side": 1,
+      "message": "I flipped... this lgtm now.",
+      "revId": "363d80bb3816984245b5f25de6a62d5f6a83c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b59ff49c_7acb0054",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
@@ -37,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f2440eb5_cb0104be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-01T15:03:52Z",
+      "side": 1,
+      "message": "I think about it again and your CL is the right thing to do. We need it inside NewRecorder because we would return err and not constructing the recorder. So the caller would not be able to call Close().\n\nTypically, caller does:\n\n  recorder, err :\u003d cuj.NewRecorder(...)\n  if err !\u003d nil {\n    s.Fatal(\"Failed to create a recorder: \", err)\n  }\n  defer recorder.Close(closeCtx)\n\nAnd we bail on s.Fatal() line and have no chance to call Close.\n\nSo the error must be handled inside NewRecorder.",
+      "parentUuid": "cdc8866a_33cdf42a",
+      "revId": "363d80bb3816984245b5f25de6a62d5f6a83c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3446cbe4_72cdac1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
@@ -66,6 +101,24 @@
       "side": 1,
       "message": "I see, thanks for catching.",
       "parentUuid": "3446cbe4_72cdac1c",
+      "revId": "363d80bb3816984245b5f25de6a62d5f6a83c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0b083e3_6b47876f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-01T15:03:52Z",
+      "side": 1,
+      "message": "I\u0027ll leave this one up to you. It is not necessary but I don\u0027t mind you keep it since the no state is an impl detail and having it is more correct logically.",
+      "parentUuid": "07b0a353_fc844aad",
       "revId": "363d80bb3816984245b5f25de6a62d5f6a83c30a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
