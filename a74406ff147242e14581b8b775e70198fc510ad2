@@ -16,6 +16,23 @@
       "revId": "a74406ff147242e14581b8b775e70198fc510ad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae2f600d_702aa912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-10-01T01:05:44Z",
+      "side": 1,
+      "message": "nit: maybe it\u0027s easier to find/use if we put cacheExtractedVideo as const here?",
+      "revId": "a74406ff147242e14581b8b775e70198fc510ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
