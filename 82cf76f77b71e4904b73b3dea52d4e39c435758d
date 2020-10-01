@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "10f8144e_ba4bc694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-01T06:39:32Z",
+      "side": 1,
+      "message": "bufio.Reader.ReadString may read data from conn beyond the first newline character. So once we start reading conn via a bufio.Reader, we must continue using it; otherwise we may lose some data.",
+      "range": {
+        "startLine": 188,
+        "startChar": 18,
+        "endLine": 188,
+        "endChar": 56
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1008951b_b71a84bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 5
@@ -42,6 +65,53 @@
     },
     {
       "key": {
+        "uuid": "e50fc034_46b8c41b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-01T06:39:32Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "1008951b_b71a84bd",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7287f1_0700b9d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-01T06:39:32Z",
+      "side": 1,
+      "message": "This is not specific to cmdReceivePayload but common to the overall protocol, so I recommend doing it generally (e.g. when reading the command). Or I think it\u0027s also fine to skip this unless it\u0027s definitely need to avoid errors.",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 55
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4360a05c_388a8fe1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 5
@@ -58,6 +128,52 @@
         "startChar": 25,
         "endLine": 252,
         "endChar": 36
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c531d6_a6f58091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-01T06:39:32Z",
+      "side": 1,
+      "message": "Currently payload data is never read. If you want to just discard data, you can do:\n\n io.CopyN(ioutil.Discard, r, payloadSize)",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 8
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e75efdb_6e87284b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-01T06:39:32Z",
+      "side": 1,
+      "message": "Let\u0027s use fmt.Sprintf.",
+      "range": {
+        "startLine": 259,
+        "startChar": 11,
+        "endLine": 259,
+        "endChar": 112
       },
       "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
