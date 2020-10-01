@@ -9,10 +9,12 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
 )
@@ -34,12 +36,13 @@ func init() {
 func Firewall(ctx context.Context, s *testing.State) {
 	const (
 		// Constants for PermissionBroker's API arguments.
-		forwardPort = 1234
-		accessPort  = 1235
-		ip          = "100.115.92.2"
-		iface       = "eth0"
+		forwardPort  = 1234
+		accessPort   = 1235
+		lifelinePort = 1236
+		ip           = "100.115.92.2"
+		iface        = "eth0"
 
-		// Executables path of iptables.
+		// Executable paths of iptables binaries.
 		iptablesCmd  = "/sbin/iptables"
 		ip6tablesCmd = "/sbin/ip6tables"
 
@@ -56,11 +59,17 @@ func Firewall(ctx context.Context, s *testing.State) {
 	}
 
 	// Call PermissionBroker's method with its arguments.
-	call := func(method string, args ...interface{}) {
+	call := func(method string, args ...interface{}) bool {
 		result := false
 		if err := d.CallWithContext(ctx, pbDbusInterface+"."+method, 0, args...).Store(&result); err != nil {
 			s.Errorf("Failed to call %s: %v", method, err)
-		} else if !result {
+		}
+		return result
+	}
+
+	// Call PermissionBroker's method with its arguments, raise an error if the method returns false.
+	checkCall := func(method string, args ...interface{}) {
+		if !call(method, args...) {
 			s.Error(method + " returned false")
 		}
 	}
@@ -85,6 +94,8 @@ func Firewall(ctx context.Context, s *testing.State) {
 	defer cleanupFds(tcpIfaceAccessR, tcpIfaceAccessW)
 	tcpForwardR, tcpForwardW := pipe()
 	defer cleanupFds(tcpForwardR, tcpForwardW)
+	tcpLifelineTestR, tcpLifelineTestW := pipe()
+	defer cleanupFds(tcpLifelineTestR, tcpLifelineTestW)
 	udpAccessR, udpAccessW := pipe()
 	defer cleanupFds(udpAccessR, udpAccessW)
 	udpIfaceAccessR, udpIfaceAccessW := pipe()
@@ -164,7 +175,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 
 	// Call permission_broker's DBus APIs to create firewall rules.
 	for _, tc := range testCases {
-		call(tc.addMethod, tc.addArgs...)
+		checkCall(tc.addMethod, tc.addArgs...)
 	}
 
 	// Check the result of called DBus APIs by comparing it with iptables active rules.
@@ -178,15 +189,44 @@ func Firewall(ctx context.Context, s *testing.State) {
 
 	// Call permission_broker's DBus APIs to delete created firewall rules.
 	for _, tc := range testCases {
-		call(tc.delMethod, tc.delArgs...)
+		checkCall(tc.delMethod, tc.delArgs...)
 	}
 
-	// Check if the created iptables rules is successfully removed by the DBus API calls.
+	// Check if the created iptables rules are successfully removed by the DBus API calls.
 	for _, tc := range testCases {
 		for _, cmd := range tc.cmds {
 			if err := testexec.CommandContext(ctx, cmd, append([]string{"-C"}, tc.rule...)...).Run(); err == nil {
 				s.Error(tc.addMethod + " failed to remove " + cmd + " rule \"" + strings.Join(tc.rule, " ") + "\"")
 			}
 		}
+	}
+
+	// Check that closing the lifeline fd causes the rules to be removed.
+	lifelineTc := testCase{
+		addMethod: "RequestTcpPortAccess",
+		addArgs:   []interface{}{uint16(lifelinePort), "", dbus.UnixFD(tcpLifelineTestR.Fd())},
+		delMethod: "ReleaseTcpPort",
+		delArgs:   []interface{}{uint16(lifelinePort), ""},
+		rule:      []string{"INPUT", "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(lifelinePort), "-j", "ACCEPT", "-w"},
+		cmds:      []string{iptablesCmd, ip6tablesCmd},
+	}
+	checkCall(lifelineTc.addMethod, lifelineTc.addArgs...)
+
+	// Close the lifeline fd to trigger plugging of the firewall hole.
+	tcpLifelineTestW.Close()
+
+	// Wait until the iptables rules are deleted.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// We want 'iptables --check' to fail because we want the rules to be gone.
+		err := testexec.CommandContext(ctx, iptablesCmd, append([]string{"--check"}, lifelineTc.rule...)...).Run()
+		if err == nil {
+			return errors.New("unexpected condition: iptables rules still present; wanted rules not to be present (are lifeline fds working?)")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  10 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		s.Fatal("Could not verify lifeline fd behaviour: ", err)
 	}
 }
