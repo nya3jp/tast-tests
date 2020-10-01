@@ -268,8 +268,8 @@ type ResizeDiskDialog struct {
 	Cancel *uig.Action `name:"Cancel" role:"button"`
 }
 
-// ClickResize clicks Change to resize disk and returns an instance of ResizeDiskDialog.
-func (s *Settings) ClickResize(ctx context.Context) (*ResizeDiskDialog, error) {
+// ClickChange clicks Change to resize disk and returns an instance of ResizeDiskDialog.
+func (s *Settings) ClickChange(ctx context.Context) (*ResizeDiskDialog, error) {
 	dialog := &ResizeDiskDialog{}
 	uig.PageObject(dialog)
 
