@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d87911b0_dfcdf420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_extended.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-01T23:01:11Z",
+      "side": 1,
+      "message": "Do we expected to schedule the tast test (tast.graphics.TraceReplayExtended)? Or we only run the test via our autotest job (graphics_TraceReplayExtended)?\n\nMy understanding is the latter. If so, we don\u0027t need to specify the attribute here.",
+      "range": {
+        "startLine": 26,
+        "startChar": 20,
+        "endLine": 26,
+        "endChar": 134
+      },
+      "revId": "cf38b3a3248476e6196836a4905b41e7d4560442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
