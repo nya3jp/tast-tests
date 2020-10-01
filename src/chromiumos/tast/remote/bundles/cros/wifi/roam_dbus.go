@@ -90,22 +90,15 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 
 	props := []*wificell.ShillProperty{
 		&wificell.ShillProperty{
-			Property:         shillconst.ServicePropertyState,
-			ExpectedValues:   []interface{}{shillconst.ServiceStateConfiguration},
-			UnexpectedValues: []interface{}{shillconst.ServiceStateIdle},
-			Method:           network.ExpectShillPropertyRequest_ON_CHANGE,
+			Property:       shillconst.ServicePropertyState,
+			ExpectedValues: shillconst.ServiceConnectedStates,
+			Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
 		},
 		&wificell.ShillProperty{
-			Property:         shillconst.ServicePropertyState,
-			ExpectedValues:   shillconst.ServiceConnectedStates,
-			UnexpectedValues: []interface{}{shillconst.ServiceStateIdle},
-			Method:           network.ExpectShillPropertyRequest_ON_CHANGE,
-		},
-		&wificell.ShillProperty{
-			Property:         shillconst.ServicePropertyWiFiBSSID,
-			ExpectedValues:   []interface{}{ap2BSSID},
-			UnexpectedValues: nil,
-			Method:           network.ExpectShillPropertyRequest_CHECK_ONLY,
+			Property:            shillconst.ServicePropertyWiFiBSSID,
+			ExpectedValues:      []interface{}{ap2BSSID},
+			MonitoredProperties: []string{shillconst.ServicePropertyState},
+			Method:              network.ExpectShillPropertyRequest_MONITOR_WAIT,
 		},
 	}
 
@@ -148,13 +141,23 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 		s.Errorf("DUT: failed to roam from %s to %s: %v", ap1BSSID, ap2BSSID, err)
 	}
 
-	if err := waitForProps(); err != nil {
+	monitorResult, err := waitForProps()
+	if err != nil {
 		s.Fatal("DUT: failed to wait for the properties, err: ", err)
 	}
-
 	s.Log("DUT: roamed")
 
-	if err := tf.VerifyConnection(ctx, ap2); err != nil {
-		s.Fatal("DUT: failed to verify connection: ", err)
+	// Assert there was no disconnection during roaming.
+	if err := tf.AssertNoDisconnectShillProperties(ctx, monitorResult); err != nil {
+		s.Fatal("DUT: failed to stay connected during the roaming process, err: ", err)
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return tf.VerifyConnection(ctx, ap2)
+	}, &testing.PollOptions{
+		Timeout:  20 * time.Second,
+		Interval: time.Second,
+	}); err != nil {
+		s.Fatal("Failed to verify connection: ", err)
 	}
 }
