@@ -88,6 +88,11 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 		s.Fatal("DUT: failed to verify connection: ", err)
 	}
 
+	stopMonitor, err := tf.MonitorShillProperty(ctx, servicePath, shillconst.ServicePropertyState)
+	if err != nil {
+		s.Fatal("Failed to start shill property monitor: ", err)
+	}
+
 	props := []*wificell.ShillProperty{
 		&wificell.ShillProperty{
 			Property:         shillconst.ServicePropertyState,
@@ -112,6 +117,28 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
 	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props)
+	if err != nil {
+		s.Fatal("DUT: failed to create a property watcher, err: ", err)
+	}
+
+	// This covers the case of no disconnection to the ServicePropertyState and
+	// only change to the BSSID.
+	propsBSSID := []*wificell.ShillProperty{
+		&wificell.ShillProperty{
+			Property:       shillconst.ServicePropertyState,
+			ExpectedValues: shillconst.ServiceConnectedStates,
+			Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
+		},
+		&wificell.ShillProperty{
+			Property:       shillconst.ServicePropertyWiFiBSSID,
+			ExpectedValues: []interface{}{ap2BSSID},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		},
+	}
+
+	waitCtxBSSID, cancel := context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+	waitForPropsBSSID, err := tf.ExpectShillProperty(waitCtxBSSID, servicePath, propsBSSID)
 	if err != nil {
 		s.Fatal("DUT: failed to create a property watcher, err: ", err)
 	}
@@ -149,7 +176,19 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 	}
 
 	if err := waitForProps(); err != nil {
-		s.Fatal("DUT: failed to wait for the properties, err: ", err)
+		if err := waitForPropsBSSID(); err != nil {
+			s.Fatal("DUT: failed to wait for the properties, err: ", err)
+		}
+		propChanges, err := stopMonitor()
+		if err != nil {
+			s.Fatal("DUT: failed to stop shill property monitor, err: ", err)
+		}
+		// Verify that there was no disconnection.
+		if len(propChanges) != 0 {
+			s.Fatal("DUT: failed to wait for the properties, err: ", err)
+		}
+	} else {
+		_, _ = stopMonitor()
 	}
 
 	s.Log("DUT: roamed")
