@@ -17,6 +17,7 @@ import (
 type AnimationFrameData struct {
 	FramesExpected int `json:"framesExpected"`
 	FramesProduced int `json:"framesProduced"`
+	JankCount      int `json:"jankCount"`
 }
 
 // FrameDataTracker is helper to get animation frame data from Chrome.
@@ -79,10 +80,17 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 		Direction: perf.BiggerIsBetter,
 		Multiple:  true,
 	}
+	jcMetric := perf.Metric{
+		Name:      "TPS.Animation.JankCount",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}
 
 	for _, data := range t.animationData {
 		pv.Append(feMetric, float64(data.FramesExpected))
 		pv.Append(fpMetric, float64(data.FramesProduced))
+		pv.Append(jcMetric, float64(data.JankCount))
 	}
 
 	pv.Set(perf.Metric{
