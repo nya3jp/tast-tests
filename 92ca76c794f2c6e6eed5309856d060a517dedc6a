@@ -182,6 +182,30 @@
       "revId": "92ca76c794f2c6e6eed5309856d060a517dedc6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ac168f0_5e1bee74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2020-10-01T12:47:55Z",
+      "side": 1,
+      "message": "To make sure I don\u0027t misunderstand the suggestion - should I look at this page and try to find an element which would make discovering the page easier?",
+      "parentUuid": "ca645717_119f7550",
+      "range": {
+        "startLine": 165,
+        "startChar": 42,
+        "endLine": 165,
+        "endChar": 70
+      },
+      "revId": "92ca76c794f2c6e6eed5309856d060a517dedc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
