@@ -195,6 +195,24 @@
       "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "363bb9de_48a37c45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-10-01T00:30:52Z",
+      "side": 1,
+      "message": "The code will return as soon as the CPU usage is below a certain threshold, so if CPU usage is still low WaitUntilIdle will return a lot quicker.\n\nThe extraction of the YUV file is synchronous, but as CPU scaling is enabled it might take a bit of time for the CPU to scale down after extracting the video. But it probably won\u0027t make a measurable difference if measuring over 5min, and we also have a small warmup duration before we start measuring.",
+      "parentUuid": "ea4be163_2a2d4bb8",
+      "revId": "4d7a2ab485dc229eb98bcdfbc8e4f9f878fd8419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
