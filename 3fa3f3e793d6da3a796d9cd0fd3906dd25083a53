@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4107f32b_a1daed00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-01T06:14:37Z",
+      "side": 1,
+      "message": "Btw, it\u0027s hitting this for eve-arc-r. Do you know why? Is the killing mechanism not working yet?",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 32
+      },
+      "revId": "3fa3f3e793d6da3a796d9cd0fd3906dd25083a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
