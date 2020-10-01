@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "76dbca1c_6a7f7392",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-10-01T07:33:16Z",
+      "side": 1,
+      "message": "Note: This CL is doing almost the same thing with https://crrev.com/c/2391884 ",
+      "revId": "a7815907d3e4843697103a494d9b69936178feb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ab2dd84_dbb1481f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
         "patchSetId": 1
