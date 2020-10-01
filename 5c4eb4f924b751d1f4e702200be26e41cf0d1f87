@@ -16,6 +16,23 @@
       "revId": "5c4eb4f924b751d1f4e702200be26e41cf0d1f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da44d347_47f35c1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-10-01T02:51:40Z",
+      "side": 1,
+      "message": "ToolchainOptions.allowlist has been failing solidly before Sep.25 on betty. Was there any known issue that caused it?",
+      "revId": "5c4eb4f924b751d1f4e702200be26e41cf0d1f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
