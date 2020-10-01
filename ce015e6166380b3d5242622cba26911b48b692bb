@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5c55da4_e68cded4",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-01T20:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bbeb631_93a1ad09",
+      "range": {
+        "startLine": 175,
+        "startChar": 21,
+        "endLine": 175,
+        "endChar": 90
+      },
+      "revId": "ce015e6166380b3d5242622cba26911b48b692bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d65414c_2e990dff",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "235d6728_c4bae446",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-01T20:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d65414c_2e990dff",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "ce015e6166380b3d5242622cba26911b48b692bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5eeec64f_10d0f7a0",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -59,6 +107,24 @@
       "writtenOn": "2020-09-21T03:37:12Z",
       "side": 1,
       "message": "Hmm... Can you also include the expected usage of this function (in RoamAPGone, I guess)? This function seems to have a potential misuse/race, for example, the following case:\n\nIn testbody:\n\n  1. Start MonitorShillProperty\n  2. Do something that might emit PropertyChanged\n  2.1. service emit the change\n  2.2. dbus catches the change and return to watcher.\n  3. Stop monitor and check the result.\n\nAssume 2 and 2.1 are synchronous. However, the order of 2.2 and 3 is still unknown so it is possible that we missed the signal just because we stop a little earlier.",
+      "revId": "ce015e6166380b3d5242622cba26911b48b692bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7ed99ef_6972e03a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-01T20:23:18Z",
+      "side": 1,
+      "message": "That\u0027s true, I changed the stop function to send a dummpy stop monitor signal. That stops the monitor. This should fix the potential race.",
+      "parentUuid": "5eeec64f_10d0f7a0",
       "revId": "ce015e6166380b3d5242622cba26911b48b692bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
