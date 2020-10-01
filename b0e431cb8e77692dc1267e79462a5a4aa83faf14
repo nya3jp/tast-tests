@@ -16,6 +16,46 @@
       "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f53aa56a_c0690cf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-01T03:03:47Z",
+      "side": 1,
+      "message": "I think this will time out at 5 minutes, but you write you ran it locally and it passed? Or are you using a trimmed case list?",
+      "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "938a69cd_58013b9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-01T03:03:47Z",
+      "side": 1,
+      "message": "Will this (gles3/31) take longer than 5 minutes to run?\nYou may want to create your own suites for running dEQP.",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
