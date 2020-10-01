@@ -88,24 +88,23 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 		s.Fatal("DUT: failed to verify connection: ", err)
 	}
 
+	stopMonitor, err := tf.MonitorShillProperty(ctx, servicePath, shillconst.ServicePropertyState)
+	if err != nil {
+		s.Fatal("Failed to start shill property monitor: ", err)
+	}
+
 	props := []*wificell.ShillProperty{
-		&wificell.ShillProperty{
-			Property:         shillconst.ServicePropertyState,
-			ExpectedValues:   []interface{}{shillconst.ServiceStateConfiguration},
-			UnexpectedValues: []interface{}{shillconst.ServiceStateIdle},
-			Method:           network.ExpectShillPropertyRequest_ON_CHANGE,
-		},
 		&wificell.ShillProperty{
 			Property:         shillconst.ServicePropertyState,
 			ExpectedValues:   shillconst.ServiceConnectedStates,
 			UnexpectedValues: []interface{}{shillconst.ServiceStateIdle},
-			Method:           network.ExpectShillPropertyRequest_ON_CHANGE,
+			Method:           network.ExpectShillPropertyRequest_CHECK_ONLY,
 		},
 		&wificell.ShillProperty{
 			Property:         shillconst.ServicePropertyWiFiBSSID,
 			ExpectedValues:   []interface{}{ap2BSSID},
 			UnexpectedValues: nil,
-			Method:           network.ExpectShillPropertyRequest_CHECK_ONLY,
+			Method:           network.ExpectShillPropertyRequest_ON_CHANGE,
 		},
 	}
 
@@ -151,7 +150,23 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 	if err := waitForProps(); err != nil {
 		s.Fatal("DUT: failed to wait for the properties, err: ", err)
 	}
-
+	propChanges, err := stopMonitor()
+	if err != nil {
+		s.Fatal("DUT: failed to stop shill property monitor, err: ", err)
+	}
+	// Verify that there was no disconnection.
+	for _, p := range propChanges {
+		connected := false
+		for _, state := range shillconst.ServiceConnectedStates {
+			if p == state {
+				connected = true
+				break
+			}
+		}
+		if !connected {
+			s.Error("DUT: failed to stay connected during roaming")
+		}
+	}
 	s.Log("DUT: roamed")
 
 	if err := tf.VerifyConnection(ctx, ap2); err != nil {

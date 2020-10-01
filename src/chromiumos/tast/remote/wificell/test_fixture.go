@@ -801,30 +801,48 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 		return errors.Errorf("frequency does not match, got %d want %d", clientFreq, serverFreq)
 	}
 
-	// Check subnet.
-	addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, &network.GetIPv4AddrsRequest{InterfaceName: iface})
-	if err != nil {
-		return errors.Wrap(err, "failed to get client ipv4 addresses")
-	}
-	serverSubnet := ap.ServerSubnet().String()
-	foundSubnet := false
-	for _, a := range addrs.Ipv4 {
-		_, ipnet, err := net.ParseCIDR(a)
-		if err != nil {
-			return errors.Wrapf(err, "failed to parse IP address %s", a)
-		}
-		if ipnet.String() == serverSubnet {
-			foundSubnet = true
-			break
-		}
-	}
-	if !foundSubnet {
-		return errors.Errorf("subnet does not match, got addrs %v want %s", addrs.Ipv4, serverSubnet)
+	if err := tf.CheckSubnet(ctx, iface, ap); err != nil {
+		return err
 	}
 
 	// Perform ping.
 	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
 		return errors.Wrap(err, "failed to ping from the DUT")
+	}
+
+	return nil
+}
+
+// CheckSubnet waits for the server and client subnet to match.
+func (tf *TestFixture) CheckSubnet(ctx context.Context, iface string, ap *APIface) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, &network.GetIPv4AddrsRequest{InterfaceName: iface})
+		if err != nil {
+			return errors.Wrap(err, "failed to get client ipv4 addresses")
+		}
+		serverSubnet := ap.ServerSubnet().String()
+		foundSubnet := false
+		for _, a := range addrs.Ipv4 {
+			_, ipnet, err := net.ParseCIDR(a)
+			if err != nil {
+				return errors.Wrapf(err, "failed to parse IP address %s", a)
+			}
+			if ipnet.String() == serverSubnet {
+				foundSubnet = true
+				break
+			}
+		}
+		if !foundSubnet {
+			return errors.Errorf("subnet does not match, got addrs %v want %s", addrs.Ipv4, serverSubnet)
+		}
+
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  10 * time.Second,
+		Interval: 200 * time.Millisecond,
+	}); err != nil {
+		return err
 	}
 
 	return nil
