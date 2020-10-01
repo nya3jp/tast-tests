@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcDEQPAndroidCTS-11.0r1_20200924.apk",
+  "size": 147359031,
+  "sha256sum": "e86b88eba934a1d74c007c394d792b1139af25bcab7fc477a0cc53eb91f63850"
+}
