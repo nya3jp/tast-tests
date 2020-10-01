@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6893b2cf_df501b35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-01T18:18:16Z",
+      "side": 1,
+      "message": "Just uploaded the latest version. It is much more stable now. It passed on hana and octopus all the time in both mode. Still have problem running on kodama in clamshell_mode. Kept seeing random failures.",
+      "revId": "94c7ee473e7cd63630d9420a6f8ebcf1d82772a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
