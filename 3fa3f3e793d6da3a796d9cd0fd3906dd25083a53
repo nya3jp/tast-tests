@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7372d8b1_abd05924",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-10-01T19:50:19Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "3fa3f3e793d6da3a796d9cd0fd3906dd25083a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4107f32b_a1daed00",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 1
@@ -13,6 +30,30 @@
       "writtenOn": "2020-10-01T06:14:37Z",
       "side": 1,
       "message": "Btw, it\u0027s hitting this for eve-arc-r. Do you know why? Is the killing mechanism not working yet?",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 32
+      },
+      "revId": "3fa3f3e793d6da3a796d9cd0fd3906dd25083a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d34f409_ded153d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-10-01T19:50:19Z",
+      "side": 1,
+      "message": "Not sure about eve-arc-r, but all the boards starting failing recently http://b/169286242 . I haven\u0027t had a chance to look into yet but will update the bug as soon as I do.",
+      "parentUuid": "4107f32b_a1daed00",
       "range": {
         "startLine": 206,
         "startChar": 3,
