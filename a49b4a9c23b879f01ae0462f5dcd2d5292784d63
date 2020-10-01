@@ -550,6 +550,24 @@
       "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bfdaf8_3cba2897",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-01T23:24:01Z",
+      "side": 1,
+      "message": "I also added check for ScrollableShelfInfo.IsAnimating based on your previous comments. Please review. Thanks.",
+      "parentUuid": "717c8c10_fcbf0669",
+      "revId": "a49b4a9c23b879f01ae0462f5dcd2d5292784d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
