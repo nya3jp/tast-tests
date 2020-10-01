@@ -33,6 +33,24 @@
       "revId": "5c4eb4f924b751d1f4e702200be26e41cf0d1f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba7a986_74dcfabd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-10-01T12:44:36Z",
+      "side": 1,
+      "message": "Yes, it was fixed by Nicole\u0027s CL at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2423553, which is why we want to move it back to being critical.",
+      "parentUuid": "da44d347_47f35c1b",
+      "revId": "5c4eb4f924b751d1f4e702200be26e41cf0d1f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
