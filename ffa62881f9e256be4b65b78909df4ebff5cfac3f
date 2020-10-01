@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "61c3843d_bcdef85c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-10-01T22:06:29Z",
+      "side": 1,
+      "message": "I see it now as well, I guess I was doing something weird. Thanks for checking.",
+      "parentUuid": "c3f21a0f_81815d82",
+      "revId": "ffa62881f9e256be4b65b78909df4ebff5cfac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11e7553d_8b4008d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/arc_availability.go",
         "patchSetId": 4
