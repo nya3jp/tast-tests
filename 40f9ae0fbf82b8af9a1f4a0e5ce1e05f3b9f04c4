@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "097d6757_50f73e8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-01T01:32:35Z",
+      "side": 1,
+      "message": "Thanks for the clarification!\nThat\u0027s indeed tricky, but still I wish if we have a nice way to reset the status of app-list and shelf -- that is technically feasible, we just haven\u0027t done that yet.\n\nIt is always great to use a precondition as it reduces the test running time -- we don\u0027t want to slowdown the CQ or any test time.\n\nAgain this is unavoidable right now and so doesn\u0027t block any progress of this CL.  But I happen to be an owner of autotest API so let me know if there\u0027s something I can help.",
+      "parentUuid": "2f93cec6_db2d9eb3",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e970097c_c7ecde7f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 29
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "If I comment out the lines for sleeping, it may fail at line 214 of launcher.go. Not all the time but frequently. I think I see failure 8 out of 10 times.\n\nPin apps to the shelf from the launcher\n\tat chromiumos/tast/local/bundles/cros/ui.LauncherPinAppToShelf (launcher_pin_app_to_shelf.go:98)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3 (run.go:669)\n\tat chromiumos/tast/internal/planner.safeCall.func1 (safe.go:58)\n\tat runtime.goexit (asm_arm.s:868)\nfail to pin app \"Web Store\" to shelf\n\tat chromiumos/tast/local/bundles/cros/ui.pinApps (launcher_pin_app_to_shelf.go:187)\n\tat chromiumos/tast/local/bundles/cros/ui.LauncherPinAppToShelf (launcher_pin_app_to_shelf.go:97)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3 (run.go:669)\n\tat chromiumos/tast/internal/planner.safeCall.func1 (safe.go:58)\n\tat runtime.goexit (asm_arm.s:868)\noption \"Pin to shelf\" is not available\n\tat chromiumos/tast/local/chrome/ui/launcher.PinAppToShelf (launcher.go:214)\n\tat chromiumos/tast/local/bundles/cros/ui.pinApps (launcher_pin_app_to_shelf.go:186)\n\tat chromiumos/tast/local/bundles/cros/ui.LauncherPinAppToShelf (launcher_pin_app_to_shelf.go:97)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3 (run.go:669)\n\tat chromiumos/tast/internal/planner.safeCall.func1 (safe.go:58)\n\tat runtime.goexit (asm_arm.s:868)\ncdp.Runtime: CallFunctionOn: context deadline exceeded\n\tat ???\n\n\nWhen it failed, I have observed that I could not even see the mouse cursor. Again, it only happens when I use ash.EnsureTabletModeEnabled to change the DUT from tablet to clamshell mode.",
       "parentUuid": "8154c1e1_05ca49f1",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "198d1e1c_a168ac56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-01T01:32:35Z",
+      "side": 1,
+      "message": "Thanks for the details.  It is weird that you couldn\u0027t find the mouse cursor, but possibly it was because the location data of app icon is still a bit old.  Maybe ui.WaitForLocationChangeCompleted() might be a better waiting strategy if so.",
+      "parentUuid": "9c640d38_09bcee72",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -391,6 +439,30 @@
       "side": 1,
       "message": "In this case, I think I need to run all teststhat use pointer package to make sure I don\u0027t break anything. Do you have a list of tests that you want to run? Thanks.",
       "parentUuid": "fcd1c724_c95e4b3b",
+      "range": {
+        "startLine": 131,
+        "startChar": 39,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ce0c71_18841d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-01T01:32:35Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/search?q\u003dbundles%2Fcros%2Fui%2Fpointer\u0026sq\u003dpackage:%5Echromeos_public$ should be the list.\nOr, at least the Go compiler can report error for missing imports, so just \u0027tast run\u0027 will show the list of locations.",
+      "parentUuid": "abf63bb8_5db3e209",
       "range": {
         "startLine": 131,
         "startChar": 39,
