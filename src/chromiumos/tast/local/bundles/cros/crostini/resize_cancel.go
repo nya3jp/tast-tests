@@ -78,7 +78,7 @@ func ResizeCancel(ctx context.Context, s *testing.State) {
 	}
 
 	// Click Resize on Linux settings page.
-	resizeDlg, err := st.ClickResize(ctx)
+	resizeDlg, err := st.ClickChange(ctx)
 	if err != nil {
 		s.Fatal("Failed to click button Change on Linux settings page: ", err)
 	}
