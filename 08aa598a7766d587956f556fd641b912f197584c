@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "897c2260_4283951f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T05:24:02Z",
+      "side": 1,
+      "message": "hugenit: maybe retErr to be consistent?",
+      "range": {
+        "startLine": 343,
+        "startChar": 42,
+        "endLine": 343,
+        "endChar": 45
+      },
+      "revId": "08aa598a7766d587956f556fd641b912f197584c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ab2a8e_7dd1e499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T05:24:02Z",
+      "side": 1,
+      "message": "nit: \"const code \u003d\"",
+      "revId": "08aa598a7766d587956f556fd641b912f197584c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
