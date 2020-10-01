@@ -24,6 +24,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type params struct {
+	RunARC bool // Whether ARC needs to run
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     LowMemoryKiller,
@@ -31,13 +35,26 @@ func init() {
 		Contacts: []string{"wvk@chromium.org"},
 		Attr:     []string{"group:mainline", "informational"},
 		// This test doesn't run well in VMs. See crbug.com/1103472.
-		SoftwareDeps: []string{"chrome", "android_p", "no_qemu"},
+		SoftwareDeps: []string{"chrome", "no_qemu"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val: params{
+				RunARC: true,
+			},
+		}, {
+			Name: "vm",
+			Val: params{
+				RunARC: false,
+			},
+		}},
 	})
 }
 
 func LowMemoryKiller(ctx context.Context, s *testing.State) {
+	params := s.Param().(params)
+
 	// Set on-device minimum memory margin before starting Chrome or eating
 	// memory. This way we are sure to consume below the margin and trigger
 	// low memory kills, without triggering kernel OOM.
@@ -85,35 +102,30 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 		defer conn.Close()
 	}
 
-	// Tabs may switch processes soon after loading, so start ARC and example
-	// app before checking tab pids, to allow time for any switches.
-	s.Log("Starting ARC")
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Could not start ARC: ", err)
-	}
-	defer a.Close()
-
 	const (
 		exampleApp      = "com.android.vending"
 		exampleActivity = "com.android.vending.AssetBrowserActivity"
 	)
-	s.Log("Launching ", exampleApp)
-	act, err := arc.NewActivity(a, exampleApp, exampleActivity)
-	if err != nil {
-		s.Fatalf("Could not launch %v: %v", exampleApp, err)
-	}
-	defer act.Close()
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatalf("Could not start %v: %v", exampleApp, err)
-	}
+	if params.RunARC {
+		// Tabs may switch processes soon after loading, so start ARC and example
+		// app before checking tab pids, to allow time for any switches.
+		s.Log("Starting ARC")
+		a, err := arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Could not start ARC: ", err)
+		}
+		defer a.Close()
 
-	s.Log("Retrieving PID of app ", exampleApp)
-	actPID, err := getNewestPID(exampleApp)
-	if err != nil {
-		s.Fatalf("Unable to get pid of %v: %v", exampleApp, err)
+		s.Log("Launching ", exampleApp)
+		act, err := arc.NewActivity(a, exampleApp, exampleActivity)
+		if err != nil {
+			s.Fatalf("Could not launch %v: %v", exampleApp, err)
+		}
+		defer act.Close()
+		if err := act.Start(ctx, tconn); err != nil {
+			s.Fatalf("Could not start %v: %v", exampleApp, err)
+		}
 	}
-	s.Logf("PID of %v: %v", exampleApp, actPID)
 
 	s.Log("Retrieving PIDs of open tabs")
 
@@ -124,7 +136,16 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 	s.Log("PIDs of Chrome tabs: ", pids)
 
 	s.Log("Checking OOM scores of app and tabs")
-	pids = append(pids, actPID)
+
+	if params.RunARC {
+		s.Log("Retrieving PID of app ", exampleApp)
+		actPID, err := getNewestPID(exampleApp)
+		if err != nil {
+			s.Fatalf("Unable to get pid of %v: %v", exampleApp, err)
+		}
+		s.Logf("PID of %v: %v", exampleApp, actPID)
+		pids = append(pids, actPID)
+	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		for _, pid := range pids {
 			if set, err := checkOOMScoreSet(pid); err != nil {
@@ -138,22 +159,24 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 		s.Fatal("Checking OOM scores failed: ", err)
 	}
 
-	s.Log("Checking OOM scores for system and persistent processes")
-	const (
-		androidHomeApp           = "org.chromium.arc.home"
-		examplePersistentApp     = "org.chromium.arc.applauncher"
-		exampleSystemProcess     = "netd"
-		persistentArcAppOOMScore = -100
-	)
-	for _, name := range []string{examplePersistentApp, exampleSystemProcess, androidHomeApp} {
-		pid, err := getNewestPID(name)
-		if err != nil {
-			s.Fatalf("Unable to get pid of %v: %v", name, err)
-		}
-		if score, err := readOOMScoreAdj(pid); err != nil {
-			s.Fatalf("Checking oom score for %v/%v failed: %v", name, pid, err)
-		} else if score != persistentArcAppOOMScore {
-			s.Errorf("System process %v/%v should have an oom_score_adj of %v, but instead it is %v", name, pid, persistentArcAppOOMScore, score)
+	if params.RunARC {
+		s.Log("Checking OOM scores for system and persistent processes")
+		const (
+			androidHomeApp           = "org.chromium.arc.home"
+			examplePersistentApp     = "org.chromium.arc.applauncher"
+			exampleSystemProcess     = "netd"
+			persistentArcAppOOMScore = -100
+		)
+		for _, name := range []string{examplePersistentApp, exampleSystemProcess, androidHomeApp} {
+			pid, err := getNewestPID(name)
+			if err != nil {
+				s.Fatalf("Unable to get pid of %v: %v", name, err)
+			}
+			if score, err := readOOMScoreAdj(pid); err != nil {
+				s.Fatalf("Checking oom score for %v/%v failed: %v", name, pid, err)
+			} else if score != persistentArcAppOOMScore {
+				s.Errorf("System process %v/%v should have an oom_score_adj of %v, but instead it is %v", name, pid, persistentArcAppOOMScore, score)
+			}
 		}
 	}
 
