@@ -80,6 +80,30 @@
       "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef654250_3bb6c6c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-01T03:20:53Z",
+      "side": 1,
+      "message": "I think you will see the timeout fire on some lab devices, but I am ok to land and iterate.",
+      "parentUuid": "0580551b_5a175837",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
