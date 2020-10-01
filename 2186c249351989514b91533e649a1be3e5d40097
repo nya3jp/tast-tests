@@ -16,6 +16,24 @@
       "revId": "2186c249351989514b91533e649a1be3e5d40097",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8193a4f_ddd96439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-01T17:22:03Z",
+      "side": 1,
+      "message": "Right, this should reduce errors.\nThis error seems happening in the lab actually, so removing this will actually help stabilizing the result numbers in Crosbolt.",
+      "parentUuid": "6988664b_2be12c0c",
+      "revId": "2186c249351989514b91533e649a1be3e5d40097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
