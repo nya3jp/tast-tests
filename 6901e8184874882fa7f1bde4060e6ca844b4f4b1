@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ba58292_4d13c4e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-01T23:24:01Z",
+      "side": 1,
+      "message": "Hi Everybody:\n\nI think I have addressed all the comments. Please review. I have tested twice on each model listed below.\n\noctopus, hana, dru, kodama, jax, karma\n\nThanks for all the valuable comments. I have learned a lot. Please let me know if you have more feedbacks.\n\nThanks.\n\nSeewai\n",
+      "revId": "6901e8184874882fa7f1bde4060e6ca844b4f4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

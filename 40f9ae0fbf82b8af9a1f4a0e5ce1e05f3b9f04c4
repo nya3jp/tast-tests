@@ -274,6 +274,30 @@
     },
     {
       "key": {
+        "uuid": "54061e9b_bb0f37b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-01T23:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "198d1e1c_a168ac56",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9960036_cfda63c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
         "patchSetId": 29
@@ -472,6 +496,30 @@
       "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b1b916_41b2cbe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-01T23:24:01Z",
+      "side": 1,
+      "message": "I have tested with the following tests:\n\ntast -verbose run -build\u003dtrue octopus ui.LauncherPinAppToShelf.tablet_mode ui.LauncherPinAppToShelf.clamshell_mode ui.HotseatSmoke ui.HotseatScrollPerf.tablet_mode ui.HotseatScrollPerf.clamshell_mode ui.SplitViewResizePerf ui.SplitViewResizePerf.clamshell_mode ui.LauncherPageSwitchPerf ui.LauncherPageSwitchPerf.clamshell_mode",
+      "parentUuid": "c2ce0c71_18841d1a",
+      "range": {
+        "startLine": 131,
+        "startChar": 39,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "40f9ae0fbf82b8af9a1f4a0e5ce1e05f3b9f04c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
