@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8cbac8_196f3f97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "Thank you for the offline discussion!\nIt was very helpful for me. Now, I believe I understand your background better. ",
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d736266a_f6080f2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "Could you comment that it is expected to spend the time till the end?\n\n// Run Suspend repeatedly until the timeout.",
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a06c66_8fa745a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "So, this is just a \"task\" rather than \"testing (\u003d run something + verify something)\".\n- Could you avoid passing testing.State, instead take the jobfile path directly?\n  There\u0027s no need to align the signature. Could you please find my below comment, too?\n- (optional): How about renaming this to runStorageTaskPeriodically(). I understand this is designed a part of \"suspend\" test, but the actual responsibility of this one is to run the task only.\n\nWDYT?",
+      "range": {
+        "startLine": 152,
+        "startChar": 47,
+        "endLine": 152,
+        "endChar": 65
+      },
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "444002ab_6d807762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "As?",
+      "range": {
+        "startLine": 162,
+        "startChar": 57,
+        "endLine": 162,
+        "endChar": 59
+      },
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85b2c2ab_1ff8ab60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "Ditto. Let\u0027s avoid passing tesitng.State nor FioResultWriter.\nAlso, maybe \"runPowerSuspendPeriodically\" or something?",
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b878833_b6d0953e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "IIUC, this part needs to run until the suspendBlockTimeout. It\u0027d be better to check given context\u0027s Timeout is longer than it.\nUnfortunately, there\u0027s no way to \"ensure\", but still nice to have it.",
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e1e0bda_117559ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "Unlike other TestBlocks, this one does not verify anything.\nCould you document what is verified this, or the goal of this running?",
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af7ede78_ee508049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "According to the offline discussion, this is a function runs several \"tasks\" in parallel, rather than running \"tests\" in parallel.\n\nMaybe it\u0027d name to runTasksInParallel or something?\nAlso, the tasks would be just \"[]func(ctx context.Context)\". You can pass closures from caller.",
+      "range": {
+        "startLine": 192,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 24
+      },
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abe47bc_bf8b97ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "note: testing.ContextLog() can be used instead, on removing testing.State from argument.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 6
+      },
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d4ff01_12a912ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "I think the test should fail on timeout, too, in this function.\nEach runFioStress runs once, so it is unexpected situation when timeout happens.",
+      "range": {
+        "startLine": 244,
+        "startChar": 2,
+        "endLine": 246,
+        "endChar": 10
+      },
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d6639aa_8db4edfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/quick_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-01T06:34:05Z",
+      "side": 1,
+      "message": "note: with my comment above, this becomes exact same with the one in above file?\nIf so, maybe moving to stress package to be shared (Similar to the previous PS)?",
+      "revId": "c862a877c07e60c72a6ee5675bc8869fa0b99cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
