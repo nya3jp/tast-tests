@@ -95,22 +95,6 @@ func arcVideoTestCleanup(ctx context.Context, a *arc.ARC) {
 	}
 }
 
-// waitForFinishedHack is a temporary replacement for act.WaitForFinished
-// TODO(b/152576355): Use act.WaitForFinished when R is supported
-func waitForFinishedHack(ctx context.Context, a *arc.ARC, ac *arc.Activity) error {
-	pkgRegExp := regexp.MustCompile(ac.PackageName())
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := a.Command(ctx, "dumpsys", "activity", "top").Output(testexec.DumpLogOnError)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "could not get 'dumpsys activity top' output"))
-		}
-		if len(pkgRegExp.FindAllStringSubmatch(string(out), -1)) != 0 {
-			return errors.New("activity still running")
-		}
-		return nil
-	}, nil)
-}
-
 func makeActivityFullscreen(ctx context.Context, activity *arc.Activity, tconn *chrome.TestConn) error {
 	if err := activity.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
 		return err
@@ -211,7 +195,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	}
 
 	s.Log("Waiting for activity to finish")
-	if err := waitForFinishedHack(ctx, a, act); err != nil {
+	if err := act.WaitForFinished(ctx, ctxutil.MaxTimeout); err != nil {
 		s.Fatal("Failed to wait for activity: ", err)
 	}
 
@@ -285,7 +269,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	}
 
 	s.Log("Waiting for activity to finish")
-	if err := waitForFinishedHack(ctx, a, act); err != nil {
+	if err := act.WaitForFinished(ctx, ctxutil.MaxTimeout); err != nil {
 		s.Fatal("Failed to wait for activity: ", err)
 	}
 
