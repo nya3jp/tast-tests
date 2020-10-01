@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "ced8372e_bbdd6a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-01T06:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66024557_617e6f2f",
+      "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08eca849_7a92c741",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 2
@@ -56,6 +74,30 @@
       "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f61dc42_b4ea9be0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-01T06:51:20Z",
+      "side": 1,
+      "message": "Not for a single call, but you\u0027re right that we\u0027d want to see it in the logs if both reads succeeded, so I\u0027ll add a log message here.",
+      "parentUuid": "08eca849_7a92c741",
+      "range": {
+        "startLine": 202,
+        "startChar": 9,
+        "endLine": 202,
+        "endChar": 12
+      },
+      "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "a8e277a6_b152f9fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-01T06:51:20Z",
+      "side": 1,
+      "message": "I think that\u0027s very unlikely. It comes from cat, which isn\u0027t likely to change much.",
+      "parentUuid": "d3753223_b5b975c0",
+      "range": {
+        "startLine": 212,
+        "startChar": 32,
+        "endLine": 212,
+        "endChar": 61
+      },
+      "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0932f3d9_44f58e17",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 2
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "d4cbd25f_72a8608d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-01T06:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0932f3d9_44f58e17",
+      "range": {
+        "startLine": 213,
+        "startChar": 21,
+        "endLine": 213,
+        "endChar": 42
+      },
+      "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b334537b_e49c524e",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 2
@@ -125,6 +215,30 @@
       "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33389533_675da1d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-01T06:51:20Z",
+      "side": 1,
+      "message": "It shouldn\u0027t be more than 1-2 lines, vsh exits immediately on most errors.",
+      "parentUuid": "b334537b_e49c524e",
+      "range": {
+        "startLine": 215,
+        "startChar": 105,
+        "endLine": 215,
+        "endChar": 111
+      },
+      "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
