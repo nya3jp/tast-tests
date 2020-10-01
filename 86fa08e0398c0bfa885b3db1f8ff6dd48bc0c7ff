@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae682515_3db7254f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-01T17:09:47Z",
+      "side": 1,
+      "message": "simple CL, not necessary to wait for the shadow to review.",
+      "revId": "86fa08e0398c0bfa885b3db1f8ff6dd48bc0c7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
