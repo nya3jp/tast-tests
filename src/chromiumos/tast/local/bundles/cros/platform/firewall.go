@@ -9,6 +9,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/godbus/dbus"
 
@@ -34,12 +35,13 @@ func init() {
 func Firewall(ctx context.Context, s *testing.State) {
 	const (
 		// Constants for PermissionBroker's API arguments.
-		forwardPort = 1234
-		accessPort  = 1235
-		ip          = "100.115.92.2"
-		iface       = "eth0"
+		forwardPort  = 1234
+		accessPort   = 1235
+		lifelinePort = 1236
+		ip           = "100.115.92.2"
+		iface        = "eth0"
 
-		// Executables path of iptables.
+		// Executable paths of iptables binaries.
 		iptablesCmd  = "/sbin/iptables"
 		ip6tablesCmd = "/sbin/ip6tables"
 
@@ -85,6 +87,8 @@ func Firewall(ctx context.Context, s *testing.State) {
 	defer cleanupFds(tcpIfaceAccessR, tcpIfaceAccessW)
 	tcpForwardR, tcpForwardW := pipe()
 	defer cleanupFds(tcpForwardR, tcpForwardW)
+	tcpLifelineTestR, tcpLifelineTestW := pipe()
+	defer cleanupFds(tcpLifelineTestR, tcpLifelineTestW)
 	udpAccessR, udpAccessW := pipe()
 	defer cleanupFds(udpAccessR, udpAccessW)
 	udpIfaceAccessR, udpIfaceAccessW := pipe()
@@ -181,12 +185,29 @@ func Firewall(ctx context.Context, s *testing.State) {
 		call(tc.delMethod, tc.delArgs...)
 	}
 
-	// Check if the created iptables rules is successfully removed by the DBus API calls.
+	// Check if the created iptables rules are successfully removed by the DBus API calls.
 	for _, tc := range testCases {
 		for _, cmd := range tc.cmds {
 			if err := testexec.CommandContext(ctx, cmd, append([]string{"-C"}, tc.rule...)...).Run(); err == nil {
 				s.Error(tc.addMethod + " failed to remove " + cmd + " rule \"" + strings.Join(tc.rule, " ") + "\"")
 			}
 		}
+	}
+
+	// Check if closing the lifeline fd causes the rules to be removed.
+	var lifelineTc = testCase{
+		addMethod: "RequestTcpPortAccess",
+		addArgs:   []interface{}{uint16(lifelinePort), "", dbus.UnixFD(tcpLifelineTestR.Fd())},
+		delMethod: "ReleaseTcpPort",
+		delArgs:   []interface{}{uint16(lifelinePort), ""},
+		rule:      []string{"INPUT", "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(lifelinePort), "-j", "ACCEPT", "-w"},
+		cmds:      []string{iptablesCmd, ip6tablesCmd},
+	}
+	call(lifelineTc.addMethod, lifelineTc.addArgs...)
+	tcpLifelineTestW.Close()
+	// Give time for the lifeline clean-up to happen.
+	testing.Sleep(ctx, 1*time.Second)
+	if err := testexec.CommandContext(ctx, iptablesCmd, append([]string{"-C"}, lifelineTc.rule...)...).Run(); err == nil {
+		s.Error(lifelineTc.addMethod + " failed to remove " + iptablesCmd + " rule \"" + strings.Join(lifelineTc.rule, " ") + "\"")
 	}
 }
