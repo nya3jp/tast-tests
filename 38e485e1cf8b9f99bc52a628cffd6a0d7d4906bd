@@ -173,6 +173,30 @@
       "revId": "38e485e1cf8b9f99bc52a628cffd6a0d7d4906bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf66c5a_f8303e45",
+        "filename": "src/chromiumos/tast/common/genparams/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-01T06:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92e11f21_cf544ca7",
+      "range": {
+        "startLine": 7,
+        "startChar": 73,
+        "endLine": 7,
+        "endChar": 79
+      },
+      "revId": "38e485e1cf8b9f99bc52a628cffd6a0d7d4906bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
