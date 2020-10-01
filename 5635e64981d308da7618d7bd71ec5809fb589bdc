@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "66024557_617e6f2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-01T00:39:40Z",
+      "side": 1,
+      "message": "nit: blank line",
+      "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08eca849_7a92c741",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 2
@@ -35,6 +52,52 @@
         "startChar": 9,
         "endLine": 202,
         "endChar": 12
+      },
+      "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3753223_b5b975c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-01T00:39:40Z",
+      "side": 1,
+      "message": "Is this error message likely to change at all in the future? (eg whitespace).  Would it be better to regex match only the important part?",
+      "range": {
+        "startLine": 212,
+        "startChar": 32,
+        "endLine": 212,
+        "endChar": 61
+      },
+      "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0932f3d9_44f58e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-01T00:39:40Z",
+      "side": 1,
+      "message": "Can you use errors.As instead?\n\nhttps://golang.org/pkg/errors/#As",
+      "range": {
+        "startLine": 213,
+        "startChar": 21,
+        "endLine": 213,
+        "endChar": 42
       },
       "revId": "5635e64981d308da7618d7bd71ec5809fb589bdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
