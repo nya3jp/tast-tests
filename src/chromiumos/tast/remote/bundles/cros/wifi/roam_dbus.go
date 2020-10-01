@@ -88,24 +88,23 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 		s.Fatal("DUT: failed to verify connection: ", err)
 	}
 
+	stopMonitor, err := tf.MonitorShillProperties(ctx, servicePath)
+	if err != nil {
+		s.Fatal("Failed to start shill property monitor: ", err)
+	}
+
 	props := []*wificell.ShillProperty{
-		&wificell.ShillProperty{
-			Property:         shillconst.ServicePropertyState,
-			ExpectedValues:   []interface{}{shillconst.ServiceStateConfiguration},
-			UnexpectedValues: []interface{}{shillconst.ServiceStateIdle},
-			Method:           network.ExpectShillPropertyRequest_ON_CHANGE,
-		},
 		&wificell.ShillProperty{
 			Property:         shillconst.ServicePropertyState,
 			ExpectedValues:   shillconst.ServiceConnectedStates,
 			UnexpectedValues: []interface{}{shillconst.ServiceStateIdle},
-			Method:           network.ExpectShillPropertyRequest_ON_CHANGE,
+			Method:           network.ExpectShillPropertyRequest_CHECK_ONLY,
 		},
 		&wificell.ShillProperty{
 			Property:         shillconst.ServicePropertyWiFiBSSID,
 			ExpectedValues:   []interface{}{ap2BSSID},
 			UnexpectedValues: nil,
-			Method:           network.ExpectShillPropertyRequest_CHECK_ONLY,
+			Method:           network.ExpectShillPropertyRequest_ON_CHANGE,
 		},
 	}
 
@@ -152,9 +151,22 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 		s.Fatal("DUT: failed to wait for the properties, err: ", err)
 	}
 
+	propChanges, err := stopMonitor()
+	if err != nil {
+		s.Fatal("DUT: failed to stop shill property monitor, err: ", err)
+	}
 	s.Log("DUT: roamed")
 
-	if err := tf.VerifyConnection(ctx, ap2); err != nil {
-		s.Fatal("DUT: failed to verify connection: ", err)
+	if err := tf.AssertNoDisconnect(ctx, propChanges); err != nil {
+		s.Fatal("DUT: failed to stay connetced during roaming, err: ", err)
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return tf.VerifyConnection(ctx, ap2)
+	}, &testing.PollOptions{
+		Timeout:  20 * time.Second,
+		Interval: time.Second,
+	}); err != nil {
+		s.Fatal("Failed to verify connection: ", err)
 	}
 }
