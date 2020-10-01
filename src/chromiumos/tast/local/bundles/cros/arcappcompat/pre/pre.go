@@ -19,6 +19,11 @@ var appcompatHearthstone = &arc.GaiaVars{
 	PassVar: "arcappcompat.Hearthstone.password",
 }
 
+var appcompatNoteshelf = &arc.GaiaVars{
+	UserVar: "arcappcompat.Noteshelf.username",
+	PassVar: "arcappcompat.Noteshelf.password",
+}
+
 // AppCompatBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the app compat credentials, and opt-in to the Play Store.
 var AppCompatBooted = arc.NewPrecondition("arcappcompat_booted", appcompatGaia, arc.DisableSyncFlags()...)
@@ -34,3 +39,11 @@ var AppCompatBootedForHearthstone = arc.NewPrecondition("arcappcompat_bootedForH
 // AppCompatBootedInTabletModeForHearthstone returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
 var AppCompatBootedInTabletModeForHearthstone = arc.NewPrecondition("arcappcompat_booted_in_tablet_modeForHearthstone", appcompatHearthstone, append(arc.DisableSyncFlags(), "--force-tablet-mode=touch_view", "--enable-virtual-keyboard")...)
+
+// AppCompatBootedForNoteshelf is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
+// that it will GAIA login with the Noteshelf credentials, and opt-in to the Play Store.
+var AppCompatBootedForNoteshelf = arc.NewPrecondition("arcappcompat_bootedForNoteshelf", appcompatNoteshelf, arc.DisableSyncFlags()...)
+
+// AppCompatBootedInTabletModeForNoteshelf returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
+// that Chrome is launched in tablet mode in this precondition.
+var AppCompatBootedInTabletModeForNoteshelf = arc.NewPrecondition("arcappcompat_booted_in_tablet_modeForNoteshelf", appcompatNoteshelf, append(arc.DisableSyncFlags(), "--force-tablet-mode=touch_view", "--enable-virtual-keyboard")...)
