@@ -7,7 +7,9 @@
 // local and remote tests.
 package shillconst
 
-import "github.com/godbus/dbus"
+import (
+	"github.com/godbus/dbus"
+)
 
 // Type values defined in dbus-constants.h
 // The values are used both for Service type and Technology type.
