@@ -84,7 +84,7 @@ func ResizeCancel(ctx context.Context, s *testing.State) {
 	}
 
 	// Click Resize on Linux settings page.
-	resizeDlg, err := st.ClickResize(ctx)
+	resizeDlg, err := st.ClickChange(ctx)
 	if err != nil {
 		s.Fatal("Failed to click button Change on Linux settings page: ", err)
 	}
@@ -92,7 +92,7 @@ func ResizeCancel(ctx context.Context, s *testing.State) {
 	// Get the dialog node and params.
 	dialog, err := uig.GetNode(ctx, tconn, resizeDlg.Self)
 	if err != nil {
-		s.Fatal("Failed to get the node of the Resize Linux diski dialog")
+		s.Fatal("Failed to get the node of the Resize Linux disk dialog")
 	}
 	dialogParams := ui.FindParams{
 		Role: dialog.Role,
