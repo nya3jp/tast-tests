@@ -7,7 +7,11 @@
 // local and remote tests.
 package shillconst
 
-import "github.com/godbus/dbus"
+import (
+	"github.com/godbus/dbus"
+
+	"chromiumos/tast/errors"
+)
 
 // Type values defined in dbus-constants.h
 // The values are used both for Service type and Technology type.
@@ -203,3 +207,16 @@ const (
 	DeviceBgscanMethodLearn  = "learn"
 	DeviceBgscanMethodNone   = "none"
 )
+
+// IsConnectedState asserts that the property value of shillconst.ServicePropertyState is equal to one of the shillconst.ServiceConnectedStates.
+func IsConnectedState(propertyName string, value interface{}) error {
+	if propertyName != ServicePropertyState {
+		return errors.Errorf("unexpected property name: got %s, want %s", propertyName, ServicePropertyState)
+	}
+	for _, state := range ServiceConnectedStates {
+		if value == state {
+			return nil
+		}
+	}
+	return errors.Errorf("detected disconnection state %s", value)
+}
