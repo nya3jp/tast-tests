@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1c89097_923cc71f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-10-01T10:30:03Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\nSorry that I have modified ui_input_gain.go a little bit due to the change of test criteria.\nWould you help to review the new modification of ui_input_gain.go in the latest patchset?\n\nThanks",
+      "revId": "9974a6f5b7ba4b3263deae3da8bf5b607bc94a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
