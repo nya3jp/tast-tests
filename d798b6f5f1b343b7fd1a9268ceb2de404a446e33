@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96a5fe61_4aeddc00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-10-01T07:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4bbe843_487c754e",
+      "range": {
+        "startLine": 439,
+        "startChar": 6,
+        "endLine": 439,
+        "endChar": 10
+      },
+      "revId": "d798b6f5f1b343b7fd1a9268ceb2de404a446e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cfd51ce_f248026e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "02d7830a_d889976b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-10-01T07:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cfd51ce_f248026e",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 15
+      },
+      "revId": "d798b6f5f1b343b7fd1a9268ceb2de404a446e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be041280_98cb029a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "d798b6f5f1b343b7fd1a9268ceb2de404a446e33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "875920c0_e313cfaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-10-01T07:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be041280_98cb029a",
+      "range": {
+        "startLine": 457,
+        "startChar": 10,
+        "endLine": 457,
+        "endChar": 35
+      },
+      "revId": "d798b6f5f1b343b7fd1a9268ceb2de404a446e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
