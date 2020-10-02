@@ -1,0 +1,93 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Package adb enables controlling android devices through the local adb server.
+package adb
+
+import (
+	"context"
+	"os"
+	"syscall"
+
+	"github.com/shirou/gopsutil/process"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
+)
+
+const (
+	adbHome = "/tmp/adb_home"
+)
+
+// LaunchServer installs vendor keys and relaunches the local ADB sever.
+// The server must be relaunched to load the vendor keys.
+func LaunchServer(ctx context.Context) error {
+	testing.ContextLog(ctx, "Installing ADB vendor keys")
+	if err := installVendorKeys(); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Killing existing ADB server process(es)")
+	if err := killADBLocalServer(ctx); err != nil {
+		return errors.Wrap(err, "failed to kill ADB local server")
+	}
+
+	testing.ContextLog(ctx, "Starting ADB server")
+	if err := Command(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed starting ADB local server")
+	}
+	return nil
+}
+
+// Command creates an ADB command with appropriate environment variables.
+func Command(ctx context.Context, args ...string) *testexec.Cmd {
+	cmd := testexec.CommandContext(ctx, "adb", args...)
+	cmd.Env = append(
+		os.Environ(),
+		"ADB_VENDOR_KEYS="+vendorKeyPath(),
+		// adb expects $HOME to be writable.
+		"HOME="+adbHome)
+	return cmd
+}
+
+// killADBLocalServer kills the existing ADB local server if it is running.
+//
+// We do not use adb kill-server since it is unreliable (crbug.com/855325).
+// We do not use killall since it can wait for orphan adb processes indefinitely (b/137797801).
+func killADBLocalServer(ctx context.Context) error {
+	ps, err := process.Processes()
+	if err != nil {
+		return err
+	}
+
+	for _, p := range ps {
+		if name, err := p.Name(); err != nil || name != "adb" {
+			continue
+		}
+		if ppid, err := p.Ppid(); err != nil || ppid != 1 {
+			continue
+		}
+
+		if err := syscall.Kill(int(p.Pid), syscall.SIGKILL); err != nil {
+			// In a very rare race condition, the server process might be already gone.
+			// Just log the error rather than reporting it to the caller.
+			testing.ContextLog(ctx, "Failed to kill ADB local server process: ", err)
+			continue
+		}
+
+		// Wait for the process to exit for sure.
+		// This may take as long as 10 seconds due to busy init process.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// We need a fresh process.Process since it caches attributes.
+			if _, err := process.NewProcess(p.Pid); err == nil {
+				return errors.Errorf("pid %d is still running", p.Pid)
+			}
+			return nil
+		}, nil); err != nil {
+			return errors.Wrap(err, "failed on waiting for ADB local server process to exit")
+		}
+	}
+	return nil
+}
