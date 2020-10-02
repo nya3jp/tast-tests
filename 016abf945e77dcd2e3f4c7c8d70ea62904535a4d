@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6799e60_72c27c68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-02T21:05:47Z",
+      "side": 1,
+      "message": "I didn\u0027t see the random failures in kodama after I focused on the icon before I dragged.\n\nThe current test has passed all tested model at least twice.\n\nPlease review.\n\nThanks.\n",
+      "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
