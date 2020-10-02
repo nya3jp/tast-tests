@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35bd8519_334c2ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/gpu_mem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-02T21:10:29Z",
+      "side": 1,
+      "message": "should be safe as underlying cdp library (devtools library) is concurrently-safe (https://github.com/mafredri/cdp)",
+      "parentUuid": "c583bc23_22ec1842",
+      "range": {
+        "startLine": 80,
+        "startChar": 41,
+        "endLine": 80,
+        "endChar": 49
+      },
+      "revId": "b8497b26e6f2070016e9feb1f80f4f9051c17b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d2b3760_0ade40f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "b8497b26e6f2070016e9feb1f80f4f9051c17b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5ab239_8d418583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-02T21:10:29Z",
+      "side": 1,
+      "message": "Done.  Indeed, if Close should be called, it\u0027s better to be called here (gpuDataSource.Stop() can\u0027t be called twice with the current form -- close() on already-closed channel causes a panic).",
+      "parentUuid": "9d2b3760_0ade40f6",
+      "revId": "b8497b26e6f2070016e9feb1f80f4f9051c17b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
