@@ -49,7 +49,7 @@ func Printer(ctx context.Context, s *testing.State) {
 		ctx, "CUPS rejects names with spaces",
 		"socket://127.0.0.1/ipp/fake_printer", ppd); err != nil {
 		s.Error("Failed to call CupsAddManuallyConfiguredPrinter: ", err)
-	} else if result != debugd.CUPSLPAdminFailure {
+	} else if result != debugd.CUPSFatal {
 		s.Error("Names with spaces should be rejected by CUPS: ", result)
 	}
 
@@ -76,15 +76,15 @@ func Printer(ctx context.Context, s *testing.State) {
 	if result, err := d.CupsAddAutoConfiguredPrinter(
 		ctx, "AutoconfPrinter", "ipp://127.0.0.1/ipp/print"); err != nil {
 		s.Error("Failed to call CupsAddAutoConfiguredPrinter: ", err)
-	} else if result != debugd.CUPSAutoconfFailure {
+	} else if result != debugd.CUPSPrinterUnreachable {
 		s.Error("Incorrect error code received: ", result)
 	}
 
 	s.Log("Attempting to add a url that is not a printer")
 	if result, err := d.CupsAddAutoConfiguredPrinter(
-		ctx, "NotAPrinter", "ipps://gstatic.com"); err != nil {
+		ctx, "NotAPrinter", "ipps://gstatic.com:443"); err != nil {
 		s.Error("Calling printer setup crashed: ", err)
-	} else if result != debugd.CUPSAutoconfFailure {
+	} else if result != debugd.CUPSPrinterWrongResponse {
 		s.Error("Incorrect error code received: ", result)
 	}
 }
