@@ -16,6 +16,161 @@
       "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa530bea_ff7a0798",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-02T20:21:38Z",
+      "side": 1,
+      "message": "Sorry for late reply on this. Left a few comments",
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10c44b88_a1f4b279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-02T20:21:38Z",
+      "side": 1,
+      "message": "Why are you launching this app and not doing anything afterwards?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034deab8_232c9cfe",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-02T20:21:38Z",
+      "side": 1,
+      "message": "Is there any autotestprivate methods you can call at the end to verify that the pinning worked?",
+      "range": {
+        "startLine": 596,
+        "startChar": 5,
+        "endLine": 596,
+        "endChar": 20
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47836459_d0c924c2",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-02T20:21:38Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 662,
+        "startChar": 30,
+        "endLine": 662,
+        "endChar": 42
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a062d8e_1dcf0c08",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-02T20:21:38Z",
+      "side": 1,
+      "message": "Does this work if the app is on the second page of apps?",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 24
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c212aa46_e1361968",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-02T20:21:38Z",
+      "side": 1,
+      "message": "Does this mean it will scroll to the page with it?",
+      "range": {
+        "startLine": 185,
+        "startChar": 16,
+        "endLine": 185,
+        "endChar": 28
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04246e8a_2d47475b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-02T20:21:38Z",
+      "side": 1,
+      "message": "You mean just that the app is launched",
+      "range": {
+        "startLine": 192,
+        "startChar": 21,
+        "endLine": 192,
+        "endChar": 27
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
