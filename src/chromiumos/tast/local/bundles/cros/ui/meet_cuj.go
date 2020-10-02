@@ -13,13 +13,27 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
+
+// meetTest specifies the setting of a Hangouts Meet journey.
+type meetTest struct {
+	num    int    // Number of the participants in the meeting.
+	layout string // Type of the layout in the meeting: Spotlight/Tiled/Sidebar/Auto.
+	pre    bool   // Whether it is presenting or not.
+	docs   bool   // Whether it is running with a Google Docs window.
+	split  bool   // Whether it is in split screen mode.
+	cam    bool   // Whether the camera is on or not.
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -36,15 +50,58 @@ func init() {
 			"ui.cuj_username",
 			"ui.cuj_password",
 		},
+		Params: []testing.Param{{
+			Name: "base_case",
+			Val: meetTest{
+				num:    4,
+				layout: "Tiled",
+				pre:    false,
+				docs:   false,
+				split:  false,
+				cam:    false,
+			},
+		}, {
+			Name: "worst_case",
+			Val: meetTest{
+				num:    4,
+				layout: "Tiled",
+				pre:    true,
+				docs:   true,
+				split:  true,
+				cam:    true,
+			},
+		}},
 	})
 }
 
+// MeetCUJ measures the performance of critical user journeys for Google Meet.
+// Journeys for Google Meet are specified by testing parameters.
+//
+// Pre-preparation:
+//   - Open a Meet window.
+//   - Create and enter the meeting code.
+//   - Open a Google Docs window (if necessary).
+//   - Enter split mode (if necessary).
+//   - Turn off camera (if necessary).
+// During recording:
+//   - Join the meeting.
+//   - Add participants(bots) to the meeting.
+//   - Set up the layout.
+//   - Max out the number of the maximum tiles (if necessary).
+//   - Start to present (if necessary).
+//   - Wait for 30 seconds before ending the meeting.
+// After recording:
+//   - Record and save metrics.
 func MeetCUJ(ctx context.Context, s *testing.State) {
 	const (
 		timeout     = 10 * time.Second
-		numBots     = 4
 		botDuration = 2 * time.Minute
+		docsURL     = "https://docs.google.com/document/d/1qREN9w1WgjgdGYBT_eEtE6T21ErlW_4nQoBJVhrR1S0/edit"
 	)
+
+	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
+
+	meet := s.Param().(meetTest)
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
@@ -96,31 +153,59 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(closeCtx)
 
-	conn, err := cr.NewConn(ctx, "https://meet.google.com/")
+	meetConn, err := cr.NewConn(ctx, "https://meet.google.com/", cdputil.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
-	defer conn.Close()
-	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
+	defer meetConn.Close()
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// Make it into a normal window if it is in clamshell-mode; so that the
-	// desktop needs to compose the browser window with the wallpaper.
 	inTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	s.Logf("Is in tablet-mode: %t", inTabletMode)
 	if err != nil {
 		s.Fatal("Failed to detect it is in tablet-mode or not: ", err)
 	}
 	if !inTabletMode {
+		// Make it into a maximized window if it is in clamshell-mode.
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to obtain the window list: ", err)
 		}
 		for _, w := range ws {
-			if _, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventNormal); err != nil {
-				s.Fatalf("Failed to change the window %s (%d) to normal: %v", w.Name, w.ID, err)
+			if _, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventMaximize); err != nil {
+				s.Fatalf("Failed to change the window %s (%d) to maximized: %v", w.Name, w.ID, err)
+			}
+		}
+	} else {
+		// If it is in tablet mode, ensure it it in landscape orientation.
+		orientation, err := display.GetOrientation(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get display orientation: ", err)
+		}
+		if orientation.Type == display.OrientationPortraitPrimary {
+			info, err := display.GetPrimaryInfo(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to get the primary display info", err)
+			}
+			s.Log("Rotating display 90 degrees")
+			if err := display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
+				s.Fatal("Failed to rotate display:", err)
 			}
 		}
 	}
 
+	var pc pointer.Controller
+	if !inTabletMode {
+		pc = pointer.NewMouseController(tconn)
+	} else {
+		pc, err = pointer.NewTouchController(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create a touch controller: ", err)
+		}
+	}
+	defer pc.Close()
+
+	// Find the web view of Meet window.
 	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find webview: ", err)
@@ -133,7 +218,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find the meeting code: ", err)
 	}
 	defer enter.Release(closeCtx)
-	if err := enter.LeftClick(ctx); err != nil {
+	if err := enter.StableLeftClick(ctx, &pollOpts); err != nil {
 		s.Fatal("Failed to click the input form: ", err)
 	}
 	kw, err := input.Keyboard(ctx)
@@ -171,7 +256,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to find the allow button")
 			}
 			defer allowButton.Release(closeCtx)
-			if err := allowButton.LeftClick(ctx); err != nil {
+			if err := allowButton.StableLeftClick(ctx, &pollOpts); err != nil {
 				return errors.Wrap(err, "failed to click the allow button")
 			}
 			if err := testing.Sleep(ctx, time.Second); err != nil {
@@ -183,6 +268,105 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to skip the permission requests: ", err)
 	}
 
+	if meet.docs {
+		// Create another browser window and open a Google Docs file.
+		docsConn, err := cr.NewConn(ctx, docsURL, cdputil.WithNewWindow())
+		if err != nil {
+			s.Fatal("Failed to open the google docs website: ", err)
+		}
+		defer docsConn.Close()
+		s.Log("Create a Google Docs window")
+	}
+
+	// Enter overview mode to enter make the Meet window on top or split mode.
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+		s.Fatal("Failed to set overview mode: ", err)
+	}
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the window list: ", err)
+	}
+	var meetWindow, docsWindow *ash.Window
+	for _, w := range ws {
+		if w.Title == "Chrome - Meet - "+meetingCode {
+			meetWindow = w
+		} else {
+			docsWindow = w
+		}
+	}
+	// There should be always a Hangouts Meet window.
+	if meetWindow == nil {
+		s.Fatal("Failed to find Meet window")
+	}
+	if meet.split {
+		// If it is in split mode, snap Meet window to the left and Ggoogle Docs window to the right.
+		info, err := display.GetPrimaryInfo(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get the primary display info: ", err)
+		}
+		snapLeftPoint := coords.NewPoint(info.WorkArea.Left+1, info.WorkArea.CenterY())
+		snapRightPoint := coords.NewPoint(info.WorkArea.Right()-1, info.WorkArea.CenterY())
+		if inTabletMode {
+			// In tablet mode, dragging windows from overview needs a long press before dragging.
+			if err := pc.Press(ctx, meetWindow.OverviewInfo.Bounds.CenterPoint()); err != nil {
+				s.Fatal("Failed to start drag the Meet window to snap to the right: ", err)
+			}
+			if err := testing.Sleep(ctx, time.Second); err != nil {
+				s.Fatal("Failed to wait for touch to become long press: ", err)
+			}
+			if err := pc.Move(ctx, meetWindow.OverviewInfo.Bounds.CenterPoint(), snapRightPoint, time.Second); err != nil {
+				s.Fatal("Failed to the Meet window to snap: ", err)
+			}
+			if err := pc.Release(closeCtx); err != nil {
+				s.Fatal("Failed to end dragging the Meet window to snap: ", err)
+			}
+			if docsWindow != nil {
+				if err := pc.Press(ctx, docsWindow.OverviewInfo.Bounds.CenterPoint()); err != nil {
+					s.Fatal("Failed to start drag the Google Docs window to snap to the left: ", err)
+				}
+				if err := testing.Sleep(ctx, time.Second); err != nil {
+					s.Fatal("Failed to wait for touch to become long press: ", err)
+				}
+				if err := pc.Move(ctx, docsWindow.OverviewInfo.Bounds.CenterPoint(), snapLeftPoint, time.Second); err != nil {
+					s.Fatal("Failed to the Google Docs window to snap: ", err)
+				}
+				if err := pc.Release(closeCtx); err != nil {
+					s.Fatal("Failed to end dragging the Google Docs window to snap: ", err)
+				}
+			}
+		} else {
+			if err := pointer.Drag(ctx, pc, meetWindow.OverviewInfo.Bounds.CenterPoint(), snapRightPoint, time.Second); err != nil {
+				s.Fatal("Failed to drag the Meet window to snap to the left", err)
+			}
+			if docsWindow != nil {
+				if err := pointer.Drag(ctx, pc, docsWindow.OverviewInfo.Bounds.CenterPoint(), snapLeftPoint, time.Second); err != nil {
+					s.Fatal("Failed to drag the Docs window to snap to the right", err)
+				}
+			}
+		}
+	} else {
+		// If it is not in split screen mode, click the Meet window to make it on top.
+		if err := pointer.Click(ctx, pc, meetWindow.OverviewInfo.Bounds.CenterPoint()); err != nil {
+			s.Fatal("Failed to click the Meet window", err)
+		}
+	}
+
+	// If camera needs to be turned off, it is turned off before joining the meeting.
+	if !meet.cam {
+		turnOffCam, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Turn off camera (ctrl + e)", Role: ui.RoleTypeButton}, timeout)
+		if err != nil {
+			s.Fatal("Failed to find turn-off-camera button: ", err)
+		}
+		defer turnOffCam.Release(closeCtx)
+		if err := turnOffCam.StableLeftClick(ctx, &pollOpts); err != nil {
+			s.Fatal("Failed to click the turn-off-camera button: ", err)
+		}
+		// Make sure the camera is turned off.
+		if err := webview.WaitUntilDescendantExists(ctx, ui.FindParams{Name: "Camera is off"}, timeout); err != nil {
+			s.Fatal("Failed to turn off the camera: ", err)
+		}
+	}
+
 	askToJoin, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Ask to join"}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find join-now button: ", err)
@@ -191,7 +375,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		if err := askToJoin.LeftClick(ctx); err != nil {
+		// Hide notifications so that they won't overlap with other UI components.
+		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
+			s.Fatal("Failed to hide visible notifications: ", err)
+		}
+		if err := askToJoin.StableLeftClick(ctx, &pollOpts); err != nil {
 			return errors.Wrap(err, `failed to click "Join now" button`)
 		}
 		shareMessage := "Share this info with people you want in the meeting"
@@ -202,7 +390,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err != nil {
 				return errors.Wrap(err, "close button should be in the popup")
 			}
-			if err := closeButton.LeftClick(ctx); err != nil {
+			if err := closeButton.StableLeftClick(ctx, &pollOpts); err != nil {
 				return errors.Wrap(err, "failed to click the close button")
 			}
 			if err := webview.WaitUntilDescendantGone(ctx, ui.FindParams{Name: shareMessage}, timeout); err != nil {
@@ -212,8 +400,126 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		sctx, cancel := context.WithTimeout(ctx, timeout)
 		defer cancel()
-		if _, err := bc.AddBots(sctx, meetingCode, numBots, botDuration); err != nil {
+		if _, err := bc.AddBots(sctx, meetingCode, meet.num, botDuration); err != nil {
 			return errors.Wrap(err, "failed to create bots")
+		}
+
+		// Change the layout after entering the meeting.
+		if err := webview.WaitUntilDescendantExists(ctx, ui.FindParams{Name: "Present now", Role: ui.RoleTypePopUpButton}, timeout); err != nil {
+			s.Fatal("Failed to wait for the meeting page to show up: ", err)
+		}
+		// Hide notifications so that they won't overlap with other UI components.
+		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
+			s.Fatal("Failed to hide visible notifications: ", err)
+		}
+
+		// Make sure the bottom panel is active by moving mouse on Meet page.
+		meetArea, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Meet - " + meetingCode, Role: ui.RoleTypeRootWebArea}, timeout)
+		if err != nil {
+			s.Fatal("Failed to find the Meet area: ", err)
+		}
+		defer meetArea.Release(closeCtx)
+		var optionsLoc coords.Point
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			options, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "More options", Role: ui.RoleTypePopUpButton}, timeout)
+			defer options.Release(closeCtx)
+			if err != nil {
+				return errors.Wrap(err, "failed to find the options button")
+			}
+			if options.Location.Height == 1 {
+				// The bottom panel is folded. The options button is not visible.
+				if err := pc.Move(ctx, meetArea.Location.CenterPoint(), meetArea.Location.CenterPoint().Add(coords.Point{X: 5, Y: 5}), 0); err != nil {
+					return errors.Wrap(err, "failed to simulate a move event on Meet area")
+				}
+				return errors.New("options button is still invisible (the height equals to 1)")
+			} else {
+				optionsLoc = options.Location.CenterPoint()
+				return nil
+			}
+		}, &pollOpts); err != nil {
+			s.Fatal("Failed to make options button visible: ", err)
+		}
+		// Now the options button is visible and clickable.
+		if err := pointer.Click(ctx, pc, optionsLoc); err != nil {
+			s.Fatal("Failed to click the options button: ", err)
+		}
+
+		changeLayout, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Change layout", Role: ui.RoleTypeMenuItem}, timeout)
+		if err != nil {
+			s.Fatal("Failed to find the change-layout item (likely because options button was not clicked correctly): ", err)
+		}
+		defer changeLayout.Release(closeCtx)
+		if err := changeLayout.StableLeftClick(ctx, &pollOpts); err != nil {
+			s.Fatal("Failed to click the change-layout button: ", err)
+		}
+		layout, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: meet.layout, Role: ui.RoleTypeRadioButton}, timeout)
+		if err != nil {
+			s.Fatal("Failed to find the layout button: ", err)
+		}
+		defer layout.Release(closeCtx)
+		if err := layout.StableLeftClick(ctx, &pollOpts); err != nil {
+			s.Fatal("Failed to click the layout item: ", err)
+		}
+		if meet.layout == "Auto" || meet.layout == "Tiled" {
+			if err := kw.Accel(ctx, "Tab"); err != nil {
+				s.Fatal("Failed to type the tab key: ", err)
+			}
+			// Max up the number of the maximum tiles to display.
+			for i := 0; i < 5; i++ {
+				if err := kw.Accel(ctx, "Right"); err != nil {
+					s.Fatal("Failed to type the right key: ", err)
+				}
+			}
+		}
+		// Close the layout change view.
+		close, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Close", Role: ui.RoleTypeButton}, timeout)
+		if err != nil {
+			s.Fatal("Failed to find the close button: ", err)
+		}
+		defer close.Release(closeCtx)
+		if err := close.StableLeftClick(ctx, &pollOpts); err != nil {
+			s.Fatal("Failed to click the close button: ", err)
+		}
+
+		if meet.pre {
+			// Start presenting the Meet tab itself.
+			present, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Present now", Role: ui.RoleTypePopUpButton}, timeout)
+			if err != nil {
+				s.Fatal("Failed to find the present button: ", err)
+			}
+			defer present.Release(closeCtx)
+			if err := present.LeftClickUntil(ctx,
+				func(ctx context.Context) (bool, error) {
+					return ui.Exists(ctx, tconn, ui.FindParams{Name: "A Chrome tab"})
+				}, &pollOpts); err != nil {
+				s.Fatal("Failed to click the present button: ", err)
+			}
+			presentTab, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "A Chrome tab"}, timeout)
+			if err != nil {
+				s.Fatal("Failed to find the present-a-chrome-tab item: ", err)
+			}
+			defer presentTab.Release(closeCtx)
+			if err := presentTab.LeftClickUntil(ctx,
+				func(ctx context.Context) (bool, error) {
+					return ui.Exists(ctx, tconn, ui.FindParams{Name: "Meet - " + meetingCode, Role: ui.RoleTypeCell})
+				}, &pollOpts); err != nil {
+				s.Fatal("Failed to click the present-a-chrome-tab button: ", err)
+			}
+			tabs, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Chrome Tab", Role: ui.RoleTypeListGrid}, timeout)
+			if err != nil {
+				s.Fatal("Failed to find the tab list: ", err)
+			}
+			defer tabs.Release(closeCtx)
+			if err := tabs.StableLeftClick(ctx, &pollOpts); err != nil {
+				s.Fatal("Failed to click the tab list:", err)
+			}
+			// Select the first tab (Meet tab) to present.
+			if err := kw.Accel(ctx, "Up"); err != nil {
+				s.Fatal("Failed to type the up key: ", err)
+			}
+			if err := kw.Accel(ctx, "Enter"); err != nil {
+				s.Fatal("Failed to type the enter key: ", err)
+			}
 		}
 
 		errc := make(chan error)
@@ -229,9 +535,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
 			return errors.Wrap(err, "failed to wait")
 		}
-		// Close the browser window to finish it.
-		if err := conn.CloseTarget(ctx); err != nil {
-			return errors.Wrap(err, "failed to close")
+		// Close the Meet window to finish meeting.
+		if err := meetConn.CloseTarget(ctx); err != nil {
+			return errors.Wrap(err, "failed to close Meet")
 		}
 		if err := <-errc; err != nil {
 			return errors.Wrap(err, "failed to collect GPU counters")
