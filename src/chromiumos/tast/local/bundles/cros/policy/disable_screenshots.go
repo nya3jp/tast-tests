@@ -112,8 +112,8 @@ func DisableScreenshots(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to get keyboard: ", err)
 			}
 
-			if err := keyboard.Accel(ctx, "Ctrl+Scale"); err != nil {
-				s.Fatal("Failed to press Ctrl+Scale to take screenshot: ", err)
+			if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
+				s.Fatal("Failed to press Ctrl+F5 to take screenshot: ", err)
 			}
 
 			if _, err := ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains("screenshot"), ash.WaitTitle(tc.wantNotification)); err != nil {
