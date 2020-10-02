@@ -41,11 +41,12 @@ public class MainActivity extends Activity {
       new Runnable() {
         @Override
         public void run() {
-          // Allocate 100 MB at a time.
-          long allocSize = Math.min(mToAllocateSize, MB_BYTES * 100);
+          // Allocate 10 MB at a time.
+          long allocSize = Math.min(mToAllocateSize, MB_BYTES * 10);
           allocate(allocSize);
           mToAllocateSize -= allocSize;
           if (mToAllocateSize > 0) {
+            mTextView.setText("Allocating... " + mToAllocateSize.toString());
             mMainHandler.post(mAllocateRunnable);
           } else {
             mTextView.setText(mAllocatedSize.toString());
