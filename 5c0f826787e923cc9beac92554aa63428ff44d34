@@ -16,6 +16,46 @@
       "revId": "5c0f826787e923cc9beac92554aa63428ff44d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdbe4bf9_47502e34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-02T00:55:50Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "5c0f826787e923cc9beac92554aa63428ff44d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5993d1d2_7b26f914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-02T00:55:50Z",
+      "side": 1,
+      "message": "Seems like this function doesn\u0027t need to be exported? Consider using confirmBlackPixelCount instead?",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 27
+      },
+      "revId": "5c0f826787e923cc9beac92554aa63428ff44d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
