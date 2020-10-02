@@ -204,6 +204,75 @@
     },
     {
       "key": {
+        "uuid": "696996b9_a07f1b23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-02T05:36:20Z",
+      "side": 1,
+      "message": "Can you use path/filepath instead for file path operations?\n\nhttps://godoc.org/path/filepath",
+      "range": {
+        "startLine": 122,
+        "startChar": 18,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b583755d_c8e6871b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-02T05:36:20Z",
+      "side": 1,
+      "message": "Not directly related to this CL, but I wonder if this approach actually works. IIUC SSH session does not finish until the background process finishes. For example:\n\n % time ssh -T dut1 \u0027( sleep 10 ) \u0026\u0027\n ssh -T dut1 \u0027( sleep 10 ) \u0026\u0027  0.01s user 0.01s system 0% cpu 11.539 total\n\nUsually we use nohup(1) or something similar to leave a background process running.",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 16
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52bc9ac9_3c5f280f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-02T05:36:20Z",
+      "side": 1,
+      "message": "No directly related to this CL as well, but to build a shell script code, splitting tokens to []string is not very useful and readable. You can just use fmt.Sprintf, e.g.\n\n displayCmd :\u003d fmt.Sprintf(\n   \"python2 %s %s \u003e %s 2\u003e\u00261 \u0026 echo -n $!\",\n   shutil.Escape(displayScript), shutil.Escape(chartHostPath), shutil.Escape(displayOutputLog))",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 32
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a22ca7c2_fd61067f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
         "patchSetId": 1
