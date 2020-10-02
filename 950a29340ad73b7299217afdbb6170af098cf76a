@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e1564ef_56cec136",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294545
+      },
+      "writtenOn": "2020-10-02T22:58:42Z",
+      "side": 1,
+      "message": "This will be merged along with the final changes in lpadmin.",
+      "revId": "950a29340ad73b7299217afdbb6170af098cf76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
