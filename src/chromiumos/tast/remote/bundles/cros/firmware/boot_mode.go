@@ -99,8 +99,14 @@ func BootMode(ctx context.Context, s *testing.State) {
 	defer h.Close(ctx)
 	ms, err := firmware.NewModeSwitcher(ctx, h)
 	if err != nil {
-		s.Fatal("creating mode switcher: ", err)
+		s.Fatal("Creating mode switcher: ", err)
 	}
+
+	// Report ModeSwitcherType, for debugging.
+	if err := h.RequireConfig(ctx); err != nil {
+		s.Fatal("Requiring config")
+	}
+	s.Log("Mode switcher type: ", h.Config.ModeSwitcherType)
 
 	// Ensure that DUT starts in normal mode.
 	if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
