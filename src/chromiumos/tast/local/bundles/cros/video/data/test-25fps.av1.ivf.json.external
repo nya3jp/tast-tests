@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test-25fps_20200925.av1.ivf.json",
+  "size": 10666,
+  "sha256sum": "31faad4241ecd45bc1eabfabfd0a4314d87dceef156ac88ca55ceb02a5226f5f"
+}

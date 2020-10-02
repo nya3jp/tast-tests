@@ -19,6 +19,12 @@ func init() {
 		Contacts:     []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome", "video_decoder_direct"},
 		Params: []testing.Param{{
+			Name:              "av1",
+			Val:               "test-25fps.av1.ivf",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			ExtraData:         []string{"test-25fps.av1.ivf", "test-25fps.av1.ivf.json"},
+		}, {
 			Name:              "h264",
 			Val:               "test-25fps.h264",
 			ExtraAttr:         []string{"group:mainline", "informational"},
@@ -42,6 +48,12 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
 			ExtraData:         []string{"test-25fps.vp9_2", "test-25fps.vp9_2.json"},
+		}, {
+			Name:              "av1_resolution_switch",
+			Val:               "resolution_change.av1.ivf",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			ExtraData:         []string{"resolution_change.av1.ivf", "resolution_change.av1.ivf.json"},
 		}, {
 			Name:              "h264_resolution_switch",
 			Val:               "switch_1080p_720p_240frames.h264",
@@ -84,6 +96,12 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "vaapi"},
 			ExtraData:         []string{"keyframe_spatial_layers_180p_360p.vp9.ivf", "keyframe_spatial_layers_180p_360p.vp9.ivf.json"},
+		}, {
+			Name:              "av1_odd_dimension",
+			Val:               "test-25fps-321x241.av1.ivf",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			ExtraData:         []string{"test-25fps-321x241.av1.ivf", "test-25fps-321x241.av1.ivf.json"},
 		}, {
 			Name:              "vp8_odd_dimension",
 			Val:               "test-25fps-321x241.vp8",
