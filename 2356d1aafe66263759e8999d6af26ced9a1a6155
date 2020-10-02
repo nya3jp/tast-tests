@@ -56,6 +56,30 @@
       "revId": "2356d1aafe66263759e8999d6af26ced9a1a6155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90c420cc_eec42613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-02T03:18:10Z",
+      "side": 1,
+      "message": "I gave it a different name on purpose to not mix it up with task var from line 208.",
+      "parentUuid": "d740df4b_3f1201a9",
+      "range": {
+        "startLine": 210,
+        "startChar": 10,
+        "endLine": 210,
+        "endChar": 19
+      },
+      "revId": "2356d1aafe66263759e8999d6af26ced9a1a6155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
