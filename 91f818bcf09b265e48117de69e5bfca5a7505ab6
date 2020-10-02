@@ -130,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "1099acff_c2da45fd",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-02T21:02:48Z",
+      "side": 1,
+      "message": "Sorry, I meant \nBoth of Kyle and I agreed that it was more natural considering the flow of the test case.",
+      "parentUuid": "f1b59209_955dcac3",
+      "range": {
+        "startLine": 596,
+        "startChar": 5,
+        "endLine": 596,
+        "endChar": 20
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47836459_d0c924c2",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 34

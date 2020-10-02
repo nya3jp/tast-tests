@@ -16,6 +16,23 @@
       "revId": "4b9cd9ac986af1851c524d4ff09ea06ce5fa1716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af6710a8_d6132901",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-02T21:02:48Z",
+      "side": 1,
+      "message": "Sorry, I have some mistakes in my comment regarding shelf.PinAppByName\n\n\u003e Both of us agreed that it is more natural considering the flow of the test case.\n\nWhat I really meant was\n\nBoth of Kyle and I agreed that it was more natural considering the flow of the test case.\n\nSorry about the confusion.\n\nSeewai\n",
+      "revId": "4b9cd9ac986af1851c524d4ff09ea06ce5fa1716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
