@@ -51,6 +51,24 @@
       "revId": "2186c249351989514b91533e649a1be3e5d40097",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41c3a916_c6640fca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-02T02:05:41Z",
+      "side": 1,
+      "message": "I think it\u0027s great to be used at the beginning of the test; for example, when an ARC test starts, it conducts the login and initialization of ARC.  After ARC is initialized, there would be some ongoing tasks in background. WaitUntilCPUCoolDown should be a great tool to wait for those background tasks to finish, in my opinion.",
+      "parentUuid": "8f3b58f1_0aff5365",
+      "revId": "2186c249351989514b91533e649a1be3e5d40097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
