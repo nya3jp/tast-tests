@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,6 +28,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"diagnostics"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")), // TODO(crbug/1134675)
 	})
 }
 
