@@ -21,25 +21,25 @@ func init() {
 		Func: Diagnostics,
 		Desc: "Tests 'cros-health-tool diag' command line invocation",
 		Contacts: []string{
-			"pmoy@chromium.org", // cros_healthd tool author
+			"pmoy@chromium.org",   // cros_healthd tool author
+			"tbegin@chromium.org", // test author
 		},
 		SoftwareDeps: []string{"diagnostics"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
 // Diagnostics runs and verifies that the 'cros-health-tool diag' command-line
 // invocation can get a list of supported routines from cros_healthd, and run
-// the urandom routine, which should be supported on every platform that
-// cros_healthd runs on. Other routines are not tested, because they could
-// flake.
+// every testable routine supported across all boards.
 //
 // The diag command has two actions it can run. 'get_routines' returns a list of
 // all routines that diag supports and 'run_routine' starts running a routine
 // and waits until the routine completes and prints the result.
 //
 // This test verifies that 'get_routines' returns a valid list of routines and
-// then runs the "urandom" routine and checks that it passes.
+// then runs the testable routines to make sure there is no error. The routines
+// can either pass or fail.
 func Diagnostics(ctx context.Context, s *testing.State) {
 	// Run the diag command with arguments
 	runDiag := func(diag_args ...string) string {
@@ -70,7 +70,10 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 		return ret
 	}
 
-	// Test a given routine and ensure that it runs and passes
+	// Test a given routine and ensure that it runs and either passes or fails.
+	// Some lab machines might have old batteries, for example, so we only want
+	// to test that the routine can complete successfully without crashing or
+	// throwing errors.
 	testRoutine := func(routine string, args ...string) {
 		raw := runDiag(append([]string{
 			"--action=run_routine", "--routine=" + routine}, args...)...)
@@ -110,13 +113,28 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		if status != "Passed" {
-			s.Fatalf("%q routine has status %q; want \"Passed\"", routine, status)
+		if status != "Passed" && status != "Failed" {
+			s.Fatalf("%q routine has status %q; want \"Passed\" or \"Failed\"", routine, status)
 		}
 
 		if progress != 100 {
 			s.Fatalf("%q routine has progress %d; want 100", routine, progress)
 		}
+	}
+
+	// Determine if a routine is programatically testable. Some routines take
+	// too long or require physical user interaction.
+	isTestable := func(routine string) bool {
+		switch routine {
+		case
+			"ac_power",          // Interactive
+			"battery_charge",    // Interactive
+			"battery_discharge", // Interactive
+			"memory":            // ~30 min runtime
+			return false
+		}
+
+		return true
 	}
 
 	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
@@ -125,12 +143,20 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 
 	routines := getRoutines()
 
-	if len(routines) < 2 {
-		s.Fatalf("Found %d routine(s) %v; want >=2", len(routines), routines)
+	// There are 9 routines supported on all devices.
+	if len(routines) < 9 {
+		s.Fatalf("Found %d routine(s) %v; want >=9", len(routines), routines)
 	}
 
-	// Only test the urandom routine. Other routines could fail and the CQ
-	// should not be blocked in that case. This will test the end to end
-	// interaction between "diag" and "wilco_dtc_supportd"
-	testRoutine("urandom", "--length_seconds=2")
+	// Run each of the routines supported on the device that are programatically
+	// testable.
+	for _, routine := range routines {
+		if !isTestable(routine) {
+			s.Logf("Skipping untestable routine: %s", routine)
+			continue
+		}
+
+		s.Logf("Running routine: %s", routine)
+		testRoutine(routine)
+	}
 }
