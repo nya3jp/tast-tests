@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "b3d61c70_f8ca0ab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-02T07:26:16Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "91b8ec45_13ebe726",
+      "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e921083_242613ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
         "patchSetId": 1
@@ -68,6 +86,24 @@
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c0ef8a_4ed3e050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-02T07:26:16Z",
+      "side": 1,
+      "message": "I checked with senozhatsky@ who refer me to suleiman@ and he says he is not familiar with the test but cpuset is still used in ARCVM, so the test seems to still be useful.",
+      "parentUuid": "7f86fd88_9f6a7ae5",
+      "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
