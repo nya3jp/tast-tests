@@ -17,6 +17,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
@@ -91,6 +92,7 @@ func Type() (t InstallType, ok bool) {
 // ARC holds resources related to an active ARC session. Call Close to release
 // those resources.
 type ARC struct {
+	device       *adb.Device   // ADB device to communicate with ARC
 	logcatCmd    *testexec.Cmd // process saving Android logs
 	logcatWriter dynamicWriter // writes output from logcatCmd to logcatFile
 	logcatFile   *os.File      // file currently being written to
@@ -190,7 +192,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	testing.ContextLog(ctx, "Setting up ADB connection")
 	ch = make(chan error, 1)
 	go func() {
-		ch <- setUpADBAuth(ctx)
+		ch <- adb.LaunchServer(ctx)
 	}()
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
@@ -205,9 +207,11 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 
 	// Connect to ADB.
-	if err := connectADB(ctx); err != nil {
+	device, err := connectADB(ctx)
+	if err != nil {
 		return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
 	}
+	arc.device = device
 
 	toClose = nil
 	return arc, nil

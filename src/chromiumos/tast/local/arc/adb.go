@@ -6,124 +6,45 @@ package arc
 
 import (
 	"context"
-	"io/ioutil"
-	"os"
 	"regexp"
 	"strings"
 	"sync"
-	"syscall"
 	"time"
 
-	"github.com/shirou/gopsutil/process"
-
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
-const (
-	adbAddr = "127.0.0.1:5555"
-
-	adbHome            = "/tmp/adb_home"
-	testPrivateKeyPath = "/tmp/adb_home/test_key"
-
-	// Generated with adb keygen.
-	testPrivateKey = `-----BEGIN PRIVATE KEY-----
-MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCnHNzujonYRLoI
-F2pyJX1SSrqmiT/3rTRCP1X0pj1V/sPGwgvIr+3QjZehLUGRQL0wneBNXd6EVrST
-drO4cOPwSxRJjCf+/PtS1nwkz+o/BGn5yhNppdSro7aPoQxEVM8qLtN5Ke9tx/zE
-ggxpF8D3XBC6Los9lAkyesZI6xqXESeofOYu3Hndzfbz8rAjC0X+p6Sx561Bt1dn
-T7k2cP0mwWfITjW8tAhzmKgL4tGcgmoLhMHl9JgScFBhW2Nd0QAR4ACyVvryJ/Xa
-2L6T2YpUjqWEDbiJNEApFb+m+smIbyGz0H/Kj9znoRs84z3/8rfyNQOyf7oqBpr2
-52XG4totAgMBAAECggEARisKYWicXKDO9CLQ4Uj4jBswsEilAVxKux5Y+zbqPjeR
-AN3tkMC+PHmXl2enRlRGnClOS24ExtCZVenboLBWJUmBJTiieqDC7o985QAgPYGe
-9fFxoUSuPbuqJjjbK73olq++v/tpu1Djw6dPirkcn0CbDXIJqTuFeRqwM2H0ckVl
-mVGUDgATckY0HWPyTBIzwBYIQTvAYzqFHmztcUahQrfi9XqxnySI91no8X6fR323
-R8WQ44atLWO5TPCu5JEHCwuTzsGEG7dEEtRQUxAsH11QC7S53tqf10u40aT3bXUh
-XV62ol9Zk7h3UrrlT1h1Ae+EtgIbhwv23poBEHpRQQKBgQDeUJwLfWQj0xHO+Jgl
-gbMCfiPYvjJ9yVcW4ET4UYnO6A9bf0aHOYdDcumScWHrA1bJEFZ/cqRvqUZsbSsB
-+thxa7gjdpZzBeSzd7M+Ygrodi6KM/ojSQMsen/EbRFerZBvsXimtRb88NxTBIW1
-RXRPLRhHt+VYEF/wOVkNZ5c2eQKBgQDAbwNkkVFTD8yQJFxZZgr1F/g/nR2IC1Yb
-ylusFztLG998olxUKcWGGMoF7JjlM6pY3nt8qJFKek9bRJqyWSqS4/pKR7QTU4Nl
-a+gECuD3f28qGFgmay+B7Fyi9xmBAsGINyVxvGyKH95y3QICw1V0Q8uuNwJW2feo
-3+UD2/rkVQKBgFloh+ljC4QQ3gekGOR0rf6hpl8D1yCZecn8diB8AnVRBOQiYsX9
-j/XDYEaCDQRMOnnwdSkafSFfLbBrkzFfpe6viMXSap1l0F2RFWhQW9yzsvHoB4Br
-W7hmp73is2qlWQJimIhLKiyd3a4RkoidnzI8i5hEUBtDsqHVHohykfDZAoGABNhG
-q5eFBqRVMCPaN138VKNf2qon/i7a4iQ8Hp8PHRr8i3TDAlNy56dkHrYQO2ULmuUv
-Erpjvg5KRS/6/RaFneEjgg9AF2R44GrREpj7hP+uWs72GTGFpq2+v1OdTsQ0/yr0
-RGLMEMYwoY+y50Lnud+jFyXHZ0xhkdzhNTGqpWkCgYBigHVt/p8uKlTqhlSl6QXw
-1AyaV/TmfDjzWaNjmnE+DxQfXzPi9G+cXONdwD0AlRM1NnBRN+smh2B4RBeU515d
-x5RpTRFgzayt0I4Rt6QewKmAER3FbbPzaww2pkfH1zr4GJrKQuceWzxUf46K38xl
-yee+dcuGhs9IGBOEEF7lFA==
------END PRIVATE KEY-----
-`
-	// Public ADB key that is paired with testPrivateKey.
-	// Though it is not referenced by tast-side code,
-	// testPublicKey is pre-installed in ARC on test image (see go/tast-adb-key).
-	testPublicKey = "QAAAAFt6z0Mt2uLGZef2mgYqun+yAzXyt/L/PeM8G6Hn3I/Kf9CzIW+IyfqmvxUpQDSJuA2EpY5UitmTvtja9Sfy+layAOARANFdY1thUHASmPTlwYQLaoKc0eILqJhzCLS8NU7IZ8Em/XA2uU9nV7dBreexpKf+RQsjsPLz9s3dedwu5nyoJxGXGutIxnoyCZQ9iy66EFz3wBdpDILE/Mdt7yl50y4qz1REDKGPtqOr1KVpE8r5aQQ/6s8kfNZS+/z+J4xJFEvw43C4s3aTtFaE3l1N4J0wvUCRQS2hl43Q7a/IC8LGw/5VPab0VT9CNK33P4mmukpSfSVyahcIukTYiY7u3Byn0Nc9qhPPbSQYNQiofN7w91BWzW46V8CgWzBCKZoKhF7YmTdAm48qmaV0rqMGaf1AtRz5QY0a47seRYCgk9lMx7BeMgIuAZDmYPsUG+mAG+IiQYfvJMIEMBowtc8IlfZv9A7bwLKcs4rRhxFdCzJ7odPgFdgUv7MEAYF+HhnQg6DYEhoqe7YkB98Pb8VbU4f/ZTNkHYtIOxMIb53saW09zop5MlQrR6E7hBeZ5FwMNOK7+yc20ulUlqq38iB6QoHx7lli8dfGpD47J1ETHw7m9uAuxMu75MD4bIxYgmj2Ud1TvmWqXtmg75+E+B1I3osGcw9a2Qxo2ypV1Nkq8b1lmgEAAQA= root@localhost"
-)
-
-// setUpADBAuth sets up ADB auth by installing testPrivateKey for local ADB server.
-func setUpADBAuth(ctx context.Context) error {
-	// Set up the ADB home directory in Chrome OS side.
-	if err := os.MkdirAll(adbHome, 0755); err != nil {
-		return err
-	}
-	if err := ioutil.WriteFile(testPrivateKeyPath, []byte(testPrivateKey), 0600); err != nil {
-		return errors.Wrap(err, "failed installing ADB private key")
-	}
-
-	testing.ContextLog(ctx, "Killing existing ADB server process(es)")
-	if err := killADBLocalServer(ctx); err != nil {
-		return errors.Wrap(err, "failed to kill ADB local server")
-	}
-
-	testing.ContextLog(ctx, "Starting ADB server")
-	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed starting ADB local server")
-	}
-
-	return nil
-}
-
-// checkADBConnected checks if ADB is currently connected to a device.
-func checkADBConnected(ctx context.Context) error {
-	// Run "adb get-state" to get the state of current connected device. "get-state" is used to have an easier output to parse.
-	out, err := adbCommand(ctx, "get-state").Output()
-	if err != nil {
-		return errors.New("failed to get device state")
-	}
-	if strings.TrimSpace(string(out)) != "device" {
-		return errors.New("device is not connected")
-	}
-	return nil
-}
+const adbAddr = "127.0.0.1:5555"
 
 // connectADB connects to the remote ADB daemon.
 // After this function returns successfully, we can assume that ADB connection is ready.
-func connectADB(ctx context.Context) error {
+func connectADB(ctx context.Context) (*adb.Device, error) {
 	ctx, st := timing.Start(ctx, "connect_adb")
 	defer st.End()
 
+	deadline, ok := ctx.Deadline()
+	if !ok {
+		// This should never happen because all Tast contexts should have a deadline.
+		return nil, errors.New("ADB connect context should always have a deadline")
+	}
 	// ADBD thinks that there is an Android emulator running because it notices adb-proxy listens on localhost:5555.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return checkADBConnected(ctx)
-	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err == nil {
-		return adbCommand(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
+	if device, err := adb.WaitForDevice(ctx, func(d *adb.Device) bool {
+		return strings.HasPrefix(d.Serial, "emulator-")
+	}, 10*time.Second); err == nil {
+		return device, device.WaitForState(ctx, adb.StateDevice, time.Until(deadline))
 	}
 
 	// https://developer.android.com/studio/command-line/adb#notlisted shows that on certain conditions emulator may not be listed. For safety, fallback to manually connecting to adb-proxy address.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := adbCommand(ctx, "connect", adbAddr).Run(); err != nil {
-			return err
-		}
-		return checkADBConnected(ctx)
-	}, &testing.PollOptions{Interval: 1 * time.Second}); err != nil {
-		return err
+	testing.ContextLog(ctx, "ARC failed to find emulator. Falling back to ip address")
+	device, err := adb.Connect(ctx, adbAddr, time.Until(deadline))
+	if err != nil {
+		return nil, err
 	}
-
-	return adbCommand(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
+	return device, device.WaitForState(ctx, adb.StateDevice, time.Until(deadline))
 }
 
 // InstallOption defines possible options to pass to "adb install".
@@ -162,7 +83,7 @@ func (a *ARC) Install(ctx context.Context, path string, installOptions ...Instal
 		commandArgs = append(commandArgs, string(installOption))
 	}
 	commandArgs = append(commandArgs, path)
-	out, err := adbCommand(ctx, commandArgs...).Output(testexec.DumpLogOnError)
+	out, err := a.device.Command(ctx, commandArgs...).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return err
 	}
@@ -201,7 +122,7 @@ func (a *ARC) InstalledPackages(ctx context.Context) (map[string]struct{}, error
 
 // Uninstall a package from the Android system.
 func (a *ARC) Uninstall(ctx context.Context, pkg string) error {
-	out, err := adbCommand(ctx, "uninstall", pkg).Output(testexec.DumpLogOnError)
+	out, err := a.device.Command(ctx, "uninstall", pkg).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return err
 	}
@@ -214,57 +135,6 @@ func (a *ARC) Uninstall(ctx context.Context, pkg string) error {
 	}
 	if !matched {
 		return errors.Errorf("failed to uninstall %v %q", pkg, string(out))
-	}
-	return nil
-}
-
-// adbCommand runs an ADB command with appropriate environment variables.
-func adbCommand(ctx context.Context, arg ...string) *testexec.Cmd {
-	cmd := testexec.CommandContext(ctx, "adb", arg...)
-	cmd.Env = append(
-		os.Environ(),
-		"ADB_VENDOR_KEYS="+testPrivateKeyPath,
-		// adb expects $HOME to be writable.
-		"HOME="+adbHome)
-	return cmd
-}
-
-// killADBLocalServer kills the existing ADB local server if it is running.
-//
-// We do not use adb kill-server since it is unreliable (crbug.com/855325).
-// We do not use killall since it can wait for orphan adb processes indefinitely (b/137797801).
-func killADBLocalServer(ctx context.Context) error {
-	ps, err := process.Processes()
-	if err != nil {
-		return err
-	}
-
-	for _, p := range ps {
-		if name, err := p.Name(); err != nil || name != "adb" {
-			continue
-		}
-		if ppid, err := p.Ppid(); err != nil || ppid != 1 {
-			continue
-		}
-
-		if err := syscall.Kill(int(p.Pid), syscall.SIGKILL); err != nil {
-			// In a very rare race condition, the server process might be already gone.
-			// Just log the error rather than reporting it to the caller.
-			testing.ContextLog(ctx, "Failed to kill ADB local server process: ", err)
-			continue
-		}
-
-		// Wait for the process to exit for sure.
-		// This may take as long as 10 seconds due to busy init process.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			// We need a fresh process.Process since it caches attributes.
-			if _, err := process.NewProcess(p.Pid); err == nil {
-				return errors.Errorf("pid %d is still running", p.Pid)
-			}
-			return nil
-		}, nil); err != nil {
-			return errors.Wrap(err, "failed on waiting for ADB local server process to exit")
-		}
 	}
 	return nil
 }
