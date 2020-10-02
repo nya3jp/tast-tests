@@ -83,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "816ef1e2_b67bbb04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_pin_app_to_shelf.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-02T22:18:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "64f65e65_764d5389",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "034deab8_232c9cfe",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 34
@@ -142,6 +166,30 @@
       "side": 1,
       "message": "Sorry, I meant \nBoth of Kyle and I agreed that it was more natural considering the flow of the test case.",
       "parentUuid": "f1b59209_955dcac3",
+      "range": {
+        "startLine": 596,
+        "startChar": 5,
+        "endLine": 596,
+        "endChar": 20
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acc7b5dc_044f2f99",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-02T22:18:33Z",
+      "side": 1,
+      "message": "I don\u0027t mean an autotestprivate method to do the pinning. I mean an autotestprivate method to check whether an app is already pinned.\n\nPinning the way you have implemented it is fine. But we don\u0027t know if it actually worked",
+      "parentUuid": "1099acff_c2da45fd",
       "range": {
         "startLine": 596,
         "startChar": 5,
@@ -292,6 +340,30 @@
       "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e286f37_cb890d95",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-02T22:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2769e46f_15ed2816",
+      "range": {
+        "startLine": 185,
+        "startChar": 16,
+        "endLine": 185,
+        "endChar": 28
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
