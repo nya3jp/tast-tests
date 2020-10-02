@@ -226,6 +226,30 @@
     },
     {
       "key": {
+        "uuid": "27b0e45f_6172455b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-02T22:32:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "37fbf013_2f5cb90e",
+      "range": {
+        "startLine": 596,
+        "startChar": 5,
+        "endLine": 596,
+        "endChar": 20
+      },
+      "revId": "91f818bcf09b265e48117de69e5bfca5a7505ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47836459_d0c924c2",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 34
