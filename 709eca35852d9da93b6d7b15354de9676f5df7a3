@@ -157,6 +157,30 @@
     },
     {
       "key": {
+        "uuid": "29efe3db_25091b9b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-02T05:17:39Z",
+      "side": 1,
+      "message": "There are pros and cons to \"closing partially initialized object\" approach. Actually I don\u0027t personally recommend the approach because, if we allow an object to be half-initialized, we can assume far less invariants to an object\u0027s internal state, which makes it harder to reason about correctness of logic.\n\nIn the code snippet above, `chart` is an half-initialized object. Then it is often tempting to call some methods in the constructor, e.g.\n\n // Create tempdir\n dir, err :\u003d chart.createTempDir(...)\n if err !\u003d nil {\n   return nil, err\n }\n chart.dir \u003d dir\n\nIn this case the chart object passed to createTempDir is half-initialized. Any usual assumption valid in other conventional methods might not hold here, and what we can assume can easily change by reordering the operations in the constructor.\n\nInstead, by never creating a half-initialized object even in the constructor, we can make sure that uniform invariants hold for every valid Chart object.",
+      "parentUuid": "ab8925ed_75a03a19",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ab2570d_9fe9cacb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
         "patchSetId": 1
