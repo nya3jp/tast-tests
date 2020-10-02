@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6335a31_fe9cc2b7",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-02T11:24:05Z",
+      "side": 1,
+      "message": "This panics, index out of bounds, array is []. You have to initialize it for needed size, or use append.",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "46de8ecfa765783afa421b17f55682db13d676be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
