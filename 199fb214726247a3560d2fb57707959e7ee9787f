@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad998055_8cb67f29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-02T22:19:33Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "199fb214726247a3560d2fb57707959e7ee9787f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8f43579_0de931ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-02T22:19:33Z",
+      "side": 1,
+      "message": "nit: does this still need to be a wrapped function? can we just run the code directly?",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "199fb214726247a3560d2fb57707959e7ee9787f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e0249d7_a017d23d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-02T22:19:33Z",
+      "side": 1,
+      "message": "nit: Should this parameter be totally removed from expectUsbguardRunning?",
+      "range": {
+        "startLine": 160,
+        "startChar": 34,
+        "endLine": 160,
+        "endChar": 38
+      },
+      "revId": "199fb214726247a3560d2fb57707959e7ee9787f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
