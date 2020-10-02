@@ -133,7 +133,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain the internal display info: ", err)
 	}
 	if orientation.Type == display.OrientationPortraitPrimary {
-		angle -= 90
+		angle += 90
 		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
 		}
@@ -159,6 +159,9 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	r.RunMultiple(ctx, s, "hotseat-revealing", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowHomescreen(ctx, tsew.Width(), tsew.Height(), stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to show homescreen")
+		}
+		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
+			return errors.Wrap(err, "hotseat is in an unexpected state")
 		}
 		// Tap the chrome icon in the app-list to re-activate the browser window.
 		findParams := chromeui.FindParams{
