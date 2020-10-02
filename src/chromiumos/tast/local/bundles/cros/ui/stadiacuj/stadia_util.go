@@ -41,6 +41,10 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	if err := gameViewButton.StableLeftClick(ctx, &pollOpts); err != nil {
 		return errors.Wrapf(err, "failed to click the game view button (%s)", gameView)
 	}
+	// Wait for the page routed and loaded completely.
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for the page to be completely routed")
+	}
 
 	// Play the game.
 	gamePlayButton, err := n.DescendantWithTimeout(ctx, ui.FindParams{Name: gamePlay, Role: ui.RoleTypeButton}, timeout)
@@ -51,7 +55,10 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	if err := gamePlayButton.MakeVisible(ctx); err != nil {
 		return errors.Wrapf(err, "failed to make the game play button (%s) visible", gamePlay)
 	}
-	if err := gamePlayButton.StableLeftClick(ctx, &pollOpts); err != nil {
+	if err := gamePlayButton.LeftClickUntil(ctx,
+		func(ctx context.Context) (bool, error) {
+			return ui.Exists(ctx, tconn, ui.FindParams{Name: gameStart, Role: ui.RoleTypeButton})
+		}, &pollOpts); err != nil {
 		return errors.Wrapf(err, "failed to click the game play button (%s)", gamePlay)
 	}
 
@@ -84,6 +91,7 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to start the game %s", name)
 	}
+
 	return nil
 }
 
