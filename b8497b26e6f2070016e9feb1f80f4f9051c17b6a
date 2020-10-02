@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c583bc23_22ec1842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/gpu_mem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-02T16:15:40Z",
+      "side": 1,
+      "message": "Is this safe to use in a background thread while the foreground thread might also use it?",
+      "range": {
+        "startLine": 80,
+        "startChar": 41,
+        "endLine": 80,
+        "endChar": 49
+      },
+      "revId": "b8497b26e6f2070016e9feb1f80f4f9051c17b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d2b3760_0ade40f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-02T16:15:40Z",
+      "side": 1,
+      "message": "Do \"r.gpuDataSource.Stop()\" here as well in case something goes wrong and Record() not gets called.",
+      "revId": "b8497b26e6f2070016e9feb1f80f4f9051c17b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
