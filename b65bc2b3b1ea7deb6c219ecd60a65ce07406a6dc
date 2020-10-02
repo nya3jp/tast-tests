@@ -200,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "443f1bc1_97cca8d4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-02T07:40:22Z",
+      "side": 1,
+      "message": "Please briefly address the reason why this is needed in the comment.",
+      "parentUuid": "99742913_6a80b94a",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 71
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "376a664a_d8284517",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -752,6 +776,30 @@
       "side": 1,
       "message": "Let\u0027s ask Dean if he has some other thoughts. :)\n\nDean@: WDYT about the usage here?",
       "parentUuid": "41071f24_c4adeab4",
+      "range": {
+        "startLine": 354,
+        "startChar": 63,
+        "endLine": 354,
+        "endChar": 67
+      },
+      "revId": "b65bc2b3b1ea7deb6c219ecd60a65ce07406a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90ae2e99_f4f3c891",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-02T07:40:22Z",
+      "side": 1,
+      "message": "I checked that Golang range keyword returns index of type int. Let\u0027s follow the convention.",
+      "parentUuid": "a07bcd5f_87a06551",
       "range": {
         "startLine": 354,
         "startChar": 63,
