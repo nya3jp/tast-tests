@@ -33,6 +33,8 @@ const (
 	Apk = "ArcPerAppDensityTest.apk"
 	// PackageName is the name of density application.
 	PackageName = "org.chromium.arc.testapp.perappdensitytest"
+	// ViewActivity is the name of view (main) activity.
+	ViewActivity = ".ViewActivity"
 )
 
 // Change is a struct containing information to perform density changes.
@@ -110,11 +112,10 @@ func SetUpApk(ctx context.Context, a *arc.ARC, apk string) error {
 	return nil
 }
 
-// StartViewActivityWithWindowState starts the view activity with the specified window state.
+// StartActivityWithWindowState starts the view activity with the specified window state.
 // It is the responsibility of the caller to close the activity.
-// TODO(sarakato): Refactor this function to allow a view to be passed as an arg.
-func StartViewActivityWithWindowState(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, windowState arc.WindowState) (*arc.Activity, error) {
-	act, err := arc.NewActivity(a, PackageName, ".ViewActivity")
+func StartActivityWithWindowState(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, windowState arc.WindowState, activity string) (*arc.Activity, error) {
+	act, err := arc.NewActivity(a, PackageName, activity)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create new activity")
 	}
@@ -167,7 +168,7 @@ func VerifyPixelsWithUSFEnabled(ctx context.Context, cr *chrome.Chrome, tconn *c
 	defer cancel()
 
 	testing.ContextLog(ctx, "Running app, with uniform scaling enabled")
-	act, err := StartViewActivityWithWindowState(ctx, tconn, a, windowState)
+	act, err := StartActivityWithWindowState(ctx, tconn, a, windowState, ViewActivity)
 	if err != nil {
 		return errors.Wrap(err, "failed to start activity after enabling uniform scale factor")
 	}
