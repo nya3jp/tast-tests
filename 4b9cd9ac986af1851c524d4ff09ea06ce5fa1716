@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b2e1b30_e4921f1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-02T20:55:36Z",
+      "side": 1,
+      "message": "Hi David:\n\nThanks for finding my mistakes in comments of the code. I have fixed it. \n\nFor your other questions, please see my comments and see if I addressed your concern.\n\nThanks.\n\nSeewai\n",
+      "revId": "4b9cd9ac986af1851c524d4ff09ea06ce5fa1716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
