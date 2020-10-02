@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,6 +29,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"cros_config", "diagnostics"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("sand", "lava")), // TODO(crbug/1134667)
 	})
 }
 
