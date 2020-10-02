@@ -36,6 +36,14 @@ func init() {
 		SoftwareDeps: []string{"chrome", "graphics_debugfs"},
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		Params: []testing.Param{{
+			Name:              "av1_hw",
+			Val:               memCheckParams{fileName: "720_av1.mp4", sizes: []graphics.Size{{Width: 1280, Height: 720}}, videoType: play.NormalVideo},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         []string{"video.html", "720_av1.mp4"},
+			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeAV1},
+			Pre:               pre.ChromeVideoWithGuestLoginAndHWAV1Decoding(),
+			Timeout:           10 * time.Minute,
+		}, {
 			Name:              "h264_hw",
 			Val:               memCheckParams{fileName: "720_h264.mp4", sizes: []graphics.Size{{Width: 1280, Height: 720}}, videoType: play.NormalVideo},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
