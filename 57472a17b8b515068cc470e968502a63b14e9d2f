@@ -22,6 +22,116 @@
       "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a24bfe3_cbee89e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-02T18:35:15Z",
+      "side": 1,
+      "message": "Agree. And think we might want to do tablets tests on both orientations. Right now, we are probably just using the device default orientation. Let\u0027s file a bug and put more thoughts on it.\n\nI am okay either way here. If we want to set landscape, it is a little tricky to set properly for all tablets. Some devices are default to portrait (e.g. Dru) and some default to landscape (e.g. Krane). So a fixed display rotation does not work.\n\nOne possible way is:\n- Check display.GetOrientation to see what we have in default\n- Then display.SetDisplayRotationSync to rotate relative to the default orientation if necessary.",
+      "parentUuid": "1174a692_f628cab3",
+      "range": {
+        "startLine": 164,
+        "startChar": 47,
+        "endLine": 164,
+        "endChar": 48
+      },
+      "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fcec672_8ed8f064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-02T18:35:15Z",
+      "side": 1,
+      "message": "Why do we need to enter overview?",
+      "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a5207c_eaa24b11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-02T18:35:15Z",
+      "side": 1,
+      "message": "Maybe WaitUntilDescendantExists is more fit here?\n\nOtherwise, we probably should give it a name and defer call its Release() to be on the safe side.",
+      "range": {
+        "startLine": 349,
+        "startChar": 5,
+        "endLine": 349,
+        "endChar": 6
+      },
+      "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39cae91_ddc6ec36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-02T18:35:15Z",
+      "side": 1,
+      "message": "It is a big strange that a web element needs double click. Please confirm.",
+      "range": {
+        "startLine": 422,
+        "startChar": 31,
+        "endLine": 422,
+        "endChar": 37
+      },
+      "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "937dfa26_e8169f6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-02T18:35:15Z",
+      "side": 1,
+      "message": "nit: ditto, please confirm this is intended.",
+      "range": {
+        "startLine": 483,
+        "startChar": 24,
+        "endLine": 483,
+        "endChar": 30
+      },
+      "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

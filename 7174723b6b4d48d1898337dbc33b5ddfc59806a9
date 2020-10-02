@@ -16,6 +16,24 @@
       "revId": "7174723b6b4d48d1898337dbc33b5ddfc59806a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed148088_0afdf947",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-02T18:35:15Z",
+      "side": 1,
+      "message": "The worse_case test fails on my end. Think my device screen is too small and we fail to find \u0027change-layout\u0027 when doing \u0027split\u0027.\n\nScreenshot:\nhttps://screenshot.googleplex.com/7A6pu6pEniZpt6D.png\n\nLog:\n2020/10/02 11:29:40 [11:29:39.509] Error at meet_cuj.go:419: Failed to find the change-layout item (likely because options button was not clicked correctly): context deadline exceeded; last error follows: node does not exist\n2020/10/02 11:29:40 [11:29:39.509] Stack trace:\nFailed to find the change-layout item (likely because options button was not clicked correctly)\n        at chromiumos/tast/local/bundles/cros/ui.MeetCUJ.func3 (meet_cuj.go:419)\n        at chromiumos/tast/local/chrome/metrics.Run (histogram.go:356)\n        at chromiumos/tast/local/bundles/cros/ui/cuj.(*Recorder).Run (recorder.go:197)\n        at chromiumos/tast/local/bundles/cros/ui.MeetCUJ (meet_cuj.go:361)\n        at chromiumos/tast/internal/planner.runTestWithRoot.func3 (run.go:669)\n        at chromiumos/tast/internal/planner.safeCall.func1 (safe.go:58)\n        at runtime.goexit (asm_arm.s:868)\ncontext deadline exceeded; last error follows\n        at chromiumos/tast/internal/testingutil.Poll (poll.go:83)\n        at chromiumos/tast/testing.Poll (util.go:43)\n        at chromiumos/tast/local/chrome/ui.(*Node).WaitUntilDescendantExists (automation.go:427)\n        at chromiumos/tast/local/chrome/ui.(*Node).DescendantWithTimeout (automation.go:401)\n        at chromiumos/tast/local/bundles/cros/ui.MeetCUJ.func3 (meet_cuj.go:417)\n        at chromiumos/tast/local/chrome/metrics.Run (histogram.go:356)\n        at chromiumos/tast/local/bundles/cros/ui/cuj.(*Recorder).Run (recorder.go:197)\n        at chromiumos/tast/local/bundles/cros/ui.MeetCUJ (meet_cuj.go:361)\n        ...\nnode does not exist\n        at chromiumos/tast/local/chrome/ui.init (automation.go:422)\n        at runtime.doInit (proc.go:5222)\n        at runtime.doInit (proc.go:5217)\n        at runtime.doInit (proc.go:5217)\n        at runtime.doInit (proc.go:5217)\n        at runtime.doInit (proc.go:5217)\n        at runtime.main (proc.go:190)\n        at runtime.goexit (asm_arm.s:868)",
+      "parentUuid": "4a553807_885420f9",
+      "revId": "7174723b6b4d48d1898337dbc33b5ddfc59806a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
