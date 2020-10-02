@@ -30,9 +30,7 @@ func init() {
 
 // Diagnostics runs and verifies that the 'cros-health-tool diag' command-line
 // invocation can get a list of supported routines from cros_healthd, and run
-// the urandom routine, which should be supported on every platform that
-// cros_healthd runs on. Other routines are not tested, because they could
-// flake.
+// every routine supported across all boards.
 //
 // The diag command has two actions it can run. 'get_routines' returns a list of
 // all routines that diag supports and 'run_routine' starts running a routine
@@ -70,7 +68,10 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 		return ret
 	}
 
-	// Test a given routine and ensure that it runs and passes
+	// Test a given routine and ensure that it runs and either passes or fails.
+	// Some lab machines might have old batteries, for example, so we only want
+	// to test that the routine can complete successfully without crashing or
+	// throwing errors.
 	testRoutine := func(routine string, args ...string) {
 		raw := runDiag(append([]string{
 			"--action=run_routine", "--routine=" + routine}, args...)...)
@@ -102,8 +103,8 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		if status != "Passed" {
-			s.Fatalf("%q routine has status %q; want \"Passed\"", routine, status)
+		if status != "Passed" && status != "Failed" {
+			s.Fatalf("%q routine has status %q; want \"Passed\" or \"Failed\"", routine, status)
 		}
 
 		if progress != 100 {
@@ -117,12 +118,14 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 
 	routines := getRoutines()
 
-	if len(routines) < 2 {
-		s.Fatalf("Found %d routine(s) %v; want >=2", len(routines), routines)
+	// There are 9 routines supported on all devices.
+	if len(routines) < 9 {
+		s.Fatalf("Found %d routine(s) %v; want >=9", len(routines), routines)
 	}
 
-	// Only test the urandom routine. Other routines could fail and the CQ
-	// should not be blocked in that case. This will test the end to end
-	// interaction between "diag" and "wilco_dtc_supportd"
-	testRoutine("urandom", "--length_seconds=2")
+	// Run each of the routines supported on the device.
+	for _, routine := range routines {
+		s.Logf("Running routine: %s", routine)
+		testRoutine(routine)
+	}
 }
