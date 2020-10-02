@@ -51,7 +51,30 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	if err := gamePlayButton.MakeVisible(ctx); err != nil {
 		return errors.Wrapf(err, "failed to make the game play button (%s) visible", gamePlay)
 	}
-	if err := gamePlayButton.StableLeftClick(ctx, &pollOpts); err != nil {
+	// Make sure the Play button is clickable.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var atTop bool
+		if err := conn.Call(ctx, &atTop,
+			`() => {
+				var sel = Array.from(document.querySelectorAll('div')).find(e => e.textContent === "Play");
+				var b = sel.getBoundingClientRect();
+				var el = document.elementFromPoint((b.left+b.right)/2, (b.top+b.bottom)/2);
+				return sel.contains(el);
+			}`); err != nil {
+			return errors.Wrapf(err, "failed to check at top of selector %q", gamePlay)
+		}
+		if !atTop {
+			return errors.Errorf("selector %q is not at top", gamePlay)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for the Play button to be clickable")
+	}
+
+	if err := gamePlayButton.LeftClickUntil(ctx,
+		func(ctx context.Context) (bool, error) {
+			return ui.Exists(ctx, tconn, ui.FindParams{Name: gameStart, Role: ui.RoleTypeButton})
+		}, &pollOpts); err != nil {
 		return errors.Wrapf(err, "failed to click the game play button (%s)", gamePlay)
 	}
 
@@ -84,6 +107,7 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to start the game %s", name)
 	}
+
 	return nil
 }
 
