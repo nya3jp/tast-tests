@@ -35,6 +35,13 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"video.html"},
 		Params: []testing.Param{{
+			Name:              "av1",
+			Val:               seekTest{filename: "720_av1.mp4", numSeeks: 25},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"720_av1.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			Pre:               pre.ChromeVideoWithHWAV1Decoding(),
+		}, {
 			Name:              "h264",
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
@@ -76,6 +83,14 @@ func init() {
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Pre:               pre.ChromeVideo(),
+		}, {
+			Name:              "stress_av1",
+			Val:               seekTest{filename: "720_av1.mp4", numSeeks: 1000},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData:         []string{"720_av1.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			Timeout:           20 * time.Minute,
+			Pre:               pre.ChromeVideoWithHWAV1Decoding(),
 		}, {
 			Name:              "stress_vp8",
 			Val:               seekTest{filename: "720_vp8.webm", numSeeks: 1000},
