@@ -34,6 +34,23 @@
       "revId": "2186c249351989514b91533e649a1be3e5d40097",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f3b58f1_0aff5365",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-02T00:44:11Z",
+      "side": 1,
+      "message": "Tast Shadow Review: LGTM.\n\nJust for my curiosity, what is the current view on when WaitUntilCPUCoolDown should be used? Is it considered flaky, or only if (as in this case) there appears to be sustained load on the system?",
+      "revId": "2186c249351989514b91533e649a1be3e5d40097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
