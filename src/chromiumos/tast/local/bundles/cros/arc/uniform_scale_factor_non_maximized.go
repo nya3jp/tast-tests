@@ -46,7 +46,7 @@ func baselinePixelCount(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 	}
 	defer cleanup(ctx)
 
-	act, err := perappdensity.StartViewActivityWithWindowState(ctx, tconn, a, arc.WindowStateNormal)
+	act, err := perappdensity.StartActivityWithWindowState(ctx, tconn, a, arc.WindowStateNormal, perappdensity.ViewActivity)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to start activity")
 	}
