@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9940e32a_6049f790",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-10-02T07:54:54Z",
+      "side": 1,
+      "message": "ptal.\nsome simple refactoring from adding usfNonMaxTest",
+      "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
