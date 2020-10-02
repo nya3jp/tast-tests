@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "6fa2699f_bd759db1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-02T21:29:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfaf07af_fd189179",
+      "revId": "273a2aa49596fb4da7dc251cca46ee02826be4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fc56318_86812a3b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 2
@@ -47,6 +65,30 @@
       "writtenOn": "2020-10-01T23:28:46Z",
       "side": 1,
       "message": "I haven\u0027t looked at the other change yet, but does this verify that there were no changes to the service state at all? That doesn\u0027t seem right. I guess I\u0027m a little confused why we need the monitor in the first place. Why don\u0027t we just use the UnexpectedValues to list states we don\u0027t want shill to go into? It seems to me like all we need to do is put all the Connected states in the ExpectedValues, and put Idle, Failure, etc. (I forget what other ones there are) into the UnexpectedValues, and wait on that. Am I missing something?",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "273a2aa49596fb4da7dc251cca46ee02826be4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "850a5b6d_f8d159c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-02T21:29:23Z",
+      "side": 1,
+      "message": "Yes, this verifies that there was no changes on service at all. I can check \"propChanges\" and make sure there is no unexpected states.\n\nI implemented the monitor so I can monitor the service state while I am waiting for the BSSID change, because ExpectShillProperty watches one property at the time and it returns when the expected property is found.  \n\nI think based on your patchset comment I don\u0027t need a monitor here. I just need to wait for change in the BSSID. However, wifi.RoamDbus still needs the monitor to make sure there is no disconnection.",
+      "parentUuid": "6fc56318_86812a3b",
       "range": {
         "startLine": 186,
         "startChar": 2,
