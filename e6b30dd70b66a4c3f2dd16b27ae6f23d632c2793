@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cc5b085_833148b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-02T04:49:38Z",
+      "side": 1,
+      "message": "I refactored all the naming, and I think things read much better now. Thanks for the feedback.",
+      "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

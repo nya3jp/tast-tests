@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "dc3e9503_484a9a8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-02T04:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1603eb5_b99746d9",
+      "range": {
+        "startLine": 136,
+        "startChar": 35,
+        "endLine": 136,
+        "endChar": 44
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c9e22d7_e13a072f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
         "patchSetId": 1
@@ -82,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "95c62d77_88e4bcf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-02T04:49:38Z",
+      "side": 1,
+      "message": "Everything is bytes now.",
+      "parentUuid": "8c9e22d7_e13a072f",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 14
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc714913_59b1a3eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
         "patchSetId": 1
@@ -102,6 +150,30 @@
       "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e130009e_ad85ac81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-02T04:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc714913_59b1a3eb",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -176,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "a0e6a8dd_ad48ff0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-02T04:49:38Z",
+      "side": 1,
+      "message": "OK, I refactored everything to use bytes, and pushed as far as the intent passed to an Android app that expects MiB.",
+      "parentUuid": "50633d19_d14fe5bd",
+      "range": {
+        "startLine": 62,
+        "startChar": 57,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cad6f32e_bf7daffa",
         "filename": "src/chromiumos/tast/local/memory/mem_low.go",
         "patchSetId": 1
@@ -244,6 +340,30 @@
       "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb081864_f74850a1",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-02T04:49:38Z",
+      "side": 1,
+      "message": "The linter complained that memory.MemoryLimit stutters, so I made it just \u0027Limit\u0027, and the names seem pretty clear.",
+      "parentUuid": "02a85322_9bd5bde4",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -435,6 +555,30 @@
     },
     {
       "key": {
+        "uuid": "165d62fa_0416713d",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-02T04:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb626b5c_54fc2ee4",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10832d5a_509d9b7c",
         "filename": "src/chromiumos/tast/local/memory/mem_low.go",
         "patchSetId": 1
@@ -455,6 +599,30 @@
       "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e0ad33_35c6f03b",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-02T04:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10832d5a_509d9b7c",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -529,6 +697,30 @@
     },
     {
       "key": {
+        "uuid": "859374f3_1c5aa5fa",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-02T04:49:38Z",
+      "side": 1,
+      "message": "NewPageReclaimLimit, to avoid the memory.Memory",
+      "parentUuid": "a29d3ec3_0d7aa1b5",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f187a850_665aa842",
         "filename": "src/chromiumos/tast/local/memory/mem_low.go",
         "patchSetId": 1
@@ -549,6 +741,30 @@
       "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39aad500_9ee52466",
+        "filename": "src/chromiumos/tast/local/memory/mem_low.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-02T04:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f187a850_665aa842",
+      "range": {
+        "startLine": 161,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 23
+      },
+      "revId": "1aa178aac444f74ccffce587a266825ab85d7dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
