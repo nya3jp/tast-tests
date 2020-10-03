@@ -47,24 +47,8 @@ var keyInfo = []struct {
 	// Performance direction, for example perf.BiggerIsBetter.
 	direction perf.Direction
 }{{
-	suffixes:  []string{"_duration", "_utime", "_stime"},
-	unitName:  "ms",
-	direction: perf.SmallerIsBetter,
-}, {
-	suffixes:  []string{"_byte_count"},
-	unitName:  "bytes",
-	direction: perf.BiggerIsBetter,
-}, {
 	suffixes:  []string{"_score"},
 	unitName:  "mbps",
-	direction: perf.BiggerIsBetter,
-}, {
-	suffixes:  []string{"_page_faults", "_page_reclaims", "_context_switches"},
-	unitName:  "count",
-	direction: perf.SmallerIsBetter,
-}, {
-	suffixes:  []string{"_fs_reads", "_fs_writes", "_msgs_sent", "_msgs_rcvd"},
-	unitName:  "count",
 	direction: perf.BiggerIsBetter,
 },
 }
@@ -197,12 +181,12 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 		}
 		if strings.HasSuffix(key, "_score") {
 			score += value
+			info, err := makeMetricInfo(key)
+			if err != nil {
+				return score, errors.Wrap(err, "failed to parse key")
+			}
+			config.PerfValues.Set(info, value)
 		}
-		info, err := makeMetricInfo(key)
-		if err != nil {
-			return score, errors.Wrap(err, "failed to parse key")
-		}
-		config.PerfValues.Set(info, value)
 	}
 
 	// Merge previous perf metrics with new power metrics.
