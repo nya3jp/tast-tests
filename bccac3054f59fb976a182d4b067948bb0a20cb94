@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b3429c0_b202b4ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-03T05:20:57Z",
+      "side": 1,
+      "message": "I haven\u0027t looked at this too closely yet, but shouldn\u0027t we just monitor everything instead of a specific property (so this behaves kind of like the iw event monitor in autotest)? In some cases, it may be important to watch for multiple properties, and it doesn\u0027t make sense to have to create two separate monitors to do that.",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
