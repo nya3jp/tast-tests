@@ -47,24 +47,8 @@ var keyInfo = []struct {
 	// Performance direction, for example perf.BiggerIsBetter.
 	direction perf.Direction
 }{{
-	suffixes:  []string{"_duration", "_utime", "_stime"},
-	unitName:  "ms",
-	direction: perf.SmallerIsBetter,
-}, {
-	suffixes:  []string{"_byte_count"},
-	unitName:  "bytes",
-	direction: perf.BiggerIsBetter,
-}, {
 	suffixes:  []string{"_score"},
 	unitName:  "mbps",
-	direction: perf.BiggerIsBetter,
-}, {
-	suffixes:  []string{"_page_faults", "_page_reclaims", "_context_switches"},
-	unitName:  "count",
-	direction: perf.SmallerIsBetter,
-}, {
-	suffixes:  []string{"_fs_reads", "_fs_writes", "_msgs_sent", "_msgs_rcvd"},
-	unitName:  "count",
 	direction: perf.BiggerIsBetter,
 },
 }
