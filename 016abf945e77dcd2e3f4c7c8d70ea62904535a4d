@@ -16,6 +16,92 @@
       "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66955e04_88cb3dcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-03T00:33:19Z",
+      "side": 1,
+      "message": "I really don\u0027t want us to write tests like this. Is there nothing we can poll for?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3122b13_ae53e732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-03T00:33:19Z",
+      "side": 1,
+      "message": "What does off screen mean?\n\nis this test doing something that a human couldn\u0027t?",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e4a412_5d68924d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-03T00:33:19Z",
+      "side": 1,
+      "message": "Move down to be above the correct line",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 45
+      },
+      "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "892a1771_b3efb52b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-03T00:33:19Z",
+      "side": 1,
+      "message": "delete line",
+      "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
