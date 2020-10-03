@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "2307e5d4_816bb4a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-03T03:43:47Z",
+      "side": 1,
+      "message": "PTALA, thanks!",
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f8144e_ba4bc694",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 5
@@ -80,6 +97,30 @@
       "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456727a3_a63f639a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-03T03:43:47Z",
+      "side": 1,
+      "message": "Reading https://golang.org/pkg/bufio/#Reader.ReadString, it seems to only read up to and including the first delimiter char.  If it reads EOF before first newline or gets another non-EOF error before first newline, it will error and return.  Please help clarify which case can cause read beyond first newline if you still see issue with new patchset.  Thanks.",
+      "parentUuid": "731bd342_6445e5ef",
+      "range": {
+        "startLine": 188,
+        "startChar": 18,
+        "endLine": 188,
+        "endChar": 56
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -154,6 +195,30 @@
     },
     {
       "key": {
+        "uuid": "fb6640fe_8171ad4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-03T03:43:47Z",
+      "side": 1,
+      "message": "Done and filed http://b/169947243.",
+      "parentUuid": "152a5aea_e521b49d",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b7287f1_0700b9d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 5
@@ -198,6 +263,30 @@
       "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4254d2e0_391dbfcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-03T03:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baec741f_339ca195",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 55
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -247,6 +336,54 @@
     },
     {
       "key": {
+        "uuid": "cd278b67_6236f680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-03T03:43:47Z",
+      "side": 1,
+      "message": "Good idea, Done.",
+      "parentUuid": "a6c531d6_a6f58091",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 8
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b407d91_35a77e62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-03T03:43:47Z",
+      "side": 1,
+      "message": "This buffer goes away based on next comment from nya@ to just discard.\n\nI originally wanted to just read everything into single buffer without looping and refilling same buffer.  The reason is because timing involved in the many loop cycles isn\u0027t interesting for the purpose of what\u0027s being profiled which are only the network system / kernel calls.\n\nAgree in real world application, I would definitely read into small buffer and construct larger message while dealing with possible out-of-order receives.  But in this case with connection being point-to-point and strictly controlled for test purposes, the out-of-order aspect should never happen.",
+      "parentUuid": "4360a05c_388a8fe1",
+      "range": {
+        "startLine": 252,
+        "startChar": 25,
+        "endLine": 252,
+        "endChar": 36
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e75efdb_6e87284b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 5
@@ -267,6 +404,30 @@
       "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03d99e79_a0261b64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-03T03:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e75efdb_6e87284b",
+      "range": {
+        "startLine": 259,
+        "startChar": 11,
+        "endLine": 259,
+        "endChar": 112
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
