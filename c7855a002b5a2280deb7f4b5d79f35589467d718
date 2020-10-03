@@ -16,6 +16,98 @@
       "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17ecabaf_e9bef5bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-03T05:18:21Z",
+      "side": 1,
+      "message": "\"This test associates a device to an AP, and then configures another AP on the same SSID. It verifies that, after we deconfigure the first AP, the DUT eventually associates to the second AP.\"",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 15
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae542439_1c5fb672",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-03T05:18:21Z",
+      "side": 1,
+      "message": "After my most recent patch, I think this should be all non-Connected states. That being said, since we end up using the monitor to verify that we don\u0027t disconnect anyway, this check becomes unnecessary.",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 63
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "868d024d_42829b97",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-03T05:18:21Z",
+      "side": 1,
+      "message": "Perhaps package this as a function (like assert_no_disconnects in autotest) with the monitor in case other tests need to use it?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27aef783_8470f016",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-03T05:18:21Z",
+      "side": 1,
+      "message": "It makes more sense to log this right after waitForProps above since that\u0027s when we check that the roam actually happens.",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 21
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
