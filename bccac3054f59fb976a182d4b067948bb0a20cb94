@@ -16,6 +16,24 @@
       "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abc6f860_81da04f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-03T05:29:06Z",
+      "side": 1,
+      "message": "Or at least allow multiple properties to be passed in.",
+      "parentUuid": "7b3429c0_b202b4ae",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
