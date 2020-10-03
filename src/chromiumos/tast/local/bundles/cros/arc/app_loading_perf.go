@@ -192,7 +192,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	finalPerfValues.Set(
 		perf.Metric{
 			Name:      "total_score",
-			Unit:      "mbps",
+			Unit:      "None",
 			Direction: perf.BiggerIsBetter,
 			Multiple:  false,
 		}, totalScore)
