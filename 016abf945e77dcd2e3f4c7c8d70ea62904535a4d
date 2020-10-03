@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "713a639f_499e43a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-03T00:58:38Z",
+      "side": 1,
+      "message": "Unfortunately, it is the most reliable way I can ensure this test passed over 90% of the time. I have tried to use ui.WaitForLocationChangeCompletedOnNode instead of sleep in this test, but the failure percentage is much higher. The problem usually happened when a tablet is running in clamshell mode. I think there are two other ways we can try. \n\n1. We only run tablet_mode on tablet and clamshell_mode on clamshell.\n2. We can poll a different event instead of location change event, but I need advise on which event to poll. At this moment, I do not know ChromeOS UI well enough to be sure.",
+      "parentUuid": "66955e04_88cb3dcc",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3122b13_ae53e732",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
         "patchSetId": 16
@@ -62,6 +86,30 @@
       "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5276e337_67e7fed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-03T00:58:38Z",
+      "side": 1,
+      "message": "Sorry, the comment was wrong. I have corrected it. Actually, I found the drag and drop operation failed quite often in this test without focusing the icon before drag and drop.",
+      "parentUuid": "c3122b13_ae53e732",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "40d6850f_dc5a236b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-03T00:58:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86e4a412_5d68924d",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 45
+      },
+      "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "892a1771_b3efb52b",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 16
@@ -102,6 +174,24 @@
       "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f4efcf_b2fb4775",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-03T00:58:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "892a1771_b3efb52b",
+      "revId": "016abf945e77dcd2e3f4c7c8d70ea62904535a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62d75d65_2dde1644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-03T00:58:38Z",
+      "side": 1,
+      "message": "Hi David:\n\nThanks for the feedback. I have addressed some of them. Please see my comments for unresolved items. \n\nThanks.\n\nSeewai\n",
+      "revId": "b8b92863bbc607ab7b3a9a9e4b542980174b31b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
