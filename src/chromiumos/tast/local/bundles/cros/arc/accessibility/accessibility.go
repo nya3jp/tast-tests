@@ -63,10 +63,12 @@ type Feature string
 
 // List of accessibility features that interacts with ARC.
 const (
-	SpokenFeedback Feature = "spokenFeedback"
-	SwitchAccess           = "switchAccess"
-	SelectToSpeak          = "selectToSpeak"
-	FocusHighlight         = "focusHighlight"
+	SpokenFeedback  Feature = "spokenFeedback"
+	SwitchAccess            = "switchAccess"
+	SelectToSpeak           = "selectToSpeak"
+	FocusHighlight          = "focusHighlight"
+	DockedMagnifier         = "dockedMagnifier"
+	ScreenMagnifier         = "screenMagnifier"
 )
 
 // focusedNode returns the currently focused node of ChromeVox.

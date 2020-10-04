@@ -36,6 +36,8 @@ var unstableSettingsBridgeParam = settingsBridgeParam{
 		accessibility.SwitchAccess,
 		accessibility.SelectToSpeak,
 		accessibility.FocusHighlight,
+		accessibility.ScreenMagnifier,
+		accessibility.DockedMagnifier,
 	},
 	runProxySync: false,
 }
