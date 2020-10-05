@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cc85b5a_c55438c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-05T02:01:08Z",
+      "side": 1,
+      "message": "LGTM % few small comments. The BT part is not yet ready for \"persistence\" tests but I think we can extend it under current structure later.",
+      "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff669e39_33247a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-05T02:01:08Z",
+      "side": 1,
+      "message": "nit: would be nice to have comments for public methods. although we already have one in .proto/.pb.go.",
+      "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d16f593c_ae5f584c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-05T02:01:08Z",
+      "side": 1,
+      "message": "Oops, this shorten is for the defer function in line 37, so should be placed after the defer? i.e. around line 60. Otherwise ctx passed to the defer func is already shortened.",
+      "range": {
+        "startLine": 34,
+        "startChar": 20,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e72c64a9_e18094db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-05T02:01:08Z",
+      "side": 1,
+      "message": "nit: I missed this one... I think it\u0027s not UI now.",
+      "range": {
+        "startLine": 52,
+        "startChar": 46,
+        "endLine": 52,
+        "endChar": 49
+      },
+      "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae1f5ca_b365fdf2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-05T02:01:08Z",
+      "side": 1,
+      "message": "nit: \"get WiFi status\"?",
+      "range": {
+        "startLine": 126,
+        "startChar": 21,
+        "endLine": 126,
+        "endChar": 33
+      },
+      "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
