@@ -228,7 +228,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 
 // runARCVideoPerfTest runs c2_e2e_test APK in ARC and gathers perf statistics.
 // It fails if c2_e2e_test fails.
-// It returns a map of perf statistics containing fps, dropped frame, cpu, and power stats.
+// It returns a map of perf statistics containing fps, dropped frame, and cpu stats.
 func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (perf map[string]float64) {
 	cr := s.PreValue().(arc.PreData).Chrome
 
@@ -301,11 +301,6 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	perfMap := make(map[string]float64)
 	s.Logf("CPU Usage = %.4f", stats["cpu"])
 	perfMap["cpu"] = stats["cpu"]
-
-	if power, ok := stats["power"]; ok {
-		s.Logf("Power Usage = %.4f", power)
-		perfMap["power"] = stats["power"]
-	}
 
 	fps, df, err := reportFrameStats(outLogFile)
 	if err != nil {
@@ -405,14 +400,6 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, stats["cpu"])
-
-	if power, ok := stats["power"]; ok {
-		p.Set(perf.Metric{
-			Name:      "power_consumption",
-			Unit:      "watts",
-			Direction: perf.SmallerIsBetter,
-		}, power)
-	}
 
 	p.Set(perf.Metric{
 		Name:      "frame_drop_percentage",
