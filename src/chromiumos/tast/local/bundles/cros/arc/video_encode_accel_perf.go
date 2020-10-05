@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // Enable to cache the extracted raw video to speed up the test.
@@ -26,6 +27,7 @@ func init() {
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklist...)),
 		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
