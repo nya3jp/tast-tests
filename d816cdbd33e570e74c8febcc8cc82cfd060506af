@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "da16a4c5_f7ccd606",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-05T18:46:41Z",
+      "side": 1,
+      "message": "Ah okay, so this CL doesn\u0027t directly contribute to $BUG. Thanks for clearing that up.",
+      "parentUuid": "3fc3e3b2_5715eedf",
+      "revId": "d816cdbd33e570e74c8febcc8cc82cfd060506af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e129a6d_d83c66a0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
         "patchSetId": 2
@@ -81,6 +99,30 @@
       "revId": "d816cdbd33e570e74c8febcc8cc82cfd060506af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a27185c_f24cdb36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-05T18:46:41Z",
+      "side": 1,
+      "message": "I meant that we could move the context shortening to the `if resp.OldSetting` clause, but I just saw Dean\u0027s comment, so never mind. The way you\u0027re doing it now is fine too.",
+      "parentUuid": "56b3c528_efcc9515",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "d816cdbd33e570e74c8febcc8cc82cfd060506af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
