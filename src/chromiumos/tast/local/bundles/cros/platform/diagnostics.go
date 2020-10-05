@@ -94,9 +94,17 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 			case "Status":
 				status = value
 			case "Progress":
-				i, err := strconv.Atoi(value)
+				// Look for just the last progress value. Diag prints a single
+				// line for the progress, which may contain carriage returns.
+				// The line will be formatted as follows, where # is any int:
+				// #\rProgress: #\rProgress: #\rProgress: # ... \rProgress: #
+				// Slicing value after the last space should give us the final
+				// progress percent.
+				percent := value[strings.LastIndex(value, " ")+1:]
+				i, err := strconv.Atoi(percent)
 				if err != nil {
-					s.Fatalf("Unable to parse %q value %q as int: %v", key, value, err)
+					s.Logf("Failed to parse progress status: %q", value)
+					s.Fatalf("Unable to parse %q value %q as int: %v", key, percent, err)
 				}
 				progress = i
 			}
