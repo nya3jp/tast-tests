@@ -16,6 +16,23 @@
       "revId": "950a29340ad73b7299217afdbb6170af098cf76a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2bd4747_135f90db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-05T21:51:34Z",
+      "side": 1,
+      "message": "Thanks.  Do you need a mutual Cq-Depend with the CL that updates debugd?",
+      "revId": "950a29340ad73b7299217afdbb6170af098cf76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
