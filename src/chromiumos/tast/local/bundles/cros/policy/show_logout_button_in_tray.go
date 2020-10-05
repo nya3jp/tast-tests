@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
@@ -71,15 +70,12 @@ func ShowLogoutButtonInTray(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Find the button node.
-			params := ui.FindParams{
+			// Confirm the status of the Sign out button node.
+			if err := ui.WaitUntilExistsStatus(ctx, tconn, param.wantButton, ui.FindParams{
 				Role: ui.RoleTypeButton,
 				Name: "Sign out",
-			}
-			if err := ui.WaitUntilExists(ctx, tconn, params, 30*time.Second); err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
-				s.Fatal("Failed to find sign out button: ", err)
-			} else if b := !errors.Is(err, ui.ErrNodeDoesNotExist); param.wantButton != b {
-				s.Errorf("Unexpected existence of sign out button: got %t; want %t", b, param.wantButton)
+			}, 30*time.Second); err != nil {
+				s.Error("Could not confirm the desired status of the Sign out button: ", err)
 			}
 		})
 	}

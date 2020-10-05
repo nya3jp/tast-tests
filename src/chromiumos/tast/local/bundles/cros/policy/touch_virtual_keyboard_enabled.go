@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
@@ -99,15 +98,12 @@ func TouchVirtualKeyboardEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to click address bar: ", err)
 			}
 
-			// Get the virtual keyboard.
-			paramsK := ui.FindParams{
+			// Confirm the status of the  virtual keyboard node.
+			if err := ui.WaitUntilExistsStatus(ctx, tconn, param.enabled, ui.FindParams{
 				Role: ui.RoleTypeKeyboard,
 				Name: "Chrome OS Virtual Keyboard",
-			}
-			if err := ui.WaitUntilExists(ctx, tconn, paramsK, 30*time.Second); err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
-				s.Fatal("Failed to find virtual keyboard: ", err)
-			} else if b := !errors.Is(err, ui.ErrNodeDoesNotExist); param.enabled != b {
-				s.Errorf("Unexpected existence of virtual keyboard: got %t; want %t", b, param.enabled)
+			}, 30*time.Second); err != nil {
+				s.Error("Could not confirm the desired status of the virtual keyboard: ", err)
 			}
 		})
 	}
