@@ -16,6 +16,23 @@
       "revId": "f3d3c0439f236f8a798eacdec7ba929c4216381e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fadecc2_79c6df3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-05T16:19:40Z",
+      "side": 1,
+      "message": "Tast LGTM. Defer to Sara and Hiroki.",
+      "revId": "f3d3c0439f236f8a798eacdec7ba929c4216381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
