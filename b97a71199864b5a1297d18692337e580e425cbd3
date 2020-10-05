@@ -34,6 +34,24 @@
       "revId": "b97a71199864b5a1297d18692337e580e425cbd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d177e4e_3e135344",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-05T02:43:53Z",
+      "side": 1,
+      "message": "Thanks for the information. I\u0027ll wait for mickey being removed and check in this CL after that.",
+      "parentUuid": "bf5f71ea_05914c69",
+      "revId": "b97a71199864b5a1297d18692337e580e425cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
