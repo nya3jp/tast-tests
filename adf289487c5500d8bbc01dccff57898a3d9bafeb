@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea2f42c1_b251f195",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-10-05T10:10:40Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nJust in case you did not see the comments, here is a friendly reminder about the comments I left on \"test_bridge.go\" for patch set 22. Could you please take a look and advice? Thanks a lot for your review and your advice.",
+      "revId": "adf289487c5500d8bbc01dccff57898a3d9bafeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
