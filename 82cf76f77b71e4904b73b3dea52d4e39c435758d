@@ -124,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "82a9cb66_a5cea7c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-05T02:29:44Z",
+      "side": 1,
+      "message": "bufio.Reader reads data to a buffer, so Reader.ReadString can read beyond a delimiter. Here\u0027s a demonstration:\nhttps://play.golang.org/p/HHMAku_s3Cr\n\nAt this moment, you\u0027re right, this won\u0027t drop bytes as long as the client doesn\u0027t send any byte after the first newline character before it receives a response from the server. However I\u0027m afraid that it\u0027s a bit fragile protocol - we basically consider that clients sending any byte after a new line character cause undefined behavior. I\u0027d rather recommend using a consistent bufio.Reader instance for a connection to avoid this unnecessary complexity. Fortunately, I believe using a consistent bufio.Reader for a connection is trivial and easy.",
+      "parentUuid": "456727a3_a63f639a",
+      "range": {
+        "startLine": 188,
+        "startChar": 18,
+        "endLine": 188,
+        "endChar": 56
+      },
+      "revId": "82cf76f77b71e4904b73b3dea52d4e39c435758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1008951b_b71a84bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 5
