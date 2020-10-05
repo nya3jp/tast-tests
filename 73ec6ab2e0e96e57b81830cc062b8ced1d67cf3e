@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3282fe53_891a6746",
+        "filename": "src/chromiumos/tast/local/adb/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T22:30:12Z",
+      "side": 1,
+      "message": "nit: seems that it is not \"running\" the command, but just creating it",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ce7ce3_c2d66e66",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T22:30:12Z",
+      "side": 1,
+      "message": "nit: see comment below, but might be better to call it \"TransportID\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a27857_76eec0af",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T22:30:12Z",
+      "side": 1,
+      "message": "out of curiosity, when should the \"*\" appear?",
+      "range": {
+        "startLine": 38,
+        "startChar": 38,
+        "endLine": 38,
+        "endChar": 52
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca13b44_3718df1e",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T22:30:12Z",
+      "side": 1,
+      "message": "nit: i\u0027d change the message to avoid dup with previous line and also to be more specific. e.g:\n\n\"\u0027adb devices -l\u0027 returned unexpected device state\"  or something like that",
+      "range": {
+        "startLine": 49,
+        "startChar": 30,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d2ca96_caeaa1e0",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T22:30:12Z",
+      "side": 1,
+      "message": "nit: adb v1.0.41 doesn\u0027t have \u0027usb\u0027, instead it has \u0027transport id\u0027:\n\nOutput from my setup:\n\n  List of devices attached\n  cros9:12345            device product:eve model:Google_Pixelbook device:eve_cheets transport_id:2\n  localhost:43471        device product:flame model:Pixel_4 device:flame transport_id:1\n\n\ncould you support both outputs?\n\nAnd \"TransportID\" seems to be better name than \"USB\".\n\n/me: wonder how often does the \"adb\" output changes.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba409e8_404a1145",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T22:30:12Z",
+      "side": 1,
+      "message": "nit: add link from where these const come from (either source code or documentation)",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 30
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "472e5b90_fd03f77d",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T22:30:12Z",
+      "side": 1,
+      "message": "nit: add doc for func",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
