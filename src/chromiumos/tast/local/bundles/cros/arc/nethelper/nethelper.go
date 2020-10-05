@@ -218,11 +218,7 @@ func handleClient(ctx context.Context, conn net.Conn) {
 			}
 		case cmdReceivePayload:
 			ack := fmt.Sprintf("Ack from nethelper connection %s pid=%s", conn.LocalAddr().String(), strconv.Itoa(os.Getpid()))
-			if _, err := conn.Write([]byte(okResponse + "\n" + ack)); err != nil {
-				testing.ContextLogf(ctx, "Failed to send response to %s, %s", conn.RemoteAddr().String(), err)
-				return
-			}
-			if result, err := handleReceivePayload(r); err != nil {
+			if result, err := handleReceivePayload(conn, r, ack); err != nil {
 				testing.ContextLogf(ctx, "Failed to receive payload from %s: %s", conn.RemoteAddr().String(), err)
 				return
 			} else if result > 0 {
@@ -246,13 +242,16 @@ func handleDropCaches(ctx context.Context) string {
 	return okResponse
 }
 
-func handleReceivePayload(r *bufio.Reader) (int64, error) {
+func handleReceivePayload(w io.Writer, r *bufio.Reader, resp string) (int64, error) {
 	message, err := r.ReadString('\n')
 	if err != nil {
 		if err == io.EOF {
 			return 0, errors.New("failed to read header with EOF, connection is closed")
 		}
 		return 0, errors.Wrap(err, "failed to read header, connection is broken")
+	}
+	if _, err := w.Write([]byte(okResponse + "\n" + resp)); err != nil {
+		return 0, errors.Wrap(err, "failed to send response")
 	}
 
 	// Read header containing size of the payload.
@@ -262,8 +261,10 @@ func handleReceivePayload(r *bufio.Reader) (int64, error) {
 	}
 
 	// Read payload and discard immediately since it's not used.
-	if bytesRead, err := io.CopyN(ioutil.Discard, r, payloadSize); err != nil || bytesRead != payloadSize {
+	if bytesRead, err := io.CopyN(ioutil.Discard, r, payloadSize); err != nil {
 		return 0, errors.Wrap(err, "failed to read payload")
+	} else if bytesRead != payloadSize {
+		return 0, errors.Errorf("failed to read with %d bytes of payload processed", bytesRead)
 	}
 	return payloadSize, nil
 }

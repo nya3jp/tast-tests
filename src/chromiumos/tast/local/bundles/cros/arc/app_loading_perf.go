@@ -19,11 +19,6 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-const (
-	apkName       = "ArcAppLoadingTest.apk"
-	nethelperPort = 1235
-)
-
 var (
 	arcAppLoadingGaia = &arc.GaiaVars{
 		UserVar: "arc.AppLoadingPerf.username",
@@ -50,7 +45,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{apkName},
+		Data:         []string{apploading.X86ApkName, apploading.ArmApkName},
 		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -87,7 +82,7 @@ func init() {
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	// Start network helper to serve requests from the app.
-	conn, err := nethelper.Start(ctx, nethelperPort)
+	conn, err := nethelper.Start(ctx, apploading.NethelperPort)
 	if err != nil {
 		s.Fatal("Failed to start nethelper: ", err)
 	}
@@ -104,10 +99,11 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	// tests where group is not defined will be computed separately using the
 	// geometric means from other groups.
 	tests := []struct {
-		name    string
-		prefix  string
-		subtest string
-		group   string
+		name      string
+		prefix    string
+		subtest   string
+		group     string
+		multiarch bool
 	}{{
 		name:   "MemoryTest",
 		prefix: "memory",
@@ -131,8 +127,9 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		prefix:  "file_ext4",
 		subtest: "runExt4Test",
 	}, {
-		name:   "NetworkTest",
-		prefix: "network",
+		name:      "NetworkTest",
+		prefix:    "network",
+		multiarch: true,
 	}, {
 		name:   "OpenGLTest",
 		prefix: "opengl",
@@ -140,10 +137,16 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		name:   "DecompressionTest",
 		prefix: "decompression",
 	}, {
-		name:   "UITest",
-		prefix: "ui",
+		name:      "UITest",
+		prefix:    "ui",
+		multiarch: true,
 	}}
 
+	a := s.PreValue().(arc.PreData).ARC
+	apkName, err := apploading.ApkNameForArch(ctx, a)
+	if err != nil {
+		s.Fatal("Failed to get APK name: ", err)
+	}
 	config := apploading.TestConfig{
 		PerfValues:           finalPerfValues,
 		BatteryDischargeMode: batteryMode,
@@ -153,13 +156,22 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 
 	var scores []float64
 	groups := make(map[string][]float64)
-	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
 	for _, test := range tests {
 		config.ClassName = test.name
 		config.Prefix = test.prefix
 		config.Subtest = test.subtest
 
+		// TODO(b/169367367): Many apps / games run libhoudini (b/169446394) which
+		// is a major use case. These subflows test for crashes but are not scored.
+		if apkName == apploading.X86ApkName && test.multiarch {
+			armConfig := config
+			armConfig.ApkPath = s.DataPath(apploading.ArmApkName)
+			armConfig.Prefix += "_arm"
+			if _, err := apploading.RunTest(ctx, armConfig, a, cr); err != nil {
+				s.Fatal("Failed to run apploading test (arm): ", err)
+			}
+		}
 		score, err := apploading.RunTest(ctx, config, a, cr)
 		if err != nil {
 			s.Fatal("Failed to run apploading test: ", err)
