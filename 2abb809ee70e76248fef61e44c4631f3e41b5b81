@@ -22,6 +22,30 @@
       "revId": "2abb809ee70e76248fef61e44c4631f3e41b5b81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "013fb9c1_36368304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-05T16:18:39Z",
+      "side": 1,
+      "message": "It is interesting log to me.\nIIUC, it is reported from here:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/622f8a7eae10b111b216289c63184106f5b2bdc7/src/chromiumos/tast/local/chrome/conn.go#216\n\nthough, as you can find, \"this\" is used before hand.\nAlso, in this case, \"this\" we expect is the object representing the background page, so I thought it is set on execution...?\nCould you share more surrounding logs?",
+      "parentUuid": "7653d42a_b527b405",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "2abb809ee70e76248fef61e44c4631f3e41b5b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
