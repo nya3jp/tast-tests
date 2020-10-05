@@ -16,6 +16,46 @@
       "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d0afd85_912b2162",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-10-05T17:47:53Z",
+      "side": 1,
+      "message": "Thanks",
+      "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f176fe8_dcdc30f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-10-05T17:47:53Z",
+      "side": 1,
+      "message": "to note, bi-directional communication is much more frequent than sending data in one direction.\nMaybe it is OK for now, however I think we might end with dataExchange command. I would still recommend to implement this way that give you freedom of implementing flows you need.",
+      "range": {
+        "startLine": 264,
+        "startChar": 25,
+        "endLine": 264,
+        "endChar": 30
+      },
+      "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
