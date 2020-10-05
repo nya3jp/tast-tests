@@ -39,7 +39,14 @@ type RoamEvent struct {
 	Skip             bool
 }
 
-// ScanResultsEvent defines data of CTRL-EVENT-SCAN-RESULTS event.
+// DisconnectedEvent defines data of CTRL-EVENT-DISCONNECTED event
+type DisconnectedEvent struct {
+	BSSID            string
+	Reason           int
+	LocallyGenerated string
+}
+
+// ScanResultsEvent defines data of CTRL-EVENT-SCAN-RESULTS event
 type ScanResultsEvent struct {
 }
 
@@ -72,6 +79,16 @@ func parseRoamEvent(matches []string) (event RoamEvent, firstError error) {
 }
 
 var eventDefs = []eventDef{
+	{
+		regexp.MustCompile(`CTRL-EVENT-DISCONNECTED bssid=([\da-fA-F:]+) reason=(\d+)(?: locally_generated=(1))?`),
+		func(matches []string) (_ SupplicantEvent, firstError error) {
+			event := new(DisconnectedEvent)
+			event.BSSID = matches[1]
+			event.Reason = atoi(matches[2], &firstError)
+			event.LocallyGenerated = matches[3]
+			return event, firstError
+		},
+	},
 	{
 		regexp.MustCompile(
 			`CTRL-EVENT-DO-ROAM cur_bssid=([\da-fA-F:]+) cur_freq=(\d+) ` +
@@ -112,6 +129,12 @@ func (e *RoamEvent) ToLogString() string {
 // ToLogString formats the event data to string suitable for logging.
 func (e *ScanResultsEvent) ToLogString() string {
 	return ""
+}
+
+// ToLogString formats the event data to string suitable for logging
+func (e *DisconnectedEvent) ToLogString() string {
+	const timeLayout = "2006-01-02 15:04:05.000000"
+	return fmt.Sprintf("%s %+v\n", time.Now().Format(timeLayout), e)
 }
 
 // Start initializes the wpa_supplicant monitor.
