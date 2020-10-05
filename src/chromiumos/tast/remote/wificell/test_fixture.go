@@ -471,6 +471,24 @@ func (tf *TestFixture) DeconfigAllAPs(ctx context.Context) error {
 	return firstErr
 }
 
+const wpaMonitorStopTimeout = 10 * time.Second
+
+// StartWpaMonitor configures and starts wpa_supplicant events monitor
+func (tf *TestFixture) StartWpaMonitor(ctx context.Context) (wpaMonitor *WPAMonitor, stop func(), stopTimeout time.Duration, retErr error) {
+	wpaMonitor = new(WPAMonitor)
+	if err := wpaMonitor.Start(ctx, tf.dut.Conn()); err != nil {
+		return nil, nil, 0, err
+	}
+	return wpaMonitor, func() {
+		timeoutCtx, cancel := context.WithTimeout(ctx, wpaMonitorStopTimeout)
+		defer cancel()
+		if err := wpaMonitor.Stop(timeoutCtx); err != nil {
+			testing.ContextLog(ctx, "Failed to wait for wpa monitor stop: ", err)
+		}
+		testing.ContextLog(ctx, "Wpa monitor stopped")
+	}, wpaMonitorStopTimeout, nil
+}
+
 // Capturer returns the auto-spawned Capturer for the APIface instance.
 func (tf *TestFixture) Capturer(ap *APIface) (*pcap.Capturer, bool) {
 	capturer, ok := tf.capturers[ap]
