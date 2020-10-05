@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "4fa1304f_bb8fa1f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-05T17:45:25Z",
+      "side": 1,
+      "message": "Some answers, need to test code more, though.",
+      "revId": "46de8ecfa765783afa421b17f55682db13d676be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6335a31_fe9cc2b7",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
         "patchSetId": 7
@@ -83,6 +100,24 @@
     },
     {
       "key": {
+        "uuid": "58cec4dd_313103f4",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-05T17:45:25Z",
+      "side": 1,
+      "message": "I planned only best-effort support, as I don\u0027t have any specific RCDAT hardware to test that on. Perhaps I should mention that somewhere in comments.\nAnyway, quite surprisingly, undocumented `CHAN:%d:ATT?` seems to work, so I wouldn\u0027t be surprised if CHAN:%d:SETATT: worked too.",
+      "parentUuid": "faf2b8c9_2c3395f7",
+      "revId": "46de8ecfa765783afa421b17f55682db13d676be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebdf07d0_e82c355d",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
         "patchSetId": 7
@@ -111,6 +146,30 @@
       "writtenOn": "2020-10-05T09:56:40Z",
       "side": 1,
       "message": "Hmm..., kind of weird that the other places are using a.maxAtten but it returns maxAttenDb here. Can you point out the document for this? I didn\u0027t see it with some naive grep in the programming manual.",
+      "range": {
+        "startLine": 203,
+        "startChar": 8,
+        "endLine": 203,
+        "endChar": 18
+      },
+      "revId": "46de8ecfa765783afa421b17f55682db13d676be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8767157_e2d56b5b",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-05T17:45:25Z",
+      "side": 1,
+      "message": "You\u0027re absolutely right here. It was constant in autotest as far as I remember, but I getting that from model number is definitely better.",
+      "parentUuid": "f02d6677_4f9e9a92",
       "range": {
         "startLine": 203,
         "startChar": 8,
