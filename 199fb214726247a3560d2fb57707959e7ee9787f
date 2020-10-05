@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "e56f7ee9_12108c22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-10-05T15:35:00Z",
+      "side": 1,
+      "message": "I thought about making that change, but didn\u0027t because it would make it harder to see if the diff. Since you have already had a chance to look through it. I will go ahead and flatten the function.",
+      "parentUuid": "b8f43579_0de931ba",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "199fb214726247a3560d2fb57707959e7ee9787f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e0249d7_a017d23d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "199fb214726247a3560d2fb57707959e7ee9787f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10ffec6e_b70da588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-10-05T15:35:00Z",
+      "side": 1,
+      "message": "No, I use this to validate USBGuard behavior across system state transitions. Sometimes it checks if usbguard is running and sometimes it checks to make sure USBGuard isn\u0027t running.",
+      "parentUuid": "5e0249d7_a017d23d",
+      "range": {
+        "startLine": 160,
+        "startChar": 34,
+        "endLine": 160,
+        "endChar": 38
+      },
+      "revId": "199fb214726247a3560d2fb57707959e7ee9787f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
