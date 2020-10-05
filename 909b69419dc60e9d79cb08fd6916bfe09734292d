@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "080847f7_a7ab370a",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-10-05T07:53:54Z",
+      "side": 1,
+      "message": "nit: looks like it\u0027s not related to this CL.\nHow about splitting to another one?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "909b69419dc60e9d79cb08fd6916bfe09734292d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7306b68b_2856127a",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-10-05T07:53:54Z",
+      "side": 1,
+      "message": "how about checking md5sum as well?\nIf failed, then fallback to decode the file.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "909b69419dc60e9d79cb08fd6916bfe09734292d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
