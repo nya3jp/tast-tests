@@ -33,6 +33,24 @@
       "revId": "a74406ff147242e14581b8b775e70198fc510ad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "623b72a4_8697d424",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-10-05T07:33:17Z",
+      "side": 1,
+      "message": "I thought about doing this, but I want to make it easy for everybody to use this without knowing the inner workings and structure of the test code. That\u0027s why I decided to put the variable in the testcase itself.",
+      "parentUuid": "ae2f600d_702aa912",
+      "revId": "a74406ff147242e14581b8b775e70198fc510ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
