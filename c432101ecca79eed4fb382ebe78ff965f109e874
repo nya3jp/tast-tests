@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "19a0521b_1f703f23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-05T07:33:05Z",
+      "side": 1,
+      "message": "nit: \u003cip\u003e",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "c432101ecca79eed4fb382ebe78ff965f109e874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07081461_661f8e66",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -13,6 +36,23 @@
       "writtenOn": "2020-10-02T17:54:51Z",
       "side": 1,
       "message": "Hi all,\n\nPTAL :) \n\nThanks!",
+      "revId": "c432101ecca79eed4fb382ebe78ff965f109e874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2106a437_b5d31f1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-05T07:33:05Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "c432101ecca79eed4fb382ebe78ff965f109e874",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
