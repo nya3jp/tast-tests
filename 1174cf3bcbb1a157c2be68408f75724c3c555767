@@ -158,6 +158,24 @@
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b74dfe7c_654b917e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-05T06:29:30Z",
+      "side": 1,
+      "message": "For big/little boards, Chrome OS provides a special init.cpusets.rc file for the container. For example, for kukui (ARC++ P), it provides src/overlays/baseboard-kukui/chromeos-base/chromeos-bsp-baseboard-kukui/files/init.cpusets.rc which is like:\n\n on property:sys.boot_completed\u003d1\n     # Adjust cpusets in container to better split work between\n     # little and big cores.\n     write /dev/cpuset/foreground/cpus 0-7\n     write /dev/cpuset/background/cpus 0\n     write /dev/cpuset/system-background/cpus 0-3\n     write /dev/cpuset/restricted/cpus 0\n     write /dev/cpuset/top-app/cpus 0-7\n\nThe Tast test is to verify if such an \u0027init.cpusets.rc\u0027 files exists in the guest.\n\nMy question is: what kind of cpuset configuration should we use for kukui-arc-r? Can we know which cores (from the guest perspective) are little? We want to bound background/system-background/restricted tasks only to little cores in general. Once we figure this out, risan@ can write/tweak the Tast test for ARM+R.",
+      "parentUuid": "a695c0c3_c6302f0b",
+      "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
