@@ -39,6 +39,30 @@
       "revId": "7cb36408cbd57fccc373d66529bf7d684e3f1012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab7a312_cdfb9673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ui_input_gain.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2020-10-05T04:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4af7af5_3285510d",
+      "range": {
+        "startLine": 131,
+        "startChar": 47,
+        "endLine": 131,
+        "endChar": 55
+      },
+      "revId": "7cb36408cbd57fccc373d66529bf7d684e3f1012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
