@@ -183,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "61a9b0ce_d5eea87d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-05T22:52:43Z",
+      "side": 1,
+      "message": "*shrug* seems fine either way, I suppose",
+      "parentUuid": "c09ddecd_adf32e82",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "937286b1_3d8ac837",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 12
@@ -218,6 +242,30 @@
       "side": 1,
       "message": "Done. I changed the bluetooth proto to use Powered/powered as well. In the actual test, I think it\u0027s fine to use \u0027status\u0027 in the error logs.",
       "parentUuid": "937286b1_3d8ac837",
+      "range": {
+        "startLine": 357,
+        "startChar": 15,
+        "endLine": 357,
+        "endChar": 21
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f2cb072_d8e95a91",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 12
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-05T22:52:43Z",
+      "side": 1,
+      "message": "For the record, the \"powered\" I was talking about was for shill too (see platform2/shill/doc/device-api.txt -- Powered). It\u0027s roughly equivalent to \"Enabled\".",
+      "parentUuid": "470ec031_c1358946",
       "range": {
         "startLine": 357,
         "startChar": 15,
