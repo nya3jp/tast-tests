@@ -1,0 +1,285 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56cee27e_89c09da7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1727,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "time.Duration",
+      "range": {
+        "startLine": 1727,
+        "startChar": 48,
+        "endLine": 1727,
+        "endChar": 51
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2488952_d1d8e14f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "%s\", wakeUpCountPath",
+      "range": {
+        "startLine": 1743,
+        "startChar": 46,
+        "endLine": 1743,
+        "endChar": 58
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d424177_43aedf58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "Do we check if wakeUpTimeout \u003c 30*time.Second ?",
+      "range": {
+        "startLine": 1748,
+        "startChar": 56,
+        "endLine": 1748,
+        "endChar": 58
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "552752cb_d4c0638c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "wakeUpTimeout.Seconds()",
+      "range": {
+        "startLine": 1751,
+        "startChar": 37,
+        "endLine": 1751,
+        "endChar": 50
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9a2fad_e10117fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "a new shill",
+      "range": {
+        "startLine": 1763,
+        "startChar": 49,
+        "endLine": 1763,
+        "endChar": 52
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b5e07e_2fc88faa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "How about giving suspend a shorter ctx like we did for pw.Expect() below?",
+      "range": {
+        "startLine": 1768,
+        "startChar": 19,
+        "endLine": 1768,
+        "endChar": 22
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0320cdfa_fdebc222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "time.Duration(req.WakeUpTimeout)",
+      "range": {
+        "startLine": 1768,
+        "startChar": 24,
+        "endLine": 1768,
+        "endChar": 46
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317d1b4a_7799754e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "Asserts WiFi connectivity after suspend-resume cycle using powerd_dbus_suspend command.",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 111
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27627a85_e7f823de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "How about adding comments for the two stress_* tests:\n\n// TODO(b/....): enable launcher for wificell_stress tests after we resolve Wificell testing lab\u0027s resource starvation.",
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd1b75ba_9f4f43f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "Start suspend-resume for %d times",
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d03316_4296d924",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "to assert WiFi connection after suspend-resume",
+      "range": {
+        "startLine": 183,
+        "startChar": 20,
+        "endLine": 183,
+        "endChar": 30
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e80774aa_e866cd5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "Stop if one of the subtest\u0027s parameter set fails the test.",
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12099e7c_66e8fb66",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:07:05Z",
+      "side": 1,
+      "message": "int64 \nLet\u0027s keep using nanosecond as unit of timeout.",
+      "range": {
+        "startLine": 360,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 7
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
