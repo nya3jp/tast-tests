@@ -436,6 +436,9 @@ func (n *Node) WaitUntilDescendantExists(ctx context.Context, params FindParams,
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
+// ErrNodeExists is returned when the node is found, but should not exist.
+var ErrNodeExists = errors.New("node still exists")
+
 // WaitUntilDescendantGone checks if a descendant node doesn't exist repeatedly until the timeout.
 // If the timeout is hit or the JavaScript fails to execute, an error is returned.
 func (n *Node) WaitUntilDescendantGone(ctx context.Context, params FindParams, timeout time.Duration) error {
@@ -445,7 +448,7 @@ func (n *Node) WaitUntilDescendantGone(ctx context.Context, params FindParams, t
 			return testing.PollBreak(err)
 		}
 		if exists {
-			return errors.New("node still exists")
+			return ErrNodeExists
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
@@ -600,6 +603,17 @@ func WaitUntilGone(ctx context.Context, tconn *chrome.TestConn, params FindParam
 	}
 	defer root.Release(ctx)
 	return root.WaitUntilDescendantGone(ctx, params, timeout)
+}
+
+// WaitUntilExistsStatus repeatedly checks the existence of a node
+// until the desired status is found or the timeout is reached.
+// If the JavaScript fails to execute, an error is returned.
+func WaitUntilExistsStatus(ctx context.Context, tconn *chrome.TestConn, params FindParams, exists bool, timeout time.Duration) error {
+	if exists {
+		return WaitUntilExists(ctx, tconn, params, timeout)
+	}
+
+	return WaitUntilGone(ctx, tconn, params, timeout)
 }
 
 // RootDebugInfo returns the chrome.automation root as a string.

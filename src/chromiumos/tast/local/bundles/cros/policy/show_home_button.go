@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
@@ -77,19 +76,12 @@ func ShowHomeButton(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			// Find the button node.
-			params := ui.FindParams{
+			// Confirm the status of the Home button node.
+			if err := ui.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeButton,
 				Name: "Home",
-			}
-			hasHomeButton := false
-			if err := ui.WaitUntilExists(ctx, tconn, params, 30*time.Second); err == nil {
-				hasHomeButton = true
-			} else if !errors.Is(err, ui.ErrNodeDoesNotExist) {
-				s.Fatal("Unexpected error retrieving home button: ", err)
-			}
-			if hasHomeButton != param.wantButton {
-				s.Errorf("Unexpected existence of home button: got %t; want %t", hasHomeButton, param.wantButton)
+			}, param.wantButton, 15*time.Second); err != nil {
+				s.Error("Could not confirm the desired status of the Home button: ", err)
 			}
 		})
 	}
