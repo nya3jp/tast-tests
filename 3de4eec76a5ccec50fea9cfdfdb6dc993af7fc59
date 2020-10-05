@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c195286_aad79a8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-05T21:40:40Z",
+      "side": 1,
+      "message": "Not necessarily done in this CL but it might be worthwhile to create a package and move some of those behaviors there -- something similar to chrome/ui/files package.",
+      "revId": "3de4eec76a5ccec50fea9cfdfdb6dc993af7fc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "646f2966_ab8167e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-05T21:40:40Z",
+      "side": 1,
+      "message": "note: this package has been moved to chrome/ui.  Please sync to the head and update accordingly.",
+      "revId": "3de4eec76a5ccec50fea9cfdfdb6dc993af7fc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c071f3c_51f50cfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-05T21:40:40Z",
+      "side": 1,
+      "message": "would love if you define an enum for this.\n\n  type meetLayoutType string\n  const (\n    meetLayoutSpotlight MeetLayoutType \u003d \"Spotlight\"\n    meetLayoutTiled MeetLayoutType \u003d \"Tiled\"\n    meetLayoutSidebar MeetLayoutType \u003d \"Sidebar\"\n    meetLayoutAuto MeetLayoutType \u003d \"Auto\"\n  )",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 7
+      },
+      "revId": "3de4eec76a5ccec50fea9cfdfdb6dc993af7fc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f28617_80e087c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-05T21:40:40Z",
+      "side": 1,
+      "message": "\"pre\" in Tast usually refers to preconditions, so I\u0027d like to avoid this abbreviations.  maybe \"present\" or \"presenting\"?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "3de4eec76a5ccec50fea9cfdfdb6dc993af7fc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "718ad320_ed7b8987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-05T21:40:40Z",
+      "side": 1,
+      "message": "When both cases for if-sentence is provided, it is better to avoid negated conditions.\n  if inTabletMode {\n    orientaiton, err :\u003d ...\n    ...\n  } else {\n    ws, err :\u003d ash.GetAllWindows(ctx, tconn)\n    ...\n  }",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "3de4eec76a5ccec50fea9cfdfdb6dc993af7fc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac6e47c_58c17fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-05T21:40:40Z",
+      "side": 1,
+      "message": "Maybe it\u0027s fine to merge this into the previous if-sentence.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "3de4eec76a5ccec50fea9cfdfdb6dc993af7fc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "333f18f5_c87f3eca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-05T21:40:40Z",
+      "side": 1,
+      "message": "\"close\" happens to be a name of a builtin function, I think it\u0027s better to be avoided. maybe \"closeButton\" might be better.",
+      "range": {
+        "startLine": 469,
+        "startChar": 2,
+        "endLine": 469,
+        "endChar": 7
+      },
+      "revId": "3de4eec76a5ccec50fea9cfdfdb6dc993af7fc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
