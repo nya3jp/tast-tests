@@ -140,6 +140,24 @@
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a695c0c3_c6302f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1339075
+      },
+      "writtenOn": "2020-10-05T05:39:11Z",
+      "side": 1,
+      "message": "Currently the big/little information is not propagated to the guest and there is no mapping between VCPUs and host cores. We would like to change that in the future, but it\u0027s probably safe to remove those heterogeneous cores check for now (it\u0027s also not completely clear what they are trying to accomplish).\n\nCpusets are still used though, as far as I\u0027m aware, so I think the test as a whole might still have some use.",
+      "parentUuid": "cb1281fd_6d57355b",
+      "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
