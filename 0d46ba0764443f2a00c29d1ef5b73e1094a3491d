@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "baf54890_c60e2bab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-05T20:30:31Z",
+      "side": 1,
+      "message": "Done and included http://b/170143774",
+      "parentUuid": "7b1e375c_9c151ea4",
+      "range": {
+        "startLine": 9,
+        "startChar": 45,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b00e377f_6be3ec28",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73fe9550_93d48202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-05T20:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b72f1b_522e84dc",
+      "range": {
+        "startLine": 45,
+        "startChar": 77,
+        "endLine": 45,
+        "endChar": 78
+      },
+      "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -108,6 +156,54 @@
       "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e988d07_1e342720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-05T20:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53bf6805_6f5bf5d4",
+      "range": {
+        "startLine": 47,
+        "startChar": 60,
+        "endLine": 47,
+        "endChar": 63
+      },
+      "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f790619_8d9331dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-05T20:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e9d632_9403ec9f",
+      "range": {
+        "startLine": 47,
+        "startChar": 70,
+        "endLine": 47,
+        "endChar": 71
+      },
+      "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
