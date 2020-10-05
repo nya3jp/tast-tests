@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f589e8ff_22afd117",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-05T15:03:59Z",
+      "side": 1,
+      "message": "Remove the VerifyConnection right after 2nd roaming because:\n1) It is possible that the DUT keeps IsConnected during roaming.\n2) This test doesn\u0027t really care about this.",
+      "revId": "633a291acd3c79fed9b6c85e472237d49cc97c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
