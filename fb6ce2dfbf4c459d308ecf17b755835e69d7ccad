@@ -16,6 +16,23 @@
       "revId": "fb6ce2dfbf4c459d308ecf17b755835e69d7ccad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4934e0a_8e9240ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T21:23:33Z",
+      "side": 1,
+      "message": "tast-wise: +2\n\n(please wait for Yury\u0027s review)",
+      "revId": "fb6ce2dfbf4c459d308ecf17b755835e69d7ccad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
