@@ -16,6 +16,23 @@
       "revId": "adf289487c5500d8bbc01dccff57898a3d9bafeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6db0b0b8_dc7a08ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-05T16:18:39Z",
+      "side": 1,
+      "message": "Thank you for ping, and sorry for delayed reply.",
+      "revId": "adf289487c5500d8bbc01dccff57898a3d9bafeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
