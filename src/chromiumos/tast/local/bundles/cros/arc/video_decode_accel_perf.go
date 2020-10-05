@@ -26,122 +26,122 @@ func init() {
 		Timeout:      video.PerfTestRuntime,
 		Params: []testing.Param{{
 			Name:              "h264_1080p_30fps",
-			Val:               "1080p_30fps_300frames.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_p"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264", "1080p_30fps_300frames.h264.json"},
 		}, {
 			Name:              "h264_1080p_30fps_vm",
-			Val:               "1080p_30fps_300frames.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_vm"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264", "1080p_30fps_300frames.h264.json"},
 		}, {
 			Name:              "h264_1080p_60fps",
-			Val:               "1080p_60fps_600frames.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_60fps_600frames.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "android_p"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264", "1080p_60fps_600frames.h264.json"},
 		}, {
 			Name:              "h264_1080p_60fps_vm",
-			Val:               "1080p_60fps_600frames.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_60fps_600frames.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "android_vm"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264", "1080p_60fps_600frames.h264.json"},
 		}, {
 			Name:              "h264_2160p_30fps",
-			Val:               "2160p_30fps_300frames.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_30fps_300frames.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K, "android_p"},
 			ExtraData:         []string{"2160p_30fps_300frames.h264", "2160p_30fps_300frames.h264.json"},
 		}, {
 			Name:              "h264_2160p_30fps_vm",
-			Val:               "2160p_30fps_300frames.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_30fps_300frames.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K, "android_vm"},
 			ExtraData:         []string{"2160p_30fps_300frames.h264", "2160p_30fps_300frames.h264.json"},
 		}, {
 			Name:              "h264_2160p_60fps",
-			Val:               "2160p_60fps_600frames.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_60fps_600frames.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K60, "android_p"},
 			ExtraData:         []string{"2160p_60fps_600frames.h264", "2160p_60fps_600frames.h264.json"},
 		}, {
 			Name:              "h264_2160p_60fps_vm",
-			Val:               "2160p_60fps_600frames.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_60fps_600frames.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K60, "android_vm"},
 			ExtraData:         []string{"2160p_60fps_600frames.h264", "2160p_60fps_600frames.h264.json"},
 		}, {
 			Name:              "vp8_1080p_30fps",
-			Val:               "1080p_30fps_300frames.vp8.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.vp8.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_p"},
 			ExtraData:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp8_1080p_30fps_vm",
-			Val:               "1080p_30fps_300frames.vp8.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.vp8.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_vm"},
 			ExtraData:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp8_1080p_60fps",
-			Val:               "1080p_60fps_600frames.vp8.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_60fps_600frames.vp8.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60, "android_p"},
 			ExtraData:         []string{"1080p_60fps_600frames.vp8.ivf", "1080p_60fps_600frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp8_1080p_60fps_vm",
-			Val:               "1080p_60fps_600frames.vp8.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_60fps_600frames.vp8.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60, "android_vm"},
 			ExtraData:         []string{"1080p_60fps_600frames.vp8.ivf", "1080p_60fps_600frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp8_2160p_30fps",
-			Val:               "2160p_30fps_300frames.vp8.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_30fps_300frames.vp8.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_4K, "android_p"},
 			ExtraData:         []string{"2160p_30fps_300frames.vp8.ivf", "2160p_30fps_300frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp8_2160p_30fps_vm",
-			Val:               "2160p_30fps_300frames.vp8.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_30fps_300frames.vp8.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_4K, "android_vm"},
 			ExtraData:         []string{"2160p_30fps_300frames.vp8.ivf", "2160p_30fps_300frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp8_2160p_60fps",
-			Val:               "2160p_60fps_600frames.vp8.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_60fps_600frames.vp8.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_4K60, "android_p"},
 			ExtraData:         []string{"2160p_60fps_600frames.vp8.ivf", "2160p_60fps_600frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp8_2160p_60fps_vm",
-			Val:               "2160p_60fps_600frames.vp8.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_60fps_600frames.vp8.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_4K60, "android_vm"},
 			ExtraData:         []string{"2160p_60fps_600frames.vp8.ivf", "2160p_60fps_600frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp9_1080p_30fps",
-			Val:               "1080p_30fps_300frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_p"},
 			ExtraData:         []string{"1080p_30fps_300frames.vp9.ivf", "1080p_30fps_300frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_1080p_30fps_vm",
-			Val:               "1080p_30fps_300frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm"},
 			ExtraData:         []string{"1080p_30fps_300frames.vp9.ivf", "1080p_30fps_300frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_1080p_60fps",
-			Val:               "1080p_60fps_600frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_60fps_600frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "android_p"},
 			ExtraData:         []string{"1080p_60fps_600frames.vp9.ivf", "1080p_60fps_600frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_1080p_60fps_vm",
-			Val:               "1080p_60fps_600frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_60fps_600frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "android_vm"},
 			ExtraData:         []string{"1080p_60fps_600frames.vp9.ivf", "1080p_60fps_600frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_2160p_30fps",
-			Val:               "2160p_30fps_300frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_30fps_300frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K, "android_p"},
 			ExtraData:         []string{"2160p_30fps_300frames.vp9.ivf", "2160p_30fps_300frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_2160p_30fps_vm",
-			Val:               "2160p_30fps_300frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_30fps_300frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K, "android_vm"},
 			ExtraData:         []string{"2160p_30fps_300frames.vp9.ivf", "2160p_30fps_300frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_2160p_60fps",
-			Val:               "2160p_60fps_600frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_60fps_600frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "android_p"},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.ivf", "2160p_60fps_600frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_2160p_60fps_vm",
-			Val:               "2160p_60fps_600frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_60fps_600frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "android_vm"},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.ivf", "2160p_60fps_600frames.vp9.ivf.json"},
 		}},
@@ -149,5 +149,5 @@ func init() {
 }
 
 func VideoDecodeAccelPerf(ctx context.Context, s *testing.State) {
-	video.RunARCVideoPerfTest(ctx, s, s.Param().(string))
+	video.RunARCVideoPerfTest(ctx, s, s.Param().(video.DecodeTestOptions))
 }
