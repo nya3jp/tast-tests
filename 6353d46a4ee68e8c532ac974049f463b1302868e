@@ -16,6 +16,24 @@
       "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f0e453_8535496d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-05T19:23:23Z",
+      "side": 1,
+      "message": "From what I observed, the game page is redirected to other pages (such as the former All Games page) after clicking the gamePlayButton. Just feel like it\u0027s too quick to click the gamePlayButton even it is already existing on the game page.",
+      "parentUuid": "b98f9d8b_8811a5ab",
+      "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
