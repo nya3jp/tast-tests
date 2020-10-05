@@ -367,7 +367,7 @@ func WaitAndroidInit(ctx context.Context) error {
 		_, err := InitPID()
 		return err
 	}, &testing.PollOptions{Interval: time.Second}); err != nil {
-		return diagnoseInitfailure(reader, errors.Wrap(err, "Init/crosvm process did not start up"))
+		return diagnoseInitfailure(reader, errors.Wrap(err, "init/crosvm process did not start up"))
 	}
 
 	// Wait for an arbitrary property set by Android init very
@@ -375,6 +375,10 @@ func WaitAndroidInit(ctx context.Context) error {
 	// process started.
 	const prop = "net.tcp.default_init_rwnd"
 	if err := waitProp(ctx, prop, "60", reportTiming); err != nil {
+		// Check if init/crosvm is still alive at this point.
+		if _, err := InitPID(); err != nil {
+			return errors.Wrap(err, "init/crosvm process exited unexpectedly")
+		}
 		return errors.Wrapf(err, "%s property is not set which shows that Android init did not come up", prop)
 	}
 	return nil
