@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8632fe6_bcb68b6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-05T21:40:07Z",
+      "side": 1,
+      "message": "LGTM for WiFi, modulo a few small things",
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3477c27d_0cdb682e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-05T21:40:07Z",
+      "side": 1,
+      "message": "Is this actually necessary? You never intentionally changed BT status, so unless you\u0027ve really b0rked the driver/firmware (in which case I doubt this will fix it), this won\u0027t really do anything.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2550dc98_18b153cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-05T21:40:07Z",
+      "side": 1,
+      "message": "What\u0027s this for? Just as an extra \"just in case\" cleanup step? AFAICT, you\u0027re cleaning things up just fine without this.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c61271fc_5a8e0450",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-05T21:40:07Z",
+      "side": 1,
+      "message": "Question for Bluetooth folks: is this good enough of a test for you? For WiFi, there are plenty of ways in which the interface might claim to be Powered yet be completely inoperable, which is why it\u0027s good to have pieces like line 83, where we connect to an AP. I\u0027m not as familiar with common Bluetooth failure modes. Would it be useful to, for instance, make sure a BT scan succeeds?",
+      "range": {
+        "startLine": 133,
+        "startChar": 30,
+        "endLine": 133,
+        "endChar": 48
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb0ffec9_eaa3108b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-05T21:40:07Z",
+      "side": 1,
+      "message": "I\u0027m curious, what\u0027s the idea on making this a function in a separate utility package, rather than a TestFixture function? Is the idea that this more like a test-helper, composed only of otherwise-public test functionality? Just curious about general code-structure decisions, no real need to change this.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "937286b1_3d8ac837",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 12
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-05T21:40:07Z",
+      "side": 1,
+      "message": "nit: \"Status\" feels a bit generic, and we already have at least two other terms for this: Enabled and Powered. Would \"GetWifiEnabled{Request,Response}\" make sense? Or change the \u0027status\u0027 to \u0027enabled\u0027? Or both?",
+      "range": {
+        "startLine": 357,
+        "startChar": 15,
+        "endLine": 357,
+        "endChar": 21
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
