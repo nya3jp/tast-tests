@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,6 +27,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"diagnostics"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("veyron_fievel", "veyron_tiger")), // TODO(crbug/1134670)
 	})
 }
 
