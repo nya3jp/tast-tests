@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "9fa3200e_df929010",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-05T22:36:24Z",
+      "side": 1,
+      "message": "Done.\n\nI think most of the time, this is unnecessary. I do think that if I fail the \"Assert bluetooth is up\" assert, it\u0027s possible, outside of the driver being totally borked, for the bluetooth device to be down because another test wasn\u0027t cleaned up properly and the device was left in a bad, but not irrecoverable state (i.e bluetooth was powered down).\n\nPerhaps I should enable bluetooth first and then assert it\u0027s up to make sure that I at least tried to bring the device into a good state if it was bad?\n\nI\u0027ll remove it now to keep the test as lean as possible.",
+      "parentUuid": "3477c27d_0cdb682e",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2550dc98_18b153cf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
         "patchSetId": 12
@@ -62,6 +86,30 @@
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c665186_277fd7cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-05T22:36:24Z",
+      "side": 1,
+      "message": "I think I can remove this. I already do one reboot anyways and the only setting that needs to be changed is whether the technology is enabled.",
+      "parentUuid": "2550dc98_18b153cf",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "c09ddecd_adf32e82",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-05T22:36:24Z",
+      "side": 1,
+      "message": "I originally wanted created this utility to purely remove code reuse in the wifi package for my tests. Originally, I thought it would be better to reduce the amount of non-primitives in TestFixture, but after taking another look at the file, maybe this utility class should be absorbed inside? I\u0027ll keep it as is for now.",
+      "parentUuid": "cb0ffec9_eaa3108b",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "937286b1_3d8ac837",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 12
@@ -131,6 +203,30 @@
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470ec031_c1358946",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 12
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-05T22:36:24Z",
+      "side": 1,
+      "message": "Done. I changed the bluetooth proto to use Powered/powered as well. In the actual test, I think it\u0027s fine to use \u0027status\u0027 in the error logs.",
+      "parentUuid": "937286b1_3d8ac837",
+      "range": {
+        "startLine": 357,
+        "startChar": 15,
+        "endLine": 357,
+        "endChar": 21
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
