@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/network/arping"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
+	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
@@ -25,6 +26,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/hwsec"
 	remotearping "chromiumos/tast/remote/network/arping"
+	"chromiumos/tast/remote/network/cmd"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/attenuator"
@@ -999,6 +1001,19 @@ func (tf *TestFixture) CurrentClientTime(ctx context.Context) (time.Time, error)
 	}
 	currentTime := time.Unix(res.NowSecond, res.NowNanosecond)
 	return currentTime, nil
+}
+
+// ClearBlacklistDUT runs "wpa_cli blacklist clear" command on DUT
+// TODO(b/161915905): replace "blacklist" with more inclusive term once wpa_supplicant updated.
+func (tf *TestFixture) ClearBlacklistDUT(ctx context.Context) error {
+	wpa := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: tf.dut.Conn()})
+
+	err := wpa.ClearBlacklist(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to clear WPA blacklist")
+	}
+
+	return nil
 }
 
 // ShillProperty holds a shill service property with it's expected and unexpected values.
