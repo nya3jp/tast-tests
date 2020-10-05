@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b98f9d8b_8811a5ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-05T19:13:47Z",
+      "side": 1,
+      "message": "Generally we want to avoid sleep with random time. Do we know why n.DescendantWithTimeout does not work? \n\nIf n.DescendantWithTimeout failure is expected, is there anything on the page that we could wait for?\ne.g.\n\n  conn.WaitForExpr(ctx, \"some condition in the page\u0027s context\")\n\nOr maybe we should bring back webutil.WaitForQuiescence but ignore its timeout error (since the page could be streaming things and never be quiet).",
+      "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
