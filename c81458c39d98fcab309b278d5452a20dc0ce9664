@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "e26beeb1_4e65d30a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-10-05T10:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50fb1ccf_c12a610e",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 6
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "129e86a0_9a883188",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 23
@@ -319,6 +343,24 @@
     },
     {
       "key": {
+        "uuid": "699c5dce_a4b55498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-10-05T10:10:40Z",
+      "side": 1,
+      "message": "Got it. Thanks. Then I think we only need to share Chrome for tests which does not need any special arguments (e.g. camera.CCAUILauncher, camera.CCAUIMojo, etc). For tests which need special arguments (e.g. camera.CCAUIPolicy, camera.CCAUIModes, etc), we can create Chrome respectively. And we should also move the setup of TestBridge out of the preconditions.",
+      "parentUuid": "f8e9cb3d_c5c9124b",
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3f4f561_b5663c15",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
         "patchSetId": 23
@@ -422,6 +464,30 @@
       "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6eb60e_50a084dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/app_window.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-10-05T10:10:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e49580d6_c80f5152",
+      "range": {
+        "startLine": 50,
+        "startChar": 42,
+        "endLine": 50,
+        "endChar": 92
+      },
+      "revId": "c81458c39d98fcab309b278d5452a20dc0ce9664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
