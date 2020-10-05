@@ -21,7 +21,7 @@ import (
 
 const debugWPAMonitor = false
 
-// SupplicantEvent defines functions common for all wpa_supplicant events
+// SupplicantEvent defines functions common for all wpa_supplicant events.
 type SupplicantEvent interface {
 	ToLogString() string
 }
@@ -37,6 +37,14 @@ type RoamEvent struct {
 	SelLevel         int
 	SelEstThroughput int
 	Skip             bool
+}
+
+// DisconnectedEvent defines data of CTRL-EVENT-DISCONNECTED event.
+type DisconnectedEvent struct {
+	BSSID            string
+	Reason           int
+	LocallyGenerated string
+	RcvTime          time.Time
 }
 
 // ScanResultsEvent defines data of CTRL-EVENT-SCAN-RESULTS event.
@@ -72,6 +80,17 @@ func parseRoamEvent(matches []string) (event RoamEvent, firstError error) {
 }
 
 var eventDefs = []eventDef{
+	{
+		regexp.MustCompile(`CTRL-EVENT-DISCONNECTED bssid=([\da-fA-F:]+) reason=(\d+)(?: locally_generated=(1))?`),
+		func(matches []string) (_ SupplicantEvent, firstError error) {
+			event := new(DisconnectedEvent)
+			event.BSSID = matches[1]
+			event.Reason = atoi(matches[2], &firstError)
+			event.LocallyGenerated = matches[3]
+			event.RcvTime = time.Now()
+			return event, firstError
+		},
+	},
 	{
 		regexp.MustCompile(
 			`CTRL-EVENT-DO-ROAM cur_bssid=([\da-fA-F:]+) cur_freq=(\d+) ` +
@@ -112,6 +131,12 @@ func (e *RoamEvent) ToLogString() string {
 // ToLogString formats the event data to string suitable for logging.
 func (e *ScanResultsEvent) ToLogString() string {
 	return ""
+}
+
+// ToLogString formats the event data to string suitable for logging
+func (e *DisconnectedEvent) ToLogString() string {
+	const timeLayout = "2006-01-02 15:04:05.000000"
+	return fmt.Sprintf("%s %+v\n", e.RcvTime.Format(timeLayout), e)
 }
 
 // Start initializes the wpa_supplicant monitor.
@@ -219,6 +244,7 @@ func atoi(str string, parseErr *error) int {
 }
 
 // WaitForEvent waits for any event in wpa_cli stdout, as defined in @eventDefs.
+// It includes events already buffered in since last call to WaitForEvent or to ClearEvents.
 // It returns event = nil when context deadline is exceeded.
 // In case of successful match and error in parsing the fields, the event is returned (incomplete)
 // and firstErr contains the first parsing error that occurred.
