@@ -16,6 +16,23 @@
       "revId": "545468db1653b29622c85b235360e25333c5461a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f38414a3_e66ec04a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-05T20:51:38Z",
+      "side": 1,
+      "message": "Holding off on submitting until Intel partner finds their own reproducing case noted in http://b/169623350.",
+      "revId": "545468db1653b29622c85b235360e25333c5461a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
