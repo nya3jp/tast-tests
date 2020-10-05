@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e8fb74e2_a0272af2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-05T17:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a24bfe3_cbee89e8",
+      "range": {
+        "startLine": 164,
+        "startChar": 47,
+        "endLine": 164,
+        "endChar": 48
+      },
+      "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fcec672_8ed8f064",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 7
@@ -60,6 +84,24 @@
       "writtenOn": "2020-10-02T18:35:15Z",
       "side": 1,
       "message": "Why do we need to enter overview?",
+      "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76d9473e_64f1884a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-05T17:47:11Z",
+      "side": 1,
+      "message": "If it should be in split mode, I think it\u0027s easy to drag and snap windows.\nIf not, Google Docs window would be on top after creating Google Docs window. I need to get the Meet window on top and I also think entering overview and clicking the Meet window is an easy way to do that.\n\nTechnically it can simply create a Google Docs tab, it is easier to either drag it to snap to split view or get Meet tab visible. But considering the tablet mode, the Mohnstrudel UI and the classic tablet UI have different UI tree structure, so it\u0027s not that easy to get the AutomationNode of Google tab or Meet tab, especially I am not sure how to determine if Mohnstrudel mdoe is on (Mukai mentioned \u0027webui-tab-strip\u0027 useflag is the marker of Mohnstrudel but I\u0027m still figuring out how to add it as a software dep...). Maybe after Mohnstrudel fully launched, we can implement in this way.",
+      "parentUuid": "4fcec672_8ed8f064",
       "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "7c822564_7a811ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-05T17:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43a5207c_eaa24b11",
+      "range": {
+        "startLine": 349,
+        "startChar": 5,
+        "endLine": 349,
+        "endChar": 6
+      },
+      "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f39cae91_ddc6ec36",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 7
@@ -112,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "aa4c21ac_2632e88f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-05T17:47:11Z",
+      "side": 1,
+      "message": "LeftClick should work. Done.",
+      "parentUuid": "f39cae91_ddc6ec36",
+      "range": {
+        "startLine": 422,
+        "startChar": 31,
+        "endLine": 422,
+        "endChar": 37
+      },
+      "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "937dfa26_e8169f6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 7
@@ -132,6 +222,30 @@
       "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2428ca5_7fd9f0fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-05T17:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "937dfa26_e8169f6a",
+      "range": {
+        "startLine": 483,
+        "startChar": 24,
+        "endLine": 483,
+        "endChar": 30
+      },
+      "revId": "57472a17b8b515068cc470e968502a63b14e9d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
