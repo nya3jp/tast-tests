@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "f42ab7ab_93c62a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-05T21:19:39Z",
+      "side": 1,
+      "message": "Still not working. The panel shows up briefly then gone quickly. See https://screenshot.googleplex.com/5A4uzZigtjfj5Yp.png\n\nI am not sure whether the problem is because \"...\" is not showing up caused by small screen, or the panel gets hidden too quickly.",
+      "parentUuid": "cb722186_4f252c9e",
+      "revId": "2925b6506c8580bd90ab81c29f71a79809e80899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbf7de0a_717b327b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 8
