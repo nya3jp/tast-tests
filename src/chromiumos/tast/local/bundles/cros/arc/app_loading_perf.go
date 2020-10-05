@@ -19,11 +19,6 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-const (
-	apkName       = "ArcAppLoadingTest.apk"
-	nethelperPort = 1235
-)
-
 var (
 	arcAppLoadingGaia = &arc.GaiaVars{
 		UserVar: "arc.AppLoadingPerf.username",
@@ -50,7 +45,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{apkName},
+		Data:         []string{apploading.X86ApkName, apploading.ArmApkName},
 		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -87,7 +82,7 @@ func init() {
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	// Start network helper to serve requests from the app.
-	conn, err := nethelper.Start(ctx, nethelperPort)
+	conn, err := nethelper.Start(ctx, apploading.NethelperPort)
 	if err != nil {
 		s.Fatal("Failed to start nethelper: ", err)
 	}
@@ -144,6 +139,11 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		prefix: "ui",
 	}}
 
+	a := s.PreValue().(arc.PreData).ARC
+	apkName, err := apploading.ApkNameForArch(ctx, a)
+	if err != nil {
+		s.Fatal("Failed to get APK name: ", err)
+	}
 	config := apploading.TestConfig{
 		PerfValues:           finalPerfValues,
 		BatteryDischargeMode: batteryMode,
@@ -153,7 +153,6 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 
 	var scores []float64
 	groups := make(map[string][]float64)
-	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
 	for _, test := range tests {
 		config.ClassName = test.name
