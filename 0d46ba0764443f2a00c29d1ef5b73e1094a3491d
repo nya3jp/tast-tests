@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b1e375c_9c151ea4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T16:53:02Z",
+      "side": 1,
+      "message": "please, file a bug for this (and update the comment including the bug number)",
+      "range": {
+        "startLine": 9,
+        "startChar": 45,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b00e377f_6be3ec28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T16:53:02Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2b72f1b_522e84dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T16:53:02Z",
+      "side": 1,
+      "message": "huge nit: end sentence with period (.)\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 45,
+        "startChar": 77,
+        "endLine": 45,
+        "endChar": 78
+      },
+      "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bf6805_6f5bf5d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T16:53:02Z",
+      "side": 1,
+      "message": "huge nit, style: arm -\u003e Arm",
+      "range": {
+        "startLine": 47,
+        "startChar": 60,
+        "endLine": 47,
+        "endChar": 63
+      },
+      "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9e9d632_9403ec9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-05T16:53:02Z",
+      "side": 1,
+      "message": "ditto above: period\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 47,
+        "startChar": 70,
+        "endLine": 47,
+        "endChar": 71
+      },
+      "revId": "0d46ba0764443f2a00c29d1ef5b73e1094a3491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
