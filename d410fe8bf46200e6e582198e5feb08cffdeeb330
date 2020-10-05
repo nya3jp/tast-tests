@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9f6c477_4e21a3b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:46:36Z",
+      "side": 1,
+      "message": "collects",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "d410fe8bf46200e6e582198e5feb08cffdeeb330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b30c56_2e2af477",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:46:36Z",
+      "side": 1,
+      "message": "works",
+      "range": {
+        "startLine": 63,
+        "startChar": 51,
+        "endLine": 63,
+        "endChar": 61
+      },
+      "revId": "d410fe8bf46200e6e582198e5feb08cffdeeb330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51eab524_6fa69aaa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:46:36Z",
+      "side": 1,
+      "message": "%fs",
+      "range": {
+        "startLine": 119,
+        "startChar": 48,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "d410fe8bf46200e6e582198e5feb08cffdeeb330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6d33d45_3a7af80d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:46:36Z",
+      "side": 1,
+      "message": "RTT",
+      "range": {
+        "startLine": 158,
+        "startChar": 38,
+        "endLine": 158,
+        "endChar": 41
+      },
+      "revId": "d410fe8bf46200e6e582198e5feb08cffdeeb330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1226e89_a4758744",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:46:36Z",
+      "side": 1,
+      "message": "diff RTT (%f ms with OBSS - %f ms without OBSS) \u003e %f ms",
+      "range": {
+        "startLine": 158,
+        "startChar": 60,
+        "endLine": 158,
+        "endChar": 78
+      },
+      "revId": "d410fe8bf46200e6e582198e5feb08cffdeeb330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7305cc4_665f1d10",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-05T09:46:36Z",
+      "side": 1,
+      "message": "packet found",
+      "range": {
+        "startLine": 230,
+        "startChar": 37,
+        "endLine": 230,
+        "endChar": 42
+      },
+      "revId": "d410fe8bf46200e6e582198e5feb08cffdeeb330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
