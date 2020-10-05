@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "153f0500_a9673e2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-10-05T19:43:03Z",
+      "side": 1,
+      "message": "I agree with you both. I added a bug to track the work to make this test less dependent on the implementation. This CL is to fix a failing test so I don\u0027t want it to wait while the other change is prepared.",
+      "parentUuid": "7be02498_381d9f8c",
+      "revId": "73c6597a99a730a49321b7e03770cf81933337f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d70f0dae_d715e535",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
         "patchSetId": 2
@@ -50,6 +68,24 @@
       "revId": "73c6597a99a730a49321b7e03770cf81933337f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "080ad9c9_c8acded2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-10-05T19:43:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70f0dae_d715e535",
+      "revId": "73c6597a99a730a49321b7e03770cf81933337f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
