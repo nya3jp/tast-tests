@@ -43,10 +43,28 @@ const (
 	PerfTestRuntime = (perfMeasurementDuration * 2) + perfTestSlack
 )
 
+// DecoderType represents the type of video decoder that can be used.
+type DecoderType int
+
+const (
+	// HardwareDecoder is the decoder type that uses hardware decoding.
+	HardwareDecoder DecoderType = iota
+	// SoftwareDecoder is the decoder type that uses software decoding.
+	SoftwareDecoder
+)
+
+// DecodeTestOptions contains all options for the video decoder test.
+type DecodeTestOptions struct {
+	// TestVideo stores the test video's name.
+	TestVideo string
+	// DecoderType indicates whether a HW or SW decoder will be used.
+	DecoderType DecoderType
+}
+
 // arcTestConfig stores GoogleTest configuration passed to c2_e2e_test APK.
 type arcTestConfig struct {
-	// testVideo stores the test video's name.
-	testVideo string
+	// opts stores the decoder test options
+	opts DecodeTestOptions
 	// videoMetadata stores video metadata.
 	metadata *c2e2etest.VideoMetadata
 	// testFilter specifies test pattern the test can run.
@@ -66,7 +84,7 @@ func (t *arcTestConfig) argsList() ([]string, error) {
 	}
 
 	// Generate '--test_video_data' flag from metadata
-	dataPath := filepath.Join(arcFilePath, t.testVideo)
+	dataPath := filepath.Join(arcFilePath, t.opts.TestVideo)
 	sdArg, err := t.metadata.StreamDataArg(dataPath)
 	if err != nil {
 		return nil, err
@@ -79,6 +97,10 @@ func (t *arcTestConfig) argsList() ([]string, error) {
 
 	if t.isPerf {
 		args = append(args, "--loop")
+	}
+
+	if t.opts.DecoderType == SoftwareDecoder {
+		args = append(args, "--use_sw_decoder")
 	}
 
 	return args, nil
@@ -305,7 +327,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 }
 
 // RunAllARCVideoTests runs all tests in c2_e2e_test.
-func RunAllARCVideoTests(ctx context.Context, s *testing.State, testVideo string) {
+func RunAllARCVideoTests(ctx context.Context, s *testing.State, opts DecodeTestOptions) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -316,10 +338,10 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, testVideo string
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	md := runARCVideoTestSetup(ctx, s, testVideo, true)
+	md := runARCVideoTestSetup(ctx, s, opts.TestVideo, true)
 
 	runARCVideoTest(ctx, s, arcTestConfig{
-		testVideo:  testVideo,
+		opts:       opts,
 		metadata:   md,
 		testFilter: "C2VideoDecoder*",
 		isPerf:     false,
@@ -359,7 +381,7 @@ func reportFrameStats(logPath string) (float64, float64, error) {
 }
 
 // RunARCVideoPerfTest runs testFPS in c2_e2e_test and sets as perf metric.
-func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string) {
+func RunARCVideoPerfTest(ctx context.Context, s *testing.State, opts DecodeTestOptions) {
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
@@ -375,11 +397,11 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 	}
 
 	p := perf.NewValues()
-	md := runARCVideoTestSetup(ctx, s, testVideo, false)
+	md := runARCVideoTestSetup(ctx, s, opts.TestVideo, false)
 
 	s.Log("Running render test")
 	stats := runARCVideoPerfTest(ctx, s, arcTestConfig{
-		testVideo:  testVideo,
+		opts:       opts,
 		metadata:   md,
 		testFilter: "C2VideoDecoderSurfaceE2ETest.TestFPS",
 		logPrefix:  "render_",
@@ -400,7 +422,7 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 
 	s.Log("Running no_render test")
 	stats = runARCVideoPerfTest(ctx, s, arcTestConfig{
-		testVideo:  testVideo,
+		opts:       opts,
 		metadata:   md,
 		testFilter: "C2VideoDecoderSurfaceNoRenderE2ETest.TestFPS",
 		logPrefix:  "no_render_",

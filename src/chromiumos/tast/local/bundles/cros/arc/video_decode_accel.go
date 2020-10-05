@@ -28,32 +28,32 @@ func init() {
 		Timeout: 5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "h264",
-			Val:               "test-25fps.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_p"},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
 			Name:              "h264_vm",
-			Val:               "test-25fps.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_vm"},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
 			Name:              "vp8",
-			Val:               "test-25fps.vp8",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp8"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_p"},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
 			Name:              "vp8_vm",
-			Val:               "test-25fps.vp8",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp8"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_vm"},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
 			Name:              "vp9",
-			Val:               "test-25fps.vp9",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp9"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_p"},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}, {
 			Name:              "vp9_vm",
-			Val:               "test-25fps.vp9",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp9"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm"},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}},
@@ -61,5 +61,5 @@ func init() {
 }
 
 func VideoDecodeAccel(ctx context.Context, s *testing.State) {
-	video.RunAllARCVideoTests(ctx, s, s.Param().(string))
+	video.RunAllARCVideoTests(ctx, s, s.Param().(video.DecodeTestOptions))
 }
