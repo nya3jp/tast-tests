@@ -122,6 +122,24 @@
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb1281fd_6d57355b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-05T05:27:14Z",
+      "side": 1,
+      "message": "suleiman@ could you answer this?",
+      "parentUuid": "bd352226_203e89e7",
+      "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
