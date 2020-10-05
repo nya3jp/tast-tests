@@ -326,6 +326,30 @@
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a8631d_f52427cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-10-05T18:36:17Z",
+      "side": 1,
+      "message": "Yes, the Cq-Depend of this CL: crrev.com/c/2404276\nBind mounts the path /mnt/stateful_partition/var_overlay/cache/dlc-images [unencrypted] onto /var/cache/dlc-images.\n\nThis happens during the last portion of chromeos-startup:\nhttps://source.corp.google.com/chromeos_public/src/platform2/init/chromeos_startup;l\u003d675?q\u003ddev_mount_packages\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public\n\nAs you saw the bind mount for /var/cache/dlc-images is stacked like this:\n[TOP]\n/mnt/stateful_partition/var_overlay/cache/dlc-images [bind mount created by dev_utils.sh]\n/mnt/stateful_partition/encrypted/var/cache/dlc-images [bind mounted by who?]\n[BOTTOM]",
+      "parentUuid": "32fa91cd_cd758ae4",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
