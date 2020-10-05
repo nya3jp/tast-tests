@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3fc3e3b2_5715eedf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-05T03:46:28Z",
+      "side": 1,
+      "message": "For the devices that does not support MAC address randomization (in particular, elm before kernel uprev), it will fail 100% with \"Failed to disable MAC randomization\" when calling SetMACRandomize.\n\nFor sarien, it is another flake with message \"Malformed probe request\". This CL is not yet handling that part. (maybe I should separate this error into another bug)",
+      "parentUuid": "49563538_3a874ce4",
+      "revId": "d816cdbd33e570e74c8febcc8cc82cfd060506af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e129a6d_d83c66a0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2020-10-01T22:37:39Z",
       "side": 1,
       "message": "Don\u0027t we only need to do this if we need to restore the property?",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "d816cdbd33e570e74c8febcc8cc82cfd060506af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56b3c528_efcc9515",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-05T03:46:28Z",
+      "side": 1,
+      "message": "SetRandomize was designed to also do the getter part which makes this branching a little awkward. Add a GetMACRandomize so the code flow is simpler.\n\nThe context for SetRandomize still needs to be shorten so that the time for restoration is guaranteed.",
+      "parentUuid": "6e129a6d_d83c66a0",
       "range": {
         "startLine": 89,
         "startChar": 2,
