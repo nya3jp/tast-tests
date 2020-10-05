@@ -75,7 +75,7 @@ func (t *ArcLifecycleTask) Run(ctx context.Context, testEnv *TestEnv) error {
 		return nil
 	}
 	// Limit has been provided, wait until we are not limited.
-	if err := testing.Poll(ctx, t.limit.Assert, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
+	if err := testing.Poll(ctx, t.limit.AssertNotReached, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for memory to not be above limit")
 	}
 	return nil
