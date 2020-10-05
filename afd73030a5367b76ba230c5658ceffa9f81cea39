@@ -56,6 +56,30 @@
       "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4658c1f8_e0e66eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-05T20:41:17Z",
+      "side": 1,
+      "message": "SG, just to clarify there is bi-directional communication currently but just not much data flowing in the reverse direction.  I created http://b/169947243 to look into this along with other enhancement ideas.",
+      "parentUuid": "8f176fe8_dcdc30f3",
+      "range": {
+        "startLine": 264,
+        "startChar": 25,
+        "endLine": 264,
+        "endChar": 30
+      },
+      "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
