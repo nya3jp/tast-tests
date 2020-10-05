@@ -16,6 +16,40 @@
       "revId": "73c6597a99a730a49321b7e03770cf81933337f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7be02498_381d9f8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-05T16:24:31Z",
+      "side": 1,
+      "message": "I have also same feeling with Paul that this may be stick to the implementation too much.\nThough, it is up to you and your team. Repecting Paul\u0027s LGTM, CR+2 from Tast code point of view with additional comment request.",
+      "revId": "73c6597a99a730a49321b7e03770cf81933337f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d70f0dae_d715e535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_system_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-05T16:24:31Z",
+      "side": 1,
+      "message": "Could you add examples of the name so that the intention of the code (specifically, replacing the characters) will be clearer?",
+      "revId": "73c6597a99a730a49321b7e03770cf81933337f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
