@@ -38,6 +38,16 @@ type TestConfig struct {
 	OutDir               string
 }
 
+const (
+	// NethelperPort is the port used for nethelper to listen for connections.
+	NethelperPort = 1235
+
+	// X86ApkName is the name of the ArcAppLoadingTest APK for x86/x86_64 devices.
+	X86ApkName = "ArcAppLoadingTest_x86.apk"
+	// ArmApkName is the name of the ArcAppLoadingTest APK for Arm devices.
+	ArmApkName = "ArcAppLoadingTest_arm.apk"
+)
+
 // Used to keep information for a key, identified by the array of possible suffixes.
 var keyInfo = []struct {
 	// Possible suffixes for the key, for example "_score"
@@ -51,6 +61,19 @@ var keyInfo = []struct {
 	unitName:  "mbps",
 	direction: perf.BiggerIsBetter,
 },
+}
+
+// ApkNameForArch gets the name of the APK file to install on the DUT.
+func ApkNameForArch(ctx context.Context, a *arc.ARC) (string, error) {
+	out, err := a.Command(ctx, "getprop", "ro.product.cpu.abi").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get abi: %v", err)
+	}
+
+	if strings.HasPrefix(string(out), "x86") {
+		return X86ApkName, nil
+	}
+	return ArmApkName, nil
 }
 
 // RunTest executes subset of tests in APK determined by the test class name.
