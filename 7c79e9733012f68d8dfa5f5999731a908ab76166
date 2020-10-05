@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "453632f8_3a50c804",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-05T08:07:16Z",
+      "side": 1,
+      "message": "My comments are all addressed so mark the sticky +2 and defer to others.",
+      "revId": "7c79e9733012f68d8dfa5f5999731a908ab76166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eaa8907b_4ce7a45c",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 6
