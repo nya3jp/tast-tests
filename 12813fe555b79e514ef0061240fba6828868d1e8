@@ -16,6 +16,46 @@
       "revId": "12813fe555b79e514ef0061240fba6828868d1e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b02566be_c1a0b688",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-05T11:53:10Z",
+      "side": 1,
+      "message": "Thanks for adding this.\nLGTM % nit",
+      "revId": "12813fe555b79e514ef0061240fba6828868d1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52301ac6_d6dbfbb0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-05T11:53:10Z",
+      "side": 1,
+      "message": "// WaitUntilExistsStatus repeatedly checks the existence of a node\n// until the desired status is found or the timeout is reached.",
+      "range": {
+        "startLine": 608,
+        "startChar": 0,
+        "endLine": 609,
+        "endChar": 63
+      },
+      "revId": "12813fe555b79e514ef0061240fba6828868d1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
