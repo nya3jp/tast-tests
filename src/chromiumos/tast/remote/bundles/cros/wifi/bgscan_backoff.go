@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	remoteiw "chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -89,6 +90,39 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 	}(ctx)
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
+
+	// Turn off power save in this test as we are using ping RTT
+	// as metric in this test. The default beacon interval (~100ms)
+	// is too large compared with our threshold/margin and we'll
+	// need much better resolution. Also, we don't want the timing
+	// of beacons to bother our results.
+	// e.g. default beacon interval is ~102ms and we might exceed
+	// the 100ms threshold just because we send request right
+	// after one beacon.
+	iwr := remoteiw.NewRemoteRunner(s.DUT().Conn())
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		s.Fatal("Failed to get the client interface: ", err)
+	}
+	psMode, err := iwr.PowersaveMode(ctx, iface)
+	if err != nil {
+		s.Fatal("Failed to get the powersave mode: ", err)
+	}
+	if psMode {
+		defer func(ctx context.Context) {
+			s.Logf("Restoring power save mode to %t", psMode)
+			if err := iwr.SetPowersaveMode(ctx, iface, psMode); err != nil {
+				s.Errorf("Failed to restore powersave mode to %t: %v", psMode, err)
+			}
+		}(ctx)
+		ctx, cancel = ctxutil.Shorten(ctx, time.Second)
+		defer cancel()
+
+		s.Log("Disabling power save in the test")
+		if err := iwr.SetPowersaveMode(ctx, iface, false); err != nil {
+			s.Fatal("Failed to turn off powersave: ", err)
+		}
+	}
 
 	// setupAndPing sets up an AP with param.ap1Option, connects DUT to it
 	// with bgscan enabled/disabled and return ping statistics of the
