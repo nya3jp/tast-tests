@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/bundles/cros/platform/csv"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
@@ -68,6 +69,17 @@ func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
 		manufactureDateRegex = regexp.MustCompile("[0-9]{4}-[0-9]{2}-[0-9]{2}")
 	)
 
+	// Sanitize the marketing name value to remove commas. This matches the
+	// behavior of the telem tool. For example
+	// "Acer Chromebook Spin 11 (CP311-H1, CP311-1HN)" ->
+	// "Acer Chromebook Spin 11 (CP311-H1/CP311-1HN)"
+	// TODO(crbug/1135261): Remove these explicit values checks from the test
+	marketingNameRaw, err := crosconfig.Get(ctx, arcBuildPropertiesPath, marketingNameProperty)
+	if err != nil {
+		s.Fatal("Unable to get marketing name from cros_config: ", err)
+	}
+	marketingName := strings.ReplaceAll(marketingNameRaw, ", ", "/")
+
 	lsbValues, err := lsbrelease.Load()
 	if err != nil {
 		s.Fatal("Failed to get lsb-release info: ", err)
@@ -93,7 +105,7 @@ func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
 			csv.MatchRegexOrNA(manufactureDateRegex)),
 		csv.Column("product_sku_number", csv.EqualToFileIfCrosConfigPropOrNA(ctx, crosHealthdCachedVpdPath,
 			skuNumberProperty, skuNumberPath)),
-		csv.Column("marketing_name", csv.EqualToCrosConfigProp(ctx, arcBuildPropertiesPath, marketingNameProperty)),
+		csv.Column("marketing_name", csv.MatchValue(marketingName)),
 		csv.Column("bios_version", csv.EqualToFileContentOrNA(biosVersionPath)),
 		csv.Column("board_name", csv.EqualToFileContentOrNA(boardNamePath)),
 		csv.Column("board_version", csv.EqualToFileContentOrNA(boardVersionPath)),
