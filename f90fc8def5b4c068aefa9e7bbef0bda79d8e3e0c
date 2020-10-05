@@ -16,6 +16,29 @@
       "revId": "f90fc8def5b4c068aefa9e7bbef0bda79d8e3e0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f92dc410_3849fe5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-10-05T02:00:34Z",
+      "side": 1,
+      "message": "please add a TODO() with bug number \n\nTODO(b/153934386): Add back arm64 when pstore works.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 141
+      },
+      "revId": "f90fc8def5b4c068aefa9e7bbef0bda79d8e3e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
