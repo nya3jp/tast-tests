@@ -1,0 +1,66 @@
+# This is the local list of words which are still too commonly used in the
+# codebase to be blocked outright. This list will continue to shrink as the
+# codebase moves away from the use of these terms.
+#
+#
+# Don't delete this file if you want to keep keyword_check enabled even if it's
+# empty.
+#
+# See repohooks/README.md for more details.
+
+# black.?hat            - clean
+black.?list
+#    - see crbug/1123459
+# build.?cop            - clean
+# crazy                 - clean
+# cripple               - clean
+dummy
+#    - see crbug/1135039
+# first.?class.?citizen - clean
+# grandfathered         - clean
+# gr[ae]y.?hat          - clean
+# gr[ae]y.?list         - clean
+# insane                - clean
+\bhe\b
+#    - see crbug/1135040
+# \bshe\b               - clean
+# \bhim\b               - clean
+\bher\b
+#    - see crbug/1135044
+# \bhis\b               - clean
+# \bhers\b              - clean
+# man.?in.?the.?middle  - clean
+master
+#    - see crbug/1122372
+.?/master
+\.master
+ymasterd
+VtsHalKeymaster.?
+mitm
+#    - external defs.go dependency.
+native
+#    - see crbug/1135046
+# red.?line             - clean
+# rtfm                  - clean
+sane
+#    - see crbug/1135047
+sanity
+#    - see crbug/1135049
+slave
+#    - see crbug/1126921
+# white.?glove          - clean
+# white.?hat            - clean
+white.?label
+#    - see crbug/1135050
+# white.?list           - clean
+
+whitelisted-extension-id
+#    - see crbug/1113099
+
+\.white.?list
+#   - see crbug 1101928
+
+/var/lib/whitelist
+#   - see crbug/1125493
+
+# wtf - see crbug/1135053
