@@ -34,6 +34,24 @@
       "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f69e4b5_66406578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-05T19:28:24Z",
+      "side": 1,
+      "message": "If page url is changed, it implies a document load. Maybe we should do this [1] before trying to find and click gamePlayButton.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d962",
+      "parentUuid": "e4f0e453_8535496d",
+      "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
