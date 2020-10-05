@@ -194,6 +194,24 @@
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c30cc48_df079a3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-05T06:40:51Z",
+      "side": 1,
+      "message": "OK, but e.g background tasks that are bound to CPU #0 may still use one of host\u0027s big cores, right? Just confirming the current kukui-arc-r status.",
+      "parentUuid": "3869555c_141bec72",
+      "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
