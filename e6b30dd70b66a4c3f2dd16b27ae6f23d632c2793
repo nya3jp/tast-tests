@@ -59,6 +59,23 @@
     },
     {
       "key": {
+        "uuid": "2133cab8_ea68691c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-05T23:53:14Z",
+      "side": 1,
+      "message": "Tast Shadow Review: LGTM % Yen\u0027s comments and the comment I just added on returning concrete types.",
+      "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27a53ac8_3bcf1dd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
         "patchSetId": 4
@@ -121,6 +138,29 @@
         "startChar": 34,
         "endLine": 30,
         "endChar": 42
+      },
+      "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef164618_2aee3f0d",
+        "filename": "src/chromiumos/tast/local/memory/limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-05T23:53:14Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#interfaces\n\nPlease return the concrete type here instead of an interface. (This may necessitate exporting the concrete type.) Ditto for the cases below.\n\nYou may also prefer to move the definition of the Limit interface down to where you consume it for CompositeLimit.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 49
       },
       "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
