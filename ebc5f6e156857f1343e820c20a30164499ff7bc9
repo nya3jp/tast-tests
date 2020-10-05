@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5a89b065_a53465e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-05T18:26:28Z",
+      "side": 1,
+      "message": "Done. Forgot to add this, my bad.",
+      "parentUuid": "ff669e39_33247a04",
+      "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d16f593c_ae5f584c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
         "patchSetId": 11
@@ -56,6 +74,30 @@
       "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c317220_aa46b8f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-05T18:26:28Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d16f593c_ae5f584c",
+      "range": {
+        "startLine": 34,
+        "startChar": 20,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "7cf1ec58_3cbc4f72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-05T18:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e72c64a9_e18094db",
+      "range": {
+        "startLine": 52,
+        "startChar": 46,
+        "endLine": 52,
+        "endChar": 49
+      },
+      "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ae1f5ca_b365fdf2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
         "patchSetId": 11
@@ -102,6 +168,30 @@
       "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a001c9d0_94910414",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-05T18:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ae1f5ca_b365fdf2",
+      "range": {
+        "startLine": 126,
+        "startChar": 21,
+        "endLine": 126,
+        "endChar": 33
+      },
+      "revId": "ebc5f6e156857f1343e820c20a30164499ff7bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
