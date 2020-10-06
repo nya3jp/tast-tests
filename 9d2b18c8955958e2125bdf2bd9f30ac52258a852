@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "814b6f7d_e4034679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-06T22:55:57Z",
+      "side": 1,
+      "message": "LGTM % a question and super nit.",
+      "revId": "9d2b18c8955958e2125bdf2bd9f30ac52258a852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f40765b_ba434479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_network_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-06T22:55:57Z",
+      "side": 1,
+      "message": "Do we really need this? We can\u0027t get away with standard logging of smaller chunks of the output when those chunks fail to parse or validate?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "9d2b18c8955958e2125bdf2bd9f30ac52258a852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468768a7_690c0b74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_network_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-06T22:55:57Z",
+      "side": 1,
+      "message": "nit: \"included.\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 36,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "9d2b18c8955958e2125bdf2bd9f30ac52258a852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
