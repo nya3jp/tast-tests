@@ -88,6 +88,24 @@
       "parentUuid": "0546ff8d_11c69166",
       "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3c27f4_e8a16710",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-06T21:50:02Z",
+      "side": 1,
+      "message": "From the video, it seem there might be no actual page load. It would be like youtube page that URL change is more like the app pushing its state into history. document.readyState would not work if there is no page load.\n\nI wonder why n.DescendantWithTimeout below does not work. It seems like the case it should support, wait until a node mathces the FindParams to show up. What is |timeout|? 10s? Maybe it is not long enough?\n\nFor webutil.WaitForQuiescence, think we had it before and removed because it causes timeout (maybe because the page is loading network resources continuously). I don\u0027t object to putting it back but that timeout might come back.",
+      "parentUuid": "fdb3297d_307f07b1",
+      "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
