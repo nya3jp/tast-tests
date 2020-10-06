@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "f6971e79_1bda90fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-06T15:22:00Z",
+      "side": 1,
+      "message": "If \"...\" is off screen, it might not be clicked correctly.\n\nTechnically \"...\" button can be focused by \"Shift-Tab\". Not sure if it is still working when \"...\" is out of the screen. Xiyuan, does PS14 work?",
+      "parentUuid": "f42ab7ab_93c62a21",
+      "revId": "2925b6506c8580bd90ab81c29f71a79809e80899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbf7de0a_717b327b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 8
