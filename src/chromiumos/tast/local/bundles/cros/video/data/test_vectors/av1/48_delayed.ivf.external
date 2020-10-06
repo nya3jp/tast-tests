@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/av1/48_delayed_20201006.ivf",
+  "size": 747370,
+  "sha256sum": "35d4f38ebb3c37bdad686de9b3aeb78979efee8823bb0413c15a9adebc3df0df"
+}
