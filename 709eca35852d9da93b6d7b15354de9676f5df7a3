@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "1d8318c6_8cf5389b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Yes, you can comment message of crrev.com/c/2276082 for more background of camerabox setup.",
+      "parentUuid": "46acf751_0ce729e4",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 64
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59ad0448_d4b73ffb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4105a4af_c3609842",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59ad0448_d4b73ffb",
+      "range": {
+        "startLine": 41,
+        "startChar": 35,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +159,54 @@
     },
     {
       "key": {
+        "uuid": "488f713e_5486a781",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bd32db6_cb38254b",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22cb6fd8_2aebbddf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e7127c_7d50c5b2",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6096b899_a21b44df",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
         "patchSetId": 1
@@ -131,6 +227,30 @@
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12823f68_a5f52af7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6096b899_a21b44df",
+      "range": {
+        "startLine": 66,
+        "startChar": 47,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -181,6 +301,30 @@
     },
     {
       "key": {
+        "uuid": "50986a34_0b38d3b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Moved it to a common function |cleanup| to cleanup both initialized and half-initialized members.",
+      "parentUuid": "29efe3db_25091b9b",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ab2570d_9fe9cacb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
         "patchSetId": 1
@@ -201,6 +345,30 @@
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e29bde56_9571ba7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ab2570d_9fe9cacb",
+      "range": {
+        "startLine": 107,
+        "startChar": 25,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -227,6 +395,30 @@
     },
     {
       "key": {
+        "uuid": "d5a9f23d_b3d45043",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "696996b9_a07f1b23",
+      "range": {
+        "startLine": 122,
+        "startChar": 18,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b583755d_c8e6871b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
         "patchSetId": 1
@@ -238,6 +430,30 @@
       "writtenOn": "2020-10-02T05:36:20Z",
       "side": 1,
       "message": "Not directly related to this CL, but I wonder if this approach actually works. IIUC SSH session does not finish until the background process finishes. For example:\n\n % time ssh -T dut1 \u0027( sleep 10 ) \u0026\u0027\n ssh -T dut1 \u0027( sleep 10 ) \u0026\u0027  0.01s user 0.01s system 0% cpu 11.539 total\n\nUsually we use nohup(1) or something similar to leave a background process running.",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 16
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe51469_278572a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "These logic are referenced from:\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/hosts/ssh_host.py;rcl\u003df73baca3b78fb4327aae9ca49a28bd04973bc6a7;l\u003d393\n\nI\u0027m not 100% sure about its correctness.\nBut before this CL these logic works completely fine in |camera.HAL3Remote.*| tests.\nThe chart process can both be set up and cleaned up correctly.",
+      "parentUuid": "b583755d_c8e6871b",
       "range": {
         "startLine": 129,
         "startChar": 2,
@@ -270,6 +486,30 @@
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1053c30e_480fe931",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52bc9ac9_3c5f280f",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 32
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -316,6 +556,54 @@
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1a53f6a_6e85bb80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bab8362_e83bc1a9",
+      "range": {
+        "startLine": 165,
+        "startChar": 15,
+        "endLine": 165,
+        "endChar": 16
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e871ce4_c13a3f35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-06T05:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a22ca7c2_fd61067f",
+      "range": {
+        "startLine": 165,
+        "startChar": 44,
+        "endLine": 165,
+        "endChar": 47
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
