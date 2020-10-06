@@ -90,10 +90,10 @@ func CUPSD(ctx context.Context, s *testing.State) {
 		s.Fatal("CUPS socket was not cleaned up: ", err)
 	}
 
-	// Create dummy file, to see if upstart-socket-bridge will clear it out
+	// Create a fake socket file, to see if upstart-socket-bridge will clear it out
 	// properly.
 	if err := ioutil.WriteFile(sockPath, nil, 0666); err != nil {
-		s.Fatal("Failed to create a dummy socket: ", err)
+		s.Fatal("Failed to create a fake socket: ", err)
 	}
 
 	if err := upstart.RestartJob(ctx, "upstart-socket-bridge"); err != nil {

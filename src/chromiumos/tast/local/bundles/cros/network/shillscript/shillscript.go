@@ -41,7 +41,7 @@ const (
 	CreateUserProfile          = "CreateProfile"
 	InsertUserProfile          = "InsertUserProfile"
 	PopAllUserProfiles         = "PopAllUserProfiles"
-	dummyEndSignal             = "DummyEndSignal"
+	fakeEndSignal              = "FakeEndSignal"
 )
 
 // TestEnv struct has the variables that are used by the functions below.
@@ -132,13 +132,13 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 	ch := make(chan error, 1)
 	var calledMethods []string
 	stop := func() ([]string, error) {
-		// Send a dummy dbus signal to stop the Eavesdrop.
+		// Send a fake dbus signal to stop the Eavesdrop.
 		connect, err := dbusutil.SystemBus()
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to connect to system bus")
 		}
-		if err := connect.Emit("/", fmt.Sprintf("com.dummy.%s", dummyEndSignal)); err != nil {
-			return calledMethods, errors.Wrap(err, "failed sending dummy signal to stop Eavesdrop")
+		if err := connect.Emit("/", fmt.Sprintf("com.fake.%s", fakeEndSignal)); err != nil {
+			return calledMethods, errors.Wrap(err, "failed sending fake signal to stop Eavesdrop")
 		}
 		if err := <-ch; err != nil {
 			return calledMethods, err
@@ -165,7 +165,7 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", InsertUserProfile),
 		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", CreateUserProfile),
 		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", PopAllUserProfiles),
-		fmt.Sprintf("type='signal',member='%s',path='/',interface='com.dummy'", dummyEndSignal),
+		fmt.Sprintf("type='signal',member='%s',path='/',interface='com.fake'", fakeEndSignal),
 	}
 
 	call := conn.BusObject().CallWithContext(ctx, "org.freedesktop.DBus.Monitoring.BecomeMonitor", 0, rules, uint(0))
@@ -192,7 +192,7 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 					testing.ContextLog(ctx, "Something failed: ", err)
 					continue
 				}
-				if dbusCmd == dummyEndSignal {
+				if dbusCmd == fakeEndSignal {
 					ch <- nil
 					return
 				}
@@ -211,7 +211,7 @@ func dbusCallMember(dbusMessage *dbus.Message) (string, error) {
 		return "", errors.Errorf("failed dbus message doesn't have field member: %s", dbusMessage)
 	}
 	msg := fmt.Sprintf(v.String()[1 : len(v.String())-1])
-	allowlistDbusCmd := []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile, dummyEndSignal}
+	allowlistDbusCmd := []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile, fakeEndSignal}
 	for _, cmd := range allowlistDbusCmd {
 		if msg == cmd {
 			return cmd, nil
