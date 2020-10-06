@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "4732368f_1f6506c7",
         "filename": "/PATCHSET_LEVEL",
@@ -14,8 +15,24 @@
       "side": 1,
       "message": "LGTM. Only outstanding questions are for BT.",
       "revId": "69b2c6702f456f11e4a3d7c1d8ccb9cbe31ccc3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7badd288_5c89adf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2020-10-06T21:49:23Z",
+      "side": 1,
+      "message": "I took a look at the Bluetooth part and left a comment. \n\nI\u0027ve written 0 lines of Go so far so I have no other comments other than the comments seem to make sense and the tests seem to be testing the correct things (wrt/ turn off Bluetooth, reboot, make sure Bluetooth works).",
+      "revId": "69b2c6702f456f11e4a3d7c1d8ccb9cbe31ccc3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

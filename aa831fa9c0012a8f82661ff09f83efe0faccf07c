@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "a8632fe6_bcb68b6c",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "LGTM for WiFi, modulo a few small things",
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3477c27d_0cdb682e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
@@ -37,10 +38,10 @@
         "endChar": 3
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "9fa3200e_df929010",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
@@ -61,10 +62,10 @@
         "endChar": 3
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2550dc98_18b153cf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
@@ -84,10 +85,10 @@
         "endChar": 3
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "1c665186_277fd7cd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
@@ -108,10 +109,10 @@
         "endChar": 3
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c61271fc_5a8e0450",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
@@ -131,10 +132,34 @@
         "endChar": 48
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d8d5a9_616d2d30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2020-10-06T21:49:23Z",
+      "side": 1,
+      "message": "Yes, running a scan on and scan off once and confirming that there were no dbus errors would be an improvement and probably a good test to run here.\n\nI\u0027m not sure what the tast library for doing this looks like but here\u0027s a similar test in autotest: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/autotest/files/server/cros/bluetooth/bluetooth_dbus_api_tests.py;l\u003d182\n\nHowever, just checking that an adapter exists and it is powered on would likely have caught the issue that necessitated this. For example, we recently had a regression where no controller was exposed because of the firmware failing to complete initialization. This would have failed immediately since no adapters were found.",
+      "parentUuid": "c61271fc_5a8e0450",
+      "range": {
+        "startLine": 133,
+        "startChar": 30,
+        "endLine": 133,
+        "endChar": 48
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "cb0ffec9_eaa3108b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
@@ -154,10 +179,10 @@
         "endChar": 22
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c09ddecd_adf32e82",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
@@ -178,10 +203,10 @@
         "endChar": 22
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "61a9b0ce_d5eea87d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
@@ -202,10 +227,10 @@
         "endChar": 22
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "937286b1_3d8ac837",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
@@ -225,10 +250,10 @@
         "endChar": 21
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "470ec031_c1358946",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
@@ -249,10 +274,10 @@
         "endChar": 21
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "2f2cb072_d8e95a91",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
@@ -273,8 +298,7 @@
         "endChar": 21
       },
       "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
