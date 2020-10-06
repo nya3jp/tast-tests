@@ -229,7 +229,7 @@ type EventType string
 
 // As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl#15
 const (
-	EventTypeActivedescendantchanged  EventType = "activedescendantchanged"
+	EventTypeActiveDescendantChanged  EventType = "activeDescendantChanged"
 	EventTypeAlert                    EventType = "alert"
 	EventTypeAriaAttributeChanged     EventType = "ariaAttributeChanged"
 	EventTypeAutocorrectionOccured    EventType = "autocorrectionOccured"
