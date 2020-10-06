@@ -169,7 +169,7 @@ func (vm *VM) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
 		"--"},
 		vshArgs...)
 	cmd := testexec.CommandContext(ctx, "vsh", args...)
-	// Add a dummy buffer for stdin to force allocating a pipe. vsh uses
+	// Add a empty buffer for stdin to force allocating a pipe. vsh uses
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
 	return cmd

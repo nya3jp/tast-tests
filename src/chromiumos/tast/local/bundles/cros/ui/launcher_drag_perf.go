@@ -38,10 +38,10 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Pre: ash.LoggedInWith100DummyApps(),
+			Pre: ash.LoggedInWith100FakeApps(),
 		}, {
 			Name:              "skia_renderer",
-			Pre:               ash.LoggedInWith100DummyAppsWithSkiaRenderer(),
+			Pre:               ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("nocturne", "krane")),
 		}},
 	})

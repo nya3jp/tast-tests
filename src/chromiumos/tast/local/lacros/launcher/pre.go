@@ -48,10 +48,10 @@ func startedByDataWithChromeOSChromeOptions(suffix string, opts ...chrome.Option
 	}
 }
 
-// StartedByDataWith100DummyApps is the same as StartedByData but creates 100 dummy apps that are shown in the
+// StartedByDataWith100FakeApps is the same as StartedByData but creates 100 fake apps that are shown in the
 // ChromeOS-chrome launcher.
-func StartedByDataWith100DummyApps() testing.Precondition {
-	return startedByDataWith100DummyAppsPre
+func StartedByDataWith100FakeApps() testing.Precondition {
+	return startedByDataWith100FakeAppsPre
 }
 
 // StartedByDataForceComposition is the same as StartedByData but forces composition for ChromeOS-chrome.
@@ -81,7 +81,7 @@ var startedByDataForceCompositionPre = &preImpl{
 	opts:    []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\"")}, // Force composition.
 }
 
-var startedByDataWith100DummyAppsPre = ash.NewDummyAppPrecondition("dummy_apps", 100, startedByDataWithChromeOSChromeOptions, false)
+var startedByDataWith100FakeAppsPre = ash.NewFakeAppPrecondition("fake_apps", 100, startedByDataWithChromeOSChromeOptions, false)
 
 // Implementation of lacros's precondition.
 type preImpl struct {

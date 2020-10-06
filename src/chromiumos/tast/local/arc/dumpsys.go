@@ -138,7 +138,7 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 	}
 	output := string(out)
 	matches := regExpP.FindAllStringSubmatch(string(output), -1)
-	// At least it must match one activity. Home and/or Dummy activities must be present.
+	// At least it must match one activity. Home and/or Fake activities must be present.
 	if len(matches) == 0 {
 		testing.ContextLog(ctx, "Using regexp: ", regStrP)
 		testing.ContextLog(ctx, "Output for regexp: ", string(output))

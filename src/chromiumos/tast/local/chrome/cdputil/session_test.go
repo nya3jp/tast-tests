@@ -57,27 +57,27 @@ func TestReadDebuggingPort(t *testing.T) {
 	}
 }
 
-type dummyConn struct {
+type fakeConn struct {
 	done   chan struct{}
 	cancel context.CancelFunc
 }
 
-func (dc *dummyConn) Read(p []byte) (n int, err error) {
+func (dc *fakeConn) Read(p []byte) (n int, err error) {
 	return 0, errors.New("not implemented")
 }
 
-func (dc *dummyConn) Write(p []byte) (n int, err error) {
+func (dc *fakeConn) Write(p []byte) (n int, err error) {
 	return 0, errors.New("not implemented")
 }
 
-func (dc *dummyConn) Close() error {
+func (dc *fakeConn) Close() error {
 	dc.cancel()
 	return nil
 }
 
-func newDummyConn(ctx context.Context, addr string) (io.ReadWriteCloser, error) {
+func newFakeConn(ctx context.Context, addr string) (io.ReadWriteCloser, error) {
 	ctx, cancel := context.WithCancel(ctx)
-	dc := &dummyConn{done: make(chan struct{}), cancel: cancel}
+	dc := &fakeConn{done: make(chan struct{}), cancel: cancel}
 	go func() {
 		select {
 		case <-ctx.Done():
@@ -87,14 +87,14 @@ func newDummyConn(ctx context.Context, addr string) (io.ReadWriteCloser, error) 
 	return dc, nil
 }
 
-type dummyCodec struct {
-	dconn         *dummyConn
+type fakeCodec struct {
+	dconn         *fakeConn
 	ch            chan uint64
 	requestedArgs []interface{}
 	responses     []interface{}
 }
 
-func (dc *dummyCodec) ReadResponse(resp *rpcc.Response) error {
+func (dc *fakeCodec) ReadResponse(resp *rpcc.Response) error {
 	var id uint64
 	select {
 	case id = <-dc.ch:
@@ -116,7 +116,7 @@ func (dc *dummyCodec) ReadResponse(resp *rpcc.Response) error {
 	return nil
 }
 
-func (dc *dummyCodec) WriteRequest(req *rpcc.Request) error {
+func (dc *fakeCodec) WriteRequest(req *rpcc.Request) error {
 	dc.requestedArgs = append(dc.requestedArgs, req.Args)
 	select {
 	case dc.ch <- req.ID:
@@ -126,14 +126,14 @@ func (dc *dummyCodec) WriteRequest(req *rpcc.Request) error {
 	}
 }
 
-func (dc *dummyCodec) AppendExpectedResponse(resp interface{}) {
+func (dc *fakeCodec) AppendExpectedResponse(resp interface{}) {
 	dc.responses = append(dc.responses, resp)
 }
 
-func newDummySession() (sess *Session, dc *dummyCodec, err error) {
-	dc = &dummyCodec{ch: make(chan uint64)}
-	conn, err := rpcc.Dial("dummy", rpcc.WithDialer(newDummyConn), rpcc.WithCodec(func(conn io.ReadWriter) rpcc.Codec {
-		dc.dconn = conn.(*dummyConn)
+func newFakeSession() (sess *Session, dc *fakeCodec, err error) {
+	dc = &fakeCodec{ch: make(chan uint64)}
+	conn, err := rpcc.Dial("fake", rpcc.WithDialer(newFakeConn), rpcc.WithCodec(func(conn io.ReadWriter) rpcc.Codec {
+		dc.dconn = conn.(*fakeConn)
 		return dc
 	}))
 	if err != nil {
@@ -172,17 +172,17 @@ func TestCreateTarget(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			ctx, cancel := context.WithCancel(context.Background())
 			defer cancel()
-			sess, dc, err := newDummySession()
+			sess, dc, err := newFakeSession()
 			if err != nil {
 				t.Fatal("Failed to dial: ", err)
 			}
-			dc.AppendExpectedResponse(&target.CreateTargetReply{TargetID: "dummy-id"})
+			dc.AppendExpectedResponse(&target.CreateTargetReply{TargetID: "fake-id"})
 			id, err := sess.CreateTarget(ctx, "about:blank", c.opts...)
 			if err != nil {
 				t.Fatal("Failed to call CreateTarget: ", err)
 			}
-			if id != "dummy-id" {
-				t.Errorf("Expected dummy-id, got %s", id)
+			if id != "fake-id" {
+				t.Errorf("Expected fake-id, got %s", id)
 			}
 			if len(dc.requestedArgs) != 1 {
 				t.Fatalf("Expected number of requests 1, got %d", len(dc.requestedArgs))
