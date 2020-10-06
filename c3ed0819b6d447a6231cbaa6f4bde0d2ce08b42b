@@ -73,6 +73,54 @@
       },
       "revId": "c3ed0819b6d447a6231cbaa6f4bde0d2ce08b42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "364ceb47_f801e85d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-06T23:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88b62300_ba828e31",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 19
+      },
+      "revId": "c3ed0819b6d447a6231cbaa6f4bde0d2ce08b42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b8f8a1_68559959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-06T23:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88b62300_ba828e31",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 19
+      },
+      "revId": "c3ed0819b6d447a6231cbaa6f4bde0d2ce08b42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
