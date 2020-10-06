@@ -16,6 +16,24 @@
       "revId": "1c696048794e0bdc0f2bd4cfb386c5fca2868a74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c059e6a2_0d922f74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-06T04:23:38Z",
+      "side": 1,
+      "message": "The alert config has been updated: b/170073532.",
+      "parentUuid": "b66c9a5c_086c1dd4",
+      "revId": "1c696048794e0bdc0f2bd4cfb386c5fca2868a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
