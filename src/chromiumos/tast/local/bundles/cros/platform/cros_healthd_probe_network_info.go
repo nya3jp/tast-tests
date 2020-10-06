@@ -35,10 +35,19 @@ func CrosHealthdProbeNetworkInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run telem command: ", err)
 	}
 
-	// Every system should have the field headers and at least one network
-	// device.
+	// Helper function to write the result from telem to a file.
+	writeResultToFile := func() {
+		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "network_health_telem.txt"),
+			b, 0644); err != nil {
+			s.Error("Unable to write network_health_telem.txt file: ", err)
+		}
+	}
+
+	// Every system should have the field headers and at least two network
+	// devices. The VPN type is always present as a network device.
 	lines := strings.Split(strings.TrimRight(string(b), "\n"), "\n")
-	if len(lines) < 2 {
+	if len(lines) < 3 {
+		writeResultToFile()
 		s.Fatal("Could not find any lines of network info")
 	}
 
@@ -46,28 +55,17 @@ func CrosHealthdProbeNetworkInfo(ctx context.Context, s *testing.State) {
 	header := []string{"type", "state", "guid", "name", "signal_strength", "mac_address"}
 	got := strings.Split(lines[0], ",")
 	if !reflect.DeepEqual(got, header) {
+		writeResultToFile()
 		s.Fatalf("Incorrect NetworkInfo keys: got %v; want %v", got, header)
 	}
 
-	// Verify that all network devices have the correct number of fields and at
-	// least one network device is online.
-	online := false
+	// Verify that all network devices have the correct number of fields.
 	for _, line := range lines[1:] {
 		vals := strings.Split(line, ",")
 		if len(vals) != len(header) {
-			s.Errorf("Unexpected number of fields in network structure: got: %v, want: %v, fields: %v",
+			writeResultToFile()
+			s.Fatalf("Unexpected number of fields in network structure: got: %v, want: %v, fields: %v",
 				len(vals), len(header), vals)
-		}
-		if vals[1] == "Online" {
-			online = true
-		}
-	}
-
-	if !online {
-		s.Error("No network devices are online")
-		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "network_health_telem.txt"),
-			b, 0644); err != nil {
-			s.Error("Unable to write network_health_telem.txt file: ", err)
 		}
 	}
 }
