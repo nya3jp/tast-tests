@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "7e5405ab_4f31b1cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-06T07:32:42Z",
+      "side": 1,
+      "message": "Mmm... after checking other tests, seems no one use Precondition for stopping UI. You may leave the stop-UI logic as is and investigate the feasibility of using Precondition later.",
+      "parentUuid": "956f7907_8b76f6e3",
+      "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00a05d6d_eed2b259",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
         "patchSetId": 5
