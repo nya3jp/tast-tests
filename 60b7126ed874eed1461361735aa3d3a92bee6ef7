@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a2f9c68_26d13432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-06T16:49:05Z",
+      "side": 1,
+      "message": "This feels fragile. It would be broken when meet changes their pages, e.g. adding a button to the panel.\n\nDo we have a somewhat more reliable way? Say, make this a while loop and check \"document.activeElement\" until we get the \"More options\" item (hopefully the item is not inside a shadow DOM).",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 3
+      },
+      "revId": "60b7126ed874eed1461361735aa3d3a92bee6ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
