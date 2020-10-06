@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f7a0356_b3509168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-06T06:10:07Z",
+      "side": 1,
+      "message": "You can reuse this task for both soak and suspend tests.\nIf you check isDualQual here, you don\u0027t need to check in all other places (line 291, line 147, etc), if dual-namespace test is not requested, this function will just return.",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 34
+      },
+      "revId": "c68046d676ae75916dc7d18d5007f3b909760727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
