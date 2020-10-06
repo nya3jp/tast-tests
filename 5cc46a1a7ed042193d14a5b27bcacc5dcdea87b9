@@ -398,6 +398,30 @@
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d87c2e26_1e06f172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-10-06T16:28:33Z",
+      "side": 1,
+      "message": "\u003eShould not be using var_overlay in production.\n\u003eThe solution here is to change the dlcservice code to never use var_overlay in production.\n\u003eAll of these references should be /var/cache/dlcservice.\n\nYup! That is what needs to be solved with these CLs + bug.\n\n\n\u003eWouldn\u0027t it make more sense to have dlcservice support some sort of test prefix?\n\nThe test prefixed used was var_overlay/cache/dlc-images, but as you mentioned + as per the bug, we need to use /var/cache/dlc-images.\nBut there is this double bind mount between var_overlay + encrypted.\n\n\n\u003eI really don\u0027t understand how var_overlay is currently working for you in production images.\n\nIn production, the var_overlay/cache/dlc-images is never populated.\nOnly for test images.",
+      "parentUuid": "b3b23bbe_ff4474c5",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
