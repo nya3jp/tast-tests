@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -338,10 +337,6 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	s.Log("Make video fullscreen")
 	if err := enterFullscreen(); err != nil {
 		s.Fatal("Failed to enter fullscreen: ", err)
-	}
-
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
 	if err = recorder.Run(ctx, func(ctx context.Context) error {
