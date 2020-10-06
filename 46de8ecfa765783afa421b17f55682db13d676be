@@ -83,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "d72320ed_da0934b0",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T05:51:14Z",
+      "side": 1,
+      "message": "I think this is done in PS8.",
+      "parentUuid": "127cdfbc_84ebfc99",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "46de8ecfa765783afa421b17f55682db13d676be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "faf2b8c9_2c3395f7",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
         "patchSetId": 7
@@ -115,6 +139,24 @@
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f828d39_bba1864b",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T05:51:14Z",
+      "side": 1,
+      "message": "Hmm... If we don\u0027t use it at all, I wonder if we can just drop it and only adds it when needed.   If we do use RCDAT, then I guess this is OK now but just need some more verification.",
+      "parentUuid": "58cec4dd_313103f4",
+      "revId": "46de8ecfa765783afa421b17f55682db13d676be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +221,30 @@
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a89314_1193a31f",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T05:51:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b8767157_e2d56b5b",
+      "range": {
+        "startLine": 203,
+        "startChar": 8,
+        "endLine": 203,
+        "endChar": 18
+      },
+      "revId": "46de8ecfa765783afa421b17f55682db13d676be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
