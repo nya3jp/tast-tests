@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd4d52a3_0a233494",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-06T11:32:51Z",
+      "side": 1,
+      "message": "Hugo, I didn\u0027t add all the methods from the patchpanel API because I\u0027m not sure how to test all of them.\n\nWould it be ok for you if we gradually add the remaining method as we need them.. or use the BugBash week for this?\n\nThanks!",
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
