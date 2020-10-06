@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06d76bfa_730a2443",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-10-06T04:44:15Z",
+      "side": 1,
+      "message": "Hi, tast-owners, can I ask to review this CL?",
+      "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
