@@ -34,6 +34,52 @@
       "revId": "f27294fdcb0a63f6f8d63c4263036d776b751292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "142339ec_10b5ab85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-06T11:53:11Z",
+      "side": 1,
+      "message": "Please add comments like this to the blocks below.",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 22
+      },
+      "revId": "f27294fdcb0a63f6f8d63c4263036d776b751292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9862af4e_757f89b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-06T11:53:11Z",
+      "side": 1,
+      "message": "keyboard can be initialized outside of Run().",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 19
+      },
+      "revId": "f27294fdcb0a63f6f8d63c4263036d776b751292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
