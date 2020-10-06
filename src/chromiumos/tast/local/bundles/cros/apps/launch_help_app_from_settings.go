@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/testing"
@@ -59,12 +58,8 @@ func LaunchHelpAppFromSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Settings: ", err)
 	}
 
-	// Find and click Get help with Chrome OS.
-	if err := ui.FindAndClick(ctx, tconn, ui.FindParams{
-		Name: "Get help with Chrome OS",
-		Role: ui.RoleTypeLink,
-	}, 10*time.Second); err != nil {
-		s.Fatal("Failed to click Get help with Chrome OS: ", err)
+	if err := ossettings.LaunchHelpApp(ctx, tconn); err != nil {
+		s.Fatal("Failed to launch Help App: ", err)
 	}
 
 	// App should be launched at the overview page.

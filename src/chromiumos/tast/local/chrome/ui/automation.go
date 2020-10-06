@@ -304,6 +304,28 @@ func (n *Node) LeftClickUntil(ctx context.Context, condition func(context.Contex
 	}, opts)
 }
 
+// FindAndClickStableNode finds the first node matching the params and waits for it to be locationed.
+// It relocate the node if unexpected error happens, such as element refreshed.
+// It should only be used if the click is flaky due to ui animation.
+// Side effect: using this function will increase the test duration.
+// Error example: "Failed to update the node's location: unexpected end of JSON input"
+// Error example: "Cannot read property 'left' of undefined"
+func FindAndClickStableNode(ctx context.Context, tconn *chrome.TestConn, params FindParams, opts *testing.PollOptions) error {
+	location := coords.Rect{}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		node, err := FindWithTimeout(ctx, tconn, params, 1*time.Second)
+		if err != nil {
+			return errors.Wrap(err, "failed to find node")
+		}
+		defer node.Release(ctx)
+		if !cmp.Equal(node.Location, location) {
+			location = node.Location
+			return errors.New("node location still changing")
+		}
+		return node.LeftClick(ctx)
+	}, opts)
+}
+
 // FindAndClick waits for and left clicks the first node matching the params.
 func FindAndClick(ctx context.Context, tconn *chrome.TestConn, params FindParams, timeout time.Duration) error {
 	node, err := FindWithTimeout(ctx, tconn, params, timeout)
