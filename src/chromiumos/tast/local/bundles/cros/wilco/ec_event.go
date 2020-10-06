@@ -31,7 +31,7 @@ func init() {
 // ECEvent tests the Wilco EC is able to generate EC events and that the kernel
 // properly passes them along to userspace to read. Normally, the EC triggers
 // events on hardware changes, such as battery errors. For testing, we can
-// send a special command to the EC, and the EC will generate a hardcoded dummy
+// send a special command to the EC, and the EC will generate a hardcoded fake
 // event.
 //
 // See http://chromium.googlesource.com/chromiumos/third_party/kernel/+/283563c976eefc1ab2e83049665d42b23bda95b5/drivers/platform/chrome/wilco_ec/debugfs.c#221
@@ -39,7 +39,7 @@ func init() {
 // http://chromium.googlesource.com/chromiumos/third_party/kernel/+/283563c976eefc1ab2e83049665d42b23bda95b5/drivers/platform/chrome/wilco_ec/event.c
 // for the kernel driver that reads events from the EC.
 func ECEvent(ctx context.Context, s *testing.State) {
-	// The format of this dummy event chosen at
+	// The format of this fake event chosen at
 	// http://issuetracker.google.com/139017129.
 	expectedECEvent := []byte{
 		0x07, 0x00, 0x13, 0x00, 0x00, 0x00, 0x01, 0x00,
