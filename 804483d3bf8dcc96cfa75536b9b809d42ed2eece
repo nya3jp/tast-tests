@@ -33,6 +33,24 @@
       "message": "LGTM. Maybe you could remove WaitUntilCPUCoolDown from this test. Either is fine with me.",
       "revId": "804483d3bf8dcc96cfa75536b9b809d42ed2eece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f24bbb_3cc26e35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-06T21:26:59Z",
+      "side": 1,
+      "message": "I agree. It does not feel useful. Removed in PS2 and see whether it impacts the collected data.",
+      "parentUuid": "a8adc35f_c2ebe816",
+      "revId": "804483d3bf8dcc96cfa75536b9b809d42ed2eece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
