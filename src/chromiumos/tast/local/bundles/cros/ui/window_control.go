@@ -29,7 +29,7 @@ func init() {
 			"chromeos-wmp@google.com",
 			"mukai@chromium.org", // Tast author
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Pre:          chrome.LoggedIn(),
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
