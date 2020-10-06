@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "849a7fbc_6131ce77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-06T17:13:54Z",
+      "side": 1,
+      "message": "Hi Everybody:\n\nI just uploaded another patch to reduce random failures of the time. I still cannot remove the sleep statement. If I remove it, it almost guarantees running clamshell mode on a tablet would fail. I have tried to wrote new functions to wait for other kinds of events such as EventTypeActivedescendantchanged and EventTypeTreeChanged. Unfortunately, they were not as reliable as sleep. \n\nThe I have tested this patch with dru (3 consecutive successful runs), kodama (3 consecutive successful runs), octopus and hana. I still could see failure on kodama once a while but it was not common.\n\nPlease let me know if it is sufficient.\n\nThanks.\n\nSeewai",
+      "revId": "06297e8dbddcca60c30857a3e48ef7c56b38a10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
