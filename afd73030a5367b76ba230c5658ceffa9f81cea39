@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "cb6493e8_504af724",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Thanks for clarifying!  Please help take another look.",
       "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "0d0afd85_912b2162",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "Thanks",
       "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "84bee313_df31590e",
         "filename": "/PATCHSET_LEVEL",
@@ -48,10 +49,10 @@
       "side": 1,
       "message": "LGTM, thanks!\n",
       "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e48b76ee_ea83064e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
@@ -71,10 +72,34 @@
         "endChar": 39
       },
       "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f2521fa_73298a36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-06T07:39:34Z",
+      "side": 1,
+      "message": "Oh, I meant io.Writer.",
+      "parentUuid": "e48b76ee_ea83064e",
+      "range": {
+        "startLine": 247,
+        "startChar": 26,
+        "endLine": 247,
+        "endChar": 39
+      },
+      "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "8f176fe8_dcdc30f3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
@@ -94,10 +119,10 @@
         "endChar": 30
       },
       "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4658c1f8_e0e66eaa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
@@ -118,8 +143,7 @@
         "endChar": 30
       },
       "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
