@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "ea2f42c1_b251f195",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Hi Hidehiko,\n\nJust in case you did not see the comments, here is a friendly reminder about the comments I left on \"test_bridge.go\" for patch set 22. Could you please take a look and advice? Thanks a lot for your review and your advice.",
       "revId": "adf289487c5500d8bbc01dccff57898a3d9bafeb",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "6db0b0b8_dc7a08ab",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "Thank you for ping, and sorry for delayed reply.",
       "revId": "adf289487c5500d8bbc01dccff57898a3d9bafeb",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "7544362c_f462eed0",
         "filename": "/PATCHSET_LEVEL",
@@ -48,8 +49,24 @@
       "side": 1,
       "message": "Thanks for helping!",
       "revId": "adf289487c5500d8bbc01dccff57898a3d9bafeb",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9d8788_d127b338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-06T16:41:45Z",
+      "side": 1,
+      "message": "Looks missing in this CL?",
+      "revId": "adf289487c5500d8bbc01dccff57898a3d9bafeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
