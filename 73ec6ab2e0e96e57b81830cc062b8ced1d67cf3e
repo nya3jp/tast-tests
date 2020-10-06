@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "530c3d3e_db4f1830",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-06T08:53:14Z",
+      "side": 1,
+      "message": "Looks really nice overall!\n",
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3282fe53_891a6746",
         "filename": "src/chromiumos/tast/local/adb/adb.go",
@@ -20,10 +38,10 @@
         "endChar": 15
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a6ce7ce3_c2d66e66",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -43,10 +61,33 @@
         "endChar": 15
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "040f16ba_7260e3aa",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-06T08:53:14Z",
+      "side": 1,
+      "message": "I recommend writing unit tests for this parser. It should be not too difficult thanks to this refactoring :)",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 59
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "94a27857_76eec0af",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -66,10 +107,10 @@
         "endChar": 52
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "aca13b44_3718df1e",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -89,10 +130,10 @@
         "endChar": 70
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d9d2ca96_caeaa1e0",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -112,10 +153,10 @@
         "endChar": 4
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1ba409e8_404a1145",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -135,10 +176,10 @@
         "endChar": 30
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "472e5b90_fd03f77d",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -158,8 +199,76 @@
         "endChar": 15
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee097609_4d3807f9",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-06T08:53:14Z",
+      "side": 1,
+      "message": "Let us avoid parsing CombinedOutput results.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#CombinedOutput\n\nIf you want to parse stderr, you can use a new SeparateOutput function introduced recently.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2336622/3/src/chromiumos/tast/local/testexec/testexec.go",
+      "range": {
+        "startLine": 147,
+        "startChar": 41,
+        "endLine": 147,
+        "endChar": 55
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fabb5a6a_e9f9cd41",
+        "filename": "src/chromiumos/tast/local/adb/vendor_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-06T08:53:14Z",
+      "side": 1,
+      "message": "I recommend strings.Join.\nhttps://godoc.org/strings#Join",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0774d385_3613bfe5",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-06T08:53:14Z",
+      "side": 1,
+      "message": "You can use ctxutil.MaxTimeout.",
+      "range": {
+        "startLine": 38,
+        "startChar": 59,
+        "endLine": 38,
+        "endChar": 78
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
