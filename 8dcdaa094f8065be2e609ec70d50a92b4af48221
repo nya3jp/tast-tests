@@ -71,6 +71,53 @@
     },
     {
       "key": {
+        "uuid": "245688b5_7e1e252d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T06:16:28Z",
+      "side": 1,
+      "message": "I guess you can use testexec.CommandContext directly?",
+      "range": {
+        "startLine": 1748,
+        "startChar": 11,
+        "endLine": 1748,
+        "endChar": 16
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b207102_c1ae1869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T06:16:28Z",
+      "side": 1,
+      "message": "Also, the maximum allowed suspend time might depend on the SSH timeout setting which is not really guaranteed value for now. Some related discussion can be found in https://groups.google.com/a/chromium.org/g/tast-users/c/Lqrq2E_Dvqk",
+      "parentUuid": "2d424177_43aedf58",
+      "range": {
+        "startLine": 1748,
+        "startChar": 56,
+        "endLine": 1748,
+        "endChar": 58
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "552752cb_d4c0638c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 2
@@ -88,6 +135,23 @@
         "endLine": 1751,
         "endChar": 50
       },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "406ea7ad_232eafde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1756,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T06:16:28Z",
+      "side": 1,
+      "message": "IIRC, Autotest checks if the DUT woke up too early. Do you think we should also keep the check?",
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -237,6 +301,23 @@
         "endLine": 183,
         "endChar": 30
       },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39796071_ce7d4c7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T06:16:28Z",
+      "side": 1,
+      "message": "This will shadow the pv variable outside of testOnce and I think the metrics will never be saved?",
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
