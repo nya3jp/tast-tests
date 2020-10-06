@@ -22,6 +22,30 @@
       "revId": "c68046d676ae75916dc7d18d5007f3b909760727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd03bdb2_18e7f8d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-06T06:57:30Z",
+      "side": 1,
+      "message": "I made a function runFioStressIfSlc. It feels super cringy though anyway, but reduces amount of ifs drastically (unless you count ones in the function names :D)",
+      "parentUuid": "2f7a0356_b3509168",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 34
+      },
+      "revId": "c68046d676ae75916dc7d18d5007f3b909760727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
