@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ca23603_ba5ed443",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-06T22:10:49Z",
+      "side": 1,
+      "message": "There is no current discovery/scan support for bluetooth in tast so far. AFAIK, this is the only tast bluez wrapper: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bluetooth/bluez.go?q\u003dbluez.go\u0026sq\u003dpackage:chromeos_public .\n\nIf we need to, I think supporting scan/discovery is just a matter of implementing the correct dbus calls. However, I don\u0027t think we have a good way of validating/testing the integrity of the scan in tast.\n\nI think if the goal of the cl is to prevent the regression from happening in the future and on other platforms, I think what we have is sufficient.",
+      "parentUuid": "65d8d5a9_616d2d30",
+      "range": {
+        "startLine": 133,
+        "startChar": 30,
+        "endLine": 133,
+        "endChar": 48
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb0ffec9_eaa3108b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
         "patchSetId": 12
