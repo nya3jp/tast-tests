@@ -422,6 +422,30 @@
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62aefb6e_e24e4081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-10-06T16:40:23Z",
+      "side": 1,
+      "message": "\u003e In production, the var_overlay/cache/dlc-images is never populated.\n\nBut I think if the directory gets created in the production image, then dlcservice will use it. Maybe we should use the crossytem flag to figure out if we\u0027re running the dev/test image, use this path, otherwise in signed images, don\u0027t use it?",
+      "parentUuid": "d87c2e26_1e06f172",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
