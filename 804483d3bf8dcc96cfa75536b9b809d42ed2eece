@@ -16,6 +16,23 @@
       "message": "This should fix the problem particularly for VideoCUJ. But I wonder what would be the best way for a generic power.WaitUntilCPUCoolDown timeout. cpu.WaitUntilIdle has a graceful 1min timeout. Maybe we should have a version of power.WaitUntilCPUCoolDown also does that?",
       "revId": "804483d3bf8dcc96cfa75536b9b809d42ed2eece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8adc35f_c2ebe816",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-06T21:06:58Z",
+      "side": 1,
+      "message": "LGTM. Maybe you could remove WaitUntilCPUCoolDown from this test. Either is fine with me.",
+      "revId": "804483d3bf8dcc96cfa75536b9b809d42ed2eece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
