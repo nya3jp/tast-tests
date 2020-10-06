@@ -1,7 +1,6 @@
 {
   "comments": [
     {
-      "unresolved": false,
       "key": {
         "uuid": "530c3d3e_db4f1830",
         "filename": "/PATCHSET_LEVEL",
@@ -15,10 +14,10 @@
       "side": 1,
       "message": "Looks really nice overall!\n",
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
-      "unresolved": true,
       "key": {
         "uuid": "3282fe53_891a6746",
         "filename": "src/chromiumos/tast/local/adb/adb.go",
@@ -38,10 +37,34 @@
         "endChar": 15
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "3bb75398_f877cb46",
+        "filename": "src/chromiumos/tast/local/adb/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3282fe53_891a6746",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
       "key": {
         "uuid": "a6ce7ce3_c2d66e66",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -61,10 +84,34 @@
         "endChar": 15
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "e62aa70e_eba28a82",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6ce7ce3_c2d66e66",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
       "key": {
         "uuid": "040f16ba_7260e3aa",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -84,10 +131,34 @@
         "endChar": 59
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "b621253a_232c3d64",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "040f16ba_7260e3aa",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 59
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
       "key": {
         "uuid": "94a27857_76eec0af",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -107,10 +178,34 @@
         "endChar": 52
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "1cdcd53f_6574f981",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "In our use case, I don\u0027t think they should ever appear. They can appear, for example, if the local server is currently down and gets launched by this command.\n List of devices attached\n * daemon not running. starting it now on port 5037 *\n * daemon started successfully *\n emulator-5555 device",
+      "parentUuid": "94a27857_76eec0af",
+      "range": {
+        "startLine": 38,
+        "startChar": 38,
+        "endLine": 38,
+        "endChar": 52
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
       "key": {
         "uuid": "aca13b44_3718df1e",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -130,10 +225,34 @@
         "endChar": 70
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "e2fd3783_3482290b",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aca13b44_3718df1e",
+      "range": {
+        "startLine": 49,
+        "startChar": 30,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
       "key": {
         "uuid": "d9d2ca96_caeaa1e0",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -153,10 +272,34 @@
         "endChar": 4
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "5cdbb67f_cbddbe57",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "I was basing off of [these docs](https://developer.android.com/studio/command-line/adb). I guess they are slightly outdated and don\u0027t show transport id at all. Hopefully these changes aren\u0027t common.\n\nIf USB no longer exists, I will switch to just including transport id.\nAs a side note, do you think it would be better to communicate with devices by transport id instead of serial?",
+      "parentUuid": "d9d2ca96_caeaa1e0",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
       "key": {
         "uuid": "1ba409e8_404a1145",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -176,10 +319,34 @@
         "endChar": 30
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "fca02321_6fcd53dd",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ba409e8_404a1145",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 30
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
       "key": {
         "uuid": "472e5b90_fd03f77d",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -199,10 +366,34 @@
         "endChar": 15
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "a3b07113_ae87f60d",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "472e5b90_fd03f77d",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
       "key": {
         "uuid": "ee097609_4d3807f9",
         "filename": "src/chromiumos/tast/local/adb/device.go",
@@ -222,10 +413,34 @@
         "endChar": 55
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "fb88f5ff_0fe4e4ed",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "That Cl was reverted. I simply re-added the SeparatedOutput method. Let me know if this is fine for now.",
+      "parentUuid": "ee097609_4d3807f9",
+      "range": {
+        "startLine": 147,
+        "startChar": 41,
+        "endLine": 147,
+        "endChar": 55
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
       "key": {
         "uuid": "fabb5a6a_e9f9cd41",
         "filename": "src/chromiumos/tast/local/adb/vendor_keys.go",
@@ -245,10 +460,34 @@
         "endChar": 26
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "fe574e78_c260f1e8",
+        "filename": "src/chromiumos/tast/local/adb/vendor_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabb5a6a_e9f9cd41",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
       "key": {
         "uuid": "0774d385_3613bfe5",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
@@ -268,7 +507,32 @@
         "endChar": 78
       },
       "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c90b4fdb_7750f349",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-06T16:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0774d385_3613bfe5",
+      "range": {
+        "startLine": 38,
+        "startChar": 59,
+        "endLine": 38,
+        "endChar": 78
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
