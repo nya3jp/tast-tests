@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2ffe120_af43c1c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-06T04:31:30Z",
+      "side": 1,
+      "message": "Intentionally spelled as halp.",
+      "range": {
+        "startLine": 88,
+        "startChar": 16,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "6435cac322e925faad6fa18462e4ded186fa3587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
