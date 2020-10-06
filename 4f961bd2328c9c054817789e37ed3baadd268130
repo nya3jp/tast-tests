@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "28722ffb_0035fc81",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "LGTM. I\u0027m not that familiar with attenuator so I\u0027ll let someone else to approve.",
       "revId": "4f961bd2328c9c054817789e37ed3baadd268130",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "edb8ee68_f9f651a1",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -37,8 +38,31 @@
         "endChar": 49
       },
       "revId": "4f961bd2328c9c054817789e37ed3baadd268130",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd68515_78f91af1",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-06T21:36:52Z",
+      "side": 1,
+      "message": "No, it\u0027s better to remove parsing, we don\u0027t use it at all.",
+      "parentUuid": "edb8ee68_f9f651a1",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 49
+      },
+      "revId": "4f961bd2328c9c054817789e37ed3baadd268130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

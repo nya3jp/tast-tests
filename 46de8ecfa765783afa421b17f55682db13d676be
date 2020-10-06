@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "c9692122_cc51c3fa",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Some questions as I have little experience of operating attenuators.",
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4fa1304f_bb8fa1f5",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "Some answers, need to test code more, though.",
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e6335a31_fe9cc2b7",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -54,10 +55,10 @@
         "endChar": 51
       },
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "127cdfbc_84ebfc99",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -78,10 +79,10 @@
         "endChar": 51
       },
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "d72320ed_da0934b0",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -102,10 +103,10 @@
         "endChar": 51
       },
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "faf2b8c9_2c3395f7",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -119,10 +120,10 @@
       "side": 1,
       "message": "Curious, does this also work for single channel device (RCDAT)? The doc [1] says that it is only supported in RC4DAT and RC8DAT series. And I think you plan to handle some single channel device by checking a.model?\n\n[1] https://www.minicircuits.com/softwaredownload/Prog_Manual-6-Programmable_Attenuator.pdf",
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "58cec4dd_313103f4",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -137,10 +138,10 @@
       "message": "I planned only best-effort support, as I don\u0027t have any specific RCDAT hardware to test that on. Perhaps I should mention that somewhere in comments.\nAnyway, quite surprisingly, undocumented `CHAN:%d:ATT?` seems to work, so I wouldn\u0027t be surprised if CHAN:%d:SETATT: worked too.",
       "parentUuid": "faf2b8c9_2c3395f7",
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "7f828d39_bba1864b",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -155,10 +156,10 @@
       "message": "Hmm... If we don\u0027t use it at all, I wonder if we can just drop it and only adds it when needed.   If we do use RCDAT, then I guess this is OK now but just need some more verification.",
       "parentUuid": "58cec4dd_313103f4",
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ebdf07d0_e82c355d",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -172,10 +173,28 @@
       "side": 1,
       "message": "nit: do you think it might be better to check if channel is out of bound here? main downside is: harder for caller to use with error returned.",
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "751d3b69_ea42d256",
+        "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-06T21:36:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebdf07d0_e82c355d",
+      "revId": "46de8ecfa765783afa421b17f55682db13d676be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "f02d6677_4f9e9a92",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -195,10 +214,10 @@
         "endChar": 18
       },
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b8767157_e2d56b5b",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -219,10 +238,10 @@
         "endChar": 18
       },
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "85a89314_1193a31f",
         "filename": "src/chromiumos/tast/remote/wificell/attenuator/attenuator.go",
@@ -243,8 +262,7 @@
         "endChar": 18
       },
       "revId": "46de8ecfa765783afa421b17f55682db13d676be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
