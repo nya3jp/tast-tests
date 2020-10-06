@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/av1/frames_refs_short_signaling_20201006.ivf",
+  "size": 71538,
+  "sha256sum": "d9136e7e427a1ec1423823f1d8cee37ed0aa354d16bb6607feb5413436810918"
+}

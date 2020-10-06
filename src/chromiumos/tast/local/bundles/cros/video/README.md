@@ -70,6 +70,18 @@ the current ones. To run all VD video decoder tests run:
 
     tast run $HOST video.DecodeAccelVD.*
 
+### Video decoder compliance tests (`video.DecodeCompliance`)
+
+The test validates video decoding compliance by running the
+[video_decode_accelerator_tests] to various video clips with the option
+[--gtest_filter=VideoDecoderTest.FlushAtEndOfStream].
+Unlike video decoder integration tests, this doesn't test video decoder
+functionalities, but still checks the correctness of produced frames.
+The test is available only for AV1. To run the test use:
+
+    tast run $HOST video.DecodeAccel.av1_test_vectors
+
+
 ### Video decoder performance tests (`video.DecodeAccelPerf`)
 
 These tests measure video decode performance by running the
