@@ -46,6 +46,30 @@
       "revId": "2abb809ee70e76248fef61e44c4631f3e41b5b81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "592e5412_f4c9e72e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-10-06T04:10:36Z",
+      "side": 1,
+      "message": "Here are the logs:\nhttps://paste.googleplex.com/4881251673571328#\n\nwhich I run with the following CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2386704/26",
+      "parentUuid": "013fb9c1_36368304",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "2abb809ee70e76248fef61e44c4631f3e41b5b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
