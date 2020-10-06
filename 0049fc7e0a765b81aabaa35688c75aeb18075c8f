@@ -22,6 +22,30 @@
       },
       "revId": "0049fc7e0a765b81aabaa35688c75aeb18075c8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0741f3db_43e3a859",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-06T23:07:27Z",
+      "side": 1,
+      "message": "Oh, for crying out loud...this is getting really frustrating.\n\nhttps://crbug.com/1124372 is tracking this\n\nThanks for identifying the discrepancy.\n\nI\u0027m a bit nervous about excluding something as possibly-broad as \"r\" from running (plus the celes failures are only sporadic right now), so I\u0027m going to leave this with a TODO for now.",
+      "parentUuid": "d2cd368e_12f1cf5a",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 67
+      },
+      "revId": "0049fc7e0a765b81aabaa35688c75aeb18075c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
