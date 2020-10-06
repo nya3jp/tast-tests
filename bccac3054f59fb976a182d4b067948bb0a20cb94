@@ -34,6 +34,70 @@
       "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f8fdb12_bc340209",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T05:18:55Z",
+      "side": 1,
+      "message": "+1 for monitoring multiple properties and thanks for the suggestion. This is a useful generalization that don\u0027t need too much more effort, I think.",
+      "parentUuid": "abc6f860_81da04f4",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eee6136_fe71ed0c",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T05:18:55Z",
+      "side": 1,
+      "message": "The design here makes it buggy if multiple Monitor is called. Adding a nonce might be a simple solution.",
+      "range": {
+        "startLine": 192,
+        "startChar": 127,
+        "endLine": 192,
+        "endChar": 168
+      },
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "110dd9cd_dd640ed0",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T05:18:55Z",
+      "side": 1,
+      "message": "Hmm..., this looks a little hacky. In particular, it sends a fake PropertyChanged on the same interface/path as the real service. It sounds like a bad idea to me. If we want to send a dbus signal, I might prefer going back with raw dbus SignalWatcher in this function so that we can add a Match for the custom \"stop\" signal. And perhaps extract a signal parsing function to share with Wait().\n\nFWIW, one thought I had for handling \"no disconnection\" is adding a \"monitor\" CheckMethod in ExpectShillProperty which watches some properties before the next event is caught. Then you\u0027ll have a clear boundary of \"monitor\". However, this can\u0027t handle the case like general AssertNoDisconnect as there might be no property change. So, the current direction also looks good to me.",
+      "range": {
+        "startLine": 191,
+        "startChar": 3,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
