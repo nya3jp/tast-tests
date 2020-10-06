@@ -27,9 +27,9 @@ import (
 const (
 	// Prefix of content URIs used by ArcVolumeProvider.
 	contentURIPrefix = "content://org.chromium.arc.volumeprovider/"
-	// Dummy UUID of removable device for testing.
+	// Fake UUID of removable device for testing.
 	// Defined in chromium:components/arc/volume_mounter/arc_volume_mounter_bridge.cc.
-	dummyUUID = "00000000000000000000000000000000DEADBEEF"
+	fakeUUID = "00000000000000000000000000000000DEADBEEF"
 )
 
 // createZeroFile creates a file filled with size bytes of 0.
@@ -198,7 +198,7 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 		return
 	}
 
-	uri := contentURIPrefix + path.Join(dummyUUID, testFile)
+	uri := contentURIPrefix + path.Join(fakeUUID, testFile)
 	if err := verify(uri, filepath.Join(s.OutDir(), testFile)); err != nil {
 		s.Fatalf("Failed to read the file via VolumeProvider using content URI %s: %v", uri, err)
 	}

@@ -31,7 +31,7 @@ func init() {
 
 // ECRTC tests the RTC contained within the EC on Wilco devices. As a
 // first check it reads the current time. Then, for a more detailed check,
-// it sets the time to a dummy time, sleeps for a bit, and reads the
+// it sets the time to a fake time, sleeps for a bit, and reads the
 // time again. The RTC better have updated itself. The test attempts to
 // reset the RTC back to time.Now() after failure or completion.
 func ECRTC(ctx context.Context, s *testing.State) {
@@ -48,7 +48,7 @@ func ECRTC(ctx context.Context, s *testing.State) {
 		// local time. We need to disable it during the test.
 		upstartJobName = "wilco_sync_ec_rtc"
 	)
-	// Set the RTC to a dummy time for consistency.
+	// Set the RTC to a fake time for consistency.
 	startTime := time.Date(2001, time.January, 1, 12, 0, 0, 0, time.Now().Location())
 	endTimeMin := startTime.Add(sleepTime).Add(-2 * time.Second)
 	endTimeMax := startTime.Add(sleepTime).Add(2 * time.Second)
