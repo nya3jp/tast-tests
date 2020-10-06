@@ -20,6 +20,8 @@ import (
 
 const uiTimeout = 15 * time.Second
 
+var defaultOSSettingsPollOptions = &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}
+
 // AboutChromeOS is a subpage link.
 var AboutChromeOS = ui.FindParams{
 	Name: "About Chrome OS",
@@ -74,8 +76,24 @@ func LaunchAtPage(ctx context.Context, tconn *chrome.TestConn, subpage ui.FindPa
 	}
 
 	// Find and click the subpage we want in the sidebar.
-	if err := ui.FindAndClick(ctx, tconn, subpage, uiTimeout); err != nil {
+	if err := ui.FindAndClickStableNode(ctx, tconn, subpage, defaultOSSettingsPollOptions); err != nil {
 		return errors.Wrapf(err, "failed to find subpage with %v", subpage)
 	}
 	return nil
+}
+
+// LaunchHelpApp launches Help app by clicking "Get help with Chrome OS".
+func LaunchHelpApp(ctx context.Context, tconn *chrome.TestConn) error {
+	return ui.FindAndClickStableNode(ctx, tconn, ui.FindParams{
+		Name: "Get help with Chrome OS",
+		Role: ui.RoleTypeLink,
+	}, defaultOSSettingsPollOptions)
+}
+
+// LaunchWhatsNew launches Help app by clicking "See what's new".
+func LaunchWhatsNew(ctx context.Context, tconn *chrome.TestConn) error {
+	return ui.FindAndClickStableNode(ctx, tconn, ui.FindParams{
+		Name: "See what's new",
+		Role: ui.RoleTypeLink,
+	}, defaultOSSettingsPollOptions)
 }
