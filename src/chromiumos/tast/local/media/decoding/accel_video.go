@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
 )
 
 // DecoderType represents the different video decoder types.
@@ -87,6 +88,48 @@ func RunAccelVideoTest(ctx context.Context, outDir, filename string, decoderType
 			}
 		}
 		return errors.Wrap(err, msg)
+	}
+	return nil
+}
+
+// RunAccelVideoTestToTestVectors runs video_decode_accelerator_tests --gtest_filter=VideoDecoderTest.FlushAtEndOfStream
+// with the specified video files using VideoDecoder.
+func RunAccelVideoTestToTestVectors(ctx context.Context, outDir string, filepaths []string) error {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		return errors.Wrap(err, "failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
+	// Reserve time to restart the ui job at the end of the test.
+	// Only a single process can have access to the GPU, so we are required
+	// to call "stop ui" at the start of the test. This will shut down the
+	// chrome process and allow us to claim ownership of the GPU.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	upstart.StopJob(shortCtx, "ui")
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	var failedFilenames []string
+	for _, file := range filepaths {
+		args := generateCmdArgs(outDir, file, VD)
+		filename := filepath.Base(file)
+		const exec = "video_decode_accelerator_tests"
+		if _, err = gtest.New(
+			filepath.Join(chrome.BinTestDir, exec),
+			gtest.Logfile(filepath.Join(outDir, exec+"_"+filename+".log")),
+			gtest.ExtraArgs(args...),
+			gtest.Filter("VideoDecoderTest.FlushAtEndOfStream"),
+			gtest.UID(int(sysutil.ChronosUID)),
+		).Run(shortCtx); err != nil {
+			failedFilenames = append(failedFilenames, filename)
+			testing.ContextLog(ctx, "fail: ", filename)
+		} else {
+			testing.ContextLog(ctx, "pass: ", filename)
+		}
+	}
+	if failedFilenames != nil {
+		return errors.Errorf("decoder validation fails, %v", failedFilenames)
 	}
 	return nil
 }
