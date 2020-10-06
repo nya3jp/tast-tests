@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
@@ -94,17 +93,17 @@ func SecondaryGoogleAccountSigninAllowed(ctx context.Context, s *testing.State) 
 			}
 
 			// We might get a dialog box where we have to click a button before we get to the actual settings we need.
+			if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+				s.Fatal("Failed to wait for location change: ", err)
+			}
 			paramsVA := ui.FindParams{
 				Role: ui.RoleTypeButton,
 				Name: "View accounts",
 			}
-			nodeVA, err := ui.FindWithTimeout(ctx, tconn, paramsVA, 15*time.Second)
-
-			if err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
-				s.Fatal("Unexpected error while retrieving View accounts button node: ", err)
-			} else if err == nil { // If we find the View accounts button we click it.
-				defer nodeVA.Release(ctx)
-				if err := nodeVA.LeftClick(ctx); err != nil {
+			if exists, err := ui.Exists(ctx, tconn, paramsVA); err != nil {
+				s.Fatal("Unexpected error while checking for View accounts button node: ", err)
+			} else if exists {
+				if err := ui.FindAndClick(ctx, tconn, paramsVA, 15*time.Second); err != nil {
 					s.Fatal("Failed to click View accounts button: ", err)
 				}
 			}
