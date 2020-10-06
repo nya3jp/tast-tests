@@ -1,0 +1,643 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// This test file generates the Params in simple_connect.go.
+// After modified, to overwrite the old Params, run:
+// TAST_GENERATE_UPDATE=1 ~/trunk/src/platform/tast/tools/go.sh test -count=1 chromiumos/tast/remote/bundles/cros/wifi
+// To check only, run:
+// ~/trunk/src/platform/fast_build.sh -t chromiumos/tast/remote/bundles/cros/wifi
+
+package wifi
+
+import (
+	"fmt"
+	"strconv"
+	"strings"
+	"testing"
+
+	"chromiumos/tast/common/genparams"
+)
+
+type paramsVal struct {
+	Doc []string
+
+	// APOpts is used if it is not empty; Otherwise CommonAPOptions is used instead.
+	APOpts          string // apOpts: []ap.Option{ %s },
+	CommonAPOptions string // apOpts: wificell.CommonAPOptions( %s ),
+
+	SecConfFac      string
+	PingOps         string
+	ExpectedFailure bool
+}
+
+type params struct {
+	Name                 string
+	Doc                  []string
+	ExtraAttr            []string
+	Val                  []paramsVal
+	ExtraHardwareDeps    string
+	ExtraHardwareDepsDoc []string
+}
+
+func commonDocPref(text string) []string {
+	return []string{"Verifies that DUT can connect to " + text}
+}
+
+func param80211abg() []params {
+	mkOps := func(mode string, channels ...int) []paramsVal {
+		p := make([]paramsVal, len(channels))
+		for i, ch := range channels {
+			p[i].APOpts = fmt.Sprintf("ap.Mode(ap.Mode80211%s), ap.Channel(%d)", mode, ch)
+		}
+		return p
+	}
+	return []params{{
+		Name: "80211a",
+		Doc:  commonDocPref("an open 802.11a network on channels 48, 64."),
+		Val:  mkOps("a", 48, 64),
+	}, {
+		Name: "80211b",
+		Doc:  commonDocPref("an open 802.11b network on channels 1, 6, 11."),
+		Val:  mkOps("b", 1, 6, 11),
+	}, {
+		Name: "80211g",
+		Doc:  commonDocPref("an open 802.11g network on channels 1, 6, 11."),
+		Val:  mkOps("g", 1, 6, 11),
+	}}
+}
+
+func param80211n() []params {
+	mkOps := func(htCaps string, channels ...int) []paramsVal {
+		p := make([]paramsVal, len(channels))
+		for i, ch := range channels {
+			p[i].APOpts = fmt.Sprintf("ap.Mode(ap.Mode80211nPure), ap.Channel(%d), ap.HTCaps(ap.HTCap%s)", ch, htCaps)
+		}
+		return p
+	}
+	return []params{{
+		Name: "80211n24ht20",
+		Doc:  commonDocPref("an open 802.11n network on 2.4GHz channels 1, 6, 11 with a channel width of 20MHz."),
+		Val:  mkOps("HT20", 1, 6, 11),
+	}, {
+		Name: "80211n24ht40",
+		Doc:  commonDocPref("an open 802.11n network on 2.4GHz channel 6 with a channel width of 40MHz."),
+		Val:  mkOps("HT40", 6),
+	}, {
+		Name: "80211n5ht20",
+		Doc:  commonDocPref("an open 802.11n network on 5GHz channel 48 with a channel width of 20MHz."),
+		Val:  mkOps("HT20", 48),
+	}, {
+		Name: "80211n5ht40",
+		Doc: append(commonDocPref("an open 802.11n network on 5GHz channel 48"),
+			"(40MHz channel with the second 20MHz chunk of the 40MHz channel on the channel below the center channel)."),
+		Val: mkOps("HT40Minus", 48),
+	}}
+}
+
+func param80211nsgi() params {
+	return params{
+		Name:      "80211nsgi",
+		Doc:       commonDocPref("an open 802.11n network on 5 GHz channel with short guard intervals enabled (both 20/40 Mhz)."),
+		ExtraAttr: []string{"wificell_cq"},
+		Val: []paramsVal{
+			{APOpts: "ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20, ap.HTCapSGI20)"},
+			{APOpts: "ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40Minus, ap.HTCapSGI40)"},
+		},
+	}
+}
+
+func param80211ac() []params {
+	return []params{{
+		Name: "80211acvht20",
+		Doc:  commonDocPref("an open 802.11ac network on channel 60 with a channel width of 20MHz."),
+		Val: []paramsVal{{APOpts: `
+			ap.Mode(ap.Mode80211acPure), ap.Channel(60), ap.HTCaps(ap.HTCapHT20),
+			ap.VHTChWidth(ap.VHTChWidth20Or40),
+		`}},
+		ExtraHardwareDeps: "hwdep.D(hwdep.Wifi80211ac())",
+	}, {
+		Name: "80211acvht40",
+		Doc:  commonDocPref("an open 802.11ac network on channel 48 with a channel width of 40MHz."),
+		Val: []paramsVal{{APOpts: `
+			ap.Mode(ap.Mode80211acPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40),
+			ap.VHTChWidth(ap.VHTChWidth20Or40),
+		`}},
+		ExtraHardwareDeps: "hwdep.D(hwdep.Wifi80211ac())",
+	}, {
+		Name: "80211acvht80mixed",
+		Doc:  commonDocPref("an open 802.11ac network on 5GHz channel 36 with center channel of 42 and channel width of 80MHz."),
+		Val: []paramsVal{{APOpts: `
+			ap.Mode(ap.Mode80211acMixed), ap.Channel(36), ap.HTCaps(ap.HTCapHT40Plus),
+			ap.VHTCaps(ap.VHTCapSGI80), ap.VHTCenterChannel(42), ap.VHTChWidth(ap.VHTChWidth80),
+		`}},
+	}, {
+		Name: "80211acvht80pure",
+		Doc: append(commonDocPref("an open 802.11ac network on channel 157 with center channel of 155 and channel width of 80MHz."),
+			"The router is forced to use 80 MHz wide rates only."),
+		Val: []paramsVal{{APOpts: `
+			ap.Mode(ap.Mode80211acPure), ap.Channel(157), ap.HTCaps(ap.HTCapHT40Plus),
+			ap.VHTCaps(ap.VHTCapSGI80), ap.VHTCenterChannel(155), ap.VHTChWidth(ap.VHTChWidth80),
+		`}},
+		ExtraHardwareDeps: "hwdep.D(hwdep.Wifi80211ac())",
+	}}
+}
+
+func paramHidden() params {
+	return params{
+		Name: "hidden",
+		Doc:  commonDocPref("a hidden network on 2.4GHz and 5GHz channels."),
+		Val: []paramsVal{
+			{APOpts: "ap.Mode(ap.Mode80211g), ap.Channel(6), ap.Hidden()"},
+			{APOpts: "ap.Mode(ap.Mode80211nPure), ap.Channel(36), ap.HTCaps(ap.HTCapHT20), ap.Hidden()"},
+			{APOpts: "ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20), ap.Hidden()"},
+		},
+	}
+}
+
+const commonSecApOpts = "ap.Mode(ap.Mode80211g), ap.Channel(1)"
+
+func paramWEP() []params {
+	mkP := func(keyLen int) params {
+		ret := params{
+			Name: "wep" + strconv.Itoa(keyLen),
+			Doc:  commonDocPref(fmt.Sprintf("a WEP network with both open and shared system authentication and %d-bit pre-shared keys.", keyLen)),
+		}
+		for _, algo := range []string{"Open", "Shared"} {
+			for key := 0; key < 4; key++ {
+				ret.Val = append(ret.Val, paramsVal{
+					APOpts:     commonSecApOpts,
+					SecConfFac: fmt.Sprintf("wep.NewConfigFactory(wep%dKeys(), wep.DefaultKey(%d), wep.AuthAlgs(wep.AuthAlgo%s))", keyLen, key, algo),
+				})
+			}
+		}
+		return ret
+	}
+	return []params{mkP(40), mkP(104)}
+}
+
+func paramWEPHidden() params {
+	var p []paramsVal
+	for _, keyLen := range []int{40, 104} {
+		for _, algo := range []string{"Open", "Shared"} {
+			p = append(p, paramsVal{
+				APOpts:     commonSecApOpts + ", ap.Hidden()",
+				SecConfFac: fmt.Sprintf("wep.NewConfigFactory(wep%dKeysHidden(), wep.AuthAlgs(wep.AuthAlgo%s))", keyLen, algo),
+			})
+		}
+	}
+	return params{
+		Name: "wephidden",
+		Doc:  commonDocPref("a hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys."),
+		Val:  p,
+	}
+}
+
+func paramWPA() []params {
+	mkOps := func(pmf, mode, cipher string) []paramsVal {
+		return []paramsVal{{
+			APOpts: commonSecApOpts + ", " + pmf,
+			SecConfFac: fmt.Sprintf(`wpa.NewConfigFactory(
+				"chromeos", wpa.Mode(wpa.Mode%s),
+				%s
+			)`, mode, cipher),
+		}}
+	}
+	return []params{{
+		Name: "wpatkip",
+		Doc:  commonDocPref("a protected network supporting for pure WPA with TKIP."),
+		Val:  mkOps("", "PureWPA", "wpa.Ciphers(wpa.CipherTKIP),"),
+	}, {
+		Name: "wpaccmp",
+		Doc:  commonDocPref("a protected network supporting for pure WPA with AES based CCMP."),
+		Val:  mkOps("", "PureWPA", "wpa.Ciphers(wpa.CipherCCMP),"),
+	}, {
+		Name:      "wpamulti",
+		Doc:       commonDocPref("a protected network supporting for pure WPA with both AES based CCMP and TKIP."),
+		ExtraAttr: []string{"wificell_cq"},
+		Val:       mkOps("", "PureWPA", "wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),"),
+	}, {
+		Name: "wpa2tkip",
+		Doc:  commonDocPref("a protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2."),
+		Val:  mkOps("", "PureWPA2", "wpa.Ciphers2(wpa.CipherTKIP),"),
+	}, {
+		Name: "wpa2pmf",
+		Doc: append(commonDocPref("an AP broadcasting a WPA2 network using AES based CCMP."),
+			"In addition, the client must also support 802.11w protected management frames."),
+		ExtraAttr: []string{"wificell_cq"},
+		Val:       mkOps("ap.PMF(ap.PMFRequired)", "PureWPA2", "wpa.Ciphers2(wpa.CipherCCMP),"),
+	}, {
+		Name: "wpa2pmfoptional",
+		Doc: append(commonDocPref("an AP broadcasting a WPA2 network using AES based CCMP."),
+			"In addition, the client may also negotiate use of 802.11w protected management frames."),
+		Val: mkOps("ap.PMF(ap.PMFOptional)", "PureWPA2", "wpa.Ciphers2(wpa.CipherCCMP),"),
+	}, {
+		Name: "wpa2",
+		Doc:  commonDocPref("a protected network supporting for WPA2 (aka RSN) and encrypted under AES."),
+		Val:  mkOps("", "PureWPA2", "wpa.Ciphers2(wpa.CipherCCMP),"),
+	}, {
+		Name: "wpamixed",
+		Doc:  commonDocPref("a protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2."),
+		Val:  mkOps("", "Mixed", "wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP), wpa.Ciphers2(wpa.CipherCCMP),"),
+	}}
+}
+
+func paramWPA3() params {
+	return params{
+		Name: "wpa3mixed",
+		Doc:  commonDocPref("an AP in WPA2/WPA3 mixed mode. WiFi alliance suggests PMF in this mode."),
+		Val: []paramsVal{{
+			APOpts: `
+				ap.Mode(ap.Mode80211acMixed), ap.Channel(36), ap.HTCaps(ap.HTCapHT40Plus),
+				ap.VHTCenterChannel(42), ap.VHTChWidth(ap.VHTChWidth80),
+				ap.PMF(ap.PMFOptional),
+			`,
+			SecConfFac: `wpa.NewConfigFactory(
+				"chromeos", wpa.Mode(wpa.ModeMixedWPA3),
+				wpa.Ciphers2(wpa.CipherCCMP),
+			)`,
+		}},
+	}
+}
+
+func paramWPAVHT80() params {
+	return params{
+		Name: "wpavht80",
+		Doc:  commonDocPref("a protected 802.11ac network supporting for WPA."),
+		Val: []paramsVal{{
+			APOpts: `
+				ap.Mode(ap.Mode80211acPure), ap.Channel(36), ap.HTCaps(ap.HTCapHT40Plus),
+				ap.VHTCenterChannel(42), ap.VHTChWidth(ap.VHTChWidth80),
+			`,
+			SecConfFac: `wpa.NewConfigFactory(
+				"chromeos", wpa.Mode(wpa.ModePureWPA),
+				wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+			)`,
+		}},
+		ExtraHardwareDeps: "hwdep.D(hwdep.Wifi80211ac())",
+	}
+}
+
+func paramWPAOddPassphrase() params {
+	var p []paramsVal
+	for _, pw := range []string{`"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89"`, `"abcdef\xc2\xa2"`, `" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~"`} {
+		temp := `wpa.NewConfigFactory(
+			%s, wpa.Mode(wpa.ModePure%s),
+			%s,
+		)`
+		p = append(p, paramsVal{
+			APOpts:     commonSecApOpts,
+			SecConfFac: fmt.Sprintf(temp, pw, "WPA", "wpa.Ciphers(wpa.CipherTKIP)"),
+		}, paramsVal{
+			APOpts:     commonSecApOpts,
+			SecConfFac: fmt.Sprintf(temp, pw, "WPA2", "wpa.Ciphers2(wpa.CipherCCMP)"),
+		})
+	}
+	return params{
+		Name: "wpaoddpassphrase",
+		Doc:  commonDocPref("a protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations."),
+		Val:  p,
+	}
+}
+
+func paramWPAHidden() params {
+	var p []paramsVal
+	for _, c := range []struct{ mode, cipher string }{
+		{"PureWPA", "wpa.Ciphers(wpa.CipherTKIP)"},
+		{"PureWPA", "wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP)"},
+		{"PureWPA2", "wpa.Ciphers2(wpa.CipherCCMP)"},
+		{"Mixed", "wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP), wpa.Ciphers2(wpa.CipherCCMP)"},
+	} {
+		p = append(p, paramsVal{
+			APOpts: commonSecApOpts + ", ap.Hidden()",
+			SecConfFac: fmt.Sprintf(`wpa.NewConfigFactory(
+				"chromeos", wpa.Mode(wpa.Mode%s),
+				%s,
+			)`, c.mode, c.cipher),
+		})
+	}
+	return params{
+		Name: "wpahidden",
+		Doc:  commonDocPref("a hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES."),
+		Val:  p,
+	}
+}
+
+func paramRawPMK() params {
+	return params{
+		Name: "raw_pmk",
+		Doc:  commonDocPref("a WPA network using a raw PMK value instead of an ASCII passphrase."),
+		Val: []paramsVal{{
+			APOpts: commonSecApOpts,
+			SecConfFac: `wpa.NewConfigFactory(
+				strings.Repeat("0123456789abcdef", 4), // length = 64.
+				wpa.Mode(wpa.ModePureWPA),
+				wpa.Ciphers(wpa.CipherTKIP),
+			)`,
+		}},
+	}
+}
+
+func paramDFS() []params {
+	return []params{{
+		Name: "dfs",
+		Doc: append(commonDocPref("an open network on a DFS channel."),
+			"DFS (dynamic frequency selection) channels are channels that may be unavailable if radar interference is detected.",
+			"See: https://en.wikipedia.org/wiki/Dynamic_frequency_selection, https://en.wikipedia.org/wiki/List_of_WLAN_channels"),
+		ExtraAttr: []string{"wificell_cq"},
+		Val:       []paramsVal{{APOpts: "ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40)"}},
+	}, {
+		Name: "dfs_ch120",
+		Doc: append(commonDocPref("an open network on the DFS channel 120 (5600MHz)."),
+			"TODO(b/154440798): Investigate why this fails on veyron_mickey and consider merge this with",
+			"\"dfs\" case after resolution."),
+		ExtraAttr: []string{"wificell_unstable"},
+		Val:       []paramsVal{{APOpts: "ap.Mode(ap.Mode80211nMixed), ap.Channel(120), ap.HTCaps(ap.HTCapHT40)"}},
+	}}
+}
+
+func paramSSIDLimits() params {
+	return params{
+		Name:      "ssid_limits",
+		Doc:       commonDocPref("a networks with the longest and shortest SSID."),
+		ExtraAttr: []string{"wificell_cq"},
+		Val: []paramsVal{
+			{CommonAPOptions: `ap.SSID("a")`},
+			{CommonAPOptions: `ap.SSID(strings.Repeat("MaxLengthSSID", 4)[:32])`},
+		},
+	}
+}
+
+func paramNonASCIISSID() params {
+	return params{
+		Name:                 "non_ascii_ssid",
+		Doc:                  []string{"This test case verifies that the DUT accepts ascii and non-ascii type characters as the SSID."},
+		ExtraHardwareDepsDoc: []string{"TODO(b/158150763): Skip Marvell WiFi as there's a known issue to make the test always fail."},
+		ExtraHardwareDeps:    "hwdep.D(hwdep.WifiNotMarvell())",
+		Val: []paramsVal{
+			{
+				Doc: []string{
+					"TODO(crbug.com/1082582): shill don't allow leading 0x00 now, so let's append it in the",
+					"end to keep the coverage.",
+				},
+				CommonAPOptions: `ap.SSID(byteSequenceStr(1, 31) + "\x00")`,
+			},
+			{CommonAPOptions: "ap.SSID(byteSequenceStr(32, 63))"},
+			{CommonAPOptions: "ap.SSID(byteSequenceStr(64, 95))"},
+			{CommonAPOptions: "ap.SSID(byteSequenceStr(96, 127))"},
+			{CommonAPOptions: "ap.SSID(byteSequenceStr(128, 159))"},
+			{CommonAPOptions: "ap.SSID(byteSequenceStr(160, 191))"},
+			{CommonAPOptions: "ap.SSID(byteSequenceStr(192, 223))"},
+			{CommonAPOptions: "ap.SSID(byteSequenceStr(224, 255))"},
+			{
+				Doc:             []string{"Valid Unicode characters."},
+				CommonAPOptions: `ap.SSID("\xe4\xb8\xad\xe5\x9b\xbd")`,
+			},
+			{
+				Doc:             []string{"Single extended ASCII character (a-grave)."},
+				CommonAPOptions: `ap.SSID("\xe0")`,
+			},
+			{
+				Doc:             []string{"Mix of ASCII and Unicode characters as SSID."},
+				CommonAPOptions: `ap.SSID("Chrome\xe7\xac\x94\xe8\xae\xb0\xe6\x9c\xac")`,
+			},
+		},
+	}
+}
+
+func param8021xWEP() params {
+	return params{
+		Name: "8021xwep",
+		Doc:  commonDocPref("a protected network supporting for dynamic WEP encryption."),
+		Val: []paramsVal{{
+			APOpts: commonSecApOpts,
+			SecConfFac: `dynamicwep.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred,
+				dynamicwep.ClientCACert(eapCert1.CACert),
+				dynamicwep.ClientCred(eapCert1.ClientCred),
+				dynamicwep.RekeyPeriod(10),
+			)`,
+			PingOps: "ping.Count(15), ping.Interval(1)",
+		}},
+	}
+}
+
+func param8021xWPA() params {
+	return params{
+		Name:      "8021xwpa",
+		Doc:       commonDocPref("a protected network supporting for WPA-EAP encryption."),
+		ExtraAttr: []string{"wificell_unstable"},
+		Val: []paramsVal{{
+			APOpts: commonSecApOpts,
+			SecConfFac: `wpaeap.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred,
+				wpaeap.ClientCACert(eapCert1.CACert),
+				wpaeap.ClientCred(eapCert1.ClientCred),
+			)`,
+		}, {
+			Doc:    []string{"Failure due to lack of CACert on client."},
+			APOpts: commonSecApOpts,
+			SecConfFac: `wpaeap.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred,
+				wpaeap.ClientCred(eapCert1.ClientCred),
+			)`,
+			ExpectedFailure: true,
+		}, {
+			Doc:    []string{"Failure due to unmatched CACert."},
+			APOpts: commonSecApOpts,
+			SecConfFac: `wpaeap.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred,
+				wpaeap.ClientCACert(eapCert2.CACert),
+				wpaeap.ClientCred(eapCert1.ClientCred),
+			)`,
+			ExpectedFailure: true,
+		}, {
+			Doc:    []string{"Should succeed if we specify that we have no CACert."},
+			APOpts: commonSecApOpts,
+			SecConfFac: `wpaeap.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred,
+				wpaeap.ClientCred(eapCert1.ClientCred),
+				wpaeap.NotUseSystemCAs(),
+			)`,
+		}, {
+			Doc:    []string{"Failure due to wrong certificate chain on client."},
+			APOpts: commonSecApOpts,
+			SecConfFac: `wpaeap.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred,
+				wpaeap.ClientCACert(eapCert1.CACert),
+				wpaeap.ClientCred(eapCert2.ClientCred),
+			)`,
+			ExpectedFailure: true,
+		}, {
+			Doc:    []string{"Failure due to expired cert on server."},
+			APOpts: commonSecApOpts,
+			SecConfFac: `wpaeap.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ExpiredServerCred,
+				wpaeap.ClientCACert(eapCert1.CACert),
+				wpaeap.ClientCred(eapCert1.ClientCred),
+			)`,
+			ExpectedFailure: true,
+		}},
+	}
+}
+
+func paramTunneled1x() []params {
+	mkP := func(outer, inner string, extraAttr []string) params {
+		ret := params{
+			Name:      "8021x" + strings.ToLower(outer) + "_" + strings.ToLower(inner),
+			Doc:       []string{fmt.Sprintf("Verifies that DUT can connect to a protected network supporting for %s authentication with tunneled %s.", outer, inner)},
+			ExtraAttr: extraAttr,
+		}
+		ret.Val = append(ret.Val, paramsVal{
+			APOpts: commonSecApOpts,
+			SecConfFac: fmt.Sprintf(`tunneled1x.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
+				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
+			)`, outer, inner),
+		})
+		for i := 0; i < 3; i++ {
+			ret.Val = append(ret.Val, paramsVal{
+				APOpts: commonSecApOpts,
+				SecConfFac: fmt.Sprintf(`tunneled1x.NewConfigFactory(
+					eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+					tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
+					tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
+					tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[%d]}),
+				)`, outer, inner, i),
+			})
+		}
+		ret.Val = append(ret.Val, paramsVal{
+			Doc: []string{
+				"Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.",
+				"For more information about how wpa_supplicant uses altsubject_match field:",
+				"https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf",
+			},
+			APOpts: commonSecApOpts,
+			SecConfFac: fmt.Sprintf(`tunneled1x.NewConfigFactory(
+				eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
+				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
+				tunneled1x.AltSubjectMatch([]string{`+"`"+`{"Type":"DNS","Value":"wrong_dns.com"}`+"`"+`, eapCert3AltSub[0]}),
+			)`, outer, inner),
+		})
+		return ret
+	}
+	mkPFail := func(outer, inner string, extraAttr []string) params {
+		ret := params{
+			Name: "8021x" + strings.ToLower(outer) + "_fail",
+			Doc: []string{
+				fmt.Sprintf("Verifies that DUT CANNOT connect to a %s network with wrong settings.", outer),
+				"We do these tests for only one inner authentication protocol because we",
+				"presume that supplicant reuses this code between inner authentication types."},
+			ExtraAttr: extraAttr,
+		}
+		for _, v := range []struct{ doc, sec string }{
+			{"Failure due to bad password.",
+				`tunneled1x.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
+				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
+				tunneled1x.ClientPassword("wrongpassword"),
+			)`},
+			{"Failure due to wrong client CA.",
+				`tunneled1x.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ServerCred, eapCert2.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
+				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
+			)`},
+			{"Failure due to expired server cred.",
+				`tunneled1x.NewConfigFactory(
+				eapCert1.CACert, eapCert1.ExpiredServerCred, eapCert1.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
+				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
+			)`},
+			{"Failure due to that a subject alternative name (SAN) is set but does not match any of the server certificate SANs.",
+				`tunneled1x.NewConfigFactory(
+				eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
+				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
+				tunneled1x.AltSubjectMatch([]string{` + "`" + `{"Type":"DNS","Value":"wrong_dns.com"}` + "`" + `}),
+			)`},
+		} {
+			ret.Val = append(ret.Val, paramsVal{
+				Doc:             []string{v.doc},
+				APOpts:          commonSecApOpts,
+				SecConfFac:      fmt.Sprintf(v.sec, outer, inner),
+				ExpectedFailure: true,
+			})
+		}
+		return ret
+	}
+	return []params{
+		mkPFail("PEAP", "MSCHAPV2", []string{"wificell_unstable"}),
+		mkP("PEAP", "MSCHAPV2", nil),
+		mkP("PEAP", "MD5", nil),
+		mkP("PEAP", "GTC", []string{"wificell_unstable"}),
+		mkPFail("TTLS", "MD5", []string{"wificell_unstable"}),
+		mkP("TTLS", "MSCHAPV2", nil),
+		mkP("TTLS", "MD5", nil),
+		mkP("TTLS", "GTC", []string{"wificell_unstable"}),
+		mkP("TTLS", "TTLSMSCHAPV2", nil),
+		mkP("TTLS", "TTLSMSCHAP", nil),
+		mkP("TTLS", "TTLSPAP", nil),
+	}
+}
+
+func TestSimpleConnect(t *testing.T) {
+	var ps []params
+	ps = append(ps, param80211abg()...)
+	ps = append(ps, param80211n()...)
+	ps = append(ps, param80211nsgi())
+	ps = append(ps, param80211ac()...)
+	ps = append(ps, paramHidden())
+	ps = append(ps, paramWEP()...)
+	ps = append(ps, paramWEPHidden())
+	ps = append(ps, paramWPA()...)
+	ps = append(ps, paramWPA3())
+	ps = append(ps, paramWPAVHT80())
+	ps = append(ps, paramWPAOddPassphrase())
+	ps = append(ps, paramWPAHidden())
+	ps = append(ps, paramRawPMK())
+	ps = append(ps, paramDFS()...)
+	ps = append(ps, paramSSIDLimits())
+	ps = append(ps, paramNonASCIISSID())
+	ps = append(ps, param8021xWEP())
+	ps = append(ps, param8021xWPA())
+	ps = append(ps, paramTunneled1x()...)
+
+	genparams.Ensure(t, "simple_connect.go", genparams.Template(t, `{{ range . }}{
+	{{ range .Doc }}
+	// {{ . }}
+	{{ end }}
+	Name: {{ .Name | fmt }},
+	{{ if .ExtraAttr }}
+	ExtraAttr: {{ .ExtraAttr | fmt }},
+	{{ end }}
+	Val:  []simpleConnectTestcase{ {{ range .Val }} {
+		{{ range .Doc }}
+		// {{ . }}
+		{{ end }}
+		{{ if .APOpts }}
+		apOpts: []ap.Option{ {{ .APOpts }} },
+		{{ else if .CommonAPOptions }}
+		apOpts: wificell.CommonAPOptions({{ .CommonAPOptions }}),
+		{{ end }}
+		{{ if .SecConfFac }}
+		secConfFac: {{ .SecConfFac }},
+		{{ end }}
+		{{ if .PingOps }}
+		pingOps: []ping.Option{ {{ .PingOps }} },
+		{{ end }}
+		{{ if .ExpectedFailure }}
+		expectedFailure: true,
+		{{ end }}
+	}, {{ end }} },
+	{{ if .ExtraHardwareDeps }}
+	{{ range .ExtraHardwareDepsDoc }}
+	// {{ . }}
+	{{ end }}
+	ExtraHardwareDeps: {{ .ExtraHardwareDeps }},
+	{{ end }}
+},{{ end }}`, ps))
+}
