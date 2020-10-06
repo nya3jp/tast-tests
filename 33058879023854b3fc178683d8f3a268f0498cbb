@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "044fa809_156b2d35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-06T12:47:34Z",
+      "side": 1,
+      "message": "This and all following comments:\nComments have to be sentences starting with a capital letter and ending with a .",
+      "range": {
+        "startLine": 86,
+        "startChar": 6,
+        "endLine": 86,
+        "endChar": 39
+      },
+      "revId": "33058879023854b3fc178683d8f3a268f0498cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21be0b12_476d2395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-06T12:47:34Z",
+      "side": 1,
+      "message": "The problem I see here is that the Continue button already existed, so even in the case that the PIN would actually work the function would probably return that the button is still there as the function can be faster than the change in the ui.\n\nIt\u0027s not a nice solution but probably you have to do the same check as with the good PIN but expecting the error and failing otherwise. Unfortunately this introduces a waiting time of 15s but at least we can then have more confidence in the result.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "33058879023854b3fc178683d8f3a268f0498cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
