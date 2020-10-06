@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45762758_5c173027",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-06T09:36:51Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cdbaf40_c5d3bada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-06T09:36:51Z",
+      "side": 1,
+      "message": "nit: \"Test of vm_pstore_dump command: check the kernel\u0027s console output after running vm_pstore_dump\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f4a4c2_ec3d8b08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-06T09:36:51Z",
+      "side": 1,
+      "message": "nit: as you don\u0027t need to keep the matched variable I\u0027d do it like this:\n\nif matched, err :\u003d regexp.MatchString(`^\\[ *\\d+\\.\\d+\\] Linux version `, out); err !\u003d nil || !matched {\n    s.Error(\"Kernel\u0027s console output after booting should start with a string like \\\"[ 0.000000] Linux version ...\\\" but it\u0027s not found in the result\")\n}",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
