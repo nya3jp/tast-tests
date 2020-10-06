@@ -106,18 +106,18 @@ func ReporterCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart anomaly detector: ", err)
 	}
 
-	s.Log("Starting a dummy process")
-	dummy := testexec.CommandContext(ctx, "/usr/bin/sleep", "300")
-	if err := dummy.Start(); err != nil {
-		s.Fatal("Failed to start a dummy process to kill: ", err)
+	s.Log("Starting a fake process")
+	fake := testexec.CommandContext(ctx, "/usr/bin/sleep", "300")
+	if err := fake.Start(); err != nil {
+		s.Fatal("Failed to start a fake process to kill: ", err)
 	}
 	defer func() {
-		dummy.Kill()
-		dummy.Wait()
+		fake.Kill()
+		fake.Wait()
 	}()
 
-	s.Log("Crashing the dummy process")
-	if err := unix.Kill(dummy.Process.Pid, syscall.SIGSEGV); err != nil {
+	s.Log("Crashing the fake process")
+	if err := unix.Kill(fake.Process.Pid, syscall.SIGSEGV); err != nil {
 		s.Fatal("Failed to induce an artifical crash: ", err)
 	}
 

@@ -68,17 +68,17 @@ func TriggerLauncherStateChange(ctx context.Context, tconn *chrome.TestConn, acc
 	return nil
 }
 
-// PrepareDummyApps creates directories for num dummy apps (hosted apps) under
+// PrepareFakeApps creates directories for num fake apps (hosted apps) under
 // the directory of baseDir and returns their path names. The intermediate
 // data may remain even when an error is returned. It is the caller's
 // responsibility to clean up the contents under the baseDir. This also may
 // update the ownership of baseDir.
-func PrepareDummyApps(baseDir string, num int) ([]string, error) {
-	// The manifest.json data for the dummy hosted app; it just opens google.com
+func PrepareFakeApps(baseDir string, num int) ([]string, error) {
+	// The manifest.json data for the fake hosted app; it just opens google.com
 	// page on launch.
 	const manifestTmpl = `{
-		"description": "dummy",
-		"name": "dummy app %d",
+		"description": "fake",
+		"name": "fake app %d",
 		"manifest_version": 2,
 		"version": "0",
 		"app": {
@@ -92,7 +92,7 @@ func PrepareDummyApps(baseDir string, num int) ([]string, error) {
 	}
 	extDirs := make([]string, 0, num)
 	for i := 0; i < num; i++ {
-		extDir := filepath.Join(baseDir, fmt.Sprintf("dummy_%d", i))
+		extDir := filepath.Join(baseDir, fmt.Sprintf("fake_%d", i))
 		if err := os.Mkdir(extDir, 0755); err != nil {
 			return nil, errors.Wrapf(err, "failed to create the directory for %d-th extension", i)
 		}

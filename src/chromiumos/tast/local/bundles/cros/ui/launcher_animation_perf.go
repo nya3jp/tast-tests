@@ -38,16 +38,16 @@ func init() {
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Val: lacros.ChromeTypeChromeOS,
-			Pre: ash.LoggedInWith100DummyApps(),
+			Pre: ash.LoggedInWith100FakeApps(),
 		}, {
 			Name:              "skia_renderer",
 			Val:               lacros.ChromeTypeChromeOS,
-			Pre:               ash.LoggedInWith100DummyAppsWithSkiaRenderer(),
+			Pre:               ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("nocturne", "krane")),
 		}, {
 			Name:      "lacros",
 			Val:       lacros.ChromeTypeLacros,
-			Pre:       lacroslauncher.StartedByDataWith100DummyApps(),
+			Pre:       lacroslauncher.StartedByDataWith100FakeApps(),
 			ExtraData: []string{lacroslauncher.DataArtifact},
 			// TODO(crbug.com/1082608): Use ExtraSoftwareDeps here instead.
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
