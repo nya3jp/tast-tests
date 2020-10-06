@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14863154_3ef681e0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-10-06T21:14:01Z",
+      "side": 1,
+      "message": "Instead of adding a new function, can you just use ui.WaitForLocationChangeCompleted(ctx, tconn)?",
+      "range": {
+        "startLine": 79,
+        "startChar": 14,
+        "endLine": 79,
+        "endChar": 36
+      },
+      "revId": "558d4cfede58385fa3c1a79bb4b994ea07999809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
