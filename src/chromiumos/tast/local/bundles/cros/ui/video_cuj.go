@@ -107,6 +107,10 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer pc.Close()
 
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
+
 	var configs []cuj.MetricConfig
 	if tabletMode {
 		configs = append(configs,
@@ -338,10 +342,6 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	s.Log("Make video fullscreen")
 	if err := enterFullscreen(); err != nil {
 		s.Fatal("Failed to enter fullscreen: ", err)
-	}
-
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
 	if err = recorder.Run(ctx, func(ctx context.Context) error {
