@@ -43,8 +43,10 @@ func init() {
 			"kefka",
 			"reks",
 			"relm",
+			"sabin", // a model name for some kefka DUTs
 			"sentry",
 			"terra",
+			"terra2",
 			"ultima",
 			"wizpig",
 			// The below models do not support the "crash" EC command.
@@ -52,7 +54,9 @@ func init() {
 			"arcada",
 			"arcada_signed",
 			"drallion",
+			"drallion_signed",
 			"drallion360",
+			"drallion360_signed",
 			"sarien",
 			"sarien_signed",
 			// The below models do not have an EC.
@@ -61,6 +65,11 @@ func init() {
 			// rather than listing models.
 			"fievel", // veyron_fievel
 			"tiger",  // veyron_tiger
+			"tidus",
+			// The below model sporadically captures panics.
+			// TODO(https://crbug.com/1135798): Re-enable this test
+			// when bug is fixed.
+			"nocturne",
 		)),
 		ServiceDeps: []string{"tast.cros.crash.FixtureService"},
 		Timeout:     10 * time.Minute,
