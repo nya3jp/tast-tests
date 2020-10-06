@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "a4f99d6a_807793db",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Disabled the test on arm devices.",
       "revId": "f90fc8def5b4c068aefa9e7bbef0bda79d8e3e0c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f92dc410_3849fe5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
@@ -37,8 +38,31 @@
         "endChar": 141
       },
       "revId": "f90fc8def5b4c068aefa9e7bbef0bda79d8e3e0c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "414c330a_cc2861f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-10-06T08:50:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f92dc410_3849fe5d",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 141
+      },
+      "revId": "f90fc8def5b4c068aefa9e7bbef0bda79d8e3e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
