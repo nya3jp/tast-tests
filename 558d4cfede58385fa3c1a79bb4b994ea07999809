@@ -22,6 +22,30 @@
       },
       "revId": "558d4cfede58385fa3c1a79bb4b994ea07999809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b20531_5fcfb674",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-06T22:06:53Z",
+      "side": 1,
+      "message": "It does not help in this case. The error message shows that the node was gone between it was located and clicked. That\u0027s why it returns `Cannot read property \u0027left\u0027 of undefined`.\n\nThis newly added function actually does retry on the entire locate -\u003e locationed -\u003e click flow.",
+      "parentUuid": "14863154_3ef681e0",
+      "range": {
+        "startLine": 79,
+        "startChar": 14,
+        "endLine": 79,
+        "endChar": 36
+      },
+      "revId": "558d4cfede58385fa3c1a79bb4b994ea07999809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
