@@ -16,6 +16,24 @@
       "revId": "633a291acd3c79fed9b6c85e472237d49cc97c8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab39f8a7_bcf666f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T06:25:19Z",
+      "side": 1,
+      "message": "Would be nice if we can keep it as the Autotest version has it and we might lose some coverage on correct key negotiation when PMKSACaching is used.\n\nMaybe we can use polling as the Autotest version for now?\n\nAs to waiting for DHCP renewal, I posed a question in crrev.com/c/2443586.",
+      "parentUuid": "f589e8ff_22afd117",
+      "revId": "633a291acd3c79fed9b6c85e472237d49cc97c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
