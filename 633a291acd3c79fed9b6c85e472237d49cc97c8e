@@ -34,6 +34,24 @@
       "revId": "633a291acd3c79fed9b6c85e472237d49cc97c8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ec0e918_21d5138f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-06T07:04:26Z",
+      "side": 1,
+      "message": "Please add polling ping for now.",
+      "parentUuid": "ab39f8a7_bcf666f6",
+      "revId": "633a291acd3c79fed9b6c85e472237d49cc97c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
