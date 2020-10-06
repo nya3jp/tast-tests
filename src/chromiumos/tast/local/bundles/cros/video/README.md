@@ -70,6 +70,20 @@ the current ones. To run all VD video decoder tests run:
 
     tast run $HOST video.DecodeAccelVD.*
 
+### Video decoder compliance tests (`video.DecodeCompliance`)
+
+The test validates video decoding compliance by running the
+[video_decode_accelerator_tests] with various video clips with the option
+--gtest\_filter=VideoDecoderTest.FlushAtEndOfStream.
+Unlike video decoder integration tests, this doesn't test video decoder
+functionalities, but still checks the correctness of produced frames.
+The test is available only for AV1. To run the test use:
+
+    tast run $HOST video.DecodeAccel.av1_test_vectors
+
+Please see [data/test_vectors/README.md] about the test video clips used in this
+test.
+
 ### Video decoder performance tests (`video.DecodeAccelPerf`)
 
 These tests measure video decode performance by running the
@@ -486,3 +500,4 @@ gen_cropped_video 32 16 88 64 still-colors-720x480.bmp \
 [Test Dependencies]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md
 [video-on-canvas.html]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html
 [ffmpeg Slideshow docs]: https://trac.ffmpeg.org/wiki/Slideshow
+[data/test_vectors/README.md]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md
