@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2cd368e_12f1cf5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-06T22:40:26Z",
+      "side": 1,
+      "message": "So, looking at the celes failures like https://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-4f0e10871fc2a910/autoserv_test/tast/results/tests/crash.ECCrash/, the device-config.txt is\n\nid: \u003c\n  platform_id: \u003c\n    value: \"Celes\"\n  \u003e\n  model_id: \u003c\n    value: \"r\"\n  \u003e\n  brand_id: \u003c\n    value: \"SMAI\"\n  \u003e\n\u003e\nhardware_features: HARDWARE_FEATURE_INTERNAL_DISPLAY\npower: POWER_SUPPLY_BATTERY\nsoc: SOC_BRASWELL\n\nNone of which seems to match the things you are excluding here.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 67
+      },
+      "revId": "0049fc7e0a765b81aabaa35688c75aeb18075c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
