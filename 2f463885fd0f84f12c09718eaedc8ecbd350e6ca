@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "06d76bfa_730a2443",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Hi, tast-owners, can I ask to review this CL?",
       "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "83900d05_7fe7fa88",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
@@ -31,10 +32,28 @@
       "side": 1,
       "message": "switch profile {\n  case videotype.H264Prof:\n    return \"h264baseline\", nil\n  ...\n}",
       "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c2823f_5fc694ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-10-06T07:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83900d05_7fe7fa88",
+      "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "635e7f12_93dab85e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
@@ -48,10 +67,28 @@
       "side": 1,
       "message": "Consider using fsutil.CopyFile():\nsrc/platform/tast/src/chromiumos/tast/fsutil/fsutil.go",
       "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1460f27_b11d7c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-10-06T07:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "635e7f12_93dab85e",
+      "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "956f7907_8b76f6e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
@@ -65,10 +102,10 @@
       "side": 1,
       "message": "Consider using precondition that stops UI.",
       "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "7e5405ab_4f31b1cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
@@ -83,10 +120,28 @@
       "message": "Mmm... after checking other tests, seems no one use Precondition for stopping UI. You may leave the stop-UI logic as is and investigate the feasibility of using Precondition later.",
       "parentUuid": "956f7907_8b76f6e3",
       "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "381d6614_3cf0b215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-10-06T07:42:04Z",
+      "side": 1,
+      "message": "Sorry, I couldn\u0027t find it. Could you give me the place of the precondition?",
+      "parentUuid": "956f7907_8b76f6e3",
+      "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "00a05d6d_eed2b259",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
@@ -106,10 +161,34 @@
         "endChar": 28
       },
       "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ad883b_0a1d9ed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-10-06T07:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00a05d6d_eed2b259",
+      "range": {
+        "startLine": 110,
+        "startChar": 25,
+        "endLine": 110,
+        "endChar": 28
+      },
+      "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "5218cc1c_34568967",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
@@ -123,10 +202,28 @@
       "side": 1,
       "message": "remove this",
       "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80038419_9b28b4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-10-06T07:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5218cc1c_34568967",
+      "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "d83274df_d37797bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
@@ -140,10 +237,28 @@
       "side": 1,
       "message": "Add a function comment to facilitate readability.\n\n// jsonFileName returns the corresponding JSON file name of the given web-M file name.\n// If webMFileName does not have the webm suffix, returns \"error.json\".",
       "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc46e65_a3507af5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-10-06T07:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d83274df_d37797bb",
+      "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "1d685a7b_54761840",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
@@ -157,8 +272,25 @@
       "side": 1,
       "message": "Do you intent to leave the flexibility that JSONName could be different from jsonFileName(WebMName)? If this is unlikely, we can derive JSONName in test body.",
       "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ce88e2_626e1d4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-10-06T07:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d685a7b_54761840",
+      "revId": "2f463885fd0f84f12c09718eaedc8ecbd350e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
