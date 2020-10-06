@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "092a1538_e8cb71b9",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "wifi.RoamAPGone:\nI deleted the monitor and only waited for BSSID change. \n\nwifi.RoamDbus: \nI kept the monitor and changed the arguments in ExpectShillProperty() to check that the service is connected first, then wait for the BSSID change.\n\nBoth:\nI had to modify the function VerifyConnection()in test_fixture.go to wait for the server and client subnet to match, because the client IP address takes ~ 5 sec to change to the new subnet.",
       "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "17ecabaf_e9bef5bc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
@@ -37,10 +38,10 @@
         "endChar": 15
       },
       "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "41e82d56_b15d523d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
@@ -54,10 +55,28 @@
       "side": 1,
       "message": "chharry@ encountered a problem when applying similar waiting in his CL: When BSSID is changed to ap2BSSID, DHCP might not yet be renewed, so the VerifyConnection here might fail.\n\nIIUC, we now might not see any state changes when roaming. One question: Is there some better way to wait for the DHCP renewal in roaming case now?",
       "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0de8e3_c2250f49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-06T21:10:35Z",
+      "side": 1,
+      "message": "That\u0027s a good question, and I don\u0027t have a great answer. After all, the point of masking state changes during roaming is to hide the fact that there is any sort of interruption in connectivity. You could just wait for the correct subnet to appear on the DUT (that\u0027s what verify_connection does in autotest).\n\nI think short of actually creating a new property or a new service state, there\u0027s probably not a \"right\" way to do this.",
+      "parentUuid": "41e82d56_b15d523d",
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "ae542439_1c5fb672",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
@@ -77,10 +96,10 @@
         "endChar": 63
       },
       "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "868d024d_42829b97",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
@@ -100,10 +119,10 @@
         "endChar": 2
       },
       "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e640cc8e_4323c933",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
@@ -124,10 +143,34 @@
         "endChar": 2
       },
       "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e41a4379_e8dd15a4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-06T21:10:35Z",
+      "side": 1,
+      "message": "Ah I didn\u0027t realize that already existed. I do think monitoring shill states is a cleaner way to do this, so I\u0027m fine with doing it this way too. I still think it would be nice to extract all the monitor functionality into another object/struct, so my comment stands.",
+      "parentUuid": "e640cc8e_4323c933",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "27aef783_8470f016",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
@@ -147,8 +190,7 @@
         "endChar": 21
       },
       "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
