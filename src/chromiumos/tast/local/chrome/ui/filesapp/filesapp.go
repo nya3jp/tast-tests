@@ -646,7 +646,7 @@ func (f *FilesApp) Search(ctx context.Context, searchTerms string) error {
 	defer listBox.Release(ctx)
 
 	// Setup a watcher to wait for search results to populate.
-	ew, err := ui.NewWatcher(ctx, listBox, ui.EventTypeActivedescendantchanged)
+	ew, err := ui.NewWatcher(ctx, listBox, ui.EventTypeActiveDescendantChanged)
 	if err != nil {
 		return errors.Wrap(err, "failed getting a watcher for the files listbox")
 	}
