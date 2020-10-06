@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b4ba79_07e0d165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_network_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-10-06T23:55:52Z",
+      "side": 1,
+      "message": "It\u0027s not strictly necessary, but it\u0027s helpful when things are failing to see what the response of telem is. I\u0027m inclined to leave it unless the tast owners have opinions.",
+      "parentUuid": "6f40765b_ba434479",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "9d2b18c8955958e2125bdf2bd9f30ac52258a852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "468768a7_690c0b74",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-06T22:55:57Z",
       "side": 1,
       "message": "nit: \"included.\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 36,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "9d2b18c8955958e2125bdf2bd9f30ac52258a852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06cc08e_d8d156f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_network_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-10-06T23:55:52Z",
+      "side": 1,
+      "message": "I changed this comment to be more descriptive.",
+      "parentUuid": "468768a7_690c0b74",
       "range": {
         "startLine": 47,
         "startChar": 36,
