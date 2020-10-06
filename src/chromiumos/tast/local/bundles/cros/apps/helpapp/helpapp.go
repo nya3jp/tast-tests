@@ -29,6 +29,7 @@ func (t tabFindParams) uiFindParams() ui.FindParams {
 
 // Tab names in Help app.
 const (
+	SearchTab   = tabFindParams("Search")
 	OverviewTab = tabFindParams("Overview")
 	PerksTab    = tabFindParams("Perks")
 	HelpTab     = tabFindParams("Help")
