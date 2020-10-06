@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
 )
 
 // DecoderType represents the different video decoder types.
@@ -52,6 +53,19 @@ func generateCmdArgs(outDir, filename string, decoderType DecoderType) []string 
 	return args
 }
 
+func runAccelVideoTestCmd(ctx context.Context, execCmd, filter, logfilepath string, args []string) (*gtest.Report, error) {
+	if report, err := gtest.New(
+		filepath.Join(chrome.BinTestDir, execCmd),
+		gtest.Logfile(logfilepath),
+		gtest.ExtraArgs(args...),
+		gtest.Filter(filter),
+		gtest.UID(int(sysutil.ChronosUID)),
+	).Run(ctx); err != nil {
+		return report, err
+	}
+	return nil, nil
+}
+
 // RunAccelVideoTest runs video_decode_accelerator_tests with the specified
 // video file. decoderType specifies whether to run the tests against the VDA
 // or VD based video decoder implementations.
@@ -74,12 +88,8 @@ func RunAccelVideoTest(ctx context.Context, outDir, filename string, decoderType
 	args := generateCmdArgs(outDir, filename, decoderType)
 
 	const exec = "video_decode_accelerator_tests"
-	if report, err := gtest.New(
-		filepath.Join(chrome.BinTestDir, exec),
-		gtest.Logfile(filepath.Join(outDir, exec+".log")),
-		gtest.ExtraArgs(args...),
-		gtest.UID(int(sysutil.ChronosUID)),
-	).Run(shortCtx); err != nil {
+	if report, err := runAccelVideoTestCmd(shortCtx,
+		exec, "", filepath.Join(outDir, exec+".log"), args); err != nil {
 		msg := fmt.Sprintf("failed to run %v with video %s", exec, filename)
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
@@ -87,6 +97,43 @@ func RunAccelVideoTest(ctx context.Context, outDir, filename string, decoderType
 			}
 		}
 		return errors.Wrap(err, msg)
+	}
+	return nil
+}
+
+// RunAccelVideoTestWithTestVectors runs video_decode_accelerator_tests --gtest_filter=VideoDecoderTest.FlushAtEndOfStream
+// with the specified video files using VideoDecoder.
+func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVectors []string) error {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		return errors.Wrap(err, "failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
+	// Reserve time to restart the ui job at the end of the test.
+	// Only a single process can have access to the GPU, so we are required
+	// to call "stop ui" at the start of the test. This will shut down the
+	// chrome process and allow us to claim ownership of the GPU.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	upstart.StopJob(shortCtx, "ui")
+	defer upstart.EnsureJobRunning(ctx, "ui")
+	const exec = "video_decode_accelerator_tests"
+	var failedFilenames []string
+	for _, file := range testVectors {
+		args := generateCmdArgs(outDir, file, VD)
+		filename := filepath.Base(file)
+		if _, err = runAccelVideoTestCmd(shortCtx,
+			exec, "VideoDecoderTest.FlushAtEndOfStream",
+			filepath.Join(outDir, exec+"_"+filename+".log"), args); err != nil {
+			failedFilenames = append(failedFilenames, filename)
+			testing.ContextLog(ctx, "fail: ", filename)
+		} else {
+			testing.ContextLog(ctx, "pass: ", filename)
+		}
+	}
+	if failedFilenames != nil {
+		return errors.Errorf("decoder validation fails, %v", failedFilenames)
 	}
 	return nil
 }
@@ -143,13 +190,9 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, decoder
 	args := generateCmdArgs(outDir, filename, decoderType)
 
 	const exec = "video_decode_accelerator_perf_tests"
-	if report, err := gtest.New(
-		filepath.Join(chrome.BinTestDir, exec),
-		gtest.Logfile(filepath.Join(outDir, exec+".1.log")),
-		gtest.Filter(fmt.Sprintf("*%s:*%s", cappedTestname, uncappedTestname)),
-		gtest.ExtraArgs(args...),
-		gtest.UID(int(sysutil.ChronosUID)),
-	).Run(ctx); err != nil {
+	if report, err := runAccelVideoTestCmd(ctx, exec,
+		fmt.Sprintf("*%s:*%s", cappedTestname, uncappedTestname),
+		filepath.Join(outDir, exec+".1.log"), args); err != nil {
 		msg := fmt.Sprintf("failed to run %v with video %s", exec, filename)
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
@@ -157,7 +200,6 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, decoder
 			}
 		}
 		return errors.Wrap(err, msg)
-
 	}
 
 	p := perf.NewValues()
