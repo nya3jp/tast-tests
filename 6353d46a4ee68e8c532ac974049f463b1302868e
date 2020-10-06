@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "b98f9d8b_8811a5ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Generally we want to avoid sleep with random time. Do we know why n.DescendantWithTimeout does not work? \n\nIf n.DescendantWithTimeout failure is expected, is there anything on the page that we could wait for?\ne.g.\n\n  conn.WaitForExpr(ctx, \"some condition in the page\u0027s context\")\n\nOr maybe we should bring back webutil.WaitForQuiescence but ignore its timeout error (since the page could be streaming things and never be quiet).",
       "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e4f0e453_8535496d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
@@ -32,10 +33,10 @@
       "message": "From what I observed, the game page is redirected to other pages (such as the former All Games page) after clicking the gamePlayButton. Just feel like it\u0027s too quick to click the gamePlayButton even it is already existing on the game page.",
       "parentUuid": "b98f9d8b_8811a5ab",
       "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1f69e4b5_66406578",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
@@ -50,10 +51,10 @@
       "message": "If page url is changed, it implies a document load. Maybe we should do this [1] before trying to find and click gamePlayButton.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d962",
       "parentUuid": "e4f0e453_8535496d",
       "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0546ff8d_11c69166",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
@@ -68,8 +69,25 @@
       "message": "you could also check location.href with testing.Poll to ensure that the URL is updated.",
       "parentUuid": "1f69e4b5_66406578",
       "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdb3297d_307f07b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-06T21:12:58Z",
+      "side": 1,
+      "message": "From my observed[1], it seems like the tab is still loading (14s) even when document.readyState is \u0027complete\u0027 (11s).\n\nMaybe webutil.WaitForQuiescence approach is more doable in this case?\n\n[1] https://drive.google.com/file/d/19QBq3uBVBpNTCdRKdBuSMnOiyz3nJbQY/view?usp\u003dsharing",
+      "parentUuid": "0546ff8d_11c69166",
+      "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
