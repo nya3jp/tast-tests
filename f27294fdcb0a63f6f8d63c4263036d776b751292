@@ -16,6 +16,24 @@
       "revId": "f27294fdcb0a63f6f8d63c4263036d776b751292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4a6fabc_de3b18b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-06T11:49:53Z",
+      "side": 1,
+      "message": "What I was saying is that there should be pinGood and pinBad varaibales in the testing params. The test cases should remain related to the policy configurations.",
+      "parentUuid": "596f3f8d_388aa2bb",
+      "revId": "f27294fdcb0a63f6f8d63c4263036d776b751292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
