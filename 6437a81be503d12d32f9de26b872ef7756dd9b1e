@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "165c660c_4c158dc9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-06T13:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d1bfec6_8d05ef09",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 45
+      },
+      "revId": "6437a81be503d12d32f9de26b872ef7756dd9b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67a261f3_282324df",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "81bcf579_c632a206",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-06T13:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67a261f3_282324df",
+      "range": {
+        "startLine": 612,
+        "startChar": 72,
+        "endLine": 612,
+        "endChar": 103
+      },
+      "revId": "6437a81be503d12d32f9de26b872ef7756dd9b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ad4c125_a4a803fd",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "6437a81be503d12d32f9de26b872ef7756dd9b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0824e972_3d5b185e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-06T13:28:32Z",
+      "side": 1,
+      "message": "Now that I learned that the JS returns with an error mainly when the parent node ceased to exist, I also feel like there is no need to continue the poll.",
+      "parentUuid": "3ad4c125_a4a803fd",
+      "range": {
+        "startLine": 613,
+        "startChar": 1,
+        "endLine": 631,
+        "endChar": 43
+      },
+      "revId": "6437a81be503d12d32f9de26b872ef7756dd9b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
