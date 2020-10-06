@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "596f3f8d_388aa2bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-06T11:29:30Z",
+      "side": 1,
+      "message": "I agree with Gabor that you need to check too short PINs too for this test.\nYou should have 3 subtests in total:\n\"unset\"\n\"badPin\"\n\"goodPin\"\n\nProbably you need a new param for each subtest that contains the expected result, depending on what exactly happens when you try to set a PIN that is too short.",
+      "revId": "f27294fdcb0a63f6f8d63c4263036d776b751292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
