@@ -374,6 +374,30 @@
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3b23bbe_ff4474c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-10-06T14:45:24Z",
+      "side": 1,
+      "message": "I think https://chromium-review.googlesource.com/c/chromiumos/platform2/+/2404276/1 is just making things harder.\n\nIIUC you want to unify the paths so that you don\u0027t need to have separate paths in production and for testing. I\u0027m not sure this is helping.\n\nThe end result of https://chromium-review.googlesource.com/c/chromiumos/platform2/+/2404276 is that the test environment is different from the production environment, so that we need to add expectations to our tests that are not true in production (there should be no var_overlay in production.)\n\nWouldn\u0027t it make more sense to have dlcservice support some sort of test prefix? I really don\u0027t understand how var_overlay is currently working for you in production images.",
+      "parentUuid": "28db972f_747de499",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
