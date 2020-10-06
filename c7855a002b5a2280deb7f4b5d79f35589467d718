@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "41e82d56_b15d523d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T04:44:27Z",
+      "side": 1,
+      "message": "chharry@ encountered a problem when applying similar waiting in his CL: When BSSID is changed to ap2BSSID, DHCP might not yet be renewed, so the VerifyConnection here might fail.\n\nIIUC, we now might not see any state changes when roaming. One question: Is there some better way to wait for the DHCP renewal in roaming case now?",
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae542439_1c5fb672",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 3
@@ -76,6 +93,30 @@
       "writtenOn": "2020-10-03T05:18:21Z",
       "side": 1,
       "message": "Perhaps package this as a function (like assert_no_disconnects in autotest) with the monitor in case other tests need to use it?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e640cc8e_4323c933",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-06T04:44:27Z",
+      "side": 1,
+      "message": "We already have a AssertNoDisconnect method in TestFixture. I wonder if we can just replace the implementation there. As we already know \"iw event\" has a problem of no log to wait for \"iw event\" ready, maybe this is preferred.",
+      "parentUuid": "868d024d_42829b97",
       "range": {
         "startLine": 157,
         "startChar": 0,
