@@ -639,7 +639,7 @@ func containerCommand(ctx context.Context, vmName, containerName, ownerID string
 		"--"},
 		vshArgs...)
 	cmd := testexec.CommandContext(ctx, "vsh", args...)
-	// Add a dummy buffer for stdin to force allocating a pipe. vsh uses
+	// Add a fake buffer for stdin to force allocating a pipe. vsh uses
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
 	return cmd

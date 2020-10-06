@@ -55,7 +55,7 @@ func DrivefsSearch(ctx context.Context, s *testing.State) {
 	// fairly unique to avoid having it match as content search (not just file name).
 	drivefsRoot := filepath.Join(mountPath, "root")
 	const fileName = "verify-full-text-search-functionality-drivefs"
-	if err := ioutil.WriteFile(filepath.Join(drivefsRoot, fileName), []byte("dummy-content"), 0644); err != nil {
+	if err := ioutil.WriteFile(filepath.Join(drivefsRoot, fileName), []byte("fake-content"), 0644); err != nil {
 		s.Fatalf("Could not create the test file inside %q: %v", drivefsRoot, err)
 	}
 	// Don't delete the test file after the test as there may not be enough time
