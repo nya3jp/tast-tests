@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55867c0c_208e0629",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-06T07:46:40Z",
+      "side": 1,
+      "message": "Thanks, LGTM. Please also get LGTM from someone in your team and meiring@.\n",
+      "revId": "d0284dfe5f4e4ce23c03175a3021b5edd861c2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
