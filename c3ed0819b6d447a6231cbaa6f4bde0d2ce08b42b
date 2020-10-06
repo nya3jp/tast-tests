@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "19eb85e0_d7de08ce",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Hi tast owners, PTAL.",
       "revId": "c3ed0819b6d447a6231cbaa6f4bde0d2ce08b42b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "fa6c1654_a6b4a739",
         "filename": "/PATCHSET_LEVEL",
@@ -31,8 +32,47 @@
       "side": 1,
       "message": "LGTM",
       "revId": "c3ed0819b6d447a6231cbaa6f4bde0d2ce08b42b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca5fed3_27e28289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-06T19:07:46Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "c3ed0819b6d447a6231cbaa6f4bde0d2ce08b42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b62300_ba828e31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-06T19:07:46Z",
+      "side": 1,
+      "message": "nit:\nchances are that if the conversion fails is because something went wrong with the pasing.\nso, I\u0027d add a log with something like:\n\n  s.Logf(\"Failed to parse progress status: %q\", value)",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 19
+      },
+      "revId": "c3ed0819b6d447a6231cbaa6f4bde0d2ce08b42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
