@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "fd4d52a3_0a233494",
         "filename": "/PATCHSET_LEVEL",
@@ -14,8 +15,139 @@
       "side": 1,
       "message": "Hugo, I didn\u0027t add all the methods from the patchpanel API because I\u0027m not sure how to test all of them.\n\nWould it be ok for you if we gradually add the remaining method as we need them.. or use the BugBash week for this?\n\nThanks!",
       "revId": "476845c61847d77e32936e28ad2626f51298304f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc65dc94_aa24abe8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-06T14:51:11Z",
+      "side": 1,
+      "message": "That\u0027s a great start ! LGTM but deferring approval to tast reviewers.\n\nIt\u0027s ok to not add all methods. Many of them don\u0027t make sense for tast, and we can iteratively improve this package as we go.\n\n+R garrick@ for Go review as well.",
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e79afa13_521d14cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-06T14:51:11Z",
+      "side": 1,
+      "message": "service ? daemon ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58677d4d_c04130b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-06T14:51:11Z",
+      "side": 1,
+      "message": "object -\u003e Client, or Client object ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 76,
+        "endLine": 34,
+        "endChar": 82
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b29c2f_dc2d961d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-06T14:51:11Z",
+      "side": 1,
+      "message": "This is not called ScopedFD in Go. Especially there is no RAII or destructor on scope exit in Go.",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30f92699_e19b54e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-06T14:51:11Z",
+      "side": 1,
+      "message": "Should be a package top-level constant",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03e27b7_15d97d80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-06T14:51:11Z",
+      "side": 1,
+      "message": "If we wrap the underlying error, we should mention we were trying to call ConnectNamespace.",
+      "range": {
+        "startLine": 68,
+        "startChar": 41,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
