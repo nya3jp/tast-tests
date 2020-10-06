@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -373,6 +374,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, p.tconn)
 
 	if p.keyboard, err = input.Keyboard(ctx); err != nil {
 		s.Fatal("Failed to create keyboard device: ", err)
