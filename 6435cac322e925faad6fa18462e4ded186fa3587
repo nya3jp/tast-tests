@@ -1,6 +1,30 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e556648e_d9f24349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-10-06T21:23:34Z",
+      "side": 1,
+      "message": "Before you use ctx for the first time, should use:\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n\nThen use ctx for test tasks, cleanupCtx for things that run after the test, like faillog.DumpUITreeOnError. This means those clean up tasks will run even if ctx times out during the test. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup",
+      "range": {
+        "startLine": 46,
+        "startChar": 23,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "6435cac322e925faad6fa18462e4ded186fa3587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "e2ffe120_af43c1c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
@@ -20,8 +44,30 @@
         "endChar": 20
       },
       "revId": "6435cac322e925faad6fa18462e4ded186fa3587",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c36469b_796b4d37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-10-06T21:23:34Z",
+      "side": 1,
+      "message": "Because we don\u0027t have rpc replay here, I would rather not rely on exact article names. Can you just check that there are results instead?",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 94,
+        "endChar": 29
+      },
+      "revId": "6435cac322e925faad6fa18462e4ded186fa3587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
