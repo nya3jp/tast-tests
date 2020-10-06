@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0842d0_6c8bf80a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-06T23:32:44Z",
+      "side": 1,
+      "message": "From the bug: \"it looks like the problem is due to power save is on\" -\u003e that\u0027s probably true for some cases, but I recall even on Autotest (where we disable PS), we still fail with a similar symptom sometimes. i.e., there are non-PS reasons we fail to meet the initial thresholds.\n\nAnyway, this change is probably good to make.\n\nBTW, *technically*, a test can get interrupted without finishing its cleanup, which would leave a DUT in a \"bad\" state (power-save disabled). I think we still have a TODO sitting around about whether the TestFixture should re-set power-save for every new test, so I guess that covers my \"technically\" complaint -- we can still evaluate that later?",
+      "revId": "b01315a89b3db9678ac811d62499da854e0269d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
