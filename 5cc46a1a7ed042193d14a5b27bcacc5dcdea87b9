@@ -470,6 +470,30 @@
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5093d87b_46e23aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-10-06T17:10:32Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what I meant. Production should never even try to use var_overlay, even if it exists and it\u0027s empty.",
+      "parentUuid": "d9595ee2_cf7f51ad",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
