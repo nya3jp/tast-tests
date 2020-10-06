@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a9068f79_4fde027b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-06T12:23:49Z",
+      "side": 1,
+      "message": "They still would be related to the policy configuration. You take a PIN of length 4 and then you try it with unset, min length 5 and min length 4.\n\nPutting them in the test params is also fine, to me it\u0027s all the same.\nThe only important thing is that we see that a too short PIN gets rejected when the policy is set.",
+      "parentUuid": "c4a6fabc_de3b18b4",
+      "revId": "f27294fdcb0a63f6f8d63c4263036d776b751292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "142339ec_10b5ab85",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
         "patchSetId": 3
