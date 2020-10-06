@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53a1d0bd_b824ecfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-06T16:44:55Z",
+      "side": 1,
+      "message": "Trent, I think it might be cleaner to just revert the change that disabled these tests.",
+      "revId": "683d4fa96b417f4cbe1c0d5686a04dd7efd5d1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
