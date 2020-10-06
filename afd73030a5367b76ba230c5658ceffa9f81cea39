@@ -36,6 +36,46 @@
     },
     {
       "key": {
+        "uuid": "84bee313_df31590e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-06T07:38:51Z",
+      "side": 1,
+      "message": "LGTM, thanks!\n",
+      "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e48b76ee_ea83064e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-06T07:38:51Z",
+      "side": 1,
+      "message": "nit\u0026optional: If you want to make sure conn is not used for read, you can pass it as io.Reader.",
+      "range": {
+        "startLine": 247,
+        "startChar": 26,
+        "endLine": 247,
+        "endChar": 39
+      },
+      "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f176fe8_dcdc30f3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
         "patchSetId": 10
