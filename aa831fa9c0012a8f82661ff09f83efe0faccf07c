@@ -185,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7b8a4ae_b08f6ee8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2020-10-06T22:27:10Z",
+      "side": 1,
+      "message": "If you call the discovery/scan dbus apis and they don\u0027t return an error, that is sufficient validation that things are working. You don\u0027t have to verify they actually see anything.\n\nIf the controller is not in a good state, the scan calls will fail with either an error or a timeout (both of which should be dbus errors).",
+      "parentUuid": "6ca23603_ba5ed443",
+      "range": {
+        "startLine": 133,
+        "startChar": 30,
+        "endLine": 133,
+        "endChar": 48
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb0ffec9_eaa3108b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
         "patchSetId": 12
