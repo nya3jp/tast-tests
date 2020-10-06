@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "a53ca031_5111c00b",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "LGTM (regarding the Go and Tast style).",
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "748232b2_8eef1437",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
@@ -37,10 +38,10 @@
         "endChar": 26
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1b66839f_cef020bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
@@ -61,10 +62,10 @@
         "endChar": 26
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ef5bdad7_ba454d55",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -84,10 +85,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "39b9ab44_e54f45ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -108,10 +109,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1ef435a0_0cfe6f7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -132,10 +133,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b22884c2_dd9d7240",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -156,10 +157,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "755aafdb_38ffe9d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -180,10 +181,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "73d24d76_a6d4a23b",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -204,10 +205,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3bc8b3dd_099ced80",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -228,10 +229,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3b1e2fe2_2dd172f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -252,10 +253,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2791f894_37bf1167",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -276,10 +277,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "24e436c2_9958d087",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -300,10 +301,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "32fa91cd_cd758ae4",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -324,10 +325,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e0a8631d_f52427cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -348,10 +349,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "28db972f_747de499",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -372,10 +373,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b3b23bbe_ff4474c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -396,10 +397,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d87c2e26_1e06f172",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -420,10 +421,10 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "62aefb6e_e24e4081",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
@@ -444,8 +445,31 @@
         "endChar": 103
       },
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9595ee2_cf7f51ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-10-06T17:07:48Z",
+      "side": 1,
+      "message": "That sounds good to me\n\nIn detail:\n 1. dlcservice startup we can omit creating /var/cache/dlc-images.\n 2. dlcservice startup set permissions only if /var/cache/dlc-images exist.\n 3. dlcservice runtime only preload if test image.\n\nSound about right?",
+      "parentUuid": "62aefb6e_e24e4081",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
