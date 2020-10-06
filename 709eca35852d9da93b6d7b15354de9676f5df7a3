@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "146ea999_7db21fe7",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Tast Shadow Review: Looks like a useful refactoring, mostly nits.",
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "46acf751_0ce729e4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -37,10 +38,10 @@
         "endChar": 64
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "1d8318c6_8cf5389b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -61,10 +62,10 @@
         "endChar": 64
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "59ad0448_d4b73ffb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -84,10 +85,10 @@
         "endChar": 42
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4105a4af_c3609842",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -108,10 +109,10 @@
         "endChar": 42
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0bd32db6_cb38254b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -131,10 +132,10 @@
         "endChar": 42
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "06e7127c_7d50c5b2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -154,10 +155,10 @@
         "endChar": 3
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "488f713e_5486a781",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -178,10 +179,10 @@
         "endChar": 42
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "22cb6fd8_2aebbddf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -202,10 +203,10 @@
         "endChar": 3
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "6096b899_a21b44df",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -225,10 +226,10 @@
         "endChar": 52
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "12823f68_a5f52af7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -249,10 +250,10 @@
         "endChar": 52
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ab8925ed_75a03a19",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -272,10 +273,10 @@
         "endChar": 4
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "29efe3db_25091b9b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -296,10 +297,10 @@
         "endChar": 4
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "50986a34_0b38d3b2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -320,10 +321,10 @@
         "endChar": 4
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8ab2570d_9fe9cacb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -343,10 +344,10 @@
         "endChar": 26
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "e29bde56_9571ba7e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -367,10 +368,10 @@
         "endChar": 26
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "696996b9_a07f1b23",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -390,10 +391,10 @@
         "endChar": 22
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "d5a9f23d_b3d45043",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -414,10 +415,10 @@
         "endChar": 22
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b583755d_c8e6871b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -437,10 +438,10 @@
         "endChar": 16
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "dfe51469_278572a6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -461,10 +462,34 @@
         "endChar": 16
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1441f554_9ec65979",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-06T07:46:40Z",
+      "side": 1,
+      "message": "Ack, though I\u0027m not sure how it works...",
+      "parentUuid": "dfe51469_278572a6",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 16
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "52bc9ac9_3c5f280f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -484,10 +509,10 @@
         "endChar": 32
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "1053c30e_480fe931",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -508,10 +533,10 @@
         "endChar": 32
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a22ca7c2_fd61067f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -531,10 +556,10 @@
         "endChar": 47
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8bab8362_e83bc1a9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -554,10 +579,10 @@
         "endChar": 16
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "d1a53f6a_6e85bb80",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -578,10 +603,10 @@
         "endChar": 16
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "5e871ce4_c13a3f35",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
@@ -602,8 +627,7 @@
         "endChar": 47
       },
       "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
