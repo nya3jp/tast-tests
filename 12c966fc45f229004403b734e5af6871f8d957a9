@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "c17d376f_c2d298d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-06T10:40:24Z",
+      "side": 1,
+      "message": "It is not done yet. As Alex wrote, it should be like:\n\u003e  []policy.Policy{\n\u003e    \u0026policy.PinUnlockMinimumLength{Stat: policy.StatusUnset}, \n\u003e    \u0026policy.QuickUnlockModeWhitelist{Val: []string{\"PIN\"}}\n\u003e  },",
+      "parentUuid": "69397073_14fec464",
+      "range": {
+        "startLine": 57,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 150
+      },
+      "revId": "12c966fc45f229004403b734e5af6871f8d957a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdfe5e4a_c5197c64",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
         "patchSetId": 1
@@ -204,6 +228,30 @@
       "revId": "12c966fc45f229004403b734e5af6871f8d957a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63c584e1_b4583c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-06T10:40:24Z",
+      "side": 1,
+      "message": "see above",
+      "parentUuid": "426c1c75_9d5c2880",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 132
+      },
+      "revId": "12c966fc45f229004403b734e5af6871f8d957a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
