@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "044fa809_156b2d35",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
@@ -20,10 +21,10 @@
         "endChar": 39
       },
       "revId": "33058879023854b3fc178683d8f3a268f0498cbb",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "21be0b12_476d2395",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
@@ -43,8 +44,31 @@
         "endChar": 4
       },
       "revId": "33058879023854b3fc178683d8f3a268f0498cbb",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657fce5d_a8c2e572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-06T14:10:29Z",
+      "side": 1,
+      "message": "There is a small error message under the input \"PIN must be at least X digits\".\nYou should check for this message instead.",
+      "parentUuid": "21be0b12_476d2395",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "33058879023854b3fc178683d8f3a268f0498cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
