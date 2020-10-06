@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c90d13be_750fab92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-06T04:32:40Z",
+      "side": 1,
+      "message": "Hi Everybody:\n\nIn the latest patch, I have clean up the code a bit to use one function instead of two to handle drag and drop to create a folder. Please review.\n\nThanks.\n\nSeewai\n",
+      "revId": "51a9c2e2effeec3039cfca7e2441e9950c64e64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
