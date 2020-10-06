@@ -6,8 +6,12 @@ package arc
 
 import (
 	"context"
+	"io/ioutil"
 	"path/filepath"
+	"strings"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/arccrash"
 	"chromiumos/tast/local/crash"
@@ -37,7 +41,7 @@ func init() {
 
 func NativeCrash(ctx context.Context, s *testing.State) {
 	const (
-		crashReportsDirPathInAndroid = "/data/vendor/arc_native_crash_reports"
+		temporaryCrashDirInAndroid = "/data/vendor/arc_native_crash_reports"
 	)
 
 	a := s.PreValue().(arc.PreData).ARC
@@ -108,5 +112,34 @@ func NativeCrash(ctx context.Context, s *testing.State) {
 	if !isValid {
 		s.Error("validateBuildProp failed. Saving meta file")
 		crash.MoveFilesToOut(ctx, s.OutDir(), metaFile)
+	}
+
+	s.Log("Getting the dir path for temporary dump files")
+	androidDataDir, err := arc.AndroidDataDir(user)
+	if err != nil {
+		s.Fatal("Failed to get android-data dir: ", err)
+	}
+	temporaryCrashDir := filepath.Join(androidDataDir, temporaryCrashDirInAndroid)
+
+	s.Log("Checking that temporary dump files are deleted")
+	// The time to wait for removal of temporary files. Typically they are removed in a few seconds.
+	const pollingTimeout = 10 * time.Second
+	err = testing.Poll(ctx, func(c context.Context) error {
+		files, err := ioutil.ReadDir(temporaryCrashDir)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		if len(files) != 0 {
+			var filePaths []string
+			for _, fi := range files {
+				filePaths = append(filePaths, filepath.Join(temporaryCrashDir, fi.Name()))
+			}
+			return errors.Errorf("temporary files found: %s", strings.Join(filePaths, ", "))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: pollingTimeout})
+	if err != nil {
+		s.Fatal("Temporary files are not deleted: ", err)
 	}
 }
