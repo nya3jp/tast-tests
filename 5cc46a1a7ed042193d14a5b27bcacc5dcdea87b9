@@ -350,6 +350,30 @@
       "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28db972f_747de499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-10-06T14:27:05Z",
+      "side": 1,
+      "message": "dev_utils.sh is not messing with the dlc-images directory, right? At most it\u0027s messing with the var_overlay directory.\n\nAnd there should be no use of var_overlay at all! var_overlay is a dev image thing only, it\u0027s not used in production.\n\nThese: https://source.corp.google.com/search?q\u003dvar_overlay\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform2%2Fdlcservice%2F\n\nShould not be using var_overlay in production.\n\nThe solution here is to change the dlcservice code to never use var_overlay in production.\n\nAll of these references should be /var/cache/dlcservice.",
+      "parentUuid": "e0a8631d_f52427cd",
+      "range": {
+        "startLine": 220,
+        "startChar": 83,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "5cc46a1a7ed042193d14a5b27bcacc5dcdea87b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
