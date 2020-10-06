@@ -106,6 +106,24 @@
       "parentUuid": "fdb3297d_307f07b1",
       "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a251710b_d7465b5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-06T23:12:45Z",
+      "side": 1,
+      "message": "I think it did find the gamePlayButton as you can see that the mouse hovered over the \"Play\" button. After clicking the \"Play\" button, the page jumped back to the former page with the game list, which is pretty weird...\nlet me find some other solutions for waiting...",
+      "parentUuid": "1e3c27f4_e8a16710",
+      "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
