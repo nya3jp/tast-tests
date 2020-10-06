@@ -44,7 +44,7 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         stress.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
-		Vars:         []string{"tast_disk_size_gb"},
+		Vars:         []string{"tast_disk_size_gb", "storage.slcQual"},
 		Params: []testing.Param{{
 			Name:    "setup_benchmarks",
 			Val:     setupBenchmarks,
@@ -96,6 +96,13 @@ func setupChecks(ctx context.Context, s *testing.State) {
 		s.Fatalf("Requested disk size %dGB doesn't correspond to to the actual size %dGB",
 			requestedSizeGb, actualSizeGb)
 	}
+
+	if isDualQual(ctx, s) {
+		slc, err := info.SlcDevice()
+		if slc == nil {
+			s.Fatal("Dual qual is specified but SLC device is not present: ", err)
+		}
+	}
 }
 
 // setupBenchmarks captures and records bandwidth and latency disk benchmarks at the
@@ -109,27 +116,81 @@ func setupBenchmarks(ctx context.Context, s *testing.State, rw *stress.FioResult
 	runFioStress(ctx, s, testConfig.WithJob("4k_read"))
 	runFioStress(ctx, s, testConfig.WithJob("16k_write"))
 	runFioStress(ctx, s, testConfig.WithJob("16k_read"))
+
+	// benchmark slc if asked for.
+	testConfig = &stress.TestConfig{ResultWriter: rw}
+	runFioStressForSlc(ctx, s, testConfig.WithJob("4k_write"))
+	runFioStressForSlc(ctx, s, testConfig.WithJob("4k_read"))
 }
 
 // soakTestBlock runs long, write-intensive storage stresses.
 func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter) {
-	testConfigNoVerify := &stress.TestConfig{Path: stress.BootDeviceFioPath}
-	testConfigVerify := &stress.TestConfig{
-		Path:         stress.BootDeviceFioPath,
-		VerifyOnly:   true,
-		ResultWriter: rw,
+	stressTasks := []func(context.Context){
+		func(ctx context.Context) {
+			testConfigNoVerify := &stress.TestConfig{Path: stress.BootDeviceFioPath}
+			testConfigVerify := &stress.TestConfig{
+				Path:         stress.BootDeviceFioPath,
+				VerifyOnly:   true,
+				ResultWriter: rw,
+				Duration:     soakBlockTimeout / 2,
+			}
+			runFioStress(ctx, s, testConfigNoVerify.WithJob("64k_stress"))
+			runFioStress(ctx, s, testConfigVerify.WithJob("surfing"))
+		},
+		func(ctx context.Context) {
+			testConfigNoVerify := &stress.TestConfig{}
+			testConfigVerify := &stress.TestConfig{
+				VerifyOnly:   true,
+				ResultWriter: rw,
+				Duration:     soakBlockTimeout / 2,
+			}
+			runFioStressForSlc(ctx, s, testConfigNoVerify.WithJob("4k_write"))
+			runFioStressForSlc(ctx, s, testConfigVerify.WithJob("4k_write"))
+		},
 	}
 
-	runFioStress(ctx, s,
-		testConfigNoVerify.WithJob("64k_stress").WithDuration(soakBlockTimeout/2))
-	runFioStress(ctx, s,
-		testConfigVerify.WithJob("surfing").WithDuration(soakBlockTimeout/2))
+	runTasksInParallel(ctx, soakBlockTimeout, writeTasks)
 }
 
 // retentionTestBlock reads and then validates the same data after multiple short suspend cycles.
 func retentionTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter) {
-	testConfig := &stress.TestConfig{Path: stress.BootDeviceFioPath}
-	runFioStress(ctx, s, testConfig.WithJob("8k_async_randwrite").WithDuration(retentionBlockTimeout))
+	writeTasks := []func(context.Context){
+		func(ctx context.Context) {
+			testConfig := &stress.TestConfig{
+				Path:     stress.BootDeviceFioPath,
+				Job:      "8k_async_randwrite",
+				Duration: retentionBlockTimeout,
+			}
+			runFioStress(ctx, s, testConfig)
+		},
+		func(ctx context.Context) {
+			testConfig := &stress.TestConfig{
+				Job:      "8k_async_randwrite",
+				Duration: retentionBlockTimeout,
+			}
+			runFioStressForSlc(ctx, s, testConfig)
+		},
+	}
+
+	verifyTasks := []func(context.Context){
+		func(ctx context.Context) {
+			testConfig := &stress.TestConfig{
+				Path:       stress.BootDeviceFioPath,
+				Job:        "8k_async_randwrite",
+				VerifyOnly: true,
+			}
+			runFioStress(ctx, s, testConfig)
+		},
+		func(ctx context.Context) {
+			testConfig := &stress.TestConfig{
+				Job:        "8k_async_randwrite",
+				VerifyOnly: true,
+			}
+			runFioStressForSlc(ctx, s, testConfig)
+		},
+	}
+
+	runTasksInParallel(ctx, retentionBlockTimeout*1.5, writeTasks)
 
 	// Run Suspend repeatedly until the timeout.
 	pollOptions := &testing.PollOptions{
@@ -146,13 +207,32 @@ func retentionTestBlock(ctx context.Context, s *testing.State, rw *stress.FioRes
 	}
 
 	// Verify disk consistency written by the initial FIO test.
-	runFioStress(ctx, s, testConfig.WithJob("8k_async_randwrite").WithVerifyOnly(true))
+	runTasksInParallel(ctx, retentionBlockTimeout*0.5, verifyTasks)
 }
 
 // runContinuousStorageStress is a storage stress that is periodically interrupted by a power suspend.
 func runContinuousStorageStress(ctx context.Context, job, jobFile string, rw *stress.FioResultWriter) {
 	testConfig := stress.TestConfig{
 		Path:         stress.BootDeviceFioPath,
+		Job:          job,
+		JobFile:      jobFile,
+		ResultWriter: rw,
+	}
+	// Running write stress continuously, until timeout.
+	for {
+		if err := stress.RunFioStress(ctx, testConfig); errors.Is(err, context.DeadlineExceeded) {
+			return // Timeout exceeded.
+		}
+	}
+}
+
+// runContinuousSlcStorageStress is an slc storage stress that is periodically interrupted by a power suspend.
+func runContinuousSlcStorageStress(ctx context.Context, job, jobFile string, rw *stress.FioResultWriter) {
+	if !isDualQual(ctx, s) {
+		return
+	}
+	testConfig := stress.TestConfig{
+		Path:         getSlcDevice(ctx, s),
 		Job:          job,
 		JobFile:      jobFile,
 		ResultWriter: rw,
@@ -188,12 +268,40 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResul
 		s.Fatal("Context timeout occurs before suspend block timeout")
 	}
 
-	runTasksInParallel(ctx, suspendBlockTimeout, []func(context.Context){
+	tasks := []func(context.Context){
 		func(ctx context.Context) {
 			runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw)
 		},
+		func(ctx context.Context) {
+			runContinuousSlcStorageStress(ctx, "write_4k", s.DataPath("write_4k"), rw)
+		},
 		runPeriodicPowerSuspend,
-	})
+	}
+
+	runTasksInParallel(ctx, suspendBlockTimeout, tasks)
+}
+
+func isDualQual(ctx context.Context, s *testing.State) bool {
+	if val, ok := s.Var("storage.slcQual"); ok {
+		dual, err := strconv.ParseBool(val)
+		if err != nil {
+			s.Fatal("Cannot parse argumet 'storage.QuickStress.slcQual' of type bool: ", err)
+		}
+		return dual
+	}
+	return false
+}
+
+func getSlcDevice(ctx context.Context, s *testing.State) string {
+	info, err := stress.ReadDiskInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed reading disk info: ", err)
+	}
+	slc, err := info.SlcDevice()
+	if slc == nil {
+		s.Fatal("Dual qual is specified but SLC device is not present: ", err)
+	}
+	return "/dev/" + slc.Name
 }
 
 // runTasksInParallel runs stress tasks in parallel.
@@ -246,6 +354,18 @@ func writeTestStatusFile(ctx context.Context, s *testing.State, passed bool, sta
 // If fio returns an error, this function will fail the Tast test.
 func runFioStress(ctx context.Context, s *testing.State, testConfig stress.TestConfig) {
 	if err := stress.RunFioStress(ctx, testConfig.WithJobFile(s.DataPath(testConfig.Job))); err != nil {
+		s.Fatal("FIO stress failed: ", err)
+	}
+}
+
+// runFioStressForSlc runs an fio job if slc namespace is present, otherwise
+// returns immediately
+// If fio returns an error, this function will fail the Tast test.
+func runFioStressForSlc(ctx context.Context, s *testing.State, testConfig stress.TestConfig) {
+	if !isDualQual(ctx, s) {
+		return
+	}
+	if err := stress.RunFioStress(ctx, testConfig.WithPath(getSlcDevice(ctx, s)).WithJobFile(s.DataPath(testConfig.Job))); err != nil {
 		s.Fatal("FIO stress failed: ", err)
 	}
 }
