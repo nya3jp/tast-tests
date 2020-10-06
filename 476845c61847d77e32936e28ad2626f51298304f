@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68324b4_4fa28290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2020-10-06T22:11:14Z",
+      "side": 1,
+      "message": "thanks for starting this!",
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e79afa13_521d14cf",
@@ -106,6 +123,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88a20399_cbe93211",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2020-10-06T22:11:14Z",
+      "side": 1,
+      "message": "\"destructor on scope exit in Go\" -\u003e idiomatically \u0027defer func{}\u0027 is used instead",
+      "parentUuid": "10b29c2f_dc2d961d",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f51d130_eb94bb95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2020-10-06T22:11:14Z",
+      "side": 1,
+      "message": "nit: prefer single char receivers e.g. \u0027c\u0027\nalso, are your mutating the recvr? if not, and this is optional, you don\u0027t need the pointer type",
+      "range": {
+        "startLine": 50,
+        "startChar": 6,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30f92699_e19b54e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
         "patchSetId": 1
@@ -122,6 +186,75 @@
         "startChar": 1,
         "endLine": 52,
         "endChar": 51
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d0496db_c7834ec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2020-10-06T22:11:14Z",
+      "side": 1,
+      "message": "where do these come from?",
+      "range": {
+        "startLine": 56,
+        "startChar": 26,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97c73798_011e6d14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2020-10-06T22:11:14Z",
+      "side": 1,
+      "message": "declare vars as close to use as possible",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329aeccc_97f03a92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2020-10-06T22:11:14Z",
+      "side": 1,
+      "message": "nit: just call this |buf| since that\u0027s what it is and you can reuse it below and not bother with |marshResponse|",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 13
       },
       "revId": "476845c61847d77e32936e28ad2626f51298304f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
