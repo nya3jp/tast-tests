@@ -54,12 +54,12 @@ func init() {
 			{
 				Name: "non_overflow_shelf",
 				Val:  nonOverflow,
-				Pre:  ash.LoggedInWith100DummyApps(),
+				Pre:  ash.LoggedInWith100FakeApps(),
 			},
 			{
 				Name: "overflow_shelf",
 				Val:  overflow,
-				Pre:  ash.LoggedInWith100DummyApps(),
+				Pre:  ash.LoggedInWith100FakeApps(),
 			},
 
 			// TODO(https://crbug.com/1083068): when the flag shelf-hide-buttons-in-tablet is removed, delete this sub-test.
@@ -108,23 +108,23 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 
 	testType := s.Param().(hotseatTestType)
 	if testType == showNavigationWidget {
-		tmpdir, err := ioutil.TempDir("", "dummyApps")
+		tmpdir, err := ioutil.TempDir("", "fakeApps")
 		if err != nil {
 			s.Fatal("Failed to create temp dir for app installation: ", err)
 		}
 		defer os.RemoveAll(tmpdir)
 
 		const numApps = 100
-		if _, err := ash.PrepareDummyApps(tmpdir, numApps); err != nil {
-			s.Fatalf("Failed to prepare %v dummy apps under %v: %v", numApps, tmpdir, err)
+		if _, err := ash.PrepareFakeApps(tmpdir, numApps); err != nil {
+			s.Fatalf("Failed to prepare %v fake apps under %v: %v", numApps, tmpdir, err)
 		}
 		var opts []chrome.Option
 		for i := 0; i < numApps; i++ {
-			opts = append(opts, chrome.UnpackedExtension(filepath.Join(tmpdir, fmt.Sprintf("dummy_%d", i))))
+			opts = append(opts, chrome.UnpackedExtension(filepath.Join(tmpdir, fmt.Sprintf("fake_%d", i))))
 		}
 		opts = append(opts, chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode", "--disable-features=MaintainShelfStateWhenEnteringOverview"))
 
-		// Install dummy apps and disable flags.
+		// Install fake apps and disable flags.
 		cr, err = chrome.New(ctx, opts...)
 		if err != nil {
 			s.Fatal("Failed to connect to Chrome: ", err)

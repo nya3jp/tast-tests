@@ -17,8 +17,9 @@ black.?list
 # crazy                 - clean
 # cripple               - clean
 
-dummy
+# dummy
 #    - see crbug/1135039
+fwupd_install_dummy_ps175_V99
 
 # first.?class.?citizen - clean
 # grandfathered         - clean

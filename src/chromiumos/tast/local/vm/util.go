@@ -173,7 +173,7 @@ func RestartDefaultVMContainer(ctx context.Context, dir string, container *Conta
 func CreateVSHCommand(ctx context.Context, cid int, command string, args ...string) *testexec.Cmd {
 	params := append([]string{"--cid=" + strconv.Itoa(cid), "--", command}, args...)
 	cmd := testexec.CommandContext(ctx, "vsh", params...)
-	// Add a dummy buffer for stdin to force allocating a pipe. vsh uses
+	// Add an empty buffer for stdin to force allocating a pipe. vsh uses
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
 	return cmd
