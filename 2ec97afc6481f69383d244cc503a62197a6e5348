@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "899fccef_85cbae59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-07T23:40:41Z",
+      "side": 1,
+      "message": "LGTM but it might not be a bad idea to get someone with more familiarity with the terminal app to look too?",
+      "revId": "2ec97afc6481f69383d244cc503a62197a6e5348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2307ba7_3089b946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-07T23:40:41Z",
+      "side": 1,
+      "message": "(nit) Can you expand on when this might still be open given that we already called terminal.Close()?",
+      "range": {
+        "startLine": 303,
+        "startChar": 38,
+        "endLine": 303,
+        "endChar": 48
+      },
+      "revId": "2ec97afc6481f69383d244cc503a62197a6e5348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
