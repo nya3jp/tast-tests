@@ -460,6 +460,25 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
+	// VK uses different extension instance in login profile and user profile.
+	// BackgroundConn will wait until the background connection is unique.
+	for _, arg := range c.extraArgs {
+		if arg == "--enable-virtual-keyboard" {
+			extURL := "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background.html"
+
+			// Background target from login persists for a few seconds, causing 2 background targets.
+			// Polling until connected to the unique target.
+			var bconn *Conn
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				var err error
+				bconn, err = c.NewConnForTarget(ctx, MatchTargetURL(extURL))
+				return err
+			}, &testing.PollOptions{Timeout: 60 * time.Second, Interval: 3 * time.Second}); err != nil {
+				return nil, errors.Wrap(err, "failed to wait for unique virtual keyboard background target")
+			}
+		}
+	}
+
 	toClose = nil
 	return c, nil
 }
