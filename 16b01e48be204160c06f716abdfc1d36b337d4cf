@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1168f68_ca113fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T04:57:44Z",
+      "side": 1,
+      "message": "optional: would it be better to have the files listed inline rather than having to scroll up and down to see which configs are applied to which files?\n\neg for _, filename :\u003d range []string{\n  \"audio_basic.go\",\n...",
+      "range": {
+        "startLine": 85,
+        "startChar": 26,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "16b01e48be204160c06f716abdfc1d36b337d4cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

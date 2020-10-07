@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1810d5a9_858c88ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_basic.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T04:57:44Z",
+      "side": 1,
+      "message": "Is the change to a string rather than the constant intentional?",
+      "range": {
+        "startLine": 29,
+        "startChar": 33,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb366053_40f84d5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T04:57:44Z",
+      "side": 1,
+      "message": "Please document the command that updates the params somewhere.  It makes most sense to me to be in this file, but put it wherever you think makes sense.",
+      "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b5b5cc8_0492fd1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T04:57:44Z",
+      "side": 1,
+      "message": "Maybe add a comment that this is here for documentation purposes only?  It took me until the second or third look to find that this was unused.",
+      "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a984738_b08f856a",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T04:57:44Z",
+      "side": 1,
+      "message": "Isn\u0027t informational added to the main test, not the params?  I don\u0027t remember seeing informational added to ExtraAttr anywhere.",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b9a106_203b98cb",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T04:57:44Z",
+      "side": 1,
+      "message": "again, I don\u0027t recall seeing this pattern used anywhere, ignore if it is actually used.",
+      "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
