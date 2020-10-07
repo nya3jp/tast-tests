@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "d743ad5c_ca41175b",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,34 @@
         "endChar": 13
       },
       "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f5b065_870c6049",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-07T02:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d743ad5c_ca41175b",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "6cc5b085_833148b7",
         "filename": "/PATCHSET_LEVEL",
@@ -37,10 +62,10 @@
       "side": 1,
       "message": "I refactored all the naming, and I think things read much better now. Thanks for the feedback.",
       "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "6bd31e37_5ddff1f9",
         "filename": "/PATCHSET_LEVEL",
@@ -54,10 +79,10 @@
       "side": 1,
       "message": "a few nits.",
       "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "2133cab8_ea68691c",
         "filename": "/PATCHSET_LEVEL",
@@ -71,10 +96,10 @@
       "side": 1,
       "message": "Tast Shadow Review: LGTM % Yen\u0027s comments and the comment I just added on returning concrete types.",
       "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "27a53ac8_3bcf1dd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
@@ -94,10 +119,34 @@
         "endChar": 33
       },
       "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ca8470_a33e0d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-07T02:12:06Z",
+      "side": 1,
+      "message": "Truncation is a type of rounding :), I\u0027ve updated the comment.",
+      "parentUuid": "27a53ac8_3bcf1dd8",
+      "range": {
+        "startLine": 162,
+        "startChar": 28,
+        "endLine": 162,
+        "endChar": 33
+      },
+      "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "8e825bcf_9556b5b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
@@ -117,10 +166,34 @@
         "endChar": 18
       },
       "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69db0f33_5ed87e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-07T02:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e825bcf_9556b5b6",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3713f588_4d71c114",
         "filename": "src/chromiumos/tast/local/memory/limit.go",
@@ -140,10 +213,34 @@
         "endChar": 42
       },
       "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa7b112_8c33ca37",
+        "filename": "src/chromiumos/tast/local/memory/limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-07T02:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3713f588_4d71c114",
+      "range": {
+        "startLine": 30,
+        "startChar": 34,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "ef164618_2aee3f0d",
         "filename": "src/chromiumos/tast/local/memory/limit.go",
@@ -163,10 +260,34 @@
         "endChar": 49
       },
       "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4694fc55_038db515",
+        "filename": "src/chromiumos/tast/local/memory/limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-07T02:12:06Z",
+      "side": 1,
+      "message": "I kept the definition of Limit up top since the type assertions I added depend on it.",
+      "parentUuid": "ef164618_2aee3f0d",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "9b839381_17a9a5f6",
         "filename": "src/chromiumos/tast/local/memory/limit.go",
@@ -186,8 +307,31 @@
         "endChar": 57
       },
       "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "743b86db_d14b8775",
+        "filename": "src/chromiumos/tast/local/memory/limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-07T02:12:06Z",
+      "side": 1,
+      "message": "I couldn\u0027t find a version that had different behavior. link?\n\nIt should not be int(free - minWatermark), as the Linux OOM killer runs at free \u003c\u003d minWatermark, and this Limit is supposed to avoid that.",
+      "parentUuid": "9b839381_17a9a5f6",
+      "range": {
+        "startLine": 106,
+        "startChar": 40,
+        "endLine": 106,
+        "endChar": 57
+      },
+      "revId": "e6b30dd70b66a4c3f2dd16b27ae6f23d632c2793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
