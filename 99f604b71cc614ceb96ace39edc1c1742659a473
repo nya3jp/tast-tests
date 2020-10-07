@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aaccead7_6543d8fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-07T15:40:57Z",
+      "side": 1,
+      "message": "Checking for the change in the restriction status of a node can be quite tricky, it is more easier and stable to check if a node exists or is gone. Usually checking for a node that exists (or checking if it is gone when it is not there) is quite stable.\n\nIn my opinion the changes in the warning node are good trigger events.",
+      "parentUuid": "d8db22df_16a5ac8a",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "99f604b71cc614ceb96ace39edc1c1742659a473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55a3a77d_2f222bb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
         "patchSetId": 5
