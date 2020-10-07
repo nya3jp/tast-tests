@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
+	"chromiumos/tast/local/bundles/cros/arc/video"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
@@ -49,62 +50,62 @@ func init() {
 		Timeout:      powerTestDuration,
 		Params: []testing.Param{{
 			Name:              "h264_1080p_30fps",
-			Val:               "1080p_30fps_300frames.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_p"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264", "1080p_30fps_300frames.h264.json"},
 		}, {
 			Name:              "h264_1080p_30fps_vm",
-			Val:               "1080p_30fps_300frames.h264",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.h264"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_vm"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264", "1080p_30fps_300frames.h264.json"},
 		}, {
 			Name:              "vp8_1080p_30fps",
-			Val:               "1080p_30fps_300frames.vp8.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.vp8.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_p"},
 			ExtraData:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp8_1080p_30fps_vm",
-			Val:               "1080p_30fps_300frames.vp8.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.vp8.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_vm"},
 			ExtraData:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp9_1080p_30fps",
-			Val:               "1080p_30fps_300frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_p"},
 			ExtraData:         []string{"1080p_30fps_300frames.vp9.ivf", "1080p_30fps_300frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_1080p_30fps_vm",
-			Val:               "1080p_30fps_300frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm"},
 			ExtraData:         []string{"1080p_30fps_300frames.vp9.ivf", "1080p_30fps_300frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_1080p_60fps",
-			Val:               "1080p_60fps_600frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_60fps_600frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "android_p"},
 			ExtraData:         []string{"1080p_60fps_600frames.vp9.ivf", "1080p_60fps_600frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_1080p_60fps_vm",
-			Val:               "1080p_60fps_600frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_60fps_600frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "android_vm"},
 			ExtraData:         []string{"1080p_60fps_600frames.vp9.ivf", "1080p_60fps_600frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_2160p_30fps",
-			Val:               "2160p_30fps_300frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_30fps_300frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K, "android_p"},
 			ExtraData:         []string{"2160p_30fps_300frames.vp9.ivf", "2160p_30fps_300frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_2160p_30fps_vm",
-			Val:               "2160p_30fps_300frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_30fps_300frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K, "android_vm"},
 			ExtraData:         []string{"2160p_30fps_300frames.vp9.ivf", "2160p_30fps_300frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_2160p_60fps",
-			Val:               "2160p_60fps_600frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_60fps_600frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "android_p"},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.ivf", "2160p_60fps_600frames.vp9.ivf.json"},
 		}, {
 			Name:              "vp9_2160p_60fps_vm",
-			Val:               "2160p_60fps_600frames.vp9.ivf",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_60fps_600frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "android_vm"},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.ivf", "2160p_60fps_600frames.vp9.ivf.json"},
 		}},
@@ -126,10 +127,10 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 	}
 
 	a := s.PreValue().(arc.PreData).ARC
-	testVideoFile := s.Param().(string)
+	opts := s.Param().(video.DecodeTestOptions)
 
 	// Parse JSON metadata.
-	md, err := c2e2etest.LoadMetadata(s.DataPath(testVideoFile) + ".json")
+	md, err := c2e2etest.LoadMetadata(s.DataPath(opts.TestVideo) + ".json")
 	if err != nil {
 		s.Fatal("Failed to get metadata: ", err)
 	}
@@ -139,7 +140,7 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get apk: ", err)
 	}
 
-	testVideoDataArg, err := md.StreamDataArg(filepath.Join(arcFilePath, testVideoFile))
+	testVideoDataArg, err := md.StreamDataArg(filepath.Join(arcFilePath, opts.TestVideo))
 	if err != nil {
 		s.Fatal("Failed to construct --test_video_data: ", err)
 	}
@@ -148,6 +149,10 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 		testVideoDataArg,
 		"--loop",
 		"--gtest_filter=C2VideoDecoderSurfaceE2ETest.TestFPS",
+	}
+	// Add "DecoderType: video.SoftwareDecoder" to the DecodeTestOptions to use a SW decoder.
+	if opts.DecoderType == video.SoftwareDecoder {
+		testArgs = append(testArgs, "--use_sw_decoder")
 	}
 	intentExtras := []string{
 		"--esa", "test-args", strings.Join(testArgs, ","),
@@ -168,7 +173,7 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 	}
 
 	sup.Add(setup.AdbMkdir(ctx, a, arcFilePath))
-	if err := a.PushFile(ctx, s.DataPath(testVideoFile), arcFilePath); err != nil {
+	if err := a.PushFile(ctx, s.DataPath(opts.TestVideo), arcFilePath); err != nil {
 		s.Fatal("Failed to push video stream to ARC: ", err)
 	}
 
