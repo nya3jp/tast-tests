@@ -52,6 +52,14 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	// VK uses different extension instance in login profile and user profile.
+	// BackgroundConn will wait until the background connection is unique.
+	bconn, err := vkb.BackgroundConn(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to connect to virtual keyboard background after user login: ", err)
+	}
+	defer bconn.Close()
+
 	if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
