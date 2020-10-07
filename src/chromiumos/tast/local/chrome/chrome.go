@@ -188,7 +188,17 @@ func DeferLogin() Option {
 // GAIALogin returns an Option that can be passed to New to perform a real GAIA-based login rather
 // than the default fake login.
 func GAIALogin() Option {
-	return func(c *Chrome) { c.loginMode = gaiaLogin }
+	return func(c *Chrome) {
+		c.loginMode = gaiaLogin
+		// TODO(rrsilva, crbug.com/1109176) - Remove once the problem is solved.
+		// Performing a GAIA login will enable verbose logging on some enrollment related files
+		c.extraArgs = append(c.extraArgs,
+			"--vmodule=auto_enrollment_check_screen=1",
+			"--vmodule=enrollment_screen=1",
+			"--vmodule=login_display_host_common=1",
+			"--vmodule=wizard_controller=1",
+			"--vmodule=auto_enrollment_controller=1")
+	}
 }
 
 // NoLogin returns an Option that can be passed to New to avoid logging in.
