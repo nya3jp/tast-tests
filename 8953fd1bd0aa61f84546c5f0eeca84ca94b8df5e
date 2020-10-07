@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e42957ea_758a3a5d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-07T07:39:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure this should be done in Chrome.New. Can this be moved to a helper function that is called by the affected tests?",
+      "revId": "8953fd1bd0aa61f84546c5f0eeca84ca94b8df5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
