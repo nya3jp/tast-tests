@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "05f6783e_0f817fc9",
         "filename": "/PATCHSET_LEVEL",
@@ -14,8 +15,24 @@
       "side": 1,
       "message": "Thanks for the review.",
       "revId": "a1f4e354ed99588f63e6f0b95684f641ea399300",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c50d55_17cf217f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T07:04:39Z",
+      "side": 1,
+      "message": "Looks like hitting crbug.com/1134667. Retry CQ.",
+      "revId": "a1f4e354ed99588f63e6f0b95684f641ea399300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
