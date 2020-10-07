@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18e3617_f9d003cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-07T12:23:55Z",
+      "side": 1,
+      "message": "Thanks for reviewing this CL! I\u0027ve tested the last patch before submitting :) and also verified that the namespace is teared down when the fd is closed.",
+      "revId": "0a702b6c93e109da0cdf51ef05124a9bc225f5a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a611e56_0528a3b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-07T12:23:55Z",
+      "side": 1,
+      "message": "The upstart utility in tast refers to the Chrome OS services as \"jobs\"[1] and the naming conventions seems to be consistently used in src/platform/tast-tests/src/chromiumos/[2].\n\nCan we keep the name as it is for consistency?\n\n[1]src/platform/tast-tests/src/chromiumos/tast/local/upstart/upstart.go\n[2]https://source.corp.google.com/search?q\u003djobname\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2F",
+      "parentUuid": "e79afa13_521d14cf",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58677d4d_c04130b7",
@@ -88,6 +112,30 @@
       "writtenOn": "2020-10-06T14:51:11Z",
       "side": 1,
       "message": "object -\u003e Client, or Client object ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 76,
+        "endLine": 34,
+        "endChar": 82
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d69301b_a0babaa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-07T12:23:55Z",
+      "side": 1,
+      "message": "Client object, thanks!",
+      "parentUuid": "58677d4d_c04130b7",
       "range": {
         "startLine": 34,
         "startChar": 76,
@@ -145,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e55106_0d714a2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-07T12:23:55Z",
+      "side": 1,
+      "message": "Oh, yes (sorry, this comment was shamelessly copied from the patchpanel client implementation in platform2 :) ).",
+      "parentUuid": "10b29c2f_dc2d961d",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f51d130_eb94bb95",
@@ -158,6 +230,30 @@
       "writtenOn": "2020-10-06T22:11:14Z",
       "side": 1,
       "message": "nit: prefer single char receivers e.g. \u0027c\u0027\nalso, are your mutating the recvr? if not, and this is optional, you don\u0027t need the pointer type",
+      "range": {
+        "startLine": 50,
+        "startChar": 6,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde7c318_5c7587ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-07T12:23:55Z",
+      "side": 1,
+      "message": "Changed to \"c\". The value of c isn\u0027t changed in the method, but I\u0027d still rather use a pointer receiver to avoid creating copies of c.",
+      "parentUuid": "7f51d130_eb94bb95",
       "range": {
         "startLine": 50,
         "startChar": 6,
@@ -191,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec5363b_15f6a59e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-07T12:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30f92699_e19b54e3",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d0496db_c7834ec6",
@@ -204,6 +324,30 @@
       "writtenOn": "2020-10-06T22:11:14Z",
       "side": 1,
       "message": "where do these come from?",
+      "range": {
+        "startLine": 56,
+        "startChar": 26,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db61510_92434ecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-07T12:23:55Z",
+      "side": 1,
+      "message": "They used to come from the method args. Pre-submit tests complained about the name format in the method args; I forgot to update the method body.",
+      "parentUuid": "5d0496db_c7834ec6",
       "range": {
         "startLine": 56,
         "startChar": 26,
@@ -237,6 +381,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95e8624_8afe57d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-07T12:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97c73798_011e6d14",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "329aeccc_97f03a92",
@@ -260,6 +428,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e758fd_71c701fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-07T12:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "329aeccc_97f03a92",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c03e27b7_15d97d80",
@@ -273,6 +465,30 @@
       "writtenOn": "2020-10-06T14:51:11Z",
       "side": 1,
       "message": "If we wrap the underlying error, we should mention we were trying to call ConnectNamespace.",
+      "range": {
+        "startLine": 68,
+        "startChar": 41,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "476845c61847d77e32936e28ad2626f51298304f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d10bdb2_b427a442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-07T12:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c03e27b7_15d97d80",
       "range": {
         "startLine": 68,
         "startChar": 41,
