@@ -304,6 +304,52 @@ func (n *Node) LeftClickUntil(ctx context.Context, condition func(context.Contex
 	}, opts)
 }
 
+// FindAndClickStableNode repeatedly finds the first matching node until the node's location if stable. Then, it clicks that node.
+// It will relocate the node if unexpected error happens, such as an element being refreshed.
+// It should only be used if the click is flaky due to ui animation.
+// Stable*Click and WaitLocationStable are alternative solutions if the node is not completely deleted and recreated.
+// Side effect: using this function will increase the test duration.
+// Error example: "Failed to update the node's location: unexpected end of JSON input".
+// Error example: "Cannot read property 'left' of undefined".
+func FindAndClickStableNode(ctx context.Context, tconn *chrome.TestConn, params FindParams, opts *testing.PollOptions) error {
+	location := coords.Rect{}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		node, err := Find(ctx, tconn, params)
+		if err != nil {
+			return errors.Wrap(err, "failed to find node")
+		}
+		defer node.Release(ctx)
+		if !cmp.Equal(node.Location, location) {
+			location = node.Location
+			return errors.New("node location still changing")
+		}
+		return node.LeftClick(ctx)
+	}, opts)
+}
+
+// StableFind repeatedly finds the first matching node until the node's location if stable.
+// It will relocate the node if unexpected error happens, such as an element being refreshed.
+// Stable*Click and WaitLocationStable are alternative solutions if the node is not completely deleted and recreated.
+// Side effect: using this function will increase the test duration.
+// Error example: "Failed to update the node's location: unexpected end of JSON input".
+func StableFind(ctx context.Context, tconn *chrome.TestConn, params FindParams, opts *testing.PollOptions) (*Node, error) {
+	location := coords.Rect{}
+	var node *Node
+	var err error
+	return node, testing.Poll(ctx, func(ctx context.Context) error {
+		node, err = Find(ctx, tconn, params)
+		if err != nil {
+			return errors.Wrap(err, "failed to find node")
+		}
+		if !cmp.Equal(node.Location, location) {
+			location = node.Location
+			node.Release(ctx)
+			return errors.New("node location still changing")
+		}
+		return nil
+	}, opts)
+}
+
 // FindAndClick waits for and left clicks the first node matching the params.
 func FindAndClick(ctx context.Context, tconn *chrome.TestConn, params FindParams, timeout time.Duration) error {
 	node, err := FindWithTimeout(ctx, tconn, params, timeout)
