@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -41,7 +42,7 @@ func init() {
 }
 
 func ZipPerf(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--disable-features=FilesZipMount"))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--disable-features=FilesZipMount", "--disable-features=FilesZipPack", "--disable-features=FilesZipUnpack"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
@@ -98,16 +99,16 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 
 			duration := testMountingZipFile(ctx, s, files, zipFile)
 
-			pv.Set(perf.Metric{
-				Name:      fmt.Sprintf("tast_mount_zip_%s", zipBaseName),
-				Unit:      "ms",
-				Direction: perf.SmallerIsBetter,
-			}, duration)
-
 			if zipBaseName == "100000_files_in_one_folder" {
 				// Mounting a file is an operation that is much faster than zipping and extracting.
-				// This specific file is created to better test this operation. However zipping and
-				// extracting would not complete within the timeout set for this test.
+				// This specific file is created to test this operation. Zipping and extracting
+				// would not complete within the timeout set for this test.
+				pv.Set(perf.Metric{
+					Name:      fmt.Sprintf("tast_mount_zip_%s", zipBaseName),
+					Unit:      "ms",
+					Direction: perf.SmallerIsBetter,
+				}, duration)
+
 				return
 			}
 
@@ -170,25 +171,7 @@ func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.
 	// Start timer for zip file mounting operation.
 	startTime := time.Now()
 
-	// Click on the mounted zip file.
-	params = ui.FindParams{
-		Name: zipFile,
-		Role: ui.RoleTypeTreeItem,
-	}
-
-	mountedZipFile, err := files.Root.DescendantWithTimeout(ctx, params, time.Minute)
-	if err != nil {
-		s.Fatal("Waiting for mounted zip file failed: ", err)
-	}
-	defer mountedZipFile.Release(ctx)
-
-	duration := float64(time.Since(startTime).Milliseconds())
-
-	if err := mountedZipFile.LeftClick(ctx); err != nil {
-		s.Fatal("Selecting mounted zip file failed: ", err)
-	}
-
-	// Ensure that the Files App is displaying the content of the mounted zip file.
+	// Wait until the Files App is displaying the content of the mounted zip file.
 	params = ui.FindParams{
 		Name: "Files - " + zipFile,
 		Role: ui.RoleTypeRootWebArea,
@@ -198,7 +181,7 @@ func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.
 		s.Fatal("Opening mounted zip file failed: ", err)
 	}
 
-	return duration
+	return float64(time.Since(startTime).Milliseconds())
 }
 
 func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipBaseName string) float64 {
@@ -214,7 +197,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 		s.Fatal("Failed selecting filesBox: ", err)
 	}
 
-	// Define the number of files that we expect to select for extraction and zipping operations.
+	// Define the number of files that we expect to select for the extraction operation.
 	var selectionLabel string
 	switch zipBaseName {
 	case "various_documents":
@@ -307,17 +290,44 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 		s.Fatal("Failed pasting files with Ctrl+V: ", err)
 	}
 
+	// Similarly to the selection label, define the number of items we're expecting to copy.
+	notificationRE := regexp.MustCompile("Copying (102|500) items to *")
+
 	// Start timer for zip file extracting operation.
 	startTime := time.Now()
 
-	// Wait for the copy operation to finish.
-	params = ui.FindParams{
-		Name: "Copied to " + zipBaseName + ".",
-		Role: ui.RoleTypeStaticText,
-	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Find notification panel for copy operation.
+		params := ui.FindParams{
+			Role: ui.RoleTypeGenericContainer,
+			Attributes: map[string]interface{}{
+				"name": notificationRE,
+			},
+		}
 
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 5*time.Minute); err != nil {
-		s.Fatal("Waiting for end of copy operation failed: ", err)
+		panel, err := files.Root.Descendant(ctx, params)
+		if err != nil {
+			return errors.New("still unable to find copy notification")
+		}
+		defer panel.Release(ctx)
+
+		// Wait for the copy operation to finish.
+		params = ui.FindParams{
+			Name: "Complete",
+			Role: ui.RoleTypeStaticText,
+		}
+
+		completeStringFound, err := panel.DescendantExists(ctx, params)
+		if err != nil {
+			return err
+		}
+		if !completeStringFound {
+			return errors.New("still unable to find 'Complete' string")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+		s.Fatal("Failed to wait for end of copy operation: ", err)
 	}
 
 	// Return duration.
