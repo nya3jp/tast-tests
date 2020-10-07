@@ -158,6 +158,11 @@ func EnableWebAppInstall() Option {
 	return func(c *Chrome) { c.installWebApp = true }
 }
 
+// EnableVerboseLogsForLogin returns an Option that enables verbose logging for some login-related files.
+func EnableVerboseLogsForLogin() Option {
+	return func(c *Chrome) { c.enableLoginVerboseLogs = true }
+}
+
 // VKEnabled returns an Option that force enable virtual keyboard.
 // VKEnabled option appends "--enable-virtual-keyboard" to chrome initialization and also checks VK connection after user login.
 // Note: This option can not be used by ARC tests as some boards block VK background from presence.
@@ -333,6 +338,7 @@ type Chrome struct {
 	keepState              bool
 	deferLogin             bool
 	loginMode              loginMode
+	enableLoginVerboseLogs bool // enable verbose logging in some login related files
 	vkEnabled              bool
 	skipOOBEAfterLogin     bool // skip OOBE post user login
 	installWebApp          bool // auto install essential apps after user login
@@ -393,24 +399,29 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	defer st.End()
 
 	c := &Chrome{
-		user:               DefaultUser,
-		pass:               DefaultPass,
-		gaiaID:             defaultGaiaID,
-		keepState:          false,
-		loginMode:          fakeLogin,
-		vkEnabled:          false,
-		skipOOBEAfterLogin: true,
-		installWebApp:      false,
-		region:             "us",
-		policyEnabled:      false,
-		enroll:             false,
-		breakpadTestMode:   true,
-		tracingStarted:     false,
-		logAggregator:      jslog.NewAggregator(),
+		user:                   DefaultUser,
+		pass:                   DefaultPass,
+		gaiaID:                 defaultGaiaID,
+		keepState:              false,
+		loginMode:              fakeLogin,
+		vkEnabled:              false,
+		skipOOBEAfterLogin:     true,
+		enableLoginVerboseLogs: false,
+		installWebApp:          false,
+		region:                 "us",
+		policyEnabled:          false,
+		enroll:                 false,
+		breakpadTestMode:       true,
+		tracingStarted:         false,
+		logAggregator:          jslog.NewAggregator(),
 	}
 	for _, opt := range opts {
 		opt(c)
 	}
+
+	// TODO(rrsilva, crbug.com/1109176) - Disable login-related verbose logging
+	// in all tests once the issue is solved.
+	EnableVerboseLogsForLogin()(c)
 
 	// Cap the timeout to be certain length depending on the login mode. Sometimes
 	// chrome.New may fail and get stuck on an unexpected screen. Without timeout,
@@ -836,6 +847,17 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 
 	if c.vkEnabled {
 		args = append(args, "--enable-virtual-keyboard")
+	}
+
+	// Enable verbose logging on some enrollment related files.
+	if c.enableLoginVerboseLogs {
+		args = append(args,
+			"--vmodule="+strings.Join([]string{
+				"*auto_enrollment_check_screen*=1",
+				"*enrollment_screen*=1",
+				"*login_display_host_common*=1",
+				"*wizard_controller*=1",
+				"*auto_enrollment_controller*=1"}, ","))
 	}
 
 	if c.loginMode != gaiaLogin {
