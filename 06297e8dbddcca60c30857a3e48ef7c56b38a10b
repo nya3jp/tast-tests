@@ -16,6 +16,23 @@
       "message": "Hi Everybody:\n\nI just uploaded another patch to reduce random failures of the time. I still cannot remove the sleep statement. If I remove it, it almost guarantees running clamshell mode on a tablet would fail. I have tried to wrote new functions to wait for other kinds of events such as EventTypeActivedescendantchanged and EventTypeTreeChanged. Unfortunately, they were not as reliable as sleep. \n\nThe I have tested this patch with dru (3 consecutive successful runs), kodama (3 consecutive successful runs), octopus and hana. I still could see failure on kodama once a while but it was not common.\n\nPlease let me know if it is sufficient.\n\nThanks.\n\nSeewai",
       "revId": "06297e8dbddcca60c30857a3e48ef7c56b38a10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b7649ba_1f173ba7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-07T02:08:11Z",
+      "side": 1,
+      "message": "Hi Everybody:\n\nI forgot to document some of my experiment regarding reducing the flakiness of the test while changing from tablet mode to clamshell mode. Sorry about it. Here was a list of things that I have tried or checked.\n\n1. I wrote two new functions based on existing \"WaitForLocation*\"\n/ WaitForEventCompletedOnNode waits for specific event on the given node to be completed.\nfunc WaitForEventCompletedOnNode(ctx context.Context, tconn *chrome.TestConn, node *Node, eventType EventType) error {\n        const (\n                entireTimeout \u003d 30 * time.Second\n                timeout       \u003d 2 * time.Second\n        )\n\n        ew, err :\u003d NewWatcher(ctx, node, eventType)\n        if err !\u003d nil {\n                return errors.Wrap(err, \"failed to create an event watcher\")\n        }\n        defer ew.Release(ctx)\n        return testing.Poll(ctx, func(ctx context.Context) error {\n                return ew.EnsureNoEvents(ctx, timeout)\n        }, \u0026testing.PollOptions{Timeout: entireTimeout})\n}\n\n// WaitForEventCompleted calls WaitForEventCompletedOnNode on the entire desktop.\nfunc WaitForEventCompleted(ctx context.Context, tconn *chrome.TestConn, eventType EventType) error {\n        root, err :\u003d Root(ctx, tconn)\n        if err !\u003d nil {\n                return errors.Wrap(err, \"failed to access root\")\n        }\n        defer root.Release(ctx)\n\n        return WaitForEventCompletedOnNode(ctx, tconn, root, eventType)\n}\nThese two functions allows me to wait for any events defined in ui.EventType in constant.go\nI have tried to use the function to wait for EventTypeActivedescendantchanged   and EventTypeTreeChanged?\nHowever, it didn\u0027t work after I replaced the sleep statement with it. The test was still extremely flaky when it turn from tablet_mode to clamshell_mode.Therefore, I didn\u0027t include the code in my check-in.\n\n2. I have tried WaitForLocationChangeCompleted a few times, but the result was still very flaky.\n\n3. I didn\u0027t try WaitWindowFinishAnimating because there were no windows.\n\n4. I didn\u0027t try WaitForHotseatAnimationToFinish because I was not sure if there is a hotseat in the clamshell mode.\n\nSo far the most effective way is to sleep for two second after the switch. If I remove the sleep after the switch, I would see a lot of failures. I understand why we should not use sleep, but I could think of an alternative at this moment.\n\nPlease let me know if you have more questions or suggestions.\n\nThanks.\n\nSeewai\n\n",
+      "revId": "06297e8dbddcca60c30857a3e48ef7c56b38a10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
