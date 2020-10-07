@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a22136c_0bb4844f",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-10-07T04:45:57Z",
+      "side": 1,
+      "message": "nit: do we need to reset hasher again?\n\nhasher \u003d md5.New()",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 40
+      },
+      "revId": "b68cbb6f116e5caeda38a9179ff85cb2f2523982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
