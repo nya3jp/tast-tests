@@ -143,12 +143,16 @@ func copyFilesToLinuxfiles(ctx context.Context, filesApp *filesapp.FilesApp, key
 
 	// Wait for the copy operation to finish.
 	params := ui.FindParams{
-		Name: fmt.Sprintf("Copied to %s.", linuxFilesFolder),
+		Name: fmt.Sprintf("Copying %d items to %s", len(testFiles), linuxFilesFolder),
 		Role: ui.RoleTypeStaticText,
 	}
 
-	if err := filesApp.Root.WaitUntilDescendantExists(ctx, params, time.Minute); err != nil {
-		return errors.Wrap(err, "Coping files to Linux files failed to finish in 1 minute")
+	if err := filesApp.Root.WaitUntilDescendantExists(ctx, params, time.Second); err != nil {
+		return errors.Wrap(err, "failed to display copying message")
+	}
+
+	if err := filesApp.Root.WaitUntilDescendantGone(ctx, params, time.Minute); err != nil {
+		return errors.Wrap(err, "failed to copy files to Linux files in 1 minute")
 	}
 	return nil
 }
