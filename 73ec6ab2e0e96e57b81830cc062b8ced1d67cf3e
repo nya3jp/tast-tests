@@ -515,6 +515,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73b7eb8b_61bf36b7",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-07T05:57:34Z",
+      "side": 1,
+      "message": "Oh I overlooked that the CL was reverted. I don\u0027t recommend adding SeparatedOutput in this CL since it might conflict with a reland CL.\n\nMeanwhile you can do what SeparatedOutput does internally in this CL, i.e. creating *testexec.Cmd and setting its Stdout and Stderr.",
+      "parentUuid": "c66404c7_e1154c45",
+      "range": {
+        "startLine": 147,
+        "startChar": 41,
+        "endLine": 147,
+        "endChar": 55
+      },
+      "revId": "73ec6ab2e0e96e57b81830cc062b8ced1d67cf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fabb5a6a_e9f9cd41",
         "filename": "src/chromiumos/tast/local/adb/vendor_keys.go",
         "patchSetId": 2
