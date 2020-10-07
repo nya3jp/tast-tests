@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af389701_eb51e292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-07T14:00:33Z",
+      "side": 1,
+      "message": "As the continue button state confirms the same thing as the warning message I\u0027d remove this. Finding and interacting with ui nodes can be a bit flaky so it\u0027s best to reduce that as much as possible.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "99f604b71cc614ceb96ace39edc1c1742659a473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a3a77d_2f222bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-07T14:00:33Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "99f604b71cc614ceb96ace39edc1c1742659a473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d5bb0d_e68866d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-07T14:00:33Z",
+      "side": 1,
+      "message": "see above",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 4
+      },
+      "revId": "99f604b71cc614ceb96ace39edc1c1742659a473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
