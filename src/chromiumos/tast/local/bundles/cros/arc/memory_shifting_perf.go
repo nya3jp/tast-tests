@@ -11,7 +11,8 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/memory"
+	arcMemory "chromiumos/tast/local/bundles/cros/arc/memory"
+	"chromiumos/tast/local/memory"
 	"chromiumos/tast/testing"
 )
 
@@ -25,7 +26,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
-		Data:         memory.AndroidData(),
+		Data:         arcMemory.AndroidData(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/146081124): Reenable the test when this test stops hanging ARC++ devices.
@@ -54,25 +55,25 @@ func MemoryShiftingPerf(ctx context.Context, s *testing.State) {
 	maxChromeOSMetric := perf.Metric{Name: "max_chromeos", Unit: "MiB", Direction: perf.BiggerIsBetter}
 	marginMetric := perf.Metric{Name: "critical_margin", Unit: "MiB", Direction: perf.SmallerIsBetter}
 	p := perf.NewValues()
-	margin, err := memory.ChromeOSCriticalMargin()
+	margin, err := memory.CriticalMargin()
 	if err != nil {
 		s.Fatal("Failed to read critical margin: ", err)
 	}
-	p.Set(marginMetric, float64(margin))
-	a := memory.NewAndroidAllocator(s.PreValue().(arc.PreData).ARC)
+	p.Set(marginMetric, float64(margin)/memory.MiB)
+	a := arcMemory.NewAndroidAllocator(s.PreValue().(arc.PreData).ARC)
 	cleanup, err := a.Prepare(ctx, func(p string) string { return s.DataPath(p) })
 	if err != nil {
 		s.Fatal("Failed to setup ArcMemoryAllocatorTest app: ", err)
 	}
 	defer cleanup()
-	c := memory.NewChromeOSAllocator()
+	c := arcMemory.NewChromeOSAllocator()
 	arcMin := math.MaxFloat64
 	arcMax := 0.0
 	crosMin := math.MaxFloat64
 	crosMax := 0.0
 	for shift := 0; shift < 3; shift++ {
 		// Allocate in Android.
-		const epsilon = 5 // We want to be consistently under the critical margin, so make the target available just inside.
+		const epsilon = 5 * memory.MiB // We want to be consistently under the critical margin, so make the target available just inside.
 		arcAllocated, err := a.AllocateUntil(
 			ctx,
 			time.Second,
