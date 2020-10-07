@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1a17f1c_4ef0489b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T23:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ea358c3_a38850e7",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "f09b31211914270d3d11d9501e4eb69165bcd876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3263198_5cc68fb9",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-07T20:45:37Z",
       "side": 1,
       "message": "ditto here",
+      "range": {
+        "startLine": 169,
+        "startChar": 40,
+        "endLine": 169,
+        "endChar": 51
+      },
+      "revId": "f09b31211914270d3d11d9501e4eb69165bcd876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa41c88_48c12547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T23:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3263198_5cc68fb9",
       "range": {
         "startLine": 169,
         "startChar": 40,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f4e9aa4_4769f121",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T23:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5c2b924_4b431fe4",
+      "range": {
+        "startLine": 255,
+        "startChar": 52,
+        "endLine": 255,
+        "endChar": 63
+      },
+      "revId": "f09b31211914270d3d11d9501e4eb69165bcd876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbbf0af6_cf090241",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-07T20:45:37Z",
       "side": 1,
       "message": "Why are these two no longer deferred?",
+      "range": {
+        "startLine": 271,
+        "startChar": 5,
+        "endLine": 280,
+        "endChar": 2
+      },
+      "revId": "f09b31211914270d3d11d9501e4eb69165bcd876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e1d9a0_a1f69e3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T23:20:20Z",
+      "side": 1,
+      "message": "We need to call terminal.Close to free an internal UI node, but it also expects the terminal window to still be around. But shutting down the VM will also close the terminal window if it managed to connect to the VM while starting up, which makes it awkward to order the calls.\n\nI realised we don\u0027t actually need the terminal window open in this method, so it didn\u0027t need to be deferred at all.\n\nThough looking at this again I think it\u0027s still wrong, because if closing the terminal fails the VM won\u0027t be shutdown.",
+      "parentUuid": "fbbf0af6_cf090241",
       "range": {
         "startLine": 271,
         "startChar": 5,
