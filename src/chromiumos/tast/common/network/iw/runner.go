@@ -1045,8 +1045,8 @@ func parseBand(attrs *sectionAttributes, sectionName, contents string) error {
 
 func parseThroughput(attrs *sectionAttributes, sectionName, contents string) error {
 	// This parser evaluates the throughput capabilities of the phy.
-	// HE related.
-	if strings.Contains(contents, "HE MAC Capabilities") {
+	// HE-MAC related.
+	if strings.Contains(contents, "HE-MAC Capabilities") {
 		attrs.supportHE = true
 	}
 	if strings.Contains(contents, "HE160/5GHz") {
