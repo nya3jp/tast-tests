@@ -207,6 +207,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ef5ed60_7106d744",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-07T23:45:20Z",
+      "side": 1,
+      "message": "Done. I wrote an additional validation function that will start/stop discovery and fail the test if I am unable to do so.",
+      "parentUuid": "d7b8a4ae_b08f6ee8",
+      "range": {
+        "startLine": 133,
+        "startChar": 30,
+        "endLine": 133,
+        "endChar": 48
+      },
+      "revId": "aa831fa9c0012a8f82661ff09f83efe0faccf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb0ffec9_eaa3108b",
