@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc554353_d1cfd066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-07T08:29:52Z",
+      "side": 1,
+      "message": "Answer to comment.",
+      "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "769a3fe5_f2439ca2",
@@ -14,6 +31,24 @@
       "writtenOn": "2020-10-07T02:13:11Z",
       "side": 1,
       "message": "We still have TODOs?",
+      "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100ac364_e84d66ae",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-07T08:29:52Z",
+      "side": 1,
+      "message": "The bugs contains all the information.\nblocking bugs and todo.",
+      "parentUuid": "769a3fe5_f2439ca2",
       "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -37,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a7d8ea8_dafdb684",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-07T08:29:52Z",
+      "side": 1,
+      "message": "the bug contains blocking bugs and todo",
+      "parentUuid": "e1e32aa6_f595d1de",
+      "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe3ebe10_2674a739",
         "filename": "unblocked_terms.txt",
         "patchSetId": 1
@@ -54,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd37712a_dea7604c",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-07T08:29:52Z",
+      "side": 1,
+      "message": "the bug contains blocking bugs and todo",
+      "parentUuid": "fe3ebe10_2674a739",
+      "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "465b8d96_55745c7b",
         "filename": "unblocked_terms.txt",
         "patchSetId": 1
@@ -65,6 +136,24 @@
       "writtenOn": "2020-10-07T02:13:11Z",
       "side": 1,
       "message": "ditto",
+      "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a2a07f_83905858",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-07T08:29:52Z",
+      "side": 1,
+      "message": "the bug contains work to be done.",
+      "parentUuid": "465b8d96_55745c7b",
       "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
