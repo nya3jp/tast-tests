@@ -38,6 +38,10 @@ const (
 	TelemCategoryTimezone          TelemCategory = "timezone"
 )
 
+// NotApplicable is the value printed for optional fields when they aren't
+// populated.
+const NotApplicable = "N/A"
+
 // RunTelem runs cros-health-tool's telem command with the given category and
 // returns the output. It also dumps the output to a file for debugging. An
 // error is returned if there is a failure to run the command or save the output

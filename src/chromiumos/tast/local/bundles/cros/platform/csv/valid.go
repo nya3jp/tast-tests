@@ -82,6 +82,25 @@ func Column(field string, validators ...validator) column {
 	return column{field, columnFunc}
 }
 
+// ColumnWithDefault returns the field name of the column and a validator that
+// will use a list of validators to validate all values in this CSV column. If
+// the field value is equal to |defaultValue|, the validators are not run.
+func ColumnWithDefault(field, defaultValue string, validators ...validator) column {
+	columnFunc := func(csvValue string) error {
+		if csvValue == defaultValue {
+			return nil
+		}
+
+		for _, validator := range validators {
+			if err := validator(csvValue); err != nil {
+				return err
+			}
+		}
+		return nil
+	}
+	return column{field, columnFunc}
+}
+
 // UInt64 returns a validator that checks whether |actual| can be parsed into a
 // uint64.
 func UInt64() validator {
@@ -104,15 +123,10 @@ func MatchValue(value string) validator {
 	}
 }
 
-// MatchRegexOrNA returns a function that checks whether |actual| matches the
-// regex pattern specified by |regex|. If |actual| is "NA", do not proceed with
-// the pattern matching.
-func MatchRegexOrNA(regex *regexp.Regexp) validator {
+// MatchRegex returns a function that checks whether |actual| matches the
+// regex pattern specified by |regex|.
+func MatchRegex(regex *regexp.Regexp) validator {
 	return func(actual string) error {
-		// If the value does not exist, do not check the format.
-		if actual == "NA" {
-			return nil
-		}
 		if !regex.MatchString(actual) {
 			return errors.Errorf("failed to follow correct pattern: got %v, want %v", regex, actual)
 		}
@@ -120,17 +134,14 @@ func MatchRegexOrNA(regex *regexp.Regexp) validator {
 	}
 }
 
-// EqualToFileContentOrNA returns a function that checks whether |path| exists.
-// If it does, it compares the value at that location wih |actual|. If it does
-// not, it ensures that |actual| equals "NA".
-func EqualToFileContentOrNA(path string) validator {
+// EqualToFileContent returns a function that checks whether |path| exists. If
+// it does, it compares the value at that location wih |actual|. If it does not,
+// an error is returned.
+func EqualToFileContent(path string) validator {
 	return func(actual string) error {
 		expectedBytes, err := ioutil.ReadFile(path)
 		if os.IsNotExist(err) {
-			if actual != "NA" {
-				return errors.Errorf("failed to get correct value: got %v, want NA", actual)
-			}
-			return nil
+			return errors.Errorf("file does not exist: %v", path)
 		} else if err != nil {
 			return errors.Wrapf(err, "failed to read from file %v", path)
 		}
@@ -142,12 +153,13 @@ func EqualToFileContentOrNA(path string) validator {
 	}
 }
 
-// EqualToFileIfCrosConfigPropOrNA returns a function that checks whether
-// |filePath| should exist by using crosconfig and its two arguments, |prop|
-// and |path|. If the file should exist, it attempts to read the value from the
-// file. If it cannot, an error is reported. If it can, it compares the read
-// value with |actual|.
-func EqualToFileIfCrosConfigPropOrNA(ctx context.Context, path, prop, filePath string) validator {
+// EqualToFileIfCrosConfigProp returns a function that checks whether
+// |filePath| should exist by using crosconfig and its two arguments, |prop| and
+// |path|. If the crosconfig property does not exist, an error is returned. If
+// the file exists, it attempts to read the value from the file. If it
+// cannot, an error is reported. If it can, it compares the read value with
+// |actual|.
+func EqualToFileIfCrosConfigProp(ctx context.Context, path, prop, filePath string) validator {
 	return func(actual string) error {
 		val, err := crosconfig.Get(ctx, path, prop)
 		if err != nil && !crosconfig.IsNotFound(err) {
@@ -155,10 +167,7 @@ func EqualToFileIfCrosConfigPropOrNA(ctx context.Context, path, prop, filePath s
 		}
 		// Property does not exist
 		if crosconfig.IsNotFound(err) || val != "true" {
-			if actual != "NA" {
-				return errors.Errorf("failed to get correct value: got %v, want NA", actual)
-			}
-			return nil
+			return errors.Errorf("crosconfig property does not exist: %v", prop)
 		}
 		expectedBytes, err := ioutil.ReadFile(filePath)
 		if err != nil {
