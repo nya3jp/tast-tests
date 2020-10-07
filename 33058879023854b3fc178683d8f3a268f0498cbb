@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1925e64a_ef2bdc03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-07T13:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "044fa809_156b2d35",
+      "range": {
+        "startLine": 86,
+        "startChar": 6,
+        "endLine": 86,
+        "endChar": 39
+      },
+      "revId": "33058879023854b3fc178683d8f3a268f0498cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21be0b12_476d2395",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "There is a small error message under the input \"PIN must be at least X digits\".\nYou should check for this message instead.",
       "parentUuid": "21be0b12_476d2395",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "33058879023854b3fc178683d8f3a268f0498cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c089ccac_462fe848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-07T13:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "657fce5d_a8c2e572",
       "range": {
         "startLine": 146,
         "startChar": 0,
