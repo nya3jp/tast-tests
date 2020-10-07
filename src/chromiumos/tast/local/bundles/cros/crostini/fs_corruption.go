@@ -61,7 +61,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState"},
-		Timeout:      10 * time.Minute,
+		Timeout:      15 * time.Minute,
 		Pre:          crostini.StartedByDownloadBuster(),
 	})
 }
@@ -228,6 +228,10 @@ func readContainerFile(ctx context.Context, container *vm.Container, path string
 // disk from backupPath. outDir is passed to
 // vm.RestartDefaultVMContainer and may be used to store logs from
 // container startup on failure.
+//
+// We assume that the VM is initially stopped and that the disk is in
+// a good (uncorrupted) state. If this function returns successfully,
+// the VM will be stopped, but the disk is in an unspecified state.
 func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userName string, offsets []int64, container *vm.Container, diskPath, backupPath, outDir string) error {
 	match := dbusutil.MatchSpec{
 		Type:      "signal",
@@ -240,10 +244,6 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 		return errors.Wrap(err, "failed to listed for DBus signals")
 	}
 	defer signalWatcher.Close(ctx)
-
-	// Defer restoring from backup before attempting the write, because if the write fails the disk is in an unknown state.
-	cmd := testexec.CommandContext(ctx, "cp", "--sparse=always", "--backup=off", "--preserve=all", backupPath, diskPath)
-	defer cmd.Run(testexec.DumpLogOnError)
 
 	// Make edit to disk at these offsets.
 	testing.ContextLog(ctx, "Making changes at offsets ", offsets)
@@ -354,6 +354,12 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	histogramCount, err = checkHistogram(ctx, tconn, histogramCount)
 	if err != nil {
 		s.Fatal("Failed to check histogram: ", err)
+	}
+
+	// Restore the disk from backup because the previous test will have corrutped it.
+	cmd = testexec.CommandContext(ctx, "cp", "--sparse=always", "--backup=off", "--preserve=all", backupPath, disk.GetPath())
+	if err = cmd.Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to restore disk from backup between tests: ", err)
 	}
 
 	if err := testOverwriteAtOffsets(ctx, tconn, userName, smallOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
