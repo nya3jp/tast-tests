@@ -109,6 +109,30 @@
       },
       "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e280d978_73ee9c1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-07T04:30:34Z",
+      "side": 1,
+      "message": "Yes, but you now invoke all cleanup methods regardless of what has been initialised.\nIn this loop you invoke conn.Command first in cleanupDisplayProcess, and only later on check if conn \u003d\u003d nil.\n\nAm I missing something?",
+      "parentUuid": "c9096812_d5cef154",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
