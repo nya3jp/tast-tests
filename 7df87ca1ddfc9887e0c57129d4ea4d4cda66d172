@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "e43bd2e5_e08f0efa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
@@ -20,10 +21,34 @@
         "endChar": 30
       },
       "revId": "7df87ca1ddfc9887e0c57129d4ea4d4cda66d172",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09f3054_f1f0a5b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T15:56:15Z",
+      "side": 1,
+      "message": "Just a note, you should reply to each comment individually with at least a done.",
+      "parentUuid": "e43bd2e5_e08f0efa",
+      "range": {
+        "startLine": 100,
+        "startChar": 13,
+        "endLine": 100,
+        "endChar": 30
+      },
+      "revId": "7df87ca1ddfc9887e0c57129d4ea4d4cda66d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "6f344089_c1349b44",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
@@ -43,10 +68,34 @@
         "endChar": 2
       },
       "revId": "7df87ca1ddfc9887e0c57129d4ea4d4cda66d172",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc638dde_5a0cf0a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T15:56:15Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "6f344089_c1349b44",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 2
+      },
+      "revId": "7df87ca1ddfc9887e0c57129d4ea4d4cda66d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "2c074990_6e81bc79",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
@@ -66,8 +115,31 @@
         "endChar": 2
       },
       "revId": "7df87ca1ddfc9887e0c57129d4ea4d4cda66d172",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aeb949d_05595d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T15:56:15Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "2c074990_6e81bc79",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 2
+      },
+      "revId": "7df87ca1ddfc9887e0c57129d4ea4d4cda66d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
