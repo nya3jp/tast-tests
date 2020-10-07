@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "195acc0d_9192fb88",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Hey all, apologies for the long time since touching this CL.\nI have revisited the logic and removed the \"full\" DEQP test suites. Let\u0027s try to land this first as a minimal/partial DEQP with only the critical portion of tests to test.\n\nI also added Android P / Android R CTS variants for the two separate ARC types, and fixed a few bugs.\n\nPTAL",
       "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f53aa56a_c0690cf8",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "I think this will time out at 5 minutes, but you write you ran it locally and it passed? Or are you using a trimmed case list?",
       "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "7c1f131a_964958ff",
         "filename": "/PATCHSET_LEVEL",
@@ -48,10 +49,10 @@
       "side": 1,
       "message": "Still LGTM with minor nits. Thanks for pinging me offline :) ",
       "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "938a69cd_58013b9b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
@@ -71,10 +72,10 @@
         "endChar": 38
       },
       "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0580551b_5a175837",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
@@ -95,10 +96,10 @@
         "endChar": 38
       },
       "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "ef654250_3bb6c6c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
@@ -119,10 +120,10 @@
         "endChar": 38
       },
       "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c8efc9f4_b15907d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
@@ -142,10 +143,34 @@
         "endChar": 53
       },
       "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0226af46_fc328fa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-10-07T06:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8efc9f4_b15907d9",
+      "range": {
+        "startLine": 65,
+        "startChar": 27,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "2c21b35e_f1e1f735",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
@@ -165,8 +190,31 @@
         "endChar": 46
       },
       "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4477ee1_e4c13df8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-10-07T06:55:58Z",
+      "side": 1,
+      "message": "I think the semantics are slightly different but MaxTimeout works well here too so LGTM, thanks.",
+      "parentUuid": "2c21b35e_f1e1f735",
+      "range": {
+        "startLine": 80,
+        "startChar": 33,
+        "endLine": 80,
+        "endChar": 46
+      },
+      "revId": "b0e431cb8e77692dc1267e79462a5a4aa83faf14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
