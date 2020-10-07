@@ -7,13 +7,16 @@ package hwsec
 import (
 	"context"
 	"crypto"
+	"crypto/ecdsa"
 	"crypto/rsa"
 	"crypto/sha256"
 	"crypto/x509"
+	"encoding/asn1"
 	"encoding/base64"
 	"encoding/hex"
 	"fmt"
 	"io/ioutil"
+	"math/big"
 	"net/http"
 	"net/url"
 	"strings"
@@ -313,8 +316,21 @@ func (at *AttestationTest) SignSimpleChallenge(ctx context.Context, username, la
 		return errors.Wrap(err, "failed to construct rsa public key")
 	}
 	hashValue := sha256.Sum256(signedChallengeProto.GetData())
-	if err := rsa.VerifyPKCS1v15(publicKey.(*rsa.PublicKey), crypto.SHA256, hashValue[:], signedChallengeProto.GetSignature()); err != nil {
-		return errors.Wrap(err, "failed to verify signature")
+	switch publicKey := publicKey.(type) {
+	case *rsa.PublicKey:
+		if err := rsa.VerifyPKCS1v15(publicKey, crypto.SHA256, hashValue[:], signedChallengeProto.GetSignature()); err != nil {
+			return errors.Wrap(err, "failed to verify signature")
+		}
+	case *ecdsa.PublicKey:
+		var eSig struct {
+			R, S *big.Int
+		}
+		if _, err := asn1.Unmarshal(signedChallengeProto.GetSignature(), &eSig); err != nil {
+			return errors.Wrap(err, "failed to unmarshal ecdsa signature")
+		}
+		if !ecdsa.Verify(publicKey, hashValue[:], eSig.R, eSig.S) {
+			return errors.New("failed to verify signature")
+		}
 	}
 	return nil
 }
