@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -197,7 +198,7 @@ func (a *AndroidAllocator) AllocateUntil(
 	ctx context.Context,
 	attemptInterval time.Duration,
 	attempts int,
-	margin uint,
+	margin int64,
 ) ([]uint, error) {
 	reader, err := syslog.NewReader(ctx)
 	if err != nil {
@@ -210,7 +211,7 @@ func (a *AndroidAllocator) AllocateUntil(
 		"ALLOC_UNTIL",
 		"--ei", "attempt_timeout", msToString(attemptInterval),
 		"--ei", "attempts", strconv.Itoa(attempts),
-		"--ei", "margin", strconv.FormatUint(uint64(margin), 10),
+		"--ei", "margin", strconv.FormatInt(margin/memory.MiB, 10),
 	); err != nil {
 		return nil, errors.Wrap(err, "failed to request allocation")
 	}
