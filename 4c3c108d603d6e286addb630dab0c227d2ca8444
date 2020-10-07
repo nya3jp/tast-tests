@@ -85,6 +85,30 @@
       },
       "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9096812_d5cef154",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-07T03:51:46Z",
+      "side": 1,
+      "message": "Yes, it\u0027s under assumption(together with clean up order) that the members are setup in order of |conn| \u003e |dir| \u003e |pid|. So if the |dir| is not empty string the conn must not be |nil|. |pid| not empty means |dir| and |conn| not empty. So it should be safe to not check the |conn|.",
+      "parentUuid": "9791e04d_dab528a1",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
