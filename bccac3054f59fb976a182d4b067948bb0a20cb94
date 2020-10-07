@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "7b3429c0_b202b4ae",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "I haven\u0027t looked at this too closely yet, but shouldn\u0027t we just monitor everything instead of a specific property (so this behaves kind of like the iw event monitor in autotest)? In some cases, it may be important to watch for multiple properties, and it doesn\u0027t make sense to have to create two separate monitors to do that.",
       "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "abc6f860_81da04f4",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,10 @@
       "message": "Or at least allow multiple properties to be passed in.",
       "parentUuid": "7b3429c0_b202b4ae",
       "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5f8fdb12_bc340209",
         "filename": "/PATCHSET_LEVEL",
@@ -50,10 +51,27 @@
       "message": "+1 for monitoring multiple properties and thanks for the suggestion. This is a useful generalization that don\u0027t need too much more effort, I think.",
       "parentUuid": "abc6f860_81da04f4",
       "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc788a8_f88e372a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-07T03:31:58Z",
+      "side": 1,
+      "message": "I gave this a little more thought, and IMO I think this is pretty redundant when we already use the ExpectShillProperty stream. Instead, I think a better/more efficient implementation would be to optionally pass in an additional list of properties to ExpectShillProperty for monitoring, and return a list of PropertyChanged signals for those properties that we would collect over the lifetime of the PropertyWatcher. This way, we would just stop monitoring when we finish waiting, and we wouldn\u0027t have to rely on the hack you currently use.\n\nYen-lin suggested something similar below, and this also wouldn\u0027t catch the disconnect case in which there was no PropertyChanged signal, but I don\u0027t think that really matters (AssertNoDisconnect relies on the disconnect event anyway, so if the device were already disconnected, AssertNoDisconnect wouldn\u0027t catch that either).\n\nI\u0027m currently working on something that might need this monitor functionality, so I might take a stab at this myself if you don\u0027t mind (and if others agree on the proposed idea).",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "7eee6136_fe71ed0c",
         "filename": "src/chromiumos/tast/local/shill/property.go",
@@ -73,10 +91,10 @@
         "endChar": 168
       },
       "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "110dd9cd_dd640ed0",
         "filename": "src/chromiumos/tast/local/shill/property.go",
@@ -96,8 +114,7 @@
         "endChar": 3
       },
       "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
