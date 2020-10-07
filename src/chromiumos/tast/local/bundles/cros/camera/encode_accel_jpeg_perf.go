@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -35,6 +36,14 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
 		Data:         []string{"coast_3840x2160_P420.yuv"},
 		Timeout:      10 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "mmap",
+			Val:               "JpegEncodeAcceleratorTest.SimpleEncode",
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("kukui")),
+		}, {
+			Name: "dmabuf",
+			Val:  "JpegEncodeAcceleratorTest.SimpleDmaEncode",
+		}},
 	})
 }
 
@@ -42,8 +51,6 @@ func init() {
 // SimpleEncode test in jpeg_encode_accelerator_unittest.
 func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	const (
-		// GTest filter used to run JPEG encode tests.
-		filter = "JpegEncodeAcceleratorTest.SimpleEncode"
 		// Number of JPEG encodes.
 		perfJPEGEncodeTimes = 100
 		// Name of the test file used.
@@ -83,7 +90,7 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	if report, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
-		gtest.Filter(filter),
+		gtest.Filter(s.Param().(string)),
 		gtest.ExtraArgs(
 			"--repeat="+strconv.Itoa(perfJPEGEncodeTimes),
 			"--output_log="+logPath,
