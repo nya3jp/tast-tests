@@ -157,6 +157,30 @@
       },
       "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e7f897_dbbda9ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-07T05:41:37Z",
+      "side": 1,
+      "message": "Roger, I follow now. Thanks for clarifying 😊 \nIf you like, it might be useful to document your assumed initialization order in the method comment for cleanup() and/or on the individual checks. (e.g. \"len(dir) !\u003d 0 implies conn !\u003d nil due to initialization order\")",
+      "parentUuid": "4c062fd8_2f2281a2",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
