@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d30077_ff3d8ea0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:38:51Z",
+      "side": 1,
+      "message": "Is it possible this could be too quick and this error will become flaky?",
+      "revId": "8d002007bff3214d4c431bb921057e6d4920b4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
