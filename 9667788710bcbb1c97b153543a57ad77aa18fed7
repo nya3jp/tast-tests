@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe30da0_f0caafdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-07T03:29:36Z",
+      "side": 1,
+      "message": "Woops, didn\u0027t realize it was deprecated! Thanks for the heads up.\nChanged to Eval, and also checked for err",
+      "parentUuid": "968144fe_45772323",
+      "revId": "9667788710bcbb1c97b153543a57ad77aa18fed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bde5d501_ae6a63fa",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-07T02:29:50Z",
       "side": 1,
       "message": "Just async function should work?\n\n(async () \u003d\u003e {return (await indexRemote.find(...)).status; })()",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "9667788710bcbb1c97b153543a57ad77aa18fed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "769648c1_23055298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-07T03:29:36Z",
+      "side": 1,
+      "message": "Yeap! Works perfectly",
+      "parentUuid": "bde5d501_ae6a63fa",
       "range": {
         "startLine": 79,
         "startChar": 3,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d701b332_bb236f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-07T03:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b89f887a_57af67af",
+      "revId": "9667788710bcbb1c97b153543a57ad77aa18fed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a4b23a7_46df8ef4",
@@ -71,6 +131,24 @@
       "writtenOn": "2020-10-07T02:29:50Z",
       "side": 1,
       "message": "leaking result. Maybe ui.WaitUntilExist()?",
+      "revId": "9667788710bcbb1c97b153543a57ad77aa18fed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "753e7c1c_0233e6d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-07T03:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a4b23a7_46df8ef4",
       "revId": "9667788710bcbb1c97b153543a57ad77aa18fed7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
