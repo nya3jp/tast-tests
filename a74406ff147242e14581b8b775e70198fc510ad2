@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "244414e7_9856c233",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Can you review my CL? Thanks!",
       "revId": "a74406ff147242e14581b8b775e70198fc510ad2",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ae2f600d_702aa912",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "nit: maybe it\u0027s easier to find/use if we put cacheExtractedVideo as const here?",
       "revId": "a74406ff147242e14581b8b775e70198fc510ad2",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "623b72a4_8697d424",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
@@ -49,10 +50,10 @@
       "message": "I thought about doing this, but I want to make it easy for everybody to use this without knowing the inner workings and structure of the test code. That\u0027s why I decided to put the variable in the testcase itself.",
       "parentUuid": "ae2f600d_702aa912",
       "revId": "a74406ff147242e14581b8b775e70198fc510ad2",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "916a6dec_6024aa1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
@@ -67,8 +68,25 @@
       "message": "Or how about putting it in a dedicated file like media/encoding/debug_util.go?\nI feel it\u0027s also hard to know/find this feature if you spread this variable at each encoding test cases.",
       "parentUuid": "623b72a4_8697d424",
       "revId": "a74406ff147242e14581b8b775e70198fc510ad2",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4f36fa_18c5665e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-10-07T03:15:25Z",
+      "side": 1,
+      "message": "I thought about adding something like debug_util.go, but different tests support different options so it might get a bit messy. That\u0027s why I decided to keep the constants in the test files themselves. But I do agree that it\u0027s a bit hard to find this feature now, so I moved the constants to the top of the testfiles.",
+      "parentUuid": "916a6dec_6024aa1d",
+      "revId": "a74406ff147242e14581b8b775e70198fc510ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
