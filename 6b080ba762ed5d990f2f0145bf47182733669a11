@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0701e89e_1df5481c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-10-07T03:38:13Z",
+      "side": 1,
+      "message": "nit: the comment is long so it may be better to show it above the target line.",
+      "range": {
+        "startLine": 125,
+        "startChar": 41,
+        "endLine": 125,
+        "endChar": 137
+      },
+      "revId": "6b080ba762ed5d990f2f0145bf47182733669a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
