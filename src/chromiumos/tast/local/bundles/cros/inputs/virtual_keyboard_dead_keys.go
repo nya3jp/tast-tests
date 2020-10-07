@@ -42,49 +42,74 @@ func init() {
 		Func:         VirtualKeyboardDeadKeys,
 		Desc:         "Checks that dead keys on the virtual keyboard work",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Pre:          pre.VKEnabled(),
 		Timeout:      5 * time.Minute,
-		Params: []testing.Param{{
-			Name: "french",
-			Val: deadKeysTestCase{
-				// "French - French keyboard" input method is decoder-backed. Dead keys
-				// are implemented differently from those of a no-frills input method.
-				inputMethodID: "xkb:fr::fra",
-				hasDecoder:    true,
+		Params: []testing.Param{
+			{
+				Name:              "french_stable",
+				ExtraHardwareDeps: pre.InputsStableModels,
+				Val: deadKeysTestCase{
+					// "French - French keyboard" input method is decoder-backed. Dead keys
+					// are implemented differently from those of a no-frills input method.
+					inputMethodID: "xkb:fr::fra",
+					hasDecoder:    true,
 
-				// "French - French keyboard" input method uses a compact-layout VK for
-				// non-a11y mode where there's no dead keys, and a full-layout VK for
-				// a11y mode where there's dead keys. To test dead keys on the VK of
-				// this input method, a11y mode must be enabled.
-				useA11yVk: true,
+					// "French - French keyboard" input method uses a compact-layout VK for
+					// non-a11y mode where there's no dead keys, and a full-layout VK for
+					// a11y mode where there's dead keys. To test dead keys on the VK of
+					// this input method, a11y mode must be enabled.
+					useA11yVk: true,
 
-				// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
-				// based on Shift and Caps states, then add Shift and Caps related
-				// typing sequences to the test case.
-				typingKeys:           []string{circumflex, "a"},
-				expectedTypingResult: "â",
+					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
+					// based on Shift and Caps states, then add Shift and Caps related
+					// typing sequences to the test case.
+					typingKeys:           []string{circumflex, "a"},
+					expectedTypingResult: "â",
+				},
+			}, {
+				Name:              "french_unstable",
+				ExtraHardwareDeps: pre.InputsUnstableModels,
+				ExtraAttr:         []string{"informational"},
+				Val: deadKeysTestCase{
+					inputMethodID:        "xkb:fr::fra",
+					hasDecoder:           true,
+					useA11yVk:            true,
+					typingKeys:           []string{circumflex, "a"},
+					expectedTypingResult: "â",
+				},
+			}, {
+				Name:              "catalan_stable",
+				ExtraHardwareDeps: pre.InputsStableModels,
+				Val: deadKeysTestCase{
+					// "Catalan keyboard" input method is no-frills. Dead keys are
+					// implemented differently from those of a decoder-backed input method.
+					inputMethodID: "xkb:es:cat:cat",
+					hasDecoder:    false,
+
+					// "Catalan keyboard" input method uses the same full-layout VK (that
+					// has dead keys) for both a11y & non-a11y. Just use non-a11y here.
+					useA11yVk: false,
+
+					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
+					// based on Shift and Caps states, then add Shift and Caps related
+					// typing sequences to the test case.
+					typingKeys:           []string{acuteAccent, "a"},
+					expectedTypingResult: "á",
+				},
+			}, {
+				Name:              "catalan_unstable",
+				ExtraHardwareDeps: pre.InputsUnstableModels,
+				ExtraAttr:         []string{"informational"},
+				Val: deadKeysTestCase{
+					inputMethodID:        "xkb:es:cat:cat",
+					hasDecoder:           false,
+					useA11yVk:            false,
+					typingKeys:           []string{acuteAccent, "a"},
+					expectedTypingResult: "á",
+				},
 			},
-		}, {
-			Name: "catalan",
-			Val: deadKeysTestCase{
-				// "Catalan keyboard" input method is no-frills. Dead keys are
-				// implemented differently from those of a decoder-backed input method.
-				inputMethodID: "xkb:es:cat:cat",
-				hasDecoder:    false,
-
-				// "Catalan keyboard" input method uses the same full-layout VK (that
-				// has dead keys) for both a11y & non-a11y. Just use non-a11y here.
-				useA11yVk: false,
-
-				// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
-				// based on Shift and Caps states, then add Shift and Caps related
-				// typing sequences to the test case.
-				typingKeys:           []string{acuteAccent, "a"},
-				expectedTypingResult: "á",
-			},
-		},
 		}})
 }
 
