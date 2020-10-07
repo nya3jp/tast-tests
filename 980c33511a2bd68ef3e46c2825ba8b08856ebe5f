@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45437e81_745f0ab8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-07T02:15:22Z",
+      "side": 1,
+      "message": "I added an Assert method to the Limit interface because it made testing.Poll calls much simpler in tests stacked above.\n\nI didn\u0027t want to reset the review below because it\u0027s almost done, but I hope you\u0027re both OK reviewing this change since you have all the context already. Let me know if not, and I\u0027ll find another reviewer.\n\nThanks,\n\n-Charles",
+      "revId": "980c33511a2bd68ef3e46c2825ba8b08856ebe5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
