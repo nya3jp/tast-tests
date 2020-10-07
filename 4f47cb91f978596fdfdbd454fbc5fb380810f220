@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "208fcde7_aed9aa05",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,10 @@
         "endChar": 0
       },
       "revId": "4f47cb91f978596fdfdbd454fbc5fb380810f220",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d2f77c5b_44f8f3e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
@@ -43,10 +44,34 @@
         "endChar": 38
       },
       "revId": "4f47cb91f978596fdfdbd454fbc5fb380810f220",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fddf0bba_7969e779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-07T23:19:52Z",
+      "side": 1,
+      "message": "I changed the regexp instead and it works fine.\nfuncName      \u003d `(NMI_INTERRUPT_UNKNOWN|ADVANCED_SYSASSERT)`",
+      "parentUuid": "d2f77c5b_44f8f3e1",
+      "range": {
+        "startLine": 130,
+        "startChar": 21,
+        "endLine": 130,
+        "endChar": 38
+      },
+      "revId": "4f47cb91f978596fdfdbd454fbc5fb380810f220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "84454d10_08857fd3",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
@@ -66,8 +91,31 @@
         "endChar": 49
       },
       "revId": "4f47cb91f978596fdfdbd454fbc5fb380810f220",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed316ace_8a497df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-07T23:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84454d10_08857fd3",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 49
+      },
+      "revId": "4f47cb91f978596fdfdbd454fbc5fb380810f220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
