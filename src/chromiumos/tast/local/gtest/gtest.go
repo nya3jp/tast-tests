@@ -17,6 +17,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -250,7 +251,7 @@ type arcRunner struct {
 }
 
 func (r *arcRunner) mktemp(ctx context.Context, name string) (string, error) {
-	out, err := r.a.Command(ctx, "mktemp", "-p", arc.ARCTmpDirPath, name+".XXXXXX").Output(testexec.DumpLogOnError)
+	out, err := r.a.Command(ctx, "mktemp", "-p", adb.AndroidTmpDirPath, name+".XXXXXX").Output(testexec.DumpLogOnError)
 	return strings.TrimSpace(string(out)), err
 }
 
