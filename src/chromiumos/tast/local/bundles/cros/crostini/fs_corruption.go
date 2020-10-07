@@ -18,7 +18,6 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/crash"
@@ -116,7 +115,7 @@ func scanBuffer(baseOffset int64, buffer, pattern []byte) []int64 {
 // binary file with no limit on the spacing between \n characters, and
 // Scanner expects to be operating on a UTF-8 character encoding with
 // reasonably sized lines. Instead we have a hand written loop.
-func getOffsets(ctx context.Context, filepath string, smallPattern, bigPattern []byte) ([]int64, []int64, error) {
+func getOffsets(ctx context.Context, filepath string, smallPattern, bigPattern []byte) (_, _ []int64, resultError error) {
 	const oneMiB = 1024 * 1024
 
 	// Buffer size = 1MiB + a small amount of overlap in case one of the UUIDs is split across a boundary
@@ -130,7 +129,15 @@ func getOffsets(ctx context.Context, filepath string, smallPattern, bigPattern [
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to open VM disk for reading")
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			if resultError == nil {
+				resultError = err
+			} else {
+				testing.ContextLog(ctx, "Failed to close file: ", err)
+			}
+		}
+	}()
 
 	stat, err := file.Stat()
 	if err != nil {
@@ -156,12 +163,20 @@ func getOffsets(ctx context.Context, filepath string, smallPattern, bigPattern [
 	return smallOffsets, bigOffsets, nil
 }
 
-func writeAtSync(filepath string, b []byte, offsets []int64) error {
+func writeAtSync(ctx context.Context, filepath string, b []byte, offsets []int64) (resultError error) {
 	file, err := os.OpenFile(filepath, os.O_RDWR, 0755)
 	if err != nil {
 		return errors.Wrap(err, "failed to open VM disk for editing")
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			if resultError == nil {
+				resultError = err
+			} else {
+				testing.ContextLog(ctx, "Failed to close file: ", err)
+			}
+		}
+	}()
 
 	for _, offset := range offsets {
 		if _, err := file.WriteAt(b, offset); err != nil {
@@ -232,7 +247,7 @@ func readContainerFile(ctx context.Context, container *vm.Container, path string
 // We assume that the VM is initially stopped and that the disk is in
 // a good (uncorrupted) state. If this function returns successfully,
 // the VM will be stopped, but the disk is in an unspecified state.
-func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userName string, offsets []int64, container *vm.Container, diskPath, backupPath, outDir string) error {
+func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userName string, offsets []int64, container *vm.Container, diskPath, backupPath, outDir string) (resultError error) {
 	match := dbusutil.MatchSpec{
 		Type:      "signal",
 		Path:      anomalyEventServicePath,
@@ -243,27 +258,50 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 	if err != nil {
 		return errors.Wrap(err, "failed to listed for DBus signals")
 	}
-	defer signalWatcher.Close(ctx)
+	defer func() {
+		if err := signalWatcher.Close(ctx); err != nil {
+			if resultError == nil {
+				resultError = err
+			} else {
+				testing.ContextLog(ctx, "Failed to close signal watcher: ", err)
+			}
+		}
+	}()
 
 	// Make edit to disk at these offsets.
 	testing.ContextLog(ctx, "Making changes at offsets ", offsets)
-	if err := writeAtSync(diskPath, []byte(uuidReplacement), offsets); err != nil {
+	if err := writeAtSync(ctx, diskPath, []byte(uuidReplacement), offsets); err != nil {
 		return errors.Wrap(err, "failed to make disk edit")
 	}
 
+	// Make sure to stop the VM before returning from this
+	// function. We do this by a direct call to concierge since we
+	// want to ensure it isn't running even when there may be an
+	// error in the startup process.
+	defer func() {
+		if err := container.VM.Stop(ctx); err != nil {
+			if resultError == nil {
+				resultError = err
+			} else {
+				testing.ContextLog(ctx, "Failed to stop VM: ", err)
+			}
+		}
+	}()
+
 	testing.ContextLog(ctx, "Restarting VM")
+	var vmRunning bool
 	// Discard the error, as this may fail due to corruption.
-	var terminal *terminalapp.TerminalApp
-	if terminal, _ = terminalapp.Launch(ctx, tconn, userName); terminal != nil {
-		// Make sure the UI node in terminalapp is released.
-		defer terminal.Close(ctx)
+	if terminal, _ := terminalapp.Launch(ctx, tconn, userName); terminal != nil {
+		// If we got a terminal object from Launch, we need to
+		// call Close to free it's internal UI node.
+		if err := terminal.Close(ctx); err != nil {
+			return err
+		}
+		vmRunning = true
 	}
-	defer apps.Close(ctx, tconn, apps.Terminal.ID)
-	// Stop the VM by a direct call to concierge since we want to ensure it isn't running even when there may be an error in the startup process.
-	defer container.VM.Stop(ctx)
 
 	// Filesystem corruption doesn't get detected until some process tries to read from the corrupted location. For metadata, this usually happens during container startup, but if the container started successfully then we read from both files just to be sure.
-	if terminal != nil {
+	if vmRunning {
 		testing.ContextLog(ctx, "Attempting to read corrupted files")
 		if err := readContainerFile(ctx, container, bigFileDest); err != nil {
 			return errors.Wrap(err, "failed to read big file")
@@ -276,11 +314,12 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 	}
 
 	testing.ContextLog(ctx, "Waiting for signal from anomaly_detector")
-	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	signalCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
-	if _, err := waitForSignal(ctx, signalWatcher); err != nil {
+	if _, err := waitForSignal(signalCtx, signalWatcher); err != nil {
 		return errors.Wrap(err, "didn't get expected DBus signal")
 	}
+	testing.ContextLog(ctx, "Got expected signal from anomaly_detector")
 
 	return nil
 }
@@ -288,7 +327,7 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 func launchAndReleaseTerminal(ctx context.Context, tconn *chrome.TestConn, userName string) error {
 	terminal, err := terminalapp.Launch(ctx, tconn, userName)
 	if terminal != nil {
-		terminal.Close(ctx)
+		err = terminal.Close(ctx)
 	}
 	return err
 }
@@ -304,7 +343,11 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
-	defer crash.TearDownCrashTest(ctx)
+	defer func() {
+		if err := crash.TearDownCrashTest(ctx); err != nil {
+			s.Error("Failed to tear down crash test fixture: ", err)
+		}
+	}()
 
 	s.Log("Writing test file to container")
 	if err := createTestFiles(ctx, data.Container); err != nil {
@@ -322,7 +365,11 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to stop VM: ", err)
 	}
 	// Restart everything before finishing so the precondition will be in a good state.
-	defer launchAndReleaseTerminal(ctx, tconn, userName)
+	defer func() {
+		if err := launchAndReleaseTerminal(ctx, tconn, userName); err != nil {
+			s.Error("Failed to restart crostini terminal: ", err)
+		}
+	}()
 
 	s.Log("Searching for pattern in disk image")
 	smallOffsets, bigOffsets, err := getOffsets(ctx, disk.GetPath(), []byte(smallUUID), []byte(bigUUID))
@@ -340,8 +387,12 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	}
 
 	// Always restore the backup disk before ending the test.
-	cmd = testexec.CommandContext(ctx, "mv", "--force", backupPath, disk.GetPath())
-	defer cmd.Run(testexec.DumpLogOnError)
+	defer func() {
+		cmd := testexec.CommandContext(ctx, "mv", "--force", backupPath, disk.GetPath())
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+			s.Error("Failed to restore VM disk from backup: ", err)
+		}
+	}()
 
 	histogramCount, err := checkHistogram(ctx, tconn, -1)
 	if err != nil {
