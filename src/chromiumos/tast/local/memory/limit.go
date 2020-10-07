@@ -21,6 +21,9 @@ type Limit interface {
 	// before the limit is reached. If negative, abs(Distance()) bytes must be
 	// freed to go below the limit.
 	Distance(ctx context.Context) (int64, error)
+	// Assert returns an error if the limit has been reached. Useful for Polls
+	// to get information about which limit was exceeded, and by how much.
+	Assert(ctx context.Context) error
 }
 
 // AvailableLimit is a Limit for ChromeOS available memory.
@@ -55,6 +58,18 @@ func (l *AvailableLimit) Distance(_ context.Context) (int64, error) {
 		return 0, errors.Wrap(err, "failed to read ChromeOS available memory")
 	}
 	return (availableMiB * MiB) - l.margin, nil
+}
+
+// Assert checks that available memory is above the margin.
+func (l *AvailableLimit) Assert(ctx context.Context) error {
+	distance, err := l.Distance(ctx)
+	if err != nil {
+		return err
+	}
+	if distance <= 0 {
+		return errors.Errorf("available memory %d is less than margin %d", distance+l.margin, l.margin)
+	}
+	return nil
 }
 
 // CriticalMargin returns the value of ChromeOS available memory below which
@@ -122,6 +137,25 @@ func (l *PageReclaimLimit) Distance(_ context.Context) (int64, error) {
 	return minDistance, nil
 }
 
+// Assert checks that no zone has its free pages counter below (min+low)/2.
+func (l *PageReclaimLimit) Assert(_ context.Context) error {
+	infos, err := ReadZoneInfo()
+	if err != nil {
+		return errors.Wrap(err, "failed to read zone counters")
+	}
+	for _, info := range infos {
+		if _, ok := l.largeZones[info.Name]; !ok {
+			// Zone is not a large zone.
+			continue
+		}
+		distance := int64(info.Free) - int64((info.Low+info.Min)/2)
+		if distance <= 0 {
+			return errors.Errorf("zone %q free %d is less than (min+low)/2 (%d+%d)/2", info.Name, info.Free, info.Min, info.Low)
+		}
+	}
+	return nil
+}
+
 // NewPageReclaimLimit creates a Limit that measures how far away ChromeOS is
 // from any Linux memory zone's free pages being half-way between the min and
 // low watermarks. The intent is to trigger page reclaim by being below the low
@@ -169,6 +203,19 @@ func (l *CompositeLimit) Distance(ctx context.Context) (int64, error) {
 		}
 	}
 	return minDistance, nil
+}
+
+// Assert checks that child Limits are above their limits.
+func (l *CompositeLimit) Assert(ctx context.Context) error {
+	if len(l.limits) == 0 {
+		return errors.New("empty compositeLimit")
+	}
+	for i := 1; i < len(l.limits); i++ {
+		if err := l.limits[i].Assert(ctx); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // NewCompositeLimit creates a Limit that returns the minimum Distance()
