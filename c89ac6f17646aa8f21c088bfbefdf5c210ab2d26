@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c846e0a7_71126f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-07T08:20:18Z",
+      "side": 1,
+      "message": "For this test, it is nice to use VKEnabled precondition. For more details, refer to http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go\n\npre.VKEnabled()",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 2
+      },
+      "revId": "c89ac6f17646aa8f21c088bfbefdf5c210ab2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c27bc31_45be04c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-07T08:20:18Z",
+      "side": 1,
+      "message": "Redundant attr. It is already in the common attr.",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "c89ac6f17646aa8f21c088bfbefdf5c210ab2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83b542f_9dbf57fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-07T08:20:18Z",
+      "side": 1,
+      "message": "cr :\u003d s.PreValue().(*chrome.Chrome)\n\ntconn, err :\u003d cr.TestAPIConn(ctx)\nif err !\u003d nil {\n\ts.Fatal(\"Creating test API connection failed: \", err)\n}\n\ncleanup, err :\u003d ash.EnsureTabletModeEnabled(ctx, tconn, true)\nif err !\u003d nil {\n\ts.Fatal(\"Failed to ensure in tablet mode: \", err)\n}\ndefer cleanup(ctx)",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 68
+      },
+      "revId": "c89ac6f17646aa8f21c088bfbefdf5c210ab2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74493db9_7b0b838e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-07T08:20:18Z",
+      "side": 1,
+      "message": "vkb.ClickUntilVKShown(ctx, tconn, element) is more reliable as it has fail-retry on some extreme cases.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "c89ac6f17646aa8f21c088bfbefdf5c210ab2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "863545be_5abb7333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-07T08:20:18Z",
+      "side": 1,
+      "message": "vkb.WaitForVKReady(ctx, tconn, cr) waits for both VK fully locationed and decoder enabled",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "c89ac6f17646aa8f21c088bfbefdf5c210ab2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e2fe43_761460a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-07T08:20:18Z",
+      "side": 1,
+      "message": "Can we go through settings page to do purely E2E journey, such as http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "c89ac6f17646aa8f21c088bfbefdf5c210ab2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b486bdd_e717bc7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-07T08:20:18Z",
+      "side": 1,
+      "message": "Not sure if it is the best implementation. Because a real user would not never do this. Ideally the test should go through normal user journeys.",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 51
+      },
+      "revId": "c89ac6f17646aa8f21c088bfbefdf5c210ab2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
