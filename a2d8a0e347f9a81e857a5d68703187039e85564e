@@ -18,6 +18,57 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc98c07c_4b98a886",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-07T23:25:14Z",
+      "side": 1,
+      "message": "Couple questions, overall LGTM. Would like to see documentation on how this works and how we add/update tests but that can be separate.",
+      "revId": "a2d8a0e347f9a81e857a5d68703187039e85564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59cbb10e_d0732cd8",
+        "filename": "src/chromiumos/tast/common/genparams/template.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-07T23:25:14Z",
+      "side": 1,
+      "message": "Why float64(int64(...))?",
+      "revId": "a2d8a0e347f9a81e857a5d68703187039e85564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91437086_aa91f743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-07T23:25:14Z",
+      "side": 1,
+      "message": "What happens if we forget to run this? I\u0027m assuming from the fact that these are all test files instead of separate that there\u0027s some sort of build integration?",
+      "revId": "a2d8a0e347f9a81e857a5d68703187039e85564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "682ab30b_8b8836fe",
