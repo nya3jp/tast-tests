@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c727c3_81a219ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-07T03:13:15Z",
+      "side": 1,
+      "message": "Tast Shadow Review: LGTM % nits",
+      "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae6af097_10432386",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-07T03:13:15Z",
+      "side": 1,
+      "message": "nit: To avoid this cleanup method becoming overly unwieldy I\u0027d prefer if you extracted this method back out (as you had before).\n\nBelow, you would add it to your list of cleanup methods as:\nfunc() error { return cleanupDisplayProcess(ctx, pid, conn, outDir) },",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 49
+      },
+      "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a91596_7103460d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-07T03:13:15Z",
+      "side": 1,
+      "message": "nit: This is getting uncomfortably long for me, consider refactoring as follows:\n\ncleanupFns :\u003d [](func() error){\n  ...\n}\n\nfor _, cleanup :\u003d range cleanupFns {\n\n}",
+      "range": {
+        "startLine": 75,
+        "startChar": 19,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
