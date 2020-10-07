@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -78,10 +77,16 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, lockTimeout); err != nil {
 		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
 	}
-
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
+	defer func() {
+		// Ensure that screen is unlocked even if the test fails.
+		if st, err := lockscreen.GetState(closeCtx, tconn); err != nil {
+			s.Error("Failed to get lockscreen state: ", err)
+		} else if st.Locked {
+			if err := kb.Type(ctx, password+"\n"); err != nil {
+				s.Error("Failed ot type password: ", err)
+			}
+		}
+	}()
 
 	var elapsed time.Duration
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
