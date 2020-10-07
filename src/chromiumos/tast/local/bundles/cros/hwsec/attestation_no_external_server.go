@@ -26,7 +26,6 @@ func init() {
 
 // AttestationNoExternalServer runs through the attestation flow, including enrollment, cert, sign challenge.
 // Also, it verifies the the key access functionality. All the external dependencies are replaced with the locally generated server responses.
-// TODO(b/154672162): Replace the communication with real servers with fake responses generated locally on DUT.
 func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	r, err := hwseclocal.NewCmdRunner()
 	if err != nil {
