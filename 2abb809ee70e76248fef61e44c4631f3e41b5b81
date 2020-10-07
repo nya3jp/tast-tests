@@ -94,6 +94,30 @@
       },
       "revId": "2abb809ee70e76248fef61e44c4631f3e41b5b81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa2a15c_ad7c176f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-10-07T03:08:00Z",
+      "side": 1,
+      "message": "Thanks for the pointer. I tried it and things will get better but there are still chances that I hit on the same error. So I am wondering if there are other things we can wait for to ensure the browser context is already bound.",
+      "parentUuid": "d134b0cf_aba3a629",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "2abb809ee70e76248fef61e44c4631f3e41b5b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
