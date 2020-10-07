@@ -16,6 +16,75 @@
       "message": "Patchset 1 just checks for a node with a \"Complete\" name on the Files app, it works might be enough?",
       "revId": "2ebb98c8b1000795229818834952a24f2d4f5f97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72842909_738c7a07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T15:52:19Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 316,
+        "startChar": 9,
+        "endLine": 316,
+        "endChar": 10
+      },
+      "revId": "2ebb98c8b1000795229818834952a24f2d4f5f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3caf1375_2cb36f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T15:52:19Z",
+      "side": 1,
+      "message": "Could you comment where the numbers come from?",
+      "range": {
+        "startLine": 319,
+        "startChar": 41,
+        "endLine": 319,
+        "endChar": 48
+      },
+      "revId": "2ebb98c8b1000795229818834952a24f2d4f5f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd063ed_02a47277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T15:52:19Z",
+      "side": 1,
+      "message": "Could you move this out from the function, so that it wouldn\u0027t need to be compiled many times (for each iteration).",
+      "range": {
+        "startLine": 319,
+        "startChar": 12,
+        "endLine": 319,
+        "endChar": 62
+      },
+      "revId": "2ebb98c8b1000795229818834952a24f2d4f5f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
