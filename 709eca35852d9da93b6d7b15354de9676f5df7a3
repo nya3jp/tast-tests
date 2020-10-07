@@ -324,6 +324,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "131f02ae_d699faca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-07T06:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50986a34_0b38d3b2",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "709eca35852d9da93b6d7b15354de9676f5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ab2570d_9fe9cacb",
