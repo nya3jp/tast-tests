@@ -68,6 +68,30 @@
       },
       "revId": "6435cac322e925faad6fa18462e4ded186fa3587",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dab13a07_408605c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-07T01:23:49Z",
+      "side": 1,
+      "message": "Changed to just checking for at least 1 result.",
+      "parentUuid": "5c36469b_796b4d37",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 94,
+        "endChar": 29
+      },
+      "revId": "6435cac322e925faad6fa18462e4ded186fa3587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
