@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "f8a04977_6addbf59",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "First time adding Tast Tests to Wificell-cq. Please double check that I did it correctly.",
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "7fb14647_f696b835",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "because Tast is in active development, I\u0027d bet that these tests are most likely to break due to changes in the .../tast-tests repo, rather than shill and wpa_supplicant. Do we need to adjust the wificell-cq path coverage parameters, so it will run when the tests change? That\u0027ll possibly create some trouble on figuring out the right paths to watch, or else create a ton of lab load if we run on every tast-tests CL",
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f20e6981_ee84ffe2",
         "filename": "/PATCHSET_LEVEL",
@@ -48,10 +49,10 @@
       "side": 1,
       "message": "Please address Brian\u0027s comment. We may trigger CQ for platform/tast and platform/tast-test change.\n",
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "401aaa16_88a52a57",
         "filename": "/PATCHSET_LEVEL",
@@ -65,10 +66,10 @@
       "side": 1,
       "message": "I agree with Brian and Dean that we should add tast and tast-test repos to trigger wificq, but I\u0027m not sure we have the bandwidth on our DUTs to run the tests triggered by that yet. I\u0027m going to hold off on submitting this CL until I review what impact that would have.\n\nThanks.\n ",
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f1532efd_7fe79662",
         "filename": "/PATCHSET_LEVEL",
@@ -83,10 +84,10 @@
       "message": "I gave an overview of CL commit frequency on dependent paths:\nhttps://chrome-internal-review.googlesource.com/c/chromeos/infra/config/+/3284846/comment/9f95ad6d_586a9126/",
       "parentUuid": "401aaa16_88a52a57",
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "aa6cdde9_febf0bd8",
         "filename": "/PATCHSET_LEVEL",
@@ -100,10 +101,27 @@
       "side": 1,
       "message": "I\u0027m fine with the concept, but this CL is not good as-is",
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6dfdd70_43d55fcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-07T00:22:02Z",
+      "side": 1,
+      "message": "any update?",
+      "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "3f99363b_a9693d76",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
@@ -117,10 +135,10 @@
       "side": 1,
       "message": "Yes it is correct.",
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d105a3e7_4a044da8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
@@ -140,10 +158,10 @@
         "endChar": 57
       },
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "74313a95_ce6fb59c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
@@ -164,10 +182,10 @@
         "endChar": 57
       },
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "aa62e45f_8074e955",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
@@ -188,8 +206,7 @@
         "endChar": 57
       },
       "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
