@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "183ab7e0_41f6abdd",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-07T08:56:24Z",
+      "side": 1,
+      "message": "Thanks. I have created chrome option for virtual keyboard. Also refactored tests that I am confident with.",
+      "parentUuid": "2dead481_c13fbe6f",
+      "revId": "8953fd1bd0aa61f84546c5f0eeca84ca94b8df5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b70031ec_3a68393d",
@@ -67,6 +85,30 @@
       "writtenOn": "2020-10-07T08:06:03Z",
       "side": 1,
       "message": "can you use ExtensionBackgroundPageURL? Also add a constant for the extension Id.",
+      "range": {
+        "startLine": 467,
+        "startChar": 13,
+        "endLine": 467,
+        "endChar": 82
+      },
+      "revId": "8953fd1bd0aa61f84546c5f0eeca84ca94b8df5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3adbb87e_faaa539e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-07T08:56:24Z",
+      "side": 1,
+      "message": "This background url is static page, not auto generated background. So the function does not suit here, but I have created a constant for the url.",
+      "parentUuid": "b70031ec_3a68393d",
       "range": {
         "startLine": 467,
         "startChar": 13,
