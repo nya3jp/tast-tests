@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63904f0_4869d5fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T01:46:59Z",
+      "side": 1,
+      "message": "Note to reviewers: the main changes are in template.go, params.go, and the _test.go files\nAlmost all of the rest is generated config code, sometimes with a few tweaks to allow for parameter generation to work as expected (e.g. adding \"informational\" to the top level test object, removing parts of the top level test object that are now managed by the parameter generator)\n\nFor most tests this is a no-op. For some this will change the set of variants or some test names, but overall the changes should be minimal.",
+      "revId": "4b45d938bd72549e5e804910929dc60c133b5e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
