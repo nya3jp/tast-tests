@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7505da1_d1e3b890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-07T09:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80e38854_0ab42ace",
+      "range": {
+        "startLine": 109,
+        "startChar": 19,
+        "endLine": 109,
+        "endChar": 31
+      },
+      "revId": "dbf0d8b7f6df5b8d53fe095ab2562a0c693774b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2acbd696_acb89469",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0919ba73_adaa6756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-07T09:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2acbd696_acb89469",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "dbf0d8b7f6df5b8d53fe095ab2562a0c693774b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c37e4e3c_4021ff56",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-07T02:47:43Z",
       "side": 1,
       "message": "maybe: \"empty\"\n\nDitto for below.",
+      "range": {
+        "startLine": 642,
+        "startChar": 10,
+        "endLine": 642,
+        "endChar": 14
+      },
+      "revId": "dbf0d8b7f6df5b8d53fe095ab2562a0c693774b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce23d07_b0de3296",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-07T09:15:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c37e4e3c_4021ff56",
       "range": {
         "startLine": 642,
         "startChar": 10,
