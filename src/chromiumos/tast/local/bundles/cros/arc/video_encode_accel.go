@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
 	"chromiumos/tast/local/bundles/cros/arc/video"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -47,7 +46,7 @@ func init() {
 		Timeout: 5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_192p_i420",
-			Val: encoding.TestOptions{
+			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Bear192P,
 				PixelFormat: videotype.I420,
@@ -58,7 +57,7 @@ func init() {
 		}, {
 			// TODO(b/140082257): enable once the virtio video encoder is ready
 			Name: "h264_192p_i420_vm",
-			Val: encoding.TestOptions{
+			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Bear192P,
 				PixelFormat: videotype.I420,
@@ -67,7 +66,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name: "h264_360p_i420",
-			Val: encoding.TestOptions{
+			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Tulip360P,
 				PixelFormat: videotype.I420},
@@ -77,7 +76,7 @@ func init() {
 		}, {
 			// TODO(b/140082257): enable once the virtio video encoder is ready
 			Name: "h264_360p_i420_vm",
-			Val: encoding.TestOptions{
+			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Tulip360P,
 				PixelFormat: videotype.I420},
@@ -85,7 +84,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name: "h264_720p_i420",
-			Val: encoding.TestOptions{
+			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Tulip720P,
 				PixelFormat: videotype.I420},
@@ -95,7 +94,7 @@ func init() {
 		}, {
 			// TODO(b/140082257): enable once the virtio video encoder is ready
 			Name: "h264_720p_i420_vm",
-			Val: encoding.TestOptions{
+			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Tulip720P,
 				PixelFormat: videotype.I420},
@@ -103,7 +102,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name: "h264_1080p_i420",
-			Val: encoding.TestOptions{
+			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420},
@@ -113,7 +112,7 @@ func init() {
 		}, {
 			// TODO(b/140082257): enable once the virtio video encoder is ready
 			Name: "h264_1080p_i420_vm",
-			Val: encoding.TestOptions{
+			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420},
@@ -125,5 +124,5 @@ func init() {
 
 func VideoEncodeAccel(ctx context.Context, s *testing.State) {
 	video.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC,
-		s.Param().(encoding.TestOptions), veaPullEncodedVideo, veaCacheExtractedVideo)
+		s.Param().(video.EncodeTestOptions), veaPullEncodedVideo, veaCacheExtractedVideo)
 }

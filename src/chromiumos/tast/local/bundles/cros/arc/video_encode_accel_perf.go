@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
 	"chromiumos/tast/local/bundles/cros/arc/video"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +30,7 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_1080p_i420",
-			Val: encoding.TestOptions{
+			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420,
@@ -42,7 +41,7 @@ func init() {
 		}, {
 			// TODO(b/140082257): enable once the virtio video encoder is ready
 			Name: "h264_1080p_i420_vm",
-			Val: encoding.TestOptions{
+			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420,
@@ -55,5 +54,5 @@ func init() {
 
 func VideoEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	video.RunARCPerfVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC,
-		s.Param().(encoding.TestOptions), veapCacheExtractedVideo)
+		s.Param().(video.EncodeTestOptions), veapCacheExtractedVideo)
 }
