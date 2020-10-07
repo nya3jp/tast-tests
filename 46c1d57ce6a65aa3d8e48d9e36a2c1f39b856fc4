@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06d62ec_a8078a84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-07T15:14:34Z",
+      "side": 1,
+      "message": "lgtm % one nit",
+      "revId": "46c1d57ce6a65aa3d8e48d9e36a2c1f39b856fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb00803_414854e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-07T15:14:34Z",
+      "side": 1,
+      "message": "nit: reaply -\u003e reply",
+      "range": {
+        "startLine": 168,
+        "startChar": 22,
+        "endLine": 168,
+        "endChar": 28
+      },
+      "revId": "46c1d57ce6a65aa3d8e48d9e36a2c1f39b856fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
