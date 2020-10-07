@@ -26,8 +26,13 @@ dummy
 # gr[ae]y.?list         - clean
 # insane                - clean
 
-\bhe\b
+# \bhe\b
 #    - see crbug/1135040
+HE\sMAC\sCapabilities
+HE-MAC
+Wifi\sHE\sprotocols
+heb:"he"
+:he\|av
 
 # \bshe\b               - clean
 # \bhim\b               - clean

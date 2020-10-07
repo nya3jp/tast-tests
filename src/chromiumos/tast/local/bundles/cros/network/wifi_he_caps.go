@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WifiHeCaps,
-		Desc:         "Verifies HE supported DUT actually supports HE protocols",
+		Desc:         "Verifies HE-MAC supported DUT actually supports Wifi HE protocols",
 		Contacts:     []string{"billyzhao@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
@@ -35,10 +35,10 @@ func WifiHeCaps(ctx context.Context, s *testing.State) {
 		s.Fatal("Expect at least one wireless phy; found nothing")
 	}
 	if !res[0].SupportHE {
-		s.Error("Device doesn't support HE capabilities")
+		s.Error("Device doesn't support HE-MAC capabilities")
 	}
 	if !res[0].SupportHE160 {
-		s.Error("Device doesn't support 5ghz HE capabilities")
+		s.Error("Device doesn't support 5ghz HE-MAC capabilities")
 	}
 
 }
