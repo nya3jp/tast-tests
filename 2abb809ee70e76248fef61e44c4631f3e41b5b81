@@ -118,6 +118,30 @@
       },
       "revId": "2abb809ee70e76248fef61e44c4631f3e41b5b81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f69303_8c874a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-10-07T15:34:40Z",
+      "side": 1,
+      "message": "Hmm, I tried to put \"location.reload()\" before \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\" just like what we did for test extension and it seems works!\nI tried to run all the camera tests for twice and did not hit the issue anymore. Thanks for the advice!",
+      "parentUuid": "5fa2a15c_ad7c176f",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "2abb809ee70e76248fef61e44c4631f3e41b5b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
