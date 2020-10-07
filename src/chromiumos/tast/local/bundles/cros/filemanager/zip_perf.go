@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -310,14 +311,38 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 	// Start timer for zip file extracting operation.
 	startTime := time.Now()
 
-	// Wait for the copy operation to finish.
-	params = ui.FindParams{
-		Name: "Copied to " + zipBaseName + ".",
-		Role: ui.RoleTypeStaticText,
-	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Find notification panel for copy operation.
+		params = ui.FindParams{
+			Role: ui.RoleTypeGenericContainer,
+			Attributes: map[string]interface{}{
+				"name": regexp.MustCompile("Copying (102|500) items to *"),
+			},
+		}
 
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 5*time.Minute); err != nil {
-		s.Fatal("Waiting for end of copy operation failed: ", err)
+		panel, err := files.Root.Descendant(ctx, params)
+		if err != nil {
+			return errors.New("still unable to find copy notification")
+		}
+		defer panel.Release(ctx)
+
+		// Wait for the copy operation to finish.
+		params = ui.FindParams{
+			Name: "Complete",
+			Role: ui.RoleTypeStaticText,
+		}
+
+		completeStringFound, err := panel.DescendantExists(ctx, params)
+		if err != nil {
+			return err
+		}
+		if !completeStringFound {
+			return errors.New("still unable to find 'Complete' string")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+		s.Fatal("Failed to wait for end of copy operation: ", err)
 	}
 
 	// Return duration.
