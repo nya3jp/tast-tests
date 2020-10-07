@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "45762758_5c173027",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,27 @@
       "side": 1,
       "message": "LGTM % nits",
       "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5eceae7_a58a5398",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T07:23:47Z",
+      "side": 1,
+      "message": "some nits",
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3cdbaf40_c5d3bada",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
@@ -37,10 +55,79 @@
         "endChar": 48
       },
       "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0b9e96_74ab80b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T07:23:47Z",
+      "side": 1,
+      "message": "as the declaration here will be in package scope, it might be better to move these into the test function so that constants in different tests won\u0027t collide.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ed36a64_7bcf527c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T07:23:47Z",
+      "side": 1,
+      "message": "nit: remove this extra space?",
+      "range": {
+        "startLine": 36,
+        "startChar": 103,
+        "endLine": 36,
+        "endChar": 104
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efdff62b_a6791fb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T07:23:47Z",
+      "side": 1,
+      "message": "nit: I personally might prefer separating the two cases. As \"err !\u003d nil\" is more likely a bug in regular expression rather than in vm_pstore_dump.",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "e4f4a4c2_ec3d8b08",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
@@ -60,8 +147,7 @@
         "endChar": 2
       },
       "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
