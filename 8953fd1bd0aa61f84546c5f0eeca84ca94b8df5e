@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure this should be done in Chrome.New. Can this be moved to a helper function that is called by the affected tests?",
       "revId": "8953fd1bd0aa61f84546c5f0eeca84ca94b8df5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49fe573f_cbf50aec",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-07T07:59:27Z",
+      "side": 1,
+      "message": "My intention was to add it into a helper function. The probem is that all areas using vkb will need to repeat the same check. Besides, this problem only happens after user login, which is part of Chrome.New. Moreover, if `--enable-virtual-keyboard` is provided in Chrome.New, it basically means that the test is going to use virtual keyboard, so vk warming up can fairly be part of Chrome.New",
+      "parentUuid": "e42957ea_758a3a5d",
+      "revId": "8953fd1bd0aa61f84546c5f0eeca84ca94b8df5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
