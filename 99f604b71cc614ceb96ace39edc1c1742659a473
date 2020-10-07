@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "084a371a_deb85cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-07T14:51:23Z",
+      "side": 1,
+      "message": "I think this is the most important part of the test, as if the Continue button is not disabled, the user won\u0027t care about the warning, and set the wrong pin if they can.",
+      "parentUuid": "7705e0ed_0ad9f07f",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "99f604b71cc614ceb96ace39edc1c1742659a473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55a3a77d_2f222bb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
         "patchSetId": 5

@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "792c2c01_2ff1de6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-07T14:51:23Z",
+      "side": 1,
+      "message": "As there is no pinBad now, you can rename is back to pin.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67c863a_f95cb0f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-07T14:51:23Z",
+      "side": 1,
+      "message": "nit: warning is enough",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739ebb7c_46c4ce02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-07T14:51:23Z",
+      "side": 1,
+      "message": "The pin shouldn\u0027t be a weak pin, as there a warning message for these. It might interact with the other warning in some way.",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 27
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3e5336_6fc8b98c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-07T14:51:23Z",
+      "side": 1,
+      "message": "You should add a test case where the min pin is longer than the default 6.\nYou can rename min_4 to \"shorter\", and the new one \"longer\".",
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5cba5a4_7e7d4d3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-07T14:51:23Z",
+      "side": 1,
+      "message": "see above",
+      "range": {
+        "startLine": 67,
+        "startChar": 21,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5326bdb_2de7c97b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-07T14:51:23Z",
+      "side": 1,
+      "message": "nit: \"Failed to find the warning message (1): \"",
+      "range": {
+        "startLine": 139,
+        "startChar": 13,
+        "endLine": 139,
+        "endChar": 87
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b42f79d_7e5fb64e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-07T14:51:23Z",
+      "side": 1,
+      "message": "nit: \"Failed to find the warning message (2): \"",
+      "range": {
+        "startLine": 165,
+        "startChar": 13,
+        "endLine": 165,
+        "endChar": 109
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
