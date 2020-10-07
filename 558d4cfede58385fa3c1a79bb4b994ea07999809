@@ -3,6 +3,144 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "623fd5ea_bac5665c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T15:53:50Z",
+      "side": 1,
+      "message": "This isn\u0027t accurate. As you are querying, it will keep checking the location of the first matching node. That node could be different between iterations.\n\nMaybe:\nFindAndClickStableNode repeatedly finds the first matching node until the node\u0027s location if stable. Then, it clicks that node.",
+      "range": {
+        "startLine": 307,
+        "startChar": 71,
+        "endLine": 307,
+        "endChar": 101
+      },
+      "revId": "558d4cfede58385fa3c1a79bb4b994ea07999809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434e9508_031c1b16",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T15:53:50Z",
+      "side": 1,
+      "message": "nit: an element being refreshed.",
+      "range": {
+        "startLine": 308,
+        "startChar": 61,
+        "endLine": 308,
+        "endChar": 78
+      },
+      "revId": "558d4cfede58385fa3c1a79bb4b994ea07999809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd4645a_fa87046f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T15:53:50Z",
+      "side": 1,
+      "message": "nit: will relocate",
+      "range": {
+        "startLine": 308,
+        "startChar": 6,
+        "endLine": 308,
+        "endChar": 14
+      },
+      "revId": "558d4cfede58385fa3c1a79bb4b994ea07999809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86f5b1b_b33391c8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T15:53:50Z",
+      "side": 1,
+      "message": "Please add a comment about Stable*Click and WaitLocationStable. I think those should generally be the preferred solution. They work with animation as long as the node is not totally deleted and recreated.",
+      "range": {
+        "startLine": 309,
+        "startChar": 3,
+        "endLine": 309,
+        "endChar": 68
+      },
+      "revId": "558d4cfede58385fa3c1a79bb4b994ea07999809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce7982df_b0e2c5bf",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T15:53:50Z",
+      "side": 1,
+      "message": "Can we make a StableFind(..) method? That way it can be reused at other locations that don\u0027t just want to click a node.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 126
+      },
+      "revId": "558d4cfede58385fa3c1a79bb4b994ea07999809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4f059d_027d6e63",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T15:53:50Z",
+      "side": 1,
+      "message": "just use find here since it is already in a poll",
+      "range": {
+        "startLine": 316,
+        "startChar": 15,
+        "endLine": 316,
+        "endChar": 30
+      },
+      "revId": "558d4cfede58385fa3c1a79bb4b994ea07999809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14863154_3ef681e0",
         "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
         "patchSetId": 5
