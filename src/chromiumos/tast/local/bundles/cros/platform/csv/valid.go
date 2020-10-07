@@ -104,13 +104,13 @@ func MatchValue(value string) validator {
 	}
 }
 
-// MatchRegexOrNA returns a function that checks whether |actual| matches the
-// regex pattern specified by |regex|. If |actual| is "NA", do not proceed with
-// the pattern matching.
-func MatchRegexOrNA(regex *regexp.Regexp) validator {
+// MatchRegexOr returns a function that checks whether |actual| matches the
+// regex pattern specified by |regex|. If |actual| is equal to |backup|, do not
+// proceed with the pattern matching.
+func MatchRegexOr(regex *regexp.Regexp, backup string) validator {
 	return func(actual string) error {
 		// If the value does not exist, do not check the format.
-		if actual == "NA" {
+		if actual == backup {
 			return nil
 		}
 		if !regex.MatchString(actual) {
@@ -120,15 +120,15 @@ func MatchRegexOrNA(regex *regexp.Regexp) validator {
 	}
 }
 
-// EqualToFileContentOrNA returns a function that checks whether |path| exists.
+// EqualToFileContentOr returns a function that checks whether |path| exists.
 // If it does, it compares the value at that location wih |actual|. If it does
-// not, it ensures that |actual| equals "NA".
-func EqualToFileContentOrNA(path string) validator {
+// not, it ensures that |actual| equals |backup|.
+func EqualToFileContentOr(path, backup string) validator {
 	return func(actual string) error {
 		expectedBytes, err := ioutil.ReadFile(path)
 		if os.IsNotExist(err) {
-			if actual != "NA" {
-				return errors.Errorf("failed to get correct value: got %v, want NA", actual)
+			if actual != backup {
+				return errors.Errorf("failed to get correct value: got %v, want %v", actual, backup)
 			}
 			return nil
 		} else if err != nil {
@@ -142,12 +142,13 @@ func EqualToFileContentOrNA(path string) validator {
 	}
 }
 
-// EqualToFileIfCrosConfigPropOrNA returns a function that checks whether
-// |filePath| should exist by using crosconfig and its two arguments, |prop|
-// and |path|. If the file should exist, it attempts to read the value from the
+// EqualToFileIfCrosConfigPropOr returns a function that checks whether
+// |filePath| should exist by using crosconfig and its two arguments, |prop| and
+// |path|. If the crosconfig property does not exist, |actual| is compared to
+// |backup|. If the file should exist, it attempts to read the value from the
 // file. If it cannot, an error is reported. If it can, it compares the read
 // value with |actual|.
-func EqualToFileIfCrosConfigPropOrNA(ctx context.Context, path, prop, filePath string) validator {
+func EqualToFileIfCrosConfigPropOr(ctx context.Context, path, prop, filePath, backup string) validator {
 	return func(actual string) error {
 		val, err := crosconfig.Get(ctx, path, prop)
 		if err != nil && !crosconfig.IsNotFound(err) {
@@ -155,8 +156,8 @@ func EqualToFileIfCrosConfigPropOrNA(ctx context.Context, path, prop, filePath s
 		}
 		// Property does not exist
 		if crosconfig.IsNotFound(err) || val != "true" {
-			if actual != "NA" {
-				return errors.Errorf("failed to get correct value: got %v, want NA", actual)
+			if actual != backup {
+				return errors.Errorf("failed to get correct value: got %v, want %v", actual, backup)
 			}
 			return nil
 		}
