@@ -78,6 +78,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bd3c62d_7bf6e110",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T03:19:11Z",
+      "side": 1,
+      "message": "So, for now, I think we can at least mitigate this by adding a polling on tf.VerifyConnection like what Autotest is doing.\n\narowa@: Please add polling on VerifyConnection after roaming as DHCP renewal might not yet finish.",
+      "parentUuid": "7e0de8e3_c2250f49",
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae542439_1c5fb672",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
         "patchSetId": 3
@@ -160,6 +178,30 @@
       "side": 1,
       "message": "Ah I didn\u0027t realize that already existed. I do think monitoring shill states is a cleaner way to do this, so I\u0027m fine with doing it this way too. I still think it would be nice to extract all the monitor functionality into another object/struct, so my comment stands.",
       "parentUuid": "e640cc8e_4323c933",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a95d5ee_35c26eef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T03:19:11Z",
+      "side": 1,
+      "message": "Sure, your suggestion also SGTM.",
+      "parentUuid": "e41a4379_e8dd15a4",
       "range": {
         "startLine": 157,
         "startChar": 0,
