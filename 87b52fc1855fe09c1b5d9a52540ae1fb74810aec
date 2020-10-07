@@ -33,6 +33,52 @@
       "message": "LGTM.  Just in case to add nya@ for double-checking if making the test API in logIn() is a good choice.",
       "revId": "87b52fc1855fe09c1b5d9a52540ae1fb74810aec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9d18de_7b597156",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T18:34:58Z",
+      "side": 1,
+      "message": "This may lead to issues if in the future someone wants to relogin and make sure that notifications persist. Maybe we can check if the login is keeping the state or not?",
+      "range": {
+        "startLine": 1293,
+        "startChar": 5,
+        "endLine": 1293,
+        "endChar": 94
+      },
+      "revId": "87b52fc1855fe09c1b5d9a52540ae1fb74810aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daff23e6_8191fe42",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T18:34:58Z",
+      "side": 1,
+      "message": "This may not matter since guest mode should be a clean session without notifications.",
+      "range": {
+        "startLine": 1294,
+        "startChar": 26,
+        "endLine": 1294,
+        "endChar": 103
+      },
+      "revId": "87b52fc1855fe09c1b5d9a52540ae1fb74810aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
