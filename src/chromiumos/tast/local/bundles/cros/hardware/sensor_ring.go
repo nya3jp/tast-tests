@@ -30,10 +30,11 @@ func init() {
 }
 
 func SensorRing(ctx context.Context, s *testing.State) {
-	s.Log("Restarting ui job to so sensors are not claimed by ARC")
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+	s.Log("Stop ui job to so sensors are not claimed by ARC")
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart ui job: ", err)
 	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	dutSensors, err := iio.GetSensors()
 	if err != nil {
