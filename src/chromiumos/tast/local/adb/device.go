@@ -6,12 +6,15 @@ package adb
 
 import (
 	"context"
+	"regexp"
 	"strings"
+	"sync"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 // Device holds the resources required to communicate with a specific ADB device.
@@ -193,4 +196,96 @@ func (d *Device) WaitForState(ctx context.Context, want State, timeout time.Dura
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second, Timeout: timeout})
+}
+
+// InstallOption defines possible options to pass to "adb install".
+type InstallOption string
+
+// ADB install options listed in "adb help".
+const (
+	InstallOptionLockApp               InstallOption = "-l"
+	InstallOptionReplaceApp            InstallOption = "-r"
+	InstallOptionAllowTestPackage      InstallOption = "-t"
+	InstallOptionSDCard                InstallOption = "-s"
+	InstallOptionAllowVersionDowngrade InstallOption = "-d"
+	InstallOptionGrantPermissions      InstallOption = "-g"
+	InstallOptionEphemeralInstall      InstallOption = "--instant"
+)
+
+var showAPKPathWarningOnce sync.Once
+
+// Install installs an APK file to the Android system.
+// By default, it uses InstallOptionReplaceApp and InstallOptionAllowVersionDowngrade.
+func (d *Device) Install(ctx context.Context, path string, installOptions ...InstallOption) error {
+	if strings.HasPrefix(path, apkPathPrefix) {
+		showAPKPathWarningOnce.Do(func() {
+			testing.ContextLog(ctx, "WARNING: When files under tast-tests/android are modified, APKs on the DUT should be pushed manually. See tast-tests/android/README.md")
+		})
+	}
+
+	if err := d.ShellCommand(ctx, "settings", "put", "global", "verifier_verify_adb_installs", "0").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed disabling verifier_verify_adb_installs")
+	}
+
+	installOptions = append(installOptions, InstallOptionReplaceApp)
+	installOptions = append(installOptions, InstallOptionAllowVersionDowngrade)
+	commandArgs := []string{"install"}
+	for _, installOption := range installOptions {
+		commandArgs = append(commandArgs, string(installOption))
+	}
+	commandArgs = append(commandArgs, path)
+	out, err := d.Command(ctx, commandArgs...).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return err
+	}
+
+	// "Success" is the only possible positive result. See runInstall() here:
+	// https://android.googlesource.com/platform/frameworks/base/+/bdd94d9979e28c39539e25fbb98621df3cbe86f2/services/core/java/com/android/server/pm/PackageManagerShellCommand.java#901
+	matched, err := regexp.Match("^Success", out)
+	if err != nil {
+		return err
+	}
+	if !matched {
+		return errors.Errorf("failed to install %v %q", path, string(out))
+	}
+	return nil
+}
+
+// InstalledPackages returns a set of currently-installed packages, e.g. "android".
+// This operation is slow (700+ ms), so unnecessary calls should be avoided.
+func (d *Device) InstalledPackages(ctx context.Context) (map[string]struct{}, error) {
+	ctx, st := timing.Start(ctx, "installed_packages")
+	defer st.End()
+
+	out, err := d.ShellCommand(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "listing packages failed")
+	}
+
+	pkgs := make(map[string]struct{})
+	for _, pkg := range strings.Split(strings.TrimSpace(string(out)), "\n") {
+		// |pm list packages| prepends "package:" to installed packages. Not needed.
+		n := strings.TrimPrefix(pkg, "package:")
+		pkgs[n] = struct{}{}
+	}
+	return pkgs, nil
+}
+
+// Uninstall uninstalls a package from the Android system.
+func (d *Device) Uninstall(ctx context.Context, pkg string) error {
+	out, err := d.Command(ctx, "uninstall", pkg).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return err
+	}
+
+	// "Success" is the only possible positive result. See runUninstall() here:
+	// https://android.googlesource.com/platform/frameworks/base/+/bdd94d9979e28c39539e25fbb98621df3cbe86f2/services/core/java/com/android/server/pm/PackageManagerShellCommand.java#1428
+	matched, err := regexp.Match("^Success", out)
+	if err != nil {
+		return err
+	}
+	if !matched {
+		return errors.Errorf("failed to uninstall %v %q", pkg, string(out))
+	}
+	return nil
 }
