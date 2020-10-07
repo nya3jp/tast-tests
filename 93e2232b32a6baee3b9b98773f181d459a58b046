@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb5896b_7fcb6b7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-07T19:38:05Z",
+      "side": 1,
+      "message": "I meant include it in the title somewhere. This should probably still be \"wifi:\". Also wrong test name.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "93e2232b32a6baee3b9b98773f181d459a58b046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
