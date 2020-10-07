@@ -16,6 +16,57 @@
       "message": "Fix all comments.",
       "revId": "6dcffed5cca622d05ad774e3b0862d0e5b356d26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7489e39d_460a048c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T15:41:24Z",
+      "side": 1,
+      "message": "some look missing, so let me explicitly point them out now.",
+      "revId": "6dcffed5cca622d05ad774e3b0862d0e5b356d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697689b5_b76dc88d",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T15:41:24Z",
+      "side": 1,
+      "message": "empty",
+      "revId": "6dcffed5cca622d05ad774e3b0862d0e5b356d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e4b6ee_378a5a63",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T15:41:24Z",
+      "side": 1,
+      "message": "empty",
+      "revId": "6dcffed5cca622d05ad774e3b0862d0e5b356d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
