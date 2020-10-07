@@ -133,6 +133,30 @@
       },
       "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c062fd8_2f2281a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-07T05:22:12Z",
+      "side": 1,
+      "message": "But the |cleanupDisplayProcess| will check |if len(pid) \u003d\u003d 0| in its body, as the previous assumption if the |conn| is nil in |cleanupDisplayProcess| that means |pid| must be a empty string(because the |pid| require |conn| to be initialized first). So only check |pid| in |cleanupDisplayProcess| is sufficient.",
+      "parentUuid": "e280d978_73ee9c1b",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4c3c108d603d6e286addb630dab0c227d2ca8444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
