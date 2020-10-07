@@ -686,7 +686,7 @@ func (u *UtilityCryptohomeBinary) SetAttestationAsyncMode(ctx context.Context, a
 	return nil
 }
 
-// DeleteKeys delete all he |usernames|'s keys with label having prefix.
+// DeleteKeys delete all the |usernames|'s keys with label having prefix.
 func (u *UtilityCryptohomeBinary) DeleteKeys(ctx context.Context, username, prefix string) error {
 	_, err := u.binary.TPMAttestationDeleteKeys(ctx, username, prefix)
 	if err != nil {
