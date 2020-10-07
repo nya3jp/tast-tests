@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea358c3_a38850e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-07T20:45:37Z",
+      "side": 1,
+      "message": "Maybe log err if err !\u003d nil \u0026\u0026 resultError !\u003d nil so that it isn\u0027t lost altogether?",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "f09b31211914270d3d11d9501e4eb69165bcd876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3263198_5cc68fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-07T20:45:37Z",
+      "side": 1,
+      "message": "ditto here",
+      "range": {
+        "startLine": 169,
+        "startChar": 40,
+        "endLine": 169,
+        "endChar": 51
+      },
+      "revId": "f09b31211914270d3d11d9501e4eb69165bcd876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c2b924_4b431fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-07T20:45:37Z",
+      "side": 1,
+      "message": "And here",
+      "range": {
+        "startLine": 255,
+        "startChar": 52,
+        "endLine": 255,
+        "endChar": 63
+      },
+      "revId": "f09b31211914270d3d11d9501e4eb69165bcd876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbbf0af6_cf090241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-07T20:45:37Z",
+      "side": 1,
+      "message": "Why are these two no longer deferred?",
+      "range": {
+        "startLine": 271,
+        "startChar": 5,
+        "endLine": 280,
+        "endChar": 2
+      },
+      "revId": "f09b31211914270d3d11d9501e4eb69165bcd876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
