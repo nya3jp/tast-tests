@@ -20,6 +20,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/testexec"
@@ -36,7 +37,7 @@ var supportedArchs = []string{
 }
 
 func arcHostClockDest() string {
-	return filepath.Join(arc.ARCTmpDirPath, "arc-host-clock-client")
+	return filepath.Join(adb.AndroidTmpDirPath, "arc-host-clock-client")
 }
 
 // AndroidData is the list of data dependencies that tests need to add to their
