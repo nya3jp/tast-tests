@@ -89,6 +89,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2249f95d_d3731f1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-07T04:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f8fdb12_bc340209",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c8febc_a068610a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-07T04:37:03Z",
+      "side": 1,
+      "message": "In the current implementation, the function monitors all the properties so I added more types in ShillVal but I am not sure if I have covered all the types in shill property values. Also, I am converting uint16 to uint32 because gRPC does not support uint16.\n\nI like the idea of a remote version of PropertyWatcher.Wait(All), but the latency is going to be an issue as you mentiond.\n\n\u003e (AssertNoDisconnect relies on the disconnect event anyway, so if the device were already disconnected, AssertNoDisconnect wouldn\u0027t catch that either).\nTo solve this issue I am checking the state of the connection after starting the monitor, then waiting for the BSSID change. \n\nMatthew: I like your idea and I can start working on it. Also, feel free to work on it :)",
+      "parentUuid": "c2140380_bff5dde8",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eee6136_fe71ed0c",
@@ -125,6 +161,30 @@
       "writtenOn": "2020-10-06T05:18:55Z",
       "side": 1,
       "message": "Hmm..., this looks a little hacky. In particular, it sends a fake PropertyChanged on the same interface/path as the real service. It sounds like a bad idea to me. If we want to send a dbus signal, I might prefer going back with raw dbus SignalWatcher in this function so that we can add a Match for the custom \"stop\" signal. And perhaps extract a signal parsing function to share with Wait().\n\nFWIW, one thought I had for handling \"no disconnection\" is adding a \"monitor\" CheckMethod in ExpectShillProperty which watches some properties before the next event is caught. Then you\u0027ll have a clear boundary of \"monitor\". However, this can\u0027t handle the case like general AssertNoDisconnect as there might be no property change. So, the current direction also looks good to me.",
+      "range": {
+        "startLine": 191,
+        "startChar": 3,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab686988_4c2d9e6a",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-07T04:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "110dd9cd_dd640ed0",
       "range": {
         "startLine": 191,
         "startChar": 3,
