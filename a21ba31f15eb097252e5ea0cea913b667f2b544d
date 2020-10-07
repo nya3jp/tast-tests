@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d19ecdf_64fc5f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T21:23:18Z",
+      "side": 1,
+      "message": "makes sense, thanks",
+      "parentUuid": "f4c27daf_0992a5dc",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6408c824_a66a0616",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Not very straightforward to do this.",
       "parentUuid": "4744f09e_2bf37bd8",
+      "range": {
+        "startLine": 100,
+        "startChar": 87,
+        "endLine": 100,
+        "endChar": 94
+      },
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91cea539_86739db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T21:23:18Z",
+      "side": 1,
+      "message": "maybe just write \"want approximately %d\" ?",
+      "parentUuid": "c6c45c10_94cff750",
       "range": {
         "startLine": 100,
         "startChar": 87,
