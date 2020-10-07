@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "9940e32a_6049f790",
         "filename": "/PATCHSET_LEVEL",
@@ -14,8 +15,24 @@
       "side": 1,
       "message": "ptal.\nsome simple refactoring from adding usfNonMaxTest",
       "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e8d79b9_d9b5b192",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2020-10-07T07:53:48Z",
+      "side": 1,
+      "message": "Code lgtm. However, I\u0027m wondering if you have a plan to use this \"flexibility\" in near future. I mean, if StartActivityWithWindowState is not (and will not be) used anywhere else, this change is over-generalization because it introduces a new arg which is always the same IMO.\nBut it\u0027s up to you.",
+      "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
