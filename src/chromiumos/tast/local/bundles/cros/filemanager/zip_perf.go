@@ -312,11 +312,11 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 
 	// Wait for the copy operation to finish.
 	params = ui.FindParams{
-		Name: "Copied to " + zipBaseName + ".",
+		Name: "Complete",
 		Role: ui.RoleTypeStaticText,
 	}
 
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 5*time.Minute); err != nil {
+	if err := files.Root.WaitUntilDescendantExists(ctx, params, 1*time.Minute); err != nil {
 		s.Fatal("Waiting for end of copy operation failed: ", err)
 	}
 
