@@ -6,6 +6,7 @@ package hwsec
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/proto"
@@ -13,6 +14,7 @@ import (
 	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/common/hwsec"
 	hwseclocal "chromiumos/tast/local/hwsec"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -25,6 +27,16 @@ func init() {
 		SoftwareDeps: []string{"tpm"},
 		Timeout:      4 * time.Minute,
 	})
+}
+
+// isTPM2 checks if the DUT has a TPM2.0 implementation. In case of any error, |false| is returned.
+func isTPM2(ctx context.Context) bool {
+	out, err := testexec.CommandContext(ctx, "tpmc", "tpmversion").Output()
+	// If tpmc is not available, assume it's TPM-less.
+	if err != nil {
+		return false
+	}
+	return strings.TrimSpace(string(out)) == "2.0"
 }
 
 // AttestationNoExternalServer runs through the attestation flow, including enrollment, cert, sign challenge.
@@ -104,19 +116,30 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	for _, param := range []struct {
 		name     string
 		username string
+		keyType  apb.KeyType
 	}{
 		{
 			name:     "system_cert",
 			username: "",
 		},
 		{
-			name:     "user_cert",
+			name:     "user_cert_rsa",
 			username: username,
+			keyType:  apb.KeyType_KEY_TYPE_RSA,
+		},
+		{
+			name:     "user_cert_ecc",
+			username: username,
+			keyType:  apb.KeyType_KEY_TYPE_ECC,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			if !isTPM2(ctx) && param.keyType == apb.KeyType_KEY_TYPE_ECC {
+				s.Log("Skipping unsupported key type item: ", param.name)
+				return
+			}
 			username := param.username
-			certReply, err := ac.GetCertificate(ctx, &apb.GetCertificateRequest{Username: proto.String(username), KeyLabel: proto.String(hwsec.DefaultCertLabel)})
+			certReply, err := ac.GetCertificate(ctx, &apb.GetCertificateRequest{Username: proto.String(username), KeyLabel: proto.String(hwsec.DefaultCertLabel), KeyType: &param.keyType})
 			if err != nil {
 				s.Fatal("Failed to call D-Bus API to get certificate: ", err)
 			}
