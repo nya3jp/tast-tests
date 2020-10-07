@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "ff8a680d_7df583a5",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,10 @@
         "endChar": 20
       },
       "revId": "150b165fa875160b6f1f29295d88e9dbba0aaa68",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "39445608_dc9782dd",
         "filename": "/COMMIT_MSG",
@@ -37,10 +38,10 @@
       "side": 1,
       "message": "Also Cq-Depend on adding the secret variables.",
       "revId": "150b165fa875160b6f1f29295d88e9dbba0aaa68",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "af585715_f8420c0f",
         "filename": "/PATCHSET_LEVEL",
@@ -54,10 +55,10 @@
       "side": 1,
       "message": "Hi, please review the following whenever you have time. Thanks.",
       "revId": "150b165fa875160b6f1f29295d88e9dbba0aaa68",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "ef50dd3d_d5bd4049",
         "filename": "/PATCHSET_LEVEL",
@@ -71,10 +72,10 @@
       "side": 1,
       "message": "LGTM % nits. Thanks for the hard work!",
       "revId": "150b165fa875160b6f1f29295d88e9dbba0aaa68",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1b1699e8_6a07d441",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_force_list.go",
@@ -88,10 +89,10 @@
       "side": 1,
       "message": "nit: remove newline",
       "revId": "150b165fa875160b6f1f29295d88e9dbba0aaa68",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d1aecf24_a34d0c3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_force_list.go",
@@ -105,10 +106,10 @@
       "side": 1,
       "message": "nit: add a comment to specify that the user has the ExtensionInstallForceList policy set.",
       "revId": "150b165fa875160b6f1f29295d88e9dbba0aaa68",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e01856b3_b6fc9730",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_force_list.go",
@@ -128,10 +129,33 @@
         "endChar": 19
       },
       "revId": "150b165fa875160b6f1f29295d88e9dbba0aaa68",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a686a63_0b4ed2f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_force_list.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T07:14:12Z",
+      "side": 1,
+      "message": "minor nit: As the strings here are not expected be changed, use \"const\" can avoid unexpected assignment.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 100
+      },
+      "revId": "150b165fa875160b6f1f29295d88e9dbba0aaa68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "49aaeefb_f39c6992",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_force_list.go",
@@ -151,10 +175,10 @@
         "endChar": 7
       },
       "revId": "150b165fa875160b6f1f29295d88e9dbba0aaa68",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "87ae2492_5e68091f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_force_list.go",
@@ -174,8 +198,7 @@
         "endChar": 61
       },
       "revId": "150b165fa875160b6f1f29295d88e9dbba0aaa68",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

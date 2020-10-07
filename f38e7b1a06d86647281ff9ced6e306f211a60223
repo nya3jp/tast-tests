@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0689a874_3c7ef8b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T07:14:12Z",
+      "side": 1,
+      "message": "LGTM % one minor nit and Victor-Gabriel\u0027s comments.",
+      "revId": "f38e7b1a06d86647281ff9ced6e306f211a60223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
