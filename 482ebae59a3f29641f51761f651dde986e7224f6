@@ -39,6 +39,30 @@
       },
       "revId": "482ebae59a3f29641f51761f651dde986e7224f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a6bcf1_7cbce69c",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-07T15:06:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a46439d_fdbafca1",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 19
+      },
+      "revId": "482ebae59a3f29641f51761f651dde986e7224f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
