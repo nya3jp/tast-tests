@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f103a6_5490406d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-10-07T00:19:18Z",
+      "side": 1,
+      "message": "Commit message update, to add another Cq-Depend.",
+      "revId": "0fcb50ca663f24a219864982c43eb33e9932cc6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
