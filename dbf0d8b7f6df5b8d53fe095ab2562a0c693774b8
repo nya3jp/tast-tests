@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e38854_0ab42ace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T02:47:43Z",
+      "side": 1,
+      "message": "it\u0027s not a fake process, but a real process.\nMaybe \"target process\" or ... something? Do you have better name?",
+      "range": {
+        "startLine": 109,
+        "startChar": 19,
+        "endLine": 109,
+        "endChar": 31
+      },
+      "revId": "dbf0d8b7f6df5b8d53fe095ab2562a0c693774b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2acbd696_acb89469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T02:47:43Z",
+      "side": 1,
+      "message": "maybe: \"Create a fake socket file\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "dbf0d8b7f6df5b8d53fe095ab2562a0c693774b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37e4e3c_4021ff56",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T02:47:43Z",
+      "side": 1,
+      "message": "maybe: \"empty\"\n\nDitto for below.",
+      "range": {
+        "startLine": 642,
+        "startChar": 10,
+        "endLine": 642,
+        "endChar": 14
+      },
+      "revId": "dbf0d8b7f6df5b8d53fe095ab2562a0c693774b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
