@@ -16,6 +16,23 @@
       "message": "Hi Trent - this is the banger CL I\u0027ve been using to test the increasing diagnostic routine coverage.",
       "revId": "47b90f4819031e082fd48cc2321f6b03a5ed1c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23cd22a9_9bb55beb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-07T20:47:57Z",
+      "side": 1,
+      "message": "I guess CC makes more sense, because this isn\u0027t reviewable.",
+      "revId": "47b90f4819031e082fd48cc2321f6b03a5ed1c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
