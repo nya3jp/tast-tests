@@ -24,15 +24,6 @@ const (
 	veaPullEncodedVideo = false
 )
 
-// deviceBlocklist is the list of devices we want to disable these tests on.
-var deviceBlocklist = []string{
-	// The ARC++ HW encoder is not enabled on MT8173: b/142514178
-	// TODO(crbug.com/1115620): remove "Elm" and "Hana" after unibuild migration completed.
-	"elm",
-	"hana",
-	"oak",
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VideoEncodeAccel,
@@ -40,7 +31,7 @@ func init() {
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(deviceBlocklist...)),
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklist...)),
 		Pre:          arc.BootedWithVideoLogging(),
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,

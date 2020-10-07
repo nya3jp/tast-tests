@@ -27,6 +27,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// EncoderBlocklist is the list of devices on which the ARC++ HW encoder is not enabled
+var EncoderBlocklist = []string{
+	// The ARC++ HW encoder is not enabled on MT8173: b/142514178
+	// TODO(crbug.com/1115620): remove "Elm" and "Hana" after unibuild migration completed.
+	"elm",
+	"hana",
+	"oak",
+}
+
 // cpuLog is the name of log file recording CPU usage.
 const cpuLog = "cpu.log"
 
