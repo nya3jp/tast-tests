@@ -16,6 +16,29 @@
       "message": "Thanks for reviewing this CL! I\u0027ve tested the last patch before submitting :) and also verified that the namespace is teared down when the fd is closed.",
       "revId": "0a702b6c93e109da0cdf51ef05124a9bc225f5a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e51e7b_26969408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2020-10-07T22:16:23Z",
+      "side": 1,
+      "message": "is this supposed to be remoteFd ?",
+      "range": {
+        "startLine": 69,
+        "startChar": 7,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "0a702b6c93e109da0cdf51ef05124a9bc225f5a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
