@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2140380_bff5dde8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T04:10:01Z",
+      "side": 1,
+      "message": "The design might depend on the real usage, but as ExpectShillProperty is getting more complicated, I have a thought: Might it be cleaner we use some bidirectional stream gRPC to achieve something general like a remote version of PropertyWatcher.Wait(All)? Then we can move the detailed monitoring logic in remote codes for each usages instead of packing them all in one gRPC.\n\nHsin-chen and I discussed about this before, but we dropped the design for two reasons:\n1. gRPC does not have a \u0027interface{}\u0027 type for arbitrary data. We\u0027ll have to marshal it ourselves (some logics now in ShillVal type) and we don\u0027t really want to handle complex reflection for the types that we might never use, e.g. nested map/slice.\n2. the test runtime might increase much if we have high network latency (e.g. connecting DUT in lab) as there are much more RTT.\n\nDo you think this might help in your use case?",
+      "parentUuid": "cdc788a8_f88e372a",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eee6136_fe71ed0c",
