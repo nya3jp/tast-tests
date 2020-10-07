@@ -39,6 +39,30 @@
       },
       "revId": "a2d8a0e347f9a81e857a5d68703187039e85564e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c410ef9c_ae7740ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T23:15:50Z",
+      "side": 1,
+      "message": "Intentional, otherwise the \"artifact\" sub-test would be CQ-critical",
+      "parentUuid": "682ab30b_8b8836fe",
+      "range": {
+        "startLine": 30,
+        "startChar": 44,
+        "endLine": 30,
+        "endChar": 57
+      },
+      "revId": "a2d8a0e347f9a81e857a5d68703187039e85564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
