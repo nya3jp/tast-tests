@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -43,6 +44,7 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklist...)),
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		Pre:          arc.Booted(),
 		Timeout:      pvepPowerTestDuration,
