@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a0cd258_0b5fea20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-10-07T08:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cdbaf40_c5d3bada",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce0b9e96_74ab80b3",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-07T07:23:47Z",
       "side": 1,
       "message": "as the declaration here will be in package scope, it might be better to move these into the test function so that constants in different tests won\u0027t collide.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd26a6b_c2f24bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-10-07T08:25:00Z",
+      "side": 1,
+      "message": "I moved these declarations into the function scope.",
+      "parentUuid": "ce0b9e96_74ab80b3",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da066a7_f9b44837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-10-07T08:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ed36a64_7bcf527c",
+      "range": {
+        "startLine": 36,
+        "startChar": 103,
+        "endLine": 36,
+        "endChar": 104
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efdff62b_a6791fb2",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f606d49c_16f65ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-10-07T08:25:00Z",
+      "side": 1,
+      "message": "Separated two cases. Now this says like below for regexp errors.\n\n\u003e [ FAIL ] Failed to check the output: error parsing regexp: missing closing ]: `[ *\\d+\\.\\d+\\] Linux version `\n\n\nBTW, we should use regexp.MustCompile(...).MatchString(out) instead?",
+      "parentUuid": "efdff62b_a6791fb2",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4f4a4c2_ec3d8b08",
@@ -140,6 +236,30 @@
       "writtenOn": "2020-10-06T09:36:51Z",
       "side": 1,
       "message": "nit: as you don\u0027t need to keep the matched variable I\u0027d do it like this:\n\nif matched, err :\u003d regexp.MatchString(`^\\[ *\\d+\\.\\d+\\] Linux version `, out); err !\u003d nil || !matched {\n    s.Error(\"Kernel\u0027s console output after booting should start with a string like \\\"[ 0.000000] Linux version ...\\\" but it\u0027s not found in the result\")\n}",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3970517_83747f26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-10-07T08:25:00Z",
+      "side": 1,
+      "message": "I put the declaration into the \"if\" scope.",
+      "parentUuid": "e4f4a4c2_ec3d8b08",
       "range": {
         "startLine": 52,
         "startChar": 0,
