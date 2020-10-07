@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "080847f7_a7ab370a",
         "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
@@ -20,10 +21,34 @@
         "endChar": 2
       },
       "revId": "909b69419dc60e9d79cb08fd6916bfe09734292d",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "94bf7343_d5a053b8",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-10-07T03:14:15Z",
+      "side": 1,
+      "message": "This is actually related to this CL. It\u0027s very important that the extracted video name is unique. If we don\u0027t put the pixelformat in the file name, then we might e.g. incorrectly use a I420 raw video file for a NV12 test. It\u0027s less important now we check the file\u0027s hash, but I would still like the filename to reflect the pixel format.",
+      "parentUuid": "080847f7_a7ab370a",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "909b69419dc60e9d79cb08fd6916bfe09734292d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "7306b68b_2856127a",
         "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
@@ -43,8 +68,31 @@
         "endChar": 2
       },
       "revId": "909b69419dc60e9d79cb08fd6916bfe09734292d",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac94e8cb_ff52298a",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-10-07T03:14:15Z",
+      "side": 1,
+      "message": "Good idea, thanks!",
+      "parentUuid": "7306b68b_2856127a",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "909b69419dc60e9d79cb08fd6916bfe09734292d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
