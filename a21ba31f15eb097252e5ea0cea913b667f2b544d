@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dffff28_8e1c8d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:32:21Z",
+      "side": 1,
+      "message": "optional: maybe if diff \u003c 0 { diff \u003d -diff } ?",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6408c824_a66a0616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:32:21Z",
+      "side": 1,
+      "message": "it is not cancelled right?",
+      "range": {
+        "startLine": 100,
+        "startChar": 58,
+        "endLine": 100,
+        "endChar": 68
+      },
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4744f09e_2bf37bd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:32:21Z",
+      "side": 1,
+      "message": "want between %d and %d ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 87,
+        "endLine": 100,
+        "endChar": 94
+      },
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8116c58_a51d315c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:32:21Z",
+      "side": 1,
+      "message": "We should set the disk size back to the original size after the test so that subsequent tests are not using an unknown disk size.",
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e0c9c0_f6541bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:32:21Z",
+      "side": 1,
+      "message": "is this correct?  the function is Clickresize.",
+      "range": {
+        "startLine": 112,
+        "startChar": 57,
+        "endLine": 112,
+        "endChar": 63
+      },
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8142063_6fbb754e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:32:21Z",
+      "side": 1,
+      "message": "You need to release dialog",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 7
+      },
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9832035_0115c837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:32:21Z",
+      "side": 1,
+      "message": "disk",
+      "range": {
+        "startLine": 118,
+        "startChar": 76,
+        "endLine": 118,
+        "endChar": 81
+      },
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39829fe_7b6e1596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:32:21Z",
+      "side": 1,
+      "message": "Is this required?  if so please make sure it is in the documentation for ChangeDiskSize (I don\u0027t remember seeing it there).",
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76c7ad9_34fc04df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:32:21Z",
+      "side": 1,
+      "message": "Maybe we should check that this is different from the initial value so that we actually do a resize?",
+      "range": {
+        "startLine": 142,
+        "startChar": 93,
+        "endLine": 142,
+        "endChar": 112
+      },
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2183eff_e01d8584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-07T02:32:21Z",
+      "side": 1,
+      "message": "What is this code for?  it doesn\u0027t match the comment, and node is not used other than releasing it.",
+      "revId": "a21ba31f15eb097252e5ea0cea913b667f2b544d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
