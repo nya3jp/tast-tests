@@ -83,6 +83,9 @@ func init() {
 }
 
 func RoamAPGone(ctx context.Context, s *testing.State) {
+	// This test associates a device to an AP, and then configures another AP on the same SSID.
+	// It verifies that, after we deconfigure the first AP, the DUT eventually associates to
+	// the second AP."
 	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {
 		if err := tf.CollectLogs(ctx); err != nil {
@@ -134,19 +137,9 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 
 	props := []*wificell.ShillProperty{
 		&wificell.ShillProperty{
-			Property:       shillconst.ServicePropertyState,
-			ExpectedValues: []interface{}{shillconst.ServiceStateConfiguration},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		},
-		&wificell.ShillProperty{
-			Property:       shillconst.ServicePropertyIsConnected,
-			ExpectedValues: []interface{}{true},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		},
-		&wificell.ShillProperty{
 			Property:       shillconst.ServicePropertyWiFiBSSID,
 			ExpectedValues: []interface{}{ap2BSSID},
-			Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
 		},
 	}
 
@@ -182,10 +175,14 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 	if err := waitForProps(); err != nil {
 		s.Fatal("DUT: failed to wait for the properties, err: ", err)
 	}
-
 	s.Log("DUT: roamed")
 
-	if err := tf.VerifyConnection(ctx, ap2); err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return tf.VerifyConnection(ctx, ap2)
+	}, &testing.PollOptions{
+		Timeout:  20 * time.Second,
+		Interval: time.Second,
+	}); err != nil {
 		s.Fatal("Failed to verify connection: ", err)
 	}
 }
