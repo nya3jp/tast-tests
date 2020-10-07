@@ -33,6 +33,23 @@
       "message": "CQ +1",
       "revId": "37daf2b475ba49df65c9533eb32e29c51d0bd195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc069cc_b2546f06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-07T16:06:03Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like the previous failure was due to my changes.",
+      "revId": "37daf2b475ba49df65c9533eb32e29c51d0bd195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
