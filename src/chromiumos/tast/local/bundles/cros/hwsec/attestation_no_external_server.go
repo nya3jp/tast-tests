@@ -105,19 +105,26 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	for _, param := range []struct {
 		name     string
 		username string
+		keyType  apb.KeyType
 	}{
 		{
 			name:     "system_cert",
 			username: "",
 		},
 		{
-			name:     "user_cert",
+			name:     "user_cert_rsa",
 			username: username,
+			keyType:  apb.KeyType_KEY_TYPE_RSA,
+		},
+		{
+			name:     "user_cert_ecc",
+			username: username,
+			keyType:  apb.KeyType_KEY_TYPE_ECC,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			username := param.username
-			certReply, err := ac.GetCertificate(ctx, &apb.GetCertificateRequest{Username: proto.String(username), KeyLabel: proto.String(hwsec.DefaultCertLabel)})
+			certReply, err := ac.GetCertificate(ctx, &apb.GetCertificateRequest{Username: proto.String(username), KeyLabel: proto.String(hwsec.DefaultCertLabel), KeyType: &param.keyType})
 			if err != nil {
 				s.Fatal("Failed to call D-Bus API to get certificate: ", err)
 			}
