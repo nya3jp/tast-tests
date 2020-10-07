@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e785a071_d85acb84",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T08:35:01Z",
+      "side": 1,
+      "message": "Sorry that my intention was not clear enough.\nI meant, if there\u0027s on-going fix, or known use addressed in the future,\nI thought those terms need to be unblocked until it is completed, right?",
+      "parentUuid": "100ac364_e84d66ae",
+      "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1e32aa6_f595d1de",
         "filename": "unblocked_terms.txt",
         "patchSetId": 1
