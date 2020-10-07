@@ -361,7 +361,7 @@ func disableCPUFrequencyScaling(ctx context.Context) (func(ctx context.Context) 
 	configPatterns := []cpuConfigEntry{
 		// crbug.com/938729: BIOS settings might prevent us from overwriting intel_pstate/no_turbo.
 		{"/sys/devices/system/cpu/intel_pstate/no_turbo", "1", true},
-		// Fix the intel_pstate percentage to 100 if possible. We raise he
+		// Fix the intel_pstate percentage to 100 if possible. We raise the
 		// maximum value before the minimum value as the min cannot exceed the
 		// max. To restore them, the order must be inverted. Note that we set
 		// and save the original values for these values because changing
