@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e9f8dd_153c3152",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-07T02:42:44Z",
+      "side": 1,
+      "message": "Tast Shadow Review: One more nit.",
+      "revId": "6529d4fd578fcfa0a4229002ae1e6ca225dcdf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b692f1f1_36d3ff99",
+        "filename": "src/chromiumos/tast/local/memory/limit.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-07T02:42:44Z",
+      "side": 1,
+      "message": "Might be useful to comment what you are doing here; I think it may be non-obvious for many folks reading the code that this is intended to assert AvailableLimit implements Limit.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "6529d4fd578fcfa0a4229002ae1e6ca225dcdf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
