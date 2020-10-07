@@ -123,6 +123,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b4d94623_d9486008",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-10-07T00:34:40Z",
+      "side": 1,
+      "message": "Now that the tast repos are being watched by the CQ, I\u0027m revisiting this CL, yes. I\u0027m reviewing the current state of passing tests and I\u0027ll update with the best performing 5. I\u0027ll also move them from wificell_unstable to wifi_matfunc, if needed. We can review each test I recommend after I finish my analysis, which should be mid-day tomorrow, I suspect.",
+      "parentUuid": "a6dfdd70_43d55fcd",
+      "revId": "15f7e5e2f319e4e515ab590dfff568af354a1f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3f99363b_a9693d76",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 1
