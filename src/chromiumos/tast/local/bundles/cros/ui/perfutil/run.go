@@ -153,22 +153,38 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 	if !r.RunTracing {
 		return true
 	}
+
+	const traceCleanupDuration = 2 * time.Second
+	if deadline, ok := ctx.Deadline(); ok && deadline.Sub(time.Now()) < traceCleanupDuration {
+		testing.ContextLog(ctx, "There are no time to conduct a tracing run. Skipping")
+		return true
+	}
+
 	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
-		sctx, cancel := ctxutil.Shorten(ctx, time.Second)
+		sctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
 		defer cancel()
 		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}); err != nil {
-			s.Fatal("Failed to start tracing: ", err)
+			// Sometimes, start tracing request is reached to the browser process but
+			// waiting for the reaply gets timeout. To ensure the tracing status
+			// stopped, StopTracing should be called here.
+			if _, stopErr := r.cr.StopTracing(ctx); stopErr != nil {
+				testing.ContextLog(ctx, "Failed to stop tracing: ", stopErr)
+			}
+			s.Log("Failed to start tracing: ", err)
+			return
 		}
 		if _, err := scenario(sctx); err != nil {
 			s.Error("Failed to run the test scenario: ", err)
 		}
 		tr, err := r.cr.StopTracing(ctx)
 		if err != nil {
-			s.Fatal("Failed to stop tracing: ", err)
+			s.Log("Failed to stop tracing: ", err)
+			return
 		}
 		data, err := proto.Marshal(tr)
 		if err != nil {
-			s.Fatal("Failed to marshal the tracing data: ", err)
+			s.Log("Failed to marshal the tracing data: ", err)
+			return
 		}
 		filename := "trace.data.gz"
 		if name != "" {
@@ -176,13 +192,14 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		}
 		file, err := os.OpenFile(filepath.Join(s.OutDir(), filename), os.O_CREATE|os.O_RDWR, 0644)
 		if err != nil {
-			s.Fatal("Failed to open the trace file: ", err)
+			s.Log("Failed to open the trace file: ", err)
+			return
 		}
 		defer file.Close()
 		writer := gzip.NewWriter(file)
 		defer writer.Close()
 		if _, err := writer.Write(data); err != nil {
-			s.Fatal("Failed to write the data: ", err)
+			s.Log("Failed to write the data: ", err)
 		}
 	})
 }
