@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ce5110e_621eeaa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-07T05:25:52Z",
+      "side": 1,
+      "message": "Right, so it sounds like the way we use gRPC is just a tradeoff between complexity of the function calls and latency caused by RTTs. Unfortunately, I don\u0027t think we can/should compromise much in the way of latency - if there\u0027s one RTT per PropertyChanged signal, this can certainly get pretty out of hand since PropertyChanged signals are pretty common. Increasing test runtime by a little will likely have compounding effects, and that\u0027s probably something that\u0027s worth preventing even if it means a little extra complexity in our code.\n\nMy particular use case is something similar to the AssertNoDisconnect functionality: I\u0027d like to verify that a certain event didn\u0027t happen over the course of the test.\n\nTo summarize, I\u0027m still in favor of just tacking on an optional monitor functionality to ExpectShillProperty (we can even change the name to be more all-encompassing if that helps :P), but if you disagree, we can grab some time to chat about it.\n\n@arowa: I wasn\u0027t sure if you were actively working on this patch or not so I offered to take it over, but it looks like you are, so feel free to continue doing so.",
+      "parentUuid": "d7c8febc_a068610a",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7eee6136_fe71ed0c",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
