@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ada32e4_a6ee0ae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T06:00:06Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Sounds like we only want a little more information from the gRPC now rather than some complex waiting combination. Then, the solution you proposed sounds good to me.",
+      "parentUuid": "4ce5110e_621eeaa2",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7eee6136_fe71ed0c",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7

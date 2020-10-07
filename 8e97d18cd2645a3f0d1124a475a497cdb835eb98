@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03b7ab1_5ecfb49e",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T06:00:06Z",
+      "side": 1,
+      "message": "Ah, sorry. I mislead you in my previous comment as I forgot dbus watcher is created in CreateWatcher... We might want to add the match in the beginning as two dbus.SignalWatcher might also race.\n\nOne more case that current implementation does not work:\n\n  1. bg routine is in Wait\n  2. Wait got a signal and return to Monitor\n    2.1. main thread calls stop function and StopSignal sent\n  3. Monitor called again and NewSignalWatcherForSystemBus again.\n  4. The new SignalWatcher might miss the StopSignal.\n\nI\u0027m not sure if this is still needed if we\u0027re moving to ExpectShillProperties. If still needed, I can take a look at how we can handle the StopSignal better.",
+      "revId": "8e97d18cd2645a3f0d1124a475a497cdb835eb98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
