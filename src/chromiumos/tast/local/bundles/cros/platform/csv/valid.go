@@ -28,6 +28,8 @@ type column struct {
 	columnFunc validator
 }
 
+const notApplicableString = "N/A"
+
 // ValidateCSV is responsible for validating headers and all values of the CSV
 // output. An error is returned if the headers are invalid or if any of the CSV
 // values are incorrect as determined by the validators provided to verify a
@@ -105,12 +107,12 @@ func MatchValue(value string) validator {
 }
 
 // MatchRegexOrNA returns a function that checks whether |actual| matches the
-// regex pattern specified by |regex|. If |actual| is "NA", do not proceed with
+// regex pattern specified by |regex|. If |actual| is "N/A", do not proceed with
 // the pattern matching.
 func MatchRegexOrNA(regex *regexp.Regexp) validator {
 	return func(actual string) error {
 		// If the value does not exist, do not check the format.
-		if actual == "NA" {
+		if actual == notApplicableString {
 			return nil
 		}
 		if !regex.MatchString(actual) {
@@ -122,13 +124,13 @@ func MatchRegexOrNA(regex *regexp.Regexp) validator {
 
 // EqualToFileContentOrNA returns a function that checks whether |path| exists.
 // If it does, it compares the value at that location wih |actual|. If it does
-// not, it ensures that |actual| equals "NA".
+// not, it ensures that |actual| equals "N/A".
 func EqualToFileContentOrNA(path string) validator {
 	return func(actual string) error {
 		expectedBytes, err := ioutil.ReadFile(path)
 		if os.IsNotExist(err) {
-			if actual != "NA" {
-				return errors.Errorf("failed to get correct value: got %v, want NA", actual)
+			if actual != notApplicableString {
+				return errors.Errorf("failed to get correct value: got %v, want %v", actual, notApplicableString)
 			}
 			return nil
 		} else if err != nil {
@@ -155,8 +157,8 @@ func EqualToFileIfCrosConfigPropOrNA(ctx context.Context, path, prop, filePath s
 		}
 		// Property does not exist
 		if crosconfig.IsNotFound(err) || val != "true" {
-			if actual != "NA" {
-				return errors.Errorf("failed to get correct value: got %v, want NA", actual)
+			if actual != notApplicableString {
+				return errors.Errorf("failed to get correct value: got %v, want %v", actual, notApplicableString)
 			}
 			return nil
 		}
