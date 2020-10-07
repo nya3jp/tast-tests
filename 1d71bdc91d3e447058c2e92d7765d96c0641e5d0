@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0096b94b_4d827142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_basic.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T05:30:52Z",
+      "side": 1,
+      "message": "Yes.\n\nThere are tests which need to add other things to ExtraData, some of which are constants and some of which are string literals. Rather then try to preserve this distinction, I decided to represent everything as a string literal, since unlike preconditions there is a literal representation which is always sufficient.",
+      "parentUuid": "1810d5a9_858c88ce",
+      "range": {
+        "startLine": 29,
+        "startChar": 33,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb366053_40f84d5d",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc7dc0f3_a359741e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T05:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb366053_40f84d5d",
+      "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b5b5cc8_0492fd1a",
@@ -54,6 +96,24 @@
       "writtenOn": "2020-10-07T04:57:44Z",
       "side": 1,
       "message": "Maybe add a comment that this is here for documentation purposes only?  It took me until the second or third look to find that this was unused.",
+      "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c082a1_9e25e3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T05:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b5b5cc8_0492fd1a",
       "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "395f769e_73b4f763",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T05:30:52Z",
+      "side": 1,
+      "message": "The intention was that you could mark one test case as informational without marking the whole test. I don\u0027t think I ever ended up needing to do that, but in the next CL I had to use this member to handle some of the graphics tests. For example, graphics.GlBench has subtests in all of mainline, graphics_weekly, graphics_daily, and graphics_perbuild.\n\nI\u0027ve updated the comment to make this clearer and use \"graphics_daily\" as an example instead.",
+      "parentUuid": "4a984738_b08f856a",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5b9a106_203b98cb",
@@ -94,6 +178,24 @@
       "writtenOn": "2020-10-07T04:57:44Z",
       "side": 1,
       "message": "again, I don\u0027t recall seeing this pattern used anywhere, ignore if it is actually used.",
+      "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc4bac3b_61bc9184",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-07T05:30:52Z",
+      "side": 1,
+      "message": "Removed this paragraph.",
+      "parentUuid": "d5b9a106_203b98cb",
       "revId": "1d71bdc91d3e447058c2e92d7765d96c0641e5d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
