@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccef3819_8f140d25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T08:42:21Z",
+      "side": 1,
+      "message": "LGTM, but I see there are still some comments not resolved, e.g. Is chrome a necessary SoftwareDep?\n\nPlease also resolve them and get CR+2 from your teammates.",
+      "revId": "52d792ed17c90a1bfc566731f638262b201ddd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -223,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb7dcc27_781300e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-07T08:42:21Z",
+      "side": 1,
+      "message": "I think regexp.MatchString is OK as it\u0027s compile it for you.\n\nSee: https://golang.org/src/regexp/regexp.go?s\u003d16946:17014#L538",
+      "parentUuid": "f606d49c_16f65ebf",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "fd94cb763586dbdb530c463a058d874d3240f7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4f4a4c2_ec3d8b08",
