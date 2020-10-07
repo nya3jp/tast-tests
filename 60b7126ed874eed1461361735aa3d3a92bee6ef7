@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "9a2f9c68_26d13432",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
@@ -20,8 +21,31 @@
         "endChar": 3
       },
       "revId": "60b7126ed874eed1461361735aa3d3a92bee6ef7",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "639121c7_5336213d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-07T21:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a2f9c68_26d13432",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 3
+      },
+      "revId": "60b7126ed874eed1461361735aa3d3a92bee6ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
