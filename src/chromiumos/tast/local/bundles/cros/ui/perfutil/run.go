@@ -181,6 +181,10 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 			s.Log("Failed to stop tracing: ", err)
 			return
 		}
+		if tr == nil || len(tr.Packet) == 0 {
+			s.Log("No trace data is collected")
+			return
+		}
 		data, err := proto.Marshal(tr)
 		if err != nil {
 			s.Log("Failed to marshal the tracing data: ", err)
@@ -195,11 +199,22 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 			s.Log("Failed to open the trace file: ", err)
 			return
 		}
-		defer file.Close()
+		defer func() {
+			if err := file.Close(); err != nil {
+				s.Log("Failed to close the trace file: ", err)
+			}
+		}()
 		writer := gzip.NewWriter(file)
-		defer writer.Close()
+		defer func() {
+			if err := writer.Close(); err != nil {
+				s.Log("Failed to close the gzip writer for the trace file: ", err)
+			}
+		}()
 		if _, err := writer.Write(data); err != nil {
 			s.Log("Failed to write the data: ", err)
+		}
+		if err := writer.Flush(); err != nil {
+			s.Log("Failed to flush the gzip writer: ", err)
 		}
 	})
 }
