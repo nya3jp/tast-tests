@@ -8,6 +8,7 @@ package adb
 import (
 	"context"
 	"os"
+	"path/filepath"
 	"syscall"
 
 	"github.com/shirou/gopsutil/process"
@@ -90,4 +91,11 @@ func killADBLocalServer(ctx context.Context) error {
 		}
 	}
 	return nil
+}
+
+const apkPathPrefix = "/usr/local/libexec/tast/apks/local/cros"
+
+// APKPath returns the absolute path to a helper APK.
+func APKPath(value string) string {
+	return filepath.Join(apkPathPrefix, value)
 }

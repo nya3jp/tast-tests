@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/graphics"
@@ -105,7 +106,7 @@ func DEQP(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Installing dEQP APK")
-	if err := a.Install(ctx, s.DataPath(apk), arc.InstallOptionGrantPermissions); err != nil {
+	if err := a.Install(ctx, s.DataPath(apk), adb.InstallOptionGrantPermissions); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 

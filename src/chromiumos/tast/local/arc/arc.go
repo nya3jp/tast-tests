@@ -428,9 +428,7 @@ func waitProp(ctx context.Context, name, value string, tm timingMode) error {
 	}, &testing.PollOptions{Interval: time.Second})
 }
 
-const apkPathPrefix = "/usr/local/libexec/tast/apks/local/cros"
-
 // APKPath returns the absolute path to a helper APK.
 func APKPath(value string) string {
-	return filepath.Join(apkPathPrefix, value)
+	return adb.APKPath(value)
 }

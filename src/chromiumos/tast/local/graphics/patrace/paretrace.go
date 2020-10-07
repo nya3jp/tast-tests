@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ash"
@@ -89,7 +90,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 		s.Fatal("Failed to push the trace file: ", err)
 	}
 
-	if err := a.Install(ctx, s.DataPath(apkFile), arc.InstallOptionGrantPermissions); err != nil {
+	if err := a.Install(ctx, s.DataPath(apkFile), adb.InstallOptionGrantPermissions); err != nil {
 		s.Fatalf("Failed to install %s: %v", s.DataPath(apkFile), err)
 	}
 
