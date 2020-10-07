@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968144fe_45772323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T02:29:50Z",
+      "side": 1,
+      "message": "- EvalPromise is deprecated. Could you use Eval?\n- Could you check err, before accessing responseStatus, which is valid only when the Eval succeeds.",
+      "revId": "9667788710bcbb1c97b153543a57ad77aa18fed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde5d501_ae6a63fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T02:29:50Z",
+      "side": 1,
+      "message": "Just async function should work?\n\n(async () \u003d\u003e {return (await indexRemote.find(...)).status; })()",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "9667788710bcbb1c97b153543a57ad77aa18fed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b89f887a_57af67af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T02:29:50Z",
+      "side": 1,
+      "message": "Could you check err?\nCould you close ew?",
+      "revId": "9667788710bcbb1c97b153543a57ad77aa18fed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a4b23a7_46df8ef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T02:29:50Z",
+      "side": 1,
+      "message": "leaking result. Maybe ui.WaitUntilExist()?",
+      "revId": "9667788710bcbb1c97b153543a57ad77aa18fed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
