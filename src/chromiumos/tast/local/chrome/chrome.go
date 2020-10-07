@@ -838,6 +838,18 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		args = append(args, "--enable-virtual-keyboard")
 	}
 
+	// TODO(rrsilva, crbug.com/1109176) - Remove once the problem is solved.
+	// Enable verbose logging on some enrollment related files
+	if c.loginMode == gaiaLogin || c.loginMode == fakeLogin {
+		args = append(args,
+			"--vmodule="+strings.Join([]string{
+				"*auto_enrollment_check_screen*=1",
+				"*enrollment_screen*=1",
+				"*login_display_host_common*=1",
+				"*wizard_controller*=1",
+				"*auto_enrollment_controller*=1"}, ","))
+	}
+
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	}
