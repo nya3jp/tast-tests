@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "97671f6f_fc0a14f7",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Sorry for the latency.",
       "revId": "3a5191f02645183eef7911c66762d67dad478f9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d1914648_a8697e7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
@@ -31,8 +32,25 @@
       "side": 1,
       "message": "I think this might not work as expected because the named return \"err\" is now shadowed. Might be better if you name the return value \"retErr\" instead.\n\nAlso a nit: there are two places assigning retErr (here and line 469) so you\u0027ll only collect the last error. You might log the ones not returned (e.g. when retErr !\u003d nil) if it helps.",
       "revId": "3a5191f02645183eef7911c66762d67dad478f9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c52c561_24055052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-10-07T20:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1914648_a8697e7c",
+      "revId": "3a5191f02645183eef7911c66762d67dad478f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
