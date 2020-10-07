@@ -16,6 +16,23 @@
       "message": "Code looks to be enabling and disabling scanning and looks correct (as far as I can tell).\n\n+2 for Bluetooth",
       "revId": "a67a7719e328a14aff19fefcaef4fc092497922f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c057ed1_58301cd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-07T23:51:04Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a67a7719e328a14aff19fefcaef4fc092497922f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
