@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69dd421d_806ed3e1",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-07T11:23:57Z",
+      "side": 1,
+      "message": "this needs to be reverted. This is a part of parsing, so the text must exactly match with the input, which depends on external command.",
+      "range": {
+        "startLine": 1049,
+        "startChar": 32,
+        "endLine": 1049,
+        "endChar": 51
+      },
+      "revId": "95deb9b1848d1d6729f9cf845b66bc944c6c1c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
