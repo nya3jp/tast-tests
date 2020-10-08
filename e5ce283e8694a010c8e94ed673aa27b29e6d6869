@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2abfca2_4b77ce90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-08T11:21:05Z",
+      "side": 1,
+      "message": "done.",
+      "revId": "e5ce283e8694a010c8e94ed673aa27b29e6d6869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3439bf95_69b1b4fd",
@@ -41,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1463f0c2_fdc9a775",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-08T11:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3439bf95_69b1b4fd",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "e5ce283e8694a010c8e94ed673aa27b29e6d6869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "111b73e5_029238f4",
@@ -54,6 +95,30 @@
       "writtenOn": "2020-10-08T04:59:10Z",
       "side": 1,
       "message": "nit: \"an\"",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 9
+      },
+      "revId": "e5ce283e8694a010c8e94ed673aa27b29e6d6869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe8a959_9cee98b1",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-08T11:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "111b73e5_029238f4",
       "range": {
         "startLine": 172,
         "startChar": 8,
