@@ -63,6 +63,30 @@
       },
       "revId": "2ec97afc6481f69383d244cc503a62197a6e5348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec2cf36_4aa9ea7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-08T16:28:58Z",
+      "side": 1,
+      "message": "lgtm now 😉",
+      "parentUuid": "ee7b1090_fc39f5dd",
+      "range": {
+        "startLine": 303,
+        "startChar": 38,
+        "endLine": 303,
+        "endChar": 48
+      },
+      "revId": "2ec97afc6481f69383d244cc503a62197a6e5348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
