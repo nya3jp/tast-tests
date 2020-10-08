@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "716a0ed7_4f9c9a80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_backup_restore_service_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T11:03:49Z",
+      "side": 1,
+      "message": "You need to reinitialize this in every subtest. For the unset value you are reusing the existing set policies.",
+      "revId": "10faac3a6188de7f893c1b4d1578e0171c938391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e8ff072_f06b3634",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_backup_restore_service_enabled.go",
         "patchSetId": 3
@@ -61,6 +78,47 @@
         "endLine": 76,
         "endChar": 94
       },
+      "revId": "10faac3a6188de7f893c1b4d1578e0171c938391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85da2fb8_5bb59b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_backup_restore_service_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T11:03:49Z",
+      "side": 1,
+      "message": "See comment above.",
+      "parentUuid": "8bac9453_dda4a7b4",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 94
+      },
+      "revId": "10faac3a6188de7f893c1b4d1578e0171c938391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "143d1484_380e4528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_backup_restore_service_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T11:03:49Z",
+      "side": 1,
+      "message": "maybe use strings.Contains instead to be more resilient to output changes?",
       "revId": "10faac3a6188de7f893c1b4d1578e0171c938391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
