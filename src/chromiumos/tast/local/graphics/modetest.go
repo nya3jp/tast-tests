@@ -22,12 +22,31 @@ type bound struct {
 
 // Connector identifies the attributes related to display connector.
 type Connector struct {
-	cid       int    // connector id
+	Cid       int    // connector id
 	Connected bool   // true if the connector is connected
 	Name      string // name of the connector
+	Encoders  []int  // encoders id
 }
 
-var modesetConnectorPattern = regexp.MustCompile(`^(\d+)\s+\d+\s+(connected|disconnected)\s+(\S+)\s+\d+x\d+\s+\d+\s+\d+`)
+// modesetConnectorPattern matches the second line of the following output:
+// id      encoder status          name            size (mm)       modes   encoders
+// 39      0       connected       eDP-1           256x144         1       38 34
+var modesetConnectorPattern = regexp.MustCompile(`^(\d+)\s+\d+\s+(connected|disconnected)\s+(\S+)\s+\d+x\d+\s+\d+\s+(.+)$`)
+
+// splitAndConvertInt splits string with comma and whitespace then convert each sub-string to int.
+func splitAndConvertInt(input string) ([]int, error) {
+	splitPattern := regexp.MustCompile(` *, *`)
+	substrings := splitPattern.Split(input, -1)
+	var result []int
+	for _, substring := range substrings {
+		i, err := strconv.Atoi(substring)
+		if err != nil {
+			return nil, err
+		}
+		result = append(result, i)
+	}
+	return result, nil
+}
 
 // ModetestConnectors retrieves a list of connectors using modetest.
 func ModetestConnectors(ctx context.Context) ([]*Connector, error) {
@@ -46,7 +65,11 @@ func ModetestConnectors(ctx context.Context) ([]*Connector, error) {
 			}
 			connected := (matches[2] == "connected")
 			name := matches[3]
-			connectors = append(connectors, &Connector{cid: cid, Connected: connected, Name: name})
+			encoders, err := splitAndConvertInt(matches[4])
+			if err != nil {
+				return nil, errors.Wrapf(err, "failed to parse encoders %s", matches[4])
+			}
+			connectors = append(connectors, &Connector{Cid: cid, Connected: connected, Name: name, Encoders: encoders})
 			continue
 		}
 	}
