@@ -39,6 +39,52 @@
       },
       "revId": "8f40dd15b470e61a5f3ee60c4ce7deb59ca4f306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e01dd8a_cd0218ca",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-08T20:53:36Z",
+      "side": 1,
+      "message": "You are looking for the textfield before selecting the label to type. You should be able to replace this with:\n\n // Click label.\n params \u003d ui.FindParams{Name: from, ClassName: \"Label\"}\n if err :\u003d ui.FindAndClick(ctx, tconn, params, 10*time.Second); err !\u003d nil {\n \treturn errors.Wrap(err, \"failed to find and click label\")\n }\n\nThen the test should be passing.",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 2
+      },
+      "revId": "8f40dd15b470e61a5f3ee60c4ce7deb59ca4f306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1342b8b5_a592213e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-08T20:53:36Z",
+      "side": 1,
+      "message": "Creating a keyboard can be quite expensive on some devices, can you pass this in to the function. That way if someone else calls this function and they have a keyboard already available, it will be reused instead of creating a new one.",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 2
+      },
+      "revId": "8f40dd15b470e61a5f3ee60c4ce7deb59ca4f306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
