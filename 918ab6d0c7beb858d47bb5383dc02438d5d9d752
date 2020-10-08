@@ -16,6 +16,29 @@
       "message": "Thanks! I assume the default size will change with time. Can we change the parameter to request relative to the default? Say we would always request 10GB more than default for the private traces. And for glxgears we would request only 100MB extra.",
       "revId": "918ab6d0c7beb858d47bb5383dc02438d5d9d752",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edea2061_dba50dd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-08T17:53:17Z",
+      "side": 1,
+      "message": "Can you document why we request a resize here? Say:\n\n// Trace tests rely on increased VM sizes, but DUTs in the CQ often have not very much storage.\n// We want to exercise the resizing path, hence we request only 100MB more storage than usual.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 61
+      },
+      "revId": "918ab6d0c7beb858d47bb5383dc02438d5d9d752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
