@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc25f7e_5a8d8e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-08T02:42:10Z",
+      "side": 1,
+      "message": "oh, yep. You can keep it. It is used for dumping ui tree in case the test failed.",
+      "parentUuid": "40def9a2_45e270ce",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 68
+      },
+      "revId": "c89ac6f17646aa8f21c088bfbefdf5c210ab2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74493db9_7b0b838e",
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "After some investigation, I found actually it doesn\u0027t require two hide and show after each settings change, I just need to wait for decoder ready before first triggering the VK.",
       "parentUuid": "0b486bdd_e717bc7a",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 51
+      },
+      "revId": "c89ac6f17646aa8f21c088bfbefdf5c210ab2d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f216ae1e_1baf16c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-08T02:42:10Z",
+      "side": 1,
+      "message": "Yes. That\u0027s why we implemented WaitForReady function",
+      "parentUuid": "1230366b_8218162b",
       "range": {
         "startLine": 108,
         "startChar": 1,
