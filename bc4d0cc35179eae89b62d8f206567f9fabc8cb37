@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561ececa_4686bfc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-08T02:31:22Z",
+      "side": 1,
+      "message": "Marking CR+2 to avoid cross time-zone iteration,\nbut I found one missing thing (... sorry again for overlooking).\nPlease fix it before submitting. Thanks in advance!",
+      "revId": "bc4d0cc35179eae89b62d8f206567f9fabc8cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41fbaa57_31883b62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-08T02:31:22Z",
+      "side": 1,
+      "message": "error check is missing here, too.\n\nif err :\u003d keyboard.Type(ctx, \"halp\"); err !\u003d nil {\n  s.Fatal(...)\n}",
+      "revId": "bc4d0cc35179eae89b62d8f206567f9fabc8cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
