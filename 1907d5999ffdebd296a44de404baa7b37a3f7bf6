@@ -117,6 +117,24 @@
       "parentUuid": "4a751b69_28bbe8b7",
       "revId": "1907d5999ffdebd296a44de404baa7b37a3f7bf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f24910ba_3d645c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T16:41:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand. Do you need a browser window or a connection? You are not using conn in any way as far as I can see.",
+      "parentUuid": "09cb4170_f8adb3e1",
+      "revId": "1907d5999ffdebd296a44de404baa7b37a3f7bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
