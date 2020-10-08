@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c24da84_e54e53b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-10-08T05:56:48Z",
+      "side": 1,
+      "message": "Should we align the subtest partitioning method as EncodeAccelJPEGPerf? That is, one subtest for DMA and one for non-DMA?\n\nqq: What is the other non-DMA JEA method (shm?) and what platforms are using that?",
+      "revId": "2557bdeca6530d8c360f39f60716eb7465232027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fe1bdb0_fc757b79",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
         "patchSetId": 2
