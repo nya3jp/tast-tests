@@ -46,6 +46,30 @@
       },
       "revId": "1b07bbe604023aa98683b20f2dec1511927838a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8be681b_739f8125",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-10-08T06:15:04Z",
+      "side": 1,
+      "message": "Yeah, but what I means is: Originally cleanupDisplayProcess() is only be called after the |pid| is filled, and we report error when doing cleanup if |pid| has unexpected value. Although we refactored the codes and cleanupDisplayProcess() might be called before |pid| is actually filled now, do we still need to check if |pid| has invalid value if we somehow know the |pid| has been filled and report it? Maybe such check should live in New() rather than cleanup() though.",
+      "parentUuid": "6bf11dd8_39c3477f",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "1b07bbe604023aa98683b20f2dec1511927838a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
