@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d79b77_e65b5cee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-10-08T23:35:45Z",
+      "side": 1,
+      "message": "As discussed, \"still unable to...\" is usually used with testing.Poll, so I\u0027m leaving like this for now?",
+      "parentUuid": "d12d3e9a_ae260828",
+      "range": {
+        "startLine": 310,
+        "startChar": 22,
+        "endLine": 310,
+        "endChar": 38
+      },
+      "revId": "47f09d5fe022a4de143e00691dfcb5cdcc5d8f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeef058a_7345ddc7",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-08T22:54:07Z",
       "side": 1,
       "message": "Cannot ...",
+      "range": {
+        "startLine": 325,
+        "startChar": 22,
+        "endLine": 325,
+        "endChar": 37
+      },
+      "revId": "47f09d5fe022a4de143e00691dfcb5cdcc5d8f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f987ef_282e0e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-10-08T23:35:45Z",
+      "side": 1,
+      "message": "Comment above",
+      "parentUuid": "aeef058a_7345ddc7",
       "range": {
         "startLine": 325,
         "startChar": 22,
