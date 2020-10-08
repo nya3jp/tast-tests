@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4a6927b_58d3742b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T15:00:50Z",
+      "side": 1,
+      "message": "nit: OS Settings",
+      "range": {
+        "startLine": 92,
+        "startChar": 40,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "1907d5999ffdebd296a44de404baa7b37a3f7bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7755f1b_19ff3d7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
         "patchSetId": 2
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "Sadly it does not work, details are in the comment above. I tried with conn.Navigate() as well, but that still doesn\u0027t open the Settings app. Only the app works well with UI automation in this case.",
       "parentUuid": "a7755f1b_19ff3d7c",
+      "revId": "1907d5999ffdebd296a44de404baa7b37a3f7bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a751b69_28bbe8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T15:00:50Z",
+      "side": 1,
+      "message": "Do you actually need the connection?",
+      "parentUuid": "2f49a25f_eb254d48",
       "revId": "1907d5999ffdebd296a44de404baa7b37a3f7bf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
