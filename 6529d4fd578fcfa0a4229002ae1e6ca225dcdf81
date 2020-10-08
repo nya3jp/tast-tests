@@ -39,6 +39,30 @@
       },
       "revId": "6529d4fd578fcfa0a4229002ae1e6ca225dcdf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb501e0_3e3cae55",
+        "filename": "src/chromiumos/tast/local/memory/limit.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-08T02:39:55Z",
+      "side": 1,
+      "message": "Added a comment, and also noticed that I was missing one for CompositeLimit below.\n\nThanks,",
+      "parentUuid": "b692f1f1_36d3ff99",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "6529d4fd578fcfa0a4229002ae1e6ca225dcdf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
