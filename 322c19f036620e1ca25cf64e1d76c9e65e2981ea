@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df564c86_8b9f6787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-08T16:27:36Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "322c19f036620e1ca25cf64e1d76c9e65e2981ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a966299_654c47e5",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-08T16:27:36Z",
+      "side": 1,
+      "message": "nit/style: I recommend reordering L61-63 as follows, in order to make the if-statement a little clearer.\n\n    hasher :\u003d md5.New()\n    if _, err :\u003d os.Stat(yuvFile); !os.IsNotExist(err) {",
+      "revId": "322c19f036620e1ca25cf64e1d76c9e65e2981ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0806860_69e2aa9f",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-08T16:27:36Z",
+      "side": 1,
+      "message": "Is this correct behavior? This branch will activate, and we will skip extraction, if md5OfYUV doesn\u0027t contain yuvName (!found). Based on the comment in L60, I would think that you should only skip extraction if the hash matches the expected value.",
+      "range": {
+        "startLine": 74,
+        "startChar": 39,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "322c19f036620e1ca25cf64e1d76c9e65e2981ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
