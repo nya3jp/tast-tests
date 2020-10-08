@@ -16,6 +16,46 @@
       "message": "Note, this doesn\u0027t try to fix the underlying issue. But rather, reduce flakiness until the real issue is fixed.",
       "revId": "5f0916150a2bc8e1c73597ebcc5b57c004f9b9e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d5d83d_54aa76a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-08T18:46:25Z",
+      "side": 1,
+      "message": "Thanks! LGTM % question",
+      "revId": "5f0916150a2bc8e1c73597ebcc5b57c004f9b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b0836df_dcb48146",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-08T18:46:25Z",
+      "side": 1,
+      "message": "I assume you also tried to increase the duration of the existing sleep. Did that help less than staggering the startup of the encoders?",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "5f0916150a2bc8e1c73597ebcc5b57c004f9b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
