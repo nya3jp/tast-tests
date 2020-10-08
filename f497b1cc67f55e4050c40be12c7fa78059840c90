@@ -16,6 +16,116 @@
       "message": "Hi Yusuke,\n\nWould you PTAL?\n\nThanks!",
       "revId": "f497b1cc67f55e4050c40be12c7fa78059840c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b67b89b_ccfa84ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-08T05:51:17Z",
+      "side": 1,
+      "message": "\u003e \"begining\" is a possible misspelling of \"beginning\".\n\nPlease fix.",
+      "parentUuid": "99ce132e_970cfe07",
+      "range": {
+        "startLine": 45,
+        "startChar": 34,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "f497b1cc67f55e4050c40be12c7fa78059840c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce272bc2_aed32007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-08T05:51:17Z",
+      "side": 1,
+      "message": "Is dex2oat always invoked with the options in THAT order? Isn\u0027t it safer / less brittle to use e.g. \"/system/bin/dex2oat .*--dex-file\u003d([^-]+?) --\" ?",
+      "range": {
+        "startLine": 55,
+        "startChar": 33,
+        "endLine": 55,
+        "endChar": 64
+      },
+      "revId": "f497b1cc67f55e4050c40be12c7fa78059840c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c52f13f_37c4e957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-08T05:51:17Z",
+      "side": 1,
+      "message": "Why do we have to find not only L55 but also L54? Can you add some code comments to explain?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 64
+      },
+      "revId": "f497b1cc67f55e4050c40be12c7fa78059840c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c976437c_f06572d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-08T05:51:17Z",
+      "side": 1,
+      "message": "What kind of non-system resources do we preopt during boot? Code comment?",
+      "revId": "f497b1cc67f55e4050c40be12c7fa78059840c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ea26cf_cbf88677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-08T05:51:17Z",
+      "side": 1,
+      "message": "Can\u0027t we wait for e.g. boot_progress_enable_screen instead? I\u0027m not sure if monitoring the CPU idleness is the same as waiting for boot.",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "f497b1cc67f55e4050c40be12c7fa78059840c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
