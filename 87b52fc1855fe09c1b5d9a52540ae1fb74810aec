@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7792833b_130b2060",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-08T17:37:16Z",
+      "side": 1,
+      "message": "Sounds good to me.",
+      "parentUuid": "26c7a42d_e901034e",
+      "range": {
+        "startLine": 1293,
+        "startChar": 5,
+        "endLine": 1293,
+        "endChar": 94
+      },
+      "revId": "87b52fc1855fe09c1b5d9a52540ae1fb74810aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daff23e6_8191fe42",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Some notifications still appear in guest mode after signing in, such as the \"Try new ways to navigate Chrome OS\" one if you\u0027re in tablet mode.",
       "parentUuid": "daff23e6_8191fe42",
+      "range": {
+        "startLine": 1294,
+        "startChar": 26,
+        "endLine": 1294,
+        "endChar": 103
+      },
+      "revId": "87b52fc1855fe09c1b5d9a52540ae1fb74810aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0afe969_66ec3744",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-08T17:37:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e71bcc1_adf0e586",
       "range": {
         "startLine": 1294,
         "startChar": 26,
