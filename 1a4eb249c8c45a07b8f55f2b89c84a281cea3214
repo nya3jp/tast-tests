@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8247b8_505149ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-08T06:33:58Z",
+      "side": 1,
+      "message": "Add myself to reviewer so that it appears on my list and I won\u0027t forget to take a look later. :)",
+      "revId": "1a4eb249c8c45a07b8f55f2b89c84a281cea3214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
