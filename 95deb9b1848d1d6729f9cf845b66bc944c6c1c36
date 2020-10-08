@@ -22,6 +22,30 @@
       },
       "revId": "95deb9b1848d1d6729f9cf845b66bc944c6c1c36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3796df9e_640ca34b",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-08T01:22:45Z",
+      "side": 1,
+      "message": "Ack\n\nwe should not be looking for an exact string here but a reg.ex....\nso fragile.",
+      "parentUuid": "69dd421d_806ed3e1",
+      "range": {
+        "startLine": 1049,
+        "startChar": 32,
+        "endLine": 1049,
+        "endChar": 51
+      },
+      "revId": "95deb9b1848d1d6729f9cf845b66bc944c6c1c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
