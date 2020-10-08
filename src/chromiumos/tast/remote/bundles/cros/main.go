@@ -8,7 +8,7 @@
 package main
 
 import (
-	"chromiumos/tast/local/bundlemain"
+	"chromiumos/tast/remote/bundlemain"
 
 	// These packages register their tests via init functions.
 	_ "chromiumos/tast/remote/bundles/cros/arc"
