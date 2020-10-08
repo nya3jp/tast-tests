@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31cbb510_565e170c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-08T04:16:00Z",
+      "side": 1,
+      "message": "I\u0027ve added more documentation to params.go and links to it in all the test files, which will hopefully help with this.",
+      "parentUuid": "bc98c07c_4b98a886",
+      "revId": "a2d8a0e347f9a81e857a5d68703187039e85564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59cbb10e_d0732cd8",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "The design doc (from tast team) is at https://docs.google.com/document/d/1sIiCvBIDYPJrpCfzaiR6HG-Q6iIXp3Mx53yP5O_UB58/edit\n\nThese are written as tests that (without the envirnment variable) verify that the params are correct.  These will be executed as part of the normal unit testing in CQ runs, so if they are not correct the CQ run will fail.\n\nThere may be a pre-upload test as well, I\u0027m not sure.",
       "parentUuid": "91437086_aa91f743",
+      "revId": "a2d8a0e347f9a81e857a5d68703187039e85564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "547d876f_9fe23f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-08T04:16:00Z",
+      "side": 1,
+      "message": "There\u0027s no pre-upload check sadly, so errors here may not be caught until a couple of hours into the CQ",
+      "parentUuid": "31ea0fa3_759582d2",
       "revId": "a2d8a0e347f9a81e857a5d68703187039e85564e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
