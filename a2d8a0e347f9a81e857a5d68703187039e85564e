@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f671d44_1c5f5230",
+        "filename": "src/chromiumos/tast/common/genparams/template.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-08T03:23:26Z",
+      "side": 1,
+      "message": "int64 to round down, then back to float64 to allow the comparison.\n\nThat said, I now see there is actually a math.Floor function which does what I want, so I\u0027ve gone with that instead.",
+      "parentUuid": "59cbb10e_d0732cd8",
+      "revId": "a2d8a0e347f9a81e857a5d68703187039e85564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91437086_aa91f743",
