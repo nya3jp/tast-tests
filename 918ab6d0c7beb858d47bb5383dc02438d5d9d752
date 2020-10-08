@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "095d1b7c_352e5381",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-08T17:51:36Z",
+      "side": 1,
+      "message": "Thanks! I assume the default size will change with time. Can we change the parameter to request relative to the default? Say we would always request 10GB more than default for the private traces. And for glxgears we would request only 100MB extra.",
+      "revId": "918ab6d0c7beb858d47bb5383dc02438d5d9d752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
