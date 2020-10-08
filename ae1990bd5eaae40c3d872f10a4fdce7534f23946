@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b376e7e_0880d19d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-08T07:48:25Z",
+      "side": 1,
+      "message": "30 or 10?",
+      "revId": "ae1990bd5eaae40c3d872f10a4fdce7534f23946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180b1a88_195b0bd8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-08T07:48:25Z",
+      "side": 1,
+      "message": "Does this timeout matter, given the deadline on the whole test?",
+      "range": {
+        "startLine": 161,
+        "startChar": 56,
+        "endLine": 161,
+        "endChar": 69
+      },
+      "revId": "ae1990bd5eaae40c3d872f10a4fdce7534f23946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
