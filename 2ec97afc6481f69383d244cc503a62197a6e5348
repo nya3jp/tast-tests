@@ -39,6 +39,30 @@
       },
       "revId": "2ec97afc6481f69383d244cc503a62197a6e5348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7b1090_fc39f5dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-08T03:09:49Z",
+      "side": 1,
+      "message": "There\u0027s a subtle distinction here between the terminalapp struct and an open terminal window.\n\nHow does it read now?",
+      "parentUuid": "e2307ba7_3089b946",
+      "range": {
+        "startLine": 303,
+        "startChar": 38,
+        "endLine": 303,
+        "endChar": 48
+      },
+      "revId": "2ec97afc6481f69383d244cc503a62197a6e5348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
