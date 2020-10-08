@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "409cc895_e66e2a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2020-10-08T06:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04dc9373_2f55bc8b",
+      "revId": "2557bdeca6530d8c360f39f60716eb7465232027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fe1bdb0_fc757b79",
