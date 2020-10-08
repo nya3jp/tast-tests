@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1574c7a9_a85467c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-08T22:43:10Z",
+      "side": 1,
+      "message": "Thanks to Brendan\u0027s suggestion to click on label instead of text field. The flakiness is gone. I also followed Kyle\u0027s suggestion to wait for all the icons to go away when there is a change from tablet mode to clamshell mode. I think it is working.\n\nI have run the current code 3 times in both clamshell mode and tablet mode on octopus, hana, kodama and dru. They were all successfully. I am not able to test it on jax, flaffy and karma yet because I was not able to lease them. I will try later, but I think this code is good as is.\n\nPlease review.\n\nThanks.\n\nSeewai\n",
+      "revId": "f3488ea00a130f356223ce4ea3fa186a915985c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

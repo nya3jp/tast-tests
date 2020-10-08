@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb6a4810_c1a1e562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-08T22:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83091339_7d4be271",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "8f40dd15b470e61a5f3ee60c4ce7deb59ca4f306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e01dd8a_cd0218ca",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f202724d_fc86d351",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-08T22:43:10Z",
+      "side": 1,
+      "message": "It works! Thanks.",
+      "parentUuid": "2e01dd8a_cd0218ca",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 2
+      },
+      "revId": "8f40dd15b470e61a5f3ee60c4ce7deb59ca4f306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1342b8b5_a592213e",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-10-08T20:53:36Z",
       "side": 1,
       "message": "Creating a keyboard can be quite expensive on some devices, can you pass this in to the function. That way if someone else calls this function and they have a keyboard already available, it will be reused instead of creating a new one.",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 2
+      },
+      "revId": "8f40dd15b470e61a5f3ee60c4ce7deb59ca4f306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65bfc19e_16a9f1bc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-08T22:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1342b8b5_a592213e",
       "range": {
         "startLine": 273,
         "startChar": 1,
