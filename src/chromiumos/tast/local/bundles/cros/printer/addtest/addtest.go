@@ -33,6 +33,9 @@ func cleanPSContents(content string) string {
 	content = r.ReplaceAllLiteralString(content, "")
 	r = regexp.MustCompile("(?m)^@PJL PRINTLOG ITEM = 2,.*[\r\n]")
 	content = r.ReplaceAllLiteralString(content, "")
+	// Remove time metadata for PCLm Jobs
+	r = regexp.MustCompile("(?m)^% *job-start-time: .*[\r\n]")
+	content = r.ReplaceAllLiteralString(content, "")
 	return content
 }
 
