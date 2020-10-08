@@ -33,6 +33,24 @@
       "message": "Could you remove \"informational\", too, which is in effect only with \"group:mainline\".\nCould you add TODO to recover with fix? (No Attr means the test won\u0027t run on CI, but it sometimes is intentional, like only for manual run for some specific cases).",
       "revId": "8215052591e4784cceacbe17ee21ef8c13100e2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c039b44_147d28e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-08T02:48:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abd2e6cb_b83e821f",
+      "revId": "8215052591e4784cceacbe17ee21ef8c13100e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
