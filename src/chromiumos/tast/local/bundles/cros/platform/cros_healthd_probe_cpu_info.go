@@ -31,9 +31,8 @@ func init() {
 
 func verifyPhysicalCPU(lines []string) error {
 	// Make sure we've received at least nine lines. The first should be the
-	// physical CPU header, followed by one line of keys, one line of values,
-	// and six or more lines of logical CPU data.
-	if len(lines) < 9 {
+	// physical CPU header, followed by one line of keys, one line of values.
+	if len(lines) < 3 {
 		return errors.New("could not find any lines of physical CPU info")
 	}
 
@@ -70,10 +69,9 @@ func verifyPhysicalCPU(lines []string) error {
 }
 
 func verifyLogicalCPU(lines []string) error {
-	// Make sure we've received at least six lines. The first should be the
-	// logical CPU header, followed by one line of keys, one line of values, and
-	// three or more lines of C-state data.
-	if len(lines) < 6 {
+	// Make sure we've received at least three lines. The first should be the
+	// logical CPU header, followed by one line of keys, and one line of values.
+	if len(lines) < 3 {
 		return errors.New("could not find any lines of logical CPU info")
 	}
 
@@ -109,10 +107,10 @@ func verifyLogicalCPU(lines []string) error {
 }
 
 func verifyCStates(lines []string) error {
-	// Make sure we've received at least three lines. The first should be the
-	// C-state header, followed by one line of keys and one or more lines of
+	// Make sure we've received at least two lines. The first should be the
+	// C-state header, followed by one line of keys and zero or more lines of
 	// C-states.
-	if len(lines) < 3 {
+	if len(lines) < 2 {
 		return errors.New("could not find any lines of C-state info")
 	}
 
@@ -130,7 +128,7 @@ func verifyCStates(lines []string) error {
 		return errors.Errorf("incorrect C-state keys: got %v; want %v", got, want)
 	}
 
-	// Verify each C-state value.
+	// Verify each C-state value that exists.
 	for _, line := range lines[2:] {
 		vals := strings.Split(line, ",")
 		if len(vals) != 2 {
