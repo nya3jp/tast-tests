@@ -49,7 +49,9 @@ func CleanPSContents(content string) string {
 			`|(/Time \(\d+\))` +
 			// For Ricoh jobs, "(\d+) lppswd" contains the date
 			// and time of the print job.
-			`|(\(\d+\)) lppswd`)
+			`|(\(\d+\)) lppswd` +
+			// Remove time metadata for PCLm Jobs
+			`|% *job-start-time: .*[\r\n]`)
 	return r.ReplaceAllLiteralString(content, "")
 }
 
