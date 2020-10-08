@@ -34,6 +34,23 @@
       "parentUuid": "9b0842d0_6c8bf80a",
       "revId": "b01315a89b3db9678ac811d62499da854e0269d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cbcf95f_b792b7f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-08T05:18:08Z",
+      "side": 1,
+      "message": "Hitting crbug.com/1126142 and one failure of crostini installation which is not quite related to this change. Retry CQ.",
+      "revId": "b01315a89b3db9678ac811d62499da854e0269d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
