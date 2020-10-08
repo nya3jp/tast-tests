@@ -49,7 +49,7 @@ func NewServer() *Server {
 // authenticated users. If proxy configuration and setup are successful, |s.HostAndPort| will be set to the host and
 // port of the local proxy in the format <host>:<port>.
 func (s *Server) Start(ctx context.Context, port int, auth *AuthCredentials) (retErr error) {
-	// Create a temp dir where configuarion and pid files can be saved.
+	// Create a temp dir where configuration and pid files can be saved.
 	tempDir, err := ioutil.TempDir("", "tinyproxy-")
 	if err != nil {
 		return errors.Wrap(err, "failed to create temp dir")
