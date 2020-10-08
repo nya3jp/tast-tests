@@ -177,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22232afc_6fc55779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-08T23:18:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c976437c_f06572d8",
+      "revId": "f497b1cc67f55e4050c40be12c7fa78059840c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9ea26cf_cbf88677",
@@ -214,6 +232,30 @@
       "side": 1,
       "message": "dex2oat usually spans in background. So we could miss some events. From other side dex2oat is heavy operation and CPU idleness indirectly says us that all heavy operations are done. Unfortunately we don\u0027t have clear signals from framework we could rely on.",
       "parentUuid": "d9ea26cf_cbf88677",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "f497b1cc67f55e4050c40be12c7fa78059840c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915779c0_d09a4237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-08T23:18:09Z",
+      "side": 1,
+      "message": "Can\u0027t we wait for boot_progress_enable_screen?? It\u0027s just a logcat line.",
+      "parentUuid": "696bde7d_c4da2f30",
       "range": {
         "startLine": 90,
         "startChar": 11,
