@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a79950d7_dbe58779",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-08T22:38:26Z",
+      "side": 1,
+      "message": "From the discussion on b/169217691 it sounds like although Dalboz taking \u003e10s to perform a scan (when reassociating; I\u0027ve checked and ordinary scans appear to be much quicker) is concerning, we really should be testing the \u0027Reattach\u0027 method anyway since that\u0027s what actually gets used (and also because wifi.Reassociate should be a reasonably direct port of network_WiFi_Reassociate\u0027s behavior).\n\nIn this CL I\u0027ve changed things to use the \u0027Reattach\u0027 method at the lowest level, but the WiFiService gRPC and the actual test are still named \u0027Reassociate\u0027. Does that seem like a reasonable way of doing this or should the renaming go further up the chain?",
+      "revId": "81f4a1b40c973becd66044f400091eb07553a697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
