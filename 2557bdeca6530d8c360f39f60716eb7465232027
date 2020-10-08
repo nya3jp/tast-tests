@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31e17aa0_96a5e760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-10-08T06:54:42Z",
+      "side": 1,
+      "message": "IIUC mmap() is used in JEA to map a fd to an address, so we can access that memory, and the memory might be backed by dmabuf or shm.\n\nLooking at the JEA unittest code [1], it looks like we do test dmabuf and shm.\n\nThere is a comment by wtlee@ in JEA mojo interface [2] says the shm path is to be deprecated. wtlee@ could you help share the latest status? Do we still use it?\n\n[1] https://source.chromium.org/chromium/chromium/src/+/master:components/chromeos_camera/jpeg_encode_accelerator_unittest.cc;l\u003d616;drc\u003decdcbbde281fbd1da8dc21ccd3447b6209d4e1cd\n\n[2] https://source.chromium.org/chromium/chromium/src/+/master:components/chromeos_camera/common/jpeg_encode_accelerator.mojom;l\u003d28;drc\u003d138a82901de3298fb7aa594f53348e300188787e",
+      "parentUuid": "409cc895_e66e2a71",
+      "revId": "2557bdeca6530d8c360f39f60716eb7465232027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fe1bdb0_fc757b79",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
         "patchSetId": 2
