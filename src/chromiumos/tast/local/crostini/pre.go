@@ -33,8 +33,8 @@ import (
 // criteria at go/tast-add-test to judge whether it should be on the CQ.
 var UnstableModels = []string{
 	// Platform auron
-	"auron_paine",
-	"auron_yuna",
+	"paine", // crbug.com/1072877
+	"yuna",  // crbug.com/1072877
 	// Platform banon
 	"banon",
 	// Platform bob
@@ -59,7 +59,7 @@ var UnstableModels = []string{
 	// Platform fizz
 	"jax",
 	// Platform gandof
-	"gandof",
+	"gandof", // crbug.com/1072877
 	// Platform grunt
 	"aleena",
 	"barla",
@@ -67,7 +67,7 @@ var UnstableModels = []string{
 	"kasumi",
 	"treeya",
 	// Platform guado
-	"guado",
+	"guado", // crbug.com/1072877
 	// Platform hana
 	"hana",
 	// Platform kefka
@@ -77,7 +77,7 @@ var UnstableModels = []string{
 	// Platform kukui
 	"krane",
 	// Platform lulu
-	"lulu",
+	"lulu", // crbug.com/1072877
 	// Platform nocturne
 	"nocturne",
 	// Platform octopus
@@ -108,8 +108,12 @@ var UnstableModels = []string{
 	// Platform scarlet
 	"dru",
 	"dumo",
+	// Platform samus
+	"samus", // crbug.com/1072877
 	// Platform terra
 	"terra",
+	// Platform tidus
+	"tidus", // crbug.com/1072877
 	// Platform ultima
 	"ultima",
 }
