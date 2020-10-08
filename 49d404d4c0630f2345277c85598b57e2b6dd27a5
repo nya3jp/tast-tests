@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "863255d8_d6aa48cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-10-08T22:43:19Z",
+      "side": 1,
+      "message": "There were a few cases I missed. I updated this CL to modify the validators in valid.go to accept a generic |backup| string instead of hardcoding \"N/A\" for cros_healthd\u0027s use case. If you wouldn\u0027t mind, could everyone take another look? Thanks!",
+      "revId": "49d404d4c0630f2345277c85598b57e2b6dd27a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
