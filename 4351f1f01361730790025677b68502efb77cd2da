@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6eb3636_a7823bd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-08T00:02:28Z",
+      "side": 1,
+      "message": "Oh no problem. Thanks so much for taking time to help me with this! I\u0027m still really new to tast tests and golang, so I appreciate it 😄",
+      "parentUuid": "cd60366b_886ad028",
+      "revId": "4351f1f01361730790025677b68502efb77cd2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ea78b02_f224a40e",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-07T15:49:47Z",
       "side": 1,
       "message": "defer cr.Close(...)\n\nis missing. (sorry I overlooked in the last iteration.)",
+      "revId": "4351f1f01361730790025677b68502efb77cd2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0096751f_51f91650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-08T00:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ea78b02_f224a40e",
       "revId": "4351f1f01361730790025677b68502efb77cd2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,54 @@
       "writtenOn": "2020-10-07T15:49:47Z",
       "side": 1,
       "message": "err check is missing.",
+      "range": {
+        "startLine": 74,
+        "startChar": 14,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "4351f1f01361730790025677b68502efb77cd2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c03663_c4660880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-08T00:02:28Z",
+      "side": 1,
+      "message": "Woops! We haven\u0027t been doing this, but will fix that up in other files in a followup",
+      "parentUuid": "ab8d1c21_ae280907",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 12
+      },
+      "revId": "4351f1f01361730790025677b68502efb77cd2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee25e1fe_1b05c22b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-08T00:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6274a080_6618d67c",
       "range": {
         "startLine": 74,
         "startChar": 14,
