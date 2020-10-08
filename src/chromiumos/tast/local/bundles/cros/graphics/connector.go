@@ -6,17 +6,19 @@ package graphics
 
 import (
 	"context"
-	"strings"
+	"os"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/graphics"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Connector,
-		Desc: "Checks the validity of display connector configurations.",
+		Desc: "Checks the validity of display connector configurations",
 		Contacts: []string{
 			"pwang@chromium.org",
 			"chromeos-gfx@google.com",
@@ -25,24 +27,60 @@ func init() {
 	})
 }
 
+func dumpModetestOnError(ctx context.Context, outDir string, hasError func() bool) {
+	if !hasError() {
+		return
+	}
+	file := filepath.Join(outDir, "modetest.txt")
+	f, err := os.Create(file)
+	if err != nil {
+		testing.ContextLogf(ctx, "Failed to create %s: %v", file, err)
+		return
+	}
+	defer f.Close()
+
+	cmd := testexec.CommandContext(ctx, "modetest", "-c")
+	cmd.Stdout, cmd.Stderr = f, f
+	if err := cmd.Run(); err != nil {
+		testing.ContextLog(ctx, "Failed to run modetest: ", err)
+	}
+}
+
+// Connector checks various attributes of the connectors settings via modetest.
 func Connector(ctx context.Context, s *testing.State) {
 	connectors, err := graphics.ModetestConnectors(ctx)
 	if err != nil {
 		s.Fatal("Failed to get connectors: ", err)
 	}
-	// We require that no HDMI-A connectors are exposed.
-	if err := checkHDMIA(ctx, connectors); err != nil {
-		s.Error("Failed to verify DP++: ", err)
-	}
+	defer dumpModetestOnError(ctx, s.OutDir(), s.HasError)
 
+	if err := checkUniqueEncoders(ctx, connectors); err != nil {
+		s.Error("Failed to have check unique encoders: ", err)
+	}
 }
 
-// checkHDMIA checks if any connector is named HDMI-A-*
-func checkHDMIA(ctx context.Context, connectors []*graphics.Connector) error {
+// checkUniqueEncoders checks if every connector can be assigned a unique encoder concurrently.
+func checkUniqueEncoders(ctx context.Context, connectors []*graphics.Connector) error {
+	encoderMap := make(map[int][]string)
 	for _, connector := range connectors {
-		if strings.HasPrefix(connector.Name, "HDMI-A-") {
-			return errors.Errorf("found connector connected to HDMI-A: %v", connector)
+		// To simplify the code, we only cares about the connector with one encoder.
+		if len(connector.Encoders) > 1 {
+			testing.ContextLogf(ctx, "Connector %s has more than 1 encoders %v", connector.Name, connector.Encoders)
+			continue
+		}
+		encoder := connector.Encoders[0]
+		if con, ok := encoderMap[encoder]; !ok {
+			encoderMap[encoder] = []string{connector.Name}
+		} else {
+			encoderMap[encoder] = append(con, connector.Name)
 		}
 	}
-	return nil
+
+	var err error
+	for encoder, connectors := range encoderMap {
+		if len(connectors) > 1 {
+			err = errors.Wrapf(err, "encoder %d is shared with multiple connector %v", encoder, connectors)
+		}
+	}
+	return err
 }
