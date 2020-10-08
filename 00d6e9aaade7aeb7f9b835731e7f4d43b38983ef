@@ -39,6 +39,30 @@
       },
       "revId": "00d6e9aaade7aeb7f9b835731e7f4d43b38983ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b9a10da_67f61e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-08T11:57:29Z",
+      "side": 1,
+      "message": "That was the original approach, but it failed sometimes. I added the ui.WaitForLocationChangeCompleted(), and I would like to try if it helps.",
+      "parentUuid": "8199efad_b92f7b46",
+      "range": {
+        "startLine": 103,
+        "startChar": 24,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "00d6e9aaade7aeb7f9b835731e7f4d43b38983ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
