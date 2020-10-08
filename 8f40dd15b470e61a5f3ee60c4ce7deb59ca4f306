@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea17bdd_19ea2f17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-08T18:16:46Z",
+      "side": 1,
+      "message": "Hi Everybody:\n\nAfter further experiments, I found the most reliable way to ensure drag \u0026 drop works with sleep is to call cpu.WaitUntilIdle. It is probably not the solution we want so I will continue to experiment other methods such as ui.WaitUntilGone. For now, I just submit what I have for now. The drag and drop always work now.\n\nOne of the reason I want to check in my code first because I want to debug a random failure due to the mismatch of the ui_tree.txt and screenshot. Since I rebase my chroot on Monday, I encountered frequent random failures with a mismatch between ui_tree.txt and screenshot. I saw this problem before but it happened rarely. It now happens frequently. \n\nThe situation is like this. If I drag and drop an icon to another one, a new folder called NoName will be create. If I click on it, a text field will show and I can rename the folder by typing in the text field. The random problem happens when I could not find the text field from the ui_tree. I was right in front of the screen, I could see the text field clearly for a long time, but the code could not find it even when I change the timeout to 30 seconds. When I looked at the ui_tree.txt, I could not find the text box. When I looked at the screenshot, I could clearly see the text field. It seems like that the ui_tree did not reflect what actually happens on screenshot at that moment. Therefore, I could not find the text field object even though it was on screen. This issues happened in both clamshell and tablet mode.\n\nI uploaded the code so that I can ask for help. I will update your status later. I will try other method to wait after I resolve the ui_tree issue.\n\nThanks for your patient.\n\nSeewai\n",
+      "revId": "8f40dd15b470e61a5f3ee60c4ce7deb59ca4f306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
