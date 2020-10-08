@@ -82,6 +82,11 @@ func MediaRecorderMulti(ctx context.Context, s *testing.State) {
 			return mediarecorder.VerifyMediaRecorderUsesEncodeAccelerator(
 				encCtx, cr, s.DataFileSystem(), c, recordDuration)
 		})
+
+		// Stagger startup of the two encoders to lower system load and
+		// allow the (async) enumeration of encoding capabilities to
+		// complete. See b/147404923 and b/168834129 for details.
+		testing.Sleep(ctx, 2*time.Second)
 	}
 
 	if err := g.Wait(); err != nil {
