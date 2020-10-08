@@ -16,6 +16,23 @@
       "message": "Made the desired changes, reducing the branching for Location and Backup toggle.  ",
       "revId": "ab702042309d18bf354549518e65503e916c792d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ae6c5e_cce73468",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-10-08T21:20:43Z",
+      "side": 1,
+      "message": "Thanks for the feedback. Going forward I\u0027ll make sure to reply on each comment individually.  ",
+      "revId": "ab702042309d18bf354549518e65503e916c792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
