@@ -9,17 +9,20 @@ import (
 	"time"
 
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/graphics/trace"
 	"chromiumos/tast/local/graphics/trace/comm"
 	"chromiumos/tast/testing"
 )
 
 func init() {
+	// Trace tests rely on increased VM sizes, but DUTs in the CQ often have not very much storage.
+	// We want to exercise the resizing path, hence we request specific size for our crostini VM.
 	testing.AddTest(&testing.Test{
 		Func:         TraceReplay,
 		Desc:         "Replay glxgears trace file in Crostini VM",
 		Contacts:     []string{"chromeos-gfx@google.com", "tutankhamen@google.com", "ddmail@google.com", "ihf@google.com"},
-		Pre:          crostini.StartedByArtifact(),
+		Pre:          crostini.StartedTraceVM(6 * settings.SizeGB),
 		Data:         []string{crostini.ImageArtifact},
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 		// We assign it to two different group in order to run it against pool:suite and pool:cros_av_analysis.
