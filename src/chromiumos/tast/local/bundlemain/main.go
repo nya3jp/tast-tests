@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/ready"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/baserpc"
 	"chromiumos/tast/ssh/linuxssh"
@@ -149,6 +150,11 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 
 	if err := crash.MarkTestInProgress(s.TestInstance().Name); err != nil {
 		s.Log("Failed to mark crash test in progress: ", err)
+	}
+
+	// Wait for Internet connectivity.
+	if err := shill.WaitForOnline(ctx); err != nil {
+		s.Log("Failed to wait for Internet connectivity: ", err)
 	}
 
 	return func(ctx context.Context, s *testing.TestHookState) {
