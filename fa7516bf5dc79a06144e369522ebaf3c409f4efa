@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f18681_a7baa496",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-08T07:17:32Z",
+      "side": 1,
+      "message": "The current LoginTimeout is long enough. Thanks for bringing this up.",
+      "parentUuid": "069b7f1e_1a9c3aae",
+      "range": {
+        "startLine": 404,
+        "startChar": 1,
+        "endLine": 409,
+        "endChar": 15
+      },
+      "revId": "fa7516bf5dc79a06144e369522ebaf3c409f4efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "735a1a58_99fb5877",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de8e2462_32ac9cf7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-08T07:17:32Z",
+      "side": 1,
+      "message": "It does take a while. But okay to reduce the interval.",
+      "parentUuid": "735a1a58_99fb5877",
+      "range": {
+        "startLine": 485,
+        "startChar": 53,
+        "endLine": 485,
+        "endChar": 78
+      },
+      "revId": "fa7516bf5dc79a06144e369522ebaf3c409f4efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a33f6999_5bf86d23",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-10-08T07:05:16Z",
       "side": 1,
       "message": "nit\u0026optional: I wonder if we can skip hasVKExtraArgs check and just always add --enable-virtual-keyboard. Is it an error to specify the flag twice?",
+      "range": {
+        "startLine": 813,
+        "startChar": 19,
+        "endLine": 813,
+        "endChar": 34
+      },
+      "revId": "fa7516bf5dc79a06144e369522ebaf3c409f4efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8351f34_7a12938e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-08T07:17:32Z",
+      "side": 1,
+      "message": "Should not be any error. Otherwise it would be a bug. I removed the check.",
+      "parentUuid": "a33f6999_5bf86d23",
       "range": {
         "startLine": 813,
         "startChar": 19,
