@@ -42,7 +42,7 @@ func init() {
 }
 
 func ZipPerf(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--disable-features=FilesZipMount", "--disable-features=FilesZipPack", "--disable-features=FilesZipUnpack"))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=FilesZipMount", "--disable-features=FilesZipPack", "--disable-features=FilesZipUnpack"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
