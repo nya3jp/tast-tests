@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a51bb6_5681521a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-08T01:30:24Z",
+      "side": 1,
+      "message": "fixed",
+      "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "769a3fe5_f2439ca2",
@@ -120,6 +137,24 @@
       "side": 1,
       "message": "I still do not want to have them here, for now.\nPREUPLOAD hook checks not only blocked terms, but others. They should not be ignored, but if such words are added, even if it is false-alarm, they have to deal with it.\nIt looses the trust of preupload hook, which is very important. Specifically, in Tast, we added lint checks to be enforced, so creating a room to ignore them is big concern.\nAlso, simply, false-negative hurts our developer experience a lot. Considering our team\u0027s goal, we should take care of it very much, IMO.\n\n\u003e I am thinking of adding more changes to the pre-upload.py to allow putting files with the unblock regex. the later would allow one to narrow the unblock to a [regex, file] pair\n\nThat sounds like an interesting approach. If that\u0027s the case, could you add unblocking words now, and then update once the feature comes?",
       "parentUuid": "3da3112f_327b3eaf",
+      "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa37a592_e5b5fd6f",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-08T01:30:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5aa4c9c_5b5825f1",
       "revId": "094f203d63c99aa3b7a7092161553d7a9fc4b2df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
