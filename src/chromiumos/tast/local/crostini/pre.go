@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	cui "chromiumos/tast/local/crostini/ui"
-	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
@@ -162,8 +161,15 @@ func StartedByDownloadStretch() testing.Precondition { return startedByDownloadS
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByDownloadBuster() testing.Precondition { return startedByDownloadBusterPre }
 
-// StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
-func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
+// StartedTraceVM will try to setup a debian buster VM with specific size disk.
+func StartedTraceVM(size uint64) testing.Precondition {
+	return &preImpl{
+		name:        "crostini_started_trace_vm_" + strconv.FormatUint(size, 10),
+		timeout:     chrome.LoginTimeout + 7*time.Minute,
+		mode:        artifact,
+		minDiskSize: size,
+	}
+}
 
 // StartedARCEnabled is similar to StartedByArtifact, but will start Chrome
 // with ARCEnabled() option.
@@ -214,13 +220,6 @@ var startedByDownloadBusterPre = &preImpl{
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
 	mode:          download,
 	debianVersion: vm.DebianBuster,
-}
-
-var startedTraceVMPre = &preImpl{
-	name:        "crostini_started_trace_vm",
-	timeout:     chrome.LoginTimeout + 10*time.Minute,
-	mode:        artifact,
-	minDiskSize: 16 * settings.SizeGB, // graphics.TraceReplay relies on at least 16GB size.
 }
 
 var startedARCEnabledPre = &preImpl{
