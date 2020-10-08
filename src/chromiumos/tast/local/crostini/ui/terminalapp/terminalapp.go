@@ -36,7 +36,14 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, userName string) (*Term
 	if err := apps.Launch(ctx, tconn, apps.Terminal.ID); err != nil {
 		return nil, err
 	}
-	return Find(ctx, tconn, userName, "~")
+	ta, err := Find(ctx, tconn, userName, "~")
+	if err != nil {
+		if closeErr := apps.Close(ctx, tconn, apps.Terminal.ID); closeErr != nil {
+			testing.ContextLog(ctx, "Error closing terminal app: ", closeErr)
+		}
+		return nil, err
+	}
+	return ta, nil
 }
 
 // Find finds an open Terminal App with the specified userName and current.
