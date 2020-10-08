@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3c9fe7_dbc88b1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-08T19:51:58Z",
+      "side": 1,
+      "message": "LGTM with one Comment.",
+      "revId": "6c18d8b5fd3e680b01db0f209697a4d98b62916b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f9b27d1_46f79d2c",
@@ -19,6 +36,29 @@
         "startChar": 24,
         "endLine": 296,
         "endChar": 28
+      },
+      "revId": "6c18d8b5fd3e680b01db0f209697a4d98b62916b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ffdf57_ffa5c407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-08T19:51:58Z",
+      "side": 1,
+      "message": "This looks wrong overall, you shouldn\u0027t use terminal if err isn\u0027t checked first. Does this work instead:\n\n terminal, err :\u003d terminalapp.Launch(ctx, tconn, userName)\n if err !\u003d nil {\n   return err\n }\n return terminal.Close(ctx)",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 11
       },
       "revId": "6c18d8b5fd3e680b01db0f209697a4d98b62916b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
