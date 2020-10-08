@@ -892,9 +892,9 @@ func (s *WifiService) Reassociate(ctx context.Context, req *network.ReassociateR
 	}
 	defer sw.Close(ctx)
 
-	// Trigger reassociate
-	if err := iface.Reassociate(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to call Reassociate method")
+	// Trigger reassociation back to the current BSS.
+	if err := iface.Reattach(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to call Reattach method")
 	}
 
 	// Watch the PropertiesChanged signals looking for a state transition from
