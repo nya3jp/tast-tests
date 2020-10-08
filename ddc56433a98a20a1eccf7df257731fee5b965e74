@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7045a1f5_5e3f9de5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-10-08T16:05:48Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "99b3f0b1_e554aa0e",
+      "revId": "ddc56433a98a20a1eccf7df257731fee5b965e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdfa849a_350292ef",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-10-08T08:32:25Z",
       "side": 1,
       "message": "Because this appeared many times, could you make this constant?",
+      "range": {
+        "startLine": 113,
+        "startChar": 15,
+        "endLine": 113,
+        "endChar": 20
+      },
+      "revId": "ddc56433a98a20a1eccf7df257731fee5b965e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "074fba51_c0819c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-10-08T16:05:48Z",
+      "side": 1,
+      "message": "Good suggestion, done.",
+      "parentUuid": "bdfa849a_350292ef",
       "range": {
         "startLine": 113,
         "startChar": 15,
