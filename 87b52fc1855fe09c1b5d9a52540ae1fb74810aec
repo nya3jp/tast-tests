@@ -143,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39956351_deea7f87",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-08T17:00:46Z",
+      "side": 1,
+      "message": "Sorry that I proposed removing notification at login. I\u0027ve suggested this because I\u0027ve seen several tests which hides notifications at the beginning (ash.HideVisibleNotifications) as the \"Try new ways...\" notification disturbs their UI flows.\n\nI don\u0027t think we have a test of checking notification behaviors on login -- and also, I don\u0027t think there\u0027s persistent notifications in ChromeOS, notifications are on-memory data in Ash and are gone on logout.  It might be possible that some installed apps re-create notifications upon login.\n\nConsidering that, I\u0027d vote +1 to \"removeNotifications\" options when it\u0027s necessary.",
+      "parentUuid": "debed9e9_7aa98937",
+      "range": {
+        "startLine": 1293,
+        "startChar": 5,
+        "endLine": 1293,
+        "endChar": 94
+      },
+      "revId": "87b52fc1855fe09c1b5d9a52540ae1fb74810aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "daff23e6_8191fe42",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
