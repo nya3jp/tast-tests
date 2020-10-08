@@ -77,6 +77,9 @@ const (
 	BlankURL = "about:blank"
 )
 
+// Virtual keyboard background page url.
+const vkBackgroundPageURL = "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background.html"
+
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
 var loginPollOpts = &testing.PollOptions{Interval: 10 * time.Millisecond}
 
@@ -150,6 +153,11 @@ type Option func(c *Chrome)
 // See https://crbug.com/1076660 for more details.
 func EnableWebAppInstall() Option {
 	return func(c *Chrome) { c.installWebApp = true }
+}
+
+// VKEnabled returns an Option that force enable virtual keyboard.
+func VKEnabled() Option {
+	return func(c *Chrome) { c.vkEnabled = true }
 }
 
 // Auth returns an Option that can be passed to New to configure the login credentials used by Chrome.
@@ -315,6 +323,7 @@ type Chrome struct {
 	keepState              bool
 	deferLogin             bool
 	loginMode              loginMode
+	vkEnabled              bool
 	skipOOBEAfterLogin     bool // skip OOBE post user login
 	installWebApp          bool // auto install essential apps after user login
 	region                 string
@@ -376,6 +385,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		gaiaID:             defaultGaiaID,
 		keepState:          false,
 		loginMode:          fakeLogin,
+		vkEnabled:          false,
 		skipOOBEAfterLogin: true,
 		installWebApp:      false,
 		region:             "us",
@@ -457,6 +467,23 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	if !c.deferLogin && (c.loginMode != noLogin) {
 		if err := c.logIn(ctx); err != nil {
 			return nil, err
+		}
+	}
+
+	// VK uses different extension instance in login profile and user profile.
+	// BackgroundConn will wait until the background connection is unique.
+	if c.vkEnabled {
+		// Background target from login persists for a few seconds, causing 2 background targets.
+		// Polling until connected to the unique target.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			bconn, err := c.NewConnForTarget(ctx, MatchTargetURL(vkBackgroundPageURL))
+			if err != nil {
+				return err
+			}
+			bconn.Close()
+			return nil
+		}, &testing.PollOptions{Timeout: 60 * time.Second, Interval: 1 * time.Second}); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for unique virtual keyboard background target")
 		}
 	}
 
@@ -594,14 +621,6 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		testing.ContextLog(ctx, "Not all targets finished closing: ", err)
 	}
 
-	vkEnabled := false
-	for _, arg := range c.extraArgs {
-		if arg == "--enable-virtual-keyboard" {
-			vkEnabled = true
-			break
-		}
-	}
-
 	// If testExtCon was created, free all remote JS objects in the TastObjectGroup.
 	if c.testExtConn != nil {
 		if err := c.testExtConn.co.ReleaseObjectGroup(ctx, cdputil.TastObjectGroup); err != nil {
@@ -614,7 +633,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		return errors.Wrap(err, "failed to get test API connection")
 	}
 
-	if vkEnabled {
+	if c.vkEnabled {
 		// Calling the method directly to avoid vkb/chrome circular imports.
 		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.inputMethodPrivate.hideInputView)()", nil); err != nil {
 			return errors.Wrap(err, "failed to hide virtual keyboard")
@@ -780,6 +799,17 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 
 	if !c.installWebApp {
 		args = append(args, "--disable-features=DefaultWebAppInstallation")
+	}
+
+	// In case some tests using extra flag to force enable virtual keyboard rather than Chrome.VKEnabled() option.
+	for _, arg := range c.extraArgs {
+		if arg == "--enable-virtual-keyboard" {
+			c.vkEnabled = true
+			break
+		}
+	}
+	if c.vkEnabled {
+		args = append(args, "--enable-virtual-keyboard")
 	}
 
 	if c.loginMode != gaiaLogin {

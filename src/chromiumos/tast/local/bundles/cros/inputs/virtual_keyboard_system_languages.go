@@ -93,7 +93,7 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	defaultInputMethodID := s.Param().(testParameters).defaultInputMethodID
 	defaultInputMethodName := s.Param().(testParameters).defaultInputMethodName
 
-	cr, err := chrome.New(ctx, chrome.Region(regionCode), chrome.ExtraArgs("--enable-virtual-keyboard"))
+	cr, err := chrome.New(ctx, chrome.Region(regionCode), chrome.VKEnabled())
 	if err != nil {
 		s.Fatalf("Failed to start Chrome in region %s: %v", regionCode, err)
 	}
