@@ -16,6 +16,52 @@
       "message": "Shall be mostly working, the exact parameters for the SLC partition could be tweaked later, this CL intends to outline the general integration. \nAlso still need to run a full end-to-end, but partial runs seem to be working, so it is pretty much review ready",
       "revId": "c4d0a502315de5dfde5a5ad7b1060b8943644ae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0a4f4d_88e0b281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/common.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-08T23:18:11Z",
+      "side": 1,
+      "message": "Why are these functions (IsDualQual, GetSlcDevice, RunFioStressForBootDev, RunFioStressForSlcDev) here? are you planning to reuse them in any other test?\n\nOne of the issues is that they all pass testing.State around, which should be very limited, according to Tast principles.",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "c4d0a502315de5dfde5a5ad7b1060b8943644ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346c1d39_244bf889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/common.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-08T23:18:11Z",
+      "side": 1,
+      "message": "if you pass out dir as string, you won\u0027t need to pass testing.State",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 24
+      },
+      "revId": "c4d0a502315de5dfde5a5ad7b1060b8943644ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
