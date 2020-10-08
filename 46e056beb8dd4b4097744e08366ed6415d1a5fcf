@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b7388a_ede5aefd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-08T03:31:42Z",
+      "side": 1,
+      "message": "Hi Brian,\n\nThanks for letting me know of shill.WaitForOnline. This patch will ensure it is called before every local test.\n",
+      "revId": "46e056beb8dd4b4097744e08366ed6415d1a5fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
