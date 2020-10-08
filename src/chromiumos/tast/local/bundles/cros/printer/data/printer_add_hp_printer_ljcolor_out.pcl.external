@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_printer_ljcolor_out_20210319.pcl",
+  "size": 138066,
+  "sha256sum": "c6670a989bf2dc402015dda72aee1f0685efd9af9500e29f836cf777feec31e7"
+}
