@@ -22,6 +22,30 @@
       },
       "revId": "1b07bbe604023aa98683b20f2dec1511927838a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf11dd8_39c3477f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-08T06:06:15Z",
+      "side": 1,
+      "message": "Reference from the comment at the start of |cleanup|\u0027s function body, the memebers will be initialized in |conn|\u003e|dir|\u003e|pid| order, if the initialize process somehow failed before |pid| is ready, it should be expected that the pid is not ready and the code here should return nil.",
+      "parentUuid": "16fcc7e0_c9276ec4",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "1b07bbe604023aa98683b20f2dec1511927838a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
