@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/testing"
@@ -59,15 +58,11 @@ func LaunchReleaseNotesFromSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Settings: ", err)
 	}
 
-	// Find and click See what's new.
-	if err := ui.FindAndClick(ctx, tconn, ui.FindParams{
-		Name: "See what's new",
-		Role: ui.RoleTypeLink,
-	}, 10*time.Second); err != nil {
-		s.Fatal("Failed to click See whats new: ", err)
+	if err := ossettings.LaunchWhatsNew(ctx, tconn); err != nil {
+		s.Fatal("Failed to launch WhatsNew: ", err)
 	}
 
 	if err := helpapp.WaitWhatsNewTabRendered(ctx, tconn); err != nil {
-		s.Error(`Failed to verify "what's new" tab rendering: `, err)
+		s.Error(`Failed to verify "What’s new" tab rendering: `, err)
 	}
 }
