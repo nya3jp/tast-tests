@@ -94,6 +94,30 @@
       },
       "revId": "1b07bbe604023aa98683b20f2dec1511927838a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b13900_651af3b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-10-08T06:58:50Z",
+      "side": 1,
+      "message": "I would say it is not very clear to me that the original check is for the unexpected call. Anyways, if you did not mean to actually check pid in the original CL, then we don\u0027t need to change it since this is just a refactor CL.",
+      "parentUuid": "c855d1de_4d1be2a9",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "1b07bbe604023aa98683b20f2dec1511927838a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
