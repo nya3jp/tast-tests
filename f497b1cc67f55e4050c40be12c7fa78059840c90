@@ -264,6 +264,30 @@
       },
       "revId": "f497b1cc67f55e4050c40be12c7fa78059840c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4f5063b_a370ce3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-08T23:42:12Z",
+      "side": 1,
+      "message": "Sorry, did not get you first time. Is your concern waiting for boot completed?\nIf so, arc.New should do this. it waits here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/arc.go;l\u003d200\nAlso from comment: \"New waits for Android to finish booting.\"\nSo looks like we don\u0027t need boot_progress_enable_screen reading.\nWaiting for CPU is added because some dex2oat may start after boot completed.",
+      "parentUuid": "915779c0_d09a4237",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "f497b1cc67f55e4050c40be12c7fa78059840c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
