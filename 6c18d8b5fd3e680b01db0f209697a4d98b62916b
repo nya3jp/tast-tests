@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0445974_117fcd64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-08T23:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f9b27d1_46f79d2c",
+      "range": {
+        "startLine": 296,
+        "startChar": 24,
+        "endLine": 296,
+        "endChar": 28
+      },
+      "revId": "6c18d8b5fd3e680b01db0f209697a4d98b62916b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24ffdf57_ffa5c407",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-08T19:51:58Z",
       "side": 1,
       "message": "This looks wrong overall, you shouldn\u0027t use terminal if err isn\u0027t checked first. Does this work instead:\n\n terminal, err :\u003d terminalapp.Launch(ctx, tconn, userName)\n if err !\u003d nil {\n   return err\n }\n return terminal.Close(ctx)",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 11
+      },
+      "revId": "6c18d8b5fd3e680b01db0f209697a4d98b62916b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb991dfb_8071fdf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-08T23:55:46Z",
+      "side": 1,
+      "message": "In the past it was possible for terminalapp.Launch to return both a terminal object and an error, and we needed to close the terminal object regardless of error state.\n\nThat\u0027s no longer the case today, but conceptually we are still obliged to close the terminal object if we get one, and are intentionally not propagating the error because failures to start crostini are expected.",
+      "parentUuid": "24ffdf57_ffa5c407",
       "range": {
         "startLine": 328,
         "startChar": 1,
