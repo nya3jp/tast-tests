@@ -63,6 +63,30 @@
       },
       "revId": "00d6e9aaade7aeb7f9b835731e7f4d43b38983ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3aee10_7967f05c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/secondary_google_account_signin_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T13:04:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b9a10da_67f61e2f",
+      "range": {
+        "startLine": 103,
+        "startChar": 24,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "00d6e9aaade7aeb7f9b835731e7f4d43b38983ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
