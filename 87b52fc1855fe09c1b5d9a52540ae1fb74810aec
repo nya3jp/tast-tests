@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba2da8a_298bf739",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-08T18:40:12Z",
+      "side": 1,
+      "message": "Thanks for the feedback! As far as I know, we don\u0027t have any tests that check notifications on login. I\u0027ll leave it as-is for now, and we can add an option if the need arises.",
+      "parentUuid": "7792833b_130b2060",
+      "range": {
+        "startLine": 1293,
+        "startChar": 5,
+        "endLine": 1293,
+        "endChar": 94
+      },
+      "revId": "87b52fc1855fe09c1b5d9a52540ae1fb74810aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daff23e6_8191fe42",
