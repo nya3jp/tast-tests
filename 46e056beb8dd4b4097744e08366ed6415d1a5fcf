@@ -16,6 +16,23 @@
       "message": "Hi Brian,\n\nThanks for letting me know of shill.WaitForOnline. This patch will ensure it is called before every local test.\n",
       "revId": "46e056beb8dd4b4097744e08366ed6415d1a5fcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e342cf1e_de1195da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-08T22:22:56Z",
+      "side": 1,
+      "message": "I suppose it\u0027s fine that there\u0027s now somewhat redundant usage of WaitForOnline() in the chrome package (for GAIA login)? One could have a test that disrupts connectivity and then wants to do GAIA login.",
+      "revId": "46e056beb8dd4b4097744e08366ed6415d1a5fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
