@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44acb05_996b6033",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-08T19:15:30Z",
+      "side": 1,
+      "message": "IIUC, this is mostly to run the test locally, in your workstation.\n\nIf that\u0027s the case, using `tast run -var keepCache\u003dtrue ...` might be better, since you don\u0027t have to modify the .go files each time.\n\nSee: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#runtime-variables",
+      "revId": "a5af2a02df1ab1817de19c6313651a910e198c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
