@@ -39,6 +39,30 @@
       },
       "revId": "0a702b6c93e109da0cdf51ef05124a9bc225f5a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cabd1161_047eb433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-08T10:09:53Z",
+      "side": 1,
+      "message": "We can\u0027t call Close on remoteFd because it\u0027s an int type Unix file descriptor. It\u0027s only valid as long as |remote| is open.",
+      "parentUuid": "f6e51e7b_26969408",
+      "range": {
+        "startLine": 69,
+        "startChar": 7,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "0a702b6c93e109da0cdf51ef05124a9bc225f5a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
