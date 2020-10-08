@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "223564e1_fc837e9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-08T10:19:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed8bba91_7f9b4316",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 56
+      },
+      "revId": "58b5c71003100ab5847e9e6ae62a4d82338dd966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bfe3979_8d9d34db",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-08T08:33:23Z",
       "side": 1,
       "message": "nit : terminal window will remain open, and we won\u0027t",
+      "range": {
+        "startLine": 307,
+        "startChar": 5,
+        "endLine": 307,
+        "endChar": 55
+      },
+      "revId": "58b5c71003100ab5847e9e6ae62a4d82338dd966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d3c353_12e7d65f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-08T10:19:46Z",
+      "side": 1,
+      "message": "Actually, with mwarton\u0027s change in CL:2460270 we don\u0027t need this bit at all.",
+      "parentUuid": "2bfe3979_8d9d34db",
       "range": {
         "startLine": 307,
         "startChar": 5,
