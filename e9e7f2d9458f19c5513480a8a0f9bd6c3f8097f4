@@ -16,6 +16,63 @@
       "message": "Thanks for the reviews. I have updated the context. Please let me know if it looks fine.",
       "revId": "e9e7f2d9458f19c5513480a8a0f9bd6c3f8097f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaeb1e26_ccb42a4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-08T02:21:00Z",
+      "side": 1,
+      "message": "Thanks for the change. LGTM % two more nits.",
+      "revId": "e9e7f2d9458f19c5513480a8a0f9bd6c3f8097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2295123_a42b6f29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_force_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-08T02:21:00Z",
+      "side": 1,
+      "message": "might be better to also use the shorten-ed context in chrome.New. Otherwise, it is possible that chrome.New consumes almost all remaining time and there\u0027s less than cleanupTime left when we reach here.\n\nSee also: go/tast-writing#Reserve-time-for-clean_up-task",
+      "revId": "e9e7f2d9458f19c5513480a8a0f9bd6c3f8097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addf0818_10a89f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_force_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-08T02:21:00Z",
+      "side": 1,
+      "message": "nit: maybe these can be merged?\n\n  const (\n    extensionID \u003d \"hoppbgdeajkagempifacalpdapphfoai\"\n    downloadURL \u003d \"https://chrome.google.com/webstore/detail/platformkeys-test-extensi/\" + extensionID\n  )",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "e9e7f2d9458f19c5513480a8a0f9bd6c3f8097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
