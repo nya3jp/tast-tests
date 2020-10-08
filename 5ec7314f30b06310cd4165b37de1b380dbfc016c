@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2f8092_a61fcd16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_no_external_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-10-08T06:34:37Z",
+      "side": 1,
+      "message": "\u003e \"avaialble\" is a possible misspelling of \"available\".\n\nPlease fix.",
+      "parentUuid": "202dad64_adc5746c",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "5ec7314f30b06310cd4165b37de1b380dbfc016c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
