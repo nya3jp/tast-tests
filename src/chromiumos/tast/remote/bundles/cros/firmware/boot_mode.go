@@ -30,7 +30,9 @@ func init() {
 		Data:         firmware.ConfigDatafiles(),
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		SoftwareDeps: []string{"crossystem"},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(b/155425293): return group:mainline and informational attributes
+		// when the test is fixed.
+		Attr: []string{},
 		Params: []testing.Param{{
 			Name: "normal",
 			Val: bootModeTestParams{
