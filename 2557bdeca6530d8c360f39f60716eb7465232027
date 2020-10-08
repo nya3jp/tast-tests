@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2e05e62_ccf40c08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2020-10-08T07:01:31Z",
+      "side": 1,
+      "message": "The mmap I mean is V4L2_MEMORY_MMAP not mmap() API.\ndmabuf is V4L2_MEMORY_DMABUF",
+      "parentUuid": "31e17aa0_96a5e760",
+      "revId": "2557bdeca6530d8c360f39f60716eb7465232027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fe1bdb0_fc757b79",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
         "patchSetId": 2
