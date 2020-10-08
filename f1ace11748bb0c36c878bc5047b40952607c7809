@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ff7a52_12c2c47d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T14:30:39Z",
+      "side": 1,
+      "message": "when",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "f1ace11748bb0c36c878bc5047b40952607c7809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6477ee55_33686e60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T14:30:39Z",
+      "side": 1,
+      "message": "I\u0027d do this after the ResetChrome. Is there a way to check if it is open? Can something else have focus when escape is pressed?",
+      "revId": "f1ace11748bb0c36c878bc5047b40952607c7809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64756abf_f5df8de3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T14:30:39Z",
+      "side": 1,
+      "message": "nit: add more details.",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 92
+      },
+      "revId": "f1ace11748bb0c36c878bc5047b40952607c7809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a0a824_c218143f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-08T14:30:39Z",
+      "side": 1,
+      "message": "Future tests should not care about the state of Chrome. Is this necessary to clean up state between subtests?",
+      "revId": "f1ace11748bb0c36c878bc5047b40952607c7809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
