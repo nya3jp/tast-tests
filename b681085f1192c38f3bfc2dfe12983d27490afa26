@@ -16,6 +16,24 @@
       "message": "Why remove these from unstable?",
       "revId": "b681085f1192c38f3bfc2dfe12983d27490afa26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71c5845_a6ebf16e",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-08T05:05:29Z",
+      "side": 0,
+      "message": "good catch, merge error I think.  Thanks.",
+      "parentUuid": "85e3b9e8_56c9ad51",
+      "revId": "b681085f1192c38f3bfc2dfe12983d27490afa26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
