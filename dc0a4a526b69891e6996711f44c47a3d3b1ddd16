@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67eabeae_ddfba9b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-08T10:12:11Z",
+      "side": 1,
+      "message": "Hi Hugo,\n\nCan you please take a look at the CL? \n\nI wrote CL:2461368 just to test the proxy server implementation, I\u0027ll abandon that CL when this change is merged.",
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
