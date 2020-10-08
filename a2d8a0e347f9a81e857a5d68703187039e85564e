@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31ea0fa3_759582d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-08T00:03:26Z",
+      "side": 1,
+      "message": "The design doc (from tast team) is at https://docs.google.com/document/d/1sIiCvBIDYPJrpCfzaiR6HG-Q6iIXp3Mx53yP5O_UB58/edit\n\nThese are written as tests that (without the envirnment variable) verify that the params are correct.  These will be executed as part of the normal unit testing in CQ runs, so if they are not correct the CQ run will fail.\n\nThere may be a pre-upload test as well, I\u0027m not sure.",
+      "parentUuid": "91437086_aa91f743",
+      "revId": "a2d8a0e347f9a81e857a5d68703187039e85564e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "682ab30b_8b8836fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb.go",
         "patchSetId": 16
