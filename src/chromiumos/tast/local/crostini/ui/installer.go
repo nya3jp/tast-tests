@@ -140,6 +140,17 @@ func (p *Installer) checkErrorMessage(ctx context.Context) (string, error) {
 
 // Install clicks the install button and waits for the Linux installation to complete.
 func (p *Installer) Install(ctx context.Context) error {
+	// Leave 10 seconds at the end of the context so that if the install times
+	// out the context, we can still check for error messages in the installer
+	// window.
+	cleanupCtx := ctx
+	deadline, ok := cleanupCtx.Deadline()
+	if ok {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithDeadline(cleanupCtx, deadline.Add(-10*time.Second))
+		defer cancel()
+	}
+
 	// Focus on the install button to ensure virtual keyboard does not get in the
 	// way and prevent the button from being clicked.
 	install := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Install"}, uiTimeout)
@@ -147,12 +158,12 @@ func (p *Installer) Install(ctx context.Context) error {
 		uig.Steps(
 			install.FocusAndWait(uiTimeout),
 			install.LeftClick(),
-			uig.WaitUntilDescendantGone(installWindowFindParams, 10*time.Minute)).WithNamef("Install()"))
+			uig.WaitUntilDescendantGone(installWindowFindParams, 5*time.Minute)).WithNamef("Install()"))
 	if err != nil {
 		// If the install fails, return any error message from the installer rather than a timeout error.
-		message, messageErr := p.checkErrorMessage(ctx)
+		message, messageErr := p.checkErrorMessage(cleanupCtx)
 		if messageErr != nil {
-			testing.ContextLog(ctx, "Error checking for error message in installer: ", messageErr)
+			testing.ContextLog(cleanupCtx, "Error checking for error message in installer: ", messageErr)
 			return err
 		}
 		if message != "" {
@@ -161,7 +172,6 @@ func (p *Installer) Install(ctx context.Context) error {
 		return err
 	}
 	return nil
-
 }
 
 func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerDir, terminaImage string, err error) {
