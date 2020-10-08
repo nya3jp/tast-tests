@@ -16,6 +16,322 @@
       "message": "Hi Hugo,\n\nCan you please take a look at the CL? \n\nI wrote CL:2461368 just to test the proxy server implementation, I\u0027ll abandon that CL when this change is merged.",
       "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dadd3e9_ca90bffc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "Looks very good. I mostly have Go nits only.",
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab585d03_4ae51d85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "Suggest saying \"http proxy\", for disambiguating with other types of proxies we have.",
+      "range": {
+        "startLine": 5,
+        "startChar": 34,
+        "endLine": 5,
+        "endChar": 39
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a7f42b4_ee36fa0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "Are these two needed ?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89744914_af178784",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "I would rather avoid hardcoding a server port here. I have seen other tast tests try to do things like this and this can only eventually leads to issues.\n\nCan we have the port be a parameter of StartServer() or NewProxyServer(), and push back the value 3128 to the actual test case ?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34a48d5_4d1df429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "Df -\u003e Fd ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd09a10_d87e3a92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "I would just directly return the result of  testexec.CommandContext() here. The caller can wrap if needed.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef7a04b_1752dca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "If this is changed to an os.File*, we need to close it in error blocks (see my other comment below).",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f8aab7_a91afbdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "Just curious: is this space significant ?",
+      "range": {
+        "startLine": 127,
+        "startChar": 35,
+        "endLine": 127,
+        "endChar": 36
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "949867bc_50b69c80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "its",
+      "range": {
+        "startLine": 142,
+        "startChar": 69,
+        "endLine": 142,
+        "endChar": 73
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0a211a_c642f5ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d47d9c_acc8e290",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "Different error ?",
+      "range": {
+        "startLine": 150,
+        "startChar": 32,
+        "endLine": 150,
+        "endChar": 51
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c729cce_c549af6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "Do you need to do that in the previous error block as well ?",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0383c44c_23abd74b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we close |file| somewhere at some point ? Here we are leaking the os.File* variable and only returning the name.\n\nIt would seem more correct to return directly the os.File* object in this function and let the caller (i.e createTinyproxyConfig()) close it in case of error, or return it one level up.",
+      "range": {
+        "startLine": 156,
+        "startChar": 8,
+        "endLine": 156,
+        "endChar": 12
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6fff5b0_1af9030c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-08T14:30:28Z",
+      "side": 1,
+      "message": "Are you sure LE is correct here ? patchpanel is supposed to only use network order for IPv4 addresses as uint32s.",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 20
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
