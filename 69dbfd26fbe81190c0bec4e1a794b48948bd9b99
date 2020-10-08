@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd885852_aa3183d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-10-08T02:18:28Z",
+      "side": 1,
+      "message": "For visualisation purpose on the Crosbolt dashboard, I expect to submit this CL about a week after the \"Improve ZipPerf\" one.",
+      "revId": "69dbfd26fbe81190c0bec4e1a794b48948bd9b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
