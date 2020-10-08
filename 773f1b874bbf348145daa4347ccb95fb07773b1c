@@ -16,6 +16,23 @@
       "message": "LGTM per style, please get a review from your team as well. Thanks!",
       "revId": "773f1b874bbf348145daa4347ccb95fb07773b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28de55dc_7b6863a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-08T09:02:29Z",
+      "side": 1,
+      "message": "LGTM with compare the different between hwsec.Attestation and hwsec.AttestationNoExternalServer.",
+      "revId": "773f1b874bbf348145daa4347ccb95fb07773b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
