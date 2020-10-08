@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e3b9e8_56c9ad51",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-08T04:49:32Z",
+      "side": 0,
+      "message": "Why remove these from unstable?",
+      "revId": "b681085f1192c38f3bfc2dfe12983d27490afa26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
