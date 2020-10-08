@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccdbe5ea_3e37ea42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-08T18:18:54Z",
+      "side": 1,
+      "message": "LGTM from a ui automation/Tast standpoint.",
+      "revId": "aa46cf8a25317dda1888bd7743cea165ca3c1ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27bc3040_a022760a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-08T18:18:54Z",
+      "side": 1,
+      "message": "just a note, you could as define these in the return type on L313 as:\n(node *Node, err error)",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 316,
+        "endChar": 14
+      },
+      "revId": "aa46cf8a25317dda1888bd7743cea165ca3c1ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
