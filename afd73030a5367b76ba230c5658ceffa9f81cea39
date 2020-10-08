@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0bfd0bc_ee729b44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-08T02:09:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f2521fa_73298a36",
+      "range": {
+        "startLine": 247,
+        "startChar": 26,
+        "endLine": 247,
+        "endChar": 39
+      },
+      "revId": "afd73030a5367b76ba230c5658ceffa9f81cea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f176fe8_dcdc30f3",
