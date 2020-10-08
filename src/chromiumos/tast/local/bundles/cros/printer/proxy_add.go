@@ -143,13 +143,21 @@ func init() {
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_generic_printer_golden.ps"},
 			}, {
-				Name: "hp",
+				Name: "hp_pclm",
 				Val: &ippprint.Params{
 					PpdFile:      "printer_add_hp_printer_pclm.ppd.gz",
 					PrintFile:    "to_print.pdf",
 					ExpectedFile: "printer_add_hp_printer_pclm_out.pclm",
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"},
+			}, {
+				Name: "hp_ljcolor",
+				Val: &ippprint.Params{
+					PpdFile:      "printer_add_hp_ljcolor.ppd.gz",
+					PrintFile:    "to_print.pdf",
+					ExpectedFile: "printer_add_hp_printer_ljcolor_out.pcl",
+				},
+				ExtraData: []string{"to_print.pdf", "printer_add_hp_ljcolor.ppd.gz", "printer_add_hp_printer_ljcolor_out.pcl"},
 			}, {
 				Name: "hp_pwg_raster_color",
 				Val: &ippprint.Params{
