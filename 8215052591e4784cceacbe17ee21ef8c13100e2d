@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "129c3596_e20ea906",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-08T02:44:29Z",
+      "side": 1,
+      "message": "Made sure this test puts the DUT for un-ssh-able state, so following tests fail.\nIn order to mitigate, let\u0027s disable this even from informational tests temporarily.",
+      "revId": "8215052591e4784cceacbe17ee21ef8c13100e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd2e6cb_b83e821f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-08T02:44:29Z",
+      "side": 1,
+      "message": "Could you remove \"informational\", too, which is in effect only with \"group:mainline\".\nCould you add TODO to recover with fix? (No Attr means the test won\u0027t run on CI, but it sometimes is intentional, like only for manual run for some specific cases).",
+      "revId": "8215052591e4784cceacbe17ee21ef8c13100e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
