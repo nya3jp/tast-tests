@@ -16,6 +16,46 @@
       "message": "LGTM",
       "revId": "ddc56433a98a20a1eccf7df257731fee5b965e74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b3f0b1_e554aa0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-08T08:32:25Z",
+      "side": 1,
+      "message": "Marking LGTM with a comment, to avoid cross timezone iteration.",
+      "revId": "ddc56433a98a20a1eccf7df257731fee5b965e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfa849a_350292ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/csv/valid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-08T08:32:25Z",
+      "side": 1,
+      "message": "Because this appeared many times, could you make this constant?",
+      "range": {
+        "startLine": 113,
+        "startChar": 15,
+        "endLine": 113,
+        "endChar": 20
+      },
+      "revId": "ddc56433a98a20a1eccf7df257731fee5b965e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
