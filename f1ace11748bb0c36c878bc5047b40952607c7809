@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa6a6701_fc636b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-08T14:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75ff7a52_12c2c47d",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "f1ace11748bb0c36c878bc5047b40952607c7809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6477ee55_33686e60",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-08T14:30:39Z",
       "side": 1,
       "message": "I\u0027d do this after the ResetChrome. Is there a way to check if it is open? Can something else have focus when escape is pressed?",
+      "revId": "f1ace11748bb0c36c878bc5047b40952607c7809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c8b7eb2_90bdb494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-08T14:42:49Z",
+      "side": 1,
+      "message": "There is no need to close it now. I removed it.",
+      "parentUuid": "6477ee55_33686e60",
       "revId": "f1ace11748bb0c36c878bc5047b40952607c7809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9efcaad8_aa752b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-08T14:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64756abf_f5df8de3",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 92
+      },
+      "revId": "f1ace11748bb0c36c878bc5047b40952607c7809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13a0a824_c218143f",
@@ -77,6 +143,24 @@
       "writtenOn": "2020-10-08T14:30:39Z",
       "side": 1,
       "message": "Future tests should not care about the state of Chrome. Is this necessary to clean up state between subtests?",
+      "revId": "f1ace11748bb0c36c878bc5047b40952607c7809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d19b69_3780d2be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-08T14:42:49Z",
+      "side": 1,
+      "message": "The check in the settings page was added later, and it closes the system tray, so there is no need to close it between subtests now.",
+      "parentUuid": "13a0a824_c218143f",
       "revId": "f1ace11748bb0c36c878bc5047b40952607c7809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
