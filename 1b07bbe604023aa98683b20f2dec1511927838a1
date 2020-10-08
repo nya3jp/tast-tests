@@ -70,6 +70,30 @@
       },
       "revId": "1b07bbe604023aa98683b20f2dec1511927838a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c855d1de_4d1be2a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/chart/chart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-08T06:34:11Z",
+      "side": 1,
+      "message": "The |pid| is derived from output of |(python2 %s %s \u003e %s 2\u003e\u00261) \u0026 echo -n $!|. IMO, we shouldn\u0027t waste time(or code line) to verify the output from every trivial shell script. For example, we don\u0027t need to check if |conn.Command(\"mktemp\", \"-d\", \"/tmp/chart_XXXXXX\").Output(ctx)| give us a real directory or not. The error from the original code is to prevent the unexpected call from other caller in the same package. But here the |cleanupDisplayProcess| is a local function which clearly tells the developer, it should follow the initialization/cleanup order.",
+      "parentUuid": "b8be681b_739f8125",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "1b07bbe604023aa98683b20f2dec1511927838a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
