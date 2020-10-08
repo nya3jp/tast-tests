@@ -56,6 +56,30 @@
       },
       "revId": "5f0916150a2bc8e1c73597ebcc5b57c004f9b9e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b3fe63_1c97186d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2020-10-08T23:42:37Z",
+      "side": 1,
+      "message": "Yes, I tried a couple of things including this. Increasing the other duration still results in the two renderer processes starting at the same time, which doesn\u0027t help with system load. This problem is with renderer startup, not login/browser startup.\n\nThe other thing I tried is waiting for the CPU to go idle after login, like what the perf tests do. There\u0027s a large amount of CPU usage when a user logs in for the first time, which is largely caused by the NaCl translation for the zip archiver. Waiting for that also doesn\u0027t help, again because the problem is with renderer startup.",
+      "parentUuid": "3b0836df_dcb48146",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "5f0916150a2bc8e1c73597ebcc5b57c004f9b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
