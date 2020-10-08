@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b79f48_d6caa0a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-08T16:15:10Z",
+      "side": 1,
+      "message": "LGTM with misc fix requests.",
+      "revId": "4a1db6850cf718c621e19e2e87006431cf110255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56eb2fd2_97414685",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-08T16:15:10Z",
+      "side": 1,
+      "message": "nit: Could you make this as a group, like adding emptyline above and below?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "4a1db6850cf718c621e19e2e87006431cf110255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f2293d0_90867ad3",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-08T16:15:10Z",
+      "side": 1,
+      "message": "nit: Could you move this up to above to make a group with \"man.?in.?the.?middle\" ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "4a1db6850cf718c621e19e2e87006431cf110255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a554b20_18ea0fbf",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-08T16:15:10Z",
+      "side": 1,
+      "message": "nit: looks not clean?",
+      "range": {
+        "startLine": 55,
+        "startChar": 24,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "4a1db6850cf718c621e19e2e87006431cf110255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
