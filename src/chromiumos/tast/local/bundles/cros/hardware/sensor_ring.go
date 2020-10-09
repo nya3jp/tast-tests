@@ -96,8 +96,8 @@ func SensorRing(ctx context.Context, s *testing.State) {
 				s.Fatal("Error reading boottime: ", err)
 			}
 
-			s.Logf("Got %v readings from %v %v",
-				len(rs), sn.Sensor.Location, sn.Sensor.Name)
+			s.Logf("Got %v readings from %v %v between %v and %v",
+				len(rs), sn.Sensor.Location, sn.Sensor.Name, start, end)
 			validate(rs, start, end, sn.Sensor, collectTime, s)
 		}()
 	}
@@ -122,8 +122,8 @@ func validate(rs []*iio.SensorReading, start, end time.Duration, sn *iio.Sensor,
 	last := start
 	for ix, sr := range rs {
 		if sr.Timestamp < last {
-			s.Errorf("Timestamp out of order for %v %v at index %v: got %v; want >= %v",
-				sn.Location, sn.Name, ix, sr.Timestamp, last)
+			s.Errorf("Timestamp out of order for %v %v %v at index %v: got %v (raw %v); want >= %v",
+				sn.ID, sn.Location, sn.Name, ix, sr.Timestamp, sr.RawTimestamp, last)
 		}
 
 		last = sr.Timestamp
@@ -132,6 +132,7 @@ func validate(rs []*iio.SensorReading, start, end time.Duration, sn *iio.Sensor,
 				sn.Location, sn.Name, ix, sr.Timestamp, end)
 		}
 	}
+	s.Logf("last timestamp seen: %v", last)
 }
 
 // boottime returns the duration from the boot time of the DUT to now.

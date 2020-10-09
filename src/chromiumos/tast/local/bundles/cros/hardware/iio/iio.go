@@ -54,7 +54,8 @@ type SensorReading struct {
 	Flags uint8
 	// Timestamp is the duration from the boot time of the DUT to the time the
 	// reading was taken
-	Timestamp time.Duration
+	RawTimestamp time.Duration
+	Timestamp    time.Duration
 }
 
 const (

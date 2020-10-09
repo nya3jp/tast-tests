@@ -51,12 +51,13 @@ const (
 	yAxis = 3
 	// zAxis is the third data value from a sensor. It is the in_accel_z_ring
 	// channel on the buffer.
-	zAxis = 4
+	zAxis        = 4
+	rawTimestamp = 5
 	// timestamp is the time since boot of the sensor reading in the ap's time
 	// domain.  It is the in_timestamp channel on the buffer.
-	timestamp = 5
+	timestamp = 6
 	// The buffer has 6 total channels.
-	ringChannels = 6
+	ringChannels = 7
 )
 
 // NewRing creates a CrosRing from a list of Sensors on the DUT.
@@ -278,7 +279,13 @@ func (cr *CrosRing) parseEvent(b *BufferData) (*SensorReading, error) {
 		float64(z) * s.Sensor.Scale,
 	}
 
-	t, err := b.Int64(timestamp)
+	rt, err := b.Int64(rawTimestamp)
+	if err != nil {
+		return nil, errors.Wrap(err, "error getting raw timestamp value")
+	}
+	ret.RawTimestamp = time.Duration(rt)
+
+	t, err := b.Uint64(timestamp)
 	if err != nil {
 		return nil, errors.Wrap(err, "error getting timestamp value")
 	}
