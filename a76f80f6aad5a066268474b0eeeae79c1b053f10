@@ -16,6 +16,23 @@
       "message": "In the meantime the FindAndClick() function changed, so PTAL.",
       "revId": "a76f80f6aad5a066268474b0eeeae79c1b053f10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5ca64b_3ecf6821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-09T13:20:47Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a76f80f6aad5a066268474b0eeeae79c1b053f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
