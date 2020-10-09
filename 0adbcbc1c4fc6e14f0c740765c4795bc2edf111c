@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce962a06_fa643986",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-09T03:05:41Z",
+      "side": 1,
+      "message": "What\u0027s the plan for these wrappers in the longer term? Do we try manually to keep all methods in sync, or do we plan to eventually remove these wrappers after rewriting callers?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9c7a50f6_bb9b4b3d",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-10-08T19:36:54Z",
       "side": 1,
       "message": "+2 % mostly nits, please way for nya\u0027s review as well.",
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cd23012_ba95126e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-09T03:05:41Z",
+      "side": 1,
+      "message": "LGTM, but I have one question.",
       "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
