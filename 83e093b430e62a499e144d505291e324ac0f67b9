@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da90b19_97083e97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-09T06:55:38Z",
+      "side": 1,
+      "message": "Still LGTM",
+      "revId": "83e093b430e62a499e144d505291e324ac0f67b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa6cfdc_cd1340c3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-09T06:55:38Z",
+      "side": 1,
+      "message": "minor nit: Virtual keyboard",
+      "range": {
+        "startLine": 475,
+        "startChar": 4,
+        "endLine": 475,
+        "endChar": 6
+      },
+      "revId": "83e093b430e62a499e144d505291e324ac0f67b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
