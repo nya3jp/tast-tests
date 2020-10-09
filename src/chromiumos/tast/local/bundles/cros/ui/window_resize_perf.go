@@ -86,9 +86,16 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		if _, err = ash.SetWindowState(ctx, tconn, id0, ash.WMEventSnapLeft); err != nil {
 			s.Fatalf("Failed to set the state of window (%d): %v", id0, err)
 		}
+		if err = ash.WaitWindowFinishAnimating(ctx, tconn, id0); err != nil {
+			s.Fatalf("Failed to wait for the animation for window (%d): %v", id0, err)
+		}
 		if len(ws) > 1 {
-			if _, err = ash.SetWindowState(ctx, tconn, ws[1].ID, ash.WMEventSnapRight); err != nil {
-				s.Fatalf("Failed to set the state of window (%d): %v", ws[1].ID, err)
+			id1 := ws[1].ID
+			if _, err = ash.SetWindowState(ctx, tconn, id1, ash.WMEventSnapRight); err != nil {
+				s.Fatalf("Failed to set the state of window (%d): %v", id1, err)
+			}
+			if err = ash.WaitWindowFinishAnimating(ctx, tconn, id1); err != nil {
+				s.Fatalf("Failed to wait for the animation for window (%d): %v", id1, err)
 			}
 		}
 
