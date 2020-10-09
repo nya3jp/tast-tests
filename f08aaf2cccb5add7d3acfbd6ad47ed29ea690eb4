@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ddd492_197086c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-09T01:38:35Z",
+      "side": 1,
+      "message": "Meet team has hrTelemetryApi which supports some useful functions for this test, e.g.: \nhrTelemetryApi.isInMeeting()\nhrTelemetryApi.setCameraMuted(false)\nhrTelemetryApi.setMicMuted(false)\nhrTelemetryApi.set*Layout()\n\nHowever we still need more functions such as setMaximumTileNum() and startPresenting() to avoid using UI automation during meeting. So for now, I prefer to land this CL first to collect data, and once hrTelemetryApi is fully ready we can use it instead. \n\nMukai and Xiyuan, any thoughts on this?",
+      "revId": "f08aaf2cccb5add7d3acfbd6ad47ed29ea690eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4923eb5e_b244e5dc",
