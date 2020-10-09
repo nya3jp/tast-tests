@@ -6,7 +6,6 @@
 package audio
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"math"
@@ -118,18 +117,16 @@ func GetRmsAmplitude(ctx context.Context, testData TestRawData) (float64, error)
 		"-t", "raw",
 		testData.Path, "-n", "stat")
 
-	// Read stderr output of the command for RMS information.
-	// TODO(johnylin): use SeparatedOutput instead after http://crbug.com/1113045
-	var buf bytes.Buffer
-	cmd.Stderr = &buf
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+	_, bstderr, err := cmd.SeparatedOutput()
+	if err != nil {
 		return 0.0, errors.Wrap(err, "sox failed")
 	}
+	stderr := string(bstderr)
 
 	re := regexp.MustCompile("RMS\\s+amplitude:\\s+(\\S+)")
-	match := re.FindStringSubmatch(string(buf.Bytes()))
+	match := re.FindStringSubmatch(stderr)
 	if match == nil {
-		testing.ContextLog(ctx, "sox stat: ", string(buf.Bytes()))
+		testing.ContextLog(ctx, "sox stat: ", stderr)
 		return 0.0, errors.New("could not find RMS info from the sox result")
 	}
 
