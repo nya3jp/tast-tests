@@ -26,7 +26,7 @@ func init() {
 			"carpenterr@chromium.org", // test author.
 			"showoff-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{
@@ -36,6 +36,7 @@ func init() {
 			}, {
 				Name:              "unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
