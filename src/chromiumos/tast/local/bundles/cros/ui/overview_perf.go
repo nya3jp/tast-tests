@@ -119,20 +119,16 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to set tablet mode %v: %v", inTabletMode, err)
 			}
 
-			eventType := ash.WMEventNormal
+			windowState := ash.WindowStateNormal
 			if state == animationTypeMaximized || state == animationTypeTabletMode {
-				eventType = ash.WMEventMaximize
+				windowState = ash.WindowStateMaximized
 			} else if state == animationTypeMinimizedTabletMode {
-				eventType = ash.WMEventMinimize
+				windowState = ash.WindowStateMinimized
 			}
-			ws, err := ash.GetAllWindows(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to obtain the window list: ", err)
-			}
-			for _, w := range ws {
-				if _, err := ash.SetWindowState(ctx, tconn, w.ID, eventType); err != nil {
-					s.Fatalf("Failed to set the window (%d): %v", w.ID, err)
-				}
+			if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+				return ash.SetWindowStateAndWait(ctx, tconn, w.ID, windowState)
+			}); err != nil {
+				s.Fatalf("Failed to set all windows to state %v: %v", windowState, err)
 			}
 
 			// Wait for 3 seconds to stabilize the result. Note that this doesn't

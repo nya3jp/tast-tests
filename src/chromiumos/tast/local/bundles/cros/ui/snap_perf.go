@@ -59,39 +59,25 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 	}
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Snap the window to the left.
-		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventSnapLeft); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateLeftSnapped); err != nil {
 			s.Fatalf("Failed to set the window (%d): %v", window.ID, err)
-		}
-
-		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
-			s.Fatal("Failed to wait for top window animation: ", err)
 		}
 
 		// Restore the normal state bounds, as no animation stats will be logged if the window size does not change.
-		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateNormal); err != nil {
 			s.Fatalf("Failed to set the window (%d): %v", window.ID, err)
-		}
-
-		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
-			s.Fatal("Failed to wait for top window animation: ", err)
 		}
 
 		// Snap the window to the right.
-		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventSnapRight); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateRightSnapped); err != nil {
 			s.Fatalf("Failed to set the window (%d): %v", window.ID, err)
 		}
 
-		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
-			s.Fatal("Failed to wait for top window animation: ", err)
-		}
 		// Restore the normal state bounds, as no animation stats will be logged if the window size does not change.
-		if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateNormal); err != nil {
 			s.Fatalf("Failed to set the window (%d): %v", window.ID, err)
 		}
 
-		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
-			s.Fatal("Failed to wait for top window animation: ", err)
-		}
 		return nil
 	},
 		"Ash.Window.AnimationSmoothness.Snap"), perfutil.StoreSmoothness)

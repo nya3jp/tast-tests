@@ -193,11 +193,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if orientation.Type == display.OrientationPortraitPrimary {
 			info, err := display.GetPrimaryInfo(ctx, tconn)
 			if err != nil {
-				s.Fatal("Failed to get the primary display info", err)
+				s.Fatal("Failed to get the primary display info: ", err)
 			}
 			s.Log("Rotating display 90 degrees")
 			if err := display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
-				s.Fatal("Failed to rotate display:", err)
+				s.Fatal("Failed to rotate display: ", err)
 			}
 			defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
 		}
@@ -207,14 +207,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	} else {
 		// Make it into a maximized window if it is in clamshell-mode.
-		ws, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to obtain the window list: ", err)
-		}
-		for _, w := range ws {
-			if _, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventMaximize); err != nil {
-				s.Fatalf("Failed to change the window %s (%d) to maximized: %v", w.Name, w.ID, err)
-			}
+		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
+		}); err != nil {
+			s.Fatal("Failed to turn all windows into maximized state: ", err)
 		}
 		pc = pointer.NewMouseController(tconn)
 	}
@@ -335,7 +331,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to drag the Google Docs window: ", err)
 				}
 				if err := pc.Release(closeCtx); err != nil {
-					s.Fatal("Failed to end dragging the Google Docs window ", err)
+					s.Fatal("Failed to end dragging the Google Docs window: ", err)
 				}
 			}
 			if err := pc.Press(ctx, meetWindow.OverviewInfo.Bounds.CenterPoint()); err != nil {
@@ -500,7 +496,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 			defer tabs.Release(closeCtx)
 			if err := tabs.StableLeftClick(ctx, &pollOpts); err != nil {
-				s.Fatal("Failed to click the tab list:", err)
+				s.Fatal("Failed to click the tab list: ", err)
 			}
 			// Select the second tab (Google Docs tab) to present.
 			for i := 0; i < 2; i++ {
@@ -521,7 +517,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 			defer docsTextfield.Release(closeCtx)
 			if err := docsTextfield.StableLeftClick(ctx, &pollOpts); err != nil {
-				s.Fatal("Failed to click on the docs text field:", err)
+				s.Fatal("Failed to click on the docs text field: ", err)
 			}
 			if err := kw.Accel(ctx, "Ctrl+A"); err != nil {
 				s.Fatal("Failed to hit ctrl-a and select all text: ", err)

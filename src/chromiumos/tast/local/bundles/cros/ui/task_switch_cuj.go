@@ -462,7 +462,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		}
 		browserWindows[w.ID] = true
 		if !tabletMode {
-			if _, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventNormal); err != nil {
+			if err := ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal); err != nil {
 				s.Fatalf("Failed to change the window (%s) into the normal state: %v", url, err)
 			}
 		}

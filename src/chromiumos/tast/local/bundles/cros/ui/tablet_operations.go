@@ -85,7 +85,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get window information: ", err)
 	}
 	for _, w := range ws {
-		if _, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal); err != nil {
 			s.Fatalf("Failed to set window %d state to normal: %v", w.ID, err)
 		}
 	}

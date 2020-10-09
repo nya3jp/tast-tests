@@ -91,14 +91,10 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		// under the app-launcher has the combination of window and wallpaper. This
 		// is not the case of the tablet mode (since windows are always maximized in
 		// the tablet mode).
-		ws, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to get the window list: ", err)
-		}
-		for _, w := range ws {
-			if _, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventNormal); err != nil {
-				s.Fatalf("Failed to set the window (%d) to normal: %v", w.ID, err)
-			}
+		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal)
+		}); err != nil {
+			s.Fatal("Failed to set all windows to normal: ", err)
 		}
 	}
 

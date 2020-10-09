@@ -248,13 +248,6 @@ func init() {
 
 var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 
-func waitForWindowState(ctx context.Context, ctconn *chrome.TestConn, windowID int, state ash.WindowStateType) error {
-	return ash.WaitForCondition(ctx, ctconn, func(w *ash.Window) bool {
-		// Wait for the window given by w to be in the given state and also not be animating.
-		return windowID == w.ID && w.State == state && !w.IsAnimating
-	}, pollOptions)
-}
-
 func leftClickLacros(ctx context.Context, ctconn *chrome.TestConn, windowID int, n *ui.Node) error {
 	if err := n.Update(ctx); err != nil {
 		return errors.Wrap(err, "failed to update the node's location")
@@ -306,23 +299,6 @@ func findFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash
 	return waitForWindowWithPredicate(ctx, ctconn, func(w *ash.Window) bool {
 		return !strings.Contains(w.Title, "about:blank")
 	})
-}
-
-func setWindowState(ctx context.Context, ctconn *chrome.TestConn, windowID int, state ash.WindowStateType) error {
-	windowEventMap := map[ash.WindowStateType]ash.WMEventType{
-		ash.WindowStateNormal:     ash.WMEventNormal,
-		ash.WindowStateMaximized:  ash.WMEventMaximize,
-		ash.WindowStateMinimized:  ash.WMEventMinimize,
-		ash.WindowStateFullscreen: ash.WMEventFullscreen,
-	}
-	wmEvent, ok := windowEventMap[state]
-	if !ok {
-		return errors.Errorf("didn't find the event for window state: %q", state)
-	}
-	if _, err := ash.SetWindowState(ctx, ctconn, windowID, wmEvent); err != nil {
-		return err
-	}
-	return waitForWindowState(ctx, ctconn, windowID, state)
 }
 
 func setWindowBounds(ctx context.Context, ctconn *chrome.TestConn, windowID int, to coords.Rect) error {
@@ -599,7 +575,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 	}
 	if invoc.scenario == testTypeResize {
 		// Restore window.
-		if err := setWindowState(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore non-blank window")
 		}
 
@@ -627,11 +603,11 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 		}
 
 		// Restore windows.
-		if err := setWindowState(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore non-blank window")
 		}
 
-		if err := setWindowState(ctx, ctconn, wb.ID, ash.WindowStateNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, ctconn, wb.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore blank window")
 		}
 
@@ -665,7 +641,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 		}
 	} else {
 		// Maximize window.
-		if err := setWindowState(ctx, ctconn, w.ID, ash.WindowStateMaximized); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, ctconn, w.ID, ash.WindowStateMaximized); err != nil {
 			return errors.Wrap(err, "failed to maximize window")
 		}
 	}
