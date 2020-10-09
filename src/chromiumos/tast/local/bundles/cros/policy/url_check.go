@@ -66,8 +66,7 @@ func init() {
 				},
 			},
 			{
-				Name:      "blocklist",
-				ExtraAttr: []string{"informational"},
+				Name: "blocklist",
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
@@ -138,8 +137,7 @@ func init() {
 				},
 			},
 			{
-				Name:      "allowlist",
-				ExtraAttr: []string{"informational"},
+				Name: "allowlist",
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
