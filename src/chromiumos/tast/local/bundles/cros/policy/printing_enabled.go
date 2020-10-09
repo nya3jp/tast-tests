@@ -113,17 +113,11 @@ func PrintingEnabled(ctx context.Context, s *testing.State) {
 
 // testPrintingFromThreeDotMenu tests whether printing is possible via Chrome's dropdown menu.
 func testPrintingFromThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
-	// Find the three dot button node.
-	menuNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
+	// Click the three dot button node.
+	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
 		Role:      ui.RoleTypePopUpButton,
 		ClassName: "BrowserAppMenuButton",
-	}, 10*time.Second)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to find dropdown menu: ")
-	}
-	defer menuNode.Release(ctx)
-
-	if err := menuNode.LeftClick(ctx); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return false, errors.Wrap(err, "failed to click on dropdown menu: ")
 	}
 

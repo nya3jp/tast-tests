@@ -88,18 +88,11 @@ func SearchSuggestEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to write events: ", err)
 			}
 
-			// Get the address and search bar.
-			paramsAB := ui.FindParams{
+			// Click the address and search bar.
+			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeTextField,
 				Name: "Address and search bar",
-			}
-			nodeAB, err := ui.FindWithTimeout(ctx, tconn, paramsAB, 30*time.Second)
-			if err != nil {
-				s.Fatal("Failed to find address bar: ", err)
-			}
-			defer nodeAB.Release(ctx)
-
-			if err := nodeAB.LeftClick(ctx); err != nil {
+			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 				s.Fatal("Failed to click address bar: ", err)
 			}
 
