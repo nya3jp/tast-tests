@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8e8fe4c9_1e6a8bad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-09T05:40:59Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "60e56cb3c3bf73aea2f7853ed1b7718cc368a0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a4679f7c_5486776b",
         "filename": "src/chromiumos/tast/local/adb/device.go",
         "patchSetId": 2
