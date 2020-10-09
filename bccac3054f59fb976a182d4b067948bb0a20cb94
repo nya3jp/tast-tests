@@ -161,6 +161,96 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9599fe88_adee0d85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ada32e4_a6ee0ae8",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c303c7_6d959e2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ada32e4_a6ee0ae8",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65208fd_dbe8bac7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ada32e4_a6ee0ae8",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0daca9c4_439d0a10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ada32e4_a6ee0ae8",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a69dc9_fb7f96fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ada32e4_a6ee0ae8",
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eee6136_fe71ed0c",
@@ -174,6 +264,30 @@
       "writtenOn": "2020-10-06T05:18:55Z",
       "side": 1,
       "message": "The design here makes it buggy if multiple Monitor is called. Adding a nonce might be a simple solution.",
+      "range": {
+        "startLine": 192,
+        "startChar": 127,
+        "endLine": 192,
+        "endChar": 168
+      },
+      "revId": "bccac3054f59fb976a182d4b067948bb0a20cb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df1eeae2_a02357d1",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:24:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7eee6136_fe71ed0c",
       "range": {
         "startLine": 192,
         "startChar": 127,
