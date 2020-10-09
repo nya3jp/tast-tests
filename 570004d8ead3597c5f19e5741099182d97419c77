@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "763d0838_d89f3d47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-09T13:30:03Z",
+      "side": 1,
+      "message": "PTAL. Test is almost always passing, only known issues unrelated to the test itself remain.\n\nhttps://cros-health-prod.googleplex.com/test/policy.URLCheck.allowlist\nhttps://cros-health-prod.googleplex.com/test/policy.URLCheck.blocklist",
+      "revId": "570004d8ead3597c5f19e5741099182d97419c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
