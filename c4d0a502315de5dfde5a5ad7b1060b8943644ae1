@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dfef810_f0002c6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/common.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-09T00:42:26Z",
+      "side": 1,
+      "message": "I would prefer to keep quick qual as simple as possible, as a short example. It doesn\u0027t represent a real test and is not expected to run for real qualifications. All real tests are based on full_qualification_stress with variable number of stress blocks.",
+      "parentUuid": "2e065ead_72cbd47f",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "c4d0a502315de5dfde5a5ad7b1060b8943644ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "346c1d39_244bf889",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/common.go",
         "patchSetId": 7
