@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c620c7_da2d6923",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-09T16:05:18Z",
+      "side": 1,
+      "message": "Just upload a latest patch to remove unused constant.\n\nThanks.\n\nSeewai",
+      "revId": "a3012f4f32f96dee77b817100c84c27aab9154b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
