@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e591ae_4c9a5259",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-09T00:26:37Z",
+      "side": 1,
+      "message": "Changed the implementation in suggested approach. Just realized \"--enable-virtual-keyboard\" does not mean VKEnabled. So now, the connection check only happens on the new option provided as chrome.VKEnabled()",
+      "parentUuid": "183ab7e0_41f6abdd",
+      "revId": "8953fd1bd0aa61f84546c5f0eeca84ca94b8df5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b70031ec_3a68393d",
