@@ -55,3 +55,19 @@ func RemoveActiveDesk(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	return nil
 }
+
+// ActivateAdjacentDesksToTargetIndex requests Ash to keep activating the adjacent
+// Virtual Desk until the one at the given index is reached. It waits for the chain
+// of desk-switch animations to complete. This call will fail if index is invalid,
+// or it is the index of the already active desk.
+func ActivateAdjacentDesksToTargetIndex(ctx context.Context, tconn *chrome.TestConn, index int) error {
+	success := false
+	if err := tconn.Call(ctx, &success, "tast.promisify(chrome.autotestPrivate.activateAdjacentDesksToTargetIndex)",
+		index); err != nil {
+		return err
+	}
+	if !success {
+		return errors.Errorf("failed to activate desk at index %v", index)
+	}
+	return nil
+}
