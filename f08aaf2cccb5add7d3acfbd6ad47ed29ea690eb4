@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f7434c9_86657ecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-09T01:49:07Z",
+      "side": 1,
+      "message": "That plan sounds good to me.",
+      "parentUuid": "37ddd492_197086c9",
+      "revId": "f08aaf2cccb5add7d3acfbd6ad47ed29ea690eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4923eb5e_b244e5dc",
