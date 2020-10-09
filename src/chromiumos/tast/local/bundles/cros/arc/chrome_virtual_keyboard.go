@@ -45,7 +45,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeVirtualKeyboard,
 		Desc:         "Checks Chrome virtual keyboard working on Android apps",
-		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.BootedInTabletMode(),
@@ -395,7 +395,7 @@ func chromeVirtualKeyboardFloatingTest(
 				return testing.PollBreak(err)
 			}
 			if expected != bounds {
-				return errors.Errorf("The field doesn't move: %q != %q", expected, bounds)
+				return errors.Errorf("the field doesn't move: %q != %q", expected, bounds)
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second})
