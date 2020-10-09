@@ -221,6 +221,24 @@ func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEv
 	return state, nil
 }
 
+// SetWindowStateAndWait requests a WMEvent to make the window for the id to be
+// in the targetState, and wait for the window animations when it happens. It
+// returns an error when it can't be in the target state. It will return nil
+// when the window is already in the target state.
+func SetWindowStateAndWait(ctx context.Context, tconn *chrome.TestConn, id int, targetState WindowStateType) error {
+	gotState, err := SetWindowState(ctx, tconn, id, stateToWmTypes[targetState])
+	if err != nil {
+		return errors.Wrap(err, "failed to set the window state")
+	}
+	if gotState != targetState {
+		return errors.Errorf("failed to set the window state: got %v want %v", gotState, targetState)
+	}
+	if err = WaitWindowFinishAnimating(ctx, tconn, id); err != nil {
+		return errors.Wrap(err, "failed to wait for the window animation")
+	}
+	return nil
+}
+
 // SetWindowBounds requests changing the bounds of the window and which display it is on to the given values.
 // It returns the actual bounds and display set, which may be different to the requested bounds and display.
 // (e.g. setting bounds on an Android app may not have Android framework honour the request).
@@ -437,7 +455,7 @@ func ForEachWindow(ctx context.Context, tconn *chrome.TestConn, f func(window *W
 	}
 	for _, window := range ws {
 		if err := f(window); err != nil {
-			return err
+			return errors.Wrapf(err, "failure on window (%d) %q", window.ID, window.Title)
 		}
 	}
 	return nil

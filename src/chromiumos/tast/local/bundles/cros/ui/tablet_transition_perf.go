@@ -56,7 +56,7 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain the window list: ", err)
 	}
 
-	if _, err := ash.SetWindowState(ctx, tconn, windows[0].ID, ash.WMEventNormal); err != nil {
+	if err := ash.SetWindowStateAndWait(ctx, tconn, windows[0].ID, ash.WindowStateNormal); err != nil {
 		s.Fatalf("Failed to set the window (%d): %v", windows[0].ID, err)
 	}
 

@@ -174,11 +174,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	id0 := ws[0].ID
 	if !tabletMode {
 		// In clamshell mode, turn the window into normal state.
-		if _, err := ash.SetWindowState(ctx, tconn, id0, ash.WMEventNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, id0, ash.WindowStateNormal); err != nil {
 			s.Fatal("Failed to set the window state to normal: ", err)
-		}
-		if err := ash.WaitWindowFinishAnimating(ctx, tconn, id0); err != nil {
-			s.Fatal("Failed to wait for top window animation: ", err)
 		}
 	}
 	w0, err := ash.GetWindow(ctx, tconn, id0)

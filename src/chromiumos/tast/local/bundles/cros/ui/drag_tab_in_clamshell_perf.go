@@ -64,7 +64,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain the window list: ", err)
 	}
 	id0 := ws[0].ID
-	if _, err := ash.SetWindowState(ctx, tconn, id0, ash.WMEventNormal); err != nil {
+	if err := ash.SetWindowStateAndWait(ctx, tconn, id0, ash.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set the window state to normal: ", err)
 	}
 	if err := ash.WaitWindowFinishAnimating(ctx, tconn, id0); err != nil {

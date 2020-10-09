@@ -93,13 +93,8 @@ func WindowControl(ctx context.Context, s *testing.State) {
 	}
 	r.RunMultiple(ctx, s, "window-state", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		for i, newState := range states {
-			if gotState, err := ash.SetWindowState(ctx, tconn, ws[0].ID, ash.WMEventTypeForState(newState)); err != nil {
+			if err := ash.SetWindowStateAndWait(ctx, tconn, ws[0].ID, newState); err != nil {
 				return errors.Wrapf(err, "failed to set window state at step %d", i)
-			} else if gotState != newState {
-				return errors.Errorf("window state want %s got %s at step %d", newState, gotState, i)
-			}
-			if err := ash.WaitWindowFinishAnimating(ctx, tconn, ws[0].ID); err != nil {
-				return errors.Wrapf(err, "failed to wait for window animation of %d at step %d", ws[0].ID, i)
 			}
 		}
 		return nil
@@ -107,11 +102,8 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		perfutil.StoreSmoothness)
 
 	s.Log("Step 2: drag the maximized window")
-	if _, err := ash.SetWindowState(ctx, tconn, ws[0].ID, ash.WMEventMaximize); err != nil {
+	if err := ash.SetWindowStateAndWait(ctx, tconn, ws[0].ID, ash.WindowStateMaximized); err != nil {
 		s.Fatalf("Failed to maximize %d: %v", ws[0].ID, err)
-	}
-	if err := ash.WaitWindowFinishAnimating(ctx, tconn, ws[0].ID); err != nil {
-		s.Fatal("Failed to wait for window animation: ", err)
 	}
 	w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.ID == ws[0].ID })
 	if err != nil {
@@ -203,13 +195,8 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get all windows: ", err)
 	}
 	for _, w := range ws {
-		if _, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal); err != nil {
 			s.Fatalf("Failed to turn window %d into normal: %v", w.ID, err)
-		}
-	}
-	for _, w := range ws {
-		if err := ash.WaitWindowFinishAnimating(ctx, tconn, w.ID); err != nil {
-			s.Fatalf("Failed to wait for the window animation for %d: %v", w.ID, err)
 		}
 	}
 	r.RunMultiple(ctx, s, "overview", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
