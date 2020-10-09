@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5db985d_4f6dfe86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-09T09:50:00Z",
+      "side": 1,
+      "message": "nit: please include what command did you use for testing",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9965e088_b942b3d0",
@@ -14,6 +37,184 @@
       "writtenOn": "2020-10-08T23:57:45Z",
       "side": 1,
       "message": "TY!",
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e64b7f0_2a5f2b50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-09T09:50:00Z",
+      "side": 1,
+      "message": "Hi Yury,\n\nLGTM % comments\n\nThanks!",
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b988d2_085f0eb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-09T09:50:00Z",
+      "side": 1,
+      "message": "nit: maybe just \n\n\"Verifies that ARC++ is fully pre-optimized and there is no pre-opt happening during the boot\" ?",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 117
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9857ba06_eae9adff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-09T09:50:00Z",
+      "side": 1,
+      "message": "nit: please include your email first",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a054e892_3bbb9968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-09T09:50:00Z",
+      "side": 1,
+      "message": "please don\u0027t log unnecessary information\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003d.%20If%20you%20want%20to%20log,it%20after%20the%20error%20has%20occurred.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3c7d80f_77530c30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-09T09:50:00Z",
+      "side": 1,
+      "message": "It\u0027s better to don\u0027t pass the whole testing.State object. Instead you can pass s.OutDir() and use testing.ContextLog for logging.",
+      "range": {
+        "startLine": 77,
+        "startChar": 52,
+        "endLine": 77,
+        "endChar": 68
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1c8f9c_e29d0d71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-09T09:50:00Z",
+      "side": 1,
+      "message": "nit: please use errors.Wrap:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003dIt%20is%20recommended%20to%20wrap%20when,which%20everything%20is%20an%20implementation%20detail.",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 12
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1fb76ec_64b44eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-09T09:50:00Z",
+      "side": 1,
+      "message": "Don\u0027t bind context object by reference, always use context by value, i.e. in your case \n\ndefer func(ctx context.Context) {\n  ...\n}(ctx)\n\nor if you will ignore Close error, you can do just defer cr.Close(ctx).\n\n\nhttps://golang.org/pkg/context/#pkg-overview:~:text\u003dpass%20a%20Context%20explicitly%20to%20each%20function%20that%20needs%20it",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ee670a_42d8fb29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-09T09:50:00Z",
+      "side": 1,
+      "message": "Looks like it isn\u0027t fatal error:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003dbut%20don%E2%80%99t%20worry%20about%20what%20Chrome%20is%20doing\n\nYou actually can ignore this error",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 10
+      },
       "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
