@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42b76238_985da3c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:19:58Z",
+      "side": 1,
+      "message": "Done, I am moving this test change to a seperate cl, because it does not depend on the montior.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2455274",
+      "parentUuid": "17ecabaf_e9bef5bc",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 15
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41e82d56_b15d523d",
@@ -94,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2e9103_7256750b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ap_gone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:19:58Z",
+      "side": 1,
+      "message": "Done, I am moving this test change to a seperate cl, because it does not depend on the montior.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2455274",
+      "parentUuid": "41e82d56_b15d523d",
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae542439_1c5fb672",
@@ -107,6 +149,30 @@
       "writtenOn": "2020-10-03T05:18:21Z",
       "side": 1,
       "message": "After my most recent patch, I think this should be all non-Connected states. That being said, since we end up using the monitor to verify that we don\u0027t disconnect anyway, this check becomes unnecessary.",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 63
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e3397f_3aa303b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae542439_1c5fb672",
       "range": {
         "startLine": 100,
         "startChar": 3,
@@ -212,6 +278,102 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "239823c6_05115654",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a95d5ee_35c26eef",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c2c3258_e153369f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a95d5ee_35c26eef",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48263d8b_722eff1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a95d5ee_35c26eef",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2cb604_7d8c30e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a95d5ee_35c26eef",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27aef783_8470f016",
@@ -225,6 +387,30 @@
       "writtenOn": "2020-10-03T05:18:21Z",
       "side": 1,
       "message": "It makes more sense to log this right after waitForProps above since that\u0027s when we check that the roam actually happens.",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 21
+      },
+      "revId": "c7855a002b5a2280deb7f4b5d79f35589467d718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73cfa2fd_07a74181",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T04:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27aef783_8470f016",
       "range": {
         "startLine": 170,
         "startChar": 1,
