@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9f68aa7d_18d9db69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-09T16:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5db985d_4f6dfe86",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9965e088_b942b3d0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0caa40af_6fd6ae9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-09T16:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73b988d2_085f0eb9",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 117
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9857ba06_eae9adff",
@@ -94,6 +142,30 @@
       "writtenOn": "2020-10-09T09:50:00Z",
       "side": 1,
       "message": "nit: please include your email first",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22423f70_7b872925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-09T16:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9857ba06_eae9adff",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dcec717_130b9c60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-09T16:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a054e892_3bbb9968",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3c7d80f_77530c30",
@@ -140,6 +236,30 @@
       "writtenOn": "2020-10-09T09:50:00Z",
       "side": 1,
       "message": "It\u0027s better to don\u0027t pass the whole testing.State object. Instead you can pass s.OutDir() and use testing.ContextLog for logging.",
+      "range": {
+        "startLine": 77,
+        "startChar": 52,
+        "endLine": 77,
+        "endChar": 68
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ae21a9_62da25a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-09T16:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3c7d80f_77530c30",
       "range": {
         "startLine": 77,
         "startChar": 52,
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f126ee73_8d30f220",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-09T16:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b1c8f9c_e29d0d71",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 12
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1fb76ec_64b44eb4",
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34720676_d1c43fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-09T16:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1fb76ec_64b44eb4",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23ee670a_42d8fb29",
@@ -209,6 +377,30 @@
       "writtenOn": "2020-10-09T09:50:00Z",
       "side": 1,
       "message": "Looks like it isn\u0027t fatal error:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003dbut%20don%E2%80%99t%20worry%20about%20what%20Chrome%20is%20doing\n\nYou actually can ignore this error",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 10
+      },
+      "revId": "139f9a1962dc475184acae7030c3f17672cc9b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc2896ef_57ba3789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/preopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-09T16:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ee670a_42d8fb29",
       "range": {
         "startLine": 85,
         "startChar": 2,
