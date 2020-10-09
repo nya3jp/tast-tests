@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
@@ -97,6 +96,12 @@ func mouseMatcher(a motioninput.Action, p coords.Point) motioninput.Matcher {
 	return motioninput.SinglePointerMatcher(a, motioninput.SourceMouse, p, pressure)
 }
 
+// initialEventMatcher returns a motionEventMatcher that matches the first mouse event
+// that should be received by an app.
+func initialEventMatcher(p coords.Point) motioninput.Matcher {
+	return motioninput.MatcherOr(mouseMatcher(motioninput.ActionHoverEnter, p), mouseMatcher(motioninput.ActionHoverMove, p))
+}
+
 // verifyMouse tests the behavior of mouse events injected into Ash on Android apps. It tests hover,
 // button, and drag events. It does not use the uinput mouse to inject events because the scale
 // relation between the relative movements injected by a relative mouse device and the display
@@ -108,16 +113,11 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	e := t.ExpectedPoint(p)
 
 	s.Log("Injected initial move, waiting... ")
-	// TODO(b/155783589): Investigate why injecting only one initial move event (by setting the
-	//  duration to 0) produces ACTION_HOVER_ENTER, ACTION_HOVER_MOVE, and ACTION_HOVER_EXIT,
-	//  instead of the expected single event with action ACTION_HOVER_ENTER.
-	if err := mouse.Move(ctx, tconn, p, 500*time.Millisecond); err != nil {
+	if err := mouse.Move(ctx, tconn, p, 0); err != nil {
 		s.Fatalf("Failed to inject move at %v: %v", e, err)
 	}
-	// TODO(b/155783589): Investigate why there are sometimes two ACTION_HOVER_ENTER events
-	//  sent. Once resolved, add expectation for ACTION_HOVER_ENTER and remove sleep.
-	if err := testing.Sleep(ctx, time.Second); err != nil {
-		s.Fatal("Failed to sleep: ", err)
+	if err := tester.WaitUntilEvent(ctx, initialEventMatcher(e)); err != nil {
+		s.Fatal("Failed to wait for the initial hover event: ", err)
 	}
 	if err := tester.ClearMotionEvents(ctx); err != nil {
 		s.Fatal("Failed to clear events: ", err)
@@ -150,7 +150,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
 		s.Fatal("Failed to press button on mouse: ", err)
 	}
-	if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionHoverExit, e), mouseMatcher(motioninput.ActionDown, e), mouseMatcher(motioninput.ActionButtonPress, e)); err != nil {
+	if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionDown, e), mouseMatcher(motioninput.ActionButtonPress, e)); err != nil {
 		s.Fatal("Failed to expect events and clear: ", err)
 	}
 
@@ -171,7 +171,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
 		s.Fatal("Failed to release mouse button: ", err)
 	}
-	if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionButtonRelease, e), mouseMatcher(motioninput.ActionUp, e)); err != nil {
+	if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionButtonRelease, e), mouseMatcher(motioninput.ActionUp, e), mouseMatcher(motioninput.ActionHoverMove, e)); err != nil {
 		s.Fatal("Failed to expect events and clear: ", err)
 	}
 
@@ -182,7 +182,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	if err := mouse.Move(ctx, tconn, p, 0); err != nil {
 		s.Fatalf("Failed to inject move at %v: %v", e, err)
 	}
-	if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionHoverEnter, e), mouseMatcher(motioninput.ActionHoverMove, e)); err != nil {
+	if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionHoverMove, e)); err != nil {
 		s.Fatal("Failed to expect events and clear: ", err)
 	}
 }

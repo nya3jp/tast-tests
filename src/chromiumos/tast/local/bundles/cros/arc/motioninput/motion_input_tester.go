@@ -137,6 +137,24 @@ func (t *Tester) ExpectMotionEvents(ctx context.Context, matchers ...Matcher) er
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+// WaitUntilEvent polls readMotionEvents repeatedly until it receives any motionEvent that
+// matches the provided matcher, while ignoring any event that does not match.
+func (t *Tester) WaitUntilEvent(ctx context.Context, matcher Matcher) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		events, err := t.readMotionEvents(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to read motion event")
+		}
+
+		for i := 0; i < len(events); i++ {
+			if err := matcher(&events[i]); err == nil {
+				return nil
+			}
+		}
+		return errors.New("no matching event received")
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
 // readMotionEvents unmarshalls the JSON string in the TextView representing the MotionEvents
 // received by ArcMotionInputTest.apk, and returns it as a slice of motionEvent.
 func (t *Tester) readMotionEvents(ctx context.Context) ([]MotionEvent, error) {
@@ -241,5 +259,17 @@ func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) 
 			err = errors.Wrap(err, e.Error())
 		}
 		return err
+	}
+}
+
+// MatcherOr produces a Matcher that matches any of the provided matchers.
+func MatcherOr(matchers ...Matcher) Matcher {
+	return func(event *MotionEvent) error {
+		for i := 0; i < len(matchers); i++ {
+			if err := matchers[i](event); err == nil {
+				return nil
+			}
+		}
+		return errors.New("did not match any of the expected matchers")
 	}
 }
