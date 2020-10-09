@@ -178,12 +178,15 @@ func InputCompat(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to receive the expected event: ", err)
 		}
 
-		if err := doTrackpadScroll(ctx); err != nil {
-			s.Fatal("Failed to perform two finger scroll: ", err)
-		}
+		// Skip testing trackpad scroll for tablet-mode devices.
+		if !tabletMode {
+			if err := doTrackpadScroll(ctx); err != nil {
+				s.Fatal("Failed to perform two finger scroll: ", err)
+			}
 
-		if err := expectEvent(ctx, true, settings.InputSourceDuringScroll, settings.NumPointersDuringScroll); err != nil {
-			s.Fatal("Failed to receive the expected event: ", err)
+			if err := expectEvent(ctx, true, settings.InputSourceDuringScroll, settings.NumPointersDuringScroll); err != nil {
+				s.Fatal("Failed to receive the expected event: ", err)
+			}
 		}
 
 		if err := tw.End(); err != nil {
