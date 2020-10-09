@@ -5,7 +5,6 @@
 package adb
 
 import (
-	"bytes"
 	"context"
 	"strings"
 	"time"
@@ -171,22 +170,15 @@ func parseState(state string) (State, error) {
 
 // State gets the state of an ADB device.
 func (d *Device) State(ctx context.Context) (State, error) {
-	var stdout, stderr bytes.Buffer
-	c := d.Command(ctx, "get-state")
-	c.Stdout = &stdout
-	c.Stderr = &stderr
-
-	if err := c.Start(); err != nil {
-		return StateUnknown, err
-	}
-	if err := c.Wait(); err != nil {
-		errString := stderr.String()
-		if strings.Contains(errString, "device offline") {
+	bstdout, bstderr, err := d.Command(ctx, "get-state").SeparatedOutput()
+	if err != nil {
+		stderr := string(bstderr)
+		if strings.Contains(stderr, "device offline") {
 			return StateOffline, nil
 		}
-		return StateUnknown, errors.Wrapf(err, "failed to get device state: %q", errString)
+		return StateUnknown, errors.Wrapf(err, "failed to get device state: %q", stderr)
 	}
-	return parseState(stdout.String())
+	return parseState(string(bstdout))
 }
 
 // WaitForState waits for the device state to be equal to the state passed in.
