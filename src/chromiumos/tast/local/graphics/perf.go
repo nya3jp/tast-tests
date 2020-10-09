@@ -6,7 +6,6 @@
 package graphics
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -61,11 +60,11 @@ func collectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 	cmd := testexec.CommandContext(ctx,
 		"/usr/bin/perf", "stat", "-e", strings.Join(eventsToCollect, ","), "--", "sleep",
 		strconv.FormatInt(int64(interval/time.Second), 10))
-	var perfOutput bytes.Buffer
-	cmd.Stderr = &perfOutput
+	_, stderr, err := cmd.SeparatedOutput()
 	if err := cmd.Run(); err != nil {
 		return nil, 0, errors.Wrap(err, "error while measuring perf counters")
 	}
+	perfOutput := string(stderr)
 
 	// A sample multiple counter output perfOutput could be e.g.:
 	// Performance counter stats for 'system wide':
@@ -85,7 +84,8 @@ func collectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 	// Add and extra regexp for the overall time elapsed.
 	regexps["total"] = regexp.MustCompile("([0-9]+[.][0-9]+ s)econds time elapsed")
 
-	for _, line := range strings.Split(perfOutput.String(), "\n") {
+	perfLines := strings.Split(perfOutput, "\n")
+	for _, line := range perfLines {
 		for name, r := range regexps {
 			submatch := r.FindStringSubmatch(line)
 			if submatch == nil {
@@ -99,7 +99,7 @@ func collectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 					return nil, 0, errors.New("failed to retrieve output directory")
 				}
 				const outFile = "perf_stat_output.log"
-				if err := ioutil.WriteFile(filepath.Join(dir, outFile), perfOutput.Bytes(), 0644); err != nil {
+				if err := ioutil.WriteFile(filepath.Join(dir, outFile), stderr, 0644); err != nil {
 					testing.ContextLogf(ctx, "Failed to dump perf output to %s: %v", outFile, err)
 				}
 				return nil, 0, errors.Wrapf(err, "error parsing perf output, see %s if present", outFile)
@@ -111,13 +111,13 @@ func collectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 	// provided as a number-of-accumulated mega cycles over the total time, see
 	// https://patchwork.freedesktop.org/patch/339667/.
 	regexpCycles := regexp.MustCompile(`([0-9]+)\s*M\s*` + "i915/actual-frequency/")
-	for _, line := range strings.Split(perfOutput.String(), "\n") {
+	for _, line := range perfLines {
 		submatch := regexpCycles.FindStringSubmatch(line)
 		if submatch == nil {
 			continue
 		}
 		if megaPeriods, err = strconv.ParseInt(submatch[1], 10, 64); err != nil {
-			return nil, 0, errors.Wrapf(err, "error parsing perf output (%s)", perfOutput.String())
+			return nil, 0, errors.Wrapf(err, "error parsing perf output (%s)", perfOutput)
 		}
 		break
 	}
