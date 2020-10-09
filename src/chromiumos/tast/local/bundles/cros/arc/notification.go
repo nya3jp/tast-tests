@@ -26,7 +26,7 @@ func init() {
 			"arc-framework+tast@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
