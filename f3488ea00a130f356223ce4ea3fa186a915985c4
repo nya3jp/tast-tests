@@ -16,6 +16,64 @@
       "message": "Thanks to Brendan\u0027s suggestion to click on label instead of text field. The flakiness is gone. I also followed Kyle\u0027s suggestion to wait for all the icons to go away when there is a change from tablet mode to clamshell mode. I think it is working.\n\nI have run the current code 3 times in both clamshell mode and tablet mode on octopus, hana, kodama and dru. They were all successfully. I am not able to test it on jax, flaffy and karma yet because I was not able to lease them. I will try later, but I think this code is good as is.\n\nPlease review.\n\nThanks.\n\nSeewai\n",
       "revId": "f3488ea00a130f356223ce4ea3fa186a915985c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce1b973_ea3e92bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:13:08Z",
+      "side": 1,
+      "message": "LGTM, will defer the +2 to the proper reviewers.",
+      "revId": "f3488ea00a130f356223ce4ea3fa186a915985c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14519c1b_59edf802",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:13:08Z",
+      "side": 1,
+      "message": "Just a general note, I wouldn\u0027t be too worry about testing on a ton of devices/configurations before submitting the test. That is what the lab is for. It runs informational tests on all devices for every build.",
+      "parentUuid": "1574c7a9_a85467c0",
+      "revId": "f3488ea00a130f356223ce4ea3fa186a915985c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d5d2ae2_e4212164",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:13:08Z",
+      "side": 1,
+      "message": "I think this is unused now",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 35
+      },
+      "revId": "f3488ea00a130f356223ce4ea3fa186a915985c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
