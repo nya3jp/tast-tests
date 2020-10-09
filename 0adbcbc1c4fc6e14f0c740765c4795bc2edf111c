@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfdbc144_cb3dbbb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:01:42Z",
+      "side": 1,
+      "message": "I am not sure that rewriting the caller is a good idea. It would likely lead to confusion for which methods should use a.Something() and which should use a.Device.Something(). Also, arc may want to do some extra things on top of what adb does at certain times, which the wrappers would enable. I am open to looking into the change though.\n\nAs for keeping the wrappers in sync, I feel that most of the arc methods that are adb specific are pretty static and easy to keep in sync. Sure a few new ones may get added at some point, but that isn\u0027t super common. Also, if new methods are added to arc, but not to adb. It would be very easy to add another extraction CL when someone using adb only needs it.",
+      "parentUuid": "ce962a06_fa643986",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9c7a50f6_bb9b4b3d",
@@ -104,6 +128,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3298ea3_e6629321",
+        "filename": "src/chromiumos/tast/local/adb/commands.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3d620e5_6d0efa5e",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9aa4c80_bf66c65d",
+        "filename": "src/chromiumos/tast/local/adb/commands.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1886caa_37701fe3",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34904db3_8610b58b",
@@ -117,6 +189,30 @@
       "writtenOn": "2020-10-08T19:36:54Z",
       "side": 1,
       "message": "nit: add testexec.DumpLogOnError perhaps?",
+      "range": {
+        "startLine": 37,
+        "startChar": 53,
+        "endLine": 37,
+        "endChar": 55
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67feb75f_14ad894a",
+        "filename": "src/chromiumos/tast/local/adb/commands.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34904db3_8610b58b",
       "range": {
         "startLine": 37,
         "startChar": 53,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b0749b_df33b37a",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c077ad2_9e02964a",
+      "range": {
+        "startLine": 282,
+        "startChar": 3,
+        "endLine": 282,
+        "endChar": 15
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da2276e8_128d6064",
@@ -163,6 +283,30 @@
       "writtenOn": "2020-10-08T19:36:54Z",
       "side": 1,
       "message": "ditto above: I assume it works with ARCVM as well",
+      "range": {
+        "startLine": 19,
+        "startChar": 57,
+        "endLine": 19,
+        "endChar": 66
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d181137a_dbfa000d",
+        "filename": "src/chromiumos/tast/local/adb/file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da2276e8_128d6064",
       "range": {
         "startLine": 19,
         "startChar": 57,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44211bf6_a8988297",
+        "filename": "src/chromiumos/tast/local/adb/file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a581a773_9c0624fb",
+      "range": {
+        "startLine": 33,
+        "startChar": 39,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fee45a33_73f7189f",
@@ -209,6 +377,30 @@
       "writtenOn": "2020-10-08T19:36:54Z",
       "side": 1,
       "message": "nit: perhaps appending testexec.DumpLogOnError ?",
+      "range": {
+        "startLine": 88,
+        "startChar": 77,
+        "endLine": 88,
+        "endChar": 78
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30f4999_d50a8d54",
+        "filename": "src/chromiumos/tast/local/adb/file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fee45a33_73f7189f",
       "range": {
         "startLine": 88,
         "startChar": 77,
@@ -242,6 +434,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf44120_e6178f78",
+        "filename": "src/chromiumos/tast/local/adb/file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908e9b21_4c1f17f0",
+      "range": {
+        "startLine": 95,
+        "startChar": 32,
+        "endLine": 95,
+        "endChar": 96
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02f350ea_3a1bc63d",
@@ -255,6 +471,30 @@
       "writtenOn": "2020-10-08T19:36:54Z",
       "side": 1,
       "message": "ditto above: I assume it works with ARCVM as well\n\n(there are few more \u0027container\u0027 words used in the rest of the files, please double check that)",
+      "range": {
+        "startLine": 16,
+        "startChar": 82,
+        "endLine": 16,
+        "endChar": 91
+      },
+      "revId": "0adbcbc1c4fc6e14f0c740765c4795bc2edf111c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b02c228c_6ad43a87",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T15:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f350ea_3a1bc63d",
       "range": {
         "startLine": 16,
         "startChar": 82,
