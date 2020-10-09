@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f19317a_2a014876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-10-09T21:52:51Z",
+      "side": 1,
+      "message": "These functions currently only use \"N/A\". My thinking of making the backup parameter was to make this library more generally useable as a library if other clients had different placeholder values. I modified the change to add a new Column function with defaults instead of adding a parameter for each validator. I think it\u0027s much more readable this way.",
+      "parentUuid": "7752dcd9_b548fd0d",
+      "revId": "49d404d4c0630f2345277c85598b57e2b6dd27a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f37cff5_ec909e27",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 4
@@ -49,6 +67,30 @@
       "writtenOn": "2020-10-09T08:36:00Z",
       "side": 1,
       "message": "nit: you can leave the String part from the name.",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "49d404d4c0630f2345277c85598b57e2b6dd27a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7575c31_3b0e1098",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-10-09T21:52:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f37cff5_ec909e27",
       "range": {
         "startLine": 43,
         "startChar": 6,
