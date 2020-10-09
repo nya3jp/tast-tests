@@ -33,6 +33,23 @@
       "message": "Important note: as written, this CL will re-add stretch testing to the CQ. I think that\u0027s okay, since it used to be on the CQ and I ran the tests and none of them failed, but if we don\u0027t want to do that it would be easy to change.",
       "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41eaeb5c_e89cdf82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-09T21:58:27Z",
+      "side": 1,
+      "message": "tast-local-tests-crosint-0.0.1-r3654: 01:50:37 \u003e\u003e\u003e Install chromeos-base/tast-local-tests-crosint-0.0.1-r3654 into /build/caroline/tmp/portage/chromeos-base/tast-local-tests-crosint-0.0.1-r3654/image/\ntast-local-tests-crosint-0.0.1-r3654:  * Installing \"chromiumos/tast/local/bundles/crosint:/build/libexec/tast/bundles/local/crosint\"\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_metadata_buster_amd64.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_metadata_buster_arm.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_metadata_stretch_amd64.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_metadata_stretch_arm.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_rootfs_buster_amd64.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_rootfs_buster_arm.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_rootfs_stretch_amd64.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_rootfs_stretch_arm.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_vm_amd64.zip.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_vm_arm.zip.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654:  * ERROR: chromeos-base/tast-local-tests-crosint-0.0.1-r3654::chromeos-partner failed (install phase):\ntast-local-tests-crosint-0.0.1-r3654:  *   Failed to copy chromiumos/tast/local/bundles/crosint/graphics/data to /build/caroline/tmp/portage/chromeos-base/tast-local-tests-crosint-0.0.1-r3654/image/build/share/tast/data/chromiumos/tast/local/bundles/crosint/graphics\ntast-local-tests-crosint-0.0.1-r3654:  *\n",
+      "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
