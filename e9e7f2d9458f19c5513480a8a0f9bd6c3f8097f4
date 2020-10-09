@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d82e7f4_27144da0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_force_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-10-09T09:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2295123_a42b6f29",
+      "revId": "e9e7f2d9458f19c5513480a8a0f9bd6c3f8097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "addf0818_10a89f8a",
@@ -65,6 +83,30 @@
       "writtenOn": "2020-10-08T02:21:00Z",
       "side": 1,
       "message": "nit: maybe these can be merged?\n\n  const (\n    extensionID \u003d \"hoppbgdeajkagempifacalpdapphfoai\"\n    downloadURL \u003d \"https://chrome.google.com/webstore/detail/platformkeys-test-extensi/\" + extensionID\n  )",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "e9e7f2d9458f19c5513480a8a0f9bd6c3f8097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f367a9c_64d82fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_force_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-10-09T09:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "addf0818_10a89f8a",
       "range": {
         "startLine": 59,
         "startChar": 1,
