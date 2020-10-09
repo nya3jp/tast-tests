@@ -16,6 +16,7 @@ import (
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/settings"
@@ -142,6 +143,7 @@ type PreData struct {
 	TestAPIConn *chrome.TestConn
 	Container   *vm.Container
 	Keyboard    *input.KeyboardEventWriter
+	ARC         *arc.ARC
 }
 
 // StartedByArtifact is similar to StartedByDownloadBuster, but will
@@ -256,6 +258,7 @@ type preImpl struct {
 	cr            *chrome.Chrome
 	tconn         *chrome.TestConn
 	cont          *vm.Container
+	arc           *arc.ARC
 	keyboard      *input.KeyboardEventWriter
 	loginType     loginType
 	startedOK     bool
@@ -409,6 +412,15 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to connect to running container: ", err)
 	}
 
+	// TODO: refactor all the ARC reset logic from arc/pre.go so we can use it
+	// here. This will not clean up stuff properly between tests that share this
+	// precondition.
+	if p.arcEnabled {
+		if p.arc, err = arc.New(ctx, s.OutDir()); err != nil {
+			s.Fatal("Failed to start ARC: ", err)
+		}
+	}
+
 	// Report disk size again after successful install.
 	if err := reportDiskUsage(ctx); err != nil {
 		s.Log("Failed to gather disk usage: ", err)
@@ -501,7 +513,7 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
+	return PreData{p.cr, p.tconn, p.cont, p.keyboard, p.arc}
 }
 
 // reportDiskUsage logs a report of the current disk usage.
