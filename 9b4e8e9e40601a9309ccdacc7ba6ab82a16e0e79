@@ -16,6 +16,24 @@
       "message": "This was mistake. Verified video perf test worked with the fix.",
       "revId": "9b4e8e9e40601a9309ccdacc7ba6ab82a16e0e79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e2f0d7_87874f57",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-09T05:40:00Z",
+      "side": 1,
+      "message": "Ouch.",
+      "parentUuid": "412c5da0_0328b8e9",
+      "revId": "9b4e8e9e40601a9309ccdacc7ba6ab82a16e0e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
