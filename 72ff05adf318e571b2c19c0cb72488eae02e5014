@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d81dce2_1098a5dd",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-09T04:59:55Z",
+      "side": 1,
+      "message": "haven\u0027t looked too closely yet, but won\u0027t this just overwrite any previous ones if you monitor multiple times? What I was thinking is that you monitor a set of properties over the ENTIRE lifetime of the watcher, not just between two shill property changes. It doesn\u0027t really make sense for the monitor to be bounded by the ordering of the property changes anyway since at that point it doesn\u0027t actually provide any additional functionality.",
+      "range": {
+        "startLine": 1034,
+        "startChar": 3,
+        "endLine": 1034,
+        "endChar": 16
+      },
+      "revId": "72ff05adf318e571b2c19c0cb72488eae02e5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
