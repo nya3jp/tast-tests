@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "681ad4d1_a6b942ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-09T04:23:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4923eb5e_b244e5dc",
+      "revId": "f08aaf2cccb5add7d3acfbd6ad47ed29ea690eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "936b47c2_f5460d74",
@@ -83,6 +101,30 @@
       "writtenOn": "2020-10-08T02:05:21Z",
       "side": 1,
       "message": "It might be more robust to make a regexp matching rather than exact match.  Sometimes the title format changes slightly.\n\nSimply checking with \u0027\\bMeet\\b\u0027 would be good enough, I think.",
+      "range": {
+        "startLine": 302,
+        "startChar": 6,
+        "endLine": 302,
+        "endChar": 47
+      },
+      "revId": "f08aaf2cccb5add7d3acfbd6ad47ed29ea690eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c92ea08_78ca20b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-09T04:23:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "936b47c2_f5460d74",
       "range": {
         "startLine": 302,
         "startChar": 6,
