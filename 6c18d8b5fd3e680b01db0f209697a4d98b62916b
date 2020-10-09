@@ -110,6 +110,30 @@
       },
       "revId": "6c18d8b5fd3e680b01db0f209697a4d98b62916b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c4bfa6_644ccf65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-09T14:20:51Z",
+      "side": 1,
+      "message": "Thats slightly concerning design. If an error is returned, whatever else was returned should generally be ignored. Might be something worth changing in another CL.\n\nGenerally, a launch/open function should do all clean up if it is going to return an error. That helps to avoid leaking resources and uncertainty in ownership.\n\nAlso, if the terminal is nil, the error is still propagated with this method.",
+      "parentUuid": "cb991dfb_8071fdf3",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 11
+      },
+      "revId": "6c18d8b5fd3e680b01db0f209697a4d98b62916b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
