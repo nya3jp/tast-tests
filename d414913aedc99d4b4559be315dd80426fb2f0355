@@ -50,6 +50,23 @@
       "message": "tast-local-tests-crosint-0.0.1-r3654: 01:50:37 \u003e\u003e\u003e Install chromeos-base/tast-local-tests-crosint-0.0.1-r3654 into /build/caroline/tmp/portage/chromeos-base/tast-local-tests-crosint-0.0.1-r3654/image/\ntast-local-tests-crosint-0.0.1-r3654:  * Installing \"chromiumos/tast/local/bundles/crosint:/build/libexec/tast/bundles/local/crosint\"\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_metadata_buster_amd64.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_metadata_buster_arm.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_metadata_stretch_amd64.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_metadata_stretch_arm.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_rootfs_buster_amd64.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_rootfs_buster_arm.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_rootfs_stretch_amd64.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_container_rootfs_stretch_arm.tar.xz.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_vm_amd64.zip.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654: cp: cannot stat \u0027chromiumos/tast/local/bundles/crosint/graphics/data/crostini_vm_arm.zip.external\u0027: No such file or directory\ntast-local-tests-crosint-0.0.1-r3654:  * ERROR: chromeos-base/tast-local-tests-crosint-0.0.1-r3654::chromeos-partner failed (install phase):\ntast-local-tests-crosint-0.0.1-r3654:  *   Failed to copy chromiumos/tast/local/bundles/crosint/graphics/data to /build/caroline/tmp/portage/chromeos-base/tast-local-tests-crosint-0.0.1-r3654/image/build/share/tast/data/chromiumos/tast/local/bundles/crosint/graphics\ntast-local-tests-crosint-0.0.1-r3654:  *\n",
       "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704eb8db_18ab8705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-09T22:29:31Z",
+      "side": 1,
+      "message": "Thank you for the refactoring! As indicated in the other change I am not enthusiastic of the renaming of the tests. Are we ever going to run an ARM vm on Intel? Are we going to run amd64 vm on ARM? If not, why specify it in the tests?\n\t\t\t\tExtraSoftwareDeps: []string{\"amd64\"},\n\nThe verbosity of the change is one issue, but having lots of independent string parameters to maintain (or set correctly when adding new tests) makes this appear brittle to me. In other words can these be constants defined in some crostini package?\n\t\t\t\tExtraData:         []string{\"crostini_vm_amd64.zip\", \"crostini_container_metadata_buster_amd64.tar.xz\", \"crostini_container_rootfs_buster_amd64.tar.xz\"},\n\nFinally we do have limited space for names on some dashboards and this pushes the string length (simple example tast.graphics.TraceReplay.glxgears_component_buster_amd64_unstable, notice we do intend to kick them off from power tests making them even longer)\n\nCan we keep the set of parameters as small as possible, not free form text, and the test names unchanged?",
+      "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
