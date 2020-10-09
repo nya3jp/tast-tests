@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13800942_eec6f899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/common.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-09T03:59:35Z",
+      "side": 1,
+      "message": "Do you want to define a quck qual as a \"subset\" of the full qual then? I am ok with that.\nThough, regardless of where those functions are, they need the testing state, that wouldn\u0027t change the fact, and since they are not specific to the particular test, I don\u0027t see why not to separate them into the utility module. Can put them back if you are particular about that.",
+      "parentUuid": "6dfef810_f0002c6d",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "c4d0a502315de5dfde5a5ad7b1060b8943644ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "346c1d39_244bf889",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/common.go",
         "patchSetId": 7
