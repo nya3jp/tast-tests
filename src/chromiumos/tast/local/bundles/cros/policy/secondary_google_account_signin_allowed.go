@@ -78,18 +78,11 @@ func SecondaryGoogleAccountSigninAllowed(ctx context.Context, s *testing.State) 
 			}
 			defer conn.Close()
 
-			// Find the Google Account button node and click it.
-			paramsGA := ui.FindParams{
+			// Click the Google Account button.
+			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeButton,
 				Name: "Google Accounts",
-			}
-			nodeGA, err := ui.FindWithTimeout(ctx, tconn, paramsGA, 15*time.Second)
-			if err != nil {
-				s.Fatal("Failed to find Google Accounts button node: ", err)
-			}
-			defer nodeGA.Release(ctx)
-
-			if err := nodeGA.LeftClick(ctx); err != nil {
+			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
 				s.Fatal("Failed to click Google Accounts button: ", err)
 			}
 
