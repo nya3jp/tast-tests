@@ -46,7 +46,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SettingsBridge,
 		Desc:         "Checks that Chrome settings are persisted in ARC",
-		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"sarakato@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),

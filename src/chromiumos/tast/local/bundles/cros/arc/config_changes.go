@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ConfigChanges,
 		Desc:         "Verifies that configChanges property in AndroidManifest.xml prevents an activity to restart on the configuration update",
-		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"informational", "group:mainline"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),

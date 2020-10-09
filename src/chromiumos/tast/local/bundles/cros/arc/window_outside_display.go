@@ -23,7 +23,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowOutsideDisplay,
 		Desc:         "Ensures an ARC window can move outside the display",
-		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.

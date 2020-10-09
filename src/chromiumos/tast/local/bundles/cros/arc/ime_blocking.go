@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         IMEBlocking,
 		Desc:         "Checks if IME blocking works on ARC",
-		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),

@@ -27,7 +27,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PreIMEKeyEvent,
 		Desc:         "Checks View.onKeyPreIme() works on Android apps",
-		Contacts:     []string{"yhanada@chromium.org", "arc-framework@google.com"},
+		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,

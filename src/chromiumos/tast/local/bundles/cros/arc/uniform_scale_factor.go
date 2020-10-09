@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UniformScaleFactor,
 		Desc:         "Checks that the uniform scale factor is applied to Android applications",
-		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"sarakato@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"android_p", "chrome"},

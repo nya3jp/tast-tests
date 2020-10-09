@@ -25,7 +25,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PointerCapture,
 		Desc:         "Checks that Pointer Capture works in Android",
-		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework@google.com"},
+		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Pre:          arc.Booted(),
