@@ -16,6 +16,47 @@
       "message": "There were a few cases I missed. I updated this CL to modify the validators in valid.go to accept a generic |backup| string instead of hardcoding \"N/A\" for cros_healthd\u0027s use case. If you wouldn\u0027t mind, could everyone take another look? Thanks!",
       "revId": "49d404d4c0630f2345277c85598b57e2b6dd27a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7752dcd9_b548fd0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-09T08:36:00Z",
+      "side": 1,
+      "message": "I don\u0027t really see the need for introducing the backup. Do you use these function with other thatn \"N/A\"? As it now, it harder to see what happens e.g. in:\n\u003e  // If the value does not exist, do not check the format.\n\u003e  \t\tif actual \u003d\u003d backup {\n\nIf you keep this version, do you need the \"Or\" at the end of the function names?",
+      "parentUuid": "863255d8_d6aa48cf",
+      "revId": "49d404d4c0630f2345277c85598b57e2b6dd27a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f37cff5_ec909e27",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-09T08:36:00Z",
+      "side": 1,
+      "message": "nit: you can leave the String part from the name.",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "49d404d4c0630f2345277c85598b57e2b6dd27a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
