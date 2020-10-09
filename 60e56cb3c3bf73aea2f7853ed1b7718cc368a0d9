@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab63de0_bec3466b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-09T05:35:38Z",
+      "side": 1,
+      "message": "PTAL, nya-san.\n\nFYI:\n- ihf@, jchinlee@, for graphics, as previous attempt broke graphics perf.\n- bhansknecht@, for new use in adb.\n- johnylin@, for new use in audio.\n\n",
+      "revId": "60e56cb3c3bf73aea2f7853ed1b7718cc368a0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4679f7c_5486776b",
+        "filename": "src/chromiumos/tast/local/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-09T05:35:38Z",
+      "side": 1,
+      "message": "Note: replaced new stderr use.",
+      "revId": "60e56cb3c3bf73aea2f7853ed1b7718cc368a0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b19d5c9_9ab36335",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-09T05:35:38Z",
+      "side": 1,
+      "message": "note: replaced new stderr use.",
+      "revId": "60e56cb3c3bf73aea2f7853ed1b7718cc368a0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
