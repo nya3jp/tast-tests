@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9520d55_400e0b55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-09T13:12:33Z",
+      "side": 1,
+      "message": "In the meantime the FindAndClick() function changed, so PTAL.",
+      "revId": "a76f80f6aad5a066268474b0eeeae79c1b053f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
