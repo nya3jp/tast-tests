@@ -33,6 +33,24 @@
       "message": "I suppose it\u0027s fine that there\u0027s now somewhat redundant usage of WaitForOnline() in the chrome package (for GAIA login)? One could have a test that disrupts connectivity and then wants to do GAIA login.",
       "revId": "46e056beb8dd4b4097744e08366ed6415d1a5fcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05f94a34_35f02d65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-09T03:23:56Z",
+      "side": 1,
+      "message": "Thanks for letting me know, I think it\u0027s okay to be redundant, assuming that WaitForOnline doesn\u0027t take much time.",
+      "parentUuid": "e342cf1e_de1195da",
+      "revId": "46e056beb8dd4b4097744e08366ed6415d1a5fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
