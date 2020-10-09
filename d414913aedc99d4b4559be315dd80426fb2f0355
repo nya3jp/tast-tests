@@ -16,6 +16,23 @@
       "message": "Graphics people: please check the graphics tests I\u0027m changing to make sure the new configuration makes sense",
       "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c66f635_bb1a36f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-09T07:46:27Z",
+      "side": 1,
+      "message": "Important note: as written, this CL will re-add stretch testing to the CQ. I think that\u0027s okay, since it used to be on the CQ and I ran the tests and none of them failed, but if we don\u0027t want to do that it would be easy to change.",
+      "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
