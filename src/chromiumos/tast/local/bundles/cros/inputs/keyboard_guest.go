@@ -39,7 +39,7 @@ func init() {
 
 // KeyboardGuest checks that both physical keyboard and virtual keyboard work in guest mode.
 func KeyboardGuest(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard", "--force-tablet-mode=touch_view"), chrome.GuestLogin())
+	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.GuestLogin())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
