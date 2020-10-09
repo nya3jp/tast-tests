@@ -107,7 +107,7 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	return nil
 }
 
-func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityName string, axEventTestSteps []axEventTestStep) error {
+func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityName string, axEventTestSteps []axEventTestStep) (func(context.Context, *chrome.Conn) error, error) {
 	eventsSeen := make(map[string]bool)
 	var events []string
 	for _, test := range axEventTestSteps {
@@ -117,17 +117,25 @@ func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityN
 			events = append(events, currentEvent)
 		}
 	}
+
 	if err := cvconn.Call(ctx, nil, `async (events) => {
 		  let desktop = await tast.promisify(chrome.automation.getDesktop)();
 		  EventStreamLogger.instance = new EventStreamLogger(desktop);
-		  EventStreamLogger.instance.notifyEventStreamFilterChangedAll(false);
 		  for (const event of events) {
 		    EventStreamLogger.instance.notifyEventStreamFilterChanged(event, true);
 		  }
 		}`, events); err != nil {
-		return errors.Wrap(err, "enabling event stream logging failed")
+		return nil, errors.Wrap(err, "enabling event stream logging failed")
 	}
-	return nil
+
+	cleanup := func(ctx context.Context, cvconn *chrome.Conn) error {
+		return cvconn.Call(ctx, nil, `async (events) => {
+		  for (const event of events) {
+		    EventStreamLogger.instance.notifyEventStreamFilterChanged(event, false);
+		  }
+		}`, events)
+	}
+	return cleanup, nil
 }
 
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
@@ -290,9 +298,16 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 
 	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
 		testSteps := events[currentActivity.Name]
-		if err := setupEventStreamLogging(ctx, cvconn, currentActivity.Name, testSteps); err != nil {
+		cleanup, err := setupEventStreamLogging(ctx, cvconn, currentActivity.Name, testSteps)
+		if err != nil {
 			return err
 		}
+		defer func() {
+			if err := cleanup(ctx, cvconn); err != nil {
+				testing.ContextLog(ctx, "Failed to clean up event stream linsteners: ", err)
+			}
+		}()
+
 		for i, test := range testSteps {
 			test.Event.RootName = currentActivity.Title
 			if err := runTestStep(ctx, cvconn, tconn, ew, test, i == 0); err != nil {
