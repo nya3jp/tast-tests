@@ -128,7 +128,9 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{path: "/run/arc/host_generated/default.prop", context: "rootfs", ignoreErrors: true}, // Android labels, bind-mount into ARC. TODO: Remove. Should not be present post Android R.
 		{path: "/run/arc/sdcard", context: "(tmpfs|storage_file)"},
 		{path: "/run/arc/shared_mounts", context: "tmpfs"},
-		{path: "/run/camera", context: "(camera_dir|camera_socket)", ignoreErrors: true}, // N or below is camera_socket
+		{path: "/run/arcvm", context: "cros_run_arcvm", ignoreErrors: true},
+		{path: "/run/arcvm/android-data", context: "system_data_root_file", ignoreErrors: true}, // Android label
+		{path: "/run/camera", context: "(camera_dir|camera_socket)", ignoreErrors: true},        // N or below is camera_socket
 		{path: "/run/camera/camera.sock", context: "camera_socket", ignoreErrors: true},
 		{path: "/run/camera/camera3.sock", context: "camera_socket", ignoreErrors: true},
 		{path: "/run/chrome/arc_bridge.sock", context: "arc_bridge_socket"},
