@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32919ebd_21e332d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-09T21:49:19Z",
+      "side": 1,
+      "message": "Thanks for doing this! LGTM for the most part. I\u0027m not sure how others feel but I think I have a slight preference for directly opening up a socket to the control interface as opposed to using wpa_cli as a proxy, but I\u0027m guessing that\u0027ll require more gRPC plumbing than it\u0027s worth.",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2377dc_301225bb",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-09T21:49:19Z",
+      "side": 1,
+      "message": "can we try to consolidate some of these repeated strings/code?",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b00f633_6a5633eb",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-09T21:49:19Z",
+      "side": 1,
+      "message": "nit: combine.",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 14
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbab83a8_1839897c",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-09T21:49:19Z",
+      "side": 1,
+      "message": "nit: combine.",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 21
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
