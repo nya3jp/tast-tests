@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1951c3c2_6a26d383",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-09T06:57:58Z",
+      "side": 1,
+      "message": "I don\u0027t think we have this kind of granularity control in the settings UI. On my DUT, each keyboard tick increases the size by 200MB. That said, this is the limitation of using UI instead command line argument.\n\nFor now, the default size is coded within chrome source and retrieving it might complicate the code. Currently, 7.5GB is set to allow installing some common dev app, e.g. android studio. The minimum size for installing crostini is set to 2GB.\nI doubt it would grows to 6GB any soon.",
+      "parentUuid": "095d1b7c_352e5381",
+      "revId": "918ab6d0c7beb858d47bb5383dc02438d5d9d752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edea2061_dba50dd3",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-08T17:53:17Z",
       "side": 1,
       "message": "Can you document why we request a resize here? Say:\n\n// Trace tests rely on increased VM sizes, but DUTs in the CQ often have not very much storage.\n// We want to exercise the resizing path, hence we request only 100MB more storage than usual.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 61
+      },
+      "revId": "918ab6d0c7beb858d47bb5383dc02438d5d9d752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2806a299_d6b3ecc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-09T06:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edea2061_dba50dd3",
       "range": {
         "startLine": 23,
         "startChar": 0,
