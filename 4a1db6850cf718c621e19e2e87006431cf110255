@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f906440_8e20447d",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-09T04:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56eb2fd2_97414685",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "4a1db6850cf718c621e19e2e87006431cf110255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f2293d0_90867ad3",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86fd10a1_023faba0",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-09T04:24:20Z",
+      "side": 1,
+      "message": "we want to keep it in alpha order, matches src/repohooks/unblocked_terms.txt",
+      "parentUuid": "6f2293d0_90867ad3",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "4a1db6850cf718c621e19e2e87006431cf110255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a554b20_18ea0fbf",
         "filename": "unblocked_terms.txt",
         "patchSetId": 3
@@ -77,6 +125,30 @@
       "writtenOn": "2020-10-08T16:15:10Z",
       "side": 1,
       "message": "nit: looks not clean?",
+      "range": {
+        "startLine": 55,
+        "startChar": 24,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "4a1db6850cf718c621e19e2e87006431cf110255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa90f11e_6e4bb55e",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-09T04:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a554b20_18ea0fbf",
       "range": {
         "startLine": 55,
         "startChar": 24,
