@@ -39,6 +39,30 @@
       },
       "revId": "1060bc11f35c409d0b7b09894e5c8385aeb4e23d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c7e79a2_5547147a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2020-10-09T10:28:02Z",
+      "side": 1,
+      "message": "Could we change how the vmodule switch is parsed, or is that something about how Chrome switches are parsed in general?\nI think it brings value to be able to specify different \u0027vmodules\u0027. Do you see a problem with this?\n\nI think that if we can\u0027t do that we will just have to plug these vmodule arguments in all the tests using GAIALogin.",
+      "parentUuid": "f220f573_94bfb822",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 44
+      },
+      "revId": "1060bc11f35c409d0b7b09894e5c8385aeb4e23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
