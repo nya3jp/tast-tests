@@ -41,6 +41,10 @@ func FscryptEncryptionPolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start cryptohomed: ", err)
 	}
 
+	if err := cryptohome.CheckService(ctx); err != nil {
+		s.Fatal("Cryptohomed not running as expected: ", err)
+	}
+
 	// Create user vault.
 	if err := cryptohome.CreateVault(ctx, user, password); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
