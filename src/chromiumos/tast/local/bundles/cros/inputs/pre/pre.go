@@ -37,7 +37,7 @@ var InputsStableModels = hwdep.D(hwdep.Model(stableModels...))
 // To stablize the tests, have to exclude entire kevin model as no distinguish between kevin and kevin64.
 var InputsUnstableModels = hwdep.D(hwdep.SkipOnModel(append(stableModels, "kevin1")...))
 
-var vkEnabledPre = chrome.NewPrecondition("virtual_keyboard_enabled", chrome.ExtraArgs("--enable-virtual-keyboard"))
+var vkEnabledPre = chrome.NewPrecondition("virtual_keyboard_enabled", chrome.VKEnabled())
 
 // VKEnabled creates a new precondition can be shared by tests that require an already-started Chromeobject that enables virtual keyboard.
 func VKEnabled() testing.Precondition { return vkEnabledPre }

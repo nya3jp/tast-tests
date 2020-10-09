@@ -40,7 +40,7 @@ func init() {
 }
 
 func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.ExtraArgs("--enable-virtual-keyboard", "--force-tablet-mode=touch_view"), chrome.LoadSigninProfileExtension(s.RequiredVar("inputs.signinProfileTestExtensionManifestKey")))
+	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.LoadSigninProfileExtension(s.RequiredVar("inputs.signinProfileTestExtensionManifestKey")))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
