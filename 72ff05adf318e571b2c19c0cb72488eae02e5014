@@ -22,6 +22,30 @@
       },
       "revId": "72ff05adf318e571b2c19c0cb72488eae02e5014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "055d07a2_3b5bc97d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-09T19:00:30Z",
+      "side": 1,
+      "message": "That make sense, I will submit a new patch soon.",
+      "parentUuid": "1d81dce2_1098a5dd",
+      "range": {
+        "startLine": 1034,
+        "startChar": 3,
+        "endLine": 1034,
+        "endChar": 16
+      },
+      "revId": "72ff05adf318e571b2c19c0cb72488eae02e5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
