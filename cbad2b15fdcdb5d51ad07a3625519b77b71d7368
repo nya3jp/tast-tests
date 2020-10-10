@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2125f3_ee509729",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-10-10T00:35:32Z",
+      "side": 1,
+      "message": "mukai-san: Could you help review? Thanks!\nafakhry: FYI as i added you as an owner 😄",
+      "revId": "cbad2b15fdcdb5d51ad07a3625519b77b71d7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
