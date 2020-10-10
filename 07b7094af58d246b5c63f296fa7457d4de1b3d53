@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4973ae57_212206a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1440694
+      },
+      "writtenOn": "2020-10-10T20:30:15Z",
+      "side": 1,
+      "message": "Missing permissions ",
+      "revId": "07b7094af58d246b5c63f296fa7457d4de1b3d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f0d5cc_9db24db3",
+        "filename": "android/ArcIntentPickerTest/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1440694
+      },
+      "writtenOn": "2020-10-10T20:30:15Z",
+      "side": 1,
+      "message": "no permissions set",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "07b7094af58d246b5c63f296fa7457d4de1b3d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
