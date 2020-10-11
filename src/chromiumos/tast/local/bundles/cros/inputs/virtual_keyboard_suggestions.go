@@ -114,7 +114,6 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 		LanguageLabel      string
 	}{
 		{"xkb:us::eng", []string{"a"}, "a", "US"},
-		{"nacl_mozc_us", []string{"o"}, "お", "あ"},
 	}
 
 	for _, testCase := range testCases {
