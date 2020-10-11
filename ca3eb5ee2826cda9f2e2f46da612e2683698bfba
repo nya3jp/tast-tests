@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d252842c_ee159e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-11T23:35:07Z",
+      "side": 1,
+      "message": "Why only 500GiB? Probably won\u0027t be too long before there are Chromebooks with bigger disks available (though may be a while until they\u0027re in the lab).",
+      "revId": "ca3eb5ee2826cda9f2e2f46da612e2683698bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162ea178_f6a6b5cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-11T23:35:07Z",
+      "side": 1,
+      "message": "I take it nodes are immutable, and don\u0027t update when the accessibility tree changes? Makes sense.",
+      "revId": "ca3eb5ee2826cda9f2e2f46da612e2683698bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5112e493_7d71068f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-11T23:35:07Z",
+      "side": 1,
+      "message": "Nit: Fetch the size node (ditto comment) or something like that. You don\u0027t actually read the size from the node until like 169.",
+      "revId": "ca3eb5ee2826cda9f2e2f46da612e2683698bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb7132e4_f9d0b2a3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-11T23:35:07Z",
+      "side": 1,
+      "message": "NIT: Maybe ClickChangeDiskSize, OpenDiskResizeDialog, etc? ClickChange is very generic.",
+      "revId": "ca3eb5ee2826cda9f2e2f46da612e2683698bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
