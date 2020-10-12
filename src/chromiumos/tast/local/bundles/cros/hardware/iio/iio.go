@@ -31,6 +31,9 @@ type SensorName string
 // the EC and exposed by the kernel in /sys/bus/iio/devices/iio:device*/location.
 type SensorLocation string
 
+// ActivityID is the ID of the activity which is reported by the EC.
+type ActivityID int
+
 // Sensor represents one sensor on the DUT.
 type Sensor struct {
 	Device
@@ -71,6 +74,9 @@ const (
 	// Ring is a special sensor for ChromeOS that produces a stream of data from
 	// all sensors on the DUT.
 	Ring SensorName = "cros-ec-ring"
+	// Activity is a special sensor for ChromeOS that produces several kind of
+	// activity events by the data of other sensors.
+	Activity SensorName = "cros-ec-activity"
 )
 
 const (
@@ -80,6 +86,17 @@ const (
 	Lid SensorLocation = "lid"
 	// None means that the sensor location is not known or not applicable.
 	None SensorLocation = "none"
+)
+
+const (
+	// SigMotionID is the ID of the activity, significant motion.
+	SigMotionID ActivityID = 1
+	// DoubleTapID is the ID of the activity, double tap.
+	DoubleTapID ActivityID = 2
+	// OrientationID is the ID of the activity, orientation.
+	OrientationID ActivityID = 3
+	// OnBodyDetectionID is the ID of the activity, on-body detection.
+	OnBodyDetectionID ActivityID = 4
 )
 
 // cros ec data flags from ec_commands.h
@@ -92,12 +109,13 @@ const (
 )
 
 var sensorNames = map[SensorName]struct{}{
-	Accel: {},
-	Baro:  {},
-	Gyro:  {},
-	Light: {},
-	Mag:   {},
-	Ring:  {},
+	Accel:    {},
+	Baro:     {},
+	Gyro:     {},
+	Light:    {},
+	Mag:      {},
+	Ring:     {},
+	Activity: {},
 }
 
 var sensorLocations = map[SensorLocation]struct{}{
@@ -426,4 +444,17 @@ func (d *Device) ReadAttr(attr string) (string, error) {
 		return "", errors.Wrapf(err, "error reading attribute %q of %v", attr, d.Path)
 	}
 	return strings.TrimSpace(string(a)), nil
+}
+
+// ReadIntegerAttr reads the device's attr file and returns the integer value.
+func (d *Device) ReadIntegerAttr(attr string) (int, error) {
+	s, err := d.ReadAttr(attr)
+	if err != nil {
+		return 0, err
+	}
+	ret, _ := strconv.Atoi(s)
+	if err != nil {
+		return 0, errors.Wrapf(err, "the value of %q is not an integer", attr)
+	}
+	return ret, nil
 }
