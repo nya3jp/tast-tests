@@ -71,7 +71,7 @@ func CommandCd(ctx context.Context, s *testing.State) {
 	userName := strings.Split(cr.User(), "@")[0]
 
 	// Open Terminal app.
-	terminalApp, err := terminalapp.Launch(ctx, tconn, userName)
+	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}

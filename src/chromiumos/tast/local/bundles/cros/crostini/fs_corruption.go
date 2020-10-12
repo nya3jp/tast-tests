@@ -262,7 +262,7 @@ func readContainerFile(ctx context.Context, container *vm.Container, path string
 // We assume that the VM is initially stopped and that the disk is in
 // a good (uncorrupted) state. If this function returns successfully,
 // the VM will be stopped, but the disk is in an unspecified state.
-func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userName string, offsets []int64, container *vm.Container, diskPath, backupPath, outDir string) (resultError error) {
+func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, offsets []int64, container *vm.Container, diskPath, backupPath, outDir string) (resultError error) {
 	match := dbusutil.MatchSpec{
 		Type:      "signal",
 		Path:      anomalyEventServicePath,
@@ -306,7 +306,7 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 	testing.ContextLog(ctx, "Restarting VM")
 	var vmRunning bool
 	// Discard the error, as this may fail due to corruption.
-	if terminal, _ := terminalapp.Launch(ctx, tconn, userName); terminal != nil {
+	if terminal, _ := terminalapp.Launch(ctx, tconn); terminal != nil {
 		// If we got a terminal object from Launch, we need to
 		// call Close to free its internal UI node.
 		if err := terminal.Close(ctx); err != nil {
@@ -339,8 +339,8 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 	return nil
 }
 
-func launchAndReleaseTerminal(ctx context.Context, tconn *chrome.TestConn, userName string) error {
-	terminal, err := terminalapp.Launch(ctx, tconn, userName)
+func launchAndReleaseTerminal(ctx context.Context, tconn *chrome.TestConn) error {
+	terminal, err := terminalapp.Launch(ctx, tconn)
 	if terminal != nil {
 		err = terminal.Close(ctx)
 	}
@@ -381,7 +381,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	}
 	// Restart everything before finishing so the precondition will be in a good state.
 	defer func() {
-		if err := launchAndReleaseTerminal(ctx, tconn, userName); err != nil {
+		if err := launchAndReleaseTerminal(ctx, tconn); err != nil {
 			s.Error("Failed to restart crostini terminal: ", err)
 		}
 	}()
