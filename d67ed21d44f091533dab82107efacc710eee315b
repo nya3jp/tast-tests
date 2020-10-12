@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658e30ee_b1a5c6c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-12T04:35:33Z",
+      "side": 1,
+      "message": "This parameter is no longer used.",
+      "range": {
+        "startLine": 231,
+        "startChar": 73,
+        "endLine": 231,
+        "endChar": 81
+      },
+      "revId": "d67ed21d44f091533dab82107efacc710eee315b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
