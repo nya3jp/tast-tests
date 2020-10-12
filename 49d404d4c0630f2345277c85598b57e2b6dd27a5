@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45f067ee_a55e3122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-12T07:17:31Z",
+      "side": 1,
+      "message": "Thanks for the change. I aslo think it got more readable.",
+      "parentUuid": "1f19317a_2a014876",
+      "revId": "49d404d4c0630f2345277c85598b57e2b6dd27a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f37cff5_ec909e27",
