@@ -23,7 +23,7 @@ func (a *ARC) PullFile(ctx context.Context, src, dst string) error {
 
 // PushFile copies a file in Chrome OS to Android with adb push.
 func (a *ARC) PushFile(ctx context.Context, src, dst string) error {
-	return a.device.PullFile(ctx, src, dst)
+	return a.device.PushFile(ctx, src, dst)
 }
 
 // PushFileToTmpDir copies a file in Chrome OS to Android temp directory.
