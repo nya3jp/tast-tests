@@ -86,8 +86,6 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to get the initial disk size")
 	}
-
-	testing.ContextLogf(ctx, "Default disk size: %d, target disk size: %d", defaultSize, minDiskSize)
 	if defaultSize == minDiskSize {
 		return nil
 	}

@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -38,7 +37,7 @@ func init() {
 		// Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      60 * time.Minute,
 		Data:         append([]string{crostini.ImageArtifact}, fioFiles()...),
-		Pre:          crostini.StartedTraceVM(16 * settings.SizeGB),
+		Pre:          crostini.StartedTraceVM(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Vars:         []string{"keepState"},
 		Params: []testing.Param{
