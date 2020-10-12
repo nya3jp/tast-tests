@@ -85,20 +85,14 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 			value:       &policy.ArcEnabled{Val: true},
 		},
 		{
-			// Should be after the "enable" test case to see if it disables ARC after it was enabled.
-			name:        "unset",
-			wantEnabled: false,
-			value:       &policy.ArcEnabled{Stat: policy.StatusUnset},
-		},
-		{
-			name:        "second_enable",
-			wantEnabled: true,
-			value:       &policy.ArcEnabled{Val: true},
-		},
-		{
 			name:        "disable",
 			wantEnabled: false,
 			value:       &policy.ArcEnabled{Val: false},
+		},
+		{
+			name:        "unset",
+			wantEnabled: false,
+			value:       &policy.ArcEnabled{Stat: policy.StatusUnset},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
