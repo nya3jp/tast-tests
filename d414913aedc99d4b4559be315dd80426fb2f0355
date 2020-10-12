@@ -67,6 +67,24 @@
       "message": "Thank you for the refactoring! As indicated in the other change I am not enthusiastic of the renaming of the tests. Are we ever going to run an ARM vm on Intel? Are we going to run amd64 vm on ARM? If not, why specify it in the tests?\n\t\t\t\tExtraSoftwareDeps: []string{\"amd64\"},\n\nThe verbosity of the change is one issue, but having lots of independent string parameters to maintain (or set correctly when adding new tests) makes this appear brittle to me. In other words can these be constants defined in some crostini package?\n\t\t\t\tExtraData:         []string{\"crostini_vm_amd64.zip\", \"crostini_container_metadata_buster_amd64.tar.xz\", \"crostini_container_rootfs_buster_amd64.tar.xz\"},\n\nFinally we do have limited space for names on some dashboards and this pushes the string length (simple example tast.graphics.TraceReplay.glxgears_component_buster_amd64_unstable, notice we do intend to kick them off from power tests making them even longer)\n\nCan we keep the set of parameters as small as possible, not free form text, and the test names unchanged?",
       "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0d42aa_d77a5741",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-12T08:06:45Z",
+      "side": 1,
+      "message": "Fundamentally, we need to run distinct VMs on x64 and ARM devices. Currently this decision is made by cbuildbot when it decides which files to download and include in the build artifact we depend on, but that presents several issues discussed in the commit message.\n\nThis pair of CLs moves us to directly depending on the files in GCS, but that means the test needs to know somehow which architecture to download. Further, it can\u0027t happen in the actual test code, because data dependencies are downloaded before the test (or precondition) starts running. So instead we have to have seperate test parameters for each architecture, which can specify different data dependencies and use software deps to prevent the wrong test from running on the wrong device.\n\nThis means the test names will change, because there are now more versions of each test, and so I\u0027m also taking the opportunity to rename them to something that will make a more useful distinction in the future (\"component\" vs \"dlc\" to refer to the installation process). That said, for the graphics trace tests I could drop the buster vs stretch part of the name since they only run on buster.\n\nI agree that all this config is very verbose, which is why this has waited until we had a way to automatically generate the parameters. The unit tests (all the files ending in \"_test.go\") will generate the correct configs and check that they match the configs in the actual test files (or update them if they are run with the right parameter). These unit tests are run on the CQ, so we can guarantee that none of these string constants will go out of date, and new tests can be added without the risk of diverging from the correct parameters.\n\nSee go/tast-generate-params and the comment at the top of params.go for more explanation.",
+      "parentUuid": "704eb8db_18ab8705",
+      "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
