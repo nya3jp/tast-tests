@@ -39,11 +39,21 @@ dummy
 # \bhers\b              - clean
 # man.?in.?the.?middle  - clean
 
-master
+# master
 #    - see crbug/1122372
 .?/master
 \.master
+\-master
+Master\s*int
+master:
+master\.
+master\s+:=
+master,\serr
+parse\smaster
+Replace\smaster
+shared,\smaster
 ymasterd
+VTSKeymaster
 VtsHalKeymaster.?
 
 mitm
