@@ -86,6 +86,24 @@
       "parentUuid": "a5698394_b4ef4dc2",
       "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5875e6d_8ef1f091",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-12T09:13:13Z",
+      "side": 1,
+      "message": "\u003e I have bugs open for all the terms that need to be modified.\n\nThis is not the term we should modify. It is just a word accidentally containing an offensive word.\nMy request is to add TODO to figure out how to deal with such situations.\nI do not think it is a way to add so-many words here in the future.\n\n\u003e I have bugs open for all the terms that need to be modified.\n\nI know the goal and agreed with it. My question point is the approach,\nbecause this approach has false positive (\u003d regression from non-offensive word point of view).\n\n\u003e it is ok to maintain this file for now as it is used to work thru the coil project, this is its intent.\n\nI\u0027m ok *for now*, but I could not find a direction for the future from this CL.\n\n\u003e  once all it clean the file goes away.\n\nno, because DailyLimitMins is not an offensive word, and I do not think it is a target of COIL project conceptually, so it must retain here without further fix of check mechanism.",
+      "parentUuid": "8da62d82_8bc480c7",
+      "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
