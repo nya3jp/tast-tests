@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c5a8dc3_cf6bf60d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-12T02:46:25Z",
+      "side": 1,
+      "message": "Does the latest patch satisfy your request?",
+      "parentUuid": "bc38ec23_e8ad2d3f",
+      "revId": "ca3eb5ee2826cda9f2e2f46da612e2683698bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5112e493_7d71068f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
         "patchSetId": 3
