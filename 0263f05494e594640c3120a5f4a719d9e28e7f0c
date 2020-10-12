@@ -16,6 +16,184 @@
       "message": "Hi Kyle:\n\nI think I have addressed all your comments. Please take a look and see if it is okay.\n\nThanks.\n\nSeewai",
       "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6453758_5ffa27b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T23:01:28Z",
+      "side": 1,
+      "message": "Thanks for explaining the waits, LGTM! Just a few small spelling/grammar nits.",
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c969fd_27abb8d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T23:01:28Z",
+      "side": 1,
+      "message": "application icons",
+      "range": {
+        "startLine": 74,
+        "startChar": 70,
+        "endLine": 74,
+        "endChar": 88
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db413977_16f2e1d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T23:01:28Z",
+      "side": 1,
+      "message": "users",
+      "range": {
+        "startLine": 74,
+        "startChar": 93,
+        "endLine": 74,
+        "endChar": 99
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72b1396_f9b84419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T23:01:28Z",
+      "side": 1,
+      "message": "application icons",
+      "range": {
+        "startLine": 75,
+        "startChar": 38,
+        "endLine": 75,
+        "endChar": 56
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390118d9_e34e317f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T23:01:28Z",
+      "side": 1,
+      "message": "launcher",
+      "range": {
+        "startLine": 75,
+        "startChar": 23,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f134680d_05a1d001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T23:01:28Z",
+      "side": 1,
+      "message": "waits",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7afe64fe_76a7be90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T23:01:28Z",
+      "side": 1,
+      "message": "moved",
+      "range": {
+        "startLine": 162,
+        "startChar": 52,
+        "endLine": 162,
+        "endChar": 56
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e10236ef_bbf1c1f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T23:01:28Z",
+      "side": 1,
+      "message": "dropped onto",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 47
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
