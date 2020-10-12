@@ -27,7 +27,7 @@ func init() {
 		},
 		Params: []testing.Param{{
 			Name: "ce_cdm",
-			Val:  execConfig{"widevine_ce_cdm_hw_tests", []string{"-n"}},
+			Val:  execConfig{"widevine_ce_cdm_hw_tests", []string{}},
 		}, {
 			Name: "oemcrypto",
 			Val:  execConfig{"oemcrypto_hw_ref_tests", []string{}},
