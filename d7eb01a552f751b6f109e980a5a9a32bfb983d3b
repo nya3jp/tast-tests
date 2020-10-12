@@ -68,6 +68,41 @@
       "message": "I guess I\u0027m assigned, so let\u0027s retry. ;)",
       "revId": "d7eb01a552f751b6f109e980a5a9a32bfb983d3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "808c3e69_95cdd594",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T17:17:00Z",
+      "side": 1,
+      "message": "Hi Brian, would you like to help review this CL?",
+      "revId": "d7eb01a552f751b6f109e980a5a9a32bfb983d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561b655d_e225542c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T17:17:00Z",
+      "side": 1,
+      "message": "It seems that the bot is not working now. Assign a reviewer manually.",
+      "parentUuid": "4971d51f_0ae157c9",
+      "revId": "d7eb01a552f751b6f109e980a5a9a32bfb983d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
