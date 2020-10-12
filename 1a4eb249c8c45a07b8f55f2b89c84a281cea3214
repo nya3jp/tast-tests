@@ -16,6 +16,23 @@
       "message": "Add myself to reviewer so that it appears on my list and I won\u0027t forget to take a look later. :)",
       "revId": "1a4eb249c8c45a07b8f55f2b89c84a281cea3214",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb7107f_1b665f37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T03:44:05Z",
+      "side": 1,
+      "message": "Sorry for the delay. Current version looks OK to me but it is a little more complex than I expected. I don\u0027t have a concrete suggestion on hand now. I guess maybe I should also try this by myself later.\n\nAlso, I think you can continue with some 8021x cases first so that we can see how this works with the cases that need the feature most.",
+      "revId": "1a4eb249c8c45a07b8f55f2b89c84a281cea3214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
