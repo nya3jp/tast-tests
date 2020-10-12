@@ -20,6 +20,132 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4e333eb_52b66e62",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "nit: WPA?",
+      "range": {
+        "startLine": 477,
+        "startChar": 28,
+        "endLine": 477,
+        "endChar": 31
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cef507f_18191fe4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "I guess this is for the caller to reserve time for stop. Maybe you can just shorten the context in this function?",
+      "range": {
+        "startLine": 489,
+        "startChar": 4,
+        "endLine": 489,
+        "endChar": 25
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e43aafa_c0ca8b08",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "This will be in package scope, so I\u0027m hesitant to have this here. Or, it should have a more specific name.",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5250cf5f_8c4e38b0",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "nit: end the sentence with period? (similar below)",
+      "range": {
+        "startLine": 22,
+        "startChar": 62,
+        "endLine": 22,
+        "endChar": 63
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b204ffc_c075b946",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "I think the name is too general for wificell package. I wonder if we should move these into a sub-package? (so that the \"debug\" will also make sense)",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48de8f89_2140a321",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "I personally slightly prefer having error return here so the caller can identify the problem (and perhaps dumps the whole line for better debugging). And utilities can be like:\n\n  func atoi(s string, firstErr *error) {\n    val, err :\u003d strconv.Atoi(str)\n    if err !\u003d nil \u0026\u0026 *firstErr \u003d\u003d nil {\n      *firstErr \u003d err\n    }\n    return val\n  }\n\nThen caller can remain simple:\n\n  var firstErr error\n  event :\u003d \u0026Event{\n    Field: atoi(matches[1], \u0026firstErr),\n    ...\n  }\n  if firstErr !\u003d nil {\n    return nil, firstErr\n  }\n  return event, nil\n\nWDYT?",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b2377dc_301225bb",
         "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
         "patchSetId": 1
@@ -31,6 +157,52 @@
       "writtenOn": "2020-10-09T21:49:19Z",
       "side": 1,
       "message": "can we try to consolidate some of these repeated strings/code?",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847f1a90_0c49437a",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "maybe the following is simpler?\n\n  event :\u003d \u0026RoamEvent{\n    CurBSSID: matches[1],\n    ...\n    Skip: false,\n  }",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd10164_8656b5b3",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "The \"true\" value seems unused. Maybe just defer close(w.done) in the beginning and the type can be chan struct{}? you may also consider close(w.lines) so WaitForEvent can identify the EOF case.",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 16
+      },
       "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +232,80 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2a44695_1f806da3",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "maybe also w.stdin.Close()?",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e607d68_963d7d6e",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "I think we have to call w.cmd.Wait here.",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb11a5b_c463785b",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "Hmm..., I\u0027m not really sure the intention of this function. When will this be called?",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed1b599e_b2aaea2a",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "The behavior sounds a little weird to me. Personally, I would expect (nil, ctx.Err()) in this case. May I know the usage that needs this behavior?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 59
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbab83a8_1839897c",
         "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
         "patchSetId": 1
@@ -77,6 +323,23 @@
         "endLine": 199,
         "endChar": 21
       },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b3ce9f_29617422",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T05:36:44Z",
+      "side": 1,
+      "message": "Is this reachable? If not, I guess `go vet` will complain about this.",
       "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
