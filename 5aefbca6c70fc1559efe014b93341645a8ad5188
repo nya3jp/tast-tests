@@ -16,6 +16,24 @@
       "message": "Mhh, nice. The bisector found this change! ;-)\nhttps://crosperf.googleplex.com/b/57d8f2ea-90dc-41f7-baff-5c3d153c63f3\n\nSigh.",
       "revId": "5aefbca6c70fc1559efe014b93341645a8ad5188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52dd044_d6c3f5a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-12T22:49:22Z",
+      "side": 1,
+      "message": "sigh, this CL has caused on multiple places -- you are not only the one.\nHowever, I\u0027m not sure what would be the correct thing.  Previously it was broken and didn\u0027t report errors, now it reports timeout error when the CPU load isn\u0027t low enough.\n\nTwo suggestions:\n- power.WaitUntilCPUCoolDown might be a good alternative. Typically it waits shorter and this would be good enough to stabilize the results\n- or ignore the error for cpu.WaitUntilIdle if that\u0027s acceptable",
+      "parentUuid": "1fb2a8d1_045eea3a",
+      "revId": "5aefbca6c70fc1559efe014b93341645a8ad5188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
