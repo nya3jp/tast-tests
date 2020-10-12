@@ -51,7 +51,7 @@ func NewTabPageLocation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to clean up: ", err)
 			}
 
-			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{tc.value}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{tc.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 

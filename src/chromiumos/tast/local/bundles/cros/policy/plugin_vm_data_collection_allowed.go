@@ -20,7 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PluginVmDataCollectionAllowed,
+		Func: PluginVMDataCollectionAllowed,
 		Desc: "Behavior of PluginVmDataCollectionAllowed policy",
 		Contacts: []string{
 			"okalitova@chromium.org", // Test author
@@ -32,7 +32,7 @@ func init() {
 	})
 }
 
-func PluginVmDataCollectionAllowed(ctx context.Context, s *testing.State) {
+func PluginVMDataCollectionAllowed(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*pre.PreData).Chrome
 	fdms := s.PreValue().(*pre.PreData).FakeDMS
 
@@ -69,7 +69,7 @@ func PluginVmDataCollectionAllowed(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
