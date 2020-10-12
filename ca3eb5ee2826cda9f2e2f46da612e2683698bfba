@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc38ec23_e8ad2d3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-12T02:40:13Z",
+      "side": 1,
+      "message": "Skimming the doc it looks like this case is fine, but I reckon pulling the size out of the node now, instead of on line 169 would be better. Don\u0027t need to keep the node around so dodge questions of mutability and (per doc proposal) lazy evaluation).",
+      "parentUuid": "4b7e3c19_192e3f7d",
+      "revId": "ca3eb5ee2826cda9f2e2f46da612e2683698bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5112e493_7d71068f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
         "patchSetId": 3
