@@ -62,6 +62,7 @@ var prunePaths = []string{
 	"/root/.debug",
 	// Skip vdso .so files which are built together with the kernel without RELRO
 	"/lib/modules/*/vdso",
+	"/lib/modules/*/vdso32",
 }
 
 // File match strings which will be ignored when searching for ELF files.
