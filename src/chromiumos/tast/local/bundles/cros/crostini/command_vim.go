@@ -7,7 +7,6 @@ package crostini
 import (
 	"context"
 	"fmt"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -60,7 +59,6 @@ func init() {
 
 func CommandVim(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
-	cr := s.PreValue().(crostini.PreData).Chrome
 	keyboard := s.PreValue().(crostini.PreData).Keyboard
 	cont := s.PreValue().(crostini.PreData).Container
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
@@ -70,10 +68,8 @@ func CommandVim(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
-	userName := strings.Split(cr.User(), "@")[0]
-
 	// Open Terminal app.
-	terminalApp, err := terminalapp.Launch(ctx, tconn, userName)
+	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}

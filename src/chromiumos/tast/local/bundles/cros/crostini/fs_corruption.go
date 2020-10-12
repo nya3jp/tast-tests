@@ -12,7 +12,6 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
-	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -262,7 +261,7 @@ func readContainerFile(ctx context.Context, container *vm.Container, path string
 // We assume that the VM is initially stopped and that the disk is in
 // a good (uncorrupted) state. If this function returns successfully,
 // the VM will be stopped, but the disk is in an unspecified state.
-func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userName string, offsets []int64, container *vm.Container, diskPath, backupPath, outDir string) (resultError error) {
+func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, offsets []int64, container *vm.Container, diskPath, backupPath, outDir string) (resultError error) {
 	match := dbusutil.MatchSpec{
 		Type:      "signal",
 		Path:      anomalyEventServicePath,
@@ -306,7 +305,7 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 	testing.ContextLog(ctx, "Restarting VM")
 	var vmRunning bool
 	// Discard the error, as this may fail due to corruption.
-	if terminal, _ := terminalapp.Launch(ctx, tconn, userName); terminal != nil {
+	if terminal, _ := terminalapp.Launch(ctx, tconn); terminal != nil {
 		// If we got a terminal object from Launch, we need to
 		// call Close to free its internal UI node.
 		if err := terminal.Close(ctx); err != nil {
@@ -339,8 +338,8 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 	return nil
 }
 
-func launchAndReleaseTerminal(ctx context.Context, tconn *chrome.TestConn, userName string) error {
-	terminal, err := terminalapp.Launch(ctx, tconn, userName)
+func launchAndReleaseTerminal(ctx context.Context, tconn *chrome.TestConn) error {
+	terminal, err := terminalapp.Launch(ctx, tconn)
 	if terminal != nil {
 		err = terminal.Close(ctx)
 	}
@@ -350,8 +349,6 @@ func launchAndReleaseTerminal(ctx context.Context, tconn *chrome.TestConn, userN
 // FsCorruption sets up the VM and then introduces corruption into its disk to check that this is detected correctly.
 func FsCorruption(ctx context.Context, s *testing.State) {
 	data := s.PreValue().(crostini.PreData)
-	cr := data.Chrome
-	userName := strings.SplitN(cr.User(), "@", 2)[0]
 	tconn := data.TestAPIConn
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
@@ -381,7 +378,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	}
 	// Restart everything before finishing so the precondition will be in a good state.
 	defer func() {
-		if err := launchAndReleaseTerminal(ctx, tconn, userName); err != nil {
+		if err := launchAndReleaseTerminal(ctx, tconn); err != nil {
 			s.Error("Failed to restart crostini terminal: ", err)
 		}
 	}()
@@ -414,7 +411,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get baseline for histogram: ", err)
 	}
 
-	if err := testOverwriteAtOffsets(ctx, tconn, userName, bigOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
+	if err := testOverwriteAtOffsets(ctx, tconn, bigOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
 		s.Fatal("Didn't get an error signal for big file: ", err)
 	}
 	histogramCount, err = checkHistogram(ctx, tconn, histogramCount)
@@ -428,7 +425,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restore disk from backup between tests: ", err)
 	}
 
-	if err := testOverwriteAtOffsets(ctx, tconn, userName, smallOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
+	if err := testOverwriteAtOffsets(ctx, tconn, smallOffsets, data.Container, disk.GetPath(), backupPath, s.OutDir()); err != nil {
 		s.Fatal("Didn't get an error signal for small file: ", err)
 	}
 	if _, err := checkHistogram(ctx, tconn, histogramCount); err != nil {
