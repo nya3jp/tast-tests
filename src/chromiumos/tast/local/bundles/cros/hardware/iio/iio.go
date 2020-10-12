@@ -71,6 +71,9 @@ const (
 	// Ring is a special sensor for ChromeOS that produces a stream of data from
 	// all sensors on the DUT.
 	Ring SensorName = "cros-ec-ring"
+	// Activity is a special sensor for ChromeOS that produces several kind of
+	// activity events by the data of other sensors.
+	Activity SensorName = "cros-ec-activity"
 )
 
 const (
@@ -92,12 +95,13 @@ const (
 )
 
 var sensorNames = map[SensorName]struct{}{
-	Accel: {},
-	Baro:  {},
-	Gyro:  {},
-	Light: {},
-	Mag:   {},
-	Ring:  {},
+	Accel:    {},
+	Baro:     {},
+	Gyro:     {},
+	Light:    {},
+	Mag:      {},
+	Ring:     {},
+	Activity: {},
 }
 
 var sensorLocations = map[SensorLocation]struct{}{
