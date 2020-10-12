@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3708102f_a1cac9d2",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-12T07:18:27Z",
+      "side": 1,
+      "message": "Instead, could you exclude\nsrc/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/third_party/\nfrom the target of lints? AFAIK, third_party library is out of the scope, right?",
+      "revId": "8d86399360d5f69673c50a74e236133e2305eba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
