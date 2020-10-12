@@ -28,6 +28,7 @@ import (
 	remotearping "chromiumos/tast/remote/network/arping"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
+	"chromiumos/tast/remote/wificell/attenuator"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/rpc"
@@ -72,6 +73,13 @@ func TFCapture(b bool) TFOption {
 	}
 }
 
+// TFAttenuator sets the attenuator hostname to use in the test fixture.
+func TFAttenuator(target string) TFOption {
+	return func(tf *TestFixture) {
+		tf.attenuatorTarget = target
+	}
+}
+
 // TFServiceName is the service needed by TestFixture.
 const TFServiceName = "tast.cros.network.WifiService"
 
@@ -93,6 +101,9 @@ type TestFixture struct {
 	pcapHost      *ssh.Conn
 	pcap          *Router
 	packetCapture bool
+
+	attenuatorTarget string
+	attenuator       *attenuator.Attenuator
 
 	apID      int
 	capturers map[*APIface]*pcap.Capturer
@@ -262,7 +273,14 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		}
 	}
 
-	// TODO(crbug.com/1034875): set up attenuator.
+	if tf.attenuatorTarget != "" {
+		testing.ContextLog(ctx, "Opening Attenuator: ", tf.attenuatorTarget)
+		// Router #0 should always be present, thus we use it as a proxy.
+		tf.attenuator, err = attenuator.Open(ctx, tf.attenuatorTarget, tf.routers[0].host)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to open attenuator")
+		}
+	}
 
 	// Seed the random as we have some randomization. e.g. default SSID.
 	rand.Seed(time.Now().UnixNano())
@@ -300,6 +318,10 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 
 	if err := tf.resetNetCertStore(ctx); err != nil {
 		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reset the NetCertStore"))
+	}
+
+	if tf.attenuator != nil {
+		tf.attenuator.Close()
 	}
 
 	// TODO(crbug.com/1133855) Handle proper closing when pcap will be able to be router.
@@ -862,6 +884,11 @@ func (tf *TestFixture) Router() *Router {
 // Pcap returns the pcap Router object in the fixture.
 func (tf *TestFixture) Pcap() *Router {
 	return tf.pcap
+}
+
+// Attenuator returns the Attenuator object in the fixture.
+func (tf *TestFixture) Attenuator() *attenuator.Attenuator {
+	return tf.attenuator
 }
 
 // WifiClient returns the gRPC WifiServiceClient of the DUT.
