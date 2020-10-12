@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ffd15af_71a9ccb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-12T05:56:57Z",
+      "side": 0,
+      "message": "Better remove the username argument here too",
+      "range": {
+        "startLine": 417,
+        "startChar": 46,
+        "endLine": 417,
+        "endChar": 54
+      },
+      "revId": "800ad0f67ede1bdc0ce928383a1f1e515250f780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f27470_664ec485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-12T05:56:57Z",
+      "side": 0,
+      "message": "And here",
+      "range": {
+        "startLine": 431,
+        "startChar": 46,
+        "endLine": 431,
+        "endChar": 54
+      },
+      "revId": "800ad0f67ede1bdc0ce928383a1f1e515250f780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
