@@ -177,7 +177,7 @@ func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.
 		Role: ui.RoleTypeRootWebArea,
 	}
 
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
+	if err := files.Root.WaitUntilDescendantExists(ctx, params, time.Minute); err != nil {
 		s.Fatal("Opening mounted zip file failed: ", err)
 	}
 
