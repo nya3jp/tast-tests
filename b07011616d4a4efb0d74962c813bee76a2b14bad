@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24091e4_6025cfd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-12T13:01:57Z",
+      "side": 1,
+      "message": "Please review.",
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da5b9cee_f7e7887a",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-12T13:01:57Z",
+      "side": 1,
+      "message": "redundant nl?",
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ddc6b97_15b50293",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-12T13:01:57Z",
+      "side": 1,
+      "message": "copy-paste error",
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
