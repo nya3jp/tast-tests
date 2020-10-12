@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e6e275_6a7b69db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-10-12T21:06:49Z",
+      "side": 1,
+      "message": "As per previous discussion with wifi team, they are OK with the design as they are not testing for cases without TPM (such as amd64-generic board).\n\nI\u0027ve updated the comments to reflect the limitation of NetCertStore and rationale for taking the ownership there.",
+      "revId": "669d484be957e9026c0b58f3fe704bd163cdf337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
