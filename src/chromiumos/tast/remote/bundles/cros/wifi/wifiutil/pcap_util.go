@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
+	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
 
@@ -69,4 +70,40 @@ func ConnectAndCollectPcap(ctx context.Context, tf *wificell.TestFixture, name s
 		return "", nil, err
 	}
 	return pcapPath, conf, nil
+}
+
+// ScanAndCollectPcap requests active scans and collect pcap file on channel ch.
+// Path to the pcap file is returned.
+func ScanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name string, scanCount, ch int) (string, error) {
+	capturer, err := func() (ret *pcap.Capturer, retErr error) {
+		capturer, err := tf.Pcap().StartCapture(fullCtx, name, ch, nil)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to start capturer")
+		}
+		defer func() {
+			if err := tf.Pcap().StopCapture(fullCtx, capturer); err != nil {
+				if retErr == nil {
+					ret = nil
+					retErr = errors.Wrap(err, "failed to stop capturer")
+				} else {
+					testing.ContextLog(fullCtx, "Failed to stop capturer: ", err)
+				}
+			}
+		}()
+
+		ctx, cancel := tf.Pcap().ReserveForStopCapture(fullCtx, capturer)
+		defer cancel()
+
+		testing.ContextLog(ctx, "Request active scans")
+		req := &network.RequestScansRequest{Count: int32(scanCount)}
+		if _, err := tf.WifiClient().RequestScans(ctx, req); err != nil {
+			return nil, errors.Wrap(err, "failed to trigger active scans")
+		}
+		return capturer, nil
+	}()
+	if err != nil {
+		return "", err
+	}
+	// Return the path where capturer saves the pcap.
+	return capturer.PacketPath(fullCtx)
 }
