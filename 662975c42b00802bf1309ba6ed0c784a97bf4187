@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "4aac060b_f438cea2",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,27 @@
       "side": 1,
       "message": "LGTM % nit",
       "revId": "662975c42b00802bf1309ba6ed0c784a97bf4187",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c3673bf_6a146efd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-10-12T14:00:35Z",
+      "side": 1,
+      "message": "I already addressed the potential issues, but i am not blocking this as long as wifi team is okay with that.",
+      "revId": "662975c42b00802bf1309ba6ed0c784a97bf4187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "1b0886d9_b5f80bd0",
         "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
@@ -37,8 +55,7 @@
         "endChar": 68
       },
       "revId": "662975c42b00802bf1309ba6ed0c784a97bf4187",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
