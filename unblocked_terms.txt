@@ -46,8 +46,9 @@ master
 ymasterd
 VtsHalKeymaster.?
 
-mitm
+# mitm
 #    - external defs.go dependency.
+\Smitm\S
 
 native
 #    - see crbug/1135046
