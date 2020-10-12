@@ -34,6 +34,23 @@
       "parentUuid": "a79950d7_dbe58779",
       "revId": "81f4a1b40c973becd66044f400091eb07553a697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87d25cdd_3eac9c57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-12T06:03:15Z",
+      "side": 1,
+      "message": "Given the fact that shill uses Reattach, we shall use Reattach in this test instead.",
+      "revId": "81f4a1b40c973becd66044f400091eb07553a697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
