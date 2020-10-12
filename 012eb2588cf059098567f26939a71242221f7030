@@ -33,6 +33,23 @@
       "message": "hmm.. I thought you are right about the same instance part. I double checked again with the planner code and they only checks the name field.\n\nChecked stainless[1] of how our tests behaves, the precondition.Prepare function for each tests are consuming ~ 0.05 sec, which I assume the code works.\n\n+nya on how the precondition instance is checked. If change has to be made, then I think I can have a quick fix to that.\n\n[1] https://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-4f32b4bd15355d10/",
       "revId": "012eb2588cf059098567f26939a71242221f7030",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb84d5f5_eae420f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-12T07:30:43Z",
+      "side": 1,
+      "message": "Hi nya@\n\nIt seems that precondition doesn\u0027t need to be the same instance over multiple tests based on stainless. Only the name field matters. \nIs my understaning correct?",
+      "revId": "012eb2588cf059098567f26939a71242221f7030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
