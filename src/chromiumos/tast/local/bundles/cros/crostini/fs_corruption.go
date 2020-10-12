@@ -254,7 +254,7 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 	testing.ContextLog(ctx, "Restarting VM")
 	// Discard the error, as this may fail due to corruption.
 	var terminal *terminalapp.TerminalApp
-	if terminal, _ = terminalapp.Launch(ctx, tconn, userName); terminal != nil {
+	if terminal, _ = terminalapp.Launch(ctx, tconn); terminal != nil {
 		// Make sure the UI node in terminalapp is released.
 		defer terminal.Close(ctx)
 	}
@@ -285,8 +285,8 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, userNam
 	return nil
 }
 
-func launchAndReleaseTerminal(ctx context.Context, tconn *chrome.TestConn, userName string) error {
-	terminal, err := terminalapp.Launch(ctx, tconn, userName)
+func launchAndReleaseTerminal(ctx context.Context, tconn *chrome.TestConn) error {
+	terminal, err := terminalapp.Launch(ctx, tconn)
 	if terminal != nil {
 		terminal.Close(ctx)
 	}
@@ -322,7 +322,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to stop VM: ", err)
 	}
 	// Restart everything before finishing so the precondition will be in a good state.
-	defer launchAndReleaseTerminal(ctx, tconn, userName)
+	defer launchAndReleaseTerminal(ctx, tconn)
 
 	s.Log("Searching for pattern in disk image")
 	smallOffsets, bigOffsets, err := getOffsets(ctx, disk.GetPath(), []byte(smallUUID), []byte(bigUUID))

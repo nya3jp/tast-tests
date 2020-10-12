@@ -6,7 +6,6 @@ package crostini
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -51,7 +50,6 @@ func init() {
 
 func RemoveCancel(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
-	cr := s.PreValue().(crostini.PreData).Chrome
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -83,7 +81,7 @@ func RemoveCancel(ctx context.Context, s *testing.State) {
 	}
 
 	// Launch Terminal to verify that Crostini still works.
-	terminalApp, err := terminalapp.Launch(ctx, tconn, strings.Split(cr.User(), "@")[0])
+	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to lauch terminal after cancel remove: ", err)
 	}

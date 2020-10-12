@@ -6,7 +6,6 @@ package crostini
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"github.com/google/go-cmp/cmp"
@@ -85,7 +84,7 @@ func ShareFilesRestart(ctx context.Context, s *testing.State) {
 	}
 
 	// Restart Crostini.
-	terminalApp, err := terminalapp.Launch(ctx, tconn, strings.Split(cr.User(), "@")[0])
+	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to lauch terminal: ", err)
 	}

@@ -163,7 +163,7 @@ func installAndShutDown(ctx context.Context, tconn *chrome.TestConn, iOptions *c
 		return errors.Wrapf(err, "failed to install Crostini for user %s", iOptions.UserName)
 	}
 
-	terminalApp, err := terminalapp.Launch(ctx, tconn, strings.Split(iOptions.UserName, "@")[0])
+	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
 		return errors.Wrapf(err, "failed to lauch terminal after installing Crostini for user %s", iOptions.UserName)
 	}
