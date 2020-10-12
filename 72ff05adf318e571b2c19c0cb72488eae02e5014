@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85510add_d7a6f3e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T06:02:25Z",
+      "side": 1,
+      "message": "Will take a closer look after Matthew\u0027s comment is addressed.",
+      "revId": "72ff05adf318e571b2c19c0cb72488eae02e5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "195e8adf_50c0f618",
+        "filename": "src/chromiumos/tast/common/network/protoutil/protoutil.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T06:02:25Z",
+      "side": 1,
+      "message": "I guess the name \"ShillValMapList\" is a bit confusing -- I misunderstood it as \"list of ShillValMap\" at first glance. How about \"ShillValListMap\"?",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "72ff05adf318e571b2c19c0cb72488eae02e5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d81dce2_1098a5dd",
