@@ -16,6 +16,23 @@
       "message": "I have updated it now. Please have a look if it is okay. I have made the shortened ctx similar to existing test now.\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/telemetry_extension.go?q\u003dctxutil.Shorten\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\u0026start\u003d21",
       "revId": "a2bbc427279b5f0ee637a9a0f1804938bfcbd4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05fb6065_337af26f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-12T03:10:40Z",
+      "side": 1,
+      "message": "Still LGTM.",
+      "revId": "a2bbc427279b5f0ee637a9a0f1804938bfcbd4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
