@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df68a2bc_f4739876",
+        "filename": "src/chromiumos/tast/common/network/protoutil/protoutil.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-12T21:07:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195e8adf_50c0f618",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "72ff05adf318e571b2c19c0cb72488eae02e5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d81dce2_1098a5dd",
@@ -112,6 +136,30 @@
       "side": 1,
       "message": "That make sense, I will submit a new patch soon.",
       "parentUuid": "1d81dce2_1098a5dd",
+      "range": {
+        "startLine": 1034,
+        "startChar": 3,
+        "endLine": 1034,
+        "endChar": 16
+      },
+      "revId": "72ff05adf318e571b2c19c0cb72488eae02e5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd17a26c_f10ebb0e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-12T21:07:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "055d07a2_3b5bc97d",
       "range": {
         "startLine": 1034,
         "startChar": 3,
