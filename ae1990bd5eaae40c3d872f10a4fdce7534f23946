@@ -81,6 +81,30 @@
       },
       "revId": "ae1990bd5eaae40c3d872f10a4fdce7534f23946",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36449cf_b1cdd818",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-12T06:27:57Z",
+      "side": 1,
+      "message": "I\u0027m easy.",
+      "parentUuid": "d7598fe0_e2cd87e0",
+      "range": {
+        "startLine": 161,
+        "startChar": 56,
+        "endLine": 161,
+        "endChar": 69
+      },
+      "revId": "ae1990bd5eaae40c3d872f10a4fdce7534f23946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
