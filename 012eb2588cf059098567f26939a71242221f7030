@@ -50,6 +50,24 @@
       "message": "Hi nya@\n\nIt seems that precondition doesn\u0027t need to be the same instance over multiple tests based on stainless. Only the name field matters. \nIs my understaning correct?",
       "revId": "012eb2588cf059098567f26939a71242221f7030",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5821edf5_cbfad3d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-12T07:35:18Z",
+      "side": 1,
+      "message": "Yes, it works right now because there are no two tests using the same config. The internal trace tests use 16 GiB, the external trace test uses 6 GiB, and disk_io_perf doesn\u0027t actually run anywhere (and maybe there\u0027s an additional separation between the internal and external tests? I\u0027m not sure).\n\nI noticed this because my test refactoring in CL:2374267 moves the precondition from the test-level to the parameter-level, which means all the trace tests have \"different\" preconditions with the same name.\n\nThere are a number of hacky ways you could make this work, but I think all of them end up worse then just making a seperate test to test setting the disk size, which is what you actually want.",
+      "parentUuid": "77be4f4f_269a12ce",
+      "revId": "012eb2588cf059098567f26939a71242221f7030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
