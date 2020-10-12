@@ -151,10 +151,6 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 		}
 		ssid, err := pcap.ParseProbeReqSSID(layer.(*layers.Dot11MgmtProbeReq))
 		if err != nil {
-			// Let's be strict here as we've filtered source MAC and
-			// packets with invalid FCS, so we don't expect malformed
-			// packets here.
-			s.Errorf("Malformed probe request %v: %v", layer, err)
 			continue
 		}
 		ssidSet[ssid] = struct{}{}
