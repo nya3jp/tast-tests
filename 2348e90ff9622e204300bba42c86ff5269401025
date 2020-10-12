@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb981b3_9c1148f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-12T23:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1b4b0e4_64308ef2",
+      "revId": "2348e90ff9622e204300bba42c86ff5269401025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ca90481_4d5c0e5b",
@@ -65,6 +83,30 @@
       "writtenOn": "2020-10-12T23:14:40Z",
       "side": 1,
       "message": "nit: File tracking bugs and use TODO(crbug.com/XXX), here and other places.",
+      "range": {
+        "startLine": 412,
+        "startChar": 10,
+        "endLine": 412,
+        "endChar": 17
+      },
+      "revId": "2348e90ff9622e204300bba42c86ff5269401025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b5581c_247c35be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-12T23:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca90481_4d5c0e5b",
       "range": {
         "startLine": 412,
         "startChar": 10,
