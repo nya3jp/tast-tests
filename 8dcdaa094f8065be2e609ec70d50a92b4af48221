@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "56cee27e_89c09da7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
@@ -20,10 +21,34 @@
         "endChar": 51
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f0e91c_be9d3c4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1727,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56cee27e_89c09da7",
+      "range": {
+        "startLine": 1727,
+        "startChar": 48,
+        "endLine": 1727,
+        "endChar": 51
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "c2488952_d1d8e14f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
@@ -43,10 +68,34 @@
         "endChar": 58
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18587433_6d8758ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2488952_d1d8e14f",
+      "range": {
+        "startLine": 1743,
+        "startChar": 46,
+        "endLine": 1743,
+        "endChar": 58
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "2d424177_43aedf58",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
@@ -66,10 +115,10 @@
         "endChar": 58
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "245688b5_7e1e252d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
@@ -89,10 +138,10 @@
         "endChar": 16
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4b207102_c1ae1869",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
@@ -113,10 +162,58 @@
         "endChar": 58
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4cf17e0_c3615496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "245688b5_7e1e252d",
+      "range": {
+        "startLine": 1748,
+        "startChar": 11,
+        "endLine": 1748,
+        "endChar": 16
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6730baa_c6c42ef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "The --timeout flag has no effect on my DUT. I guess the issue is the same as below (the ctx timer is not running), but I\u0027m not sure it is a bug or not.\n\nAcorrding to the doc (powerd_dbus_suspend --help), the --wakeup_timeout should be more likely to wake the DUT up because it sets up a RTC alarm.\n\nRemoved the --timeout flag and added the --suspend_for_sec flag for daemon side promise.",
+      "parentUuid": "4b207102_c1ae1869",
+      "range": {
+        "startLine": 1748,
+        "startChar": 56,
+        "endLine": 1748,
+        "endChar": 58
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "552752cb_d4c0638c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
@@ -136,10 +233,34 @@
         "endChar": 50
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14b8cb86_7fa31b35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "552752cb_d4c0638c",
+      "range": {
+        "startLine": 1751,
+        "startChar": 37,
+        "endLine": 1751,
+        "endChar": 50
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "406ea7ad_232eafde",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
@@ -153,10 +274,28 @@
       "side": 1,
       "message": "IIRC, Autotest checks if the DUT woke up too early. Do you think we should also keep the check?",
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e8d9fc3_9bc15d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1756,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "406ea7ad_232eafde",
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3a9a2fad_e10117fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
@@ -176,10 +315,34 @@
         "endChar": 52
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0635ef68_d952989d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a9a2fad_e10117fa",
+      "range": {
+        "startLine": 1763,
+        "startChar": 49,
+        "endLine": 1763,
+        "endChar": 52
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "84b5e07e_2fc88faa",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
@@ -199,10 +362,10 @@
         "endChar": 22
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0320cdfa_fdebc222",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
@@ -222,10 +385,58 @@
         "endChar": 46
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "21417d0b_b69055d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "The timer gen-ed by context.WithTimeout is probably not running during suspend. I tried set a 10 seconds timeout to the ctx before suspending, but the deadline exceeded in about 9 seconds after resumed.",
+      "parentUuid": "84b5e07e_2fc88faa",
+      "range": {
+        "startLine": 1768,
+        "startChar": 19,
+        "endLine": 1768,
+        "endChar": 22
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c6a9a49_46778b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0320cdfa_fdebc222",
+      "range": {
+        "startLine": 1768,
+        "startChar": 24,
+        "endLine": 1768,
+        "endChar": 46
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "317d1b4a_7799754e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
@@ -245,10 +456,34 @@
         "endChar": 111
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6763d29d_cc8d06a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317d1b4a_7799754e",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 111
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "27627a85_e7f823de",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
@@ -262,10 +497,10 @@
       "side": 1,
       "message": "How about adding comments for the two stress_* tests:\n\n// TODO(b/....): enable launcher for wificell_stress tests after we resolve Wificell testing lab\u0027s resource starvation.",
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "bd1b75ba_9f4f43f7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
@@ -279,10 +514,28 @@
       "side": 1,
       "message": "Start suspend-resume for %d times",
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbae58ca_9453eb0a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd1b75ba_9f4f43f7",
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "84d03316_4296d924",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
@@ -302,10 +555,34 @@
         "endChar": 30
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a80cad_6bff8088",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d03316_4296d924",
+      "range": {
+        "startLine": 183,
+        "startChar": 20,
+        "endLine": 183,
+        "endChar": 30
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "39796071_ce7d4c7e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
@@ -319,10 +596,28 @@
       "side": 1,
       "message": "This will shadow the pv variable outside of testOnce and I think the metrics will never be saved?",
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c798793_b302427f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39796071_ce7d4c7e",
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "e80774aa_e866cd5f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
@@ -336,10 +631,28 @@
       "side": 1,
       "message": "Stop if one of the subtest\u0027s parameter set fails the test.",
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2656ba98_6f3db5d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e80774aa_e866cd5f",
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "12099e7c_66e8fb66",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
@@ -359,8 +672,31 @@
         "endChar": 7
       },
       "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6fadef_3bb6a011",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T10:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12099e7c_66e8fb66",
+      "range": {
+        "startLine": 360,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 7
+      },
+      "revId": "8dcdaa094f8065be2e609ec70d50a92b4af48221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
