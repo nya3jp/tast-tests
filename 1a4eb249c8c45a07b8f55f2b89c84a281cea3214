@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9977f5_aa1a8a27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T18:54:24Z",
+      "side": 1,
+      "message": "I am still thinking if we should add more logics to the template because the template code is much harder than these generator functions to read and to maintain. Anyway, let\u0027s wait and see.",
+      "parentUuid": "f1a35d74_fa8a6960",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "1a4eb249c8c45a07b8f55f2b89c84a281cea3214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "402c0b1a_e660f25e",
@@ -71,6 +95,24 @@
       "writtenOn": "2020-10-12T05:29:17Z",
       "side": 1,
       "message": "Do we really need to verify the params / template with the original test cases? We can just ensure this by seeing simple_connect.go does not change.",
+      "revId": "1a4eb249c8c45a07b8f55f2b89c84a281cea3214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c031bee_1deed1dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-12T18:54:24Z",
+      "side": 1,
+      "message": "The template codes start from here are actually not template, they are the test cases that I have not yet converted. By doing this I can easily confirm that I have generated correct code.",
+      "parentUuid": "402c0b1a_e660f25e",
       "revId": "1a4eb249c8c45a07b8f55f2b89c84a281cea3214",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
