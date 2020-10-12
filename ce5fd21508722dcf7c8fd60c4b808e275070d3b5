@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf70c41_748d23b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-12T07:16:12Z",
+      "side": 1,
+      "message": "# Sorry, sent out during the draft.\n\nI\u0027m ok to introduce this for very short term, iff there\u0027s a plan/on-going work to mitigate this. Could you add TODO to get rid of the hard-coded manually maintained allow-list words with concrete plan + schedule?",
+      "parentUuid": "f9eaa94e_1084679d",
+      "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5698394_b4ef4dc2",
