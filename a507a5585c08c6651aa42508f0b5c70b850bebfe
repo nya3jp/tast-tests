@@ -16,6 +16,115 @@
       "message": "It\u0027s ready for review :) ",
       "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361350bc_c4bdf432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-12T22:53:15Z",
+      "side": 1,
+      "message": "This sentence has become a little garbled. For example, we don\u0027t monitor the properties in order. Can you fix it up?",
+      "range": {
+        "startLine": 1336,
+        "startChar": 0,
+        "endLine": 1337,
+        "endChar": 68
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3279e8f_a600e695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-12T22:53:15Z",
+      "side": 1,
+      "message": "Can you also add a comment explaining how the monitor works and what it returns.",
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3ed66c_7c7c1c9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-12T22:53:15Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of the way we report the results here, particularly because we can only see a property changing within the context of that property, and not in the context of other properties. I\u0027d prefer this to just be a chronological list of property changed signals.",
+      "range": {
+        "startLine": 1375,
+        "startChar": 18,
+        "endLine": 1375,
+        "endChar": 48
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fed60fc_4b0018af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-12T22:53:15Z",
+      "side": 1,
+      "message": "p is already used in the outer most loop.",
+      "range": {
+        "startLine": 1437,
+        "startChar": 11,
+        "endLine": 1437,
+        "endChar": 12
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de81a553_c65c3baf",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-12T22:53:15Z",
+      "side": 1,
+      "message": "`return protoutil...`",
+      "range": {
+        "startLine": 1042,
+        "startChar": 2,
+        "endLine": 1047,
+        "endChar": 29
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
