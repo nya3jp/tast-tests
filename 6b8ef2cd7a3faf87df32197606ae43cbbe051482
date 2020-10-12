@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "465c9b6a_9062d6ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/plugin_vm_data_collection_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-12T12:24:35Z",
+      "side": 0,
+      "message": "Move the name change to a different CL",
+      "parentUuid": "7149f062_70a9b2c4",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "6b8ef2cd7a3faf87df32197606ae43cbbe051482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32aff996_1927819f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/plugin_vm_data_collection_allowed.go",
         "patchSetId": 1
