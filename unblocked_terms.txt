@@ -32,8 +32,9 @@ dummy
 # \bshe\b               - clean
 # \bhim\b               - clean
 
-\bher\b
+# \bher\b
 #    - see crbug/1135044
+her:"hz"
 
 # \bhis\b               - clean
 # \bhers\b              - clean
