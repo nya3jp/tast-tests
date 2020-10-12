@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce9acb8b_90105346",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-12T07:32:23Z",
+      "side": 1,
+      "message": "added comments.",
+      "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5698394_b4ef4dc2",
@@ -49,6 +66,24 @@
       "writtenOn": "2020-10-12T07:13:55Z",
       "side": 1,
       "message": "This looks false positive.\nAny plans to mitigate cases like this?\nI do not think it is reasonable approach to maintain the allow list of this kinds forever.",
+      "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da62d82_8bc480c7",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-12T07:32:23Z",
+      "side": 1,
+      "message": "I have bugs open for all the terms that need to be modified. this one we can not add a TODO in the deps file itself.\nThis is to make sure that we do not introduce new terms when checking in as we discussed.\nit is ok to maintain this file for now as it is used to work thru the coil project, this is its intent. once all it clean the file goes away.",
+      "parentUuid": "a5698394_b4ef4dc2",
       "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
