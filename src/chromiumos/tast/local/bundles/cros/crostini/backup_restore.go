@@ -8,7 +8,6 @@ import (
 	"context"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -91,7 +90,7 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 		if err := cont.VM.Stop(ctx); err != nil {
 			s.Fatal("Error stopping VM: ", err)
 		}
-		terminalApp, err := terminalapp.Launch(ctx, tconn, strings.SplitN(cr.User(), "@", 2)[0])
+		terminalApp, err := terminalapp.Launch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Error restarting container: ", err)
 		}

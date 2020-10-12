@@ -7,7 +7,7 @@ package terminalapp
 
 import (
 	"context"
-	"strings"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -31,12 +31,12 @@ type TerminalApp struct {
 
 // Launch launches the Terminal App and returns it.
 // An error is returned if the app fails to launch.
-func Launch(ctx context.Context, tconn *chrome.TestConn, userName string) (*TerminalApp, error) {
+func Launch(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	// Launch the Terminal App.
 	if err := apps.Launch(ctx, tconn, apps.Terminal.ID); err != nil {
 		return nil, err
 	}
-	ta, err := Find(ctx, tconn, userName, "~")
+	ta, err := Find(ctx, tconn)
 	if err != nil {
 		if closeErr := apps.Close(ctx, tconn, apps.Terminal.ID); closeErr != nil {
 			testing.ContextLog(ctx, "Error closing terminal app: ", closeErr)
@@ -46,14 +46,12 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, userName string) (*Term
 	return ta, nil
 }
 
-// Find finds an open Terminal App with the specified userName and current.
-// working directory (cwd). An error is returned if terminal cannot be found.
-func Find(ctx context.Context, tconn *chrome.TestConn, userName, cwd string) (*TerminalApp, error) {
-	title := userName + "@penguin: " + cwd
+// Find finds an open Terminal App. An error is returned if terminal cannot be found.
+func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	rootFindParams := ui.FindParams{
-		Name:      title,
-		Role:      ui.RoleTypeWindow,
-		ClassName: "BrowserFrame",
+		Attributes: map[string]interface{}{"name": regexp.MustCompile(`\@penguin\: `)},
+		Role:       ui.RoleTypeWindow,
+		ClassName:  "BrowserFrame",
 	}
 
 	app, err := ui.FindWithTimeout(ctx, tconn, rootFindParams, time.Minute)
@@ -68,7 +66,7 @@ func Find(ctx context.Context, tconn *chrome.TestConn, userName, cwd string) (*T
 	}
 
 	terminalApp := &TerminalApp{tconn: tconn, Root: app}
-	if err := terminalApp.waitForPrompt(ctx, title); err != nil {
+	if err := terminalApp.waitForPrompt(ctx); err != nil {
 		app.Release(ctx)
 		return nil, errors.Wrap(err, "failed to wait for terminal prompt")
 	}
@@ -76,8 +74,12 @@ func Find(ctx context.Context, tconn *chrome.TestConn, userName, cwd string) (*T
 	return terminalApp, nil
 }
 
-func (ta *TerminalApp) waitForPrompt(ctx context.Context, title string) error {
-	waitForPrompt := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: title}, uiTimeout).
+func (ta *TerminalApp) waitForPrompt(ctx context.Context) error {
+	parentParams := ui.FindParams{
+		Role:       ui.RoleTypeRootWebArea,
+		Attributes: map[string]interface{}{"name": regexp.MustCompile(`\@penguin\: `)},
+	}
+	waitForPrompt := uig.FindWithTimeout(parentParams, uiTimeout).
 		FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "$ "}, 90*time.Second).
 		WithNamef("Terminal.waitForPrompt()")
 	return uig.Do(ctx, ta.tconn, waitForPrompt)
@@ -114,7 +116,7 @@ func (ta *TerminalApp) RestartCrostini(ctx context.Context, keyboard *input.Keyb
 	}
 
 	// Start the VM and container.
-	ta, err := Launch(ctx, ta.tconn, strings.Split(userName, "@")[0])
+	ta, err := Launch(ctx, ta.tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to lauch terminal")
 	}

@@ -6,7 +6,6 @@ package crostini
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/local/chrome/ui/filesapp"
@@ -69,7 +68,7 @@ func OpenWithTerminal(ctx context.Context, s *testing.State) {
 	}
 
 	// Find terminal window.
-	terminalApp, err := terminalapp.Find(ctx, pre.TestAPIConn, strings.Split(pre.Chrome.User(), "@")[0], "/mnt/chromeos/MyFiles/Downloads")
+	terminalApp, err := terminalapp.Find(ctx, pre.TestAPIConn)
 	if err != nil {
 		s.Fatal("Failed to find terminal window: ", err)
 	}

@@ -6,7 +6,6 @@ package crostini
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -57,7 +56,6 @@ func init() {
 
 func IconAndUsername(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
-	cr := s.PreValue().(crostini.PreData).Chrome
 	keyboard := s.PreValue().(crostini.PreData).Keyboard
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
@@ -67,7 +65,7 @@ func IconAndUsername(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Open Terminal app.
-	terminalApp, err := terminalapp.Launch(ctx, tconn, strings.Split(cr.User(), "@")[0])
+	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}

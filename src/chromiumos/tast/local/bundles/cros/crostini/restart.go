@@ -7,7 +7,6 @@ package crostini
 import (
 	"context"
 	"strconv"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -87,10 +86,8 @@ func Restart(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get startup time: ", err)
 	}
 
-	userName := strings.Split(cr.User(), "@")[0]
-
 	for i := 0; i < numRestarts; i++ {
-		terminalApp, err := terminalapp.Launch(ctx, tconn, userName)
+		terminalApp, err := terminalapp.Launch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to lauch terminal: ", err)
 		}

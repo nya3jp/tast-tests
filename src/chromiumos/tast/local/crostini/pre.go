@@ -380,7 +380,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	if useLocalImage {
 		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
-		terminalApp, err := terminalapp.Launch(ctx, p.tconn, strings.Split(p.cr.User(), "@")[0])
+		terminalApp, err := terminalapp.Launch(ctx, p.tconn)
 		if err != nil {
 			s.Fatal("keepState failed to launch Terminal. Try again, cryptohome will be cleared on the next run to reset to a good state: ", err)
 		}
