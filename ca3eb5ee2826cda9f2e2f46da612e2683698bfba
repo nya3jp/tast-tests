@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e26a8ce_bf1a12e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-12T02:30:47Z",
+      "side": 1,
+      "message": "I think 500GB is big enough for a while (maybe 5+ years).",
+      "parentUuid": "d252842c_ee159e19",
+      "revId": "ca3eb5ee2826cda9f2e2f46da612e2683698bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "162ea178_f6a6b5cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
         "patchSetId": 3
@@ -70,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "755ce20b_296358e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_ok.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-12T02:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5112e493_7d71068f",
+      "revId": "ca3eb5ee2826cda9f2e2f46da612e2683698bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb7132e4_f9d0b2a3",
@@ -83,6 +119,24 @@
       "writtenOn": "2020-10-11T23:35:07Z",
       "side": 1,
       "message": "NIT: Maybe ClickChangeDiskSize, OpenDiskResizeDialog, etc? ClickChange is very generic.",
+      "revId": "ca3eb5ee2826cda9f2e2f46da612e2683698bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d98dba_2cfbe889",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-12T02:30:47Z",
+      "side": 1,
+      "message": "There is only one button called \"Change\" on the Linux settings page now. Using other word different from the UI makes it confusing. Actually, I would recommend to change the ui to Resize.",
+      "parentUuid": "fb7132e4_f9d0b2a3",
       "revId": "ca3eb5ee2826cda9f2e2f46da612e2683698bfba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
