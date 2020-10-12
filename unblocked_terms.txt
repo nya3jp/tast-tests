@@ -39,12 +39,11 @@ dummy
 # \bhers\b              - clean
 # man.?in.?the.?middle  - clean
 
-master
+# master
 #    - see crbug/1122372
-.?/master
-\.master
-ymasterd
-VtsHalKeymaster.?
+master(\s+int|:|\.|\s+:=|.\serr)
+(.?/|\-|\.)master
+(parse|replace|shared,|Key|y)\s*master
 
 mitm
 #    - external defs.go dependency.
