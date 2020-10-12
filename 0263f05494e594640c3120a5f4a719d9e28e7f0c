@@ -81,6 +81,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e01b59_49481f69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T23:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db413977_16f2e1d4",
+      "range": {
+        "startLine": 74,
+        "startChar": 93,
+        "endLine": 74,
+        "endChar": 99
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a8109c_97a4c8b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T23:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55c969fd_27abb8d0",
+      "range": {
+        "startLine": 74,
+        "startChar": 70,
+        "endLine": 74,
+        "endChar": 88
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b72b1396_f9b84419",
@@ -127,6 +175,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81027fc0_af7c0439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T23:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "390118d9_e34e317f",
+      "range": {
+        "startLine": 75,
+        "startChar": 23,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c5da98_d67d2f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T23:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b72b1396_f9b84419",
+      "range": {
+        "startLine": 75,
+        "startChar": 38,
+        "endLine": 75,
+        "endChar": 56
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f134680d_05a1d001",
@@ -140,6 +236,30 @@
       "writtenOn": "2020-10-12T23:01:28Z",
       "side": 1,
       "message": "waits",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f929ce_a2ea08c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T23:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f134680d_05a1d001",
       "range": {
         "startLine": 76,
         "startChar": 34,
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b93e54_d9516437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T23:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7afe64fe_76a7be90",
+      "range": {
+        "startLine": 162,
+        "startChar": 52,
+        "endLine": 162,
+        "endChar": 56
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e10236ef_bbf1c1f4",
@@ -186,6 +330,30 @@
       "writtenOn": "2020-10-12T23:01:28Z",
       "side": 1,
       "message": "dropped onto",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 47
+      },
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b5421c_3d51a2ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T23:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e10236ef_bbf1c1f4",
       "range": {
         "startLine": 173,
         "startChar": 32,

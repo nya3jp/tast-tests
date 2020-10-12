@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935a304d_ffdd13fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T23:17:59Z",
+      "side": 1,
+      "message": "Thanks for catching all those mistakes. I have done fixing the comments. Submitting to CQ now.\n\nSeewai\n",
+      "revId": "04f823ae940dada1040ff80476d87f9d7f19aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
