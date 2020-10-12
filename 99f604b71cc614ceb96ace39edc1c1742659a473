@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1cb92bd_81f9113e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-12T13:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b59a2e3_bb01b906",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "99f604b71cc614ceb96ace39edc1c1742659a473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55a3a77d_2f222bb6",

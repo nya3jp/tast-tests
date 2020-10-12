@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64d378c_fda02118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-12T13:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "792c2c01_2ff1de6f",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a67c863a_f95cb0f5",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-07T14:51:23Z",
       "side": 1,
       "message": "nit: warning is enough",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69aca441_181d88fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-12T13:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a67c863a_f95cb0f5",
       "range": {
         "startLine": 53,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa23067_cf755661",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-12T13:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "739ebb7c_46c4ce02",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 27
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe3e5336_6fc8b98c",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa7ee230_1e4167b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-12T13:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe3e5336_6fc8b98c",
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5cba5a4_7e7d4d3d",
@@ -100,6 +190,30 @@
       "writtenOn": "2020-10-07T14:51:23Z",
       "side": 1,
       "message": "see above",
+      "range": {
+        "startLine": 67,
+        "startChar": 21,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d67b1c_98d9711d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-12T13:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5cba5a4_7e7d4d3d",
       "range": {
         "startLine": 67,
         "startChar": 21,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "290bfdee_27b3e87a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-12T13:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5326bdb_2de7c97b",
+      "range": {
+        "startLine": 139,
+        "startChar": 13,
+        "endLine": 139,
+        "endChar": 87
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b42f79d_7e5fb64e",
@@ -146,6 +284,30 @@
       "writtenOn": "2020-10-07T14:51:23Z",
       "side": 1,
       "message": "nit: \"Failed to find the warning message (2): \"",
+      "range": {
+        "startLine": 165,
+        "startChar": 13,
+        "endLine": 165,
+        "endChar": 109
+      },
+      "revId": "68f85865040e1109dd295311119ef6bdc5e19364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74cb48b0_f7ef5f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-12T13:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b42f79d_7e5fb64e",
       "range": {
         "startLine": 165,
         "startChar": 13,
