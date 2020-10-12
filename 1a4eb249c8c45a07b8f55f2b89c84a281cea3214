@@ -33,6 +33,46 @@
       "message": "Sorry for the delay. Current version looks OK to me but it is a little more complex than I expected. I don\u0027t have a concrete suggestion on hand now. I guess maybe I should also try this by myself later.\n\nAlso, I think you can continue with some 8021x cases first so that we can see how this works with the cases that need the feature most.",
       "revId": "1a4eb249c8c45a07b8f55f2b89c84a281cea3214",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a35d74_fa8a6960",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-12T05:29:17Z",
+      "side": 1,
+      "message": "Interesting. The genparams shall make the doc as comment so the Doc fields don\u0027t need to prefix //.",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "1a4eb249c8c45a07b8f55f2b89c84a281cea3214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "402c0b1a_e660f25e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-12T05:29:17Z",
+      "side": 1,
+      "message": "Do we really need to verify the params / template with the original test cases? We can just ensure this by seeing simple_connect.go does not change.",
+      "revId": "1a4eb249c8c45a07b8f55f2b89c84a281cea3214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
