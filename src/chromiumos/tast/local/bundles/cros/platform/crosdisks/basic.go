@@ -188,8 +188,8 @@ func testUnmountNonExistentDevice(ctx context.Context, s *testing.State, cd *cro
 	}
 }
 
-// RunTests runs a series of tests.
-func RunTests(ctx context.Context, s *testing.State) {
+// RunBasicTests runs a series of tests.
+func RunBasicTests(ctx context.Context, s *testing.State) {
 	cd, err := crosdisks.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect CrosDisks D-Bus service: ", err)
