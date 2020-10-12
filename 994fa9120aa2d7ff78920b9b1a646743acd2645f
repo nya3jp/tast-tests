@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b5a2a6b_48d86a84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-12T23:16:36Z",
+      "side": 1,
+      "message": "Yes. Otherwise it\u0027s syntax error",
+      "parentUuid": "b1291c25_c9ec1f45",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 7
+      },
+      "revId": "994fa9120aa2d7ff78920b9b1a646743acd2645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "872296ae_73c2fff0",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-12T22:46:37Z",
       "side": 1,
       "message": "`ctx` doesn\u0027t seem to be used. Is it normal?",
+      "range": {
+        "startLine": 42,
+        "startChar": 26,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "994fa9120aa2d7ff78920b9b1a646743acd2645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f915dc62_3795d2fe",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-12T23:16:36Z",
+      "side": 1,
+      "message": "It\u0027s sort of implementing an interface (in go\u0027s sense). Given that creation required ctx it\u0027s idiomatic to use ctx in destroying it, but I guess there isn\u0027t much value in this particular case, so I\u0027ll remove it.",
+      "parentUuid": "872296ae_73c2fff0",
       "range": {
         "startLine": 42,
         "startChar": 26,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f3da1ee_d936d11e",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-12T23:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aae6d9e_8047170d",
+      "range": {
+        "startLine": 26,
+        "startChar": 84,
+        "endLine": 26,
+        "endChar": 88
+      },
+      "revId": "994fa9120aa2d7ff78920b9b1a646743acd2645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ee7dc2e_30994222",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1bfd92b_b8af8950",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-12T23:16:36Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "4ee7dc2e_30994222",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 7
+      },
+      "revId": "994fa9120aa2d7ff78920b9b1a646743acd2645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2e675af_0e5b9b3f",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-10-12T22:46:37Z",
       "side": 1,
       "message": "returns",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "994fa9120aa2d7ff78920b9b1a646743acd2645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c28280b_31483042",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-12T23:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2e675af_0e5b9b3f",
       "range": {
         "startLine": 79,
         "startChar": 20,
