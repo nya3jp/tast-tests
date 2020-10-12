@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb50d771_3e04c79a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-12T22:22:40Z",
+      "side": 1,
+      "message": "Since cuj test account got whitelisted, it enter the meeting without asking to join and we can use hrTelemetryApi to check if it is in the meeting. \n\nIn next CL, functions in MeetCUJ will be move to a new package.",
+      "revId": "2348e90ff9622e204300bba42c86ff5269401025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
