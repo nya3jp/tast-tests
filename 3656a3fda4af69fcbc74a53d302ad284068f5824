@@ -16,6 +16,23 @@
       "message": "PTAL. Test is almost always passing, only known issues unrelated to the test itself remain.\n\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.allowlist\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.blocklist\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.default",
       "revId": "3656a3fda4af69fcbc74a53d302ad284068f5824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0b2832_8de10f29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-12T21:44:10Z",
+      "side": 1,
+      "message": "Please file a bug to track this change.\n\nThe test results of this case are very stable recently:\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.allowlist\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.blocklist\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.default\n",
+      "revId": "3656a3fda4af69fcbc74a53d302ad284068f5824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
