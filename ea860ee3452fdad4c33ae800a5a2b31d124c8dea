@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f1f4bb_bac3b246",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_multi_channels.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-12T10:12:33Z",
+      "side": 1,
+      "message": "We should stop pulseaudio before accessing alsa devices. or the server could occupy the alsa device\n\nCheck controlPulse in PulseaudioBasic (might need to use \"stop\" or \"kill\")",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "ea860ee3452fdad4c33ae800a5a2b31d124c8dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
