@@ -16,6 +16,161 @@
       "message": "Hi Everybody:\n\nI just rebased my branch. Also, the name and signature for the function ui.FindAndClick has been changed so I have updated the code to use the new API. ui.StableFindAndClick.\n\nThanks.\n\nSeewai\n",
       "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf4086a_a93ef7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T19:00:36Z",
+      "side": 1,
+      "message": "Hi Seewai, just a few nits for making the comments clearer, and some questions around the use of ui.WaitForLocationChangeCompleted. I think it would be nice to clarify why it\u0027s necessary, especially since it\u0027s used quite a bit here. Aside from that it\u0027s looking good though.",
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e970fb08_e8dbc042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T19:00:36Z",
+      "side": 1,
+      "message": "nit: in tablet mode",
+      "range": {
+        "startLine": 64,
+        "startChar": 37,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1167b8b9_53a31930",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T19:00:36Z",
+      "side": 1,
+      "message": "It would be clearer to specify what\u0027s taking a while to settle down. You could describe what animation we\u0027re waiting for here.",
+      "range": {
+        "startLine": 71,
+        "startChar": 61,
+        "endLine": 71,
+        "endChar": 103
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00cf99a0_2be548d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T19:00:36Z",
+      "side": 1,
+      "message": "Is 2 seconds important here? Can it be shorter?",
+      "range": {
+        "startLine": 152,
+        "startChar": 37,
+        "endLine": 152,
+        "endChar": 50
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29ab145_0e36270b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T19:00:36Z",
+      "side": 1,
+      "message": "I don\u0027t remember if we discussed this one already, but is it necessary here? What are we waiting for after dragging the icon?",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468a4d1c_e0245c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T19:00:36Z",
+      "side": 1,
+      "message": "Similar question here, what exactly are we waiting for? I think we should document why we\u0027re using WaitForLocationChangeCompleted, especially if removing it destabilizes the test.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd369ff_d09e144d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-12T19:00:36Z",
+      "side": 1,
+      "message": "similar question here",
+      "range": {
+        "startLine": 256,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 2
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
