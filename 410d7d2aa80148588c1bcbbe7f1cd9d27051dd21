@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c6266f_d0676806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-12T07:13:34Z",
+      "side": 1,
+      "message": "Last week it got renamed StableFindAndClick. They also changed how cn you call it, istead of timeout, you have to pass polling options.\nYou can see some examples in change I0d20b2dc5ab654ae3234b05e086053aac20450db.",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "410d7d2aa80148588c1bcbbe7f1cd9d27051dd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
