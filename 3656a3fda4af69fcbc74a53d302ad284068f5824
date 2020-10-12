@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93264b3_05ba2317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-12T12:13:31Z",
+      "side": 1,
+      "message": "PTAL. Test is almost always passing, only known issues unrelated to the test itself remain.\n\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.allowlist\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.blocklist\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.default",
+      "revId": "3656a3fda4af69fcbc74a53d302ad284068f5824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
