@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1291c25_c9ec1f45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-10-12T22:46:37Z",
+      "side": 1,
+      "message": "Is this naked return necessary at the end of a function?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 7
+      },
+      "revId": "994fa9120aa2d7ff78920b9b1a646743acd2645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "872296ae_73c2fff0",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-10-12T22:46:37Z",
+      "side": 1,
+      "message": "`ctx` doesn\u0027t seem to be used. Is it normal?",
+      "range": {
+        "startLine": 42,
+        "startChar": 26,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "994fa9120aa2d7ff78920b9b1a646743acd2645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aae6d9e_8047170d",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-10-12T22:46:37Z",
+      "side": 1,
+      "message": "size.",
+      "range": {
+        "startLine": 26,
+        "startChar": 84,
+        "endLine": 26,
+        "endChar": 88
+      },
+      "revId": "994fa9120aa2d7ff78920b9b1a646743acd2645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ee7dc2e_30994222",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-10-12T22:46:37Z",
+      "side": 1,
+      "message": "Is this return necessary?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 7
+      },
+      "revId": "994fa9120aa2d7ff78920b9b1a646743acd2645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e675af_0e5b9b3f",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-10-12T22:46:37Z",
+      "side": 1,
+      "message": "returns",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "994fa9120aa2d7ff78920b9b1a646743acd2645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
