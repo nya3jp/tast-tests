@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ee328e_13439ec9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-12T08:04:16Z",
+      "side": 1,
+      "message": "I\u0027ll defer the review to Yenlin and Hsin-chen.",
+      "revId": "72ff05adf318e571b2c19c0cb72488eae02e5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "195e8adf_50c0f618",
