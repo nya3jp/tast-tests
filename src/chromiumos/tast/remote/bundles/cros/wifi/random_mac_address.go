@@ -14,7 +14,7 @@ import (
 	"github.com/google/gopacket/layers"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/network/ip"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/pcap"
@@ -108,7 +108,9 @@ func RandomMACAddress(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for current scan to be done: ", err)
 		}
 
-		pcapPath, err := scanAndCollectPcap(ctx, tf, name, ap.Config().Channel)
+		timeoutCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
+		defer cancel()
+		pcapPath, err := wifiutil.ScanAndCollectPcap(timeoutCtx, tf, name, 5, ap.Config().Channel)
 		if err != nil {
 			s.Fatal("Failed to collect pcap: ", err)
 		}
@@ -189,42 +191,4 @@ func RandomMACAddress(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verified; tearing down")
-}
-
-// scanAndCollectPcap requests active scans and collect pcap file. Path to the pcap
-// file is returned.
-func scanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name string, ch int) (string, error) {
-	capturer, err := func() (ret *pcap.Capturer, retErr error) {
-		capturer, err := tf.Pcap().StartCapture(fullCtx, name, ch, nil)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to start capturer")
-		}
-		defer func() {
-			if err := tf.Pcap().StopCapture(fullCtx, capturer); err != nil {
-				if retErr == nil {
-					ret = nil
-					retErr = errors.Wrap(err, "failed to stop capturer")
-				} else {
-					testing.ContextLog(fullCtx, "Failed to stop capturer: ", err)
-				}
-			}
-		}()
-
-		ctx, cancel := tf.Pcap().ReserveForStopCapture(fullCtx, capturer)
-		defer cancel()
-
-		testing.ContextLog(ctx, "Request active scans")
-		timeoutCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
-		defer cancel()
-		req := &network.RequestScansRequest{Count: 5}
-		if _, err := tf.WifiClient().RequestScans(timeoutCtx, req); err != nil {
-			return nil, errors.Wrap(err, "failed to trigger active scans")
-		}
-		return capturer, nil
-	}()
-	if err != nil {
-		return "", err
-	}
-	// Return the path where capturer saves the pcap.
-	return capturer.PacketPath(fullCtx)
 }
