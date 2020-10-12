@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f5c9aac_e652943d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T21:58:12Z",
+      "side": 1,
+      "message": "Hi Kyle:\n\nI think I have addressed all your comments. Please take a look and see if it is okay.\n\nThanks.\n\nSeewai",
+      "revId": "0263f05494e594640c3120a5f4a719d9e28e7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

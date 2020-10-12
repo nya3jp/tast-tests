@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a413ca40_86e937f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T21:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e970fb08_e8dbc042",
+      "range": {
+        "startLine": 64,
+        "startChar": 37,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1167b8b9_53a31930",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-12T19:00:36Z",
       "side": 1,
       "message": "It would be clearer to specify what\u0027s taking a while to settle down. You could describe what animation we\u0027re waiting for here.",
+      "range": {
+        "startLine": 71,
+        "startChar": 61,
+        "endLine": 71,
+        "endChar": 103
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bceeeed_c6772f19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T21:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1167b8b9_53a31930",
       "range": {
         "startLine": 71,
         "startChar": 61,
@@ -127,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e3b348_53ecd1c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T21:58:12Z",
+      "side": 1,
+      "message": "My observation was that the release of the mouse button sometimes happens too early. This statement is to make sure it is the case. Please see my new comments. Thanks.",
+      "parentUuid": "d29ab145_0e36270b",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "468a4d1c_e0245c52",
@@ -150,6 +222,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aab81b4_4b59a28c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T21:58:12Z",
+      "side": 1,
+      "message": "I added more comments to explain. Please let me know if the comments are clear now. Thanks.",
+      "parentUuid": "468a4d1c_e0245c52",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbd369ff_d09e144d",
@@ -163,6 +259,30 @@
       "writtenOn": "2020-10-12T19:00:36Z",
       "side": 1,
       "message": "similar question here",
+      "range": {
+        "startLine": 256,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 2
+      },
+      "revId": "1d72afbbac7a21187601e3c8a205daec24d1008b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94bfb7a1_78b9d081",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-12T21:58:12Z",
+      "side": 1,
+      "message": "That\u0027s based on my observation. The next click action cannot be attempted until the folder is fully open on screen. I have tried to wait for the object HeaderFolderView exists before clicking, but it didn\u0027t work. I think the reason is that the UI for the folder is not fully open yet. I have updated the comment in the code. Please check if it is ok. Thanks.",
+      "parentUuid": "cbd369ff_d09e144d",
       "range": {
         "startLine": 256,
         "startChar": 1,
