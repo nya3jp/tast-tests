@@ -38,6 +38,11 @@ func New(ctx context.Context) (*CrosDisks, error) {
 	return &CrosDisks{conn, obj}, nil
 }
 
+// Close connection to CrosDisks D-Bus service.
+func (c *CrosDisks) Close() error {
+	return c.conn.Close()
+}
+
 // call is a thin wrapper of CallWithContext for convenience.
 func (c *CrosDisks) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return c.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
@@ -135,4 +140,24 @@ func (c *CrosDisks) WatchMountCompleted(ctx context.Context) (*MountCompletedWat
 		return nil, err
 	}
 	return &MountCompletedWatcher{*w}, nil
+}
+
+// MountAndWaitForCompletion mounts and waits for the response signal.
+// This is a convenience method for the odd CrosDisks' mounting API.
+func (c *CrosDisks) MountAndWaitForCompletion(ctx context.Context, devicePath, fsType string, options []string) (MountCompleted, error) {
+	w, err := c.WatchMountCompleted(ctx)
+	if err != nil {
+		return MountCompleted{}, err
+	}
+	defer w.Close(ctx)
+
+	if err := c.Mount(ctx, devicePath, fsType, options); err != nil {
+		return MountCompleted{}, err
+	}
+
+	m, err := w.Wait(ctx)
+	if err != nil {
+		return MountCompleted{}, err
+	}
+	return m, nil
 }
