@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9eaa94e_1084679d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-12T07:13:55Z",
+      "side": 1,
+      "message": "I\u0027m ok to introduce this for very short term,",
+      "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5698394_b4ef4dc2",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-12T07:13:55Z",
+      "side": 1,
+      "message": "This looks false positive.\nAny plans to mitigate cases like this?\nI do not think it is reasonable approach to maintain the allow list of this kinds forever.",
+      "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
