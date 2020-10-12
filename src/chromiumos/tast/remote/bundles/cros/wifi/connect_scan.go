@@ -142,9 +142,6 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read packets: ", err)
 	}
 	s.Logf("Total %d probe requests found", len(packets))
-	if len(packets) == 0 {
-		s.Fatal("No probe request captured")
-	}
 
 	ssidSet := make(map[string]struct{})
 	for _, p := range packets {
