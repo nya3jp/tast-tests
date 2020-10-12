@@ -185,6 +185,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61006d0f_33f22ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/common.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-12T06:08:00Z",
+      "side": 1,
+      "message": "Moved back.",
+      "parentUuid": "ea0ff257_78256035",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "c4d0a502315de5dfde5a5ad7b1060b8943644ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "346c1d39_244bf889",
