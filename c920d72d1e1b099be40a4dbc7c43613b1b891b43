@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd6c096b_487c2d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-12T08:04:32Z",
+      "side": 1,
+      "message": "I\u0027ll defer the review to Yenlin and Hsin-chen.",
+      "revId": "c920d72d1e1b099be40a4dbc7c43613b1b891b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
