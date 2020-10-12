@@ -6,17 +6,26 @@ package wificell
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
+// ExtraFeatures is enum for any extra features needed for precondition.
+type ExtraFeatures uint8
+
+const (
+	multiRouters ExtraFeatures = 1 << iota
+	attenuatorPresent
+)
+
 type testFixturePreImpl struct {
 	name     string
 	extraOps []TFOption
-
-	tf *TestFixture
+	features ExtraFeatures
+	tf       *TestFixture
 }
 
 // String returns a short, underscore-separated name for the precondition.
@@ -58,11 +67,25 @@ func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.PreState) i
 	var ops []TFOption
 	// Read router/pcap variable. If not available or empty, NewTestFixture
 	// will fall back to Default{Router,Pcap}Host.
-	if router, ok := s.Var("router"); ok && router != "" {
+	if p.features&multiRouters != 0 {
+		if routers, ok := s.Var("routers"); ok && routers != "" {
+			s.Log("routers = ", routers)
+			slice := strings.Split(routers, ",")
+			ops = append(ops, TFRouter(slice...))
+		}
+	} else if router, ok := s.Var("router"); ok && router != "" {
+		s.Log("router = ", router)
 		ops = append(ops, TFRouter(router))
 	}
+
 	if pcap, ok := s.Var("pcap"); ok && pcap != "" {
 		ops = append(ops, TFPcap(pcap))
+	}
+	if p.features&attenuatorPresent != 0 {
+		if atten, ok := s.Var("attenuator"); ok && atten != "" {
+			s.Log("attenuator = ", atten)
+			ops = append(ops, TFAttenuator(atten))
+		}
 	}
 	ops = append(ops, p.extraOps...)
 	tf, err := NewTestFixture(ctx, s.PreCtx(), s.DUT(), s.RPCHint(), ops...)
@@ -88,15 +111,16 @@ func (p *testFixturePreImpl) Close(ctx context.Context, s *testing.PreState) {
 }
 
 // newTestFixturePre creates a testFixturePreImpl object to be used as Precondition.
-func newTestFixturePre(name string, extraOps ...TFOption) *testFixturePreImpl {
+func newTestFixturePre(name string, features ExtraFeatures, extraOps ...TFOption) *testFixturePreImpl {
 	return &testFixturePreImpl{
 		name:     name,
 		extraOps: extraOps,
+		features: features,
 	}
 }
 
 // testFixturePre is the singleton of test fixture precondition.
-var testFixturePre = newTestFixturePre("default")
+var testFixturePre = newTestFixturePre("default", 0)
 
 // TestFixturePre returns a precondition of wificell TestFixture.
 func TestFixturePre() testing.Precondition {
@@ -105,10 +129,38 @@ func TestFixturePre() testing.Precondition {
 
 // testFixturePreWithCapture is the singleton of test fixture precondition with
 // TFCapture option.
-var testFixturePreWithCapture = newTestFixturePre("capture", TFCapture(true))
+var testFixturePreWithCapture = newTestFixturePre("capture", 0, TFCapture(true))
 
 // TestFixturePreWithCapture returns a precondition of wificell TestFixture with
 // TFCapture(true) option.
 func TestFixturePreWithCapture() testing.Precondition {
 	return testFixturePreWithCapture
+}
+
+// testFixturePreWithRouters is the singleton of test fixture precondition with
+// multiple routers option.
+var testFixturePreWithRouters *testFixturePreImpl
+
+// TestFixturePreWithRouters returns a precondition of wificell TestFixture with
+// multiple routers setup.
+func TestFixturePreWithRouters() testing.Precondition {
+	// Lazy init, we don't want this to be initialized if not used.
+	if testFixturePreWithRouters == nil {
+		testFixturePreWithRouters = newTestFixturePre("routers", multiRouters)
+	}
+	return testFixturePreWithRouters
+}
+
+// testFixturePreWithAttenuator is the singleton of test fixture precondition with
+// attenuator option.
+var testFixturePreWithAttenuator *testFixturePreImpl
+
+// TestFixturePreWithAttenuator returns a precondition of wificell TestFixture with
+// multiple routers setup.
+func TestFixturePreWithAttenuator() testing.Precondition {
+	// Lazy init, we don't want this to be initialized if not used.
+	if testFixturePreWithAttenuator == nil {
+		testFixturePreWithAttenuator = newTestFixturePre("attenuator", attenuatorPresent)
+	}
+	return testFixturePreWithAttenuator
 }
