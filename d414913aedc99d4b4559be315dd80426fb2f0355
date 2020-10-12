@@ -85,6 +85,24 @@
       "parentUuid": "704eb8db_18ab8705",
       "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a677608d_0d36d78a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-12T10:09:01Z",
+      "side": 1,
+      "message": "\u003e That said, for the graphics trace tests I could drop the buster vs stretch part of the name since they only run on buster.\nI\u0027ve now done this",
+      "parentUuid": "9c0d42aa_d77a5741",
+      "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
