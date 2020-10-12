@@ -28,11 +28,6 @@ type intentOptions struct {
 	ResultInfo   resultInfo
 }
 
-type testCase struct {
-	Name          string
-	IntentOptions intentOptions
-}
-
 type testBehavior struct {
 	ShouldReview bool
 	// ShouldConfirmAfterCapture indicates if it should click confirm button after capturing. If false, it should click the cancel button.
@@ -96,90 +91,12 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
+		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
-			Val: []testCase{{
-				Name: "take photo (no extra)",
-				IntentOptions: intentOptions{
-					Action:       takePhotoAction,
-					URI:          "",
-					Mode:         cca.Photo,
-					TestBehavior: captureConfirmAndDone,
-				},
-			}, {
-				Name: "take photo (has extra)",
-				IntentOptions: intentOptions{
-					Action:       takePhotoAction,
-					URI:          testPhotoURI,
-					Mode:         cca.Photo,
-					TestBehavior: captureConfirmAndDone,
-					ResultInfo: resultInfo{
-						FilePattern: testPhotoPattern,
-					},
-				},
-			}, {
-				Name: "launch camera on photo mode",
-				IntentOptions: intentOptions{
-					Action:       launchOnPhotoModeAction,
-					URI:          "",
-					Mode:         cca.Photo,
-					TestBehavior: captureAndAlive,
-					ResultInfo: resultInfo{
-						FilePattern: cca.PhotoPattern,
-					},
-				},
-			}, {
-				Name: "launch camera on video mode",
-				IntentOptions: intentOptions{
-					Action:       launchOnVideoModeAction,
-					URI:          "",
-					Mode:         cca.Video,
-					TestBehavior: captureAndAlive,
-					ResultInfo: resultInfo{
-						FilePattern: cca.VideoPattern,
-					},
-				},
-			}, {
-				Name: "record video (no extras)",
-				IntentOptions: intentOptions{
-					Action:       recordVideoAction,
-					URI:          "",
-					Mode:         cca.Video,
-					TestBehavior: captureConfirmAndDone,
-					ResultInfo: resultInfo{
-						Dir:         defaultArcCameraPath,
-						FilePattern: cca.VideoPattern,
-					},
-				},
-			}, {
-				Name: "record video (has extras)",
-				IntentOptions: intentOptions{
-					Action:       recordVideoAction,
-					URI:          testVideoURI,
-					Mode:         cca.Video,
-					TestBehavior: captureConfirmAndDone,
-					ResultInfo: resultInfo{
-						FilePattern: testVideoPattern,
-					},
-				},
-			}, {
-				Name: "close app",
-				IntentOptions: intentOptions{
-					Action:       takePhotoAction,
-					URI:          "",
-					Mode:         cca.Photo,
-					TestBehavior: closeApp,
-				},
-			}, {
-				Name: "cancel when review",
-				IntentOptions: intentOptions{
-					Action:       takePhotoAction,
-					URI:          "",
-					Mode:         cca.Photo,
-					TestBehavior: captureCancelAndAlive,
-				},
-			}},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
 }
@@ -212,7 +129,92 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	scripts := []string{s.DataPath("cca_ui.js")}
 	outDir := s.OutDir()
 
-	for _, tc := range s.Param().([]testCase) {
+	for _, tc := range []struct {
+		Name          string
+		IntentOptions intentOptions
+	}{
+		{
+			Name: "take photo (no extra)",
+			IntentOptions: intentOptions{
+				Action:       takePhotoAction,
+				URI:          "",
+				Mode:         cca.Photo,
+				TestBehavior: captureConfirmAndDone,
+			},
+		}, {
+			Name: "take photo (has extra)",
+			IntentOptions: intentOptions{
+				Action:       takePhotoAction,
+				URI:          testPhotoURI,
+				Mode:         cca.Photo,
+				TestBehavior: captureConfirmAndDone,
+				ResultInfo: resultInfo{
+					FilePattern: testPhotoPattern,
+				},
+			},
+		}, {
+			Name: "launch camera on photo mode",
+			IntentOptions: intentOptions{
+				Action:       launchOnPhotoModeAction,
+				URI:          "",
+				Mode:         cca.Photo,
+				TestBehavior: captureAndAlive,
+				ResultInfo: resultInfo{
+					FilePattern: cca.PhotoPattern,
+				},
+			},
+		}, {
+			Name: "launch camera on video mode",
+			IntentOptions: intentOptions{
+				Action:       launchOnVideoModeAction,
+				URI:          "",
+				Mode:         cca.Video,
+				TestBehavior: captureAndAlive,
+				ResultInfo: resultInfo{
+					FilePattern: cca.VideoPattern,
+				},
+			},
+		}, {
+			Name: "record video (no extras)",
+			IntentOptions: intentOptions{
+				Action:       recordVideoAction,
+				URI:          "",
+				Mode:         cca.Video,
+				TestBehavior: captureConfirmAndDone,
+				ResultInfo: resultInfo{
+					Dir:         defaultArcCameraPath,
+					FilePattern: cca.VideoPattern,
+				},
+			},
+		}, {
+			Name: "record video (has extras)",
+			IntentOptions: intentOptions{
+				Action:       recordVideoAction,
+				URI:          testVideoURI,
+				Mode:         cca.Video,
+				TestBehavior: captureConfirmAndDone,
+				ResultInfo: resultInfo{
+					FilePattern: testVideoPattern,
+				},
+			},
+		}, {
+			Name: "close app",
+			IntentOptions: intentOptions{
+				Action:       takePhotoAction,
+				URI:          "",
+				Mode:         cca.Photo,
+				TestBehavior: closeApp,
+			},
+		}, {
+			Name: "cancel when review",
+			IntentOptions: intentOptions{
+				Action:       takePhotoAction,
+				URI:          "",
+				Mode:         cca.Photo,
+				TestBehavior: captureCancelAndAlive,
+			},
+		},
+	} {
 		s.Run(ctx, tc.Name, func(ctx context.Context, s *testing.State) {
 			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir); err != nil {
 				s.Error("Failed when checking intent behavior: ", err)
