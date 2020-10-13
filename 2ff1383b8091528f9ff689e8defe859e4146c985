@@ -16,6 +16,46 @@
       "message": "PTAL!",
       "revId": "2ff1383b8091528f9ff689e8defe859e4146c985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "989d7a76_237a6103",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-10-13T00:35:01Z",
+      "side": 1,
+      "message": "sorry for delay in review. LGTM thanks!!",
+      "revId": "2ff1383b8091528f9ff689e8defe859e4146c985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d899cbf_96d35dfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-10-13T00:35:01Z",
+      "side": 1,
+      "message": "optional nit: should we rename to \"cleanup\", since we are calling it cleanup below?",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 6
+      },
+      "revId": "2ff1383b8091528f9ff689e8defe859e4146c985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
