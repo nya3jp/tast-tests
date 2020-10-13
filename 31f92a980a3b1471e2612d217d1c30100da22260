@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5545d276_f1fb623d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T05:38:17Z",
+      "side": 1,
+      "message": "The test still fails with \"Bluetooth is off, expected to be on\" on my DUT. I\u0027ll try again after updating my DUT. The change is still good as TestFixture can properly initialize default router.",
+      "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
