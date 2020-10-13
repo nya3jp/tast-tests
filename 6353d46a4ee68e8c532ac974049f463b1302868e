@@ -177,6 +177,24 @@
       "parentUuid": "1e3c27f4_e8a16710",
       "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cebc1f7_42ef407c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-13T20:17:18Z",
+      "side": 1,
+      "message": "It sounds like when the problem happens, the \"Play\" button is not ready to be clicked.\n\nVideoCUJ has code in [1] to ensure the element we want to click is the topmost one. Would that be helpful here?\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go;l\u003d229?q\u003dvideocuj\u0026sq\u003dfile:%5Esrc%20package:%5Echromeos_(internal%7Cpublic)$",
+      "parentUuid": "a251710b_d7465b5c",
+      "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
