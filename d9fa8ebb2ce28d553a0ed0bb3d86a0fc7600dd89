@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b840e846_a45562e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2020-10-13T07:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae25f5ea_905824fe",
+      "revId": "d9fa8ebb2ce28d553a0ed0bb3d86a0fc7600dd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4091f35a_3149256a",
@@ -65,6 +83,24 @@
       "writtenOn": "2020-10-12T15:22:21Z",
       "side": 1,
       "message": "nit: remove the empty line?",
+      "revId": "d9fa8ebb2ce28d553a0ed0bb3d86a0fc7600dd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed6d2251_7388fa44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2020-10-13T07:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4091f35a_3149256a",
       "revId": "d9fa8ebb2ce28d553a0ed0bb3d86a0fc7600dd89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa03585_5c5e2903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2020-10-13T07:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c1fcb1e_87a58a6c",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "d9fa8ebb2ce28d553a0ed0bb3d86a0fc7600dd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9619f671_99c228d8",
@@ -105,6 +165,30 @@
       "writtenOn": "2020-10-12T15:22:21Z",
       "side": 1,
       "message": "Could you check error?",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "d9fa8ebb2ce28d553a0ed0bb3d86a0fc7600dd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d842c936_826b4aaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2020-10-13T07:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9619f671_99c228d8",
       "range": {
         "startLine": 84,
         "startChar": 6,
@@ -151,6 +235,54 @@
       "writtenOn": "2020-10-12T15:22:21Z",
       "side": 1,
       "message": "; got %s, want %s",
+      "range": {
+        "startLine": 140,
+        "startChar": 62,
+        "endLine": 140,
+        "endChar": 81
+      },
+      "revId": "d9fa8ebb2ce28d553a0ed0bb3d86a0fc7600dd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84c6c00b_cd01f4f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2020-10-13T07:55:09Z",
+      "side": 1,
+      "message": "I tried wrapping it with testing.PoolBreak, but this made the test fail because it compares before all keys have been typed. It will say \"failed to input with virtual keyboard; got:  Go. go, want:  Go. go.\", missing the last \".\" although it was actually typed into the input box.",
+      "parentUuid": "b64fc74d_bb52222b",
+      "range": {
+        "startLine": 140,
+        "startChar": 9,
+        "endLine": 140,
+        "endChar": 10
+      },
+      "revId": "d9fa8ebb2ce28d553a0ed0bb3d86a0fc7600dd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9a86060_ac1f93cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2020-10-13T07:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "772024ab_5360e0c9",
       "range": {
         "startLine": 140,
         "startChar": 62,
