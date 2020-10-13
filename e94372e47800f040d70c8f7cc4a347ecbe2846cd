@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90a11e25_e1fcc975",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T09:32:54Z",
+      "side": 1,
+      "message": "How about in the function:\n\n  // ...\n  sCtx, sCancel :\u003d ctxutil.Shorten(ctx, wpaMonitorStopTimeout)\n  return wpaMonitor, func() {\n    sCancel()\n    timeoutCtx, cancel :\u003d context.WithTimeout(ctx, wpaMonitorStopTimeout)\n    defer cancel()\n    wpaMonitor.Stop(timeoutCtx)\n  }, sCtx, nil\n\nAnd the caller:\n\n  wpaMonitor, stop, ctx, err :\u003d tf.StartWpaMonitor(ctx)\n  if err !\u003d nil {\n    s.Fatal(\"Faled to start wpa monitor: \", err)\n  }\n  defer stop()\n\nWDYT?",
+      "parentUuid": "a7af157d_bb3c9d94",
+      "range": {
+        "startLine": 489,
+        "startChar": 4,
+        "endLine": 489,
+        "endChar": 25
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e43aafa_c0ca8b08",
         "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
         "patchSetId": 1
@@ -290,6 +314,24 @@
       "side": 1,
       "message": "I\u0027m not sure it\u0027s needed. These events are only used for log/stats purposes, so parsing errors here don\u0027t have to be fatal. When something breaks, e.g. after a change in wpa_supplicant, some of the stats will be missing, but some may still be useful to have.",
       "parentUuid": "48de8f89_2140a321",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e825ba86_a456e093",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T09:32:54Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t think the error has to be fatal either. But my point is, when there\u0027s parsing error:\n1. we probably shouldn\u0027t return the event.\n2. it might be more informative to dump the whole line instead of only the sub-match.",
+      "parentUuid": "2ff0c24b_7877f284",
       "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -575,6 +617,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c40fe78_d4b01fc0",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T09:32:54Z",
+      "side": 1,
+      "message": "Some things I worried about the usage here is:\n1. As the data source is not closed, if the event comes fast, we might spend unlimited amount of time here.\n2. It is not really guaranteed that all events are dropped. For example, some messages might be still buffered in the scanner/reader/socket... If the Scan routine does not get scheduled when we consume \"lines\" channel, it is possible that some events are not dropped.\n\nDo you think spawning a WPAMonitor every time is too heavy?",
+      "parentUuid": "84c4356e_bdd93500",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed1b599e_b2aaea2a",
@@ -612,6 +672,30 @@
       "side": 1,
       "message": "A timeout here is not an error. You wait for an event for specific time (context deadline) and if nothing comes in then you move forward. This is actual case in the upcoming RoamNatural test - check if any roams happened during specific time after changing attenuation, and log them, or move forward if nothing happened.",
       "parentUuid": "ed1b599e_b2aaea2a",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 59
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d4ef480_1113b18f",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T09:32:54Z",
+      "side": 1,
+      "message": "The caller can still check the timeout error but for the specific usage, this design might make sense. But then I\u0027m thinking if we still need the error in return (always nil for now).",
+      "parentUuid": "8d5ae290_4f02a416",
       "range": {
         "startLine": 186,
         "startChar": 0,
