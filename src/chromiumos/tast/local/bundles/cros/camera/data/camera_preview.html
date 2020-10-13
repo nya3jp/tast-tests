@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><title>Simple Camera Preview</title></head>
+<body>
+<video autoplay playsinline></video>
+<script>
+let isVideoInputFound = false;
+let scriptReady = false;
+let streamReady = false;
+
+var constraints = {
+  audio: false,
+  video: {
+    width: { ideal: 4096 },
+    height: { ideal: 2160 }
+  }
+};
+
+var video = document.querySelector('video');
+
+function getUserMediaSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+  streamReady = true;
+}
+
+function getUserMediaError(error) {
+  console.log('getUserMedia error: ', error);
+}
+
+function resolutionReady() {
+  return video.videoWidth * video.videoHeight > 0;
+}
+
+function cameraReady() {
+  return streamReady && resolutionReady();
+}
+
+navigator.mediaDevices.getUserMedia(constraints).then(getUserMediaSuccess).catch(getUserMediaError);
+scriptReady = true;
+</script>
+</body>
+</html>

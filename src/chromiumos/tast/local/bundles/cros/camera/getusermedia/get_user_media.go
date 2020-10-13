@@ -9,16 +9,24 @@ package getusermedia
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
+	"path/filepath"
+	"strconv"
+	"strings"
 	"time"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/vm"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -161,4 +169,106 @@ func RunGetUserMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 
 	return results
+}
+
+// getAllPIDs returns all PIDs with name.
+func getAllPIDs(name string) ([]int, error) {
+	var pids []int
+	procs, err := process.Processes()
+	if err != nil {
+		return pids, err
+	}
+	for _, proc := range procs {
+		if cl, err := proc.Cmdline(); err != nil || !strings.Contains(cl, name) {
+			continue
+		}
+		pids = append(pids, int(proc.Pid))
+	}
+	if len(pids) == 0 {
+		return pids, errors.Errorf("unable to find process with name %v", name)
+	}
+	return pids, nil
+}
+func getAllCameraRelatedProcesses() ([]string, [][]int, error) {
+	var pnames []string
+	var pids [][]int
+	for _, pname := range []string{"cros_camera_service", "cros_camera_algo"} {
+		curPids, err := getAllPIDs(pname)
+		if err != nil {
+			return pnames, pids, err
+		}
+		pnames = append(pnames, pname)
+		pids = append(pids, curPids)
+	}
+	crBrowserPID, err := chrome.GetRootPID()
+	if err != nil {
+		return pnames, pids, errors.Wrap(err, "failed getting chrome browser process id")
+	}
+	pnames = append(pnames, "chrome_browser")
+	pids = append(pids, []int{crBrowserPID})
+	return pnames, pids, nil
+
+}
+
+func runQuipper(ctx context.Context, pids []int, duration int, pname, outDir string) error {
+	testing.ContextLogf(ctx, "Executing quipper to %s (pids: %v)", pname, pids)
+	output, err := testexec.CommandContext(
+		ctx,
+		"quipper", strconv.Itoa(duration), "perf", "record", "-a", "-g",
+		"-F", "499",
+		"-p", strings.Trim(strings.Join(strings.Fields(fmt.Sprint(pids)), ","), "[]")).Output()
+	if err != nil {
+		return err
+	}
+	testing.ContextLogf(ctx, "size=%d", len(output))
+	outFile := filepath.Join(outDir, fmt.Sprintf("%s.proto", pname))
+	if err := ioutil.WriteFile(outFile, output, 0644); err != nil {
+		return errors.Wrap(err, "Failed writing proto to the file")
+	}
+	return nil
+}
+
+func RunGetUserMediaPerf2(ctx context.Context, s *testing.State, cr *chrome.Chrome) {
+	const quipperDuration = 5
+
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+	conn, err := cr.NewConn(ctx, server.URL+"/camera_preview.html")
+	if err != nil {
+		s.Fatal("Creating renderer failed: ", err)
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	shortCtx, rcancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer rcancel()
+
+	if err := conn.WaitForExpr(shortCtx, "scriptReady"); err != nil {
+		s.Fatal("Timed out waiting for scripts ready: ", err)
+	}
+	if err := conn.WaitForExpr(shortCtx, "cameraReady()"); err != nil {
+		s.Fatal("Timed out waiting for camera ready: ", err)
+	}
+
+	var cameraWidth, cameraHeight int
+	if err := conn.Eval(shortCtx, "video.videoWidth", &cameraWidth); err != nil {
+		s.Fatal("Failed getting the camera width: ", err)
+	}
+	if err := conn.Eval(shortCtx, "video.videoHeight", &cameraHeight); err != nil {
+		s.Fatal("Failed getting the camera height: ", err)
+	}
+
+	testing.ContextLogf(shortCtx, "camera resolution: %dx%d", cameraWidth, cameraHeight)
+
+	pnames, pids, err := getAllCameraRelatedProcesses()
+	if err != nil {
+		s.Fatal("Failed to get all camera related processes: ", err)
+	}
+	for i := 0; i < len(pnames); i++ {
+		pname := pnames[i]
+		curPids := pids[i]
+		if err := runQuipper(shortCtx, curPids, quipperDuration, pname, s.OutDir()); err != nil {
+			s.Fatal("Failed to execute quipper: ", err)
+		}
+	}
 }
