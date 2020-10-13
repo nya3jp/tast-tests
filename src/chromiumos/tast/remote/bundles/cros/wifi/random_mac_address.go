@@ -35,7 +35,6 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.WifiMACAddrRandomize()),
 		Params: []testing.Param{
 			{
-				ExtraAttr:         []string{"wificell_unstable"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("oak", "elm", "hana")),
 			},
 			{
