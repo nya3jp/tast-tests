@@ -198,12 +198,14 @@ func TestNewConfig(t *testing.T) {
 		{
 			ops: []Option{
 				SSID("ssid"),
+				BSSID("00:11:22:33:44:55"),
 				Mode(Mode80211g),
 				Channel(1),
 				DTIMPeriod(254),
 			},
 			expected: &Config{
 				SSID:           "ssid",
+				BSSID:          "00:11:22:33:44:55",
 				Mode:           Mode80211g,
 				Channel:        1,
 				HTCaps:         0,
@@ -215,6 +217,7 @@ func TestNewConfig(t *testing.T) {
 		{
 			ops: []Option{
 				SSID("ssid"),
+				BSSID("00:11:22:33:44:55"),
 				Mode(Mode80211nMixed),
 				Channel(1),
 				HTCaps(HTCapHT20),
@@ -222,6 +225,7 @@ func TestNewConfig(t *testing.T) {
 			},
 			expected: &Config{
 				SSID:           "ssid",
+				BSSID:          "00:11:22:33:44:55",
 				Mode:           Mode80211nMixed,
 				Channel:        1,
 				HTCaps:         HTCapHT20,
@@ -233,6 +237,7 @@ func TestNewConfig(t *testing.T) {
 		{
 			ops: []Option{
 				SSID("ssid"),
+				BSSID("00:11:22:33:44:55"),
 				Mode(Mode80211nPure),
 				Channel(36),
 				HTCaps(HTCapHT40),
@@ -241,6 +246,7 @@ func TestNewConfig(t *testing.T) {
 			},
 			expected: &Config{
 				SSID:           "ssid",
+				BSSID:          "00:11:22:33:44:55",
 				Mode:           Mode80211nPure,
 				Channel:        36,
 				HTCaps:         HTCapHT40 | HTCapSGI20,
@@ -252,6 +258,7 @@ func TestNewConfig(t *testing.T) {
 		{
 			ops: []Option{
 				SSID("ssid"),
+				BSSID("00:11:22:33:44:55"),
 				Mode(Mode80211acPure),
 				Channel(157),
 				HTCaps(HTCapHT40Plus),
@@ -262,6 +269,7 @@ func TestNewConfig(t *testing.T) {
 			},
 			expected: &Config{
 				SSID:             "ssid",
+				BSSID:            "00:11:22:33:44:55",
 				Mode:             Mode80211acPure,
 				Channel:          157,
 				HTCaps:           HTCapHT40Plus,
@@ -276,6 +284,7 @@ func TestNewConfig(t *testing.T) {
 		{
 			ops: []Option{
 				SSID("ssid"),
+				BSSID("00:11:22:33:44:55"),
 				Mode(Mode80211a),
 				Channel(36),
 				Hidden(),
@@ -283,6 +292,7 @@ func TestNewConfig(t *testing.T) {
 			},
 			expected: &Config{
 				SSID:           "ssid",
+				BSSID:          "00:11:22:33:44:55",
 				Mode:           Mode80211a,
 				Channel:        36,
 				HTCaps:         0,
@@ -818,5 +828,16 @@ func TestPerfDesc(t *testing.T) {
 		if desc != tc.expect {
 			t.Errorf("testcase #%d failed, got %s, want %s", i, desc, tc.expect)
 		}
+	}
+}
+
+func TestDefaultBSSID(t *testing.T) {
+	// Ensure that we have a default non-empty BSSID that can pass validation.
+	conf, err := NewConfig(SSID("ssid"), Mode(Mode80211g), Channel(1))
+	if err != nil {
+		t.Errorf("NewConfig failed with err=%s", err.Error())
+	}
+	if conf.BSSID == "" {
+		t.Errorf("Expect a non-empty default BSSID")
 	}
 }
