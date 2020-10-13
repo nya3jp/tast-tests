@@ -103,6 +103,30 @@
       },
       "revId": "5f0916150a2bc8e1c73597ebcc5b57c004f9b9e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c520fd_2a00ff0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-13T03:04:34Z",
+      "side": 1,
+      "message": "For this particular situation, polling is probably not practical because I don\u0027t think there\u0027s an API to know when hardware video encoding profiles become available, unfortunately. b/168834129#comment6 has some more details about the rationale for a delay.",
+      "parentUuid": "3f1badfb_4a84c8e7",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "5f0916150a2bc8e1c73597ebcc5b57c004f9b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
