@@ -83,7 +83,7 @@ func verifyLogicalCPU(lines []string) error {
 	}
 
 	// Verify the keys are correct.
-	want := []string{"max_clock_speed_khz", "scaling_max_frequency_khz", "scaling_current_frequency_khz", "idle_time_user_hz"}
+	want := []string{"max_clock_speed_khz", "scaling_max_frequency_khz", "scaling_current_frequency_khz", "user_time_user_hz", "system_time_user_hz", "idle_time_user_hz"}
 	got := strings.Split(lines[1], ",")
 	if !reflect.DeepEqual(want, got) {
 		return errors.Errorf("incorrect logical CPU keys: got %v; want %v", got, want)
@@ -92,7 +92,7 @@ func verifyLogicalCPU(lines []string) error {
 	// Check for error values.
 	vals := strings.Split(lines[2], ",")
 	if len(vals) != len(want) {
-		return errors.Errorf("wrong number of logical CPU values: got %v, want 4", len(vals))
+		return errors.Errorf("wrong number of logical CPU values: got %v, want %v", len(vals), len(want))
 	}
 
 	for i, val := range vals {
