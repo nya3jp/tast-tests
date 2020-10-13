@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -139,7 +139,7 @@ func PIP(ctx context.Context, s *testing.State) {
 	}
 	defer maPIPBaseAct.Close()
 
-	dev, err := ui.NewDevice(ctx, a)
+	dev, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
@@ -727,7 +727,7 @@ func waitForPIPWindow(ctx context.Context, tconn *chrome.TestConn) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := getPIPWindow(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "The PIP window hasn't been created yet")
+			return errors.Wrap(err, "the PIP window hasn't been created yet")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})

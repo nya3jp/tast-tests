@@ -218,7 +218,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 
 	cvconn, err := waitForSpokenFeedbackReady(ctx, cr, a)
 	if err != nil {
-		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
+		s.Fatal(err) // NOLINT: adb/ui returns loggable errors
 	}
 	defer cvconn.Close()
 

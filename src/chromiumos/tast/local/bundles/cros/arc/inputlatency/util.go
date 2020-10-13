@@ -20,9 +20,9 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/adb"
+	"chromiumos/tast/local/android/adb"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
