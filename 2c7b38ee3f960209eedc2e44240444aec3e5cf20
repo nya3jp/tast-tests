@@ -16,6 +16,23 @@
       "message": "Add a test for the hbpl1 printer langauge so we can enable them in the PPD index again.",
       "revId": "2c7b38ee3f960209eedc2e44240444aec3e5cf20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8a06ed_9c3c93b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-13T23:07:40Z",
+      "side": 1,
+      "message": "Please wait for review from team member",
+      "revId": "2c7b38ee3f960209eedc2e44240444aec3e5cf20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
