@@ -2,8 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package addtest implements Add*Printer tests.
-package addtest
+// Package lpprint implements adding a printer, printing to it via the lp command,
+// and comparing the data sent to the printer to a golden file.
+package lpprint
 
 import (
 	"context"
@@ -24,16 +25,32 @@ import (
 // cleanPSContents filters any unwanted lines from content to ensure a stable
 // diff.
 func cleanPSContents(content string) string {
-	// Matches the embedded poppler version in the PS file. This gets
-	// outdated on every poppler uprev, so we strip it out.
-	r := regexp.MustCompile("(?m)^.*poppler.*version:.*[\r\n]")
-	content = r.ReplaceAllLiteralString(content, "")
-	// Remove time metadata
-	r = regexp.MustCompile("(?m)^@PJL SET JOBTIME = .*[\r\n]")
-	content = r.ReplaceAllLiteralString(content, "")
-	r = regexp.MustCompile("(?m)^@PJL PRINTLOG ITEM = 2,.*[\r\n]")
-	content = r.ReplaceAllLiteralString(content, "")
-	return content
+	r := regexp.MustCompile(
+		// Matches the embedded poppler version in the PS file. This gets
+		// outdated on every poppler uprev, so we strip it out.
+		"(?m)(^(.*poppler.*version:.*" +
+			// For Brother jobs, jobtime and printlog item 2 contain
+			// time-specific values.
+			"|@PJL SET JOBTIME = .*" +
+			"|@PJL PRINTLOG ITEM = 2,.*" +
+			// For HP jobs, JobAcct4,JobAcc5 & DMINFO contain
+			// time-specific values.
+			"|@PJL SET JOBATTR=\"JobAcct[45]=.*" +
+			"|@PJL DMINFO ASCIIHEX=\".*" +
+			// For Ricoh jobs, the SET DATE/TIME values are time-specific.
+			"|@PJL SET DATE=\".*" +
+			"|@PJL SET TIME=\".*)[\r\n])" +
+			// For Ricoh jobs, the /ID tag is time-specific.
+			"|(\\/ID \\[<.*>\\])" +
+			// For Ricoh jobs, "usercode (\d+)" contains the date
+			// and time of the print job.
+			"|(usrcode \\(\\d+\\))" +
+			// For Ricoh PS jobs, the time is contained here.
+			"|(/Time \\(\\d+\\))" +
+			// For Ricoh jobs, "(\d+) lppswd" contains the date
+			// and time of the print job.
+			"|(\\(\\d+\\)) lppswd")
+	return r.ReplaceAllLiteralString(content, "")
 }
 
 // Run executes the main test logic with given parameters.
@@ -97,17 +114,16 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 		s.Fatal("Fake printer didn't receive a request: ", err)
 	}
 
-	if diff := diff.Diff(cleanPSContents(string(request)), cleanPSContents(string(expect))); diff != "" {
+	if diff := diff.Diff(cleanPSContents(string(expect)), cleanPSContents(string(request))); diff != "" {
 		path := filepath.Join(s.OutDir(), diffFile)
 		if err := ioutil.WriteFile(path, []byte(diff), 0644); err != nil {
 			s.Error("Failed to dump diff: ", err)
 		}
-		s.Errorf("Read request has diff from the golden file, dumped at %s", diffFile)
-		outPath := filepath.Join(s.OutDir(), "output.file")
-		testing.ContextLog(ctx, "Diff from golden file: ", goldenFile)
-		testing.ContextLog(ctx, "Dumping output file to: ", outPath)
+		outPath := filepath.Join(s.OutDir(), goldenFile)
 		if err := ioutil.WriteFile(outPath, request, 0644); err != nil {
-			testing.ContextLog(ctx, "Failed to dump output: ", err)
+			s.Error("Failed to dump output: ", err)
 		}
+
+		s.Errorf("Printer output differs from expected: diff saved to %q (-want +got), output to %q", diffFile, goldenFile)
 	}
 }
