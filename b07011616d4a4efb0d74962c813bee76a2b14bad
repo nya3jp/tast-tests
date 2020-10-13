@@ -230,6 +230,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d209dd8_76c18848",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T10:02:59Z",
+      "side": 1,
+      "message": "routers is already short, attenuator is not, and atten is a clear abbreviation. but ok, this is a matter of taste so leave it to you.",
+      "parentUuid": "f1aea16b_789ebfc4",
+      "range": {
+        "startLine": 85,
+        "startChar": 25,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d7702ae_4cd7d083",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 1
