@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7b045f_85a71ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippprint/ippprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1167246
+      },
+      "writtenOn": "2020-10-13T21:26:31Z",
+      "side": 1,
+      "message": "I like what you\u0027re trying to do here, but I don\u0027t think it makes sense for ippprint tests to take a dependency on an \"addtest\" module (this is why pinprint ended up with their own module fwiw). I think to do what you\u0027re trying to do you should rename the addtest module to a different name that is applicable both to ippprint and the actual add tests that depend upon it.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "4d1b9ac539b4aebafd0be68abb8fd864705737f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
