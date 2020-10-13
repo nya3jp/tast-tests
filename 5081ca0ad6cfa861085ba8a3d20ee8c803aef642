@@ -16,6 +16,23 @@
       "message": "style LGTM",
       "revId": "5081ca0ad6cfa861085ba8a3d20ee8c803aef642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21cc1691_d85fdbd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2020-10-13T23:09:11Z",
+      "side": 1,
+      "message": "toolchainoptions test passed for trogdor: https://ci.chromium.org/p/chromeos/builders/test_runner/test_runner/b8866589009012005120",
+      "revId": "5081ca0ad6cfa861085ba8a3d20ee8c803aef642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
