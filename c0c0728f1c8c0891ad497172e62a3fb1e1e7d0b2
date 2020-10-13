@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b732e7_bbfe94e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-10-13T01:52:07Z",
+      "side": 1,
+      "message": "Sorry, I had overlooked the shadow review. Cancelling my vote.",
+      "revId": "c0c0728f1c8c0891ad497172e62a3fb1e1e7d0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
