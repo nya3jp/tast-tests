@@ -121,6 +121,24 @@
       "parentUuid": "41eaeb5c_e89cdf82",
       "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c09bac4_5df17955",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-13T05:50:19Z",
+      "side": 1,
+      "message": "Ah, when the cros_workon eclass is building from the 9999 ebuild it copies from the source tree using \"rsync --safe-links\" which discards the symlinks from tast-tests-private to tast-tests, causing the data files to silently disappear.\n\nBut in the CQ it\u0027s building a stable ebuild which make a copy via git checkout, which preserves the symlinks but breaks them because they\u0027re relative and now in a different place. The tast-bundle eclass then tries to dereference the symlinks and fails.\n\nThere\u0027s also the third possibility to consider, which is whatever the tast commandline tool does to build and deploy these data files.",
+      "parentUuid": "0f90e6a8_114cca4b",
+      "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
