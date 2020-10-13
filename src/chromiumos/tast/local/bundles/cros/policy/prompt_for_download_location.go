@@ -103,27 +103,50 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Start a download.
-			conn, err := cr.NewConn(ctx, server.URL+"/prompt_for_download_location.html")
+			// Open settings page where the affected toggle button can be found.
+			conn, err := cr.NewConn(ctx, "chrome://settings/downloads")
 			if err != nil {
-				s.Fatal("Failed to start download: ", err)
+				s.Fatal("Failed to connect to the settings page: ", err)
 			}
 			defer conn.Close()
 
-			err = conn.Exec(ctx, `document.getElementById('dlink').click()`)
+			paramsTB := ui.FindParams{
+				Role: ui.RoleTypeToggleButton,
+				Name: "Ask where to save each file before downloading",
+			}
+			// Find the toggle button node.
+			nodeTB, err := ui.FindWithTimeout(ctx, tconn, paramsTB, 15*time.Second)
 			if err != nil {
+				s.Fatal("Finding toggle button node failed: ", err)
+			}
+			defer nodeTB.Release(ctx)
+
+			// Check the restriction setting of the toggle button.
+			if restricted := (nodeTB.Restriction == ui.RestrictionDisabled || nodeTB.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
+				s.Errorf("Unexpected toggle button restriction in the settings: got %t; want %t", restricted, param.wantRestricted)
+			}
+
+			if nodeTB.Checked != param.wantChecked {
+				s.Errorf("Unexpected toggle button checked state in the settings: got %s; want %s", nodeTB.Checked, param.wantChecked)
+			}
+
+			// Start a download.
+			if err := conn.Navigate(ctx, server.URL+"/prompt_for_download_location.html"); err != nil {
+				s.Fatal("Failed to start download: ", err)
+			}
+
+			if err := conn.Exec(ctx, `document.getElementById('dlink').click()`); err != nil {
 				s.Fatal("Failed to execute JS expression: ", err)
 			}
 
 			// Check whether we get a prompt for the download location or if the file gets downloaded to the default folder.
+			params := ui.FindParams{
+				Role: ui.RoleTypeWindow,
+				Name: "Save file as",
+			}
 			asked := false
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
-
 				// Check if there is a prompt for the download location.
-				params := ui.FindParams{
-					Role: ui.RoleTypeWindow,
-					Name: "Save file as",
-				}
 				if exist, err := ui.Exists(ctx, tconn, params); err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
 					return testing.PollBreak(errors.Wrap(err, "finding prompt for download location failed"))
 				} else if exist {
@@ -153,33 +176,6 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 
 			if asked != param.wantAsk {
 				s.Errorf("Unexpected existence of download location prompt: got %t; want %t", asked, param.wantAsk)
-			}
-
-			// Open settings page where the affected toggle button can be found.
-			sconn, err := cr.NewConn(ctx, "chrome://settings/downloads")
-			if err != nil {
-				s.Fatal("Failed to connect to the settings page: ", err)
-			}
-			defer sconn.Close()
-
-			paramsTB := ui.FindParams{
-				Role: ui.RoleTypeToggleButton,
-				Name: "Ask where to save each file before downloading",
-			}
-			// Find the toggle button node.
-			nodeTB, err := ui.FindWithTimeout(ctx, tconn, paramsTB, 15*time.Second)
-			if err != nil {
-				s.Fatal("Finding toggle button node failed: ", err)
-			}
-			defer nodeTB.Release(ctx)
-
-			// Check the restriction setting of the toggle button.
-			if restricted := (nodeTB.Restriction == ui.RestrictionDisabled || nodeTB.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
-				s.Errorf("Unexpected toggle button restriction in the settings: got %t; want %t", restricted, param.wantRestricted)
-			}
-
-			if nodeTB.Checked != param.wantChecked {
-				s.Errorf("Unexpected toggle button checked state in the settings: got %s; want %s", nodeTB.Checked, param.wantChecked)
 			}
 		})
 	}
