@@ -34,6 +34,24 @@
       "parentUuid": "5545d276_f1fb623d",
       "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5198c0_5ad0b422",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-13T18:00:00Z",
+      "side": 1,
+      "message": "So just to clarify, are you saying that Bluetooth remains on throughout the first part of the test, the DUT reboots, and Bluetooth still appears to be on after the DUT reboots, but appears to not be powered? Bluetooth is not toggled during by this test ever (only WiFi is being toggled). IIUC, I do believe that the kernel explicitly enables bluetooth as the persistence setting for bluetooth is saved by the kernel. In either case, I\u0027m not able to reproduce the powered issue that you\u0027re observing on my hatch :(.",
+      "parentUuid": "c9ae1daf_1cd101d0",
+      "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

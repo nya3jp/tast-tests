@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b64cf4c_b03724f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-13T18:00:00Z",
+      "side": 1,
+      "message": "Verified that I\u0027m seeing the original observed \"failed to connect to\nthe router : dial tcp: missing address\" error and that this CL fixes this issue on hatch.",
+      "revId": "4d523a41249a421e0198d398a778400b08ab2295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
