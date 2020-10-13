@@ -107,7 +107,7 @@ func ScreenBrightnessPercent(ctx context.Context, s *testing.State) {
 			}
 			nodeBS, err := ui.FindWithTimeout(ctx, tconn, paramsBS, 15*time.Second)
 			if err != nil {
-				s.Fatal("Failed to find Status tray: ", err)
+				s.Fatal("Failed to find Brightness slider: ", err)
 			}
 			defer nodeBS.Release(ctx)
 
