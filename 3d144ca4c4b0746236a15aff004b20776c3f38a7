@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4222e72_476add70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-13T05:33:29Z",
+      "side": 1,
+      "message": "LGTM per Tast reviews, but please get LGTM from the test owner (Yury).\n",
+      "revId": "3d144ca4c4b0746236a15aff004b20776c3f38a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
