@@ -124,7 +124,7 @@ func ClickTab(ctx context.Context, tconn *chrome.TestConn, tabParams tabFindPara
 	}
 	defer tabNode.Release(ctx)
 
-	return tabNode.LeftClick(ctx)
+	return tabNode.StableLeftClick(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second})
 }
 
 // HelpRootNode returns the root ui node of Help app.
