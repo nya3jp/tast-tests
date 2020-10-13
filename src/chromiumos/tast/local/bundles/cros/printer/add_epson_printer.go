@@ -7,7 +7,7 @@ package printer
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/printer/addtest"
+	"chromiumos/tast/local/bundles/cros/printer/lpprint"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -53,9 +53,9 @@ func AddEpsonPrinter(ctx context.Context, s *testing.State) {
 	)
 
 	// Tests printing with the old Ink PPDs.
-	addtest.Run(ctx, s, epsonPPDFile, epsonToPrintFile, epsonGoldenFile, diffFile)
+	lpprint.Run(ctx, s, epsonPPDFile, epsonToPrintFile, epsonGoldenFile, diffFile)
 
 	// Tests printing with the modified ColorModel PPD in color and monochrome.
-	addtest.RunWithOptions(ctx, s, epsonModPPD, epsonToPrintFile, epsonColorGoldenFile, colorDiffFile, "print-color-mode=color")
-	addtest.RunWithOptions(ctx, s, epsonModPPD, epsonToPrintFile, epsonMonochromeGoldenFile, monochromeDiffFile, "print-color-mode=monochrome")
+	lpprint.RunWithOptions(ctx, s, epsonModPPD, epsonToPrintFile, epsonColorGoldenFile, colorDiffFile, "print-color-mode=color")
+	lpprint.RunWithOptions(ctx, s, epsonModPPD, epsonToPrintFile, epsonMonochromeGoldenFile, monochromeDiffFile, "print-color-mode=monochrome")
 }
