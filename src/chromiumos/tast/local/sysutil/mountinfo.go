@@ -33,20 +33,23 @@ const (
 	MntNodiratime
 	// MntRelatime represents "relatime".
 	MntRelatime
+	// MntNosymfollow represents "nosymfollow".
+	MntNosymfollow
 )
 
 // Map from string representation in /proc/${PID}/mountinfo to a bit flag.
 var optMap = map[string]MountOpt{
 	// "rw" is valid mount option, but no bit flag will be set.
 	// If the flag does not contain MntReadonly, it is writable.
-	"rw":         0,
-	"ro":         MntReadonly,
-	"nosuid":     MntNosuid,
-	"nodev":      MntNodev,
-	"noexec":     MntNoexec,
-	"noatime":    MntNoatime,
-	"nodiratime": MntNodiratime,
-	"relatime":   MntRelatime,
+	"rw":          0,
+	"ro":          MntReadonly,
+	"nosuid":      MntNosuid,
+	"nodev":       MntNodev,
+	"noexec":      MntNoexec,
+	"noatime":     MntNoatime,
+	"nodiratime":  MntNodiratime,
+	"relatime":    MntRelatime,
+	"nosymfollow": MntNosymfollow,
 }
 
 // MountInfo is a struct containing mount point info.
