@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f185368d_ae06c046",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-10-13T21:35:23Z",
+      "side": 1,
+      "message": "Thanks for the review Mukai-san!",
+      "revId": "d3cc38aff49b95a27fc58ac7446a1e96bf4ab929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

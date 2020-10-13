@@ -56,6 +56,30 @@
       },
       "revId": "cbad2b15fdcdb5d51ad07a3625519b77b71d7368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b44eaf7_e48d6ed7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-10-13T21:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d7dbc58_42884c5a",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "cbad2b15fdcdb5d51ad07a3625519b77b71d7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
