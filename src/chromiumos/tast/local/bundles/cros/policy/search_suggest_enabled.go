@@ -109,7 +109,9 @@ func SearchSuggestEnabled(ctx context.Context, s *testing.State) {
 			hasSuggestions := false
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				nodes, err := ui.FindAll(ctx, tconn, paramsS)
-				if err != nil {
+				if errors.Is(err, context.DeadlineExceeded) {
+					return err
+				} else if err != nil {
 					return testing.PollBreak(err)
 				}
 				defer nodes.Release(ctx)
@@ -118,15 +120,11 @@ func SearchSuggestEnabled(ctx context.Context, s *testing.State) {
 				for _, node := range nodes {
 					if strings.Contains(node.Name, "search suggestion") {
 						hasSuggestions = true
-						break
+						return nil
 					}
 				}
 
-				if !hasSuggestions {
-					return errNoSearchSuggestions
-				}
-
-				return nil
+				return errNoSearchSuggestions
 			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil && !errors.Is(err, errNoSearchSuggestions) {
 				s.Fatal("Failed to retrieve the suggestions: ", err)
 			}
