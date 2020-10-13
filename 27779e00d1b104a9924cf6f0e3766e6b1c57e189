@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4eab3cf_d10e81ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-13T14:24:23Z",
+      "side": 1,
+      "message": "Thanks. It looks to me like we\u0027re not really directly checking for the scan to back off, we\u0027re just making sure that traffic doesn\u0027t experience too much interruption, and maybe that implies that a scan backed off. Is my understanding correct?",
+      "parentUuid": "7a7b4dc4_acc62797",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 106
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52cc5c6c_e36ad96d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "In Autotest, it turns off power save in most tests when initializing. [1] We don\u0027t do this in Tast as CrOS don\u0027t have PS default off now. This test in particular needs PS off for the reason here so I turn it off explicitly.\n\n[1] http://cs/chromeos_public/src/third_party/autotest/files/server/cros/network/wifi_client.py?l\u003d374\u0026rcl\u003def7539924b4e5da46f3da9eafe9286d140972b5b",
       "parentUuid": "52cc5c6c_e36ad96d",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d951e0_5b85d746",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-13T14:24:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cefac5f9_21384397",
       "range": {
         "startLine": 50,
         "startChar": 4,
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "My understanding: the test compares the same metric (max latency) with/without OBSS so the meaning of the difference is simpler: time added due to OBSS.",
       "parentUuid": "b5ed50ec_baf0d260",
+      "range": {
+        "startLine": 192,
+        "startChar": 43,
+        "endLine": 192,
+        "endChar": 53
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b62dff8_1d73c209",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-13T14:24:23Z",
+      "side": 1,
+      "message": "Sure, SGTM.",
+      "parentUuid": "152973f9_043abbc1",
       "range": {
         "startLine": 192,
         "startChar": 43,
