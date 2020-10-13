@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75f03be8_c65734b3",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T05:18:26Z",
+      "side": 1,
+      "message": "Hmm..., so for multiRouter precondition, it is possible that the TestFixture only has one default router?",
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da5b9cee_f7e7887a",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 1
@@ -37,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ede3352_832e7e9b",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T05:18:26Z",
+      "side": 1,
+      "message": "Is there any reason for this? Did I miss any side effect?",
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ddc6b97_15b50293",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 1
@@ -48,6 +82,46 @@
       "writtenOn": "2020-10-12T13:01:57Z",
       "side": 1,
       "message": "copy-paste error",
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8749c9da_39632bef",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T05:18:26Z",
+      "side": 1,
+      "message": "I think it will be better to check \"tf.attenuator !\u003d nil\" here. tf.Close is also used as cleanup when there\u0027s error in New. It is possible that attenuatorTarget is non-empty but attenuator is not yet created. Then the tf.attenuator.Close() call will likely panic.",
+      "range": {
+        "startLine": 323,
+        "startChar": 4,
+        "endLine": 323,
+        "endChar": 29
+      },
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c1eb97_8a35d9da",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T05:18:26Z",
+      "side": 1,
+      "message": "Not sure if it is good to just return nil if there\u0027s no attenuator. I slightly prefer having these optional things like: (*attenuator.Attenuator, bool), but then it is harder for the caller to use.",
       "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
