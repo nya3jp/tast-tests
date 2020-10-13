@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b001beb_6fc69295",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-13T07:44:48Z",
+      "side": 1,
+      "message": "nit: I think 1024 * 1024 is more readable.",
+      "range": {
+        "startLine": 31,
+        "startChar": 39,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "d30dc7e0b7f539773b78c4540605c3f424d28611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced32259_5e945d37",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-13T07:44:48Z",
+      "side": 1,
+      "message": "This name isn\u0027t very clear. Is it supposed to be the number of longs in a page? In that case, then this would be better:\n\nprivate static final int LONGS_PER_PAGE \u003d 4096 / Long.BYTES;",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "d30dc7e0b7f539773b78c4540605c3f424d28611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d330eaf_a95cbfc4",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-13T07:44:48Z",
+      "side": 1,
+      "message": "I don\u0027t see any usage code that benefits from these being boxed types, so just use primitive types instead.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "d30dc7e0b7f539773b78c4540605c3f424d28611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58115ad3_2c9834c4",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-13T07:44:48Z",
+      "side": 1,
+      "message": "The usage of this Runnable doesn\u0027t really match how Runnables are normally used. I think the code would be a lot more readable if the allocation was done in a regular while() loop on a separate thread. The only thing that really needs to access the main thread is calling mTextView.setText(), which can just be done with Activity.runOnUiThread.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "d30dc7e0b7f539773b78c4540605c3f424d28611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95a9995_dd47e7c6",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-13T07:44:48Z",
+      "side": 1,
+      "message": "Can you add a comment explaining why this is split up into random/zero sections?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 7
+      },
+      "revId": "d30dc7e0b7f539773b78c4540605c3f424d28611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a4baf3c_9c9418d2",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-13T07:44:48Z",
+      "side": 1,
+      "message": "How would this happen?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 5
+      },
+      "revId": "d30dc7e0b7f539773b78c4540605c3f424d28611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e65bc520_b0dcc63b",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-13T07:44:48Z",
+      "side": 1,
+      "message": "Just inline this method.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 3
+      },
+      "revId": "d30dc7e0b7f539773b78c4540605c3f424d28611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
