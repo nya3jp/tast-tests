@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7585a21_bf39050c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-13T19:58:30Z",
+      "side": 1,
+      "message": "It can find the button we want before the progress bar finish animation, so I think we need to figure out when the progress bar will finish. Failures we observed such as jumping back to the former page might be cause by clicking the button too quick during progress bar running.\n\nI did find that there is a progressIndicator node, which might be able to use. I\u0027m testing it now.",
+      "parentUuid": "9b33ca5b_478517fd",
+      "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b98f9d8b_8811a5ab",
