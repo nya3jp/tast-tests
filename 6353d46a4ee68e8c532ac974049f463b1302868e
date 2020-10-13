@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e7368d_149a1aff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-13T15:19:32Z",
+      "side": 1,
+      "message": "I looked up the source, Stadia seems to be using Wiz framework[1], calling wiz_progress() and wiz_tick to load controller and renderer[2]. I suspect that the progress bar indicating the loading of controller and renderer, which we should wait for it to be done. document.readyState can\u0027t be an indicator here, thus webutil.WaitForQuiescence also shouldn\u0027t work accurately.\n\nFor now, I can\u0027t think of any other way to wait for wiz loading instead of using Sleep()...\n\n[1] https://g3doc.corp.google.com/java/com/google/chrome/cloudcast/partnerportal/g3doc/development.md?cl\u003dhead#wiz-client-side-and-server-side-rendering\n[2] https://screenshot.googleplex.com/7kL8FvH7pNCMXog.png",
+      "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b98f9d8b_8811a5ab",
