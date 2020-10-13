@@ -16,6 +16,24 @@
       "message": "The test still fails with \"Bluetooth is off, expected to be on\" on my DUT. I\u0027ll try again after updating my DUT. The change is still good as TestFixture can properly initialize default router.",
       "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ae1daf_1cd101d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T10:45:39Z",
+      "side": 1,
+      "message": "The test still fails on my grunt with latest-canary. I checked UI after the test, BT is toggled, so I guess the problem might be that Bluetooth device does not instantly get \"Powered\" after reboot. A polling might fix the problem but it is out of the scope of thie CL. I\u0027ll change the $TEST of this CL for now.",
+      "parentUuid": "5545d276_f1fb623d",
+      "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
