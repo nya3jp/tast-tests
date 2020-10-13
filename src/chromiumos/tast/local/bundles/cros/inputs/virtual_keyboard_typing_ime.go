@@ -26,6 +26,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     VirtualKeyboardTypingIME,
 		Desc:     "Enables manual test using IME decoder, the virtual keyboard works in Chrome; this test only for manual test on G3 VM",
+		Attr:     []string{"group:essential-inputs", "group:rapid-ime-decoder"},
 		Contacts: []string{"essential-inputs-team@google.com"},
 		// this test is not to be promoted as it is only intended for dev use
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
