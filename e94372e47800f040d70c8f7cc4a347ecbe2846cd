@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "300ede97_4e89f2b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "Yeah, and there is no plumbing infra in Tast so that would be a lot of work.",
+      "parentUuid": "32919ebd_21e332d6",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4e333eb_52b66e62",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-12T05:36:44Z",
       "side": 1,
       "message": "nit: WPA?",
+      "range": {
+        "startLine": 477,
+        "startChar": 28,
+        "endLine": 477,
+        "endChar": 31
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "050b26f2_18958936",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4e333eb_52b66e62",
       "range": {
         "startLine": 477,
         "startChar": 28,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7af157d_bb3c9d94",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "That would be more complicated, as I would have to return both new context and the cancel function of shortening (to defer it from the caller).\nCurrently the caller code is:\n       wpaMonitor, stop, stopTimeout, err :\u003d tf.StartWpaMonitor(ctx)\n       if err !\u003d nil {\n               s.Fatal(\"Faled to start wpa monitor: \", err)\n       }\n       defer stop()\n       ctx, cancel \u003d ctxutil.Shorten(ctx, stopTimeout)\n       defer cancel()",
+      "parentUuid": "6cef507f_18191fe4",
+      "range": {
+        "startLine": 489,
+        "startChar": 4,
+        "endLine": 489,
+        "endChar": 25
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e43aafa_c0ca8b08",
         "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
         "patchSetId": 1
@@ -77,6 +143,24 @@
       "writtenOn": "2020-10-12T05:36:44Z",
       "side": 1,
       "message": "This will be in package scope, so I\u0027m hesitant to have this here. Or, it should have a more specific name.",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf8c2b2_aa42bf96",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "Renamed",
+      "parentUuid": "6e43aafa_c0ca8b08",
       "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +211,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d25c435_bee36fe2",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure it deserved a dedicated package :) so I have changed the name.",
+      "parentUuid": "8b204ffc_c075b946",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f461cd_f1a237e5",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5250cf5f_8c4e38b0",
+      "range": {
+        "startLine": 22,
+        "startChar": 62,
+        "endLine": 22,
+        "endChar": 63
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48de8f89_2140a321",
@@ -140,6 +272,24 @@
       "writtenOn": "2020-10-12T05:36:44Z",
       "side": 1,
       "message": "I personally slightly prefer having error return here so the caller can identify the problem (and perhaps dumps the whole line for better debugging). And utilities can be like:\n\n  func atoi(s string, firstErr *error) {\n    val, err :\u003d strconv.Atoi(str)\n    if err !\u003d nil \u0026\u0026 *firstErr \u003d\u003d nil {\n      *firstErr \u003d err\n    }\n    return val\n  }\n\nThen caller can remain simple:\n\n  var firstErr error\n  event :\u003d \u0026Event{\n    Field: atoi(matches[1], \u0026firstErr),\n    ...\n  }\n  if firstErr !\u003d nil {\n    return nil, firstErr\n  }\n  return event, nil\n\nWDYT?",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff0c24b_7877f284",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure it\u0027s needed. These events are only used for log/stats purposes, so parsing errors here don\u0027t have to be fatal. When something breaks, e.g. after a change in wpa_supplicant, some of the stats will be missing, but some may still be useful to have.",
+      "parentUuid": "48de8f89_2140a321",
       "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6330fa9b_1fb8f138",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "yes we should :)",
+      "parentUuid": "2b2377dc_301225bb",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "847f1a90_0c49437a",
@@ -174,6 +342,30 @@
       "writtenOn": "2020-10-12T05:36:44Z",
       "side": 1,
       "message": "maybe the following is simpler?\n\n  event :\u003d \u0026RoamEvent{\n    CurBSSID: matches[1],\n    ...\n    Skip: false,\n  }",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eecddf41_b80ed15b",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "right, thanks",
+      "parentUuid": "847f1a90_0c49437a",
       "range": {
         "startLine": 66,
         "startChar": 0,
@@ -207,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8ea6b2_dd6c0b25",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "Will this work? I need to catch done in the Stop function, if I close, this won\u0027t be signaled, right? And I can\u0027t find a way to signal on struct{}.\nAnyway - this done channel is not needed at all, we can use Wait in Stop intead.",
+      "parentUuid": "1dd10164_8656b5b3",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 16
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b00f633_6a5633eb",
@@ -220,6 +436,30 @@
       "writtenOn": "2020-10-09T21:49:19Z",
       "side": 1,
       "message": "nit: combine.",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 14
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99cc6170_cd56bb47",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b00f633_6a5633eb",
       "range": {
         "startLine": 157,
         "startChar": 1,
@@ -247,6 +487,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6148142d_82ca7c00",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2a44695_1f806da3",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e607d68_963d7d6e",
@@ -260,6 +518,24 @@
       "writtenOn": "2020-10-12T05:36:44Z",
       "side": 1,
       "message": "I think we have to call w.cmd.Wait here.",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4775008b_2bebef25",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "Right, I missed that function.",
+      "parentUuid": "5e607d68_963d7d6e",
       "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -281,6 +557,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84c4356e_bdd93500",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "In a test you may need to discard any events so far and start collecting only new. I actually use it in one of the upcoming tests.\nI have clarified the comment a bit.",
+      "parentUuid": "8cb11a5b_c463785b",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed1b599e_b2aaea2a",
@@ -294,6 +588,30 @@
       "writtenOn": "2020-10-12T05:36:44Z",
       "side": 1,
       "message": "The behavior sounds a little weird to me. Personally, I would expect (nil, ctx.Err()) in this case. May I know the usage that needs this behavior?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 59
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d5ae290_4f02a416",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "A timeout here is not an error. You wait for an event for specific time (context deadline) and if nothing comes in then you move forward. This is actual case in the upcoming RoamNatural test - check if any roams happened during specific time after changing attenuation, and log them, or move forward if nothing happened.",
+      "parentUuid": "ed1b599e_b2aaea2a",
       "range": {
         "startLine": 186,
         "startChar": 0,
@@ -327,6 +645,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d562fe_708f96e9",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbab83a8_1839897c",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 21
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1b3ce9f_29617422",
@@ -340,6 +682,24 @@
       "writtenOn": "2020-10-12T05:36:44Z",
       "side": 1,
       "message": "Is this reachable? If not, I guess `go vet` will complain about this.",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "852f13b4_49fdbc34",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T07:52:46Z",
+      "side": 1,
+      "message": "It does not complain, but you\u0027re right, not needed.",
+      "parentUuid": "e1b3ce9f_29617422",
       "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
