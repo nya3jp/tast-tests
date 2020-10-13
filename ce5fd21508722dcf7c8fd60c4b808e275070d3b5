@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f46d92d_fd15375c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-13T03:28:23Z",
+      "side": 1,
+      "message": "reply to comments.",
+      "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5698394_b4ef4dc2",
@@ -120,6 +137,24 @@
       "side": 1,
       "message": "this not unlike building your own dictionary. I think we can fix this at the source later, once we have more such example. the regex \"mitm\" is wrong and needs to be fixed.\n\nCan you approve so I can move to other terms?\nthank you.",
       "parentUuid": "a5875e6d_8ef1f091",
+      "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e60f637_27124de2",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-13T03:28:23Z",
+      "side": 1,
+      "message": "After some thoughts, once we are done with this brute force approach, I will try to introduce using a #pragma to add it to the code and turn off specific terms in the code itself. We should also have a way to ignore files all together.\n\nsuggestion:\n #pragma \u003cterm\u003e in code to turn off term for files that we can do it for.\n #ignore_file \u003cfile\u003e in unblocked_terms.txt to turn off check of file. (or as\n   you indicated use the same rules for ignoring files as the ones for lint)",
+      "parentUuid": "1efff677_d261913d",
       "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
