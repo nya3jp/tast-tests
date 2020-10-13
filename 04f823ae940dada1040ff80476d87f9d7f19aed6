@@ -16,6 +16,92 @@
       "message": "Thanks for catching all those mistakes. I have done fixing the comments. Submitting to CQ now.\n\nSeewai\n",
       "revId": "04f823ae940dada1040ff80476d87f9d7f19aed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87931925_b9663a2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-13T21:03:21Z",
+      "side": 1,
+      "message": "LGTM, please switch to using a precondition if possible before submitting.",
+      "revId": "04f823ae940dada1040ff80476d87f9d7f19aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e1ff8a7_96c61269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-13T21:03:21Z",
+      "side": 1,
+      "message": "nit: is there a proper team alias to add here.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "04f823ae940dada1040ff80476d87f9d7f19aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062a8498_5e00b79b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-13T21:03:21Z",
+      "side": 1,
+      "message": "can this use the chrome.LoggedIn precondition instead?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "04f823ae940dada1040ff80476d87f9d7f19aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7254d4e2_484f3429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-13T21:03:21Z",
+      "side": 1,
+      "message": "nit: switches",
+      "range": {
+        "startLine": 72,
+        "startChar": 15,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "04f823ae940dada1040ff80476d87f9d7f19aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
