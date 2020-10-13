@@ -82,8 +82,8 @@ func SyncTime(ctx context.Context, s *testing.State) {
 	pastTime := time.Now().Add(-15 * time.Minute)
 	// Set the time with maitred_client.
 	cmd := testexec.CommandContext(ctx, "maitred_client", fmt.Sprintf("--cid=%d", cont.VM.ContextID), "--port=8888", fmt.Sprintf("--set_time_sec=%d", pastTime.Unix()))
-	if err := cmd.Run(); err != nil {
-		s.Error("Failed to set past time: ", err)
+	if out, err := cmd.CombinedOutput(); err != nil {
+		s.Errorf("Failed to set past time: %v: %s", err, out)
 		cmd.DumpLog(ctx)
 		return
 	}
