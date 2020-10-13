@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
@@ -87,7 +87,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

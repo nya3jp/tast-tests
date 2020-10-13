@@ -10,8 +10,8 @@ import (
 	"math"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -207,7 +207,7 @@ func waitForGamepadAxis(ctx context.Context, d *ui.Device, axis string, expected
 
 func Gamepad(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

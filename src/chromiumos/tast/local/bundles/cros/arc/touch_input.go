@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arc/motioninput"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -44,7 +43,7 @@ func TouchInput(ctx context.Context, s *testing.State) {
 	}
 	defer tconn.Close()
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

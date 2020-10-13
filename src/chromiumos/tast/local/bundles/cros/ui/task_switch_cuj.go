@@ -12,8 +12,8 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc/playstore"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -88,7 +88,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed to setup ARC and Play Store: ", err)
 	}

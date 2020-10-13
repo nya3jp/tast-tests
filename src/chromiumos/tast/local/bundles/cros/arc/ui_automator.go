@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -52,7 +52,7 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 	)
 
 	a := s.PreValue().(arc.PreData).ARC
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
@@ -70,7 +70,7 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 
 	must := func(err error) {
 		if err != nil {
-			s.Fatal(err) // NOLINT: arc/ui returns loggable errors
+			s.Fatal(err) // NOLINT: adb/ui returns loggable errors
 		}
 	}
 

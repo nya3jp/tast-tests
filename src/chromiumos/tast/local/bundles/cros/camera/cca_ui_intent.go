@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
@@ -110,7 +110,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	uiDevice, err := ui.NewDevice(ctx, a)
+	uiDevice, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
