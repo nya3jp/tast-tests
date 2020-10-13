@@ -11,12 +11,13 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/adb"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -24,9 +25,6 @@ import (
 const (
 	// StartTimeout is the timeout of NewDevice.
 	StartTimeout = 120 * time.Second
-
-	// Hard-coded IP addresses of Android and fixed port of the UI automator server.
-	host = "100.115.92.2:9008"
 
 	serverPackage  = "com.github.uiautomator.test"
 	serverActivity = "androidx.test.runner.AndroidJUnitRunner"
@@ -44,7 +42,7 @@ var apkPaths = []string{
 // This object corresponds to UiDevice in UI Automator API:
 // https://developer.android.com/reference/android/support/test/uiautomator/UiDevice
 type Device struct {
-	a     *arc.ARC
+	host  string
 	sp    *testexec.Cmd // Server process
 	debug bool
 }
@@ -82,24 +80,26 @@ type DeviceInfo struct {
 }
 
 // NewDevice creates a Device object by starting and connecting to UI Automator server.
-//
 // Close must be called to clean up resources when a test is over.
-func NewDevice(ctx context.Context, a *arc.ARC) (*Device, error) {
+func NewDevice(ctx context.Context, d *adb.Device, ipAddr string) (*Device, error) {
 	ictx, cancel := context.WithTimeout(ctx, StartTimeout)
 	defer cancel()
 
 	testing.ContextLog(ctx, "Starting UI Automator server")
 
-	if err := installServer(ictx, a); err != nil {
+	if err := installServer(ictx, d); err != nil {
 		return nil, err
 	}
 
-	sp := a.Command(ctx, "am", "instrument", "-w", serverPackage+"/"+serverActivity)
+	sp := d.ShellCommand(ctx, "am", "instrument", "-w", serverPackage+"/"+serverActivity)
 	if err := sp.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed starting UI Automator server")
 	}
 
-	s := &Device{a, sp, false}
+	// Fixed port of the UI automator server.
+	const port = 9008
+	host := fmt.Sprintf("%s:%d", ipAddr, port)
+	s := &Device{host, sp, false}
 
 	if err := s.waitServer(ictx); err != nil {
 		s.Close()
@@ -110,9 +110,9 @@ func NewDevice(ctx context.Context, a *arc.ARC) (*Device, error) {
 }
 
 // installServer installs UI Automator server to Android system.
-func installServer(ctx context.Context, a *arc.ARC) error {
+func installServer(ctx context.Context, d *adb.Device) error {
 	for _, p := range apkPaths {
-		if err := a.Install(ctx, p); err != nil {
+		if err := d.Install(ctx, p); err != nil {
 			return errors.Wrapf(err, "failed installing %s", p)
 		}
 	}
@@ -155,7 +155,7 @@ func (d *Device) Close() error {
 // params is a list of parameters to the remote method.
 func (d *Device) call(ctx context.Context, method string, out interface{}, params ...interface{}) error {
 	// Prepare the request.
-	req, err := http.NewRequest("POST", "http://"+host+"/jsonrpc/0", nil)
+	req, err := http.NewRequest("POST", "http://"+d.host+"/jsonrpc/0", nil)
 	if err != nil {
 		return errors.Wrapf(err, "%s: failed initializing request", method)
 	}

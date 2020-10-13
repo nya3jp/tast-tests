@@ -9,8 +9,8 @@ import (
 	"net/http/httptest"
 	"time"
 
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	arcmedia "chromiumos/tast/local/bundles/cros/arc/mediasession"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/mediasession"

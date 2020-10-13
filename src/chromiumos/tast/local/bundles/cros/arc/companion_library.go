@@ -19,8 +19,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -112,7 +112,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed to get device: ", err)
 	}
@@ -659,7 +659,7 @@ func testCaptionButton(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn 
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return errors.New("Error while changing hidden caption button")
+			return errors.New("error while changing hidden caption button")
 		}
 
 		if err := testing.Poll(ctx, func(ctx context.Context) error {

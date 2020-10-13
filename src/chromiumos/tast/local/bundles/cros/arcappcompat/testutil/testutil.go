@@ -14,10 +14,10 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/power"
@@ -147,7 +147,7 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

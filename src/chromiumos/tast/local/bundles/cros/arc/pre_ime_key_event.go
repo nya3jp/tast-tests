@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -173,7 +173,7 @@ func PreIMEKeyEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

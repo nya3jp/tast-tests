@@ -21,8 +21,8 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/adb"
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )

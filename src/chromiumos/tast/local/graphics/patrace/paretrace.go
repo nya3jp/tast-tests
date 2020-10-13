@@ -18,8 +18,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/adb"
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
@@ -100,7 +100,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	}
 	defer act.Close()
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
