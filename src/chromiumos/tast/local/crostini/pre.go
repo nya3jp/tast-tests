@@ -336,7 +336,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	defer func() {
 		if shouldClose {
 			p.writeLXCLogs(ctx)
-			TrySaveVMLogs(ctx, p.cont.VM)
+			if p.cont != nil {
+				TrySaveVMLogs(ctx, p.cont.VM)
+			}
 			p.cleanUp(ctx, s)
 		}
 	}()
