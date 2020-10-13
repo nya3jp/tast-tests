@@ -11,9 +11,9 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	adbui "chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
-	arcui "chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	chromeui "chromiumos/tast/local/chrome/ui"
@@ -86,7 +86,7 @@ func PlayStoreOmnibox(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	d, err := arcui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
@@ -147,21 +147,21 @@ func PlayStoreOmnibox(ctx context.Context, s *testing.State) {
 }
 
 // checkPlayStoreLaunched validates the Install button, app title and publisher are present.
-func checkPlayStoreLaunched(ctx context.Context, d *arcui.Device, title, publisher string) error {
+func checkPlayStoreLaunched(ctx context.Context, d *adbui.Device, title, publisher string) error {
 	// Check that the install button exists
-	installButton := d.Object(arcui.ClassName("android.widget.Button"), arcui.TextMatches("(?i)install"), arcui.Enabled(true))
+	installButton := d.Object(adbui.ClassName("android.widget.Button"), adbui.TextMatches("(?i)install"), adbui.Enabled(true))
 	if err := installButton.WaitForExists(ctx, uiTimeout); err != nil {
 		return errors.Wrap(err, "failed finding install button")
 	}
 
 	// Check that the title exists
-	appTitle := d.Object(arcui.ClassName("android.widget.TextView"), arcui.TextMatches("(?i)"+title), arcui.Enabled(true))
+	appTitle := d.Object(adbui.ClassName("android.widget.TextView"), adbui.TextMatches("(?i)"+title), adbui.Enabled(true))
 	if err := appTitle.WaitForExists(ctx, uiTimeout); err != nil {
 		return errors.Wrapf(err, "failed finding %s text", title)
 	}
 
 	// Check that the publisher exists
-	appPublisher := d.Object(arcui.ClassName("android.widget.TextView"), arcui.TextMatches("(?i)"+publisher), arcui.Enabled(true))
+	appPublisher := d.Object(adbui.ClassName("android.widget.TextView"), adbui.TextMatches("(?i)"+publisher), adbui.Enabled(true))
 	if err := appPublisher.WaitForExists(ctx, uiTimeout); err != nil {
 		return errors.Wrapf(err, "failed finding %s text", publisher)
 	}
