@@ -63,6 +63,30 @@
       },
       "revId": "1060bc11f35c409d0b7b09894e5c8385aeb4e23d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009b6c0d_796165c8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-10-13T07:46:22Z",
+      "side": 1,
+      "message": "you could specify different vmodules with --vmodule\u003dauto_enrollment_check_screen\u003d1,enrollment_screen\u003d1,login_display_host_common\u003d1,wizard_controller\u003d1\n\ncould we just try to add it for some tests from https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2020-09-30\u0026last_date\u003d2020-10-13\u0026status\u003dWARN\u0026status\u003dFAIL\u0026status\u003dERROR\u0026reason\u003dFailed+to+start+Chrome%3A+not+mounted+for\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse ?",
+      "parentUuid": "2c7e79a2_5547147a",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 44
+      },
+      "revId": "1060bc11f35c409d0b7b09894e5c8385aeb4e23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
