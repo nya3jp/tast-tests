@@ -1,0 +1,439 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f93905d_8bd10893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "Thank you for all the spelunking you must have done to prepare this CL! It looks great, % a handful of nits.",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "123afa75_f5c905f5",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "While not strictly necessary for unexported const\u0027s, please add a comment describing what this is.",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd328bf_732581c3",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "Because the GBBFlag values are all the integers 0–13, this block ultimately sets sortedGBBFlags\u003d[]pb.GBBFlag{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}.\n\nWe could reduce the amount of code we need to maintain by removing sortedGBBFlags, and refactoring L113-117 to use the integers 0–13 directly:\n\n    for i :\u003d 0; i \u003c len(pb.GBBFlag_name); i++ {\n        if mask\u0026(0x0001 \u003c\u003c i) !\u003d 0 {\n            res.append(res, pb.GBBFlag(pos)\n        }\n    }",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b46e46_e26999c0",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "Since you\u0027re not capturing stdout, please use Run instead of Output.\n\n    err \u003d testexec.CommandContext(ctx, ...).Run(testexec.DumpLogOnError)",
+      "range": {
+        "startLine": 61,
+        "startChar": 87,
+        "endLine": 61,
+        "endChar": 93
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d41b413_60566fba",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "Consolidate L61-62:\n\n    if _, err \u003d testexec.CommandContext(ctx, ...).Output(...); err !\u003d nil {",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b73e5e0_5fee20d6",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "\u003e \"clared\" is a possible misspelling of \"cleared\".\n\nPlease fix.",
+      "parentUuid": "742479d7_2f23b346",
+      "range": {
+        "startLine": 81,
+        "startChar": 35,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02b4db43_83e14c09",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "Please combine L84-85:\n\n    if err :\u003d i.readSectionData(...); err !\u003d nil {",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec3a0d6_50f5d49f",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "Could you add a comment describing how a typical fmap line might look?",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2186f70f_bd291447",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "While not strictly necessary for non-exported functions, please add a Godoc-style comment.",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b6832d_398afddb",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "nit/typo: sorted",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 15
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a0e380_e445122a",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "Did you run gofmt on this file? I\u0027m surprised that it didn\u0027t turn this into `mask \u0026 (0x0001 \u003c\u003c pos)`. But if it\u0027s good enough for gofmt, it\u0027s good enough for me.",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 23
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f55d7e2d_9f2bbac1",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "While not strictly necessary for non-exported functions, please add a Godoc-style comment.",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27dc7795_d4c31062",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "While not strictly necessary for non-exported functions, please add a Godoc-style comment.",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f8a228b_b7e4a2f8",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "%d is clearer",
+      "range": {
+        "startLine": 137,
+        "startChar": 47,
+        "endLine": 137,
+        "endChar": 49
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69737d31_07345762",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "%d is clearer",
+      "range": {
+        "startLine": 137,
+        "startChar": 53,
+        "endLine": 137,
+        "endChar": 55
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea36f242_68e93867",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "Remove this line",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58748d7f_2d92bbe4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "No need to rename this",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "188961d1_5eb419f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "nit/typo: Verifies",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fce3cea_2b1fd5f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "From https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration, \"At least one personal email address of an active committer should be specified so that we can file bugs or ask for code reviews.\"\n\n(I think I\u0027m guilty of forgetting this in some other tests... I should fix that.)",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4691060d_6ee215e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "I recommend renaming this test to GBBFlags, since we will presumably add other BiosService RPCs later that this test will not exercise.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18c3241d_56b0a71d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "nit: remove this newline",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f621aaf_aff5e9f8",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T02:46:59Z",
+      "side": 1,
+      "message": "Please vertically align the rest of the enum with this.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
