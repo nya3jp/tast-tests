@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff55a72_3d02fad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2020-10-13T05:42:12Z",
+      "side": 1,
+      "message": "I\u0027m deferring to mwarton here. You have my rubber stamp.",
+      "revId": "a7924fadc862553b54b8d8c823f71f6855eeb7b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b14fb7_f8d7eaf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_cd.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2020-10-13T05:42:12Z",
+      "side": 1,
+      "message": "I feel like these slices could be named constants to avoid such long repetitions. But that\u0027s something for the code generator I guess.",
+      "range": {
+        "startLine": 33,
+        "startChar": 54,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "a7924fadc862553b54b8d8c823f71f6855eeb7b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
