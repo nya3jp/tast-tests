@@ -166,6 +166,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a83ee467_fad79652",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T10:17:15Z",
+      "side": 1,
+      "message": "Yeah, I guess this is OK for now, but it can become a problem when we are using it in real tests. e.g. the test will have to check if RouterByID(1) is non-nil before using it.",
+      "parentUuid": "0a19a837_154a2445",
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da5b9cee_f7e7887a",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 1
@@ -381,6 +399,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd4dbfa_55805550",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T10:17:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f5e518a_2cc7c66a",
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ddc6b97_15b50293",
@@ -494,6 +530,24 @@
       "side": 1,
       "message": "I\u0027m sticking to convention here.\n\nGenerally, it\u0027s not good practice to decapsulate object members at all, but if it works this way throughout the whole wificell, then all I can do is be consistent ;)",
       "parentUuid": "c44cb038_77289e79",
+      "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cac4ff_8e1ccae1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T10:17:15Z",
+      "side": 1,
+      "message": "I think it\u0027s a different case for Router, Pcap, and WifiClient as the those should always exist. Attenuator and RouterByID are optional resources. Anyway, I guess we can re-visit the decision when using them in real tests.",
+      "parentUuid": "a565afab_c05c2e67",
       "revId": "b07011616d4a4efb0d74962c813bee76a2b14bad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
