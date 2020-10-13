@@ -1,0 +1,261 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11057c4_0bdf331c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "Could you check err?",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89aea4fc_c80b99f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "if either is fail, the other should terminate?\n\nDitto for below.",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d00bbd1_81c5a258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "Could you define these at latest timing? (at L193 in this case).",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec590be1_45e39728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "Now this statement is conflicting with new implementation.",
+      "range": {
+        "startLine": 244,
+        "startChar": 3,
+        "endLine": 244,
+        "endChar": 77
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5517fef_68aad367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "so now you designed these start to fail?\nIf so, could you shutdown remaining tasks (incl. runPeriodicPowerSuspend), if one of them fail?",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 4
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd33bd90_67d7bdce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "go does not use some common prefixes, like \"is\", \"get\", \"has\" etc.\n\nmaybe dualQual()? (or slcQual reflecting the var name?)",
+      "range": {
+        "startLine": 264,
+        "startChar": 3,
+        "endLine": 264,
+        "endChar": 13
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa5a861b_b0b3e34a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "Please do not take testing.State.\nInstead could you return an error?",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cacd9ab_0afd9821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "ditto for prefix, not to take testing.State?",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2905ef1e_927f61f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "could you use filepath.Join() ?",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41bcb3fa_41c48832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "Could you unify this and the below, by introducing the path to an arg?",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f14be7_fc5e7533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "Could you unify the error reporting path?\nIf this needs to return an error, please do not take the testing.State, and instead could you let each caller handle it.",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 344,
+        "endChar": 37
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65a9c97_5933cefd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "This check looks like the caller\u0027s responsibility.",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1daa9af7_b6f6f1cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:54:30Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 353,
+        "startChar": 5,
+        "endLine": 353,
+        "endChar": 6
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
