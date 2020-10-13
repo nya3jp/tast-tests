@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/adb"
+	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )

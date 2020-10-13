@@ -18,8 +18,8 @@ import (
 	"golang.org/x/sync/errgroup"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -123,7 +123,7 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 
 	// Start ARC multicast sender app.
 	a := s.PreValue().(arc.PreData).ARC
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
