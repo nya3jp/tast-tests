@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0b1de6_c6190a38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-13T08:26:54Z",
+      "side": 1,
+      "message": "Fixed the issue (added act.Stop) and now test is passing. PTAL!",
+      "revId": "e437e3cb01d6c46094b8ac3e4836f7f403630ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
