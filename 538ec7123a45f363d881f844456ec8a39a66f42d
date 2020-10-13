@@ -1,0 +1,313 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8237377a_f51f7497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "While not strictly required for non-exported functions, could you please add a gofmt-style docstring?",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed59ad4_4d8e47d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "From go/tast-writing#test-subpackages, \"Avoid passing testing.State when it’s not actually necessary\". It looks like this function only uses state for errors and logging. Could you refactor to use testing.ContextLog for logging, and have the function return an error instead of calling s.Error/s.Fatal?",
+      "range": {
+        "startLine": 36,
+        "startChar": 47,
+        "endLine": 36,
+        "endChar": 63
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886a280e_a9af3d9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "While not strictly required for non-exported functions, could you please add a gofmt-style docstring?",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe4baff_cec5551b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "From go/tast-writing#test-subpackages, \"Avoid passing testing.State when it’s not actually necessary\". It looks like this function only uses state for logging. Could you refactor to use testing.ContextLog for logging?",
+      "range": {
+        "startLine": 72,
+        "startChar": 34,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f56c53f_0a8cb0c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "From go/tast-writing#test-subpackages, \"Avoid passing testing.State when it’s not actually necessary\". It looks like this function only uses state for errors and logging. Could you refactor to use testing.ContextLog for logging, and have the function return an error instead of calling s.Error/s.Fatal?",
+      "range": {
+        "startLine": 86,
+        "startChar": 46,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5fbcba_9c30b4d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "Please cleanup this dir. (Maybe not necessary if MountPath will get destroyed anyway?)",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b02780bb_042661f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "Please make this comment more descriptive.",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a92f6390_02342f82",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "It\u0027s more efficient to return a pointer to the struct instead of the struct itself. Could you change the function signature to return (*MountCompleted, error)? This also matches the return type of WatchMountCompleted.",
+      "range": {
+        "startLine": 147,
+        "startChar": 113,
+        "endLine": 147,
+        "endChar": 127
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1832b15f_cb76db6c",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "Once the return type is a pointer, please change to returning nil.",
+      "range": {
+        "startLine": 150,
+        "startChar": 9,
+        "endLine": 150,
+        "endChar": 25
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f1bc5a_dda07cd6",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "Once the return type is a pointer, please change to returning nil.",
+      "range": {
+        "startLine": 155,
+        "startChar": 9,
+        "endLine": 155,
+        "endChar": 26
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70281dec_9398c9ef",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "Once the return type is a pointer, please change to returning nil.",
+      "range": {
+        "startLine": 160,
+        "startChar": 9,
+        "endLine": 160,
+        "endChar": 25
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0335644_a83ae884",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "Please capture and return any errors returned by file.Close. I think you\u0027ll need to use a named return value for the error, like you\u0027ve done in LoopbackDevice.Close.",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9715c816_7cf12eec",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "Please capture and return any errors returned by os.Remove. I think you\u0027ll need to use a named return value for the error, like you\u0027ve done in LoopbackDevice.Close.",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b60d3d0d_1f52b48a",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "From https://golang.org/doc/effective_go.html#Getters:\n\n    There\u0027s nothing wrong with providing getters and setters yourself, and it\u0027s often appropriate to do so, but it\u0027s neither idiomatic nor necessary to put Get into the getter\u0027s name. If you have a field called owner (lower case, unexported), the getter method should be called Owner (upper case, exported), not GetOwner.\n\nPlease rename to DevicePath.",
+      "range": {
+        "startLine": 75,
+        "startChar": 25,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1db4839_d3c10f3d",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-13T00:35:28Z",
+      "side": 1,
+      "message": "From https://golang.org/doc/effective_go.html#Getters:\n\n    There\u0027s nothing wrong with providing getters and setters yourself, and it\u0027s often appropriate to do so, but it\u0027s neither idiomatic nor necessary to put Get into the getter\u0027s name. If you have a field called owner (lower case, unexported), the getter method should be called Owner (upper case, exported), not GetOwner.\n\nPlease rename to SysDevicePath.",
+      "range": {
+        "startLine": 80,
+        "startChar": 25,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
