@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62818cb5_64c60f87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf56acb1_3cd53741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "unused. Could you remove?",
+      "range": {
+        "startLine": 114,
+        "startChar": 57,
+        "endLine": 114,
+        "endChar": 84
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae0761f_35368998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "nit: maybe just \"Launch\".\n\nFrom caller\u0027s point of view, it will look like\n\ntestserver.Launch(...)",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 17
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66daa29b_2b44cee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "iiuc, the evaluation order is left to right, so \"out\" will be still empty on the evaluation?",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 54
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c393424_84ff357f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "Clarification: in this case, should we retry later? Or break the polling?\nIf latter, could you wrap the error by testing.PollBreak?",
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ff0f03_0f64a50f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "style: could you use one sentence?\n\n\"failed to validate input value: got %q; want %q\"",
+      "range": {
+        "startLine": 190,
+        "startChar": 25,
+        "endLine": 190,
+        "endChar": 74
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a1d7f9d_ab65fe71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "is this ctx needs to carried out from this block?",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 5
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642479f9_f6f238f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "Waiting some fix amount of time is the source of flakiness.\nCould you wait some signal that indicate the input method is installed explicitly, e.g. by using testing.Poll?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30aac312_ac718edd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "could you add check that InputMethodCode is either one of cases? I.e. let test fail on default?",
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aab15e71_e78a32f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "off topic/optional: does this mean \"hello\" in Japanese? if so \"konnnitiha\" or \"konnnichiha\" and \"こんにちは\" is the Japanese. (as for test case, it is just fine, but looks typo to me (as native Japanese speaker. Thank you for supporting it :-)).",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 24
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93217e9c_bd2f0f54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "Could you handle errors?",
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d5b5047_0d1cd960",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-13T16:40:56Z",
+      "side": 1,
+      "message": "Could you add the reference where these values come from?\nAlso, is this/will this be automatically generated? Or manually maintained?",
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
