@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d73fad96_1efee623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-13T22:55:49Z",
+      "side": 1,
+      "message": "This is already incorporated in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2460273\n\nFeel free to submit it as well if you like.",
+      "revId": "09735782fbd8615bf550084af8437dfe33ac968c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
