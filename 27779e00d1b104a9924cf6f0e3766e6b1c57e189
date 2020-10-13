@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a7b4dc4_acc62797",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T02:32:10Z",
+      "side": 1,
+      "message": "I add some more description in the beginning of test body. PTAL.",
+      "parentUuid": "26b25d12_da694b7c",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 106
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52cc5c6c_e36ad96d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-12T23:49:59Z",
       "side": 1,
       "message": "It doesn\u0027t look like the autotest does this. Why is that?",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cefac5f9_21384397",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T02:32:10Z",
+      "side": 1,
+      "message": "In Autotest, it turns off power save in most tests when initializing. [1] We don\u0027t do this in Tast as CrOS don\u0027t have PS default off now. This test in particular needs PS off for the reason here so I turn it off explicitly.\n\n[1] http://cs/chromeos_public/src/third_party/autotest/files/server/cros/network/wifi_client.py?l\u003d374\u0026rcl\u003def7539924b4e5da46f3da9eafe9286d140972b5b",
+      "parentUuid": "52cc5c6c_e36ad96d",
       "range": {
         "startLine": 50,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "331d57a5_7855d543",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T02:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a828da7_4d67eacb",
+      "range": {
+        "startLine": 54,
+        "startChar": 18,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcfda7df_96fb933c",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3258f569_265d7fd6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T02:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcfda7df_96fb933c",
+      "range": {
+        "startLine": 169,
+        "startChar": 8,
+        "endLine": 169,
+        "endChar": 15
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5ed50ec_baf0d260",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-10-12T23:49:59Z",
       "side": 1,
       "message": "why do we use max instead of avg here?",
+      "range": {
+        "startLine": 192,
+        "startChar": 43,
+        "endLine": 192,
+        "endChar": 53
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "152973f9_043abbc1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T02:32:10Z",
+      "side": 1,
+      "message": "My understanding: the test compares the same metric (max latency) with/without OBSS so the meaning of the difference is simpler: time added due to OBSS.",
+      "parentUuid": "b5ed50ec_baf0d260",
       "range": {
         "startLine": 192,
         "startChar": 43,
