@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4161e4f5_a9d45da3",
+        "filename": "src/chromiumos/tast/common/network/protoutil/protoutil.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-13T07:52:43Z",
+      "side": 1,
+      "message": "Please also update protoutil_test.go.",
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "361350bc_c4bdf432",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 15
@@ -124,6 +141,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c178d1fe_3fa924c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-13T07:52:43Z",
+      "side": 1,
+      "message": "Is this anonymous functions necessary? Also, I guess it is worth to leave a comment here, how about \"Wait for the property to change to an expected or unexpected value. Record the property changes we are monitoring.\"?",
+      "range": {
+        "startLine": 1430,
+        "startChar": 18,
+        "endLine": 1430,
+        "endChar": 22
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "158b5479_b7fe5ef1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 15
@@ -163,6 +203,52 @@
         "startChar": 11,
         "endLine": 1437,
         "endChar": 12
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72500aeb_7137eab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-13T07:52:43Z",
+      "side": 1,
+      "message": "You can replace these loops with the \"foundIn\" function.",
+      "range": {
+        "startLine": 1444,
+        "startChar": 5,
+        "endLine": 1453,
+        "endChar": 6
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d74b1df0_3f643515",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-13T07:52:43Z",
+      "side": 1,
+      "message": "and returns",
+      "range": {
+        "startLine": 969,
+        "startChar": 11,
+        "endLine": 969,
+        "endChar": 17
       },
       "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
