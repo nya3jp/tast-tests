@@ -154,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82877ee2_f11b7222",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T11:09:48Z",
+      "side": 1,
+      "message": "Yeah, should be fine.",
+      "parentUuid": "90a11e25_e1fcc975",
+      "range": {
+        "startLine": 489,
+        "startChar": 4,
+        "endLine": 489,
+        "endChar": 25
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e43aafa_c0ca8b08",
@@ -332,6 +356,24 @@
       "side": 1,
       "message": "Yeah, I don\u0027t think the error has to be fatal either. But my point is, when there\u0027s parsing error:\n1. we probably shouldn\u0027t return the event.\n2. it might be more informative to dump the whole line instead of only the sub-match.",
       "parentUuid": "2ff0c24b_7877f284",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4870e612_c020ce28",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T11:09:48Z",
+      "side": 1,
+      "message": "1. my point is that we should return it and move forward with it. the test still completes, with partial results, and that can be useful during the time till a fix comes. kind of defensive programming\n2. why? the problem is in parsing one token, not the whole line. if the whole line is somewhat broken/incompatible, then it will not pass the matcher.",
+      "parentUuid": "e825ba86_a456e093",
       "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -637,6 +679,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d923bae7_428683be",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T11:09:48Z",
+      "side": 1,
+      "message": "Right, your first point is a concern. Very unlikely in this case, but still... How about a deadline on completion of this loop?\nThe other point is not as fatal, and it\u0027s hard to really resolve, especially as there is no timestamps in the output from wpa_cli. Restarting the whole thing seems like an overkill and it may actually result in skipping some events (they are not buffered while wpa_cli is not consuming).",
+      "parentUuid": "0c40fe78_d4b01fc0",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed1b599e_b2aaea2a",
         "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
         "patchSetId": 1
@@ -696,6 +756,30 @@
       "side": 1,
       "message": "The caller can still check the timeout error but for the specific usage, this design might make sense. But then I\u0027m thinking if we still need the error in return (always nil for now).",
       "parentUuid": "8d5ae290_4f02a416",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 59
+      },
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6dd2462_a3deb907",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T11:09:48Z",
+      "side": 1,
+      "message": "Right, now the error is not needed.",
+      "parentUuid": "4d4ef480_1113b18f",
       "range": {
         "startLine": 186,
         "startChar": 0,

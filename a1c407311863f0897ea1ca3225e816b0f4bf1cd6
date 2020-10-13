@@ -16,6 +16,24 @@
       "message": "Just noticed that this routine might live forever. If it stuck in this channel write before reaching EOF in Scan. We might need some mechanism to make this break. One simple way might be draining all remaining lines in Stop. (and you can know when to end by closing w.lines).\n\nOne similar example can be found in dbusutil.SignalWatcher in [1]. \n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/dbusutil/signal.go",
       "revId": "a1c407311863f0897ea1ca3225e816b0f4bf1cd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74fb04c8_fd8ed592",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-13T11:09:48Z",
+      "side": 1,
+      "message": "Good catch! The only risk is that a blocked write will panic if the channel is closed. Even with drain before close a race can happen if there is more lines queued in stdout. Very unlikely, but not impossible, so I have added a recover in the goroutine. Not the best solution, but alternatives are not worth the complexity, IMHO - see https://go101.org/article/channel-closing.html\nHave a look if it\u0027s correct.",
+      "parentUuid": "a40c9fa1_b85eb8d2",
+      "revId": "a1c407311863f0897ea1ca3225e816b0f4bf1cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
