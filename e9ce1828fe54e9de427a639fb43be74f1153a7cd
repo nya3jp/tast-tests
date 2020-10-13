@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600d788d_1d062218",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-13T15:42:23Z",
+      "side": 1,
+      "message": "can we define these as constants?",
+      "revId": "e9ce1828fe54e9de427a639fb43be74f1153a7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
