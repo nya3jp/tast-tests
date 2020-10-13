@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/memory/memoryuser"
 	"chromiumos/tast/local/memory/mempressure"
 	"chromiumos/tast/local/testexec"
@@ -55,7 +55,7 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 	}
 
 	youtubeFunc := func(a *arc.ARC) {
-		device, err := ui.NewDevice(ctx, a)
+		device, err := a.NewUIDevice(ctx)
 		if err != nil {
 			s.Fatal("Failed initializing UI Automator: ", err)
 		}

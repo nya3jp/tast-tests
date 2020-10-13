@@ -17,7 +17,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/adb"
+	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"

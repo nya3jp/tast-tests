@@ -8,7 +8,7 @@ import (
 	"context"
 	"strings"
 
-	"chromiumos/tast/local/adb"
+	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/testexec"
 )
 

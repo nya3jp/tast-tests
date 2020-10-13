@@ -9,10 +9,10 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/testexec"
@@ -147,7 +147,7 @@ func ArcAvailability(ctx context.Context, s *testing.State) {
 		defer a.Close()
 		defer dumpUIOnErr(ctx, a)
 
-		d, err := ui.NewDevice(ctx, a)
+		d, err := a.NewUIDevice(ctx)
 		if err != nil {
 			s.Fatal("Failed initializing UI Automator: ", err)
 		}
@@ -180,7 +180,8 @@ func ArcAvailability(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 	defer dumpUIOnErr(ctx, a)
-	d, err := ui.NewDevice(ctx, a)
+
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
