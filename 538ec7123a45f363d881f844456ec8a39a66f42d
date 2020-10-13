@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "556caf4c_409ad94c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8237377a_f51f7497",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aed59ad4_4d8e47d3",
@@ -58,6 +76,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aeb70a5_64462a68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aed59ad4_4d8e47d3",
+      "range": {
+        "startLine": 36,
+        "startChar": 47,
+        "endLine": 36,
+        "endChar": 63
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcd91382_b425efc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "886a280e_a9af3d9a",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fe4baff_cec5551b",
@@ -71,6 +131,30 @@
       "writtenOn": "2020-10-13T00:35:28Z",
       "side": 1,
       "message": "From go/tast-writing#test-subpackages, \"Avoid passing testing.State when it’s not actually necessary\". It looks like this function only uses state for logging. Could you refactor to use testing.ContextLog for logging?",
+      "range": {
+        "startLine": 72,
+        "startChar": 34,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b22a5f_cb83777a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe4baff_cec5551b",
       "range": {
         "startLine": 72,
         "startChar": 34,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "475d4166_e7d3c31d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Okay. Though these are actually test cases so using testing.State is probably legit.",
+      "parentUuid": "1f56c53f_0a8cb0c5",
+      "range": {
+        "startLine": 86,
+        "startChar": 46,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd5fbcba_9c30b4d2",
@@ -117,6 +225,24 @@
       "writtenOn": "2020-10-13T00:35:28Z",
       "side": 1,
       "message": "Please cleanup this dir. (Maybe not necessary if MountPath will get destroyed anyway?)",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0f622f_2b8d473f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Not necessary. The whole device is destroyed afterwards.",
+      "parentUuid": "bd5fbcba_9c30b4d2",
       "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aaa35a7_ceb4755a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b02780bb_042661f0",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a92f6390_02342f82",
@@ -151,6 +295,30 @@
       "writtenOn": "2020-10-13T00:35:28Z",
       "side": 1,
       "message": "It\u0027s more efficient to return a pointer to the struct instead of the struct itself. Could you change the function signature to return (*MountCompleted, error)? This also matches the return type of WatchMountCompleted.",
+      "range": {
+        "startLine": 147,
+        "startChar": 113,
+        "endLine": 147,
+        "endChar": 127
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf4305dd_f8feafb6",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "WatchMountCompleted returns \"watcher\", not a struct, and Wait returns struct by value. So if to keep consistent with that one then it is already correct. Or I can change both to return pointers.",
+      "parentUuid": "a92f6390_02342f82",
       "range": {
         "startLine": 147,
         "startChar": 113,
@@ -184,6 +352,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01145387_d48acf5f",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1832b15f_cb76db6c",
+      "range": {
+        "startLine": 150,
+        "startChar": 9,
+        "endLine": 150,
+        "endChar": 25
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23f1bc5a_dda07cd6",
@@ -197,6 +389,30 @@
       "writtenOn": "2020-10-13T00:35:28Z",
       "side": 1,
       "message": "Once the return type is a pointer, please change to returning nil.",
+      "range": {
+        "startLine": 155,
+        "startChar": 9,
+        "endLine": 155,
+        "endChar": 26
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "578fe1fc_14f63bed",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "23f1bc5a_dda07cd6",
       "range": {
         "startLine": 155,
         "startChar": 9,
@@ -230,6 +446,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f673de_722e6919",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70281dec_9398c9ef",
+      "range": {
+        "startLine": 160,
+        "startChar": 9,
+        "endLine": 160,
+        "endChar": 25
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0335644_a83ae884",
@@ -247,6 +487,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3239b86_60e7fe49",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "This codepath is triggered only if there was another, more important error.",
+      "parentUuid": "a0335644_a83ae884",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9715c816_7cf12eec",
@@ -260,6 +518,24 @@
       "writtenOn": "2020-10-13T00:35:28Z",
       "side": 1,
       "message": "Please capture and return any errors returned by os.Remove. I think you\u0027ll need to use a named return value for the error, like you\u0027ve done in LoopbackDevice.Close.",
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ae0c87_a1af0a88",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "9715c816_7cf12eec",
       "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -287,6 +563,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5af2b9_fa43e205",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b60d3d0d_1f52b48a",
+      "range": {
+        "startLine": 75,
+        "startChar": 25,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1db4839_d3c10f3d",
@@ -300,6 +600,30 @@
       "writtenOn": "2020-10-13T00:35:28Z",
       "side": 1,
       "message": "From https://golang.org/doc/effective_go.html#Getters:\n\n    There\u0027s nothing wrong with providing getters and setters yourself, and it\u0027s often appropriate to do so, but it\u0027s neither idiomatic nor necessary to put Get into the getter\u0027s name. If you have a field called owner (lower case, unexported), the getter method should be called Owner (upper case, exported), not GetOwner.\n\nPlease rename to SysDevicePath.",
+      "range": {
+        "startLine": 80,
+        "startChar": 25,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "538ec7123a45f363d881f844456ec8a39a66f42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65db512c_2772024b",
+        "filename": "src/chromiumos/tast/local/crosdisks/loopback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-10-13T05:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1db4839_d3c10f3d",
       "range": {
         "startLine": 80,
         "startChar": 25,
