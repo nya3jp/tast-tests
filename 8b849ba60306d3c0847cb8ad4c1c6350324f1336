@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "698e44eb_032a5471",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-13T07:25:27Z",
+      "side": 1,
+      "message": "This LGTM now. Add tast reviewer",
+      "revId": "8b849ba60306d3c0847cb8ad4c1c6350324f1336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
