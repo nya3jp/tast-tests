@@ -57,8 +57,11 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 		defer r.Close(ctx)
 
 		// Assert WiFi is up.
-		router, _ := s.Var("router")
-		tf, err := wificell.NewTestFixture(ctx, ctx, d, s.RPCHint(), wificell.TFRouter(router))
+		var tfOps []wificell.TFOption
+		if router, ok := s.Var("router"); ok && router != "" {
+			tfOps = append(tfOps, wificell.TFRouter(router))
+		}
+		tf, err := wificell.NewTestFixture(ctx, ctx, d, s.RPCHint(), tfOps...)
 		if err != nil {
 			s.Fatal("Failed to set up test fixture: ", err)
 		}
