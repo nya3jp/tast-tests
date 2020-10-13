@@ -72,7 +72,7 @@ func GetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn) (string,
 		return "", errors.Wrap(err, "failed to get current input method")
 	}
 
-	return strings.TrimPrefix(id, ImePrefix+":"), nil
+	return strings.TrimPrefix(id, ImePrefix), nil
 }
 
 // IsShown checks if the virtual keyboard is currently shown. It checks whether

@@ -113,7 +113,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 			currentInputMethod, err := vkb.GetCurrentInputMethod(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to get current input method")
-			} else if currentInputMethod != vkb.ImePrefix+inputMethod {
+			} else if currentInputMethod != inputMethod {
 				return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, vkb.ImePrefix+inputMethod)
 			}
 			keyboard, err := vkb.VirtualKeyboard(ctx, tconn)

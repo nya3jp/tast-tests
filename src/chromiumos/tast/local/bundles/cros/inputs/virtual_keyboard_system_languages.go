@@ -37,7 +37,7 @@ func init() {
 				ExtraHardwareDeps: pre.InputsStableModels,
 				Val: testParameters{
 					regionCode:             "es",
-					defaultInputMethodID:   "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:es::spa",
+					defaultInputMethodID:   "xkb:es::spa",
 					defaultInputMethodName: "abrir menú de teclado", // label displayed as ES
 				},
 			}, {
@@ -46,7 +46,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:             "es",
-					defaultInputMethodID:   "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:es::spa",
+					defaultInputMethodID:   "xkb:es::spa",
 					defaultInputMethodName: "abrir menú de teclado", // label displayed as ES
 				},
 			}, {
@@ -54,7 +54,7 @@ func init() {
 				ExtraHardwareDeps: pre.InputsStableModels,
 				Val: testParameters{
 					regionCode:             "fr",
-					defaultInputMethodID:   "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:fr::fra",
+					defaultInputMethodID:   "xkb:fr::fra",
 					defaultInputMethodName: "ouvrir le menu du clavier", // label displayed as FR
 				},
 			}, {
@@ -63,7 +63,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:             "fr",
-					defaultInputMethodID:   "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:fr::fra",
+					defaultInputMethodID:   "xkb:fr::fra",
 					defaultInputMethodName: "ouvrir le menu du clavier", // label displayed as FR
 				},
 			}, {
@@ -71,7 +71,7 @@ func init() {
 				ExtraHardwareDeps: pre.InputsStableModels,
 				Val: testParameters{
 					regionCode:             "jp",
-					defaultInputMethodID:   "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:jp::jpn",
+					defaultInputMethodID:   "xkb:jp::jpn",
 					defaultInputMethodName: "キーボード メニューを開く", // label displayed as JA
 				},
 			}, {
@@ -80,7 +80,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:             "jp",
-					defaultInputMethodID:   "_comp_ime_jkghodnilhceideoidjikpgommlajknkxkb:jp::jpn",
+					defaultInputMethodID:   "xkb:jp::jpn",
 					defaultInputMethodName: "キーボード メニューを開く", //label displayed as JA
 				},
 			},
