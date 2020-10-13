@@ -59,7 +59,7 @@ func init() {
 // getTime returns the current wall clock time as reported by `date` in the container.
 func getTime(ctx context.Context, s *testing.State, cont *vm.Container) (time.Time, error) {
 	cmd := cont.Command(ctx, "date", "+%s")
-	out, err := cmd.CombinedOutput()
+	out, err := cmd.Output()
 	if err != nil {
 		cmd.DumpLog(ctx)
 		return time.Time{}, err
