@@ -16,6 +16,24 @@
       "message": "so, extraArgs is no longer needed. Could you remove?",
       "revId": "900b83552bb218fe9e8761c1caa90337da91cada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4421eb_e7920f01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2020-10-13T17:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "967f04e5_49f35ebf",
+      "revId": "900b83552bb218fe9e8761c1caa90337da91cada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
