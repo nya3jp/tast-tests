@@ -17,7 +17,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/adb"
+	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"

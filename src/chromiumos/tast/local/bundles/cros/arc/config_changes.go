@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +31,7 @@ func ConfigChanges(ctx context.Context, s *testing.State) {
 	p := s.PreValue().(arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
