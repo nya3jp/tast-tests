@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
@@ -129,7 +130,7 @@ func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
 
 				return errors.New("requested ui nodes not found")
 
-			}, nil); err != nil {
+			}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 				s.Fatal("Failed to check if history exists: ", err)
 			}
 
