@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "840b22c9_cf1df7c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-13T21:21:05Z",
+      "side": 1,
+      "message": "I have not figured out which alias to add yet. Just submit as is for now. Thanks.\n",
+      "revId": "024be3856a6da52ecc99eaa70965bcd6657e84fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

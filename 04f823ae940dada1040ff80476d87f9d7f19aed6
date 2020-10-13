@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef51635_1400b487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-13T21:21:05Z",
+      "side": 1,
+      "message": "Any suggestion on which alias to use?",
+      "parentUuid": "0e1ff8a7_96c61269",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "04f823ae940dada1040ff80476d87f9d7f19aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "062a8498_5e00b79b",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08fccff9_5b478291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-13T21:21:05Z",
+      "side": 1,
+      "message": "It may fail if the the previous test change the layout of the launcher. For example, it will fail if the previous test move all the icons to one folder. Therefore, I think it is safer to put it as new login.",
+      "parentUuid": "062a8498_5e00b79b",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "04f823ae940dada1040ff80476d87f9d7f19aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7254d4e2_484f3429",
@@ -94,6 +142,30 @@
       "writtenOn": "2020-10-13T21:03:21Z",
       "side": 1,
       "message": "nit: switches",
+      "range": {
+        "startLine": 72,
+        "startChar": 15,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "04f823ae940dada1040ff80476d87f9d7f19aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "329a3b73_fde7eadb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_create_and_rename_folder.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-10-13T21:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7254d4e2_484f3429",
       "range": {
         "startLine": 72,
         "startChar": 15,
