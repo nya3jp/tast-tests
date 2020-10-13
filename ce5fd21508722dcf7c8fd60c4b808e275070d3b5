@@ -104,6 +104,24 @@
       "parentUuid": "8da62d82_8bc480c7",
       "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1efff677_d261913d",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-13T00:39:54Z",
+      "side": 1,
+      "message": "this not unlike building your own dictionary. I think we can fix this at the source later, once we have more such example. the regex \"mitm\" is wrong and needs to be fixed.\n\nCan you approve so I can move to other terms?\nthank you.",
+      "parentUuid": "a5875e6d_8ef1f091",
+      "revId": "ce5fd21508722dcf7c8fd60c4b808e275070d3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
