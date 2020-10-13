@@ -273,7 +273,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 			},
 			Event: axEventLog{
-				EventType:  "textChanged",
+				EventType:  "valueChanged",
 				TargetName: "contentDescription",
 			},
 		},
