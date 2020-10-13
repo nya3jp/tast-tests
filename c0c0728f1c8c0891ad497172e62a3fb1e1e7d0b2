@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9af00097_d0294a9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-10-13T09:42:19Z",
+      "side": 1,
+      "message": "I agree with it. One of our Chromium OS documents refers to an external page that recommends the 72-chars rule for the body considering how it is used by git.\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Commit-messages",
+      "parentUuid": "07b48910_dfe63a2e",
+      "revId": "c0c0728f1c8c0891ad497172e62a3fb1e1e7d0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7071122d_abf9d94e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
