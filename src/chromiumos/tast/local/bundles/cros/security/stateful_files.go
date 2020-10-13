@@ -236,6 +236,11 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/sound_card_init"), users("sound_card_init"), groups("sound_card_init"), chk.NotMode(022)))
 	}
 
+	if _, err := user.Lookup("rmtfs"); err == nil {
+
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/rmtfs"), users("rmtfs"), chk.NotMode(022)))
+	}
+
 	if moblab.IsMoblab() {
 		// On moblab devices, there are additional user dirs and tons of stuff (MySQL, etc.) in /var.
 		prependPatterns(
