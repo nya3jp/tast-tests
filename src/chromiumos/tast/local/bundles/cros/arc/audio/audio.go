@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/power/setup"
@@ -147,7 +147,7 @@ func (t *ARCAudioTast) startActivity(ctx context.Context, param TestParameters) 
 }
 
 func (t *ARCAudioTast) verifyAppResult(ctx context.Context) error {
-	device, err := ui.NewDevice(ctx, t.arc)
+	device, err := t.arc.NewUIDevice(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create ui.device")
 	}

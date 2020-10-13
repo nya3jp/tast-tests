@@ -9,9 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	adbui "chromiumos/tast/local/adb/ui"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
-	arcui "chromiumos/tast/local/arc/ui"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
@@ -46,7 +46,7 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	d, err := arcui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
@@ -98,13 +98,13 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 	}
 }
 
-func checkAndroidSettings(ctx context.Context, arcDevice *arcui.Device) error {
+func checkAndroidSettings(ctx context.Context, arcDevice *adbui.Device) error {
 
 	// Time to wait for UI elements to appear in Play Store and Chrome.
 	const timeoutUI = 30 * time.Second
 
 	// Verify System settings in ARC++.
-	system := arcDevice.Object(arcui.ClassName("android.widget.TextView"), arcui.TextMatches("(?i)system"), arcui.Enabled(true))
+	system := arcDevice.Object(adbui.ClassName("android.widget.TextView"), adbui.TextMatches("(?i)system"), adbui.Enabled(true))
 	if err := system.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding System Text View")
 	}
@@ -114,7 +114,7 @@ func checkAndroidSettings(ctx context.Context, arcDevice *arcui.Device) error {
 	}
 
 	testing.ContextLog(ctx, "Navigate to About Device")
-	aboutDevice := arcDevice.Object(arcui.ClassName("android.widget.TextView"), arcui.TextMatches("(?i)about device"), arcui.Enabled(true))
+	aboutDevice := arcDevice.Object(adbui.ClassName("android.widget.TextView"), adbui.TextMatches("(?i)about device"), adbui.Enabled(true))
 	if err := aboutDevice.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding About Device Text View")
 	}
@@ -123,7 +123,7 @@ func checkAndroidSettings(ctx context.Context, arcDevice *arcui.Device) error {
 		return errors.Wrap(err, "failed to click About Device")
 	}
 
-	buildNumber := arcDevice.Object(arcui.ClassName("android.widget.TextView"), arcui.TextMatches("(?i)build number"), arcui.Enabled(true))
+	buildNumber := arcDevice.Object(adbui.ClassName("android.widget.TextView"), adbui.TextMatches("(?i)build number"), adbui.Enabled(true))
 	if err := buildNumber.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding Build Number TextView")
 	}
@@ -135,7 +135,7 @@ func checkAndroidSettings(ctx context.Context, arcDevice *arcui.Device) error {
 		}
 	}
 
-	backButton := arcDevice.Object(arcui.ClassName("android.widget.ImageButton"), arcui.Enabled(true))
+	backButton := arcDevice.Object(adbui.ClassName("android.widget.ImageButton"), adbui.Enabled(true))
 
 	if err := backButton.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding Back Button")
@@ -145,14 +145,14 @@ func checkAndroidSettings(ctx context.Context, arcDevice *arcui.Device) error {
 		return errors.Wrap(err, "failed to click Back Button")
 	}
 
-	developerOptions := arcDevice.Object(arcui.ClassName("android.widget.TextView"), arcui.TextMatches("(?i)developer options"), arcui.Enabled(true))
+	developerOptions := arcDevice.Object(adbui.ClassName("android.widget.TextView"), adbui.TextMatches("(?i)developer options"), adbui.Enabled(true))
 	if err := developerOptions.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding Developer Options")
 	}
 
 	testing.ContextLog(ctx, "Turn Backup On")
 	// TODO(b/159956557): Confirm that Backup status is changing when the button is clicked.
-	backup := arcDevice.Object(arcui.ClassName("android.widget.TextView"), arcui.TextMatches("(?i)backup"), arcui.Enabled(true))
+	backup := arcDevice.Object(adbui.ClassName("android.widget.TextView"), adbui.TextMatches("(?i)backup"), adbui.Enabled(true))
 	if err := backup.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding Backup")
 	}
@@ -161,8 +161,8 @@ func checkAndroidSettings(ctx context.Context, arcDevice *arcui.Device) error {
 		return errors.Wrap(err, "failed to click Backup")
 	}
 
-	backupToggleOff := arcDevice.Object(arcui.ClassName("android.widget.Switch"), arcui.TextMatches("(?i)off"), arcui.Enabled(true))
-	backupToggleOn := arcDevice.Object(arcui.ClassName("android.widget.Switch"), arcui.TextMatches("(?i)on"), arcui.Enabled(true))
+	backupToggleOff := arcDevice.Object(adbui.ClassName("android.widget.Switch"), adbui.TextMatches("(?i)off"), adbui.Enabled(true))
+	backupToggleOn := arcDevice.Object(adbui.ClassName("android.widget.Switch"), adbui.TextMatches("(?i)on"), adbui.Enabled(true))
 
 	if err := backupToggleOff.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding Backup Off Toggle")
@@ -181,7 +181,7 @@ func checkAndroidSettings(ctx context.Context, arcDevice *arcui.Device) error {
 		return errors.Wrap(err, "failed to click backup toggle")
 	}
 
-	turnOffBackup := arcDevice.Object(arcui.ClassName("android.widget.Button"), arcui.TextMatches("(?i)turn off & delete"), arcui.Enabled(true))
+	turnOffBackup := arcDevice.Object(adbui.ClassName("android.widget.Button"), adbui.TextMatches("(?i)turn off & delete"), adbui.Enabled(true))
 	if err := turnOffBackup.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding Turn Off backup button")
 	}
@@ -201,7 +201,7 @@ func checkAndroidSettings(ctx context.Context, arcDevice *arcui.Device) error {
 	}
 
 	testing.ContextLog(ctx, "Turn Location On")
-	security := arcDevice.Object(arcui.ClassName("android.widget.TextView"), arcui.TextMatches("(?i)security & location"), arcui.Enabled(true))
+	security := arcDevice.Object(adbui.ClassName("android.widget.TextView"), adbui.TextMatches("(?i)security & location"), adbui.Enabled(true))
 	if err := security.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding Security & location TextView")
 	}
@@ -210,7 +210,7 @@ func checkAndroidSettings(ctx context.Context, arcDevice *arcui.Device) error {
 		return errors.Wrap(err, "failed to click Security & Location")
 	}
 
-	location := arcDevice.Object(arcui.ClassName("android.widget.TextView"), arcui.TextMatches("(?i)location"), arcui.Enabled(true))
+	location := arcDevice.Object(adbui.ClassName("android.widget.TextView"), adbui.TextMatches("(?i)location"), adbui.Enabled(true))
 	if err := location.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding Location TextView")
 	}
@@ -219,8 +219,8 @@ func checkAndroidSettings(ctx context.Context, arcDevice *arcui.Device) error {
 		return errors.Wrap(err, "failed to click Location")
 	}
 
-	locationToggleOff := arcDevice.Object(arcui.ClassName("android.widget.Switch"), arcui.TextMatches("(?i)off"), arcui.Enabled(true))
-	locationToggleOn := arcDevice.Object(arcui.ClassName("android.widget.Switch"), arcui.TextMatches("(?i)on"), arcui.Enabled(true))
+	locationToggleOff := arcDevice.Object(adbui.ClassName("android.widget.Switch"), adbui.TextMatches("(?i)off"), adbui.Enabled(true))
+	locationToggleOn := arcDevice.Object(adbui.ClassName("android.widget.Switch"), adbui.TextMatches("(?i)on"), adbui.Enabled(true))
 
 	if err := locationToggleOff.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding location toggle button")
