@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b33ca5b_478517fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-13T16:24:25Z",
+      "side": 1,
+      "message": "If we could identity the DOM node we want in the desired UI state, it does not really matter of which JS library is used. We could poll the DOM tree and wait for the element to show up.\n\nn.DescendantWithTimeout is supposed to do that. If that is not working because the element is hidden in ax tree, we could use WaitForExpr etc to inject JS to find the desired element.",
+      "parentUuid": "50e7368d_149a1aff",
+      "revId": "6353d46a4ee68e8c532ac974049f463b1302868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b98f9d8b_8811a5ab",
