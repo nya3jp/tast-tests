@@ -139,6 +139,24 @@
       "parentUuid": "0f90e6a8_114cca4b",
       "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76c62afe_5bbd9499",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-13T06:23:03Z",
+      "side": 1,
+      "message": "Okay, \"tast run\" builds using go and just pushes files from the directory directly. I theorize that no one actually needs to build the 9999 version of tast-tests-private because the tast command line binary already covers that use case, so just switching over to absolute symlinks under /mnt/host/source/ should work.",
+      "parentUuid": "5c09bac4_5df17955",
+      "revId": "d414913aedc99d4b4559be315dd80426fb2f0355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
