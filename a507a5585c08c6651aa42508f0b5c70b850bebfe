@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "070ed159_3cdeab36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T03:36:41Z",
+      "side": 1,
+      "message": "generally looks good.",
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "361350bc_c4bdf432",
@@ -83,6 +100,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23ef1915_6efddcfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T03:36:41Z",
+      "side": 1,
+      "message": "+1 for this. This will also make the protobuf object simpler: we can just return a list of (string, ShillVal) pair instead of ShillValListMap.",
+      "parentUuid": "3e3ed66c_7c7c1c9d",
+      "range": {
+        "startLine": 1375,
+        "startChar": 18,
+        "endLine": 1375,
+        "endChar": 48
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158b5479_b7fe5ef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T03:36:41Z",
+      "side": 1,
+      "message": "nit: wrap this error?",
+      "range": {
+        "startLine": 1434,
+        "startChar": 17,
+        "endLine": 1434,
+        "endChar": 20
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fed60fc_4b0018af",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 15
@@ -122,6 +186,29 @@
         "startChar": 2,
         "endLine": 1047,
         "endChar": 29
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e895892c_2f048cc6",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-13T03:36:41Z",
+      "side": 1,
+      "message": "I think this might be more suitable to be in the next CL, together with its caller.\n\nAlso, I think it will be convenient if we add a IsConnectedState in shillconst package. Then, this function can be simply:\n\n  for _, state :\u003d range props[shillconst.ServicePropertyState] {\n    if !shillconst.IsConnectState(state) {\n      return errors.Errorf(\"detected disconnection state %s\", v)\n    }\n  }\n\nOr even just expand these lines in caller.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 1
       },
       "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
