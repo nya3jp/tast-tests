@@ -7,7 +7,6 @@ package wificell
 import (
 	"bytes"
 	"context"
-	"crypto/rand"
 	"fmt"
 	"net"
 	"path/filepath"
@@ -37,9 +36,6 @@ const (
 	autotestWorkdirGlob = "/tmp/autotest-*"
 	workingDir          = "/tmp/tast-test/"
 )
-
-const macBitLocal = 0x2
-const macBitMulticast = 0x1
 
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
@@ -646,11 +642,10 @@ func (r *Router) ensureUniqueMAC(ctx context.Context, nd *iw.NetDev) error {
 
 	// When necessary, change the interface's MAC address to a unique one
 	if !unique {
-		randMAC := make(net.HardwareAddr, 6)
-		if _, err := rand.Read(randMAC); err != nil {
-			return errors.Wrap(err, "failed to generate random MAC address")
+		randMAC, err := hostapd.RandomMAC()
+		if err != nil {
+			return err
 		}
-		randMAC[0] = (randMAC[0] &^ macBitMulticast) | macBitLocal
 		return r.ipr.SetMAC(ctx, nd.IfName, randMAC)
 	}
 

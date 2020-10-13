@@ -7,6 +7,7 @@ package hostapd
 import (
 	"fmt"
 	"math/rand"
+	"net"
 	"strconv"
 	"strings"
 
@@ -221,6 +222,17 @@ func NewConfig(ops ...Option) (*Config, error) {
 	}
 	for _, op := range ops {
 		op(conf)
+	}
+
+	// TODO(b/161648841): Remove this work-around after the bug is fixed.
+	// Assign a random BSSID if not assigned to avoid a known issue of
+	// reused BSSID in QC driver.
+	if conf.BSSID == "" {
+		randBSSID, err := RandomMAC()
+		if err != nil {
+			return nil, err
+		}
+		conf.BSSID = randBSSID.String()
 	}
 
 	if err := conf.validate(); err != nil {
@@ -639,4 +651,18 @@ func RandomSSID(prefix string) string {
 		s[i] = letters[rand.Intn(len(letters))]
 	}
 	return prefix + string(s)
+}
+
+const macBitLocal = 0x2
+const macBitMulticast = 0x1
+
+// RandomMAC returns a random MAC address for WiFi device. This can
+// also be used as BSSID.
+func RandomMAC() (net.HardwareAddr, error) {
+	randMAC := make(net.HardwareAddr, 6)
+	if _, err := rand.Read(randMAC); err != nil {
+		return nil, errors.Wrap(err, "failed to generate random MAC address")
+	}
+	randMAC[0] = (randMAC[0] &^ macBitMulticast) | macBitLocal
+	return randMAC, nil
 }
