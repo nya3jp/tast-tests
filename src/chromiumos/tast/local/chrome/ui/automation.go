@@ -77,7 +77,7 @@ func (params *FindParams) rawAttributes() ([]byte, error) {
 			buf.WriteByte(',')
 		}
 		switch v := v.(type) {
-		case string, RoleType:
+		case string, RoleType, CheckedState, RestrictionState:
 			fmt.Fprintf(&buf, "%q:%q", k, v)
 		case int, float32, float64, bool:
 			fmt.Fprintf(&buf, "%q:%v", k, v)

@@ -24,9 +24,9 @@ const axEventFilePrefix = "accessibility_event"
 // Defined in https://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/accessibility/chromevox/background/logging/log_types.js
 // TODO(b/159413215): Use automationEvent instead of axEventLog.
 type axEventLog struct {
-	EventType  string `json:"type_"`
-	TargetName string `json:"targetName_"`
-	RootName   string `json:"rootName_"`
+	EventType  ui.EventType `json:"type_"`
+	TargetName string       `json:"targetName_"`
+	RootName   string       `json:"rootName_"`
 	// There is also docUrl property, but it is not used in test.
 }
 
@@ -108,8 +108,8 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 }
 
 func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityName string, axEventTestSteps []axEventTestStep) (func(context.Context, *chrome.Conn) error, error) {
-	eventsSeen := make(map[string]bool)
-	var events []string
+	eventsSeen := make(map[ui.EventType]bool)
+	var events []ui.EventType
 	for _, test := range axEventTestSteps {
 		currentEvent := test.Event.EventType
 		if _, ok := eventsSeen[currentEvent]; !ok {
@@ -147,11 +147,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				Name:      "OFF",
 				Role:      ui.RoleTypeToggleButton,
 				Attributes: map[string]interface{}{
-					"checked": "false",
+					"checked": ui.CheckedStateFalse,
 				},
 			},
 			Event: axEventLog{
-				EventType:  "focus",
+				EventType:  ui.EventTypeFocus,
 				TargetName: "OFF",
 			},
 		},
@@ -162,11 +162,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				Name:      "ON",
 				Role:      ui.RoleTypeToggleButton,
 				Attributes: map[string]interface{}{
-					"checked": "true",
+					"checked": ui.CheckedStateTrue,
 				},
 			},
 			Event: axEventLog{
-				EventType:  "checkedStateChanged",
+				EventType:  ui.EventTypeCheckedStateChanged,
 				TargetName: "ON",
 			},
 		},
@@ -177,11 +177,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				Name:      "CheckBox",
 				Role:      ui.RoleTypeCheckBox,
 				Attributes: map[string]interface{}{
-					"checked": "false",
+					"checked": ui.CheckedStateFalse,
 				},
 			},
 			Event: axEventLog{
-				EventType:  "focus",
+				EventType:  ui.EventTypeFocus,
 				TargetName: "CheckBox",
 			},
 		},
@@ -192,11 +192,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				Name:      "CheckBox",
 				Role:      ui.RoleTypeCheckBox,
 				Attributes: map[string]interface{}{
-					"checked": "true",
+					"checked": ui.CheckedStateTrue,
 				},
 			},
 			Event: axEventLog{
-				EventType:  "checkedStateChanged",
+				EventType:  ui.EventTypeCheckedStateChanged,
 				TargetName: "CheckBox",
 			},
 		},
@@ -211,7 +211,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 			},
 			Event: axEventLog{
-				EventType:  "focus",
+				EventType:  ui.EventTypeFocus,
 				TargetName: "seekBar",
 			},
 		},
@@ -226,7 +226,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 			},
 			Event: axEventLog{
-				EventType:  "valueChanged",
+				EventType:  ui.EventTypeValueChanged,
 				TargetName: "seekBar",
 			},
 		},
@@ -240,7 +240,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 			},
 			Event: axEventLog{
-				EventType: "focus",
+				EventType: ui.EventTypeFocus,
 			},
 		},
 		axEventTestStep{
@@ -253,7 +253,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 			},
 			Event: axEventLog{
-				EventType: "valueChanged",
+				EventType: ui.EventTypeValueChanged,
 			},
 		},
 	}
@@ -266,7 +266,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				Role:      ui.RoleTypeTextField,
 			},
 			Event: axEventLog{
-				EventType:  "focus",
+				EventType:  ui.EventTypeFocus,
 				TargetName: "contentDescription",
 			},
 		},
@@ -281,7 +281,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 			},
 			Event: axEventLog{
-				EventType:  "textChanged",
+				EventType:  ui.EventTypeValueChanged,
 				TargetName: "contentDescription",
 			},
 		},
