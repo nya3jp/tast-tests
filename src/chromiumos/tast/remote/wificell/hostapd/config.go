@@ -7,6 +7,7 @@ package hostapd
 import (
 	"fmt"
 	"math/rand"
+	"net"
 	"strconv"
 	"strings"
 
@@ -221,6 +222,17 @@ func NewConfig(ops ...Option) (*Config, error) {
 	}
 	for _, op := range ops {
 		op(conf)
+	}
+
+	// Assign a random BSSID if not assigned to avoid a known issue of
+	// reused BSSID in ath10k driver. For the BSSID re-used cases,
+	// we'll have a specific test for that.
+	if conf.BSSID == "" {
+		randBSSID, err := RandomMAC()
+		if err != nil {
+			return nil, err
+		}
+		conf.BSSID = randBSSID.String()
 	}
 
 	if err := conf.validate(); err != nil {
@@ -639,4 +651,19 @@ func RandomSSID(prefix string) string {
 		s[i] = letters[rand.Intn(len(letters))]
 	}
 	return prefix + string(s)
+}
+
+const macBitLocal = 0x2
+const macBitMulticast = 0x1
+
+// RandomMAC returns a random MAC address for WiFi device.
+// The MAC address is a locally administered unicast address.
+// This can also be used as BSSID.
+func RandomMAC() (net.HardwareAddr, error) {
+	randMAC := make(net.HardwareAddr, 6)
+	if _, err := rand.Read(randMAC); err != nil {
+		return nil, errors.Wrap(err, "failed to generate random MAC address")
+	}
+	randMAC[0] = (randMAC[0] &^ macBitMulticast) | macBitLocal
+	return randMAC, nil
 }
