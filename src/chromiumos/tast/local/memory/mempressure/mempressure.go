@@ -557,24 +557,27 @@ func runPhase1(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunPara
 		// Switch among recently loaded tabs to encourage loading.
 		// Errors are usually from a renderer crash or, less likely, a tab discard.
 		// We fail in those cases because they are not expected.
-		recentTabs := tabs[len(tabs)-recentTabSetSize:]
-		times, err := cycleTabs(ctx, recentTabs, time.Second, true)
-		if err != nil {
-			return nil, nil, errors.Wrap(err, "tab cycling error")
-		}
-		allTabSwitchTimes = append(allTabSwitchTimes, times...)
-		// Quickly switch among initial set of tabs to collect
-		// measurements and position the tabs high in the LRU list.
-		testing.ContextLog(ctx, "Refreshing LRU order of initial tab set")
-		if err := runAndLogSwapStats(ctx, func() error {
-			if _, err := cycleTabs(ctx, pinnedTabs, 0, false); err != nil {
-				return errors.Wrap(err, "tab LRU refresh error")
+		if len(tabs)%recentTabSetSize == 0 {
+			recentTabs := tabs[len(tabs)-recentTabSetSize:]
+			times, err := cycleTabs(ctx, recentTabs, time.Second, true)
+			if err != nil {
+				return nil, nil, errors.Wrap(err, "tab cycling error")
 			}
-			return nil
-		}, switchMeter); err != nil {
-			return nil, nil, err
+			allTabSwitchTimes = append(allTabSwitchTimes, times...)
+			// Quickly switch among initial set of tabs to collect
+			// measurements and position the tabs high in the LRU list.
+			testing.ContextLog(ctx, "Refreshing LRU order of initial tab set")
+			if err := runAndLogSwapStats(ctx, func() error {
+				if _, err := cycleTabs(ctx, pinnedTabs, 0, false); err != nil {
+					return errors.Wrap(err, "tab LRU refresh error")
+				}
+				return nil
+			}, switchMeter); err != nil {
+				return nil, nil, err
+			}
+			logPSIStats(ctx, "phase_1")
 		}
-		logPSIStats(ctx, "phase_1")
+
 		t, err := newTab(ctx, cr, tabURLs[urlIndex])
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
@@ -583,6 +586,10 @@ func runPhase1(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunPara
 		tabs = append(tabs, t)
 		if err := t.waitForQuiescence(ctx, tabLoadTimeout); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to wait for quiescence")
+		}
+		// Wiggle a tab after creation to consume more memory before next tab creation.
+		if err := t.wiggle(ctx); err != nil {
+			return nil, nil, errors.Wrap(err, "cannot wiggle tab")
 		}
 		logAndResetStats(ctx, partialMeter, fmt.Sprintf("tab %d", t.id))
 		if z, err := kernelmeter.ZramStats(ctx); err != nil {
