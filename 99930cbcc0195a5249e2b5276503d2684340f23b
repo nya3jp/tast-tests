@@ -22,6 +22,30 @@
       },
       "revId": "99930cbcc0195a5249e2b5276503d2684340f23b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df8068b_50fdbf99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:37:35Z",
+      "side": 1,
+      "message": "This CL will not be merged, it\u0027s just to help the review of CL:2461367 and answer questions like \"is the proxy server actually working?\".\n\nI used this test to verify the implementation of the go proxy server on an eve DUT.",
+      "parentUuid": "7400137d_d47ec737",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "99930cbcc0195a5249e2b5276503d2684340f23b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
