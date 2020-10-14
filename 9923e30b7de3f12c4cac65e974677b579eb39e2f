@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35502a36_0520e8f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-14T22:18:09Z",
+      "side": 1,
+      "message": "\u003e But it does seem like it could be possible to reflect Service states accurately without actually tearing everything down -- not sure.\n\nYeah, point taken, I\u0027ll put that on my TODO list.\n\n\u003e I guess we stick with polling post-roam for now.\n\nsg",
+      "parentUuid": "c9fdd68a_0f469396",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "9923e30b7de3f12c4cac65e974677b579eb39e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92646b20_f33bd92a",
