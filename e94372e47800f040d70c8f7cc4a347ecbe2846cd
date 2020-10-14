@@ -396,6 +396,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96160b42_46bce259",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-14T08:52:20Z",
+      "side": 1,
+      "message": "Fine, though I chose to still return the event alongside the error, the caller can decide what to do.",
+      "parentUuid": "25ffaf6d_cf29cef6",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b2377dc_301225bb",
@@ -727,6 +745,24 @@
       "side": 1,
       "message": "\u003e How about a deadline on completion of this loop?\n\nThis also depends on the usage. If the other point is not a problem, this might be OK. (But then I wonder how much or why we need to ClearEvent.)\n\n\u003e Restarting the whole thing seems like an overkill\n\nYes, it might be much overhead so it is not the best solution if we have some others. \n\n\u003e it may actually result in skipping some events\n\nClearEvents will just drop all events so I think another New should be the same if the timing of New and ClearEvents is the same?\n\nHowever, this reminds me that we don\u0027t actually wait until wpa_cli getting ready for watching events. cmd.Start will return when the process is created but it is not guaranteed that initialization of wpa_cli is finished. We suffered a similar problem with \"iw event\" which prints nothing after initialization. Is there any message we can know wpa_cli is ready?",
       "parentUuid": "d923bae7_428683be",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa15d800_3a4b6da5",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-14T08:52:20Z",
+      "side": 1,
+      "message": "It is fine for the purpose of my tests, so I would leave it.\nI have added timeout to avoid deadlock and clarified limitations in the comment.\nAnd yes, good catch with the ready check - added in Start.",
+      "parentUuid": "0a27c64e_20f871de",
       "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
