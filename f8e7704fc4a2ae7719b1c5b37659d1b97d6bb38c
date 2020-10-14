@@ -16,6 +16,46 @@
       "message": "LGTM",
       "revId": "f8e7704fc4a2ae7719b1c5b37659d1b97d6bb38c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7958f6_b7f9e26d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-14T09:09:28Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f8e7704fc4a2ae7719b1c5b37659d1b97d6bb38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96727276_ed1a2917",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lpprint/lpprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-14T09:09:28Z",
+      "side": 1,
+      "message": "No need for | here\n\nhttps://golang.org/doc/effective_go.html#commentary",
+      "range": {
+        "startLine": 25,
+        "startChar": 51,
+        "endLine": 25,
+        "endChar": 60
+      },
+      "revId": "f8e7704fc4a2ae7719b1c5b37659d1b97d6bb38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
