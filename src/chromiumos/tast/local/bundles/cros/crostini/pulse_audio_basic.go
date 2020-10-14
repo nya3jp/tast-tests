@@ -62,6 +62,14 @@ func controlPulse(ctx context.Context, s *testing.State, cont *vm.Container, cmd
 	}
 }
 
+// playZeros generates zero samples though `aplay` command.
+func playZeros(ctx context.Context, s *testing.State, cont *vm.Container) {
+	s.Log("Play zeros with ALSA device")
+	if err := cont.Command(ctx, "aplay", "-f", "dat", "-d", " 3", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to playback with ALSA devices: ", err)
+	}
+}
+
 func PulseAudioBasic(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
@@ -71,23 +79,11 @@ func PulseAudioBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to list ALSA output devices: ", err)
 	}
 
-	// Case 1: Stop pulseaudio and run playback to restart.
-	controlPulse(ctx, s, cont, "stop")
-	s.Log("Play zeros with ALSA device")
-	if err := cont.Command(ctx, "aplay", "-f", "dat", "-d", " 3", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to playback with ALSA devices: ", err)
+	// Stop pulseaudio by different operation and run playback to restart.
+	stopOpts := []string{"stop", "restart", "kill"}
+	for _, stopOpt := range stopOpts {
+		controlPulse(ctx, s, cont, stopOpt)
+		playZeros(ctx, s, cont)
+		checkPulseDevices(ctx, s, cont)
 	}
-	checkPulseDevices(ctx, s, cont)
-
-	// Case 2: Restart pulseaudio.
-	controlPulse(ctx, s, cont, "restart")
-	checkPulseDevices(ctx, s, cont)
-
-	// Case 3: Kill pulseaudio and run playback to restart.
-	controlPulse(ctx, s, cont, "kill")
-	s.Log("Play zeros with ALSA device")
-	if err := cont.Command(ctx, "aplay", "-f", "dat", "-d", "3", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to playback with ALSA devices: ", err)
-	}
-	checkPulseDevices(ctx, s, cont)
 }
