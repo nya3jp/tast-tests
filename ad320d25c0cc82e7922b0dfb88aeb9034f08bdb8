@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ebae341_3692d9c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "Hi Hidehiko, thanks for the quick review. More comments / suggestions are welcomed.\n\nI fixed most comments, and added one more language: Chinese.",
+      "revId": "ad320d25c0cc82e7922b0dfb88aeb9034f08bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
