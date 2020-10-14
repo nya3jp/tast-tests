@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f940e79_0239f273",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T08:48:28Z",
+      "side": 1,
+      "message": "Some nits.",
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44dc95db_f72dd1f5",
@@ -35,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96b9958_17e9f4c5",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T08:48:28Z",
+      "side": 1,
+      "message": "\"TFF\" prefix might be enough. TFFNone, TFFCapture, etc.",
+      "parentUuid": "44dc95db_f72dd1f5",
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "653a145c_3a88eb7b",
@@ -48,6 +83,69 @@
       "writtenOn": "2020-10-14T06:15:50Z",
       "side": 1,
       "message": "It is nice to also have this a Feature. Thanks for the change. :)",
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7430cd12_d8eb7eef",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T08:48:28Z",
+      "side": 1,
+      "message": "value: residual bits",
+      "range": {
+        "startLine": 52,
+        "startChar": 45,
+        "endLine": 52,
+        "endChar": 50
+      },
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8368b14_47ade73c",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T08:48:28Z",
+      "side": 1,
+      "message": "Or we may use []string instead:\nret :\u003d []string{}\nif enum\u0026... {\n  ret \u003d append(ret, \"...\")\n  ...\n}\n...\n\nreturn strings.Join(ret, \"\u0026\")",
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f26f8a8_221b557a",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T08:48:28Z",
+      "side": 1,
+      "message": "We use \"field_name: value\" pattern. So \"routers: \".",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 20
+      },
       "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
