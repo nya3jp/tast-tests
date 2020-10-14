@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "dee8bb84_38a404e1",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,34 @@
         "endChar": 69
       },
       "revId": "c4be7055b8d736b8e4ab24c4df67dbedfc4eaa59",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ac6bea_a54cf66e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-10-14T05:34:43Z",
+      "side": 1,
+      "message": "This only works on x86. Pstore is not enabled on arm yet (b/153934386). I\u0027ve already disabled on arm with SoftwareDeps.",
+      "parentUuid": "dee8bb84_38a404e1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 69
+      },
+      "revId": "c4be7055b8d736b8e4ab24c4df67dbedfc4eaa59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "aea0898b_df8d19a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump_follow.go",
@@ -43,8 +68,31 @@
         "endChar": 32
       },
       "revId": "c4be7055b8d736b8e4ab24c4df67dbedfc4eaa59",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca197bf6_5e9cb35e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump_follow.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-10-14T05:34:43Z",
+      "side": 1,
+      "message": "The command depends session_manager and cryptohome because .pstore file exists under /home/root/\u003chash\u003e of the primary session. The document says\n\n\u003e chrome - Support for performing user login via Chrome (i.e. using session_manager and cryptohome).\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/test_dependencies.md",
+      "parentUuid": "aea0898b_df8d19a9",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "c4be7055b8d736b8e4ab24c4df67dbedfc4eaa59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
