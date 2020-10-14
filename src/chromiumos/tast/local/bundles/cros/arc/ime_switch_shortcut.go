@@ -109,8 +109,8 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		s.Fatal("Unexpected default IME: ", imeID)
 	}
 
-	usIMEID := "_comp_ime_" + extID + "xkb:us::eng"
-	intlIMEID := "_comp_ime_" + extID + "xkb:us:intl:eng"
+	usIMEID := "_comp_ime_" + extID + string(ime.INPUTMETHOD_XKB_US_ENG)
+	intlIMEID := "_comp_ime_" + extID + string(ime.INPUTMETHOD_XKB_US_INTL)
 
 	if imeID != usIMEID {
 		s.Fatalf("US keyboard is not default: got %q; want %q", imeID, usIMEID)
