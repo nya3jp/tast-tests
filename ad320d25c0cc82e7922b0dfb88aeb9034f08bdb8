@@ -16,6 +16,46 @@
       "message": "Hi Hidehiko, thanks for the quick review. More comments / suggestions are welcomed.\n\nI fixed most comments, and added one more language: Chinese.",
       "revId": "ad320d25c0cc82e7922b0dfb88aeb9034f08bdb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cb27f41_d65c0e53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2020-10-14T03:15:43Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "ad320d25c0cc82e7922b0dfb88aeb9034f08bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a25258_9ab4db5c",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2020-10-14T03:15:43Z",
+      "side": 1,
+      "message": "nit: I think the source of truth is actually chrome/browser/resources/chromeos/input_method/google_xkb_manifest.json",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 81
+      },
+      "revId": "ad320d25c0cc82e7922b0dfb88aeb9034f08bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
