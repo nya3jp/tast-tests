@@ -52,6 +52,24 @@
       "parentUuid": "c9ae1daf_1cd101d0",
       "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e3e716_8fabbb17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T05:46:07Z",
+      "side": 1,
+      "message": "Mostly yes but:\n\n\u003e Bluetooth still appears to be on after the DUT reboots, but appears to not be powered?\n\nI only looked at the BT status on UI but didn\u0027t check Powered state after running the test, so I guess the \"not powered\" state is temporary.\n\nI did some more experiments today that if I add a polling on the BT Powered check after reboot, the test can pass after one retry (2 seconds interval). So there might be a short interval that \"DUT is booted but BT not yet ready/powered\".",
+      "parentUuid": "bf5198c0_5ad0b422",
+      "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
