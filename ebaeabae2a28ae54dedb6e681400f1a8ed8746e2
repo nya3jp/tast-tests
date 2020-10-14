@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e13f5c8_def13cbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-10-14T18:55:33Z",
+      "side": 1,
+      "message": "LGTM but I want Charles and/or Ned to weigh in",
+      "revId": "ebaeabae2a28ae54dedb6e681400f1a8ed8746e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
