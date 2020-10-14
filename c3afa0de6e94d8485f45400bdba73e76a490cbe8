@@ -72,6 +72,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3a720389_dd51697b",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-14T14:45:12Z",
+      "side": 1,
+      "message": "I went for full prefix. Lack of built-in enums cries for that.",
+      "parentUuid": "b96b9958_17e9f4c5",
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "653a145c_3a88eb7b",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 2
@@ -110,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60921438_03f8166d",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-14T14:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7430cd12_d8eb7eef",
+      "range": {
+        "startLine": 52,
+        "startChar": 45,
+        "endLine": 52,
+        "endChar": 50
+      },
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8368b14_47ade73c",
@@ -127,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb24ac1_bb9b0dc1",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-14T14:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8368b14_47ade73c",
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f26f8a8_221b557a",
@@ -140,6 +200,30 @@
       "writtenOn": "2020-10-14T08:48:28Z",
       "side": 1,
       "message": "We use \"field_name: value\" pattern. So \"routers: \".",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae4baad_fe60eb51",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-14T14:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f26f8a8_221b557a",
       "range": {
         "startLine": 105,
         "startChar": 17,
