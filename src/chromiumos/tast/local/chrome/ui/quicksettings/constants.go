@@ -109,4 +109,5 @@ const (
 	SettingPodDoNotDisturb  SettingPod = "Do not disturb"
 	SettingPodNetwork       SettingPod = "network"
 	SettingPodNightLight    SettingPod = "Night Light"
+	SettingPodNearbyShare   SettingPod = "Nearby Share"
 )
