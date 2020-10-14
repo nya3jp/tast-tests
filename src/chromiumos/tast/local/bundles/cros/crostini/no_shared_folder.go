@@ -19,7 +19,7 @@ func init() {
 		Func:         NoSharedFolder,
 		Desc:         "Test shared folder list in Settings app when there is no folder shared",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

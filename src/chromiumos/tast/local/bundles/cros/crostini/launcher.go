@@ -36,7 +36,7 @@ func init() {
 		Func:         Launcher,
 		Desc:         "Runs applications from the launcher in low/high-DPI mode",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

@@ -22,7 +22,7 @@ func init() {
 		Func:         IconAndUsername,
 		Desc:         "Test Terminal icon on shelf and username in Terminal window",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

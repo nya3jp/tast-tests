@@ -25,7 +25,7 @@ func init() {
 		Func:         ShareDownloadsAddFiles,
 		Desc:         "Test sharing Downloads with Crostini",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
