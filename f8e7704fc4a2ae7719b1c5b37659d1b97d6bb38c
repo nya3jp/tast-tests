@@ -56,6 +56,30 @@
       },
       "revId": "f8e7704fc4a2ae7719b1c5b37659d1b97d6bb38c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81fda231_2684c8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lpprint/lpprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-14T09:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96727276_ed1a2917",
+      "range": {
+        "startLine": 25,
+        "startChar": 51,
+        "endLine": 25,
+        "endChar": 60
+      },
+      "revId": "f8e7704fc4a2ae7719b1c5b37659d1b97d6bb38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
