@@ -50,6 +50,23 @@
       "message": "see my answer",
       "revId": "d6ce34f00e646f3ed9823ac39f7afc5af3efa9aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "996087c5_d9e23cfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-14T04:58:15Z",
+      "side": 1,
+      "message": "Can you put CQ-Depends on the other CL?",
+      "revId": "d6ce34f00e646f3ed9823ac39f7afc5af3efa9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
