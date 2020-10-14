@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a75f1cf_6476aabe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T08:12:53Z",
+      "side": 1,
+      "message": "Thanks. Hope it can fix the flaky issues found in QC devices.",
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de33f6b6_de3ce676",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T08:12:53Z",
+      "side": 1,
+      "message": "Consider putting it in the second line.\n\nAlso adds:\n// The MAC address is a locally administered unicast address.",
+      "range": {
+        "startLine": 659,
+        "startChar": 59,
+        "endLine": 660,
+        "endChar": 25
+      },
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
