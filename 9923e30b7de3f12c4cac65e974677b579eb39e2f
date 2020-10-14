@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34280db3_feb4355e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T20:57:07Z",
+      "side": 1,
+      "message": "Is there no visible way (as in, shill API/state machine, or similar) to determine when roaming is \"complete\", then? I noticed that Hsin-chen is having to repeat similar polling patterns in CL:2380898, and that seems kind of unfortunate -- maybe we don\u0027t care for every test, but at some point, we *do* care that connectivity is relatively seamless -- for instance, that we don\u0027t have connectivity \"hiccups\" after we thought we were finished. Polling leaves more gaps, where we can\u0027t really tell if we\u0027re having flaky connectivity along the way.\n\nI\u0027m mostly asking for consistency sake (so my reviews on other CLs match the expected behaviors we\u0027re testing for in tests like RoamDbus), not necessarily to block this particular change. But if this is indeed a problem, maybe this is deserving of some future changes.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "9923e30b7de3f12c4cac65e974677b579eb39e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
