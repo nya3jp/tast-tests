@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5f2799bb_dca0e4bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-14T22:59:00Z",
+      "side": 1,
+      "message": "I changed that restriction recently to allow imports across packages with the same name in different bundles (http://crrev.com/c/2324119).",
+      "parentUuid": "6d8d9d94_af7693d1",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "656e6be33a4e2f64132160be36d217cfc05c9eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "358f9358_b61e6639",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
