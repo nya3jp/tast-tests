@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34bb1206_ff984404",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T10:24:51Z",
+      "side": 1,
+      "message": "only look briefly. I haven\u0027t got time to play with this so I\u0027m not yet sure the proper scope for it...",
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74cbd511_acb25767",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T10:24:51Z",
+      "side": 1,
+      "message": "curious: will the variable name in different _test.go collide with each others? If so, we might need a much longer name for these. :/",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57f020a_7ad8db58",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T10:24:51Z",
+      "side": 1,
+      "message": "For the security tests, I think apOpts is almost always the same. So it seems to worth to be extracted. I see some functions does handle this by their own, but I\u0027m not sure if this should be done in a even bigger scope. e.g. param.Val becomes an object instead of just string.",
+      "range": {
+        "startLine": 300,
+        "startChar": 3,
+        "endLine": 300,
+        "endChar": 62
+      },
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
