@@ -33,6 +33,24 @@
       "message": "I\u0027m thinking if we can extract common code of enabling/disabling  MACRandomizeSupport and share with RandomMACAddress test. However, it may return a shortened ctx and two defer functions. Not sure if it is overkill. WDYT?",
       "revId": "59b63d72dd6543c173ca3a2d8cb132404904c1d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a6103a_87868cef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T06:49:31Z",
+      "side": 1,
+      "message": "Hmm... it will be awkward if we want to include the usage in RandomMACAddress as it might prefer asserting MACRandomizeSupport\u003d\u003dtrue and setting it explicitly instead of assuming default disabled when not supported.\n\nBut I think it is still useful to have a function for other usages. will include this change in next patchset.",
+      "parentUuid": "1a04a18b_a7508051",
+      "revId": "59b63d72dd6543c173ca3a2d8cb132404904c1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
