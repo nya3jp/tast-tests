@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6a686f_8e6539cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-14T16:28:01Z",
+      "side": 1,
+      "message": "Address Oleh\u0027s offline comment: remove testPulseRestart function",
+      "revId": "209a309c2d9643a2c85f08e6a384ddb38ef74175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
