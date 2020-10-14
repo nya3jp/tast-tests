@@ -22,34 +22,34 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// cleanPSContents filters any unwanted lines from content to ensure a stable
+// CleanPSContents filters any unwanted lines from content to ensure a stable
 // diff.
-func cleanPSContents(content string) string {
+func CleanPSContents(content string) string {
 	r := regexp.MustCompile(
 		// Matches the embedded poppler version in the PS file. This gets
 		// outdated on every poppler uprev, so we strip it out.
-		"(?m)(^(.*poppler.*version:.*" +
+		`(?m)(^(.*poppler.*version:.*` +
 			// For Brother jobs, jobtime and printlog item 2 contain
 			// time-specific values.
-			"|@PJL SET JOBTIME = .*" +
-			"|@PJL PRINTLOG ITEM = 2,.*" +
+			`|@PJL SET JOBTIME = .*` +
+			`|@PJL PRINTLOG ITEM = 2,.*` +
 			// For HP jobs, JobAcct4,JobAcc5 & DMINFO contain
 			// time-specific values.
-			"|@PJL SET JOBATTR=\"JobAcct[45]=.*" +
-			"|@PJL DMINFO ASCIIHEX=\".*" +
+			`|@PJL SET JOBATTR="JobAcct[45]=.*` +
+			`|@PJL DMINFO ASCIIHEX=".*` +
 			// For Ricoh jobs, the SET DATE/TIME values are time-specific.
-			"|@PJL SET DATE=\".*" +
-			"|@PJL SET TIME=\".*)[\r\n])" +
+			`|@PJL SET DATE=".*` +
+			`|@PJL SET TIME=".*)[\r\n])` +
 			// For Ricoh jobs, the /ID tag is time-specific.
-			"|(\\/ID \\[<.*>\\])" +
+			`|(\/ID \[<.*>\])` +
 			// For Ricoh jobs, "usercode (\d+)" contains the date
 			// and time of the print job.
-			"|(usrcode \\(\\d+\\))" +
+			`|(usrcode \(\d+\))` +
 			// For Ricoh PS jobs, the time is contained here.
-			"|(/Time \\(\\d+\\))" +
+			`|(/Time \(\d+\))` +
 			// For Ricoh jobs, "(\d+) lppswd" contains the date
 			// and time of the print job.
-			"|(\\(\\d+\\)) lppswd")
+			`|(\(\d+\)) lppswd`)
 	return r.ReplaceAllLiteralString(content, "")
 }
 
@@ -95,14 +95,14 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 	}
 
 	testing.ContextLog(ctx, "Issuing print request")
-	var cmd *testexec.Cmd
+	args := []string{"-d", printerID}
 	if len(options) != 0 {
-		cmd = testexec.CommandContext(ctx, "lp", "-d", printerID, "-o", options, s.DataPath(toPrintFile))
-	} else {
-		cmd = testexec.CommandContext(ctx, "lp", "-d", printerID, s.DataPath(toPrintFile))
+		args = append(args, "-o", options)
 	}
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
+	args = append(args, s.DataPath(toPrintFile))
+	cmd := testexec.CommandContext(ctx, "lp", args...)
+
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to run lp: ", err)
 	}
 
@@ -114,7 +114,7 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 		s.Fatal("Fake printer didn't receive a request: ", err)
 	}
 
-	if diff := diff.Diff(cleanPSContents(string(expect)), cleanPSContents(string(request))); diff != "" {
+	if diff := diff.Diff(CleanPSContents(string(expect)), CleanPSContents(string(request))); diff != "" {
 		path := filepath.Join(s.OutDir(), diffFile)
 		if err := ioutil.WriteFile(path, []byte(diff), 0644); err != nil {
 			s.Error("Failed to dump diff: ", err)
