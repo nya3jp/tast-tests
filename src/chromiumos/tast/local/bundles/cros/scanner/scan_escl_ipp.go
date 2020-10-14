@@ -149,8 +149,7 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
 	defer func() {
-		printer.Kill()
-		printer.Wait()
+		usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
 	}()
 
 	var deviceName string
