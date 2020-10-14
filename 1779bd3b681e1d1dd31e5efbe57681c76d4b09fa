@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bbe0c44_6fa0453f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-14T05:17:34Z",
+      "side": 1,
+      "message": "One suggestion, doesn\u0027t have to happen in this CL though since I\u0027m late to the party.\n\nAlso, in future breaking things up into smaller CLs helps. There are a few bits and pieces in here (using tar.xz instead of squashfs, generating pres for additional tests) that could be broken into separate CLs.\n\nI also assume that the tests only have regenerated pres, no other changes?",
+      "revId": "1779bd3b681e1d1dd31e5efbe57681c76d4b09fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc26419_72ad82cd",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-14T05:17:34Z",
+      "side": 1,
+      "message": "I\u0027d rather see GetArtifactPath etc functions that take named placeholders and return a string, instead of a pattern that the caller needs to Sprintf. More self-documenting.",
+      "revId": "1779bd3b681e1d1dd31e5efbe57681c76d4b09fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
