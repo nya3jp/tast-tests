@@ -33,6 +33,23 @@
       "message": "Thanks for the feedback. Going forward I\u0027ll make sure to reply on each comment individually.  ",
       "revId": "ab702042309d18bf354549518e65503e916c792d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec5ba51_150a4b84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-14T19:36:33Z",
+      "side": 1,
+      "message": "Based on the number of failures, you may need to rebase on master. Potentially something you depend on changed. Not fully sure though.",
+      "revId": "ab702042309d18bf354549518e65503e916c792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
