@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4790c6c5_59b3943b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fae0761f_35368998",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 17
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb42358_eac0cbb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf56acb1_3cd53741",
+      "range": {
+        "startLine": 114,
+        "startChar": 57,
+        "endLine": 114,
+        "endChar": 84
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66daa29b_2b44cee0",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-10-13T16:40:56Z",
       "side": 1,
       "message": "iiuc, the evaluation order is left to right, so \"out\" will be still empty on the evaluation?",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 54
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250cb1d7_8233cdcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "In the second function, it overwrite the value of out. GetValue is functional.",
+      "parentUuid": "66daa29b_2b44cee0",
       "range": {
         "startLine": 179,
         "startChar": 8,
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9376ff3e_49ceac2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c393424_84ff357f",
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9ff0f03_0f64a50f",
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4626488a_6d7e42c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ff0f03_0f64a50f",
+      "range": {
+        "startLine": 190,
+        "startChar": 25,
+        "endLine": 190,
+        "endChar": 74
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a1d7f9d_ab65fe71",
@@ -140,6 +254,30 @@
       "writtenOn": "2020-10-13T16:40:56Z",
       "side": 1,
       "message": "is this ctx needs to carried out from this block?",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 5
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "662be68b_fce38beb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a1d7f9d_ab65fe71",
       "range": {
         "startLine": 69,
         "startChar": 2,
@@ -175,6 +313,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18a2149e_bd671b1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "There is no signal or any other identifier to check decoder readiness. This has become a big blocker to add more input tests. I will work with inputs Eng team to find a better solution.",
+      "parentUuid": "642479f9_f6f238f0",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30aac312_ac718edd",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
         "patchSetId": 1
@@ -186,6 +348,24 @@
       "writtenOn": "2020-10-13T16:40:56Z",
       "side": 1,
       "message": "could you add check that InputMethodCode is either one of cases? I.e. let test fail on default?",
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "705ced5d_f5dc7e8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30aac312_ac718edd",
       "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -213,6 +393,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94abe5bd_9c570162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aab15e71_e78a32f2",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 24
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93217e9c_bd2f0f54",
@@ -230,6 +434,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "322ea28e_a283e409",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93217e9c_bd2f0f54",
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d5b5047_0d1cd960",
@@ -243,6 +465,24 @@
       "writtenOn": "2020-10-13T16:40:56Z",
       "side": 1,
       "message": "Could you add the reference where these values come from?\nAlso, is this/will this be automatically generated? Or manually maintained?",
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "592b04cf_d27ce3cd",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T03:02:25Z",
+      "side": 1,
+      "message": "Add reference. @shend, can you please confirm this list is still in use?",
+      "parentUuid": "8d5b5047_0d1cd960",
       "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
