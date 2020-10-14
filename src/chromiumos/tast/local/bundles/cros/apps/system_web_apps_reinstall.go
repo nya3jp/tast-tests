@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -25,13 +26,25 @@ func init() {
 		},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
-			Name: "default_enabled_apps",
-			Val:  []chrome.Option{},
+			Name:              "default_enabled_apps_unstable",
+			Val:               []chrome.Option{},
+			ExtraHardwareDeps: pre.SystemWebAppsUnstableModels,
+			ExtraAttr:         []string{"informational"},
 		}, {
-			Name: "all_apps",
-			Val:  []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
+			Name:              "all_apps_unstable",
+			Val:               []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
+			ExtraHardwareDeps: pre.SystemWebAppsUnstableModels,
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "default_enabled_apps_stable",
+			Val:               []chrome.Option{},
+			ExtraHardwareDeps: pre.SystemWebAppsStableModels,
+		}, {
+			Name:              "all_apps_stable",
+			Val:               []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
+			ExtraHardwareDeps: pre.SystemWebAppsStableModels,
 		}},
 	})
 }
