@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9fdd68a_0f469396",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T21:40:50Z",
+      "side": 1,
+      "message": "\u003e I suggested earlier (hidden somewhere in the comments of this this CL I think) that we could add a new DBus property somewhere that accomplishes this.\n\nAs you were writing your comment, I expanded the old comments and found that on patchset 3. Oops.\n\nIf we\u0027re just staying Online (or, Connected in this test case), that actually seems to be a bit of a lie, as we really are going through \"configuring\" at a minimum (we have to reestablish layer 3 connectivity, even if this is usually a trivial renewal). I understand the practical reasons why we don\u0027t do that right now, as that might cause needless disruption. But it does seem like it could be possible to reflect Service states accurately without actually tearing everything down -- not sure.\n\nAnyway, thanks, I guess we stick with polling post-roam for now.",
+      "parentUuid": "ea6e608b_02a73398",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "9923e30b7de3f12c4cac65e974677b579eb39e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92646b20_f33bd92a",
