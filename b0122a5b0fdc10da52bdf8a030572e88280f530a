@@ -16,6 +16,24 @@
       "message": "Hi Xiyuan, PS5 checks if the Play button is on top and clickable, PS6 checks the status of the progress bar. Both of them work on my local device, which approach do you think is better?",
       "revId": "b0122a5b0fdc10da52bdf8a030572e88280f530a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f54444_0c3e0526",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-14T21:30:55Z",
+      "side": 1,
+      "message": "I think PS5 is more stable than PS6. The at-top state is one condition that could be polled at any time. PS6 depends on a serials states: page load, progress bar element visible, then progress element gone. The tast might run at a bad timing and breaks the state expectations.",
+      "parentUuid": "03751d2f_2d3f2c0d",
+      "revId": "b0122a5b0fdc10da52bdf8a030572e88280f530a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
