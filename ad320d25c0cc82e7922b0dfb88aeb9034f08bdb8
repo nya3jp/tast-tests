@@ -56,6 +56,30 @@
       },
       "revId": "ad320d25c0cc82e7922b0dfb88aeb9034f08bdb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "433591b0_eedf2d89",
+        "filename": "src/chromiumos/tast/local/chrome/ime/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T04:41:21Z",
+      "side": 1,
+      "message": "Oh, good to know. I changed mind to have the hole list in this cl. Instead, we can have input code added one by one on demand.\n\nbtw, since input codes are usually abbreviations. I prefer to keep use ALL_CAPS rather than CamelCase",
+      "parentUuid": "a3a25258_9ab4db5c",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 81
+      },
+      "revId": "ad320d25c0cc82e7922b0dfb88aeb9034f08bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
