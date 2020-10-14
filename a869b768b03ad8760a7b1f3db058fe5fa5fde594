@@ -52,6 +52,24 @@
       "parentUuid": "695d40df_43a144c6",
       "revId": "a869b768b03ad8760a7b1f3db058fe5fa5fde594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45cdb84c_f085f1cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413538
+      },
+      "writtenOn": "2020-10-14T22:40:07Z",
+      "side": 1,
+      "message": "Test passed after adding your suggested change and changing directory owner to rmtfs.",
+      "parentUuid": "84cc3be9_4dde6b54",
+      "revId": "a869b768b03ad8760a7b1f3db058fe5fa5fde594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
