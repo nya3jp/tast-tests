@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec66819_3b0c4290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-14T18:27:13Z",
+      "side": 1,
+      "message": "Thanks, all.",
+      "revId": "95c036746c45cbc7f23caa4ddfa1a76d144a176a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adea5e8a_7ab99178",
@@ -48,6 +65,30 @@
       "writtenOn": "2020-10-13T23:24:46Z",
       "side": 1,
       "message": "nit: We could change this to len(want) so it automatically works when we add new keys to want.",
+      "range": {
+        "startLine": 95,
+        "startChar": 73,
+        "endLine": 95,
+        "endChar": 74
+      },
+      "revId": "95c036746c45cbc7f23caa4ddfa1a76d144a176a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09dacb8a_620e5c12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-14T18:27:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adea5e8a_7ab99178",
       "range": {
         "startLine": 95,
         "startChar": 73,
