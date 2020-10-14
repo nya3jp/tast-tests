@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfdd91f8_a4e69a33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-14T15:14:33Z",
+      "side": 1,
+      "message": "hugenit/style: Could you add \":\" (colon) after the paren?\n\nTODO(b/...): A better solution ...",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 22
+      },
+      "revId": "59a7716b212f0628de455cc40cdcef2d97e43fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
