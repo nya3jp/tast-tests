@@ -81,6 +81,10 @@ func PulseAudioBasic(ctx context.Context, s *testing.State) {
 
 	// Case 2: Restart pulseaudio.
 	controlPulse(ctx, s, cont, "restart")
+	s.Log("Play zeros with ALSA device")
+	if err := cont.Command(ctx, "aplay", "-f", "dat", "-d", "3", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to playback with ALSA devices: ", err)
+	}
 	checkPulseDevices(ctx, s, cont)
 
 	// Case 3: Kill pulseaudio and run playback to restart.
