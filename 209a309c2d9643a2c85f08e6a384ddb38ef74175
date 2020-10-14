@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8baf22c0_64f5eb56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-14T16:48:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2a0777d_884df4e7",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "209a309c2d9643a2c85f08e6a384ddb38ef74175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b87a8031_bbd7bcb8",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "890ff245_9d89e33e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-14T16:48:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b87a8031_bbd7bcb8",
+      "range": {
+        "startLine": 74,
+        "startChar": 13,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "209a309c2d9643a2c85f08e6a384ddb38ef74175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1da4cd3e_5599a1e3",
@@ -94,6 +142,30 @@
       "writtenOn": "2020-10-14T16:40:20Z",
       "side": 1,
       "message": "nit: maybe it\u0027ll be better to put output into quotest by using %q instead of %s?",
+      "range": {
+        "startLine": 75,
+        "startChar": 56,
+        "endLine": 75,
+        "endChar": 58
+      },
+      "revId": "209a309c2d9643a2c85f08e6a384ddb38ef74175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd3bf0b_69fff671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-14T16:48:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1da4cd3e_5599a1e3",
       "range": {
         "startLine": 75,
         "startChar": 56,
