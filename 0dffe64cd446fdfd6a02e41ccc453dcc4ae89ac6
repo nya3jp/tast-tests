@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "298ec9fb_5508e6a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Can this run with SELinux enforced?",
       "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5a712fb3_7031e014",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
@@ -32,10 +33,10 @@
       "message": "I have no idea for this.\nHow can I check this? If this cannot run with SELinux, what should I do?",
       "parentUuid": "298ec9fb_5508e6a5",
       "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "27aa1967_11c870f3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
@@ -50,10 +51,28 @@
       "message": "On a -user image, with selinux enforced (any prebuild) this happens:\n\nlocalhost ~ # android-sh                                                                                                                                                                                               \n:/ # \n:/ # echo hello \u003e /dev/kmsg\n/system/bin/sh: can\u0027t create /dev/kmsg: Permission denied\n\n\nyou\u0027ll need a different approach.",
       "parentUuid": "5a712fb3_7031e014",
       "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eed0341_e9cad48e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-10-14T05:34:43Z",
+      "side": 1,
+      "message": "This is already done. Using android-sh is removed.",
+      "parentUuid": "27aa1967_11c870f3",
+      "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "9dd30e2b_ea752037",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
@@ -67,10 +86,10 @@
       "side": 1,
       "message": "Please describe why you put \"1 $i\" and \"2 $i\" before the string.",
       "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "dd637533_66298262",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
@@ -85,10 +104,10 @@
       "message": "Done",
       "parentUuid": "9dd30e2b_ea752037",
       "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "27f049f7_57b50255",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
@@ -102,10 +121,10 @@
       "side": 1,
       "message": "This test is parameterized, but it\u0027s actually two different tests.\nCould you do either:\n- Make the test code less duplicated.\n- Make these two separate tests.",
       "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "b749e61a_cbf43071",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
@@ -120,8 +139,7 @@
       "message": "I separated these tests. (this made two new files.)",
       "parentUuid": "27f049f7_57b50255",
       "revId": "0dffe64cd446fdfd6a02e41ccc453dcc4ae89ac6",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
