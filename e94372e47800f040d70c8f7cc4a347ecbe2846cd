@@ -380,6 +380,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25ffaf6d_cf29cef6",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T05:19:10Z",
+      "side": 1,
+      "message": "1. This might depend on how the events will be used. One case I have: if there\u0027s an atoi error, the field will be 0 and when it is checked in some condition, the test might wrongly pass, which means we might miss some signal when things really got broken.\n\n2. My thought is: the current error message might be something like: \u0027\"1-23\" is not an integer\u0027, but with only the sub-match, we\u0027re not sure where it is from and make it harder to debug. I had a similar parsing bug that is hard to reproduce, and the sub-match didn\u0027t give me much clue so maybe I think too much here.",
+      "parentUuid": "4870e612_c020ce28",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b2377dc_301225bb",
         "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
         "patchSetId": 1
@@ -691,6 +709,24 @@
       "side": 1,
       "message": "Right, your first point is a concern. Very unlikely in this case, but still... How about a deadline on completion of this loop?\nThe other point is not as fatal, and it\u0027s hard to really resolve, especially as there is no timestamps in the output from wpa_cli. Restarting the whole thing seems like an overkill and it may actually result in skipping some events (they are not buffered while wpa_cli is not consuming).",
       "parentUuid": "0c40fe78_d4b01fc0",
+      "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a27c64e_20f871de",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T05:19:10Z",
+      "side": 1,
+      "message": "\u003e How about a deadline on completion of this loop?\n\nThis also depends on the usage. If the other point is not a problem, this might be OK. (But then I wonder how much or why we need to ClearEvent.)\n\n\u003e Restarting the whole thing seems like an overkill\n\nYes, it might be much overhead so it is not the best solution if we have some others. \n\n\u003e it may actually result in skipping some events\n\nClearEvents will just drop all events so I think another New should be the same if the timing of New and ClearEvents is the same?\n\nHowever, this reminds me that we don\u0027t actually wait until wpa_cli getting ready for watching events. cmd.Start will return when the process is created but it is not guaranteed that initialization of wpa_cli is finished. We suffered a similar problem with \"iw event\" which prints nothing after initialization. Is there any message we can know wpa_cli is ready?",
+      "parentUuid": "d923bae7_428683be",
       "revId": "e94372e47800f040d70c8f7cc4a347ecbe2846cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

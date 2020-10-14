@@ -34,6 +34,24 @@
       "parentUuid": "a40c9fa1_b85eb8d2",
       "revId": "a1c407311863f0897ea1ca3225e816b0f4bf1cd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b07a7257_ec2e233b",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T05:19:10Z",
+      "side": 1,
+      "message": "Usually the channel is closed by the writer. I think maybe:\nbg goroutine:\n\n  go func () {\n    defer close(w.lines)\n    for w.stdoutScanner.Scan() { // Reader will be closed after Wait, we depend on this to break the loop.\n      ...\n      w.lines \u003c- line\n    }\n  }()\n\nIn Stop:\n\n  func (w *WPAMonitor) Stop(ctx context.Context) (retErr error) {\n    if _, err :\u003d io.WriteString(w.std, \"q\\n\"); err !\u003d nil {\n      // No return here to release other resources.\n      collectFirstErr(ctx, \u0026retErr, errors.Wrap(err, \"failed to send command to wpa_cli\"))\n    }\n    if err :\u003d w.cmd.Wait(ctx); err !\u003d nil {\n      collectFirstErr(ctx, \u0026retErr, errors.Wrap(err, \"failed to wait for wpa_cli exit\"))\n    }\n    for range w.lines {} // Drain the channel until closed.\n  }\n\nYou can add more logic to respect context deadline, but I think this might be enough.",
+      "parentUuid": "74fb04c8_fd8ed592",
+      "revId": "a1c407311863f0897ea1ca3225e816b0f4bf1cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
