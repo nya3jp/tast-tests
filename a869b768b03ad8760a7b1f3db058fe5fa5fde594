@@ -34,6 +34,24 @@
       "parentUuid": "f9f665d2_6d9342be",
       "revId": "a869b768b03ad8760a7b1f3db058fe5fa5fde594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84cc3be9_4dde6b54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-10-14T19:48:56Z",
+      "side": 1,
+      "message": "You should use the construct used in other parts of the test:\n\nif _, err :\u003d user.Lookup(\"rmtfs\"); err \u003d\u003d nil {\n\t\tprependPatterns(chk.NewPattern(chk.Tree(\u003cPATH\u003e), users(\"rmtfs\"), chk.NotMode(022)))\n\t}\n\nThis test should reflect the intended user of the files. It\u0027s not just about making the test pass blindly. Who should own these files? Ideally, they wouldn\u0027t be owned by root.",
+      "parentUuid": "695d40df_43a144c6",
+      "revId": "a869b768b03ad8760a7b1f3db058fe5fa5fde594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
