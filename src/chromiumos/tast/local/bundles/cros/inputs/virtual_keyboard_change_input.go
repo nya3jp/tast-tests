@@ -57,11 +57,11 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	const (
-		defaultInputMethod       = "xkb:us::eng"
+		defaultInputMethod       = string(ime.INPUTMETHOD_XKB_US_ENG)
 		defaultInputMethodLabel  = "US"
 		defaultInputMethodOption = "US keyboard"
 		language                 = "fr-FR"
-		inputMethod              = "xkb:fr::fra"
+		inputMethod              = string(ime.INPUTMETHOD_XKB_FR_FRA)
 		InputMethodLabel         = "FR"
 	)
 
@@ -113,7 +113,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 			currentInputMethod, err := vkb.GetCurrentInputMethod(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to get current input method")
-			} else if currentInputMethod != vkb.ImePrefix+inputMethod {
+			} else if currentInputMethod != inputMethod {
 				return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, vkb.ImePrefix+inputMethod)
 			}
 			keyboard, err := vkb.VirtualKeyboard(ctx, tconn)

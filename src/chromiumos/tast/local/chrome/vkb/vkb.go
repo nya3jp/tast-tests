@@ -72,7 +72,7 @@ func GetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn) (string,
 		return "", errors.Wrap(err, "failed to get current input method")
 	}
 
-	return strings.TrimPrefix(id, ImePrefix+":"), nil
+	return strings.TrimPrefix(id, ImePrefix), nil
 }
 
 // IsShown checks if the virtual keyboard is currently shown. It checks whether
@@ -351,4 +351,16 @@ func WaitForVKReady(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chro
 // be used when activated.
 func EnableA11yVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.a11y.virtual_keyboard", enabled)
+}
+
+// SelectFromSuggestion waits for suggestion candidate to appear and clicks it to select.
+func SelectFromSuggestion(ctx context.Context, tconn *chrome.TestConn, candidateText string) error {
+	candidateFindParams := ui.FindParams{
+		Role:      ui.RoleTypeButton,
+		ClassName: "sk",
+		Name:      candidateText,
+	}
+
+	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
+	return ui.StableFindAndClick(ctx, tconn, candidateFindParams, &opts)
 }
