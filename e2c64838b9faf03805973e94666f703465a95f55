@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9169f893_77fd3631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-14T10:00:32Z",
+      "side": 1,
+      "message": "Regarding 1) I think these made sense before the cases were added into the foor loop, but I agree that the code inside them should just be in the main function now.",
+      "parentUuid": "65fd3655_28fc67f3",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "e2c64838b9faf03805973e94666f703465a95f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "615494ec_7bf6d044",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-14T09:51:11Z",
       "side": 1,
       "message": "Please don\u0027t use just for loop, use s.Run + for loop\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests\n\nBenefits:\n1. even if one option failed you still can try other options\n2. if automatically add logs about which option you are running. In your case it\u0027s unclear in which option we failed.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "e2c64838b9faf03805973e94666f703465a95f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e28782_cba79174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-14T10:00:32Z",
+      "side": 1,
+      "message": "In your case does it make sense to run \"restart\" if \"stop\" failed, or all previous cases have to pass?",
+      "parentUuid": "615494ec_7bf6d044",
       "range": {
         "startLine": 82,
         "startChar": 0,
