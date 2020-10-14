@@ -383,6 +383,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c73e94f_05ed445a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T21:18:06Z",
+      "side": 1,
+      "message": "Marked as resolved with TODO",
+      "parentUuid": "18a2149e_bd671b1d",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30aac312_ac718edd",
