@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bad412b_fea08a8f",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "123afa75_f5c905f5",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dd328bf_732581c3",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-10-13T02:46:59Z",
       "side": 1,
       "message": "Because the GBBFlag values are all the integers 0–13, this block ultimately sets sortedGBBFlags\u003d[]pb.GBBFlag{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}.\n\nWe could reduce the amount of code we need to maintain by removing sortedGBBFlags, and refactoring L113-117 to use the integers 0–13 directly:\n\n    for i :\u003d 0; i \u003c len(pb.GBBFlag_name); i++ {\n        if mask\u0026(0x0001 \u003c\u003c i) !\u003d 0 {\n            res.append(res, pb.GBBFlag(pos)\n        }\n    }",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72417bb_f318eb91",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Doing it the current way makes less assumptions about the flag bit positions (starts at 0 and contiguous) and so is more robust to future code changes.",
+      "parentUuid": "5dd328bf_732581c3",
       "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f69e56d_b5b05f86",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85b46e46_e26999c0",
+      "range": {
+        "startLine": 61,
+        "startChar": 87,
+        "endLine": 61,
+        "endChar": 93
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d41b413_60566fba",
@@ -88,6 +148,24 @@
       "writtenOn": "2020-10-13T02:46:59Z",
       "side": 1,
       "message": "Consolidate L61-62:\n\n    if _, err \u003d testexec.CommandContext(ctx, ...).Output(...); err !\u003d nil {",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9d9c21_7ddd1191",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d41b413_60566fba",
       "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3574a423_24636cfb",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b73e5e0_5fee20d6",
+      "range": {
+        "startLine": 81,
+        "startChar": 35,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02b4db43_83e14c09",
@@ -129,6 +231,24 @@
       "writtenOn": "2020-10-13T02:46:59Z",
       "side": 1,
       "message": "Please combine L84-85:\n\n    if err :\u003d i.readSectionData(...); err !\u003d nil {",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee87003_55d739f8",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02b4db43_83e14c09",
       "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +270,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af9efdd_0dc00abf",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ec3a0d6_50f5d49f",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2186f70f_bd291447",
@@ -167,6 +305,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b55e5a_ad4f9a62",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2186f70f_bd291447",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25b6832d_398afddb",
@@ -180,6 +336,30 @@
       "writtenOn": "2020-10-13T02:46:59Z",
       "side": 1,
       "message": "nit/typo: sorted",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 15
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1aefe8f_fd489057",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b6832d_398afddb",
       "range": {
         "startLine": 112,
         "startChar": 8,
@@ -213,6 +393,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edded1b9_72a9c53a",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "yea ran it.",
+      "parentUuid": "e6a0e380_e445122a",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 23
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f55d7e2d_9f2bbac1",
@@ -230,6 +434,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b9b97eb_5c8f7987",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f55d7e2d_9f2bbac1",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27dc7795_d4c31062",
@@ -243,6 +465,24 @@
       "writtenOn": "2020-10-13T02:46:59Z",
       "side": 1,
       "message": "While not strictly necessary for non-exported functions, please add a Godoc-style comment.",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3e1f24_2abf456d",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27dc7795_d4c31062",
       "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -293,6 +533,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "def493ab_46082d3b",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69737d31_07345762",
+      "range": {
+        "startLine": 137,
+        "startChar": 53,
+        "endLine": 137,
+        "endChar": 55
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbd659c_2bdaec13",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f8a228b_b7e4a2f8",
+      "range": {
+        "startLine": 137,
+        "startChar": 47,
+        "endLine": 137,
+        "endChar": 49
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea36f242_68e93867",
@@ -310,6 +598,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4c72d3_1d75c3d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea36f242_68e93867",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58748d7f_2d92bbe4",
@@ -323,6 +629,30 @@
       "writtenOn": "2020-10-13T02:46:59Z",
       "side": 1,
       "message": "No need to rename this",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b1ac15_c5d960c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58748d7f_2d92bbe4",
       "range": {
         "startLine": 14,
         "startChar": 1,
@@ -356,6 +686,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50c9864_0e5bc864",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188961d1_5eb419f5",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fce3cea_2b1fd5f3",
@@ -369,6 +723,24 @@
       "writtenOn": "2020-10-13T02:46:59Z",
       "side": 1,
       "message": "From https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration, \"At least one personal email address of an active committer should be specified so that we can file bugs or ask for code reviews.\"\n\n(I think I\u0027m guilty of forgetting this in some other tests... I should fix that.)",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ed16cc_2e595bb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fce3cea_2b1fd5f3",
       "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -396,6 +768,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "224f6b71_67792c55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4691060d_6ee215e0",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18c3241d_56b0a71d",
@@ -409,6 +805,24 @@
       "writtenOn": "2020-10-13T02:46:59Z",
       "side": 1,
       "message": "nit: remove this newline",
+      "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c3018b1_92d69e16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T03:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c3241d_56b0a71d",
       "revId": "ad4904906bb2c9f34feba7723b566bf896c1ee9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
