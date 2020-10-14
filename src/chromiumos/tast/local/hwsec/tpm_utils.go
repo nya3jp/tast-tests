@@ -225,6 +225,9 @@ func restoreSystemKey(ctx context.Context) error {
 // ensureJobsStarted ensures the given jobs are started or returns an error if any one of the jobs failed to start.
 func ensureJobsStarted(ctx context.Context, jobs []string) error {
 	for _, job := range jobs {
+		if !upstart.JobExists(ctx, job) {
+			continue
+		}
 		if err := upstart.EnsureJobRunning(ctx, job); err != nil {
 			return errors.Wrapf(err, "failed to start %s", job)
 		}
@@ -237,6 +240,9 @@ func ensureJobsStarted(ctx context.Context, jobs []string) error {
 // stop. It's not an error if a given job is already stopped.
 func stopJobs(ctx context.Context, jobs []string) error {
 	for _, job := range jobs {
+		if !upstart.JobExists(ctx, job) {
+			continue
+		}
 		if err := upstart.StopJob(ctx, job); err != nil {
 			return errors.Wrapf(err, "failed to stop %s", job)
 		}
