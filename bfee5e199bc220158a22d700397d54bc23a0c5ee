@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb0038e_4b155506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-14T16:57:25Z",
+      "side": 1,
+      "message": "nit: for window update",
+      "range": {
+        "startLine": 299,
+        "startChar": 28,
+        "endLine": 299,
+        "endChar": 42
+      },
+      "revId": "bfee5e199bc220158a22d700397d54bc23a0c5ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff85d4b_42ecb70c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-14T16:57:25Z",
+      "side": 1,
+      "message": "nit: was clicked",
+      "range": {
+        "startLine": 301,
+        "startChar": 41,
+        "endLine": 301,
+        "endChar": 48
+      },
+      "revId": "bfee5e199bc220158a22d700397d54bc23a0c5ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1c61c5_6d1c2d3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-14T16:57:25Z",
+      "side": 1,
+      "message": "nit: for window update",
+      "range": {
+        "startLine": 321,
+        "startChar": 28,
+        "endLine": 321,
+        "endChar": 42
+      },
+      "revId": "bfee5e199bc220158a22d700397d54bc23a0c5ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e0bb14_d0e32b24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-14T16:57:25Z",
+      "side": 1,
+      "message": "nit: was clicked",
+      "range": {
+        "startLine": 323,
+        "startChar": 41,
+        "endLine": 323,
+        "endChar": 48
+      },
+      "revId": "bfee5e199bc220158a22d700397d54bc23a0c5ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
