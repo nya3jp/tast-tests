@@ -16,6 +16,46 @@
       "message": "Thanks, Hugo! Please take another look!",
       "revId": "87a6345b705845154f59933819131eef7785b10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d45ca116_62fe8a2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-14T14:30:56Z",
+      "side": 1,
+      "message": "LGTM, would +2. Deferring approval to tast OWNERs.",
+      "revId": "87a6345b705845154f59933819131eef7785b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83873c9f_61703123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-14T14:30:56Z",
+      "side": 1,
+      "message": "Are you sure Name() is still valid here after calling Close() ? I think it might be safer (amd more Go idiomatic) to change L.117 to defer pidFile.Close().",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 22
+      },
+      "revId": "87a6345b705845154f59933819131eef7785b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

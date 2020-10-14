@@ -644,6 +644,30 @@
       },
       "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335c9a78_c2313be6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-14T14:30:56Z",
+      "side": 1,
+      "message": "Ok this is a bit weird and unexpected. I ll try to remember to investigate that on the pp side.",
+      "parentUuid": "bdb28d8d_347fe93d",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 20
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
