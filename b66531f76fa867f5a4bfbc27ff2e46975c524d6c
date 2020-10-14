@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43460e41_2a973218",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T18:06:40Z",
+      "side": 1,
+      "message": "Still needed since the type of pb.GBBFlag_value is map[string]int32.",
+      "parentUuid": "9180cb9e_37fdf598",
+      "range": {
+        "startLine": 37,
+        "startChar": 45,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "b66531f76fa867f5a4bfbc27ff2e46975c524d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "909b3f81_33f7c3ec",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-14T16:14:55Z",
       "side": 1,
       "message": "sortedGBBFlags[i] and sortedGBBFlags[j] are already subtypes of int, so the \u003c operator works on them the way you\u0027d expect. No need to cast them to ints.",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "b66531f76fa867f5a4bfbc27ff2e46975c524d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ba0ed4_5bbee726",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-14T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "909b3f81_33f7c3ec",
       "range": {
         "startLine": 40,
         "startChar": 9,
