@@ -26,6 +26,7 @@ var stableModels = []string{
 	"bobba",
 	"kefka",
 	"coral",
+	"betty",
 }
 
 // InputsStableModels is a shortlist of models aiming to run critical inputs tests.
