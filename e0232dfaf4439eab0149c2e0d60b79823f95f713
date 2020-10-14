@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30d95b6a_1aa8090b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-14T23:11:52Z",
+      "side": 1,
+      "message": "nit: you could use conn.Call, I think.\n  if err :\u003d conn.Call(ctx, \u0026atTop, `function() { ... }`); err !\u003d nil { ...",
+      "revId": "e0232dfaf4439eab0149c2e0d60b79823f95f713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a92cbc6_2f141f1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
         "patchSetId": 8
@@ -37,6 +54,23 @@
         "endLine": 60,
         "endChar": 92
       },
+      "revId": "e0232dfaf4439eab0149c2e0d60b79823f95f713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5178a59_28e3b922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-14T23:11:52Z",
+      "side": 1,
+      "message": "question: is this error normal?  If this is an erroneous situation and should not happen, consider using testing.PollBreak(errors.Wrapf(err, ...)).  That way it quits poll immediately and reports an error.",
       "revId": "e0232dfaf4439eab0149c2e0d60b79823f95f713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
