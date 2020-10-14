@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05f9a55b_7284747d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-14T10:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9169f893_77fd3631",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "e2c64838b9faf03805973e94666f703465a95f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "615494ec_7bf6d044",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "In your case does it make sense to run \"restart\" if \"stop\" failed, or all previous cases have to pass?",
       "parentUuid": "615494ec_7bf6d044",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "e2c64838b9faf03805973e94666f703465a95f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "572a79eb_400ec1af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-14T10:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4e28782_cba79174",
       "range": {
         "startLine": 82,
         "startChar": 0,
