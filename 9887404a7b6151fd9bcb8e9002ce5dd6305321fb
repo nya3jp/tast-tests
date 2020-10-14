@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c804d284_9b28f299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T09:32:56Z",
+      "side": 1,
+      "message": "Some nits.",
+      "revId": "9887404a7b6151fd9bcb8e9002ce5dd6305321fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc3bfb8_cbea321c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1800,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T09:32:56Z",
+      "side": 1,
+      "message": "readFileTrimSpace",
+      "range": {
+        "startLine": 1800,
+        "startChar": 1,
+        "endLine": 1800,
+        "endChar": 21
+      },
+      "revId": "9887404a7b6151fd9bcb8e9002ce5dd6305321fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9836a3de_d66e4aa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T09:32:56Z",
+      "side": 1,
+      "message": "wakeUpTimeout is a Stringer so it can implicitly convert to %s. \n\"... %s ...\", wakeUpTimeout\n\nhttps://tour.golang.org/methods/17",
+      "range": {
+        "startLine": 1821,
+        "startChar": 93,
+        "endLine": 1821,
+        "endChar": 102
+      },
+      "revId": "9887404a7b6151fd9bcb8e9002ce5dd6305321fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "718dfac5_e8695814",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T09:32:56Z",
+      "side": 1,
+      "message": "Consider a shorter name, like: startTime (or startRTC)",
+      "range": {
+        "startLine": 1829,
+        "startChar": 1,
+        "endLine": 1829,
+        "endChar": 24
+      },
+      "revId": "9887404a7b6151fd9bcb8e9002ce5dd6305321fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2672842_629d89b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T09:32:56Z",
+      "side": 1,
+      "message": "Maybe just \nint(wakeUpTimeout.Seconds())",
+      "range": {
+        "startLine": 1834,
+        "startChar": 42,
+        "endLine": 1834,
+        "endChar": 64
+      },
+      "revId": "9887404a7b6151fd9bcb8e9002ce5dd6305321fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "417cd84e_e229a01c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1844,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T09:32:56Z",
+      "side": 1,
+      "message": "finishTime (or finishRTC)",
+      "range": {
+        "startLine": 1844,
+        "startChar": 1,
+        "endLine": 1844,
+        "endChar": 25
+      },
+      "revId": "9887404a7b6151fd9bcb8e9002ce5dd6305321fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7595a489_54169889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T09:32:56Z",
+      "side": 1,
+      "message": "This is not needed as suspend() accepts time.Duration as the second parameter now.",
+      "range": {
+        "startLine": 1867,
+        "startChar": 56,
+        "endLine": 1867,
+        "endChar": 72
+      },
+      "revId": "9887404a7b6151fd9bcb8e9002ce5dd6305321fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
