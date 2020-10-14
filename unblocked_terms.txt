@@ -17,9 +17,8 @@ black.?list
 # crazy                 - clean
 # cripple               - clean
 
-# dummy
+dummy
 #    - see crbug/1135039
-fwupd_install_dummy_ps175_V99
 
 # first.?class.?citizen - clean
 # grandfathered         - clean
@@ -27,13 +26,8 @@ fwupd_install_dummy_ps175_V99
 # gr[ae]y.?list         - clean
 # insane                - clean
 
-# \bhe\b
+\bhe\b
 #    - see crbug/1135040
-HE\sMAC\sCapabilities
-HE-MAC
-Wifi\sHE\sprotocols
-heb:"he"
-:he\|av
 
 # \bshe\b               - clean
 # \bhim\b               - clean
@@ -47,18 +41,13 @@ heb:"he"
 
 master
 #    - see crbug/1122372
-.?/master
-\.master
-ymasterd
-VtsHalKeymaster.?
 
-mitm
-#    - external defs.go dependency.
+# \bmitm\b              - clean
 
-native
+\bnative
 #    - see crbug/1135046
 
-# red.?line             - clean
+# \bred.?line           - clean
 # rtfm                  - clean
 
 sane
@@ -77,16 +66,9 @@ white.?label
 #    - see crbug/1135050
 
 white.?list
+#    - see crbug/1101928
 #    - see crbug/1125493
-
-whitelisted-extension-id
 #    - see crbug/1113099
 
-\.white.?list
-#   - see crbug 1101928
-
-/var/lib/whitelist
-#   - see crbug/1125493
-
-wtf
+\bwtf
 #   - see crbug/1135053
