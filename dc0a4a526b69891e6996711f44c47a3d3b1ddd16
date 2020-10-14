@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfbe89b0_3a23999d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "Thanks! (FYI it\u0027s also possible to run tinyproxy as an SSL proxy)",
+      "parentUuid": "ab585d03_4ae51d85",
+      "range": {
+        "startLine": 5,
+        "startChar": 34,
+        "endLine": 5,
+        "endChar": 39
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a7f42b4_ee36fa0b",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-08T14:30:28Z",
       "side": 1,
       "message": "Are these two needed ?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2913701c_f5be5459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "It\u0027s not, I forgot to remove the variables.\n\nIn the initial implementation, proxyPidDirectory was the directory where minijail0 wrote the pid of the running process. I only later realized that tinyproxy has a configuration option to save the pid in specified file.",
+      "parentUuid": "3a7f42b4_ee36fa0b",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cad04f4_190f62c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "Makes sense, thanks!",
+      "parentUuid": "89744914_af178784",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b34a48d5_4d1df429",
@@ -117,6 +189,30 @@
       "writtenOn": "2020-10-08T14:30:28Z",
       "side": 1,
       "message": "Df -\u003e Fd ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2726dc_53c4771c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "b34a48d5_4d1df429",
       "range": {
         "startLine": 34,
         "startChar": 9,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f9866d_d4b95f35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "ffd09a10_d87e3a92",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eef7a04b_1752dca8",
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c2d2ad_25a8fe98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "You\u0027re right, thanks for catching this!",
+      "parentUuid": "eef7a04b_1752dca8",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16f8aab7_a91afbdf",
@@ -186,6 +330,30 @@
       "writtenOn": "2020-10-08T14:30:28Z",
       "side": 1,
       "message": "Just curious: is this space significant ?",
+      "range": {
+        "startLine": 127,
+        "startChar": 35,
+        "endLine": 127,
+        "endChar": 36
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4975817_d839a4a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "It\u0027s not necessary, it was just easier for me to read.",
+      "parentUuid": "16f8aab7_a91afbdf",
       "range": {
         "startLine": 127,
         "startChar": 35,
@@ -242,6 +410,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8bbf560_72bd1906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be0a211a_c642f5ce",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2728c0d8_45671af5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "949867bc_50b69c80",
+      "range": {
+        "startLine": 142,
+        "startChar": 69,
+        "endLine": 142,
+        "endChar": 73
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8d47d9c_acc8e290",
@@ -255,6 +471,30 @@
       "writtenOn": "2020-10-08T14:30:28Z",
       "side": 1,
       "message": "Different error ?",
+      "range": {
+        "startLine": 150,
+        "startChar": 32,
+        "endLine": 150,
+        "endChar": 51
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05ec9f7_cbaa95b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "Yes. Bad copy/paste.",
+      "parentUuid": "d8d47d9c_acc8e290",
       "range": {
         "startLine": 150,
         "startChar": 32,
@@ -288,6 +528,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "935011f0_19ebcc63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "1c729cce_c549af6e",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0383c44c_23abd74b",
@@ -311,6 +575,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a04de0f_31fa2a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "Great suggestion, thank you!",
+      "parentUuid": "0383c44c_23abd74b",
+      "range": {
+        "startLine": 156,
+        "startChar": 8,
+        "endLine": 156,
+        "endChar": 12
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6fff5b0_1af9030c",
@@ -324,6 +612,30 @@
       "writtenOn": "2020-10-08T14:30:28Z",
       "side": 1,
       "message": "Are you sure LE is correct here ? patchpanel is supposed to only use network order for IPv4 addresses as uint32s.",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 20
+      },
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb28d8d_347fe93d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-14T09:36:41Z",
+      "side": 1,
+      "message": "100% that here LE is correct.\n\nLike you, I\u0027ve initially thought it\u0027s BigEndian and the test in CL:2461368 kept failing. After some debugging I\u0027ve noticed that BE byte order converted the address to 130.92.115.100.",
+      "parentUuid": "a6fff5b0_1af9030c",
       "range": {
         "startLine": 183,
         "startChar": 8,
