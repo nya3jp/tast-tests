@@ -81,6 +81,24 @@
       "parentUuid": "f4201d13_c15a3866",
       "revId": "2b51b5d654168f0a83da8f5132ddb72e172fa263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f763b281_da1efc64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-14T16:42:04Z",
+      "side": 1,
+      "message": "I am OK with both, don\u0027t think it can affect test runtime much if it will be calculated 3 times instead of 1 :)",
+      "parentUuid": "108e6784_906ea02f",
+      "revId": "2b51b5d654168f0a83da8f5132ddb72e172fa263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
