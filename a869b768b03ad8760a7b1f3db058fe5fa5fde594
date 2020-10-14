@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f665d2_6d9342be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-10-14T18:11:01Z",
+      "side": 1,
+      "message": "I thought we agreed you\u0027d look into figuring out who was creating the root-owned files and switch everything to be owned by the rmtfs user.\n\nThese kinds of allowlist entries don\u0027t help. We need to be certain what the system is doing to avoid security bugs.",
+      "revId": "a869b768b03ad8760a7b1f3db058fe5fa5fde594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
