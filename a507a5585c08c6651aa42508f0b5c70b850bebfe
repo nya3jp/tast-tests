@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "196093a0_3c461086",
+        "filename": "src/chromiumos/tast/common/network/protoutil/protoutil.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4161e4f5_a9d45da3",
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "361350bc_c4bdf432",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf07557f_b2c58e90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "361350bc_c4bdf432",
+      "range": {
+        "startLine": 1336,
+        "startChar": 0,
+        "endLine": 1337,
+        "endChar": 68
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3279e8f_a600e695",
@@ -88,6 +130,24 @@
       "writtenOn": "2020-10-12T22:53:15Z",
       "side": 1,
       "message": "Can you also add a comment explaining how the monitor works and what it returns.",
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27c08fa0_dafe3f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3279e8f_a600e695",
       "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c108699_96c57776",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ef1915_6efddcfa",
+      "range": {
+        "startLine": 1375,
+        "startChar": 18,
+        "endLine": 1375,
+        "endChar": 48
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c178d1fe_3fa924c8",
@@ -152,6 +236,30 @@
       "writtenOn": "2020-10-13T07:52:43Z",
       "side": 1,
       "message": "Is this anonymous functions necessary? Also, I guess it is worth to leave a comment here, how about \"Wait for the property to change to an expected or unexpected value. Record the property changes we are monitoring.\"?",
+      "range": {
+        "startLine": 1430,
+        "startChar": 18,
+        "endLine": 1430,
+        "endChar": 22
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0223fe6e_f8bad41d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c178d1fe_3fa924c8",
       "range": {
         "startLine": 1430,
         "startChar": 18,
@@ -185,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c30e8b3_fa196484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "158b5479_b7fe5ef1",
+      "range": {
+        "startLine": 1434,
+        "startChar": 17,
+        "endLine": 1434,
+        "endChar": 20
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fed60fc_4b0018af",
@@ -198,6 +330,30 @@
       "writtenOn": "2020-10-12T22:53:15Z",
       "side": 1,
       "message": "p is already used in the outer most loop.",
+      "range": {
+        "startLine": 1437,
+        "startChar": 11,
+        "endLine": 1437,
+        "endChar": 12
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f82e517b_ab5ed84c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fed60fc_4b0018af",
       "range": {
         "startLine": 1437,
         "startChar": 11,
@@ -231,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af23e1f1_71d352c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72500aeb_7137eab3",
+      "range": {
+        "startLine": 1444,
+        "startChar": 5,
+        "endLine": 1453,
+        "endChar": 6
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d74b1df0_3f643515",
@@ -244,6 +424,30 @@
       "writtenOn": "2020-10-13T07:52:43Z",
       "side": 1,
       "message": "and returns",
+      "range": {
+        "startLine": 969,
+        "startChar": 11,
+        "endLine": 969,
+        "endChar": 17
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e47d76e_eb7329d7",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d74b1df0_3f643515",
       "range": {
         "startLine": 969,
         "startChar": 11,
@@ -277,6 +481,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea23951b_a193f958",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de81a553_c65c3baf",
+      "range": {
+        "startLine": 1042,
+        "startChar": 2,
+        "endLine": 1047,
+        "endChar": 29
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e895892c_2f048cc6",
@@ -290,6 +518,30 @@
       "writtenOn": "2020-10-13T03:36:41Z",
       "side": 1,
       "message": "I think this might be more suitable to be in the next CL, together with its caller.\n\nAlso, I think it will be convenient if we add a IsConnectedState in shillconst package. Then, this function can be simply:\n\n  for _, state :\u003d range props[shillconst.ServicePropertyState] {\n    if !shillconst.IsConnectState(state) {\n      return errors.Errorf(\"detected disconnection state %s\", v)\n    }\n  }\n\nOr even just expand these lines in caller.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 1
+      },
+      "revId": "a507a5585c08c6651aa42508f0b5c70b850bebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "029ea872_0843ee5c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e895892c_2f048cc6",
       "range": {
         "startLine": 1053,
         "startChar": 0,
