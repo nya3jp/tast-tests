@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "00fa3ef9_b1b34546",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "pausing on this since https://crrev.com/c/2376389 may resolve some of these failures.",
       "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "3f10d63e_39929c5c",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,10 @@
       "message": "Test is still failing on a very high percentage of runs.\n\nhttp://screen/5ycBghnxQ2ysGSZ\n\nLet\u0027s disable this test until it can be fixed locally.",
       "parentUuid": "00fa3ef9_b1b34546",
       "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "33c88688_60b5c116",
         "filename": "/PATCHSET_LEVEL",
@@ -49,10 +50,10 @@
       "side": 1,
       "message": "There is a following fix. https://crrev.com/c/2382451",
       "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "d82f4d90_29d030ce",
         "filename": "/PATCHSET_LEVEL",
@@ -66,10 +67,10 @@
       "side": 1,
       "message": "This test is still failing on the vast majority of its runs.  Let\u0027s commit this CL to disable it until it can be fixed.",
       "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "2f3328c1_b053c912",
         "filename": "/PATCHSET_LEVEL",
@@ -83,10 +84,10 @@
       "side": 1,
       "message": "Can we have it on for a while? I need to check screenshot to check what happened on some of the boards. But there is infra issue recently. I couldn\u0027t see the log files. At least there are 1/3 of boards passed.",
       "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "01805cde_4c5d47ca",
         "filename": "/PATCHSET_LEVEL",
@@ -101,10 +102,10 @@
       "message": "I\u0027m fine to let it run if someone is actually actively working on it.  Are you able to fix it in the next few weeks?  Looking back over the last several months this test has never been close to passing even 50% of the time.\n\nFor more information on why having tests run and fail is harmful, please see the \"Why Not Just Let Tests Stay Red?\" section in our Goals document:\n\nhttp://go/cros-green-stainless-goals\n\nIf you have other things you need to work on first, let\u0027s disable it until you can debug it locally.",
       "parentUuid": "2f3328c1_b053c912",
       "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "3eca613a_d4d95499",
         "filename": "/PATCHSET_LEVEL",
@@ -118,8 +119,24 @@
       "side": 1,
       "message": "Well we started working on enabling this feature for some gaming apps recently so I just started working on fixing this test recently. Thanks!",
       "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3fa14d2_da21aae4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-10-14T17:52:20Z",
+      "side": 1,
+      "message": "It\u0027s been a month, and this test is still faling on ~70% of its runs.\n\nLet\u0027s disable it and fix it offline to stop wasting lab resources.",
+      "revId": "3c6ae2853ea62ca80eb12d674ed38d0e8cd2db22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
