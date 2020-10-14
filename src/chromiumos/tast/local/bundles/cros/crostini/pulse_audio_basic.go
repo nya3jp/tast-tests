@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -43,24 +42,9 @@ func init() {
 	})
 }
 
-// checkPulseDevices checks if ALSA device is in the list of sinks in pulseaudio by using command `pactl`.
-func checkPulseDevices(ctx context.Context, s *testing.State, cont *vm.Container) {
-	alsaSinksPattern := regexp.MustCompile("1\talsa_output.hw_0_0\tmodule-alsa-sink.c\ts16le 2ch 48000Hz\t(IDLE|SUSPENDED)\n")
-	if out, err := cont.Command(ctx, "pactl", "list", "sinks", "short").Output(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to list pulseaudio sinks: ", err)
-	} else if res := alsaSinksPattern.Match(out); !res {
-		s.Fatal("Failed to load ALSA device to pulseaudio:", string(out))
-	}
-}
-
-// controlPulse controls pulseaudio through systemctl with command `cmd`.
-func controlPulse(ctx context.Context, s *testing.State, cont *vm.Container, cmd string) {
-	s.Logf("%v pulseaudio service", cmd)
-	// Use systemctl to control pulseaudio service.
-	if err := cont.Command(ctx, "systemctl", " --user", cmd, "pulseaudio").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatalf("Fail to %s pulseaudio: %v", cmd, err)
-	}
-}
+var (
+	alsaSinksPattern = regexp.MustCompile("1\talsa_output.hw_0_0\tmodule-alsa-sink.c\ts16le 2ch 48000Hz\t(IDLE|SUSPENDED)\n")
+)
 
 func PulseAudioBasic(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
@@ -71,23 +55,25 @@ func PulseAudioBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to list ALSA output devices: ", err)
 	}
 
-	// Case 1: Stop pulseaudio and run playback to restart.
-	controlPulse(ctx, s, cont, "stop")
-	s.Log("Play zeros with ALSA device")
-	if err := cont.Command(ctx, "aplay", "-f", "dat", "-d", " 3", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to playback with ALSA devices: ", err)
-	}
-	checkPulseDevices(ctx, s, cont)
+	for _, stopOpt := range []string{"stop", "restart", "kill"} {
+		// Stops pulseaudio server by `stopOpt` and restarts the server by a playback stream.
+		s.Run(ctx, stopOpt, func(ctx context.Context, s *testing.State) {
+			s.Logf("%s pulseaudio service", stopOpt)
+			// Use systemctl to control pulseaudio service.
+			if err := cont.Command(ctx, "systemctl", " --user", stopOpt, "pulseaudio").Run(testexec.DumpLogOnError); err != nil {
+				s.Fatalf("Failed to %s pulseaudio: %v", stopOpt, err)
+			}
 
-	// Case 2: Restart pulseaudio.
-	controlPulse(ctx, s, cont, "restart")
-	checkPulseDevices(ctx, s, cont)
+			testing.ContextLog(ctx, "Play zeros with ALSA device")
+			if err := cont.Command(ctx, "aplay", "-f", "dat", "-d", " 3", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
+				s.Fatal("Failed to playback with ALSA devices: ", err)
+			}
 
-	// Case 3: Kill pulseaudio and run playback to restart.
-	controlPulse(ctx, s, cont, "kill")
-	s.Log("Play zeros with ALSA device")
-	if err := cont.Command(ctx, "aplay", "-f", "dat", "-d", "3", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to playback with ALSA devices: ", err)
+			if out, err := cont.Command(ctx, "pactl", "list", "sinks", "short").Output(testexec.DumpLogOnError); err != nil {
+				s.Fatal("Failed to list pulseaudio sinks: ", err)
+			} else if res := alsaSinksPattern.Match(out); !res {
+				s.Fatalf("Failed to load ALSA device to pulseaudio: %s", string(out))
+			}
+		})
 	}
-	checkPulseDevices(ctx, s, cont)
 }
