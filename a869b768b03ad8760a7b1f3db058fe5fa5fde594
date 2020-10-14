@@ -16,6 +16,24 @@
       "message": "I thought we agreed you\u0027d look into figuring out who was creating the root-owned files and switch everything to be owned by the rmtfs user.\n\nThese kinds of allowlist entries don\u0027t help. We need to be certain what the system is doing to avoid security bugs.",
       "revId": "a869b768b03ad8760a7b1f3db058fe5fa5fde594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "695d40df_43a144c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413538
+      },
+      "writtenOn": "2020-10-14T18:42:29Z",
+      "side": 1,
+      "message": "rmtfs user failed for other targets with error: \n\u0027Failed to find uid: failed to look up user \"rmtfs\": user: unknown user rmtfs\u0027. \nrmtfs is more specific to Trogdor target. So I add \u0027root\u0027 user to be more generic and it passed the test.",
+      "parentUuid": "f9f665d2_6d9342be",
+      "revId": "a869b768b03ad8760a7b1f3db058fe5fa5fde594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
