@@ -74,6 +74,12 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 		return nil, err
 	}
 
+	return WaitForLaunched(ctx, tconn)
+}
+
+// WaitForLaunched waits for the Files App to launch and returns it.
+// This can be used to get a FilesApp struct for an already-open instance of the app.
+func WaitForLaunched(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	// Get Files App root node.
 	app, err := ui.FindWithTimeout(ctx, tconn, rootFindParams, time.Minute)
 	if err != nil {
