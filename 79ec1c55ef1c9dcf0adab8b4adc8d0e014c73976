@@ -22,6 +22,30 @@
       },
       "revId": "79ec1c55ef1c9dcf0adab8b4adc8d0e014c73976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d304f4fd_13a4af98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-14T12:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b5e3406_9535cca9",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 4
+      },
+      "revId": "79ec1c55ef1c9dcf0adab8b4adc8d0e014c73976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
