@@ -16,6 +16,24 @@
       "message": "Move this earlier to the start of the test?",
       "revId": "0c26eeb9dc5641c4d10ca99d6b8ed99fa2b91d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a257cbb_a625c35c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_folders.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-14T05:00:40Z",
+      "side": 1,
+      "message": "That would not work. I hope it could dump the content of the settings app. If I move it before line 127, the settings app will get closed first.",
+      "parentUuid": "1620f24e_31b2fef4",
+      "revId": "0c26eeb9dc5641c4d10ca99d6b8ed99fa2b91d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
