@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "193f666d_ddf1ec40",
+        "filename": "src/chromiumos/tast/local/adb/ui/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-14T16:47:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06cd028f_35125358",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 15
+      },
+      "revId": "fa830ebd1daef360f2bf16d401bc657b238344cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a72fd871_6b92c4fd",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-13T20:44:12Z",
       "side": 1,
       "message": "nit, optional:\n\nport should be an int, not a string. If so:\n\n  host :\u003d fmt.Sprintf(\"%s:%d\", ipAddr, port)  // Not sure whether is a better way to do this.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 22
+      },
+      "revId": "fa830ebd1daef360f2bf16d401bc657b238344cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d042ff_b3e41413",
+        "filename": "src/chromiumos/tast/local/adb/ui/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-14T16:47:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a72fd871_6b92c4fd",
       "range": {
         "startLine": 101,
         "startChar": 1,
