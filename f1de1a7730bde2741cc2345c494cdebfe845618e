@@ -185,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa99685f_71040774",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T20:43:29Z",
+      "side": 1,
+      "message": "Anyway, to avoid confusing and for better readability, I changed a little bit.",
+      "parentUuid": "b2796ef0_8648593f",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 54
+      },
+      "revId": "f1de1a7730bde2741cc2345c494cdebfe845618e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c393424_84ff357f",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 1
