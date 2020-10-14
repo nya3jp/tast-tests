@@ -34,6 +34,24 @@
       "parentUuid": "3708102f_a1cac9d2",
       "revId": "8d86399360d5f69673c50a74e236133e2305eba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "815726c3_f6a85d29",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-14T00:59:22Z",
+      "side": 1,
+      "message": "I do not believe that there is a way to put ../third_party/.. out of scope.\nWe can change how presubmit block terms work, but this will require some changes / proposal. (i.e. add a way to exclude directories/files from the check.",
+      "parentUuid": "091199eb_4001b03a",
+      "revId": "8d86399360d5f69673c50a74e236133e2305eba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
