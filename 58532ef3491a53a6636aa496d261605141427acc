@@ -22,6 +22,30 @@
       },
       "revId": "58532ef3491a53a6636aa496d261605141427acc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84bbc82a_3ea2a66c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps_ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-10-14T03:06:58Z",
+      "side": 0,
+      "message": "The implementation has changed. \nJun\u0027s has another test that will be migrated eventually to IME.",
+      "parentUuid": "cc9457d0_36e739ff",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "58532ef3491a53a6636aa496d261605141427acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -33,6 +33,23 @@
       "message": "LGTM with question",
       "revId": "d6ce34f00e646f3ed9823ac39f7afc5af3efa9aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e15959_46f19968",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1354413
+      },
+      "writtenOn": "2020-10-14T03:06:58Z",
+      "side": 1,
+      "message": "see my answer",
+      "revId": "d6ce34f00e646f3ed9823ac39f7afc5af3efa9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
