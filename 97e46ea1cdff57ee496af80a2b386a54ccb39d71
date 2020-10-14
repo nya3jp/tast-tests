@@ -22,6 +22,30 @@
       },
       "revId": "97e46ea1cdff57ee496af80a2b386a54ccb39d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02fb669_f61b7935",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T23:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec956cee_1e2f64ae",
+      "range": {
+        "startLine": 101,
+        "startChar": 26,
+        "endLine": 101,
+        "endChar": 57
+      },
+      "revId": "97e46ea1cdff57ee496af80a2b386a54ccb39d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
