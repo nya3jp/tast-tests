@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "084211a0_c140c8a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T21:45:42Z",
+      "side": 1,
+      "message": "I guess I\u0027m added mostly for this question. I\u0027m not all that familiar with PMKSA caching, but based on a little reading, it seems like this approach is correct. +CC Matthew, since he actually managed to break this test recently [1], so maybe he\u0027d have thoughts -- I believe such breakage would also be caught by this test variant too.\n\nI also wanted to say: excellent refactor! Not only is log parsing generally kind of bad to do, but this variation is checking actual DUT behavior, instead of checking for what the AP thinks. Nice!\n\n[1] https://b.corp.google.com/issues/161229810",
+      "range": {
+        "startLine": 12,
+        "startChar": 31,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f20ab5de_77c9e4eb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 15
@@ -14,6 +37,98 @@
       "writtenOn": "2020-10-12T19:03:37Z",
       "side": 1,
       "message": "Rebased to ToT.",
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "076dd968_df4ad57b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T21:45:42Z",
+      "side": 1,
+      "message": "I think I\u0027m slightly over my head on how gRPC streaming works here: what happens to receivers in cases like this? Does this get translated into a Recv() error?",
+      "range": {
+        "startLine": 1829,
+        "startChar": 0,
+        "endLine": 1829,
+        "endChar": 19
+      },
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2f65cc2_9ecd16f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T21:45:42Z",
+      "side": 1,
+      "message": "In light of stuff like [1], I wonder if we can avoid writing in fixed BSSIDs, and instead just ask the hostapd config what its randomized MAC is. That might be a little tough to get the ordering right though, since you want to establish watchers (which use AP1\u0027s BSSID) before you create (or at least before you start) AP1.\n\nOr we can wait for that other CL to settle -- we already have this same pattern elsewhere, and if we want to stop using fixed BSSIDs entirely (except for the rare case where we intentionally use the *same* one), that could be a separate cleanup. Or even skip it altogether, if we decide that fixed BSSIDs are OK in a few cases.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2469350",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb7b6d8_cb2f005f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T21:45:42Z",
+      "side": 1,
+      "message": "nit: has",
+      "range": {
+        "startLine": 193,
+        "startChar": 118,
+        "endLine": 193,
+        "endChar": 122
+      },
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37751a6_b8439977",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T21:45:42Z",
+      "side": 1,
+      "message": "I had some questions about this on CL:2443586, but I see those were already asked, with not-very-satisfying answers; I guess this makes sense for now.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 131
+      },
       "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
