@@ -39,6 +39,121 @@
       },
       "revId": "d4109831ed195b1e28b61df11cec7ae38b07f510",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f82455b0_1339161c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1410,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-14T04:29:01Z",
+      "side": 1,
+      "message": "[ %q ] value",
+      "range": {
+        "startLine": 1410,
+        "startChar": 46,
+        "endLine": 1410,
+        "endChar": 57
+      },
+      "revId": "d4109831ed195b1e28b61df11cec7ae38b07f510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654b6a34_ec40bace",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-14T04:29:01Z",
+      "side": 1,
+      "message": "IIUC, the gRPC command should always return a resp.MonitorDone\u003dtrue before returning io.EOF. Since you break the loop as long as resp.MonitorDone\u003dtrue, \"err \u003d\u003d io.EOF\" here indicates that the gRPC command returns early, which should be an error.",
+      "range": {
+        "startLine": 1021,
+        "startChar": 6,
+        "endLine": 1021,
+        "endChar": 19
+      },
+      "revId": "d4109831ed195b1e28b61df11cec7ae38b07f510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96dfe0af_11dfdcaa",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-14T04:29:01Z",
+      "side": 1,
+      "message": "Why not nil?",
+      "range": {
+        "startLine": 1025,
+        "startChar": 11,
+        "endLine": 1025,
+        "endChar": 44
+      },
+      "revId": "d4109831ed195b1e28b61df11cec7ae38b07f510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb41c95f_105d180f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-14T04:29:01Z",
+      "side": 1,
+      "message": "How about \"return protoutil.DecodeFromShillPropertyChangedSignalList(resp.Props)\" so we can omit the statements outside the loop?",
+      "range": {
+        "startLine": 1029,
+        "startChar": 4,
+        "endLine": 1029,
+        "endChar": 30
+      },
+      "revId": "d4109831ed195b1e28b61df11cec7ae38b07f510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc28b10_1bab6f41",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-14T04:29:01Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 1036,
+        "startChar": 11,
+        "endLine": 1036,
+        "endChar": 44
+      },
+      "revId": "d4109831ed195b1e28b61df11cec7ae38b07f510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
