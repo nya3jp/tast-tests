@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac9b1e4_4237a854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-14T13:13:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20d73eef_0db149e6",
+      "range": {
+        "startLine": 48,
+        "startChar": 43,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "2b51b5d654168f0a83da8f5132ddb72e172fa263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4201d13_c15a3866",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-14T12:57:20Z",
       "side": 1,
       "message": "This regex is complied 3 times. Ohel@ is it a cheap computation, or it should be moved to a const variable outside of the function?",
+      "revId": "2b51b5d654168f0a83da8f5132ddb72e172fa263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "108e6784_906ea02f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-14T13:13:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4201d13_c15a3866",
       "revId": "2b51b5d654168f0a83da8f5132ddb72e172fa263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
