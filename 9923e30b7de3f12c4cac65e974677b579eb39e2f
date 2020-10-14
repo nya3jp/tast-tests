@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "236e3169_dacbce24",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T22:20:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92646b20_f33bd92a",
+      "range": {
+        "startLine": 209,
+        "startChar": 18,
+        "endLine": 209,
+        "endChar": 25
+      },
+      "revId": "9923e30b7de3f12c4cac65e974677b579eb39e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dec1a7a1_a138b8ce",
@@ -132,6 +156,30 @@
       "writtenOn": "2020-10-14T21:29:08Z",
       "side": 1,
       "message": "nit: IsConnectedState",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 19
+      },
+      "revId": "9923e30b7de3f12c4cac65e974677b579eb39e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8747ab7f_2b603636",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T22:20:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dec1a7a1_a138b8ce",
       "range": {
         "startLine": 210,
         "startChar": 5,
