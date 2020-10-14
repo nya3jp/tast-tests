@@ -128,6 +128,30 @@
       },
       "revId": "1060bc11f35c409d0b7b09894e5c8385aeb4e23d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1720cd8c_e8d1aeb6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-10-14T07:56:08Z",
+      "side": 1,
+      "message": "Either way is fine by me. I think it\u0027s easier to start from some specific tests.",
+      "parentUuid": "7d76231d_9694bc90",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 44
+      },
+      "revId": "1060bc11f35c409d0b7b09894e5c8385aeb4e23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
