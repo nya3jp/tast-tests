@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e3cd52_fdd422ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-14T23:45:44Z",
+      "side": 1,
+      "message": "I would say that if either fails, the test should fail as well, which is the actual behavior in this case (runFioStress* functions invoke s.Fatal).",
+      "parentUuid": "5e942f53_972ec05c",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d00bbd1_81c5a258",
