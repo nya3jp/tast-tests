@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb850713_dcaab298",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-14T11:35:36Z",
+      "side": 1,
+      "message": "Stainless search for these tests:\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2020-10-01\u0026last_date\u003d2020-10-14\u0026branch\u003dmaster\u0026suite\u003dbvt-tast-informational\u0026test\u003d%5Etast%5C.crostini%5C.%28CommandCd%7CCommandVim%7CCrashReporter%7CFilesAppWatch%7CHomeDirectoryCreateFile%7CIconAndUsername%7CLaunchBrowser%7CLaunchTerminal%7CLauncher%7CNoAccessToDownloads%7CNoSharedFolder%7CSSHFSMount%7CShareDownloadsAddFiles%7CSharedFontFiles%29%5C..*artifact%24\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dtrue\u0026exclude_non_production\u003dfalse\n\nIn the cluster view we can see that all the failures are on board auron_paine/auron_paine, which was removed from the stable set in CL:2459968:\nhttps://stainless.corp.google.com/search?view\u003dcluster\u0026first_date\u003d2020-10-01\u0026last_date\u003d2020-10-14\u0026branch\u003dmaster\u0026suite\u003dbvt-tast-informational\u0026test\u003d%5Etast%5C.crostini%5C.%28CommandCd%7CCommandVim%7CCrashReporter%7CFilesAppWatch%7CHomeDirectoryCreateFile%7CIconAndUsername%7CLaunchBrowser%7CLaunchTerminal%7CLauncher%7CNoAccessToDownloads%7CNoSharedFolder%7CSSHFSMount%7CShareDownloadsAddFiles%7CSharedFontFiles%29%5C..*artifact%24\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dtrue\u0026exclude_non_production\u003dfalse",
+      "revId": "b5efa3a2a3464ce9f789af3c0eb979121cd162de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
