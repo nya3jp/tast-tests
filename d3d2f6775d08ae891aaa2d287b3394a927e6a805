@@ -65,6 +65,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ef5d07_a714f887",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T20:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b0619ff_908db45f",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 211,
+        "endChar": 19
+      },
+      "revId": "d3d2f6775d08ae891aaa2d287b3394a927e6a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c6d965_f3c94827",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T20:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b0619ff_908db45f",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 211,
+        "endChar": 19
+      },
+      "revId": "d3d2f6775d08ae891aaa2d287b3394a927e6a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a73fccd4_f735b2b7",
@@ -78,6 +126,30 @@
       "writtenOn": "2020-10-14T02:40:38Z",
       "side": 1,
       "message": "what did you intend with this? This doesn\u0027t actually do anything since when you start the waiting, we\u0027re always connected to the first AP.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 4
+      },
+      "revId": "d3d2f6775d08ae891aaa2d287b3394a927e6a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab698869_7b3202d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-14T20:40:35Z",
+      "side": 1,
+      "message": "I think I was just confused. I deleted this check.",
+      "parentUuid": "a73fccd4_f735b2b7",
       "range": {
         "startLine": 92,
         "startChar": 2,
