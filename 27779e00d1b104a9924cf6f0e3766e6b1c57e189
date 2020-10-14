@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea8c1104_898a7c26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T04:30:14Z",
+      "side": 1,
+      "message": "Yes, the test is actually checking the \"if scan does not back off\" case. It also checks OBSS is working after pinging (checking pcap in Tast and hostapd log in Autotest). Together with a rather long pinging, we can have some confidence that our traffic can hit a running scan and it does back off.",
+      "parentUuid": "b4eab3cf_d10e81ae",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 106
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52cc5c6c_e36ad96d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
         "patchSetId": 3
