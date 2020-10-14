@@ -34,6 +34,24 @@
       "parentUuid": "1620f24e_31b2fef4",
       "revId": "0c26eeb9dc5641c4d10ca99d6b8ed99fa2b91d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "461919b7_c2f3d682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_folders.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-14T05:11:30Z",
+      "side": 1,
+      "message": "Makes sense, thanks.",
+      "parentUuid": "8a257cbb_a625c35c",
+      "revId": "0c26eeb9dc5641c4d10ca99d6b8ed99fa2b91d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
