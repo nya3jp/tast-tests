@@ -61,8 +61,7 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
 	defer func() {
-		printer.Kill()
-		printer.Wait()
+		usbprinter.StopPrinter(ctx, printer, devInfo)
 	}()
 
 	s.Log("Requesting scanner list")
