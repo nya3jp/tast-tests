@@ -16,6 +16,24 @@
       "message": "LGTM.  Could you also update the TPS docs for how this value will be used?",
       "revId": "72eb8a1bc8ed2a7931cb4b8c60c021a3f442e796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d76d80_058a3870",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-14T17:06:57Z",
+      "side": 1,
+      "message": "Done. Added a paragraph below TPS.Animation.FramesExpected/FramesProduced.\n\nThe application of the value has not finalized. We might use that either to create a score to replace the DroppedFrame subscore, or incorporate it into DroppedFrame subscore.",
+      "parentUuid": "6763174e_bd065cb9",
+      "revId": "72eb8a1bc8ed2a7931cb4b8c60c021a3f442e796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
