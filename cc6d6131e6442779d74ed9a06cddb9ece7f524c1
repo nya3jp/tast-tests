@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56786936_09e58374",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T20:09:53Z",
+      "side": 1,
+      "message": "Some possible suggestions, but LGTM as-is too.",
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9364ec0f_dfdb1864",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T20:09:53Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure we *need* to remove this workaround, even if the bug does get fixed. Because the common case is that we users will not be rapidly reconnecting to a reconfigured AP, it might make sense to avoid reusing BSSIDs so quickly. As long as there aren\u0027t significant downsides, this kind of change could be fine to keep? WDYT?\n\nAlso, if we *do* want to test/enforce this behavior, maybe we need to write a proper test case that ensures ordering -- switching quickly between open/secured/open/..., for instance. (You already had a WIP/test version of that somewhere, but my point is that we can be explicit, if that\u0027s a feature/bug we want to test for.)",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 46
+      },
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f29969_d742d86c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T20:09:53Z",
+      "side": 1,
+      "message": "ath10k",
+      "range": {
+        "startLine": 229,
+        "startChar": 20,
+        "endLine": 229,
+        "endChar": 22
+      },
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de33f6b6_de3ce676",
@@ -36,6 +99,29 @@
         "startChar": 59,
         "endLine": 660,
         "endChar": 25
+      },
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08734119_e3560441",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-14T20:09:53Z",
+      "side": 1,
+      "message": "do we need any of this, if we randomize by default? (well, there\u0027s still a tiny chance of collisions in randomization, but that possibility exists already.)",
+      "range": {
+        "startLine": 616,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 1
       },
       "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
