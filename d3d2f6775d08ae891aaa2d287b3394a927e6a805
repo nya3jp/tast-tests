@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb5cc36_54975673",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T06:01:56Z",
+      "side": 1,
+      "message": "generally LGTM % Matthew\u0027s comment.",
+      "revId": "d3d2f6775d08ae891aaa2d287b3394a927e6a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82d452a0_7a55c323",
@@ -14,6 +31,30 @@
       "writtenOn": "2020-10-14T02:40:38Z",
       "side": 1,
       "message": "IMO this should just be:\n\n\tfor _, state :\u003d range ServiceConnectedStates {\n\t\tif value \u003d\u003d state {\n\t\t\treturn true\n\t\t}\n\t}\n\treturn false",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 211,
+        "endChar": 19
+      },
+      "revId": "d3d2f6775d08ae891aaa2d287b3394a927e6a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b0619ff_908db45f",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T06:01:56Z",
+      "side": 1,
+      "message": "+1.",
+      "parentUuid": "82d452a0_7a55c323",
       "range": {
         "startLine": 211,
         "startChar": 3,
