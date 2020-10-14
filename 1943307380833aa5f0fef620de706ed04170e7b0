@@ -79,6 +79,30 @@
       },
       "revId": "1943307380833aa5f0fef620de706ed04170e7b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a08e8db5_0937dc9d",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T03:50:01Z",
+      "side": 1,
+      "message": "Tast  (I had a typo, too...)",
+      "parentUuid": "3b2c69b0_b0231933",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "1943307380833aa5f0fef620de706ed04170e7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
