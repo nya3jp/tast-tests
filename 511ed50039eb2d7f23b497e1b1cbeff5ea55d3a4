@@ -16,6 +16,24 @@
       "message": "Betty seems to have some failures on inputs.VirtualKeyboardSystemLanguages.jp_unstable, have these been resolved?",
       "revId": "511ed50039eb2d7f23b497e1b1cbeff5ea55d3a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a192dd16_1325336e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-14T07:19:14Z",
+      "side": 1,
+      "message": "Yes. The only betty flakiness is in VirtualKeyboardSystemLanguages. This test is already in CQ for some boards. \nFor betty, The root cause is caused by ui animation, vk is not fully displayed before validation. This line of code is to solve the problem http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/vkb/vkb.go?l\u003d95\n\nSorry for rushing to push betty to CQ. I got a few tests broken by chromium changes. And I had to update the tests at a very urgent situation. \n\nKeyboardQuest test was just promoted in https://crrev.com/c/2458698 yesterday, I have to remove it again because of not running in chromium CQ.",
+      "parentUuid": "dcd3dc08_7585c96a",
+      "revId": "511ed50039eb2d7f23b497e1b1cbeff5ea55d3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
