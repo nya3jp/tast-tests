@@ -70,6 +70,24 @@
       "parentUuid": "bf5198c0_5ad0b422",
       "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "098c10f8_964fa04e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-14T17:11:53Z",
+      "side": 1,
+      "message": "I looked at my DUT logs (/var/log/messages) to verify the behavior you\u0027re seeing. https://paste.googleplex.com/5903347723796480\n\nIt looks like iwlwifi firmware is loaded within one second of coreboot code being executed. iwlwifi Wifi is found in 5 seconds from coreboot code being executed. Bluetooth adapter is turned on within 10 seconds post reboot. I guess it\u0027s still worth having the polling timeout, but I\u0027m not sure if this is enough time for the tast test to invoke the bluetooth check post reboot.",
+      "parentUuid": "20e3e716_8fabbb17",
+      "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
