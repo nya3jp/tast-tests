@@ -22,6 +22,76 @@
       },
       "revId": "9923e30b7de3f12c4cac65e974677b579eb39e2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea6e608b_02a73398",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-14T21:29:08Z",
+      "side": 1,
+      "message": "ATM I don\u0027t think there\u0027s a good way to determine when roaming is \"complete\". I suggested earlier (hidden somewhere in the comments of this this CL I think) that we could add a new DBus property somewhere that accomplishes this. We could also add a new state that is considered an Online state, but indicates that we\u0027re renewing DHCP after a roam. Or, we could emit a PropertyChanged signal for Online -\u003e Online service state change, but that\u0027s a little hacky.\n\nOpen to other ideas as well.",
+      "parentUuid": "34280db3_feb4355e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "9923e30b7de3f12c4cac65e974677b579eb39e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92646b20_f33bd92a",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-14T21:29:08Z",
+      "side": 1,
+      "message": "it doesn\u0027t",
+      "range": {
+        "startLine": 209,
+        "startChar": 18,
+        "endLine": 209,
+        "endChar": 25
+      },
+      "revId": "9923e30b7de3f12c4cac65e974677b579eb39e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec1a7a1_a138b8ce",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-14T21:29:08Z",
+      "side": 1,
+      "message": "nit: IsConnectedState",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 19
+      },
+      "revId": "9923e30b7de3f12c4cac65e974677b579eb39e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
