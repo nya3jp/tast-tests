@@ -19,7 +19,7 @@ func init() {
 		Func:         LaunchBrowser,
 		Desc:         "Opens a browser window on the host from the container, using several common approaches (/etc/alternatives, $BROWSER, and xdg-open)",
 		Contacts:     []string{"davidmunro@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
