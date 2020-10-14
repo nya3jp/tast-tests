@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "166f941e_c8664569",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-14T11:04:24Z",
+      "side": 1,
+      "message": "come on :)",
+      "range": {
+        "startLine": 108,
+        "startChar": 37,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "449b31f8d24d689d3f54f97996c6a1308abedbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e60bf2_f8aaedfd",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-14T11:04:24Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "449b31f8d24d689d3f54f97996c6a1308abedbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b4edb3_c107c9a5",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-14T11:04:24Z",
+      "side": 1,
+      "message": "typo. stress testing tricium? :)",
+      "range": {
+        "startLine": 128,
+        "startChar": 16,
+        "endLine": 128,
+        "endChar": 26
+      },
+      "revId": "449b31f8d24d689d3f54f97996c6a1308abedbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
