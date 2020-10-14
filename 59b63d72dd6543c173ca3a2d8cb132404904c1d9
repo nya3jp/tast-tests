@@ -16,6 +16,23 @@
       "message": "I\u0027m not sure if we should land this or only use this for debugging + revert crrev.com/c/2465611 after the problem is identified/fixed. WDYT?",
       "revId": "59b63d72dd6543c173ca3a2d8cb132404904c1d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a04a18b_a7508051",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-14T03:48:52Z",
+      "side": 1,
+      "message": "I\u0027m thinking if we can extract common code of enabling/disabling  MACRandomizeSupport and share with RandomMACAddress test. However, it may return a shortened ctx and two defer functions. Not sure if it is overkill. WDYT?",
+      "revId": "59b63d72dd6543c173ca3a2d8cb132404904c1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
