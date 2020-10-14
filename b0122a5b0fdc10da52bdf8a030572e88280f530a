@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03751d2f_2d3f2c0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-14T21:10:58Z",
+      "side": 1,
+      "message": "Hi Xiyuan, PS5 checks if the Play button is on top and clickable, PS6 checks the status of the progress bar. Both of them work on my local device, which approach do you think is better?",
+      "revId": "b0122a5b0fdc10da52bdf8a030572e88280f530a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
