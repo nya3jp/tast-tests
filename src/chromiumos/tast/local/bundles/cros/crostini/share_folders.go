@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/listset"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
@@ -124,6 +125,8 @@ func ShareFolders(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Manage shared folders: ", err)
 	}
 	defer st.Close(ctx)
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Check results after sharing two folders.
 	if err := checkShareFoldersResults(ctx, tconn, cont, st, []string{folder1, folder2}, []string{sharedFolder1, sharedFolder2}); err != nil {
