@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61cf2118_1202058c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c11057c4_0bdf331c",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89aea4fc_c80b99f3",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-13T16:54:30Z",
       "side": 1,
       "message": "if either is fail, the other should terminate?\n\nDitto for below.",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e942f53_972ec05c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "I would defer to Alex for those, he implemented the parallel runner.",
+      "parentUuid": "89aea4fc_c80b99f3",
       "range": {
         "startLine": 136,
         "startChar": 2,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "479d2e0d_8aea07f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d00bbd1_81c5a258",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec590be1_45e39728",
@@ -71,6 +131,30 @@
       "writtenOn": "2020-10-13T16:54:30Z",
       "side": 1,
       "message": "Now this statement is conflicting with new implementation.",
+      "range": {
+        "startLine": 244,
+        "startChar": 3,
+        "endLine": 244,
+        "endChar": 77
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4adc9cc2_cc443d61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "I don\u0027t think the comment is incorrect now. Why?",
+      "parentUuid": "ec590be1_45e39728",
       "range": {
         "startLine": 244,
         "startChar": 3,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b0fd4a_c695593b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "It doesn\u0027t fail. Not having an Slc device is totally legitimate case: we want to re-use the same suit for both cases. While it uses the same function (getSlcDev) which can fail, the setup will check that it doesn\u0027t.",
+      "parentUuid": "b5517fef_68aad367",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 4
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd33bd90_67d7bdce",
@@ -117,6 +225,30 @@
       "writtenOn": "2020-10-13T16:54:30Z",
       "side": 1,
       "message": "go does not use some common prefixes, like \"is\", \"get\", \"has\" etc.\n\nmaybe dualQual()? (or slcQual reflecting the var name?)",
+      "range": {
+        "startLine": 264,
+        "startChar": 3,
+        "endLine": 264,
+        "endChar": 13
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "285e5103_204eba56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd33bd90_67d7bdce",
       "range": {
         "startLine": 264,
         "startChar": 3,
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c94f025_d92d9531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "I need testing.State to do s.Var();",
+      "parentUuid": "fa5a861b_b0b3e34a",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cacd9ab_0afd9821",
@@ -157,6 +307,24 @@
       "writtenOn": "2020-10-13T16:54:30Z",
       "side": 1,
       "message": "ditto for prefix, not to take testing.State?",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23bda493_1b697641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cacd9ab_0afd9821",
       "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +346,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8528e4d7_b2d28380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2905ef1e_927f61f4",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41bcb3fa_41c48832",
@@ -195,6 +381,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "935e7cd4_c6290b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "No, the other function is conditional on whether we are in slc testing mode or not",
+      "parentUuid": "41bcb3fa_41c48832",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81f14be7_fc5e7533",
@@ -208,6 +412,30 @@
       "writtenOn": "2020-10-13T16:54:30Z",
       "side": 1,
       "message": "Could you unify the error reporting path?\nIf this needs to return an error, please do not take the testing.State, and instead could you let each caller handle it.",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 344,
+        "endChar": 37
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be210763_b6a4b63f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "Well, than each call sight would need to check for the error. Combined with the fact that the slc version of the function would need to take the State for querying dualQual regardless, it is not going to bring any benefits in my opinion.",
+      "parentUuid": "81f14be7_fc5e7533",
       "range": {
         "startLine": 341,
         "startChar": 2,
@@ -254,6 +482,48 @@
         "endLine": 353,
         "endChar": 6
       },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18fc6b4_55024310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1daa9af7_b6f6f1cb",
+      "range": {
+        "startLine": 353,
+        "startChar": 5,
+        "endLine": 353,
+        "endChar": 6
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5442fa2_d3030f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-14T18:46:30Z",
+      "side": 1,
+      "message": "The reason we have those calls buried in here is because we want to avoid an immense amount of \"if dualQual\" in the testing blocks. This suit is used for both cases : with one device and with two devices - because the part for the boot device is identical in both cases. After quite some thoughts - this is the best way to avoid an insane amount of duplication",
+      "parentUuid": "a65a9c97_5933cefd",
       "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
