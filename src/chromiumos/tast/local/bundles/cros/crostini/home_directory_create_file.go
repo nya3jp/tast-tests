@@ -24,7 +24,7 @@ func init() {
 		Func:         HomeDirectoryCreateFile,
 		Desc:         "Test creating a file/folder in Linux files and container using a pre-built crostini image",
 		Contacts:     []string{"jinrongwu@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
