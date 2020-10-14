@@ -16,6 +16,40 @@
       "message": "Fixes",
       "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44dc95db_f72dd1f5",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T06:15:50Z",
+      "side": 1,
+      "message": "nit: do you think it might be better to have prefix for these so that the names won\u0027t collide? e.g. TFFeatNone, TFFeatCapture...",
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "653a145c_3a88eb7b",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-14T06:15:50Z",
+      "side": 1,
+      "message": "It is nice to also have this a Feature. Thanks for the change. :)",
+      "revId": "c3afa0de6e94d8485f45400bdba73e76a490cbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
