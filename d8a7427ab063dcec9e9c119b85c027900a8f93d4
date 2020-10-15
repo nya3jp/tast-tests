@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d677199_ed3b15bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-10-15T20:43:26Z",
+      "side": 1,
+      "message": "Doh, sorry for messing up your CQ.  :(",
+      "revId": "d8a7427ab063dcec9e9c119b85c027900a8f93d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
