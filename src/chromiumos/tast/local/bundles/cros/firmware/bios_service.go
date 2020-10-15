@@ -41,3 +41,19 @@ func (*BiosService) GetGBBFlags(ctx context.Context, req *empty.Empty) (*pb.GBBF
 	ret := pb.GBBFlagsState{Clear: cf, Set: sf}
 	return &ret, nil
 }
+
+// ClearAndSetGBBFlags clears and sets specified GBB flags, leaving the rest unchanged.
+func (bs *BiosService) ClearAndSetGBBFlags(ctx context.Context, req *pb.GBBFlagsState) (*empty.Empty, error) {
+	img, err := bios.NewImage(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not read firmware")
+	}
+	bs.s.Logf("Start ClearAndSetGBBFlags: %v", req)
+	if err = img.ClearAndSetGBBFlags(req.Clear, req.Set); err != nil {
+		return nil, errors.Wrap(err, "could not clear/set flags")
+	}
+	if err = img.WriteFlashrom(ctx, bios.GBBImageSection); err != nil {
+		return nil, errors.Wrap(err, "could not write image")
+	}
+	return &empty.Empty{}, nil
+}
