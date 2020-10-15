@@ -14,6 +14,7 @@ import (
 	"syscall"
 	"time"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 	"github.com/mafredri/cdp/protocol/target"
 	"github.com/shirou/gopsutil/process"
 	"golang.org/x/sys/unix"
@@ -38,6 +39,18 @@ type LacrosChrome struct {
 	logAggregator *jslog.Aggregator // collects JS console output
 	testExtID     string            // ID for test extension exposing APIs
 	testExtConn   *chrome.Conn      // connection to test extension exposing APIs
+}
+
+// StartTracing starts trace events collection for the selected categories. Android
+// categories must be prefixed with "disabled-by-default-android ", e.g. for the
+// gfx category, use "disabled-by-default-android gfx", including the space.
+func (l *LacrosChrome) StartTracing(ctx context.Context, categories []string) error {
+	return l.Devsess.StartTracing(ctx, categories)
+}
+
+// StopTracing stops trace collection and returns the collected trace events.
+func (l *LacrosChrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
+	return l.Devsess.StopTracing(ctx)
 }
 
 // Close kills a launched instance of lacros-chrome.
