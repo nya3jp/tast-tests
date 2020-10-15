@@ -5,6 +5,10 @@
 // Package comm contains trace_replay application host <-> guest communication protocol structures.
 package comm
 
+import (
+	"chromiumos/tast/testing"
+)
+
 const (
 	// TestResultSuccess means all the tests in a test group were completed successfully
 	TestResultSuccess = "Success"
@@ -42,6 +46,31 @@ type SystemInfo struct {
 	Chipset         string `json:"Chipset"`
 	Model           string `json:"Model"`
 	ChromeOSVersion string `json:"ChromeOSVersion"`
+}
+
+// PowerTestVars struct contains all runtime variables used by tests that interact with
+// the graphics_Power test via IPC
+type PowerTestVars struct {
+	ResultDir            string `json:"ResultDir,string"`
+	SignalRunningFile    string `json:"SignalRunningFile,string"`
+	SignalCheckpointFile string `json:"SignalCheckpointFile,string"`
+}
+
+// GetPowerTestVars populates a PowerTestVars struct with all of the dynamically defined variable
+// values by querying the testing.State
+func GetPowerTestVars(s *testing.State) PowerTestVars {
+	vars := PowerTestVars{
+		ResultDir:            s.RequiredVar("graphics.TraceReplayExtended.resultDir"),
+		SignalRunningFile:    s.RequiredVar("graphics.TraceReplayExtended.signalRunningFile"),
+		SignalCheckpointFile: s.RequiredVar("graphics.TraceReplayExtended.signalCheckpointFile"),
+	}
+	return vars
+}
+
+// TestVars struct contains all runtime variables that are consumed by the TraceReplay
+// family of tests
+type TestVars struct {
+	PowerTestVars PowerTestVars `json:"PowerTestVars"`
 }
 
 // TestGroupConfig struct is a part of host->guest communication protocol and it used
