@@ -16,6 +16,24 @@
       "message": "Tast runs in parallel with chrome and progress UI is transient. WaitForExpr() involves calling into chrome and getting result back via rpc. It could be slow and the progress UI is gone when we hit testing.Poll().\n\nI propose we do a \"WaitUntilDescendantExists\" instead to wait for progress UI. Then \"WaitUntilDescendantGone\" gone.\n\nAlso, I think we should use the default 100ms poll interval rather than `pollOpts` that uses 1s interval since the UI is transient.",
       "revId": "2f3fe0440b44eaf8b8cd021028cdec833eec5121",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d00b7dbf_d001bbfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-15T21:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd5ac316_e1846efb",
+      "revId": "2f3fe0440b44eaf8b8cd021028cdec833eec5121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
