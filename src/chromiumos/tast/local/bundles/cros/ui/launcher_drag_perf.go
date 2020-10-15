@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -129,11 +128,6 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to close the connection to chrome")
 		}
 		currentWindows = windows
-		// The best effort to stabilize CPU usage. This may or
-		// may not be satisfied in time.
-		if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-			s.Error("Failed to wait for system UI to be stabilized: ", err)
-		}
 
 		suffix := fmt.Sprintf("%dwindows", currentWindows)
 		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {

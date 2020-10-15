@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -113,10 +112,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to install %s: %v", pkgName, err)
 		}
 		cancel()
-	}
-
-	if _, err = power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed to wait for idle-ness: ", err)
 	}
 
 	var pc pointer.Controller
@@ -466,10 +461,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to change the window (%s) into the normal state: %v", url, err)
 			}
 		}
-	}
-
-	if _, err = power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed to wait for idle-ness: ", err)
 	}
 
 	subtests := []subtest{

@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -105,10 +104,6 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// https://crbug.com/1084185.
 	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to open/close the quick settings: ", err)
-	}
-
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed to wait: ", err)
 	}
 
 	// Search or Shift-Search key to show the apps grid in fullscreen.

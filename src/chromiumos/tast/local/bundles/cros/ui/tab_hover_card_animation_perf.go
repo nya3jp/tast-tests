@@ -15,7 +15,6 @@ import (
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -84,32 +83,25 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 		{tabs[0], "inactive"},
 		{tabs[1], "active"},
 	} {
-		s.Run(ctx, data.suffix, func(ctx context.Context, s *testing.State) {
-			// Stabilize CPU usage.
-			if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-				s.Error("Failed to wait for system UI to be stabilized: ", err)
+		runner.RunMultiple(ctx, s, data.suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+			if err := mouse.Move(ctx, tconn, center, 0); err != nil {
+				return errors.Wrap(err, "failed to put the mouse to the center")
 			}
-
-			runner.RunMultiple(ctx, s, data.suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-				if err := mouse.Move(ctx, tconn, center, 0); err != nil {
-					return errors.Wrap(err, "failed to put the mouse to the center")
-				}
-				if err := mouse.Move(ctx, tconn, data.tab.Location.CenterPoint(), 500*time.Millisecond); err != nil {
-					return errors.Wrapf(err, "failed to move the mouse to the %s tab", data.suffix)
-				}
-				// Hover on the tab.
-				if err := testing.Sleep(ctx, 4*time.Second); err != nil {
-					return errors.Wrap(err, "failed to sleep for 5 seconds")
-				}
-				if err := mouse.Move(ctx, tconn, center, 500*time.Millisecond); err != nil {
-					return errors.Wrap(err, "failed to move the mouse back to the center")
-				}
-				return nil
-			},
-				"Chrome.Tabs.AnimationSmoothness.HoverCard.FadeIn",
-				"Chrome.Tabs.AnimationSmoothness.HoverCard.FadeOut"),
-				perfutil.StoreSmoothness)
-		})
+			if err := mouse.Move(ctx, tconn, data.tab.Location.CenterPoint(), 500*time.Millisecond); err != nil {
+				return errors.Wrapf(err, "failed to move the mouse to the %s tab", data.suffix)
+			}
+			// Hover on the tab.
+			if err := testing.Sleep(ctx, 4*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep for 5 seconds")
+			}
+			if err := mouse.Move(ctx, tconn, center, 500*time.Millisecond); err != nil {
+				return errors.Wrap(err, "failed to move the mouse back to the center")
+			}
+			return nil
+		},
+			"Chrome.Tabs.AnimationSmoothness.HoverCard.FadeIn",
+			"Chrome.Tabs.AnimationSmoothness.HoverCard.FadeOut"),
+			perfutil.StoreSmoothness)
 	}
 	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf data: ", err)

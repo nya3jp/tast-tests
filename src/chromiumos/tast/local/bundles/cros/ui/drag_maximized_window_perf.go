@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -92,10 +91,6 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 	window := windows[0]
 	if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateMaximized); err != nil {
 		s.Fatalf("Failed to set the state of window (%d): %v", window.ID, err)
-	}
-
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
 	// Check that the window we maximized is the active window, otherwise this test won't work.

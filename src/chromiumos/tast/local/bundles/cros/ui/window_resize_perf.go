@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -91,10 +90,6 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			if err := ash.SetWindowStateAndWait(ctx, tconn, id1, ash.WindowStateRightSnapped); err != nil {
 				s.Fatalf("Failed to set the state of window (%d): %v", id1, err)
 			}
-		}
-
-		if _, err = power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-			s.Fatal("Failed to wait: ", err)
 		}
 
 		suffix := fmt.Sprintf("%dwindows", numWindows)

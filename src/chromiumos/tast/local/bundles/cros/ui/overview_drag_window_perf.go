@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -332,11 +331,6 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			s.Fatal("Failed to enter into the overview mode: ", err)
-		}
-
-		// Wait for cpu idle after creating windows and entering overview.
-		if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-			s.Fatal("Failed waiting for CPU to become idle: ", err)
 		}
 
 		// Run the drag and collect histogram.
