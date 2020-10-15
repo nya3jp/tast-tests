@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c4a6c6e_c8922038",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-15T07:06:08Z",
+      "side": 1,
+      "message": "I originally think if we remove the random BSSID, we can have more free coverage on the \"BSSID reused\" case. But after some more thoughts, I find that the coverage will be uncertain (depending on test ordering), and it is harder to debug this kind of failure. So, yeah, keeping the check explicit is better.\n\nComment and commit message updated.",
+      "parentUuid": "9364ec0f_dfdb1864",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 46
+      },
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74f29969_d742d86c",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-14T20:09:53Z",
       "side": 1,
       "message": "ath10k",
+      "range": {
+        "startLine": 229,
+        "startChar": 20,
+        "endLine": 229,
+        "endChar": 22
+      },
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec3e33d_b2094494",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-15T07:06:08Z",
+      "side": 1,
+      "message": "I have QC here partly because I see similar cfg80211_get_bss call without SSID also in upstream ath11k. :p\n\nChanged to ath10k.",
+      "parentUuid": "74f29969_d742d86c",
       "range": {
         "startLine": 229,
         "startChar": 20,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc24d0c_62465a24",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-15T07:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de33f6b6_de3ce676",
+      "range": {
+        "startLine": 659,
+        "startChar": 59,
+        "endLine": 660,
+        "endChar": 25
+      },
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08734119_e3560441",
@@ -117,6 +189,30 @@
       "writtenOn": "2020-10-14T20:09:53Z",
       "side": 1,
       "message": "do we need any of this, if we randomize by default? (well, there\u0027s still a tiny chance of collisions in randomization, but that possibility exists already.)",
+      "range": {
+        "startLine": 616,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 1
+      },
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "268fa7a4_398ddd40",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-15T07:06:08Z",
+      "side": 1,
+      "message": "I think we don\u0027t need this anymore as hostapd will set it if needed.. I keep this mainly for easier revert, but we now consider keeping this workaround so remove this.",
+      "parentUuid": "08734119_e3560441",
       "range": {
         "startLine": 616,
         "startChar": 0,
