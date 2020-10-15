@@ -97,7 +97,7 @@ func processExist(ctx context.Context, a *arc.ARC, procName string) (bool, error
 	}
 
 	// Package name is also the process name.
-	matched, err := regexp.MatchString(procName, string(out))
+	matched, err := regexp.MatchString(procName+"\n", string(out))
 	if err != nil {
 		return false, errors.Wrap(err, "failed to parse output")
 	}
