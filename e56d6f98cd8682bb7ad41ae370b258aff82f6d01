@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec76964_9205b789",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-10-15T02:25:04Z",
+      "side": 1,
+      "message": "and for reference: https://golang.org/pkg/crypto/ecdsa/#VerifyASN1",
+      "parentUuid": "508fc3a1_d2a5f488",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 3
+      },
+      "revId": "e56d6f98cd8682bb7ad41ae370b258aff82f6d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c16feb7_a1c0ace5",
