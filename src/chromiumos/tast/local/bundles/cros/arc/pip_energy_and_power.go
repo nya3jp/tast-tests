@@ -6,12 +6,16 @@ package arc
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	chromeui "chromiumos/tast/local/chrome/ui"
@@ -54,6 +58,11 @@ func init() {
 }
 
 func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
+	// Reserve one minute for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
 	cr := s.PreValue().(arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -64,7 +73,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure clamshell mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to hide notifications: ", err)
@@ -116,7 +125,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app: ", err)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	// The test activity enters PIP mode in onUserLeaveHint().
 	if err := act.SetWindowState(ctx, tconn, arc.WindowStateMinimized); err != nil {
@@ -202,21 +211,56 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send Tab: ", err)
 	}
 
+	// triedToStopTracing means that cr.StopTracing(cleanupCtx)
+	// was already done, with or without success (if it failed
+	// then we have no reason to try again with the same timeout).
+	triedToStopTracing := false
+	defer func() {
+		if triedToStopTracing {
+			return
+		}
+		if _, err := cr.StopTracing(cleanupCtx); err != nil {
+			s.Error("Failed to stop tracing viz.triangles in cleanup phase: ", err)
+		}
+	}()
+	if err := cr.StartTracing(ctx, []string{"disabled-by-default-viz.triangles"}); err != nil {
+		s.Fatal("Failed to start tracing viz.triangles: ", err)
+	}
+
 	if err := timeline.Start(ctx); err != nil {
 		s.Fatal("Failed to start metrics: ", err)
 	}
+
 	if err := timeline.StartRecording(ctx); err != nil {
 		s.Fatal("Failed to start recording: ", err)
 	}
+
 	const timelineDuration = time.Minute
 	if err := testing.Sleep(ctx, timelineDuration); err != nil {
 		s.Fatalf("Failed to wait %v: %v", timelineDuration, err)
 	}
+
 	pv, err := timeline.StopRecording()
 	if err != nil {
 		s.Fatal("Error while recording metrics: ", err)
 	}
+
+	// As we still have to save results to files, we are not yet
+	// focusing on cleanup, but we can safely pass cleanupCtx
+	// (borrowing from the time reserved for cleanup) because
+	// StopTracing was deferred to cleanup and we are now getting
+	// it done ahead of time (see comment on triedToStopTracing).
+	triedToStopTracing = true
+	tr, err := cr.StopTracing(cleanupCtx)
+	if err != nil {
+		s.Fatal("Failed to stop tracing viz.triangles: ", err)
+	}
+
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save perf data: ", err)
+	}
+
+	if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(s.OutDir(), "trace.data.gz")); err != nil {
+		s.Error("Failed to save trace data: ", err)
 	}
 }
