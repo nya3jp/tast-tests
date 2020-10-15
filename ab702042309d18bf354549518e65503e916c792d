@@ -50,6 +50,24 @@
       "message": "Based on the number of failures, you may need to rebase on master. Potentially something you depend on changed. Not fully sure though.",
       "revId": "ab702042309d18bf354549518e65503e916c792d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883a79ff_ebea17b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-10-15T17:35:33Z",
+      "side": 1,
+      "message": "Vaibhav,\n\ngo to master, sync your code\ngo back to the branch\nrun `git pull --rebase`\nre upload the change",
+      "parentUuid": "8ec5ba51_150a4b84",
+      "revId": "ab702042309d18bf354549518e65503e916c792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
