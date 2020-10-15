@@ -5,13 +5,19 @@
 package video
 
 import (
+	"compress/gzip"
 	"context"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"os"
+	"path/filepath"
 	"time"
 
+	"github.com/golang/protobuf/proto"
+
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -56,6 +62,11 @@ func init() {
 }
 
 func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
+	// Reserve one minute for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -66,7 +77,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure clamshell mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to hide notifications: ", err)
@@ -119,7 +130,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get web contents view: ", err)
 	}
-	defer webContentsView.Release(ctx)
+	defer webContentsView.Release(cleanupCtx)
 
 	if err := mouse.Click(ctx, tconn, webContentsView.Location.TopLeft().Add(pipButtonCenterInWebContents), mouse.LeftButton); err != nil {
 		s.Fatal("Failed to click PIP button: ", err)
@@ -134,7 +145,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get PIP resize handle: ", err)
 	}
-	defer resizeHandle.Release(ctx)
+	defer resizeHandle.Release(cleanupCtx)
 
 	if err := mouse.Move(ctx, tconn, resizeHandle.Location.CenterPoint(), time.Second); err != nil {
 		s.Fatal("Failed to move mouse to PIP resize handle: ", err)
@@ -168,7 +179,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get PIP window: ", err)
 	}
-	defer pipWindow.Release(ctx)
+	defer pipWindow.Release(cleanupCtx)
 
 	if params.bigPIP {
 		maxWidth := info.WorkArea.Width / 2
@@ -197,7 +208,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to get Chrome icon: ", err)
 		}
-		defer chromeIcon.Release(ctx)
+		defer chromeIcon.Release(cleanupCtx)
 
 		if err := mouse.Move(ctx, tconn, chromeIcon.Location.CenterPoint(), time.Second); err != nil {
 			s.Fatal("Failed to move mouse to Chrome icon: ", err)
@@ -205,7 +216,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
 			s.Fatal("Failed to press left mouse button for dragging Chrome icon: ", err)
 		}
-		defer mouse.Release(ctx, tconn, mouse.LeftButton)
+		defer mouse.Release(cleanupCtx, tconn, mouse.LeftButton)
 		if err := mouse.Move(ctx, tconn, pipWindow.Location.CenterPoint(), time.Second); err != nil {
 			s.Fatal("Failed to move mouse for dragging Chrome icon: ", err)
 		}
@@ -232,21 +243,62 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send Tab: ", err)
 	}
 
+	// Sometimes, start tracing request is reached to the browser process but
+	// waiting for the reply gets timeout. Therefore, we may need to call
+	// StopTracing even if StartTracing fails.
+	defer cr.StopTracing(cleanupCtx)
+	if err := cr.StartTracing(ctx, []string{"viz"}); err != nil {
+		s.Fatal("Failed to start tracing viz: ", err)
+	}
+
 	if err := timeline.Start(ctx); err != nil {
 		s.Fatal("Failed to start metrics: ", err)
 	}
+
 	if err := timeline.StartRecording(ctx); err != nil {
 		s.Fatal("Failed to start recording: ", err)
 	}
+
 	const timelineDuration = time.Minute
 	if err := testing.Sleep(ctx, timelineDuration); err != nil {
 		s.Fatalf("Failed to wait %v: %v", timelineDuration, err)
 	}
+
 	pv, err := timeline.StopRecording()
 	if err != nil {
 		s.Fatal("Error while recording metrics: ", err)
 	}
+
+	tr, err := cr.StopTracing(ctx)
+	if err != nil {
+		s.Fatal("Failed to stop tracing viz: ", err)
+	}
+
+	trData, err := proto.Marshal(tr)
+	if err != nil {
+		s.Fatal("Failed to marshal the tracing data: ", err)
+	}
+
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save perf data: ", err)
+	}
+
+	trDataFile, err := os.OpenFile(filepath.Join(s.OutDir(), "trace.data.gz"), os.O_CREATE|os.O_RDWR, 0644)
+	if err != nil {
+		s.Fatal("Failed to open the trace file: ", err)
+	}
+	defer trDataFile.Close()
+
+	trDataWriter := gzip.NewWriter(trDataFile)
+
+	if _, err := trDataWriter.Write(trData); err != nil {
+		if err := trDataWriter.Close(); err != nil {
+			s.Fatal("Failed to write the tracing data, and then failed to close the gzip writer: ", err)
+		}
+		s.Fatal("Failed to write the tracing data: ", err)
+	}
+
+	if err := trDataWriter.Close(); err != nil {
+		s.Fatal("Failed to close the gzip writer: ", err)
 	}
 }

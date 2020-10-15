@@ -5,10 +5,16 @@
 package arc
 
 import (
+	"compress/gzip"
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
+	"github.com/golang/protobuf/proto"
+
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
@@ -54,6 +60,11 @@ func init() {
 }
 
 func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
+	// Reserve one minute for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
 	cr := s.PreValue().(arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -64,7 +75,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure clamshell mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to hide notifications: ", err)
@@ -116,7 +127,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app: ", err)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	// The test activity enters PIP mode in onUserLeaveHint().
 	if err := act.SetWindowState(ctx, tconn, arc.WindowStateMinimized); err != nil {
@@ -202,21 +213,62 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send Tab: ", err)
 	}
 
+	// Sometimes, start tracing request is reached to the browser process but
+	// waiting for the reply gets timeout. Therefore, we may need to call
+	// StopTracing even if StartTracing fails.
+	defer cr.StopTracing(cleanupCtx)
+	if err := cr.StartTracing(ctx, []string{"viz"}); err != nil {
+		s.Fatal("Failed to start tracing viz: ", err)
+	}
+
 	if err := timeline.Start(ctx); err != nil {
 		s.Fatal("Failed to start metrics: ", err)
 	}
+
 	if err := timeline.StartRecording(ctx); err != nil {
 		s.Fatal("Failed to start recording: ", err)
 	}
+
 	const timelineDuration = time.Minute
 	if err := testing.Sleep(ctx, timelineDuration); err != nil {
 		s.Fatalf("Failed to wait %v: %v", timelineDuration, err)
 	}
+
 	pv, err := timeline.StopRecording()
 	if err != nil {
 		s.Fatal("Error while recording metrics: ", err)
 	}
+
+	tr, err := cr.StopTracing(ctx)
+	if err != nil {
+		s.Fatal("Failed to stop tracing viz: ", err)
+	}
+
+	trData, err := proto.Marshal(tr)
+	if err != nil {
+		s.Fatal("Failed to marshal the tracing data: ", err)
+	}
+
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save perf data: ", err)
+	}
+
+	trDataFile, err := os.OpenFile(filepath.Join(s.OutDir(), "trace.data.gz"), os.O_CREATE|os.O_RDWR, 0644)
+	if err != nil {
+		s.Fatal("Failed to open the trace file: ", err)
+	}
+	defer trDataFile.Close()
+
+	trDataWriter := gzip.NewWriter(trDataFile)
+
+	if _, err := trDataWriter.Write(trData); err != nil {
+		if err := trDataWriter.Close(); err != nil {
+			s.Fatal("Failed to write the tracing data, and then failed to close the gzip writer: ", err)
+		}
+		s.Fatal("Failed to write the tracing data: ", err)
+	}
+
+	if err := trDataWriter.Close(); err != nil {
+		s.Fatal("Failed to close the gzip writer: ", err)
 	}
 }
