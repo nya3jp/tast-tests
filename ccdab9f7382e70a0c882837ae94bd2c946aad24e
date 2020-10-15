@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "715e4bb2_ad218136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-15T07:36:04Z",
+      "side": 1,
+      "message": "When the ctx is canceled, the recv.Recv() call returns with an rpc error like \"rpc error: code \u003d DeadlineExceeded desc \u003d context deadline exceeded\", no matter what we returned here.",
+      "parentUuid": "076dd968_df4ad57b",
+      "range": {
+        "startLine": 1829,
+        "startChar": 0,
+        "endLine": 1829,
+        "endChar": 19
+      },
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2f65cc2_9ecd16f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 15
@@ -89,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94487013_4dad8401",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-15T07:36:04Z",
+      "side": 1,
+      "message": "The ordering is not a big problem -- after yenlin\u0027s random BSSID CL is merged, we can simply replace `ap0BSSID \u003d \"00:11:22:33:44:55\"` to `ap0BSSID \u003d hostapd.RandomMAC()`.\n\nI guess we can have a cleanup CL to fix all of them, or if yenlin\u0027s CL is merged before this one, I can rebase and fix it immediately then.",
+      "parentUuid": "b2f65cc2_9ecd16f6",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdb7b6d8_cb2f005f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 15
@@ -100,6 +148,30 @@
       "writtenOn": "2020-10-14T21:45:42Z",
       "side": 1,
       "message": "nit: has",
+      "range": {
+        "startLine": 193,
+        "startChar": 118,
+        "endLine": 193,
+        "endChar": 122
+      },
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d6183d_debd4831",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-15T07:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdb7b6d8_cb2f005f",
       "range": {
         "startLine": 193,
         "startChar": 118,
