@@ -704,7 +704,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 				return err
 			}
 			filename := filepath.Join(invoc.traceDir, string(invoc.crt)+"-"+invoc.page.name+"-trace.data")
-			if err := chrome.SaveTraceToFile(tr, filename); err != nil {
+			if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
 				return err
 			}
 			return nil
