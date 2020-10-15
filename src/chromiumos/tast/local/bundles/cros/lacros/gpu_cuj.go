@@ -9,9 +9,12 @@ import (
 	"context"
 	"fmt"
 	"math"
+	"path/filepath"
 	"sort"
 	"strings"
 	"time"
+
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -396,6 +399,9 @@ var metricMap = map[string]struct {
 	},
 }
 
+// These are the default categories for 'UI Rendering' in chrome://tracing plus 'exo' and 'wayland'.
+var tracingCategories = []string{"benchmark", "cc", "exo", "gpu", "input", "toplevel", "ui", "views", "viz", "wayland"}
+
 type statType string
 
 const (
@@ -574,11 +580,17 @@ type testInvocation struct {
 	page     page
 	crt      lacros.ChromeType
 	metrics  *metricsRecorder
+	traceDir string
+}
+
+type traceable interface {
+	StartTracing(ctx context.Context, categories []string) error
+	StopTracing(ctx context.Context) (*trace.Trace, error)
 }
 
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
 // tconn is a test connection to the current browser being used (either ChromeOS or lacros chrome).
-func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, invoc *testInvocation) error {
+func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, tracer traceable, invoc *testInvocation) error {
 	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to test API")
@@ -683,6 +695,30 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 		defer toggleThreeDotMenu(ctx, tconn, clickFn)
 	}
 
+	if invoc.traceDir != "" {
+		oldPerfFn := perfFn
+		perfFn = func(ctx context.Context) error {
+			if err := tracer.StartTracing(ctx, tracingCategories); err != nil {
+				if _, err := tracer.StopTracing(ctx); err != nil {
+					return errors.Wrap(err, "failed to start tracing, then failed to clean up afterwards")
+				}
+				return err
+			}
+			if err := oldPerfFn(ctx); err != nil {
+				return err
+			}
+			tr, err := tracer.StopTracing(ctx)
+			if err != nil {
+				return err
+			}
+			filename := filepath.Join(invoc.traceDir, string(invoc.crt)+"-"+invoc.page.name+"-trace.data")
+			if err := chrome.SaveTraceToFile(tr, filename); err != nil {
+				return err
+			}
+			return nil
+		}
+	}
+
 	return runHistogram(ctx, tconn, invoc, perfFn)
 }
 
@@ -757,7 +793,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 		defer connBlank.CloseTarget(ctx)
 	}
 
-	return runTest(ctx, ltconn, pd, invoc)
+	return runTest(ctx, ltconn, pd, l, invoc)
 }
 
 func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
@@ -793,7 +829,7 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation
 		defer connBlank.CloseTarget(ctx)
 	}
 
-	return runTest(ctx, ctconn, pd, invoc)
+	return runTest(ctx, ctconn, pd, pd.Chrome, invoc)
 }
 
 func GpuCUJ(ctx context.Context, s *testing.State) {
