@@ -51,6 +51,24 @@
       "parentUuid": "f46ad084_6d6831b4",
       "revId": "f428e248cfd166e15035ec55524937d79e55a66b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bead2ed1_ddaa60a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-15T03:11:30Z",
+      "side": 1,
+      "message": "boards are added and removed from the CQ all the time based on ongoing breakages.  If this submits today and a board is put back on tomorrow it could break the CQ for everybody.",
+      "parentUuid": "d5634fbb_dc49124f",
+      "revId": "f428e248cfd166e15035ec55524937d79e55a66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
