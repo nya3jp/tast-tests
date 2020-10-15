@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "736aaf2f_bad97416",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-15T07:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e5fe61c_b35d1a38",
+      "range": {
+        "startLine": 81,
+        "startChar": 26,
+        "endLine": 81,
+        "endChar": 37
+      },
+      "revId": "b16715a86a1c6309d51e770ede0a3239c3d477c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "166e8ecd_3066523c",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-14T09:19:54Z",
       "side": 1,
       "message": "nit: This named return does not seem necessary.",
+      "range": {
+        "startLine": 120,
+        "startChar": 68,
+        "endLine": 120,
+        "endChar": 71
+      },
+      "revId": "b16715a86a1c6309d51e770ede0a3239c3d477c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77060a16_ec8fb98e",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-15T07:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "166e8ecd_3066523c",
       "range": {
         "startLine": 120,
         "startChar": 68,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff1c5b24_edf96fd8",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-15T07:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84f9ea08_df180092",
+      "range": {
+        "startLine": 143,
+        "startChar": 12,
+        "endLine": 149,
+        "endChar": 5
+      },
+      "revId": "b16715a86a1c6309d51e770ede0a3239c3d477c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95511a0c_6e450abb",
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "497166e7_aebb8feb",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-15T07:28:34Z",
+      "side": 1,
+      "message": "Right, it\u0027s ok to call Stop with the other change there.",
+      "parentUuid": "95511a0c_6e450abb",
+      "revId": "b16715a86a1c6309d51e770ede0a3239c3d477c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb3461f5_4e940bb9",
@@ -117,6 +207,30 @@
       "writtenOn": "2020-10-14T09:19:54Z",
       "side": 1,
       "message": "nit: does not seem necessary. (and a few similar ones below)",
+      "range": {
+        "startLine": 164,
+        "startChar": 53,
+        "endLine": 164,
+        "endChar": 56
+      },
+      "revId": "b16715a86a1c6309d51e770ede0a3239c3d477c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f360a1ef_78a74131",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-15T07:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb3461f5_4e940bb9",
       "range": {
         "startLine": 164,
         "startChar": 53,
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "078ea259_adfa4480",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-15T07:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f567ac59_fef9a195",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 62
+      },
+      "revId": "b16715a86a1c6309d51e770ede0a3239c3d477c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51d3a34d_54e9290d",
@@ -164,6 +302,30 @@
       "side": 1,
       "message": "\u003e \"occured\" is a possible misspelling of \"occurred\".\n\nPlease fix.",
       "parentUuid": "423516e6_52d70cd4",
+      "range": {
+        "startLine": 225,
+        "startChar": 54,
+        "endLine": 225,
+        "endChar": 61
+      },
+      "revId": "b16715a86a1c6309d51e770ede0a3239c3d477c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc125b08_bb3ac6d5",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-15T07:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51d3a34d_54e9290d",
       "range": {
         "startLine": 225,
         "startChar": 54,
