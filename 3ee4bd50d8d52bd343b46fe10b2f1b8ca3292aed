@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9ca65a3_16d8f22d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-15T08:27:22Z",
+      "side": 1,
+      "message": "Unfortunately, yes. As the param* functions may also meet the issue, Do you think it is good to place all of them into TestSimpleConnect?",
+      "parentUuid": "74cbd511_acb25767",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f57f020a_7ad8db58",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-14T10:24:51Z",
       "side": 1,
       "message": "For the security tests, I think apOpts is almost always the same. So it seems to worth to be extracted. I see some functions does handle this by their own, but I\u0027m not sure if this should be done in a even bigger scope. e.g. param.Val becomes an object instead of just string.",
+      "range": {
+        "startLine": 300,
+        "startChar": 3,
+        "endLine": 300,
+        "endChar": 62
+      },
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9adb600_024e2aa6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-15T08:27:22Z",
+      "side": 1,
+      "message": "Do you mean to extract some common Opts and reuse in several param* functions?\n\nI guess it worth a try to define the params.Val as:\n  struct {\n    apOpts          string\n    secConfFac      string\n    pingOps         string\n    expectedFailure bool\n  }\n\nI will try it after I have finish converting the rest cases.",
+      "parentUuid": "f57f020a_7ad8db58",
       "range": {
         "startLine": 300,
         "startChar": 3,
