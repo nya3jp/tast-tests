@@ -33,6 +33,41 @@
       "message": "There was an open bug regarding this test, and the test was updated 2 days ago. Now it is passing on most boards. https://tastboard.corp.google.com/test/policy.ArcEnabled",
       "revId": "022f618f7631829625e25efc041918658933edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5433f623_0cf68e6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-10-15T15:30:54Z",
+      "side": 1,
+      "message": "Gabor, can you please also ensure that the fix is backported to M87 so the test stops failing there?",
+      "revId": "022f618f7631829625e25efc041918658933edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdfd9f12_82c0498e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-10-15T15:30:54Z",
+      "side": 1,
+      "message": "Ah, fair enough.\n\nCan you please add the bug link to http://go/cros-green-stainless-tast so we can stay in sync?",
+      "parentUuid": "fc12705c_d5f39449",
+      "revId": "022f618f7631829625e25efc041918658933edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
