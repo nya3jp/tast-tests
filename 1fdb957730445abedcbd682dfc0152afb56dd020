@@ -16,6 +16,29 @@
       "message": "Hi!\nPlease help me to review this CL.",
       "revId": "1fdb957730445abedcbd682dfc0152afb56dd020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d667fa_35ba0c19",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-15T00:24:01Z",
+      "side": 1,
+      "message": "This will make ensureJobsStarted/stopJobs vulnerable to typos. I\u0027m afraid such bugs become much more difficult to catch.\n\nRather I\u0027d recommend updating callers to check if u2fd exists in advance, and passing correct \"jobs\" slice.",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 23
+      },
+      "revId": "1fdb957730445abedcbd682dfc0152afb56dd020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
