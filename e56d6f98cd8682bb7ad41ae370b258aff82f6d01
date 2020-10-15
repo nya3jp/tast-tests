@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b95db40_47140850",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-10-15T04:36:35Z",
+      "side": 1,
+      "message": "Ah and FYI, we have 1.13.5.",
+      "parentUuid": "2ec76964_9205b789",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 3
+      },
+      "revId": "e56d6f98cd8682bb7ad41ae370b258aff82f6d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c16feb7_a1c0ace5",
