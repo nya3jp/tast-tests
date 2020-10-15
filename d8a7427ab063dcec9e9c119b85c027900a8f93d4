@@ -16,6 +16,24 @@
       "message": "Doh, sorry for messing up your CQ.  :(",
       "revId": "d8a7427ab063dcec9e9c119b85c027900a8f93d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aee13a2_00da4492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413538
+      },
+      "writtenOn": "2020-10-15T20:47:44Z",
+      "side": 1,
+      "message": "thanks for fixing it :)",
+      "parentUuid": "1d677199_ed3b15bf",
+      "revId": "d8a7427ab063dcec9e9c119b85c027900a8f93d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
