@@ -16,6 +16,29 @@
       "message": "Note that nya@ suggested this here: https://screenshot.googleplex.com/A3qDDEZGmPM3wxw",
       "revId": "14657dc0deb2fd84a17887339d3bfa920fc507df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39cd835_0e6d6b1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002639
+      },
+      "writtenOn": "2020-10-15T21:54:53Z",
+      "side": 1,
+      "message": "Just a note that the problem is unrelated to reflect.DeepEqual().\n\nShallow copying a protobuf is an error. Passing a protobuf by value does effectively that. Kaboom.",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "14657dc0deb2fd84a17887339d3bfa920fc507df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
