@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63801a31_3b8251db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-15T08:07:29Z",
+      "side": 1,
+      "message": "Add some more description in the comment. PTAL.",
+      "parentUuid": "80e11b59_084f9202",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 106
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52cc5c6c_e36ad96d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
         "patchSetId": 3
