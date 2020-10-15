@@ -16,6 +16,23 @@
       "message": "Keigo,\n\nI think it\u0027s finally ready to try to submit this again.\n\nI increased the number of tabs to get the test variance down. Here are the results of the \"still_alive\" metric over 10 runs on my kled:\n      \"value\": 40\n      \"value\": 42\n      \"value\": 42\n      \"value\": 40\n      \"value\": 42\n      \"value\": 43\n      \"value\": 43\n      \"value\": 42\n      \"value\": 42\n      \"value\": 40",
       "revId": "0045963c7421dbf7a2b78f48405176969bfd96a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1da4a374_9a1203f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-10-15T14:52:27Z",
+      "side": 1,
+      "message": "Thank you. I somehow missed the update. I will review this tomorrow.",
+      "revId": "0045963c7421dbf7a2b78f48405176969bfd96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
