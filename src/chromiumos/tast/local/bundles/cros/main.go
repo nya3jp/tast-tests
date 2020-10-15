@@ -16,6 +16,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/arcappcompat"
 	_ "chromiumos/tast/local/bundles/cros/assistant"
 	_ "chromiumos/tast/local/bundles/cros/audio"
+	_ "chromiumos/tast/local/bundles/cros/audio/soundcardinit"
 	_ "chromiumos/tast/local/bundles/cros/baserpc"
 	_ "chromiumos/tast/local/bundles/cros/biod"
 	_ "chromiumos/tast/local/bundles/cros/camera"
