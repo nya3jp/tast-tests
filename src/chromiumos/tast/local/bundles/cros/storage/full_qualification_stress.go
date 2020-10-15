@@ -171,7 +171,7 @@ func runPeriodicPowerSuspend(ctx context.Context) {
 	// Indefinite loop of randomized sleeps and power suspends.
 	for {
 		sleepDuration := time.Duration(rand.Intn(30)+30) * time.Second
-		if err := testing.Sleep(ctx, sleepDuration); err != nil && errors.As(err, context.DeadlineExceeded) {
+		if err := testing.Sleep(ctx, sleepDuration); err != nil && errors.Is(err, context.DeadlineExceeded) {
 			return
 		}
 		if err := stress.Suspend(ctx); errors.Is(err, context.DeadlineExceeded) {
