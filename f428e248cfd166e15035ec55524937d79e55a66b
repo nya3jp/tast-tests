@@ -33,6 +33,24 @@
       "message": "lets wait for at least one round of testing to verify that the fix works across all boards.",
       "revId": "f428e248cfd166e15035ec55524937d79e55a66b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5634fbb_dc49124f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-10-15T02:56:58Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this only submit if it passes on all boards?",
+      "parentUuid": "f46ad084_6d6831b4",
+      "revId": "f428e248cfd166e15035ec55524937d79e55a66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
