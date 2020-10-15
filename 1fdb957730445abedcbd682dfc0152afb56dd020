@@ -56,6 +56,30 @@
       },
       "revId": "1fdb957730445abedcbd682dfc0152afb56dd020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b08296_1e71767c",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-15T02:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09d667fa_35ba0c19",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 23
+      },
+      "revId": "1fdb957730445abedcbd682dfc0152afb56dd020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
