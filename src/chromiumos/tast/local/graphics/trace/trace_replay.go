@@ -212,6 +212,97 @@ func pushTraceReplayApp(ctx context.Context, cont *vm.Container) error {
 	return nil
 }
 
+// runTraceReplayInVM calls the trace_replay executable in a VM with args and writes test results to a file
+// for Crosbolt to pick up later.
+func runTraceReplayInVM(ctx context.Context, resultDir string, cont *vm.Container, group *comm.TestGroupConfig) error {
+	replayArgs, err := json.Marshal(*group)
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Running replay with args: "+string(replayArgs))
+	replayCmd := cont.Command(ctx, path.Join(replayAppPathAtGuest, replayAppName), string(replayArgs))
+	replayOutput, err := replayCmd.Output()
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Replay output: "+string(replayOutput))
+
+	var testResult comm.TestGroupResult
+	if err := json.Unmarshal(replayOutput, &testResult); err != nil {
+		return errors.Wrapf(err, "unable to parse test group result output: %q", string(replayOutput))
+	}
+	getDirection := func(d int32) perf.Direction {
+		if d < 0 {
+			return perf.SmallerIsBetter
+		}
+		return perf.BiggerIsBetter
+	}
+
+	perfValues := perf.NewValues()
+	failedEntries := 0
+	for _, resultEntry := range testResult.Entries {
+		if resultEntry.Message != "" {
+			testing.ContextLog(ctx, resultEntry.Message)
+		}
+		if resultEntry.Result != comm.TestResultSuccess {
+			failedEntries++
+			continue
+		}
+		for key, value := range resultEntry.Values {
+			perfValues.Set(perf.Metric{
+				Name:      resultEntry.Name,
+				Variant:   key,
+				Unit:      value.Unit,
+				Direction: getDirection(value.Direction),
+				Multiple:  false,
+			}, float64(value.Value))
+		}
+	}
+
+	if err := perfValues.Save(resultDir); err != nil {
+		return errors.Wrap(err, "unable to save performance values")
+	}
+
+	if testResult.Result != comm.TestResultSuccess {
+		return errors.Errorf("%s", testResult.Message)
+	}
+
+	return nil
+}
+
+// runTraceReplayExtendedInVM calls the trace_replay executable in a VM with args.
+// It also interacts with the graphics_Power subtest via IPC to create temporal
+// checkpoints on the power-dashboard, and stores additional results to a directory
+// to be collected by the managing server test.
+func runTraceReplayExtendedInVM(ctx context.Context, resultDir string, cont *vm.Container, group *comm.TestGroupConfig) error {
+	replayArgs, err := json.Marshal(*group)
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Running extended replay with args: "+string(replayArgs))
+	replayCmd := cont.Command(ctx, path.Join(replayAppPathAtGuest, replayAppName), string(replayArgs))
+	replayOutput, err := replayCmd.Output()
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Replay output: "+string(replayOutput))
+
+	var testResult comm.TestGroupResult
+	if err := json.Unmarshal(replayOutput, &testResult); err != nil {
+		return errors.Wrapf(err, "unable to parse test group result output: %q", string(replayOutput))
+	}
+
+	if testResult.Result != comm.TestResultSuccess {
+		return errors.Errorf("%s", testResult.Message)
+	}
+
+	return nil
+}
+
 // RunTraceReplayTest starts a VM and replays all the traces in the test config.
 func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *testing.CloudStorage, cont *vm.Container, group *comm.TestGroupConfig, testVars *comm.TestVars) error {
 	// Guest is unable to use VM network interface to access it's host because of security reason,
@@ -273,64 +364,13 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	}()
 	shortCtx, shortCancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer shortCancel()
-	perfValues := perf.NewValues()
 
 	group.ProxyServer = comm.ProxyServerInfo{
 		URL: "http://" + serverAddr,
 	}
 
-	replayArgs, err := json.Marshal(*group)
-	if err != nil {
-		return err
+	if group.ExtendedDuration > 0 {
+		return runTraceReplayExtendedInVM(shortCtx, resultDir, cont, group)
 	}
-
-	testing.ContextLog(shortCtx, "Running replay with args: "+string(replayArgs))
-	replayCmd := cont.Command(shortCtx, path.Join(replayAppPathAtGuest, replayAppName), string(replayArgs))
-	replayOutput, err := replayCmd.Output()
-	if err != nil {
-		return err
-	}
-
-	testing.ContextLog(shortCtx, "Replay output: "+string(replayOutput))
-
-	var testResult comm.TestGroupResult
-	if err := json.Unmarshal(replayOutput, &testResult); err != nil {
-		return errors.Wrapf(err, "unable to parse test group result output: %q", string(replayOutput))
-	}
-	getDirection := func(d int32) perf.Direction {
-		if d < 0 {
-			return perf.SmallerIsBetter
-		}
-		return perf.BiggerIsBetter
-	}
-
-	failedEntries := 0
-	for _, resultEntry := range testResult.Entries {
-		if resultEntry.Message != "" {
-			testing.ContextLog(shortCtx, resultEntry.Message)
-		}
-		if resultEntry.Result != comm.TestResultSuccess {
-			failedEntries++
-			continue
-		}
-		for key, value := range resultEntry.Values {
-			perfValues.Set(perf.Metric{
-				Name:      resultEntry.Name,
-				Variant:   key,
-				Unit:      value.Unit,
-				Direction: getDirection(value.Direction),
-				Multiple:  false,
-			}, float64(value.Value))
-		}
-	}
-
-	if err := perfValues.Save(resultDir); err != nil {
-		return errors.Wrap(err, "unable to save performance values")
-	}
-
-	if testResult.Result != comm.TestResultSuccess {
-		return errors.Errorf("%s", testResult.Message)
-	}
-
-	return nil
+	return runTraceReplayInVM(shortCtx, resultDir, cont, group)
 }
