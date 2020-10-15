@@ -68,6 +68,24 @@
       "parentUuid": "8ec5ba51_150a4b84",
       "revId": "ab702042309d18bf354549518e65503e916c792d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aaccf1f_fac77421",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-15T18:54:15Z",
+      "side": 1,
+      "message": "instead of `git pull --rebase` there is now `repo rebase .`\n\nAlso, you can sync without going back to master with `repo sync -n .` though personally, I tend to just let the sync fail and the rebase with `repo sync -j32` followed by `repo rebase .`",
+      "parentUuid": "883a79ff_ebea17b1",
+      "revId": "ab702042309d18bf354549518e65503e916c792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
