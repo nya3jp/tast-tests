@@ -73,7 +73,8 @@ func init() {
 					"meta.RemotePass/faillog/ps.txt": notExists,
 				},
 			},
-			ExtraAttr: []string{"group:mainline", "informational"},
+			// TODO(https://crbug.com/1111251): Test is disabled until it can be fixed
+			// ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name: "files",
 			Val: runTestsParam{
@@ -104,7 +105,8 @@ func init() {
 					"meta.RemoteFiles/remote_files_external.txt": "This is an external data file for remote tests.\n",
 				},
 			},
-			ExtraAttr: []string{"group:mainline", "informational"},
+			// TODO(https://crbug.com/1111251): Test is disabled until it can be fixed
+			// ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name: "panic",
 			Val: runTestsParam{
