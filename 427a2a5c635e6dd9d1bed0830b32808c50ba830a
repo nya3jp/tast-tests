@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e78ed65_5f4b06fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-10-15T18:58:52Z",
+      "side": 1,
+      "message": "Can you please file a bug for this and add it to http://go/cros-green-stainless-tast\n\nAlso, can you please backport this to M87 so the test stops failing there?",
+      "revId": "427a2a5c635e6dd9d1bed0830b32808c50ba830a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
