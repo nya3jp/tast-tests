@@ -27,7 +27,7 @@ func init() {
 			"bhansknecht@chromium.org",
 			"dhaddock@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.Battery()),
