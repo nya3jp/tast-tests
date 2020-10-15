@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "230a62ce_e55cf3d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-15T13:09:13Z",
+      "side": 1,
+      "message": "Can you also add 1134522 please?",
+      "revId": "3ebef24dee948ae83086def9c6f5ac8301a30d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553b486e_2bae2f22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-15T13:09:13Z",
+      "side": 1,
+      "message": "nit: \u003cip\u003e",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "3ebef24dee948ae83086def9c6f5ac8301a30d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "da5baf52_95e71620",
@@ -31,6 +71,23 @@
       "writtenOn": "2020-10-15T12:04:54Z",
       "side": 1,
       "message": "Ooops, pressed CQ+2 instead of CQ+1",
+      "revId": "3ebef24dee948ae83086def9c6f5ac8301a30d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "580e3cd4_397b1e03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-15T13:09:13Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "3ebef24dee948ae83086def9c6f5ac8301a30d9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
