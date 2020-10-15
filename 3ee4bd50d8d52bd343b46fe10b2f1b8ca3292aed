@@ -67,6 +67,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6fdeb6f_4ede8e85",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-15T08:57:01Z",
+      "side": 1,
+      "message": "But it might be messy if we move all into one function... I\u0027ll suggest keeping it this way for now so that it is easier to review, and resolve this after the design is decided? WDYT?",
+      "parentUuid": "a9ca65a3_16d8f22d",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fe42098_d8993be6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-15T08:57:01Z",
+      "side": 1,
+      "message": "With the potential change in the other comment, I\u0027m thinking: Might it make the following case list simple if we return the whole \u0027params\u0027 object in this function?\n\nSo the return will be like:\n\n  []params{\n    mkP(\"80211n24ht20\",\n      \"Verifies that DUT can connect to an open 802.11n network on 2.4GHz channels 1, 6, 11 with a channel width of 20MHz.\",\n      false, // unstable\n      []int{1,6,11}),\n    mkP(...),\n  }\n\nThen we can avoid writing all fields in \u0027param\u0027 which might be expanded later.\n\nDownside will be that the input meaning is less obvious without the field names, but I guess it\u0027s OK if it\u0027s not too complex?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f57f020a_7ad8db58",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
         "patchSetId": 6
@@ -107,6 +154,53 @@
         "startChar": 3,
         "endLine": 300,
         "endChar": 62
+      },
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c35c82_942a0ae4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-15T08:57:01Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a possible way. With it, we can further remove the duplicated \"[]ap.Option\u0027 and get cleaner \u0027param\u0027 which makes us less prone to syntax error when writing the \u0027codes\u0027 without syntax highlight. :p",
+      "parentUuid": "e9adb600_024e2aa6",
+      "range": {
+        "startLine": 300,
+        "startChar": 3,
+        "endLine": 300,
+        "endChar": 62
+      },
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b5a92f_f382e83c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-15T08:57:01Z",
+      "side": 1,
+      "message": "Now this looks like an index for all testcases, so it won\u0027t be that hard for a newcomer to find the proper place when they want to add one testcase, I guess?\n\n(Just a note and nothing actionable, so mark resolved)",
+      "range": {
+        "startLine": 445,
+        "startChar": 16,
+        "endLine": 456,
+        "endChar": 41
       },
       "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
