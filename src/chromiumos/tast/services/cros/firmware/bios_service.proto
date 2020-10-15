@@ -14,6 +14,8 @@ option go_package = "chromiumos/tast/services/cros/firmware";
 service BiosService {
   // GetGBBFlags gets the flags that are cleared and set.
   rpc GetGBBFlags (google.protobuf.Empty) returns (GBBFlagsState) {}
+  // GetGBBFlags gets the flags that are cleared and set.
+  rpc ClearSetGBBFlags (GBBFlagsState) returns (google.protobuf.Empty) {}
 }
 
 // GBBFlag bit positions

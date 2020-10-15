@@ -7,6 +7,7 @@ package bios
 import (
 	"bytes"
 	"encoding/binary"
+	"fmt"
 	"io/ioutil"
 	"sort"
 	"strconv"
@@ -23,13 +24,19 @@ import (
 type ImageSection string
 
 const (
-	// GBBImageSection is the named section for GBB.
+	// GBBImageSection is the named section for GBB as output from dump_fmap.
 	GBBImageSection ImageSection = "GBB"
 
 	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
 	gbbHeaderOffset uint = 12
 )
 
+// defaultChromeosFmapConversion converts dump_fmap names to those recognized by flashrom
+var defaultChromeosFmapConversion = map[ImageSection]string{
+	GBBImageSection: "FV_GBB",
+}
+
+// sortedGBBFlags ensures flags are returned in a consistent order.
 var sortedGBBFlags []pb.GBBFlag
 
 func init() {
@@ -49,8 +56,8 @@ type SectionInfo struct {
 
 // Image represents the content and sections of a firmware image.
 type Image struct {
-	Data     []byte
-	Sections map[ImageSection]SectionInfo
+	data     []byte
+	sections map[ImageSection]SectionInfo
 }
 
 // NewImage creates an Image object representing the currently loaded BIOS image.
@@ -87,6 +94,56 @@ func (i *Image) GetGBBFlags() ([]pb.GBBFlag, []pb.GBBFlag, error) {
 	setFlags := calcGBBFlags(gbb)
 	clearFlags := calcGBBFlags(^gbb)
 	return clearFlags, setFlags, nil
+}
+
+// ClearSetGBBFlags clears and sets the specified flags, leaving the rest unchanged.
+func (i *Image) ClearSetGBBFlags(clearFlags, setFlags []pb.GBBFlag) error {
+	var gbb uint32
+	if err := i.readSectionData(GBBImageSection, gbbHeaderOffset, 4, &gbb); err != nil {
+		return err
+	}
+	newGbb := (gbb & ^calcGBBMask(clearFlags)) | calcGBBMask(setFlags)
+	if newGbb != gbb {
+		if err := i.writeSectionData(GBBImageSection, gbbHeaderOffset, newGbb); err != nil {
+			return err
+		}
+		return nil
+	}
+	return nil
+}
+
+// WriteSection writes the current data in the specified section into flashrom.
+func (i *Image) WriteSection(ctx context.Context, sec ImageSection) error {
+	flashromSec, ok := defaultChromeosFmapConversion[sec]
+	if !ok {
+		return errors.Errorf("section %q is not recognized", string(sec))
+	}
+
+	imgTmp, err := ioutil.TempFile("", "")
+	if err != nil {
+		return errors.Wrap(err, "creating tmpfile for image contents")
+	}
+
+	if err := ioutil.WriteFile(imgTmp.Name(), i.data, 0644); err != nil {
+		return errors.Wrap(err, "wrting image contents to tmpfile")
+	}
+
+	layData := i.getLayout()
+
+	layTmp, err := ioutil.TempFile("", "")
+	if err != nil {
+		return errors.Wrap(err, "creating tmpfile for layout contents")
+	}
+
+	if err := ioutil.WriteFile(layTmp.Name(), layData, 0644); err != nil {
+		return errors.Wrap(err, "wrting layout contents to tmpfile")
+	}
+
+	if err = testexec.CommandContext(ctx, "flashrom", "-p", "host", "-l", layTmp.Name(), "-i", flashromSec, "-w", imgTmp.Name()).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "could not write host image")
+	}
+
+	return nil
 }
 
 // parseSections extracts section names and locations from dump_fmap output.
@@ -131,16 +188,55 @@ func calcGBBMask(flags []pb.GBBFlag) uint32 {
 
 // readSectionData returns interpreted data of a given size from raw bytes at the specified location.
 func (i *Image) readSectionData(sec ImageSection, off, sz uint, out interface{}) error {
-	si, ok := i.Sections[sec]
+	si, ok := i.sections[sec]
 	if !ok {
 		return errors.Errorf("Section %s not found", sec)
 	}
 	beg := si.Start + off
 	end := si.Start + off + sz
-	if len(i.Data) < int(end) {
-		return errors.Errorf("Data length too short: %d (<=%d)", len(i.Data), end)
+	if len(i.data) < int(end) {
+		return errors.Errorf("Data length too short: %d (<=%d)", len(i.data), end)
 	}
-	b := i.Data[beg:end]
+	b := i.data[beg:end]
 	r := bytes.NewReader(b)
 	return binary.Read(r, binary.LittleEndian, out)
+}
+
+// writeSectionData writes data to the specified section location.
+func (i *Image) writeSectionData(sec ImageSection, off uint, data interface{}) error {
+	var buf bytes.Buffer
+	err := binary.Write(&buf, binary.LittleEndian, data)
+	if err != nil {
+		return errors.Wrap(err, "could not parse section start")
+	}
+
+	si, ok := i.sections[sec]
+	if !ok {
+		return errors.Errorf("Section %s not found", sec)
+	}
+	bb := buf.Bytes()
+	beg := si.Start + off
+	if len(i.data) <= int(beg) {
+		return errors.Errorf("Data length too short: %v (<=%v)", len(i.data), beg)
+	}
+	d := append(i.data[0:beg], bb...)
+	i.data = append(d, i.data[beg+uint(len(bb)):]...)
+	return nil
+}
+
+// getLayout gets the section locations of all the ones we care about into a flashrom friendly format.
+func (i *Image) getLayout() []byte {
+	var data []string
+	for name, info := range i.sections {
+		layoutName, ok := defaultChromeosFmapConversion[name]
+		if !ok {
+			continue
+		}
+		layoutStart := info.Start
+		layoutEnd := layoutStart + info.Length - 1
+		// lines in the layout file look like this: 0x00000001:0x0000000A FV_GBB
+		data = append(data, fmt.Sprintf("0x%08x:0x%08x %s", layoutStart, layoutEnd, layoutName))
+	}
+	sort.Strings(data)
+	return []byte(strings.Join(data, "\n") + "\n")
 }
