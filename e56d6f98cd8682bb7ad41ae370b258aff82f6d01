@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "508fc3a1_d2a5f488",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-10-15T02:21:21Z",
+      "side": 1,
+      "message": "our golang version is too old. that function requires 1.15.\n(shrug)",
+      "parentUuid": "78f2a258_f93f5b59",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 3
+      },
+      "revId": "e56d6f98cd8682bb7ad41ae370b258aff82f6d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c16feb7_a1c0ace5",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-14T09:23:35Z",
       "side": 1,
       "message": "This command would failed on our TPM2.0 simulator now.\nOur TPM2.0 simulator didn\u0027t support tpmc command, because it need /dev/tpm0 to run.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 72
+      },
+      "revId": "e56d6f98cd8682bb7ad41ae370b258aff82f6d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa402314_e23f03fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_no_external_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-10-15T02:21:21Z",
+      "side": 1,
+      "message": "nope. tpm version returns your a constant string instead of talking to TPM.\nHere is for you reference: https://source.corp.google.com/chromeos_public/src/platform/vboot_reference/utility/tpmc.c;rcl\u003d3c477458fa7f1506e722ede38636eaced8810687;l\u003d133",
+      "parentUuid": "2c16feb7_a1c0ace5",
       "range": {
         "startLine": 34,
         "startChar": 1,
