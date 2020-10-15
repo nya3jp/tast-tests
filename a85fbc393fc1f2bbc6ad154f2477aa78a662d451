@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c5691e_5735cb97",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-15T03:54:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ddaf95_f01696df",
+      "range": {
+        "startLine": 269,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 25
+      },
+      "revId": "a85fbc393fc1f2bbc6ad154f2477aa78a662d451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56d35ad5_9491ab97",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f62783_a4fe779d",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-15T03:54:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56d35ad5_9491ab97",
+      "range": {
+        "startLine": 271,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 30
+      },
+      "revId": "a85fbc393fc1f2bbc6ad154f2477aa78a662d451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ea23ba8_a2ff5151",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-10-15T03:00:40Z",
       "side": 1,
       "message": "nit: Since you\u0027re using map[string]bool where valid entries have true as a value, you can rewrite this to:\n\n if !optionalDaemons[job] || ...\n\nAlternatively, if you don\u0027t want to rely on values, you can use map[string]struct{} instead.",
+      "range": {
+        "startLine": 272,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 17
+      },
+      "revId": "a85fbc393fc1f2bbc6ad154f2477aa78a662d451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cb26c3_98234209",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-15T03:54:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ea23ba8_a2ff5151",
       "range": {
         "startLine": 272,
         "startChar": 2,
