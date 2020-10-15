@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfb75ab4_111c01a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-15T03:00:40Z",
+      "side": 1,
+      "message": "LGTM with nits.\n",
+      "revId": "a85fbc393fc1f2bbc6ad154f2477aa78a662d451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ddaf95_f01696df",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-15T03:00:40Z",
+      "side": 1,
+      "message": "style: var newJobs []string\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 269,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 25
+      },
+      "revId": "a85fbc393fc1f2bbc6ad154f2477aa78a662d451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d35ad5_9491ab97",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-15T03:00:40Z",
+      "side": 1,
+      "message": "for _, job :\u003d range jobs",
+      "range": {
+        "startLine": 271,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 30
+      },
+      "revId": "a85fbc393fc1f2bbc6ad154f2477aa78a662d451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea23ba8_a2ff5151",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-15T03:00:40Z",
+      "side": 1,
+      "message": "nit: Since you\u0027re using map[string]bool where valid entries have true as a value, you can rewrite this to:\n\n if !optionalDaemons[job] || ...\n\nAlternatively, if you don\u0027t want to rely on values, you can use map[string]struct{} instead.",
+      "range": {
+        "startLine": 272,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 17
+      },
+      "revId": "a85fbc393fc1f2bbc6ad154f2477aa78a662d451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
