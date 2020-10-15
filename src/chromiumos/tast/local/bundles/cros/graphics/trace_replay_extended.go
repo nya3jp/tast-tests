@@ -22,9 +22,9 @@ func init() {
 		Pre:          crostini.StartedByArtifact(),
 		Data:         []string{crostini.ImageArtifact},
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
-		Attr:    []string{},
-		Vars:    []string{"keepState"},
-		Timeout: 45 * time.Minute,
+		Attr:         []string{},
+		Vars:         []string{"keepState", "graphics.TraceReplayExtended.resultDir", "graphics.TraceReplayExtended.signalRunningFile", "graphics.TraceReplayExtended.signalCheckpointFile"},
+		Timeout:      45 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "glxgears_1minute",
@@ -46,7 +46,8 @@ func TraceReplayExtended(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	config := s.Param().(comm.TestGroupConfig)
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
-	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), pre.Container, &config); err != nil {
+	testVars := comm.TestVars{PowerTestVars: comm.GetPowerTestVars(s)}
+	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), pre.Container, &config, &testVars); err != nil {
 		s.Fatal("Trace replay test failed: ", err)
 	}
 }

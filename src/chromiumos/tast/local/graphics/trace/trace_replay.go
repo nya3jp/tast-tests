@@ -213,7 +213,7 @@ func pushTraceReplayApp(ctx context.Context, cont *vm.Container) error {
 }
 
 // RunTraceReplayTest starts a VM and replays all the traces in the test config.
-func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *testing.CloudStorage, cont *vm.Container, group *comm.TestGroupConfig) error {
+func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *testing.CloudStorage, cont *vm.Container, group *comm.TestGroupConfig, testVars *comm.TestVars) error {
 	// Guest is unable to use VM network interface to access it's host because of security reason,
 	// and the only to make such connectivity is to use host's outbound network interface.
 	outboundIP, err := getOutboundIP()
