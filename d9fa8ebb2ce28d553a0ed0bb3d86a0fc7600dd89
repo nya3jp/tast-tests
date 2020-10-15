@@ -291,6 +291,30 @@
       },
       "revId": "d9fa8ebb2ce28d553a0ed0bb3d86a0fc7600dd89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05663d84_78fbeb17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-10-15T14:50:03Z",
+      "side": 1,
+      "message": "Sorry I understood the logic, feel free to revert introduction of PollBreak.",
+      "parentUuid": "84c6c00b_cd01f4f0",
+      "range": {
+        "startLine": 140,
+        "startChar": 9,
+        "endLine": 140,
+        "endChar": 10
+      },
+      "revId": "d9fa8ebb2ce28d553a0ed0bb3d86a0fc7600dd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
