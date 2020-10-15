@@ -169,6 +169,30 @@
       },
       "revId": "5f0916150a2bc8e1c73597ebcc5b57c004f9b9e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e1f534_fb9c54ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-10-15T09:18:55Z",
+      "side": 1,
+      "message": "\u003e Yeah, unfortunately, this is a bug in the renderer internals and not something we can poll for. Properly fixing the renderer might take a while, so this is a workaround for now. The test is still flaky, but this should make it less so.\n\nThank you. Could you put that as a comment?",
+      "parentUuid": "d8cbca14_34e5f448",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "5f0916150a2bc8e1c73597ebcc5b57c004f9b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
