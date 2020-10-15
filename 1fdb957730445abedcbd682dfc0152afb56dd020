@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f179ba86_5ff2f4c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-10-15T01:32:04Z",
+      "side": 1,
+      "message": "Intention-wise LGTM. pls help resolve he concern raised by nya@, thanks.",
+      "revId": "1fdb957730445abedcbd682dfc0152afb56dd020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09d667fa_35ba0c19",
