@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b0779a_09988eff",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-15T05:23:06Z",
+      "side": 1,
+      "message": "Don\u0027t panic. For this case just s.Fatal()",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "088dd2630fe1cd02b2773c988c4c99b046f88f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
