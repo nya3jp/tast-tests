@@ -113,6 +113,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38085aea_16512921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-15T00:19:46Z",
+      "side": 1,
+      "message": "yes, this line is for JS error. But it could be transient if the query selector and find() may not match with any elements.",
+      "parentUuid": "4497d40d_30e1e747",
+      "revId": "e0232dfaf4439eab0149c2e0d60b79823f95f713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb63c9aa_1a34c4e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
         "patchSetId": 8
