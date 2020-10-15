@@ -33,6 +33,23 @@
       "message": "Looks reasonable, but Sean would know if correct. \nSean, you said this would work only on Intel. What happens on other platforms?",
       "revId": "965f9f60cbf4ce45405be4258d2a98cc7d3dd07d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae40e6a3_6b15ab6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-15T00:13:15Z",
+      "side": 1,
+      "message": "tast-remote-tests-cros-0.0.1-r4010: # chromiumos/tast/local/bundles/cros/graphics\ntast-remote-tests-cros-0.0.1-r4010: src/chromiumos/tast/local/bundles/cros/graphics/connector.go:82:10: Wrapf format %s has arg encoder of wrong type int",
+      "revId": "965f9f60cbf4ce45405be4258d2a98cc7d3dd07d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
