@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb3fd16_bd91d3fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/overlapping_bss_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-15T14:44:54Z",
+      "side": 1,
+      "message": "LGTM, thanks. Still +2",
+      "parentUuid": "63801a31_3b8251db",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 106
+      },
+      "revId": "27779e00d1b104a9924cf6f0e3766e6b1c57e189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52cc5c6c_e36ad96d",
