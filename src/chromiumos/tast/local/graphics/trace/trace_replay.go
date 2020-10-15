@@ -10,6 +10,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net"
 	"net/http"
 	"net/url"
@@ -93,11 +94,49 @@ func setTCPPortState(ctx context.Context, port int, open bool) error {
 	return toggleCmd.Run()
 }
 
+// graphicsPowerInterface provides control of the graphics_Power logging subtest.
+type graphicsPowerInterface struct {
+	// signalRunningFile is a file that controls/exists when the graphics_Power test is running.
+	signalRunningFile string
+	// signalCheckpointFile is a file that the graphics_Power test listens to for creating new checkpoints.
+	signalCheckpointFile string
+}
+
+// stop deletes signalRunningFile monitored by the graphics_Power process, informing it to shutdown gracefully
+func (gpi *graphicsPowerInterface) stop(ctx context.Context) error {
+	if err := os.Remove(gpi.signalRunningFile); err != nil {
+		testing.ContextLogf(ctx, "Failed to remove stop signal file %s to shutdown graphics_Power test process", gpi.signalRunningFile)
+		return err
+	}
+	return nil
+}
+
+// finishCheckpointWithStartTime writes to signalCheckpointFile monitored by the graphics_Power process, informing it to save a checkpoint.
+// The passed startTime as seconds since the epoch is used as the checkpoint's start time.
+func (gpi *graphicsPowerInterface) finishCheckpointWithStartTime(ctx context.Context, name string, startTime float64) error {
+	if err := ioutil.WriteFile(gpi.signalCheckpointFile, []byte(name+"\n"+strconv.FormatFloat(startTime, 'e', -1, 64)), 0644); err != nil {
+		testing.ContextLogf(ctx, "Failed to write graphics_Power checkpoint signal file %s", gpi.signalCheckpointFile)
+		return err
+	}
+	return nil
+}
+
+// finishCheckpoint writes to signalCheckpointFile monitored by the graphics_Power process, informing it to save a checkpoint.
+// The current checkpoint is started immediately after the previous checkpoint's end.
+func (gpi *graphicsPowerInterface) finishCheckpoint(ctx context.Context, name string) error {
+	if err := ioutil.WriteFile(gpi.signalCheckpointFile, []byte(name), 0644); err != nil {
+		testing.ContextLogf(ctx, "Failed to write graphics_Power checkpoint signal file %s", gpi.signalCheckpointFile)
+		return err
+	}
+	return nil
+}
+
 // File server routine. It serves all the artifact requests request from the guest.
 type fileServer struct {
-	cloudStorage *testing.CloudStorage // cloudStorage is a client to read files on Google Cloud Storage.
-	repository   *comm.RepositoryInfo  // repository is a struct to communicate between container and proxyServer.
-	outDir       string                // outDir is directory to store the received file.
+	cloudStorage *testing.CloudStorage   // cloudStorage is a client to read files on Google Cloud Storage.
+	repository   *comm.RepositoryInfo    // repository is a struct to communicate between container and proxyServer.
+	outDir       string                  // outDir is directory to store the received file.
+	gpi          *graphicsPowerInterface // gpi is an interface for issuing IPC signals to the graphics_Power test process.
 }
 
 func validateRequestedFilePath(filePath string) bool {
@@ -156,28 +195,63 @@ func (s *fileServer) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	// The server serves two kind of requests, one at a time. If two requests are given at the same time, only the first parsed one would be served.
-	// 1) download=${val} to download file from given ${val}.
-	// 2) log=${msg} to log the msg to the tast log file.
-	for key, val := range query {
-		switch key {
-		case "download":
-			if err := s.serveDownloadRequest(ctx, wr, val[0]); err != nil {
-				s.log(ctx, "serveDownloadRequest failed: ", err.Error())
-			}
+	// The server serves many types of requests, one at a time, determined by the string value of the request's "type" value.
+	// Each request type can make use of any number of additional values by matching pre-determined key strings for their values.
+	requestType := query.Get("type")
+	switch requestType {
+	case "download":
+		filePath := query.Get("filePath")
+		if filePath == "" {
+			s.log(ctx, "Error: filePath was not provided by download request to proxyServer")
+			wr.WriteHeader(http.StatusBadRequest)
 			return
-		case "log":
-			s.log(ctx, val[0])
-			wr.WriteHeader(http.StatusOK)
-			return
-		default:
-			s.log(ctx, "Skip request: %v", key)
 		}
+		if err := s.serveDownloadRequest(ctx, wr, filePath); err != nil {
+			s.log(ctx, "serveDownloadRequest failed: ", err.Error())
+		}
+	case "log":
+		message := query.Get("message")
+		if message == "" {
+			s.log(ctx, "Error: message was not provided by log request to proxyServer")
+			wr.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		s.log(ctx, message)
+	case "notifyInitFinished":
+		s.log(ctx, "Test initialization has finished")
+		if s.gpi != nil {
+			s.gpi.finishCheckpoint(ctx, "Initialization")
+		}
+	case "notifyReplayFinished":
+		replayDesc := query.Get("replayDescription")
+		if replayDesc == "" {
+			s.log(ctx, "Error: replayDescription was not provided by notifyReplayFinished request to proxyServer")
+			wr.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		s.log(ctx, "A trace replay %s has finished", replayDesc)
+		if s.gpi != nil {
+			replayStartTime := query.Get("replayStartTime")
+			if replayStartTime == "" {
+				s.log(ctx, "Error: replayStartTime was not provided by notifyReplayFinished request to proxyServer")
+				wr.WriteHeader(http.StatusBadRequest)
+				return
+			}
+			startTime, err := strconv.ParseFloat(replayStartTime, 64)
+			if err != nil {
+				s.log(ctx, "replayStartTime parsing to float failed: ", err.Error())
+				return
+			}
+			s.gpi.finishCheckpointWithStartTime(ctx, replayDesc, startTime)
+		}
+	default:
+		s.log(ctx, "Skip request: %v", requestType)
 	}
+	wr.WriteHeader(http.StatusOK)
 }
 
-func startFileServer(ctx context.Context, addr, outDir string, cloudStorage *testing.CloudStorage, repository *comm.RepositoryInfo) *http.Server {
-	handler := &fileServer{cloudStorage: cloudStorage, repository: repository, outDir: outDir}
+func startFileServer(ctx context.Context, addr, outDir string, cloudStorage *testing.CloudStorage, repository *comm.RepositoryInfo, gpi *graphicsPowerInterface) *http.Server {
+	handler := &fileServer{cloudStorage: cloudStorage, repository: repository, outDir: outDir, gpi: gpi}
 	testing.ContextLog(ctx, "Starting server at "+addr)
 	server := &http.Server{
 		Addr:    addr,
@@ -355,8 +429,13 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 		return errors.Errorf("trace_replay protocol version mismatch. Host version: %d. Guest version: %d. Please make sure to sync the chroot/tast bundle to the same revision as the DUT image", comm.ProtocolVersion, replayAppVersionInfo.ProtocolVersion)
 	}
 
+	var gpi *graphicsPowerInterface
+	if group.ExtendedDuration > 0 {
+		gpi = &graphicsPowerInterface{signalRunningFile: testVars.PowerTestVars.SignalRunningFile, signalCheckpointFile: testVars.PowerTestVars.SignalCheckpointFile}
+
+	}
 	serverAddr := fmt.Sprintf("%s:%d", outboundIP, fileServerPort)
-	server := startFileServer(ctx, serverAddr, outDir, cloudStorage, &group.Repository)
+	server := startFileServer(ctx, serverAddr, outDir, cloudStorage, &group.Repository, gpi)
 	defer func() {
 		if err := server.Shutdown(ctx); err != nil {
 			testing.ContextLog(ctx, "Unable to shutdown file server: ", err)
