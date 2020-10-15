@@ -25,7 +25,8 @@ func init() {
 			"bhansknecht@chromium.org",
 			"kyleshima@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(https://crbug.com/1085084): Test is disabled until it can be fixed
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
