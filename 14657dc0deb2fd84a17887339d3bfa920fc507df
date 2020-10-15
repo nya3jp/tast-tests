@@ -39,6 +39,30 @@
       },
       "revId": "14657dc0deb2fd84a17887339d3bfa920fc507df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65d423f_921b0eb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1318707
+      },
+      "writtenOn": "2020-10-15T22:11:01Z",
+      "side": 1,
+      "message": "Good to know! Thanks!",
+      "parentUuid": "a39cd835_0e6d6b1d",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "14657dc0deb2fd84a17887339d3bfa920fc507df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
