@@ -16,6 +16,40 @@
       "message": "PTAL~~",
       "revId": "f273df0b505771ecd6af8c44a3904e31e230112c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0e3b38d_40eca0e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-15T14:13:34Z",
+      "side": 1,
+      "message": "nit: Could you add brief comment where this comes from?",
+      "revId": "f273df0b505771ecd6af8c44a3904e31e230112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d6c55b_9e3e76e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-15T14:13:34Z",
+      "side": 1,
+      "message": "even in case of error, StopTracing needs to be called?",
+      "revId": "f273df0b505771ecd6af8c44a3904e31e230112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
