@@ -16,6 +16,24 @@
       "message": "Can i also add checking for progress bar?",
       "revId": "8aa9b1221268d1cee9fca5de9dc2713e1a885f92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1073f0_597eebb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-15T15:54:23Z",
+      "side": 1,
+      "message": "You can if they serve some purpose, say making the \"Play\" button click more reliable etc. Otherwise, prefer not since it adds an assumption of the target page.",
+      "parentUuid": "2fd24ad4_3db89cb8",
+      "revId": "8aa9b1221268d1cee9fca5de9dc2713e1a885f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
