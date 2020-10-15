@@ -16,6 +16,23 @@
       "message": "LGTM as a Tast reviewer, but please check with the test author.\n",
       "revId": "022f618f7631829625e25efc041918658933edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc12705c_d5f39449",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-15T07:43:22Z",
+      "side": 1,
+      "message": "There was an open bug regarding this test, and the test was updated 2 days ago. Now it is passing on most boards. https://tastboard.corp.google.com/test/policy.ArcEnabled",
+      "revId": "022f618f7631829625e25efc041918658933edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
