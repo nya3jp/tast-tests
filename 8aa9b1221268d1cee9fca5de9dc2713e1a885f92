@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd24ad4_3db89cb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-15T15:39:24Z",
+      "side": 1,
+      "message": "Can i also add checking for progress bar?",
+      "revId": "8aa9b1221268d1cee9fca5de9dc2713e1a885f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
