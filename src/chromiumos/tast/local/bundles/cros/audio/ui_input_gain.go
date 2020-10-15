@@ -100,10 +100,10 @@ func UIInputGain(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Select ALSA loopback output and input nodes as active nodes by UI.
-	if err := quicksettings.SelectAudioOption(shortCtx, tconn, "Loopback Playback"); err != nil {
+	if err := quicksettings.SelectAudioOption(shortCtx, tconn, kb, "Loopback Playback"); err != nil {
 		s.Fatal("Failed to select ALSA loopback output: ", err)
 	}
-	if err := quicksettings.SelectAudioOption(shortCtx, tconn, "Loopback Capture"); err != nil {
+	if err := quicksettings.SelectAudioOption(shortCtx, tconn, kb, "Loopback Capture"); err != nil {
 		s.Fatal("Failed to select ALSA loopback input: ", err)
 	}
 
