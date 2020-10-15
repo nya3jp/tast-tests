@@ -86,7 +86,7 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 	}
 	badConfigError := kp.ErrorType_ERROR_BAD_CONFIG
 	badConfigErrorCode := kp.ConfigErrorCode_CONFIG_ERROR_KEY_NOT_SUPPORTED
-	expectedResp := kp.ValidateConfigResponse{
+	expectedResp := &kp.ValidateConfigResponse{
 		Error: &badConfigError,
 		ErrorInfo: &kp.ConfigErrorInfo{
 			Code:      &badConfigErrorCode,
@@ -119,7 +119,7 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 	}
 
 	acc := listResp.Accounts[0]
-	expectedAcc := kp.Account{
+	expectedAcc := &kp.Account{
 		PrincipalName:         proto.String(user),
 		Krb5Conf:              []byte(validConfig),
 		TgtValiditySeconds:    nil,
