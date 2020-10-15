@@ -15,7 +15,6 @@ import (
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -90,11 +89,6 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Fatalf("Expected 2 tabs, only found %v tab(s)", len(tabs))
 	}
 	start := tabs[0].Location.CenterPoint()
-
-	// Stabilize CPU usage.
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Error("Failed to wait for system UI to be stabilized: ", err)
-	}
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := mouse.Drag(ctx, tconn, start, end, time.Second); err != nil {

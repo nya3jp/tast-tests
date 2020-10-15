@@ -20,7 +20,6 @@ import (
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -278,10 +277,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 
 			if err := testCase.customPrep(ctx); err != nil {
 				s.Fatal("Failed to prepare: ", err)
-			}
-
-			if _, err = power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-				s.Fatal("Failed to wait: ", err)
 			}
 
 			const dividerSmoothnessName = "Ash.SplitViewResize.AnimationSmoothness.DividerAnimation"

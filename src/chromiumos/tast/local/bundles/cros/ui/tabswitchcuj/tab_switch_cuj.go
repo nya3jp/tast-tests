@@ -30,7 +30,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -119,10 +118,6 @@ func Run(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
-	}
-
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed to wait: ", err)
 	}
 
 	recorder, err := cuj.NewRecorder(ctx, tconn, cuj.NewCustomMetricConfig(

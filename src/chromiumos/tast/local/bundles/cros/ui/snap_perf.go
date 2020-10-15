@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -48,10 +47,6 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure in clamshell mode: ", err)
 	}
 	defer cleanup(ctx)
-
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
 
 	window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return true })
 	if err != nil {
