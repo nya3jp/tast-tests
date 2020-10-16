@@ -6,15 +6,12 @@ package arc
 
 import (
 	"context"
-	"path/filepath"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -122,12 +119,8 @@ type preImpl struct {
 	extraArgs []string  // passed to Chrome on initialization
 	gaia      *GaiaVars // a struct containing GAIA secret variables
 
-	cr  *chrome.Chrome
-	arc *ARC
-
-	origInitPID       int32               // initial PID (outside container) of ARC init process
-	origInstalledPkgs map[string]struct{} // initially-installed packages
-	origRunningPkgs   map[string]struct{} // initially-running packages
+	cr    *chrome.Chrome
+	state StateManager
 }
 
 func (p *preImpl) String() string         { return p.name }
@@ -139,37 +132,31 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
-	if p.arc != nil {
+	if p.state.Active() {
 		pre, err := func() (interface{}, error) {
 			ctx, cancel := context.WithTimeout(ctx, resetTimeout)
 			defer cancel()
 			ctx, st := timing.Start(ctx, "reset_"+p.name)
 			defer st.End()
-			installed, err := p.arc.InstalledPackages(ctx)
-			if err != nil {
-				return nil, errors.Wrap(err, "failed to get installed packages")
+			// Make sure ARC still works, and reset it.
+			if err := p.state.CheckAndReset(ctx, s.OutDir()); err != nil {
+				return nil, err
 			}
-			running, err := p.runningPackages(ctx)
-			if err != nil {
-				return nil, errors.Wrap(err, "failed to get running packages")
+			// Make sure Chrome still works and reset it.
+			if err := p.cr.Responded(ctx); err != nil {
+				return nil, err
 			}
-			if err := p.checkUsable(ctx, installed, running); err != nil {
-				return nil, errors.Wrap(err, "existing Chrome or ARC connection is unusable")
+			if err := p.cr.ResetState(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed resetting Chrome's state")
 			}
-			if err := p.resetState(ctx, installed, running); err != nil {
-				return nil, errors.Wrap(err, "failed resetting existing Chrome or ARC session")
-			}
-			if err := p.arc.setLogcatFile(filepath.Join(s.OutDir(), logcatName)); err != nil {
-				return nil, errors.Wrap(err, "failed to update logcat output file")
-			}
-			return PreData{p.cr, p.arc}, nil
+			return PreData{p.cr, p.state.arc}, nil
 		}()
 		if err == nil {
 			s.Log("Reusing existing ARC session")
 			return pre
 		}
 		s.Log("Failed to reuse existing ARC session: ", err)
-		locked = false
+		Unlock()
 		chrome.Unlock()
 		p.closeInternal(ctx, s)
 	}
@@ -201,50 +188,24 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	// Opt-in if performing a GAIA login.
 	if p.gaia != nil {
-		func() {
-			ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout)
-			defer cancel()
-			tconn, err := p.cr.TestAPIConn(ctx)
-			if err != nil {
-				s.Fatal("Failed to create test API connection: ", err)
-			}
-			if err := optin.Perform(ctx, p.cr, tconn); err != nil {
-				s.Fatal("Failed to opt-in to Play Store: ", err)
-			}
-			if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
-				s.Fatal("Failed to wait for Play Store: ", err)
-			}
-			if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-				s.Fatal("Failed to close Play Store: ", err)
-			}
-		}()
+		optin.PostLogin(ctx, p.cr)
 	}
 
 	func() {
 		ctx, cancel := context.WithTimeout(ctx, BootTimeout)
 		defer cancel()
-		var err error
-		if p.arc, err = New(ctx, s.OutDir()); err != nil {
-			s.Fatal("Failed to start ARC: ", err)
-		}
-		if p.origInitPID, err = InitPID(); err != nil {
-			s.Fatal("Failed to get initial init PID: ", err)
-		}
-		if p.origInstalledPkgs, err = p.arc.InstalledPackages(ctx); err != nil {
-			s.Fatal("Failed to list initial packages: ", err)
-		}
-		if p.origRunningPkgs, err = p.runningPackages(ctx); err != nil {
-			s.Fatal("Failed to list running packages: ", err)
+		if err := p.state.Activate(ctx, s.OutDir()); err != nil {
+			s.Fatal("Failed to create ARC: ", err)
 		}
 	}()
 
 	// Prevent the arc and chrome package's New and Close functions from
 	// being called while this precondition is active.
-	locked = true
+	Lock()
 	chrome.Lock()
 
 	shouldClose = false
-	return PreData{p.cr, p.arc}
+	return PreData{p.cr, p.state.arc}
 }
 
 // Close is called by the test framework after the last test that uses this precondition.
@@ -252,103 +213,18 @@ func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 	ctx, st := timing.Start(ctx, "close_"+p.name)
 	defer st.End()
 
-	locked = false
+	Unlock()
 	chrome.Unlock()
 	p.closeInternal(ctx, s)
 }
 
-// runningPackages returns a set of currently-running packages, e.g. "com.android.settings".
-// It queries all running activities, but it returns the activity's package name.
-func (p *preImpl) runningPackages(ctx context.Context) (map[string]struct{}, error) {
-	tasks, err := p.arc.DumpsysActivityActivities(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "listing activities failed")
-	}
-
-	acts := make(map[string]struct{})
-	for _, t := range tasks {
-		for _, a := range t.ActivityInfos {
-			acts[a.PackageName] = struct{}{}
-		}
-	}
-	return acts, nil
-}
-
-// checkUsable verifies that p.cr and p.arc are still usable. Both must be non-nil.
-// installed should come from InstalledPackages.
-// running should come from runningPackages.
-func (p *preImpl) checkUsable(ctx context.Context, installed, running map[string]struct{}) error {
-	ctx, st := timing.Start(ctx, "check_arc")
-	defer st.End()
-
-	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
-	defer cancel()
-
-	// Check that the init process is the same as before. Otherwise, ARC was probably restarted.
-	if pid, err := InitPID(); err != nil {
-		return err
-	} else if pid != p.origInitPID {
-		return errors.Errorf("init process changed from %v to %v; probably crashed", p.origInitPID, pid)
-	}
-
-	// Check that the package manager service is running.
-	const pkgi = "android"
-	if _, ok := installed[pkgi]; !ok {
-		return errors.Errorf("pm didn't list %q among %d package(s)", pkgi, len(installed))
-	}
-
-	// Check that home package is running.
-	const pkgr = "org.chromium.arc.home"
-	if _, ok := running[pkgr]; !ok {
-		return errors.Errorf("package %q is not running", pkgr)
-	}
-
-	// TODO(nya): Should we also check that p.cr is still usable?
-	return nil
-}
-
-// resetState resets ARC's and Chrome's state between tests.
-// installed should come from InstalledPackages.
-// running should come from runningPackages.
-func (p *preImpl) resetState(ctx context.Context, installed, running map[string]struct{}) error {
-	// Stop any packages that weren't present when ARC booted. Stop before uninstall.
-	for pkg := range running {
-		if _, ok := p.origRunningPkgs[pkg]; ok {
-			continue
-		}
-		testing.ContextLogf(ctx, "Stopping package %q", pkg)
-		if err := p.arc.Command(ctx, "am", "force-stop", pkg).Run(testexec.DumpLogOnError); err != nil {
-			return errors.Wrapf(err, "failed to stop %q", pkg)
-		}
-	}
-
-	// Uninstall any packages that weren't present when ARC booted.
-	for pkg := range installed {
-		if _, ok := p.origInstalledPkgs[pkg]; ok {
-			continue
-		}
-		testing.ContextLog(ctx, "Uninstalling ", pkg)
-		if err := p.arc.Command(ctx, "pm", "uninstall", pkg).Run(testexec.DumpLogOnError); err != nil {
-			return errors.Wrapf(err, "failed to uninstall %v", pkg)
-		}
-	}
-
-	if err := p.cr.ResetState(ctx); err != nil {
-		return errors.Wrap(err, "failed resetting Chrome's state")
-	}
-	return nil
-}
-
 // closeInternal closes and resets p.arc and p.cr if non-nil.
 func (p *preImpl) closeInternal(ctx context.Context, s *testing.PreState) {
-	if p.arc != nil {
-		if err := p.arc.Close(); err != nil {
-			s.Log("Failed to close ARC connection: ", err)
+	if p.state.Active() {
+		if err := p.state.Deactivate(ctx); err != nil {
+			s.Log("Failed to close arc state: ", err)
 		}
-		p.arc = nil
 	}
-	p.origInstalledPkgs = nil
-	p.origRunningPkgs = nil
 
 	if p.cr != nil {
 		if err := p.cr.Close(ctx); err != nil {

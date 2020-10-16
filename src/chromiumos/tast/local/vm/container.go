@@ -82,6 +82,7 @@ var locked = false
 // prePackages lists packages containing preconditions that are allowed to call Lock and Unlock.
 var prePackages = []string{
 	"chromiumos/tast/local/crostini",
+	"chromiumos/tast/local/multivm",
 }
 
 // Lock prevents container creation/destruction until Unlock is called.
