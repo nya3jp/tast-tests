@@ -158,7 +158,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			return pre
 		}
 		s.Log("Failed to reuse existing ARC session: ", err)
-		unlock()
+		Unlock()
 		chrome.Unlock()
 		p.closeInternal(ctx, s)
 	}
@@ -223,7 +223,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	// Prevent the arc and chrome package's New and Close functions from
 	// being called while this precondition is active.
-	lock()
+	Lock()
 	chrome.Lock()
 
 	shouldClose = false
@@ -235,7 +235,7 @@ func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 	ctx, st := timing.Start(ctx, "close_"+p.name)
 	defer st.End()
 
-	unlock()
+	Unlock()
 	chrome.Unlock()
 	p.closeInternal(ctx, s)
 }
