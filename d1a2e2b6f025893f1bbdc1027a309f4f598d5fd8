@@ -39,6 +39,30 @@
       },
       "revId": "d1a2e2b6f025893f1bbdc1027a309f4f598d5fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed66765e_7c7ec835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/search_suggest_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-16T12:23:58Z",
+      "side": 1,
+      "message": "I think it is enough time to create the node. It has an animation as well, that could take a longer time, but that is the next step.",
+      "parentUuid": "7121334f_c816be17",
+      "range": {
+        "startLine": 104,
+        "startChar": 95,
+        "endLine": 104,
+        "endChar": 97
+      },
+      "revId": "d1a2e2b6f025893f1bbdc1027a309f4f598d5fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
