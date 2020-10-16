@@ -107,7 +107,7 @@ func newTop(ctx context.Context, outDir string, opts *TopOpts) (instance, error)
 }
 
 // end interrupts the top command and ends the recording of top.data.
-func (t *top) end() error {
+func (t *top) end(ctx context.Context) error {
 	// Interrupt the cmd to stop recording.
 	t.cmdTop.Signal(syscall.SIGINT)
 	errTop := t.cmdTop.Wait()

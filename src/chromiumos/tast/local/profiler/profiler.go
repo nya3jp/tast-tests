@@ -25,7 +25,7 @@ import (
 )
 
 type instance interface {
-	end() error
+	end(ctx context.Context) error
 }
 
 // Profiler is a function construct a profiler instance
@@ -45,7 +45,7 @@ func Start(ctx context.Context, outDir string, profs ...Profiler) (*RunningProf,
 	success := false
 	defer func() {
 		if !success {
-			rp.End()
+			rp.End(ctx)
 		}
 	}()
 
@@ -63,11 +63,11 @@ func Start(ctx context.Context, outDir string, profs ...Profiler) (*RunningProf,
 }
 
 // End terminates all the profilers currently running.
-func (p *RunningProf) End() error {
+func (p *RunningProf) End(ctx context.Context) error {
 	// Ends all profilers, return the first error encountered.
 	var firstErr error
 	for _, prof := range *p {
-		if err := prof.end(); err != nil && firstErr == nil {
+		if err := prof.end(ctx); err != nil && firstErr == nil {
 			firstErr = err
 		}
 	}
