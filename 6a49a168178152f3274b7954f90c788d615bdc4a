@@ -18,6 +18,149 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c25238aa_c7ec8e32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "Thanks for adding the test.",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d3dba3a_13ba5750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "You can delete this comment.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 84
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3b7fa8c_72aa7b1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "maybe add a little bit how you check the behavior.\n\"Behavior of EditBookmarksEnabled policy: check if you can create, edit and remove bookmarks based on the policy value.\"",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf30c25_19d110f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "\"EditBookmarksEnabled tests the EditBookmarksEnabaled policy for the enabled,disabled and unset cases.\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 91
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e78d1492_df3764cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "nit: urlToBookmark",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a0e3f7_7e5d9a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9198999_9737754a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "nit: Comments have to be sentences staring with a capital letter and ending with a punctuation mark.",
+      "range": {
+        "startLine": 46,
+        "startChar": 48,
+        "endLine": 46,
+        "endChar": 89
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ca6afe7_25d78d3c",
@@ -31,6 +174,29 @@
       "writtenOn": "2020-10-16T15:03:29Z",
       "side": 1,
       "message": "Add . to the end.",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7e817b_5afedfbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "remove this comment and the similar ones.",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 11
+      },
       "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +306,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df94465a_301ccc83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "Log only for errors or when waiting times are to be expected in the test.\nBut you can turn these into comments.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 32
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddbf6336_955e57bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 1
@@ -156,6 +345,98 @@
         "startChar": 4,
         "endLine": 120,
         "endChar": 8
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a3c565_6b2b1c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "If you want to keep that I\u0027d put it at the start of the test.\nShould be removed once the test is stable.",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 70
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "501e959f_8880002a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "5 seconds can be a bit too short for some devices. Same for other nodes you try to find. 10-15 seconds would be better.",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c40856_ff907b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "\"Unexpected bookmark name: got %s; want %s\"",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 154,
+        "endChar": 82
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41198566_db29d610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "Can\u0027t you open the bookmark menu again and check if there is a bookmark with the bookmark name you used?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 46
       },
       "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -197,6 +478,52 @@
       "writtenOn": "2020-10-16T15:03:29Z",
       "side": 1,
       "message": "Same as above.",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bbe4b59_891e09b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "err is nil, so no use to print it.",
+      "range": {
+        "startLine": 205,
+        "startChar": 75,
+        "endLine": 205,
+        "endChar": 80
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34e55f5_71439d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-16T15:25:42Z",
+      "side": 1,
+      "message": "\"Unexpected existence of bookmark name text field: got true; want false\"",
+      "range": {
+        "startLine": 205,
+        "startChar": 10,
+        "endLine": 205,
+        "endChar": 75
+      },
       "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
