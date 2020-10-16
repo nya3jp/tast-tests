@@ -40,6 +40,12 @@ var Canvas = App{
 	Name: "Chrome Canvas",
 }
 
+// Diagnostics has details about Diagnostics SWA.
+var Diagnostics = App{
+	ID:   "keejpcfcpecjhmepmpcfgjemkmlicpam", // TODO(joonbug): Figure this out.
+	Name: "Diagnostics",
+}
+
 // Duo has details about the Duo app.
 var Duo = App{
 	ID:   "djkcbcmkefiiphjkonbeknmcgiheajce",
