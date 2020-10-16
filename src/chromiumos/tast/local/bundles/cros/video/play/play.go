@@ -203,6 +203,14 @@ func colorDistance(a, b color.Color) int {
 		abs(int(aA>>8)-int(bA>>8)))
 }
 
+// isBlack returns true if c corresponds to opaque black. Returns false otherwise.
+func isBlack(c color.Color) bool {
+	// Note that the RGBA method returns components in the range [0, 65535]
+	// (https://blog.golang.org/image).
+	cR, cG, cB, cA := c.RGBA()
+	return cR == 0 && cG == 0 && cB == 0 && cA == 65535
+}
+
 // TestPlay checks that the video file named filename can be played using Chrome.
 // videotype represents a type of a given video. If it is MSEVideo, filename is a name
 // of MPD file.
@@ -368,23 +376,41 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 		img = rotImg
 	}
 
-	// Find the top and bottom of the video, i.e., exclude the black strips on top and bottom. Note
-	// the video colors are chosen such that none of the RGB components are 0. We assume symmetry, so the
-	// bottom is calculated based on the value of the top instead of using a loop (this is because the
-	// bottom of the video can acceptably bleed into the bottom black strip and we want to ignore that).
-	// No black strips are expected on the left or right.
+	// Find the bounds of the video by excluding the black strips on each side.
+	xMiddle := img.Bounds().Dx() / 2
+	yMiddle := img.Bounds().Dy() / 2
 	top := 0
 	for ; top < img.Bounds().Dy(); top++ {
-		if r, _, _, _ := img.At(0, top).RGBA(); r != 0 {
+		if !isBlack(img.At(xMiddle, top)) {
 			break
 		}
 	}
-	if top >= img.Bounds().Dy() {
-		return errors.New("could not find the top of the video")
+	bottom := img.Bounds().Dy() - 1
+	for ; bottom >= 0; bottom-- {
+		if !isBlack(img.At(xMiddle, bottom)) {
+			break
+		}
 	}
-	bottom := img.Bounds().Dy() - 1 - top
+	if bottom <= top {
+		return errors.New("could not find the top or bottom of the video")
+	}
 	left := 0
+	for ; left < img.Bounds().Dx(); left++ {
+		if !isBlack(img.At(left, yMiddle)) {
+			break
+		}
+	}
 	right := img.Bounds().Dx() - 1
+	for ; right >= 0; right-- {
+		if !isBlack(img.At(right, yMiddle)) {
+			break
+		}
+	}
+	if right <= left {
+		return errors.New("could not find the left or right of the video")
+	}
+	s.Logf("Video bounds: top = %d, right = %d, bottom = %d, left = %d",
+		top, right, bottom, left)
 
 	// Open the reference file to assert expectations on the screenshot later.
 	refPath := s.DataPath(refFilename)
