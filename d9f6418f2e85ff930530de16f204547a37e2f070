@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa719d0_e77262b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-16T18:35:32Z",
+      "side": 1,
+      "message": "I think the test should fail regardless whether bluetooth is disabled or is not initialized in time. I think the distinction only matters if we want to recover bluetooth if it\u0027s disabled after reboot; and I don\u0027t think that\u0027s what we want/need to do especially since we want to assert that bluetooth is up on reboot. I think a simple poll is good enough to catch the not initialized condition, and the disabled condition should always fail. I\u0027ll add @abhishekpandit to make sure this isn\u0027t an issue.",
+      "parentUuid": "68c530d6_e143f26e",
+      "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4355f197_51691250",
@@ -31,6 +49,47 @@
       "writtenOn": "2020-10-16T07:20:54Z",
       "side": 1,
       "message": "I don\u0027t break poll or fatal here because I guess, although very unlikely, it is also possible that bluez is not yet ready on dbus at this point.",
+      "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec409575_52270e64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-16T18:35:32Z",
+      "side": 1,
+      "message": "Sounds good to me.",
+      "parentUuid": "4355f197_51691250",
+      "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "259c04a5_d0c4de03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-16T18:35:32Z",
+      "side": 1,
+      "message": "nit: Would it be better to move the polling into the GetBluetoothPowered function itself similar to how GetWifiEnabled implicitly polls with the WaitAll() call within the subroutine.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 55
+      },
       "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
