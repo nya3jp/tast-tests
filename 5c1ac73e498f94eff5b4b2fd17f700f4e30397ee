@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c449571f_06db4371",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-10-16T16:04:00Z",
+      "side": 1,
+      "message": "This change is what Yen-lin suggested at my previous CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2467743/1/src/chromiumos/tast/local/bundles/cros/crostini/sync_time.go#73\n\nAdded Yen-lin as a Tast owner and Stephen as a member of Crotini team.\nPTAL.",
+      "revId": "5c1ac73e498f94eff5b4b2fd17f700f4e30397ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
