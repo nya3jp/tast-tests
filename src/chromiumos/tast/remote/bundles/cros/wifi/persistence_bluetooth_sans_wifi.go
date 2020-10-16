@@ -11,6 +11,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/rpc"
@@ -124,12 +125,21 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 		s.Fatal("Wifi is on, expected to be off ")
 	}
 
-	// Assert Bluetooth is up.
+	// Assert Bluetooth is up. We need to poll a little bit here as it might
+	// not yet get initialized after reboot.
 	btClient := network.NewBluetoothServiceClient(r.Conn)
-	if response, err := btClient.GetBluetoothPowered(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Could not get Bluetooth status: ", err)
-	} else if !response.Powered {
-		s.Fatal("Bluetooth is off, expected to be on ")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if response, err := btClient.GetBluetoothPowered(ctx, &empty.Empty{}); err != nil {
+			return errors.Wrap(err, "could not get Bluetooth status")
+		} else if !response.Powered {
+			return errors.New("Bluetooth is off, expected to be on")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  10 * time.Second,
+		Interval: time.Second,
+	}); err != nil {
+		s.Fatal("Failed to wait for BT to be powered: ", err)
 	}
 	if _, err := btClient.ValidateBluetoothFunctional(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Could not get validate Bluetooth status: ", err)

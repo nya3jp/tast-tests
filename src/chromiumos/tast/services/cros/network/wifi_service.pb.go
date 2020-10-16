@@ -2624,6 +2624,8 @@ type WifiServiceClient interface {
 	// has reconnected or the timeout (in nanoseconds) expires.
 	Reassociate(ctx context.Context, in *ReassociateRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// GetWifiEnabled checks to see if Wifi is an enabled technology on shill.
+	// This call will wait for WiFi to appear in available technologies so we
+	// can get correct enabled setting.
 	GetWifiEnabled(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetWifiEnabledResponse, error)
 	// SetWifiEnabled persistently enables/disables Wifi via shill.
 	SetWifiEnabled(ctx context.Context, in *SetWifiEnabledRequest, opts ...grpc.CallOption) (*empty.Empty, error)
@@ -3034,6 +3036,8 @@ type WifiServiceServer interface {
 	// has reconnected or the timeout (in nanoseconds) expires.
 	Reassociate(context.Context, *ReassociateRequest) (*empty.Empty, error)
 	// GetWifiEnabled checks to see if Wifi is an enabled technology on shill.
+	// This call will wait for WiFi to appear in available technologies so we
+	// can get correct enabled setting.
 	GetWifiEnabled(context.Context, *empty.Empty) (*GetWifiEnabledResponse, error)
 	// SetWifiEnabled persistently enables/disables Wifi via shill.
 	SetWifiEnabled(context.Context, *SetWifiEnabledRequest) (*empty.Empty, error)
