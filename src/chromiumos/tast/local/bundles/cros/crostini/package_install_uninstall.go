@@ -84,7 +84,7 @@ func PackageInstallUninstall(ctx context.Context, s *testing.State) {
 	if err := cont.InstallPackage(ctx, filePath); err != nil {
 		s.Fatal("Failed executing LinuxPackageInstall: ", err)
 	}
-	if err := cont.Command(ctx, "dpkg", "-s", "cros-tast-tests").Run(); err != nil {
+	if err := cont.Command(ctx, "dpkg", "-s", "cros-tast-tests").Run(testexec.DumpLogOnError); err != nil {
 		s.Error("Failed checking for cros-tast-tests in dpkg -s: ", err)
 	}
 
@@ -104,7 +104,7 @@ func PackageInstallUninstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed executing UninstallPackageOwningFile: ", err)
 	}
 	// Verify the package does not show up in the dpkg installed list.
-	err := cont.Command(ctx, "dpkg", "-s", "cros-tast-tests").Run()
+	err := cont.Command(ctx, "dpkg", "-s", "cros-tast-tests").Run(testexec.DumpLogOnError)
 	// A wait status of 1 indicates that the package could not be found. 0
 	// indicates the package is still installed. Other wait statii indicate a dpkg
 	// issue.
