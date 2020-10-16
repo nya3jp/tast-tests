@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e2e81c_c367b2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-10-16T19:09:02Z",
+      "side": 1,
+      "message": "As I have not used the Perfetto UI before, I am having difficulty verifying that my code is producing the desired results. If I am interested to check viz.triangles, should this string be \"viz.triangles\" instead of just \"viz\"?",
+      "range": {
+        "startLine": 220,
+        "startChar": 41,
+        "endLine": 220,
+        "endChar": 46
+      },
+      "revId": "689ae01e1eeb005f22f8516ffd08ed631d145325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f34e18_0adcf31f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-10-16T19:09:02Z",
+      "side": 1,
+      "message": "Here I have the same question as in the other file.",
+      "range": {
+        "startLine": 250,
+        "startChar": 41,
+        "endLine": 250,
+        "endChar": 46
+      },
+      "revId": "689ae01e1eeb005f22f8516ffd08ed631d145325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
