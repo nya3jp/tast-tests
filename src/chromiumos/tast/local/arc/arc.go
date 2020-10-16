@@ -16,6 +16,7 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/chrome"
@@ -63,15 +64,24 @@ const (
 // locked is a flag that makes New and Close fail unconditionally.
 var locked = false
 
-// lock sets a flag that makes New and Close fail unconditionally.
+// prePackages lists packages containing preconditions that are allowed to call
+// Lock and Unlock.
+var prePackages = []string{
+	"chromiumos/tast/local/arc",
+	"chromiumos/tast/local/multivm",
+}
+
+// Lock sets a flag that makes New and Close fail unconditionally.
 // Preconditions and fixtures should call this function on setup to prevent
 // tests from invalidating an ARC object by a mistake.
-func lock() {
+func Lock() {
+	caller.Check(2, prePackages)
 	locked = true
 }
 
-// unlock resets the flag set by lock.
-func unlock() {
+// Unlock resets the flag set by lock.
+func Unlock() {
+	caller.Check(2, prePackages)
 	locked = false
 }
 

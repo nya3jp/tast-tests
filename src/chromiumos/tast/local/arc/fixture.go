@@ -58,7 +58,7 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 
 	// Prevent the arc and chrome package's New and Close functions from
 	// being called while this bootedFixture is active.
-	lock()
+	Lock()
 	chrome.Lock()
 
 	f.cr = cr
@@ -72,7 +72,7 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 }
 
 func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
-	unlock()
+	Unlock()
 	if err := f.arc.Close(); err != nil {
 		s.Log("Failed to close ARC: ", err)
 	}
