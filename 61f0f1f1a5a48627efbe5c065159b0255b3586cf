@@ -16,6 +16,23 @@
       "message": "Looks good.",
       "revId": "61f0f1f1a5a48627efbe5c065159b0255b3586cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a80e20a_39963995",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-16T00:12:14Z",
+      "side": 1,
+      "message": "Tatsuhisa, can you also review this change?\n",
+      "revId": "61f0f1f1a5a48627efbe5c065159b0255b3586cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
