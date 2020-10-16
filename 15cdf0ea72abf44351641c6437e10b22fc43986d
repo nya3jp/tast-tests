@@ -234,6 +234,30 @@
       },
       "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2c5e0a_fb146b21",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-16T17:00:54Z",
+      "side": 1,
+      "message": "I tried this and I was getting errors. Will look more into it.",
+      "parentUuid": "8a503a2d_49b52165",
+      "range": {
+        "startLine": 234,
+        "startChar": 27,
+        "endLine": 234,
+        "endChar": 30
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
