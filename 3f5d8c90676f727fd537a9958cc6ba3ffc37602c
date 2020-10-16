@@ -52,6 +52,24 @@
       "parentUuid": "6d4598c3_ab815d1d",
       "revId": "3f5d8c90676f727fd537a9958cc6ba3ffc37602c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f68749a5_384e825d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-10-16T19:56:23Z",
+      "side": 1,
+      "message": "Actually, hold on; I think I have a better idea than creating a whole new package.",
+      "parentUuid": "1ec8311c_c5f45213",
+      "revId": "3f5d8c90676f727fd537a9958cc6ba3ffc37602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
