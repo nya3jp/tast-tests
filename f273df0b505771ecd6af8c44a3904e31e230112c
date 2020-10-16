@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c2fad8_d0779557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-16T09:18:31Z",
+      "side": 1,
+      "message": "Sure - there\u0027s not that much logic to it.",
+      "parentUuid": "c0e3b38d_40eca0e7",
+      "revId": "f273df0b505771ecd6af8c44a3904e31e230112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8d6c55b_9e3e76e4",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-10-15T14:13:34Z",
       "side": 1,
       "message": "even in case of error, StopTracing needs to be called?",
+      "revId": "f273df0b505771ecd6af8c44a3904e31e230112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf80f3a9_153d343c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-16T09:18:31Z",
+      "side": 1,
+      "message": "Thanks for catching.",
+      "parentUuid": "e8d6c55b_9e3e76e4",
       "revId": "f273df0b505771ecd6af8c44a3904e31e230112c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
