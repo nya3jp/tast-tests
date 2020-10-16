@@ -5,11 +5,14 @@
 package profiler
 
 import (
+	"bufio"
 	"context"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"regexp"
 	"strconv"
+	"strings"
 	"syscall"
 
 	"chromiumos/tast/common/testexec"
@@ -40,10 +43,13 @@ const (
 	perfStatRecord
 	// perfStat runs "perf stat -a" on the DUT.
 	perfStat
+	// perfSched runs "perf sched record" on the DUT
+	perfSched
 
 	perfRecordFileName     = "perf_record.data"
 	perfStatRecordFileName = "perf_stat_record.data"
 	perfStatFileName       = "perf_stat.data"
+	perfSchedFileName      = "perf_sched.data"
 
 	// Used in perfStat to get CPU cycle count on all processes.
 	PerfAllProcs = 0
@@ -60,6 +66,12 @@ type PerfStatOutput struct {
 	CyclesPerSecond float64
 }
 
+// PerfSchedOutput holds output metrics of perf sched
+type PerfSchedOutput struct {
+	// Maximum latency from wake up to switch
+	MaxLatencyMs float64
+}
+
 // PerfOpts represents options for running perf.
 type PerfOpts struct {
 	// t indicates the type of profiler running ("record", "stat record", or "stat").
@@ -72,6 +84,12 @@ type PerfOpts struct {
 	// Used in perfStat.
 	// A pointer to the output of perfStat.
 	perfStatOutput *PerfStatOutput
+
+	// Used in perf sched to get stats of process
+	procName string
+
+	// Used in perf sched to provide output
+	perfSchedOutput *PerfSchedOutput
 }
 
 // PerfStatOpts creates a PerfOpts for running "perf stat -a" on the DUT.
@@ -90,6 +108,11 @@ func PerfRecordOpts() *PerfOpts {
 // PerfStatRecordOpts creates a PerfOpts for running "perf stat record -a" on the DUT.
 func PerfStatRecordOpts() *PerfOpts {
 	return &PerfOpts{t: perfStatRecord}
+}
+
+// PerfSchedOpts creates a PerfOpts for running "perf sched record" on the DUT.
+func PerfSchedOpts(out *PerfSchedOutput, procName string) *PerfOpts {
+	return &PerfOpts{t: perfSched, procName: procName, perfSchedOutput: out}
 }
 
 // Perf creates a Profiler instance that constructs the profiler.
@@ -157,9 +180,55 @@ func getCmd(ctx context.Context, outDir string, opts *PerfOpts) (*testexec.Cmd, 
 			return testexec.CommandContext(ctx, "perf", "stat", "-a", "-e", "cycles", "--output", outputPath), nil
 		}
 		return testexec.CommandContext(ctx, "perf", "stat", "-a", "-p", strconv.Itoa(opts.pid), "-e", "cycles", "--output", outputPath), nil
+	case perfSched:
+		outputPath := filepath.Join(outDir, perfSchedFileName)
+		return testexec.CommandContext(ctx, "perf", "sched", "record", "--output", outputPath), nil
 	default:
 		return nil, errors.Errorf("invalid perf type: %v", opts.t)
 	}
+}
+
+// getMaxLatencyMs is for perf sched latency and parses Maximum latency from wake up to switch
+func getMaxLatencyMs(ctx context.Context, perfSchedFile, procName string) (float64, error) {
+	cmd := testexec.CommandContext(ctx, "perf", "sched", "latency", "-i", perfSchedFile)
+
+	output, err := cmd.Output()
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get output of perf sched latency")
+	}
+
+	PerfSchedLatencyFile := filepath.Join(filepath.Dir(perfSchedFile), "perf_sched_latency.out")
+	if err := ioutil.WriteFile(PerfSchedLatencyFile, output, 0644); err != nil {
+		return 0, errors.Wrap(err, "failed to write latency file")
+	}
+
+	file, err := os.Open(PerfSchedLatencyFile)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to open perf sched latency file")
+	}
+	defer file.Close()
+
+	re, err := regexp.Compile(`max:\s*(.+?)\s*ms`)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to compile regex")
+	}
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		if strings.Contains(scanner.Text(), procName+":") {
+			res := re.FindAllStringSubmatch(scanner.Text(), -1)
+			if res == nil {
+				return 0, errors.New("failed to parse max latency")
+			}
+			f, err := strconv.ParseFloat(res[0][1], 64)
+			if err != nil {
+				return 0, errors.Wrap(err, "failed to parse max latency")
+			}
+			return f, nil
+		}
+	}
+
+	return 0, errors.New("failed to read perf sched file")
 }
 
 // parseStatFile parses the output file of perf stat command to get CPU cycles per second
@@ -211,18 +280,34 @@ func (p *perf) handleStat() error {
 	return nil
 }
 
-func (p *perf) handleOutput() error {
-	if p.opts.t != perfStat {
-		return nil
+func (p *perf) handleSched(ctx context.Context) error {
+	perfPath := filepath.Join(p.outDir, perfSchedFileName)
+
+	maxLatencyMs, err := getMaxLatencyMs(ctx, perfPath, p.opts.procName)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse sched file")
 	}
-	if err := p.handleStat(); err != nil {
-		return errors.Wrap(err, "failed to handle perf stat result")
+
+	p.opts.perfSchedOutput.MaxLatencyMs = maxLatencyMs
+	return nil
+}
+
+func (p *perf) handleOutput(ctx context.Context) error {
+	switch p.opts.t {
+	case perfStat:
+		if err := p.handleStat(); err != nil {
+			return errors.Wrap(err, "failed to handle perf stat result")
+		}
+	case perfSched:
+		if err := p.handleSched(ctx); err != nil {
+			return errors.Wrap(err, "failed to handle perf sched result")
+		}
 	}
 	return nil
 }
 
 // end interrupts the perf command and ends the recording of perf.data.
-func (p *perf) end() error {
+func (p *perf) end(ctx context.Context) error {
 	// Interrupt the cmd to stop recording perf.
 	p.cmd.Signal(syscall.SIGINT)
 	err := p.cmd.Wait()
@@ -231,5 +316,5 @@ func (p *perf) end() error {
 	if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGINT {
 		return errors.Wrap(err, "failed waiting for the command to exit")
 	}
-	return p.handleOutput()
+	return p.handleOutput(ctx)
 }
