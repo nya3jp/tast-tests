@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/input"
@@ -101,36 +100,33 @@ func SearchSuggestEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to write events: ", err)
 			}
 
-			// Poll until search suggestions are found.
-			paramsS := ui.FindParams{
-				ClassName: "OmniboxResultView",
-			}
-			var errNoSearchSuggestions = errors.New("failed to find search suggestions")
-			hasSuggestions := false
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				nodes, err := ui.FindAll(ctx, tconn, paramsS)
-				if errors.Is(err, context.DeadlineExceeded) {
-					return err
-				} else if err != nil {
-					return testing.PollBreak(err)
-				}
-				defer nodes.Release(ctx)
-
-				// Check if we have search suggestions.
-				for _, node := range nodes {
-					if strings.Contains(node.Name, "search suggestion") {
-						hasSuggestions = true
-						return nil
-					}
-				}
-
-				return errNoSearchSuggestions
-			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil && !errors.Is(err, errNoSearchSuggestions) {
-				s.Fatal("Failed to retrieve the suggestions: ", err)
+			// Wait for the omnibox popup node.
+			err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "OmniboxPopupContentsView"}, 10*time.Second)
+			if err != nil {
+				s.Fatal("Failed to find omnibox popup: ", err)
 			}
 
-			if hasSuggestions != param.enabled {
-				s.Errorf("Unexpected existence of search suggestions: got %t; want %t", hasSuggestions, param.enabled)
+			if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+				s.Fatal("Failed to wait for location change: ", err)
+			}
+
+			// Get all the omnibox results.
+			omniResults, err := ui.FindAll(ctx, tconn, ui.FindParams{ClassName: "OmniboxResultView"})
+			if err != nil {
+				s.Fatal("Failed to get omnibox results: ", err)
+			}
+			defer omniResults.Release(ctx)
+
+			suggest := false
+			for _, result := range omniResults {
+				if strings.Contains(result.Name, "search suggestion") {
+					suggest = true
+					break
+				}
+			}
+
+			if suggest != param.enabled {
+				s.Errorf("Unexpected existence of search suggestions: got %t; want %t", suggest, param.enabled)
 			}
 		})
 	}
