@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dc5bcdb_a914c228",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-16T07:28:20Z",
+      "side": 1,
+      "message": "LGTM for me. I\u0027ll put the sticky +2 and defer to other reviewers (one comment from Matthew is not yet resolved)",
+      "revId": "797118b5a7304c501f4ed1f6b714c98cdeb19a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
