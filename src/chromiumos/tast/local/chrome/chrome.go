@@ -97,6 +97,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/crostini",
 	"chromiumos/tast/local/drivefs",
 	"chromiumos/tast/local/lacros/launcher",
+	"chromiumos/tast/local/multivm",
 	"chromiumos/tast/local/wpr",
 }
 

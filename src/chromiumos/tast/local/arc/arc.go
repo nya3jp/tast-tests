@@ -16,6 +16,7 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/adb"
 	"chromiumos/tast/local/chrome"
@@ -61,6 +62,26 @@ const (
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Close.
 var locked = false
+
+// prePackages lists packages containing preconditions that are allowed to call Lock and Unlock.
+var prePackages = []string{
+	"chromiumos/tast/local/arc",
+	"chromiumos/tast/local/multivm",
+}
+
+// Lock prevents from New or Close from being called until Unlock is called.
+// It can only be called by preconditions and is idempotent.
+func Lock() {
+	caller.Check(2, prePackages)
+	locked = true
+}
+
+// Unlock allows New and Close to be called after an earlier call to Lock.
+// It can only be called by preconditions and is idempotent.
+func Unlock() {
+	caller.Check(2, prePackages)
+	locked = false
+}
 
 // TODO(b/134144418): Consolidate ARC and ARCVM diverged code once ADB issues are resolved.
 
