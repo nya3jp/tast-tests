@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "77dce448_602c463c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-16T16:59:46Z",
+      "side": 1,
+      "message": "I\u0027m a brand new Go programmer (and ChromeOS for that matter). Thanks for the review and I will work on the comments and refresh it. Really, thank you!!",
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ef4504ad_8581c3ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 2
