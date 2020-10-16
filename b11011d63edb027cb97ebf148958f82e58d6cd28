@@ -22,6 +22,30 @@
       },
       "revId": "b11011d63edb027cb97ebf148958f82e58d6cd28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c94d029_e1a22349",
+        "filename": "src/chromiumos/tast/local/adb/ui/device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-16T19:47:41Z",
+      "side": 1,
+      "message": "Very good point. Fixed.",
+      "parentUuid": "fc126740_eced9569",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "b11011d63edb027cb97ebf148958f82e58d6cd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
