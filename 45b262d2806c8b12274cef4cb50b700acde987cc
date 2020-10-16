@@ -16,6 +16,75 @@
       "message": "PTAL~~",
       "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c8feffb_8d1b066a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-10-16T16:40:25Z",
+      "side": 1,
+      "message": "Should we just grab a fishfood build, e.g. http://go/releasing-lacros-fishfood",
+      "range": {
+        "startLine": 3,
+        "startChar": 44,
+        "endLine": 3,
+        "endChar": 49
+      },
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53b6a3a_6af51ea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-10-16T16:40:25Z",
+      "side": 1,
+      "message": "fishfood build is already zipped. Is that a problem?",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3238edc5_ca13d63d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-10-16T16:40:25Z",
+      "side": 1,
+      "message": "If we\u0027re revving the fishfood build used for omaha releasee, then those are thoroughly QA-ed",
+      "range": {
+        "startLine": 22,
+        "startChar": 37,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
