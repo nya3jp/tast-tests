@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58022470_47a4a8d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:46:00Z",
+      "side": 1,
+      "message": "This should cause a lot of warning messages when you repo upload.  Please check them and fix them before sending the code review.",
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef4504ad_8581c3ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:46:00Z",
+      "side": 1,
+      "message": "not related to the CL, but I don\u0027t think you need to rename this -- simply \u0027perf\u0027 whould be fine.",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "309a4be5_3592e491",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:46:00Z",
+      "side": 1,
+      "message": "context is prohibited to be a member of a struct. cf. https://golang.org/pkg/context/\n\u003e Do not store Contexts inside a struct type; instead, pass a Context explicitly to each function that needs it. \n\nTo do this, you should modify end() method (and Profiler.End() method) to accept its own context.\n\nThis is also better, since someone may want to use a different context(timeout) for the end. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30fd6f64_ba9e4f61",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:46:00Z",
+      "side": 1,
+      "message": "PerfSchedOpts creates...",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 12
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366aa264_9e62a1b7",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:46:00Z",
+      "side": 1,
+      "message": "The comment for a function should be a normal sentence and start with the name of function.\nFor example,\n  getMaxLatencyMs parses perf sched data and returns the maximum latency.",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 72
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e35ced38_58bf6dca",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:46:00Z",
+      "side": 1,
+      "message": "errors shouldn\u0027t start with a capital character.  (\"failed to open...\")\n\nSame on other errors in this function.",
+      "range": {
+        "startLine": 209,
+        "startChar": 24,
+        "endLine": 209,
+        "endChar": 30
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f0dfb4_710808d2",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:46:00Z",
+      "side": 1,
+      "message": "errors shouldn\u0027t start with a capital character.  (\"failed to open...\")",
+      "range": {
+        "startLine": 220,
+        "startChar": 24,
+        "endLine": 220,
+        "endChar": 30
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c25ae8_04f78f7e",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:46:00Z",
+      "side": 1,
+      "message": "since the content of this file should be same as \u0027output\u0027, I guess you can simply\n  for _, line :\u003d range strings.Split(string(output), \"\\n\") {\n    ...",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 21
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b91079_ecb521ad",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:46:00Z",
+      "side": 1,
+      "message": "let\u0027s bring regexp.Compile outside of the loop as it can be shared.",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 0
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a503a2d_49b52165",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:46:00Z",
+      "side": 1,
+      "message": "you don\u0027t need to rename as e2.  It\u0027s okay to say \"err\"  (f, err :\u003d strconv...)",
+      "range": {
+        "startLine": 234,
+        "startChar": 27,
+        "endLine": 234,
+        "endChar": 30
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
