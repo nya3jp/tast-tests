@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c451eb3_66470bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/max98390.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-10-16T09:40:53Z",
+      "side": 1,
+      "message": "We should use multiple s.Run to run different test cases (https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#Table_driven-tests)\n\n\nAnd merge testFirstBoot and testFastReboot into testBoot() with an removeFile option?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "f72f10ec4cd2a5ccc22d4b7222722cb41aa84c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
