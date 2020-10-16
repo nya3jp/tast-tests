@@ -118,9 +118,8 @@ func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings
 	extraArgs := []string{"--output-format=json", "--end_fsync=1"}
 
 	cmd := re.fioCmd(ctx, re.jobFilePath(jobFile), envArgs, extraArgs)
-	out, err := cmd.Output()
+	out, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		if err := writeError("Run fio failure", out); err != nil {
 			testing.ContextLog(ctx, "Failed to write fio running error to log file: ", err)
 		}
@@ -237,7 +236,7 @@ func DiskIOPerf(ctx context.Context, s *testing.State) {
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	testing.ContextLog(ctx, "Installing fio")
-	if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "fio").Run(); err != nil {
+	if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "fio").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to install fio: ", err)
 	}
 

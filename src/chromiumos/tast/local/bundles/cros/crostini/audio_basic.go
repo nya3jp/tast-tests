@@ -58,7 +58,7 @@ func AudioBasic(ctx context.Context, s *testing.State) {
 	}
 
 	alsaSinksPattern := regexp.MustCompile("1\talsa_output.hw_0_0\tmodule-alsa-sink.c\ts16le 2ch 48000Hz\t(IDLE|SUSPENDED)\n")
-	if out, err := cont.Command(ctx, "pactl", "list", "sinks", "short").Output(); err != nil {
+	if out, err := cont.Command(ctx, "pactl", "list", "sinks", "short").Output(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to list pulseaudio sinks: ", err)
 	} else if res := alsaSinksPattern.Match(out); !res {
 		s.Fatal("Failed to load alsa device to pulseaudio:", string(out))
