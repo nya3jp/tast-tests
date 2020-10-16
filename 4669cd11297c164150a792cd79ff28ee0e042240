@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c9c9664_14c52dfe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-16T22:52:24Z",
+      "side": 1,
+      "message": "I realized that this doesn\u0027t actually do what we intended it to. The BSSID property changes even as we\u0027re attempting to associate to the new AP, so the monitor stops as soon as we detect that wpa_supplicant initiates the association. When we check for disconnection down below, it doesn\u0027t actually check that we don\u0027t disconnect throughout the roam process because the disconnection happens after the BSSID property changes.\n\nWe should probably not be watching the BSSID property, but there\u0027s not a great alternative right now. Shill needs to surface through D-Bus (either via the State service prop or something else) that it\u0027s attempting to renew the DHCP lease. The trick is to figure out how we can do this without disrupting the Service sort order.\n\nLet\u0027s leave this test as is for now since there\u0027s not much we can do about it. I\u0027ll file a bug for doing what I described above.",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "4669cd11297c164150a792cd79ff28ee0e042240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
