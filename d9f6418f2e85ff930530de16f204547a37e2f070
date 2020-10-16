@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c530d6_e143f26e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-16T07:20:54Z",
+      "side": 1,
+      "message": "I think the polling for BT is not very good as we still can\u0027t distinguish disabled or not yet initialized. But good enough as a quick mitigation for this test, I guess. PTAL.",
+      "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4355f197_51691250",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-16T07:20:54Z",
+      "side": 1,
+      "message": "I don\u0027t break poll or fatal here because I guess, although very unlikely, it is also possible that bluez is not yet ready on dbus at this point.",
+      "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
