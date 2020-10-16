@@ -85,7 +85,7 @@ func newVMStat(ctx context.Context, outDir string, opts *VMStatOpts) (instance, 
 }
 
 // end interrupts the vmstat command and ends the recording of vmstat.data.
-func (v *vmstat) end() error {
+func (v *vmstat) end(ctx context.Context) error {
 	// Interrupt the cmd to stop recording.
 	v.cmd.Signal(syscall.SIGINT)
 	err := v.cmd.Wait()

@@ -77,6 +77,7 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 	defer cancel()
 
 	var out profiler.PerfStatOutput
+	var outSched profiler.PerfSchedOutput
 
 	profs := []profiler.Profiler{
 		profiler.Top(&profiler.TopOpts{
@@ -84,6 +85,7 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 		}),
 		profiler.Perf(profiler.PerfStatOpts(&out, pid)),
 		profiler.Perf(profiler.PerfRecordOpts()),
+		profiler.Perf(profiler.PerfSchedOpts(&outSched, "cras")),
 	}
 
 	s.Log("start audio")
@@ -127,7 +129,7 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 
 	defer func() {
 		// The perf value is stored when ending the profiler.
-		if err := runningProfs.End(); err != nil {
+		if err := runningProfs.End(ctx); err != nil {
 			s.Error("Failure in ending the profiler: ", err)
 		} else {
 			// Append one measurement to PerfValue.
@@ -137,6 +139,14 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 				Direction: perfpkg.SmallerIsBetter,
 				Multiple:  true,
 			}, out.CyclesPerSecond)
+
+			// Append one measurement to PerfValue.
+			pv.Append(perfpkg.Metric{
+				Name:      "cras_max_latency_ms",
+				Unit:      "milliseconds",
+				Direction: perfpkg.SmallerIsBetter,
+				Multiple:  true,
+			}, outSched.MaxLatencyMs)
 		}
 
 		if param.Playback {
@@ -168,7 +178,8 @@ func CrasPerf(ctx context.Context, s *testing.State) {
 		iterations = 10
 	)
 
-	// TODO(crbug.com/996728): aarch64 is disabled before the kernel crash is fixed.
+	// TODO(b/194820340): aarch64 is disabled while perf HW counters don't
+	// all work reliably.
 	if u, err := sysutil.Uname(); err != nil {
 		s.Fatal("Failed to get uname: ", err)
 	} else if u.Machine == "aarch64" {
