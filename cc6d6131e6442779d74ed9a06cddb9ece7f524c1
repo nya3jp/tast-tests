@@ -176,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "234a5dd5_644be903",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-16T08:05:48Z",
+      "side": 1,
+      "message": "Oops, missed the second part of this comment. Now it is really done.",
+      "parentUuid": "ffc24d0c_62465a24",
+      "range": {
+        "startLine": 659,
+        "startChar": 59,
+        "endLine": 660,
+        "endChar": 25
+      },
+      "revId": "cc6d6131e6442779d74ed9a06cddb9ece7f524c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08734119_e3560441",
