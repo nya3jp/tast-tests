@@ -51,6 +51,24 @@
       "parentUuid": "96b88f0d_8f4b54ec",
       "revId": "219b5189f7c989d04e915c354f72725c4c70f85b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d24db6a_acf264a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadiacuj/stadia_util.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T16:48:29Z",
+      "side": 1,
+      "message": "not sure if it\u0027s done. maybe forgotten to upload the new patchset?",
+      "parentUuid": "59e1f4c8_59804cb8",
+      "revId": "219b5189f7c989d04e915c354f72725c4c70f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
