@@ -88,6 +88,24 @@
       "parentUuid": "20e3e716_8fabbb17",
       "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8fca30b_e7eb79c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-16T06:00:38Z",
+      "side": 1,
+      "message": "I also took a look at the logic of enabled technologies in shill. The devices seems to added in the callback of rtnl message, so it should be async. Then it is possible that eth is ready and our SSH connect is established but the WiFi device is not yet found. So both WiFi and BT needs a polling as you said. I can add them in another CL as it is not very related to this fix.",
+      "parentUuid": "098c10f8_964fa04e",
+      "revId": "31f92a980a3b1471e2612d217d1c30100da22260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
