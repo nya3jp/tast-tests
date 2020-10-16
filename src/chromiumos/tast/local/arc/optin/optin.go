@@ -76,6 +76,26 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 	return nil
 }
 
+// PostLogin performs opt-in and then waits for Play Store and dismisses it.
+func PostLogin(ctx context.Context, cr *chrome.Chrome) error {
+	ctx, cancel := context.WithTimeout(ctx, OptinTimeout)
+	defer cancel()
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create test API connection")
+	}
+	if err := Perform(ctx, cr, tconn); err != nil {
+		return errors.Wrap(err, "failed to opt-in to Play Store")
+	}
+	if err := WaitForPlayStoreShown(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for Play Store")
+	}
+	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+		return errors.Wrap(err, "failed to close Play Store")
+	}
+	return nil
+}
+
 // Perform steps through opt-in flow and waits for it to complete.
 func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 	ctx, cancel := context.WithTimeout(ctx, 3*time.Minute)
