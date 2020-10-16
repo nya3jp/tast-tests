@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8303aa5_1ebb46b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-16T07:22:32Z",
+      "side": 1,
+      "message": "Oh, the ctx been canceled is a special case because the gRPC library code is also canceled. The error returned in this function can be properly received by Recv(), while possibly wrapped with a \"rpc error: code \u003d Unknown desc \u003d \" prefix.\n\nIIUC, there should not be a hang. Recv() repeats the final error (possibly io.EOF) if one keeps calling it.\n\nHowever, it\u0027s true that we are not able to send the wrapped time out errors back to receiver. I reserved some time for it in the latest patch set.",
+      "parentUuid": "d61336ea_32c7ceb4",
+      "range": {
+        "startLine": 1829,
+        "startChar": 0,
+        "endLine": 1829,
+        "endChar": 19
+      },
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2f65cc2_9ecd16f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 15
