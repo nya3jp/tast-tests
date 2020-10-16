@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "8b19a054_13e950d0",
         "filename": "/PATCHSET_LEVEL",
@@ -14,8 +15,41 @@
       "side": 1,
       "message": "PTAL",
       "revId": "b6f1fff181b3cd97d22613bcfaba005808b3fe1d",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02339a99_c29eb912",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-16T22:18:14Z",
+      "side": 1,
+      "message": "lgtm, thanks!",
+      "revId": "b6f1fff181b3cd97d22613bcfaba005808b3fe1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17704f39_ee7c8a62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-16T22:18:14Z",
+      "side": 1,
+      "message": "remove the TODO",
+      "revId": "b6f1fff181b3cd97d22613bcfaba005808b3fe1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
