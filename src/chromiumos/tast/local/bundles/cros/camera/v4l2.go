@@ -27,6 +27,7 @@ func init() {
 		Func: V4L2,
 		Desc: "Verifies required V4L2 operations on USB camera devices",
 		Contacts: []string{
+			"kamesan@chromium.org",
 			"shik@chromium.org",
 			"henryhsu@chromium.org",
 			"chromeos-camera-eng@google.com",
