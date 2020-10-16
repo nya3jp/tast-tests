@@ -664,7 +664,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		if prof != nil {
 			defer func() {
-				if err := prof.End(); err != nil {
+				if err := prof.End(ctx); err != nil {
 					s.Error("Failed to stop profiler: ", err)
 				}
 			}()
