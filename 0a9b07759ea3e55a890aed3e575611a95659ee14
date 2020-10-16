@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e08f1c7c_50344805",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2020-10-16T20:53:22Z",
+      "side": 1,
+      "message": "it\u0027s a big behavioral change, does it make any difference on the final number of tabs created? I can also try it a bit",
+      "revId": "0a9b07759ea3e55a890aed3e575611a95659ee14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
