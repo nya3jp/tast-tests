@@ -86,6 +86,70 @@ func ensureYoutubeVideo(ctx context.Context, ctconn *chrome.TestConn, conn *chro
 	return nil
 }
 
+func ensureSpeedometer(ctx context.Context, ctconn *chrome.TestConn, conn *chrome.Conn) error {
+	conn.Exec(ctx, `
+		benchmarkClient.totalScore = 0;
+		benchmarkClient.iterCount = 0;
+		benchmarkClient.finished = false;
+		benchmarkClient.oldDidRunSuites = benchmarkClient.didRunSuites;
+		benchmarkClient.didRunSuites = function(measuredValues) {
+			benchmarkClient.totalScore += measuredValues['score'];
+			benchmarkClient.iterCount += 1;
+			benchmarkClient.oldDidRunSuites(measuredValues);
+		};
+		benchmarkClient.oldDidFinishLastIteration = benchmarkClient.didFinishLastIteration;
+		benchmarkClient.didFinishLastIteration = function() {
+			benchmarkClient.oldDidFinishLastIteration();
+			benchmarkClient.finished = true;
+		};
+		var runner = new BenchmarkRunner(Suites, benchmarkClient);
+		runner.runMultipleIterations(benchmarkClient.iterationCount);`)
+	err := conn.WaitForExprFailOnErrWithTimeout(ctx, `
+		benchmarkClient.finished`, time.Minute*10)
+	if err != nil {
+		return errors.Wrap(err, "speedometer tests did not finish")
+	}
+
+	var score float64
+	err = conn.Eval(ctx,
+		`benchmarkClient.totalScore / benchmarkClient.iterCount`,
+		&score)
+	if err != nil {
+		return errors.Wrap(err, "failed to fetch speedometer score")
+	}
+	testing.ContextLogf(ctx, "speedometer score: %q", score)
+	return nil
+}
+
+func ensureOctane(ctx context.Context, ctconn *chrome.TestConn, conn *chrome.Conn) error {
+	conn.Exec(ctx, `
+		window.testFinished = false;
+		BenchmarkSuite.RunSuites({
+			NotifyResult(name, result) {
+				// Ignore sub-suite scores.
+			},
+			NotifyScore(score) {
+				window.testScore = parseFloat(score);
+				window.testFinished = true;
+			}
+		});`)
+	err := conn.WaitForExprFailOnErrWithTimeout(ctx, `
+		window.testFinished`, time.Minute*10)
+	if err != nil {
+		return errors.Wrap(err, "octane tests did not finish")
+	}
+
+	var score float64
+	err = conn.Eval(ctx,
+		`window.testScore`,
+		&score)
+	if err != nil {
+		return errors.Wrap(err, "failed to fetch octane score")
+	}
+	testing.ContextLogf(ctx, "octane score: %q", score)
+	return nil
+}
+
 type page struct {
 	name     string
 	url      string
@@ -113,6 +177,18 @@ var pageSet = []page{
 	{
 		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
 		url:  "https://en.wikipedia.org/wiki/Cat",
+	},
+	{
+		name:     "speedometer", // Speedometer 2 is a cross-browser benchmarking site.
+		url:      "https://browserbench.org/Speedometer2.0/",
+		finalize: ensureSpeedometer,
+	},
+	{
+		// Octane is a cross-browser benchmarking site. It's deprecated but
+		// still used by industry to do laptop evaluation.
+		name:     "octane",
+		url:      "https://chromium.github.io/octane/",
+		finalize: ensureOctane,
 	},
 }
 
