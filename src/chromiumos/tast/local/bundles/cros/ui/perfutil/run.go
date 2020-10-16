@@ -5,14 +5,10 @@
 package perfutil
 
 import (
-	"compress/gzip"
 	"context"
 	"fmt"
-	"os"
 	"path/filepath"
 	"time"
-
-	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
@@ -185,36 +181,12 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 			s.Log("No trace data is collected")
 			return
 		}
-		data, err := proto.Marshal(tr)
-		if err != nil {
-			s.Log("Failed to marshal the tracing data: ", err)
-			return
-		}
 		filename := "trace.data.gz"
 		if name != "" {
 			filename = name + "-" + filename
 		}
-		file, err := os.OpenFile(filepath.Join(s.OutDir(), filename), os.O_CREATE|os.O_RDWR, 0644)
-		if err != nil {
-			s.Log("Failed to open the trace file: ", err)
-			return
-		}
-		defer func() {
-			if err := file.Close(); err != nil {
-				s.Log("Failed to close the trace file: ", err)
-			}
-		}()
-		writer := gzip.NewWriter(file)
-		defer func() {
-			if err := writer.Close(); err != nil {
-				s.Log("Failed to close the gzip writer for the trace file: ", err)
-			}
-		}()
-		if _, err := writer.Write(data); err != nil {
-			s.Log("Failed to write the data: ", err)
-		}
-		if err := writer.Flush(); err != nil {
-			s.Log("Failed to flush the gzip writer: ", err)
+		if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(s.OutDir(), filename), chrome.WithGZipped()); err != nil {
+			s.Log("Failed to save the trace file: ", err)
 		}
 	})
 }

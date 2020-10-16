@@ -6,6 +6,7 @@
 package chrome
 
 import (
+	"compress/gzip"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -1659,16 +1660,59 @@ func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
 	return c.devsess.StopTracing(ctx)
 }
 
+type traceSaveOption struct {
+	gzipped bool
+}
+
+// TraceSaveOption customizes operation of saving the trace data.
+type TraceSaveOption func(*traceSaveOption)
+
+// WithGZipped is a TraceSaveOption to save the tracing data into a gzipped format.
+func WithGZipped() TraceSaveOption {
+	return func(opt *traceSaveOption) {
+		opt.gzipped = true
+	}
+}
+
 // SaveTraceToFile marshals the given trace into a binary protobuf and saves it
 // at the specified path.
-func SaveTraceToFile(trace *trace.Trace, path string) error {
+func SaveTraceToFile(ctx context.Context, trace *trace.Trace, path string, opts ...TraceSaveOption) error {
+	var opt traceSaveOption
+	for _, o := range opts {
+		o(&opt)
+	}
+
 	data, err := proto.Marshal(trace)
 	if err != nil {
 		return errors.Wrap(err, "could not marshal trace to binary")
 	}
 
-	if err := ioutil.WriteFile(path, data, 0666); err != nil {
-		return errors.Wrap(err, "could not save trace to file")
+	if opt.gzipped {
+		file, err := os.OpenFile(path, os.O_CREATE|os.O_RDWR, 0666)
+		if err != nil {
+			return errors.Wrap(err, "failed to open the trace file")
+		}
+		defer func() {
+			if err := file.Close(); err != nil {
+				testing.ContextLog(ctx, "Failed to close the trace file: ", err)
+			}
+		}()
+		writer := gzip.NewWriter(file)
+		defer func() {
+			if err := writer.Close(); err != nil {
+				testing.ContextLog(ctx, "Failed to close the gzip writer for the trace file: ", err)
+			}
+		}()
+		if _, err := writer.Write(data); err != nil {
+			return errors.Wrap(err, "failed to write the trace data")
+		}
+		if err := writer.Flush(); err != nil {
+			return errors.Wrap(err, "failed to flush the gzip writer")
+		}
+	} else {
+		if err := ioutil.WriteFile(path, data, 0666); err != nil {
+			return errors.Wrap(err, "could not save trace to file")
+		}
 	}
 	return nil
 }
