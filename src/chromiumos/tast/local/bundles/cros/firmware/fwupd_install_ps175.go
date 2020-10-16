@@ -21,7 +21,7 @@ import (
 
 const (
 	flashromCmdReg = "^-p lspcon_i2c_spi:bus=7 --layout /tmp/flashrom-i2c-7-[a-zA-Z0-9]{6}/layout" +
-		" --image BLK[0-9]:/tmp/flashrom-i2c-7-[a-zA-Z0-9]{6}/ps175-V99.99.bin -w[\n]+-p" +
+		" --image PARTITION[0-9]:/tmp/flashrom-i2c-7-[a-zA-Z0-9]{6}/ps175-V99.99.bin -w[\n]+-p" +
 		" lspcon_i2c_spi:bus=7 --layout /tmp/flashrom-i2c-7-[a-zA-Z0-9]{6}/layout --image" +
 		" FLAG:/tmp/flashrom-i2c-7-[a-zA-Z0-9]{6}/flag[0-9].bin -w[\n]*$"
 )
