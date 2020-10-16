@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff5c8ca2_7ba06051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-16T08:55:42Z",
+      "side": 1,
+      "message": "\u003e a timeout would be opaque if the error doesn\u0027t propagate right.\n\n(Not sure if Brian is asking this part, but) I tried a little bit on this and it seems only the error string is returned to the caller side so caller is unable to identify the error better than strings.Contain.\n\nI think this makes sense as it is very hard to marshal arbitrary error type, especially, the type might not even exist in the caller binary.\n\nWe don\u0027t have similar usage so far but it might be a potential problem. One mitigation might be marshaling the error by ourselves in a wrapper.\n\n\n\u003e the ctx been canceled is a special case because the gRPC library code is also canceled\n\nI also tried this and, to my surprise, cancel does propagate to the server(DUT). The deadline works better than I expect. :)",
+      "parentUuid": "c8303aa5_1ebb46b0",
+      "range": {
+        "startLine": 1829,
+        "startChar": 0,
+        "endLine": 1829,
+        "endChar": 19
+      },
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2f65cc2_9ecd16f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/pmksa_caching.go",
         "patchSetId": 15
