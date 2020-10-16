@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00f22deb_c4923df6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-10-16T00:12:09Z",
+      "side": 1,
+      "message": "It\u0027d be nice if we can share the code with perfutil/run.go,\nbut don\u0027t have specific suggestion how.\nI defer to mukai@.\n\nCan you update the CL description why you want to measure only viz?\n",
+      "revId": "b153d1055153e91011273f43878b39186937cd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
