@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "415ad113_fb79e285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sync_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-10-16T16:00:47Z",
+      "side": 1,
+      "message": "Yes it does, but I want to have the error messages be displayed on Tastboard.\nCurrently, we have many messages like \"Failed to set past time: exit status 1\", which are not informative to triage failures.",
+      "parentUuid": "2c8593b5_444b63e5",
+      "range": {
+        "startLine": 72,
+        "startChar": 49,
+        "endLine": 72,
+        "endChar": 54
+      },
+      "revId": "60d5af02dcae79206aa9815d856eedf8f56b449f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be4a0f08_e539abea",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-16T01:17:03Z",
       "side": 1,
       "message": "nit: I think you can use testexec.DumpLogOnError option so that you don\u0027t have to call this by yourself. like: \"cmd.Run(testexec.DumpLogOnError)\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "60d5af02dcae79206aa9815d856eedf8f56b449f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7568a5_72c3d782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sync_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-10-16T16:00:47Z",
+      "side": 1,
+      "message": "Good suggestion! I created CL:2480303 to change this not only in this test but also in other crostini tests. PTAL!",
+      "parentUuid": "be4a0f08_e539abea",
       "range": {
         "startLine": 73,
         "startChar": 2,
