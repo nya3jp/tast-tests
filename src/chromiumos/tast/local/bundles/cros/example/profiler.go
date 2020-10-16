@@ -47,7 +47,7 @@ func Profiler(ctx context.Context, s *testing.State) {
 	}
 
 	defer func() {
-		if err := p.End(); err != nil {
+		if err := p.End(ctx); err != nil {
 			s.Error("Failure in ending the profiler: ", err)
 		}
 		if runPerf {
