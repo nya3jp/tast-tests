@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07de788f_824601c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-16T01:17:03Z",
+      "side": 1,
+      "message": "LGTM % one nit and one question.",
+      "revId": "60d5af02dcae79206aa9815d856eedf8f56b449f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8593b5_444b63e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sync_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-16T01:17:03Z",
+      "side": 1,
+      "message": "Curious: doesn\u0027t cmd.DumpLog already print the uncaptured output?",
+      "range": {
+        "startLine": 72,
+        "startChar": 49,
+        "endLine": 72,
+        "endChar": 54
+      },
+      "revId": "60d5af02dcae79206aa9815d856eedf8f56b449f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be4a0f08_e539abea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sync_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-16T01:17:03Z",
+      "side": 1,
+      "message": "nit: I think you can use testexec.DumpLogOnError option so that you don\u0027t have to call this by yourself. like: \"cmd.Run(testexec.DumpLogOnError)\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "60d5af02dcae79206aa9815d856eedf8f56b449f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
