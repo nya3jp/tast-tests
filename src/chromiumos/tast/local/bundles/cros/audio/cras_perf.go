@@ -76,6 +76,7 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 	defer cancel()
 
 	var out profiler.PerfStatOutput
+	var outSched profiler.PerfSchedOutput
 
 	profs := []profiler.Profiler{
 		profiler.Top(&profiler.TopOpts{
@@ -83,6 +84,7 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 		}),
 		profiler.Perf(profiler.PerfStatOpts(&out, pid)),
 		profiler.Perf(profiler.PerfRecordOpts()),
+		profiler.Perf(profiler.PerfSchedOpts(&outSched, "cras")),
 	}
 
 	s.Log("start audio")
@@ -128,6 +130,14 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 				Direction: perfpkg.SmallerIsBetter,
 				Multiple:  true,
 			}, out.CyclesPerSecond)
+
+			// Append one measurement to PerfValue.
+			pv.Append(perfpkg.Metric{
+				Name:      "cras_max_latency_ms",
+				Unit:      "milliseconds",
+				Direction: perfpkg.SmallerIsBetter,
+				Multiple:  true,
+			}, outSched.MaxLatencyMs)
 		}
 
 		if param.Playback {
