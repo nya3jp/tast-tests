@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "242b09c4_fee60a41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T17:28:25Z",
+      "side": 1,
+      "message": "Rather than copying those things similarly, it might be worthwhile to create a utility package (something like chrome/tracing).  I can help that if you want.",
+      "revId": "3f5d8c90676f727fd537a9958cc6ba3ffc37602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

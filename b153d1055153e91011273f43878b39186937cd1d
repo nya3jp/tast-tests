@@ -16,6 +16,29 @@
       "message": "It\u0027d be nice if we can share the code with perfutil/run.go,\nbut don\u0027t have specific suggestion how.\nI defer to mukai@.\n\nCan you update the CL description why you want to measure only viz?\n",
       "revId": "b153d1055153e91011273f43878b39186937cd1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8210af_8baed510",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-16T17:28:25Z",
+      "side": 1,
+      "message": "Please bring StopTracing part as a defer.  If the test scenario reports an error, it may not call StopTracing and affect further tests.\n\nAlso, consider reserving the timeout for StopTracing.  See: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 0
+      },
+      "revId": "b153d1055153e91011273f43878b39186937cd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
