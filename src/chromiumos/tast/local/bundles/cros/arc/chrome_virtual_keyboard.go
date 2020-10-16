@@ -37,6 +37,7 @@ var stableVkTests = []vkTestParams{
 var unstableVkTests = []vkTestParams{
 	{"Floating mode", chromeVirtualKeyboardFloatingTest},
 	{"Rotation", chromeVirtualKeyboardRotationTest},
+	{"Password editing", chromeVirtualKeyboardPasswordEditingTest},
 }
 
 const virtualKeyboardTestAppPkg = "org.chromium.arc.testapp.keyboard"
@@ -511,6 +512,75 @@ func chromeVirtualKeyboardRotationTest(
 		coordsAfter := element.Location
 		if coordsBefore == coordsAfter || coordsAfter.Empty() {
 			s.Fatalf("Failed to show the virtual keyboard after rotation in %s, before %q; after %q", r, coordsBefore, coordsAfter)
+		}
+	}
+}
+
+// chromeVirtualKeyboardPasswordEditingTest tests editing on a password field on an ARC app by Chrome's virtual keyboard.
+func chromeVirtualKeyboardPasswordEditingTest(
+	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
+	const (
+		activityName = ".MainActivity"
+
+		passwordFieldID = virtualKeyboardTestAppPkg + ":id/password"
+	)
+	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	if err != nil {
+		s.Fatalf("Failed to create a new activity %q", activityName)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatalf("Failed to start the activity %q", activityName)
+	}
+	defer act.Stop(ctx, tconn)
+
+	field := d.Object(ui.ID(passwordFieldID))
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find field: ", err)
+	}
+	if err := field.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
+	if err := field.SetText(ctx, ""); err != nil {
+		s.Fatal("Failed to empty field: ", err)
+	}
+
+	if err := d.Object(ui.ID(passwordFieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to focus a text field: ", err)
+	}
+
+	s.Log("Waiting for virtual keyboard to be ready")
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	}
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	}
+	// We should not wait for the decoder because it is not enabled on the password field.
+
+	// Press a sequence of keys.
+	keys := []string{"p", "a", "s", "s", "w", "o", "r", "d", "backspace", "backspace"}
+
+	expected := ""
+
+	for _, key := range keys {
+		if err := vkb.TapKey(ctx, tconn, key); err != nil {
+			s.Fatalf("Failed to tap %q: %v", key, err)
+		}
+
+		if key == "backspace" {
+			expected = expected[:len(expected)-1]
+		} else {
+			expected += key
+		}
+
+		// Check the input field after each keystroke to avoid flakiness. https://crbug.com/945729
+		// In order to use GetText() after timeout, we should have shorter timeout than ctx.
+		if err := field.WaitForText(ctx, expected, 30*time.Second); err != nil {
+			s.Fatal("Failed to wait for text: ", err)
 		}
 	}
 }
