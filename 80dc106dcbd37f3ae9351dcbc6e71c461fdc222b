@@ -16,6 +16,23 @@
       "message": "Thanks for the review.",
       "revId": "80dc106dcbd37f3ae9351dcbc6e71c461fdc222b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fccc5ce_56cad7a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-16T09:36:14Z",
+      "side": 1,
+      "message": "Looks like provision failure. Retry CQ.",
+      "revId": "80dc106dcbd37f3ae9351dcbc6e71c461fdc222b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
