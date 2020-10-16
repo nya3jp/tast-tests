@@ -16,6 +16,29 @@
       "message": "Adding g/tast-owners to select someone for OWNERS review - PTAL.",
       "revId": "3f53f4b6da8e89953a7105e018fdc0727ff2f442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf86e937_502ce81a",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-16T16:12:01Z",
+      "side": 1,
+      "message": "Initialisms, such as IO for input/ouptut, should have a consistent case, per http://go/go-code-review-comments#Initialisms. This is even true for multiple adjacent initalisms, such as CUPS+IO. Please rename this constant to CUPSIOError.\n\n    Words in names that are initialisms or acronyms (e.g. \"URL\" or \"NATO\") have a consistent case. For example, \"URL\" should appear as \"URL\" or \"url\" (as in \"urlPony\", or \"URLPony\"), never as \"Url\". As an example: ServeHTTP not ServeHttp. For identifiers with multiple initialized \"words\", use for example \"xmlHTTPRequest\" or \"XMLHTTPRequest\".",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "3f53f4b6da8e89953a7105e018fdc0727ff2f442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
