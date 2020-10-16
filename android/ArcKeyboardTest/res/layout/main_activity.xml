@@ -13,6 +13,11 @@
               android:layout_height="wrap_content"
               android:inputType="text"
               android:text="@string/default_text" />
+    <EditText android:id="@+id/password"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:inputType="textVisiblePassword"
+              android:text="" />
     <TextView android:id="@+id/last_key_down"
               android:layout_width="match_parent"
               android:layout_height="wrap_content" />
