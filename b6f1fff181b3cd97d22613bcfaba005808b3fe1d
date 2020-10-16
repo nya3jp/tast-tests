@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e7ca150_a2cfae97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-16T22:19:33Z",
+      "side": 1,
+      "message": "Please add Cq-Depend: on the ebuild fix.",
+      "revId": "b6f1fff181b3cd97d22613bcfaba005808b3fe1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8b19a054_13e950d0",
