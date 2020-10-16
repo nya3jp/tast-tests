@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08969a13_1477cbf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-16T15:25:39Z",
+      "side": 1,
+      "message": "It can differ some for cases where the bookmarks are enabled and where not. But in case for the unset and true values of the policy, the expected behaviour is the same.",
+      "parentUuid": "38d85b00_714c115f",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffbacad1_ec317aad",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 1
@@ -179,6 +197,29 @@
       "writtenOn": "2020-10-16T15:03:29Z",
       "side": 1,
       "message": "Same as above.",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "638b86ae_c43957e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-16T15:25:39Z",
+      "side": 1,
+      "message": "If you trigger a change, and nothing happens, you cannot be sure if you just didn\u0027t wait for long enough.\nYou should check for the \"bookmark this page\" without sending ctrl+d, as that node should be there if enabled from when you open the browser.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 2
+      },
       "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
