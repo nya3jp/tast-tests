@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec4a1f60_aa91e977",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-16T11:31:21Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "d1a2e2b6f025893f1bbdc1027a309f4f598d5fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7121334f_c816be17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/search_suggest_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-16T11:31:21Z",
+      "side": 1,
+      "message": "is 10 enough for all devices?",
+      "range": {
+        "startLine": 104,
+        "startChar": 95,
+        "endLine": 104,
+        "endChar": 97
+      },
+      "revId": "d1a2e2b6f025893f1bbdc1027a309f4f598d5fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
