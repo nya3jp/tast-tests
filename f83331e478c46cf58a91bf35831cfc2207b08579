@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7874858e_148b9a7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-16T03:08:50Z",
+      "side": 1,
+      "message": "LGTM, I think the Recv() questions are more informational, as we shouldn\u0027t be hitting that anyway",
+      "revId": "f83331e478c46cf58a91bf35831cfc2207b08579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
