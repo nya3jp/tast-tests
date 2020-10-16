@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "4b3e619b_953f54ed",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "I\u0027ll wait for replies to Yusuke\u0027s comments since we may drastically change the code...\n",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "91b8ec45_13ebe726",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "I\u0027m a bit confused. Shouldn\u0027t we make this both for ARC++ and ARCVM, and remove the cpuset test from containermount.go? It doesn\u0027t seem like a good idea to have duplicated code.",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "b3d61c70_f8ca0ab9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -49,10 +50,10 @@
       "message": "Done.",
       "parentUuid": "91b8ec45_13ebe726",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3e921083_242613ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -66,10 +67,10 @@
       "side": 1,
       "message": "Does this test still make sense in ARCVM? What do we do for e.g. kukui-arc-r? Please check it with the platform team?",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7f86fd88_9f6a7ae5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -84,10 +85,10 @@
       "message": "senozhatsky seems like the best person to talk to.",
       "parentUuid": "3e921083_242613ad",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "a0c0ef8a_4ed3e050",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -102,10 +103,10 @@
       "message": "I checked with senozhatsky@ who refer me to suleiman@ and he says he is not familiar with the test but cpuset is still used in ARCVM, so the test seems to still be useful.",
       "parentUuid": "7f86fd88_9f6a7ae5",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "bd352226_203e89e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -120,10 +121,10 @@
       "message": "Are all cores (big and little) visible from the guest side? How is each vcpu mapped to the host\u0027s core? Is the mapping static? (If you\u0027re not sure, please add suleiman@ here.)",
       "parentUuid": "a0c0ef8a_4ed3e050",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "cb1281fd_6d57355b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -138,10 +139,10 @@
       "message": "suleiman@ could you answer this?",
       "parentUuid": "bd352226_203e89e7",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a695c0c3_c6302f0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -156,10 +157,10 @@
       "message": "Currently the big/little information is not propagated to the guest and there is no mapping between VCPUs and host cores. We would like to change that in the future, but it\u0027s probably safe to remove those heterogeneous cores check for now (it\u0027s also not completely clear what they are trying to accomplish).\n\nCpusets are still used though, as far as I\u0027m aware, so I think the test as a whole might still have some use.",
       "parentUuid": "cb1281fd_6d57355b",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b74dfe7c_654b917e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -174,10 +175,10 @@
       "message": "For big/little boards, Chrome OS provides a special init.cpusets.rc file for the container. For example, for kukui (ARC++ P), it provides src/overlays/baseboard-kukui/chromeos-base/chromeos-bsp-baseboard-kukui/files/init.cpusets.rc which is like:\n\n on property:sys.boot_completed\u003d1\n     # Adjust cpusets in container to better split work between\n     # little and big cores.\n     write /dev/cpuset/foreground/cpus 0-7\n     write /dev/cpuset/background/cpus 0\n     write /dev/cpuset/system-background/cpus 0-3\n     write /dev/cpuset/restricted/cpus 0\n     write /dev/cpuset/top-app/cpus 0-7\n\nThe Tast test is to verify if such an \u0027init.cpusets.rc\u0027 files exists in the guest.\n\nMy question is: what kind of cpuset configuration should we use for kukui-arc-r? Can we know which cores (from the guest perspective) are little? We want to bound background/system-background/restricted tasks only to little cores in general. Once we figure this out, risan@ can write/tweak the Tast test for ARM+R.",
       "parentUuid": "a695c0c3_c6302f0b",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3869555c_141bec72",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -192,10 +193,10 @@
       "message": "From my understanding, there is currently no mapping between host core and guest VCPUs: VCPUs aren\u0027t bound to any particular host CPU.\nWe want to change that, but haven\u0027t yet decided how. My guess is that we\u0027ll try to somewhat mirror what happens in the host, but not with a 1:1 mapping: Guest little cores being able to be scheduled on any host little core and guest big cores being able to be scheduled on any host big core.\n\nSo, for now, the exact cpuset configuration you use today does not matter, as long as you restrict background tasks to be able to run on fewer VCPUs than foreground things.",
       "parentUuid": "b74dfe7c_654b917e",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8c30cc48_df079a3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -210,10 +211,10 @@
       "message": "OK, but e.g background tasks that are bound to CPU #0 may still use one of host\u0027s big cores, right? Just confirming the current kukui-arc-r status.",
       "parentUuid": "3869555c_141bec72",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0d6dbf2d_709f260b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -228,10 +229,10 @@
       "message": "Yes, I believe that is correct.",
       "parentUuid": "8c30cc48_df079a3c",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1393ac48_50314005",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -246,10 +247,10 @@
       "message": "OK thanks.\n\nRisan, can you do the following for now?\n\n- Make sure kukui-arc-r\u0027s guest has src/overlays/baseboard-kukui/chromeos-base/chromeos-bsp-baseboard-kukui/files/init.cpusets.rc. I forgot how the file ends up becoming visible from the guest on P. Please check it too... (I can help if needed but not today - it\u0027s Sunday night.)\n- Then, in the Tast test, use the same code for P and R re big/little.",
       "parentUuid": "0d6dbf2d_709f260b",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "84ef1491_b237cdc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -264,10 +265,10 @@
       "message": "Thanks for the replies!\n\nRegarding \"Then, in the Tast test, use the same code for P and R re big/little.\", do you mean keep my CL as it is after adding the init.cpusets.rc?",
       "parentUuid": "1393ac48_50314005",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a9a1c418_1a919cba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
@@ -282,8 +283,25 @@
       "message": "Yes.",
       "parentUuid": "84ef1491_b237cdc1",
       "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e59923c_525360c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-16T14:39:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9a1c418_1a919cba",
+      "revId": "1174cf3bcbb1a157c2be68408f75724c3c555767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
