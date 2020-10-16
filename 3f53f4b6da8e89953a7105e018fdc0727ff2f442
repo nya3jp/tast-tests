@@ -39,6 +39,30 @@
       },
       "revId": "3f53f4b6da8e89953a7105e018fdc0727ff2f442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ac7529_e5e59520",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-16T16:13:21Z",
+      "side": 1,
+      "message": "(Unless you\u0027re talking about Io, the innermost Galilean moon of Jupiter.)",
+      "parentUuid": "cf86e937_502ce81a",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "3f53f4b6da8e89953a7105e018fdc0727ff2f442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
