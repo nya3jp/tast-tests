@@ -62,6 +62,7 @@ const (
 // Manager property names.
 const (
 	ManagerPropertyActiveProfile          = "ActiveProfile"
+	ManagerPropertyAvailableTechnologies  = "AvailableTechnologies"
 	ManagerPropertyDevices                = "Devices"
 	ManagerPropertyEnabledTechnologies    = "EnabledTechnologies"
 	ManagerPropertyProfiles               = "Profiles"
