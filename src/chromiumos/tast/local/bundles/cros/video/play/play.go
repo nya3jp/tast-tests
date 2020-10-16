@@ -368,23 +368,41 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 		img = rotImg
 	}
 
-	// Find the top and bottom of the video, i.e., exclude the black strips on top and bottom. Note
-	// the video colors are chosen such that none of the RGB components are 0. We assume symmetry, so the
-	// bottom is calculated based on the value of the top instead of using a loop (this is because the
-	// bottom of the video can acceptably bleed into the bottom black strip and we want to ignore that).
-	// No black strips are expected on the left or right.
+	// Find the bounds of the video by excluding the black strips on each side.
+	xMiddle := img.Bounds().Dx() / 2
+	yMiddle := img.Bounds().Dy() / 2
 	top := 0
 	for ; top < img.Bounds().Dy(); top++ {
-		if r, _, _, _ := img.At(0, top).RGBA(); r != 0 {
+		if r, g, b, _ := img.At(xMiddle, top).RGBA(); r != 0 && g != 0 && b != 0 {
 			break
 		}
 	}
-	if top >= img.Bounds().Dy() {
-		return errors.New("could not find the top of the video")
+	bottom := img.Bounds().Dy() - 1
+	for ; bottom >= 0; bottom-- {
+		if r, g, b, _ := img.At(xMiddle, bottom).RGBA(); r != 0 && g != 0 && b != 0 {
+			break
+		}
 	}
-	bottom := img.Bounds().Dy() - 1 - top
+	if bottom <= top {
+		return errors.New("could not find the top or bottom of the video")
+	}
 	left := 0
+	for ; left < img.Bounds().Dx(); left++ {
+		if r, g, b, _ := img.At(left, yMiddle).RGBA(); r != 0 && g != 0 && b != 0 {
+			break
+		}
+	}
 	right := img.Bounds().Dx() - 1
+	for ; right >= 0; right-- {
+		if r, g, b, _ := img.At(right, yMiddle).RGBA(); r != 0 && g != 0 && b != 0 {
+			break
+		}
+	}
+	if right <= left {
+		return errors.New("could not find the left or right of the video")
+	}
+	s.Logf("Video bounds: top = %d, right = %d, bottom = %d, left = %d",
+		top, right, bottom, left)
 
 	// Open the reference file to assert expectations on the screenshot later.
 	refPath := s.DataPath(refFilename)
