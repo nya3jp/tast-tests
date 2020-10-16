@@ -1695,14 +1695,72 @@ func (s *WifiService) ProfileBasicTest(ctx context.Context, req *network.Profile
 	return &empty.Empty{}, nil
 }
 
+// waitForWifiAvailable waits for WiFi to be available in shill.
+func (s *WifiService) waitForWifiAvailable(ctx context.Context, m *shill.Manager) error {
+	pw, err := m.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	prop, err := m.GetProperties(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get Manager's properties from shill")
+	}
+
+	findWifi := func(list []string) bool {
+		for _, s := range list {
+			if s == shillconst.TypeWifi {
+				return true
+			}
+		}
+		return false
+	}
+
+	techs, err := prop.GetStrings(shillconst.ManagerPropertyAvailableTechnologies)
+	if err != nil {
+		return errors.Wrap(err, "failed to get availabe technologies property")
+	}
+	if findWifi(techs) {
+		return nil
+	}
+	for {
+		val, err := pw.WaitAll(ctx, shillconst.ManagerPropertyAvailableTechnologies)
+		if err != nil {
+			return errors.Wrap(err, "failed to wait available technologies changes")
+		}
+		techs, ok := val[0].([]string)
+		if !ok {
+			return errors.Errorf("unexpected available technologies value: %v", val)
+		}
+		if findWifi(techs) {
+			return nil
+		}
+	}
+}
+
 // GetWifiEnabled checks to see if Wifi is an enabled technology on shill.
+// This call will wait for WiFi to appear in available technologies so we
+// can get correct enabled setting.
 func (s *WifiService) GetWifiEnabled(ctx context.Context, _ *empty.Empty) (*network.GetWifiEnabledResponse, error) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
 	}
+
+	if err := s.waitForWifiAvailable(ctx, manager); err != nil {
+		return nil, err
+	}
+
 	prop, err := manager.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Manager' properties from shill")
+	}
+
 	technologies, err := prop.GetStrings(shillconst.ManagerPropertyEnabledTechnologies)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed go get enabled technologies property")
+	}
 
 	for _, t := range technologies {
 		if t == string(shill.TechnologyWifi) {
