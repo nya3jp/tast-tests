@@ -158,16 +158,11 @@ func NetworkPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 	runCmd := func(cmd *testexec.Cmd) (out []byte, err error) {
-		out, err = cmd.Output()
+		out, err = cmd.Output(testexec.DumpLogOnError)
 		if err == nil {
 			return out, nil
 		}
 		cmdString := strings.Join(append(cmd.Cmd.Env, cmd.Cmd.Args...), " ")
-
-		// Dump stderr.
-		if err := cmd.DumpLog(ctx); err != nil {
-			s.Logf("Failed to dump log for cmd %q: %v", cmdString, err)
-		}
 
 		// Output complete stdout to a log file.
 		writeError(cmdString, out)

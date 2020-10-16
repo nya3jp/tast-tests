@@ -12,6 +12,7 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -67,8 +68,7 @@ func LaunchTerminal(ctx context.Context, s *testing.State) {
 
 		cmd := cont.Command(ctx, command...)
 		s.Logf("Running: %q", strings.Join(cmd.Args, " "))
-		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 			s.Error("Failed to launch terminal command in container: ", err)
 			return
 		}

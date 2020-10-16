@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -64,9 +65,8 @@ func LaunchBrowser(ctx context.Context, s *testing.State) {
 
 		cmd := cont.Command(ctx, command...)
 		s.Logf("Running: %q", strings.Join(cmd.Args, " "))
-		if err := cmd.Run(); err != nil {
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 			s.Error("Failed to launch browser from container: ", err)
-			cmd.DumpLog(ctx)
 			return
 		}
 
