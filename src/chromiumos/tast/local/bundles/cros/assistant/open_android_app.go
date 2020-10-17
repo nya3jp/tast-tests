@@ -56,7 +56,11 @@ func OpenAndroidApp(ctx context.Context, s *testing.State) {
 	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
-	defer assistant.Cleanup(ctx, s, cr, tconn)
+	defer func() {
+		if err := assistant.Cleanup(ctx, s.HasError, cr, tconn); err != nil {
+			s.Fatal("Failed to disable Assistant: ", err)
+		}
+	}()
 
 	s.Log("Waiting for ARC package list initial refreshed")
 	if err := waitForArcPackageListInitialRefreshed(ctx, s, tconn); err != nil {

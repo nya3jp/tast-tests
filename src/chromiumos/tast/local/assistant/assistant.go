@@ -45,14 +45,16 @@ func Disable(ctx context.Context, tconn *chrome.TestConn) error {
 // Cleanup stops the Google Assistant service so other tests are not impacted.
 // If a failure happened, we make a screenshot beforehand so the Assistant UI
 // is visible in the screenshot.
-func Cleanup(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) {
-	if s.HasError() {
-		screenshot.CaptureChrome(ctx, cr, filepath.Join(s.OutDir(), "screenshot.png"))
+func Cleanup(ctx context.Context, hasError func() bool, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+	if hasError() {
+		outDir, ok := testing.ContextOutDir(ctx)
+		if !ok {
+			return errors.New("outdir not available")
+		}
+		screenshot.CaptureChrome(ctx, cr, filepath.Join(outDir, "screenshot.png"))
 	}
 
-	if err := Disable(ctx, tconn); err != nil {
-		s.Fatal("Failed to disable Assistant: ", err)
-	}
+	return Disable(ctx, tconn)
 }
 
 // EnableAndWaitForReady brings up Google Assistant service, waits for
