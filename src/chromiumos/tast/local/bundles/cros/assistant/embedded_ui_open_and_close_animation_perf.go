@@ -94,6 +94,17 @@ func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) 
 		}
 	}()
 
+	// The maximum number of user sessions in which to show Assistant onboarding. Please keep it
+	// synced to |kOnboardingMaxSessionsShown| stored in ash/assistant/ui/assistant_ui_constants.h.
+	// Note that we will not restore its true value at the end of the test, so any tests that want
+	// to test onboarding feature should explicitly enable it during setup.
+	const onboardingMaxSessionsShown = 3
+	// We set the value to its maximum to disable the onboarding feature which will bring the
+	// launcher to "Half" state of "Peaking". See crbug.com/1135381.
+	if err := assistant.SetNumSessionsOnboardingShown(ctx, tconn, onboardingMaxSessionsShown); err != nil {
+		s.Fatal("Failed to disable onboarding for Assistant: ", err)
+	}
+
 	// We measure the open/close animation smoothness of the embedded UI with 0, 1 or 2
 	// browser windows in the background.
 	const maxNumOfWindows = 2
