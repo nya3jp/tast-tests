@@ -121,6 +121,24 @@
       "message": "Working on rebasing the repo. ",
       "revId": "ab702042309d18bf354549518e65503e916c792d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b110de24_43e0c3d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-10-17T01:16:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5367110f_71080584",
+      "revId": "ab702042309d18bf354549518e65503e916c792d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
