@@ -47,7 +47,7 @@ func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
 	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
-	defer assistant.Cleanup(ctx, s, cr, tconn)
+	defer assistant.Cleanup(ctx, s.HasError, cr, tconn)
 
 	if err := assistant.SetVoiceInteractionConsentValue(ctx, tconn, 1); err != nil {
 		s.Fatal("Failed to set voice interaction consent value: ", err)
