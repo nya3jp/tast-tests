@@ -182,6 +182,7 @@ type CrashTester struct {
 	ptype     ProcessType
 	waitFor   CrashFileType
 	logReader *syslog.ChromeReader
+	killedPid int
 }
 
 // NewCrashTester returns a CrashTester. This must be called before chrome.New.
@@ -509,6 +510,8 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs []string) error 
 			}
 			return testing.PollBreak(errors.Wrapf(err, "could not kill target process %d", toKill.Pid))
 		}
+		ct.killedPid = int(toKill.Pid)
+
 		return nil
 	}, nil)
 	if err != nil {
@@ -545,7 +548,7 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs []string) error 
 // is that this waits for the SEGV'ed process to die instead of waiting for a
 // .meta file. We can't wait for a file to be created because ChromeCrashLoop
 // doesn't create files at all on one of its kills.
-func killBrowser(ctx context.Context) error {
+func (ct *CrashTester) killBrowser(ctx context.Context) error {
 	preSleepTime := time.Now()
 
 	// Sleep briefly after Chrome starts so it has time to set up breakpad or
@@ -572,6 +575,7 @@ func killBrowser(ctx context.Context) error {
 	if err = syscall.Kill(rp, syscall.SIGSEGV); err != nil {
 		return errors.Wrap(err, "failed to kill process")
 	}
+	ct.killedPid = rp
 
 	// Wait for all the processes to die (not just the root one). This avoids
 	// messing up other killNonBrowser tests that might try to kill an orphaned
@@ -609,6 +613,18 @@ func killBrowser(ctx context.Context) error {
 	return nil
 }
 
+// A custom 'error' type, used to indicate that we exited the testing.Poll loop
+// in KillAndGetCrashFiles because we didn't find the crash files after the
+// timeout, as opposed to a 'real' error. In many cases, not finding the files
+// is not an error.
+type crashReportNotFound struct {
+	pid int
+}
+
+func (e crashReportNotFound) Error() string {
+	return fmt.Sprintf("Could not find crash report for PID %d", e.pid)
+}
+
 // KillAndGetCrashFiles sends SIGSEGV to the given Chrome process, waits for it to
 // crash, finds all the new crash files, and then deletes them and returns their paths.
 func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
@@ -621,7 +637,7 @@ func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, erro
 	dirs = append(dirs, crash.DefaultDirs()...)
 
 	if ct.ptype == Browser {
-		if err = killBrowser(ctx); err != nil {
+		if err = ct.killBrowser(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to kill Browser process")
 		}
 	} else {
@@ -630,17 +646,61 @@ func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, erro
 		}
 	}
 
-	newFiles, err := crash.GetCrashes(dirs...)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get new crashes")
-	}
-	for _, p := range newFiles {
-		testing.ContextLog(ctx, "Found expected Chrome crash file ", p)
-	}
+	// For reasons unknown, we sometimes don't see the files under the cryptohome
+	// when we do GetCrashes. (See https://crbug.com/1139494 for investigation.)
+	// Retry several times to avoid brief flakes.
+	testing.ContextLog(ctx, "Scanning crash directories")
+	var newFiles []string
+	// NOTE THAT in some tests (particularly ChromeCrashLoop), we don't know if
+	// the files will be written out or not, so we can't just loop forever looking
+	// for the files.
+	const timeout = 5 * time.Second
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		newNewFiles, err := crash.GetCrashes(dirs...)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get new crashes"))
+		}
+		for _, p := range newFiles {
+			testing.ContextLog(ctx, "Found expected Chrome crash file ", p)
+		}
 
-	// Delete all crash files produced during this test: https://crbug.com/881638
-	deleteFiles(ctx, newFiles)
+		// Delete all crash files produced during this test: https://crbug.com/881638
+		deleteFiles(ctx, newNewFiles)
 
+		newFiles = append(newFiles, newNewFiles...)
+
+		switch ct.waitFor {
+		case NoCrashFile:
+			// There's no crash files to look for. Always exit after the first time
+			// the testing.Poll runs. We do this function once just to detect
+			// *incorrect* additions of crash data.
+			return nil
+		case BreakpadDmp:
+			// The file name doesn't indicate if this is the 'correct' crash data,
+			// so if there are any dmp files, return.
+			for _, file := range newNewFiles {
+				if strings.HasSuffix(file, "dmp") {
+					if isTheFile, err := crash.IsBreakpadDmpFileForPID(file, ct.killedPid); err == nil && isTheFile {
+						return nil
+					}
+				}
+			}
+		case MetaFile:
+			pid := strconv.Itoa(ct.killedPid)
+			for _, file := range newNewFiles {
+				if strings.HasSuffix(file, "meta") && strings.Contains(file, pid) {
+					// Found the crash report we were looking for.
+					return nil
+				}
+			}
+		}
+		return &crashReportNotFound{pid: ct.killedPid}
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		var crashReportNotFoundError *crashReportNotFound
+		if !errors.As(err, &crashReportNotFoundError) {
+			return nil, err
+		}
+	}
 	return newFiles, nil
 }
 
