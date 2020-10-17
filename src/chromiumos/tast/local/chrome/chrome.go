@@ -351,6 +351,8 @@ type Chrome struct {
 	signinExtDir  string // dir containing signin test profile extension
 	signinExtConn *Conn  // connection to signin profile test extension
 
+	tracingStarted bool
+
 	watcher       *browserWatcher   // tries to catch Chrome restarts
 	logAggregator *jslog.Aggregator // collects JS console output
 }
@@ -621,6 +623,21 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		return nil
 	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: time.Minute}); err != nil {
 		testing.ContextLog(ctx, "Not all targets finished closing: ", err)
+	}
+
+	// If the test case started the tracing but somehow StopTracing isn't called,
+	// the tracing should be stopped in ResetState.
+	if c.tracingStarted {
+		// As noted in the comment of c.StartTracing, the tracingStarted flag is
+		// marked before actually StartTracing request is sent because
+		// StartTracing's failure doesn't necessarily mean that tracing isn't
+		// started. So at this point, c.StopTracing may fail if StartTracing failed
+		// and tracing actually didn't start. Because of that, StopTracing's error
+		// wouldn't cause an error of ResetState, but simply reporting the error
+		// message.
+		if _, err := c.StopTracing(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
+		}
 	}
 
 	// If testExtCon was created, free all remote JS objects in the TastObjectGroup.
@@ -1651,12 +1668,22 @@ func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool,
 // categories must be prefixed with "disabled-by-default-android ", e.g. for the
 // gfx category, use "disabled-by-default-android gfx", including the space.
 func (c *Chrome) StartTracing(ctx context.Context, categories []string) error {
+	// Note: even when StartTracing fails, it might be due to the case that the
+	// StartTracing request is successsfully sent to the browser and tracing
+	// collection has started, but the context deadline is exceeded before Tast
+	// receives the reply.  Therefore, tracingStarted flag is marked beforehand.
+	c.tracingStarted = true
 	return c.devsess.StartTracing(ctx, categories)
 }
 
 // StopTracing stops trace collection and returns the collected trace events.
 func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
-	return c.devsess.StopTracing(ctx)
+	traces, err := c.devsess.StopTracing(ctx)
+	if err != nil {
+		return nil, err
+	}
+	c.tracingStarted = false
+	return traces, nil
 }
 
 // SaveTraceToFile marshals the given trace into a binary protobuf and saves it
