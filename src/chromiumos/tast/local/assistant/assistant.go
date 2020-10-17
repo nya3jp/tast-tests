@@ -86,6 +86,12 @@ func SetVoiceInteractionConsentValue(ctx context.Context, tconn *chrome.TestConn
 	return setPrefValue(ctx, tconn, "settings.voice_interaction.activity_control.consent_status", value)
 }
 
+// SetNumSessionsOnboardingShown enables/disables the Assistant onboarding feature by controlling the number
+// of sessions where onboarding screen has shown.
+func SetNumSessionsOnboardingShown(ctx context.Context, tconn *chrome.TestConn, value int) error {
+	return setPrefValue(ctx, tconn, "ash.assistant.num_sessions_where_onboarding_shown", value)
+}
+
 // setPrefValue is a helper function to set value for Assistant related preferences.
 func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, value interface{}) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, value)
