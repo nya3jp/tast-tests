@@ -198,18 +198,68 @@ func GetDaemonStoreCrashDirs(ctx context.Context) ([]string, error) {
 	return ret, nil
 }
 
+// RegexesNotFound is an error type, used to indicate that
+// WaitForCrashFiles didn't find matches for all of the regexs.
+type RegexesNotFound struct {
+	// Missing lists all the regexs that weren't matched.
+	Missing []string
+	// Files lists all the files that were checked against the regexes.
+	Files []string
+	// PartialMatches gives all the regexes that were matched and the files that
+	// matched them.
+	PartialMatches map[string][]string
+}
+
+func (e RegexesNotFound) Error() string {
+	return fmt.Sprintf("timed out while waiting for crash files: no file matched %s (found %s)",
+		strings.Join(e.Missing, ", "), strings.Join(e.Files, ", "))
+}
+
+type waitForCrashFilesOptions struct {
+	timeout         time.Duration
+	optionalRegexes []string
+}
+
+// WaitForCrashFilesOpt is a self-referential function can be used to configure Chrome.
+// See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
+// for details about this pattern.
+type WaitForCrashFilesOpt func(w *waitForCrashFilesOptions)
+
+// Timeout returns a WaitForCrashFilesOpts which will set the timeout of WaitForCrashFiles
+// to the indicated duration.
+func Timeout(timeout time.Duration) WaitForCrashFilesOpt {
+	return func(w *waitForCrashFilesOptions) {
+		w.timeout = timeout
+	}
+}
+
+// OptionalRegexes instructs WaitForCrashFiles to look for files matching the
+// given regexes and return those as normal in the return map. However, if
+// the optional regexes are not matched, the polling loop will still exit and
+// WaitForCrashFiles will not return an error.
+func OptionalRegexes(optionalRegexes []string) WaitForCrashFilesOpt {
+	return func(w *waitForCrashFilesOptions) {
+		w.optionalRegexes = optionalRegexes
+	}
+}
+
 // WaitForCrashFiles waits for each regex in regexes to match a file in dirs.
 // One might use it by
 // 1. Doing some operation that will create new files in that directory (e.g. inducing a crash).
 // 2. Calling this method to wait for the expected files to appear.
 // On success, WaitForCrashFiles returns a map from a regex to a list of files that matched that regex.
-// If any regex was not matched, instead returns an error.
+// If any regex was not matched, instead returns an error of type RegexesNotFound.
 //
 // When it comes to deleting files, tests should:
 //   * Remove matching files that they expect to generate
 //   * Leave matching files they do not expect to generate
 // If there are more matches than expected and the test can't tell which are expected, it shouldn't delete any.
-func WaitForCrashFiles(ctx context.Context, dirs, regexes []string) (map[string][]string, error) {
+func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...WaitForCrashFilesOpt) (map[string][]string, error) {
+	w := &waitForCrashFilesOptions{timeout: 15 * time.Second}
+	for _, opt := range opts {
+		opt(w)
+	}
+
 	var files map[string][]string
 	err := testing.Poll(ctx, func(c context.Context) error {
 		var newFiles []string
@@ -227,42 +277,55 @@ func WaitForCrashFiles(ctx context.Context, dirs, regexes []string) (map[string]
 
 		// track regexes that weren't matched.
 		var missing []string
-		for _, re := range regexes {
-			match := false
-			for _, f := range newFiles {
-				var err error
-				match, err = regexp.MatchString(re, f)
-				if err != nil {
-					return testing.PollBreak(errors.Wrapf(err, "invalid regexp %s", re))
-				}
-				if match {
-					// Wait for meta files to have "done=1".
-					if strings.HasSuffix(f, ".meta") {
-						var contents []byte
-						if contents, err = ioutil.ReadFile(f); err != nil {
-							return testing.PollBreak(errors.Wrap(err, "failed to read .meta file"))
-						}
-						if !strings.Contains(string(contents), "done=1") {
-							// Not there yet.
-							match = false
-							break
-						}
-					}
-					files[re] = append(files[re], f)
-					break
-				}
+		for isOptional, regexList := range [][]string{regexes, w.optionalRegexes} {
+			if regexList == nil {
+				continue
 			}
-			if !match {
-				missing = append(missing, re)
+			for _, re := range regexList {
+				match := false
+				for _, f := range newFiles {
+					var err error
+					match, err = regexp.MatchString(re, f)
+					if err != nil {
+						return testing.PollBreak(errors.Wrapf(err, "invalid regexp %s", re))
+					}
+					if match {
+						// Wait for meta files to have "done=1".
+						if strings.HasSuffix(f, ".meta") {
+							var contents []byte
+							if contents, err = ioutil.ReadFile(f); err != nil {
+								return testing.PollBreak(errors.Wrap(err, "failed to read .meta file"))
+							}
+							if !strings.Contains(string(contents), "done=1") {
+								// Not there yet.
+								match = false
+								break
+							}
+						}
+						files[re] = append(files[re], f)
+						break
+					}
+				}
+				if !match && isOptional == 0 {
+					missing = append(missing, re)
+				}
 			}
 		}
 		if len(missing) != 0 {
-			return errors.Errorf("no file matched %s (found %s)", strings.Join(missing, ", "), strings.Join(newFiles, ", "))
+			return &RegexesNotFound{Missing: missing, Files: newFiles, PartialMatches: files}
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Second})
+	}, &testing.PollOptions{Timeout: w.timeout})
 	if err != nil {
-		return nil, errors.Wrap(err, "timed out while waiting for crash files")
+		var regexesNotFoundError *RegexesNotFound
+		if errors.As(err, &regexesNotFoundError) {
+			// Return unwrapped error, since we promise to return a RegexesNotFound
+			// error, not an error that wraps a RegexesNotFound error. (testing.Poll
+			// will run errors.Wrap on the returned error, see https://blog.golang.org/go1.13-errors)
+			return nil, *regexesNotFoundError
+		}
+
+		return nil, errors.Wrap(err, "unable to find crash files")
 	}
 	return files, nil
 }
