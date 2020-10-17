@@ -182,6 +182,7 @@ type CrashTester struct {
 	ptype     ProcessType
 	waitFor   CrashFileType
 	logReader *syslog.ChromeReader
+	killedPid int
 }
 
 // NewCrashTester returns a CrashTester. This must be called before chrome.New.
@@ -509,6 +510,8 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs []string) error 
 			}
 			return testing.PollBreak(errors.Wrapf(err, "could not kill target process %d", toKill.Pid))
 		}
+		ct.killedPid = int(toKill.Pid)
+
 		return nil
 	}, nil)
 	if err != nil {
@@ -545,7 +548,7 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs []string) error 
 // is that this waits for the SEGV'ed process to die instead of waiting for a
 // .meta file. We can't wait for a file to be created because ChromeCrashLoop
 // doesn't create files at all on one of its kills.
-func killBrowser(ctx context.Context) error {
+func (ct *CrashTester) killBrowser(ctx context.Context) error {
 	preSleepTime := time.Now()
 
 	// Sleep briefly after Chrome starts so it has time to set up breakpad or
@@ -572,6 +575,7 @@ func killBrowser(ctx context.Context) error {
 	if err = syscall.Kill(rp, syscall.SIGSEGV); err != nil {
 		return errors.Wrap(err, "failed to kill process")
 	}
+	ct.killedPid = rp
 
 	// Wait for all the processes to die (not just the root one). This avoids
 	// messing up other killNonBrowser tests that might try to kill an orphaned
@@ -621,7 +625,7 @@ func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, erro
 	dirs = append(dirs, crash.DefaultDirs()...)
 
 	if ct.ptype == Browser {
-		if err = killBrowser(ctx); err != nil {
+		if err = ct.killBrowser(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to kill Browser process")
 		}
 	} else {
@@ -630,18 +634,57 @@ func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, erro
 		}
 	}
 
-	newFiles, err := crash.GetCrashes(dirs...)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get new crashes")
-	}
-	for _, p := range newFiles {
-		testing.ContextLog(ctx, "Found expected Chrome crash file ", p)
+	// For reasons unknown, we sometimes don't see the files under the cryptohome
+	// when we do GetCrashes. (See https://crbug.com/1139494 for investigation.)
+	// Retry several times to avoid brief flakes.
+	testing.ContextLog(ctx, "Scanning crash directories")
+	// NOTE THAT in some tests (particularly ChromeCrashLoop), we don't know if
+	// the files will be written out or not, so we can't just loop forever looking
+	// for the files.
+	const timeout = 5 * time.Second
+	var regexes, optionalRegexes []string
+	switch ct.waitFor {
+	case NoCrashFile:
+		// We don't expect to find anything; we go through the WaitForCrashFiles
+		// loop once just to make sure there aren't unexpected files being written
+		// out.
+		optionalRegexes = []string{".*"}
+	case BreakpadDmp:
+		// Filename doesn't include the PID, so just accept any dmp file as the
+		// expected one. (The problems we've seen have always been the entire
+		// directory not being present, so this should be OK)
+		regexes = []string{`chromium-.*-minidump-.*\.dmp`}
+	case MetaFile:
+		meta := fmt.Sprintf(`.*\.%d\.meta`, ct.killedPid)
+		dmp := fmt.Sprintf(`.*\.%d\.dmp`, ct.killedPid)
+		regexes = []string{meta, dmp}
+		// Logs and i915_error_state may be skipped if the dmp file is too large,
+		// and we don't have control of the dmp file size, so leave them as
+		// optional.
+		logs := fmt.Sprintf(`.*\.%d\.chrome.txt.gz`, ct.killedPid)
+		i915 := fmt.Sprintf(`.*\.%d\.i915_error_state.log.xz`, ct.killedPid)
+		optionalRegexes = []string{logs, i915}
 	}
 
-	// Delete all crash files produced during this test: https://crbug.com/881638
-	deleteFiles(ctx, newFiles)
-
-	return newFiles, nil
+	var matches map[string][]string
+	if matches, err = crash.WaitForCrashFiles(ctx, dirs, regexes, crash.Timeout(timeout), crash.OptionalRegexes(optionalRegexes)); err != nil {
+		notFoundErr, ok := err.(crash.RegexesNotFound)
+		if !ok {
+			return nil, errors.Wrap(err, "WaitForCrashFiles failed")
+		}
+		// Some tests (like ChromeCrashLoop) don't know in advance if they will get
+		// crash files. Don't return an error if we didn't find the crash files;
+		// instead, return the list of files we found to the caller and let them
+		// decide if it was an error.
+		deleteFiles(ctx, notFoundErr.Files)
+		return notFoundErr.Files, nil
+	}
+	var files []string
+	for _, fileList := range matches {
+		files = append(files, fileList...)
+	}
+	deleteFiles(ctx, files)
+	return files, nil
 }
 
 // KillCrashpad kills all crashpad_handler processes running in the system. It
