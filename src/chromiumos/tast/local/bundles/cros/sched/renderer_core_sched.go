@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Ensures renderers are assigned different scheduling cookies",
 		Contacts:     []string{"joelaf@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "arc"},
+		SoftwareDeps: []string{"chrome", "arc", "coresched"},
 		Timeout:      3 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 	})
