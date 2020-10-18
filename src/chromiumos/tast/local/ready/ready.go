@@ -183,7 +183,7 @@ func killOrphanAutotestd(ctx context.Context) {
 // hasTPM checks whether the DUT has a TPM.
 func hasTPM(ctx context.Context) bool {
 	const noTPMError = "Communication failure"
-
+	return false
 	out, err := exec.Command("tpm_version").CombinedOutput()
 	if err != nil {
 		if exitError, ok := err.(*exec.ExitError); ok {
