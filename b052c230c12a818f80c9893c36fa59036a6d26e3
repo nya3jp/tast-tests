@@ -117,6 +117,30 @@
       },
       "revId": "b052c230c12a818f80c9893c36fa59036a6d26e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d479cdf0_bda4c9b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2020-10-19T21:18:16Z",
+      "side": 1,
+      "message": "It\u0027s already updated to use BootstrapCommand",
+      "parentUuid": "2055d7fe_a45a8321",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 20
+      },
+      "revId": "b052c230c12a818f80c9893c36fa59036a6d26e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
