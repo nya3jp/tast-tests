@@ -16,6 +16,23 @@
       "message": "```\n2020/10/19 14:05:35 [14:05:35.650] play_store_shown_time - average: 41397, range 40206 - 43058 based on 10 samples\n2020/10/19 14:05:35 [14:05:35.650] account_check_time - average: 0, range 0 - 1 based on 10 samples\n2020/10/19 14:05:35 [14:05:35.651] checkin_time - average: 4437, range 3681 - 5878 based on 10 samples\n2020/10/19 14:05:35 [14:05:35.651] network_wait_time - average: 39, range 7 - 93 based on 10 samples\n2020/10/19 14:05:35 [14:05:35.651] sign_in_time - average: 3664, range 2468 - 4252 based on 10 samples\n2020/10/19 14:05:35 [14:05:35.651] 13531.0.0,10,40206,41397,43058,0,0,1,3681,4437,5878,7,39,93,2468,3664,4252\n2020/10/19 14:05:35 Completed test arc.AuthPerf.unmanaged in 12m31.707s with 0 error(s)\n```",
       "revId": "7b05f0c4d8ed6f91f4f7bc8bd66983ed2fb0873b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad4b6a6a_8c507ac0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-19T21:21:51Z",
+      "side": 1,
+      "message": "TY",
+      "revId": "7b05f0c4d8ed6f91f4f7bc8bd66983ed2fb0873b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
