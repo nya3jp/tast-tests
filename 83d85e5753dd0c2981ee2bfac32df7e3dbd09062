@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b67b7394_382c86ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/finalize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-19T03:20:40Z",
+      "side": 1,
+      "message": "Consider specifying PollOptions.Timeout instead.\n\nsee: http://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testingutil/poll.go?l\u003d18",
+      "revId": "83d85e5753dd0c2981ee2bfac32df7e3dbd09062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
