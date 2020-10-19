@@ -27,8 +27,14 @@ func init() {
 		Desc:         "Checks connectivity while multi-networking is enabled",
 		Contacts:     []string{"jasongustaman@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
