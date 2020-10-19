@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87a9fa30_0f639f32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T20:00:19Z",
+      "side": 1,
+      "message": "Please also add a test owner as a reviewer, per go/tast-reviews.",
+      "revId": "29aff9d5771a18dbcae0e818fca26c09fb2e757f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b9fb373_b441ded0",
@@ -14,6 +31,24 @@
       "writtenOn": "2020-10-19T09:48:17Z",
       "side": 1,
       "message": "It does not do anything except return nil. Can we completely remove this function and caller code? Alternative, Add some comments on why keep this function.",
+      "revId": "29aff9d5771a18dbcae0e818fca26c09fb2e757f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b345ed_c4f2bf65",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T20:00:19Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "7b9fb373_b441ded0",
       "revId": "29aff9d5771a18dbcae0e818fca26c09fb2e757f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
