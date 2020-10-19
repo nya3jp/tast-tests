@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "da64264c_b2acc4e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-19T22:01:14Z",
+      "side": 1,
+      "message": "make sure to test it both on ARC P and ARCVM.\n\nI think arc.Bootstrap() had some issues on ARCVM? (perhaps it was already fixed... or was it on P?)",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "7b05f0c4d8ed6f91f4f7bc8bd66983ed2fb0873b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "965be9ce_d2ce31e3",
@@ -31,6 +54,23 @@
       "writtenOn": "2020-10-19T21:21:51Z",
       "side": 1,
       "message": "TY",
+      "revId": "7b05f0c4d8ed6f91f4f7bc8bd66983ed2fb0873b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e30016bd_8c8544c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-19T22:01:14Z",
+      "side": 1,
+      "message": "+2 % see comments",
       "revId": "7b05f0c4d8ed6f91f4f7bc8bd66983ed2fb0873b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
