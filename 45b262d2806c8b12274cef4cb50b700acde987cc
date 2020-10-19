@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "228e6869_05051ca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-10-19T16:52:18Z",
+      "side": 1,
+      "message": "Sure, won\u0027t say no to extra documentation. But note that we do prefer the fishfood build [don\u0027t need people making a mistake in building and uploading a broken binary]. It\u0027s also helpufl that the fishfood binary gets qualified.",
+      "parentUuid": "210608f7_f273fa2a",
+      "range": {
+        "startLine": 3,
+        "startChar": 44,
+        "endLine": 3,
+        "endChar": 49
+      },
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d53b6a3a_6af51ea8",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
         "patchSetId": 2
