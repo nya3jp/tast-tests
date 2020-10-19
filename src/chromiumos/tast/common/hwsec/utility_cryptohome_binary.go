@@ -35,6 +35,7 @@ const (
 	removeKeyExSuccessMessage              = "Key removed."
 	migrateKeyExSucessMessage              = "Key migration succeeded."
 	updateKeyExSuccessMessage              = "Key updated."
+	dbusCallFailedMessage                  = "call failed:"
 )
 
 func getLastLine(s string) string {
@@ -109,6 +110,9 @@ func (u *UtilityCryptohomeBinary) IsTPMReady(ctx context.Context) (bool, error) 
 	if strings.Contains(out, tpmIsNotReadyString) {
 		return false, nil
 	}
+	if strings.Contains(out, dbusCallFailedMessage) {
+		return false, nil
+	}
 	return false, errors.New("unexpected output from |cryptohome|")
 }
 
@@ -124,6 +128,9 @@ func (u *UtilityCryptohomeBinary) IsPreparedForEnrollment(ctx context.Context) (
 	if strings.Contains(out, tpmIsNotAttestationPreparedString) {
 		return false, nil
 	}
+	if strings.Contains(out, dbusCallFailedMessage) {
+		return false, nil
+	}
 	return false, errors.New("unexpected output from |cryptohome|")
 }
 
@@ -137,6 +144,9 @@ func (u *UtilityCryptohomeBinary) IsEnrolled(ctx context.Context) (bool, error) 
 		return true, nil
 	}
 	if strings.Contains(out, tpmIsNotAttestationEnrolledString) {
+		return false, nil
+	}
+	if strings.Contains(out, dbusCallFailedMessage) {
 		return false, nil
 	}
 	return false, errors.New("unexpected output from |cryptohome|")
