@@ -10,7 +10,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
-	"path"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -20,8 +20,6 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
-
-const loopbackSizeBytes = 16 * 1024 * 1024
 
 // formatDevice is a convenience function to invoke provided command to create
 // a filesystem on the device.
@@ -37,12 +35,12 @@ func formatDevice(ctx context.Context, formatCmd, device string) error {
 
 // withLoopbackDeviceDo initializes a loopback device (optionally formatting it) and calls
 // the provided function enclosed within the scope of validity of the loopback device.
-func withLoopbackDeviceDo(ctx context.Context, cd *crosdisks.CrosDisks, formatCmd string, f func(ctx context.Context, ld *crosdisks.LoopbackDevice) error) (err error) {
+func withLoopbackDeviceDo(ctx context.Context, cd *crosdisks.CrosDisks, sizeBytes int64, formatCmd string, f func(ctx context.Context, ld *crosdisks.LoopbackDevice) error) (err error) {
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second*10)
 	defer cancel()
 
-	ld, err := crosdisks.CreateLoopbackDevice(ctx, loopbackSizeBytes)
+	ld, err := crosdisks.CreateLoopbackDevice(ctx, sizeBytes)
 	if err != nil {
 		return errors.Wrap(err, "failed to create loopback device")
 	}
@@ -70,66 +68,27 @@ func withLoopbackDeviceDo(ctx context.Context, cd *crosdisks.CrosDisks, formatCm
 	return f(ctx, ld)
 }
 
-func doMount(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType, options string) (m crosdisks.MountCompleted, err error) {
-	testing.ContextLogf(ctx, "Mounting %q as %q with options %q", source, fsType, options)
-	m, err = cd.MountAndWaitForCompletion(ctx, source, fsType, strings.Split(options, ","))
-	if err != nil {
-		err = errors.Wrap(err, "failed to invoke mount")
-		return
-	}
-	testing.ContextLogf(ctx, "Mount completed with status %d", m.Status)
-	if m.SourcePath != source {
-		err = errors.Errorf("unexpected source_path: got %q; want %q", m.SourcePath, source)
-	}
-	return
+// testMountFilesystem mounts the loopback device, attempts a write and returns an error if unsuccessful.
+func testMountFilesystem(ctx context.Context, cd *crosdisks.CrosDisks, ld *crosdisks.LoopbackDevice, label string) error {
+	expectedMountPath := filepath.Join("/media/removable", label)
+	return withMountDo(ctx, cd, ld.DevicePath(), "", "rw", func(ctx context.Context, mountPath string) error {
+		if expectedMountPath != mountPath {
+			return errors.Errorf("unexpected mount_path: got %q; want %q", mountPath, expectedMountPath)
+		}
+		// Test writes.
+		dir := filepath.Join(mountPath, "mydir")
+		if err := os.Mkdir(dir, 0777); err != nil {
+			return errors.Wrapf(err, "failed to create a test directory %q", dir)
+		}
+		file := filepath.Join(dir, "test.txt")
+		if err := ioutil.WriteFile(file, []byte("some text\n"), 0666); err != nil {
+			return errors.Wrapf(err, "failed to write a test file in %q", file)
+		}
+		return nil
+	})
 }
 
-func testMountFilesystem(ctx context.Context, cd *crosdisks.CrosDisks, ld *crosdisks.LoopbackDevice, label string) (err error) {
-	ctxForUnmount := ctx
-	ctx, unmount := ctxutil.Shorten(ctx, time.Second*5)
-	defer unmount()
-
-	m, err := doMount(ctx, cd, ld.DevicePath(), "", "rw")
-	if err != nil {
-		return err
-	}
-
-	if m.Status != 0 {
-		return errors.Errorf("unexpected mount status: got %d; want %d", m.Status, 0)
-	}
-	defer func() {
-		status, e := cd.Unmount(ctxForUnmount, m.MountPath, []string{})
-		if e != nil {
-			testing.ContextLogf(ctxForUnmount, "Could not invoke unmount %q: %v", m.MountPath, e)
-			if err == nil {
-				err = errors.Wrapf(e, "could not invoke unmount %q", m.MountPath)
-			}
-			return
-		}
-		if status != 0 {
-			testing.ContextLogf(ctxForUnmount, "Failed to unmount %q: status %d", m.MountPath, status)
-			if err == nil {
-				err = errors.Wrapf(e, "failed to unmount %q: status %d", m.MountPath, status)
-			}
-		}
-	}()
-
-	mountPath := path.Join("/media/removable", label)
-	if m.MountPath != mountPath {
-		return errors.Errorf("unexpected mount_path: got %q; want %q", m.MountPath, mountPath)
-	}
-
-	// Test writes.
-	dir := path.Join(m.MountPath, "mydir")
-	if err := os.Mkdir(dir, 0777); err != nil {
-		return errors.Wrapf(err, "failed to create a test directory %q", dir)
-	}
-	file := path.Join(dir, "test.txt")
-	if err := ioutil.WriteFile(file, []byte("some text\n"), 0666); err != nil {
-		return errors.Wrapf(err, "failed to write a test file in %q", file)
-	}
-	return
-}
+const loopbackSizeBytes = 16 * 1024 * 1024
 
 // RunFilesystemTests executes a set of tests which mount different filesystems using CrosDisks.
 func RunFilesystemTests(ctx context.Context, s *testing.State) {
@@ -139,7 +98,7 @@ func RunFilesystemTests(ctx context.Context, s *testing.State) {
 	}
 	defer cd.Close()
 
-	err = withLoopbackDeviceDo(ctx, cd, "", func(ctx context.Context, ld *crosdisks.LoopbackDevice) error {
+	err = withLoopbackDeviceDo(ctx, cd, loopbackSizeBytes, "", func(ctx context.Context, ld *crosdisks.LoopbackDevice) error {
 		// Ideally we should run also some failure tests, e.g. unknown/no filesystem, etc, but cros-disks
 		// is too fragile and remains in a half-broken state after that, so we only check known good scenarios.
 		s.Run(ctx, "vfat", func(ctx context.Context, state *testing.State) {
