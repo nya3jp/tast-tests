@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a687b7_c5d7a4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-19T18:15:35Z",
+      "side": 1,
+      "message": "(I think Hsin-chen answered my question, FWIW. I also found grpc.io has some useful docs that I hadn\u0027t really read through much.)\n\n\u003e \u003e a timeout would be opaque if the error doesn\u0027t propagate right.\n\u003e \n\u003e (Not sure if Brian is asking this part, but) I tried a little bit on this and it seems only the error string is returned to the caller side so caller is unable to identify the error better than strings.Contain.\n\u003e \n\u003e I think this makes sense as it is very hard to marshal arbitrary error type, especially, the type might not even exist in the caller binary.\n\u003e \n\u003e We don\u0027t have similar usage so far but it might be a potential problem. One mitigation might be marshaling the error by ourselves in a wrapper.\n\nI wasn\u0027t so much worried about marshaling things -- just that we get some meaningful diagnostic that doesn\u0027t just say \"deadline exceeded.\"",
+      "parentUuid": "ff5c8ca2_7ba06051",
+      "range": {
+        "startLine": 1829,
+        "startChar": 0,
+        "endLine": 1829,
+        "endChar": 19
+      },
+      "revId": "ccdab9f7382e70a0c882837ae94bd2c946aad24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2f65cc2_9ecd16f6",
