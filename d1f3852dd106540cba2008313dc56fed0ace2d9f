@@ -16,6 +16,137 @@
       "message": "PTAL~",
       "revId": "d1f3852dd106540cba2008313dc56fed0ace2d9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ce2d15e_d181a605",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T14:49:18Z",
+      "side": 1,
+      "message": "let\u0027s return *os.File to encapsulate low layer things as much as possible.",
+      "range": {
+        "startLine": 110,
+        "startChar": 41,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "d1f3852dd106540cba2008313dc56fed0ace2d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc6a392_aebc103a",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T14:49:18Z",
+      "side": 1,
+      "message": "Could you close the conn?",
+      "revId": "d1f3852dd106540cba2008313dc56fed0ace2d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f615a907_bfe3b145",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T14:49:18Z",
+      "side": 1,
+      "message": "Could you close all fds in this case?",
+      "revId": "d1f3852dd106540cba2008313dc56fed0ace2d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d76532a_83080676",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T14:49:18Z",
+      "side": 1,
+      "message": "f needs to be closed after the use?",
+      "revId": "d1f3852dd106540cba2008313dc56fed0ace2d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12823d7c_e3204462",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T14:49:18Z",
+      "side": 1,
+      "message": "According to L198, because f is the first element of ExtraFiles, the FD will be always 3.",
+      "revId": "d1f3852dd106540cba2008313dc56fed0ace2d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dd15d1f_7a28c432",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T14:49:18Z",
+      "side": 1,
+      "message": "This is used only within this package. Can this be package private?",
+      "revId": "d1f3852dd106540cba2008313dc56fed0ace2d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ae8431_e0523b2b",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T14:49:18Z",
+      "side": 1,
+      "message": "optional/style: maybe merge them into one block?\n\nconst (\n  MojoSocketPath \u003d \"/tmp/lacros.socket\"\n  DataArtifact \u003d \"lacros_binary.tar\"\n)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "d1f3852dd106540cba2008313dc56fed0ace2d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
