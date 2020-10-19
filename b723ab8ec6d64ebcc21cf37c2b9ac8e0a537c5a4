@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d70f98c0_29e55d3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-19T22:05:19Z",
+      "side": 1,
+      "message": "What do you think of this approach? Might need some tests, but I\u0027ll add them iff you think I should go this route.",
+      "parentUuid": "c30d9732_c0736206",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 62
+      },
+      "revId": "b723ab8ec6d64ebcc21cf37c2b9ac8e0a537c5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c59d5fa_11da0987",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 1
