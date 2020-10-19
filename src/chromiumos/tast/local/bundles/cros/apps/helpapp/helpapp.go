@@ -166,7 +166,7 @@ func WaitWhatsNewTabRendered(ctx context.Context, tconn *chrome.TestConn) error 
 
 	// Particularly in this case, the apostrophe in What’s is not actually the normal
 	// apostrophe character, but instead the "right single quotation mark" character (&rsquo;).
-	titleParams := ui.FindParams{Role: ui.RoleTypeStaticText, Name: "What’s new with Chromebook?"}
+	titleParams := ui.FindParams{Role: ui.RoleTypeStaticText, Name: "What's new with Chromebook?"}
 	return ui.WaitUntilExists(ctx, tconn, titleParams, 30*time.Second)
 }
 
