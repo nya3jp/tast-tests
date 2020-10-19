@@ -41,7 +41,7 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 	// Get the information of the WLAN device.
 	dev, err := wlan.DeviceInfo(ctx, netIf)
 	if err != nil {
-		s.Fatal(err, "Failed reading the WLAN device information")
+		s.Fatal("Failed reading the WLAN device information: ", err)
 	}
 
 	res, err := iwr.ListPhys(ctx)
