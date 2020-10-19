@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0143ba_d9171aaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-19T08:48:42Z",
+      "side": 1,
+      "message": "Btw this is the build at badd264c1d94c314aa6bce4fff70890c610cc1a6 .",
+      "revId": "641144923cadd266db6646d00e761057e9c947d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
