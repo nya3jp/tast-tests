@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "953d90c9_23fa8c2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2020-10-19T22:06:12Z",
+      "side": 1,
+      "message": "tested and it works fine on vm as well. Thanks for the heads up.",
+      "parentUuid": "da64264c_b2acc4e1",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "7b05f0c4d8ed6f91f4f7bc8bd66983ed2fb0873b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "965be9ce_d2ce31e3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
