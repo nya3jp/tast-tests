@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc47d5b_77774014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-19T17:01:51Z",
+      "side": 1,
+      "message": "nit: \u0027exited\u0027",
+      "range": {
+        "startLine": 616,
+        "startChar": 51,
+        "endLine": 616,
+        "endChar": 58
+      },
+      "revId": "b723ab8ec6d64ebcc21cf37c2b9ac8e0a537c5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5f1d10_b2b1ffe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-19T17:01:51Z",
+      "side": 1,
+      "message": "This is similar to crash.WaitForCrashFiles. Is there any reason not to use that?",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 62
+      },
+      "revId": "b723ab8ec6d64ebcc21cf37c2b9ac8e0a537c5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c59d5fa_11da0987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-19T17:01:51Z",
+      "side": 1,
+      "message": "Can we use ct.killedPid here and wait for the file based on that? (The pid should be in the filename, right?)",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 0
+      },
+      "revId": "b723ab8ec6d64ebcc21cf37c2b9ac8e0a537c5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
