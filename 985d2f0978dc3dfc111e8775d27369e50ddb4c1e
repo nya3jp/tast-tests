@@ -44,6 +44,48 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "38e60af5_f21cb126",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-19T23:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f43b47af_6f75b811",
+      "revId": "985d2f0978dc3dfc111e8775d27369e50ddb4c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd30c4df_70a21db6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-19T23:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "834329e4_1e20133e",
+      "range": {
+        "startLine": 7,
+        "startChar": 48,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "985d2f0978dc3dfc111e8775d27369e50ddb4c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7910fe7a_76e3a370",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -73,6 +115,30 @@
       "side": 1,
       "message": "\u003e \"funcitons\" is a possible misspelling of \"functions\".\n\nPlease fix.",
       "parentUuid": "d40c05b1_ee785e63",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "985d2f0978dc3dfc111e8775d27369e50ddb4c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35412452_2ee480cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-19T23:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0ed6194_4e8b77f0",
       "range": {
         "startLine": 34,
         "startChar": 17,
