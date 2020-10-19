@@ -46,6 +46,30 @@
       },
       "revId": "4669cd11297c164150a792cd79ff28ee0e042240",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "814dffbc_c4053c35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_dbus.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-19T18:01:35Z",
+      "side": 1,
+      "message": "\u003e When we check for disconnection down below, it doesn\u0027t actually check that we don\u0027t disconnect throughout the roam process because the disconnection happens after the BSSID property changes.\n\nGood point. (We could fix that part by having a Watcher that spans across both the roam and the VerifyConnection step. But b/171086223 is probably a better place to straighten that out.)\n\nChecking for BSSID does still serve some purpose though; without it, we can\u0027t safely check for connectivity at line 155, because we don\u0027t know if we\u0027ve actually started disconnecting from the previous BSS. We could still be on the 1st AP.",
+      "parentUuid": "b130d02f_d4bc526e",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "4669cd11297c164150a792cd79ff28ee0e042240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
