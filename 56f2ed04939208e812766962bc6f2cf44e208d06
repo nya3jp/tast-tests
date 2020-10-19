@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "339ef7ff_1db6ce59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-19T22:24:21Z",
+      "side": 1,
+      "message": "Thanks, Ian! Mostly LGTM but I have one major concern (and one nit)",
+      "revId": "56f2ed04939208e812766962bc6f2cf44e208d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f732f46_2888e0c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-19T22:24:21Z",
+      "side": 1,
+      "message": "is it appropriate to delete files that didn\u0027t match the regex? it seems like that might make it harder to debug failures where the test causes unrelated crashes.",
+      "range": {
+        "startLine": 679,
+        "startChar": 19,
+        "endLine": 679,
+        "endChar": 36
+      },
+      "revId": "56f2ed04939208e812766962bc6f2cf44e208d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba20e1f_43f27646",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-19T22:24:21Z",
+      "side": 1,
+      "message": "nit: Can you elaborate a bit on this? I believe testing.Poll wraps the error, but I don\u0027t recall how or with what, so details might be useful",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 36
+      },
+      "revId": "56f2ed04939208e812766962bc6f2cf44e208d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
