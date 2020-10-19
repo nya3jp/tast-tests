@@ -22,6 +22,30 @@
       },
       "revId": "f72f10ec4cd2a5ccc22d4b7222722cb41aa84c07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7274a1de_f038939e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/max98390.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-19T07:02:27Z",
+      "side": 1,
+      "message": "Done by extrating common functions to utils.go.\n\nI use Table-driven tests to test between different hardware modles as they may have different amp count or sound card name, but they may share the some logic.\nI prefer implementing different boot time scenarios in different .go rather than run different logics by the options in the table for test readibility.",
+      "parentUuid": "0c451eb3_66470bca",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "f72f10ec4cd2a5ccc22d4b7222722cb41aa84c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
