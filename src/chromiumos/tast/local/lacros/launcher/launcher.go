@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"net"
 	"os"
 	"strings"
 	"syscall"
@@ -105,6 +106,52 @@ func killLacrosChrome(ctx context.Context) {
 	}
 }
 
+func receiveMojoFile(ctx context.Context) (*os.File, error) {
+	addr := &net.UnixAddr{
+		Name: mojoSocketPath,
+		Net:  "unix",
+	}
+	conn, err := net.DialUnix("unix", nil, addr)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not open lacros mojo socket")
+	}
+	defer conn.Close()
+
+	oob := make([]byte, syscall.CmsgSpace(4))
+	_, oobn, _, _, err := conn.ReadMsgUnix(nil, oob)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not read lacros mojo socket")
+	}
+
+	msgs, err := syscall.ParseSocketControlMessage(oob[:oobn])
+	if err != nil {
+		return nil, err
+	}
+
+	var fds []int
+	for _, msg := range msgs {
+		msgfds, err := syscall.ParseUnixRights(&msg)
+		if err != nil {
+			return nil, err
+		}
+		fds = append(fds, msgfds...)
+	}
+
+	if len(fds) != 1 {
+		for _, fd := range fds {
+			if err := syscall.Close(fd); err != nil {
+				testing.ContextLog(ctx, "Failed to close file descriptor while cleaning up: ", err)
+			}
+		}
+		return nil, errors.Errorf("expected exactly 1 file descriptor, got %d", len(fds))
+	}
+	f := os.NewFile(uintptr(fds[0]), "lacros.sock")
+	if f == nil {
+		return nil, errors.New("could not use fd for mojo")
+	}
+	return f, nil
+}
+
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
 func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	killLacrosChrome(ctx)
@@ -141,11 +188,24 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--use-cras",                                 // Use CrAS.
 		"--use-fake-ui-for-media-stream",             // Avoid the need to grant camera/microphone permissions.
+		"--mojo-platform-channel-handle=3",           // Pass the file descriptor needed to connect lacros and ash-chrome via Mojo.
 		chrome.BlankURL,                              // Specify first tab to load.
 	}
 
 	l.cmd = testexec.CommandContext(ctx, BinaryPath+"/chrome", args...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
+
+	// Get a file to connect to ash-chrome using Mojo with.
+	f, err := receiveMojoFile(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get fd for mojo")
+	}
+	defer f.Close()
+
+	// The mojo platform channel file is the first element of ExtraFiles, so it will be be accessible
+	// to lacros as file descriptor #3. Be careful about this when adding more ExtraFiles.
+	l.cmd.Cmd.ExtraFiles = append(l.cmd.Cmd.ExtraFiles, f)
+
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
 	if err := l.cmd.Cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros-chrome")
