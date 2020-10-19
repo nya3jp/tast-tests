@@ -93,6 +93,30 @@
       },
       "revId": "b052c230c12a818f80c9893c36fa59036a6d26e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2055d7fe_a45a8321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-19T21:16:38Z",
+      "side": 1,
+      "message": "Separating args is the right way of doing this. Way you do it bit hacky. \nI ack, that this is a historical issue where we were using something like\n\"android-sh\", \"-c\", \"getprop dev.arc.signin.result\"\n\nThat is why I recommend you to use arc.BootstrapCommand\nIn your case this would be \na.BootstrapCommand(\u0027getprop\u0027, propname)\nI think it should work. Could you please give a try?\nThanks",
+      "parentUuid": "34fad751_f7cad762",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 20
+      },
+      "revId": "b052c230c12a818f80c9893c36fa59036a6d26e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
