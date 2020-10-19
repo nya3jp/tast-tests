@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d294cd3_f1b11515",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-19T06:32:09Z",
+      "side": 1,
+      "message": "A nit.",
+      "revId": "271b37f0840e6b5013a74c6f4a37562e62bf08b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca0c20bc_7eb5ee64",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-19T06:32:09Z",
+      "side": 1,
+      "message": "Let\u0027s make the method name shorter. How about \"SuspendAssureConnect\"?",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 28
+      },
+      "revId": "271b37f0840e6b5013a74c6f4a37562e62bf08b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eecbdff_4fd4ac03",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-19T06:32:09Z",
+      "side": 1,
+      "message": "waits",
+      "range": {
+        "startLine": 136,
+        "startChar": 50,
+        "endLine": 136,
+        "endChar": 54
+      },
+      "revId": "271b37f0840e6b5013a74c6f4a37562e62bf08b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
