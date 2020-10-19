@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b764bc_92b6f828",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2020-10-19T20:23:43Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/web_applications/default_web_app_ids.h",
+      "revId": "203dd5774038f9c5bdc577e82b79ff35692fa526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc33c32_be223d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2020-10-19T20:23:43Z",
+      "side": 1,
+      "message": "cros-peripherals@",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "203dd5774038f9c5bdc577e82b79ff35692fa526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ef8d62_0694881f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2020-10-19T20:23:43Z",
+      "side": 1,
+      "message": "Is there a formatter? What\u0027s the line limit for Go?",
+      "revId": "203dd5774038f9c5bdc577e82b79ff35692fa526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
