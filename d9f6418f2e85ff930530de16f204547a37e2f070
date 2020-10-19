@@ -92,6 +92,30 @@
       },
       "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae808ba4_6c62232f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T08:56:22Z",
+      "side": 1,
+      "message": "I think this way the gRPC can only be used for BT enabled case because if it\u0027s disabled, the gRPC will poll until timeout. (And the behavior is more like WaitBTPowered) OTOH, the WiFi case is a little different, it is a tri-state case: not available, disabled, or enabled. When getting \"if enabled\" setting, it makes sense to wait until \"available\" as otherwise, the setting is still unknown.\n\nHowever, moving the polling into gRPC will make future changes easier, so I\u0027m also not sure which is better. Or, should I just rename it to WaitBTPowered...?",
+      "parentUuid": "259c04a5_d0c4de03",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 55
+      },
+      "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
