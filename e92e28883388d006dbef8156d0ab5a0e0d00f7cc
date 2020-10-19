@@ -33,6 +33,24 @@
       "message": "should this check the returned error, too?",
       "revId": "e92e28883388d006dbef8156d0ab5a0e0d00f7cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f011943d_b7c67272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-10-19T19:48:49Z",
+      "side": 1,
+      "message": "Thanks for catching this :) Done.",
+      "parentUuid": "b7dbf7a1_d67efc32",
+      "revId": "e92e28883388d006dbef8156d0ab5a0e0d00f7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
