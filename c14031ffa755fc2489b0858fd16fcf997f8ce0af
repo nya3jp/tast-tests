@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d35c0b_e86a050f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T01:58:58Z",
+      "side": 1,
+      "message": "do you mean to put this at L708?\n\nAlso, I\u0027d recommend to to return the first error (i.e. the one at L701), in case of StopTracing failed, and just log the StopTracing\u0027s err, instead.",
+      "range": {
+        "startLine": 702,
+        "startChar": 4,
+        "endLine": 705,
+        "endChar": 14
+      },
+      "revId": "c14031ffa755fc2489b0858fd16fcf997f8ce0af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
