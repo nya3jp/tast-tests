@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7550391a_3f5906e8",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-19T21:15:33Z",
+      "side": 1,
+      "message": "I don\u0027t see diagnostics in that list. Should I add an entry?",
+      "parentUuid": "a1b764bc_92b6f828",
+      "revId": "203dd5774038f9c5bdc577e82b79ff35692fa526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cdc33c32_be223d67",
         "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-19T20:23:43Z",
       "side": 1,
       "message": "cros-peripherals@",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "203dd5774038f9c5bdc577e82b79ff35692fa526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25409de8_b7d2f650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-19T21:15:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdc33c32_be223d67",
       "range": {
         "startLine": 25,
         "startChar": 4,
@@ -54,6 +96,24 @@
       "writtenOn": "2020-10-19T20:23:43Z",
       "side": 1,
       "message": "Is there a formatter? What\u0027s the line limit for Go?",
+      "revId": "203dd5774038f9c5bdc577e82b79ff35692fa526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bfa0b15_d5a8f2a1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-19T21:15:33Z",
+      "side": 1,
+      "message": "Yeah this is the output of the formatter. Apparently there\u0027s no line length limits in go.",
+      "parentUuid": "e4ef8d62_0694881f",
       "revId": "203dd5774038f9c5bdc577e82b79ff35692fa526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
