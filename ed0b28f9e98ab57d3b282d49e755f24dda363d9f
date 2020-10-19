@@ -16,6 +16,24 @@
       "message": "I think this should be outside the loop, otherwise the test will wait for 2 seconds for each menu item.",
       "revId": "ed0b28f9e98ab57d3b282d49e755f24dda363d9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "365007da_f76c4782",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-19T04:01:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57ffa3e2_b63ed8d4",
+      "revId": "ed0b28f9e98ab57d3b282d49e755f24dda363d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
