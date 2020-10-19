@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec56ba4_2c47800b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T14:57:58Z",
+      "side": 1,
+      "message": "LGTM with minor fix request.",
+      "revId": "aa9d55404650e6a0a31d5cf93c8202fa2f9f65cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afdb82e5_6d41da7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T14:57:58Z",
+      "side": 1,
+      "message": "nit: could you dump the err (the one returned from StopTracing) here, too? That may help investigation in the future.\n\ntesting.ContextLog(ctx, \"Failed to stop tracing after encountering other error: \", err)",
+      "revId": "aa9d55404650e6a0a31d5cf93c8202fa2f9f65cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
