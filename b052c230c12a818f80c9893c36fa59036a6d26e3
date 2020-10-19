@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd26c7e_80964c97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2020-10-19T21:10:01Z",
+      "side": 1,
+      "message": "That\u0027s how I\u0027ve been running it but just noticed it works without it as well.",
+      "parentUuid": "b889b137_f6b43e1a",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "b052c230c12a818f80c9893c36fa59036a6d26e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a14f2b2_07c7d615",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-19T20:00:04Z",
       "side": 1,
       "message": "Wonder if we could use something like:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/commands.go;l\u003d20?q\u003dBootstrapCommand\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2F\n\nCould you please remind what is changed here? IIRC we use prop for a long time and it used to work.",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 20
+      },
+      "revId": "b052c230c12a818f80c9893c36fa59036a6d26e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34fad751_f7cad762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2020-10-19T21:10:01Z",
+      "side": 1,
+      "message": "When I initially wrote the test, I was concatenating getprop and propName but I got a CL feedback to separate them into separate args. Which passes the test still, but breaks the parsing and gives wrong number because getprop doesn\u0027t filter to single property and returns all properties if prop name is sent separately.",
+      "parentUuid": "7a14f2b2_07c7d615",
       "range": {
         "startLine": 247,
         "startChar": 2,
