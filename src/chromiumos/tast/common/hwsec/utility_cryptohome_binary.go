@@ -35,6 +35,7 @@ const (
 	removeKeyExSuccessMessage              = "Key removed."
 	migrateKeyExSucessMessage              = "Key migration succeeded."
 	updateKeyExSuccessMessage              = "Key updated."
+	dbusCallFailedMessage                  = "call failed:"
 )
 
 func getLastLine(s string) string {
@@ -99,47 +100,89 @@ func (u *UtilityCryptohomeBinary) GetDAInfo(ctx context.Context) (info *DAInfo, 
 
 // IsTPMReady checks if TPM is ready.
 func (u *UtilityCryptohomeBinary) IsTPMReady(ctx context.Context) (bool, error) {
-	out, err := u.binary.TPMStatus(ctx)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to call tpm_status")
+	const waitForDBus = 15 * time.Second
+
+	var result bool
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := u.binary.TPMStatus(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to call cryptohome")
+		}
+		if strings.Contains(out, dbusCallFailedMessage) {
+			return errors.Wrap(err, "failed to call cryptohome")
+		}
+		if strings.Contains(out, tpmIsReadyString) {
+			result = true
+			return nil
+		}
+		if strings.Contains(out, tpmIsNotReadyString) {
+			result = false
+			return nil
+		}
+		return errors.New("unexpected output from |cryptohome|")
+	}, &testing.PollOptions{Timeout: waitForDBus}); err != nil {
+		return false, errors.Wrap(err, "failed to call cryptohome")
 	}
-	if strings.Contains(out, tpmIsReadyString) {
-		return true, nil
-	}
-	if strings.Contains(out, tpmIsNotReadyString) {
-		return false, nil
-	}
-	return false, errors.New("unexpected output from |cryptohome|")
+
+	return result, nil
 }
 
 // IsPreparedForEnrollment checks if prepared for enrollment.
 func (u *UtilityCryptohomeBinary) IsPreparedForEnrollment(ctx context.Context) (bool, error) {
-	out, err := u.binary.TPMAttestationStatus(ctx)
-	if err != nil {
+	const waitForDBus = 15 * time.Second
+
+	var result bool
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := u.binary.TPMAttestationStatus(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to call cryptohome")
+		}
+		if strings.Contains(out, dbusCallFailedMessage) {
+			return errors.Wrap(err, "failed to call cryptohome")
+		}
+		if strings.Contains(out, tpmIsAttestationPreparedString) {
+			result = true
+			return nil
+		}
+		if strings.Contains(out, tpmIsNotAttestationPreparedString) {
+			result = false
+			return nil
+		}
+		return errors.New("unexpected output from |cryptohome|")
+	}, &testing.PollOptions{Timeout: waitForDBus}); err != nil {
 		return false, errors.Wrap(err, "failed to call cryptohome")
 	}
-	if strings.Contains(out, tpmIsAttestationPreparedString) {
-		return true, nil
-	}
-	if strings.Contains(out, tpmIsNotAttestationPreparedString) {
-		return false, nil
-	}
-	return false, errors.New("unexpected output from |cryptohome|")
+
+	return result, nil
 }
 
 // IsEnrolled checks if DUT is enrolled.
 func (u *UtilityCryptohomeBinary) IsEnrolled(ctx context.Context) (bool, error) {
-	out, err := u.binary.TPMAttestationStatus(ctx)
-	if err != nil {
+	const waitForDBus = 15 * time.Second
+
+	var result bool
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := u.binary.TPMAttestationStatus(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to call cryptohome")
+		}
+		if strings.Contains(out, dbusCallFailedMessage) {
+			return errors.Wrap(err, "failed to call cryptohome")
+		}
+		if strings.Contains(out, tpmIsAttestationEnrolledString) {
+			result = true
+			return nil
+		}
+		if strings.Contains(out, tpmIsNotAttestationEnrolledString) {
+			result = false
+			return nil
+		}
+		return errors.New("unexpected output from |cryptohome|")
+	}, &testing.PollOptions{Timeout: waitForDBus}); err != nil {
 		return false, errors.Wrap(err, "failed to call cryptohome")
 	}
-	if strings.Contains(out, tpmIsAttestationEnrolledString) {
-		return true, nil
-	}
-	if strings.Contains(out, tpmIsNotAttestationEnrolledString) {
-		return false, nil
-	}
-	return false, errors.New("unexpected output from |cryptohome|")
+
+	return result, nil
 }
 
 // EnsureOwnership takes TPM ownership if found unowned.
