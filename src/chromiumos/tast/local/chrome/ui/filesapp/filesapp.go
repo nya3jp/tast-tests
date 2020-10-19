@@ -335,6 +335,11 @@ func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuN
 		return errors.Wrapf(err, "failed to right click on %s", fileName)
 	}
 
+	// Wait location.
+	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
+
 	for _, menuName := range menuNames {
 		// Left click menuItem.
 		if err := f.LeftClickItem(ctx, menuName, ui.RoleTypeMenuItem); err != nil {
@@ -440,7 +445,7 @@ func (f *FilesApp) DeleteFileOrFolder(ctx context.Context, fileName string) erro
 	}
 	deleteButton, err := f.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
 	if err != nil {
-		return errors.Wrapf(err, "failed to find button Delete after selecting Delet in context menu of %s", fileName)
+		return errors.Wrapf(err, "failed to find button Delete after selecting Delete in context menu of %s", fileName)
 	}
 	defer deleteButton.Release(ctx)
 
