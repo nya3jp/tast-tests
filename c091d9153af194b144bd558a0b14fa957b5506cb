@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c76aea98_51c63138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T15:45:30Z",
+      "side": 1,
+      "message": "My recommendation of this CL is:\n- Minimize the testing.State use.\n  It is recommended by Tast: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n  \u003d\u003d quote \u003d\u003d\n  Avoid passing testing.State when it’s not actually necessary\n  \u003d\u003d quote end \u003d\u003d\n  - Nice to avoid to take it in utility functions.\n    I\u0027d recommend to return an error, rather than fail (s.Fatal()).\n  - If the \"error\" in the function _can_ be handled as non-fatal error,\n    let\u0027s not to take testing.State. If it needs to be shared with a function (named X) handling\n    the error as fatal, let X handle to make it fail. X can take testing.State.\n- Let\u0027s terminate the test as earlier as possible if it turns out that the test fails.\n  Rather than running longer time and report fatal error at the end. That helps to utilize\n  the engineering time in the future on runtime.\n\nThose may need to refactor the code, but I believe they will provide better long term maintainability and usability.",
+      "revId": "c091d9153af194b144bd558a0b14fa957b5506cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

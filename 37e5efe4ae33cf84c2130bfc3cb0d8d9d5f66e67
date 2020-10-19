@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ed7de8a_d046435a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T15:45:30Z",
+      "side": 1,
+      "message": "so the other task should be cancelled asap. Could you update the code to do so?",
+      "parentUuid": "54e3cd52_fdd422ff",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d00bbd1_81c5a258",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 10
@@ -191,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95b0c69c_0bb42dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T15:45:30Z",
+      "side": 1,
+      "message": "There\u0027s code path to call s.Fatal().\nIf it is not intentional, could you remove? Rather, could you not depending on tesitng.State if it does not fail? So, we can avoid any accidental misintroduction of s.Fatal() etc. in a callee in the future.\n\ntesting.State has many attributes, and we encourage not to take it as much as possible.\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "parentUuid": "4adc9cc2_cc443d61",
+      "range": {
+        "startLine": 244,
+        "startChar": 3,
+        "endLine": 244,
+        "endChar": 77
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5517fef_68aad367",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 10
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "It doesn\u0027t fail. Not having an Slc device is totally legitimate case: we want to re-use the same suit for both cases. While it uses the same function (getSlcDev) which can fail, the setup will check that it doesn\u0027t.",
       "parentUuid": "b5517fef_68aad367",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 4
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a97e73b_3515ad48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T15:45:30Z",
+      "side": 1,
+      "message": "Re-using the same suite is just fine, but Tast encourages to avoid depending on testing.State in general, if it does not trigger the fatal scenario.\nCould you refactor the code to:\n\nfunc foo(... /* no *testing.State */) error {\n  ...  // main test content. returns error on failure.\n}\n\nfunc testFoo(..., s *testing.State, ...) {\n  if err :\u003d foo(); err !\u003d nil {\n    s.Fatal(...)\n  }\n}\n\nto guarantee that should not fail here, but still fail in other cases?\nThat\u0027d reduce the long term maintenance cost, because not-fail characteristic is guaranteed by the compiler and the code structure.",
+      "parentUuid": "09b0fd4a_c695593b",
       "range": {
         "startLine": 252,
         "startChar": 2,
@@ -320,6 +392,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9be00af0_1d2382e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T15:45:30Z",
+      "side": 1,
+      "message": "Then, could you pass the value?\nAlso, please do not make this fatal, instead return an error.\n\nditto cf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "parentUuid": "8c94f025_d92d9531",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cacd9ab_0afd9821",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 10
@@ -349,6 +439,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "1cacd9ab_0afd9821",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d3f9e2d_dfc2a48b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T15:45:30Z",
+      "side": 1,
+      "message": "Revive for testing.State.",
+      "parentUuid": "23bda493_1b697641",
       "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -472,6 +580,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e686501b_d137ab90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T15:45:30Z",
+      "side": 1,
+      "message": "# Please take a look at my comment above. So, I still don\u0027t think utility funcitons should take testing.State, and thus the combination does not make sense for now at least.",
+      "parentUuid": "be210763_b6a4b63f",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 344,
+        "endChar": 37
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a65a9c97_5933cefd",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 10
@@ -548,6 +680,24 @@
       "side": 1,
       "message": "The reason we have those calls buried in here is because we want to avoid an immense amount of \"if dualQual\" in the testing blocks. This suit is used for both cases : with one device and with two devices - because the part for the boot device is identical in both cases. After quite some thoughts - this is the best way to avoid an insane amount of duplication",
       "parentUuid": "a65a9c97_5933cefd",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b56f73ee_47dd6ddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T15:45:30Z",
+      "side": 1,
+      "message": "I still think it is the callers\u0027 responsibility.\nSpecifically, looking at the usage, the expected behavior is that no task runs in parallel cases.\n\nif dualQual {\n  tasks \u003d append(tasks, func ... )\n}\n\nlooks like more go-ish, indeed there needs some minor duplication (and I personally agreed that may look annoying, but probably still better to handle as upper layer as possible, to avoid accidental overlooking in the future).\n\nWDYT?",
+      "parentUuid": "d5442fa2_d3030f91",
       "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
