@@ -33,6 +33,24 @@
       "message": "Please note that this is slightly different from what CL description says (and what patchset 1 does), \nI think this is fine but it might be worthwhile to update the CL description accordingly.\nPreviously: each iteration of testing.Poll had 10 second timeout. Poll does not have the timeout\nPatchset1: each iteration has 30 second timeout\nPatchset2: each iteration has no timeout, the entire Polling has 30 seconds timeout\n\nShuo-Peng will make the approve as he\u0027s assigned as the owner.\n\nI guess the most of the duration/latency comes from the cat of the file through ssh -- eventually it may be worthwhile to add a gRPC server to conduct this checking on the device. That way it should be much faster.",
       "revId": "ae4137c5902734c5d0f38bffe0ef059284fa4fb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2fdb34_37577ee1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-10-19T17:32:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ba6a63e3_ae39181d",
+      "revId": "ae4137c5902734c5d0f38bffe0ef059284fa4fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
