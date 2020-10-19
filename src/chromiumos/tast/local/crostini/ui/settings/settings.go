@@ -240,7 +240,6 @@ func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 // RemoveConfirmDialog represents the confirm dialog of removing Crostini.
 type RemoveConfirmDialog struct {
 	Self   *uig.Action `name:"Delete Linux (Beta)" role:"dialog"`
-	Msg    *uig.Action `name:"Delete all Linux applications and data in your Linux files folder from this Chromebook?" role:"staticText"`
 	Delete *uig.Action `name:"Delete" role:"button"`
 	Cancel *uig.Action `name:"Cancel" role:"button"`
 }
@@ -252,8 +251,7 @@ func (s *Settings) ClickRemove(ctx context.Context, tconn *chrome.TestConn) (*Re
 
 	if err := uig.Do(ctx, tconn,
 		uig.FindWithTimeout(removeLinuxButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
-		dialog.Self,
-		dialog.Msg); err != nil {
+		dialog.Self); err != nil {
 		return nil, errors.Wrap(err, "failed to find the delete dialog")
 	}
 
