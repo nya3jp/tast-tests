@@ -244,7 +244,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 func readResultProp(ctx context.Context, propName string) (float64, error) {
 	// TODO(mhasank): replace android-sh with an api call.
 	out, err := testexec.CommandContext(ctx,
-		"android-sh", "-c", "getprop ", propName).Output(testexec.DumpLogOnError)
+		"android-sh", "-c", "getprop "+propName).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return 0, errors.Wrapf(err, "failed to get the result property %q", propName)
 	}
