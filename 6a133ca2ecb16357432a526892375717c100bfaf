@@ -80,6 +80,30 @@
       },
       "revId": "6a133ca2ecb16357432a526892375717c100bfaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "032ea2ab_b61d5b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2020-10-19T23:33:49Z",
+      "side": 1,
+      "message": "If we don\u0027t want to restore this pref, we should just remove this defer method to avoid confusion. Clearly comment on we don\u0027t restore and any tests that want to test onboarding, which does not exist, will need to explicitly setup themselves.",
+      "parentUuid": "d4ceb7c6_dcf04393",
+      "range": {
+        "startLine": 107,
+        "startChar": 64,
+        "endLine": 107,
+        "endChar": 65
+      },
+      "revId": "6a133ca2ecb16357432a526892375717c100bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
