@@ -39,6 +39,30 @@
       },
       "revId": "0bfec2ece78c3e656b5075763d8f67107597bd4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca88c1d7_958f7691",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-19T08:34:16Z",
+      "side": 1,
+      "message": "Nice catch! fastest, slowest, and average become meaningless when there\u0027s no successful suspend. Let\u0027s return early in this case.",
+      "parentUuid": "943b6bb1_2c723adf",
+      "range": {
+        "startLine": 198,
+        "startChar": 21,
+        "endLine": 198,
+        "endChar": 47
+      },
+      "revId": "0bfec2ece78c3e656b5075763d8f67107597bd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
