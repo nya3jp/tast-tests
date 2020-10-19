@@ -168,7 +168,8 @@ func DeviceInfo(ctx context.Context, netIf string) (*DevInfo, error) {
 		return &DevInfo{vendor: vendorID, device: productID, subsystem: subsystemID, Name: d}, nil
 	}
 
-	return nil, errors.Errorf("get device %s: device unknown", netIf)
+	return nil, errors.Errorf("unknown %s device with vendorID=%s, productID=%s, subsystemID=%s",
+		netIf, vendorID, productID, subsystemID)
 }
 
 // LogBandwidthSupport logs info about the device bandwidth support.
