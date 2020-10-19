@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f0af7d3_a30a9e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T01:56:46Z",
+      "side": 1,
+      "message": "Could you move this out from data directory? (Maybe bundles/cros/lacros/README.md to be consistent with other categories).\n\nOtherwise, this will be the target to be uploaded to DUT on testing runtime.",
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c8feffb_8d1b066a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
         "patchSetId": 2
@@ -31,6 +48,30 @@
       "writtenOn": "2020-10-16T16:40:25Z",
       "side": 1,
       "message": "Should we just grab a fishfood build, e.g. http://go/releasing-lacros-fishfood",
+      "range": {
+        "startLine": 3,
+        "startChar": 44,
+        "endLine": 3,
+        "endChar": 49
+      },
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210608f7_f273fa2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T01:56:46Z",
+      "side": 1,
+      "message": "Probably, both? WDYT to document both ways, taking from fishfood prebuilt one, and build by oursevles?",
+      "parentUuid": "4c8feffb_8d1b066a",
       "range": {
         "startLine": 3,
         "startChar": 44,
@@ -83,6 +124,23 @@
         "endLine": 22,
         "endChar": 44
       },
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f826d21_8fd91e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T01:56:46Z",
+      "side": 1,
+      "message": "To ensure external data is used, local data/lacros_binary.tar needs to be removed. Could you comment it, too?",
       "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
