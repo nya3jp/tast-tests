@@ -17,6 +17,11 @@ import (
 	"chromiumos/tast/timing"
 )
 
+// MojoSocketPath indicates the path of the unix socket that ash-chrome creates.
+// This unix socket is used for getting the file descriptor needed to connect mojo
+// from ash-chrome to lacros.
+const MojoSocketPath string = "/tmp/lacros.socket"
+
 // DataArtifact holds the name of the tarball which contains the lacros-chrome
 // binary. When using the StartedByData precondition, you must list this as one
 // of the data dependencies of your test.
@@ -71,14 +76,16 @@ var startedByDataPre = &preImpl{
 	name:    "lacros_started_by_artifact",
 	timeout: chrome.LoginTimeout + 7*time.Minute,
 	mode:    download,
-	opts:    nil,
+	opts:    []chrome.Option{chrome.ExtraArgs("--lacros-mojo-socket-for-testing=" + MojoSocketPath)},
 }
 
 var startedByDataForceCompositionPre = &preImpl{
 	name:    "lacros_started_by_artifact_force_composition",
 	timeout: chrome.LoginTimeout + 7*time.Minute,
 	mode:    download,
-	opts:    []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\"")}, // Force composition.
+	opts: []chrome.Option{chrome.ExtraArgs(
+		"--lacros-mojo-socket-for-testing="+MojoSocketPath,
+		"--enable-hardware-overlays=\"\"")}, // Force composition.
 }
 
 var startedByDataWith100FakeAppsPre = ash.NewFakeAppPrecondition("fake_apps", 100, startedByDataWithChromeOSChromeOptions, false)

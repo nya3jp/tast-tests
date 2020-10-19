@@ -9,7 +9,9 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"net"
 	"os"
+	"strconv"
 	"strings"
 	"syscall"
 	"time"
@@ -105,10 +107,56 @@ func killLacrosChrome(ctx context.Context) {
 	}
 }
 
+func receiveMojoFD(ctx context.Context) (int, error) {
+	addr := &net.UnixAddr{
+		Name: MojoSocketPath,
+		Net:  "unix",
+	}
+	conn, err := net.DialUnix("unix", nil, addr)
+	if err != nil {
+		return -1, errors.Wrap(err, "could not open lacros mojo socket")
+	}
+
+	oob := make([]byte, syscall.CmsgSpace(4))
+	_, oobn, _, _, err := conn.ReadMsgUnix(nil, oob)
+	if err != nil {
+		return -1, errors.Wrap(err, "could not read lacros mojo socket")
+	}
+
+	msgs, err := syscall.ParseSocketControlMessage(oob[:oobn])
+	if err != nil {
+		return -1, err
+	}
+
+	var fds []int
+	for _, msg := range msgs {
+		msgfds, err := syscall.ParseUnixRights(&msg)
+		if err != nil {
+			return -1, err
+		}
+		fds = append(fds, msgfds...)
+	}
+
+	if len(fds) != 1 {
+		return -1, errors.Errorf("expected exactly 1 file descriptor, got %d", len(fds))
+	}
+	return fds[0], nil
+}
+
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
 func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	killLacrosChrome(ctx)
 
+	// Get a file descriptor to connect to ash-chrome using Mojo with.
+	fd, err := receiveMojoFD(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get fd for mojo")
+	}
+
+	f := os.NewFile(uintptr(fd), "lacros.sock")
+	if f == nil {
+		return nil, errors.New("could not use fd for mojo")
+	}
 	// Create a new temporary directory for user data dir. We don't bother
 	// clearing it on shutdown, since it's a subdirectory of the binary
 	// path, which is cleared by pre.go. We need to use a new temporary
@@ -141,11 +189,13 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--use-cras",                                 // Use CrAS.
 		"--use-fake-ui-for-media-stream",             // Avoid the need to grant camera/microphone permissions.
-		chrome.BlankURL,                              // Specify first tab to load.
+		"--mojo-platform-channel-handle=" + strconv.Itoa(fd),
+		chrome.BlankURL, // Specify first tab to load.
 	}
 
 	l.cmd = testexec.CommandContext(ctx, BinaryPath+"/chrome", args...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
+	l.cmd.Cmd.ExtraFiles = append(l.cmd.Cmd.ExtraFiles, f)
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
 	if err := l.cmd.Cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros-chrome")
