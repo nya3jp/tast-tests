@@ -16,6 +16,41 @@
       "message": "+CC wgd, since we\u0027re dropping/refactoring the stuff from CL:2365493\n\nPresumably wifi.MultiAuth still works OK (technically, that\u0027s covered by your TEST\u003d); by inspection, it should.",
       "revId": "8e85a111f705166db0128b82cedbdbd34dac3f03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acda744d_a62bad04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T02:28:28Z",
+      "side": 1,
+      "message": "Yes, wifi.MultiAuth is included in my verification.",
+      "parentUuid": "fb7b79d4_4d406a24",
+      "revId": "8e85a111f705166db0128b82cedbdbd34dac3f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9d59e2f_60e2a7fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T02:28:28Z",
+      "side": 1,
+      "message": "Verified on the latest patchset.",
+      "revId": "8e85a111f705166db0128b82cedbdbd34dac3f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
