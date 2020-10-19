@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dce2113_0cbff9b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-10-19T22:54:33Z",
+      "side": 1,
+      "message": "Discussed offline. It should be \"disabled-by-default-viz.triangles\"",
+      "parentUuid": "10e2e81c_c367b2e1",
+      "range": {
+        "startLine": 220,
+        "startChar": 41,
+        "endLine": 220,
+        "endChar": 46
+      },
+      "revId": "689ae01e1eeb005f22f8516ffd08ed631d145325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85f34e18_0adcf31f",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-16T19:09:02Z",
       "side": 1,
       "message": "Here I have the same question as in the other file.",
+      "range": {
+        "startLine": 250,
+        "startChar": 41,
+        "endLine": 250,
+        "endChar": 46
+      },
+      "revId": "689ae01e1eeb005f22f8516ffd08ed631d145325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3feb87d8_27908fbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-10-19T22:54:33Z",
+      "side": 1,
+      "message": "Same answer as in the other file.",
+      "parentUuid": "85f34e18_0adcf31f",
       "range": {
         "startLine": 250,
         "startChar": 41,
