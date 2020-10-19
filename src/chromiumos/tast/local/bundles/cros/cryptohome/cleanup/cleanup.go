@@ -50,7 +50,7 @@ func RunAutomaticCleanup(ctx context.Context, cleanupThreshold, aggressiveCleanu
 	}
 
 	// Wait for cleanup to finish.
-	if _, err := reader.Wait(ctx, 30*time.Second, func(e *syslog.Entry) bool {
+	if _, err := reader.Wait(ctx, 60*time.Second, func(e *syslog.Entry) bool {
 		return strings.Contains(e.Content, "Disk cleanup complete.")
 	}); err != nil {
 		return errors.Wrap(err, "cleanup not complete")
