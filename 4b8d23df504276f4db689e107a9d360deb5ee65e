@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "081f8c77_610a06a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T07:31:20Z",
+      "side": 1,
+      "message": "Not yet look carefully at the CL, but add a comment for a leftover question in crrev.com/c/2463410 first, in case I forget.",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ef1469_899ff24f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T07:31:20Z",
+      "side": 1,
+      "message": "Now we\u0027re facing the lab configuration problem. With this set of attributes, the test will be scheduled in wificell pool where, IIUC, there\u0027s no attenuator. We\u0027ll have to add an attribute for tests need attenuator.\n\nAlso, currently no \"-var\" is passed to the test by default, so this test will fail 100% in lab due to lack of the second Router. Do you plan to use pcap as router now? If so, we\u0027ll have to pass the setting to NewTestFixture somewhere. (This might not be trivial as we get the default router/pcap with *ssh.Conn instead of hostname...)",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
