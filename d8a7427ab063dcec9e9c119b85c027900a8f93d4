@@ -34,6 +34,23 @@
       "parentUuid": "1d677199_ed3b15bf",
       "revId": "d8a7427ab063dcec9e9c119b85c027900a8f93d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a6939de_185f7440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-10-19T19:27:06Z",
+      "side": 1,
+      "message": "Extra line",
+      "revId": "d8a7427ab063dcec9e9c119b85c027900a8f93d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
