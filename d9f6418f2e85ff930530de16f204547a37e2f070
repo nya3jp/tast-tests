@@ -140,6 +140,30 @@
       },
       "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a9989b7_2fb18bbb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T09:10:42Z",
+      "side": 1,
+      "message": "Thanks for the quick reply. :) I\u0027ll keep this as is. ACK.",
+      "parentUuid": "410b8a59_6b1e17a8",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 55
+      },
+      "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
