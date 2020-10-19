@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93f493c_264e8ee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sync_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T01:49:02Z",
+      "side": 1,
+      "message": "Oh, that\u0027s true. Thanks for the explanation!",
+      "parentUuid": "415ad113_fb79e285",
+      "range": {
+        "startLine": 72,
+        "startChar": 49,
+        "endLine": 72,
+        "endChar": 54
+      },
+      "revId": "60d5af02dcae79206aa9815d856eedf8f56b449f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be4a0f08_e539abea",
