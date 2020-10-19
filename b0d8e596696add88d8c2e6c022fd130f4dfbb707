@@ -16,6 +16,40 @@
       "message": "LGTM",
       "revId": "b0d8e596696add88d8c2e6c022fd130f4dfbb707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b52e37d_7b50fd16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-19T08:08:01Z",
+      "side": 1,
+      "message": "This got renamed, it is now StableFindAndClick(). The CQ is failing because of this.",
+      "revId": "b0d8e596696add88d8c2e6c022fd130f4dfbb707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21bf4e2_cf386e79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-19T08:08:01Z",
+      "side": 1,
+      "message": "See above.",
+      "revId": "b0d8e596696add88d8c2e6c022fd130f4dfbb707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
