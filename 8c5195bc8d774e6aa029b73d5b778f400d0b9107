@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2cdfb35_7f906447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-19T07:41:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f9e490e_c4b6e727",
+      "range": {
+        "startLine": 35,
+        "startChar": 37,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "8c5195bc8d774e6aa029b73d5b778f400d0b9107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4539202e_8419900c",
@@ -71,6 +95,24 @@
       "writtenOn": "2020-10-14T13:25:23Z",
       "side": 1,
       "message": "optional: how about doing like this?\nfunc .... , retErr error) {\n  ....\n  defer func(){\n    if retErr !\u003d nil {\n      local.Close()\n    }\n  }()\n  ...",
+      "revId": "8c5195bc8d774e6aa029b73d5b778f400d0b9107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f7e773_f2c0d290",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/patchpanel_client/patchpanel_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-19T07:41:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4539202e_8419900c",
       "revId": "8c5195bc8d774e6aa029b73d5b778f400d0b9107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
