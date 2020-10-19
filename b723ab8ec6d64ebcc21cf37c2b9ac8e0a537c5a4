@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c30d9732_c0736206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-19T18:35:54Z",
+      "side": 1,
+      "message": "IDK, maybe? How much work do you think it\u0027d be to make those changes?\n\nIf it\u0027s easy, I\u0027d say do it now, but if it\u0027d be more work than it would be worth for this CL (which I suspect), feel free to either add a TODO or just not do it.",
+      "parentUuid": "c7c9f3a9_669d049b",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 62
+      },
+      "revId": "b723ab8ec6d64ebcc21cf37c2b9ac8e0a537c5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c59d5fa_11da0987",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 1
