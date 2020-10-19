@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "510ad579_325f6402",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T09:16:10Z",
+      "side": 1,
+      "message": "Thanks for the change. one more nit. :)",
+      "revId": "ca6e3fe90d00876e01c4e12a351378eb799af495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832c9c61_472bf8a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T09:16:10Z",
+      "side": 1,
+      "message": "nit: Not sure if it will be better to have this Error, just in case someone forget to set suspendCount when adding test case.",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "ca6e3fe90d00876e01c4e12a351378eb799af495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
