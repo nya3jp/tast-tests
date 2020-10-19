@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f11ddc_e913755f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T07:50:56Z",
+      "side": 1,
+      "message": "Fix a unit test failure due to conflict with crrev.com/c/2440080 (which adds a test case without BSSID option).",
+      "revId": "bddb9e2ef45ac0e6cd96edf8a482069b1890a71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
