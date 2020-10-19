@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4fd0e42_7478f49f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T08:23:43Z",
+      "side": 1,
+      "message": "only one more nit.",
+      "revId": "0bfec2ece78c3e656b5075763d8f67107597bd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943b6bb1_2c723adf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-19T08:23:43Z",
+      "side": 1,
+      "message": "nit: this has small chance to be 0, maybe only calculate average when len(connectTimes) !\u003d 0? and leave zero value otherwise. (Or, if you prefer, +Inf)",
+      "range": {
+        "startLine": 198,
+        "startChar": 21,
+        "endLine": 198,
+        "endChar": 47
+      },
+      "revId": "0bfec2ece78c3e656b5075763d8f67107597bd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
