@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49209167_2c9fe15e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d3dba3a_13ba5750",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 84
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3b7fa8c_72aa7b1a",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf71d93a_57b69a0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3b7fa8c_72aa7b1a",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbf30c25_19d110f8",
@@ -88,6 +130,30 @@
       "writtenOn": "2020-10-16T15:25:42Z",
       "side": 1,
       "message": "\"EditBookmarksEnabled tests the EditBookmarksEnabaled policy for the enabled,disabled and unset cases.\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 91
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83abc792_072f1ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbf30c25_19d110f8",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -138,6 +204,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d822a9_698fc001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e78d1492_df3764cb",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b9a7cd_12a61232",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38a0e3f7_7e5d9a5c",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9198999_9737754a",
@@ -151,6 +259,30 @@
       "writtenOn": "2020-10-16T15:25:42Z",
       "side": 1,
       "message": "nit: Comments have to be sentences staring with a capital letter and ending with a punctuation mark.",
+      "range": {
+        "startLine": 46,
+        "startChar": 48,
+        "endLine": 46,
+        "endChar": 89
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "042f3a8c_9a756384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9198999_9737754a",
       "range": {
         "startLine": 46,
         "startChar": 48,
@@ -203,6 +335,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66727cb8_c133be1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Gherkin keywords help recognize where arrange/act/assert blocks are. It is a good practice regardless of the language.\n\nI have no problem removing them and the same time I see how they help with better understanding the flow structure.",
+      "parentUuid": "bc7e817b_5afedfbd",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 11
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a10f4a3_2f7b48e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 1
@@ -214,6 +370,24 @@
       "writtenOn": "2020-10-16T15:03:29Z",
       "side": 1,
       "message": "Add . to the end.",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1893376b_f47412a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a10f4a3_2f7b48e3",
       "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -255,6 +429,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "367681d9_f3664275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "logic for the Disabled policy state is a bit different. \nI see in some tests we have conditionals in the execution flow which should be happening. Test logic should now have if/switch that means tests executes logic which depends on a certain flag.\nIMHO it is better to have logic defined in a separate functions (func policyOn, func policyOff, func policyNotSet). If those, in turn use the same code then applying DRY (don\u0027t repeat yourself) principle will end up with cleaner code.",
+      "parentUuid": "08969a13_1477cbf8",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffbacad1_ec317aad",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 1
@@ -272,6 +464,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b81809c1_f4c9319b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "hmmm... I was thinking about this but, how I would log actions then? It seems like a flaw having logger bonded with testing State.\nI could pass just TestAPI reference and in case of errors use Fatal or panic but then still - what if I want to just log something? Should I just go for fmt.Sprint()  ?",
+      "parentUuid": "ffbacad1_ec317aad",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dab82515_f51d5511",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 1
@@ -283,6 +493,24 @@
       "writtenOn": "2020-10-16T15:03:29Z",
       "side": 1,
       "message": "Add . to the end.",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3784d847_1c9e4488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dab82515_f51d5511",
       "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -329,6 +557,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef92fb8c_0a419a70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "I would debate on that. Doc says:\n- Log and Logf record informational messages about the test\u0027s progress.\n- When you‘re about to do something that could take a while or even hang, log a message using Log or Logf first.\n\nUI interactions involve waiting or interacting with something that may go away. Good practice in (especially) UI automation is to log high level execution so, that when looking at the logs one could perform the test without looking into the code.",
+      "parentUuid": "df94465a_301ccc83",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 32
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddbf6336_955e57bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 1
@@ -340,6 +592,30 @@
       "writtenOn": "2020-10-16T15:03:29Z",
       "side": 1,
       "message": "Use full sentences.",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 8
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ebda28_c0ae2e9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "As above commented concerning //GIVEN\n\nthose keywords come from Gherkin syntax and are meant to highlight arrange/act/assert blocks.\n\nFull sentence would be nice if we fully supported BDT (Behavioral Driven Testing).",
+      "parentUuid": "ddbf6336_955e57bb",
       "range": {
         "startLine": 120,
         "startChar": 4,
@@ -396,6 +672,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e304f0_6ce8fe9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "501e959f_8880002a",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11c40856_ff907b2d",
@@ -409,6 +709,30 @@
       "writtenOn": "2020-10-16T15:25:42Z",
       "side": 1,
       "message": "\"Unexpected bookmark name: got %s; want %s\"",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 154,
+        "endChar": 82
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b8a639_fb466967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Out of curiosity - is this Go convention?",
+      "parentUuid": "11c40856_ff907b2d",
       "range": {
         "startLine": 154,
         "startChar": 12,
@@ -444,6 +768,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eeb3f60a_e0ee9686",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "That is how I started the tests to begin with. However, chrome://bookmarks has shadow DOM. When I tried to fish out the bookmark row with css selector \"#bookmark_0\" it didn\u0027t work. I think you mentioned we could use full path but that put test on risk - something changes on the page and it will fail as path may change.",
+      "parentUuid": "41198566_db29d610",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 46
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acda371c_de56f58e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 1
@@ -455,6 +803,30 @@
       "writtenOn": "2020-10-16T15:03:29Z",
       "side": 1,
       "message": "Add . to the end.",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6157245_8272b70f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acda371c_de56f58e",
       "range": {
         "startLine": 174,
         "startChar": 1,
@@ -528,6 +900,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea51aa7_32711842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c34e55f5_71439d67",
+      "range": {
+        "startLine": 205,
+        "startChar": 10,
+        "endLine": 205,
+        "endChar": 75
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96cfb53e_039daa0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bbe4b59_891e09b4",
+      "range": {
+        "startLine": 205,
+        "startChar": 75,
+        "endLine": 205,
+        "endChar": 80
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "638b86ae_c43957e4",
@@ -541,6 +961,30 @@
       "writtenOn": "2020-10-16T15:25:39Z",
       "side": 1,
       "message": "If you trigger a change, and nothing happens, you cannot be sure if you just didn\u0027t wait for long enough.\nYou should check for the \"bookmark this page\" without sending ctrl+d, as that node should be there if enabled from when you open the browser.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839286a0_67c19020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-19T09:44:18Z",
+      "side": 1,
+      "message": "Checking that.",
+      "parentUuid": "638b86ae_c43957e4",
       "range": {
         "startLine": 200,
         "startChar": 0,
