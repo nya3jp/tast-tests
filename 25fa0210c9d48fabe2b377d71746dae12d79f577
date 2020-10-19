@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1332b88_9c5a4ab8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-19T07:41:17Z",
+      "side": 1,
+      "message": "Thanks a lot for the review, Tatsuhisa!",
+      "revId": "25fa0210c9d48fabe2b377d71746dae12d79f577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
