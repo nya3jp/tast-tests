@@ -16,6 +16,46 @@
       "message": "Roman, PTAL 😊",
       "revId": "1628d1c49613110dc5959393dfe41f83dc215cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "377f1ca2_9eee3844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-10-19T12:08:09Z",
+      "side": 1,
+      "message": "lgtm with a nit",
+      "revId": "1628d1c49613110dc5959393dfe41f83dc215cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e18c4a_128e7433",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-10-19T12:08:09Z",
+      "side": 1,
+      "message": "let\u0027s do the same on fakeLogin. I think we have a lot of issues there too.",
+      "range": {
+        "startLine": 192,
+        "startChar": 16,
+        "endLine": 192,
+        "endChar": 25
+      },
+      "revId": "1628d1c49613110dc5959393dfe41f83dc215cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
