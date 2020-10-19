@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f5ce5e_38a74e8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-10-19T20:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a15d9b9f_03994e01",
+      "revId": "d0a6ccfe996f17dfa978824ba01593c4799b2a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3cfe1d0_af0534bb",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-16T23:47:35Z",
       "side": 1,
       "message": "In a successful run, this is not necessary.  It might be okay but might avoid by introducing a flag.\n  tracingStopped :\u003d false\n  defer func() {\n    if !tracingStopped {\n      if _, err :\u003d cr.StopTracing(cleanupCtx); err !\u003d nil {\n        s.Error(\"Failed to stop tracing: \", err)\n      }\n    }\n  }()\n  ...\n  tracingStopped \u003d true\n  tr, err :\u003d cr.SopTracing(cleanupCtx)\n  ...",
+      "revId": "d0a6ccfe996f17dfa978824ba01593c4799b2a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb7bb17_5e166191",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-10-19T20:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3cfe1d0_af0534bb",
       "revId": "d0a6ccfe996f17dfa978824ba01593c4799b2a3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff47aa14_70a3fa23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_pip_energy_and_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-10-19T20:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a8c4b2d_03dcf869",
+      "range": {
+        "startLine": 265,
+        "startChar": 27,
+        "endLine": 265,
+        "endChar": 30
+      },
+      "revId": "d0a6ccfe996f17dfa978824ba01593c4799b2a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd6e8b88_877f4216",
@@ -71,6 +131,30 @@
       "writtenOn": "2020-10-16T23:47:35Z",
       "side": 1,
       "message": "Can you also add ctx to the argument, and then make testing.ContextLog when file.Close or writer.Close return an error?",
+      "range": {
+        "startLine": 1668,
+        "startChar": 5,
+        "endLine": 1668,
+        "endChar": 20
+      },
+      "revId": "d0a6ccfe996f17dfa978824ba01593c4799b2a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "939334ee_f299c920",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1668,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-10-19T20:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd6e8b88_877f4216",
       "range": {
         "startLine": 1668,
         "startChar": 5,
