@@ -116,6 +116,30 @@
       },
       "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410b8a59_6b1e17a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-19T09:04:07Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t think the network cost of polling through gRPC is too great and the current implementation works just fine.\n\nI don\u0027t think we will expect too many more bluetooth tests in Tast in the near future. The Bluetooth team hasn\u0027t migrated to Tast (yet?), so I think we can just keep the change as is.",
+      "parentUuid": "ae808ba4_6c62232f",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 55
+      },
+      "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
