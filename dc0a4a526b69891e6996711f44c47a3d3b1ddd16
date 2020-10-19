@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1253ae4_fcb9a5dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "Why abandon that CL? It would be good to test this functionality to prevent regressions. Currently this entire library is untested.",
+      "parentUuid": "67eabeae_ddfba9b6",
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab585d03_4ae51d85",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
         "patchSetId": 2

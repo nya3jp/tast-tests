@@ -33,6 +33,356 @@
       "message": "Hi Tast Experts,\n\nCan you please take a look at this CL? Thanks!",
       "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d6bf05c_8c985a88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "It might make sense to export this type (change from proxyServer to ProxyServer) so that other packages can use it as a type param type / return type, or make type assertions.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b11dbc6_3089b551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "I assume FD is an initialism for File Descriptor. Please change this variable name to lifelineFD in accordance with Go\u0027s convention on initialisms in variable names:\n\n    Words in names that are initialisms or acronyms (e.g. \"URL\" or \"NATO\") have a consistent case. For example, \"URL\" should appear as \"URL\" or \"url\" (as in \"urlPony\", or \"URLPony\"), never as \"Url\". As an example: ServeHTTP not ServeHttp. For identifiers with multiple initialized \"words\", use for example \"xmlHTTPRequest\" or \"XMLHTTPRequest\".\n    \nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e95566_248f76a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "This should be |auth|, since it looks like you\u0027re referring to the variable and not its type.",
+      "range": {
+        "startLine": 46,
+        "startChar": 57,
+        "endLine": 46,
+        "endChar": 72
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6415f636_ed33acb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "nit: I recommend clarifying that this is the proxy\u0027s HostAndPort:\n\n    |s.HostAndPort| will be set to...",
+      "range": {
+        "startLine": 47,
+        "startChar": 85,
+        "endLine": 47,
+        "endChar": 96
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0a1befe_0d545f66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "nit/typo: \"If proxy configuration and setup ARE successful\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 69,
+        "endLine": 47,
+        "endChar": 71
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9f54f3_8bdb9583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "nit/style: The \"Server\" part is already implied by the fact that this is a proxyServer. In accordance with Go\u0027s preference for concision, you can shorten this method name to Start.",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1fc4ef_c54bd298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "nit/style: The \"Server\" part is already implied by the fact that this is a proxyServer. In accordance with Go\u0027s preference for concision, you can shorten this method name to Stop.",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b5fafa5_e1a33d29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "The creation of the additional file seems like an unexpected side-effect of this function. Based on the principle that functions should do one thing with no side-effects, the PID file should be created separately from createTinyproxyConfig.\n\nThat said, I do recognize you need pidFile.Name() to populate the config file. Thus, I recommend modifying createTinyproxyConfig to take an addition parameter, pidFile *os.File. Then StartServer would look like this:\n\n    func (s *proxyServer) StartServer(ctx context.Context, port int, auth *AuthCredentials) error {\n        pidFile, err :\u003d createTempFile()\n        if err !\u003d nil {\n            return errors.Wrap(err, \"creating PID file\")\n        }\n        if err :\u003d createTinyproxyConfig(port, auth, pidFile); err !\u003d nil {\n            return errors.Wrap(err, \"creating tinyproxy config\")\n        }\n        ...\n    }",
+      "range": {
+        "startLine": 74,
+        "startChar": 62,
+        "endLine": 74,
+        "endChar": 84
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6236be8a_58650655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "Every line of this file is going to be indented except for the first line. Is that intentional?",
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef8c0b0_0e277d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "nit/style: This is the only comment that begins with the name of the variable it describes. For consistency, I recommend removing the variable name:\n\n    # The number of servers to start initially.\n    StartServers 5",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 15
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d5b00d8_c7823402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "I\u0027m guessing there\u0027s some special behavior when MaxRequestsPerChild\u003d0, or else I would expect threads to die immediately upon creation. Please clarify this comment.",
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a0f2ba_25a10fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "You\u0027re not opening pidFile here, so no need to close it.",
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9cc174c_678a9b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "I think that this dirpath would make sense to define up top with proxyServerBin and proxyServerConfig.\n\nAnd, does this need to have this particular filepath? Or could you use ioutil.TempDir? http://go/godoc/io/ioutil/#TempDir",
+      "range": {
+        "startLine": 124,
+        "startChar": 15,
+        "endLine": 124,
+        "endChar": 29
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff83db5d_b1e5d356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "Currently there is no process to clean up /etc/tinyproxy at the end of the test. Please create a proxyServer.Close() method which deletes the tempfiles.\n\nSame for the PID file and its tempdir.",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82afc73b_d871b51b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "Please don\u0027t ignore errors.\n\n    if err :\u003d os.Mkdir(\"/etc/tinyproxy\", os.ModeDir); err !\u003d nil {\n        return errors.Wrap(err, \"creating tinyproxy dir\")\n    }",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d26e19e6_f334c8d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-19T18:32:52Z",
+      "side": 1,
+      "message": "createTempFile is quite an ambiguous name, especially when compared with ioutil.TempFile(), ioutil.TempDir(), and testingutil.TempDir(). Specifically, this function is not just creating any old tempfile, but rather creating a very specific PID file. I recommend renaming this to something more specific, such as createPIDFile.",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 17
+      },
+      "revId": "5f7dbf1343d21c359cee0537040e2772b7ba7fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
