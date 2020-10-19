@@ -16,6 +16,41 @@
       "message": "Btw this is the build at badd264c1d94c314aa6bce4fff70890c610cc1a6 .",
       "revId": "641144923cadd266db6646d00e761057e9c947d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "346f9a4c_7e05a52d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T15:06:30Z",
+      "side": 1,
+      "message": "Could you add in the commit message?\nE.g.\n\nupdate the lacros binary to r817851 manually.\n\nLet\u0027s discuss what version we\u0027d like to exercise for mid-term separately.",
+      "parentUuid": "4f0143ba_d9171aaa",
+      "revId": "641144923cadd266db6646d00e761057e9c947d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77fffb75_179bc60f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-19T15:06:30Z",
+      "side": 1,
+      "message": "Owner +2.\nErik, could you double check if you\u0027re ok to uprev to the current version?",
+      "revId": "641144923cadd266db6646d00e761057e9c947d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
