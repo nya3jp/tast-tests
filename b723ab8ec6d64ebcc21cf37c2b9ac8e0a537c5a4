@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f5ab8f_69124a90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-19T18:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fc47d5b_77774014",
+      "range": {
+        "startLine": 616,
+        "startChar": 51,
+        "endLine": 616,
+        "endChar": 58
+      },
+      "revId": "b723ab8ec6d64ebcc21cf37c2b9ac8e0a537c5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c5f1d10_b2b1ffe8",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7c9f3a9_669d049b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-19T18:32:41Z",
+      "side": 1,
+      "message": "A couple of issues that would need to be fixed to use WaitForCrashFiles:\n\n1. In some cases, we don\u0027t expect to find the files. In some cases, we might or might not find the crash files, and it\u0027s not an error either way. WaitForCrashFiles always returns an error when regexs aren\u0027t match. I\u0027d need some way to distinguish actual errors from \"didn\u0027t find the file I was looking for. That\u0027s what crashReportNotFound is for, above. \n\n2. It doesn\u0027t handle BreakpadDmp-format files that well. I guess I could go back to just looking for any .dmp file, and not calling IsBreakpadDmpFileForPID\n\n3. I\u0027d want to add a way to handle the NoCrashFile case. If I had #1, I could just add a short timeout and accept that the function will run a couple of times instead of just once. \n\n#1 is probably the big blocker; I *need* to be able to ignore the \"the regexes weren\u0027t matched\" errors. The others are slightly-suboptimal but not blockers.\n\nDo you want me to update WaitForCrashFiles? Probably to have a similar special error type for not-found errors? (And maybe an optional timeout parameter)",
+      "parentUuid": "4c5f1d10_b2b1ffe8",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 62
+      },
+      "revId": "b723ab8ec6d64ebcc21cf37c2b9ac8e0a537c5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c59d5fa_11da0987",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-19T17:01:51Z",
       "side": 1,
       "message": "Can we use ct.killedPid here and wait for the file based on that? (The pid should be in the filename, right?)",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 0
+      },
+      "revId": "b723ab8ec6d64ebcc21cf37c2b9ac8e0a537c5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e809ba54_22051b40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-19T18:32:41Z",
+      "side": 1,
+      "message": "It\u0027s not in the filename. I\u0027ll call IsBreakpadDmpFileForPID",
+      "parentUuid": "0c59d5fa_11da0987",
       "range": {
         "startLine": 679,
         "startChar": 0,
