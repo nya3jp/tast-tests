@@ -39,6 +39,30 @@
       },
       "revId": "ca6e3fe90d00876e01c4e12a351378eb799af495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "418631f4_6ba30be4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/suspend_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-19T09:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "832c9c61_472bf8a7",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "ca6e3fe90d00876e01c4e12a351378eb799af495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
