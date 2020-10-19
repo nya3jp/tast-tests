@@ -36,7 +36,7 @@ func init() {
 			Name:      "5_users",
 			Val:       5,
 			ExtraAttr: []string{"group:mainline", "informational"},
-			Timeout:   2 * time.Minute,
+			Timeout:   3 * time.Minute,
 		}, {
 			Name:      "20_users",
 			Val:       20,
