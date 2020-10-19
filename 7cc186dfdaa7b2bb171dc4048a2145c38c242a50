@@ -1,0 +1,300 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "537d7ea6_30588934",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Some comments and suggestions.",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43778ef5_ae1e3594",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be by default false?\nPerhaps you could steer this by a cmd line parameter?",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a8d0424_d83e4a65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a part of roamNaturalTestcase to improve testcase scaling?",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34333e1_d6b780dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a part of roamNaturalTestcase to improve testcase scaling?",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca3912f_76831e71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a part of roamNaturalTestcase to improve testcase scaling?",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d931e6b_a6e49e59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "I think this should be two sets of `roamNaturalTestcase`s each with a pair of APs \"From\" and \"To\". It will improve test scalability - see for example SimpleConnect.",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7154c45e_d0460bea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Perhaps it would be better(more readable) if you use struct for them and pass by value. It would save you from this strange unpacking here, and become more clear when setting.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 23
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa40dec_b1b486c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "This could be moved to separate func(attenId, attenDB, freq).",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 75
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08cd8595_d81d9251",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "I wonder if a configurable delay here wouldn\u0027t simulate movement speed?",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58cafea_8b7081b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be constant?",
+      "range": {
+        "startLine": 137,
+        "startChar": 48,
+        "endLine": 137,
+        "endChar": 61
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb73d9b_dc440ba9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Reserve time for deferred function.",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3f7f56_6687ee8e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Perhaps return these values directly and have more fine-grained stats dump at the end, but\nI understand it will produce different output than autotest.\nIt depends on what is more important: accuracy or similarity. @Matthew? @Brian?",
+      "range": {
+        "startLine": 164,
+        "startChar": 36,
+        "endLine": 164,
+        "endChar": 85
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a548229_ae74123d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we reserve some time for stopping WPA monitor?",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "491321b6_506b457e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Again, the rule in tests seems to reserve some time for each deferred operation. You\u0027re eating away time reserved for AP operations.",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5974acc_b021fa47",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "reserve time?",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca12e43f_1a8f1f71",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-19T20:06:30Z",
+      "side": 1,
+      "message": "Perhaps we should wrap this error to see full error stack. Otherwise you could simply return wpa.ClearBlacklist(ctx)",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
