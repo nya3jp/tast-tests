@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/memory.Alloc.anon_arc_x86_64_20201020",
+  "size": 11600,
+  "sha256sum": "921ac3128140df6ff857921228550f90f1b2716e05a35c74fa90c9e9e159c8a9"
+}

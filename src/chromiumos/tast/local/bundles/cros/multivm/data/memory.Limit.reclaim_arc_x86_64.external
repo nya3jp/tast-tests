@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/memory.Limit.reclaim_arc_x86_64_20201020",
+  "size": 6720,
+  "sha256sum": "9ad692fa891aaa14cc2182d8659a820c7ea547b14e2148711ce5f7bdf694ff4a"
+}
