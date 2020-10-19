@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1761b8bc_6bb47c41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-19T03:36:54Z",
+      "side": 1,
+      "message": "Looks nice, thank you for the refactoring!\n",
+      "revId": "43de2b3125c0b98fb7d3e035c9dc21095514643f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
