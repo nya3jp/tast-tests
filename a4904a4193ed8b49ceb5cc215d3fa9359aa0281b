@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc1a29aa_9aedb19f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-20T04:54:49Z",
+      "side": 1,
+      "message": "Overall approach LGTM",
+      "parentUuid": "e70f7ddf_a45c5276",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6451c1a_066b7aad",
@@ -191,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50826d21_86918674",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-20T04:54:49Z",
+      "side": 1,
+      "message": "cui was originally meant to be just the ui automation parts, although I am aware that it has grown a bit beyond that at this point.let me think about whether to put it in there, or whether we should have a new lib for the non-ui parts.",
+      "parentUuid": "f32aedc2_f4de21fe",
+      "range": {
+        "startLine": 237,
+        "startChar": 6,
+        "endLine": 237,
+        "endChar": 10
+      },
+      "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c4ab5d6_aa3523f7",
         "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
         "patchSetId": 3
@@ -237,6 +285,24 @@
       "side": 1,
       "message": "It\u0027s so that a panic during cleanup doesn\u0027t stop the rest of the cleanup from running.\n\nI\u0027m not sure we have to be that defensive, but there is a chance we would be recovering from a failure due to high memory use, so it would be nice to clean up as much as possible as we shut down to make it more likely more things don\u0027t break.\n\nHappy to hear from Go/Tast experts saying this isn\u0027t necessary, or if there\u0027s a more idiomatic way of doing it. I\u0027m still quite a Go newb.",
       "parentUuid": "50cfad25_6d583101",
+      "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25222b23_d12ec773",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-20T04:54:49Z",
+      "side": 1,
+      "message": "Makes sense.  I think it is unusual enough that it should have a comment for the rationale though, so that no-one refactors it.",
+      "parentUuid": "c18f7a46_15be67bf",
       "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
