@@ -22,6 +22,30 @@
       },
       "revId": "f64310fe6b0932b63f6fa66488a4102475a7bc61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9c21a52_02c1b233",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-20T20:05:18Z",
+      "side": 1,
+      "message": "This is part of the bug mentioned above. If you open quick settings by clicking the status area (as we do here), focus() doesn\u0027t do anything on the node. It only works after you put the focus in quick settings by pressing Tab (or if you open quick settings using the keyboard instead). So the Tab here is to initially place the focus in quick settings to work around that, so FocusAndWait will work correctly.",
+      "parentUuid": "c9e9b057_851a8ece",
+      "range": {
+        "startLine": 527,
+        "startChar": 1,
+        "endLine": 529,
+        "endChar": 2
+      },
+      "revId": "f64310fe6b0932b63f6fa66488a4102475a7bc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
