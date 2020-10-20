@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7af320c0_2b31a0cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-10-20T17:53:42Z",
+      "side": 1,
+      "message": "this is not accurate, see comment below. I\u0027d rephrase as: recommended ... because it\u0027s guaranteed to be compiled correctly. ;)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aefecbb5_0afc93cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-10-20T17:53:42Z",
+      "side": 1,
+      "message": "this is fine. note that not all builds in this dir get qualified. This just gets the latest build, not the latest qualified build",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 81
+      },
+      "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f15f2278_e7786702",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
         "patchSetId": 3
