@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf37eda3_ff090949",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-20T17:46:03Z",
+      "side": 1,
+      "message": "Make sure to rebase and update the CL before running CQ+2",
+      "revId": "312e13fe51fefbb8689b10e0944a60468e329bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
