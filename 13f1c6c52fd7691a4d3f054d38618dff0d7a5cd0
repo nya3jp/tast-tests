@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415419c5_3feebb61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-20T12:06:50Z",
+      "side": 1,
+      "message": "You are not using these variable outside of if. Please move it to the if. Same for the checks below.",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17158654_ac241d5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-20T12:06:50Z",
+      "side": 1,
+      "message": "The error handling should be separete:\n\u003e  if err !\u003d nil {\n\u003e  } else if result !\u003d expectation {\n\u003e  }",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c83b47_baf2e380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-20T12:06:50Z",
+      "side": 1,
+      "message": "It should be always true.",
+      "range": {
+        "startLine": 123,
+        "startChar": 88,
+        "endLine": 123,
+        "endChar": 121
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd393ec0_eeabe44a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-20T12:06:50Z",
+      "side": 1,
+      "message": "If you rename it to \"visible\", you can omit the \"\u003d\u003d true\" part.",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 10
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
