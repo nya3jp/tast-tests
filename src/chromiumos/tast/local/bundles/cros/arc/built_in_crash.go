@@ -21,8 +21,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         NativeCrash,
-		Desc:         "Test handling of a native binary crash",
+		Func:         BuiltInCrash,
+		Desc:         "Test handling of a built-in binary crash",
 		Contacts:     []string{"kimiyuki@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
@@ -39,7 +39,7 @@ func init() {
 	})
 }
 
-func NativeCrash(ctx context.Context, s *testing.State) {
+func BuiltInCrash(ctx context.Context, s *testing.State) {
 	const (
 		temporaryCrashDirInAndroid = "/data/vendor/arc_native_crash_reports"
 	)
