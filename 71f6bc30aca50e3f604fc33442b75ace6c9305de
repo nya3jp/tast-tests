@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6f8e01_ae235e7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-20T23:36:56Z",
+      "side": 1,
+      "message": "Done. I also updated the documentation in the function above this for consistency.",
+      "parentUuid": "bcd2567d_a4bb335c",
+      "range": {
+        "startLine": 209,
+        "startChar": 3,
+        "endLine": 209,
+        "endChar": 5
+      },
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "504b0ea6_151534f7",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-20T22:13:36Z",
       "side": 1,
       "message": "Do you mind changing this to 0xFFFF?\nAlso, do we really care about the alpha of the black?",
+      "range": {
+        "startLine": 211,
+        "startChar": 47,
+        "endLine": 211,
+        "endChar": 52
+      },
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c204474_b34c311a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-20T23:36:56Z",
+      "side": 1,
+      "message": "Done.\n\nThe alpha shouldn\u0027t matter. I can\u0027t tell for sure, but the fact that we\u0027re using PNG_COLOR_TYPE_RGB instead of PNG_COLOR_TYPE_RGB_ALPHA when saving the screenshot PNG [1] likely means the PNG is fully opaque.\n\nNonetheless, I wanted to be specific about the pixels I want to ignore.\n\n[1] http://cs/chromeos_public/src/platform2/screenshot/png.cc?l\u003d35\u0026rcl\u003d71f8834c8d82ef5ba1fe0846e5910641ff40ef6b",
+      "parentUuid": "504b0ea6_151534f7",
       "range": {
         "startLine": 211,
         "startChar": 47,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5427e8f4_f04f78ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-20T23:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e4da156_769cd634",
+      "range": {
+        "startLine": 395,
+        "startChar": 53,
+        "endLine": 395,
+        "endChar": 55
+      },
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2acd57d_9ffe7960",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39e21658_249fce05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-20T23:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2acd57d_9ffe7960",
+      "range": {
+        "startLine": 410,
+        "startChar": 53,
+        "endLine": 410,
+        "endChar": 54
+      },
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2443924f_ec73ec34",
@@ -140,6 +236,30 @@
       "writtenOn": "2020-10-20T22:13:36Z",
       "side": 1,
       "message": "Would it make sense to order this from small to large? IIUC (left, top), (right, bottom)",
+      "range": {
+        "startLine": 413,
+        "startChar": 2,
+        "endLine": 413,
+        "endChar": 27
+      },
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42c3905_3120b36c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-20T23:36:56Z",
+      "side": 1,
+      "message": "Sure. I was using the CSS ordering before :)",
+      "parentUuid": "2443924f_ec73ec34",
       "range": {
         "startLine": 413,
         "startChar": 2,
