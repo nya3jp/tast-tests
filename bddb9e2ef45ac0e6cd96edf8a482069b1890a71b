@@ -50,6 +50,23 @@
       "message": "Verified again on the latest PS.",
       "revId": "bddb9e2ef45ac0e6cd96edf8a482069b1890a71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da02967_b2ddaa5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-20T02:18:30Z",
+      "side": 1,
+      "message": "The CQ failure in crostini seems unrelated to this CL. Retry CQ.",
+      "revId": "bddb9e2ef45ac0e6cd96edf8a482069b1890a71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
