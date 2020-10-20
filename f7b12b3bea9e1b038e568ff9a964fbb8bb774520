@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3437f7ca_ef4f5346",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-20T08:46:22Z",
+      "side": 1,
+      "message": "I would prefer to submit this CL first and extract these logics in another CL. Filed a bug and left TODO.",
+      "parentUuid": "6bc6e3a8_ee4f28b2",
+      "revId": "f7b12b3bea9e1b038e568ff9a964fbb8bb774520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9d41e10_c0254f0f",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-10-20T00:21:33Z",
       "side": 1,
       "message": "you need to lock the check_ethernet hook when calling this.",
+      "range": {
+        "startLine": 1831,
+        "startChar": 36,
+        "endLine": 1831,
+        "endChar": 55
+      },
+      "revId": "f7b12b3bea9e1b038e568ff9a964fbb8bb774520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7459eb_1a019383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-20T08:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9d41e10_c0254f0f",
       "range": {
         "startLine": 1831,
         "startChar": 36,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d08b3a_81c88f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1872,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-20T08:46:22Z",
+      "side": 1,
+      "message": "I guess you are right, removed.",
+      "parentUuid": "6b659386_53da3b22",
+      "range": {
+        "startLine": 1872,
+        "startChar": 0,
+        "endLine": 1872,
+        "endChar": 39
+      },
+      "revId": "f7b12b3bea9e1b038e568ff9a964fbb8bb774520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34288962_106d8d2f",
@@ -94,6 +160,30 @@
       "writtenOn": "2020-10-20T00:21:33Z",
       "side": 1,
       "message": "sp: alarm",
+      "range": {
+        "startLine": 1873,
+        "startChar": 106,
+        "endLine": 1873,
+        "endChar": 111
+      },
+      "revId": "f7b12b3bea9e1b038e568ff9a964fbb8bb774520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68793b50_d3024ba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1873,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-20T08:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34288962_106d8d2f",
       "range": {
         "startLine": 1873,
         "startChar": 106,
