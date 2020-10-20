@@ -34,7 +34,7 @@ const (
 	SizeTB = 1024 * 1024 * 1024 * 1024
 )
 
-const uiTimeout = 30 * time.Second
+const uiTimeout = 10 * time.Second
 
 // Sub settings name.
 const (
@@ -167,13 +167,13 @@ func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string
 	}
 
 	// Find "Shared folders will appear here". It will be displayed if no folder is shared.
-	msg, textErr := ui.FindWithTimeout(ctx, s.tconn, emptySharedFoldersMsg, uiTimeout)
+	msg, textErr := ui.FindWithTimeout(ctx, s.tconn, emptySharedFoldersMsg, 1*time.Second)
 	if msg != nil {
 		defer msg.Release(ctx)
 	}
 
 	// Find "Shared folders" list. It will be displayed if any folder is shared.
-	list, listErr := ui.FindWithTimeout(ctx, s.tconn, sharedFoldersList, uiTimeout)
+	list, listErr := ui.FindWithTimeout(ctx, s.tconn, sharedFoldersList, 1*time.Second)
 	if list != nil {
 		defer list.Release(ctx)
 	}
@@ -209,7 +209,7 @@ func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string
 // UnshareFolder deletes a shared folder from Settings app.
 // Settings must be open at the Linux Manage Shared Folders page.
 func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
-	list := uig.FindWithTimeout(sharedFoldersList, uiTimeout)
+	list := uig.FindWithTimeout(sharedFoldersList, 2*time.Second)
 	folderParam := ui.FindParams{Role: ui.RoleTypeButton, Name: folder}
 	if err := uig.Do(ctx, s.tconn, list); err != nil {
 		return errors.Wrap(err, "failed to find shared folder list")
@@ -221,7 +221,7 @@ func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 	}
 
 	// There might be an unshare dialog. Click OK on it.
-	unshareDialog := uig.FindWithTimeout(unshareFailDlg, uiTimeout)
+	unshareDialog := uig.FindWithTimeout(unshareFailDlg, 2*time.Second)
 	if err := uig.Do(ctx, s.tconn, unshareDialog); err == nil {
 		if err := uig.Do(ctx, s.tconn, unshareDialog.FindWithTimeout(okButton, uiTimeout).LeftClick()); err != nil {
 			return errors.Wrap(err, "failed to click OK on Unshare failed dialog")
