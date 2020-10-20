@@ -9,7 +9,7 @@ package input
 // Do not change the above line; see https://golang.org/pkg/cmd/go/internal/generate/
 //
 // This file contains constants from include/uapi/linux/input-event-codes.h
-// in the Linux kernel repository at revision 5d1dbc856254dafc3a4141164ecbc14c04b7c743.
+// in the Linux kernel repository at revision b1a4f18e49c0dab0acd49c26f14a8f418a6e6791.
 // Run "go generate" to regenerate it.
 
 //go:generate ../../../../../../tast/tools/go.sh run gen/gen_constants.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
@@ -552,6 +552,7 @@ const (
 	BTN_TOOL_MOUSE      EventCode = 0x146
 	BTN_TOOL_LENS       EventCode = 0x147
 	BTN_TOOL_QUINTTAP   EventCode = 0x148
+	BTN_STYLUS3         EventCode = 0x149
 	BTN_TOUCH           EventCode = 0x14a
 	BTN_STYLUS          EventCode = 0x14b
 	BTN_STYLUS2         EventCode = 0x14c
@@ -684,7 +685,8 @@ const (
 	SW_LINEIN_INSERT        EventCode = 0xd
 	SW_MUTE_DEVICE          EventCode = 0xe
 	SW_PEN_INSERTED         EventCode = 0xf
-	SW_MAX                  EventCode = 0xf
+	SW_MACHINE_COVER        EventCode = 0x10
+	SW_MAX                  EventCode = 0x10
 
 	// Miscellaneous input and output events
 	MSC_SERIAL    EventCode = 0x0

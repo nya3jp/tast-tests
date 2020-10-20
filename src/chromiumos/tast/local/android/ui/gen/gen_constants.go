@@ -48,8 +48,8 @@ func main() {
 		MainGoFilePath: thisFile,
 
 		Types: []genutil.TypeSpec{
-			{Name: keyCodeType, NativeType: "uint16", Desc: "represents an Android key code."},
-			{Name: metaStateType, NativeType: "uint64", Desc: "represents a meta-key state. Each bit set to 1 represents a pressed meta key."},
+			{Name: keyCodeType, BuiltInType: "uint16", Desc: "represents an Android key code."},
+			{Name: metaStateType, BuiltInType: "uint64", Desc: "represents a meta-key state. Each bit set to 1 represents a pressed meta key."},
 		},
 
 		// We only care about KEYCODE and META prefixes. We ignore the rest.

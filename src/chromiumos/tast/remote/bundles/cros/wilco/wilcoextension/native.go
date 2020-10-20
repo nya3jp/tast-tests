@@ -15,30 +15,30 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// NativeMessaging is a helper to interact with the Wilco native messaging API
-type NativeMessaging struct {
+// BuiltInMessaging is a helper to interact with the Wilco built-in messaging API
+type BuiltInMessaging struct {
 	pc ps.PolicyServiceClient
 }
 
-// NewNativeMessaging creates a new instance of NativeMessaging and connects to
-// the native API.
-func NewNativeMessaging(ctx context.Context, pc ps.PolicyServiceClient) (*NativeMessaging, error) {
+// NewBuiltInMessaging creates a new instance of BuiltInMessaging and connects to
+// the built-in API.
+func NewBuiltInMessaging(ctx context.Context, pc ps.PolicyServiceClient) (*BuiltInMessaging, error) {
 	script := `const port = chrome.runtime.connectNative('com.google.wilco_dtc');`
 
 	if _, err := pc.EvalStatementInExtension(ctx, &ps.EvalInExtensionRequest{
 		ExtensionId: ID,
 		Expression:  script,
 	}); err != nil {
-		return nil, errors.Wrap(err, "failed to create port to native application")
+		return nil, errors.Wrap(err, "failed to create port to built-in application")
 	}
 
-	return &NativeMessaging{
+	return &BuiltInMessaging{
 		pc,
 	}, nil
 }
 
-// SendMessage sends a message over the native messaging port.
-func (n *NativeMessaging) SendMessage(ctx context.Context, message interface{}) error {
+// SendMessage sends a message over the built-in messaging port.
+func (n *BuiltInMessaging) SendMessage(ctx context.Context, message interface{}) error {
 	marshaled, err := json.Marshal(&message)
 	if err != nil {
 		return errors.Wrapf(err, "failed to marshall %v", message)
@@ -48,15 +48,15 @@ func (n *NativeMessaging) SendMessage(ctx context.Context, message interface{}) 
 		ExtensionId: ID,
 		Expression:  fmt.Sprintf(`port.postMessage(%s)`, string(marshaled)),
 	}); err != nil {
-		return errors.Wrap(err, "failed to send native message")
+		return errors.Wrap(err, "failed to send built-in message")
 	}
 
 	return nil
 }
 
-// SendMessageAndGetReply sends a message over the native messaging port.
+// SendMessageAndGetReply sends a message over the built-in messaging port.
 // It waits for the response to arrive and saves it in the response parameter.
-func (n *NativeMessaging) SendMessageAndGetReply(ctx context.Context, message, response interface{}) error {
+func (n *BuiltInMessaging) SendMessageAndGetReply(ctx context.Context, message, response interface{}) error {
 	marshaled, err := json.Marshal(&message)
 	if err != nil {
 		return errors.Wrapf(err, "failed to marshall %v", message)
@@ -77,7 +77,7 @@ func (n *NativeMessaging) SendMessageAndGetReply(ctx context.Context, message, r
 		Expression:  script,
 	})
 	if err != nil {
-		return errors.Wrap(err, "failed to send native message")
+		return errors.Wrap(err, "failed to send buit-in message")
 	}
 
 	if err := json.Unmarshal(res.Result, response); err != nil {
@@ -87,8 +87,8 @@ func (n *NativeMessaging) SendMessageAndGetReply(ctx context.Context, message, r
 	return nil
 }
 
-// StartListener starts receiving messages from the native messaging port.
-func (n *NativeMessaging) StartListener(ctx context.Context) error {
+// StartListener starts receiving messages from the built-in messaging port.
+func (n *BuiltInMessaging) StartListener(ctx context.Context) error {
 	script := `
 	var requests = new Array();
 	var replies = new Array();
@@ -111,14 +111,14 @@ func (n *NativeMessaging) StartListener(ctx context.Context) error {
 		ExtensionId: ID,
 		Expression:  script,
 	}); err != nil {
-		return errors.Wrap(err, "failed to create port to native application")
+		return errors.Wrap(err, "failed to create port to built-in application")
 	}
 
 	return nil
 }
 
 // AddReply sets message as the reply to the next message. Multiple replies can be queued.
-func (n *NativeMessaging) AddReply(ctx context.Context, message interface{}) error {
+func (n *BuiltInMessaging) AddReply(ctx context.Context, message interface{}) error {
 	marshaledMessage, err := json.Marshal(message)
 	if err != nil {
 		return errors.Wrap(err, "failed to marshal message")
@@ -128,20 +128,20 @@ func (n *NativeMessaging) AddReply(ctx context.Context, message interface{}) err
 		ExtensionId: ID,
 		Expression:  fmt.Sprintf(`replies.push(%s);`, string(marshaledMessage)),
 	}); err != nil {
-		return errors.Wrap(err, "failed to create port to native application")
+		return errors.Wrap(err, "failed to create port to built-in application")
 	}
 
 	return nil
 }
 
-// GetMessage reads a messasge the native messaging port.
-func (n *NativeMessaging) GetMessage(ctx context.Context, message interface{}) error {
+// GetMessage reads a messasge the built-in messaging port.
+func (n *BuiltInMessaging) GetMessage(ctx context.Context, message interface{}) error {
 	res, err := n.pc.EvalInExtension(ctx, &ps.EvalInExtensionRequest{
 		ExtensionId: ID,
 		Expression:  `requests.pop()`,
 	})
 	if err != nil {
-		return errors.Wrap(err, "failed to create port to native application")
+		return errors.Wrap(err, "failed to create port to built-in application")
 	}
 
 	if err := json.Unmarshal(res.Result, message); err != nil {
@@ -151,9 +151,9 @@ func (n *NativeMessaging) GetMessage(ctx context.Context, message interface{}) e
 	return nil
 }
 
-// WaitForMessage reads a messasge the native messaging port and waits if none
+// WaitForMessage reads a messasge the built-in messaging port and waits if none
 // are available.
-func (n *NativeMessaging) WaitForMessage(ctx context.Context, message interface{}) error {
+func (n *BuiltInMessaging) WaitForMessage(ctx context.Context, message interface{}) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		res, err := n.pc.EvalInExtension(ctx, &ps.EvalInExtensionRequest{
 			ExtensionId: ID,

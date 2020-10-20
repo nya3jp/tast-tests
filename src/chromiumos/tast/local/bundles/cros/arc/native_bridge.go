@@ -2,6 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// TODO(crbug/1142830) - Change all native terms when Android's subcomponents
+//                       name are changed.
+//                       Modify the filename to match the substitute term.
+
 package arc
 
 import (

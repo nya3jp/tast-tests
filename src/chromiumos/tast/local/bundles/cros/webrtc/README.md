@@ -4,7 +4,7 @@ The Tast WebRTC tests are used to exercise and verify various WebRTC-related
 APIs. WebRTC in the current scope refers to the W3C Specifications (Specs)
 published under the [Web Real-Time Communications Working Group], for use by a
 Web Application and provided by a User Agent (in this case Chrome). C++, Java or
-other native APIs can be derived from these ECMAScript-based Specs, and are
+other built-in APIs can be derived from these ECMAScript-based Specs, and are
 beyond the scope of this document and test cases. Some popular Specifications
 under the WebRTC umbrella are:
 

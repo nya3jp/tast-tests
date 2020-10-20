@@ -74,7 +74,7 @@ func init() {
 
 // CCAUIPreviewPowerPerf measures battery drain during CCA preview.
 // To allow for a fair comparison with arc.PowerCameraPreviewPerf, ARCVM is running
-// in the background in the vm subtest. (But CCA is a native ChromeOS application.)
+// in the background in the vm subtest. (But CCA is a built-in ChromeOS application.)
 func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
 	// deadline.
