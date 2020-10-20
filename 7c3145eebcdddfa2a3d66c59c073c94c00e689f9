@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32081361_31ea3205",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-20T06:38:20Z",
+      "side": 1,
+      "message": "oops... CQ+1 and CQ+2 conflict... retry CQ+2",
+      "revId": "7c3145eebcdddfa2a3d66c59c073c94c00e689f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
