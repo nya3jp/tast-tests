@@ -110,6 +110,30 @@
       },
       "revId": "56f2ed04939208e812766962bc6f2cf44e208d06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898d675d_d49879e8",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-20T00:47:48Z",
+      "side": 1,
+      "message": "Sure, this is fine. I don\u0027t think the link is necessary; the reference to errors.Wrap makes it clear.",
+      "parentUuid": "e01fdf21_da54807c",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 36
+      },
+      "revId": "56f2ed04939208e812766962bc6f2cf44e208d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
