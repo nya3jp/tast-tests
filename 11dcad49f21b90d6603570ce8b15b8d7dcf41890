@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09658f40_77c90c2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:39:51Z",
+      "side": 1,
+      "message": "LGTM. Defer to Erik.",
+      "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09f328af_402ec30b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:39:51Z",
+      "side": 1,
+      "message": "offtopic: I\u0027m ok this now, but I think we\u0027d need more discussion what Lacros version should be used in Tast.\n\nSpecifically, if we stick the fishfood version, even if we made some fix in lacros-chrome, it cannot be verified, until the next fishfood release.",
+      "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15f2278_e7786702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:39:51Z",
+      "side": 1,
+      "message": "Let\u0027s unzip into some new directory / the directory under /tmp etc. to avoid the conflict.",
+      "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d98dba_7ae3dc81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:39:51Z",
+      "side": 1,
+      "message": "nit: rm -rf lacros_binary",
+      "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
