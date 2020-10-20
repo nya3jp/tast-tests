@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f2c4ce_99b4ba5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-20T21:32:07Z",
+      "side": 1,
+      "message": "Transitional CL before chrome side CL:2488664 lands. After that, I will clean up the autotest API call.",
+      "revId": "59a98fb40802315104cde42b04c833910ee4642c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
