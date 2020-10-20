@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61b63dd_2b884b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-20T02:12:43Z",
+      "side": 1,
+      "message": "It is not necessary to define a const which is only used once.",
+      "range": {
+        "startLine": 644,
+        "startChar": 7,
+        "endLine": 644,
+        "endChar": 14
+      },
+      "revId": "1969e9544dd7f9b4d030bc2cd597f29b12019f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b724aa40_71eef6ae",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-20T02:12:43Z",
+      "side": 1,
+      "message": "Please add comment for this exported method.",
+      "revId": "1969e9544dd7f9b4d030bc2cd597f29b12019f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
