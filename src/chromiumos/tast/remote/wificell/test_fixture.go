@@ -1085,3 +1085,10 @@ func (tf *TestFixture) EAPAuthSkipped(ctx context.Context) (func() (bool, error)
 		return resp.Skipped, nil
 	}, nil
 }
+
+// SetWifiEnabled persistently enables/disables Wifi via shill.
+func (tf *TestFixture) SetWifiEnabled(ctx context.Context, enabled bool) error {
+	req := &network.SetWifiEnabledRequest{Enabled: enabled}
+	_, err := tf.WifiClient().SetWifiEnabled(ctx, req)
+	return err
+}

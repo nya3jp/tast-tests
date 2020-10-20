@@ -29,6 +29,25 @@ func NewRunner(cmd cmd.Runner) *Runner {
 
 // MAC returns the MAC address of the interface.
 func (r *Runner) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
+	fields, err := r.showLink(ctx, iface)
+	if err != nil {
+		return nil, err
+	}
+	return net.ParseMAC(fields[2])
+}
+
+// Flags returns the flags of the interface.
+func (r *Runner) Flags(ctx context.Context, iface string) ([]string, error) {
+	fields, err := r.showLink(ctx, iface)
+	if err != nil {
+		return nil, err
+	}
+	flags := strings.Split(strings.Trim(fields[3], "<>"), ",")
+	return flags, nil
+}
+
+// showLink runs `ip -br link show <iface>` then splits and sanity-checks the output.
+func (r *Runner) showLink(ctx context.Context, iface string) ([]string, error) {
 	// Let ip print brief output so that we can have less assumption on
 	// the output format.
 	// The brief format: (ref: print_linkinfo_brief in iproute2)
@@ -51,7 +70,7 @@ func (r *Runner) MAC(ctx context.Context, iface string) (net.HardwareAddr, error
 	if fields[0] != iface {
 		return nil, errors.Errorf("unmatched interface name, got %s, want %s", fields[0], iface)
 	}
-	return net.ParseMAC(fields[2])
+	return fields, nil
 }
 
 // SetMAC sets MAC address of iface with command "ip link set $iface address $mac.
@@ -112,6 +131,20 @@ func (r *Runner) SetLinkUp(ctx context.Context, iface string) error {
 		err = errors.Wrapf(err, "failed to set %s up", iface)
 	}
 	return nil
+}
+
+// IsLinkUp queries whether iface is currently up.
+func (r *Runner) IsLinkUp(ctx context.Context, iface string) (bool, error) {
+	flags, err := r.Flags(ctx, iface)
+	if err != nil {
+		return false, err
+	}
+	for _, flag := range flags {
+		if flag == "UP" {
+			return true, nil
+		}
+	}
+	return false, nil
 }
 
 // SetLinkDown brings iface down.
