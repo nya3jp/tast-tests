@@ -60,6 +60,13 @@ func Count(count int) Option {
 	}
 }
 
+// SSIDPrefix returns an Option which sets the SSID prefix.
+func SSIDPrefix(p string) Option {
+	return func(c *config) {
+		c.ssidPrefix = p
+	}
+}
+
 // NumBSS returns an Option which sets the number of BSS.
 func NumBSS(n int) Option {
 	return func(c *config) {
