@@ -16,6 +16,23 @@
       "message": "Hi!\nPlease help me to review this CL.",
       "revId": "b65286f6bf7f1236635b36eec9a2e89f066f62f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae47b8b_b5347f21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-10-20T04:23:41Z",
+      "side": 1,
+      "message": "hmmmmm i\u0027d sleep on it unless in production we do have the same behavior.\n\nin testing we should be more strict and paranoid right? if the daemon crashes, it doesn\u0027t make sense to let any test passes because we have such an indirection translation.\n\nfor example, if we wanna test if a device is not enrolled after a intentionally failed enrollment and it turns out the test would pass even when attestation service crashes.\n\nmakes sense?",
+      "revId": "b65286f6bf7f1236635b36eec9a2e89f066f62f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
