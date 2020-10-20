@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d25bbac6_86f1e54a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-20T02:45:03Z",
+      "side": 1,
+      "message": "Alexis, I think this is a cleaner way to add metrics, since in theory each MemoryTask could have its own custom metrics. It also allows tests to control exactly when during a test metrics are collected.\n\nWhat do you think?",
+      "revId": "b270c300e50ad3d2f9dff7f999d6359cd98f86f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
