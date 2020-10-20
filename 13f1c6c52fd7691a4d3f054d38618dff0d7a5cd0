@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90572f6e_6af24a6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T13:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f42cad3_0fc94884",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 15
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ca48aa2_67bf09a4",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-20T12:12:55Z",
       "side": 1,
       "message": "Please use tconn as it is in the other policy tests. I am not against this name, but if you want to change it, change it for all of the tests.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 8
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf6be7d_321c8473",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T13:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ca48aa2_67bf09a4",
       "range": {
         "startLine": 41,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d694e86a_ad5d619c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T13:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89bdac4e_8816bdbd",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "415419c5_3feebb61",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-20T12:06:50Z",
       "side": 1,
       "message": "You are not using these variable outside of if. Please move it to the if. Same for the checks below.",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b86b8af_5e0f3b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T13:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "415419c5_3feebb61",
       "range": {
         "startLine": 105,
         "startChar": 3,
@@ -118,6 +214,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0b533ca_24374bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T13:54:56Z",
+      "side": 1,
+      "message": "err value is associated with the result value. If result is true, error is nil. If result is false, error is not nil.\n\nin case of EditBookmarksEnabled policy set to false: each test (except the last one - using bookmark) returns err - either star icon was not visible or bookmark menu was not found, and \"false\" as those actions are not allowed. That is all fine as expected value is \"false\".",
+      "parentUuid": "17158654_ac241d5e",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b90b66_2296841a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T13:54:56Z",
+      "side": 1,
+      "message": "err value is associated with the result value. If result is true, error is nil. If result is false, error is not nil.\n\nin case of EditBookmarksEnabled policy set to false: each test (except the last one - using bookmark) returns err - either star icon was not visible or bookmark menu was not found, and \"false\" as those actions are not allowed. That is all fine as expected value is \"false\".",
+      "parentUuid": "17158654_ac241d5e",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81c83b47_baf2e380",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 3
@@ -129,6 +273,30 @@
       "writtenOn": "2020-10-20T12:06:50Z",
       "side": 1,
       "message": "It should be always true.",
+      "range": {
+        "startLine": 123,
+        "startChar": 88,
+        "endLine": 123,
+        "endChar": 121
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "126339fa_2cc420de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T13:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c83b47_baf2e380",
       "range": {
         "startLine": 123,
         "startChar": 88,
@@ -152,6 +320,30 @@
       "writtenOn": "2020-10-20T12:06:50Z",
       "side": 1,
       "message": "If you rename it to \"visible\", you can omit the \"\u003d\u003d true\" part.",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 10
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23b567de_09fd092c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T13:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd393ec0_eeabe44a",
       "range": {
         "startLine": 136,
         "startChar": 4,
@@ -187,6 +379,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95ffb89f_da659c5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T13:54:56Z",
+      "side": 1,
+      "message": "I will change to conn.",
+      "parentUuid": "17a320f5_641f8018",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 10
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92d7442a_c14c66d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 3
@@ -198,6 +414,30 @@
       "writtenOn": "2020-10-20T12:12:55Z",
       "side": 1,
       "message": "This doesn\u0027t seem to check if you can a bookmark or not.",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "402883b9_875e62be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T13:54:56Z",
+      "side": 1,
+      "message": "Indeed, there is no validation of the action.",
+      "parentUuid": "92d7442a_c14c66d2",
       "range": {
         "startLine": 190,
         "startChar": 1,
