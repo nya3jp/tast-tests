@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8410da5_f8a9fad3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-10-20T18:33:42Z",
+      "side": 1,
+      "message": "launcher part LGTM :D ",
+      "revId": "6bbb58baacc025f61e41a068ffff5fa67a36720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cddcc47_c76492e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-10-20T18:33:42Z",
+      "side": 1,
+      "message": "Did you mean keep this comment here?",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 71
+      },
+      "revId": "6bbb58baacc025f61e41a068ffff5fa67a36720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46be6049_8bdf8b89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-10-20T18:33:42Z",
+      "side": 1,
+      "message": "nit: \"Opens the launcher, enters a search query, ..\", to match the tense of the rest of the comment",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 8
+      },
+      "revId": "6bbb58baacc025f61e41a068ffff5fa67a36720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
