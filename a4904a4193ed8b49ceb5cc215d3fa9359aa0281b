@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e70f7ddf_a45c5276",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-20T04:10:17Z",
+      "side": 1,
+      "message": "I\u0027m looking for feedback on the overall approach, and to make sure this will work for more VMs than just ARCVM and Crostini.\n\nSo please review the structure of things, but if you get into details, it might all change.",
+      "parentUuid": "6d77c563_79f6d095",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6451c1a_066b7aad",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6518beeb_5a86abe8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-20T04:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6451c1a_066b7aad",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35476429_056c5791",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-19T03:40:25Z",
       "side": 1,
       "message": "Done?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9d4968_e3c043aa",
+        "filename": "src/chromiumos/tast/local/arc/state_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-20T04:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35476429_056c5791",
       "range": {
         "startLine": 32,
         "startChar": 1,
@@ -95,6 +167,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f32aedc2_f4de21fe",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-20T04:10:17Z",
+      "side": 1,
+      "message": "Would it be OK to add it to cui.InstallCrostini, so that all users get the logging?",
+      "parentUuid": "b4f23d71_bc28b7fc",
+      "range": {
+        "startLine": 237,
+        "startChar": 6,
+        "endLine": 237,
+        "endChar": 10
+      },
+      "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c4ab5d6_aa3523f7",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-20T04:10:17Z",
+      "side": 1,
+      "message": "mwarton@, Is there something quick we can do to clean up the image between tests? Restore to a snapshot and reboot?\n\nI\u0027m worried that debugging interactions between tests that don\u0027t clean up properly could be quite difficult.",
+      "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50cfad25_6d583101",
         "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
         "patchSetId": 3
@@ -106,6 +219,24 @@
       "writtenOn": "2020-10-19T03:40:25Z",
       "side": 1,
       "message": "Any reason for the defers rather than doing the cleanup directly?  I haven\u0027t seen this style before.",
+      "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18f7a46_15be67bf",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-20T04:10:17Z",
+      "side": 1,
+      "message": "It\u0027s so that a panic during cleanup doesn\u0027t stop the rest of the cleanup from running.\n\nI\u0027m not sure we have to be that defensive, but there is a chance we would be recovering from a failure due to high memory use, so it would be nice to clean up as much as possible as we shut down to make it more likely more things don\u0027t break.\n\nHappy to hear from Go/Tast experts saying this isn\u0027t necessary, or if there\u0027s a more idiomatic way of doing it. I\u0027m still quite a Go newb.",
+      "parentUuid": "50cfad25_6d583101",
       "revId": "a4904a4193ed8b49ceb5cc215d3fa9359aa0281b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
