@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a88fbcb3_95c6d790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-20T15:37:31Z",
+      "side": 1,
+      "message": "Yet another missing dot.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "cd599aaddeda3093ab8375a5aa428fc69f2877d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5e5294_98c2c2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-20T15:37:31Z",
+      "side": 1,
+      "message": "Missing dot at the end of the comment.",
+      "range": {
+        "startLine": 57,
+        "startChar": 59,
+        "endLine": 57,
+        "endChar": 126
+      },
+      "revId": "cd599aaddeda3093ab8375a5aa428fc69f2877d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19353800_3a2c2802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-20T15:37:31Z",
+      "side": 1,
+      "message": "Missing dot at the end.",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 76
+      },
+      "revId": "cd599aaddeda3093ab8375a5aa428fc69f2877d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
