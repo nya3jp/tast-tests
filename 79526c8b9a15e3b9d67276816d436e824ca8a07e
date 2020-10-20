@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ed82bb_8b0e37a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/adb",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:30:13Z",
+      "side": 0,
+      "message": "adb should be available on the testing image. Could you use it, instead?",
+      "revId": "79526c8b9a15e3b9d67276816d436e824ca8a07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e8583f_67b10623",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/android-cts-verifier-9.0_r13-linux_x86-arm.zip",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:30:13Z",
+      "side": 0,
+      "message": "Could you avoid using internal binary data?\n\nHere\u0027s the guide line:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#data-files",
+      "revId": "79526c8b9a15e3b9d67276816d436e824ca8a07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

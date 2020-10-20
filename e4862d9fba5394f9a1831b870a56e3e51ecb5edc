@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f446f87_fa580333",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:30:13Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6154d4a3_c4ef3ee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/its_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:30:13Z",
+      "side": 1,
+      "message": "td needs to be removed?",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c96970_aad185a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:30:13Z",
+      "side": 1,
+      "message": "could you declare the buffer size 1 not to block?",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9916ebb2_bfe8f822",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:30:13Z",
+      "side": 1,
+      "message": "clarification: are lines in the patter will output by the verifier in the order once? Or will it be multiple times?",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338a39cb_f7bf0216",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:30:13Z",
+      "side": 1,
+      "message": "so read stdout first, and then stderr? I\u0027m slightly concerning the order because the above rules depends on the output order.",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50a418f_45177fef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:30:13Z",
+      "side": 1,
+      "message": "could you check the scanner error at the end?",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59bdc38c_4c0dac02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:30:13Z",
+      "side": 1,
+      "message": "Instead, could you dump to a file?",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466394a0_a57ee1e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:30:13Z",
+      "side": 1,
+      "message": "Could you not depends on the command line on shell if possible? In this case, could you use os.Rename() ?",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
