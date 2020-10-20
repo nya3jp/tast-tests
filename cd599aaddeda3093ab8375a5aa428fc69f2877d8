@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e9f9b87_d54cbe07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T15:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a88fbcb3_95c6d790",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "cd599aaddeda3093ab8375a5aa428fc69f2877d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c5e5294_98c2c2df",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a747111b_a1848c98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T15:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c5e5294_98c2c2df",
+      "range": {
+        "startLine": 57,
+        "startChar": 59,
+        "endLine": 57,
+        "endChar": 126
+      },
+      "revId": "cd599aaddeda3093ab8375a5aa428fc69f2877d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19353800_3a2c2802",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-20T15:37:31Z",
       "side": 1,
       "message": "Missing dot at the end.",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 76
+      },
+      "revId": "cd599aaddeda3093ab8375a5aa428fc69f2877d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65246abd_0df072d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T15:59:17Z",
+      "side": 1,
+      "message": "hmm.. I wonder why this check is not in the pre commit checks.",
+      "parentUuid": "19353800_3a2c2802",
       "range": {
         "startLine": 312,
         "startChar": 1,
