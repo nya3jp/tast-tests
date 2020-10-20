@@ -35,6 +35,7 @@ type TestEnv struct {
 	cr     *chrome.Chrome
 	arc    *arc.ARC
 	tconn  *chrome.TestConn
+	p      *perf.Values
 	vm     bool
 	outDir string
 }
@@ -253,6 +254,7 @@ func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv,
 	te := &TestEnv{
 		vm:     false,
 		outDir: outDir,
+		p:      perf.NewValues(),
 	}
 
 	// Schedule closure of partially-initialized struct.
@@ -330,9 +332,6 @@ type RunParameters struct {
 	// ExistingARC indicates that we should use this ARC instance instead of
 	// creating a new one. ExistingChrome and UseARC must be set.
 	ExistingARC *arc.ARC
-	// ExtraPerfMetrics is a function that, if provided, is called at the end of
-	// the test to add additional performance metrics.
-	ExtraPerfMetrics func(context.Context, *TestEnv, *perf.Values, string)
 }
 
 // Close closes the Chrome, ARC, and WPR instances used in the TestEnv.
@@ -379,8 +378,6 @@ func RunTest(ctx context.Context, outDir string, tasks []MemoryTask, p *RunParam
 	testMeter := kernelmeter.New(ctx)
 	defer testMeter.Close(ctx)
 
-	perfValues := perf.NewValues()
-
 	taskCtx, taskCancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer taskCancel()
 
@@ -425,12 +422,9 @@ func RunTest(ctx context.Context, outDir string, tasks []MemoryTask, p *RunParam
 		return errors.Wrap(err, "failed to get memd files")
 	}
 
-	setPerfValues(testMeter, perfValues, "full_test")
-	if p.ExtraPerfMetrics != nil {
-		p.ExtraPerfMetrics(ctx, testEnv, perfValues, "full_test")
-	}
+	setPerfValues(testMeter, testEnv.p, "full_test")
 	resetAndLogStats(ctx, testMeter, "full test")
-	if err = perfValues.Save(outDir); err != nil {
+	if err = testEnv.p.Save(outDir); err != nil {
 		return errors.Wrap(err, "cannot save perf data")
 	}
 	// NB: errRet can be set by goroutines above, so don't override it if they
