@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c725ca24_cdafeddd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-20T06:06:42Z",
+      "side": 1,
+      "message": "Done by adding the link to comment of |rules|.",
+      "parentUuid": "2c7f9762_5c285b62",
+      "range": {
+        "startLine": 279,
+        "startChar": 19,
+        "endLine": 279,
+        "endChar": 102
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ec57d53_589d5aaf",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-20T05:27:58Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 285,
+        "startChar": 26,
+        "endLine": 285,
+        "endChar": 37
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d071e72a_92e6ac12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-20T06:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ec57d53_589d5aaf",
       "range": {
         "startLine": 285,
         "startChar": 26,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc4e077_1daa07f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-20T06:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6e32a95_5ad9aa10",
+      "range": {
+        "startLine": 291,
+        "startChar": 26,
+        "endLine": 291,
+        "endChar": 37
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc1ee45c_08d6de64",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-10-20T05:27:58Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 299,
+        "startChar": 26,
+        "endLine": 299,
+        "endChar": 37
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "725bd735_37d5c9a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-20T06:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc1ee45c_08d6de64",
       "range": {
         "startLine": 299,
         "startChar": 26,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87df16e5_47e3cf97",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-20T06:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "721bed1e_040e070a",
+      "range": {
+        "startLine": 306,
+        "startChar": 26,
+        "endLine": 306,
+        "endChar": 37
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fe165e4_06a1eccc",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6541d62_bff2a1e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-20T06:06:42Z",
+      "side": 1,
+      "message": "Yes it\u0027s typo, fixed.",
+      "parentUuid": "8fe165e4_06a1eccc",
+      "range": {
+        "startLine": 33,
+        "startChar": 39,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94c43652_817b1512",
@@ -169,6 +313,30 @@
       "writtenOn": "2020-10-20T05:27:58Z",
       "side": 1,
       "message": "Could you explain, add a comment why this symbolic link is necessary?",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d32bddf_644db304",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-20T06:06:42Z",
+      "side": 1,
+      "message": "Update the comment on L147.\nBecause the ITS require running in python2, the envsetup.sh script will also check on this:\nhttps://cs.android.com/android/platform/superproject/+/master:cts/apps/CameraITS/build/envsetup.sh;drc\u003db693c47afa147a609ac0f1f5d6a80967f658685f;l\u003d31",
+      "parentUuid": "94c43652_817b1512",
       "range": {
         "startLine": 152,
         "startChar": 1,
