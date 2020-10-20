@@ -16,6 +16,24 @@
       "message": "See the CL of Joon\u0027s I sent you for where/how this is created. You can either dig yourself or ask if he already did to understand it\u0027s purpose.",
       "revId": "ec25a4d47560ad89fb908dd186ead6fe3e40e33d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b641f419_0089831a",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-10-20T20:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bac0185a_3d38ab72",
+      "revId": "ec25a4d47560ad89fb908dd186ead6fe3e40e33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
