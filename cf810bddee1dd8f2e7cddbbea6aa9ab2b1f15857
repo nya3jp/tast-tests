@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6af308be_706f1b1a",
+        "filename": "src/chromiumos/tast/remote/network/netperf/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "The doc should at least point to the API of the package. Otherwise it\u0027s a bit pointless.\n\nHowever, I suggest a different structure of files:\n- rename session.go to netperf.go, so it\u0027s an obvious go-to for first timers\n- remove the doc.go",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07cbc2c_23d993a8",
+        "filename": "src/chromiumos/tast/remote/network/netperf/firewall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 23,
+        "startChar": 40,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80a18335_bcded5ad",
         "filename": "src/chromiumos/tast/remote/network/netperf/firewall.go",
         "patchSetId": 3
@@ -31,6 +77,162 @@
       "writtenOn": "2020-10-19T21:12:45Z",
       "side": 1,
       "message": "Might be worth moving outside this package to some more generic place.",
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8534924b_bd210909",
+        "filename": "src/chromiumos/tast/remote/network/netperf/firewall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "80a18335_bcded5ad",
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b5358a_9a80fb22",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "enum?",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 77
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2370b852_6f99aeb5",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "FromNetperf/FromNetperfOut/FromNetperfResults? This is misleading name clash because it actually creates a Result",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 16
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80f5178_060e3b36",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "Maybe this line could be used to validate if the columns are as expected? There is no other validation and the function could be providing completely wrong data.",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fbe4d24_b880652f",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "calculateStats will better reflect what the function actually does, it\u0027s not a mere getter.",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aaa1cff_cce9aba6",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "why not call it aggregate or something along the lines?",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 16
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7de56ad9_261e3383",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "should be \" dev\" to comply with the above function",
+      "range": {
+        "startLine": 185,
+        "startChar": 28,
+        "endLine": 185,
+        "endChar": 45
+      },
       "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +256,144 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b460f51c_dd6ff832",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "why not 3 * time.Second?",
+      "range": {
+        "startLine": 22,
+        "startChar": 31,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e73c3085_cb33002a",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "Is this comment necessary? Not clear what it refers to (to all above I guess) and what value it holds in this context.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 59
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0ef7b9_1ea9defd",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "maybe to conn.Command?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 32
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d689b525_3a1d4d7b",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "returns a configured instance of Runner",
+      "range": {
+        "startLine": 101,
+        "startChar": 12,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf88919_8730599e",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "Is there no way to wait actively, checking on something that would flag netserv is up?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 2
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e488abc0_373fd961",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "Isn\u0027t there a risk of race? The previous instance of netserv still up?",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 27
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e32eab2_10f42725",
         "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
         "patchSetId": 3
@@ -65,6 +405,282 @@
       "writtenOn": "2020-10-19T21:12:45Z",
       "side": 1,
       "message": "to remove",
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f181fab_3a6ae681",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "It\u0027s a bit twisted logic 😊\nWhy not:\nif err \u003d\u003d nil {\n  result \u003d string(ret)\n  break\n}\nrestart\u0026co",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 7
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42742aeb_ce91fdd4",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "Maybe leave it to the caller, which may/not want to log this.",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 32
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec2b913b_4ea651be",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "2 * time.Second",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26542e1f_eb15ac3c",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "Why is this called History?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64077d29_d9d7829d",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "I would comment a bit more on what the result actually is. There is quite a bit of non-obvious logic on obtaining it.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 59
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99fb8ae7_b4f815db",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "just:\ndefer runner.Close(ctx)\nshould be fine, ctx is not changed later on (and if it was you may want to use the latest anyway)",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e77adc_f581a9dc",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "One could run it with reverse and TestTypeUDPStream explicitly. Maybe set a flag when the cfg change is done?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 55
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c55928_af915ffb",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "} else\notherwise finalResult may be nil",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 3
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5154a7f2_a55a5f8f",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "Logic-wise, is there a chance this will return something different than last call to fromSamples in the loop above? Value of history will be the same, right?",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b402500_9c007e8d",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "Maybe this could be returned as well?",
+      "range": {
+        "startLine": 116,
+        "startChar": 58,
+        "endLine": 116,
+        "endChar": 69
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbef996b_9c6998d7",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "Same as earlier, no need to evaluate ctx here.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 7
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e567464_92fcd4d4",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-20T10:07:21Z",
+      "side": 1,
+      "message": "The host attributes should be cleared, it\u0027s a GCed language :)",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 46
+      },
       "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
