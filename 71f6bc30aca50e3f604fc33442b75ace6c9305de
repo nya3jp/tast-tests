@@ -16,6 +16,138 @@
       "message": "Ilja: do you have objections to this patch?\n\nTatsuhisa: thanks! PTAL.",
       "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e80fae_a357ba05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-20T22:13:36Z",
+      "side": 1,
+      "message": "Looks good, nothing major, just clarifications. Thanks!",
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd2567d_a4bb335c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-20T22:13:36Z",
+      "side": 1,
+      "message": "It is the 8 bit value premultiplied by 0x101. (See ...)",
+      "range": {
+        "startLine": 209,
+        "startChar": 3,
+        "endLine": 209,
+        "endChar": 5
+      },
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "504b0ea6_151534f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-20T22:13:36Z",
+      "side": 1,
+      "message": "Do you mind changing this to 0xFFFF?\nAlso, do we really care about the alpha of the black?",
+      "range": {
+        "startLine": 211,
+        "startChar": 47,
+        "endLine": 211,
+        "endChar": 52
+      },
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e4da156_769cd634",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-20T22:13:36Z",
+      "side": 1,
+      "message": "boundary of",
+      "range": {
+        "startLine": 395,
+        "startChar": 53,
+        "endLine": 395,
+        "endChar": 55
+      },
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2acd57d_9ffe7960",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-20T22:13:36Z",
+      "side": 1,
+      "message": "boundary",
+      "range": {
+        "startLine": 410,
+        "startChar": 53,
+        "endLine": 410,
+        "endChar": 54
+      },
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2443924f_ec73ec34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-20T22:13:36Z",
+      "side": 1,
+      "message": "Would it make sense to order this from small to large? IIUC (left, top), (right, bottom)",
+      "range": {
+        "startLine": 413,
+        "startChar": 2,
+        "endLine": 413,
+        "endChar": 27
+      },
+      "revId": "71f6bc30aca50e3f604fc33442b75ace6c9305de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
