@@ -69,15 +69,15 @@ func saveScreenshot(ctx context.Context, dir string) {
 		return
 	}
 
-	// Fallback to native screenshot command.
-	if err := saveScreenshotNative(ctx, dir); err != nil {
+	// Fallback to built-in screenshot command.
+	if err := saveScreenshotBuiltIn(ctx, dir); err != nil {
 		testing.ContextLog(ctx, "Failed to take screenshot by a command: ", err)
 	}
 }
 
-// saveScreenshotNative saves a screenshot by using "screenshot" command.
-func saveScreenshotNative(ctx context.Context, dir string) error {
-	path := filepath.Join(dir, "screenshot_native.png")
+// saveScreenshotBuiltIn saves a screenshot by using "screenshot" command.
+func saveScreenshotBuiltIn(ctx context.Context, dir string) error {
+	path := filepath.Join(dir, "screenshot_builtin.png")
 	return screenshot.Capture(ctx, path)
 }
 

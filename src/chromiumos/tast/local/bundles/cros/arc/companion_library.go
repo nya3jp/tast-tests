@@ -1328,7 +1328,7 @@ func windowBounds(ctx context.Context, d *ui.Device) (coords.Rect, error) {
 	const getWindowBoundsButtonID = companionLibDemoPkg + ":id/get_window_bounds_button"
 
 	parseBoundFromMsg := func(msg *companionLibMessage) (coords.Rect, error) {
-		// Parse Rect short string to rectangle format with native pixel size.
+		// Parse Rect short string to rectangle format with built-in pixel size.
 		var left, top, right, bottom int
 		if msg.WindowBoundMsg == nil {
 			return coords.Rect{}, errors.New("not a window bound message")

@@ -76,7 +76,7 @@ var (
 	}
 )
 
-// Describes either a container(guest) environment or native(host) environment on which a performance test is executed.
+// Describes either a container(guest) environment or built-in(host) environment on which a performance test is executed.
 type runEnv struct {
 	// File name the disk I/O test is performed on.
 	testDataPath string
@@ -158,7 +158,7 @@ func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings
 }
 
 // reportMetric given the metric name metricName and perf numbers of the same configuration running in the container as guestValue
-// and on the native host machine as hostValue, reports three metrics:
+// and on the built-in host machine as hostValue, reports three metrics:
 // - guest_|metricName| : The perf value in the container.
 // - host_|metricName| : The perf value on the host machine.
 // - ratio_|metricName| : The ratio of guestValue divided by hostValue.

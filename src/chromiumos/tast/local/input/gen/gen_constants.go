@@ -47,20 +47,20 @@ func main() {
 		MainGoFilePath: thisFile,
 
 		Types: []genutil.TypeSpec{{
-			Name:       etType,
-			NativeType: "uint16",
+			Name:        etType,
+			BuiltInType: "uint16",
 			Desc: `corresponds to the "type" field in the input_event C struct.
 	// Per the kernel documentation, "event types are groupings of codes under a logical input construct."
 	// Stated more plainly, event types represent broad categories like "keyboard events".`,
 		}, {
-			Name:       ecType,
-			NativeType: "uint16",
+			Name:        ecType,
+			BuiltInType: "uint16",
 			Desc: `corresponds to the "code" field in the input_event C struct.
 	// Per the kernel documentation, "event codes define the precise type of event."
 	// There are codes corresponding to different keys on a keyboard or different mouse buttons, for example.`,
 		}, {
-			Name:       propType,
-			NativeType: "uint16",
+			Name:        propType,
+			BuiltInType: "uint16",
 			Desc: `describes additional information about an input device beyond
 	// the event types that it supports.`,
 		}},

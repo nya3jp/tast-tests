@@ -27,7 +27,7 @@ func verifyDiagnose(t *testing.T, logcat, exp string) {
 	}
 }
 
-func TestDiagnoseNativeCrash(t *testing.T) {
+func TestDiagnoseBuildInCrash(t *testing.T) {
 	const logcat = `
 --------- beginning of crash
 11-14 17:04:58.241    68   128 F libc    : Fatal signal 11 (SIGSEGV), code 1, fault addr 0x8 in tid 128 (Binder:68_1)
