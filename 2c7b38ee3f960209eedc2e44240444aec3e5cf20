@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feba2303_f33956f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_hp_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-20T05:10:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d2c1c5_b3575414",
+      "revId": "2c7b38ee3f960209eedc2e44240444aec3e5cf20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04ff7573_35aa4203",
@@ -82,6 +100,24 @@
       "writtenOn": "2020-10-13T23:33:37Z",
       "side": 1,
       "message": "If this comment is intentional, please add more context.",
+      "revId": "2c7b38ee3f960209eedc2e44240444aec3e5cf20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cfc3fd9_7c3ec70f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_hp_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-20T05:10:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04ff7573_35aa4203",
       "revId": "2c7b38ee3f960209eedc2e44240444aec3e5cf20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
