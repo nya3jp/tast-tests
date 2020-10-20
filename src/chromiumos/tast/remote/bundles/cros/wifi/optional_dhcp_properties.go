@@ -90,8 +90,19 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 			layers.LayerTypeDot11,
 			func(layer gopacket.Layer) bool {
 				dot11 := layer.(*layers.Dot11)
-				// Filter sender == MAC of DUT.
-				return bytes.Equal(dot11.Address2, mac)
+				if bytes.Equal(dot11.Address2, mac) {
+					// Sender is DUT.
+					return true
+				}
+				// Check if source is DUT.
+				if !dot11.Flags.FromDS() {
+					return false
+				}
+				// Both FromDS and ToDS is 1, source is Address4.
+				if dot11.Flags.ToDS() {
+					return bytes.Equal(dot11.Address4, mac)
+				}
+				return bytes.Equal(dot11.Address3, mac)
 			},
 		),
 		pcap.TypeFilter(layers.LayerTypeDHCPv4, nil),
@@ -165,6 +176,7 @@ packetLoop:
 			s.Errorf("Unexpected hostname; got %q, want %q", name, hostname)
 		}
 	}
+	s.Logf("Found %d DHCP Requests", dhcpReqCount)
 	if dhcpReqCount == 0 {
 		s.Fatal("No DHCP Request found")
 	}
