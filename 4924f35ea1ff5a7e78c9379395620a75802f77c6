@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ab90fd_9087056a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-20T00:32:20Z",
+      "side": 1,
+      "message": "Do yo mind setting a flag here\nmachine_idle_at_start \u003d false\n\nIt would be good to wait for cooldown as well.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 77
+      },
+      "revId": "4924f35ea1ff5a7e78c9379395620a75802f77c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f743dd0_ea3c1abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-20T00:32:20Z",
+      "side": 1,
+      "message": "Check here for machine_idle_at_start and fail test if so.\nIf you want can also check a second time for idle at end of test and report that information for debugging.",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 1
+      },
+      "revId": "4924f35ea1ff5a7e78c9379395620a75802f77c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
