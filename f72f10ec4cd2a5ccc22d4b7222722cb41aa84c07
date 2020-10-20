@@ -46,6 +46,30 @@
       },
       "revId": "f72f10ec4cd2a5ccc22d4b7222722cb41aa84c07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "206f9777_c4a3807f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/max98390.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-20T05:53:10Z",
+      "side": 1,
+      "message": "Re-organized the test structure.",
+      "parentUuid": "7274a1de_f038939e",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "f72f10ec4cd2a5ccc22d4b7222722cb41aa84c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
