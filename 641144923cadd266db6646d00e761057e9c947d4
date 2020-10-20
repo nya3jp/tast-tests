@@ -69,6 +69,42 @@
       "parentUuid": "77fffb75_179bc60f",
       "revId": "641144923cadd266db6646d00e761057e9c947d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2aef325_50e77f8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-20T07:12:13Z",
+      "side": 1,
+      "message": "Changed this to use fishfood release ( gs://chrome-lacros-fishfood/x86_64/817096/lacros.zip ) since I had to update the commit message anyway.",
+      "parentUuid": "685a6a91_0a7fd168",
+      "revId": "641144923cadd266db6646d00e761057e9c947d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af59caa_b8d84011",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-20T07:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "346f9a4c_7e05a52d",
+      "revId": "641144923cadd266db6646d00e761057e9c947d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
