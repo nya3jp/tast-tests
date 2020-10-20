@@ -88,6 +88,12 @@ var PlayStore = App{
 	Name: "Play Store",
 }
 
+// Scan has details about the Scan SWA.
+var Scan = App{
+	ID:   "", // TODO(jschettler): Create ID.
+	Name: "Scan",
+}
+
 // Settings has details about the Settings app.
 var Settings = App{
 	ID:   "odknhmnlageboeamepcngndbggdpaobj",
