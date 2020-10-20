@@ -16,6 +16,23 @@
       "message": "CQ is erroring out saying it can\u0027t find the data files, so I removed the symlinks to see if that helps, can\u0027t reproduce locally because on my commit the build fails for other reasons :-/",
       "revId": "da921d021895e7c03e5f6901ec2d265e3fea62df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cccdab8d_bf40102a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 24
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-20T02:39:05Z",
+      "side": 1,
+      "message": "whoops, will fix that",
+      "revId": "da921d021895e7c03e5f6901ec2d265e3fea62df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
