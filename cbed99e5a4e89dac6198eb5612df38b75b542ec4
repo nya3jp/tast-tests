@@ -16,6 +16,29 @@
       "message": "PTAL. This CL adds a test for the double input on password field issue. Thanks!\n",
       "revId": "cbed99e5a4e89dac6198eb5612df38b75b542ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76a40d06_93da455e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-10-20T02:46:10Z",
+      "side": 1,
+      "message": ", ui.Text(\"\")",
+      "range": {
+        "startLine": 551,
+        "startChar": 60,
+        "endLine": 551,
+        "endChar": 61
+      },
+      "revId": "cbed99e5a4e89dac6198eb5612df38b75b542ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
