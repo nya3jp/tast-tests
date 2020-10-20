@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbeec22f_83415a8d",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-20T22:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1b4a72a_119c6814",
+      "revId": "203dd5774038f9c5bdc577e82b79ff35692fa526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdc33c32_be223d67",
