@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03238a7f_82ad8800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-20T00:54:19Z",
+      "side": 1,
+      "message": "The code LGTM but wondering if we want other viz traces in addition to viz.triangles?  oshima, malay, could you confirm that?\n\ncc: nya@ and wvk for the change of chrome.SaveTraceToFile -- it will save the data as gzipped format.",
+      "revId": "0551df11baea71695217ae7684e10315df3924ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
