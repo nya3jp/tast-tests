@@ -17,11 +17,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// KillableTask allows querying whether a task has been killed or not.
-type KillableTask interface {
-	StillAlive(context.Context, *TestEnv) bool
-}
-
 // MemoryStressTask creates a Chrome tab that allocates memory like the
 // platform.MemoryStressBasic test.
 type MemoryStressTask struct {
@@ -32,6 +27,9 @@ type MemoryStressTask struct {
 
 // MemoryStressTask is a MemoryTask.
 var _ MemoryTask = (*MemoryStressTask)(nil)
+
+// MemoryStressTask is a KillableTask.
+var _ KillableTask = (*MemoryStressTask)(nil)
 
 // Run creates a Chrome tab that allocates memory. If a memory.Limit has been
 // provided, we wait until we are no longer limited.
