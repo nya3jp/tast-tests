@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/memory"
@@ -66,29 +65,18 @@ func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
 	// the memory of the system.
 	tabAllocMiB := (int)((2 * info.Total / numTabs) / memory.MiB)
 	var tasks []memoryuser.MemoryTask
+	var tabsAliveTasks []memoryuser.KillableTask
 	server := memoryuser.NewMemoryStressServer(s.DataFileSystem())
 	defer server.Close()
 	for i := 0; i < numTabs; i++ {
-		tasks = append(tasks, server.NewMemoryStressTask(tabAllocMiB, 0.67, limit))
+		task := server.NewMemoryStressTask(tabAllocMiB, 0.67, limit)
+		tasks = append(tasks, task)
+		tabsAliveTasks = append(tabsAliveTasks, task)
 	}
 	s.Logf("Created tasks to open %d tabs of %d MiB", numTabs, tabAllocMiB)
 
-	// Define a metric for the number of those tabs still alive.
-	var extraPerfMetrics = func(ctx context.Context, testEnv *memoryuser.TestEnv, p *perf.Values, label string) {
-		tabsAlive := 0
-		for _, task := range tasks {
-			killable, ok := task.(memoryuser.KillableTask)
-			if ok && killable.StillAlive(ctx, testEnv) {
-				tabsAlive++
-			}
-		}
-		totalTabKillMetric := perf.Metric{
-			Name:      "tabs_alive",
-			Unit:      "count",
-			Direction: perf.BiggerIsBetter,
-		}
-		p.Set(totalTabKillMetric, float64(tabsAlive))
-	}
+	// Add a task to collect metrics on which tabs are still alive.
+	tasks = append(tasks, memoryuser.NewStillAliveMetricTask(tabsAliveTasks, "tabs_alive"))
 
 	var a *arc.ARC
 	cr, ok := s.PreValue().(*chrome.Chrome)
@@ -98,9 +86,8 @@ func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
 		a = pre.ARC
 	}
 	rp := &memoryuser.RunParameters{
-		ExistingChrome:   cr,
-		ExistingARC:      a,
-		ExtraPerfMetrics: extraPerfMetrics,
+		ExistingChrome: cr,
+		ExistingARC:    a,
 	}
 	if err := memoryuser.RunTest(ctx, s.OutDir(), tasks, rp); err != nil {
 		s.Fatal("RunTest failed: ", err)
