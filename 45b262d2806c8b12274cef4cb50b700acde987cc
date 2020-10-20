@@ -257,6 +257,24 @@
       "message": "To ensure external data is used, local data/lacros_binary.tar needs to be removed. Could you comment it, too?",
       "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "424c576f_f3eb15df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-20T02:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f826d21_8fd91e14",
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
