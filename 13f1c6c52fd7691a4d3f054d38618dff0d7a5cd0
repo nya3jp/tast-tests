@@ -262,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02228285_ba02b117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-20T14:11:20Z",
+      "side": 1,
+      "message": "The 2 should be separate. You should use err if there was error while executing the function, and the result is unclear. If you can give a clear result, that means there were no errors in checking if you can see the BookmarkIcon.\n\nSo if err !\u003d nil, you shouldn\u0027t use the value of result, as the error means it is unreliable.",
+      "parentUuid": "d0b533ca_24374bf2",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81c83b47_baf2e380",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 3
