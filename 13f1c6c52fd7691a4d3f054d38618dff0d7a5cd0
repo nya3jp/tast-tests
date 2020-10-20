@@ -286,6 +286,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa3db0cf_988a5ec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T15:00:04Z",
+      "side": 1,
+      "message": "I get all you are saying. \nThe thing is we have:\n\n- enabled policy\n- disabled policy \n\ncases. \n\nFor enabled policy, when something that causes problem surfaces then we return \"false\" and error. Expectation is to have true. Then failure is reported with assertion message containing error. This is shared functionality on the test routine level.\n\nFir disabled policy, when:\na) something unexpected happens we return false and err\nb) something expected (like bookmark menu is not showing up) happens we return false and err\nFor disabled policy scenario we expect in most cases to receive false.\n\nWhile writing these I realized that we will have false positives.\n\nI don\u0027t see any other way that for the test to know whether we run disabled policy case to change the logic accordingly e.g. treating failure of opening bookmark menu as expected.",
+      "parentUuid": "02228285_ba02b117",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3f5c83_a04ccb18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T15:00:04Z",
+      "side": 1,
+      "message": "I get all you are saying. \nThe thing is we have:\n\n- enabled policy\n- disabled policy \n\ncases. \n\nFor enabled policy, when something that causes problem surfaces then we return \"false\" and error. Expectation is to have true. Then failure is reported with assertion message containing error. This is shared functionality on the test routine level.\n\nFir disabled policy, when:\na) something unexpected happens we return false and err\nb) something expected (like bookmark menu is not showing up) happens we return false and err\nFor disabled policy scenario we expect in most cases to receive false.\n\nWhile writing these I realized that we will have false positives.\n\nI don\u0027t see any other way that for the test to know whether we run disabled policy case to change the logic accordingly e.g. treating failure of opening bookmark menu as expected.",
+      "parentUuid": "02228285_ba02b117",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "13f1c6c52fd7691a4d3f054d38618dff0d7a5cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81c83b47_baf2e380",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 3

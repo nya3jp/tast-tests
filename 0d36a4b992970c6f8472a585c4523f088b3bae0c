@@ -22,6 +22,30 @@
       },
       "revId": "0d36a4b992970c6f8472a585c4523f088b3bae0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66452595_b90d64e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T15:00:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94aa2815_478fad80",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "0d36a4b992970c6f8472a585c4523f088b3bae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
