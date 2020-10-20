@@ -292,12 +292,11 @@ func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...Wait
 			for _, re := range rx.regexp {
 				match := false
 				for _, f := range newFiles {
-					var err error
-					match, err = regexp.MatchString(re, f)
+					matchThisFile, err := regexp.MatchString(re, f)
 					if err != nil {
 						return testing.PollBreak(errors.Wrapf(err, "invalid regexp %s", re))
 					}
-					if match {
+					if matchThisFile {
 						// Wait for meta files to have "done=1".
 						if strings.HasSuffix(f, ".meta") {
 							var contents []byte
@@ -306,12 +305,13 @@ func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...Wait
 							}
 							if !strings.Contains(string(contents), "done=1") {
 								// Not there yet.
-								match = false
-								break
+								matchThisFile = false
 							}
 						}
+					}
+					if matchThisFile {
 						files[re] = append(files[re], f)
-						break
+						match = true
 					}
 				}
 				if !match && !rx.optional {
