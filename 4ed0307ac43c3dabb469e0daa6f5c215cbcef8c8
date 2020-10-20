@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c7f9762_5c285b62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-10-20T05:27:58Z",
+      "side": 1,
+      "message": "Let\u0027s use links to our official Android codesearch https://cs.android.com/android/platform/superproject/+/master:cts/apps/CameraITS/tools/run_all_tests.py (and select the right branch).",
+      "range": {
+        "startLine": 279,
+        "startChar": 19,
+        "endLine": 279,
+        "endChar": 102
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec57d53_589d5aaf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-10-20T05:27:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 285,
+        "startChar": 26,
+        "endLine": 285,
+        "endChar": 37
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e32a95_5ad9aa10",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-10-20T05:27:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 291,
+        "startChar": 26,
+        "endLine": 291,
+        "endChar": 37
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1ee45c_08d6de64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-10-20T05:27:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 299,
+        "startChar": 26,
+        "endLine": 299,
+        "endChar": 37
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "721bed1e_040e070a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-10-20T05:27:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 306,
+        "startChar": 26,
+        "endLine": 306,
+        "endChar": 37
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fe165e4_06a1eccc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-10-20T05:27:58Z",
+      "side": 1,
+      "message": "Is this a typo?",
+      "range": {
+        "startLine": 33,
+        "startChar": 39,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c43652_817b1512",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-10-20T05:27:58Z",
+      "side": 1,
+      "message": "Could you explain, add a comment why this symbolic link is necessary?",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
