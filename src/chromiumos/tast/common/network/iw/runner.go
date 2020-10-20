@@ -16,6 +16,7 @@ import (
 
 	"chromiumos/tast/common/network/cmd"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 var htTable = map[string]string{
@@ -270,12 +271,14 @@ func (r *Runner) TimedScan(ctx context.Context, iface string,
 		args = append(args, "ssid", ssid)
 	}
 	startTime := time.Now()
-	out, err := r.cmd.Output(ctx, "iw", args...)
+	testing.ContextLogf(ctx, "Running scan command: iw %v", args)
+	out, err := r.cmd.Output(ctx, "/usr/sbin/iw", args...)
 	scanTime := time.Since(startTime)
 	if err != nil {
 		return nil, errors.Wrap(err, "iw scan failed")
 	}
 	scanOut := string(out)
+	testing.ContextLogf(ctx, "Scan Result: %s", scanOut)
 	bssList, err := parseScanResults(scanOut)
 	if err != nil {
 		return nil, err

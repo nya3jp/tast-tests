@@ -60,6 +60,13 @@ func Count(count int) Option {
 	}
 }
 
+// SSIDPrefix returns an Option which sets the SSID prefix.
+func SSIDPrefix(p string) Option {
+	return func(c *config) {
+		c.ssidPrefix = p
+	}
+}
+
 // NumBSS returns an Option which sets the number of BSS.
 func NumBSS(n int) Option {
 	return func(c *config) {
@@ -126,6 +133,7 @@ func (s *Sender) Send(ctx context.Context, t Type, ch int, ops ...Option) error 
 	testing.ContextLogf(ctx, "Logging send_management_frame output to %q", filepath.Base(f.Name()))
 
 	cmd := s.host.Command("send_management_frame", args...)
+	testing.ContextLogf(ctx, "Spawning FrameSender: %v", cmd)
 	// Collect combined output to f.
 	cmd.Stdout = f
 	cmd.Stderr = f
