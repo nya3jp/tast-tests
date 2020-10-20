@@ -7,6 +7,7 @@ package wifi
 import (
 	"bytes"
 	"context"
+	"net"
 	"time"
 
 	"github.com/google/gopacket"
@@ -90,8 +91,24 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 			layers.LayerTypeDot11,
 			func(layer gopacket.Layer) bool {
 				dot11 := layer.(*layers.Dot11)
-				// Filter sender == MAC of DUT.
-				return bytes.Equal(dot11.Address2, mac)
+				// Filter Data frame.
+				if dot11.Type.MainType() != layers.Dot11TypeData {
+					return false
+				}
+				// Filter source. See ieee802.11 9.2.4.1.4 for more details.
+				var source net.HardwareAddr
+				switch {
+				case !dot11.Flags.FromDS():
+					// From DS = 0: Sent by STA to AP/another STA, source in Address2.
+					source = dot11.Address2
+				case !dot11.Flags.ToDS():
+					// From DS = 1, To DS = 0: Sent by STA, source in Address3.
+					source = dot11.Address3
+				default:
+					// From DS = 1, To DS = 1: Sent by mesh STA, source in Address4.
+					source = dot11.Address4
+				}
+				return bytes.Equal(source, mac)
 			},
 		),
 		pcap.TypeFilter(layers.LayerTypeDHCPv4, nil),
@@ -165,6 +182,7 @@ packetLoop:
 			s.Errorf("Unexpected hostname; got %q, want %q", name, hostname)
 		}
 	}
+	s.Logf("Found %d DHCP Requests", dhcpReqCount)
 	if dhcpReqCount == 0 {
 		s.Fatal("No DHCP Request found")
 	}
