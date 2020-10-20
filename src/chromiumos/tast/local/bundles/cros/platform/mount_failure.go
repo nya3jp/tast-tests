@@ -115,7 +115,7 @@ func validateCrashLogs(files map[string][]string) error {
 		logFileRegex := mf.name + `\.\d{8}\.\d{6}\.0\.log`
 
 		if len(files[logFileRegex]) != 1 {
-			return errors.Errorf("multiple (%d) log files within the same regex bucket: %s", len(files[logFileRegex]), mf.name)
+			return errors.Errorf("multiple log files (%v) within the same regex bucket: %s", files[logFileRegex], mf.name)
 		}
 
 		f := files[logFileRegex][0]
