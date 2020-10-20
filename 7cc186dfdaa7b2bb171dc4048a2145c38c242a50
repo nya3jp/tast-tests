@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "316da9bc_c4e0cc62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Right, should be false. No need to do it via cmdline, it\u0027s only useful when developing the test.",
+      "parentUuid": "43778ef5_ae1e3594",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a8d0424_d83e4a65",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-10-19T20:06:30Z",
       "side": 1,
       "message": "Shouldn\u0027t this be a part of roamNaturalTestcase to improve testcase scaling?",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f32f11_d1802fba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Maybe, if we want to extend the test to run in multiple configurations. Will take long time... Let\u0027s leave it as const now, for clarity. Easy to change later.",
+      "parentUuid": "2a8d0424_d83e4a65",
       "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e816960_52c369e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "As above.",
+      "parentUuid": "e34333e1_d6b780dd",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ca3912f_76831e71",
@@ -82,6 +136,24 @@
       "writtenOn": "2020-10-19T20:06:30Z",
       "side": 1,
       "message": "Shouldn\u0027t this be a part of roamNaturalTestcase to improve testcase scaling?",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6df48e2_6218c6c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "As above.",
+      "parentUuid": "4ca3912f_76831e71",
       "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b36cb40_0b1c866e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Right.",
+      "parentUuid": "5d931e6b_a6e49e59",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7154c45e_d0460bea",
@@ -116,6 +206,30 @@
       "writtenOn": "2020-10-19T20:06:30Z",
       "side": 1,
       "message": "Perhaps it would be better(more readable) if you use struct for them and pass by value. It would save you from this strange unpacking here, and become more clear when setting.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 23
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab52da8_9219dbd1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Right, following python gone too far :)",
+      "parentUuid": "7154c45e_d0460bea",
       "range": {
         "startLine": 95,
         "startChar": 1,
@@ -149,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "138a9c66_a2f5c9b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fa40dec_b1b486c3",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 75
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08cd8595_d81d9251",
@@ -166,6 +304,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb11fd1_e96ebb35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Yes, but it\u0027s constant in the original. A point for improvement in future, if we want to.",
+      "parentUuid": "08cd8595_d81d9251",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f58cafea_8b7081b2",
@@ -179,6 +335,30 @@
       "writtenOn": "2020-10-19T20:06:30Z",
       "side": 1,
       "message": "Shouldn\u0027t this be constant?",
+      "range": {
+        "startLine": 137,
+        "startChar": 48,
+        "endLine": 137,
+        "endChar": 61
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c3fac41_b83b0c36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f58cafea_8b7081b2",
       "range": {
         "startLine": 137,
         "startChar": 48,
@@ -208,6 +388,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f302978_87733ea3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Why? This is just cancel of the timeout context.",
+      "parentUuid": "2fb73d9b_dc440ba9",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e3f7f56_6687ee8e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
         "patchSetId": 1
@@ -219,6 +417,30 @@
       "writtenOn": "2020-10-19T20:06:30Z",
       "side": 1,
       "message": "Perhaps return these values directly and have more fine-grained stats dump at the end, but\nI understand it will produce different output than autotest.\nIt depends on what is more important: accuracy or similarity. @Matthew? @Brian?",
+      "range": {
+        "startLine": 164,
+        "startChar": 36,
+        "endLine": 164,
+        "endChar": 85
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45849238_a049e8a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Well, I guess the point of the test is to collect these stats for quick evaluation good/no. Details are in the logs, if needed.",
+      "parentUuid": "3e3f7f56_6687ee8e",
       "range": {
         "startLine": 164,
         "startChar": 36,
@@ -246,6 +468,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3da80d1_15090bc3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Yes, we should, and StartWPAMonitor does that - that\u0027s why it returns a new context. I have clarified the comment of StartWPAMonitor.",
+      "parentUuid": "8a548229_ae74123d",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "491321b6_506b457e",
@@ -259,6 +499,24 @@
       "writtenOn": "2020-10-19T20:06:30Z",
       "side": 1,
       "message": "Again, the rule in tests seems to reserve some time for each deferred operation. You\u0027re eating away time reserved for AP operations.",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "934f4159_4a21715f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Can Close() last enough to justify context shortening? I think it returns immediately, it shouldn\u0027t block on anything, right? \nIn existing Tast codebase I can\u0027t find any example of reserving time for Close().",
+      "parentUuid": "491321b6_506b457e",
       "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -282,6 +540,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1d4934e_8f60b684",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "As above",
+      "parentUuid": "f5974acc_b021fa47",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca12e43f_1a8f1f71",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -293,6 +569,24 @@
       "writtenOn": "2020-10-19T20:06:30Z",
       "side": 1,
       "message": "Perhaps we should wrap this error to see full error stack. Otherwise you could simply return wpa.ClearBlacklist(ctx)",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa6ebe0_ee1efc04",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-20T08:39:50Z",
+      "side": 1,
+      "message": "Good point.",
+      "parentUuid": "ca12e43f_1a8f1f71",
       "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
