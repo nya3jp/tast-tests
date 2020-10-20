@@ -1136,3 +1136,10 @@ func (tf *TestFixture) DisableMACRandomize(ctx context.Context) (shortenCtx cont
 	// Not supported or not enabled. No-op for these cases.
 	return ctx, func() error { return nil }, nil
 }
+
+// SetWifiEnabled persistently enables/disables Wifi via shill.
+func (tf *TestFixture) SetWifiEnabled(ctx context.Context, enabled bool) error {
+	req := &network.SetWifiEnabledRequest{Enabled: enabled}
+	_, err := tf.WifiClient().SetWifiEnabled(ctx, req)
+	return err
+}
