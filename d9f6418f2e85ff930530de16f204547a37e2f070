@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5592de_7eec156f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2020-10-20T02:36:02Z",
+      "side": 1,
+      "message": "Looking at the way `GetBluetoothPowered` is implemented, you should only get an error if bluez isn\u0027t started. In case an adapter doesn\u0027t exist or it\u0027s powered down, you should get False.\n\nSo this LGTM.",
+      "parentUuid": "bfa719d0_e77262b8",
+      "revId": "d9f6418f2e85ff930530de16f204547a37e2f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4355f197_51691250",
