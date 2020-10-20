@@ -16,6 +16,92 @@
       "message": "still LGTM",
       "revId": "f7b12b3bea9e1b038e568ff9a964fbb8bb774520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc6e3a8_ee4f28b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-20T00:21:33Z",
+      "side": 1,
+      "message": "[drive by, as I saw this CL referred from another bug about the existing Autotest]\n\ndid anybody send this by anyone on the power team? seems like the suspend/resume logic is something others are going to want, and it would be nice to have a single way of doing this for tests. I\u0027m also not sure if all the logic around the RTC is really all that necessary still -- it\u0027s possible this was an overengineered leftover from Autotest.",
+      "revId": "f7b12b3bea9e1b038e568ff9a964fbb8bb774520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d41e10_c0254f0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-20T00:21:33Z",
+      "side": 1,
+      "message": "you need to lock the check_ethernet hook when calling this.",
+      "range": {
+        "startLine": 1831,
+        "startChar": 36,
+        "endLine": 1831,
+        "endChar": 55
+      },
+      "revId": "f7b12b3bea9e1b038e568ff9a964fbb8bb774520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b659386_53da3b22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1872,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-20T00:21:33Z",
+      "side": 1,
+      "message": "I\u0027m not really sure why we\u0027re specifying this; are you? I think that\u0027s mostly useful if we were planning to do a lot of stuff (that might try to wake the system) in between line 1859 and this; otherwise, it doesn\u0027t really mean much and is just an extra race condition, I think.",
+      "range": {
+        "startLine": 1872,
+        "startChar": 0,
+        "endLine": 1872,
+        "endChar": 39
+      },
+      "revId": "f7b12b3bea9e1b038e568ff9a964fbb8bb774520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34288962_106d8d2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1873,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-20T00:21:33Z",
+      "side": 1,
+      "message": "sp: alarm",
+      "range": {
+        "startLine": 1873,
+        "startChar": 106,
+        "endLine": 1873,
+        "endChar": 111
+      },
+      "revId": "f7b12b3bea9e1b038e568ff9a964fbb8bb774520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
