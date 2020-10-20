@@ -83,29 +83,17 @@ func SMB(ctx context.Context, s *testing.State) {
 	}
 	defer files.Release(ctx)
 
-	menuItems := []string{"Install new service", "SMB file share"}
+	menuItems := []string{"Add new service", "SMB file share"}
 	if err := files.ClickMoreMenuItem(ctx, menuItems); err != nil {
 		s.Fatal("Failed clicking menu item SMB file share: ", err)
 	}
 
-	// Get SMB Window that has just popped up
-	params := ui.FindParams{
-		Name: "Add file share",
-		Role: ui.RoleTypeDialog,
-	}
-
-	smbWindow, err := ui.FindWithTimeout(ctx, tconn, params, 15*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find the newly launched smb window: ", err)
-	}
-	defer smbWindow.Release(ctx)
-
 	// Click the SMB file share input box to enter details
-	params = ui.FindParams{
+	params := ui.FindParams{
 		Name: "File share URL",
 		Role: ui.RoleTypeTextField,
 	}
-	fileShareURLTextBox, err := smbWindow.DescendantWithTimeout(ctx, params, 10*time.Second)
+	fileShareURLTextBox, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		s.Fatal("Failed waiting for file share url text box: ", err)
 	}
