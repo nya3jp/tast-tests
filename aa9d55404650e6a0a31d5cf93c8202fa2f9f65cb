@@ -33,6 +33,24 @@
       "message": "nit: could you dump the err (the one returned from StopTracing) here, too? That may help investigation in the future.\n\ntesting.ContextLog(ctx, \"Failed to stop tracing after encountering other error: \", err)",
       "revId": "aa9d55404650e6a0a31d5cf93c8202fa2f9f65cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7143b5d_56a4eeea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-20T07:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afdb82e5_6d41da7e",
+      "revId": "aa9d55404650e6a0a31d5cf93c8202fa2f9f65cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
