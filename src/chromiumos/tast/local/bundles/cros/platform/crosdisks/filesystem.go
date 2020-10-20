@@ -137,7 +137,6 @@ func RunFilesystemTests(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect CrosDisks D-Bus service: ", err)
 	}
-	defer cd.Close()
 
 	err = withLoopbackDeviceDo(ctx, cd, "", func(ctx context.Context, ld *crosdisks.LoopbackDevice) error {
 		// Ideally we should run also some failure tests, e.g. unknown/no filesystem, etc, but cros-disks

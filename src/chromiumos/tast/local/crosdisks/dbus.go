@@ -38,11 +38,6 @@ func New(ctx context.Context) (*CrosDisks, error) {
 	return &CrosDisks{conn, obj}, nil
 }
 
-// Close connection to CrosDisks D-Bus service.
-func (c *CrosDisks) Close() error {
-	return c.conn.Close()
-}
-
 // call is a thin wrapper of CallWithContext for convenience.
 func (c *CrosDisks) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return c.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
