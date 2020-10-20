@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e9b057_851a8ece",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-20T19:47:32Z",
+      "side": 1,
+      "message": "Tab before focus and wait, not after, why?",
+      "range": {
+        "startLine": 527,
+        "startChar": 1,
+        "endLine": 529,
+        "endChar": 2
+      },
+      "revId": "f64310fe6b0932b63f6fa66488a4102475a7bc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
