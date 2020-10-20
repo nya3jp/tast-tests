@@ -16,6 +16,24 @@
       "message": "Are these timeouts long enough? I know in other places we\u0027ve had to bump them up",
       "revId": "0717c945a454469d0d3256baff2995dad33420ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644eb1f5_398f4fee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-20T04:50:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure.  I don\u0027t have any slow device to check on, so the lpan is to submit it and keep an eye out for breakages.",
+      "parentUuid": "8b45bbd9_5aac7bbf",
+      "revId": "0717c945a454469d0d3256baff2995dad33420ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
