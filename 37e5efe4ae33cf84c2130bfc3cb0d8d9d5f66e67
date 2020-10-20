@@ -155,6 +155,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec3b7d8_4f44ed2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T08:48:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63b7155a_d1dc745b",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d00bbd1_81c5a258",
@@ -285,6 +309,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb19373f_18188713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T08:48:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d392bfe9_1fd5802b",
+      "range": {
+        "startLine": 244,
+        "startChar": 3,
+        "endLine": 244,
+        "endChar": 77
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5517fef_68aad367",
@@ -346,6 +394,30 @@
       "side": 1,
       "message": "Re-using the same suite is just fine, but Tast encourages to avoid depending on testing.State in general, if it does not trigger the fatal scenario.\nCould you refactor the code to:\n\nfunc foo(... /* no *testing.State */) error {\n  ...  // main test content. returns error on failure.\n}\n\nfunc testFoo(..., s *testing.State, ...) {\n  if err :\u003d foo(); err !\u003d nil {\n    s.Fatal(...)\n  }\n}\n\nto guarantee that should not fail here, but still fail in other cases?\nThat\u0027d reduce the long term maintenance cost, because not-fail characteristic is guaranteed by the compiler and the code structure.",
       "parentUuid": "09b0fd4a_c695593b",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 4
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3c0aa5_47ed7143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T08:48:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a97e73b_3515ad48",
       "range": {
         "startLine": 252,
         "startChar": 2,
@@ -474,6 +546,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba22e616_60e4626c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T08:48:19Z",
+      "side": 1,
+      "message": "The function is used in lots of places now. it is in 5 places now, and the minimum amount is 3 (I need to check it in setup, benchmark and testblock at the very least), thus I would need the state here - the function is pretty much an accessor to the variable.",
+      "parentUuid": "aea2c855_0708ba7b",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cacd9ab_0afd9821",
@@ -523,6 +613,24 @@
       "side": 1,
       "message": "Revive for testing.State.",
       "parentUuid": "23bda493_1b697641",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce44ed2_377bae9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T08:48:19Z",
+      "side": 1,
+      "message": "gone",
+      "parentUuid": "2d3f9e2d_dfc2a48b",
       "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -692,6 +800,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad30b114_e86a03f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T08:48:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4d2abb3b_85f0898e",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 344,
+        "endChar": 37
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a65a9c97_5933cefd",
@@ -806,6 +938,24 @@
       "side": 1,
       "message": "PTAL at the \"patchset 1\" (which is not buildable, but was a base for the discussion). It is not readable in my opinion. And since we need the state for s.Fatal (See the previous comment), we path it here anyway.",
       "parentUuid": "b56f73ee_47dd6ddc",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05cec999_01f14035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T08:48:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6e7b1150_613bcb15",
       "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
