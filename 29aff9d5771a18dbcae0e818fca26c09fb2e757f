@@ -69,6 +69,24 @@
       "parentUuid": "51b345ed_c4f2bf65",
       "revId": "29aff9d5771a18dbcae0e818fca26c09fb2e757f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f1aa7d_fc8069e3",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-20T04:23:58Z",
+      "side": 1,
+      "message": "Sorry I am not convinced for this reason. Have a empty function here does not make sense.\n\nOnce this function being removed, user is unlikely to repeat the same mistake again. But it would be nice to add a comment on New() function, so users know that this is a shared connection and should not be closed. https://github.com/godbus/dbus/blob/master/conn.go#L301",
+      "parentUuid": "57ed84a4_c6637ad5",
+      "revId": "29aff9d5771a18dbcae0e818fca26c09fb2e757f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
