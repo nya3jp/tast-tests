@@ -88,6 +88,12 @@ var PlayStore = App{
 	Name: "Play Store",
 }
 
+// Scan has details about the Scan SWA.
+var Scan = App{
+	ID:   "cdkahakpgkdaoffdmfgnhgomkelkocfo",
+	Name: "Scan",
+}
+
 // Settings has details about the Settings app.
 var Settings = App{
 	ID:   "odknhmnlageboeamepcngndbggdpaobj",
