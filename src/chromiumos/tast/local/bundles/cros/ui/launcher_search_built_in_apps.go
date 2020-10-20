@@ -17,8 +17,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LauncherSearchNativeApps,
-		Desc: "Launches a native app through the launcher",
+		Func: LauncherSearchBuiltInApps,
+		Desc: "Launches a built-in app through the launcher",
 		Contacts: []string{
 			"bhansknecht@chromium.org",
 			"dhaddock@chromium.org",
@@ -29,7 +29,7 @@ func init() {
 	})
 }
 
-func LauncherSearchNativeApps(ctx context.Context, s *testing.State) {
+func LauncherSearchBuiltInApps(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
