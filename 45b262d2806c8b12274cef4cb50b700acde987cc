@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44486b0f_0559a005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-20T01:59:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f0af7d3_a30a9e9c",
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c8feffb_8d1b066a",
@@ -106,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19753ff2_51f3afdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-20T01:59:42Z",
+      "side": 1,
+      "message": "I agree with having both. Added instructions using fishfood build, and noted that as the recommended way.",
+      "parentUuid": "210608f7_f273fa2a",
+      "range": {
+        "startLine": 3,
+        "startChar": 44,
+        "endLine": 3,
+        "endChar": 49
+      },
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d53b6a3a_6af51ea8",
@@ -129,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "090dda1c_1b7ddfb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-20T01:59:42Z",
+      "side": 1,
+      "message": "Requires some extra commands but not an issue.",
+      "parentUuid": "d53b6a3a_6af51ea8",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3238edc5_ca13d63d",
@@ -142,6 +208,30 @@
       "writtenOn": "2020-10-16T16:40:25Z",
       "side": 1,
       "message": "If we\u0027re revving the fishfood build used for omaha releasee, then those are thoroughly QA-ed",
+      "range": {
+        "startLine": 22,
+        "startChar": 37,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "45b262d2806c8b12274cef4cb50b700acde987cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b988064_cd57b938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-20T01:59:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3238edc5_ca13d63d",
       "range": {
         "startLine": 22,
         "startChar": 37,
