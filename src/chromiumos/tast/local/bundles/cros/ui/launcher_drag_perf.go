@@ -41,7 +41,6 @@ func init() {
 		}, {
 			Name:              "skia_renderer",
 			Pre:               ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("nocturne", "krane")),
 		}},
 	})
 }
