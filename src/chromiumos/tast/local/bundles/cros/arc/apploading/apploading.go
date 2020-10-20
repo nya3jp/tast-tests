@@ -157,6 +157,14 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	}
 
 	testing.ContextLog(ctx, "Running test")
+	if err := metrics.Start(ctx); err != nil {
+		return 0, errors.Wrap(err, "failed to start metrics")
+	}
+
+	if err := metrics.StartRecording(ctx); err != nil {
+		return 0, errors.Wrap(err, "failed to start recording")
+	}
+
 	out, err := a.Command(ctx, "am", "instrument", "-w", "-e", "class", testName, packageName).CombinedOutput()
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to execute test")
@@ -168,14 +176,6 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	}
 	testing.ContextLog(ctx, "Finished writing to log: ", outputFile)
 
-	if err := metrics.Start(ctx); err != nil {
-		return 0, errors.Wrap(err, "failed to start metrics")
-	}
-
-	if err := metrics.StartRecording(ctx); err != nil {
-		return 0, errors.Wrap(err, "failed to start recording")
-	}
-
 	// Make sure test is completed successfully.
 	if !regexp.MustCompile(`\nOK \(\d+ tests?\)\n*$`).Match(out) {
 		return 0, errors.Errorf("test is not completed successfully, see: %s", outputFile)
@@ -185,6 +185,9 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	if err != nil {
 		return 0, errors.Wrap(err, "error while recording power metrics")
 	}
+
+	// Merge previous perf metrics with new power metrics.
+	config.PerfValues.Merge(powerPerfValues)
 
 	testing.ContextLog(ctx, "Analyzing results")
 
@@ -211,9 +214,6 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 			config.PerfValues.Set(info, value)
 		}
 	}
-
-	// Merge previous perf metrics with new power metrics.
-	config.PerfValues.Merge(powerPerfValues)
 
 	var result int
 	// There may be several INSTRUMENTATION_STATUS_CODE: X (x = 0 or x = -1)
