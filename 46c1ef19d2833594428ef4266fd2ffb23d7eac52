@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac45db4_3c09bd0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-20T18:52:54Z",
+      "side": 1,
+      "message": "Hi Hugo, Greg,\n\nFrom the feedback, we should keep this CL as a basic test for the proxy server.\n\nCould you please review the CL?\n\nThanks!",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
