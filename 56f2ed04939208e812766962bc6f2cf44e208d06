@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc8b0cf_21a79eae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-20T00:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f732f46_2888e0c2",
+      "range": {
+        "startLine": 679,
+        "startChar": 19,
+        "endLine": 679,
+        "endChar": 36
+      },
+      "revId": "56f2ed04939208e812766962bc6f2cf44e208d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ba20e1f_43f27646",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-19T22:24:21Z",
       "side": 1,
       "message": "nit: Can you elaborate a bit on this? I believe testing.Poll wraps the error, but I don\u0027t recall how or with what, so details might be useful",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 36
+      },
+      "revId": "56f2ed04939208e812766962bc6f2cf44e208d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e01fdf21_da54807c",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-20T00:45:55Z",
+      "side": 1,
+      "message": "Does this help?",
+      "parentUuid": "9ba20e1f_43f27646",
       "range": {
         "startLine": 319,
         "startChar": 0,
