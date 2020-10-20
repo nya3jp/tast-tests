@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a621bf1_cfb1525c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-20T02:21:54Z",
+      "side": 1,
+      "message": "I actually just wanted to make a const so that I had somewhere to put the comment above it. I don\u0027t want to place it next to the WaitForCrashFiles because it only applies to one of the 5 parameters.",
+      "parentUuid": "d61b63dd_2b884b4c",
+      "range": {
+        "startLine": 644,
+        "startChar": 7,
+        "endLine": 644,
+        "endChar": 14
+      },
+      "revId": "1969e9544dd7f9b4d030bc2cd597f29b12019f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b724aa40_71eef6ae",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 5
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-20T02:12:43Z",
       "side": 1,
       "message": "Please add comment for this exported method.",
+      "revId": "1969e9544dd7f9b4d030bc2cd597f29b12019f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "158b4eef_7d45cb96",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-20T02:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b724aa40_71eef6ae",
       "revId": "1969e9544dd7f9b4d030bc2cd597f29b12019f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
