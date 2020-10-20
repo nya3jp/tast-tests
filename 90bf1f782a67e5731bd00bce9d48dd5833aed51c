@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9f3fc2_3755ab35",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:16:12Z",
+      "side": 1,
+      "message": "sorry, I overlooked that this also leaks the FDs. Could you close them? E.g.:\n\nvar fds []int\nvar firstErr error\nfor _, msg :\u003d range msgs {\n  msgfds, err :\u003d ...\n  if err !\u003d nil {\n    if firstErr \u003d\u003d nil {\n      firstErr \u003d err\n    }\n    continue\n  }\n  fds \u003d append(...)\n}\n\nif len(fds) !\u003d 1 || firstErr !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "90bf1f782a67e5731bd00bce9d48dd5833aed51c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661efa76_690b78f6",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-20T15:16:12Z",
+      "side": 1,
+      "message": "IIUC, when command is created, it needs to start to handle resource closing.\nCOuld you move this above the command instance creation?",
+      "revId": "90bf1f782a67e5731bd00bce9d48dd5833aed51c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
