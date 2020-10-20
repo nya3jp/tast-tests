@@ -147,7 +147,7 @@ func verifyHWOverlay(ctx context.Context, a *arc.Activity, path string) error {
 			return errors.Wrap(err, "could not parse CRTC height")
 		}
 
-		// CRTC size is always in native size (non-rotated). Frame size could be rotated or not.
+		// CRTC size is always in built-in size (non-rotated). Frame size could be rotated or not.
 		if (crtcW == w && crtcH == h) || (crtcW == h && crtcH == w) {
 			return nil
 		}
