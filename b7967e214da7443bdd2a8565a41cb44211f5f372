@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f72876ce_93340cab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-20T18:50:12Z",
+      "side": 1,
+      "message": "Thanks a lot for the review, Greg! Please take another look!",
+      "revId": "b7967e214da7443bdd2a8565a41cb44211f5f372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

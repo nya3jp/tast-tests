@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c49b90_0cc819bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-20T18:50:12Z",
+      "side": 1,
+      "message": "Thanks for the feedback! I\u0027ve polished a bit CL:2461368. Could you please take a look (since you already have the background)?",
+      "parentUuid": "e1253ae4_fcb9a5dc",
+      "revId": "dc0a4a526b69891e6996711f44c47a3d3b1ddd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab585d03_4ae51d85",

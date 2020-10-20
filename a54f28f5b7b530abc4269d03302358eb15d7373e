@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d058485_776968db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-20T18:50:12Z",
+      "side": 1,
+      "message": "\u003e \"configuarion\" is a possible misspelling of \"configuration\".\n\nPlease fix.",
+      "parentUuid": "c2bae420_9ee7b44e",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "a54f28f5b7b530abc4269d03302358eb15d7373e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
