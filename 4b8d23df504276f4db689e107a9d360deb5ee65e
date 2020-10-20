@@ -20,6 +20,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4da483f_be8bff4c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "These can be moved to Params to improve tests scaling.",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5311d6_4349f8f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "Buckets could be configurable, too.",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d98bcd_b374241d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "This could be defined as type and used here and later.",
+      "range": {
+        "startLine": 60,
+        "startChar": 33,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e54e10_99090b13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "`RoamDiagnostics`?",
+      "range": {
+        "startLine": 62,
+        "startChar": 51,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07ef1469_899ff24f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
@@ -49,6 +135,178 @@
       "side": 1,
       "message": "I\u0027m running the test in the Donut lab and yes, using pcap as the 2nd router.\nNot sure I follow the rest TBH, but I have no knowledge of how the tests are executed in QA environment. Are there any docs?",
       "parentUuid": "07ef1469_899ff24f",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7a13809_66970165",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure this should be in any functional suite at all. There seem to be no clear pass/fail criteria here.",
+      "parentUuid": "107a1998_a3f73c81",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b42729f0_0c277213",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be in a separate thread and started before scan request?\nFor comparison, see TestFixture::AssertNoDisconnect()",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dbc7162_924c54ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "Opportunity to reuse type.",
+      "range": {
+        "startLine": 172,
+        "startChar": 14,
+        "endLine": 172,
+        "endChar": 20
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30fde057_d3caa26e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "I wonder if we could improve bucket picking logic here:\n- have a separate bucket for detecting negative delta (which is not entirely impossible),\n- have a different method for picking bucket distribution rather than `/2`, e.g. proportional to a certain max value.",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9dc2399_653b766f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "From my experience, it is well worth to reset attenuations to 0 prior to ConnectAP() call.\nYour test may time out/crash when AP0 is attenuated and subsequent tests will fail.",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7001b48b_f4d58c0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "This repeats also in RoamNatural IIRC. I wonder if you could move whole thing to a separate function, that would take slice of params and returned slice of {ap, freq} and a single cancel function to defer?",
+      "range": {
+        "startLine": 186,
+        "startChar": 25,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3877cd_5013d1c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "Like with RoamNatural, I\u0027d rather see this as two parameterised subtests.",
+      "range": {
+        "startLine": 306,
+        "startChar": 19,
+        "endLine": 307,
+        "endChar": 114
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19a90ffc_b433788f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "I\u0027d rather put it directly in wificell (or even TestFixture itself) as tf method, but I\u0027m not insisting too much.",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76f65a40_e97ca121",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-20T10:39:19Z",
+      "side": 1,
+      "message": "Same as above.",
       "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
