@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c36a5bf0_a356c4dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-10-20T05:31:06Z",
+      "side": 1,
+      "message": "Could you also add a reference to crbug.com/1111251 to explain why we cannot download adb, CTSV as external files?\n\nAlso I wonder what happens if we have an existing adb connection and there\u0027s a version mismatch between this one and the existing one.",
+      "revId": "4ed0307ac43c3dabb469e0daa6f5c215cbcef8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c7f9762_5c285b62",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
         "patchSetId": 7
