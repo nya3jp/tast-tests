@@ -133,6 +133,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63b7155a_d1dc745b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T00:54:46Z",
+      "side": 1,
+      "message": "Can you suggest an easy way to do so? How does the other goroutine would even know s.Fatal was called?",
+      "parentUuid": "9ed7de8a_d046435a",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d00bbd1_81c5a258",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 10
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "There\u0027s code path to call s.Fatal().\nIf it is not intentional, could you remove? Rather, could you not depending on tesitng.State if it does not fail? So, we can avoid any accidental misintroduction of s.Fatal() etc. in a callee in the future.\n\ntesting.State has many attributes, and we encourage not to take it as much as possible.\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
       "parentUuid": "4adc9cc2_cc443d61",
+      "range": {
+        "startLine": 244,
+        "startChar": 3,
+        "endLine": 244,
+        "endChar": 77
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d392bfe9_1fd5802b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T00:54:46Z",
+      "side": 1,
+      "message": "It was already calling s.Fatal before in \nrunFioStressForBootDev called from runContinuousStorageStress, I could change the comment though.",
+      "parentUuid": "95b0c69c_0bb42dc3",
       "range": {
         "startLine": 244,
         "startChar": 3,
@@ -404,6 +452,24 @@
       "side": 1,
       "message": "Then, could you pass the value?\nAlso, please do not make this fatal, instead return an error.\n\nditto cf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
       "parentUuid": "8c94f025_d92d9531",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea2c855_0708ba7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T00:54:46Z",
+      "side": 1,
+      "message": "The flag is not necessarily present. It may be omitted, so we assume it is false then. This whole function is to avoid writing its body at every place it needs to be used. Especially if you insist on doing dualQual check outside of runFioStressForSlcDev - I would need to repeat the incantation an endless amount of time...",
+      "parentUuid": "9be00af0_1d2382e7",
       "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -604,6 +670,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d2abb3b_85f0898e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T00:54:46Z",
+      "side": 1,
+      "message": "If not here, every call to runFioStressForBootDev would need to have error handling, and we have 11 of them. I don\u0027t think that is going to be more readable.",
+      "parentUuid": "e686501b_d137ab90",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 344,
+        "endChar": 37
+      },
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a65a9c97_5933cefd",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 10
@@ -698,6 +788,24 @@
       "side": 1,
       "message": "I still think it is the callers\u0027 responsibility.\nSpecifically, looking at the usage, the expected behavior is that no task runs in parallel cases.\n\nif dualQual {\n  tasks \u003d append(tasks, func ... )\n}\n\nlooks like more go-ish, indeed there needs some minor duplication (and I personally agreed that may look annoying, but probably still better to handle as upper layer as possible, to avoid accidental overlooking in the future).\n\nWDYT?",
       "parentUuid": "d5442fa2_d3030f91",
+      "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e7b1150_613bcb15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T00:54:46Z",
+      "side": 1,
+      "message": "PTAL at the \"patchset 1\" (which is not buildable, but was a base for the discussion). It is not readable in my opinion. And since we need the state for s.Fatal (See the previous comment), we path it here anyway.",
+      "parentUuid": "b56f73ee_47dd6ddc",
       "revId": "37e5efe4ae33cf84c2130bfc3cb0d8d9d5f66e67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

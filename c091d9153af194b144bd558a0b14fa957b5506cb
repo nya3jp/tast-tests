@@ -16,6 +16,24 @@
       "message": "My recommendation of this CL is:\n- Minimize the testing.State use.\n  It is recommended by Tast: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n  \u003d\u003d quote \u003d\u003d\n  Avoid passing testing.State when it’s not actually necessary\n  \u003d\u003d quote end \u003d\u003d\n  - Nice to avoid to take it in utility functions.\n    I\u0027d recommend to return an error, rather than fail (s.Fatal()).\n  - If the \"error\" in the function _can_ be handled as non-fatal error,\n    let\u0027s not to take testing.State. If it needs to be shared with a function (named X) handling\n    the error as fatal, let X handle to make it fail. X can take testing.State.\n- Let\u0027s terminate the test as earlier as possible if it turns out that the test fails.\n  Rather than running longer time and report fatal error at the end. That helps to utilize\n  the engineering time in the future on runtime.\n\nThose may need to refactor the code, but I believe they will provide better long term maintainability and usability.",
       "revId": "c091d9153af194b144bd558a0b14fa957b5506cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544c9171_2970fc2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-20T00:54:46Z",
+      "side": 1,
+      "message": "I answered some of the point (not closing the comments to continue discussion), but here is a meta-point.\nI understand all you are saying about State, fatal and things, I am not being dismissive here. I just want to clarify that our case is unique in a sense.\nWhat we have is not just a unit/integration/performance test, but full blown qualification run, which includes a lot of things it needs to do over multiple weeks.\nOn top of that, we need to add a second device to the equation. Normally I would say we shall just run one, then another, then have a short test to see how they behave together and that is it. But the test already takes two weeks(!) to run and we can\u0027t make it any longer without impacting the relations with vendors.\nI hate the fact I need to do the check for whether we are in dual-mode test or not at the pretty much lowest possible layer (Alex can confirm how annoyed I was I couldn\u0027t find a better way), but the alternative - handling everything at the top-most layer - is not readable at all because of how many places would need to check for the conditions.. It is horrible what I am doing here, I don\u0027t see any other way to do that without either making the code absolutely unreadable, much more complex or running way too long to be used for its purpose.",
+      "parentUuid": "c76aea98_51c63138",
+      "revId": "c091d9153af194b144bd558a0b14fa957b5506cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
