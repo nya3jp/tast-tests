@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c634e1c2_6b65e2fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T10:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6b7b4ff_b551b0ac",
+      "range": {
+        "startLine": 34,
+        "startChar": 78,
+        "endLine": 34,
+        "endChar": 79
+      },
+      "revId": "ae2d2f04dd9657614d5c8380d019735493f3bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23eb9ff5_dde3efa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T10:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6b7b4ff_b551b0ac",
+      "range": {
+        "startLine": 34,
+        "startChar": 78,
+        "endLine": 34,
+        "endChar": 79
+      },
+      "revId": "ae2d2f04dd9657614d5c8380d019735493f3bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b945a826_a64d323c",
@@ -47,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84c8b776_f032b436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T10:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b945a826_a64d323c",
+      "range": {
+        "startLine": 40,
+        "startChar": 48,
+        "endLine": 40,
+        "endChar": 52
+      },
+      "revId": "ae2d2f04dd9657614d5c8380d019735493f3bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06dd96dd_6ec4b3d2",
@@ -60,6 +132,30 @@
       "writtenOn": "2020-10-20T09:26:18Z",
       "side": 1,
       "message": "The variable name should be the first word in the comment.",
+      "range": {
+        "startLine": 41,
+        "startChar": 48,
+        "endLine": 41,
+        "endChar": 74
+      },
+      "revId": "ae2d2f04dd9657614d5c8380d019735493f3bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e172400a_6ee5cc25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T10:59:43Z",
+      "side": 1,
+      "message": "is that convention? It is weird to put variable names in comments if IDE cannot refactor them.",
+      "parentUuid": "06dd96dd_6ec4b3d2",
       "range": {
         "startLine": 41,
         "startChar": 48,
@@ -100,6 +196,30 @@
       "writtenOn": "2020-10-20T09:45:55Z",
       "side": 1,
       "message": "don\u0027t forget to remove this",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 27
+      },
+      "revId": "ae2d2f04dd9657614d5c8380d019735493f3bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d785df1a_4431fd6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-20T10:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "925f72f5_09833452",
       "range": {
         "startLine": 191,
         "startChar": 1,
