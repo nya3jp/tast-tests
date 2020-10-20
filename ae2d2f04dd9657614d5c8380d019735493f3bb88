@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6b7b4ff_b551b0ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-20T09:45:55Z",
+      "side": 1,
+      "message": "nit: space after comma",
+      "range": {
+        "startLine": 34,
+        "startChar": 78,
+        "endLine": 34,
+        "endChar": 79
+      },
+      "revId": "ae2d2f04dd9657614d5c8380d019735493f3bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b945a826_a64d323c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 2
@@ -60,6 +83,29 @@
       "writtenOn": "2020-10-19T09:54:49Z",
       "side": 1,
       "message": "Those should be enabled.",
+      "revId": "ae2d2f04dd9657614d5c8380d019735493f3bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925f72f5_09833452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-20T09:45:55Z",
+      "side": 1,
+      "message": "don\u0027t forget to remove this",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 27
+      },
       "revId": "ae2d2f04dd9657614d5c8380d019735493f3bb88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
