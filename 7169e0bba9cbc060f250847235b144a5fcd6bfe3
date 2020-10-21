@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceeb2a40_07b5d64e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T05:33:32Z",
+      "side": 1,
+      "message": "I guess I\u0027ll cq+2 this now as I see several other CLs getting hatch-cq failure due to network.WifiCaps.",
+      "revId": "7169e0bba9cbc060f250847235b144a5fcd6bfe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
