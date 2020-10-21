@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91d6be6_3aee546c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T10:17:31Z",
+      "side": 1,
+      "message": "A text description would be better.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 103
+      },
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9763121_a73be194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T10:17:31Z",
+      "side": 1,
+      "message": "This seems like too much code duplication, this CL is almost the same as If240988a3767fc4be74088807325a6ae076dea62.",
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948c239e_aef4c49c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T10:17:31Z",
+      "side": 1,
+      "message": "Use apps.Diagnostics.Name.",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68bb423c_bc76e751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T10:17:31Z",
+      "side": 1,
+      "message": "Why is there a need to define all these function instead of using laucher.SearchAndLaunch()?",
+      "range": {
+        "startLine": 54,
+        "startChar": 20,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a79bf73_4bd15a01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T10:17:31Z",
+      "side": 1,
+      "message": "Use apps.Diagnostics.Name.",
+      "range": {
+        "startLine": 59,
+        "startChar": 55,
+        "endLine": 59,
+        "endChar": 68
+      },
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1532796_e43984f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T10:17:31Z",
+      "side": 1,
+      "message": "Defer a node release.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 8
+      },
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
