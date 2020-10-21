@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "f09ad0dadeccd6b3f37953f44c5768c553c70280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d14156dc_53c895b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-21T22:52:30Z",
+      "side": 1,
+      "message": "kathrelkeld@ friendly ping for OWNERs for apps.go",
+      "revId": "f09ad0dadeccd6b3f37953f44c5768c553c70280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
