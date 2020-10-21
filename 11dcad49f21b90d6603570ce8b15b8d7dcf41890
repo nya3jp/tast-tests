@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb58b53_0ef440e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-21T06:43:12Z",
+      "side": 1,
+      "message": "Ah, not all fishfood builds are QA\u0027d. I see. Thanks!",
+      "parentUuid": "7af320c0_2b31a0cc",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aefecbb5_0afc93cb",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-20T17:53:42Z",
       "side": 1,
       "message": "this is fine. note that not all builds in this dir get qualified. This just gets the latest build, not the latest qualified build",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 81
+      },
+      "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "161fff29_71335206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-21T06:43:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aefecbb5_0afc93cb",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8639a0_112419c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-21T06:43:12Z",
+      "side": 1,
+      "message": "Changed doc to put stuff in /tmp to be consistent.",
+      "parentUuid": "f15f2278_e7786702",
+      "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22d98dba_7ae3dc81",
@@ -111,6 +177,24 @@
       "writtenOn": "2020-10-20T15:39:51Z",
       "side": 1,
       "message": "nit: rm -rf lacros_binary",
+      "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd0aef5_b6175ad7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-21T06:43:12Z",
+      "side": 1,
+      "message": "moved to /tmp",
+      "parentUuid": "22d98dba_7ae3dc81",
       "revId": "11dcad49f21b90d6603570ce8b15b8d7dcf41890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
