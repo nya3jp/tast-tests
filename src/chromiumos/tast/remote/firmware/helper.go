@@ -27,9 +27,9 @@ type Helper struct {
 	// Config contains a variety of platform-specific attributes.
 	Config *Config
 
-	// configDataDir is the full path to the data directory containing fw-testing-configs JSON files.
-	// Any tests requiring a Config should set configDataDir to s.DataPath(firmware.ConfigDir) during NewHelper.
-	configDataDir string
+	// cfgFilepath is the full path to the data directory containing fw-testing-configs JSON files.
+	// Any tests requiring a Config should set cfgFilepath to s.DataPath(firmware.ConfigFile) during NewHelper.
+	cfgFilepath string
 
 	// DUT is used for communicating with the device under test.
 	DUT *dut.DUT
@@ -62,9 +62,9 @@ type Helper struct {
 
 // NewHelper creates a new Helper object with info from testing.State.
 // For tests that do not use a certain Helper aspect (e.g. RPC or Servo), it is OK to pass null-values (nil or "").
-func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, configDataDir, servoHostPort string) *Helper {
+func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort string) *Helper {
 	return &Helper{
-		configDataDir: configDataDir,
+		cfgFilepath:   cfgFilepath,
 		DUT:           d,
 		Reporter:      reporters.New(d),
 		rpcHint:       rpcHint,
@@ -159,11 +159,11 @@ func (h *Helper) RequireConfig(ctx context.Context) error {
 	if err := h.RequirePlatform(ctx); err != nil {
 		return errors.Wrap(err, "requiring DUT platform")
 	}
-	// configDataDir comes from testing.State, so it needs to be passed during NewHelper.
-	if h.configDataDir == "" {
-		return errors.New("cannot create firmware Config with a null Helper.configDataDir")
+	// cfgFilepath comes from testing.State, so it needs to be passed during NewHelper.
+	if h.cfgFilepath == "" {
+		return errors.New("cannot create firmware Config with a null Helper.cfgFilepath")
 	}
-	cfg, err := NewConfig(h.configDataDir, h.Board, h.Model)
+	cfg, err := NewConfig(h.cfgFilepath, h.Board, h.Model)
 	if err != nil {
 		return errors.Wrapf(err, "during NewConfig with board=%s, model=%s", h.Board, h.Model)
 	}
