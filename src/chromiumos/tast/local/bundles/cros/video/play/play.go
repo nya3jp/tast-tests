@@ -420,10 +420,25 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	// helps us detect undesired stretching/shifting/rotation/mirroring. The
 	// naming convention for each point of a stencil is as follows:
 	//
-	//   _00: top-left corner of the stencil.
-	//   _10: top-right corner of the stencil.
-	//   _11: bottom-right corner of the stencil.
-	//   _01: bottom-left corner of the stencil.
+	//   inner_Y_X_00: the corner of the stencil closest to the Y-X corner of the video.
+	//   inner_Y_X_01: the corner of the stencil that's in the interior X border of the video.
+	//   inner_Y_X_10: the corner of the stencil that's in the interior Y border of the video.
+	//   inner_Y_X_11: the only corner of the stencil that's not in the interior border.
+	//
+	// For example, the top-right corner of the video looks like this:
+	//
+	//   MMMMMMMMMMMMMMMM
+	//   MMMMMMMMMM1MMM2M
+	//   MMMMMMMMMMMMMMMM
+	//             4  M3M
+	//                MMM
+	//
+	// So the names of each of the points 1, 2, 3, 4 are:
+	//
+	//   1: inner_top_right_10
+	//   2: inner_top_right_00
+	//   3: inner_top_right_01
+	//   4: inner_top_right_11
 	edgeOffset := 7
 	stencilW := 2
 	innerCorners := map[string]struct {
@@ -433,18 +448,18 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 		"inner_top_left_10":     {edgeOffset + stencilW, edgeOffset},
 		"inner_top_left_11":     {edgeOffset + stencilW, edgeOffset + stencilW},
 		"inner_top_left_01":     {edgeOffset, edgeOffset + stencilW},
-		"inner_top_right_00":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset},
-		"inner_top_right_10":    {(videoW - 1) - edgeOffset, edgeOffset},
-		"inner_top_right_11":    {(videoW - 1) - edgeOffset, edgeOffset + stencilW},
-		"inner_top_right_01":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset + stencilW},
-		"inner_bottom_right_00": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_right_10": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_right_11": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset},
-		"inner_bottom_right_01": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset},
-		"inner_bottom_left_00":  {edgeOffset, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_left_10":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_left_11":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset},
-		"inner_bottom_left_01":  {edgeOffset, (videoH - 1) - edgeOffset},
+		"inner_top_right_10":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset},
+		"inner_top_right_00":    {(videoW - 1) - edgeOffset, edgeOffset},
+		"inner_top_right_01":    {(videoW - 1) - edgeOffset, edgeOffset + stencilW},
+		"inner_top_right_11":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset + stencilW},
+		"inner_bottom_right_11": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_right_01": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_right_00": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset},
+		"inner_bottom_right_10": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset},
+		"inner_bottom_left_01":  {edgeOffset, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_left_11":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_left_10":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset},
+		"inner_bottom_left_00":  {edgeOffset, (videoH - 1) - edgeOffset},
 	}
 	samples := map[string]struct {
 		x, y int
