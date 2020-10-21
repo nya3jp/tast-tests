@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0802cca7_ef7c5f7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-21T03:44:09Z",
+      "side": 1,
+      "message": "Does that mean: in addition to the unicast DHCP request sent by the DUT, pcap also captures a broadcast DHCP requests relayed by AP. If so, I\u0027m interested to know why AP would relay the DHCP request to wireless broadcast. Doesn\u0027t the AP have the routing table to know where the DHCP server is?",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a0f80b2_2945369f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-21T03:44:09Z",
+      "side": 1,
+      "message": "How about giving a matrix for ToDS and FromDS combinations for easier to read the code below:\n// ToDS\u003d0, FromDS\u003d0: management / control frame sent by AP.\n// ToDS\u003d1, FromDS\u003d0: sent by a wireless client. Sender MAC in Address2.\n// ToDS\u003d0, FromDS\u003d1: sent by a wired device. Sender MAC in Address3.\n// ToDS\u003d1, FromDS\u003d1: mesh environment. Sender MAC in Address4.",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3caa76_1d74bc64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-21T03:44:09Z",
+      "side": 1,
+      "message": "// Transmitter address \u003d\u003d DUT WiFi MAC address -\u003e\n// Sender is DUT.",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69568159_8669ff77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-21T03:44:09Z",
+      "side": 1,
+      "message": "Does that mean:\n// FromDS\u003d0: either sent by a wireless client which is not DUT or a management / control frame. Filtered.",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e8692e_2e0729f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-21T03:44:09Z",
+      "side": 1,
+      "message": "// FromDS\u003dToDS\u003d1: mesh scenario, check if the sender address (Address4) \u003d\u003d DUT WiFi MAC.",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be7f175_9cd0024a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-21T03:44:09Z",
+      "side": 1,
+      "message": "// FromDS\u003d1, ToDS\u003d0: sent from AP: check if the sender address (Address 3) \u003d\u003d DUT WiFi MAC.\n// This is the scenario that AP relays a DHCP request to broadcast address.",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f0a9c65_7f7f180a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-21T03:44:09Z",
+      "side": 1,
+      "message": "I\u0027m thinking would it be easier to deal with four cases (FromDS x ToDS matrix) explicitly?\n\nif !FromDS {\n  if !ToDS {\n    return false\n  }\n  return Address2 \u003d\u003d mac\n} else {\n  if !ToDS {\n    return Address3 \u003d\u003d mac\n  }\n  return Address4 \u003d\u003d mac\n}",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
