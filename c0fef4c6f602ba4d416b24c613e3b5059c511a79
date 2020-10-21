@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "554b3b62_b8397360",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-21T05:40:18Z",
+      "side": 1,
+      "message": "Only a nit in comments.",
+      "revId": "c0fef4c6f602ba4d416b24c613e3b5059c511a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9977899_db374710",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-21T05:40:18Z",
+      "side": 1,
+      "message": "The structure is better than I proposed. Thanks.",
+      "revId": "c0fef4c6f602ba4d416b24c613e3b5059c511a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c881117_e054cbf7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-21T05:40:18Z",
+      "side": 1,
+      "message": "FromDS (as it is a bit field name of the frame control field)",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "c0fef4c6f602ba4d416b24c613e3b5059c511a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
