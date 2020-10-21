@@ -88,6 +88,12 @@ var PlayStore = App{
 	Name: "Play Store",
 }
 
+// PrintManagement has details about the Print Management app.
+var PrintManagement = App{
+	ID:   "fglkccnmnaankjodgccmiodmlkpaiodc",
+	Name: "Print Jobs",
+}
+
 // Scan has details about the Scan SWA.
 var Scan = App{
 	ID:   "cdkahakpgkdaoffdmfgnhgomkelkocfo",
