@@ -328,6 +328,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e54731e7_ad9b3ed5",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T18:15:03Z",
+      "side": 1,
+      "message": "I am not sure if I understand correctly...  It\u0027s good to save output into a file, please keep that.  But my point is about this for-loop.\nSince the file content is exactly same as \u0027output\u0027, you really don\u0027t have to read this file, but just use existing on-memory data \u0027output\u0027. This should be faster and simplify the code.",
+      "parentUuid": "e7c44d7b_07373bc0",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 21
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0b91079_ecb521ad",
@@ -365,6 +389,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "d0b91079_ecb521ad",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 0
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f08e0555_8f62d442",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T18:15:03Z",
+      "side": 1,
+      "message": "Seems not addressed?  I still see the regexp.Compile here.\nWhat I meant is:\n  re, err :\u003d regexp.Compile(`max:\\s*(.+?)\\s*ms`)\n  if err !\u003d nil {\n    return 0, errors.Wrap(err, ...)\n  }\n  for ... {\n    if ... {\n      res :\u003d re.FindAllStringSubmatch(...)\n      ...",
+      "parentUuid": "d94f4f83_42b5150b",
       "range": {
         "startLine": 228,
         "startChar": 0,
