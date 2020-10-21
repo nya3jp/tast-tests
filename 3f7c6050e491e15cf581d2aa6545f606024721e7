@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b662279_bc3dd9a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1383204
+      },
+      "writtenOn": "2020-10-21T11:16:02Z",
+      "side": 1,
+      "message": "Why we use wav format? Could we use .raw?",
+      "revId": "3f7c6050e491e15cf581d2aa6545f606024721e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
