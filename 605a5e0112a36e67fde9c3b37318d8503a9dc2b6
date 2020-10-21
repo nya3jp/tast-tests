@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b40883_fb846b8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-21T10:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27b07917_3d8a767f",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 77
+      },
+      "revId": "605a5e0112a36e67fde9c3b37318d8503a9dc2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecf7b284_a76dbd9e",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-20T15:55:00Z",
       "side": 1,
       "message": "ping: not to depend on testing.State here.\nYou can pass the content of Var, and return (bool, error) instead.\n\nIndeed it will require to duplicate the code in caller, but it is the go style and please follow it.",
+      "revId": "605a5e0112a36e67fde9c3b37318d8503a9dc2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c8e9931_14d13ec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-21T10:31:58Z",
+      "side": 1,
+      "message": "Done.\n\nHowever, I want to rise my concern, that I consider such a code duplication for no good reason absolutely wrong, and if the style guide tells us to do so we shall change the style guide. The rules are supposed to make code more readable and easy to maintain and this clearly does the opposite.",
+      "parentUuid": "ecf7b284_a76dbd9e",
       "revId": "605a5e0112a36e67fde9c3b37318d8503a9dc2b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
