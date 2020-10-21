@@ -16,6 +16,23 @@
       "message": "ptal mcasas@",
       "revId": "963bdc1cc43262ce078c4878c57675ae6480dbdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa19ea62_eb290085",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-10-21T22:16:14Z",
+      "side": 1,
+      "message": "tast-owners@ ptal",
+      "revId": "963bdc1cc43262ce078c4878c57675ae6480dbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
