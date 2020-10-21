@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8efe553_994d4091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-21T08:12:51Z",
+      "side": 1,
+      "message": "Should this use the param generation Fergus refactored the other tests to use?",
+      "revId": "de80493769343fbcc2b23ac27693ebd21296cdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f24c416_c5d6f5c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-21T08:12:51Z",
+      "side": 1,
+      "message": "If only using a single size, is this test redundant with the regular Crostini precondition also resizing during installation? Also, what happens if a device doesn\u0027t have 16GB?",
+      "revId": "de80493769343fbcc2b23ac27693ebd21296cdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bbf0e14_5586c519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-21T08:12:51Z",
+      "side": 1,
+      "message": "I forget who asked it in chat, but I think we decided tests should keep concierge running after they finish now.",
+      "revId": "de80493769343fbcc2b23ac27693ebd21296cdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "003b1d74_e92c4c76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-21T08:12:51Z",
+      "side": 1,
+      "message": "VM logs might be useful (no need for container logs).",
+      "revId": "de80493769343fbcc2b23ac27693ebd21296cdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
