@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7653fa_fea510f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:16:36Z",
+      "side": 1,
+      "message": "I replied to a few initial comments to keep the discussion going. For the comments I agree with and I will work on -- I did not reply to those.",
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dc0d8dd_4a8f1e16",
@@ -14,6 +31,30 @@
       "writtenOn": "2020-10-21T01:56:12Z",
       "side": 1,
       "message": "it\u0027s not clear to me if it is worthwhile to have a separate package.\nAre you going to add more tests in this package?\nIf that\u0027s okay I guess simply putting \"kernel\" would also make sense.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "638920c9_71c9746e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:16:36Z",
+      "side": 1,
+      "message": "Yes, I am the owner of ChromeOS kernel scheduling and I will be adding more scheduling-related tests to this package.\n\nIf its Ok, I will resolve this comment for now.",
+      "parentUuid": "7dc0d8dd_4a8f1e16",
       "range": {
         "startLine": 6,
         "startChar": 8,
@@ -181,6 +222,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "219c6780_9188bd0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:16:36Z",
+      "side": 1,
+      "message": "I will choose a more descriptive name, but I believe I was going for \"Chrome pointer\". I agree it could be a better name, will change it as needed.",
+      "parentUuid": "97090b82_b6f0465f",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 9
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "672cbd47_80a5761e",
         "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
         "patchSetId": 3
@@ -250,6 +315,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e3b4b43_662941db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:16:36Z",
+      "side": 1,
+      "message": "No, I want to check the cookies for both existing renderers and new ones that I am creating. That way it tests more. What\u0027s the benefit of excluding?",
+      "parentUuid": "afebf4ea_c6d9243b",
+      "range": {
+        "startLine": 119,
+        "startChar": 16,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7378dc5d_cf8308e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
         "patchSetId": 3
@@ -289,6 +378,30 @@
         "startChar": 10,
         "endLine": 123,
         "endChar": 58
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d4df3f3_9b9a3f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:16:36Z",
+      "side": 1,
+      "message": "No, I want to fail the test if anyone fails. This is a hard failure and there\u0027s no point in continuing to test.",
+      "parentUuid": "7378dc5d_cf8308e0",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 9
       },
       "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -399,6 +512,30 @@
       "writtenOn": "2020-10-21T01:56:12Z",
       "side": 1,
       "message": "This will send a real http request to the server.  Is it really what you want?\nCan\u0027t you use a sample webpage?\n\nIf not, maybe it\u0027s better to use web replayer.",
+      "range": {
+        "startLine": 157,
+        "startChar": 17,
+        "endLine": 157,
+        "endChar": 61
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a0f38b_4bdbc65a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:16:36Z",
+      "side": 1,
+      "message": "I can work with a sample webppage. I really only want new renderers that I create. Web player should work for me, I will give it a try.",
+      "parentUuid": "767ccf10_9fcff129",
       "range": {
         "startLine": 157,
         "startChar": 17,
