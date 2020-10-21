@@ -327,6 +327,12 @@ func checkDaemonsRunning(ctx context.Context) error {
 	if err := expectDaemonRunning(ctx, "vmlog_forwarder"); err != nil {
 		return errors.Wrap(err, "failed to check Daemon running for vmlog_forwarder")
 	}
+	if err := expectDaemonRunning(ctx, "chunneld"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for chunneld")
+	}
+	if err := expectDaemonRunning(ctx, "crosdns"); err != nil {
+		return errors.Wrap(err, "failed to check Daemon running for crosdns")
+	}
 	return nil
 }
 
