@@ -9,6 +9,7 @@ package ui
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"regexp"
 	"strings"
@@ -286,6 +287,10 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 		return errors.Wrap(err, "failed to stop apt-daily")
 	}
 
+	if err := disableGarconPackageUpdates(ctx, cont); err != nil {
+		return errors.Wrap(err, "failed to stop garcon from auto-updating packages")
+	}
+
 	// If the wayland backend is used, the fonctconfig cache will be
 	// generated the first time the app starts. On a low-end device, this
 	// can take a long time and timeout the app executions below.
@@ -343,4 +348,20 @@ func stopAptDaily(ctx context.Context, cont *vm.Container) error {
 		}
 	}
 	return nil
+}
+
+// disableGarconPackageUpdates stops garcon from updating packages, which can mess with some tests.
+func disableGarconPackageUpdates(ctx context.Context, cont *vm.Container) error {
+	const (
+		garconConfig = `DisableAutomaticCrosPackageUpdates=true
+                                DisableAutomaticSecurityUpdates=true`
+		configPath = ".config/cros-garcon.conf"
+		localPath  = "/tmp/cros-garcon.conf"
+	)
+	testing.ContextLog(ctx, "Disabling garcon package updates")
+	if err := ioutil.WriteFile(localPath, []byte(garconConfig), 0666); err != nil {
+		return err
+	}
+	defer os.Remove(localPath)
+	return cont.PushFile(ctx, localPath, configPath)
 }
