@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c20c893_06e141f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanning/launch_scan_app_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T17:21:08Z",
+      "side": 1,
+      "message": "I thought that the WaitForApp was waiting for something in the launcher. Now I see it is actually looks for the App itself.",
+      "parentUuid": "f7b62a48_72071957",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "a01439117d05dedbeac526c50f0c447a66593048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574fce22_597e3bf7",
