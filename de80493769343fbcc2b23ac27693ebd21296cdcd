@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feaadea1_63867653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-21T22:58:20Z",
+      "side": 1,
+      "message": "Done. Changed ExtraData to[]string{\"crostini_guest_images.tar\"}.",
+      "parentUuid": "a8efe553_994d4091",
+      "revId": "de80493769343fbcc2b23ac27693ebd21296cdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f24c416_c5d6f5c8",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-21T08:12:51Z",
       "side": 1,
       "message": "If only using a single size, is this test redundant with the regular Crostini precondition also resizing during installation? Also, what happens if a device doesn\u0027t have 16GB?",
+      "revId": "de80493769343fbcc2b23ac27693ebd21296cdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b9f8603_28777768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-21T22:58:20Z",
+      "side": 1,
+      "message": "There used to be a test using a non-default size as a precondition. It was deleted a few days ago. That\u0027s why I added this one. In addition, that case used 16GB.\n\nI\u0027m thinking of two possible ways to avoid specify the disk size:\n1. Set MinDiskSize\u003d1GB, then it will always resize to the minimum size. \n2. Pass another bool parameter to installer and then if it is true, resize to the mid size.\nHowever, both them have a problem: we do not know what is the result size, as a result, we could only use the result on settings to verify the container disk size.\n\nWDYT?",
+      "parentUuid": "2f24c416_c5d6f5c8",
       "revId": "de80493769343fbcc2b23ac27693ebd21296cdcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cfd27a_a1e4868f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-21T22:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bbf0e14_5586c519",
+      "revId": "de80493769343fbcc2b23ac27693ebd21296cdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "003b1d74_e92c4c76",
@@ -65,6 +119,24 @@
       "writtenOn": "2020-10-21T08:12:51Z",
       "side": 1,
       "message": "VM logs might be useful (no need for container logs).",
+      "revId": "de80493769343fbcc2b23ac27693ebd21296cdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f11a0b_3ea72801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-21T22:58:20Z",
+      "side": 1,
+      "message": "Sorry but did not get the point, how do you want this to be changed?",
+      "parentUuid": "003b1d74_e92c4c76",
       "revId": "de80493769343fbcc2b23ac27693ebd21296cdcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
