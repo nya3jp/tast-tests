@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4eaef0_ad824176",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-21T22:35:38Z",
+      "side": 1,
+      "message": "LGTM % btw you need to add a peer to review the test from business perspective.\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/pre.go?l\u003d38",
+      "revId": "f7461ed07d0839a57ac25fd91b477dc23d414226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
