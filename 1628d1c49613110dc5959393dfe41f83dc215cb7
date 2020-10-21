@@ -56,6 +56,30 @@
       },
       "revId": "1628d1c49613110dc5959393dfe41f83dc215cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b616be_0aeda532",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2020-10-21T10:43:27Z",
+      "side": 1,
+      "message": "Thanks for this suggestion.\n\nAs discussed it seems that \u0027fakeLogin\u0027 is the default mode when creating a fresh Chrome instance. We would need to add the vmodules in the method New(), which would add it to all tests. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;drc\u003df7992e04f1d6dd507778f1bdddec6c7dae0cb488;l\u003d403\n\nIs this what we want? Would it be ok to add it directly to the method New().\nThanks for the insights 😊",
+      "parentUuid": "06e18c4a_128e7433",
+      "range": {
+        "startLine": 192,
+        "startChar": 16,
+        "endLine": 192,
+        "endChar": 25
+      },
+      "revId": "1628d1c49613110dc5959393dfe41f83dc215cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
