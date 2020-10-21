@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6daa3f_ad4dd2c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "\"go vet\" tells me it\u0027s undefined.",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76885221_8efc3074",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "The scope of these functions is kind of awkward as tast-lint does not allow referencing symbols in other test file so this will block other tests defining similar utilities. It is also inconvenient that golang doesn\u0027t provide this for us. I don\u0027t have a better solution than moving these into a package, e.g. bundles/cros/wifi/mathutil, (which is somehow excessive).",
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0467cbf3_48813158",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "So this looks like hacking this gRPC with the boundary that it will trigger scan but not waiting. I\u0027m not sure if the behavior will always be guaranteed (at least not documented now).\n\nMay I know why calling RequestScans with Count\u003d1 doesn\u0027t work for this usage?",
+      "range": {
+        "startLine": 129,
+        "startChar": 38,
+        "endLine": 129,
+        "endChar": 46
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0874fda_22707570",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "Please add comments for the functions. I think it would help the reader to understand.",
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e84bb7_9597b238",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "nit: as the size should be exactly two, not sure if \"apParam0, apParam1 []hostapd.Option\" is more explicit?",
+      "range": {
+        "startLine": 196,
+        "startChar": 71,
+        "endLine": 196,
+        "endChar": 101
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "582d73d5_5bd372c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "nit: fmt.Sprintf(\"%d_roam.txt\", runIdx) is clearer for me but YMMV.",
+      "range": {
+        "startLine": 232,
+        "startChar": 55,
+        "endLine": 232,
+        "endChar": 87
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2815d3a_bebee35f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "\"go vet\" tells me it\u0027s undefined. I think it\u0027s freq0/freq1 in this function.",
+      "range": {
+        "startLine": 240,
+        "startChar": 49,
+        "endLine": 240,
+        "endChar": 54
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a5f799c_36109d4f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "curious: is this 0 needed? I think golang will assign zero values for us?",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 12
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2318e03_18721494",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "nit: end the sentence with period. similar in other places.",
+      "range": {
+        "startLine": 17,
+        "startChar": 97,
+        "endLine": 17,
+        "endChar": 98
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c431a0_9a5f1f32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "This is a big assumption of this function. Please add this in the function doc or pass TestFixture in the parameter list. Similar in ConnectAP.",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a09b5ec_6dd1e494",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of calling s.Fatal/s.Error in a shared function. However, it is in bundles and allowed to have more control over testing.State. Also, the main intention of this utility seems to be handling the error so it makes sense here. But I think the behavior worth to be mentioned in the function doc.",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1362c8c9_0ed0194e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T07:44:15Z",
+      "side": 1,
+      "message": "you probably should do this before ConfigureAPOnRouterID otherwise it is possible that ap is not closed when we get error here. (although there is a similar check inside ConfigureAPOnRouterID but it is not obvious).",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
