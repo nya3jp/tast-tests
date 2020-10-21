@@ -39,6 +39,18 @@ func setUpTestBridge(ctx context.Context, cr *chrome.Chrome, useSWA bool) (*chro
 	if useSWA {
 		pageConn, err = cr.NewConn(ctx, "chrome://camera-app/views/test.html")
 	} else {
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "failed to connect to test extension")
+		}
+		// Background page will not be available if it is not used for a while.
+		// We should wake it up before trying to connect it.
+		if err := tconn.Call(ctx, nil, `
+		  (id) => {
+			chrome.runtime.sendMessage(id, "");
+		  }`, ID); err != nil {
+			return nil, nil, errors.Wrap(err, "failed to wake background page up")
+		}
 		pageConn, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL(BackgroundURL))
 	}
 	if err != nil {
