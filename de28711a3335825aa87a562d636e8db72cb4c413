@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05520bd7_622e6490",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-10-21T04:38:21Z",
+      "side": 1,
+      "message": "suppose I should lease some boards to make sure this is good on various platforms. Only tested on Lazor so far.",
+      "revId": "de28711a3335825aa87a562d636e8db72cb4c413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
