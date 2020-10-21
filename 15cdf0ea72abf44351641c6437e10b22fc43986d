@@ -75,6 +75,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "256425e9_5c6e9a9d",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309a4be5_3592e491",
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30fd6f64_ba9e4f61",
@@ -88,6 +106,30 @@
       "writtenOn": "2020-10-16T16:46:00Z",
       "side": 1,
       "message": "PerfSchedOpts creates...",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 12
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "139b2575_24fb53ed",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30fd6f64_ba9e4f61",
       "range": {
         "startLine": 115,
         "startChar": 3,
@@ -121,6 +163,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f16f09_15529501",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "366aa264_9e62a1b7",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 72
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e35ced38_58bf6dca",
@@ -134,6 +200,30 @@
       "writtenOn": "2020-10-16T16:46:00Z",
       "side": 1,
       "message": "errors shouldn\u0027t start with a capital character.  (\"failed to open...\")\n\nSame on other errors in this function.",
+      "range": {
+        "startLine": 209,
+        "startChar": 24,
+        "endLine": 209,
+        "endChar": 30
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4afff65_d3521bf0",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e35ced38_58bf6dca",
       "range": {
         "startLine": 209,
         "startChar": 24,
@@ -167,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d44e631_52754ec2",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f0dfb4_710808d2",
+      "range": {
+        "startLine": 220,
+        "startChar": 24,
+        "endLine": 220,
+        "endChar": 30
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0c25ae8_04f78f7e",
@@ -190,6 +304,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c44d7b_07373bc0",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:03:02Z",
+      "side": 1,
+      "message": "No, I want the file output as well so that I can refer to it later if needed.",
+      "parentUuid": "f0c25ae8_04f78f7e",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 21
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0b91079_ecb521ad",
@@ -203,6 +341,30 @@
       "writtenOn": "2020-10-16T16:46:00Z",
       "side": 1,
       "message": "let\u0027s bring regexp.Compile outside of the loop as it can be shared.",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 0
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d94f4f83_42b5150b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:03:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0b91079_ecb521ad",
       "range": {
         "startLine": 228,
         "startChar": 0,
@@ -250,6 +412,30 @@
       "side": 1,
       "message": "I tried this and I was getting errors. Will look more into it.",
       "parentUuid": "8a503a2d_49b52165",
+      "range": {
+        "startLine": 234,
+        "startChar": 27,
+        "endLine": 234,
+        "endChar": 30
+      },
+      "revId": "15cdf0ea72abf44351641c6437e10b22fc43986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c336dd21_5757e845",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-21T04:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c2c5e0a_fb146b21",
       "range": {
         "startLine": 234,
         "startChar": 27,
