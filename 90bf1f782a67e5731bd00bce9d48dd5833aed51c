@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "075666ba_4f1ecaf2",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-21T06:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da9f3fc2_3755ab35",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "90bf1f782a67e5731bd00bce9d48dd5833aed51c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "661efa76_690b78f6",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-20T15:16:12Z",
       "side": 1,
       "message": "IIUC, when command is created, it needs to start to handle resource closing.\nCOuld you move this above the command instance creation?",
+      "revId": "90bf1f782a67e5731bd00bce9d48dd5833aed51c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4adcc34_1a03729a",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-21T06:42:58Z",
+      "side": 1,
+      "message": "wow that is a gotcha. thanks for catching!",
+      "parentUuid": "661efa76_690b78f6",
       "revId": "90bf1f782a67e5731bd00bce9d48dd5833aed51c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
