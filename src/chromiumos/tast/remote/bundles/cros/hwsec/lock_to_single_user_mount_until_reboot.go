@@ -22,10 +22,8 @@ func init() {
 			"zuan@chromium.org", // Test author
 			"cros-hwsec@google.com",
 		},
-		Attr: []string{"informational", "group:mainline"},
-		// This feature is temporarily unavailable on TPM 1.2.
-		// TODO(b/156326276): Re-enable this test after the feature is fixed for TPM 1.2.
-		SoftwareDeps: []string{"tpm2"},
+		Attr:         []string{"informational", "group:mainline"},
+		SoftwareDeps: []string{"tpm"},
 	})
 }
 
