@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05037d79_2107c5ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-10-21T16:22:21Z",
+      "side": 1,
+      "message": "https://crrev.com/c/2484250 went in recently, you\u0027ll need to rebase on ToT I think",
+      "revId": "db7a902c219faf14ca9c7fe57d1b67242a3ff5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
