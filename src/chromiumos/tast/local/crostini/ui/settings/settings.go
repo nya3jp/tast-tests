@@ -52,11 +52,12 @@ var (
 	linuxBetaButton       = ui.FindParams{Name: "Linux (Beta)", Role: ui.RoleTypeButton}
 	nextButton            = ui.FindParams{Name: "Next", Role: ui.RoleTypeButton}
 	settingsHeading       = ui.FindParams{Name: "Settings", Role: ui.RoleTypeHeading}
+	linuxSettings         = ui.FindParams{Name: PageNameLinux, Role: ui.RoleTypeRootWebArea}
 	emptySharedFoldersMsg = ui.FindParams{Name: "Shared folders will appear here", Role: ui.RoleTypeStaticText}
 	sharedFoldersList     = ui.FindParams{Name: "Shared folders", Role: ui.RoleTypeList}
 	unshareFailDlg        = ui.FindParams{Name: "Unshare failed", Role: ui.RoleTypeDialog}
 	okButton              = ui.FindParams{Name: "OK", Role: ui.RoleTypeButton}
-	removeLinuxButton     = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Remove Linux for .*`)}, Role: ui.RoleTypeButton}
+	removeLinuxButton     = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Remove.*`)}, Role: ui.RoleTypeButton}
 	resizeButton          = ui.FindParams{Name: "Change disk size", Role: ui.RoleTypeButton}
 )
 
@@ -250,7 +251,7 @@ func (s *Settings) ClickRemove(ctx context.Context, tconn *chrome.TestConn) (*Re
 	uig.PageObject(dialog)
 
 	if err := uig.Do(ctx, tconn,
-		uig.FindWithTimeout(removeLinuxButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
+		uig.FindWithTimeout(linuxSettings, uiTimeout).FindWithTimeout(removeLinuxButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
 		dialog.Self); err != nil {
 		return nil, errors.Wrap(err, "failed to find the delete dialog")
 	}
