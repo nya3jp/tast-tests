@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7640076_24c0885e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printmanagement/doc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-21T21:54:38Z",
+      "side": 1,
+      "message": "Just curious why not put printmanagement SWA test under apps package, instead of creating a separate package. It is okay if you are going to add more tests.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "6bd31d7d0c150bca99e20d64c341d58d0f4cf871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f215ef_9fc30afc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printmanagement/launch_printmanagement_from_launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-21T21:54:38Z",
+      "side": 1,
+      "message": "Highly recommended to use precondition here, according to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#preconditions\n\nCode example: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "6bd31d7d0c150bca99e20d64c341d58d0f4cf871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
