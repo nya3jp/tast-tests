@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2447f9f_415d035e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-21T11:30:02Z",
+      "side": 1,
+      "message": "added fixes for\n\nsrc/chromiumos/tast/local/android/ui/gen/gen_constants.go\n  - clean\n  - regenerated:  from: chromeos/src/platform/tast/src/chromiumos/tast/genutil\n    ../../../../tools/go.sh generate chromiumos/tast/local/android/ui\n\nsrc/chromiumos/tast/local/input/gen/gen_constants.go\n  - clean\n  - regenerated:  from: chromeos/src/platform/tast/src/chromiumos/tast/genutil\n       ../../../../tools/go.sh generate  chromiumos/tast/local/input\n\n",
+      "revId": "ff1cb369690444abc7e965a02d1eda6570c11fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6779970b_f57c416e",
