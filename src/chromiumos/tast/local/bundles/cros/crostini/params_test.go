@@ -54,6 +54,7 @@ var testFiles = []string{
 	"remove_ok.go",
 	"resize_cancel.go",
 	"restart.go",
+	"security_cpu_vulnerability.go",
 	"shared_font_files.go",
 	"share_downloads_add_files.go",
 	"share_downloads.go",
