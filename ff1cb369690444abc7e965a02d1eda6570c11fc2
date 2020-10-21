@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "929aa8f8_0d4b8bf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-21T02:59:15Z",
+      "side": 1,
+      "message": "Thank you for looking at the changes.\n\nAfter the changes, the file below still contain \"native\" terms\n     1 android/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/AccelerometerPlayActivity.java\n     59 src/chromiumos/tast/common/policy/defs.go\n      1 src/chromiumos/tast/common/storage/storage_lulu_test.go\n      2 src/chromiumos/tast/common/storage/storage_nocturne_test.go\n      1 src/chromiumos/tast/local/arc/diagnose_test.go\n      2 src/chromiumos/tast/local/arc/ui/gen/gen_constants.go\n      6 src/chromiumos/tast/local/bundles/cros/arc/built_in_bridge.go\n      1 src/chromiumos/tast/local/bundles/cros/arc/deqp.go\n      1 src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go\n      1 src/chromiumos/tast/local/bundles/cros/security/open_fds.go\n     17 src/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player/shaka-player.compiled.debug.js\n      3 src/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player/shaka-player.compiled.debug.map\n      2 src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go\n      3 src/chromiumos/tast/local/input/gen/gen_constants.go\n      1 src/chromiumos/tast/remote/bundles/cros/wilco/wilcoextension/constants.go\n      1 src/chromiumos/tast/remote/bundles/cros/wilco/wilcoextension/native.go\n\n\u003d\u003d\u003d\u003d\u003d\u003d\n\nI am including a full log of what was done:\n\nandroid/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/AccelerometerPlayActivity.java\n  - not fixed\nsrc/chromiumos/tast/common/policy/defs.go\n  - not fixable.\nsrc/chromiumos/tast/common/storage/storage_lulu_test.go\n  - not fixable.\nsrc/chromiumos/tast/common/storage/storage_nocturne_test.go\n  - word alternative\n  - not fixable, testing output\nsrc/chromiumos/tast/local/arc/diagnose_test.go\n  - Fix TestDiagnoseNativeCrash\n  - not fixable string.\nsrc/chromiumos/tast/local/arc/ui/gen/gen_constants.go\n  - need to ask question. This is a structure type change.\n      NativeType: \"uint16\"\nsrc/chromiumos/tast/local/bundles/cros/arc/deqp.go\n  - android.app.NativeActivity\n  - test:  tast run localhost:9222 arc.DEQP\nsrc/chromiumos/tast/local/bundles/cros/arc/native_bridge.go\n  - fixed terms that were local\n  - could not remove android dependencies\n  - renamed built_in_bridge.go\n  - tast run localhost:9222 arc.BuiltInBridge.*\nsrc/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go\n  - external dependency, external command line option\n  - tast run localhost:9222 arc.Video*.*\nsrc/chromiumos/tast/local/bundles/cros/security/open_fds.go\n  - external dependency /opt/google/chrome/natives_blob.bin\n  - tast run localhost:9222 security.*\nsrc/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player/shaka-player.compiled.debug.js\n  - need to ask how we fix those.\nsrc/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player/shaka-player.compiled.debug.map\n  - need to ask how we fix those.\nsrc/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go\n  - arguments to video_encode_accelerator_unittest\n  -  tast run localhost:9222 video.*\nsrc/chromiumos/tast/remote/bundles/cros/wilco/wilcoextension/constants.go\n  - permissions: nativeMessaging\n  - tast run localhost:9222 wilco.*\nsrc/chromiumos/tast/remote/bundles/cros/wilco/wilcoextension/native.go\n  - chrome.runtime.connectNative\n  - chrome.runtime.sendNativeMessage\n  - chrome.runtime.onConnectNative\n  - port.sender.nativeApplication\n  - tast run localhost:9222 wilco.* \n\n\nsrc/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go\n  - fixed\n  - tast run localhost:9222 arc.CheckAndroidARM64Support\nsrc/chromiumos/tast/local/bundles/cros/arc/companion_library.go\n  - fixed\n  - tast run localhost:9222 arc.CompanionLibrary\nsrc/chromiumos/tast/local/bundles/cros/arc/hwoverlay_tablet.go\n  - fixed\n  - tast run localhost:9222 arc.HWOverlayTablet\nsrc/chromiumos/tast/local/bundles/cros/arc/native_crash.go\n  - rename built_in_crash.go\n  - fixed terms.\n  - tast run localhost:9222 arc.BuiltInCrash.*\nsrc/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_power_perf.go\n  - clean\n  - tast run localhost:9222 camera.CCAUIPreviewPowerPerf\nsrc/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go\n  - clean\n  - tast run localhost:9222 crostini.DiskIOPerf.*\nsrc/chromiumos/tast/local/bundles/cros/graphics/gbm.go\n  - clean\n  - tast run localhost:9222 graphics.GBM*\nsrc/chromiumos/tast/local/bundles/cros/ui/launcher_search_native_apps.go\n  - clean. replace function\n  - rename launcher_search_native_apps.go to\n  launcher_search_built_in_apps.go\n  - tast run localhost:9222 ui.LauncherSearchBuiltInApps\nsrc/chromiumos/tast/local/bundles/cros/webrtc/README.md:7:native\n  - clean\nsrc/chromiumos/tast/local/faillog/faillog.go\n  - clean\nsrc/chromiumos/tast/local/input/gen/gen_constants.go\n  - generated file?\nsrc/chromiumos/tast/remote/bundles/cros/wilco/api_handle_message_from_ui.go\n  - clean\n  - tast run localhost:9222 wilco.*\nsrc/chromiumos/tast/remote/bundles/cros/wilco/api_send_message_to_ui.go\n  - clean\n  - tast run localhost:9222 wilco.*\n",
+      "revId": "ff1cb369690444abc7e965a02d1eda6570c11fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6779970b_f57c416e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/built_in_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-21T02:59:15Z",
+      "side": 1,
+      "message": "I was not sure about the naming that we want here.\nshould we have builtInBridgeConfig? (upper case \"In\")",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "ff1cb369690444abc7e965a02d1eda6570c11fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
