@@ -16,6 +16,224 @@
       "message": "LGTM",
       "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a389cf_581ad3c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T14:35:20Z",
+      "side": 1,
+      "message": "Use time.Duration type, and you can include time.Second here.",
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af693ed_bc676152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T14:35:20Z",
+      "side": 1,
+      "message": "The previous error msg style can help debugging more.",
+      "range": {
+        "startLine": 109,
+        "startChar": 13,
+        "endLine": 109,
+        "endChar": 25
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b008aa66_e2604cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T14:35:20Z",
+      "side": 1,
+      "message": "As errors are wrapped, \":\" is usually help to separete the different layers of the error. Please use \";\" here.",
+      "range": {
+        "startLine": 111,
+        "startChar": 71,
+        "endLine": 111,
+        "endChar": 72
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0990781_119738d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T14:35:20Z",
+      "side": 1,
+      "message": "nit: remove extra whitespace",
+      "range": {
+        "startLine": 143,
+        "startChar": 75,
+        "endLine": 143,
+        "endChar": 76
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9556d4_b4f3789f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T14:35:20Z",
+      "side": 1,
+      "message": "In Wrap() you don\u0027t need to add \": \" to the end. Same for the other wraps.",
+      "range": {
+        "startLine": 156,
+        "startChar": 64,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66476b81_b7d9cfa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T14:35:20Z",
+      "side": 1,
+      "message": "Defer a release for these nodes.",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 10
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42eaec41_62920f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T14:35:20Z",
+      "side": 1,
+      "message": "Add error handling here as well.",
+      "range": {
+        "startLine": 204,
+        "startChar": 24,
+        "endLine": 204,
+        "endChar": 25
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc5d6c59_2b539f8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T14:35:20Z",
+      "side": 1,
+      "message": "Instead of counting the bookmarks, is it possible to check if the StarView node turned blue/active? You might need to use node.Update().",
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0367f2_04c01253",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T14:35:20Z",
+      "side": 1,
+      "message": "nit: you can remove this part.",
+      "range": {
+        "startLine": 210,
+        "startChar": 66,
+        "endLine": 210,
+        "endChar": 76
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c22984e9_dde864c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T14:35:20Z",
+      "side": 1,
+      "message": "newName+\u0027\\n\u0027 might work as well, to skip pressing Enter.",
+      "range": {
+        "startLine": 267,
+        "startChar": 30,
+        "endLine": 267,
+        "endChar": 37
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
