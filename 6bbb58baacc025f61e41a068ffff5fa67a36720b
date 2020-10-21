@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28bf0664_957dd695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T21:56:02Z",
+      "side": 1,
+      "message": "Yes. See https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/ui/window_control.go#49 for example.",
+      "parentUuid": "9cddcc47_c76492e6",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 71
+      },
+      "revId": "6bbb58baacc025f61e41a068ffff5fa67a36720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46be6049_8bdf8b89",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8e4b8c_fcda2d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T21:56:02Z",
+      "side": 1,
+      "message": "Thanks, reformed the comment into list items. Using the original form rather than present tense.",
+      "parentUuid": "46be6049_8bdf8b89",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 8
+      },
+      "revId": "6bbb58baacc025f61e41a068ffff5fa67a36720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e24e25c1_64b92c07",
@@ -94,6 +142,24 @@
       "writtenOn": "2020-10-20T20:35:44Z",
       "side": 1,
       "message": "can you add a bug number for this?",
+      "revId": "6bbb58baacc025f61e41a068ffff5fa67a36720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39aa0c09_58d3c14a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T21:56:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e24e25c1_64b92c07",
       "revId": "6bbb58baacc025f61e41a068ffff5fa67a36720b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
