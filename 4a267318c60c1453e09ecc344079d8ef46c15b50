@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db5291a8_ae10651e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T08:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2ef19c9_1d9dc05d",
+      "range": {
+        "startLine": 5,
+        "startChar": 107,
+        "endLine": 5,
+        "endChar": 123
+      },
+      "revId": "4a267318c60c1453e09ecc344079d8ef46c15b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd19256_a2aa85c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T08:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b900122b_23ee2ba6",
+      "range": {
+        "startLine": 5,
+        "startChar": 65,
+        "endLine": 5,
+        "endChar": 78
+      },
+      "revId": "4a267318c60c1453e09ecc344079d8ef46c15b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e099479_972ba65f",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-21T02:20:23Z",
       "side": 1,
       "message": "Please use os.RemoveFile instead.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "4a267318c60c1453e09ecc344079d8ef46c15b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0799aa7d_7e269f98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T08:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e099479_972ba65f",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6d814f_829d5050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T08:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f235d9b2_f169970d",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 86
+      },
+      "revId": "4a267318c60c1453e09ecc344079d8ef46c15b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65a04e8c_b3df342a",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-10-21T02:20:23Z",
       "side": 1,
       "message": "Please use os.RemoveFile instead",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 3
+      },
+      "revId": "4a267318c60c1453e09ecc344079d8ef46c15b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d7a575d_25945ce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T08:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65a04e8c_b3df342a",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1530e205_58359707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T08:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05ef5b06_0bafce46",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 116
+      },
+      "revId": "4a267318c60c1453e09ecc344079d8ef46c15b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9e97142_23f5d00b",
@@ -152,6 +296,30 @@
       "writtenOn": "2020-10-21T02:20:23Z",
       "side": 1,
       "message": "Please use ioutil.WriteFile instead",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 124
+      },
+      "revId": "4a267318c60c1453e09ecc344079d8ef46c15b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f673f8f4_ca430486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T08:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9e97142_23f5d00b",
       "range": {
         "startLine": 86,
         "startChar": 8,
@@ -176,6 +344,30 @@
       "side": 1,
       "message": "\u003e \"retrives\" is a possible misspelling of \"retrieves\".\n\nPlease fix.",
       "parentUuid": "ec62fb4e_3a901b87",
+      "range": {
+        "startLine": 117,
+        "startChar": 18,
+        "endLine": 117,
+        "endChar": 26
+      },
+      "revId": "4a267318c60c1453e09ecc344079d8ef46c15b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fda2033_9a2a26e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T08:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f78250e9_14cac6fb",
       "range": {
         "startLine": 117,
         "startChar": 18,
