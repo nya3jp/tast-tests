@@ -16,6 +16,144 @@
       "message": "Should be good for review now.",
       "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e1223c2_9ef396f7",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T18:15:03Z",
+      "side": 1,
+      "message": "arguments and local variables should start with lower letter.  perfSchedFile and procName are more suitable.",
+      "range": {
+        "startLine": 202,
+        "startChar": 42,
+        "endLine": 202,
+        "endChar": 65
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "003d8df9_34f39cf9",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T18:15:03Z",
+      "side": 1,
+      "message": "Please use errors.Wrap.  errors.Wrap(err, \"failed to get output of perf sched latency\")\ncf. https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/errors#hdr-Simple_usage",
+      "range": {
+        "startLine": 207,
+        "startChar": 12,
+        "endLine": 207,
+        "endChar": 68
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d3cdff1_346cc18c",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T18:15:03Z",
+      "side": 1,
+      "message": "filepath.Join(filepath.Dir(PerfSchedFile), \"perf_sched_latency.out\")",
+      "range": {
+        "startLine": 210,
+        "startChar": 25,
+        "endLine": 210,
+        "endChar": 80
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b953e4_de9558f5",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T18:15:03Z",
+      "side": 1,
+      "message": "similarly use errors.Wrap",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 54
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e73b2c_3bcf0215",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T18:15:03Z",
+      "side": 1,
+      "message": "if err \u003d ioutil.WriteFile(perfSchedLatencyFile, output, 0644); err !\u003d nil {\n   ...\n}",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61c633d_5d833f68",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T18:15:03Z",
+      "side": 1,
+      "message": "Please drop \u0027\u003d\u003d true\u0027. That is redundant.",
+      "range": {
+        "startLine": 225,
+        "startChar": 52,
+        "endLine": 225,
+        "endChar": 59
+      },
+      "revId": "58fef54c73866564fe043326f0e0b248f0f26363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
