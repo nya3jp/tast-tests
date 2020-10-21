@@ -211,10 +211,6 @@ func (s *Session) WaitForTarget(ctx context.Context, tm TargetMatcher) (*target.
 	}
 
 	if len(matched) != 1 {
-		testing.ContextLogf(ctx, "%d targets matched while unique match was expected. Existing matching targets:", len(matched))
-		for _, t := range matched {
-			testing.ContextLogf(ctx, "  %+v", t)
-		}
 		return nil, errors.Errorf("%d matching targets found", len(matched))
 	}
 	return matched[0], nil
