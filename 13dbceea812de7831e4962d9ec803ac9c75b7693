@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e74c0b9b_47e15185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "mostly nits",
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a68a7f_7b9defff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "nit: here and below:  Pid -\u003e PID\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 10
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d236b98_39e559c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "nit, style:\nSince this still under investigation, I\u0027d use a TODO. e.g.\n\n  // TODO(crbug.com/1139494): Remove retry once bug is fixed.\n  // Retry several times...",
+      "range": {
+        "startLine": 637,
+        "startChar": 1,
+        "endLine": 639,
+        "endChar": 46
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "708b4735_f63f1d45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "nit, style:\nany particular reason why NOTE THAT is in uppercase?\nIf so, consider using \"Note that\"...  ore perhaps: \"NOTE: In some tests...\"",
+      "range": {
+        "startLine": 641,
+        "startChar": 4,
+        "endLine": 641,
+        "endChar": 14
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14fdefae_e50338f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "nit: move const close to where it is used. e.g: move it to L670",
+      "range": {
+        "startLine": 644,
+        "startChar": 0,
+        "endLine": 644,
+        "endChar": 32
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5c2114_932e37ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "huge nit, style: I\u0027d just remove the parentheses.",
+      "range": {
+        "startLine": 663,
+        "startChar": 68,
+        "endLine": 663,
+        "endChar": 69
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a11fe47_44c22dd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "nit, style: order of parameters\n\nput all the regexp together. e.g:\n\n  crash.WaitForCrashFiles(ctx, dirs, regexes, crash.OptionRegexes(optionalRegexes), crash.Timeout(timeout)): ...",
+      "range": {
+        "startLine": 670,
+        "startChar": 63,
+        "endLine": 670,
+        "endChar": 125
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f236a5_661c7152",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "nit: add doctring for this struct",
+      "range": {
+        "startLine": 220,
+        "startChar": 5,
+        "endLine": 220,
+        "endChar": 29
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21779bb_f0e5732b",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "nit: I guess this is a copy\u0026paste error",
+      "range": {
+        "startLine": 225,
+        "startChar": 80,
+        "endLine": 225,
+        "endChar": 86
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc0f81d_363b3dac",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "The \"range index\" is kind of overloaded and is kind of confusing. It took a while to understand how \"isOptional\" was working.\n\nI\u0027d rather use a more explicit way to do it, like:\n\n\n  for _, rx :\u003d range []struct {\n    regexp []string\n    optional bool\n  } {\n    {regexes, false},\n    {w.optionalRegexes, true},\n  } {\n    for _, re :\u003d rx.regexp {\n      ...\n    }\n  }",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 77
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb4862e1_0fc54055",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "nit: seems that this one is not needed. the range won\u0027t get executed if regexList is nil",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 4
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8e4150_b20687e9",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-21T01:49:21Z",
+      "side": 1,
+      "message": "huge nit, style: perhaps removing the parentheses ? and append period at the end.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 326,
+        "startChar": 64,
+        "endLine": 326,
+        "endChar": 65
+      },
+      "revId": "13dbceea812de7831e4962d9ec803ac9c75b7693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
