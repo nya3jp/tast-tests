@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8b871ae5_83914dcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-21T15:20:03Z",
+      "side": 1,
+      "message": "Added a text description.",
+      "parentUuid": "d91d6be6_3aee546c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 103
+      },
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b9763121_a73be194",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-21T10:17:31Z",
       "side": 1,
       "message": "This seems like too much code duplication, this CL is almost the same as If240988a3767fc4be74088807325a6ae076dea62.",
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e744b0fb_874b06df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-21T15:20:03Z",
+      "side": 1,
+      "message": "It certainly seems that way now since both are a simple \"hello world\" set up for each respective app. I plan on adding many more app specific tests, which will cause app drivers to diverge significantly.",
+      "parentUuid": "b9763121_a73be194",
       "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -87,6 +129,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b809fc11_fee6c1f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-21T15:20:03Z",
+      "side": 1,
+      "message": "I\u0027d like to search specifically for \"diagnostic\" (without the s and capitalization) instead of app.Diagnostics.Name which is \"Diagnostics\"",
+      "parentUuid": "948c239e_aef4c49c",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "011fe528_80ce1b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-21T15:20:03Z",
+      "side": 1,
+      "message": "Didn\u0027t realize SearchAndLaunch existed, thanks for the pointer. I think I\u0027d still write all these out since I\u0027m trying to differentiate the search term and actual app name.",
+      "parentUuid": "68bb423c_bc76e751",
+      "range": {
+        "startLine": 54,
+        "startChar": 20,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a79bf73_4bd15a01",
@@ -123,6 +213,54 @@
       "writtenOn": "2020-10-21T10:17:31Z",
       "side": 1,
       "message": "Defer a node release.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 8
+      },
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32dc0c0a_e546a074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-21T15:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a79bf73_4bd15a01",
+      "range": {
+        "startLine": 59,
+        "startChar": 55,
+        "endLine": 59,
+        "endChar": 68
+      },
+      "revId": "02c274a3eed1e792ea4aaf0cdb893c555ac71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "074a8680_36549c5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-21T15:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1532796_e43984f6",
       "range": {
         "startLine": 59,
         "startChar": 1,
