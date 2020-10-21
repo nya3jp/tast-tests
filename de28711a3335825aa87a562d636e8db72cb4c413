@@ -16,6 +16,29 @@
       "message": "suppose I should lease some boards to make sure this is good on various platforms. Only tested on Lazor so far.",
       "revId": "de28711a3335825aa87a562d636e8db72cb4c413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e4593bb_0a015529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/security_cpu_vulnerability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2020-10-21T22:13:53Z",
+      "side": 1,
+      "message": "how about using DefaultContainerCommand and sh -c for the file redirection? https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/vm/container.go;l\u003d648;drc\u003d6c831f2079c196dd66c96f4c579b654671a17d43\n\nit does boil down to running the same command, but you do get to avoid any potential flakiness from chrome/terminal app.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "de28711a3335825aa87a562d636e8db72cb4c413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
