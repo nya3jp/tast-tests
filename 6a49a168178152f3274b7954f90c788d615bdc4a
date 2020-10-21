@@ -310,6 +310,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f07c12_4b31b37d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-21T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ca6afe7_25d78d3c",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc7e817b_5afedfbd",
@@ -347,6 +365,30 @@
       "side": 1,
       "message": "Gherkin keywords help recognize where arrange/act/assert blocks are. It is a good practice regardless of the language.\n\nI have no problem removing them and the same time I see how they help with better understanding the flow structure.",
       "parentUuid": "bc7e817b_5afedfbd",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 11
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d93d4ce_da7cdba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-21T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66727cb8_c133be1c",
       "range": {
         "startLine": 73,
         "startChar": 3,
@@ -445,6 +487,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "877c59e5_d6b36a3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-21T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "367681d9_f3664275",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffbacad1_ec317aad",
@@ -512,6 +572,24 @@
       "side": 1,
       "message": "I saw example with logs. I will give it a shoot.",
       "parentUuid": "b81809c1_f4c9319b",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "436c179d_bfdd095f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-21T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3df1455_b653287b",
       "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -710,6 +788,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0abea82c_372a88ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-21T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ac430ac_f07de3a2",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 8
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54a3c565_6b2b1c33",
@@ -723,6 +825,30 @@
       "writtenOn": "2020-10-16T15:25:42Z",
       "side": 1,
       "message": "If you want to keep that I\u0027d put it at the start of the test.\nShould be removed once the test is stable.",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 70
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8952df73_14674847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-21T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a3c565_6b2b1c33",
       "range": {
         "startLine": 142,
         "startChar": 1,
@@ -851,6 +977,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b67d9c0_32f6158c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-21T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4dd53d6_11ada972",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 154,
+        "endChar": 82
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41198566_db29d610",
@@ -888,6 +1038,30 @@
       "side": 1,
       "message": "That is how I started the tests to begin with. However, chrome://bookmarks has shadow DOM. When I tried to fish out the bookmark row with css selector \"#bookmark_0\" it didn\u0027t work. I think you mentioned we could use full path but that put test on risk - something changes on the page and it will fail as path may change.",
       "parentUuid": "41198566_db29d610",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 46
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fb4c287_b81216df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-21T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb3f60a_e0ee9686",
       "range": {
         "startLine": 174,
         "startChar": 0,
@@ -958,6 +1132,24 @@
       "writtenOn": "2020-10-16T15:03:29Z",
       "side": 1,
       "message": "Same as above.",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2a4f01_8a02d5b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-21T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bed6bcef_549f0d0b",
       "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1093,6 +1285,30 @@
       "side": 1,
       "message": "Checking that.",
       "parentUuid": "638b86ae_c43957e4",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef622306_d19cde60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-21T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "839286a0_67c19020",
       "range": {
         "startLine": 200,
         "startChar": 0,
