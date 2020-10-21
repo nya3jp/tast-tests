@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa24103f_a07befd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-21T11:55:37Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "3f7c6050e491e15cf581d2aa6545f606024721e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b662279_bc3dd9a4",
@@ -14,6 +31,52 @@
       "writtenOn": "2020-10-21T11:16:02Z",
       "side": 1,
       "message": "Why we use wav format? Could we use .raw?",
+      "revId": "3f7c6050e491e15cf581d2aa6545f606024721e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb15994_2e7d91e5",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-21T11:55:37Z",
+      "side": 1,
+      "message": "Is it possible to somehow check if the playback is working? If so using poll with that check would be a better choice as just sleeping for some time might introduce flakiness.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 58
+      },
+      "revId": "3f7c6050e491e15cf581d2aa6545f606024721e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e09dc169_7af4bd04",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-21T11:55:37Z",
+      "side": 1,
+      "message": "nit: please stay consistent in the writing (Aloop vs aloop)",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 25
+      },
       "revId": "3f7c6050e491e15cf581d2aa6545f606024721e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
