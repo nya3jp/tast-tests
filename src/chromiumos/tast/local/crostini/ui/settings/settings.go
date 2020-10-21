@@ -56,7 +56,7 @@ var (
 	sharedFoldersList     = ui.FindParams{Name: "Shared folders", Role: ui.RoleTypeList}
 	unshareFailDlg        = ui.FindParams{Name: "Unshare failed", Role: ui.RoleTypeDialog}
 	okButton              = ui.FindParams{Name: "OK", Role: ui.RoleTypeButton}
-	removeLinuxButton     = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Remove Linux for .*`)}, Role: ui.RoleTypeButton}
+	removeLinuxButton     = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Remove.*`)}, Role: ui.RoleTypeButton}
 	resizeButton          = ui.FindParams{Name: "Change disk size", Role: ui.RoleTypeButton}
 )
 
