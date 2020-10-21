@@ -56,6 +56,30 @@
       },
       "revId": "c0fef4c6f602ba4d416b24c613e3b5059c511a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8873fa6_4e2954e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T08:26:48Z",
+      "side": 1,
+      "message": "Hmm..., I see the standard is using \"To DS\" and \"From DS\" with the space. Not sure which might be better here.",
+      "parentUuid": "0c881117_e054cbf7",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "c0fef4c6f602ba4d416b24c613e3b5059c511a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
