@@ -16,13 +16,13 @@ func init() {
 		Func:     Config,
 		Desc:     "Verifies that remote tests can load fw-testing-configs properly",
 		Contacts: []string{"cros-fw-engprod@google.com"},
-		Data:     firmware.ConfigDatafiles(),
+		Data:     []string{firmware.ConfigFile},
 		Attr:     []string{"group:mainline", "informational"},
 	})
 }
 
 func Config(ctx context.Context, s *testing.State) {
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigDir), "")
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), "")
 	defer h.Close(ctx)
 
 	if err := h.RequireConfig(ctx); err != nil {

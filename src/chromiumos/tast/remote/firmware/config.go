@@ -49,132 +49,18 @@ const (
 	ECX86            ECCapability = "x86"
 )
 
-// ConfigDir is the basename of the directory within remote/firmware/data/ which contains the JSON files.
-const ConfigDir = "fw-testing-configs"
+// cfgDirName is the name of the folder within data/ containing the platform config datafiles.
+const cfgDirName = "fw-testing-configs"
 
-// defaultName is the name of the JSON file containing default config values.
-// Although the actual filepath contains a .json extension, this variable does not.
-const defaultName = "DEFAULTS"
+// consolidatedBasename is the name of the .json file containing all platforms' config data.
+const consolidatedBasename = "CONSOLIDATED.json"
 
-// configPlatforms is a list of all platforms with JSON files in ConfigDir.
-var configPlatforms = []string{
-	defaultName,
-	"arkham",
-	"asuka",
-	"atlas",
-	"auron",
-	"banjo",
-	"banon",
-	"bob",
-	"brain",
-	"buddy",
-	"candy",
-	"caroline",
-	"cave",
-	"celes",
-	"chell",
-	"cheza",
-	"coral",
-	"cyan",
-	"dedede",
-	"dragonegg",
-	"drallion",
-	"edgar",
-	"elm",
-	"enguarde",
-	"eve",
-	"expresso",
-	"fievel",
-	"fizz",
-	"gale",
-	"gandof",
-	"glados",
-	"gnawty",
-	"gru",
-	"grunt",
-	"guado",
-	"hana",
-	"hatch",
-	"heli",
-	"jacuzzi",
-	"jaq",
-	"jecht",
-	"jerry",
-	"jetstream",
-	"kalista",
-	"kefka",
-	"kevin",
-	"kevin_tpm2",
-	"kip",
-	"kitty",
-	"kukui",
-	"kunimitsu",
-	"lars",
-	"lulu",
-	"mickey",
-	"mighty",
-	"minnie",
-	"mistral",
-	"monroe",
-	"nami",
-	"nasher",
-	"nautilus",
-	"ninja",
-	"nocturne",
-	"nyan",
-	"oak",
-	"octopus",
-	"orco",
-	"paine",
-	"pinky",
-	"poppy",
-	"puff",
-	"pyro",
-	"rambi",
-	"rammus",
-	"reef",
-	"reef_uni",
-	"reks",
-	"relm",
-	"rikku",
-	"samus",
-	"sand",
-	"sarien",
-	"scarlet",
-	"sentry",
-	"setzer",
-	"slippy",
-	"snappy",
-	"soraka",
-	"speedy",
-	"storm",
-	"strago",
-	"sumo",
-	"swanky",
-	"terra",
-	"tidus",
-	"tiger",
-	"trogdor",
-	"ultima",
-	"veyron",
-	"volteer",
-	"whirlwind",
-	"winky",
-	"wizpig",
-	"yuna",
-	"zork",
-}
-
-// ConfigDatafiles returns the relative paths from data/ to all config files in ConfigDir, as well as to ConfigDir itself.
+// ConfigFile is the relative path from data/ to the .json file containing all platforms' config data.
 // It is intended to be used in the Data field of a testing.Test declaration.
-func ConfigDatafiles() []string {
-	var dfs []string
-	for _, platform := range configPlatforms {
-		dfs = append(dfs, filepath.Join(ConfigDir, fmt.Sprintf("%s.json", platform)))
-	}
-	dfs = append(dfs, ConfigDir)
-	return dfs
-}
+var ConfigFile = filepath.Join(cfgDirName, consolidatedBasename)
+
+// defaultName is the name of the CONSOLIDATED.json attribute containing default values.
+const defaultName = "DEFAULTS"
 
 // Config contains platform-specific attributes.
 // Fields are documented in autotest/server/cros/faft/configs/DEFAULTS.json.
@@ -189,7 +75,7 @@ type Config struct {
 	// Raw duration fields represent a quantity of seconds.
 	// They are used during NewConfig to populate actual duration fields, which are defined below.
 	// Generally, these raw fields should not be accessed by tests and libraries.
-  	// Nevertheless, the raw fields must be exported in order for them to be set by json.Unmarshal.
+	// Nevertheless, the raw fields must be exported in order for them to be set by json.Unmarshal.
 	RawConfirmScreen     float64 `json:"confirm_screen"`
 	RawDelayRebootToPing float64 `json:"delay_reboot_to_ping"`
 	RawECBootToPwrButton float64 `json:"ec_boot_to_pwr_button"`
@@ -239,31 +125,40 @@ func parentFromBytes(b []byte) (string, error) {
 }
 
 // NewConfig creates a new Config matching the DUT platform.
-func NewConfig(configDataDir, board, model string) (*Config, error) {
-	// Load JSON bytes in order from most specific (board) to most general (DEFAULTS).
-	type platformBytes struct {
-		name string
-		b    []byte
+// cfgFilepath should take s.DataPath(firmware.ConfigFile).
+func NewConfig(cfgFilepath, board, model string) (*Config, error) {
+	// Load CONSOLIDATED.json as bytes
+	b, err := ioutil.ReadFile(cfgFilepath)
+	if err != nil {
+		return nil, errors.Wrapf(err, "reading config file %s", cfgFilepath)
 	}
-	var inherits []platformBytes
+
+	// Unmarshal consolidated JSON bytes onto a map from platform name to raw JSON
+	var consolidated map[string]json.RawMessage
+	if err := json.Unmarshal(b, &consolidated); err != nil {
+		return nil, errors.Wrapf(err, "unmarshaling consolidated JSON bytes %s", b)
+	}
+
+	// inherits is an array of platform names to be inherited, from most specific (board) to most general (DEFAULTS).
+	var inherits []string
 	for platform := CfgPlatformFromLSBBoard(board); platform != ""; {
-		b, err := loadBytes(configDataDir, platform)
-		if err != nil {
-			return nil, errors.Wrapf(err, "loading config bytes for platform %s", platform)
+		b, ok := consolidated[platform]
+		if !ok {
+			return nil, errors.Wrapf(err, "consolidated JSON did not contain platform %s", platform)
 		}
 		parent, err := parentFromBytes(b)
 		if err != nil {
 			return nil, errors.Wrapf(err, "determining parent from bytes for %s", platform)
 		}
-		inherits = append(inherits, platformBytes{name: platform, b: b})
+		inherits = append(inherits, platform)
 		platform = parent
 	}
 
 	// Unmarshal JSON bytes in order from most general (DEFAULTS) to most specific (board).
 	var cfg Config
 	for i := len(inherits) - 1; i >= 0; i-- {
-		if err := json.Unmarshal(inherits[i].b, &cfg); err != nil {
-			return nil, errors.Wrapf(err, "failed to unmarshal config for %q", inherits[i].name)
+		if err := json.Unmarshal(consolidated[inherits[i]], &cfg); err != nil {
+			return nil, errors.Wrapf(err, "failed to unmarshal config for %q", inherits[i])
 		}
 	}
 
@@ -297,6 +192,6 @@ func (cfg *Config) HasECCapability(ecc ECCapability) bool {
 
 // toSeconds casts a float64 to a time.Duration, in seconds.
 func toSeconds(f float64) time.Duration {
-  	// The 1000* factor enables a non-integer f to be cast as a time.Duration, an integer field.
+	// The 1000* factor enables a non-integer f to be cast as a time.Duration, an integer field.
 	return time.Duration(1000*f) * time.Millisecond
 }
