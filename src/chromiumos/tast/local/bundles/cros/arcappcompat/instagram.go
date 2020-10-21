@@ -82,6 +82,7 @@ func Instagram(ctx context.Context, s *testing.State) {
 // verify Instagram reached main activity page of the app.
 func launchAppForInstagram(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
+		captchaID           = "recaptcha-anchor"
 		dismissButtonID     = "android:id/button2"
 		enterEmailAddressID = "com.instagram.android:id/login_username"
 		loginButtonID       = "com.instagram.android:id/log_in_button"
@@ -179,6 +180,15 @@ func launchAppForInstagram(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Log("dimissButton doesn't exists: ", err)
 	} else if err := dimissButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on dimissButton: ", err)
+	}
+
+	// Check for captcha.
+	checkForCaptcha := d.Object(ui.ID(captchaID))
+	if err := checkForCaptcha.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("CheckForCaptcha does not exist")
+	} else {
+		s.Log("CheckForCaptcha does exist")
+		return
 	}
 
 	// Check for profile icon.
