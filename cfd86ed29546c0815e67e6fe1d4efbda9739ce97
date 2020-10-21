@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91ab8fc_7cbed6d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-21T20:29:01Z",
+      "side": 1,
+      "message": "Can a tast-owner CR+2 this so that we can unblock the CQ?",
+      "revId": "cfd86ed29546c0815e67e6fe1d4efbda9739ce97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
