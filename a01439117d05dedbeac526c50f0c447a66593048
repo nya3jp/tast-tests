@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b62a48_72071957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanning/launch_scan_app_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-10-21T15:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "134a6b3d_a6704fcf",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "a01439117d05dedbeac526c50f0c447a66593048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574fce22_597e3bf7",
@@ -99,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d89cf13f_09e67290",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanning/launch_scan_app_from_launcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-10-21T15:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "574fce22_597e3bf7",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "a01439117d05dedbeac526c50f0c447a66593048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d117014b_47d8fcb5",
@@ -112,6 +160,30 @@
       "writtenOn": "2020-10-21T10:00:48Z",
       "side": 1,
       "message": "Defer a release for the node.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "a01439117d05dedbeac526c50f0c447a66593048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec17365_6c003955",
+        "filename": "src/chromiumos/tast/local/chrome/ui/scanapp/scanapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-10-21T15:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d117014b_47d8fcb5",
       "range": {
         "startLine": 35,
         "startChar": 1,
