@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4325f308_26ca6221",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T17:59:12Z",
+      "side": 1,
+      "message": "sure, thanks for the clarification.",
+      "parentUuid": "638920c9_71c9746e",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c31130e_d8ab2c1f",
@@ -246,6 +270,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3d4ff8f_a5f8bb72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T17:59:12Z",
+      "side": 1,
+      "message": "\u0027ptr\u0027 for pointer wouldn\u0027t be common in Golang, in my understanding. Typically recommended to be short and concise, unlike Google\u0027s C++ coding style :-)\n\nFor this context, since it is a process instance, I think just \u0027p\u0027 or \u0027proc\u0027 is fine.\nIf you want to emphasize it is a process of chrome, \u0027chromeProc\u0027 or \u0027chromeProcess\u0027 would look nicer to me (\u0027cros\u0027 would refer to chromeos, not chrome, I think...)",
+      "parentUuid": "219c6780_9188bd0e",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 9
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "672cbd47_80a5761e",
         "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
         "patchSetId": 3
@@ -337,6 +385,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e7a4582_af3b0266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T17:59:12Z",
+      "side": 1,
+      "message": "Indeed. Thanks for the clarifications.",
+      "parentUuid": "9e3b4b43_662941db",
+      "range": {
+        "startLine": 119,
+        "startChar": 16,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7378dc5d_cf8308e0",
@@ -397,6 +469,30 @@
       "side": 1,
       "message": "No, I want to fail the test if anyone fails. This is a hard failure and there\u0027s no point in continuing to test.",
       "parentUuid": "7378dc5d_cf8308e0",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86c4991_f8b42a10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T17:59:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d4df3f3_9b9a3f7c",
       "range": {
         "startLine": 123,
         "startChar": 3,
@@ -536,6 +632,30 @@
       "side": 1,
       "message": "I can work with a sample webppage. I really only want new renderers that I create. Web player should work for me, I will give it a try.",
       "parentUuid": "767ccf10_9fcff129",
+      "range": {
+        "startLine": 157,
+        "startChar": 17,
+        "endLine": 157,
+        "endChar": 61
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e537b7f2_90de8852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-21T17:59:12Z",
+      "side": 1,
+      "message": "If any rendering processes are fine, there would be a few choices, such as:\n- internal pages. chrome://version, chrome://settings, etc.\n- a sample webpage you create. You can use \u0027data\u0027 for the use. An example is https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go#51 -- use animation.html/js.  See https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#Data-files for this use\n- for web replayer: you can use wpr package.\n   - See https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go as an example of this.\n   - it needs a way to create the data source. Typically it\u0027s done with another test case which is not running by default (for memory_pressure, https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_recorder.go is the one).\n   - also, wpr does not work with ARC right now.\n\nMy recommendation is internal pages, if they\u0027re fine with this purpose.\nIf you want a complicated webpage like google news for this case, web replayer should be the one. Combination with ARC needs to be addressed but that is not infeasible.",
+      "parentUuid": "e8a0f38b_4bdbc65a",
       "range": {
         "startLine": 157,
         "startChar": 17,
