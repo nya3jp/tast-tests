@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daad4d3e_52dd8d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-21T21:56:54Z",
+      "side": 1,
+      "message": "The data format does not really matter. It supports different type of audio types.",
+      "parentUuid": "4b662279_bc3dd9a4",
+      "revId": "3f7c6050e491e15cf581d2aa6545f606024721e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeb15994_2e7d91e5",
