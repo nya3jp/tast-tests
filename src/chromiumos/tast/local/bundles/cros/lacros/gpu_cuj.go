@@ -370,6 +370,11 @@ var metricMap = map[string]struct {
 		direction: perf.SmallerIsBetter,
 		uma:       false,
 	},
+	"cpu_power": {
+		unit:      "joules",
+		direction: perf.SmallerIsBetter,
+		uma:       false,
+	},
 }
 
 type statType string
@@ -533,6 +538,9 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvoca
 		return err
 	}
 	if err := invoc.metrics.recordValue(ctx, invoc, "nongpu_power", nongpuPower); err != nil {
+		return err
+	}
+	if err := invoc.metrics.recordValue(ctx, invoc, "cpu_power", raplv.Core()); err != nil {
 		return err
 	}
 	if err := invoc.metrics.recordValue(ctx, invoc, "gpu_power", raplv.Uncore()); err != nil {

@@ -78,6 +78,11 @@ func (rapl *RAPLValues) Total() float64 {
 	return rapl.joules[package0] + rapl.joules[psys]
 }
 
+// Core returns the joules from the CPU.
+func (rapl *RAPLValues) Core() float64 {
+	return rapl.joules[core]
+}
+
 // Uncore returns the joules from the GPU.
 func (rapl *RAPLValues) Uncore() float64 {
 	return rapl.joules[uncore]
