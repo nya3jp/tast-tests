@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "932ee3eb_b302da8b",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-21T21:22:31Z",
+      "side": 1,
+      "message": "Done。 Removed this check.",
+      "parentUuid": "aeb15994_2e7d91e5",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 58
+      },
+      "revId": "3f7c6050e491e15cf581d2aa6545f606024721e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e09dc169_7af4bd04",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-21T11:55:37Z",
       "side": 1,
       "message": "nit: please stay consistent in the writing (Aloop vs aloop)",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "3f7c6050e491e15cf581d2aa6545f606024721e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36587f6_6a7b52c8",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-21T21:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e09dc169_7af4bd04",
       "range": {
         "startLine": 62,
         "startChar": 20,
