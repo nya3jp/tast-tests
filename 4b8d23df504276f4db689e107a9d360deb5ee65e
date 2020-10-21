@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d784d72b_de06beab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "The same as in RoamNatural case, I don\u0027t see any value now, it will only make things less clear. It can be easily changed if the test is expanded.",
+      "parentUuid": "f4da483f_be8bff4c",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a5311d6_4349f8f6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2020-10-20T10:39:19Z",
       "side": 1,
       "message": "Buckets could be configurable, too.",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d278962_04c4d1fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "As above.",
+      "parentUuid": "7a5311d6_4349f8f6",
       "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cebd4b17_92d375d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1d98bcd_b374241d",
+      "range": {
+        "startLine": 60,
+        "startChar": 33,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6e54e10_99090b13",
@@ -94,6 +160,30 @@
       "writtenOn": "2020-10-20T10:39:19Z",
       "side": 1,
       "message": "`RoamDiagnostics`?",
+      "range": {
+        "startLine": 62,
+        "startChar": 51,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39714f09_e7b77fcd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "No need to, there will be a random core anyway. The prefix is just to flag the SSID that it\u0027s from tests.",
+      "parentUuid": "d6e54e10_99090b13",
       "range": {
         "startLine": 62,
         "startChar": 51,
@@ -159,6 +249,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1159ec16_0603dc65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "Might be so, but on the other hand it does test a functional feature. I\u0027m not sure what the criteria are.",
+      "parentUuid": "f7a13809_66970165",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b42729f0_0c277213",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
@@ -176,6 +284,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2de50cfc_7df07668",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "No, WaitForEvent takes into account all events since last call (or a call to ClearEvents)",
+      "parentUuid": "b42729f0_0c277213",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dbc7162_924c54ca",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
@@ -187,6 +313,30 @@
       "writtenOn": "2020-10-20T10:39:19Z",
       "side": 1,
       "message": "Opportunity to reuse type.",
+      "range": {
+        "startLine": 172,
+        "startChar": 14,
+        "endLine": 172,
+        "endChar": 20
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b84d75_dfe0eebe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbc7162_924c54ca",
       "range": {
         "startLine": 172,
         "startChar": 14,
@@ -216,6 +366,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43f950f2_3e6df5eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "Not sure what we would gain.\nAnyway, at this point this is reconstruction of an existing test and this would break compatibility of results.",
+      "parentUuid": "30fde057_d3caa26e",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9dc2399_653b766f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
@@ -227,6 +395,24 @@
       "writtenOn": "2020-10-20T10:39:19Z",
       "side": 1,
       "message": "From my experience, it is well worth to reset attenuations to 0 prior to ConnectAP() call.\nYour test may time out/crash when AP0 is attenuated and subsequent tests will fail.",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d1cdf4_b1bc0333",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "Right, I had it in an earlier version and lost when migrating to the new TestFixture-based solution.",
+      "parentUuid": "b9dc2399_653b766f",
       "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -256,6 +442,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5fe88ab_886e041c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "No, in RoamNatural it\u0027s slightly different implementation. Would be hard to make a generic function for both cases, in the end readability might suffer.",
+      "parentUuid": "7001b48b_f4d58c0d",
+      "range": {
+        "startLine": 186,
+        "startChar": 25,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df3877cd_5013d1c2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
@@ -267,6 +477,30 @@
       "writtenOn": "2020-10-20T10:39:19Z",
       "side": 1,
       "message": "Like with RoamNatural, I\u0027d rather see this as two parameterised subtests.",
+      "range": {
+        "startLine": 306,
+        "startChar": 19,
+        "endLine": 307,
+        "endChar": 114
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb53ac35_1012c2de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-21T06:13:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df3877cd_5013d1c2",
       "range": {
         "startLine": 306,
         "startChar": 19,
