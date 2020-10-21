@@ -83,6 +83,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "212765cc_87c8a610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T15:24:05Z",
+      "side": 1,
+      "message": "nit: you can put the true here.",
+      "range": {
+        "startLine": 131,
+        "startChar": 66,
+        "endLine": 131,
+        "endChar": 68
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0990781_119738d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 7
@@ -231,6 +254,29 @@
         "startChar": 30,
         "endLine": 267,
         "endChar": 37
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982fd97a_39db473f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-21T15:24:05Z",
+      "side": 1,
+      "message": "It might be faster to check the name in bookmark bar. (You could skip the bookmark menu opening and closing.)",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 2
       },
       "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
