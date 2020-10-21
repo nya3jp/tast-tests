@@ -16,6 +16,23 @@
       "message": "Thanks Ilja. Addressed your comments.",
       "revId": "e509acf157c503a44a7b339886a62f8bea392e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a37015e9_d23d610d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-21T04:39:22Z",
+      "side": 1,
+      "message": "Thanks!\n",
+      "revId": "e509acf157c503a44a7b339886a62f8bea392e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
