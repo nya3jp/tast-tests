@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4113b44e_13cfd1f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T05:22:41Z",
+      "side": 1,
+      "message": "\u003e Does that mean: in addition to the unicast DHCP request sent by the DUT, pcap also captures a broadcast DHCP requests relayed by AP. If so, I\u0027m interested to know why AP would relay the DHCP request to wireless broadcast.\n\nYes. The packet is relayed because the destination is really broadcast MAC. A little detail here: https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol#Request.\n\n\u003e Doesn\u0027t the AP have the routing table to know where the DHCP server is?\n\nIIUC, DHCP is in L3 so possibly AP have little knowledge about it. Also, I think it is possible that DHCP server is run on a STA instead of AP. (although unlikely)",
+      "parentUuid": "0802cca7_ef7c5f7f",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a0f80b2_2945369f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-21T03:44:09Z",
       "side": 1,
       "message": "How about giving a matrix for ToDS and FromDS combinations for easier to read the code below:\n// ToDS\u003d0, FromDS\u003d0: management / control frame sent by AP.\n// ToDS\u003d1, FromDS\u003d0: sent by a wireless client. Sender MAC in Address2.\n// ToDS\u003d0, FromDS\u003d1: sent by a wired device. Sender MAC in Address3.\n// ToDS\u003d1, FromDS\u003d1: mesh environment. Sender MAC in Address4.",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b60316af_009dcd31",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T05:22:41Z",
+      "side": 1,
+      "message": "\u003e // ToDS\u003d0, FromDS\u003d0: management / control frame sent by AP.\n\nWe should only handle data frame case here, so this will be STA to another STA case.\n\nAlso add an explicit check for data frame (although the next DHCP filter already filter its subset).",
+      "parentUuid": "7a0f80b2_2945369f",
       "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +152,24 @@
       "writtenOn": "2020-10-21T03:44:09Z",
       "side": 1,
       "message": "I\u0027m thinking would it be easier to deal with four cases (FromDS x ToDS matrix) explicitly?\n\nif !FromDS {\n  if !ToDS {\n    return false\n  }\n  return Address2 \u003d\u003d mac\n} else {\n  if !ToDS {\n    return Address3 \u003d\u003d mac\n  }\n  return Address4 \u003d\u003d mac\n}",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b82f6f_61ff5a71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T05:22:41Z",
+      "side": 1,
+      "message": "In golang, we have switch case to make the format better, so I use switch instead. \n\nAlso a little more comments added and a reference to details. (I kind of want the inline function to be short). PTAL.",
+      "parentUuid": "6f0a9c65_7f7f180a",
       "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
