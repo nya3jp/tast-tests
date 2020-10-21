@@ -16,6 +16,46 @@
       "message": "Thanks a lot for the review, Greg! Please take another look!",
       "revId": "b7967e214da7443bdd2a8565a41cb44211f5f372",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20238081_8eaa3373",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T15:54:41Z",
+      "side": 1,
+      "message": "LGTM % one last fix",
+      "revId": "b7967e214da7443bdd2a8565a41cb44211f5f372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658d34f4_6980cf80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T15:54:41Z",
+      "side": 1,
+      "message": "Typo: configFile",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "b7967e214da7443bdd2a8565a41cb44211f5f372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
