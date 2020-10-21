@@ -33,6 +33,177 @@
       "message": "LGTM",
       "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f1d156_0094abe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T16:11:47Z",
+      "side": 1,
+      "message": "Per go/inclusive-language, please avoid using the word \"sanity\" in this way. Alternatives include \"Basic test\" and \"Smoke test\".",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1fad9ed_a608a828",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T16:11:47Z",
+      "side": 1,
+      "message": "nit: Remove newline",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82eff5f_05909ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T16:11:47Z",
+      "side": 1,
+      "message": "This error is the same as L55. I recommend clarifying that this is the curl without auth. This will make it easier for maintainers to understand the error at a glance, such as if viewing Tastboard results.\n\n    s.Error(\"Curl command without auth failed: \", err)\n\nDitto for the other 3 \"curl failed\" / \"curl returned unexpected result\" error messages.",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6db81e_6644e548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T16:11:47Z",
+      "side": 1,
+      "message": "You can make the test slightly simpler by operating on the output directly as []byte, rather than casting to a string. This would involve:\n\n1. Change the string constants in L25–28 to []byte vars:\n\n    var (\n\tauthRequiredHeader \u003d \"HTTP/1.0 407 Proxy Authentication Required\"\n\tpageMovedHeader    \u003d \"HTTP/1.0 301 Moved Permanently\"\n    )\n\n2. Use bytes.Contains rather than strings.Contains in L48:\n\n    if !bytes.Contains(out, authRequiredHeader) {",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6923cf3_5fb440d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T16:11:47Z",
+      "side": 1,
+      "message": "If the curl command returned an error, then this block will always be activated too. We can clean up some noise by making this block only activate when error is nil:\n\n    if err !\u003d nil {\n        s.Error(...)\n    } else if !strings/bytes.Contains(response, authRequiredHeader) {\n        s.Error(...)\n    }",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19506f8a_50fa2368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T16:11:47Z",
+      "side": 1,
+      "message": "It is helpful for debugging to include what the expected result was:\n\n    s.Errorf(\"Unexpected curl result without auth: got %s; want %s\", response, authRequiredHeader)",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b9073e1_5f253db9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T16:11:47Z",
+      "side": 1,
+      "message": "Same as above: you can slightly simplify the test by operating on out directly rather than creating a new string.",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7068378b_1e388ae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T16:11:47Z",
+      "side": 1,
+      "message": "It is helpful for debugging to include what the expected result was:\n\n    s.Errorf(\"Unexpected curl result with auth: got %s; want %s\", response, pageMovedHeader)",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a44969f_8330028f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-21T16:11:47Z",
+      "side": 1,
+      "message": "As above: If the curl command returned an error, then this block will always be activated too. We can clean up some noise by making this block only activate when error is nil:\n\n    if err !\u003d nil {\n        s.Error(...)\n    } else if !strings/bytes.Contains(response, pageMovedHeader) {\n        s.Error(...)\n    }",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
