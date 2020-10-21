@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5167acb_e1bf6c77",
+        "filename": "src/chromiumos/tast/remote/network/netperf/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "Ok, but still it makes sense to give some actual high-level documentation there - pointers to API.\nHow about name change suggested?",
+      "parentUuid": "9b3f38dd_2e5648fd",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d07cbc2c_23d993a8",
         "filename": "src/chromiumos/tast/remote/network/netperf/firewall.go",
         "patchSetId": 3
@@ -160,6 +184,30 @@
       "side": 1,
       "message": "I thought about it, too. Even though the original is also string-based.",
       "parentUuid": "32b5358a_9a80fb22",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 77
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08cbfbeb_1fd4870b",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "It could be a string-based \"enum\"",
+      "parentUuid": "7ab624d8_3a1f595d",
       "range": {
         "startLine": 24,
         "startChar": 4,
@@ -277,6 +325,30 @@
       "side": 1,
       "message": "These names match autotest\u0027s ones. I left them mostly intact if someone wanted to compare function with original.\n\nI can change them before merge.",
       "parentUuid": "9fbe4d24_b880652f",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac09c570_2d404dd9",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "Code is very different anyway, so I wouldn\u0027t bother keeping the two comparable. Execution/results compatibility is important.",
+      "parentUuid": "df478741_4b62d4f5",
       "range": {
         "startLine": 127,
         "startChar": 5,
@@ -435,6 +507,30 @@
       "side": 1,
       "message": "Why not 3s? ;)\nWait, go compiler can handle multiplication of consts?",
       "parentUuid": "b460f51c_dd6ff832",
+      "range": {
+        "startLine": 22,
+        "startChar": 31,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea25c2c7_2822a09f",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "You need to parse the string, so what\u0027s the point?",
+      "parentUuid": "4ebf48dc_43bcf97f",
       "range": {
         "startLine": 22,
         "startChar": 31,
@@ -609,6 +705,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f004b689_768119d1",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "Ok, fine.",
+      "parentUuid": "36aac9a7_fc81ff05",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 2
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e488abc0_373fd961",
@@ -646,6 +766,30 @@
       "side": 1,
       "message": "Firewall calls make a nice buffer. I doubt there will be any problems.\n```\n2020/10/19 11:54:33 [11:54:33.533] Stopping netserver...\n2020/10/19 11:54:36 [11:54:36.688] Starting netserver...\n```",
       "parentUuid": "e488abc0_373fd961",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 27
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e0780f_e407554d",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "765a6d45_4671e058",
       "range": {
         "startLine": 194,
         "startChar": 0,
@@ -839,6 +983,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7137ba76_f365b1bd",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "Seems strange. As said earlier, I wouldn\u0027t bother internal compatibility that much.",
+      "parentUuid": "0e9479cd_12a7b096",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64077d29_d9d7829d",
         "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
         "patchSetId": 3
@@ -950,6 +1118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2de5403_983b6803",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "But then, the typical pattern is to first do the defer and then shorten the context. So you still can use the simple \"defer runner.Close(ctx)\"",
+      "parentUuid": "a5a570d8_9af06b2d",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5e77adc_f581a9dc",
         "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
         "patchSetId": 3
@@ -985,6 +1177,30 @@
       "side": 1,
       "message": "Dunno. Original Attenuated Perf tests had UDP_MAERTS directly in the test list, not reversed UDP_STREAM.",
       "parentUuid": "f5e77adc_f581a9dc",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 55
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62bf7368_0a3f1068",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "My point is that the code should handle both cases. Now it won\u0027t handle the reverse TestTypeUDPStream case.",
+      "parentUuid": "2aab65e2_dc2780e3",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -1067,6 +1283,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9ee341d_dcb76b0f",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "Ok, maybe, though still don\u0027t see that case.",
+      "parentUuid": "978e2fda_9b43148f",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b402500_9c007e8d",
         "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
         "patchSetId": 3
@@ -1102,6 +1342,30 @@
       "side": 1,
       "message": "It was not returned in autotest as well. I see no reason for it now.",
       "parentUuid": "4b402500_9c007e8d",
+      "range": {
+        "startLine": 116,
+        "startChar": 58,
+        "endLine": 116,
+        "endChar": 69
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55a47185_60d9142d",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "Ok. Can be changed in future if needed.",
+      "parentUuid": "c516d813_3652a974",
       "range": {
         "startLine": 116,
         "startChar": 58,
@@ -1196,6 +1460,30 @@
       "side": 1,
       "message": "Wait, GC won\u0027t notice reference count for parent dropped to 0 and clean it?",
       "parentUuid": "9e567464_92fcd4d4",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 46
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c60e02ca_babbb629",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1448787
+      },
+      "writtenOn": "2020-10-21T06:46:51Z",
+      "side": 1,
+      "message": "I guess it will, but the parent may be alive a little longer (e.g. the caller may keep it for reuse), so it\u0027s more efficient to clean here, since you have the Close function.",
+      "parentUuid": "f56e40f7_6f30107d",
       "range": {
         "startLine": 186,
         "startChar": 0,
