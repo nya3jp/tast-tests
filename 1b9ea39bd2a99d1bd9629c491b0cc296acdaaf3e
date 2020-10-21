@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8114e985_17766c1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T08:22:53Z",
+      "side": 1,
+      "message": "First round of review. Some shared comments in the parent commit are skipped in order not to duplicate the discussion.",
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a9648c_af95c935",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T08:22:53Z",
+      "side": 1,
+      "message": "nit: DUT\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 114,
+        "startChar": 13,
+        "endLine": 114,
+        "endChar": 16
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86317926_d83ab10b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T08:22:53Z",
+      "side": 1,
+      "message": "please add comments for the functions.",
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76da8875_9fc37ba4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T08:22:53Z",
+      "side": 1,
+      "message": "nit: one space after \"//\"?",
+      "range": {
+        "startLine": 194,
+        "startChar": 20,
+        "endLine": 194,
+        "endChar": 21
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed872685_33dd5738",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T08:22:53Z",
+      "side": 1,
+      "message": "don\u0027t we want to update deconfig0 here? I\u0027m not sure if it is good to assume the deconfig function works for all.\n\nsimilar below.",
+      "range": {
+        "startLine": 332,
+        "startChar": 17,
+        "endLine": 332,
+        "endChar": 18
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811779a0_f9644036",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-21T08:22:53Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the time be collected in Wait?",
+      "range": {
+        "startLine": 137,
+        "startChar": 32,
+        "endLine": 137,
+        "endChar": 61
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
