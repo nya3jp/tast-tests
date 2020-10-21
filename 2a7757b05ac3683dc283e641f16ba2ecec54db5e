@@ -33,6 +33,23 @@
       "message": "I\u0027ll need to look at this in the morning...",
       "revId": "2a7757b05ac3683dc283e641f16ba2ecec54db5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5cce2ee_93d0374c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-21T18:19:50Z",
+      "side": 1,
+      "message": "Looks good from a Tast standpoint. Please wait on the other review and some math double checking before submitting. ",
+      "revId": "2a7757b05ac3683dc283e641f16ba2ecec54db5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
