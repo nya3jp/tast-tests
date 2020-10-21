@@ -16,6 +16,24 @@
       "message": "I was just about to do this :) ",
       "revId": "94e52f0ef1679c7358700ed625bc521bb197e655",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "591c5abe_85267390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-21T07:08:11Z",
+      "side": 1,
+      "message": "hehe glad you noticed before putting in too much work\n\nbtw I am also adding some documentation about how to do the uprev if you ever have to do it in future, not sure if you would need it though",
+      "parentUuid": "3e409569_d5f9273f",
+      "revId": "94e52f0ef1679c7358700ed625bc521bb197e655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
