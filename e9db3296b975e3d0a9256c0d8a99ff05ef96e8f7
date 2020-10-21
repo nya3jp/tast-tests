@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ad52b8_3b844f46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/max98390.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T09:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abda33bd_ca55fc79",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 29
+      },
+      "revId": "e9db3296b975e3d0a9256c0d8a99ff05ef96e8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82fb8671_dba9ddc8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "496edd14_90128e72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/max98390.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T09:57:42Z",
+      "side": 1,
+      "message": "Add comment that to sleep and verify calib files still not exist after sound_card_init completion.",
+      "parentUuid": "82fb8671_dba9ddc8",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "e9db3296b975e3d0a9256c0d8a99ff05ef96e8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "def183d5_5dad1779",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-21T08:50:57Z",
       "side": 1,
       "message": "Could have a const template\n\ntimestampYamlFile \u003d `\n---\nsecs: %d\nnanos: 0\n`\n\nand use it in CreateStopTimeFile as well.",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 46
+      },
+      "revId": "e9db3296b975e3d0a9256c0d8a99ff05ef96e8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a7938e_13b3432c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2020-10-21T09:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "def183d5_5dad1779",
       "range": {
         "startLine": 51,
         "startChar": 19,
