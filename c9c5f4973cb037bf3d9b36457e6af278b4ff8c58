@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9476483_f76fc6da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2020-10-21T21:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c97d6e05_a47dcb9a",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "c9c5f4973cb037bf3d9b36457e6af278b4ff8c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e968459_52394a97",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71fb6a28_f98f608c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printmanagement/launch_printmanagement_from_launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2020-10-21T21:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e968459_52394a97",
+      "range": {
+        "startLine": 55,
+        "startChar": 45,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "c9c5f4973cb037bf3d9b36457e6af278b4ff8c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28c27b2f_1eb036d8",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-21T20:25:48Z",
       "side": 1,
       "message": "Fix",
+      "range": {
+        "startLine": 41,
+        "startChar": 13,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "c9c5f4973cb037bf3d9b36457e6af278b4ff8c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e87c6335_e8021ef2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2020-10-21T21:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28c27b2f_1eb036d8",
       "range": {
         "startLine": 41,
         "startChar": 13,
