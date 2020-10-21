@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8822409_a65ca761",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-21T22:00:11Z",
+      "side": 1,
+      "message": "optional: a multi line string might be more readable",
+      "range": {
+        "startLine": 356,
+        "startChar": 18,
+        "endLine": 356,
+        "endChar": 21
+      },
+      "revId": "3a4afdcd384a26f3855fa015f7ae8fa971453ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46567d6_c7d9a970",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-21T22:00:11Z",
+      "side": 1,
+      "message": "clean up the local file after write?  is there any possibility of file collisions?  maybe comment on why not.",
+      "revId": "3a4afdcd384a26f3855fa015f7ae8fa971453ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
