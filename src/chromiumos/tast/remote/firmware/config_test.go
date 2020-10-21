@@ -5,7 +5,7 @@
 package firmware
 
 import (
-	"bytes"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -44,8 +44,8 @@ const (
 	myModelDuration       = 5500 * time.Millisecond
 )
 
-var mockData = map[string][]byte{
-	defaultName: []byte(fmt.Sprintf(`{
+var mockData = map[string]json.RawMessage{
+	defaultName: json.RawMessage(fmt.Sprintf(`{
 		"platform": null,
 		"parent": null,
 		"firmware_screen": %d,
@@ -53,7 +53,7 @@ var mockData = map[string][]byte{
 		"confirm_screen": %d,
 		"usb_plug": %d
 	}`, defaultValue, defaultValue, defaultValue, defaultValue)),
-	myBoardName: []byte(fmt.Sprintf(`{
+	myBoardName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
 		"parent": %q,
 		"firmware_screen": %f,
@@ -63,18 +63,18 @@ var mockData = map[string][]byte{
 			}
 		}
 	}`, myBoardName, myParentName, myBoardValue, myModelName, myModelValue)),
-	myParentName: []byte(fmt.Sprintf(`{
+	myParentName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
 		"parent": %q,
 		"confirm_screen": %f,
 		"firmware_screen": %f
 	}`, myParentName, myGrandparentName, myParentValue, myParentValue)),
-	myGrandparentName: []byte(fmt.Sprintf(`{
+	myGrandparentName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
 		"usb_plug": %f,
 		"confirm_screen": %f
 	}`, myGrandparentName, myGrandparentValue, myGrandparentValue)),
-	withECBatteryName: []byte(fmt.Sprintf(`{
+	withECBatteryName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
 		"ec_capability": [
 			%q
@@ -82,41 +82,39 @@ var mockData = map[string][]byte{
 	}`, withECBatteryName, ECBattery)),
 }
 
-// setupMockData creates a temporary directory containing .json files for each platform in mockData.
-func setupMockData(t *testing.T) (string, error) {
-	mockConfigDir := testutil.TempDir(t)
-	for platform, b := range mockData {
-		err := ioutil.WriteFile(filepath.Join(mockConfigDir, fmt.Sprintf("%s.json", platform)), b, 0644)
-		if err != nil {
-			return mockConfigDir, errors.Wrapf(err, "writing mock data for platform %s to tempdir %s", platform, mockConfigDir)
-		}
+// setupMockData creates a temporary directory with a consolidated JSON file containing all the data from mockData.
+func setupMockData(t *testing.T) (cfgDir, cfgFilepath string, retErr error) {
+	// Create JSON bytes out of mock data
+	mockJSON, err := json.Marshal(mockData)
+	if err != nil {
+		return "", "", errors.Wrap(err, "marshaling mock data into JSON")
 	}
-	return mockConfigDir, nil
-}
 
-func TestLoadBytes(t *testing.T) {
-	mockConfigDir, err := setupMockData(t)
-	defer os.RemoveAll(mockConfigDir)
-	if err != nil {
-		t.Fatal(err)
+	// Create temp dir to contain mock consolidated JSON file
+	cfgDir = testutil.TempDir(t)
+	defer func() {
+		if retErr != nil {
+			os.RemoveAll(cfgDir)
+		}
+	}()
+
+	// Create mock consolidated JSON file
+	cfgFilepath = filepath.Join(cfgDir, consolidatedBasename)
+	if err = ioutil.WriteFile(cfgFilepath, mockJSON, 0644); err != nil {
+		return "", "", errors.Wrapf(err, "writing mock json to file %s", cfgFilepath)
 	}
-	b, err := loadBytes(mockConfigDir, myBoardName)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if !bytes.Equal(b, mockData[myBoardName]) {
-		t.Errorf("unexpected response from loadBytes for platform %s; got %s, want %s", myBoardName, b, mockData[myBoardName])
-	}
+
+	return cfgDir, cfgFilepath, nil
 }
 
 // TestNewConfig verifies that we can create a new Config object with proper inheritance.
 func TestNewConfig(t *testing.T) {
-	mockConfigDir, err := setupMockData(t)
-	defer os.RemoveAll(mockConfigDir)
+	cfgDir, cfgFilepath, err := setupMockData(t)
+	defer os.RemoveAll(cfgDir)
 	if err != nil {
 		t.Fatal(err)
 	}
-	cfg, err := NewConfig(mockConfigDir, myBoardName, "")
+	cfg, err := NewConfig(cfgFilepath, myBoardName, "")
 	if err != nil {
 		t.Fatalf("creating config for %s: %+v", myBoardName, err)
 	}
@@ -143,12 +141,12 @@ func TestNewConfig(t *testing.T) {
 
 // TestNewConfigNoParent verifies that a new config with no parent value has proper inheritance.
 func TestNewConfigNoParent(t *testing.T) {
-	mockConfigDir, err := setupMockData(t)
-	defer os.RemoveAll(mockConfigDir)
+	cfgDir, cfgFilepath, err := setupMockData(t)
+	defer os.RemoveAll(cfgDir)
 	if err != nil {
 		t.Fatal(err)
 	}
-	cfg, err := NewConfig(mockConfigDir, myGrandparentName, "")
+	cfg, err := NewConfig(cfgFilepath, myGrandparentName, "")
 	if err != nil {
 		t.Fatalf("creating config for %s: %+v", myGrandparentName, err)
 	}
@@ -167,18 +165,18 @@ func TestNewConfigNoParent(t *testing.T) {
 
 // TestNewConfigNoParent verifies that a model-specific config overrides the platform config.
 func TestNewConfigModelOverride(t *testing.T) {
-	mockConfigDir, err := setupMockData(t)
-	defer os.RemoveAll(mockConfigDir)
+	cfgDir, cfgFilepath, err := setupMockData(t)
+	defer os.RemoveAll(cfgDir)
 	if err != nil {
 		t.Fatal(err)
 	}
 	// Test with model-specific override
-	cfg, err := NewConfig(mockConfigDir, myBoardName, myModelName)
+	cfg, err := NewConfig(cfgFilepath, myBoardName, myModelName)
 	if cfg.FirmwareScreen != myModelDuration {
 		t.Errorf("unexpected FirmwareScreen value; got %s, want %s // %+v", cfg.FirmwareScreen, myModelDuration, cfg)
 	}
 	// Test with no model-specific override
-	cfg, err = NewConfig(mockConfigDir, myBoardName, myOtherModelName)
+	cfg, err = NewConfig(cfgFilepath, myBoardName, myOtherModelName)
 	if cfg.FirmwareScreen != myBoardDuration {
 		t.Errorf("unexpected FirmwareScreen value; got %s, want %s", cfg.FirmwareScreen, myModelDuration)
 	}
@@ -186,13 +184,13 @@ func TestNewConfigModelOverride(t *testing.T) {
 
 // TestHasECCapability exercises HasECCapability to verify that we can check whether a Config contains a certain EC capability.
 func TestHasECCapability(t *testing.T) {
-	mockConfigDir, err := setupMockData(t)
-	defer os.RemoveAll(mockConfigDir)
+	cfgDir, cfgFilepath, err := setupMockData(t)
+	defer os.RemoveAll(cfgDir)
 	if err != nil {
 		t.Fatal(err)
 	}
 	// Test a platform that does not define any ec_capability
-	cfg, err := NewConfig(mockConfigDir, myBoardName, "")
+	cfg, err := NewConfig(cfgFilepath, myBoardName, "")
 	if err != nil {
 		t.Fatalf("Creating config for platform %s: %+v", myBoardName, err)
 	}
@@ -200,7 +198,7 @@ func TestHasECCapability(t *testing.T) {
 		t.Fatalf("Platform %q: HasECCapability(ECBattery) returned True; want False", myBoardName)
 	}
 	// Test a platform that defines some ec_capabilities
-	cfg, err = NewConfig(mockConfigDir, withECBatteryName, "")
+	cfg, err = NewConfig(cfgFilepath, withECBatteryName, "")
 	if err != nil {
 		t.Fatalf("Creating config for platform %s: %+v", withECBatteryName, err)
 	}

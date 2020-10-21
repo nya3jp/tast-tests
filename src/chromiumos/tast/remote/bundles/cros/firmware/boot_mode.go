@@ -27,7 +27,7 @@ func init() {
 		Func:         BootMode,
 		Desc:         "Verifies that remote tests can boot the DUT into, and confirm that the DUT is in, the different firmware modes (normal, dev, and recovery)",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
-		Data:         firmware.ConfigDatafiles(),
+		Data:         []string{firmware.CfgFilename},
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		SoftwareDeps: []string{"crossystem"},
 		// TODO(b/155425293): return group:mainline and informational attributes
@@ -97,7 +97,7 @@ func init() {
 
 func BootMode(ctx context.Context, s *testing.State) {
 	tc := s.Param().(bootModeTestParams)
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigDir), s.RequiredVar("servo"))
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.CfgFilename), s.RequiredVar("servo"))
 	defer h.Close(ctx)
 	ms, err := firmware.NewModeSwitcher(ctx, h)
 	if err != nil {
