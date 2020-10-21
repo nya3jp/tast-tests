@@ -253,6 +253,21 @@ func SetFloatingMode(ctx context.Context, cr *chrome.Chrome, enable bool) error 
 	return nil
 }
 
+// SwitchToVoiceInput changes virtual keyboard to voice input layout.
+func SwitchToVoiceInput(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := TapKey(ctx, tconn, "Voice"); err != nil {
+		return errors.Wrap(err, "failed to tap voice input button")
+	}
+
+	params := ui.FindParams{
+		Role:      ui.RoleTypeButton,
+		Name:      "Got it",
+		ClassName: "voice-got-it",
+	}
+	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
+	return ui.StableFindAndClick(ctx, tconn, params, &opts)
+}
+
 // TapKeys simulates tap events on the middle of the specified sequence of keys via touch event.
 // Each keys can be any letter of the alphabet, "space" or "backspace".
 func TapKeys(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
