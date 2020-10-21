@@ -11,9 +11,11 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -26,6 +28,7 @@ const (
 	// See go/cros-fingerprint-firmware-branching-and-signing.
 	fingerprintBoardNameSuffix  = "_fp"
 	fingerprintFirmwarePathBase = "/opt/google/biod/fw/"
+	waitForBiodToStartTimeout   = 30 * time.Second
 )
 
 func init() {
@@ -140,6 +143,29 @@ func FpSensor(ctx context.Context, s *testing.State) {
 		if err := flashFpFirmware(ctx, d); err != nil {
 			s.Error("Failed to flash FP firmware: ", err)
 		}
+	}
+
+	// The seed is only set after bio_crypto_init runs. biod will only start after
+	// bio_crypto_init runs, so waiting for biod to be running is sufficient.
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		out, err = d.Conn().Command("status", "biod").Output(ctx)
+		if err != nil {
+			return errors.Wrap(err, "unable to get biod status")
+		}
+		goal, state, _, err := upstart.ParseStatus("biod", string(out))
+		if err != nil {
+			return errors.Wrap(err, "failed to parse biod status")
+		}
+
+		if goal == upstart.StartGoal && state == upstart.RunningState {
+			return nil
+		}
+
+		return errors.Errorf("biod upstart job not running, state: %v, goal %v", state, goal)
+	}, &testing.PollOptions{Timeout: waitForBiodToStartTimeout})
+
+	if err != nil {
+		s.Fatal("Timed out waiting for biod to start: ", err)
 	}
 
 	fpencstatusCmd := []string{"ectool", "--name=cros_fp", "fpencstatus"}
