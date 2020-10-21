@@ -5,10 +5,14 @@
 package perfutil
 
 import (
+	"compress/gzip"
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
@@ -156,11 +160,16 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		return true
 	}
 
-	defer r.cr.StopTracing(ctx)
 	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
 		sctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
 		defer cancel()
 		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}); err != nil {
+			// Sometimes, start tracing request is reached to the browser process but
+			// waiting for the reply gets timeout. To ensure the tracing status
+			// stopped, StopTracing should be called here.
+			if _, stopErr := r.cr.StopTracing(ctx); stopErr != nil {
+				testing.ContextLog(ctx, "Failed to stop tracing: ", stopErr)
+			}
 			s.Log("Failed to start tracing: ", err)
 			return
 		}
@@ -176,13 +185,36 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 			s.Log("No trace data is collected")
 			return
 		}
+		data, err := proto.Marshal(tr)
+		if err != nil {
+			s.Log("Failed to marshal the tracing data: ", err)
+			return
+		}
 		filename := "trace.data.gz"
 		if name != "" {
 			filename = name + "-" + filename
 		}
-		if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(s.OutDir(), filename)); err != nil {
-			s.Log("Failed to save trace to file: ", err)
+		file, err := os.OpenFile(filepath.Join(s.OutDir(), filename), os.O_CREATE|os.O_RDWR, 0644)
+		if err != nil {
+			s.Log("Failed to open the trace file: ", err)
 			return
+		}
+		defer func() {
+			if err := file.Close(); err != nil {
+				s.Log("Failed to close the trace file: ", err)
+			}
+		}()
+		writer := gzip.NewWriter(file)
+		defer func() {
+			if err := writer.Close(); err != nil {
+				s.Log("Failed to close the gzip writer for the trace file: ", err)
+			}
+		}()
+		if _, err := writer.Write(data); err != nil {
+			s.Log("Failed to write the data: ", err)
+		}
+		if err := writer.Flush(); err != nil {
+			s.Log("Failed to flush the gzip writer: ", err)
 		}
 	})
 }
