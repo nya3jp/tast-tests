@@ -86,13 +86,13 @@ func JobStatus(ctx context.Context, job string) (goal Goal, state State, pid int
 		c.DumpLog(ctx)
 		return goal, state, pid, err
 	}
-	return parseStatus(job, string(b))
+	return ParseStatus(job, string(b))
 }
 
-// parseStatus parses the output from "initctl status <job>", e.g. "ui start/running, process 28515".
+// ParseStatus parses the output from "initctl status <job>", e.g. "ui start/running, process 28515".
 // The output may be multiple lines; see the example in Section 10.1.6.19.3,
 // "Single Job Instance Running with Multiple PIDs", in the Upstart Cookbook.
-func parseStatus(job, out string) (goal Goal, state State, pid int, err error) {
+func ParseStatus(job, out string) (goal Goal, state State, pid int, err error) {
 	if !strings.HasPrefix(out, job+" ") {
 		return goal, state, pid, errors.Errorf("missing job prefix %q in %q", job, out)
 	}

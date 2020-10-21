@@ -20,8 +20,8 @@ func TestParseStatus(t *testing.T) {
 		{"boot-splash", "boot-splash stop/waiting\n", StopGoal, WaitingState, 0},
 		{"ureadahead", "ureadahead stop/pre-stop, process 227\npre-stop process 5579\n", StopGoal, PreStopState, 227},
 	} {
-		goal, state, pid, err := parseStatus(tc.job, tc.line)
-		sig := fmt.Sprintf("parseStatus(%q, %q)", tc.job, tc.line)
+		goal, state, pid, err := ParseStatus(tc.job, tc.line)
+		sig := fmt.Sprintf("ParseStatus(%q, %q)", tc.job, tc.line)
 		if err != nil {
 			t.Errorf("%s returned error: %v", sig, err)
 			continue
