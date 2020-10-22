@@ -103,6 +103,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8ecdb55a_20762e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-22T01:35:57Z",
+      "side": 1,
+      "message": "Done. Somehow I overlooked this possibility of the passing the state everywhere. That looks alright now, thanks!",
+      "parentUuid": "d7c05fdc_0a19dd4c",
+      "revId": "605a5e0112a36e67fde9c3b37318d8503a9dc2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "04811202_3d98d3e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 14
