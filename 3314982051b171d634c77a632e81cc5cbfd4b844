@@ -175,6 +175,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69e7bb7e_88cfd695",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T19:38:42Z",
+      "side": 1,
+      "message": "Do you mean {2,2}:{} instead?",
+      "parentUuid": "8a5f799c_36109d4f",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 12
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2318e03_18721494",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
         "patchSetId": 4

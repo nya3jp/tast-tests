@@ -267,6 +267,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d976a71_23d37e58",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T19:38:42Z",
+      "side": 1,
+      "message": "If pass criteria cannot be defined, then it cannot run in any automated suite IMO.",
+      "parentUuid": "1159ec16_0603dc65",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b42729f0_0c277213",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
@@ -296,6 +314,24 @@
       "side": 1,
       "message": "No, WaitForEvent takes into account all events since last call (or a call to ClearEvents)",
       "parentUuid": "b42729f0_0c277213",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fce0d3d_7503465f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T19:38:42Z",
+      "side": 1,
+      "message": "Then the name is somewhat misleading, but OK. Some comment could be handy.",
+      "parentUuid": "2de50cfc_7df07668",
       "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -384,6 +420,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "180697b1_9caf3de8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T19:38:42Z",
+      "side": 1,
+      "message": "I think we already established, that the results are similar enough. I don\u0027t see reason why we couldn\u0027t improve upon the old test.\nNegative delta should not rather happen in a typical case and any such result would be yellow flag.\n/2 causes risk of registering proportionally too many events in the last bucket, especially, that you don\u0027t want to have the number of buckets parameterised.",
+      "parentUuid": "43f950f2_3e6df5eb",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9dc2399_653b766f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
@@ -454,6 +508,30 @@
       "side": 1,
       "message": "No, in RoamNatural it\u0027s slightly different implementation. Would be hard to make a generic function for both cases, in the end readability might suffer.",
       "parentUuid": "7001b48b_f4d58c0d",
+      "range": {
+        "startLine": 186,
+        "startChar": 25,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad6dcd05_a206d676",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T19:38:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5fe88ab_886e041c",
       "range": {
         "startLine": 186,
         "startChar": 25,
