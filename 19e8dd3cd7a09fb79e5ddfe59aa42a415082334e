@@ -33,6 +33,42 @@
       "message": "Maybe add a brief comment explaining it.",
       "revId": "19e8dd3cd7a09fb79e5ddfe59aa42a415082334e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62e88d8_45cd5af1",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-10-22T21:54:28Z",
+      "side": 1,
+      "message": "done via crbug link",
+      "parentUuid": "043dd067_f59d4862",
+      "revId": "19e8dd3cd7a09fb79e5ddfe59aa42a415082334e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d12ec30a_3af546c6",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-10-22T21:54:28Z",
+      "side": 1,
+      "message": "i\u0027m not sure, i cant find much documentation on kevin1 but this person ran into a similar problem and is talking about kevin64 https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go;rcl\u003db2e6f5ed5a40d691ef01979556518fd270ed4061;l\u003d40",
+      "parentUuid": "d5d43538_d75a14c9",
+      "revId": "19e8dd3cd7a09fb79e5ddfe59aa42a415082334e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
