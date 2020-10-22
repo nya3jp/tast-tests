@@ -56,6 +56,30 @@
       },
       "revId": "9d0791cf166b0e8ac5710c913f60c51a123e4ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4573e0b_d9627a84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/built_in_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1125664
+      },
+      "writtenOn": "2020-10-22T16:29:54Z",
+      "side": 1,
+      "message": "Native bridge is android\u0027s component:\nhttps://cs.android.com/android/platform/superproject/+/master:art/libnativebridge/\n\nIt takes its name from Java Native Interface.\n\nNot sure if it\u0027s worth it to rename it here without renaming those two first. But if we must, \"build-in\" would not be a good choice. From the alternatives \"machine code\" or \"platform specific\" would fit much better. If we have more freedom in picking alternatives, I\u0027d suggest to replace \"native bridge\" with \"binary translation\".",
+      "parentUuid": "a256347a_8e512446",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "9d0791cf166b0e8ac5710c913f60c51a123e4ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
