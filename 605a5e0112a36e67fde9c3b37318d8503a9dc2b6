@@ -85,6 +85,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d7c05fdc_0a19dd4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-22T01:05:49Z",
+      "side": 1,
+      "message": "I\u0027m ok with the current code to move forward.\n(optional): To be clearer and to mitigate your concern (I agreed with you at the point), I would write like follows as very briefly mentioned in the VC:\n\ntype slcQualConfig struct {\n  enabled bool\n  device string\n}\n\nfunc FullQualificationStress(ctx, s) {\n  var slcConfig slcQualConfig\n  if val, ok :\u003d s.Var(\"storage.slcQual\"); ok {\n    parsed, err :\u003d strconv.ParseBool(val)\n    if err !\u003d nil {\n      s.Fatal(...)\n    }\n    slcConfig.enabled \u003d parsed\n    if slcConfig.enabled {\n      device, err :\u003d slcDevice(ctx)\n      if err !\u003d nil {\n        s.Fatal(...)\n      }\n      slcConfig.device \u003d device\n  }\n\n  ... // the current content of FullQualificationStress()\n  ...\n    setupChecks(..., slcConfig)\n  ...\n    subtest(..., slcConfig)\n}\n\nand let each subblock take a look the config.\n\nfunc soakTestBlock(..., slcConfig slcQualConfig) {\n  ...\n  if slcConfig.enabled {\n    stressTasks \u003d append(stressTasks, func(ctx context.Context) {\n\trunFioStress(ctx, s, testConfigNoVerify.WithPath(slcConfig.device).WithJob(\"4k_write\"))\n\t...\n    })\n  }\n}\n\nditto for retention and suspend test blocks.\nNote:\n- Parse the content of Var and translate it to an appropriate structure at the beginning. That makes it possible to split the dependency to testing.State as well as to avoid calling parser functions etc. inside each method.\n- (optional) I\u0027d pass the config by value, since it is small enough so to prioritize ensuring it wouldn\u0027t be nil clearly.\n- we should have enabled and device seperately. Specifically, these are different concept (in go), and there\u0027s similar recommendation:\nhttps://github.com/golang/go/wiki/CodeReviewComments#in-band-errors\n\nGo sometimes requires us to solve a puzzle of dependencies and layering problems to mitigate the duplication, and (best) practices in other languages may not work...\nGo + style does not have enough power to extract needed information within the small # of lines in this case unlike other languages, so it needs to introduce another data structure instead and to find a better layer to minimize the boilerplates.",
+      "parentUuid": "2c8e9931_14d13ec0",
+      "revId": "605a5e0112a36e67fde9c3b37318d8503a9dc2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "04811202_3d98d3e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 14
