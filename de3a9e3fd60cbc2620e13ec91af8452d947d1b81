@@ -16,6 +16,23 @@
       "message": "I see one chell failure https://tastboard.corp.google.com/test/cryptohome.FscryptEncryptionPolicy\n\nCan you check if that\u0027s correlated to the test or not? So far it looks good.",
       "revId": "de3a9e3fd60cbc2620e13ec91af8452d947d1b81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb79caf_18106f8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-10-22T19:39:13Z",
+      "side": 1,
+      "message": "Sorry forgot to reply, the test failure looks like an unrelated flake.",
+      "revId": "de3a9e3fd60cbc2620e13ec91af8452d947d1b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
