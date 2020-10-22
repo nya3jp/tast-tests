@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29229070_85fcb1b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/max98390.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-10-22T11:33:50Z",
+      "side": 1,
+      "message": "Can this be the common HardwareDeps because this is same among the two tests?",
+      "revId": "5db552541b693e032c922f2214fd2bf214d57a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94ce3557_0cc4e7df",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/max98390.go",
         "patchSetId": 6
@@ -72,6 +89,30 @@
       "side": 1,
       "message": "We can not use poll here as:\n1. We delete the Calib files before running the test case.\n2. We test the Calib files still not exist after sound_card_init completion (sound_card_init skips the calibration).\n\nWe can poll in firstBoot as we are polling the Calib files being created by sound_card_init.",
       "parentUuid": "94ce3557_0cc4e7df",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "5db552541b693e032c922f2214fd2bf214d57a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b93fd440_f6a26801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/max98390.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-10-22T11:33:50Z",
+      "side": 1,
+      "message": "I am thinking it is best to avoid use of Sleep by checking a more direct condition if possible.\nIs it possible to examine if the initialization procedure by sound_card_init (and presumably some services triggered by it) is finished, like by exmining system log or process list, or by querying something to a service?",
+      "parentUuid": "01e486d0_b715561f",
       "range": {
         "startLine": 118,
         "startChar": 0,
