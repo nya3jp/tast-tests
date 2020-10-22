@@ -22,6 +22,30 @@
       },
       "revId": "07a7349e2ad153502104a50603f4d874bc26c7ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58303100_24cd1e0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-22T06:05:39Z",
+      "side": 1,
+      "message": "ah, now I see where the Hidehiko comment of the change of failing came from! I forgot I changed this function. Done",
+      "parentUuid": "5d0e6e0a_1301546d",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 103
+      },
+      "revId": "07a7349e2ad153502104a50603f4d874bc26c7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
