@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/camera/ArcCameraOrientationTest_20191119.apk",
-  "size": 16128,
-  "sha256sum": "3de29e8fe22e3a1c964d8285f22680b5c25256ff1f25c450e16fd13d7704f0a4"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/camera/ArcCameraOrientationTest_20201026.apk",
+  "size": 12769,
+  "sha256sum": "34d54f40de79a69ad76f109d2e10ae58b687c831deafeb0a06720635b480dde6"
 }
