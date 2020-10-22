@@ -61,7 +61,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	}()
 
 	// Add the default power test configuration.
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{Battery: setup.ForceBatteryDischarge}))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}

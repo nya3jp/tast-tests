@@ -18,7 +18,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -33,6 +32,7 @@ import (
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -814,10 +814,19 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	if err := crastestclient.Mute(ctx); err != nil {
-		s.Fatal("Failed to mute audio: ", err)
+	// Set-up environment to be more consistent:
+	sup, supCleanup := setup.New("lacros.GpuCUJ")
+	defer func() {
+		if err := supCleanup(ctx); err != nil {
+			s.Fatal("Failed to cleanup after creating test: ", err)
+		}
+	}()
+
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{Wifi: setup.DoNotDisableWifiInterfaces}))
+
+	if err := sup.Check(ctx); err != nil {
+		s.Fatal("Failed to setup GpuCUJ power test environment: ", err)
 	}
-	defer crastestclient.Unmute(ctx)
 
 	if err := quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, true); err != nil {
 		s.Fatal("Failed to disable notifications: ", err)

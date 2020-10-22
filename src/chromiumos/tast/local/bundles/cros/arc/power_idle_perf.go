@@ -113,7 +113,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn, args.setupOption))
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{Battery: args.setupOption}))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
