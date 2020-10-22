@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a407f4e_a429b898",
+        "filename": "src/chromiumos/tast/remote/network/netperf/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Doc extended\nAs to the filename, I\u0027d rather name files after main struct.",
+      "parentUuid": "b5167acb_e1bf6c77",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d07cbc2c_23d993a8",
@@ -102,6 +126,30 @@
       "writtenOn": "2020-10-20T10:07:21Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 23,
+        "startChar": 40,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a83a378b_72b1e192",
+        "filename": "src/chromiumos/tast/remote/network/netperf/firewall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07cbc2c_23d993a8",
       "range": {
         "startLine": 23,
         "startChar": 40,
@@ -143,6 +191,24 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "80a18335_bcded5ad",
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb129a21_e3cbbf66",
+        "filename": "src/chromiumos/tast/remote/network/netperf/firewall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8534924b_bd210909",
       "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -208,6 +274,30 @@
       "side": 1,
       "message": "It could be a string-based \"enum\"",
       "parentUuid": "7ab624d8_3a1f595d",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 77
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7560fb43_21a33517",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08cbfbeb_1fd4870b",
       "range": {
         "startLine": 24,
         "startChar": 4,
@@ -290,6 +380,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62f9b4a8_b6a39bb8",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "I\u0027m not sure. I\u0027d rather unexport this function. This way I have a full control over what is passed to it and I don\u0027t expect netperf output to suddenly change so drastically .",
+      "parentUuid": "e80f5178_060e3b36",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fbe4d24_b880652f",
         "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
         "patchSetId": 3
@@ -349,6 +463,30 @@
       "side": 1,
       "message": "Code is very different anyway, so I wouldn\u0027t bother keeping the two comparable. Execution/results compatibility is important.",
       "parentUuid": "df478741_4b62d4f5",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e2b75f_e09f0b72",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "I will change them then, after all other comments are resolved.",
+      "parentUuid": "ac09c570_2d404dd9",
       "range": {
         "startLine": 127,
         "startChar": 5,
@@ -453,6 +591,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c4b63e_7ca20d97",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8205490_e8a11a50",
+      "range": {
+        "startLine": 185,
+        "startChar": 28,
+        "endLine": 185,
+        "endChar": 45
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d64b735_21702729",
@@ -541,6 +703,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "338f183a_623b0067",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "It has better readibility. But I can change that.",
+      "parentUuid": "ea25c2c7_2822a09f",
+      "range": {
+        "startLine": 22,
+        "startChar": 31,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e73c3085_cb33002a",
@@ -588,6 +774,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc88702_0bd6992d",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e950841_4734f92e",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 59
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a0ef7b9_1ea9defd",
@@ -601,6 +811,30 @@
       "writtenOn": "2020-10-20T10:07:21Z",
       "side": 1,
       "message": "maybe to conn.Command?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 32
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "038e0c46_5d3dbb1e",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "or cmd",
+      "parentUuid": "4a0ef7b9_1ea9defd",
       "range": {
         "startLine": 91,
         "startChar": 0,
@@ -648,6 +882,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "d689b525_3a1d4d7b",
+      "range": {
+        "startLine": 101,
+        "startChar": 12,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dcdc31a_91744a34",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be5902b1_65d7c51c",
       "range": {
         "startLine": 101,
         "startChar": 12,
@@ -817,6 +1075,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf0552a_ef2c6696",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e32eab2_10f42725",
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f181fab_3a6ae681",
@@ -854,6 +1130,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "6f181fab_3a6ae681",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 7
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94869cd4_14d13e8a",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aad67667_352d82ad",
       "range": {
         "startLine": 229,
         "startChar": 0,
@@ -911,6 +1211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aa9d027_763679db",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12712e5f_bd42a542",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 32
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec2b913b_4ea651be",
@@ -924,6 +1248,30 @@
       "writtenOn": "2020-10-20T10:07:21Z",
       "side": 1,
       "message": "2 * time.Second",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34fe58b0_2830b456",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec2b913b_4ea651be",
       "range": {
         "startLine": 21,
         "startChar": 26,
@@ -1007,6 +1355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f872be60_4aa85c25",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "TBH, I don\u0027t see anything strange. Just like bash history, this are results of previous runs...",
+      "parentUuid": "7137ba76_f365b1bd",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64077d29_d9d7829d",
         "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
         "patchSetId": 3
@@ -1052,6 +1424,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae711e9_347ac0e8",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Added more comments to code.",
+      "parentUuid": "da63a1c8_ec57c6fb",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 59
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3ee6071_f8e91a0f",
@@ -1065,6 +1461,24 @@
       "writtenOn": "2020-10-20T21:35:40Z",
       "side": 1,
       "message": "Shorten ctx for deferred function.",
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f95f5fa_0f40a471",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ee6071_f8e91a0f",
       "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1130,6 +1544,30 @@
       "side": 1,
       "message": "But then, the typical pattern is to first do the defer and then shorten the context. So you still can use the simple \"defer runner.Close(ctx)\"",
       "parentUuid": "a5a570d8_9af06b2d",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5888994d_f15d2f0f",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d2de5403_983b6803",
       "range": {
         "startLine": 71,
         "startChar": 1,
@@ -1211,6 +1649,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0dc8e1f_a3a8d078",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Oh, I know what you mean now. Fixed.",
+      "parentUuid": "62bf7368_0a3f1068",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 55
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0c55928_af915ffb",
@@ -1224,6 +1686,30 @@
       "writtenOn": "2020-10-20T10:07:21Z",
       "side": 1,
       "message": "} else\notherwise finalResult may be nil",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 3
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e10e1202_cc6f1a1d",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0c55928_af915ffb",
       "range": {
         "startLine": 101,
         "startChar": 0,
@@ -1295,6 +1781,30 @@
       "side": 1,
       "message": "Ok, maybe, though still don\u0027t see that case.",
       "parentUuid": "978e2fda_9b43148f",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dfa9b0f_4720be9c",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "measurementMaxSamples \u003d 10\nmeasurementMinSamples \u003d 3\nmeasurementMaxFailures \u003d 9\nlen(history) \u003d 2\nnoneCount \u003d 8\nIt never gets through first fromSamples(), but still contains valid results history that can be used by this call.",
+      "parentUuid": "a9ee341d_dcb76b0f",
       "range": {
         "startLine": 109,
         "startChar": 2,
@@ -1423,6 +1933,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6dd3a61_9c8f64ad",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d04afb3_b686664c",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 7
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e567464_92fcd4d4",
@@ -1484,6 +2018,30 @@
       "side": 1,
       "message": "I guess it will, but the parent may be alive a little longer (e.g. the caller may keep it for reuse), so it\u0027s more efficient to clean here, since you have the Close function.",
       "parentUuid": "f56e40f7_6f30107d",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 46
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e444c1_81111acd",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T18:37:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c60e02ca_babbb629",
       "range": {
         "startLine": 186,
         "startChar": 0,
