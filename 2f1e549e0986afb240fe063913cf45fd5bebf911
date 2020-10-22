@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e9e00d_19723103",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-22T21:17:11Z",
+      "side": 1,
+      "message": "Nit, this can just be named ConfigFile.",
+      "revId": "2f1e549e0986afb240fe063913cf45fd5bebf911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
