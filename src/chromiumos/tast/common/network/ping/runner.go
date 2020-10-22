@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/common/network/cmd"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/shutil"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testutil"
 )
 
 const pingCmd = "ping"
@@ -37,6 +39,7 @@ type config struct {
 	qos         QOSType
 	sourceIface string
 	user        string
+	savePath    string
 }
 
 // Option is a function used to configure ping command.
@@ -85,19 +88,36 @@ func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (
 		args = []string{cfg.user, "-c", userCmd}
 	}
 
-	output, err := r.cmd.Output(ctx, command, args...)
+	output, cmdErr := r.cmd.Output(ctx, command, args...)
+
+	// Save output regardless command error.
+	if cfg.savePath != "" {
+		testing.ContextLogf(ctx, "Saving ping output to %s", cfg.savePath)
+		if err := r.writeToPath(ctx, cfg.savePath, output); err != nil {
+			testing.ContextLogf(ctx, "Failed to save ping output to %s: %v", cfg.savePath, err)
+		}
+	}
 
 	// ping will return non-zero value when no reply received. It would
 	// be convenient if the caller can distinguish the case from command
 	// error. Always try to parse the output here.
 	res, parseErr := parseOutput(string(output))
 	if parseErr != nil {
-		if err != nil {
-			return nil, err
+		if cmdErr != nil {
+			return nil, cmdErr
 		}
 		return nil, parseErr
 	}
 	return res, nil
+}
+
+// writeToPath writes content to filePath under OutDir.
+func (r *Runner) writeToPath(ctx context.Context, filePath string, content []byte) error {
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("no OutDir avaiable")
+	}
+	return testutil.WriteFiles(outDir, map[string]string{filePath: string(content)})
 }
 
 // BindAddress returns an Option that can be passed to Ping to disallow ping
@@ -134,6 +154,12 @@ func SourceIface(iface string) Option {
 // User returns an Option that can be passed to Ping to set user.
 func User(user string) Option {
 	return func(c *config) { c.user = user }
+}
+
+// SaveOutput returns an Option that can be passed to Ping to save
+// the output of ping command to filePath under OutDir.
+func SaveOutput(filePath string) Option {
+	return func(c *config) { c.savePath = filePath }
 }
 
 // cmdArgs converts a config into a string of arguments for the ping command.

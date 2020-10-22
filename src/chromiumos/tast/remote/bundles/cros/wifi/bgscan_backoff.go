@@ -209,15 +209,18 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 		pr := remoteping.NewRemoteRunner(s.DUT().Conn())
 		var count int
 		var desc string
+		var pingLogPath string
 		if bgscan {
 			desc = "with bgscan"
 			count = pingCountBgscan
+			pingLogPath = "ping_bgscan.log"
 		} else {
 			desc = "without bgscan"
 			count = pingCountNoBgscan
+			pingLogPath = "ping_no_bgscan.log"
 		}
 		s.Logf("Pinging router %s, count=%d, interval=%f", desc, count, pingInterval)
-		pingStats, err := pr.Ping(ctx, ap1.ServerIP().String(), ping.Count(count), ping.Interval(pingInterval))
+		pingStats, err := pr.Ping(ctx, ap1.ServerIP().String(), ping.Count(count), ping.Interval(pingInterval), ping.SaveOutput(pingLogPath))
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to ping router with bgscan")
 		}
