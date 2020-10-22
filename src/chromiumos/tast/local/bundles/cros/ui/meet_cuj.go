@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
 )
 
@@ -529,6 +530,16 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to hit alt-tab and focus back to Meet tab: ", err)
 			}
 		}
+
+		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
+		if err != nil {
+			s.Fatal("Failed to start the profiler: ", err)
+		}
+		defer func() {
+			if err := prof.End(); err != nil {
+				s.Error("Failed to stop profiler: ", err)
+			}
+		}()
 
 		errc := make(chan error)
 		go func() {
