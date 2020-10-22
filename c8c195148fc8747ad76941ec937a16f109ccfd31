@@ -39,6 +39,30 @@
       },
       "revId": "c8c195148fc8747ad76941ec937a16f109ccfd31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6878159_123b6cb8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-22T23:55:04Z",
+      "side": 1,
+      "message": "Done. Thanks for spelling it out. Saves me lots of time...",
+      "parentUuid": "28ebcbf7_2799e60a",
+      "range": {
+        "startLine": 697,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 2
+      },
+      "revId": "c8c195148fc8747ad76941ec937a16f109ccfd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
