@@ -1,0 +1,313 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "807b7786_14585743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "local/graph.  No \u0027graphics\u0027 in it.",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a783f2c_47282573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "nit: since this is actually in the test directory (under bundles/), it is okay to pass testing.State.  You can replace these 2 parameters by \u0027s\u0027.",
+      "range": {
+        "startLine": 31,
+        "startChar": 46,
+        "endLine": 31,
+        "endChar": 82
+      },
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e1d7263_b9ea838b",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "Please export this type as it is used outside.\n\nIf you want to hide the implementation, rather you should unexport fields, i.e.\n  type Bipartite struct {\n    edges map[int][]int\n  }",
+      "range": {
+        "startLine": 8,
+        "startChar": 5,
+        "endLine": 8,
+        "endChar": 14
+      },
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "360748fa_42a4e38a",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "This does not look like a bipartite graph to me.  What will happen if\n  g :\u003d NewBipartite()\n  g.AddEdge(0, 1)\n  g.AddEdge(1, 2)\n  g.AddEdge(2, 0)\n\n?",
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c92fde7_5bc73594",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "name this as edges;\n  if edges, ok :\u003d g.Edges[x]; !ok {\n    g.Edges[x] \u003d []int{y}\n  } else {\n    g.Edges[x] \u003d append(edges, y)\n  }",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd12f85_e22ed34e",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "if match[dest] exists and arrives here due to g.matchingHelper, it will update the matching. Wouldn\u0027t change the algorithm but it feels weird to me.",
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77dab996_c50c82f9",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "\"the max number of matchings in the bipartite graph\" ?\n\nAlso, please end with a period.",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 63
+      },
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7133ea9_48ff0e07",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "you can use map[int]bool for this. That way you really don\u0027t need inSlice function.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58ce4f0c_e277527f",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "looks like visited is only marked at line 45, the key is always someone\u0027s dest.\nThat means, rather than setting false, I guess you can simply recreate visited here.\n  for src :\u003d range g.Edges {\n    if g.matchingHelper(src, matchMap, map[int]bool{}) {\n      ...\n\nAm I missing something?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f103c05_dd853ba0",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "This algorithm does not work on some type of input.  I think there is an assumption in the code. Maybe you should clarify the assumption somewhere (maybe in AddEdge).  Also adding some checks in AddEdge to enforce the assumption would be excellent.\n\nFor example,\n  g :\u003d NewBipartite()\n  g.AddEdge(0, 1)\n  g.AddEdge(1, 2)\n  result :\u003d g.MaxMatching()\n\nIn this case, result should be 1, right?  But this outputs 2.",
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3452a228_10ae6c38",
+        "filename": "src/chromiumos/tast/local/graph/bipartite_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "there are edges to the source (0 -\u003e 0, 1 -\u003e 1).  That is not a bipartite graph.",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de6f7156_9fd53273",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "I\u0027m afraid that this is an unusual pattern for a comment of a variable in Go. And it is not very clear to me what this comment indicates and which line is the target of the this pattern without checking the code.\n\nTypically it starts with the name itself, e.g.\n  // modesetConnectorPattern matches the second line of the following output:\n  // id  encoder status ...\n  // 39  0       connected ...",
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34a9c81_29c5180c",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "It has a lot of parens, and hard to ensure which one is grouped and which one is not.\nMaybe it\u0027s better to use named patterns (see the example of https://golang.org/pkg/regexp/#Regexp.SubexpIndex).",
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ac0eab_8d77ecec",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "In the example line above, the \u0027encoders\u0027 contain commas.  Isn\u0027t it a problem?",
+      "range": {
+        "startLine": 42,
+        "startChar": 22,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b47684f7_672d3f13",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:18:35Z",
+      "side": 1,
+      "message": "This an be an (unexported) normal function, it doesn\u0027t have to be defined inside of this function.",
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
