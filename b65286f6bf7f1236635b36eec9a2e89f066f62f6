@@ -50,6 +50,24 @@
       "message": "Code-wise LGTM, but I\u0027ll wait for a reply to Let\u0027s comment.\n",
       "revId": "b65286f6bf7f1236635b36eec9a2e89f066f62f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8b16a4_b1b7cd4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-22T02:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cae47b8b_b5347f21",
+      "revId": "b65286f6bf7f1236635b36eec9a2e89f066f62f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
