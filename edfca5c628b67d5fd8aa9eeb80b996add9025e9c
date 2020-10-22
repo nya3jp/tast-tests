@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6779748_84aaa3f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000015
+      },
+      "writtenOn": "2020-10-22T20:38:57Z",
+      "side": 1,
+      "message": "The method of detecting DP++/HDMI seems good to me.\n\nI\u0027ll leave the code review to someone better versed in Go.",
+      "revId": "edfca5c628b67d5fd8aa9eeb80b996add9025e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
