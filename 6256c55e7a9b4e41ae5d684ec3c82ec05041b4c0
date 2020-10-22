@@ -40,6 +40,30 @@
       },
       "revId": "6256c55e7a9b4e41ae5d684ec3c82ec05041b4c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01969cd6_ab5b2a05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-10-22T02:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22858630_5bf72ab7",
+      "range": {
+        "startLine": 23,
+        "startChar": 51,
+        "endLine": 23,
+        "endChar": 64
+      },
+      "revId": "6256c55e7a9b4e41ae5d684ec3c82ec05041b4c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
