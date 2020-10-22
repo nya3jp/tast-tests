@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee8042e_e561961b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c31130e_d8ab2c1f",
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fedabb2a_525c142c",
@@ -119,6 +137,30 @@
       "writtenOn": "2020-10-21T01:56:12Z",
       "side": 1,
       "message": "filepath.Join(\"/proc\", strconv.FormatInt(p.Pid, 10), \"sched\")",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5827b898_4aec5de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fedabb2a_525c142c",
       "range": {
         "startLine": 51,
         "startChar": 9,
@@ -152,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1119a8d_f8a23f98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c0b126c_553f2483",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49e5e54e_09156ca1",
@@ -165,6 +231,30 @@
       "writtenOn": "2020-10-21T01:56:12Z",
       "side": 1,
       "message": "Any particular reason why you avoid []*process.Process?  process.NewProcess will create an instance and returns its pointer. It\u0027s natural to return them directly.",
+      "range": {
+        "startLine": 81,
+        "startChar": 50,
+        "endLine": 81,
+        "endChar": 65
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49434154_8719a8a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49e5e54e_09156ca1",
       "range": {
         "startLine": 81,
         "startChar": 50,
@@ -198,6 +288,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cc90b9_3da52eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce672a6_8adb3929",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4762c9dc_41aeccfd",
@@ -211,6 +325,30 @@
       "writtenOn": "2020-10-21T01:56:12Z",
       "side": 1,
       "message": "I guess you can also use ioutil.ReadDir (https://golang.org/pkg/io/ioutil/#ReadDir).\n  finfos, err :\u003d ioutil.ReadDir(path)\n  if err !\u003d nil {\n    ...\n  }\n  for _, finfo :\u003d range finfos {\n    fname :\u003d finfo.Name()\n    ....",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b137e8_359f0a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4762c9dc_41aeccfd",
       "range": {
         "startLine": 85,
         "startChar": 0,
@@ -292,6 +430,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78af554b_239bf679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d4ff8f_a5f8bb72",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 9
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "672cbd47_80a5761e",
@@ -305,6 +467,30 @@
       "writtenOn": "2020-10-21T01:56:12Z",
       "side": 1,
       "message": "For the use of a set, the community agreement is to use struct{} or bool for the value type (see https://www.davidkaya.com/sets-in-golang/ for example).  I recommend to do that.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67e1a4d_e0e5fb4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "672cbd47_80a5761e",
       "range": {
         "startLine": 117,
         "startChar": 1,
@@ -409,6 +595,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e87bb08d_fb4d927e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "246be9f5_ec3edb41",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 5
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7378dc5d_cf8308e0",
@@ -503,6 +713,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf542ec5_dfe688fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89717481_4ff4bba5",
+      "range": {
+        "startLine": 123,
+        "startChar": 10,
+        "endLine": 123,
+        "endChar": 58
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ae89f54_130bd85f",
@@ -516,6 +750,30 @@
       "writtenOn": "2020-10-21T01:56:12Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 127,
+        "startChar": 10,
+        "endLine": 127,
+        "endChar": 62
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b30af8b_4404d0bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ae89f54_130bd85f",
       "range": {
         "startLine": 127,
         "startChar": 10,
@@ -549,6 +807,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c372c5ea_e7d552b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f04f8bd3_d04c3937",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 6
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfeddcbf_71a01cec",
@@ -572,6 +854,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae94b7d8_e3ead799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfeddcbf_71a01cec",
+      "range": {
+        "startLine": 133,
+        "startChar": 7,
+        "endLine": 133,
+        "endChar": 8
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d118fc8c_933b8c28",
@@ -585,6 +891,30 @@
       "writtenOn": "2020-10-21T01:56:12Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 136,
+        "startChar": 11,
+        "endLine": 136,
+        "endChar": 51
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "936dc432_158e8062",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d118fc8c_933b8c28",
       "range": {
         "startLine": 136,
         "startChar": 11,
@@ -666,6 +996,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9874e4_70fce833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Thanks a lot for the ideas! I will choose option #1 as its simplest but will sue the above comment for future reference. Thank you again for the awesome review.",
+      "parentUuid": "e537b7f2_90de8852",
+      "range": {
+        "startLine": 157,
+        "startChar": 17,
+        "endLine": 157,
+        "endChar": 61
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c7e183e_437720a2",
@@ -679,6 +1033,30 @@
       "writtenOn": "2020-10-21T01:56:12Z",
       "side": 1,
       "message": "ditto.  Also, since this is a dummy login, it won\u0027t show a real gmail content.",
+      "range": {
+        "startLine": 168,
+        "startChar": 19,
+        "endLine": 168,
+        "endChar": 56
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea43a727_c10860cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c7e183e_437720a2",
       "range": {
         "startLine": 168,
         "startChar": 19,
