@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "309d64d2_7774b1f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-22T14:18:17Z",
+      "side": 1,
+      "message": "Hi yenlin, this is my PoC for refactoring APIface and Router. About the comments I left, WDYT?",
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822aa9b1_df8a7bd7",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-22T14:18:17Z",
+      "side": 1,
+      "message": "I guess it\u0027s better to move the methods that are using ip and iw to Router, so the tests are able to configure the iface by Router object (if needed).",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 67
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7984d40f_3fab26c6",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-22T14:18:17Z",
+      "side": 1,
+      "message": "If we move some IP configuring methods to Router, then we can add a ServerIP argument StartDHCP to and configure IP in it. The logics here will become more intuitive.",
+      "range": {
+        "startLine": 132,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 55
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aa8274a_8968bbf4",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-22T14:18:17Z",
+      "side": 1,
+      "message": "FlushIP and SetLinkDown are actually for stopping different service -- FlushIP is for DHCP, and SetLinkDown is for hostapd.",
+      "range": {
+        "startLine": 206,
+        "startChar": 11,
+        "endLine": 206,
+        "endChar": 85
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
