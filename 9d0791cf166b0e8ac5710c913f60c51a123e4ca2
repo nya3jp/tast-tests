@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75cc719e_3c5c9323",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-22T01:32:26Z",
+      "side": 1,
+      "message": "Could you Cq-Depend to another CL for tast/ repository to submit together (for genutils update).",
+      "revId": "9d0791cf166b0e8ac5710c913f60c51a123e4ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a256347a_8e512446",
