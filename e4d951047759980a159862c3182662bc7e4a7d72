@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43874692_6d9b2dc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-22T20:16:21Z",
+      "side": 1,
+      "message": "LGTM just some nits",
+      "revId": "e4d951047759980a159862c3182662bc7e4a7d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdbfe3a7_b17fa6bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-22T20:16:21Z",
+      "side": 1,
+      "message": "Can launcher.SearchAndLaunch() be used here instead?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "e4d951047759980a159862c3182662bc7e4a7d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9964f1c_d2d2e09d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-22T20:16:21Z",
+      "side": 1,
+      "message": "nit: give this a more descriptive definition. Generally labelling something as a catch all for common functions is not a good idea. May say it is used for controlling the ui of the diagonistics swa",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 68
+      },
+      "revId": "e4d951047759980a159862c3182662bc7e4a7d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
