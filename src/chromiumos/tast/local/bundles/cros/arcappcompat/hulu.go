@@ -63,7 +63,7 @@ func init() {
 		}},
 		Timeout: 10 * time.Minute,
 		Vars: []string{"arcappcompat.username", "arcappcompat.password",
-			"arcappcompat.Hulu.emailid", "arcappcompat.Hulu.password", "arcappcompat.Hulu.username"},
+			"arcappcompat.Hulu.emailid", "arcappcompat.Hulu.password"},
 	})
 }
 
@@ -148,22 +148,14 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to click on clickOnLoginButton: ", err)
 	}
 
-	// Select User.
-	userText := s.RequiredVar("arcappcompat.Hulu.username")
-	selectUser := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(userText))
-	if err := selectUser.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("SelectUser doesn't exist: ", err)
-	} else if err := selectUser.Click(ctx); err != nil {
-		s.Fatal("Failed to click on selectUser: ", err)
-	}
-
 	// Check for home icon.
 	homeIcon := d.Object(ui.ID(homeIconID))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("SelectUser doesn't exist: ", err)
+		s.Fatal("homeIcon doesn't exist: ", err)
+	} else {
+		s.Log("HomeIcon does exist")
+		signOutOfHulu(ctx, s, a, d, appPkgName, appActivity)
 	}
-
-	signOutOfHulu(ctx, s, a, d, appPkgName, appActivity)
 
 }
 
@@ -171,7 +163,7 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 func signOutOfHulu(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		accountIconID    = "com.hulu.plus:id/menu_account"
-		logOutOfHuluText = "Log out of Hulu"
+		logOutOfHuluText = "Log out of Hulu|LOG OUT OF HULU"
 	)
 
 	// Click on account icon.
@@ -183,7 +175,7 @@ func signOutOfHulu(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Devi
 	}
 
 	// Click on log out of Hulu.
-	logOutOfHulu := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(logOutOfHuluText))
+	logOutOfHulu := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches(logOutOfHuluText))
 	if err := logOutOfHulu.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("LogOutOfHulu doesn't exist: ", err)
 	} else if err := logOutOfHulu.Click(ctx); err != nil {
