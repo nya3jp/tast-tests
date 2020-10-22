@@ -17,6 +17,7 @@ import (
 	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 	"github.com/mafredri/cdp/protocol/target"
 
@@ -25,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/shill"
@@ -691,6 +693,16 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	if err := tconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "failed to wait for the ready state")
 	}
+
+	// Ensures that display is on because UI tests need real output.
+	_, obj, err := dbusutil.Connect(ctx, "org.chromium.PowerManager", dbus.ObjectPath("/org/chromium/PowerManager"))
+	if err != nil {
+		return errors.Wrap(err, "failed to dbus connect to power manager")
+	}
+	if err := obj.CallWithContext(ctx, "org.chromium.PowerManager.HandleUserActivity", dbus.FlagNoReplyExpected, 0).Err; err != nil {
+		return errors.Wrap(err, "failed to dbus call power manager to simulate user actiity")
+	}
+
 	return nil
 }
 
