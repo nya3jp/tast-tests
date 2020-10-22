@@ -7,21 +7,16 @@ package containermount
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"reflect"
 	"regexp"
-	"runtime"
 	"sort"
 	"strconv"
 	"strings"
 
-	"github.com/shirou/gopsutil/process"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/cpuset"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -259,172 +254,6 @@ func testCgroup(ctx context.Context, s *testing.State, arc []sysutil.MountInfo) 
 	}
 }
 
-// getInitPIDs returns all PIDs corresponding to ARC init processes.
-// TODO (hidehiko@): merge this and InitPID()
-func getInitPIDs() ([]int, error) {
-	ver, err := arc.SDKVersion()
-	if err != nil {
-		return nil, err
-	}
-
-	// The path to the ARC init executable.
-	var initExecPath = "/init"
-	if ver >= arc.SDKQ {
-		initExecPath = "/system/bin/init"
-	}
-
-	all, err := process.Pids()
-	if err != nil {
-		return nil, err
-	}
-
-	var pids []int
-	for _, pid := range all {
-		proc, err := process.NewProcess(pid)
-		if err != nil {
-			// Assume that the process exited.
-			continue
-		}
-		if exe, err := proc.Exe(); err == nil && exe == initExecPath {
-			if username, err := proc.Username(); err == nil && username == "android-root" {
-				pids = append(pids, int(pid))
-			}
-		}
-	}
-	return pids, nil
-}
-
-// getRootPID returns the PID of the root ARC init process.
-func getRootPID() (int, error) {
-	pids, err := getInitPIDs()
-	if err != nil {
-		return -1, err
-	}
-
-	pm := make(map[int]struct{}, len(pids))
-	for _, pid := range pids {
-		pm[pid] = struct{}{}
-	}
-	for _, pid := range pids {
-		// If we see errors, assume that the process exited.
-		proc, err := process.NewProcess(int32(pid))
-		if err != nil {
-			continue
-		}
-		ppid, err := proc.Ppid()
-		if err != nil || ppid <= 0 {
-			continue
-		}
-		if _, ok := pm[int(ppid)]; !ok {
-			return pid, nil
-		}
-	}
-	return -1, errors.New("root not found")
-}
-
-// Intel does not have any 'CPU part' line. ARM does, and when it's
-// big.LITTLE, it has two different CPU parts (e.g. 0xd03 and 0xd09).
-var cpuPartRE = regexp.MustCompile(`^CPU part\s+:\s+(0x[0-9a-f]+)$`)
-
-// isHeterogeneousCores returns true if cores are heterogeneous ones
-// such as ARM's big.LITTLE.
-func isHeterogeneousCores(ctx context.Context) (bool, error) {
-	if arch := runtime.GOARCH; arch != "arm" && arch != "arm64" {
-		return false, nil
-	}
-
-	out, err := ioutil.ReadFile("/proc/cpuinfo")
-	if err != nil {
-		return false, errors.Wrap(err, "failed to read cpuinfo")
-	}
-	lines := strings.Split(string(out), "\n")
-
-	var lastCPUPart string
-	for _, line := range lines {
-		matches := cpuPartRE.FindAllStringSubmatch(strings.TrimSpace(line), -1)
-		if matches == nil {
-			continue
-		}
-		cpuPart := matches[0][1]
-		if lastCPUPart == "" {
-			lastCPUPart = cpuPart
-			continue
-		}
-		if lastCPUPart != cpuPart {
-			testing.ContextLog(ctx, "Detected heterogeneous cores")
-			return true, nil
-		}
-	}
-	if lastCPUPart == "" {
-		return false, errors.New("no CPU part information found")
-	}
-	return false, nil
-}
-
-func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
-	s.Log("Running testCPUSet")
-
-	initPID, err := getRootPID()
-	if err != nil {
-		s.Error("Failed to get root init process")
-		return
-	}
-
-	// Verify that /dev/cpuset is properly set up.
-	types := []string{"foreground", "background", "system-background", "top-app", "restricted"}
-	numOtherCores := 0
-
-	for _, t := range types {
-		// cgroup pseudo file cannot be "adb pull"ed. Additionally, it is not
-		// accessible via adb shell user in P. Access by procfs instead.
-		path := fmt.Sprintf("/proc/%d/root/dev/cpuset/%s/effective_cpus", initPID, t)
-		out, err := ioutil.ReadFile(path)
-		if err != nil {
-			s.Errorf("Failed to read %s: %v", path, err)
-			continue
-		}
-		val := strings.TrimSpace(string(out))
-		cpusInUse, err := cpuset.Parse(ctx, val)
-		if err != nil {
-			s.Errorf("Failed to parse %s: %v", path, err)
-			continue
-		}
-
-		if t == "foreground" || t == "top-app" {
-			// Even after full boot, these processes should be able
-			// to use all CPU cores.
-			if len(cpusInUse) != runtime.NumCPU() {
-				s.Errorf("Unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs", val, path,
-					len(cpusInUse), runtime.NumCPU())
-			}
-		} else {
-			// Other processes should not.
-			if len(cpusInUse) == runtime.NumCPU() {
-				s.Errorf("Unexpected CPU setting %q for %s: should not be %d CPUs", val, path,
-					runtime.NumCPU())
-			}
-			numOtherCores += len(cpusInUse)
-		}
-	}
-
-	heterogeneousCores, err := isHeterogeneousCores(ctx)
-	if err != nil {
-		s.Error("Failed to determine core type: ", err)
-		return
-	}
-	if heterogeneousCores {
-		// The cpuset settings done in init.{cheets,bertha}.rc work fine
-		// for homogeneous systems, but heterogeneous systems require
-		// their own init.cpusets.rc to properly set up non-foreground
-		// cpusets. Verify that init.cpusets.rc exists on heterogeneous
-		// systems.
-		s.Log("Running testCPUSet (for boards with heterogeneous cores)")
-		if numOtherCores == 3 {
-			s.Error("Unexpected CPU setting; found heterogeneous cores but lacks proper init.cpusets.rc file")
-		}
-	}
-}
-
 func testADBD(ctx context.Context, s *testing.State, adbd []sysutil.MountInfo) {
 	s.Log("Running testADBD")
 
@@ -590,8 +419,6 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC) {
 	testNoARCSharedLeak(ctx, s, arc, joinMounts(global, adbd, sdcard, obb))
 	testDebugfsTracefs(ctx, s, arc)
 	testCgroup(ctx, s, arc)
-	// TODO(hidehiko): This is not a part of "mount" tests. Find a good place to move.
-	testCPUSet(ctx, s, a)
 	testADBD(ctx, s, adbd)
 	testSDCard(ctx, s, sdcard)
 	testMountPassthrough(ctx, s, mountPassthrough)
