@@ -16,6 +16,29 @@
       "message": "Mukai-san, please review. This CL lights up display in ResetState by dbus calling power manager.\n\ncc nya@ in case he has inputs.",
       "revId": "c8c195148fc8747ad76941ec937a16f109ccfd31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ebcbf7_2799e60a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T23:12:24Z",
+      "side": 1,
+      "message": "I think it\u0027s better to use the dbus library in golang; https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/dbusutil\nhttps://godoc.org/github.com/godbus/dbus\n\nIt would be something like\n  _, obj, err :\u003d dbusutil.Connect(ctx, \"org.chromium.PowerManager\", \"/org/chromium/PowerManager\")\n  if err !\u003d nil {\n    ...\n  }\n  if err :\u003d obj.CallWithContext(ctx, \"org.chromium.PowerManager.HandleUserActivity\", dbus.FlagNoReplyExpected, 0); err !\u003d nil {\n    ...\n  }\n\nA bit longer but that should be more lightweight.",
+      "range": {
+        "startLine": 697,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 2
+      },
+      "revId": "c8c195148fc8747ad76941ec937a16f109ccfd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
