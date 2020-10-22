@@ -90,7 +90,7 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get the current DUT time: ", err)
 	}
-	if err := tf.Router().ChangeAPIfaceSubnetIdx(ctx, ap); err != nil {
+	if err := ap.ChangeSubnetIdx(ctx); err != nil {
 		s.Fatal("Failed to change the subnet index of the AP: ", err)
 	}
 
