@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a846841_09b12708",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-10-22T03:29:40Z",
+      "side": 1,
+      "message": "Cherry-picking to M-87\nSee https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1133994",
+      "revId": "5cb223bd8f77751041c02957b1a3cb92b1d063b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
