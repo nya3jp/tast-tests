@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "464bacff_ed5d1e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-22T01:04:12Z",
+      "side": 1,
+      "message": "Changed to s.Error, which marks the test as failure without aborting the test.",
+      "parentUuid": "d3ab90fd_9087056a",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 77
+      },
+      "revId": "4924f35ea1ff5a7e78c9379395620a75802f77c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f743dd0_ea3c1abb",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-20T00:32:20Z",
       "side": 1,
       "message": "Check here for machine_idle_at_start and fail test if so.\nIf you want can also check a second time for idle at end of test and report that information for debugging.",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 1
+      },
+      "revId": "4924f35ea1ff5a7e78c9379395620a75802f77c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0699aefa_61b21d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-22T01:04:12Z",
+      "side": 1,
+      "message": "we already have temperature info at line 218.",
+      "parentUuid": "0f743dd0_ea3c1abb",
       "range": {
         "startLine": 343,
         "startChar": 0,
