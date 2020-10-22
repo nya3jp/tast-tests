@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49adff35_3ea01750",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-10-22T02:24:51Z",
+      "side": 1,
+      "message": "Thanks for addressing it. looks about right now.\n\nPlease nya@ take a look; a reminder: the CL is quite different now.",
+      "revId": "03ed0c44d2b9981bbc2b750769b02da4d66f2fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
