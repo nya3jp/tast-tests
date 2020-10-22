@@ -404,6 +404,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2919c21e_0db27126",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T19:40:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f302978_87733ea3",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e3f7f56_6687ee8e",
@@ -441,6 +459,30 @@
       "side": 1,
       "message": "Well, I guess the point of the test is to collect these stats for quick evaluation good/no. Details are in the logs, if needed.",
       "parentUuid": "3e3f7f56_6687ee8e",
+      "range": {
+        "startLine": 164,
+        "startChar": 36,
+        "endLine": 164,
+        "endChar": 85
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddacbc02_e78de211",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T19:40:55Z",
+      "side": 1,
+      "message": "What I mean is that if e.g. only one of subtests have weird stats or failures, we won\u0027t see it.\nHaving them separate can let easily identify which one is causing problems. You could even provide output with the summary as well.",
+      "parentUuid": "45849238_a049e8a9",
       "range": {
         "startLine": 164,
         "startChar": 36,
@@ -517,6 +559,24 @@
       "side": 1,
       "message": "Can Close() last enough to justify context shortening? I think it returns immediately, it shouldn\u0027t block on anything, right? \nIn existing Tast codebase I can\u0027t find any example of reserving time for Close().",
       "parentUuid": "491321b6_506b457e",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d624da0_21158001",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T19:40:55Z",
+      "side": 1,
+      "message": "Close() is just a function, can do anything; very likely this one is flushing buffers to disk. It will be probably covered by other reservations, so if you\u0027re sure it won\u0027t cause test flakiness, then skip the defer.",
+      "parentUuid": "934f4159_4a21715f",
       "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

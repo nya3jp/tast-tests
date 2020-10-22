@@ -83,6 +83,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fce37e6_ad6af225",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T19:40:55Z",
+      "side": 1,
+      "message": "Magic number?",
+      "range": {
+        "startLine": 228,
+        "startChar": 38,
+        "endLine": 228,
+        "endChar": 42
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96e2dc09_7b63c03f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-22T19:40:55Z",
+      "side": 1,
+      "message": "Magic number?",
+      "range": {
+        "startLine": 235,
+        "startChar": 38,
+        "endLine": 235,
+        "endChar": 42
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed872685_33dd5738",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
         "patchSetId": 5
