@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d0e6e0a_1301546d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-22T05:59:30Z",
+      "side": 1,
+      "message": "Here, I was specifically calling stress.RunFioStress, which doesn\u0027t fail the execution even if Fio fails. Could you change this entire line back to the original?",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 103
+      },
+      "revId": "07a7349e2ad153502104a50603f4d874bc26c7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
