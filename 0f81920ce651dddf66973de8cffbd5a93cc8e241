@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6997e30a_2fd168c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-22T03:09:20Z",
+      "side": 1,
+      "message": "LGTM, but please also get code review from your teammate/peer.",
+      "revId": "0f81920ce651dddf66973de8cffbd5a93cc8e241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
