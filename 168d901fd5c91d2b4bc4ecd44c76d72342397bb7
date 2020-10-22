@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f60cd503_2891aa06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-10-22T23:13:34Z",
+      "side": 1,
+      "message": "I don\u0027t think we\u0027re ready to handle this test yet, since there\u0027s currently no way to modify the preconditions set by the generator (that will change in CL:2374267 which is still blocked on working things out with the lab infra people)",
+      "parentUuid": "07080af4_c28bc5e9",
+      "revId": "168d901fd5c91d2b4bc4ecd44c76d72342397bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5f47dd3_aafebe79",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
         "patchSetId": 4
