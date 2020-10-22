@@ -69,6 +69,24 @@
       "parentUuid": "d1b2e697_872219f0",
       "revId": "a08e84f9da0674b92d5bc8a5dfb2d379201f0856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c8714c_d8ed79ac",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-22T22:56:38Z",
+      "side": 1,
+      "message": "If that\u0027s the case, I prefer stucts too, since once we switch to structs, adding fields will not be breaking.",
+      "parentUuid": "d6d10de6_4e1e0441",
+      "revId": "a08e84f9da0674b92d5bc8a5dfb2d379201f0856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
