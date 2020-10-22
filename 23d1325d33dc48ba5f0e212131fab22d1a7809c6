@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aacb59c_cf32c30e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-10-22T04:51:22Z",
+      "side": 1,
+      "message": "Sorry for the delay, I kind of forgot about this CL.",
+      "revId": "23d1325d33dc48ba5f0e212131fab22d1a7809c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
