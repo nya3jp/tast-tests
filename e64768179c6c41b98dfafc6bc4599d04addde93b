@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d79757f3_734fb705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-22T08:11:33Z",
+      "side": 1,
+      "message": "seems like this gerrit overwrites the commit message for subsequent uploads (unlike gerrit for chromium cls). re-added the cq-depend lines.",
+      "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
