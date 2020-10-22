@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc8b3593_e4e0fed2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-10-22T16:58:13Z",
+      "side": 1,
+      "message": "Eliot Courtney, with this change, the tracing results from lacros.GpuCUJ.* will be saved in gzip archives. Is that okay? If so, please check whatever you would check about those tests before marking a CL as Verified +1, let me know what you find, and I will check my own tests likewise. Thank you!",
+      "revId": "36a37fe6144d8de9f5a8f782b6e7b06b5581699e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
