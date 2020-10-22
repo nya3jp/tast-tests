@@ -56,6 +56,30 @@
       },
       "revId": "b7967e214da7443bdd2a8565a41cb44211f5f372",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9f9120_331378ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T11:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "658d34f4_6980cf80",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "b7967e214da7443bdd2a8565a41cb44211f5f372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
