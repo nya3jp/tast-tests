@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "611f0fa8_61fbdb62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-22T02:00:42Z",
+      "side": 1,
+      "message": "slgtm.",
+      "revId": "6256c55e7a9b4e41ae5d684ec3c82ec05041b4c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22858630_5bf72ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-22T02:00:42Z",
+      "side": 1,
+      "message": "\u003e \"funcitonality\" is a possible misspelling of \"functionality\".\n\nPlease fix.",
+      "parentUuid": "8c4b2dea_a4a3f56f",
+      "range": {
+        "startLine": 23,
+        "startChar": 51,
+        "endLine": 23,
+        "endChar": 64
+      },
+      "revId": "6256c55e7a9b4e41ae5d684ec3c82ec05041b4c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
