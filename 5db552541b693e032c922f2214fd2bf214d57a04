@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ae637d_1d60515a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-22T08:35:39Z",
+      "side": 1,
+      "message": "Thanks for adding the test.",
+      "revId": "5db552541b693e032c922f2214fd2bf214d57a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ce3557_0cc4e7df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/max98390.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-22T08:35:39Z",
+      "side": 1,
+      "message": "Can you use testing.Poll here instead of Sleep like you did in firstBoot()?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "5db552541b693e032c922f2214fd2bf214d57a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
