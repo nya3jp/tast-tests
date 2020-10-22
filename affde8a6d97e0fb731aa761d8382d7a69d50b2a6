@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e0aa69_cb610ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000015
+      },
+      "writtenOn": "2020-10-22T13:59:56Z",
+      "side": 1,
+      "message": "I don\u0027t think we can simplify this, there are invalid configurations with multiple encoders. Consider the following invalid configuration:\n\nconnector 1 - possible encoders A, B\nconnector 2 - possible encoders A, B\nconnector 3 - possible encoders A, B",
+      "revId": "affde8a6d97e0fb731aa761d8382d7a69d50b2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
