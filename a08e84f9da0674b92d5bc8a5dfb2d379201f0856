@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8fccc0_988c85cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-22T07:49:42Z",
+      "side": 1,
+      "message": "Is there a way to atomically commit internal and external CLs? If so I would really like to hear it, otherwise, this will break the build between the external and internal change landing.",
+      "revId": "a08e84f9da0674b92d5bc8a5dfb2d379201f0856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b2e697_872219f0",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-22T07:49:42Z",
+      "side": 1,
+      "message": "We can avoid making this a breaking API change if we do something like:\n    type PowerTestOption int\n    const (\n        ForceBatteryDischarge PowerTestOption \u003d iota\n        DoNotDisableWifiInterfaces\n    )\n    func PowerTest(ctx context.Context, c *chrome.TestConn, options ...PowerTestOption) (CleanupCallback, error) {\n        // Set up based on finding flag in options slice\n\nNoBatteryDischarge is not used in internal tests, so it should be safe to remove it in this commit without breaking other builds.",
+      "revId": "a08e84f9da0674b92d5bc8a5dfb2d379201f0856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
