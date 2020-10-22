@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e0d8f4_813a8fd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T23:59:07Z",
+      "side": 1,
+      "message": "Thanks. LGTM.\nPlease wait a bit before moving forward, to allow nya@ to take a look.",
+      "revId": "824c6eb4f2f1bef1c7c9741a664f6344388edbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
