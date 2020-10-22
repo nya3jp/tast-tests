@@ -86,6 +86,24 @@
       "parentUuid": "5433f623_0cf68e6c",
       "revId": "022f618f7631829625e25efc041918658933edff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20042f35_23686063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-10-22T15:10:37Z",
+      "side": 1,
+      "message": "Nope, they continue to run against builds from the M87 branch.  You can see this best by looking at stainless:\n\nhttp://screen/5iJixVH3k8BjUWA\n\nWe have 223 failed runs of tast.policy.ArcEnabled just for build R87-13505.19.0, which according to Goldeneye:\n\nhttp://go/goldeney\n\nwas just built yesterday.  We have a similar number of failed test runs for every build, and builds happen daily.",
+      "parentUuid": "4296e75a_6ad172e0",
+      "revId": "022f618f7631829625e25efc041918658933edff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
