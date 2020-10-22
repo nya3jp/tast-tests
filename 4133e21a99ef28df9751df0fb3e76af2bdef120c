@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "465214ee_e3e5316e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-22T23:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00eb3e7a_8b589940",
+      "range": {
+        "startLine": 49,
+        "startChar": 28,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48d79901_b8804441",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-22T08:30:13Z",
       "side": 1,
       "message": "Set up",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5139c300_c618cc17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-22T23:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48d79901_b8804441",
       "range": {
         "startLine": 53,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "797a8726_a8e8bf56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-22T23:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db11945f_459a5bfa",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 4
+      },
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65800dff_2d78fea4",
@@ -83,6 +155,24 @@
       "writtenOn": "2020-10-22T08:30:13Z",
       "side": 1,
       "message": "Reserve some time for defer with ctx:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a18b9f6_122c7867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-22T23:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65800dff_2d78fea4",
       "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4e68ed_db7df91a",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-22T23:00:17Z",
+      "side": 1,
+      "message": "They are parameters used to indicate how to play the sound. In audio input, it does not really matter.",
+      "parentUuid": "2d8c2422_9592562e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64d386b5_e5f699ae",
@@ -123,6 +237,24 @@
       "writtenOn": "2020-10-22T08:30:13Z",
       "side": 1,
       "message": "Is it defined?",
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea2c6fac_a291bf32",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-22T23:00:17Z",
+      "side": 1,
+      "message": "It is a mandatory param for play command. It is defined in the struct. Default value is 0.",
+      "parentUuid": "64d386b5_e5f699ae",
       "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -146,6 +278,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4cb1bed_e7f19efd",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-22T23:00:17Z",
+      "side": 1,
+      "message": "Not in this case. Previously assigned node attribute is fixed, there is no method like Update() to refresh. So it requires to repeatly request new node.",
+      "parentUuid": "8a49b486_b9aa4101",
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f728cf0_b8f2f2df",
         "filename": "src/chromiumos/tast/local/input/audio.go",
         "patchSetId": 3
@@ -157,6 +307,30 @@
       "writtenOn": "2020-10-22T08:30:13Z",
       "side": 1,
       "message": "active Aloop",
+      "range": {
+        "startLine": 75,
+        "startChar": 37,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acad2f86_209e2005",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-22T23:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f728cf0_b8f2f2df",
       "range": {
         "startLine": 75,
         "startChar": 37,
