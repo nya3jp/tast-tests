@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a683469a_332e4223",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-22T07:39:09Z",
+      "side": 1,
+      "message": "Just fixed up the commit message a little.",
+      "revId": "2a9eaf854f819a1a7cc02b5ead90e986e8ad1ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
