@@ -16,6 +16,23 @@
       "message": "LGTM % btw you need to add a peer to review the test from business perspective.\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/pre.go?l\u003d38",
       "revId": "f7461ed07d0839a57ac25fd91b477dc23d414226",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80490c3d_df6a87ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-22T07:34:51Z",
+      "side": 1,
+      "message": "LGTM, please also get code review from your teammate/peer.",
+      "revId": "f7461ed07d0839a57ac25fd91b477dc23d414226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
