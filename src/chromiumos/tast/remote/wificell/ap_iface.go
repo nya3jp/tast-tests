@@ -7,34 +7,48 @@ package wificell
 import (
 	"context"
 	"net"
-	"time"
 
-	"chromiumos/tast/common/network/ip"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	remote_ip "chromiumos/tast/remote/network/ip"
-	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
+
+// busySubnet records the used subnet indexes.
+// It is a global variable because the usage of subnet is not limited in a certain router or ap.
+var busySubnet = make(map[byte]struct{})
+
+// reserveSubnetIdx finds a free subnet index and reserves it.
+func reserveSubnetIdx() (byte, error) {
+	for i := byte(0); i <= 255; i++ {
+		if _, ok := busySubnet[i]; ok {
+			continue
+		}
+		busySubnet[i] = struct{}{}
+		return i, nil
+	}
+	return 0, errors.New("subnet index exhausted")
+}
+
+// freeSubnetIdx marks the subnet index as unused.
+func freeSubnetIdx(i byte) {
+	delete(busySubnet, i)
+}
 
 // APIface is the handle object of an instance of hostapd service managed by Router.
 // It is comprised of a hostapd and a dhcpd. The DHCP server is assigned with the subnet
 // 192.168.$subnetIdx.0/24.
 type APIface struct {
-	host      *ssh.Conn
+	router    *Router
 	name      string
 	iface     string
-	workDir   string
 	subnetIdx byte
 	config    *hostapd.Config
 
 	hostapd *hostapd.Server
 	dhcpd   *dhcp.Server
 
-	stopped bool // true if stop() is called. Used to avoid stop() being called twice.
+	stopped bool // true if Stop() is called. Used to avoid Stop() being called twice.
 }
 
 // Config returns the config of hostapd.
@@ -75,83 +89,89 @@ func (h *APIface) ServerSubnet() *net.IPNet {
 	return &net.IPNet{IP: ip, Mask: mask}
 }
 
-// start starts the service. Make this private as one should start this from Router.
-// After start(), the caller should call h.stop() at the end, and use the shortened ctx
-// (provided b h.reserveForStop()) before h.stop() to reserve time for h.stop() to run.
-func (h *APIface) start(fullCtx context.Context) (retErr error) {
-	defer func() {
+// NewAPIface starts the service.
+// After started, the caller should call h.Stop() at the end, and use the shortened ctx
+// (provided by h.ReserveForStop()) before h.Stop() to reserve time for h.Stop() to run.
+func NewAPIface(ctx context.Context, r *Router, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
+	var h APIface
+	var err error
+
+	h.router = r
+
+	h.hostapd, err = r.StartHostapd(ctx, name, conf)
+	if err != nil {
+		return nil, err
+	}
+	defer func(ctx context.Context) {
 		if retErr != nil {
-			if err := h.stop(fullCtx); err != nil {
-				testing.ContextLogf(fullCtx, "Failed to stop HostAPHandle, err=%s", err.Error())
+			if err := h.hostapd.Close(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to stop hostapd server while NewAPIface has failed: ", err)
 			}
 		}
-	}()
-	h.stopped = false
-
-	// Reserve for h.tearDownIface() running in h.stop().
-	// Calling h.reserveForStop() here reserves insufficient time because h.hostapd and h.dhcpd
-	// are not set yet.
-	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second)
+	}(ctx)
+	ctx, cancel := h.hostapd.ReserveForClose(ctx)
 	defer cancel()
+	h.iface = h.hostapd.Interface()
+	// hostapd.Config() makes copy, so calling hostapd.Config() in each APIface.Config() would be heavy. Make copy only once here.
+	config := h.hostapd.Config()
+	h.config = &config
 
-	hs, err := hostapd.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.config)
+	h.subnetIdx, err = reserveSubnetIdx()
 	if err != nil {
-		return errors.Wrap(err, "failed to start hostapd")
+		return nil, err
 	}
-	h.hostapd = hs
-	// We only need to call cancel of the first shorten context.
-	ctx, _ = h.hostapd.ReserveForClose(ctx)
+	defer func() {
+		if retErr != nil {
+			freeSubnetIdx(h.subnetIdx)
+		}
+	}()
 
-	// txpower setting relies on hostapd to bring h.iface up and configure the channel.
-	if err := h.configureIface(ctx); err != nil {
-		return errors.Wrap(err, "failed to setup interface")
-	}
-
-	ds, err := dhcp.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.subnetIP(1), h.subnetIP(128))
+	h.dhcpd, err = r.StartDHCP(ctx, name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
 	if err != nil {
-		return errors.Wrap(err, "failed to start dhcp server")
+		return nil, err
 	}
-	h.dhcpd = ds
-
-	return nil
+	return &h, nil
 }
 
-// reserveForStop returns a shortened ctx with its cancel function.
-// The shortened ctx is used for running things before h.stop() to reserve time for it to run.
-func (h *APIface) reserveForStop(ctx context.Context) (context.Context, context.CancelFunc) {
-	// Reserve for h.tearDownIface()
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+// ReserveForStop returns a shortened ctx with its cancel function.
+// The shortened ctx is used for running things before h.Stop() to reserve time for it to run.
+func (h *APIface) ReserveForStop(ctx context.Context) (context.Context, context.CancelFunc) {
+	// We only need to call cancel of the first shorten context because the shorten context's
+	// Done channel is closed when the parent context's Done channel is closed.
+	// https://golang.org/pkg/context/#WithDeadline.
+	var firstCancel, cancel func()
 	if h.hostapd != nil {
-		// We only need to call cancel of the first shorten context because the shorten context's
-		// Done channel is closed when the parent context's Done channel is closed.
-		// https://golang.org/pkg/context/#WithDeadline.
-		ctx, _ = h.hostapd.ReserveForClose(ctx)
+		ctx, cancel = h.hostapd.ReserveForClose(ctx)
+		if firstCancel == nil {
+			firstCancel = cancel
+		}
 	}
 	if h.dhcpd != nil {
-		ctx, _ = h.dhcpd.ReserveForClose(ctx)
+		ctx, cancel = h.dhcpd.ReserveForClose(ctx)
+		if firstCancel == nil {
+			firstCancel = cancel
+		}
 	}
-	return ctx, cancel
+	return ctx, firstCancel
 }
 
-// stop stops the service. Make this private as one should stop it from Router.
-func (h *APIface) stop(ctx context.Context) error {
+// Stop stops the service.
+func (h *APIface) Stop(ctx context.Context) error {
 	if h.stopped {
 		return nil
 	}
 	var retErr error
 	if h.dhcpd != nil {
-		if err := h.dhcpd.Close(ctx); err != nil {
+		if err := h.router.StopDHCP(ctx, h.dhcpd); err != nil {
 			retErr = errors.Wrapf(retErr, "failed to stop dhcp server, err=%s", err.Error())
 		}
 	}
 	if h.hostapd != nil {
-		if err := h.hostapd.Close(ctx); err != nil {
+		if err := h.router.StopHostapd(ctx, h.hostapd); err != nil {
 			retErr = errors.Wrapf(retErr, "failed to stop hostapd, err=%s", err.Error())
 		}
 	}
-	if err := h.tearDownIface(ctx); err != nil {
-		retErr = errors.Wrapf(retErr, "teardownIface error=%s", err.Error())
-	}
+	freeSubnetIdx(h.subnetIdx)
 	h.stopped = true
 	return retErr
 }
@@ -161,70 +181,38 @@ func (h *APIface) DeauthenticateClient(ctx context.Context, clientMAC string) er
 	return h.hostapd.DeauthClient(ctx, clientMAC)
 }
 
-// configureIface configures the interface which we're providing services on.
-func (h *APIface) configureIface(ctx context.Context) error {
-	var retErr error
-	if err := remote_iw.NewRemoteRunner(h.host).SetTxPowerAuto(ctx, h.iface); err != nil {
-		retErr = errors.Wrapf(retErr, "failed to set txpower to auto, err=%s", err)
-	}
-	if err := h.configureIP(ctx); err != nil {
-		retErr = errors.Wrapf(retErr, "failed to configureIP, err=%s", err)
-	}
-	return retErr
-}
-
-// tearDownIface tears down the interface which we provided services on.
-func (h *APIface) tearDownIface(ctx context.Context) error {
-	var firstErr error
-	ipr := remote_ip.NewRemoteRunner(h.host)
-	if err := ipr.FlushIP(ctx, h.iface); err != nil {
-		collectFirstErr(ctx, &firstErr, err)
-	}
-	if err := ipr.SetLinkDown(ctx, h.iface); err != nil {
-		collectFirstErr(ctx, &firstErr, err)
-	}
-	return firstErr
-}
-
-// configureIP configures server IP and broadcast IP on h.iface.
-func (h *APIface) configureIP(ctx context.Context) error {
-	ipr := remote_ip.NewRemoteRunner(h.host)
-	if err := ipr.FlushIP(ctx, h.iface); err != nil {
-		return err
-	}
-	maskLen, _ := h.mask().Size()
-	return ipr.AddIP(ctx, h.iface, h.ServerIP(), maskLen, ip.AddIPBroadcast(h.broadcastIP()))
-}
-
-// changeSubnetIdx configures the ip to the new index and restart the dhcp server.
+// ChangeSubnetIdx restarts the dhcp server with a different subnet index.
 // On failure, the APIface object will keep holding the old index, but the states of the
-// dhcp server and WiFi interface are not guaranteed and a call of stop is still needed.
-func (h *APIface) changeSubnetIdx(ctx context.Context, newIdx byte) (retErr error) {
+// dhcp server and WiFi interface are not guaranteed and a call of Stop is still needed.
+func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
 	if h.dhcpd != nil {
-		if err := h.dhcpd.Close(ctx); err != nil {
+		if err := h.router.StopDHCP(ctx, h.dhcpd); err != nil {
 			return errors.Wrap(err, "failed to stop dhcp server")
 		}
 		h.dhcpd = nil
 	}
 
-	// Reset the subnet index to old value on failure.
 	oldIdx := h.subnetIdx
+	newIdx, err := reserveSubnetIdx()
+	if err != nil {
+		return errors.Wrap(err, "failed to reserve a new subnet index")
+	}
+	h.subnetIdx = newIdx
 	defer func() {
 		if retErr != nil {
+			// Reset the subnet index to old value on failure.
 			h.subnetIdx = oldIdx
+			freeSubnetIdx(newIdx)
+		} else {
+			freeSubnetIdx(oldIdx)
 		}
 	}()
+	testing.ContextLogf(ctx, "changing AP subnet index from %d to %d", oldIdx, newIdx)
 
-	h.subnetIdx = newIdx
-	if err := h.configureIP(ctx); err != nil {
-		return errors.Wrap(err, "failed to configure ip")
-	}
-
-	ds, err := dhcp.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.subnetIP(1), h.subnetIP(128))
+	h.dhcpd, err = h.router.StartDHCP(ctx, h.name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
 	if err != nil {
 		return errors.Wrap(err, "failed to start dhcp server")
 	}
-	h.dhcpd = ds
 	return nil
 }
 
@@ -235,23 +223,13 @@ func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
 		return errors.New("hostapd is not running")
 	}
 
-	if err := h.hostapd.Close(ctx); err != nil {
-		return errors.Wrap(err, "failed to stop hostapd")
-	}
-	h.hostapd = nil
-
-	// hostapd will attempt to set the interface up and would fail if it is already up.
-	ipr := remote_ip.NewRemoteRunner(h.host)
-	if err := ipr.SetLinkDown(ctx, h.iface); err != nil {
-		return err
-	}
-
 	h.config.SSID = ssid
-	hs, err := hostapd.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.config)
+	var err error
+	h.hostapd, err = h.router.ReconfigureHostapd(ctx, h.hostapd, h.config)
 	if err != nil {
-		return errors.Wrap(err, "failed to start hostapd")
+		return errors.Wrap(err, "failed to reconfigure the hostapd server")
 	}
-	h.hostapd = hs
-
+	config := h.hostapd.Config()
+	h.config = &config
 	return nil
 }
