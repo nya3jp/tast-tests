@@ -34,6 +34,24 @@
       "parentUuid": "84e2d339_3b5b6ec8",
       "revId": "b88b0ef5e97fa4f5c90ca0cdc644047f3208676b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a97163_e16a7d08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T02:15:00Z",
+      "side": 1,
+      "message": "Moved to collect the profiling only on the core part (i.e. during the video conference).",
+      "parentUuid": "8ce1d9cc_d1fbdfaf",
+      "revId": "b88b0ef5e97fa4f5c90ca0cdc644047f3208676b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
