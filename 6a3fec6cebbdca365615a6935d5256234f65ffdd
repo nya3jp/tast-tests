@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd2a7ee_f3401cd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2020-10-22T14:56:34Z",
+      "side": 1,
+      "message": "PTAL, see b/161182929#comment30 for context. I don\u0027t have a better option right now...",
+      "revId": "6a3fec6cebbdca365615a6935d5256234f65ffdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
