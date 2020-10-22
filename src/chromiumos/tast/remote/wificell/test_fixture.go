@@ -107,12 +107,8 @@ type TestFixture struct {
 	apID      int
 	capturers map[*APIface]*pcap.Capturer
 
-	// apRouterIDs is reverse map for router identification for two purposes:
-	// 1) We need to know which router the APIface belongs to deconfigure
-	//    AP on correct device;
-	// 2) We need to know (?) a complete list of APIfaces to deconfigure all APs,
-	//    which some tests require.
-	apRouterIDs map[*APIface]int
+	// aps is a set of APs useful for deconfiguring all APs, which some tests require.
+	aps map[*APIface]struct{}
 
 	// netCertStore is initialized lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests need it.
 	netCertStore *netcertstore.Store
@@ -172,9 +168,9 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	defer st.End()
 
 	tf := &TestFixture{
-		dut:         d,
-		capturers:   make(map[*APIface]*pcap.Capturer),
-		apRouterIDs: make(map[*APIface]int),
+		dut:       d,
+		capturers: make(map[*APIface]*pcap.Capturer),
+		aps:       make(map[*APIface]struct{}),
 	}
 	for _, op := range ops {
 		op(tf)
@@ -424,11 +420,11 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		}()
 	}
 
-	ap, err := tf.routers[idx].object.StartAPIface(ctx, name, config)
+	ap, err := NewAPIface(ctx, tf.routers[idx].object, name, config)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
 	}
-	tf.apRouterIDs[ap] = idx
+	tf.aps[ap] = struct{}{}
 
 	if capturer != nil {
 		tf.capturers[ap] = capturer
@@ -449,7 +445,7 @@ func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, ap *APIface) (c
 	if len(tf.routers) == 0 {
 		return ctx, func() {}
 	}
-	ctx, cancel := tf.routers[tf.apRouterIDs[ap]].object.ReserveForStopAPIface(ctx, ap)
+	ctx, cancel := ap.ReserveForStop(ctx)
 	if capturer, ok := tf.capturers[ap]; ok {
 		// Also reserve time for stopping the capturer if it exists.
 		// Noted that CancelFunc returned here is dropped as we rely on its
@@ -468,7 +464,7 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 
 	capturer := tf.capturers[ap]
 	delete(tf.capturers, ap)
-	if err := tf.routers[tf.apRouterIDs[ap]].object.StopAPIface(ctx, ap); err != nil {
+	if err := ap.Stop(ctx); err != nil {
 		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop APIface"))
 	}
 	if capturer != nil {
@@ -476,7 +472,7 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 		}
 	}
-	delete(tf.apRouterIDs, ap)
+	delete(tf.aps, ap)
 	return firstErr
 }
 
@@ -484,7 +480,7 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 // this test fixture.
 func (tf *TestFixture) DeconfigAllAPs(ctx context.Context) error {
 	var firstErr error
-	for ap := range tf.apRouterIDs {
+	for ap := range tf.aps {
 		if err := tf.DeconfigAP(ctx, ap); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to deconfig AP"))
 		}
