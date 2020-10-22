@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de83f1f4_c36d6226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-10-22T04:51:22Z",
+      "side": 1,
+      "message": "Yes, I\u0027m surprised that this was working.",
+      "parentUuid": "958946c2_e37c5306",
+      "range": {
+        "startLine": 159,
+        "startChar": 37,
+        "endLine": 159,
+        "endChar": 48
+      },
+      "revId": "8b8dd287ff0bb3e09b4ce643c0fff24b52f78dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39c85827_bef9122e",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-12T12:31:27Z",
       "side": 1,
       "message": "this is to get rid of the colon?",
+      "revId": "8b8dd287ff0bb3e09b4ce643c0fff24b52f78dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5633129d_ea342f90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-10-22T04:51:22Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "39c85827_bef9122e",
       "revId": "8b8dd287ff0bb3e09b4ce643c0fff24b52f78dd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
