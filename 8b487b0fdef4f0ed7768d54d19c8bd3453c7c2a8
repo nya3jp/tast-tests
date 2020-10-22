@@ -16,6 +16,40 @@
       "message": "I restarted this change and actually fixed it this time.  PTAL.",
       "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5caca615_657ee0f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2020-10-22T22:04:13Z",
+      "side": 1,
+      "message": "LGTM with one comment - happy to punt it to tast-owners.",
+      "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e0273c_033691fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_star_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2020-10-22T22:04:13Z",
+      "side": 1,
+      "message": "Is it the case that a fatal failure in the above rastertostar print test will abort this entire test suite? If rastertostar and rastertostarlm aren\u0027t highly correlated, I would hesitate to tie the fates of these two test cases together.",
+      "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
