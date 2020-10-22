@@ -74,6 +74,7 @@ var UnstableModels = []string{
 	"kefka",
 	// Platform kevin
 	"kevin",
+	"kevin1", // crbug.com/1140145
 	// Platform kukui
 	"krane",
 	// Platform lulu
