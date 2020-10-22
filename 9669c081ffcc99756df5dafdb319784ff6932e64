@@ -1020,6 +1020,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3760d686_534c781b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2020-10-22T19:35:16Z",
+      "side": 1,
+      "message": "s/sue/use/",
+      "parentUuid": "8b9874e4_70fce833",
+      "range": {
+        "startLine": 157,
+        "startChar": 17,
+        "endLine": 157,
+        "endChar": 61
+      },
+      "revId": "9669c081ffcc99756df5dafdb319784ff6932e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c7e183e_437720a2",
