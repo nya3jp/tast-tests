@@ -16,6 +16,46 @@
       "message": "Thanks a lot for the review Greg! PTAL",
       "revId": "b99ceb28ffe928752c2d4beba7e6ab90d0e58517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b13d0032_3e6f837c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-22T15:09:38Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "b99ceb28ffe928752c2d4beba7e6ab90d0e58517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dff05fd_1ef02c42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-22T15:09:38Z",
+      "side": 1,
+      "message": "Should say \"with auth\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 35,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "b99ceb28ffe928752c2d4beba7e6ab90d0e58517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
