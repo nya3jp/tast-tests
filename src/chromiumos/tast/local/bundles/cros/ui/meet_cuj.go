@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
 )
 
@@ -278,6 +279,16 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}(); err != nil {
 		s.Fatal("Failed to skip the permission requests: ", err)
 	}
+
+	prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
+	if err != nil {
+		s.Fatal("Failed to start the profiler: ", err)
+	}
+	defer func() {
+		if err := prof.End(); err != nil {
+			s.Error("Failed to stop profiler: ", err)
+		}
+	}()
 
 	if meet.docs {
 		// Create another browser window and open a Google Docs file.
