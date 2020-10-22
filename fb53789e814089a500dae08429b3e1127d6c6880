@@ -16,6 +16,75 @@
       "message": "PTAL",
       "revId": "fb53789e814089a500dae08429b3e1127d6c6880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0be255_8774195b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-22T10:09:48Z",
+      "side": 1,
+      "message": "arc.ContainerMount is critical at this moment. Are we fine with demoting it?",
+      "range": {
+        "startLine": 37,
+        "startChar": 33,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "fb53789e814089a500dae08429b3e1127d6c6880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a484d7_ea99e9f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-22T10:09:48Z",
+      "side": 1,
+      "message": "Can we inline this call as we did in the original code? We can introduce readCPUSetInfo later if we want to do so.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "fb53789e814089a500dae08429b3e1127d6c6880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f52f23_95361e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-22T10:09:48Z",
+      "side": 1,
+      "message": "Can we inline this call? IIUC we don\u0027t have a plan to add anything else to CPUSet.",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 51
+      },
+      "revId": "fb53789e814089a500dae08429b3e1127d6c6880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
