@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93838a75_957e366e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T12:01:53Z",
+      "side": 1,
+      "message": "Thanks a lot for the review Greg! PTAL",
+      "revId": "b99ceb28ffe928752c2d4beba7e6ab90d0e58517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

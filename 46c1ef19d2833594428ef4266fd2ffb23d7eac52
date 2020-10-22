@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bb9f2d0_8bd33756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T12:01:53Z",
+      "side": 1,
+      "message": "True, thanks for correcting!",
+      "parentUuid": "62f1d156_0094abe3",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1fad9ed_a608a828",
@@ -71,6 +95,24 @@
       "writtenOn": "2020-10-21T16:11:47Z",
       "side": 1,
       "message": "nit: Remove newline",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e9d63fd_30f48213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T12:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1fad9ed_a608a828",
       "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e92a80_0becac57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T12:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b82eff5f_05909ee7",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e6db81e_6644e548",
@@ -109,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e9d5cff_54e4093c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T12:01:53Z",
+      "side": 1,
+      "message": "Great suggestion, thanks!",
+      "parentUuid": "2e6db81e_6644e548",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6923cf3_5fb440d0",
@@ -122,6 +200,24 @@
       "writtenOn": "2020-10-21T16:11:47Z",
       "side": 1,
       "message": "If the curl command returned an error, then this block will always be activated too. We can clean up some noise by making this block only activate when error is nil:\n\n    if err !\u003d nil {\n        s.Error(...)\n    } else if !strings/bytes.Contains(response, authRequiredHeader) {\n        s.Error(...)\n    }",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a1ba93_3d06a612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T12:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6923cf3_5fb440d0",
       "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +245,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d371a8e9_2d915183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T12:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19506f8a_50fa2368",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b9073e1_5f253db9",
@@ -162,6 +282,24 @@
       "writtenOn": "2020-10-21T16:11:47Z",
       "side": 1,
       "message": "Same as above: you can slightly simplify the test by operating on out directly rather than creating a new string.",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b91d81_a253729d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T12:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b9073e1_5f253db9",
       "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -202,6 +340,48 @@
       "writtenOn": "2020-10-21T16:11:47Z",
       "side": 1,
       "message": "As above: If the curl command returned an error, then this block will always be activated too. We can clean up some noise by making this block only activate when error is nil:\n\n    if err !\u003d nil {\n        s.Error(...)\n    } else if !strings/bytes.Contains(response, pageMovedHeader) {\n        s.Error(...)\n    }",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c979566_57246631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T12:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a44969f_8330028f",
+      "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d8b85a4_a8cc1597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_proxy_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2020-10-22T12:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7068378b_1e388ae0",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 33
+      },
       "revId": "46c1ef19d2833594428ef4266fd2ffb23d7eac52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
