@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6b8c50_b06d6d7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-22T07:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0bf6c69_d4e7ecb1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "b6f1fff181b3cd97d22613bcfaba005808b3fe1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e7ca150_a2cfae97",
@@ -115,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b089fd8_2c9dda72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-22T07:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "728162a8_f0369392",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 59
+      },
+      "revId": "b6f1fff181b3cd97d22613bcfaba005808b3fe1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b946d356_6d85f03d",
@@ -128,6 +176,30 @@
       "writtenOn": "2020-10-19T04:03:07Z",
       "side": 1,
       "message": "shutil.Escape(path)",
+      "range": {
+        "startLine": 170,
+        "startChar": 79,
+        "endLine": 170,
+        "endChar": 83
+      },
+      "revId": "b6f1fff181b3cd97d22613bcfaba005808b3fe1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1e525b_43642ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-22T07:49:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b946d356_6d85f03d",
       "range": {
         "startLine": 170,
         "startChar": 79,
