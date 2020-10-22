@@ -16,6 +16,29 @@
       "message": "seems like this gerrit overwrites the commit message for subsequent uploads (unlike gerrit for chromium cls). re-added the cq-depend lines.",
       "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50b917d_41985f4e",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-22T08:34:40Z",
+      "side": 1,
+      "message": "Double negation leads confusion. How about KeepWifiInterfaces?",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 13
+      },
+      "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
