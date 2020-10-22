@@ -80,6 +80,30 @@
       },
       "revId": "9d0791cf166b0e8ac5710c913f60c51a123e4ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b922decc_443dadbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/built_in_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-22T17:25:29Z",
+      "side": 1,
+      "message": "Thanks. To me, this sounds like the external dependency?\n\nLaurent, considering the recent discussion via code review,\nis it possible to add entries of proper nouns / project names etc. containing words considered as offensive to the spreadsheet, and come up with the consensus of the replacement with entire teams?\nE.g., \"master mount\", \"slave mount\", \"keymaster\", \"native bridge\", \"native app\", ... maybe more. There should be \"exact one term/phrase\" replacement, and it should be used consistently wherever.\nIf so, could you drive the discussion, and if so this can be left TODO?",
+      "parentUuid": "f4573e0b_d9627a84",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "9d0791cf166b0e8ac5710c913f60c51a123e4ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
