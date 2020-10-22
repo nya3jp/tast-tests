@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34d3283_6c07e0cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-22T08:09:30Z",
+      "side": 1,
+      "message": "Yes, Cq-Depend will make sure this is atomically committed.",
+      "parentUuid": "6a8fccc0_988c85cc",
+      "revId": "a08e84f9da0674b92d5bc8a5dfb2d379201f0856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1b2e697_872219f0",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-22T07:49:42Z",
       "side": 1,
       "message": "We can avoid making this a breaking API change if we do something like:\n    type PowerTestOption int\n    const (\n        ForceBatteryDischarge PowerTestOption \u003d iota\n        DoNotDisableWifiInterfaces\n    )\n    func PowerTest(ctx context.Context, c *chrome.TestConn, options ...PowerTestOption) (CleanupCallback, error) {\n        // Set up based on finding flag in options slice\n\nNoBatteryDischarge is not used in internal tests, so it should be safe to remove it in this commit without breaking other builds.",
+      "revId": "a08e84f9da0674b92d5bc8a5dfb2d379201f0856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6d10de6_4e1e0441",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-22T08:09:30Z",
+      "side": 1,
+      "message": "I\u0027m fine with either - although, the struct method for default arguments seems more go-like to me and is a bit more extensible. w.r.t. breaking api change, the CLs will be committed atomically, so it shouldn\u0027t be an issue.\n\nAbe-san, do you have a preference?",
+      "parentUuid": "d1b2e697_872219f0",
       "revId": "a08e84f9da0674b92d5bc8a5dfb2d379201f0856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
