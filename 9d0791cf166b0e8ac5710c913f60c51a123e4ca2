@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f735eb0_9bf1c180",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-22T01:31:06Z",
+      "side": 1,
+      "message": "R+\u003dLev for native bridge. Lev, could you take a look?",
+      "revId": "9d0791cf166b0e8ac5710c913f60c51a123e4ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a256347a_8e512446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/built_in_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-22T01:31:06Z",
+      "side": 1,
+      "message": "The term \"native bridge\" is a technical term. Native bridge is designed and developed to support ARC, so it sounds like a target of COIL. I\u0027m ok to rename, as long as they agreed to rename \"builtin bridge\" sometime soon rather than other terms.\nDefer to Lev.\n\n(optional): maybe nice to have a tracking issue for this specific case, and make it a blocker for fixing \"native\" term, because it is not closed within Tast.",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "9d0791cf166b0e8ac5710c913f60c51a123e4ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
