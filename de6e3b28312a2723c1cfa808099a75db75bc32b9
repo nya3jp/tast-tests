@@ -33,6 +33,23 @@
       "message": "Tast LGTM. Defer to Peter.",
       "revId": "de6e3b28312a2723c1cfa808099a75db75bc32b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "214f702f_99cdf242",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-22T06:09:56Z",
+      "side": 1,
+      "message": "Before I submit, Peter, do you reckon this is useful?",
+      "revId": "de6e3b28312a2723c1cfa808099a75db75bc32b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
