@@ -56,6 +56,30 @@
       },
       "revId": "f7461ed07d0839a57ac25fd91b477dc23d414226",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31cbaa7b_43429fe3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2020-10-22T21:36:30Z",
+      "side": 1,
+      "message": "It seems to be normal. Two examples that also use this timeout duration:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2487445/7/src/chromiumos/tast/local/chrome/ui/scanapp/scanapp.go#42\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2481625/9/src/chromiumos/tast/local/chrome/ui/diagnosticsapp/diagnosticsapp.go#42",
+      "parentUuid": "a651ab62_ed4ffd29",
+      "range": {
+        "startLine": 42,
+        "startChar": 88,
+        "endLine": 42,
+        "endChar": 102
+      },
+      "revId": "f7461ed07d0839a57ac25fd91b477dc23d414226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
