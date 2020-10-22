@@ -29,7 +29,8 @@ const (
 	// BootTimeout is the maximum amount of time that ARC is expected to take to boot.
 	// Tests that call New should declare a timeout that's at least this long.
 	// TODO(yusukes,khmel): Change this back to 120 once we optimize ARCVM's boot time with virtio-fs.
-	BootTimeout = 180 * time.Second
+	// TODO(b/161182929): Change this back to 180 once the L1 betty CPU lockup issue is resolved.
+	BootTimeout = 300 * time.Second
 
 	// Time Android init process takes to start. It should be smaller than BootTimeout.
 	androidInitTimeout = 60 * time.Second
