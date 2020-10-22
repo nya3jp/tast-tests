@@ -98,6 +98,15 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	gameOngoing := false
+	defer func() {
+		if gameOngoing {
+			if err := stadiacuj.ExitGame(closeCtx, kb, webview); err != nil {
+				s.Error("Failed to exit game: ", err)
+			}
+		}
+	}()
+
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Hard code the game playing routine.
 		// Enter the menu.
@@ -117,13 +126,10 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		if err := stadiacuj.PressKeyInGame(ctx, kb, "Enter", 20*time.Second); err != nil {
 			s.Fatal("Failed to enter Exploration Mode: ", err)
 		}
+		gameOngoing = true
 		// Game starts. Control the main character to move forward for 30 seconds.
 		if err := stadiacuj.HoldKeyInGame(ctx, kb, "W", 30*time.Second); err != nil {
 			s.Fatal("Failed to move forward: ", err)
-		}
-		// Exit the game.
-		if err := stadiacuj.ExitGame(ctx, kb, webview); err != nil {
-			s.Fatal("Failed to exit game: ", err)
 		}
 		return nil
 	}); err != nil {
@@ -131,15 +137,21 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Check if there is any tab crashed.
-	if err := tabChecker.Check(ctx); err != nil {
+	if err := tabChecker.Check(closeCtx); err != nil {
 		s.Fatal("Tab renderer crashed: ", err)
 	}
 
 	pv := perf.NewValues()
-	if err := recorder.Record(ctx, pv); err != nil {
+	if err := recorder.Record(closeCtx, pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save the perf data: ", err)
 	}
+
+	// Exit the game.
+	if err := stadiacuj.ExitGame(closeCtx, kb, webview); err != nil {
+		s.Error("Failed to exit game: ", err)
+	}
+	gameOngoing = false
 }

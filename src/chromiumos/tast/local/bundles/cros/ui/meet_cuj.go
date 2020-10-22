@@ -279,6 +279,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to skip the permission requests: ", err)
 	}
 
+	meetingOngoing := true
+	defer func() {
+		if meetingOngoing {
+			if err := meetConn.CloseTarget(closeCtx); err != nil {
+				s.Error("Failed to close the meeting: ", err)
+			}
+		}
+	}()
+
 	if meet.docs {
 		// Create another browser window and open a Google Docs file.
 		docsConn, err := cr.NewConn(ctx, docsURL, cdputil.WithNewWindow())
@@ -543,10 +552,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
 			return errors.Wrap(err, "failed to wait")
 		}
-		// Close the Meet window to finish meeting.
-		if err := meetConn.CloseTarget(ctx); err != nil {
-			return errors.Wrap(err, "failed to close Meet")
-		}
 		if err := <-errc; err != nil {
 			return errors.Wrap(err, "failed to collect GPU counters")
 		}
@@ -566,4 +571,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
 	}
+
+	// Close the Meet window to finish meeting.
+	if err := meetConn.CloseTarget(closeCtx); err != nil {
+		s.Error("Failed to close Meet: ", err)
+	}
+	meetingOngoing = false
 }
