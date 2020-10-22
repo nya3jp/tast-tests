@@ -60,16 +60,16 @@ func AudioBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to list alsa output devices: ", err)
 	}
 
+	s.Log("Play zeros with alsa device")
+	if err := cont.Command(ctx, "aplay", "-r", "48000", "-c", "2", "-d", "3", "-f", "dat", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to playback with alsa devices: ", err)
+	}
+
 	alsaSinksPattern := regexp.MustCompile("1\talsa_output.hw_0_0\tmodule-alsa-sink.c\ts16le 2ch 48000Hz\t(IDLE|SUSPENDED)\n")
 	if out, err := cont.Command(ctx, "pactl", "list", "sinks", "short").Output(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to list pulseaudio sinks: ", err)
 	} else if res := alsaSinksPattern.Match(out); !res {
 		s.Fatal("Failed to load alsa device to pulseaudio:", string(out))
-	}
-
-	s.Log("Play zeros with alsa device")
-	if err := cont.Command(ctx, "aplay", "-r", "48000", "-c", "2", "-d", "3", "-f", "dat", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to playback with alsa devices: ", err)
 	}
 
 	s.Log("List alsa input devices")
