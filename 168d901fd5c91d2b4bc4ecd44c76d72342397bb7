@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07080af4_c28bc5e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-22T22:54:55Z",
+      "side": 1,
+      "message": "please use the new generated params for these params",
+      "revId": "168d901fd5c91d2b4bc4ecd44c76d72342397bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f47dd3_aafebe79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-22T22:54:55Z",
+      "side": 1,
+      "message": "download_buster?",
+      "revId": "168d901fd5c91d2b4bc4ecd44c76d72342397bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af22e5b0_d5b83189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-22T22:54:55Z",
+      "side": 1,
+      "message": "Can you verify it inside the container too? (df command)",
+      "revId": "168d901fd5c91d2b4bc4ecd44c76d72342397bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
