@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe5705ce_712fbfeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-22T21:09:50Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "parentUuid": "43874692_6d9b2dc1",
+      "revId": "e4d951047759980a159862c3182662bc7e4a7d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdbfe3a7_b17fa6bc",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "967324d1_057de87c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/launch_diagnostics_from_launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-22T21:09:50Z",
+      "side": 1,
+      "message": "Since I\u0027d like to differentiate the search query and the app name, unfortunately not.",
+      "parentUuid": "bdbfe3a7_b17fa6bc",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "e4d951047759980a159862c3182662bc7e4a7d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9964f1c_d2d2e09d",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-10-22T20:16:21Z",
       "side": 1,
       "message": "nit: give this a more descriptive definition. Generally labelling something as a catch all for common functions is not a good idea. May say it is used for controlling the ui of the diagonistics swa",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 68
+      },
+      "revId": "e4d951047759980a159862c3182662bc7e4a7d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4d48c48_f6604ccc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-22T21:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9964f1c_d2d2e09d",
       "range": {
         "startLine": 5,
         "startChar": 3,
