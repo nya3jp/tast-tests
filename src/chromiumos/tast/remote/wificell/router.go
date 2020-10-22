@@ -41,7 +41,6 @@ type Router struct {
 	host          *ssh.Conn
 	name          string
 	board         string
-	busySubnet    map[byte]struct{}
 	phys          map[int]*iw.Phy       // map from phy idx to iw.Phy.
 	availIfaces   map[string]*iw.NetDev // map from interface name to iw.NetDev.
 	busyIfaces    map[string]*iw.NetDev // map from interface name to iw.NetDev.
@@ -62,7 +61,6 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 	r := &Router{
 		host:          host,
 		name:          name,
-		busySubnet:    make(map[byte]struct{}),
 		phys:          make(map[int]*iw.Phy),
 		availIfaces:   make(map[string]*iw.NetDev),
 		busyIfaces:    make(map[string]*iw.NetDev),
@@ -395,65 +393,109 @@ func (r *Router) monitorOnInterface(ctx context.Context, iface string) (*iw.NetD
 	return r.netDevWithPhyID(ctx, phyID, iw.IfTypeMonitor)
 }
 
-// StartAPIface starts a hostapd service which includes hostapd and dhcpd. It will select a suitable
-// phy and re-use or create interface on the phy. Name is used on the path to store logs, config files
-// or related resources. The handle object for the service is returned.
-// After getting an APIface instance, h, the caller should call h.StopAPIfaceClose() at the end,
-// and use the shortened ctx (provided by h.ReserveForStopAPIface()) before h.StopAPIfaceClose()
-// to reserve time for it to run.
-func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Config) (*APIface, error) {
-	ctx, st := timing.Start(ctx, "router.StartAPIface")
-	defer st.End()
+// StartHostapd starts the hostapd server.
+func (r *Router) StartHostapd(ctx context.Context, name string, conf *hostapd.Config) (_ *hostapd.Server, retErr error) {
+	if err := conf.SecurityConfig.InstallRouterCredentials(ctx, r.host, r.workDir()); err != nil {
+		return nil, errors.Wrap(err, "failed to install router credentials")
+	}
 
-	// Reserve required resources.
 	nd, err := r.netDev(ctx, conf.Channel, iw.IfTypeManaged)
 	if err != nil {
 		return nil, err
 	}
 	iface := nd.IfName
 	r.setIfaceBusy(iface)
+	defer func() {
+		if retErr != nil {
+			r.freeIface(iface)
+		}
+	}()
+	return r.startHostapdOnIface(ctx, iface, name, conf)
+}
 
-	idx, err := r.reserveSubnetIdx()
+func (r *Router) startHostapdOnIface(ctx context.Context, iface, name string, conf *hostapd.Config) (_ *hostapd.Server, retErr error) {
+	hs, err := hostapd.StartServer(ctx, r.host, name, iface, r.workDir(), conf)
 	if err != nil {
-		r.freeIface(iface)
-		return nil, err
+		return nil, errors.Wrap(err, "failed to start hostapd server")
 	}
+	defer func(ctx context.Context) {
+		if retErr != nil {
+			if err := hs.Close(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to stop hostapd server while StartHostapd has failed: ", err)
+			}
+		}
+	}(ctx)
+	ctx, cancel := hs.ReserveForClose(ctx)
+	defer cancel()
 
-	h := &APIface{
-		host:      r.host,
-		name:      name,
-		iface:     iface,
-		workDir:   r.workDir(),
-		subnetIdx: idx,
-		config:    conf,
+	if err := r.iwr.SetTxPowerAuto(ctx, iface); err != nil {
+		return nil, errors.Wrap(err, "failed to set txpower to auto")
 	}
-
-	// Note that we don't need to reserve time for clean up as h.start() reserves time to clean
-	// up itself and the rest of cleaning up in r.StopAPIface() does not limited by ctx.
-	if err := h.start(ctx); err != nil {
-		r.StopAPIface(ctx, h)
-		return nil, err
-	}
-	return h, nil
+	return hs, nil
 }
 
-// ReserveForStopAPIface returns a shortened ctx with cancel function.
-// The shortened ctx is used for running things before r.StopAPIface() to reserve time for it to run.
-func (r *Router) ReserveForStopAPIface(ctx context.Context, h *APIface) (context.Context, context.CancelFunc) {
-	return h.reserveForStop(ctx)
+// StopHostapd stops the hostapd server.
+func (r *Router) StopHostapd(ctx context.Context, hs *hostapd.Server) error {
+	var firstErr error
+	iface := hs.Interface()
+	if err := hs.Close(ctx); err != nil {
+		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop hostapd"))
+	}
+	collectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, iface))
+	r.freeIface(iface)
+	return firstErr
 }
 
-// StopAPIface stops the InterfaceHandle, release the subnet and mark the interface
-// as free to re-use.
-func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
-	ctx, st := timing.Start(ctx, "router.StopAPIface")
-	defer st.End()
+// ReconfigureHostapd restarts the hostapd server with the new config. It preserves the interface and the name of the old hostapd server.
+func (r *Router) ReconfigureHostapd(ctx context.Context, hs *hostapd.Server, conf *hostapd.Config) (_ *hostapd.Server, retErr error) {
+	iface := hs.Interface()
+	name := hs.Name()
+	if err := r.StopHostapd(ctx, hs); err != nil {
+		return nil, errors.Wrap(err, "failed to stop hostapd server")
+	}
+	r.setIfaceBusy(iface)
+	defer func() {
+		if retErr != nil {
+			r.freeIface(iface)
+		}
+	}()
+	return r.startHostapdOnIface(ctx, iface, name, conf)
+}
 
-	err := h.stop(ctx)
-	// Free resources even if something went wrong in stop.
-	r.freeSubnetIdx(h.subnetIdx)
-	r.freeIface(h.iface)
-	return err
+// StartDHCP starts the DHCP server and configures the server IP.
+func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask) (_ *dhcp.Server, retErr error) {
+	if err := r.ipr.FlushIP(ctx, iface); err != nil {
+		return nil, err
+	}
+	maskLen, _ := mask.Size()
+	if err := r.ipr.AddIP(ctx, iface, serverIP, maskLen, ip.AddIPBroadcast(broadcastIP)); err != nil {
+		return nil, err
+	}
+	defer func(ctx context.Context) {
+		if retErr != nil {
+			if err := r.ipr.FlushIP(ctx, iface); err != nil {
+				testing.ContextLogf(ctx, "Failed to flush the interface %s while StartDHCP has failed: %v", iface, err)
+			}
+		}
+	}(ctx)
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
+	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start DHCP server")
+	}
+	return ds, nil
+}
+
+// StopDHCP stops the DHCP server and flushes the interface.
+func (r *Router) StopDHCP(ctx context.Context, ds *dhcp.Server) error {
+	var firstErr error
+	iface := ds.Interface()
+	if err := ds.Close(ctx); err != nil {
+		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop dhcpd"))
+	}
+	collectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, iface))
+	return firstErr
 }
 
 // StartCapture starts a packet capturer.
@@ -644,23 +686,6 @@ func (r *Router) freeIface(iface string) {
 	delete(r.busyIfaces, iface)
 }
 
-// reserveSubnetIdx finds a free subnet index and reserves it.
-func (r *Router) reserveSubnetIdx() (byte, error) {
-	for i := byte(0); i <= 255; i++ {
-		if _, ok := r.busySubnet[i]; ok {
-			continue
-		}
-		r.busySubnet[i] = struct{}{}
-		return i, nil
-	}
-	return 0, errors.New("subnet index exhausted")
-}
-
-// freeSubnetIdx marks the subnet index as unused.
-func (r *Router) freeSubnetIdx(i byte) {
-	delete(r.busySubnet, i)
-}
-
 // logsToCollect is the list of files on router to collect.
 var logsToCollect = []string{
 	"/var/log/messages",
@@ -766,28 +791,6 @@ func hostBoard(ctx context.Context, host *ssh.Conn) (string, error) {
 		}
 	}
 	return "", errors.Errorf("no %s key found in %s", crosReleaseBoardKey, lsbReleasePath)
-}
-
-// ChangeAPIfaceSubnetIdx restarts the dhcp server with a different subnet index.
-// Note that a call of StopAPIface is still needed on failure.
-func (r *Router) ChangeAPIfaceSubnetIdx(ctx context.Context, h *APIface) (retErr error) {
-	oldIdx := h.subnetIdx
-	newIdx, err := r.reserveSubnetIdx()
-	if err != nil {
-		return errors.Wrap(err, "failed to reserve a new subnet index")
-	}
-	defer func() {
-		// On failure, the subnetIdx of h will not change so we should free the new
-		// index here and let the old index be freed in the future StopAPIface call.
-		if retErr != nil {
-			r.freeSubnetIdx(newIdx)
-		} else {
-			r.freeSubnetIdx(oldIdx)
-		}
-	}()
-
-	testing.ContextLogf(ctx, "changing AP subnet index from %d to %d", oldIdx, newIdx)
-	return h.changeSubnetIdx(ctx, newIdx)
 }
 
 // MAC returns the MAC address of iface on this router.

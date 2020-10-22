@@ -247,6 +247,11 @@ func (s *Server) Interface() string {
 	return s.iface
 }
 
+// Name returns the name used by the hostapd.
+func (s *Server) Name() string {
+	return s.name
+}
+
 // Config returns the config used by the hostapd.
 func (s *Server) Config() Config {
 	return *s.conf
