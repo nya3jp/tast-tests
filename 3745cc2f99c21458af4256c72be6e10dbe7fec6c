@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "204039ce_e826a3cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-22T21:21:20Z",
+      "side": 1,
+      "message": "nit: How about getting rid of this and relying on the deferred call to close it? Prefer to have one piece of code to do the same thing.",
+      "revId": "3745cc2f99c21458af4256c72be6e10dbe7fec6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
