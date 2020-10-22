@@ -67,6 +67,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f3f468a8_61488a8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-22T08:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e7ca150_a2cfae97",
+      "revId": "b6f1fff181b3cd97d22613bcfaba005808b3fe1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8b19a054_13e950d0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -112,6 +130,24 @@
       "writtenOn": "2020-10-16T22:18:14Z",
       "side": 1,
       "message": "remove the TODO",
+      "revId": "b6f1fff181b3cd97d22613bcfaba005808b3fe1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93842f1b_65d4850f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-22T08:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17704f39_ee7c8a62",
       "revId": "b6f1fff181b3cd97d22613bcfaba005808b3fe1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
