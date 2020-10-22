@@ -63,6 +63,30 @@
       },
       "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee42431b_2cd8f6bd",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-22T15:08:56Z",
+      "side": 1,
+      "message": "\u003e Keep implies that they will be on\n\nOh really... Then maybe \"UnchangeWifiInterfaces\"?\n\nBTW, then (optional), I think it is preferred to make \"UnchangeWifiInterfaces\" as default.\nI guess your intention of making \"Disable*\" default is to adapt the current situation, but at the same time, in general go prefers everything explicit, and making \"no-op\" default sounds like a common approach. Specifically, anyways you have to update all this use in this CL. WDYT?",
+      "parentUuid": "edfe70f8_9e3ee30a",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 13
+      },
+      "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
