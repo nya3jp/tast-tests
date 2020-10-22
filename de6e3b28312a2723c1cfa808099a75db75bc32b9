@@ -16,6 +16,23 @@
       "message": "Peter, is this metric useful to you?",
       "revId": "de6e3b28312a2723c1cfa808099a75db75bc32b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d39e351_f07b76cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-22T01:06:58Z",
+      "side": 1,
+      "message": "Tast LGTM. Defer to Peter.",
+      "revId": "de6e3b28312a2723c1cfa808099a75db75bc32b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
