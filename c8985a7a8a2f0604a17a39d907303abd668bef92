@@ -33,6 +33,23 @@
       "message": "Looks good to me.",
       "revId": "c8985a7a8a2f0604a17a39d907303abd668bef92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6722dd5_db0a88dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T16:49:37Z",
+      "side": 1,
+      "message": "cc: yichenz for the edit of meet_cuj.go",
+      "revId": "c8985a7a8a2f0604a17a39d907303abd668bef92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
