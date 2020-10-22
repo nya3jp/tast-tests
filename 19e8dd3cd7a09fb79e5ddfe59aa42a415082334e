@@ -16,6 +16,23 @@
       "message": "Is this a bug of some kind?",
       "revId": "19e8dd3cd7a09fb79e5ddfe59aa42a415082334e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "043dd067_f59d4862",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-22T05:33:26Z",
+      "side": 1,
+      "message": "Maybe add a brief comment explaining it.",
+      "revId": "19e8dd3cd7a09fb79e5ddfe59aa42a415082334e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
