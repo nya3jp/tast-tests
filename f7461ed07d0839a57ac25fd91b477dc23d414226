@@ -33,6 +33,29 @@
       "message": "LGTM, please also get code review from your teammate/peer.",
       "revId": "f7461ed07d0839a57ac25fd91b477dc23d414226",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a651ab62_ed4ffd29",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2020-10-22T19:17:14Z",
+      "side": 1,
+      "message": "LG but is it normal to have such a long timeout for this kind of test?",
+      "range": {
+        "startLine": 42,
+        "startChar": 88,
+        "endLine": 42,
+        "endChar": 102
+      },
+      "revId": "f7461ed07d0839a57ac25fd91b477dc23d414226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
