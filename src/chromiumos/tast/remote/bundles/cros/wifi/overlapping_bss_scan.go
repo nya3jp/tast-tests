@@ -150,15 +150,19 @@ func OverlappingBSSScan(ctx context.Context, s *testing.State) {
 		pr := remoteping.NewRemoteRunner(s.DUT().Conn())
 		var count int
 		var desc string
+		var pingLogPath string
 		if obss {
 			desc = "with OBSS scan"
 			count = pingCountOBSS
+			pingLogPath = "ping_obss_enabled.log"
 		} else {
 			desc = "without OBSS scan"
 			count = pingCountNoOBSS
+			pingLogPath = "ping_obss_disabled.log"
 		}
 		s.Logf("Pinging router %s, count=%d, interval=%fs", desc, count, pingInterval)
-		pingStats, err := pr.Ping(ctx, ap.ServerIP().String(), ping.Count(count), ping.Interval(pingInterval))
+		pingStats, err := pr.Ping(ctx, ap.ServerIP().String(), ping.Count(count),
+			ping.Interval(pingInterval), ping.SaveOutput(pingLogPath))
 		if err != nil {
 			return nil, nil, errors.Wrapf(err, "failed to ping router %s", desc)
 		}

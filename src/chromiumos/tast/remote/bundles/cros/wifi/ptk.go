@@ -113,7 +113,8 @@ func PTK(ctx context.Context, s *testing.State) {
 	s.Logf("Pinging with count=%d interval=%g second(s)", param.pingCount, param.pingInterval)
 	// As we need to record ping loss, we cannot use tf.PingFromDUT() here.
 	pr := remoteping.NewRemoteRunner(s.DUT().Conn())
-	res, err := pr.Ping(ctx, ap.ServerIP().String(), ping.Count(param.pingCount), ping.Interval(param.pingInterval))
+	res, err := pr.Ping(ctx, ap.ServerIP().String(), ping.Count(param.pingCount),
+		ping.Interval(param.pingInterval), ping.SaveOutput("ptk_ping.log"))
 	if err != nil {
 		s.Fatal("Failed to ping from DUT: ", err)
 	}
