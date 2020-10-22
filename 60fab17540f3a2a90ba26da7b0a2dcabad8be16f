@@ -33,6 +33,24 @@
       "message": "Code lgtm. However, I\u0027m wondering if you have a plan to use this \"flexibility\" in near future. I mean, if StartActivityWithWindowState is not (and will not be) used anywhere else, this change is over-generalization because it introduces a new arg which is always the same IMO.\nBut it\u0027s up to you.",
       "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "699e387d_3001230c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-10-22T22:57:11Z",
+      "side": 1,
+      "message": "ah so the purpose of this, is that it should help with testing ag/12735143 (testing an allowlist of apps).",
+      "parentUuid": "9e8d79b9_d9b5b192",
+      "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
