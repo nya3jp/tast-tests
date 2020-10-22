@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d43538_d75a14c9",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2020-10-22T05:31:42Z",
+      "side": 1,
+      "message": "Is this a bug of some kind?",
+      "revId": "19e8dd3cd7a09fb79e5ddfe59aa42a415082334e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
