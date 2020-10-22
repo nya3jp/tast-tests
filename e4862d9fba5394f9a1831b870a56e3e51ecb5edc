@@ -88,6 +88,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2968c749_cc3e135b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-22T01:01:00Z",
+      "side": 1,
+      "message": "Sorry that I not very familiar with golang. Is there any built-in multiplex reader that can help poll from multiple source simultaneously? Or I should use select-case for this?",
+      "parentUuid": "338a39cb_f7bf0216",
+      "revId": "e4862d9fba5394f9a1831b870a56e3e51ecb5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d50a418f_45177fef",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/its.go",
         "patchSetId": 8

@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2f8bb8b_d2fabc52",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/adb",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-22T01:01:00Z",
+      "side": 0,
+      "message": "This adb is used on host chromeOS sdk chroot environment.\nNot sure if copy adb from DUT\u0027s test image to host is a good idea or not.\nAlso the CTS autotest also use adb download from gs path:\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/cros/tradefed/tradefed_constants.py;rcl\u003deb5586094d7f8cfb3fc3c67f4729cfdfba0950fe;l\u003d10",
+      "parentUuid": "02ed82bb_8b0e37a5",
+      "revId": "79526c8b9a15e3b9d67276816d436e824ca8a07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0e8583f_67b10623",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/android-cts-verifier-9.0_r13-linux_x86-arm.zip",
         "patchSetId": 8
