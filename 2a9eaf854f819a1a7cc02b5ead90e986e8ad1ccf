@@ -16,6 +16,23 @@
       "message": "Just fixed up the commit message a little.",
       "revId": "2a9eaf854f819a1a7cc02b5ead90e986e8ad1ccf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5630050d_40d33812",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-22T19:20:10Z",
+      "side": 1,
+      "message": "The failure has nothing to do with this change.\n\n\n10/22 11:17:34.846 INFO |             utils:0304| [stdout] firmware.FpSensor                                        [ FAIL ] FPTPM seed is not set; output \"FPMCU encryption status: 0x00000000\\nValid flags:             0x00000001 FPTPM_seed_set\\n\" doesn\u0027t match regex \"FPMCU encryption status: 0x[a-f0-9]{7}1(.+)FPTPM_seed_set\"",
+      "revId": "2a9eaf854f819a1a7cc02b5ead90e986e8ad1ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
