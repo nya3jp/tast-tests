@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92565ad_fe23471d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:51:21Z",
+      "side": 1,
+      "message": "sorry if I wasn\u0027t clear.  \u0027ptr\u0027 isn\u0027t a good word for a variable like this. Consider using \u0027proc\u0027 or \u0027p\u0027.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 5
+      },
+      "revId": "7dc8bae66506ad5dab1bc28c6379e398b7bc09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f758265_9eb5d9cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:51:21Z",
+      "side": 1,
+      "message": "Please check the errors.\n  procs, err :\u003d chrome.GetRendererProcesses()\n  if err !\u003d nil {\n    return errors.Wrapf(err, \"failed to get the renderer processes\")\n  }",
+      "range": {
+        "startLine": 109,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 9
+      },
+      "revId": "7dc8bae66506ad5dab1bc28c6379e398b7bc09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c11f3f_6610c267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:51:21Z",
+      "side": 1,
+      "message": "nit: it is not a news anymore.  maybe \"settingsConn\"?  (or just \"conn1\" is good enough).",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 9
+      },
+      "revId": "7dc8bae66506ad5dab1bc28c6379e398b7bc09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92b3ecf8_e3fcdd2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:51:21Z",
+      "side": 1,
+      "message": "It is a bit strange to register DumpUITreeOnError here.  You could move above, before \"newsConn\" is created.",
+      "revId": "7dc8bae66506ad5dab1bc28c6379e398b7bc09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d316fd_4512cb3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sched/core_sched_tag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T22:51:21Z",
+      "side": 1,
+      "message": "similarly, not the gmail page anymore.  Maybe versionConn, or conn2.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 10
+      },
+      "revId": "7dc8bae66506ad5dab1bc28c6379e398b7bc09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
