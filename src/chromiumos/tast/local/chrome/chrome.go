@@ -28,6 +28,7 @@ import (
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -690,6 +691,16 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	}
 	if err := tconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "failed to wait for the ready state")
+	}
+
+	// Ensures that display is on because UI tests need real output.
+	if err := testexec.CommandContext(ctx, "dbus-send", "--system",
+		"--type=method_call",
+		"--dest=org.chromium.PowerManager",
+		"/org/chromium/PowerManager",
+		"org.chromium.PowerManager.HandleUserActivity",
+		"int32:0").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to power up display")
 	}
 	return nil
 }
