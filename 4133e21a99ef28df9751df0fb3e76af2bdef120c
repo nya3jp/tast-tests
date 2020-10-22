@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00eb3e7a_8b589940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-22T08:30:13Z",
+      "side": 1,
+      "message": "Aloop",
+      "range": {
+        "startLine": 49,
+        "startChar": 28,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d79901_b8804441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-22T08:30:13Z",
+      "side": 1,
+      "message": "Set up",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db11945f_459a5bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-22T08:30:13Z",
+      "side": 1,
+      "message": "How about \"ts\"?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 4
+      },
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65800dff_2d78fea4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-22T08:30:13Z",
+      "side": 1,
+      "message": "Reserve some time for defer with ctx:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8c2422_9592562e",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-22T08:30:13Z",
+      "side": 1,
+      "message": "Are these spec audio file dependent? If so, they should be part of input parameters.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d386b5_e5f699ae",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-22T08:30:13Z",
+      "side": 1,
+      "message": "Is it defined?",
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a49b486_b9aa4101",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-22T08:30:13Z",
+      "side": 1,
+      "message": "Do we need to get aloop node using findAloopInputNode() for each polling? Can\u0027t we just use the aloopInputNode object previously assigned?",
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f728cf0_b8f2f2df",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-22T08:30:13Z",
+      "side": 1,
+      "message": "active Aloop",
+      "range": {
+        "startLine": 75,
+        "startChar": 37,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
