@@ -51,6 +51,24 @@
       "message": "Could you avoid using internal binary data?\n\nHere\u0027s the guide line:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#data-files",
       "revId": "79526c8b9a15e3b9d67276816d436e824ca8a07e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "638a0b4a_111e7511",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/android-cts-verifier-9.0_r13-linux_x86-arm.zip",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-10-22T01:08:08Z",
+      "side": 0,
+      "message": "It seems that download external data in remote test(very common for local test though) is still not a stable feature from the latest reply here:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1111251\n@nya can you some comment on this? Will the external data fix target M88?",
+      "parentUuid": "b0e8583f_67b10623",
+      "revId": "79526c8b9a15e3b9d67276816d436e824ca8a07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
