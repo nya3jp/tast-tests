@@ -16,6 +16,24 @@
       "message": "Ching-lin can you take a look?\n\nSome questions: I\u0027m not familiar with the details of the test, but I wonder if it makes sense to collect perf profiles separately in different test stages (if there\u0027s any)?\n\nIf we collect one big perf file for the whole test run, it\u0027s much harder to tell what actually happened when the test did different operations, because all the event samples would be scrambled together.",
       "revId": "b88b0ef5e97fa4f5c90ca0cdc644047f3208676b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce1d9cc_d1fbdfaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-22T01:42:15Z",
+      "side": 1,
+      "message": "The current mechanism of profiler package only allows to save a single file.  And personally, I don\u0027t think it\u0027s great to split perf data into multiple files -- rather, I think it\u0027s better to focus only on the part where we want to collect the profile.\n\nSo what do we care?  Is it only for the conference session?  Then maybe it should be done slightly later.",
+      "parentUuid": "84e2d339_3b5b6ec8",
+      "revId": "b88b0ef5e97fa4f5c90ca0cdc644047f3208676b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
