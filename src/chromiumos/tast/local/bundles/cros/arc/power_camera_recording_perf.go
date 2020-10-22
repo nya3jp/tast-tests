@@ -95,7 +95,7 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
-	sup.Add(setup.PowerTest(ctx, tconn, batteryMode))
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{Battery: batteryMode}))
 
 	// Install camera testing app.
 	a := s.PreValue().(arc.PreData).ARC

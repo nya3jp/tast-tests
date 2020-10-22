@@ -120,9 +120,26 @@ const (
 	ForceBatteryDischarge
 )
 
+// WifiInterfacesMode describes how to setup WiFi interfaces for a test.
+type WifiInterfacesMode int
+
+const (
+	// DisableWifiInterfaces indicates that WiFi interfaces should be disabled.
+	DisableWifiInterfaces WifiInterfacesMode = iota
+
+	// DoNotDisableWifiInterfaces indicates that WiFi interfaces should be left in the same state.
+	DoNotDisableWifiInterfaces
+)
+
+// PowerTestOptions describes how to set up a power test.
+type PowerTestOptions struct {
+	Battery BatteryDischargeMode
+	Wifi    WifiInterfacesMode
+}
+
 // PowerTest configures a DUT to run a power test by disabling features that add
 // noise, and consistently configuring components that change power draw.
-func PowerTest(ctx context.Context, c *chrome.TestConn, option BatteryDischargeMode) (CleanupCallback, error) {
+func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions) (CleanupCallback, error) {
 	return Nested(ctx, "power test", func(s *Setup) error {
 		s.Add(DisableService(ctx, "powerd"))
 		s.Add(DisableService(ctx, "update-engine"))
@@ -131,8 +148,10 @@ func PowerTest(ctx context.Context, c *chrome.TestConn, option BatteryDischargeM
 		s.Add(SetBacklightLux(ctx, 150))
 		s.Add(SetKeyboardBrightness(ctx, 24))
 		s.Add(MuteAudio(ctx))
-		s.Add(DisableWiFiInterfaces(ctx))
-		if option == ForceBatteryDischarge {
+		if options.Wifi == DisableWifiInterfaces {
+			s.Add(DisableWiFiInterfaces(ctx))
+		}
+		if options.Battery == ForceBatteryDischarge {
 			s.Add(SetBatteryDischarge(ctx, 2.0))
 		}
 		s.Add(DisableBluetooth(ctx))
