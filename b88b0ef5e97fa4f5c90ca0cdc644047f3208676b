@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e2d339_3b5b6ec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2020-10-22T01:39:03Z",
+      "side": 1,
+      "message": "Ching-lin can you take a look?\n\nSome questions: I\u0027m not familiar with the details of the test, but I wonder if it makes sense to collect perf profiles separately in different test stages (if there\u0027s any)?\n\nIf we collect one big perf file for the whole test run, it\u0027s much harder to tell what actually happened when the test did different operations, because all the event samples would be scrambled together.",
+      "revId": "b88b0ef5e97fa4f5c90ca0cdc644047f3208676b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
