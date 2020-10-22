@@ -183,12 +183,6 @@ func launchAppForAmazonKindle(ctx context.Context, s *testing.State, tconn *chro
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
 		s.Log("notNowButton doesn't exist: ", err)
-		// Check for send OTP button
-		if err := sendOTPButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-			s.Log("Send OTP Button doesn't exist: ", err)
-		} else {
-			s.Error("Failed to signed into the app")
-		}
 	} else if err := notNowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on notNowButton: ", err)
 	}
@@ -199,6 +193,14 @@ func launchAppForAmazonKindle(ctx context.Context, s *testing.State, tconn *chro
 		s.Log("dimissButton doesn't exists: ", err)
 	} else if err := dimissButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on dimissButton: ", err)
+	}
+
+	// Check for send OTP button
+	if err := sendOTPButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Send OTP Button doesn't exist: ", err)
+	} else {
+		s.Log("Send OTP Button does exist")
+		return
 	}
 
 	// Check for captcha.
