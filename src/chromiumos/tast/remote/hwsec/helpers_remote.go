@@ -82,6 +82,10 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 		}
 	}
 
+	if _, err := h.r.Run(ctx, "stop", "ui"); err != nil {
+		return errors.Wrap(err, "failed to unmount users")
+	}
+
 	if _, err := h.r.Run(ctx, "cryptohome", "--action=unmount"); err != nil {
 		return errors.Wrap(err, "failed to unmount users")
 	}
