@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49d74fe6_85ab9ad1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-10-23T11:06:28Z",
+      "side": 1,
+      "message": "Basically LGTM, but please see my comment in the code.",
+      "revId": "28e0ba3d921d18cec613eef4c13820bfd3c53731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
