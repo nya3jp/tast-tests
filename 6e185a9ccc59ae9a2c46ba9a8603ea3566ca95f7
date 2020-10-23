@@ -16,6 +16,92 @@
       "message": "Hey Jun,\n\nI know that you have done stuff with perf tests before so I added you as reviewer. This is just a port from autotest. Is this all I need to do to get results in crosbolt? I have seen some mention of \"src/third_party/autotest/files/tko/perf_upload/perf_dashboard_config.json\", but it does not look to have any arc tests listed in it. I assume it is only needed for the Chrome Performance Dashboard and not crosbolt?\n\nThanks,\nBrendan",
       "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8a3d9f_84ba5eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T21:23:46Z",
+      "side": 1,
+      "message": "I found this very similar to platform.ReportDiskUsage which monitors and reports the disk usage (though, it does not check android image file size).  It might make sense to integrate into that test rather than having this as an independent case?\n\nstevenjb@, could you take a look or find a reviewer for this?",
+      "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "848fdd44_bb3ef7de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/system_raw_image_size_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T21:23:46Z",
+      "side": 1,
+      "message": "I think this can be done through os.Stat.\n  finfo, err :\u003d os.Stat(\"/opt/google/containers/android/system.raw.img\")\n  if err !\u003d nil {\n    s.Fatal(\"...\")\n  }\n  systemSize :\u003d finfo.Size()\n\nAny particular reason to avoid this?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 60
+      },
+      "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7f9448_c6f90c70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/system_raw_image_size_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T21:23:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc7cca5_9148c7fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/system_raw_image_size_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T21:23:46Z",
+      "side": 1,
+      "message": "nit: rootfs info is already reported through platform.ReportDiskUsage test case.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
