@@ -16,6 +16,23 @@
       "message": "Meenakshi is aware this failure and working on the fix.",
       "revId": "22a5a678ff3cb350ad7c2e1a1c879743f8f90d26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b650676d_2aa6a956",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-10-23T23:48:25Z",
+      "side": 1,
+      "message": "Actually there is a fix in the queue. Is it fine to wait for a couple of more days?\n\ncrrev.com/c/2492524",
+      "revId": "22a5a678ff3cb350ad7c2e1a1c879743f8f90d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
