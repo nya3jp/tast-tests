@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15bffd89_8af3e143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-23T05:51:24Z",
+      "side": 1,
+      "message": "Verified with chromeos6-row12-rack6-host9.cros with R86-13421.75.0 image + R86 branch tast/tast-tests code.",
+      "revId": "915820c58f0c846c161d602bc9f59ec996867644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
