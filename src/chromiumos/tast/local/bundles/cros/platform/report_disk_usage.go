@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"context"
 	"io/ioutil"
+	"path/filepath"
 	"runtime"
 	"sort"
 	"strconv"
@@ -90,17 +91,21 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 	case "arm":
 		metrics["/usr/lib/"] = "bytes_lib"
 	default:
-		s.Errorf("unsupported architecture %q", arch)
+		s.Errorf("Unsupported architecture %q", arch)
 	}
 	if arc.Supported() {
 		if t, ok := arc.Type(); ok {
 			switch t {
 			case arc.Container:
 				metrics[arc.ARCPath] = "bytes_arc"
+				metrics[filepath.Join(arc.ARCPath, "system.raw.img")] = "bytes_arc_system_raw_img"
+				metrics[filepath.Join(arc.ARCPath, "vendor.raw.img")] = "bytes_arc_vendor_raw_img"
 			case arc.VM:
 				metrics[arc.ARCVMPath] = "bytes_arc"
+				metrics[filepath.Join(arc.ARCVMPath, "system.raw.img")] = "bytes_arc_system_raw_img"
+				metrics[filepath.Join(arc.ARCVMPath, "vendor.raw.img")] = "bytes_arc_vendor_raw_img"
 			default:
-				s.Errorf("unsupported ARC type %d", t)
+				s.Errorf("Unsupported ARC type %d", t)
 			}
 		} else {
 			s.Error("Failed to detect ARC type")
