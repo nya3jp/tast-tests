@@ -5,14 +5,19 @@
 package stress
 
 import (
+	"bufio"
 	"context"
 	"encoding/json"
 	"io/ioutil"
 	"math"
+	"os"
 	"regexp"
+	"strconv"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 var devRegExp = regexp.MustCompile(`(sda|nvme\dn\d|mmcblk\d)$`)
@@ -103,6 +108,109 @@ func (d DiskInfo) SizeInGB() (int, error) {
 	}
 
 	return int(math.Round(float64(device.Size) / 1e9)), nil
+}
+
+// PartitionSize return size (in bytes) of given disk partition.
+func PartitionSize(ctx context.Context, partition string) (uint64, error) {
+	devNames := strings.Split(partition, "/")
+	partitionDevName := devNames[len(devNames)-1]
+
+	f, err := os.Open("/proc/partitions")
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to open /proc/partitions file")
+	}
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
+	re := regexp.MustCompile(`\s+`)
+	var blocksStr string
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.HasSuffix(line, partitionDevName) {
+			blocksStr = re.Split(strings.TrimSpace(line), -1)[2]
+			break
+		}
+	}
+	if err := scanner.Err(); err != nil {
+		return 0, errors.Wrap(err, "failed to read disk partitions file")
+	}
+	if len(blocksStr) == 0 {
+		return 0, errors.Wrapf(err, "partition %s not found in partitions file", partitionDevName)
+	}
+
+	blocks, err := strconv.ParseFloat(blocksStr, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed parsing size of partition: %s", partition)
+	}
+	return uint64(blocks) * 1024, nil
+}
+
+// RootPartitionForTrim returns root partition for trim stress.
+func RootPartitionForTrim(ctx context.Context) (string, error) {
+	diskName, err := fixedDstDrive(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed selecting free root partition")
+	}
+
+	rootDev, err := rootDevice(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed selecting free root device")
+	}
+
+	testing.ContextLog(ctx, "Diskname: ", diskName, ", root: ", rootDev)
+	if diskName == rootDev {
+		freeRootPart, err := freeRootPartition(ctx)
+		if err != nil {
+			return "", errors.Wrap(err, "failed selecting free root partition")
+		}
+		return freeRootPart, nil
+	}
+
+	return diskName, nil
+}
+
+func fixedDstDrive(ctx context.Context) (string, error) {
+	// Reading fixed drive device name as reported by Chrome OS test system scripts.
+	const command = ". /usr/sbin/write_gpt.sh;. /usr/share/misc/chromeos-common.sh;load_base_vars;get_fixed_dst_drive"
+	out, err := testexec.CommandContext(ctx, "sh", "-c", command).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read fixed DST drive info")
+	}
+	return strings.TrimSpace(string(out)), nil
+}
+
+func rootDevice(ctx context.Context) (string, error) {
+	out, err := testexec.CommandContext(ctx, "rootdev", "-s", "-d").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read root device info")
+	}
+	return strings.TrimSpace(string(out)), nil
+}
+
+func rootDevicePartitionName(ctx context.Context) (string, error) {
+	out, err := testexec.CommandContext(ctx, "rootdev", "-s").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read root device parition name info")
+	}
+	return strings.TrimSpace(string(out)), nil
+}
+
+func freeRootPartition(ctx context.Context) (string, error) {
+	partition, err := rootDevicePartitionName(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read root partition info")
+	}
+	if len(partition) == 0 {
+		return "", errors.New("error reading root partition info")
+	}
+	// For main storage device, this is the mapping of main root to free root partitions,
+	// i.e. free partition is /dev/nvme0n1p5 for the root partition /dev/nvme0n1p3.
+	partitionIndex := partition[len(partition)-1:]
+	if partitionIndex != "3" && partitionIndex != "5" {
+		return "", errors.Errorf("invalid index of root parition: %s", partitionIndex)
+	}
+	spareRootMap := map[string]string{"3": "5", "5": "3"}
+	return partition[:len(partition)-1] + spareRootMap[partitionIndex], nil
 }
 
 // ReadDiskInfo returns storage information as reported by lsblk tool.
