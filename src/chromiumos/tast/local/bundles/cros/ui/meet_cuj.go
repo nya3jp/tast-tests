@@ -69,7 +69,7 @@ func init() {
 				present: false,
 				docs:    false,
 				split:   false,
-				cam:     false,
+				cam:     true,
 			},
 		}, {
 			Name: "worst_case",
