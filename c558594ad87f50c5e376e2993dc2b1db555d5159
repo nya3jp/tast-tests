@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6beafc55_a1c326ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T00:52:23Z",
+      "side": 1,
+      "message": "mostly nits",
+      "revId": "c558594ad87f50c5e376e2993dc2b1db555d5159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ecb4563_75313f8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T00:52:23Z",
+      "side": 1,
+      "message": "Sorry I\u0027ve forgotten to comment in the previous patchset, but could you move this function above?   The currennt arrangement -- main function (Connector) in the middle of utility functions -- looks strange to me.",
+      "revId": "c558594ad87f50c5e376e2993dc2b1db555d5159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8603a19_f70fe216",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T00:52:23Z",
+      "side": 1,
+      "message": "Thanks for adding up the detail!!  I was completely misunderstanding this part.",
+      "revId": "c558594ad87f50c5e376e2993dc2b1db555d5159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5aae2cf_09c09d90",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T00:52:23Z",
+      "side": 1,
+      "message": "Can you also name that? i.e.\n  if matched, ok :\u003d match[dest]; !ok || g.matchingHelper(matched, match, seen) { ...",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "c558594ad87f50c5e376e2993dc2b1db555d5159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a4ae52_e7290875",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T00:52:23Z",
+      "side": 1,
+      "message": "visited is now not used.  Let\u0027s remove.\nThat means dests is also not used. You can remove that too.",
+      "revId": "c558594ad87f50c5e376e2993dc2b1db555d5159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
