@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8542c06_a917c8e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-10-23T21:39:07Z",
+      "side": 1,
+      "message": "Agreed. We do report \u0027bytes_arc\u0027, so maybe we can just use that as-is, or add separate system/vendor image sizes for arc?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go\n\n+norvez@",
+      "parentUuid": "2a8a3d9f_84ba5eca",
+      "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "848fdd44_bb3ef7de",
