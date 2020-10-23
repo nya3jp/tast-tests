@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromeos-test-assets-private/tast/crosint/printer/ppds_all_20201021.tar.xz",
+  "size": 13460304,
+  "sha256sum": "c04d8fe57ca27852979e5a1278a6606df83c7f34686dfb2f418672131421a336"
+}
