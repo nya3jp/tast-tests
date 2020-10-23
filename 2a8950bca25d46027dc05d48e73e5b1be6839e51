@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "808bd01a_7c57409e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-23T09:41:58Z",
+      "side": 1,
+      "message": "nit: maybe remove this prefix to make commit title shorter? It\u0027s already much longer than recommended 50 symbols.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "2a8950bca25d46027dc05d48e73e5b1be6839e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d10896af_2a0e2d1a",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-10-23T05:02:32Z",
       "side": 1,
       "message": "yhanada@: Please take a look. Thank you.\ntast-owners@: PTAL for OWNERS. Thank you.",
+      "revId": "2a8950bca25d46027dc05d48e73e5b1be6839e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d7411c_f962b480",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-23T09:41:58Z",
+      "side": 1,
+      "message": "LGTM % nit, thanks!",
       "revId": "2a8950bca25d46027dc05d48e73e5b1be6839e51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
