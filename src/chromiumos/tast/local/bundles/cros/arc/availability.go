@@ -21,7 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ArcAvailability,
+		Func:         Availability,
 		Desc:         "Verifies that ARC is available in different scenarios",
 		Contacts:     []string{"timkovich@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -33,7 +33,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arc.ArcAvailability.username", "arc.ArcAvailability.password"},
+		Vars:    []string{"arc.Availability.username", "arc.Availability.password"},
 	})
 }
 
@@ -42,9 +42,15 @@ func isPlayStoreOpen(ctx context.Context, s *testing.State, d *ui.Device, tconn 
 	if err := ash.WaitForApp(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Fatal("Play Store failed to open: ", err)
 	}
-
+	noThanks := d.Object(ui.ResourceIDMatches("com.android.vending:id/no_thanks_button"))
 	toc := d.Object(ui.ResourceIDMatches("com.android.vending:id/(play_card|mini_blurb)"))
-	if err := toc.WaitForExists(ctx, 30*time.Second); err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Click no thanks to close the pop-up if it exists.
+		if err := noThanks.Exists(ctx); err == nil {
+			noThanks.Click(ctx)
+		}
+		return toc.Exists(ctx)
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		s.Fatal("Timed waiting for Play Store table of contents: ", err)
 	}
 }
@@ -98,14 +104,14 @@ func reopenPlayStore(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.De
 	}
 }
 
-// ArcAvailability Ensures that ARC is available after:
+// Availability Ensures that ARC is available after:
 // * Login
 // * Logout/Login
 // * Updating GMS Core
 // * Updating Play Store
-func ArcAvailability(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("arc.ArcAvailability.username")
-	password := s.RequiredVar("arc.ArcAvailability.password")
+func Availability(ctx context.Context, s *testing.State) {
+	username := s.RequiredVar("arc.Availability.username")
+	password := s.RequiredVar("arc.Availability.password")
 	dumpUIOnErr := func(ctx context.Context, a *arc.ARC) {
 		if s.HasError() {
 			if err := a.Command(ctx, "uiautomator", "dump").Run(testexec.DumpLogOnError); err != nil {
