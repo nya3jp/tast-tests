@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "324289f4_37ca884a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-23T23:46:23Z",
+      "side": 1,
+      "message": "This test is working reliably now and I\u0027m reasonably happy with the code, although there may still be some potential to move helper functionality (for example `claimInterface()`) into other packages if we think it might be used by other tests in the future.",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
