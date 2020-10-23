@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05adc3b5_edccd0c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-23T06:32:40Z",
+      "side": 1,
+      "message": "LGTM with minor comments.",
+      "revId": "1f365d545ee1a2ab6e25cd930550eb36f205f63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35d737e_7a2eb40b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-23T06:32:40Z",
+      "side": 1,
+      "message": "Probably s.Error() to give it try to run RemoveVault (in case the vault is accidentally not mounted for some reason).",
+      "revId": "1f365d545ee1a2ab6e25cd930550eb36f205f63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a56cfe35_cb6c74d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-23T06:32:40Z",
+      "side": 1,
+      "message": "(optional): we often write like:\nvar err error\niterations, err \u003d strconv.ParseInt(...)\nif err !\u003d nil {\n  ...\n}",
+      "revId": "1f365d545ee1a2ab6e25cd930550eb36f205f63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ae41a0_5f5c1424",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-23T06:32:40Z",
+      "side": 1,
+      "message": "could you check the error?",
+      "revId": "1f365d545ee1a2ab6e25cd930550eb36f205f63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
