@@ -37,10 +37,11 @@ var touchviewTestsForAmazonKindle = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AmazonKindle,
-		Desc:         "Functional test for AmazonKindle that installs the app also verifies it is logged in and that the main page is open, checks AmazonKindle correctly changes the window state in both clamshell and touchview mode",
-		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat"},
+		Func:     AmazonKindle,
+		Desc:     "Functional test for AmazonKindle that installs the app also verifies it is logged in and that the main page is open, checks AmazonKindle correctly changes the window state in both clamshell and touchview mode",
+		Contacts: []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
+		// TODO(http://b/171598061): Test is disabled until it can be fixed
+		// Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:               clamshellTestsForAmazonKindle,
