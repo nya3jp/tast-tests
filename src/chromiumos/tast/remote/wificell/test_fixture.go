@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/pkcs11/netcertstore"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/ctxutil"
@@ -1175,4 +1176,30 @@ func (tf *TestFixture) SetWifiEnabled(ctx context.Context, enabled bool) error {
 	req := &network.SetWifiEnabledRequest{Enabled: enabled}
 	_, err := tf.WifiClient().SetWifiEnabled(ctx, req)
 	return err
+}
+
+// TurnOffBgscan turns off the DUT's background scan, and returns a shortened ctx and a restoring function.
+func (tf *TestFixture) TurnOffBgscan(ctx context.Context) (context.Context, func() error, error) {
+	ctxForRestoreBgConfig := ctx
+	ctx, cancel := ctxutil.Shorten(ctxForRestoreBgConfig, 2*time.Second)
+
+	testing.ContextLog(ctx, "Disable the DUT's background scan")
+	bgscanResp, err := tf.wifiClient.GetBgscanConfig(ctx, &empty.Empty{})
+	if err != nil {
+		return ctxForRestoreBgConfig, nil, err
+	}
+	oldBgConfig := bgscanResp.Config
+
+	turnOffBgConfig := *bgscanResp.Config
+	turnOffBgConfig.Method = shillconst.DeviceBgscanMethodNone
+	if _, err := tf.wifiClient.SetBgscanConfig(ctx, &network.SetBgscanConfigRequest{Config: &turnOffBgConfig}); err != nil {
+		return ctxForRestoreBgConfig, nil, err
+	}
+
+	return ctx, func() error {
+		cancel()
+		testing.ContextLog(ctxForRestoreBgConfig, "Restore the DUT's background scan config: ", oldBgConfig)
+		_, err := tf.wifiClient.SetBgscanConfig(ctxForRestoreBgConfig, &network.SetBgscanConfigRequest{Config: oldBgConfig})
+		return err
+	}, nil
 }
