@@ -16,6 +16,23 @@
       "message": "Synced the master and rebased the branch.",
       "revId": "360ca54bc62ea8529aa73d0d3395056c3d44927a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e478dc67_ad6d1d50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-10-23T21:02:36Z",
+      "side": 1,
+      "message": "Vaibhav, was there a new patch uploaded?",
+      "revId": "360ca54bc62ea8529aa73d0d3395056c3d44927a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
