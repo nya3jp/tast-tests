@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e88fcd_222d89cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/nearby_share.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-23T01:46:27Z",
+      "side": 1,
+      "message": "Change the filename to whatever you\u0027d like",
+      "revId": "a9384464e7d50d5c8dde140a7716d8a4f2713507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbbc506b_b0e4a112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/nearby_share.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-23T01:46:27Z",
+      "side": 1,
+      "message": "Change this line to your own device\u0027s name, or just comment out this check entirely since it\u0027s not necessary 😊",
+      "revId": "a9384464e7d50d5c8dde140a7716d8a4f2713507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
