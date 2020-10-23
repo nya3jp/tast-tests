@@ -16,7 +16,6 @@ import (
 // FrameDataTracker is helper to get animation frame data from Chrome.
 type FrameDataTracker struct {
 	animationData []perfutil.DisplayFrameData
-	ds            float64
 	dsData        *perfutil.DisplayFrameData
 	dsTracker     *perfutil.DisplaySmoothnessTracker
 }
@@ -40,10 +39,9 @@ func (t *FrameDataTracker) Start(ctx context.Context, tconn *chrome.TestConn) er
 
 // Stop stops the animation data collection and stores the collected data.
 func (t *FrameDataTracker) Stop(ctx context.Context, tconn *chrome.TestConn) error {
-	var ds float64
 	var dsData *perfutil.DisplayFrameData
 	var err error
-	if ds, dsData, err = t.dsTracker.Stop(ctx, tconn, ""); err != nil {
+	if dsData, err = t.dsTracker.Stop(ctx, tconn, ""); err != nil {
 		return errors.Wrap(err, "failed to stop display smoothness tracking")
 	}
 
@@ -52,7 +50,6 @@ func (t *FrameDataTracker) Stop(ctx context.Context, tconn *chrome.TestConn) err
 		return errors.Wrap(err, "failed to stop data collection")
 	}
 
-	t.ds = ds
 	t.dsData = dsData
 	t.animationData = append(t.animationData, data...)
 	return nil
@@ -89,24 +86,16 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 		pv.Append(jcMetric, float64(data.JankCount))
 	}
 
-	if t.dsData != nil {
-		pv.Set(perf.Metric{
-			Name:      "TPS.DisplaySmoothness",
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, float64(t.dsData.FramesProduced)/float64(t.dsData.FramesExpected)*100)
-		pv.Set(perf.Metric{
-			Name:      "TPS.DisplayJankMetric",
-			Unit:      "percent",
-			Direction: perf.SmallerIsBetter,
-		}, float64(t.dsData.JankCount)/float64(t.dsData.FramesExpected)*100)
-	} else {
-		pv.Set(perf.Metric{
-			Name:      "TPS.DisplaySmoothness",
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, t.ds)
-	}
+	pv.Set(perf.Metric{
+		Name:      "TPS.DisplaySmoothness",
+		Unit:      "percent",
+		Direction: perf.BiggerIsBetter,
+	}, float64(t.dsData.FramesProduced)/float64(t.dsData.FramesExpected)*100)
+	pv.Set(perf.Metric{
+		Name:      "TPS.DisplayJankMetric",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, float64(t.dsData.JankCount)/float64(t.dsData.FramesExpected)*100)
 }
 
 // NewFrameDataTracker creates a new instance for FrameDataTracker.

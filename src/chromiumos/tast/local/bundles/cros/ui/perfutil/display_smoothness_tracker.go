@@ -36,7 +36,7 @@ func displayIDString(displayID string) string {
 func (t *DisplaySmoothnessTracker) Close(ctx context.Context, tconn *chrome.TestConn) error {
 	var firstErr error
 	for displayID := range t.displayIDs {
-		_, _, err := t.Stop(ctx, tconn, displayID)
+		_, err := t.Stop(ctx, tconn, displayID)
 		if err != nil && firstErr == nil {
 			firstErr = err
 		}
@@ -65,37 +65,21 @@ func (t *DisplaySmoothnessTracker) Start(ctx context.Context, tconn *chrome.Test
 // Stop stops tracking for the given display id and report the smoothness
 // since the relevant Start() call. Primary display is used if the given display
 // id is empty.
-func (t *DisplaySmoothnessTracker) Stop(ctx context.Context, tconn *chrome.TestConn, displayID string) (float64, *DisplayFrameData, error) {
+func (t *DisplaySmoothnessTracker) Stop(ctx context.Context, tconn *chrome.TestConn, displayID string) (*DisplayFrameData, error) {
 	_, found := t.displayIDs[displayID]
 	if !found {
-		return 0, nil, errors.Errorf("display smoothness not tracked for %q", displayIDString(displayID))
+		return nil, errors.Errorf("display smoothness not tracked for %q", displayIDString(displayID))
 	}
 
-	// TODO(crbug.com/1132017): Use DisplayFrameData struct after chrome uprev'd
-	// with the new api.
-	var data interface{}
-	err := tconn.Call(ctx, &data,
+	var dsData DisplayFrameData
+	err := tconn.Call(ctx, &dsData,
 		`tast.promisify(chrome.autotestPrivate.stopSmoothnessTracking)`, displayID)
 	if err != nil {
-		return 0, nil, err
-	}
-
-	var ds float64
-	var dsData *DisplayFrameData
-	switch data.(type) {
-	case float64:
-		ds = data.(float64)
-	case map[string]interface{}:
-		dataMap := data.(map[string]interface{})
-		dsData = &DisplayFrameData{
-			FramesExpected: int(dataMap["framesExpected"].(float64)),
-			FramesProduced: int(dataMap["framesProduced"].(float64)),
-			JankCount:      int(dataMap["jankCount"].(float64)),
-		}
+		return nil, err
 	}
 
 	delete(t.displayIDs, displayID)
-	return ds, dsData, nil
+	return &dsData, nil
 }
 
 // NewDisplaySmoothnessTracker creates a DisplaySmoothnessTracker.
