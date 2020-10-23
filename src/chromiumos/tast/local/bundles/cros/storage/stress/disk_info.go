@@ -7,12 +7,16 @@ package stress
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"math"
 	"regexp"
+	"strconv"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 var devRegExp = regexp.MustCompile(`(sda|nvme\dn\d|mmcblk\d)$`)
@@ -103,6 +107,76 @@ func (d DiskInfo) SizeInGB() (int, error) {
 	}
 
 	return int(math.Round(float64(device.Size) / 1e9)), nil
+}
+
+// PartitionSize return size (in bytes) of given disk partition.
+func PartitionSize(ctx context.Context, partition string) (uint64, error) {
+	devNames := strings.Split(partition, "/")
+	cmd := fmt.Sprintf("cat /proc/partitions | egrep '%v$' | awk '{print $3}'", devNames[len(devNames)-1])
+	out, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output()
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed checking size of partition: %s", partition)
+	}
+	blocks, err := strconv.ParseFloat(strings.TrimSpace(string(out)), 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed parsing size of partition: %s", partition)
+	}
+	return uint64(blocks) * 1024, nil
+}
+
+// RootPartitionForTrim returns root partition for trim stress.
+func RootPartitionForTrim(ctx context.Context) (string, error) {
+	diskName, err := fixedDstDrive(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed selecting free root partition")
+	}
+
+	rootDev, err := rootDevice(ctx, false)
+	if err != nil {
+		return "", errors.Wrap(err, "failed selecting free root partition")
+	}
+
+	testing.ContextLog(ctx, "Diskname: ", diskName, ", root: ", rootDev)
+	if diskName == rootDev {
+		freeRootPart, err := freeRootPartition(ctx)
+		if err != nil {
+			return "", errors.Wrap(err, "failed selecting free root partition")
+		}
+		return freeRootPart, nil
+	}
+
+	return diskName, nil
+}
+
+func fixedDstDrive(ctx context.Context) (string, error) {
+	command := ". /usr/sbin/write_gpt.sh;. /usr/share/misc/chromeos-common.sh;load_base_vars;get_fixed_dst_drive"
+	out, err := testexec.CommandContext(ctx, "sh", "-c", command).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read fixed DST drive info")
+	}
+	return strings.TrimSpace(string(out)), nil
+}
+
+func rootDevice(ctx context.Context, returnPartitionName bool) (string, error) {
+	args := []string{"-s"}
+	if !returnPartitionName {
+		args = append(args, "-d")
+	}
+	out, err := testexec.CommandContext(ctx, "rootdev", args...).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read root device info")
+	}
+	return strings.TrimSpace(string(out)), nil
+}
+
+func freeRootPartition(ctx context.Context) (string, error) {
+	partition, err := rootDevice(ctx, true)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read root partition info")
+	}
+	testing.ContextLog(ctx, "Partition: ", partition)
+	spareRootMap := map[string]string{"3": "5", "5": "3"}
+	return partition[:len(partition)-1] + spareRootMap[partition[len(partition)-1:]], nil
 }
 
 // ReadDiskInfo returns storage information as reported by lsblk tool.
