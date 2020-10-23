@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3f2b43_1e9fd8bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2020-10-23T12:23:00Z",
+      "side": 1,
+      "message": "Thank you for sharing me this test scripts.\nI tried it on my workstation with image file.",
+      "revId": "a9384464e7d50d5c8dde140a7716d8a4f2713507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f55eb83c_5cabd06c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/nearby_share.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2020-10-23T12:23:00Z",
+      "side": 1,
+      "message": "This may too short for OFFLINE nearby sharing an image file.\nFor example, I test 4.96 MB image transfer with 3 minutes timeout.",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "a9384464e7d50d5c8dde140a7716d8a4f2713507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54e88fcd_222d89cf",
@@ -31,6 +71,92 @@
       "writtenOn": "2020-10-23T01:46:27Z",
       "side": 1,
       "message": "Change this line to your own device\u0027s name, or just comment out this check entirely since it\u0027s not necessary 😊",
+      "revId": "a9384464e7d50d5c8dde140a7716d8a4f2713507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f52ad46_d694e034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/nearby_share.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2020-10-23T12:23:00Z",
+      "side": 1,
+      "message": "On my chromebook, 10 seconds not enough for image case.\nI tune it to 30 seconds.",
+      "range": {
+        "startLine": 102,
+        "startChar": 47,
+        "endLine": 102,
+        "endChar": 49
+      },
+      "revId": "a9384464e7d50d5c8dde140a7716d8a4f2713507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de3cef3_8bf6da3d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/nearbyshare/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2020-10-23T12:23:00Z",
+      "side": 1,
+      "message": "For image type, we can add\n```\n+       SharingContentImage SharingContentType \u003d \"image\"\n```",
+      "revId": "a9384464e7d50d5c8dde140a7716d8a4f2713507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb657e06_4340f897",
+        "filename": "src/chromiumos/tast/local/chrome/ui/nearbyshare/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2020-10-23T12:23:00Z",
+      "side": 1,
+      "message": "Image type also show \"OPEN FOLDER\"\n+       SharingContentImage: \"OPEN FOLDER\",",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "a9384464e7d50d5c8dde140a7716d8a4f2713507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a161afe_42681406",
+        "filename": "src/chromiumos/tast/local/chrome/ui/nearbyshare/nearbyshare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2020-10-23T12:23:00Z",
+      "side": 1,
+      "message": "Should be timeout here.\n```\n-       if _, err :\u003d ash.WaitForNotification(ctx, tconn, 10*time.Second,\n+       if _, err :\u003d ash.WaitForNotification(ctx, tconn, timeout,\n```",
+      "range": {
+        "startLine": 72,
+        "startChar": 50,
+        "endLine": 72,
+        "endChar": 64
+      },
       "revId": "a9384464e7d50d5c8dde140a7716d8a4f2713507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
