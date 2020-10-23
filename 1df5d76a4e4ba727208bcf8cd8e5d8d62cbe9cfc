@@ -221,6 +221,30 @@
       },
       "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bfaccad_038b590c",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-23T03:59:50Z",
+      "side": 1,
+      "message": "Per discussion, we might pick similar design in Autotest that let Router to create/delete bridge interfaces but let the test to control the main logic. So to hostapd, the only change for it is a new Option.",
+      "parentUuid": "afe286e5_0401f1a3",
+      "range": {
+        "startLine": 397,
+        "startChar": 104,
+        "endLine": 397,
+        "endChar": 110
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
