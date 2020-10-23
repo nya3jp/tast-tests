@@ -294,6 +294,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18117db0_ea31fb76",
+        "filename": "src/chromiumos/tast/local/input/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-23T17:47:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4cb1bed_e7f19efd",
+      "revId": "4133e21a99ef28df9751df0fb3e76af2bdef120c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f728cf0_b8f2f2df",
