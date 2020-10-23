@@ -16,6 +16,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type arcMousePerfParams struct {
+	leftClickNumEvents int
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MousePerf,
@@ -26,9 +30,11 @@ func init() {
 		Data:         inputlatency.AndroidData(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               arcMousePerfParams{leftClickNumEvents: 4},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               arcMousePerfParams{leftClickNumEvents: 5},
 		}},
 		Pre:     arc.Booted(),
 		Timeout: 2 * time.Minute,
@@ -131,11 +137,13 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear UI: ", err)
 	}
 
-	// When left-clicking on mouse, it injects ACTION_DOWN, ACTION_BUTTON_PRESS, ACTION_UP and ACTION_BUTTON_RELEASE events.
-	// Check latency for these four actions.
+	// When left-clicking on mouse, it injects ACTION_DOWN, ACTION_BUTTON_PRESS, ACTION_UP, and ACTION_BUTTON_RELEASE.
+	// On R, the framework also injects ACTION_HOVER_MOVE.
+	// Check latency for these actions.
 	s.Log("Injecting mouse left-click events")
 	eventTimes = make([]int64, 0, numEvents)
-	for i := 0; i < numEvents; i += 4 {
+	params := s.Param().(arcMousePerfParams)
+	for i := 0; i < numEvents; i += params.leftClickNumEvents {
 		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
@@ -148,8 +156,11 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
-		// ACTION_UP and ACTION_BUTTON_RELEASE are generated together.
+		// ACTION_UP, ACTION_BUTTON_RELEASE, and ACTION_HOVER_MOVE are generated together.
 		eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
+		if params.leftClickNumEvents == 5 {
+			eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
+		}
 		if err := m.Release(); err != nil {
 			s.Fatal("Unable to inject Release mouse event: ", err)
 		}
