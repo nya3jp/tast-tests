@@ -104,6 +104,30 @@
       },
       "revId": "9d0791cf166b0e8ac5710c913f60c51a123e4ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6801fbc_c340b5de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/built_in_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-10-23T09:47:23Z",
+      "side": 1,
+      "message": "I do not think the spreadsheet is the place to have the conversation about changing terms. It looks like someone just added a big sign on the go/inclusive-codebase spreadsheet to use the more formal channel to make changes.\nRight now lets go with a TODO and a bug combination.",
+      "parentUuid": "b922decc_443dadbe",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "9d0791cf166b0e8ac5710c913f60c51a123e4ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
