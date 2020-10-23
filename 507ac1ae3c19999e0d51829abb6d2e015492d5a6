@@ -34,6 +34,24 @@
       "parentUuid": "38a98699_c54ae9f3",
       "revId": "507ac1ae3c19999e0d51829abb6d2e015492d5a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c61c1a1_b1eec05f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-10-23T18:56:37Z",
+      "side": 1,
+      "message": "The Tast tests are branched along with the rest of the codebase for each release branch.  These tests were disabled in R88-13520.0.0, but R87 branched back in R87-13505.0.0 and we\u0027ve been creating a testing new builds from that branch each day since then.  You can probably see this most clearly by looking at Goldeneye:\n\nhttp://go/goldeney\n\nhttp://screen/B8YpiJpUQB7zfVa\n\nR87-13505.21.0, the latest M87 build, was built yesterday and these tests have generated 1,805 failures when run against that one build:\n\nhttp://screen/B2NztAhKVsf3Tx9\n\nThe solution is to cherry pick the CL which disables these tests back the R87 branch.  We are still early enough in the M87 release cycle (first few weeks of beta) that for this type of change you can self-approve your merge.  More on that here:\n\nhttp://go/cros-release-branch-merge-guidelines",
+      "parentUuid": "3be38d4f_bbac3acc",
+      "revId": "507ac1ae3c19999e0d51829abb6d2e015492d5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
