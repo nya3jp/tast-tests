@@ -16,6 +16,46 @@
       "message": "I would write a design doc later. Let\u0027s start review first.",
       "revId": "7d85e7835fc9a003a5fae0655c77fbc24c620534",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e2f7a6d_aca54bd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-23T08:30:21Z",
+      "side": 1,
+      "message": "I wonder if it might be better to have the RoamFT change in the same chain when review as it\u0027s the only test needs separated dhcpd and hostapd.",
+      "revId": "7d85e7835fc9a003a5fae0655c77fbc24c620534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092fbac1_28bdafbd",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-23T08:30:21Z",
+      "side": 1,
+      "message": "Oops, I didn\u0027t notice this. This is not good now as the interface of hostapd might change. The new service will not have DHCP server running on it in that case. We probably need a ReconfigureHostapd function on Router for the case...",
+      "range": {
+        "startLine": 231,
+        "startChar": 21,
+        "endLine": 239,
+        "endChar": 19
+      },
+      "revId": "7d85e7835fc9a003a5fae0655c77fbc24c620534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
