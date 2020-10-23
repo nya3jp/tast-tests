@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083a6e01_549ecf0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-23T01:58:57Z",
+      "side": 1,
+      "message": "Could you clarify why this is needed?\nAt least this change makes the \"leak\" of the state, i.e., from caller\u0027s point of view, there\u0027re no ways to 1) know whether there is a stale file in the dir or not on error, and 2) know the stale file path if there is.\n\nThat is correctly handled now which is preferred in general.\nCould you clarify why you\u0027re trying to make the regression? To me, indeed this removes some lines of code, but introduces the complexity (i.e. implicit dependency). WDYT?\nI\u0027m kind of ok as long as the scope of the functions are very limited, but could you clarify the details more in the comment, as this should be exception (here and below). E.g.\n\nIn case of error, stale hash file may be retained, and there\u0027s no way from callers to remove it except removing all the contents in the dir. All callers must aware of it and handle it properly.",
+      "revId": "87fbf50911e83a3bae79c685b83c08b9bc7c9b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
