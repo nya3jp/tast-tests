@@ -83,6 +83,7 @@ func launchAppForGooglePlayGames(ctx context.Context, s *testing.State, tconn *c
 		homeID     = "com.google.android.play.games:id/games__navigation__bottom_navigation_view"
 		createText = "Create"
 		gotItText  = "Got it"
+		updateText = "Update"
 	)
 	// Click on create button.
 	clickOnCreateButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(createText))
@@ -98,6 +99,14 @@ func launchAppForGooglePlayGames(ctx context.Context, s *testing.State, tconn *c
 		s.Log("clickOnGotItButton doesn't exist: ", err)
 	} else if err := clickOnGotItButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnGotItButton: ", err)
+	}
+
+	// Click on update button.
+	clickOnUpdateButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(updateText))
+	if err := clickOnUpdateButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnUpdateButton doesn't exist: ", err)
+	} else if err := clickOnUpdateButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnUpdateButton: ", err)
 	}
 
 	// Check for home icon.
