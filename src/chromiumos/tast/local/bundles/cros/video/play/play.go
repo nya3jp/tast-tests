@@ -203,12 +203,15 @@ func colorDistance(a, b color.Color) int {
 		abs(int(aA>>8)-int(bA>>8)))
 }
 
-// isBlack returns true if c corresponds to opaque black. Returns false otherwise.
-func isBlack(c color.Color) bool {
-	// Note that the RGBA method returns components in the range [0, 0xFFFF] corresponding to
-	// the 8-bit values multiplied by 0x101 (https://blog.golang.org/image).
-	cR, cG, cB, cA := c.RGBA()
-	return cR == 0 && cG == 0 && cB == 0 && cA == 0xFFFF
+// isVideoPadding returns true iff c corresponds to the expected color of the padding that a
+// video gets when in full screen so that it appears centered. This color is black within a
+// certain tolerance.
+func isVideoPadding(c color.Color) bool {
+	paddingColor := color.RGBA{0, 0, 0, 255}
+	// The tolerance was picked empirically. For example, on kukui, the first padding row below
+	// the video has a color of (21, 1, 22, 255).
+	tolerance := 25
+	return colorDistance(c, paddingColor) < tolerance
 }
 
 // TestPlay checks that the video file named filename can be played using Chrome.
@@ -381,13 +384,13 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	yMiddle := img.Bounds().Dy() / 2
 	top := 0
 	for ; top < img.Bounds().Dy(); top++ {
-		if !isBlack(img.At(xMiddle, top)) {
+		if !isVideoPadding(img.At(xMiddle, top)) {
 			break
 		}
 	}
 	bottom := img.Bounds().Dy() - 1
 	for ; bottom >= 0; bottom-- {
-		if !isBlack(img.At(xMiddle, bottom)) {
+		if !isVideoPadding(img.At(xMiddle, bottom)) {
 			break
 		}
 	}
@@ -396,13 +399,13 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	}
 	left := 0
 	for ; left < img.Bounds().Dx(); left++ {
-		if !isBlack(img.At(left, yMiddle)) {
+		if !isVideoPadding(img.At(left, yMiddle)) {
 			break
 		}
 	}
 	right := img.Bounds().Dx() - 1
 	for ; right >= 0; right-- {
-		if !isBlack(img.At(right, yMiddle)) {
+		if !isVideoPadding(img.At(right, yMiddle)) {
 			break
 		}
 	}
