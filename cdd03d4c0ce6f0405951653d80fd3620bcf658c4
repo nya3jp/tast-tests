@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "629f7663_3654b331",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T21:52:34Z",
+      "side": 1,
+      "message": "LGTM % a nit",
+      "revId": "cdd03d4c0ce6f0405951653d80fd3620bcf658c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0be4668_9fa95d28",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T21:52:34Z",
+      "side": 1,
+      "message": "dests is also not used anymore. Please remove it.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "cdd03d4c0ce6f0405951653d80fd3620bcf658c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
