@@ -2035,3 +2035,33 @@ func (s *WifiService) SuspendAssertConnect(ctx context.Context, req *network.Sus
 
 	return &network.SuspendAssertConnectResponse{ReconnectTime: time.Since(resumeStartTime).Nanoseconds()}, nil
 }
+
+// GetGlobalFTProperty returns the WiFi.GlobalFTEnabled manager property value.
+func (s *WifiService) GetGlobalFTProperty(ctx context.Context, _ *empty.Empty) (*network.GetGlobalFTPropertyResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a shill manager")
+	}
+
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the shill manager properties")
+	}
+	enabled, err := props.GetBool(shillconst.ManagerPropertyGlobalFTEnabled)
+	if err != nil {
+		return nil, err
+	}
+	return &network.GetGlobalFTPropertyResponse{Enabled: enabled}, nil
+}
+
+// SetGlobalFTProperty set the WiFi.GlobalFTEnabled manager property value.
+func (s *WifiService) SetGlobalFTProperty(ctx context.Context, req *network.SetGlobalFTPropertyRequest) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a shill manager")
+	}
+	if err := m.SetProperty(ctx, shillconst.ManagerPropertyGlobalFTEnabled, req.Enabled); err != nil {
+		return nil, errors.Wrapf(err, "failed to set the shill manager property %s with value %v", shillconst.ManagerPropertyGlobalFTEnabled, req.Enabled)
+	}
+	return &empty.Empty{}, nil
+}
