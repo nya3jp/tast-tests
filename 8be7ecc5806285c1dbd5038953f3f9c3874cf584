@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2b8e6f0_41639360",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-23T00:46:40Z",
+      "side": 1,
+      "message": "LGTM % 1 comment",
+      "revId": "8be7ecc5806285c1dbd5038953f3f9c3874cf584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75c3066_b7aef2a1",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-23T00:46:40Z",
+      "side": 1,
+      "message": "How about using testutil.WriteFiles?\n\nhttp://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/testutil/files.go?l\u003d32",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 49
+      },
+      "revId": "8be7ecc5806285c1dbd5038953f3f9c3874cf584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
