@@ -26,7 +26,6 @@ var clamshellTestsForSkype = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Clamshell: Signout app", Fn: signOutOfSkype},
 }
 
 // TouchviewTests are placed here.
@@ -34,7 +33,6 @@ var touchviewTestsForSkype = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForSkype},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
-	{Name: "Touchview: Signout app", Fn: signOutOfSkype},
 }
 
 func init() {
@@ -75,7 +73,7 @@ func init() {
 func Skype(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.skype.raider"
-		appActivity = "com.skype.m2.views.HubActivity"
+		appActivity = "com.skype4life.MainActivity"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
@@ -86,17 +84,27 @@ func Skype(ctx context.Context, s *testing.State) {
 func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		allowButtonText     = "ALLOW"
+		continueButtonDes   = "Continue"
+		letsGoDes           = "Let's go"
 		enterEmailAddressID = "i0116"
-		hamburgerClassName  = "android.widget.ImageButton"
-		hamburgerDes        = "Menu"
+		profileClassName    = "android.widget.Button"
+		profileDes          = "My info"
 		nextButtonText      = "Next"
-		notNowID            = "android:id/autofill_save_no"
 		passwordID          = "i0118"
 		signInClassName     = "android.widget.Button"
 		signInText          = "Sign in"
+		signInOrCreateDes   = "Sign in or create"
 	)
+	// Click on letsGo button.
+	letsGoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(letsGoDes))
+	if err := letsGoButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("letsGoButton doesn't exists: ", err)
+	} else if err := letsGoButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on letsGoButton: ", err)
+	}
+
 	// Click on sign in button.
-	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
+	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(signInOrCreateDes))
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("signInButton doesn't exists: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
@@ -119,27 +127,9 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on enterEmailAddress: ", err)
 	}
 
-	// Click on emailid text field until the emailid text field is focused.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if emailIDFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
-			return errors.New("email text field not focused yet")
-		} else if !emailIDFocused {
-			enterEmailAddress.Click(ctx)
-			return errors.New("email text field not focused yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
-		s.Fatal("Failed to focus EmailId: ", err)
-	}
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kb.Close()
-
-	emailID := s.RequiredVar("arcappcompat.Skype.emailid")
-	if err := kb.Type(ctx, emailID); err != nil {
-		s.Fatal("Failed to enter emailID: ", err)
+	emailAddress := s.RequiredVar("arcappcompat.Skype.emailid")
+	if err := enterEmailAddress.SetText(ctx, emailAddress); err != nil {
+		s.Fatal("Doesn't enter EmailAddress: ", err)
 	}
 	s.Log("Entered EmailAddress")
 
@@ -159,21 +149,27 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on enterPassword: ", err)
 	}
 
-	// Click on password text field until the password text field is focused.
+	// Keep clicking password text field until the password text field is focused.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
-			return errors.New("password text field not focused yet")
+			s.Log("Password text field is focused ")
 		} else if !pwdFocused {
 			enterPassword.Click(ctx)
-			return errors.New("password text field not focused yet")
+			return errors.New("Password text field not focused yet")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
 		s.Fatal("Failed to focus password: ", err)
 	}
 
+	kbp, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kbp.Close()
+
 	password := s.RequiredVar("arcappcompat.Skype.password")
-	if err := kb.Type(ctx, password); err != nil {
+	if err := kbp.Type(ctx, password); err != nil {
 		s.Fatal("Failed to enter password: ", err)
 	}
 	s.Log("Entered password")
@@ -185,25 +181,49 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signInButton: ", err)
 	}
-	// Click on notnow button.
-	notNowButton := d.Object(ui.ID(notNowID))
-	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("notNowButton doesn't exists: ", err)
-	} else if err := notNowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on notNowButton: ", err)
+
+	// Click on continue button.
+	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(continueButtonDes))
+	if err := continueButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("Continue Button doesn't exists: ", err)
+	} else if err := continueButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on continueButton: ", err)
 	}
 
 	// Click on allow button to access your files.
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err = allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("Allow Button doesn't exists: ", err)
 	} else if err := allowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on allowButton: ", err)
 	}
 
-	// Check for hamburgerIcon on homePage.
-	hamburgerIcon := d.Object(ui.ClassName(hamburgerClassName), ui.Description(hamburgerDes))
-	if err := hamburgerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("hamburgerIcon doesn't exists: ", err)
+	// Click on continue Button until allow button exist.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := allowButton.Exists(ctx); err != nil {
+			continueButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Log("allowButton doesn't exist: ", err)
+	} else if err := allowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on allowButton: ", err)
+	}
+
+	// Click on allow button to access your files.
+	if err = allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Allow Button doesn't exists: ", err)
+	} else if err := allowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on allowButton: ", err)
+	}
+
+	// Check for profileIcon on homePage.
+	profileIcon := d.Object(ui.ClassName(profileClassName), ui.Description(profileDes))
+	if err := profileIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("profileIcon doesn't exists: ", err)
+	} else {
+		s.Log("profileIcon does exists")
+		signOutOfSkype(ctx, s, tconn, a, d, appPkgName, appActivity)
 	}
 }
 
@@ -212,32 +232,33 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	const (
 		closeIconClassName = "android.widget.ImageButton"
 		closeIconDes       = "Close main menus"
-		hamburgerClassName = "android.widget.ImageButton"
-		hamburgerDes       = "Menu"
-		signOutID          = "com.skype.raider:id/drawer_signout"
+		profileClassName   = "android.widget.Button"
+		profileDes         = "My info"
+		signOutDes         = "Sign out"
+		yesText            = "YES"
 	)
 
-	// Click on close main menu icon
-	clickOnCloseIcon := d.Object(ui.ClassName(closeIconClassName), ui.Description(closeIconDes))
-	if err := clickOnCloseIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("clickOnCloseIcon doesn't exists: ", err)
-	} else if err := clickOnCloseIcon.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnCloseIcon: ", err)
-	}
-
-	// Check for hamburgerIcon on homePage.
-	hamburgerIcon := d.Object(ui.ClassName(hamburgerClassName), ui.Description(hamburgerDes))
-	if err := hamburgerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("hamburgerIcon doesn't exists: ", err)
-	} else if err := hamburgerIcon.Click(ctx); err != nil {
-		s.Fatal("Failed to click on hamburgerIcon: ", err)
+	// Check for profileIcon on homePage.
+	profileIcon := d.Object(ui.ClassName(profileClassName), ui.Description(profileDes))
+	if err := profileIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("profileIcon doesn't exists: ", err)
+	} else if err := profileIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on profileIcon: ", err)
 	}
 
 	// Click on sign out of Skype.
-	signOutOfSkype := d.Object(ui.ID(signOutID))
+	signOutOfSkype := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(signOutDes))
 	if err := signOutOfSkype.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("signOutOfSkype doesn't exist: ", err)
 	} else if err := signOutOfSkype.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signOutOfSkype: ", err)
+	}
+
+	// Click on yes button.
+	yesButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(yesText))
+	if err := yesButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("yesButton doesn't exists: ", err)
+	} else if err := yesButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on yesButton: ", err)
 	}
 }
