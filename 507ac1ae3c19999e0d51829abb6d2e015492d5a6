@@ -16,6 +16,24 @@
       "message": "Daniil, these tests are still running and failing on M87:\n\nhttp://screen/BHDGxWZ4Zau7YeA\n\nCan you please cherry pick this CL back to that branch to stop the tests from running there?",
       "revId": "507ac1ae3c19999e0d51829abb6d2e015492d5a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be38d4f_bbac3acc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-23T18:15:59Z",
+      "side": 1,
+      "message": "Hi Ross. These tests have not run on M87 since this CL was merged. This CL was merged in 13520; your screenshot\u0027s most recent M87 version was 13505.\n\nYour screenshot does show some more recent runs in R88-13550. That\u0027s because of another recent CL that merged last night: https://crrev.com/c/2492889. I reactivated the \"normal\" subset of firmware.BootMode tests, because they were not the source of the issues that led us to deactivate the tests. This will allow us to start stabilizing the library.\n\nAs far as I know, Tast tests are not branched, so I don\u0027t think it\u0027s necessary to cherry-pick this CL into M87.\n\nDoes that clear things up?",
+      "parentUuid": "38a98699_c54ae9f3",
+      "revId": "507ac1ae3c19999e0d51829abb6d2e015492d5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
