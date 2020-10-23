@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7e0971d4_2fe6aca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-23T17:48:45Z",
+      "side": 1,
+      "message": "let me move dumpModetestOnError down.",
+      "parentUuid": "2ecb4563_75313f8c",
+      "revId": "c558594ad87f50c5e376e2993dc2b1db555d5159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e8603a19_f70fe216",
         "filename": "src/chromiumos/tast/local/graph/bipartite.go",
         "patchSetId": 7
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a991d11_a2754204",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-23T17:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5aae2cf_09c09d90",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "c558594ad87f50c5e376e2993dc2b1db555d5159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86a4ae52_e7290875",
@@ -88,6 +130,24 @@
       "writtenOn": "2020-10-23T00:52:23Z",
       "side": 1,
       "message": "visited is now not used.  Let\u0027s remove.\nThat means dests is also not used. You can remove that too.",
+      "revId": "c558594ad87f50c5e376e2993dc2b1db555d5159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0761aa3d_c43116d6",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-23T17:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86a4ae52_e7290875",
       "revId": "c558594ad87f50c5e376e2993dc2b1db555d5159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
