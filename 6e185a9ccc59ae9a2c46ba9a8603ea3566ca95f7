@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc213fb0_39d052c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-23T19:54:31Z",
+      "side": 1,
+      "message": "Hey Jun,\n\nI know that you have done stuff with perf tests before so I added you as reviewer. This is just a port from autotest. Is this all I need to do to get results in crosbolt? I have seen some mention of \"src/third_party/autotest/files/tko/perf_upload/perf_dashboard_config.json\", but it does not look to have any arc tests listed in it. I assume it is only needed for the Chrome Performance Dashboard and not crosbolt?\n\nThanks,\nBrendan",
+      "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
