@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/apploading"
 	"chromiumos/tast/local/bundles/cros/arc/nethelper"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -154,6 +155,8 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		OutDir:               s.OutDir(),
 	}
 
+	// Continue on fail and only record first error as it's the most interesting.
+	var firstErr error
 	var scores []float64
 	groups := make(map[string][]float64)
 	cr := s.PreValue().(arc.PreData).Chrome
@@ -168,13 +171,13 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 			armConfig := config
 			armConfig.ApkPath = s.DataPath(apploading.ArmApkName)
 			armConfig.Prefix += "_arm"
-			if _, err := apploading.RunTest(ctx, armConfig, a, cr); err != nil {
-				s.Fatal("Failed to run apploading test (arm): ", err)
+			if _, err := runAppLoadingTest(ctx, armConfig, a, cr); err != nil {
+				firstErr = err
 			}
 		}
-		score, err := apploading.RunTest(ctx, config, a, cr)
+		score, err := runAppLoadingTest(ctx, config, a, cr)
 		if err != nil {
-			s.Fatal("Failed to run apploading test: ", err)
+			firstErr = err
 		}
 
 		// Put scores in the same group together, else add to top-level scores.
@@ -183,6 +186,10 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		} else {
 			scores = append(scores, score)
 		}
+	}
+
+	if firstErr != nil {
+		s.Fatal("Failed to complete apploading test: ", firstErr)
 	}
 
 	// Obtain geometric mean of each group and append to top-level scores.
@@ -231,4 +238,30 @@ func calcGeometricMean(scores []float64) (float64, error) {
 	mean /= float64(len(scores))
 
 	return math.Exp(mean), nil
+}
+
+// runAppLoadingTest will test each app loading subflow with timeout.
+func runAppLoadingTest(ctx context.Context, config apploading.TestConfig, a *arc.ARC, cr *chrome.Chrome) (float64, error) {
+	// Each subflow should take no longer than 5 minutes based on stainless data.
+	// If it takes longer, very likely the app is stuck (e.g. b/169367367).
+	shorterCtx, cancel := context.WithTimeout(ctx, 5*time.Minute)
+	defer cancel()
+
+	testDone := make(chan struct{})
+	var score float64
+	var err error
+	go func() {
+		score, err = apploading.RunTest(shorterCtx, config, a, cr)
+		close(testDone)
+	}()
+
+	select {
+	case <-testDone:
+		// test finished in time.
+		return score, err
+	case <-shorterCtx.Done():
+		testing.ContextLog(ctx, "Failed to complete test in time")
+	}
+
+	return 0, errors.Errorf("failed to run %s, timeout occurred", config.ClassName)
 }
