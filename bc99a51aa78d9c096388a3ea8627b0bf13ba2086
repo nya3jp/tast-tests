@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "892844cf_2797c871",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-10-23T22:10:29Z",
+      "side": 1,
+      "message": "Reliant on username and pass of test account. This CL to be merged first: \n\nhttps://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/3358489",
+      "revId": "bc99a51aa78d9c096388a3ea8627b0bf13ba2086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
