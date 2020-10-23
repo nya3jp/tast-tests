@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "925b91fd_2b16c7a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-23T18:16:25Z",
+      "side": 1,
+      "message": "Only a nit.",
+      "revId": "c00d06ddb816ef48795f10c1a7b42ec269040cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e10508d5_031b6210",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-23T18:16:25Z",
+      "side": 1,
+      "message": "Does the function need to be part of Runner method?",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "c00d06ddb816ef48795f10c1a7b42ec269040cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
