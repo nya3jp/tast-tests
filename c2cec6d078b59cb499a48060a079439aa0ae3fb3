@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8199a60c_7540b07a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-10-23T03:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8710724_d9582325",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 29
+      },
+      "revId": "c2cec6d078b59cb499a48060a079439aa0ae3fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ad208ce_715c5565",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-22T10:01:02Z",
       "side": 1,
       "message": "I don\u0027t recommend ignoring all errors from ioutil.ReadFile. It\u0027s okay to skip when os.IsNotExist(err) since it\u0027s likely a race, but it will be useful to abort on other errors for diagnosis.",
+      "range": {
+        "startLine": 351,
+        "startChar": 2,
+        "endLine": 352,
+        "endChar": 17
+      },
+      "revId": "c2cec6d078b59cb499a48060a079439aa0ae3fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80dd8696_980b9fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-10-23T03:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad208ce_715c5565",
       "range": {
         "startLine": 351,
         "startChar": 2,
