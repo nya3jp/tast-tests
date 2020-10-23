@@ -197,6 +197,30 @@
       },
       "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe286e5_0401f1a3",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-23T02:30:56Z",
+      "side": 1,
+      "message": "Oh, hostapd.Server has already had an Interface() getter, I should use that instead.\n\nBTW about bridge setting, I\u0027m thinking that StartHostapd should setup a bridge -\u003e add the bridge to conf -\u003e StartServer -\u003e callers get the bridge name from the returned hostapd.Server obj.\nHowever, modifying the conf passed by caller sounds bad to me. Though making a copy should be better, but I am not sure if there are some code assuming the conf should be the same as the returned hostapd.Server.Config()...",
+      "parentUuid": "8a093c6b_bd2249f0",
+      "range": {
+        "startLine": 397,
+        "startChar": 104,
+        "endLine": 397,
+        "endChar": 110
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
