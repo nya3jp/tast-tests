@@ -6,16 +6,20 @@ package ui
 
 import (
 	"context"
+	"path/filepath"
 	"regexp"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -58,6 +62,9 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get the connection to the test API: ", err)
 	}
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
 
 	conns, err := ash.CreateWindows(ctx, tconn, cr, "", 2)
 	if err != nil {
@@ -77,7 +84,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure into clamshell mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(closeCtx)
 
 	// Turn windows into normal state before entering into tablet-mode.
 	ws, err := ash.GetAllWindows(ctx, tconn)
@@ -137,7 +144,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
 		}
-		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
+		defer display.SetDisplayRotationSync(closeCtx, tconn, info.ID, display.Rotate0)
 		info, err = display.GetInternalInfo(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to obtain the internal display info: ", err)
@@ -156,7 +163,17 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	// release the finger; this will switch the screen to the app-list. Then
 	// tap the Chrome icon in the hotseat to re-activate the window.
 	s.Log("2. swipe up to minimize the window")
-	r.RunMultiple(ctx, s, "hotseat-revealing", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	r.RunMultiple(ctx, s, "hotseat-revealing", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) (err error) {
+		defer func() {
+			if err != nil {
+				if captureErr := screenshot.CaptureChrome(closeCtx, cr, filepath.Join(s.OutDir(), "hotseat-failure.png")); captureErr != nil {
+					s.Error("Failed to take the screenshot: ", captureErr)
+				}
+				if logErr := ui.LogRootDebugInfo(closeCtx, tconn, filepath.Join(s.OutDir(), "ui-tree.txt")); logErr != nil {
+					s.Error("Failed to dump the UI tree: ", logErr)
+				}
+			}
+		}()
 		if err := ash.DragToShowHomescreen(ctx, tsew.Width(), tsew.Height(), stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to show homescreen")
 		}
