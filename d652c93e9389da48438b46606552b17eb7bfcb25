@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "124e7f3e_9fd76317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-23T08:26:44Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "d652c93e9389da48438b46606552b17eb7bfcb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e8df1d_e256f21b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-23T08:26:44Z",
+      "side": 1,
+      "message": "nit: create a bug and a TODO to create a upstart service that can be used in such cases instead of parsing over ssh.",
+      "revId": "d652c93e9389da48438b46606552b17eb7bfcb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21336eb6_065e616e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-23T08:26:44Z",
+      "side": 1,
+      "message": "use PollBreak",
+      "range": {
+        "startLine": 153,
+        "startChar": 10,
+        "endLine": 153,
+        "endChar": 21
+      },
+      "revId": "d652c93e9389da48438b46606552b17eb7bfcb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2651611f_491248d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-23T08:26:44Z",
+      "side": 1,
+      "message": "use PollBreak",
+      "range": {
+        "startLine": 157,
+        "startChar": 10,
+        "endLine": 157,
+        "endChar": 21
+      },
+      "revId": "d652c93e9389da48438b46606552b17eb7bfcb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
