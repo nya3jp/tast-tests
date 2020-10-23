@@ -37,6 +37,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bc09ee42_053c7ecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-23T22:46:23Z",
+      "side": 1,
+      "message": "Tast OWNERS PTAL",
+      "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "79e0273c_033691fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_star_printer.go",
         "patchSetId": 1
@@ -48,6 +65,24 @@
       "writtenOn": "2020-10-22T22:04:13Z",
       "side": 1,
       "message": "Is it the case that a fatal failure in the above rastertostar print test will abort this entire test suite? If rastertostar and rastertostarlm aren\u0027t highly correlated, I would hesitate to tie the fates of these two test cases together.",
+      "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1130e111_e52f4947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_star_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-23T22:46:23Z",
+      "side": 1,
+      "message": "In unit tests, this would be true.  However, the recommendation is just to combine them in tast in the interest of conserving resources.  But I\u0027d be happy to hear if the guidance has changed.",
+      "parentUuid": "79e0273c_033691fa",
       "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
