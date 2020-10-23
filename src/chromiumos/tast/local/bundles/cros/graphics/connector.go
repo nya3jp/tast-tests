@@ -6,13 +6,10 @@ package graphics
 
 import (
 	"context"
-	"os"
-	"path/filepath"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/graph"
 	"chromiumos/tast/local/graphics"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -82,7 +79,7 @@ func Connector(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get connectors: ", err)
 	}
-	defer dumpModetestOnError(ctx, s)
+	defer graphics.DumpModetestOnError(ctx, s.OutDir(), s.HasError)
 
 	if err := checkUniqueEncoders(ctx, connectors); err != nil {
 		s.Error("Failed to have check unique encoders: ", err)
@@ -103,24 +100,4 @@ func checkUniqueEncoders(ctx context.Context, connectors []*graphics.Connector) 
 		return errors.Errorf("not all connector has a unqiue encoder matching (expect %d but got %d)", len(connectors), maxMatch)
 	}
 	return nil
-}
-
-// dumpModetestOnError dumps the output of modetest to a file if the test failed.
-func dumpModetestOnError(ctx context.Context, s *testing.State) {
-	if !s.HasError() {
-		return
-	}
-	file := filepath.Join(s.OutDir(), "modetest.txt")
-	f, err := os.Create(file)
-	if err != nil {
-		testing.ContextLogf(ctx, "Failed to create %s: %v", file, err)
-		return
-	}
-	defer f.Close()
-
-	cmd := testexec.CommandContext(ctx, "modetest", "-c")
-	cmd.Stdout, cmd.Stderr = f, f
-	if err := cmd.Run(); err != nil {
-		testing.ContextLog(ctx, "Failed to run modetest: ", err)
-	}
 }

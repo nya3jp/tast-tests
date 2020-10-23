@@ -7,12 +7,15 @@ package graphics
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 type bound struct {
@@ -26,6 +29,26 @@ type Connector struct {
 	Connected bool   // true if the connector is connected
 	Name      string // name of the connector
 	Encoders  []int  // encoders id
+}
+
+// DumpModetestOnError dumps the output of modetest to a file if the test failed.
+func DumpModetestOnError(ctx context.Context, outDir string, hasError func() bool) {
+	if !hasError() {
+		return
+	}
+	file := filepath.Join(outDir, "modetest.txt")
+	f, err := os.Create(file)
+	if err != nil {
+		testing.ContextLogf(ctx, "Failed to create %s: %v", file, err)
+		return
+	}
+	defer f.Close()
+
+	cmd := testexec.CommandContext(ctx, "modetest", "-c")
+	cmd.Stdout, cmd.Stderr = f, f
+	if err := cmd.Run(); err != nil {
+		testing.ContextLog(ctx, "Failed to run modetest: ", err)
+	}
 }
 
 // modesetConnectorPattern matches the second line of the following output:
