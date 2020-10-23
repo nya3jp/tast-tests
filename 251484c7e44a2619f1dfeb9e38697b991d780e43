@@ -393,6 +393,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6347a843_aee3c678",
+        "filename": "src/chromiumos/tast/local/graph/bipartite.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T00:52:23Z",
+      "side": 1,
+      "message": "Sorry maybe I was misunderstanding the algorithm. If that\u0027s expected, please disregard it.",
+      "parentUuid": "b00e40d9_6f206a46",
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3452a228_10ae6c38",
@@ -506,6 +524,24 @@
       "side": 1,
       "message": "Tried, but the compiler are complaining that (type *regexp.Regexp has no field or method SubexpIndex).",
       "parentUuid": "c34a9c81_29c5180c",
+      "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ba853a_ee4f142e",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T00:52:23Z",
+      "side": 1,
+      "message": "Oops, sorry. SubexpIndex seems to be a new function. You can still use SubexpNames() (see code samples in https://stackoverflow.com/questions/20750843/using-named-matches-from-go-regex) but that\u0027s cumbersome to use, so I\u0027m fine with unnamed groups. Sorry for the confusing suggestions.",
+      "parentUuid": "e7ee46fb_48bb7f68",
       "revId": "251484c7e44a2619f1dfeb9e38697b991d780e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
