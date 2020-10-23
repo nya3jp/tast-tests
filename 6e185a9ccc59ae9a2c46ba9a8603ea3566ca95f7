@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09399861_3d67851a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-23T21:38:55Z",
+      "side": 1,
+      "message": "(sorry, I missed your question before reviewing it)\n\nRegarding the question -- I actually didn\u0027t touch that file, but definitely it does not need for crosbolt.",
+      "parentUuid": "dc213fb0_39d052c7",
+      "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "848fdd44_bb3ef7de",
