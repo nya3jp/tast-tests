@@ -51,6 +51,23 @@
       "parentUuid": "96062d82_d481b4b5",
       "revId": "219a283a5c390aaa78054eaedea4c24dba5be2ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2cbbf0_1e6355f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-23T08:43:10Z",
+      "side": 1,
+      "message": "Let me add tast-owners@ again as no response from Katherine for a week.",
+      "revId": "219a283a5c390aaa78054eaedea4c24dba5be2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
