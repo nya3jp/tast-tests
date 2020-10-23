@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8582bb20_0306e958",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-23T02:12:09Z",
+      "side": 1,
+      "message": "I guess you mean the configureIface function. I think it should and maybe divided into two peaces. SetTxPower should belong to StartHostapd and configureIP should belong to StartDHCPd.",
+      "parentUuid": "822aa9b1_df8a7bd7",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 67
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7984d40f_3fab26c6",
         "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-22T14:18:17Z",
       "side": 1,
       "message": "If we move some IP configuring methods to Router, then we can add a ServerIP argument StartDHCP to and configure IP in it. The logics here will become more intuitive.",
+      "range": {
+        "startLine": 132,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 55
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb6f320_3fd51cca",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-23T02:12:09Z",
+      "side": 1,
+      "message": "Yeah, as replied in another comment.",
+      "parentUuid": "7984d40f_3fab26c6",
       "range": {
         "startLine": 132,
         "startChar": 11,
@@ -82,6 +130,70 @@
         "startChar": 11,
         "endLine": 206,
         "endChar": 85
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15457327_7b39ae4f",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-23T02:12:09Z",
+      "side": 1,
+      "message": "Similar to another comment, I think we can consider moving these into Stop*.",
+      "parentUuid": "2aa8274a_8968bbf4",
+      "range": {
+        "startLine": 206,
+        "startChar": 11,
+        "endLine": 206,
+        "endChar": 85
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed9ea80_9cf3abef",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-23T02:12:09Z",
+      "side": 1,
+      "message": "Possibly this should also be in StopHostapd? if no obvious reason not to do so.",
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a093c6b_bd2249f0",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-23T02:12:09Z",
+      "side": 1,
+      "message": "I just notice that interface name is available in hostapd.Server. Possibly it is cleaner to have a getter on hostpad.Server as the interface will be simpler.",
+      "range": {
+        "startLine": 397,
+        "startChar": 104,
+        "endLine": 397,
+        "endChar": 110
       },
       "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
