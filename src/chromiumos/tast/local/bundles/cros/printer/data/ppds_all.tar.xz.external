@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/ppds_all_20201030.tar.xz",
+  "size": 36967060,
+  "sha256sum": "a7ceef71b8e7b0c85ff84d91a28602a3ef5e4627d57dfbdcc26ab68f3fd7aede"
+}
