@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc8777d_b50eab1c",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-23T08:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8582bb20_0306e958",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 67
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7984d40f_3fab26c6",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Yeah, as replied in another comment.",
       "parentUuid": "7984d40f_3fab26c6",
+      "range": {
+        "startLine": 132,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 55
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b569e09b_67dc06ab",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-23T08:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdb6f320_3fd51cca",
       "range": {
         "startLine": 132,
         "startChar": 11,
@@ -159,6 +207,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b7b3d62_d5d22e0a",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-23T08:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15457327_7b39ae4f",
+      "range": {
+        "startLine": 206,
+        "startChar": 11,
+        "endLine": 206,
+        "endChar": 85
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ed9ea80_9cf3abef",
@@ -172,6 +244,24 @@
       "writtenOn": "2020-10-23T02:12:09Z",
       "side": 1,
       "message": "Possibly this should also be in StopHostapd? if no obvious reason not to do so.",
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b8ca45_1ebc1ea2",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-23T08:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ed9ea80_9cf3abef",
       "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -237,6 +327,30 @@
       "side": 1,
       "message": "Per discussion, we might pick similar design in Autotest that let Router to create/delete bridge interfaces but let the test to control the main logic. So to hostapd, the only change for it is a new Option.",
       "parentUuid": "afe286e5_0401f1a3",
+      "range": {
+        "startLine": 397,
+        "startChar": 104,
+        "endLine": 397,
+        "endChar": 110
+      },
+      "revId": "1df5d76a4e4ba727208bcf8cd8e5d8d62cbe9cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de9df8f1_8a5b8c1d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-23T08:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bfaccad_038b590c",
       "range": {
         "startLine": 397,
         "startChar": 104,

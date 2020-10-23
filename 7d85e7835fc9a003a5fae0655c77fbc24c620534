@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b76f0c4_a872b3ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-23T08:07:42Z",
+      "side": 1,
+      "message": "I would write a design doc later. Let\u0027s start review first.",
+      "revId": "7d85e7835fc9a003a5fae0655c77fbc24c620534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
