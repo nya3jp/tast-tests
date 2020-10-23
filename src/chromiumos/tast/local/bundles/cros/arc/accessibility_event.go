@@ -38,10 +38,11 @@ type axEventTestStep struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AccessibilityEvent,
-		Desc:         "Checks accessibility events in Chrome are as expected with ARC enabled",
-		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     AccessibilityEvent,
+		Desc:     "Checks accessibility events in Chrome are as expected with ARC enabled",
+		Contacts: []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-framework+tast@google.com"},
+		// TODO(http://b/160107299): Test is disabled until it can be fixed
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
