@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2472fb6_8a462a08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-23T23:43:55Z",
+      "side": 1,
+      "message": "ihf@ PTAL. This came up while analyzing the current data.",
+      "revId": "a6128848115e7ed94094cd0b528a21c119573fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
