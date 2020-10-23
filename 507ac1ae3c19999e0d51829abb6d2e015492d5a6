@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a98699_c54ae9f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-10-23T17:11:35Z",
+      "side": 1,
+      "message": "Daniil, these tests are still running and failing on M87:\n\nhttp://screen/BHDGxWZ4Zau7YeA\n\nCan you please cherry pick this CL back to that branch to stop the tests from running there?",
+      "revId": "507ac1ae3c19999e0d51829abb6d2e015492d5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
