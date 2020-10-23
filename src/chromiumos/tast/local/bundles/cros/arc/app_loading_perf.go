@@ -14,10 +14,17 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/apploading"
 	"chromiumos/tast/local/bundles/cros/arc/nethelper"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+// testParameters contains all the data needed to run a single test iteration.
+type testParameters struct {
+	batteryMode       setup.BatteryDischargeMode
+	binaryTranslation bool
+}
 
 var (
 	arcAppLoadingGaia = &arc.GaiaVars{
@@ -50,26 +57,74 @@ func init() {
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val:               setup.ForceBatteryDischarge,
-			Pre:               arcAppLoadingBooted,
+			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingBooted,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val:               setup.ForceBatteryDischarge,
-			Pre:               arcAppLoadingVMBooted,
+			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingVMBooted,
+		}, {
+			Name:              "binarytranslation",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.X86()),
+			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
+				binaryTranslation: true,
+			},
+			Pre: arcAppLoadingBooted,
+		}, {
+			Name:              "vm_binarytranslation",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.X86()),
+			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
+				binaryTranslation: true,
+			},
+			Pre: arcAppLoadingVMBooted,
 		}, {
 			Name:              "nobatterymetrics",
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val:               setup.NoBatteryDischarge,
-			Pre:               arcAppLoadingBooted,
+			Val: testParameters{
+				batteryMode:       setup.NoBatteryDischarge,
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingBooted,
 		}, {
 			Name:              "vm_nobatterymetrics",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val:               setup.NoBatteryDischarge,
-			Pre:               arcAppLoadingVMBooted,
+			Val: testParameters{
+				batteryMode:       setup.NoBatteryDischarge,
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingVMBooted,
+		}, {
+			Name:              "binarytranslation_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge(), hwdep.X86()),
+			Val: testParameters{
+				batteryMode:       setup.NoBatteryDischarge,
+				binaryTranslation: true,
+			},
+			Pre: arcAppLoadingBooted,
+		}, {
+			Name:              "vm_binarytranslation_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge(), hwdep.X86()),
+			Val: testParameters{
+				batteryMode:       setup.NoBatteryDischarge,
+				binaryTranslation: true,
+			},
+			Pre: arcAppLoadingVMBooted,
 		}},
 		Vars: []string{"arc.AppLoadingPerf.username", "arc.AppLoadingPerf.password"},
 	})
@@ -93,17 +148,16 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	}()
 
 	finalPerfValues := perf.NewValues()
-	batteryMode := s.Param().(setup.BatteryDischargeMode)
+	param := s.Param().(testParameters)
 
 	// Geometric mean for tests in the same group are computed together.  All
 	// tests where group is not defined will be computed separately using the
 	// geometric means from other groups.
 	tests := []struct {
-		name      string
-		prefix    string
-		subtest   string
-		group     string
-		multiarch bool
+		name    string
+		prefix  string
+		subtest string
+		group   string
 	}{{
 		name:   "MemoryTest",
 		prefix: "memory",
@@ -127,9 +181,8 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		prefix:  "file_ext4",
 		subtest: "runExt4Test",
 	}, {
-		name:      "NetworkTest",
-		prefix:    "network",
-		multiarch: true,
+		name:   "NetworkTest",
+		prefix: "network",
 	}, {
 		name:   "OpenGLTest",
 		prefix: "opengl",
@@ -137,9 +190,8 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		name:   "DecompressionTest",
 		prefix: "decompression",
 	}, {
-		name:      "UITest",
-		prefix:    "ui",
-		multiarch: true,
+		name:   "UITest",
+		prefix: "ui",
 	}}
 
 	a := s.PreValue().(arc.PreData).ARC
@@ -149,9 +201,15 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	}
 	config := apploading.TestConfig{
 		PerfValues:           finalPerfValues,
-		BatteryDischargeMode: batteryMode,
+		BatteryDischargeMode: param.batteryMode,
 		ApkPath:              s.DataPath(apkName),
 		OutDir:               s.OutDir(),
+	}
+
+	// Many apps / games run with binary translation (b/169623350#comment8)
+	// and thus it's an important use case to exercise.
+	if param.binaryTranslation {
+		config.ApkPath = s.DataPath(apploading.ArmApkName)
 	}
 
 	var scores []float64
@@ -162,17 +220,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		config.Prefix = test.prefix
 		config.Subtest = test.subtest
 
-		// TODO(b/169367367): Many apps / games run libhoudini (b/169446394) which
-		// is a major use case. These subflows test for crashes but are not scored.
-		if apkName == apploading.X86ApkName && test.multiarch {
-			armConfig := config
-			armConfig.ApkPath = s.DataPath(apploading.ArmApkName)
-			armConfig.Prefix += "_arm"
-			if _, err := apploading.RunTest(ctx, armConfig, a, cr); err != nil {
-				s.Fatal("Failed to run apploading test (arm): ", err)
-			}
-		}
-		score, err := apploading.RunTest(ctx, config, a, cr)
+		score, err := runAppLoadingTest(ctx, config, a, cr)
 		if err != nil {
 			s.Fatal("Failed to run apploading test: ", err)
 		}
@@ -231,4 +279,15 @@ func calcGeometricMean(scores []float64) (float64, error) {
 	mean /= float64(len(scores))
 
 	return math.Exp(mean), nil
+}
+
+// runAppLoadingTest will test each app loading subflow with timeout.
+func runAppLoadingTest(ctx context.Context, config apploading.TestConfig, a *arc.ARC, cr *chrome.Chrome) (float64, error) {
+	shorterCtx, cancel := context.WithTimeout(ctx, 5*time.Minute)
+	defer cancel()
+
+	// Each subflow should take no longer than 5 minutes based on stainless data.
+	// If it takes longer, very likely the app is stuck (e.g. b/169367367).
+	// TODO(b/169341324): Reduce subflow test timeout and overall context timeout.
+	return apploading.RunTest(shorterCtx, config, a, cr)
 }
