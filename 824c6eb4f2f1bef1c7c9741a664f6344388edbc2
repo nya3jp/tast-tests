@@ -16,6 +16,23 @@
       "message": "Thanks. LGTM.\nPlease wait a bit before moving forward, to allow nya@ to take a look.",
       "revId": "824c6eb4f2f1bef1c7c9741a664f6344388edbc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "195a6958_9abd5167",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-23T14:54:52Z",
+      "side": 1,
+      "message": "nya@, does the approach look good to you? Thanks.",
+      "revId": "824c6eb4f2f1bef1c7c9741a664f6344388edbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
