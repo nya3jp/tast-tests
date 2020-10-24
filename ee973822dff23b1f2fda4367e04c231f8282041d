@@ -69,6 +69,24 @@
       "parentUuid": "f57a58ca_babb0ca1",
       "revId": "ee973822dff23b1f2fda4367e04c231f8282041d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1966909c_db12a0a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-10-24T02:05:57Z",
+      "side": 1,
+      "message": "Whoops, actually I should have talked about context.DeadlineExceeded instead of Cancelled! Sorry for the bad advice; see https://golang.org/pkg/context/#pkg-variables\n\n(also, just to make sure the upload didn\u0027t get lost/stuck, I don\u0027t see a new patchset removing the select. If you\u0027re still working on it or testing it no big deal! Maybe you\u0027re still testing because of my accidental suggestion of using Cancelled...)",
+      "parentUuid": "326f23e2_7499dae5",
+      "revId": "ee973822dff23b1f2fda4367e04c231f8282041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
