@@ -16,6 +16,23 @@
       "message": "Verified with chromeos6-row12-rack6-host9.cros with R86-13421.75.0 image + R86 branch tast/tast-tests code.",
       "revId": "915820c58f0c846c161d602bc9f59ec996867644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee77f70b_16e5de52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-24T04:34:55Z",
+      "side": 1,
+      "message": "As Merge Process [1] asks the CL to be merged in 72 hrs after approved, I\u0027ll merge this now.\n\n[1] https://g3doc.corp.google.com/company/teams/chromeos/processes/release/merging.md?cl\u003dhead",
+      "revId": "915820c58f0c846c161d602bc9f59ec996867644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
