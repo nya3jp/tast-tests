@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66e29b9d_0574ecb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-24T00:43:22Z",
+      "side": 1,
+      "message": "Sorry, I was late to revisit. I\u0027d suggest a follow-up CL.",
+      "revId": "4394f31aed2a12e0a438eeffcba0d9218e7de254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6fb72fe_3af69d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-24T00:43:22Z",
+      "side": 1,
+      "message": "there\u0027s an API for that already:\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/network#LockCheckNetworkHook",
+      "range": {
+        "startLine": 1962,
+        "startChar": 0,
+        "endLine": 1971,
+        "endChar": 2
+      },
+      "revId": "4394f31aed2a12e0a438eeffcba0d9218e7de254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
