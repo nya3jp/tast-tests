@@ -10,6 +10,8 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/go-cmp/cmp"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
@@ -697,6 +699,43 @@ func WaitForHotseatAnimationToFinish(ctx context.Context, tc *chrome.TestConn) e
 		return nil
 	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for the hotseat animation to finish")
+	}
+
+	return nil
+}
+
+// WaitForStableShelfBounds waits for the shelf location to be the same for a single iteration of polling.
+func WaitForStableShelfBounds(ctx context.Context, tc *chrome.TestConn) error {
+	// The shelf info does not provide the shelf bounds themselves, but shelf icon bounds can be used as
+	// a proxy for the shelf position.
+	firstIconBounds := coords.Rect{}
+	lastIconBounds := coords.Rect{}
+
+	newFirstIconBounds := coords.Rect{}
+	newLastIconBounds := coords.Rect{}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		shelfInfo, err := fetchShelfInfoForState(ctx, tc, &ShelfState{})
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to fetch scrollable shelf info"))
+		}
+
+		info := shelfInfo.ScrollableShelfInfo
+		if len(info.IconsBoundsInScreen) == 0 {
+			return testing.PollBreak(errors.New("no icons found"))
+		}
+
+		newFirstIconBounds = *info.IconsBoundsInScreen[0]
+		newLastIconBounds = *info.IconsBoundsInScreen[len(info.IconsBoundsInScreen)-1]
+
+		if !cmp.Equal(firstIconBounds, newFirstIconBounds) || !cmp.Equal(lastIconBounds, newLastIconBounds) {
+			firstIconBounds = newFirstIconBounds
+			lastIconBounds = newLastIconBounds
+			return errors.New("Shelf bounds location still changing")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
+		return errors.Wrap(err, "Shelf bounds unstable")
 	}
 
 	return nil

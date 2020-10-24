@@ -285,6 +285,13 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	// Tests close all notification as part of the test state reset, which impacts shelf bounds.
+	// Wait for shelf/hotseat animations to complete to ensure shelf bounds are stable when the test
+	// starts.
+	if err := ash.WaitForStableShelfBounds(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for location changes: ", err)
+	}
+
 	type testSetting struct {
 		state uiState
 		mode  uiMode
