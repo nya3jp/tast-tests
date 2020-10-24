@@ -20,7 +20,7 @@ func init() {
 		Func:         IdlePerf,
 		Desc:         "Measures the CPU usage while the desktop is idle",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Pre:          arc.Booted(),

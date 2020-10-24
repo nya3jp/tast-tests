@@ -50,7 +50,7 @@ func init() {
 		Func:         MeetCUJ,
 		Desc:         "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		Timeout:      3 * time.Minute,
 		Pre:          cuj.LoggedInToCUJUser(),
