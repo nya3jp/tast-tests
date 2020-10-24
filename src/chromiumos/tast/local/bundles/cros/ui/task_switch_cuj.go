@@ -30,7 +30,7 @@ func init() {
 		Func:         TaskSwitchCUJ,
 		Desc:         "Measures the performance of tab-switching CUJ",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      8 * time.Minute,
