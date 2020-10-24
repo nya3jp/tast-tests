@@ -105,6 +105,24 @@
       "parentUuid": "1966909c_db12a0a6",
       "revId": "ee973822dff23b1f2fda4367e04c231f8282041d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224b98b0_4a43aef9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-24T03:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f680a1ce_4a43beaa",
+      "revId": "ee973822dff23b1f2fda4367e04c231f8282041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
