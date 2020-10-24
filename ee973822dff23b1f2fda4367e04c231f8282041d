@@ -87,6 +87,24 @@
       "parentUuid": "326f23e2_7499dae5",
       "revId": "ee973822dff23b1f2fda4367e04c231f8282041d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f680a1ce_4a43beaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-24T02:28:44Z",
+      "side": 1,
+      "message": "No sorry I was finishing dinner 😊\n\nA bit confused now. See ExampleWithTimeout in https://golang.org/src/context/example_test.go.  WithTimeout is a Wrapper convenience function for WithDeadline.\n\nI thought the suggestion was to let runAppLoadingTest defer the cancel() if context timeout signal occurs.  Then have the caller of runAppLoadingTest check errors.Is(err, context.Canceled) and COF if that\u0027s the case.  Otherwise if there is an error, s.Fatal.",
+      "parentUuid": "1966909c_db12a0a6",
+      "revId": "ee973822dff23b1f2fda4367e04c231f8282041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
