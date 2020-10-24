@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8bb3e3_704f63a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-24T01:30:04Z",
+      "side": 1,
+      "message": "Yeah, that makes sense to me.",
+      "parentUuid": "990c1f6a_f05ea0b0",
+      "revId": "5bcfd156da3f2328b1496fe33ff2a8cbc1c964f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a0f80b2_2945369f",
