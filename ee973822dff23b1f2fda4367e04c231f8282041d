@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34b2831_5cfbe047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-24T01:42:28Z",
+      "side": 1,
+      "message": "Good catch. Done",
+      "parentUuid": "30476238_06149b6d",
+      "revId": "ee973822dff23b1f2fda4367e04c231f8282041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f57a58ca_babb0ca1",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-24T01:00:59Z",
       "side": 1,
       "message": "Usually the contract of a function which takes a context is: soon after the context expires the function should return. So I don\u0027t quite see what this goroutine/channel/select is doing: it seems to me like the apploading.RunTest should return soon after shorterCtx expires, which is what the select also seems to be ensuring.\n\nI\u0027d suggest just getting rid of the extra stuff and just expect that apploading.RunTest returns \"soon\". If you already know that function doesn\u0027t actually respect the context, then it would be better to add this goroutine/channel/select to that function instead of on the caller side. That way each caller does not have to reproduce this extra logic, it can just live in one place.",
+      "revId": "ee973822dff23b1f2fda4367e04c231f8282041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "326f23e2_7499dae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-24T01:42:28Z",
+      "side": 1,
+      "message": "My original intention was to only COF on timeout due to the known hang issue or just s.Fatal immediately.  Thanks for mentioning I can also do this with errors.Is(err, context.Canceled).  In this case, you\u0027re right the select is redundant and I\u0027ll remove it.  Thanks.",
+      "parentUuid": "f57a58ca_babb0ca1",
       "revId": "ee973822dff23b1f2fda4367e04c231f8282041d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
