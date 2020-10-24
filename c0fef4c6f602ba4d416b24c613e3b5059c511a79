@@ -20,6 +20,46 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0b94b53b_8d61ae76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-24T01:30:04Z",
+      "side": 1,
+      "message": "Ha, the original test didn\u0027t bother with any of this -- it would accept all DHCP packets, even if captured from some other STA or BSS.\n\nBTW, food for thought: this test has nothing to do with layer 2 (right?), so I wonder if it would be more stable to just do a higher-layer (layer 3-ish -- it includes the pseudo-802.3 framing) capture on the AP, a la `tcpdump -i managed0`. That would only capture traffic on the current BSS, and it should be more reliable than a 3rd-party over-the-air capture.\n\nNo need to change immediately.",
+      "revId": "c0fef4c6f602ba4d416b24c613e3b5059c511a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "852ecde0_b5293cd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-24T01:30:04Z",
+      "side": 1,
+      "message": "Unhelpful note: it\u0027s a little annoying that gopacket leaves you to figure these things out. tshark/pyshark have much richer niceties in this area.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 64
+      },
+      "revId": "c0fef4c6f602ba4d416b24c613e3b5059c511a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f9977899_db374710",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
         "patchSetId": 2
@@ -72,6 +112,30 @@
       "side": 1,
       "message": "Hmm..., I see the standard is using \"To DS\" and \"From DS\" with the space. Not sure which might be better here.",
       "parentUuid": "0c881117_e054cbf7",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "c0fef4c6f602ba4d416b24c613e3b5059c511a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "033d46c4_ea2a25eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-24T01:30:04Z",
+      "side": 1,
+      "message": "No strong opinion here. Feels kind of like a variable name in the current usage, so 1 word might make sense.",
+      "parentUuid": "b8873fa6_4e2954e7",
       "range": {
         "startLine": 102,
         "startChar": 8,
