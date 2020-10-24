@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/ui/pointer"
@@ -284,6 +285,12 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to ensure the tablet-mode enabled status to %v: %v", s.Param().(bool), err)
 	}
 	defer cleanup(ctx)
+
+	// Tests close all notification as part of the test state reset, which impacts shelf bounds.
+	// Wait for locaion changes to complete to ensure shelf bounds are stable when the test starts.
+	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for location changes: ", err)
+	}
 
 	type testSetting struct {
 		state uiState
