@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76652b15_5a982029",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-10-25T22:28:28Z",
+      "side": 1,
+      "message": "lgtm\n(+fyi hirokisato@)",
+      "revId": "fe273e2d6aba52d261cc7f8902b94adf7b92a9da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf104c6a_23bf8a89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-10-25T22:28:28Z",
+      "side": 1,
+      "message": "nit: full stop",
+      "range": {
+        "startLine": 44,
+        "startChar": 68,
+        "endLine": 44,
+        "endChar": 69
+      },
+      "revId": "fe273e2d6aba52d261cc7f8902b94adf7b92a9da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0a7cde_bb2082a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-10-25T22:28:28Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "fe273e2d6aba52d261cc7f8902b94adf7b92a9da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
