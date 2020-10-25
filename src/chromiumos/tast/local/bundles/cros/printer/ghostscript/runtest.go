@@ -61,13 +61,15 @@ func RunTest(ctx context.Context, s *testing.State, gsFilter, input, golden, env
 		s.Fatalf("Failed to read file %s: %v", golden, err)
 	}
 
-	diffPath := filepath.Join(s.OutDir(), "diff.txt")
-	if err := document.CompareFileContents(ctx, string(output), string(goldenBytes), diffPath); err != nil {
-		s.Error("Printed file differs from golden file: ", err)
-		outPath := filepath.Join(s.OutDir(), "output.pdf")
-		testing.ContextLog(ctx, "Dumping output file to ", outPath)
+	const diffFile = "diff.txt"
+	diffPath := filepath.Join(s.OutDir(), diffFile)
+	if err := document.CompareFileContents(ctx, string(goldenBytes), string(output), diffPath); err != nil {
+		cmd.DumpLog(ctx)
+		outFile := filepath.Base(golden)
+		outPath := filepath.Join(s.OutDir(), outFile)
 		if err := ioutil.WriteFile(outPath, output, 0644); err != nil {
 			testing.ContextLog(ctx, "Failed to dump output: ", err)
 		}
+		s.Errorf("Output differs from expected: diff saved to %q (-want +got), output to %q", diffFile, outFile)
 	}
 }
