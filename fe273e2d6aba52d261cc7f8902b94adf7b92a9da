@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58d57ad_3681f3a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-25T23:56:13Z",
+      "side": 1,
+      "message": "I have a fix for this http://crrev/c/2467224, which is blocked by tast-owners review (no response for a while even after pinging).",
+      "revId": "fe273e2d6aba52d261cc7f8902b94adf7b92a9da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf104c6a_23bf8a89",
