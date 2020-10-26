@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19785b6_89269324",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T22:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be0604af_b383b2e5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "3bdad518cf38747b855f3e7feb725526e38c139b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bad479a_096c07cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T22:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a88f15_eafea05c",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "3bdad518cf38747b855f3e7feb725526e38c139b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94211850_ed40a3cc",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-26T20:59:47Z",
       "side": 1,
       "message": "The commit description should summarize what the CL does. For example, \"add monitoring of ARC++ and ARCVM system and vendor images to ReportDiskUsage\". As-is, it does not really explain what the CL is doing.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/refs/heads/master/contributing.md#Commit-messages points to https://chris.beams.io/posts/git-commit/ for more details",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "3bdad518cf38747b855f3e7feb725526e38c139b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b61582a_10086895",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T22:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94211850_ed40a3cc",
       "range": {
         "startLine": 9,
         "startChar": 0,
