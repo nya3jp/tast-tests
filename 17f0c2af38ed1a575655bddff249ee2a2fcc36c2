@@ -22,6 +22,30 @@
       },
       "revId": "17f0c2af38ed1a575655bddff249ee2a2fcc36c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1637f8f3_907e5470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-10-26T08:15:26Z",
+      "side": 1,
+      "message": "Fixed in PS2.",
+      "parentUuid": "cb8f749d_1af25a17",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "17f0c2af38ed1a575655bddff249ee2a2fcc36c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
