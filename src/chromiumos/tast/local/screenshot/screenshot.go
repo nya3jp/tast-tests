@@ -9,6 +9,8 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
+	"image"
+	_ "image/png" // PNG decoder
 	"io"
 	"os"
 	"strings"
@@ -39,6 +41,31 @@ func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {
 	return captureInternal(ctx, path, func(code string, out interface{}) error {
 		return tconn.EvalPromise(ctx, code, out)
 	})
+}
+
+// CaptureChromeImage takes a screenshot of the primary display and returns
+// it as an image.Image. It will use Chrome to perform the screen capture.
+func CaptureChromeImage(ctx context.Context, cr *chrome.Chrome) (image.Image, error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+	var base64PNG string
+	if err := tconn.EvalPromise(ctx,
+		`new Promise(function(resolve, reject) {
+		   chrome.autotestPrivate.takeScreenshot(function(base64PNG) {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve(base64PNG);
+		     } else {
+		       reject(chrome.runtime.lastError.message);
+		     }
+		   });
+		 })`, &base64PNG); err != nil {
+		return nil, err
+	}
+	sr := strings.NewReader(base64PNG)
+	img, _, err := image.Decode(base64.NewDecoder(base64.StdEncoding, sr))
+	return img, err
 }
 
 // CaptureCDP takes a screenshot and saves it as a PNG image at path, similar to
