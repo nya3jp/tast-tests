@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6fe48b_d6df2eb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-10-26T20:58:25Z",
+      "side": 1,
+      "message": "The companion CL to my adding of DUT.IthWifiPeerHost(). This one establishes the wifipeer.go file where I\u0027m putting all the functions to control wifipeers. There is not unittest for this, but I have one mostly written. I just need to learn how to mock DUT out before I submit it. It pings real devices right now, but proves that my code works.",
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
