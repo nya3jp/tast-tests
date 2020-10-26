@@ -41,13 +41,13 @@ func (c *SystemTimezoneService) TestSystemTimezone(ctx context.Context, req *pb.
 	// Wait until the timezone is set.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 
-		out, err := testexec.CommandContext(ctx, "date", "+%Z").Output()
+		out, err := testexec.CommandContext(ctx, "/bin/ls", "-l", "/var/lib/timezone/localtime").Output()
 		if err != nil {
 			return errors.Wrap(err, "failed to get the timezone")
 		}
 		outStr := strings.TrimSpace(string(out))
 
-		if outStr != req.Timezone {
+		if !strings.Contains(outStr, req.Timezone) {
 			return errors.Errorf("unexpected timezone: got %q; want %q", outStr, req.Timezone)
 		}
 
