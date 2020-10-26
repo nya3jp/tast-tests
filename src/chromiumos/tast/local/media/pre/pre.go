@@ -17,7 +17,8 @@ func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
 var chromeVideoPre = chrome.NewPrecondition("video",
 	chromeVModuleArgs,
-	chromeUseHwDecoderForSmallResolutions)
+	chromeUseHwDecoderForSmallResolutions,
+	chromeBypassPermissionsArgs)
 
 // ChromeAlternateVideoDecoder returns a precondition with flags selecting the
 // alternate hardware accelerated video decoder implementation. Chrome has two
