@@ -285,6 +285,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7556716_a341d06e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "@yenlinlai could you advise how to flag this test?\nAlso, in regard to the \"-var\" issue, this will be handled separately, as followup to the previous CLs.",
+      "parentUuid": "5d976a71_23d37e58",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b42729f0_0c277213",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
@@ -332,6 +350,24 @@
       "side": 1,
       "message": "Then the name is somewhat misleading, but OK. Some comment could be handy.",
       "parentUuid": "2de50cfc_7df07668",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "277ba947_ad01859d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "Right.",
+      "parentUuid": "6fce0d3d_7503465f",
       "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -432,6 +468,24 @@
       "side": 1,
       "message": "I think we already established, that the results are similar enough. I don\u0027t see reason why we couldn\u0027t improve upon the old test.\nNegative delta should not rather happen in a typical case and any such result would be yellow flag.\n/2 causes risk of registering proportionally too many events in the last bucket, especially, that you don\u0027t want to have the number of buckets parameterised.",
       "parentUuid": "43f950f2_3e6df5eb",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee8b8bd_fbd023c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "I have added handling of negative delta (use bucket 0 which represent the minimum delta).",
+      "parentUuid": "180697b1_9caf3de8",
       "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -602,6 +656,24 @@
       "writtenOn": "2020-10-20T10:39:19Z",
       "side": 1,
       "message": "I\u0027d rather put it directly in wificell (or even TestFixture itself) as tf method, but I\u0027m not insisting too much.",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4865af33_7d07ed61",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "Right, I have considered this option, but on the other hand the methods in TestFixture are more fine-grained. This is a pure util, so I didn\u0027t want to clutter that code.",
+      "parentUuid": "19a90ffc_b433788f",
       "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

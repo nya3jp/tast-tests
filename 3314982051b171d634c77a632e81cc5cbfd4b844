@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fd0b10_47241035",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "Right, copy-paste error. It\u0027s in another file in the same package, the same value so it passed my tests.",
+      "parentUuid": "db6daa3f_ad4dd2c0",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76885221_8efc3074",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-21T07:44:15Z",
       "side": 1,
       "message": "The scope of these functions is kind of awkward as tast-lint does not allow referencing symbols in other test file so this will block other tests defining similar utilities. It is also inconvenient that golang doesn\u0027t provide this for us. I don\u0027t have a better solution than moving these into a package, e.g. bundles/cros/wifi/mathutil, (which is somehow excessive).",
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02bd85af_2ddbce58",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "I\u0027ve chosen to use the wifi/wifiutil, which, despite its name, contains non-wifi utilities already. I guess the name refers to that it\u0027s used in the wifi test.",
+      "parentUuid": "76885221_8efc3074",
       "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e72aad38_50638956",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "I think wanted to follow the logic of handling timeouts as in the original auto_test, but it doesn\u0027t matter that much. Count\u003d1 works fine as well.",
+      "parentUuid": "0467cbf3_48813158",
+      "range": {
+        "startLine": 129,
+        "startChar": 38,
+        "endLine": 129,
+        "endChar": 46
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0874fda_22707570",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb17ed19_5869fb80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0874fda_22707570",
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21e84bb7_9597b238",
@@ -94,6 +178,30 @@
       "writtenOn": "2020-10-21T07:44:15Z",
       "side": 1,
       "message": "nit: as the size should be exactly two, not sure if \"apParam0, apParam1 []hostapd.Option\" is more explicit?",
+      "range": {
+        "startLine": 196,
+        "startChar": 71,
+        "endLine": 196,
+        "endChar": 101
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "754070b7_0b140d94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "Right :)",
+      "parentUuid": "21e84bb7_9597b238",
       "range": {
         "startLine": 196,
         "startChar": 71,
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "595581ca_17ed9e61",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "yeah, probably a bit...",
+      "parentUuid": "582d73d5_5bd372c7",
+      "range": {
+        "startLine": 232,
+        "startChar": 55,
+        "endLine": 232,
+        "endChar": 87
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2815d3a_bebee35f",
@@ -140,6 +272,30 @@
       "writtenOn": "2020-10-21T07:44:15Z",
       "side": 1,
       "message": "\"go vet\" tells me it\u0027s undefined. I think it\u0027s freq0/freq1 in this function.",
+      "range": {
+        "startLine": 240,
+        "startChar": 49,
+        "endLine": 240,
+        "endChar": 54
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5efe035e_e7ca0fbc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "Yeap, it was a too quick fix from another CL.",
+      "parentUuid": "f2815d3a_bebee35f",
       "range": {
         "startLine": 240,
         "startChar": 49,
@@ -199,6 +355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20c4f9f2_f8084d20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "Yes, but I think {2, 2}: {} is not as clear, especially as the type is defined somewhere else.",
+      "parentUuid": "8a5f799c_36109d4f",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 12
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2318e03_18721494",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
         "patchSetId": 4
@@ -210,6 +390,30 @@
       "writtenOn": "2020-10-21T07:44:15Z",
       "side": 1,
       "message": "nit: end the sentence with period. similar in other places.",
+      "range": {
+        "startLine": 17,
+        "startChar": 97,
+        "endLine": 17,
+        "endChar": 98
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ca7ea5_b4b4053c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2318e03_18721494",
       "range": {
         "startLine": 17,
         "startChar": 97,
@@ -243,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "558e491f_92eed61e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "Added comment.",
+      "parentUuid": "d0c431a0_9a5f1f32",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a09b5ec_6dd1e494",
@@ -266,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c26bf5db_b16434fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a09b5ec_6dd1e494",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1362c8c9_0ed0194e",
@@ -279,6 +531,30 @@
       "writtenOn": "2020-10-21T07:44:15Z",
       "side": 1,
       "message": "you probably should do this before ConfigureAPOnRouterID otherwise it is possible that ap is not closed when we get error here. (although there is a similar check inside ConfigureAPOnRouterID but it is not obvious).",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "3314982051b171d634c77a632e81cc5cbfd4b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "900a48cd_c2d48195",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:27:33Z",
+      "side": 1,
+      "message": "ap is not available earlier. So I handled this case with explicit deconfig.",
+      "parentUuid": "1362c8c9_0ed0194e",
       "range": {
         "startLine": 28,
         "startChar": 0,
