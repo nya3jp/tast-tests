@@ -261,7 +261,7 @@ func (s *Settings) ClickRemove(ctx context.Context, tconn *chrome.TestConn) (*Re
 
 // ResizeDiskDialog represents the Resize Linux disk dialog.
 type ResizeDiskDialog struct {
-	Self   *uig.Action `name:"Resize Linux disk" role:"dialog"`
+	Self   *uig.Action `name:"Resize Linux disk" role:"genericContainer"`
 	Slider *uig.Action `role:"slider"`
 	Resize *uig.Action `name:"Resize" role:"button"`
 	Cancel *uig.Action `name:"Cancel" role:"button"`
