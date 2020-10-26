@@ -5,6 +5,7 @@
 package hostapd
 
 import (
+	"encoding/hex"
 	"fmt"
 	"math/rand"
 	"net"
@@ -220,6 +221,50 @@ func OBSSInterval(interval uint16) Option {
 	}
 }
 
+// Bridge returns an Option which sets bridge in hostapd config.
+func Bridge(br string) Option {
+	return func(c *Config) {
+		c.Bridge = br
+	}
+}
+
+// MobilityDomain returns an Option which sets mobility domain in hostapd config.
+func MobilityDomain(mdID string) Option {
+	return func(c *Config) {
+		c.MobilityDomain = mdID
+	}
+}
+
+// NASIdentifier returns an Option which sets nas_identifier in hostapd config.
+func NASIdentifier(id string) Option {
+	return func(c *Config) {
+		c.NASIdentifier = id
+	}
+}
+
+// R1KeyHolder returns an Option which sets r1 key holder identifier in hostapd config.
+func R1KeyHolder(r1khID string) Option {
+	return func(c *Config) {
+		c.R1KeyHolder = r1khID
+	}
+}
+
+// R0KHs returns an Option which sets R0KHs in hostapd config. Each R0KH
+// should be in format: <MAC address> <NAS Identifier> <256-bit key as hex string>
+func R0KHs(r0KHs ...string) Option {
+	return func(c *Config) {
+		c.R0KHs = append([]string(nil), r0KHs...)
+	}
+}
+
+// R1KHs returns an Option which sets R1KHs in hostapd config. Each R1KH
+// should be in format: <MAC address> <R1KH-ID> <256-bit key as hex string>
+func R1KHs(r1KHs ...string) Option {
+	return func(c *Config) {
+		c.R1KHs = append([]string(nil), r1KHs...)
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -267,6 +312,12 @@ type Config struct {
 	DTIMPeriod         int
 	BSSID              string
 	OBSSInterval       uint16
+	Bridge             string
+	MobilityDomain     string
+	NASIdentifier      string
+	R1KeyHolder        string
+	R0KHs              []string
+	R1KHs              []string
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -354,6 +405,30 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	}
 
 	configure("ieee80211w", strconv.Itoa(int(c.PMF)))
+
+	if c.Bridge != "" {
+		configure("bridge", c.Bridge)
+	}
+
+	if c.MobilityDomain != "" {
+		configure("mobility_domain", c.MobilityDomain)
+	}
+	if c.NASIdentifier != "" {
+		configure("nas_identifier", c.NASIdentifier)
+	}
+	if c.R1KeyHolder != "" {
+		configure("r1_key_holder", c.R1KeyHolder)
+	}
+	if len(c.R0KHs) != 0 {
+		for _, r := range c.R0KHs {
+			configure("r0kh", r)
+		}
+	}
+	if len(c.R1KHs) != 0 {
+		for _, r := range c.R1KHs {
+			configure("r1kh", r)
+		}
+	}
 
 	return builder.String(), nil
 }
@@ -465,6 +540,42 @@ func (c *Config) validate() error {
 	if c.DTIMPeriod != 0 {
 		if c.DTIMPeriod > 255 || c.DTIMPeriod < 1 {
 			return errors.Errorf("invalid DTIM period: got %d; want [1..255]", c.DTIMPeriod)
+		}
+	}
+
+	if c.MobilityDomain != "" {
+		if b, err := hex.DecodeString(c.MobilityDomain); err != nil {
+			return errors.Wrap(err, "mobility domain should be a hex string")
+		} else if len(b) != 2 {
+			return errors.New("mobility domain should be 2-octet identifier as a hex string")
+		}
+	}
+
+	if c.R1KeyHolder != "" {
+		if b, err := hex.DecodeString(c.R1KeyHolder); err != nil {
+			return errors.Wrap(err, "r1 key holder identifier should be a hex string")
+		} else if len(b) != 6 {
+			return errors.New("r1 key holder identifier should be 6-octet identifier as a hex string")
+		}
+	}
+
+	for i, khs := range append(c.R0KHs, c.R1KHs...) {
+		fields := strings.Fields(khs)
+		if len(fields) != 3 {
+			return errors.Errorf("key holder should have exactly three fields, got %q", khs)
+		}
+		if _, err := net.ParseMAC(fields[0]); err != nil {
+			return errors.Wrap(err, "the first field of key holders should be a MAC address")
+		}
+		if i >= len(c.R0KHs) {
+			if _, err := net.ParseMAC(fields[1]); err != nil {
+				return errors.Wrap(err, "the second field of r1kh should be a MAC address")
+			}
+		}
+		if b, err := hex.DecodeString(fields[2]); err != nil {
+			return errors.Wrap(err, "the third field of key holders should be a hex string")
+		} else if len(b) != 32 {
+			return errors.Errorf("the third field of key holders should be a 256-bits hex string, got len=%d", len(b))
 		}
 	}
 
