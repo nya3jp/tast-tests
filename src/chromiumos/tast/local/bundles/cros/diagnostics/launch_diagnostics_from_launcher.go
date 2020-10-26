@@ -47,25 +47,8 @@ func LaunchDiagnosticsFromLauncher(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	if err := launcher.OpenLauncher(ctx, tconn); err != nil {
-		s.Fatal("Failed to open launcher: ", err)
-	}
-
-	// Search for "diagnostic".
-	if err := launcher.Search(ctx, tconn, "diagnostic"); err != nil {
-		s.Fatal("Failed to search for diagnostics: ", err)
-	}
-
-	// Diagnostics app should be one of the search results.
-	appNode, err := launcher.WaitForAppResult(ctx, tconn, apps.Diagnostics.Name, 15*time.Second)
-	if err != nil {
-		s.Fatal("Diagnostics app does not exist in search result: ", err)
-	}
-	defer appNode.Release(ctx)
-
-	// Clicking that result should open the Diagnostics app.
-	if err := appNode.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to launch app from search result: ", err)
+	if err := launcher.SearchAndLaunchWithQuery(ctx, tconn, "diagnostic", apps.Diagnostics.Name); err != nil {
+		s.Fatal("Failed to search and launch diagnostics: ", err)
 	}
 
 	// App should be launched.
