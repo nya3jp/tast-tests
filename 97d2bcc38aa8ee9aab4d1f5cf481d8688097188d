@@ -16,6 +16,143 @@
       "message": "This test is working reliably now and I\u0027m reasonably happy with the code, although there may still be some potential to move helper functionality (for example `claimInterface()`) into other packages if we think it might be used by other tests in the future.",
       "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c72e30b_24559840",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-26T04:54:17Z",
+      "side": 1,
+      "message": "Reviewed the first half.",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9820b6f4_5c8c83d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-26T04:54:17Z",
+      "side": 1,
+      "message": "TestFixturePreWithCapture",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba65ab2_38b65e45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-26T04:54:17Z",
+      "side": 1,
+      "message": "In Golang, file level lowercase const is still shared within the package. To avoid conflict, please add a prefix, e.g. \"csdt\" to the const, or move the const to where it is used.",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa7588a_3accd153",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-26T04:54:17Z",
+      "side": 1,
+      "message": "It is not always wlan0. Please call tf.ClientInterface() to get the default WiFi interface name.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/test_fixture.go?l\u003d916",
+      "range": {
+        "startLine": 68,
+        "startChar": 45,
+        "endLine": 68,
+        "endChar": 50
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42013b57_645aad24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-26T04:54:17Z",
+      "side": 1,
+      "message": "Recently we decided to shorten ctx before something setting up:\n\ndeferCtx \u003d ctx\nctx, cancel \u003d ctxutil.Shorten(ctx, time.Second)\ndefer cancel()\nif err :\u003d claimInterface(ctx, ...); ... {\n  ...\n}\ndefer func(ctx context.Context) {\n  ...\n}(deferCtx)\n...",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf50fc4_710cf606",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-26T04:54:17Z",
+      "side": 1,
+      "message": "With TestFixturePreWithCapture, you don\u0027t need to set up pcap here.",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3a2215_468bb5b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-26T04:54:17Z",
+      "side": 1,
+      "message": "You may use td.DefaultOpenNetworkAP(ctx) to set up AP for open network.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/missing_beacons.go?l\u003d53",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 0
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
