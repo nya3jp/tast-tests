@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db8b2b84_7a0cf6aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-26T00:33:34Z",
+      "side": 1,
+      "message": "This will also fix this bug: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1142289.",
+      "revId": "7226d5c13ee9e3b6f29e4d3d0b252b71c1bf554b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
