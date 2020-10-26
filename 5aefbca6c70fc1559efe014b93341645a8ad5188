@@ -70,6 +70,24 @@
       "parentUuid": "b7872161_a01241c6",
       "revId": "5aefbca6c70fc1559efe014b93341645a8ad5188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd8df3b_93ca2fb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-26T20:21:38Z",
+      "side": 1,
+      "message": "Notice that the CPU can get throttled by power. So 20% is not always 20%. One really should scale this number by CPU frequency or pin the CPU.\n\nFailing IMO is correct. But one should still run the test and report the numbers before failing. Otherwise one becomes blind on the performance dashboards and needs to switch to stainless, which is inconvenient (and blinding to performance).",
+      "parentUuid": "89eb8355_4d810e86",
+      "revId": "5aefbca6c70fc1559efe014b93341645a8ad5188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
