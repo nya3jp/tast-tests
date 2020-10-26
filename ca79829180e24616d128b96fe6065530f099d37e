@@ -33,6 +33,385 @@
       "message": "Please review.",
       "revId": "ca79829180e24616d128b96fe6065530f099d37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d7da21_8d668c77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "First round of review. I\u0027m not very familiar with the perf tests so I guess I\u0027ll have to re-read the Autotest version and come back to this CL again later.",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c1c350_a88a323f",
+        "filename": "src/chromiumos/tast/remote/network/cmd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "nit: I know Autotest does this with some more path scrawling e.g. /system/bin, but I\u0027m not sure if this is still necessary.",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce00f187_a36a1456",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "Is the Result still valuable when there\u0027s parsing error? I guess we should properly handle format/parsing error and let the test fail instead of ignoring it?",
+      "range": {
+        "startLine": 70,
+        "startChar": 97,
+        "endLine": 70,
+        "endChar": 104
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be31bd35_d7870a19",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "nit: maybe parseResult? fromResults is not that obvious to me.",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 16
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b74aab_d2a944bd",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "\"case TestTypeTCPMaerts, TestTypeTCPSendfile, TestTypeTCPStream:\" should work.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bdfcf77_5892e5ed",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "\"case TestTypeUDPStream, TestTypeUDPMaerts\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 23
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac00c271_10400457",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "\"case TestTypeTCPCRR, TestTypeTCPRR, TestTypeUDPRR:\"",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 20
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7869592_23586fee",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "tast prefer returning error over panic: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#support-packages",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afc54e0_39f85d11",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "nit: not sure if AggregateResults or AggregateSamples is more straightforward.",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e311bade_58b691b7",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "nit: not sure if the pairing is more obvious with anonymous struct, e.g.:\n\n  for _, m :\u003d range []struct{\n    Val Category\n    Dev Category\n  } {\n    {CategoryThroughput, CategoryThroughputDev},\n    ...\n  } {\n    // Use m.Val and m.Dev.\n  }",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 30
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "567f08b5_af94b76e",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "I\u0027m not really sure if this is true. What if another test wants to verify the default firewall rule?",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "499e3ded_613905a4",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "you can just omit the \"_ \u003d\"",
+      "range": {
+        "startLine": 130,
+        "startChar": 45,
+        "endLine": 139,
+        "endChar": 73
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "066d1570_0dea5bfc",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "nit: combine these into \"if err :\u003d do.something(); err !\u003d nil {\" ? similar below.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f44b1389_17155c61",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "IIUC, if we hit any of the errors here, netserver will not be killed?",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12cdb503_30a0b0c1",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "curious: is there some ways to know if the service is up? Tast doesn\u0027t suggest any Sleep whenever it is possible.",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795d95bb_7deec19b",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "nit: Looks like this is the same as the one in Command below. I guess you can construct a slice for the arguments and log with strings.Join here?",
+      "range": {
+        "startLine": 206,
+        "startChar": 37,
+        "endLine": 209,
+        "endChar": 32
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf8e179_be391b4e",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "This seems to be the same as the one in line213 and it seems be un-changed. Assign a variable for this?",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 74
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75bbd255_ad3fb353",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:48:48Z",
+      "side": 1,
+      "message": "\u003e \"calcualte\" is a possible misspelling of \"calculate\".\n\nPlease fix.",
+      "parentUuid": "ecfac822_7579582e",
+      "range": {
+        "startLine": 119,
+        "startChar": 40,
+        "endLine": 119,
+        "endChar": 49
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
