@@ -82,6 +82,7 @@ func Messenger(ctx context.Context, s *testing.State) {
 func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		cameraDes          = "Camera"
+		doneDes            = "DONE"
 		loginDes           = "LOG IN"
 		notNowDes          = "NOT NOW"
 		notNowText         = "NOT NOW"
@@ -151,6 +152,13 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Log("clickOnOkButton doesn't exist: ", err)
 	} else if err := clickOnOkButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnOkButton: ", err)
+	}
+	// Click on done button.
+	clickOnDoneButton := d.Object(ui.ClassName(viewGroupClassName), ui.Description(doneDes))
+	if err := clickOnDoneButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnDoneButton doesn't exist: ", err)
+	} else if err := clickOnDoneButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnDoneButton: ", err)
 	}
 
 	// Check for camera Icon.
