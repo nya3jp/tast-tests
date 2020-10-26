@@ -1,0 +1,23 @@
+[
+  {
+    "action": "LockScreen",
+    "start": "1s"
+  },
+  {
+    "action": "UnlockScreen",
+    "start": "+2s"
+  },
+  {
+    "action": "OpenUrl",
+    "args": {
+      "url": "https://www.gmail.com/"
+    }
+  },
+  {
+    "action": "ClickUI",
+    "args": {
+      "role": "row"
+    },
+    "start": "+5s"
+  }
+]
