@@ -16,6 +16,24 @@
       "message": "Will this break again if/when the cr-dialog change gets reverted? If so, a link to the CL/bug for that will help future us.",
       "revId": "85b10ff2be68d1a5d5adfed586d43c6714158768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1150e43c_56f8b18c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-26T02:47:30Z",
+      "side": 1,
+      "message": "No, it will not. With this cl, we are looking for a child of the dialog. So any change to the dialog node will not have impact to this node.",
+      "parentUuid": "7be305d7_1fadf654",
+      "revId": "85b10ff2be68d1a5d5adfed586d43c6714158768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
