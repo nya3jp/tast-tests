@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "981906c9_79bf694a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-26T23:35:47Z",
+      "side": 1,
+      "message": "Given that at least one of the tests failed, I\u0027m nervous that some others might, too. Can you run all of the tests?",
+      "revId": "b5b79cf28f049b5e85d61907aee01c51c4a14451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306828ec_44589b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-26T23:35:47Z",
+      "side": 1,
+      "message": "This feels like a suboptimal way to handle this case. Consider a test that looks for \"chrome.\\d{8}.\\d{6}.\\d{1,6}.meta\". It would match a hypothetical \"foobar_chrome.20201031.111111.1234.meta\". It seems cumbersome to have to always specify the leading slash.\n\nInstead, can we change the semantic of WaitForCrashFiles to match the full filename? IIRC most tests already do this.\n\nAlternatively, could we change the default to match the full filename and add an Option to allow partial filename matches? (or vice-versa, but either way I think it should be a first-class part of the API rather than having to hack the regex to include the directory separator).",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "b5b79cf28f049b5e85d61907aee01c51c4a14451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ce178c_0016c4e5",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-26T23:35:47Z",
+      "side": 1,
+      "message": "extra s?",
+      "range": {
+        "startLine": 383,
+        "startChar": 15,
+        "endLine": 383,
+        "endChar": 16
+      },
+      "revId": "b5b79cf28f049b5e85d61907aee01c51c4a14451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

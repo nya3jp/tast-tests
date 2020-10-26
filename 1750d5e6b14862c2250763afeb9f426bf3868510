@@ -353,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b05e1bab_dd07c82c",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-26T23:35:47Z",
+      "side": 1,
+      "message": "Oh, got it. For some reason I thought this was the timeout to WaitForCrashFiles. Nevermind 😊",
+      "parentUuid": "2ff24467_1d7adab7",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 11
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a924bfc7_1eb1153a",
