@@ -175,6 +175,87 @@ func TestNewConfig(t *testing.T) {
 			expected:   nil,
 			shouldFail: true, // should not set the BSSID if its length is under 17.
 		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				MobilityDomain("efgh"),
+			},
+			expected:   nil,
+			shouldFail: true, // mobility domain should be a hex string.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				MobilityDomain("012345"),
+			},
+			expected:   nil,
+			shouldFail: true, // mobility domain should be 2-octet identifier as a hex string.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				R1KeyHolder("1122334455gg"),
+			},
+			expected:   nil,
+			shouldFail: true, // r1 key holder should be a hex string.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				R1KeyHolder("11223344556677"),
+			},
+			expected:   nil,
+			shouldFail: true, // r1 key holder identifier should be 6-octet identifier as a hex string.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				R0KHs("02:01:02:03:04:05 r0kh-1.example.com 0123 extra fields"),
+			},
+			expected:   nil,
+			shouldFail: true, // Key holders should have exactly three fields.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				R0KHs("02:01:02:03:04:05 r0kh-1.example.com"),
+			},
+			expected:   nil,
+			shouldFail: true, // Key holders should have exactly three fields.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				R0KHs("02:01:02:03:0405 r0kh-1.example.com 0123"),
+			},
+			expected:   nil,
+			shouldFail: true, // The first field should be a MAC address.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				R1KHs("02:01:02:03:04:05 r0kh-1.example.com 0123"),
+			},
+			expected:   nil,
+			shouldFail: true, // The second field of r1kh should be a MAC address.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				R0KHs("02:01:02:03:04:05 r0kh-1.example.com 01234"),
+			},
+			expected:   nil,
+			shouldFail: true, // The third field should be a hex string.
+		},
 		// Good cases.
 		{
 			ops: []Option{
@@ -318,6 +399,34 @@ func TestNewConfig(t *testing.T) {
 				HTCaps:         0,
 				SecurityConfig: &base.Config{},
 				OBSSInterval:   5,
+			},
+			shouldFail: false,
+		},
+		{
+			ops: []Option{
+				SSID("ssid"),
+				BSSID("00:11:22:33:44:55"),
+				Mode(Mode80211a),
+				Channel(36),
+				Bridge("br0"),
+				MobilityDomain("0123"),
+				NASIdentifier("r0kh-1.example.com"),
+				R1KeyHolder("112233445566"),
+				R0KHs("02:01:02:03:04:05 r0kh-1.example.com 0123"),
+				R1KHs("02:01:02:03:04:05 02:01:02:03:04:05 0123"),
+			},
+			expected: &Config{
+				SSID:           "ssid",
+				BSSID:          "00:11:22:33:44:55",
+				Mode:           Mode80211a,
+				Channel:        36,
+				SecurityConfig: &base.Config{},
+				Bridge:         "br0",
+				MobilityDomain: "0123",
+				NASIdentifier:  "r0kh-1.example.com",
+				R1KeyHolder:    "112233445566",
+				R0KHs:          []string{"02:01:02:03:04:05 r0kh-1.example.com 0123"},
+				R1KHs:          []string{"02:01:02:03:04:05 02:01:02:03:04:05 0123"},
 			},
 			shouldFail: false,
 		},
