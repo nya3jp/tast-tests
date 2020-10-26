@@ -11,12 +11,10 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net"
-	"os"
 	"reflect"
 	"sort"
 	"strconv"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -28,6 +26,7 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	local_network "chromiumos/tast/local/network"
 	"chromiumos/tast/local/network/cmd"
 	"chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
@@ -1960,15 +1959,11 @@ func suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
 		pauseEthernetHookPath = "/run/autotest_pause_ethernet_hook"
 	)
 
-	// FLock the pauseEthernetHookPath to prevent check_ethernet.hook from initiating the recovery actions during test.
-	f, err := os.OpenFile(pauseEthernetHookPath, os.O_WRONLY|os.O_CREATE, 0644)
+	unlock, err := local_network.LockCheckNetworkHook(ctx)
 	if err != nil {
-		return errors.Wrapf(err, "failed to get the fd of %s", pauseEthernetHookPath)
+		return errors.Wrap(err, "failed to lock the check network hook")
 	}
-	defer f.Close()
-	if err := syscall.Flock(int(f.Fd()), syscall.LOCK_EX); err != nil {
-		return errors.Wrapf(err, "failed to lock the %s", pauseEthernetHookPath)
-	}
+	defer unlock()
 
 	rtcTimeSeconds := func() (int, error) {
 		b, err := ioutil.ReadFile(rtcPath)
