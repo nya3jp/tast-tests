@@ -88,8 +88,7 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 		notNowID              = "android:id/autofill_save_no"
 		neverButtonID         = "com.google.android.gms:id/credential_save_reject"
 		passwordText          = "Password"
-		homeIconClassName     = "android.widget.TextView"
-		homeIconText          = "Home"
+		homeiconID            = "com.spotify.music:id/home_tab"
 	)
 
 	// Click on login button.
@@ -189,7 +188,7 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 
 	// Check for home icon.
-	homeIcon := d.Object(ui.ClassName(homeIconClassName), ui.Text(homeIconText))
+	homeIcon := d.Object(ui.ID(homeiconID))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("home icon doesn't exist: ", err)
 	} else {
