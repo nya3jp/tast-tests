@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51091def_f5a8a412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-26T05:52:06Z",
+      "side": 1,
+      "message": "Done, added as critical. Is this ok? I upload this with --no-verify because I got a presubmit error otherwise \"Newly added test should be marked as informational\".",
+      "parentUuid": "fd0be255_8774195b",
+      "range": {
+        "startLine": 37,
+        "startChar": 33,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "fb53789e814089a500dae08429b3e1127d6c6880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98a484d7_ea99e9f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-22T10:09:48Z",
       "side": 1,
       "message": "Can we inline this call as we did in the original code? We can introduce readCPUSetInfo later if we want to do so.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "fb53789e814089a500dae08429b3e1127d6c6880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be89ffd_2cc6ff41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-26T05:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98a484d7_ea99e9f7",
       "range": {
         "startLine": 166,
         "startChar": 2,
@@ -77,6 +125,30 @@
       "writtenOn": "2020-10-22T10:09:48Z",
       "side": 1,
       "message": "Can we inline this call? IIUC we don\u0027t have a plan to add anything else to CPUSet.",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 51
+      },
+      "revId": "fb53789e814089a500dae08429b3e1127d6c6880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f73c6ab_52273b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-10-26T05:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13f52f23_95361e28",
       "range": {
         "startLine": 215,
         "startChar": 1,
