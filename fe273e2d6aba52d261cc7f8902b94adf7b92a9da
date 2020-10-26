@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd1771f3_16271cd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-26T10:09:44Z",
+      "side": 1,
+      "message": "Sorry for no reply from Tast reviewers. I hope newly assigned reviewer will reply soon...",
+      "parentUuid": "b58d57ad_3681f3a2",
+      "revId": "fe273e2d6aba52d261cc7f8902b94adf7b92a9da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf104c6a_23bf8a89",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 1
