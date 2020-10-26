@@ -371,7 +371,7 @@ func (c *Container) sftpCommand(ctx context.Context, sftpCmd string) error {
 		"-o", "UserKnownHostsFile=" + knownHostsFile,
 		"-P", "2222",
 		"-r",
-		testContainerUsername + "@" + ip,
+		c.username + "@" + ip,
 	}
 	cmd := testexec.CommandContext(ctx, "sftp", sftpArgs...)
 	if err := cmd.Run(); err != nil {
