@@ -16,6 +16,23 @@
       "message": "yhanada@: Please take a look. Thank you.\ntast-owners@: PTAL for OWNERS. Thank you.",
       "revId": "afe655100973b921c2c152c9aa746001efa60db3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e2433e_32429720",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-10-26T01:58:18Z",
+      "side": 1,
+      "message": "FYI we have to wait for http://ag/12897998 to roll before landing this change.",
+      "revId": "afe655100973b921c2c152c9aa746001efa60db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
