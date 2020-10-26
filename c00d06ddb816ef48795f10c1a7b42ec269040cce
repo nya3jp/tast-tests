@@ -39,6 +39,30 @@
       },
       "revId": "c00d06ddb816ef48795f10c1a7b42ec269040cce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d61619c_da3b0a38",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T02:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e10508d5_031b6210",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "c00d06ddb816ef48795f10c1a7b42ec269040cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
