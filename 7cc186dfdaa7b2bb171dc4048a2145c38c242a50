@@ -495,6 +495,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15c1b773_fe9c4732",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:28:18Z",
+      "side": 1,
+      "message": "But the stats are separate for each subtest (freq pairs). For error analysis each roam/disconnect event is reported to log (in the main loop of executeRoamNaturalTest)",
+      "parentUuid": "ddacbc02_e78de211",
+      "range": {
+        "startLine": 164,
+        "startChar": 36,
+        "endLine": 164,
+        "endChar": 85
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a548229_ae74123d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
         "patchSetId": 1
@@ -577,6 +601,24 @@
       "side": 1,
       "message": "Close() is just a function, can do anything; very likely this one is flushing buffers to disk. It will be probably covered by other reservations, so if you\u0027re sure it won\u0027t cause test flakiness, then skip the defer.",
       "parentUuid": "934f4159_4a21715f",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b244571e_1d4836c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:28:18Z",
+      "side": 1,
+      "message": "Defer is need to properly close the stream, so I can\u0027t skip it. I don\u0027t even know how much time this function needs and its not possible to set timeout for it, as in other cases where time is reserved. Again, the pattern across the codebase is to not reserve time for Close.",
+      "parentUuid": "5d624da0_21158001",
       "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

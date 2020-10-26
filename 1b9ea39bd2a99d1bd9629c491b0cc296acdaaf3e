@@ -58,6 +58,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84fa5c7b_1887a66a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86317926_d83ab10b",
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb4001e_31d83195",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a9648c_af95c935",
+      "range": {
+        "startLine": 114,
+        "startChar": 13,
+        "endLine": 114,
+        "endChar": 16
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76da8875_9fc37ba4",
@@ -71,6 +113,30 @@
       "writtenOn": "2020-10-21T08:22:53Z",
       "side": 1,
       "message": "nit: one space after \"//\"?",
+      "range": {
+        "startLine": 194,
+        "startChar": 20,
+        "endLine": 194,
+        "endChar": 21
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "191ba72e_3475fc17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76da8875_9fc37ba4",
       "range": {
         "startLine": 194,
         "startChar": 20,
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbef5f65_a4b057ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:28:18Z",
+      "side": 1,
+      "message": "Well, API of the os package seems to assume that every developer should know these by heart :), and use of numbers is encouraged. See os.Create, for instance.",
+      "parentUuid": "3fce37e6_ad6af225",
+      "range": {
+        "startLine": 228,
+        "startChar": 38,
+        "endLine": 228,
+        "endChar": 42
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96e2dc09_7b63c03f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
         "patchSetId": 5
@@ -117,6 +207,30 @@
       "writtenOn": "2020-10-22T19:40:55Z",
       "side": 1,
       "message": "Magic number?",
+      "range": {
+        "startLine": 235,
+        "startChar": 38,
+        "endLine": 235,
+        "endChar": 42
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7402242_1d38b2e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:28:18Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "96e2dc09_7b63c03f",
       "range": {
         "startLine": 235,
         "startChar": 38,
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7993e79f_1919a58c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:28:18Z",
+      "side": 1,
+      "message": "Good point, we can do it now since it\u0027s called from another deferred function (initial version deferred deconfig directly hence this construct).",
+      "parentUuid": "ed872685_33dd5738",
+      "range": {
+        "startLine": 332,
+        "startChar": 17,
+        "endLine": 332,
+        "endChar": 18
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "811779a0_f9644036",
@@ -163,6 +301,30 @@
       "writtenOn": "2020-10-21T08:22:53Z",
       "side": 1,
       "message": "Shouldn\u0027t the time be collected in Wait?",
+      "range": {
+        "startLine": 137,
+        "startChar": 32,
+        "endLine": 137,
+        "endChar": 61
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af5a0cfd_3c1cb003",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-26T09:28:18Z",
+      "side": 1,
+      "message": "Right.",
+      "parentUuid": "811779a0_f9644036",
       "range": {
         "startLine": 137,
         "startChar": 32,
