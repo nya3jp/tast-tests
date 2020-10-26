@@ -16,6 +16,52 @@
       "message": "Hi Brendan,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "0cb736e247aed834c8f4c10f2ea9aec0fde716c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7cf129_1b914700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/hulu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T21:31:21Z",
+      "side": 1,
+      "message": "This should be removable since you use a different set of credentials",
+      "range": {
+        "startLine": 65,
+        "startChar": 17,
+        "endLine": 65,
+        "endChar": 65
+      },
+      "revId": "0cb736e247aed834c8f4c10f2ea9aec0fde716c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e9066d_382b79a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/hulu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T21:31:21Z",
+      "side": 1,
+      "message": "nit: H",
+      "range": {
+        "startLine": 154,
+        "startChar": 11,
+        "endLine": 154,
+        "endChar": 12
+      },
+      "revId": "0cb736e247aed834c8f4c10f2ea9aec0fde716c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
