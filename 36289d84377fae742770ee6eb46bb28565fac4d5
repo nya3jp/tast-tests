@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "619d6afc_8210f44c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-26T16:04:05Z",
+      "side": 1,
+      "message": "Chrome side change is included in 88.0.4303.0 and uprev\u0027d. Landing this.",
+      "revId": "36289d84377fae742770ee6eb46bb28565fac4d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
