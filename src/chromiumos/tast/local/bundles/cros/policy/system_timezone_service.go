@@ -47,8 +47,8 @@ func (c *SystemTimezoneService) TestSystemTimezone(ctx context.Context, req *pb.
 		}
 		outStr := strings.TrimSpace(string(out))
 
-		if outStr != req.Timezone {
-			return errors.Errorf("unexpected timezone: got %q; want %q", outStr, req.Timezone)
+		if (outStr != req.TimezoneSummer) && (outStr != req.TimezoneWinter) {
+			return errors.Errorf("unexpected timezone: got %q; want %q or %q", outStr, req.TimezoneSummer, req.TimezoneWinter)
 		}
 
 		return nil

@@ -46,19 +46,22 @@ func SystemTimezone(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	for _, param := range []struct {
-		name     string                // name is the subtest name.
-		policy   policy.SystemTimezone // policy is the policy we test.
-		timezone string                // timezone is a short string of the timezone set by the policy.
+		name           string                // name is the subtest name.
+		policy         policy.SystemTimezone // policy is the policy we test.
+		timezoneSummer string                // timezoneSummer is the expected timezone after setting the policy during summer time.
+		timezoneWinter string                // timezoneWinter is the expected timezone after setting the policy during winter time.
 	}{
 		{
-			name:     "Berlin",
-			policy:   policy.SystemTimezone{Val: "Europe/Berlin"},
-			timezone: "CEST",
+			name:           "Berlin",
+			policy:         policy.SystemTimezone{Val: "Europe/Berlin"},
+			timezoneSummer: "CEST",
+			timezoneWinter: "CET",
 		},
 		{
-			name:     "Los Angeles",
-			policy:   policy.SystemTimezone{Val: "America/Los_Angeles"},
-			timezone: "PDT",
+			name:           "Los Angeles",
+			policy:         policy.SystemTimezone{Val: "America/Los_Angeles"},
+			timezoneSummer: "PDT",
+			timezoneWinter: "PST",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -92,7 +95,8 @@ func SystemTimezone(ctx context.Context, s *testing.State) {
 			psc := ps.NewSystemTimezoneServiceClient(cl.Conn)
 
 			if _, err = psc.TestSystemTimezone(ctx, &ps.TestSystemTimezoneRequest{
-				Timezone: param.timezone,
+				TimezoneSummer: param.timezoneSummer,
+				TimezoneWinter: param.timezoneWinter,
 			}); err != nil {
 				s.Error("Failed to set SystemTimezone policy : ", err)
 			}
