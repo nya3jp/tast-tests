@@ -29,11 +29,12 @@ func (r *stubCmdRunner) Output(ctx context.Context, cmd string, args ...string) 
 	return r.out, nil
 }
 
-func TestGetMAC(t *testing.T) {
+func TestGetLinkStatus(t *testing.T) {
 	testcases := []struct {
-		out        string
-		expect     net.HardwareAddr
-		shouldFail bool
+		out           string
+		expectedState string
+		expectedMac   net.HardwareAddr
+		shouldFail    bool
 	}{
 		// Some invalid output.
 		{
@@ -53,9 +54,10 @@ wlan0            DOWN           1a:2b:3c:4d:5e:6f <NO-CARRIER,BROADCAST,MULTICAS
 		},
 		// Valid case.
 		{
-			out:        "wlan0            DOWN           1a:2b:3c:4d:5e:6f <NO-CARRIER,BROADCAST,MULTICAST,UP> \n",
-			expect:     net.HardwareAddr{0x1a, 0x2b, 0x3c, 0x4d, 0x5e, 0x6f},
-			shouldFail: false,
+			out:           "wlan0            DOWN           1a:2b:3c:4d:5e:6f <NO-CARRIER,BROADCAST,MULTICAST,UP> \n",
+			expectedState: LinkStateDown,
+			expectedMac:   net.HardwareAddr{0x1a, 0x2b, 0x3c, 0x4d, 0x5e, 0x6f},
+			shouldFail:    false,
 		},
 	}
 	stub := &stubCmdRunner{}
@@ -63,7 +65,7 @@ wlan0            DOWN           1a:2b:3c:4d:5e:6f <NO-CARRIER,BROADCAST,MULTICAS
 	for i, tc := range testcases {
 		stub.out = []byte(tc.out)
 		// Test MAC function.
-		got, err := r.MAC(context.Background(), "wlan0")
+		state, mac, err := r.LinkStatus(context.Background(), "wlan0")
 		if tc.shouldFail {
 			if err == nil {
 				t.Errorf("case#%d should have error", i)
@@ -74,8 +76,11 @@ wlan0            DOWN           1a:2b:3c:4d:5e:6f <NO-CARRIER,BROADCAST,MULTICAS
 			t.Errorf("case#%d failed with err=%v", i, err)
 			continue
 		}
-		if !reflect.DeepEqual(got, tc.expect) {
-			t.Errorf("case#%d got MAC: %v, want: %v", i, got, tc.expect)
+		if state != tc.expectedState {
+			t.Errorf("case#%d got state: %s, want: %s", i, state, tc.expectedState)
+		}
+		if !reflect.DeepEqual(mac, tc.expectedMac) {
+			t.Errorf("case#%d got MAC: %v, want: %v", i, mac, tc.expectedMac)
 		}
 	}
 }
