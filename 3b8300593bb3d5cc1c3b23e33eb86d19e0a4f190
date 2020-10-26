@@ -1,0 +1,347 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b3077b_e2edde57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2bea1ec_3fcc8adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "Could you add comment where this flooring comes from? Specifically, about the constant \"4\".",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7c3615_0243c032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "Timeout should not be ignored.",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "906e5fd2_8df068bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "This cast looks no-op?",
+      "range": {
+        "startLine": 331,
+        "startChar": 38,
+        "endLine": 331,
+        "endChar": 41
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a25dfef_703d0edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447761e0_28337618",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "Could you check an error?",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ca1d3d_51086412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "nit: fmt.Fprintf()",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9565dba7_0465d420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "style: go prefers shorter name by using surrounding context. In this case \"status\" is enough, I think.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a6a81f4_475cb977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "file/f etc. are used for os.File() or filepaths. For consistency, I\u0027d recommend to use other term, e.g. |content|, |marshaled| etc.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80255b6e_a0974a44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "Please avoid using command line execution whenever possible.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#creating-the-filesystem\n\n\u003d\u003d quote \u003d\u003d\n When the work being performed is straightforward, native code is usually preferable, as it both makes it easier to see the exact operations that are being performed and provides vastly better error-reporting when something goes wrong.\n\u003d\u003d quote end \u003d\u003d\n\nin this case, os.Open + scan each line should work.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17ad89d5_d3094947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "could you split the execution into three, and returns error appropriately.\nAlso, could you add brief comments (or add reference) why just get_fixed_dst_drive does not work?",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 94
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1cab3c4_671ba249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "Changing the semantics of the return value by argument is not recommended.\nCould you introduce two functions?",
+      "range": {
+        "startLine": 160,
+        "startChar": 37,
+        "endLine": 160,
+        "endChar": 61
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c7ff99f_28ce6f04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "Could you comment where this comes from?\nAlso, could you check an error if the last partition is accidentally neither \"3\" nor \"5\"?",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322e7e44_783db40b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/trim_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "style\n\nif errCode \u003d\u003d ... {\n  return ...\n}\nif errCode !\u003d 0 {\n  return ...\n}\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35d38ca_ea04ac1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/trim_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "ditto for not using commands.\n\nAlso, this does two independent things, calculating zero hash and one hash.\nCould you split?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 25
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1be774f_f59185b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/trim_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "ditto for avoiding command.",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6acab8_f39e3a2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/trim_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-26T03:03:11Z",
+      "side": 1,
+      "message": "ditto for avoiding command.",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
