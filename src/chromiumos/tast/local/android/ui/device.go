@@ -23,6 +23,9 @@ import (
 )
 
 const (
+	// Port is the fixed port of the UI Automator server.
+	Port = 9008
+
 	// StartTimeout is the timeout of NewDevice.
 	StartTimeout = 120 * time.Second
 
@@ -96,9 +99,7 @@ func NewDevice(ctx context.Context, d *adb.Device, ipAddr string) (*Device, erro
 		return nil, errors.Wrap(err, "failed starting UI Automator server")
 	}
 
-	// Fixed port of the UI automator server.
-	const port = 9008
-	host := fmt.Sprintf("%s:%d", ipAddr, port)
+	host := fmt.Sprintf("%s:%d", ipAddr, Port)
 	s := &Device{host, sp, false}
 
 	if err := s.waitServer(ictx); err != nil {

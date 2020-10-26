@@ -55,3 +55,8 @@ func (a *ARC) InstalledPackages(ctx context.Context) (map[string]struct{}, error
 func (a *ARC) Uninstall(ctx context.Context, pkg string) error {
 	return a.device.Uninstall(ctx, pkg)
 }
+
+// IsConnected checks if ARC is connected through ADB.
+func (a *ARC) IsConnected(ctx context.Context) error {
+	return a.device.IsConnected(ctx)
+}
