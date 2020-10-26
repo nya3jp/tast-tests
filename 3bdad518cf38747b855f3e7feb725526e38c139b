@@ -70,6 +70,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb5ddf8_49ab12b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-26T21:31:17Z",
+      "side": 1,
+      "message": "style LGTM",
+      "revId": "3bdad518cf38747b855f3e7feb725526e38c139b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d48149c_195f0116",
@@ -83,6 +100,30 @@
       "writtenOn": "2020-10-26T20:59:47Z",
       "side": 1,
       "message": "My recollection is that |Errorf()| inserts its argument into a longer sentence, so lower-case would be correct. It\u0027s been a while though, I might be wrong on that :-)",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "3bdad518cf38747b855f3e7feb725526e38c139b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4ab6ea4_be05a58e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-26T21:31:17Z",
+      "side": 1,
+      "message": "Log messages like s.Errorf should be capitalized actually, while messages of error objects are composed with other logs, so they shouldn\u0027t be capitalized. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting for the details.",
+      "parentUuid": "3d48149c_195f0116",
       "range": {
         "startLine": 94,
         "startChar": 12,
