@@ -2,5 +2,5 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package diagnostics contains integration tests for diagnostics SWA.
-package diagnostics
+// Package peripherals contains integration tests for peripherals apps.
+package peripherals
