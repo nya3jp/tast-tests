@@ -23,13 +23,13 @@ const defaultTimeout = 15 * time.Second
 // ExpandedItemsClass define the class name of the expanded launcher view which is used as search parameters in ui.
 const ExpandedItemsClass = "ui/app_list/AppListItemView"
 
-// SearchAndLaunch searches a query in the launcher and executes it.
-func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, query string) error {
+// SearchAndLaunchWithQuery searches a query in the launcher and executes an app from the list.
+func SearchAndLaunchWithQuery(ctx context.Context, tconn *chrome.TestConn, query, appName string) error {
 	if err := OpenLauncher(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to open launcher")
 	}
 
-	appNode, err := SearchAndWaitForApp(ctx, tconn, query, defaultTimeout)
+	appNode, err := SearchAndWaitForApp(ctx, tconn, query, appName, defaultTimeout)
 	if err != nil {
 		return errors.Wrap(err, "failed to find app")
 	}
@@ -38,6 +38,11 @@ func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, query string) 
 		return errors.Wrap(err, "failed to launch app")
 	}
 	return nil
+}
+
+// SearchAndLaunch searches an app in the launcher and executes it.
+func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+	return SearchAndLaunchWithQuery(ctx, tconn, appName, appName)
 }
 
 // OpenLauncher opens the launcher.
@@ -114,12 +119,12 @@ func WaitForAppResult(ctx context.Context, tconn *chrome.TestConn, appName strin
 	return appNode, nil
 }
 
-// SearchAndWaitForApp searches for APP name and wait for it to appear.
+// SearchAndWaitForApp searches for a query and waits for the app to appear.
 // Launcher should be opened already.
 // timeout only applies to waiting for the presence of the app.
-func SearchAndWaitForApp(ctx context.Context, tconn *chrome.TestConn, appName string, timeout time.Duration) (*ui.Node, error) {
-	if err := Search(ctx, tconn, appName); err != nil {
-		return nil, errors.Wrapf(err, "failed to search app: %s", appName)
+func SearchAndWaitForApp(ctx context.Context, tconn *chrome.TestConn, query, appName string, timeout time.Duration) (*ui.Node, error) {
+	if err := Search(ctx, tconn, query); err != nil {
+		return nil, errors.Wrapf(err, "failed to search %s for app %s", query, appName)
 	}
 
 	appNode, err := WaitForAppResult(ctx, tconn, appName, defaultTimeout)
