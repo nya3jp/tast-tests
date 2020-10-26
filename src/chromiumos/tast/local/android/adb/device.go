@@ -198,6 +198,16 @@ func (d *Device) WaitForState(ctx context.Context, want State, timeout time.Dura
 	}, &testing.PollOptions{Interval: time.Second, Timeout: timeout})
 }
 
+// IsConnected checks if the device is connected.
+func (d *Device) IsConnected(ctx context.Context) error {
+	if state, err := d.State(ctx); err != nil {
+		return errors.Wrap(err, "failed to get the ADB device state")
+	} else if state != StateDevice {
+		return errors.New("ADB device not connected")
+	}
+	return nil
+}
+
 // InstallOption defines possible options to pass to "adb install".
 type InstallOption string
 
