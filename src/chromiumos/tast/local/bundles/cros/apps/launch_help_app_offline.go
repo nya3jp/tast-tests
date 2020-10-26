@@ -100,22 +100,26 @@ func LaunchHelpAppOffline(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Verify help article category available offline")
-		// Expand Help article category by clicking Help tab.
-		if err := helpapp.ClickTab(ctx, tconn, helpapp.HelpTab); err != nil {
-			return errors.Wrap(err, "failed to click Help tab")
-		}
 
-		getStartedHelpCategory := ui.FindParams{
-			Name: "Get started",
-			Role: ui.RoleTypeTreeItem,
-		}
-		getStartedHelpCategoryNode, err := helpapp.DescendantWithTimeout(ctx, tconn, getStartedHelpCategory, 10*time.Second)
-		if err != nil {
-			return errors.Wrapf(err, "failed to find get started help category with %v", getStartedHelpCategory)
-		}
-		defer getStartedHelpCategoryNode.Release(ctx)
+		// Clicking tab is not very reliable on rendering. Using Poll to stabilize the test.
+		return testing.Poll(ctx, func(context.Context) error {
+			// Expand Help article category by clicking Help tab.
+			if err := helpapp.ClickTab(ctx, tconn, helpapp.HelpTab); err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to click Help tab"))
+			}
 
-		return nil
+			getStartedHelpCategory := ui.FindParams{
+				Name: "Get started",
+				Role: ui.RoleTypeTreeItem,
+			}
+			getStartedHelpCategoryNode, err := helpapp.DescendantWithTimeout(ctx, tconn, getStartedHelpCategory, 10*time.Second)
+			if err != nil {
+				return errors.Wrapf(err, "failed to find get started help category with %v", getStartedHelpCategory)
+			}
+			defer getStartedHelpCategoryNode.Release(ctx)
+
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second})
 	}
 
 	// Run test steps in offline mode.
