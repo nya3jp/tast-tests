@@ -34,6 +34,24 @@
       "parentUuid": "1fb2a8d1_045eea3a",
       "revId": "5aefbca6c70fc1559efe014b93341645a8ad5188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7872161_a01241c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-10-26T06:38:51Z",
+      "side": 1,
+      "message": "Ignoring the error in cpu.WaitUntilIdle is probably acceptable. The only downside of this is that the performance results will be a bit more noisy, but this is definitely better than having flaky tests. This will probably only affect lower spec platforms anyway. Even if the CPU usage can\u0027t be brought down to less than 20%, any waiting we do should at least stabilize the performance results a bit more.",
+      "parentUuid": "b52dd044_d6c3f5a0",
+      "revId": "5aefbca6c70fc1559efe014b93341645a8ad5188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
