@@ -1101,3 +1101,38 @@ func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout t
 	}
 	return time.Duration(resp.ReconnectTime), nil
 }
+
+// DisableMACRandomize disables MAC randomization on DUT if supported, this
+// is useful for tests verifying probe requests from DUT.
+// On success, a shortened context and cleanup function is returned.
+func (tf *TestFixture) DisableMACRandomize(ctx context.Context) (shortenCtx context.Context, cleanupFunc func() error, retErr error) {
+	// If MAC randomization setting is supported, disable MAC randomization
+	// as we're filtering the packets with MAC address.
+	if supResp, err := tf.WifiClient().MACRandomizeSupport(ctx, &empty.Empty{}); err != nil {
+		return ctx, nil, errors.Wrap(err, "failed to get if MAC randomization is supported")
+	} else if supResp.Supported {
+		resp, err := tf.WifiClient().GetMACRandomize(ctx, &empty.Empty{})
+		if err != nil {
+			return ctx, nil, errors.Wrap(err, "failed to get MAC randomization setting")
+		}
+		if resp.Enabled {
+			ctxRestore := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+			_, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: false})
+			if err != nil {
+				return ctx, nil, errors.Wrap(err, "failed to disable MAC randomization")
+			}
+			// Restore the setting when exiting.
+			restore := func() error {
+				cancel()
+				if _, err := tf.WifiClient().SetMACRandomize(ctxRestore, &network.SetMACRandomizeRequest{Enable: true}); err != nil {
+					return errors.Wrap(err, "failed to re-enable MAC randomization")
+				}
+				return nil
+			}
+			return ctx, restore, nil
+		}
+	}
+	// Not supported or not enabled. No-op for these cases.
+	return ctx, func() error { return nil }, nil
+}

@@ -9,19 +9,15 @@ import (
 	"context"
 	"fmt"
 	"reflect"
-	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/network/ip"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
-	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
 
@@ -81,31 +77,15 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
-	// If MAC randomization setting is supported, disable MAC randomization
-	// as we're filtering the packets with MAC address.
-	if supResp, err := tf.WifiClient().MACRandomizeSupport(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to get if MAC randomization is supported: ", err)
-	} else if supResp.Supported {
-		resp, err := tf.WifiClient().GetMACRandomize(ctx, &empty.Empty{})
-		if err != nil {
-			s.Fatal("Failed to get MAC randomization setting: ", err)
-		}
-		if resp.Enabled {
-			ctxRestore := ctx
-			ctx, cancel = ctxutil.Shorten(ctx, time.Second)
-			defer cancel()
-			_, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: false})
-			if err != nil {
-				s.Fatal("Failed to disable MAC randomization: ", err)
-			}
-			// Restore the setting when exiting.
-			defer func(ctx context.Context) {
-				if _, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: true}); err != nil {
-					s.Error("Failed to re-enable MAC randomization: ", err)
-				}
-			}(ctxRestore)
-		}
+	ctx, restore, err := tf.DisableMACRandomize(ctx)
+	if err != nil {
+		s.Fatal("Failed to disable MAC randomization: ", err)
 	}
+	defer func() {
+		if err := restore(); err != nil {
+			s.Error("Failed to restore MAC randomization: ", err)
+		}
+	}()
 
 	// Get the MAC address of WiFi interface.
 	iface, err := tf.ClientInterface(ctx)
