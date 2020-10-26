@@ -73,7 +73,7 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 	}
 
 	ipr := ip.NewRemoteRunner(s.DUT().Conn())
-	mac, err := ipr.MAC(ctx, iface)
+	_, mac, err := ipr.LinkStatus(ctx, iface)
 	if err != nil {
 		s.Fatal("Failed to get MAC of the WiFi interface")
 	}

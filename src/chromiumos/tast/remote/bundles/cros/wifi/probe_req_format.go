@@ -60,7 +60,7 @@ func ProbeReqFormat(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get WiFi interface of DUT")
 	}
 	ipr := ip.NewRemoteRunner(s.DUT().Conn())
-	mac, err := ipr.MAC(ctx, iface)
+	_, mac, err := ipr.LinkStatus(ctx, iface)
 	if err != nil {
 		s.Fatal("Failed to get MAC of WiFi interface")
 	}

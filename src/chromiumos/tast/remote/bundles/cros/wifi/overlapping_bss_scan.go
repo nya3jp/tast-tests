@@ -203,7 +203,7 @@ func OverlappingBSSScan(ctx context.Context, s *testing.State) {
 	s.Log("Parsing packets to see if coexistence management frames are sent")
 	// Get the MAC address of DUT's WiFi interface.
 	ipr := ip.NewRemoteRunner(s.DUT().Conn())
-	mac, err := ipr.MAC(ctx, clientIface)
+	_, mac, err := ipr.LinkStatus(ctx, clientIface)
 	if err != nil {
 		s.Fatal("Failed to get MAC of WiFi interface")
 	}
