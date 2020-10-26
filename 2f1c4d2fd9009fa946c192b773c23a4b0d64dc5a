@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ccd121_2b831380",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-26T22:40:08Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "2f1c4d2fd9009fa946c192b773c23a4b0d64dc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04d8d66b_1c1afa56",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "This test has been flaky for a couple of weeks, and all isues are failed to wait for `Get started` visible, which means no error returns in click function. If clicking failed, it should be caused by element not found, which is not worthing for any retry. It should fail the test immediately.",
       "parentUuid": "04d8d66b_1c1afa56",
+      "revId": "2f1c4d2fd9009fa946c192b773c23a4b0d64dc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1ab3ef_9522f3a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1390787
+      },
+      "writtenOn": "2020-10-26T22:40:08Z",
+      "side": 1,
+      "message": "Ok, acknowledged!",
+      "parentUuid": "a2d49629_52730cb8",
       "revId": "2f1c4d2fd9009fa946c192b773c23a4b0d64dc5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
