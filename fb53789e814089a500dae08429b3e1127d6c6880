@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "973420fc_353bc05b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-26T10:12:40Z",
+      "side": 1,
+      "message": "Ah I see, sorry for the false alert in the linter. --no-verify sounds fine in this case.",
+      "parentUuid": "51091def_f5a8a412",
+      "range": {
+        "startLine": 37,
+        "startChar": 33,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "fb53789e814089a500dae08429b3e1127d6c6880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98a484d7_ea99e9f7",

@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "5d4c896697196d7a9bddcf222a4b546a9116ae2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f90b7d_82cf7415",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-26T10:12:40Z",
+      "side": 1,
+      "message": "LGTM with a nit, thanks!\n",
+      "revId": "5d4c896697196d7a9bddcf222a4b546a9116ae2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f72de2ea_aa331764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-26T10:12:40Z",
+      "side": 1,
+      "message": "1. We can use s.Fatal now\n2. Let us include err for more context\n\n s.Fatal(\"Failed to get root init process: \", err)",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 8
+      },
+      "revId": "5d4c896697196d7a9bddcf222a4b546a9116ae2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
