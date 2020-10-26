@@ -36,6 +36,14 @@ const (
 	workingDir          = "/tmp/tast-test/"
 )
 
+const (
+	// NOTE: shill does not manage (i.e., run a dhcpcd on) the device with prefix "veth".
+	// See kIgnoredDeviceNamePrefixes in http://cs/chromeos_public/src/platform2/shill/device_info.cc
+	vethPrefix     = "vethA"
+	vethPeerPrefix = "vethB"
+	bridgePrefix   = "tastbr"
+)
+
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
 	host          *ssh.Conn
@@ -45,6 +53,8 @@ type Router struct {
 	availIfaces   map[string]*iw.NetDev // map from interface name to iw.NetDev.
 	busyIfaces    map[string]*iw.NetDev // map from interface name to iw.NetDev.
 	ifaceID       int
+	bridgeID      int
+	vethID        int
 	iwr           *iw.Runner
 	ipr           *ip.Runner
 	logCollectors map[string]*log.Collector // map from log path to its collector.
@@ -239,6 +249,13 @@ func (r *Router) initialize(ctx, daemonCtx context.Context) error {
 	if err := r.setupWifiPhys(ctx); err != nil {
 		return err
 	}
+	if err := r.removeDevicesWithPrefix(ctx, bridgePrefix); err != nil {
+		return err
+	}
+	// Note that we only need to remove one side of each veth pair.
+	if err := r.removeDevicesWithPrefix(ctx, vethPrefix); err != nil {
+		return err
+	}
 
 	killHostapdDhcp := func() {
 		ctx, st := timing.Start(ctx, "killHostapdDhcp")
@@ -301,6 +318,15 @@ func (r *Router) Close(ctx context.Context) error {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
+
+	if err := r.removeDevicesWithPrefix(ctx, bridgePrefix); err != nil {
+		return err
+	}
+	// Note that we only need to remove one side of each veth pair.
+	if err := r.removeDevicesWithPrefix(ctx, vethPrefix); err != nil {
+		return err
+	}
+
 	// Collect closing log to facilitate debugging for error occurs in
 	// r.initialize() or after r.CollectLogs().
 	if err := r.collectLogs(ctx, ".close"); err != nil {
@@ -617,6 +643,88 @@ func (r *Router) workDir() string {
 	return workingDir
 }
 
+// NewBridge returns a bridge name for tests to use. Note that the caller is responsible to call ReleaseBridge.
+func (r *Router) NewBridge(ctx context.Context) (_ string, retErr error) {
+	br := fmt.Sprintf("%s%d", bridgePrefix, r.bridgeID)
+	r.bridgeID++
+	if err := r.ipr.AddLink(ctx, br, "bridge"); err != nil {
+		return "", err
+	}
+	defer func() {
+		if retErr != nil {
+			if err := r.ipr.DeleteLink(ctx, br); err != nil {
+				testing.ContextLog(ctx, "Failed to delete bridge while NewBridge has failed: ", err)
+			}
+		}
+	}()
+	if err := r.claimBridge(ctx, br); err != nil {
+		return "", err
+	}
+	return br, nil
+}
+
+// ReleaseBridge releases the bridge.
+func (r *Router) ReleaseBridge(ctx context.Context, br string) error {
+	var firstErr error
+	collectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, br))
+	collectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, br))
+	collectFirstErr(ctx, &firstErr, r.ipr.DeleteLink(ctx, br))
+	return firstErr
+}
+
+// NewVethPair returns a veth pair for tests to use. Note that the caller is responsible to call ReleaseVethPair.
+func (r *Router) NewVethPair(ctx context.Context) (_, _ string, retErr error) {
+	veth := fmt.Sprintf("%s%d", vethPrefix, r.vethID)
+	vethPeer := fmt.Sprintf("%s%d", vethPeerPrefix, r.vethID)
+	r.vethID++
+	if err := r.ipr.AddLink(ctx, veth, "veth", "peer", "name", vethPeer); err != nil {
+		return "", "", err
+	}
+	defer func() {
+		if retErr != nil {
+			if err := r.ipr.DeleteLink(ctx, veth); err != nil {
+				testing.ContextLogf(ctx, "Failed to delete the veth %s while NewVethPair has failed", veth)
+			}
+		}
+	}()
+	if err := r.ipr.SetLinkUp(ctx, veth); err != nil {
+		return "", "", err
+	}
+	if err := r.ipr.SetLinkUp(ctx, vethPeer); err != nil {
+		return "", "", err
+	}
+	return veth, vethPeer, nil
+}
+
+// ReleaseVethPair release the veth pair.
+// Note that each side of the pair can be passed to this method, but the test should only call the method once for each pair.
+func (r *Router) ReleaseVethPair(ctx context.Context, veth string) error {
+	// If it is a peer side veth name, change it to another side.
+	if strings.HasPrefix(veth, vethPeerPrefix) {
+		veth = vethPrefix + veth[len(vethPeerPrefix):]
+	}
+	vethPeer := vethPeerPrefix + veth[len(vethPrefix):]
+
+	var firstErr error
+	collectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, veth))
+	collectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, veth))
+	collectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, vethPeer))
+	collectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, vethPeer))
+	// Note that we only need to delete one side.
+	collectFirstErr(ctx, &firstErr, r.ipr.DeleteLink(ctx, veth))
+	return firstErr
+}
+
+// BindVethToBridge binds the veth to bridge.
+func (r *Router) BindVethToBridge(ctx context.Context, veth, br string) error {
+	return r.ipr.SetBridge(ctx, veth, br)
+}
+
+// UnbindVeth unbinds the veth to any other interface.
+func (r *Router) UnbindVeth(ctx context.Context, veth string) error {
+	return r.ipr.UnsetBridge(ctx, veth)
+}
+
 // Utilities for resource control.
 
 // uniqueIfaceName returns an unique name for interface with type t.
@@ -644,6 +752,70 @@ func (r *Router) createWifiIface(ctx context.Context, phyID int, t iw.IfType) (*
 	}
 	r.availIfaces[iface] = nd
 	return nd, nil
+}
+
+// waitBridgeState polls for the bridge's link status.
+func (r *Router) waitBridgeState(ctx context.Context, br string, expectedState ip.LinkState) error {
+	const (
+		poweredTimeout  = time.Second * 5
+		poweredInterval = time.Millisecond * 100
+	)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		state, err := r.ipr.State(ctx, br)
+		if err != nil {
+			testing.PollBreak(err)
+		}
+		if state == expectedState {
+			return nil
+		}
+		return errors.Errorf("unexpected state of bridge %s: got %s, want %s", br, state, expectedState)
+	}, &testing.PollOptions{
+		Timeout:  poweredTimeout,
+		Interval: poweredInterval,
+	})
+}
+
+// claimBridge claims the bridge from shill. We are doing this because once shill
+// manages a device, it runs dhcpcd on it and would mess up our network environment.
+// NOTE: This is only for CrOS-base test AP.
+// TODO(b/171683002): Find a better way to make sure that shill has already enabled/disabled the bridge. We poll the
+// bridge state with ip command for avoiding parsing dbus-send output. shill-test-script might be an alternative:
+// https://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/shill-test-scripts/shill-test-scripts-9999.ebuild
+func (r *Router) claimBridge(ctx context.Context, br string) error {
+	// Wait for the bridge to be enabled by shill, that is, managed by shill.
+	// After shill enables the bridge, because the bridge has not yet connected to any other interface, the state would be UNKNOWN instead of UP.
+	if err := r.waitBridgeState(ctx, br, ip.LinkStateUnknown); err != nil {
+		return err
+	}
+
+	// Disable the bridge to prevent shill from spawning dhcpcd on it.
+	if output, err := r.host.Command("dbus-send", "--system", "--type=method_call", "--print-reply",
+		"--dest=org.chromium.flimflam", fmt.Sprintf("/device/%s", br), "org.chromium.flimflam.Device.Disable",
+	).Output(ctx); err != nil {
+		testing.ContextLogf(ctx, "Failed to disable the bridge %q, stdout=%q", br, string(output))
+		return errors.Wrapf(err, "failed to set bridge %s down: %v", br, err)
+	}
+
+	// Wait for the bridge to become disable.
+	if err := r.waitBridgeState(ctx, br, ip.LinkStateDown); err != nil {
+		return err
+	}
+
+	return r.ipr.SetLinkUp(ctx, br)
+}
+
+// removeDevicesWithPrefix removes the devices whose names start with the given prefix.
+func (r *Router) removeDevicesWithPrefix(ctx context.Context, prefix string) error {
+	devs, err := r.ipr.LinkWithPrefix(ctx, prefix)
+	if err != nil {
+		return err
+	}
+	for _, dev := range devs {
+		if err := r.ipr.DeleteLink(ctx, dev); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // isPhyBusyAny returns if the phyID is occupied by a busy interface of any type.
