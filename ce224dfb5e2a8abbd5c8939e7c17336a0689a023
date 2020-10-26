@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e65fe828_dc847b4f",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T22:32:01Z",
+      "side": 1,
+      "message": "Currently these methods are essentially direct ports, which work, but we may want to look into airplane mode on the arc side. I am not sure if that would work though because we need exceptions for some local communication.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 56
+      },
+      "revId": "ce224dfb5e2a8abbd5c8939e7c17336a0689a023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
