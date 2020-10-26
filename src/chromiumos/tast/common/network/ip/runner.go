@@ -109,7 +109,7 @@ func (r *Runner) FlushIP(ctx context.Context, iface string) error {
 // SetLinkUp brings iface up.
 func (r *Runner) SetLinkUp(ctx context.Context, iface string) error {
 	if err := r.cmd.Run(ctx, "ip", "link", "set", iface, "up"); err != nil {
-		err = errors.Wrapf(err, "failed to set %s up", iface)
+		return errors.Wrapf(err, "failed to set %s up", iface)
 	}
 	return nil
 }
@@ -117,7 +117,7 @@ func (r *Runner) SetLinkUp(ctx context.Context, iface string) error {
 // SetLinkDown brings iface down.
 func (r *Runner) SetLinkDown(ctx context.Context, iface string) error {
 	if err := r.cmd.Run(ctx, "ip", "link", "set", iface, "down"); err != nil {
-		err = errors.Wrapf(err, "failed to set %s down", iface)
+		return errors.Wrapf(err, "failed to set %s down", iface)
 	}
 	return nil
 }
@@ -138,4 +138,40 @@ func (r *Runner) DeleteLink(ctx context.Context, name string) error {
 		return errors.Wrapf(err, "failed to delete link %s", name)
 	}
 	return nil
+}
+
+// SetLinkMaster binds iface to master.
+func (r *Runner) SetLinkMaster(ctx context.Context, iface, master string) error {
+	if err := r.cmd.Run(ctx, "ip", "link", "set", iface, "master", master); err != nil {
+		return errors.Wrapf(err, "failed to set %s master %s", iface, master)
+	}
+	return nil
+}
+
+// SetLinkNoMaster sets no master for iface.
+func (r *Runner) SetLinkNoMaster(ctx context.Context, iface string) error {
+	if err := r.cmd.Run(ctx, "ip", "link", "set", iface, "nomaster"); err != nil {
+		return errors.Wrapf(err, "failed to set %s nomaster", iface)
+	}
+	return nil
+}
+
+// ListPrefix show the device names that start with prefix.
+func (r *Runner) ListPrefix(ctx context.Context, prefix string) ([]string, error) {
+	output, err := r.cmd.Output(ctx, "ip", "-brief", "link", "show")
+	if err != nil {
+		return nil, errors.Wrap(err, `failed to run "ip -brief link show"`)
+	}
+	content := strings.TrimSpace(string(output))
+	var ret []string
+	for _, line := range strings.Split(content, "\n") {
+		fields := strings.Fields(line)
+		if len(fields) == 0 {
+			return nil, errors.New(`failed to parse the output of "ip -brief link show": unexpected empty line`)
+		}
+		if strings.HasPrefix(fields[0], prefix) {
+			ret = append(ret, fields[0])
+		}
+	}
+	return ret, nil
 }
