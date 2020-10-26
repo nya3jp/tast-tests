@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ba7a32cb_71bfcdc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T01:28:25Z",
+      "side": 1,
+      "message": "Oh, capturing on managed0 sounds nice. Thanks! I leave a TODO in the code for this.",
+      "parentUuid": "0b94b53b_8d61ae76",
+      "revId": "c0fef4c6f602ba4d416b24c613e3b5059c511a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "852ecde0_b5293cd3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
         "patchSetId": 2
@@ -136,6 +154,30 @@
       "side": 1,
       "message": "No strong opinion here. Feels kind of like a variable name in the current usage, so 1 word might make sense.",
       "parentUuid": "b8873fa6_4e2954e7",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "c0fef4c6f602ba4d416b24c613e3b5059c511a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f58501d_054e1d13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T01:28:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "033d46c4_ea2a25eb",
       "range": {
         "startLine": 102,
         "startChar": 8,
