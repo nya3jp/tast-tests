@@ -303,6 +303,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1424379c_fd094571",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T09:52:41Z",
+      "side": 1,
+      "message": "Sorry, I think I still don\u0027t get the full context. Will the two tests be scheduled regularly in lab (grover cell?) or just for manual test?\n\nIf it is just for manual test, I guess only \"group:wificell\" and some comments saying the requirement of the manual test might be enough. Might still be nice to have attribute saying that it needs attenuator + multiple routers, but I think the Precondition already mentions some of the story.\n\nIf it is scheduled, I think you need:\n1. a different attribute for filtering. Dean\u0027s previous work for wifi_perf might be partial example: https://b.corp.google.com/issues/161258468.\n2. handle the \"var\" part. in particular:\n  2.1. specify the two routers needed\n  2.2. in lab the -router and -pcap DNS are available so will have to handle the default pcap part (which is used as pcap and 2nd router)",
+      "parentUuid": "c7556716_a341d06e",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b42729f0_0c277213",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
