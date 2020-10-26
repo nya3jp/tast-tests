@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dc81993_285fc047",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-26T23:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd02c284_1da6cdf2",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92365759_8f35f024",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-26T18:20:16Z",
       "side": 1,
       "message": "this is the case where we\u0027re expecting _no_ error, no?",
+      "range": {
+        "startLine": 180,
+        "startChar": 83,
+        "endLine": 180,
+        "endChar": 98
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b287392_657e1309",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-26T23:04:34Z",
+      "side": 1,
+      "message": "Technically, no, this would be the case where I set testCase.expectErr to true but testCase.expectErrRegexesNotFound to nil. \n\nBut I never actually use that combination in a test case, so it\u0027s pointless. I removed testCase.expectErr",
+      "parentUuid": "92365759_8f35f024",
       "range": {
         "startLine": 180,
         "startChar": 83,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c816fa23_df6994ee",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-26T23:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55dd352b_065274fb",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 10
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e2442ab_5c22b43b",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f3d2f5_bbbf86fa",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-26T23:04:34Z",
+      "side": 1,
+      "message": "Ya, I wanted to keep the file names short since they are already stretching on pretty long on some tests. I just wanted enough to show that we\u0027re actually matching a regex.",
+      "parentUuid": "5e2442ab_5c22b43b",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 37
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7849592d_a4f50933",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-10-26T18:20:16Z",
       "side": 1,
       "message": "nit: \"to WaitForCrashFiles\"",
+      "range": {
+        "startLine": 226,
+        "startChar": 73,
+        "endLine": 226,
+        "endChar": 74
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91493028_5da33b26",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-26T23:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7849592d_a4f50933",
       "range": {
         "startLine": 226,
         "startChar": 73,
@@ -162,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d0e987_cbcdbd04",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-26T23:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7ec82cb_9056edf6",
+      "range": {
+        "startLine": 257,
+        "startChar": 73,
+        "endLine": 257,
+        "endChar": 91
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e08efe6_b6f9454f",
@@ -175,6 +319,30 @@
       "writtenOn": "2020-10-26T18:20:16Z",
       "side": 1,
       "message": "Should this have an explicit timeout of 2 seconds or so (something long enough to write the files out)?",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 11
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff24467_1d7adab7",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-26T23:04:34Z",
+      "side": 1,
+      "message": "I have the timeouts on some of the others because I don\u0027t want fast_build.sh to take 15 seconds in the all-tests-pass case.\n\nIf this test succeeds, it will finish in 1 second, so that\u0027s not a concern here. I don\u0027t want to increase the flakiness by giving it a short timeout, and then the other go thread (that writes out the files) doesn\u0027t get scheduled for a second or something",
+      "parentUuid": "0e08efe6_b6f9454f",
       "range": {
         "startLine": 283,
         "startChar": 0,
@@ -208,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e92ade_c6b078c1",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-26T23:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a924bfc7_1eb1153a",
+      "range": {
+        "startLine": 355,
+        "startChar": 16,
+        "endLine": 355,
+        "endChar": 43
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3817deb6_b70c854b",
@@ -231,6 +423,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75958ae9_b88e6add",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-26T23:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3817deb6_b70c854b",
+      "range": {
+        "startLine": 385,
+        "startChar": 4,
+        "endLine": 385,
+        "endChar": 15
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c49789b7_5ff0a06f",
@@ -244,6 +460,30 @@
       "writtenOn": "2020-10-26T18:20:16Z",
       "side": 1,
       "message": "nit:\n  append(nil, something)\nworks fine, so this could just be:\n  var opts []WaitForCrashFilesOpt",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 42
+      },
+      "revId": "1750d5e6b14862c2250763afeb9f426bf3868510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77fe2bc5_b4e20671",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-26T23:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c49789b7_5ff0a06f",
       "range": {
         "startLine": 432,
         "startChar": 0,
