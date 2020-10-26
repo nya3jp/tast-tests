@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a88f15_eafea05c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-10-26T20:59:47Z",
+      "side": 1,
+      "message": "This CL is no longer about cheets_SystemRawImageSize.py, it would be nice to reflect that in the commit message",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "3bdad518cf38747b855f3e7feb725526e38c139b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0604af_b383b2e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-10-26T20:59:47Z",
+      "side": 1,
+      "message": "Title should be of the form \"prefix: short description\"\nhttps://chromium.googlesource.com/chromiumos/docs/+/refs/heads/master/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "3bdad518cf38747b855f3e7feb725526e38c139b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94211850_ed40a3cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-10-26T20:59:47Z",
+      "side": 1,
+      "message": "The commit description should summarize what the CL does. For example, \"add monitoring of ARC++ and ARCVM system and vendor images to ReportDiskUsage\". As-is, it does not really explain what the CL is doing.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/refs/heads/master/contributing.md#Commit-messages points to https://chris.beams.io/posts/git-commit/ for more details",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "3bdad518cf38747b855f3e7feb725526e38c139b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d48149c_195f0116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-10-26T20:59:47Z",
+      "side": 1,
+      "message": "My recollection is that |Errorf()| inserts its argument into a longer sentence, so lower-case would be correct. It\u0027s been a while though, I might be wrong on that :-)",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "3bdad518cf38747b855f3e7feb725526e38c139b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
