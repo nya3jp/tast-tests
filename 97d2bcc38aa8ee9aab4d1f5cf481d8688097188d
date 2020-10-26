@@ -117,6 +117,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93344d14_afa3779a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T05:59:09Z",
+      "side": 1,
+      "message": "Side note: this pattern is not very suitable for the functions spawning bg routines, like Start*. I\u0027m still finding a good design for them so we\u0027ll have two patterns mixed for now...",
+      "parentUuid": "42013b57_645aad24",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbf50fc4_710cf606",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
         "patchSetId": 2
@@ -150,6 +168,69 @@
         "startChar": 1,
         "endLine": 95,
         "endChar": 0
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "426cf467_60f1334f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T05:59:09Z",
+      "side": 1,
+      "message": "nit: not sure if we should wait for this routine to end (e.g. with sync.WaitGroup?) before leaving the test.\n\nbtw, I plan to work on a Start/Stop version for framesender.Send, which might be more suitable for the usage here.",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0671e23c_f63fe645",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T05:59:09Z",
+      "side": 1,
+      "message": "nit: this might return error if context deadline is reached, so perhaps we can just fatal on this error.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb495d7_5fe03fd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T05:59:09Z",
+      "side": 1,
+      "message": "As the PacketPath is only valid after StopCapture, it is kind of tricky to use... I had one refinement CL but it was blocked by crbug.com/1030635 somehow.\n\nFor the usage here, it is possible that capturer is not closed if some Fatal is triggered before StopCapture here.\n\nI usually wrap the period of capturing in a function for ease of cleanup with defer, e.g.\n\n  capturer, err :\u003d func() (*pcap.Capturer, error) {\n    capturer, err :\u003d StartCapturer(...)\n    if err !\u003d nil {\n      return nil, err // Or just Fatal here.\n    }\n    defer func() {\n      if err :\u003d StopCapturer(ctx, capturer); err !\u003d nil {\n        // May modify returned error or Fatal/Error.\n      }\n    }()\n\n    // Do some stuffs.\n\n    return capturer, nil\n  }()\n  if err !\u003d nil {\n    s.Fatal(\"...\", err)\n  }\n  pcapPath :\u003d capturer.PacketPath(ctx)\n  ...\n\nI guess the pattern might also help a little bit here. (also an example with TestFixturePreWithCapture in remote/bundles/cros/wifi/wifiutil/pcap_util.go)",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
       },
       "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
