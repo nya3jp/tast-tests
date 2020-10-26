@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92937c23_7237743b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T17:38:00Z",
+      "side": 1,
+      "message": "I added a minimal change to add the other two statistics.",
+      "parentUuid": "c8542c06_a917c8e6",
+      "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "848fdd44_bb3ef7de",
@@ -94,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf424d9_50b9893f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/system_raw_image_size_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T17:38:00Z",
+      "side": 1,
+      "message": "Too directly porting from python and didn\u0027t think about that.",
+      "parentUuid": "848fdd44_bb3ef7de",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 60
+      },
+      "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c7f9448_c6f90c70",
@@ -107,6 +149,30 @@
       "writtenOn": "2020-10-23T21:23:46Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "6e185a9ccc59ae9a2c46ba9a8603ea3566ca95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a688677_d9291fe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/system_raw_image_size_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T17:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c7f9448_c6f90c70",
       "range": {
         "startLine": 43,
         "startChar": 1,
