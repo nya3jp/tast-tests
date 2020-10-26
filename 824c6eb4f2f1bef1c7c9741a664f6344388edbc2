@@ -33,6 +33,46 @@
       "message": "nya@, does the approach look good to you? Thanks.",
       "revId": "824c6eb4f2f1bef1c7c9741a664f6344388edbc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb4a2e4_1a8d31bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-26T09:36:23Z",
+      "side": 1,
+      "message": "Thanks Xiyuan for this change. It\u0027s an interesting example of how it\u0027s difficult to reset states...\n",
+      "revId": "824c6eb4f2f1bef1c7c9741a664f6344388edbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "384048bb_dbdfaf64",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-26T09:36:23Z",
+      "side": 1,
+      "message": "typo: activity",
+      "range": {
+        "startLine": 703,
+        "startChar": 78,
+        "endLine": 703,
+        "endChar": 85
+      },
+      "revId": "824c6eb4f2f1bef1c7c9741a664f6344388edbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
