@@ -34,6 +34,24 @@
       "parentUuid": "600d788d_1d062218",
       "revId": "e9ce1828fe54e9de427a639fb43be74f1153a7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a767e865_0c6e263d",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-10-26T16:16:05Z",
+      "side": 1,
+      "message": "Fair enough, no strong preference. Resolving this.",
+      "parentUuid": "63ddc9c0_9425876a",
+      "revId": "e9ce1828fe54e9de427a639fb43be74f1153a7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
