@@ -259,8 +259,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for pure WPA with TKIP.
-				Name:      "wpatkip",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpatkip",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -272,8 +271,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for pure WPA with AES based CCMP.
-				Name:      "wpaccmp",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpaccmp",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -285,8 +283,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for pure WPA with both AES based CCMP and TKIP.
-				Name:      "wpamulti",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpamulti",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -298,8 +295,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
-				Name:      "wpa2tkip",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpa2tkip",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -312,8 +308,7 @@ func init() {
 			}, {
 				// Verifies that we can connect to an AP broadcasting a WPA2 network using AES based CCMP.
 				// In addition, the client must also support 802.11w protected management frames.
-				Name:      "wpa2pmf",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpa2pmf",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFRequired)},
@@ -326,8 +321,7 @@ func init() {
 			}, {
 				// Verifies that we can connect to an AP broadcasting a WPA2 network using AES based CCMP.
 				// In addition, the client may also negotiate use of 802.11w protected management frames.
-				Name:      "wpa2pmfoptional",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpa2pmfoptional",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFOptional)},
@@ -339,8 +333,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) and encrypted under AES.
-				Name:      "wpa2",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpa2",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -352,8 +345,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
-				Name:      "wpamixed",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpamixed",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -399,8 +391,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
 				// Verifies that DUT can connect to a protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
-				Name:      "wpaoddpassphrase",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpaoddpassphrase",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -447,8 +438,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
-				Name:      "wpahidden",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpahidden",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
@@ -482,8 +472,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a WPA network using a raw PMK value instead of an ASCII passphrase.
-				Name:      "raw_pmk",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "raw_pmk",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
