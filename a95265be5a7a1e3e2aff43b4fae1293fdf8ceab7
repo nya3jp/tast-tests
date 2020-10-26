@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f1cfe9_e1a7090d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:55:28Z",
+      "side": 1,
+      "message": "nit: not sure if it is better to have this part of change in another CL because this might affect other tests using the same precondition?",
+      "revId": "a95265be5a7a1e3e2aff43b4fae1293fdf8ceab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc816732_aa0450a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-26T08:55:28Z",
+      "side": 1,
+      "message": "LGTM % one question/suggestion.",
+      "revId": "a95265be5a7a1e3e2aff43b4fae1293fdf8ceab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
