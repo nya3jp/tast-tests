@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "a49ced43e9c0b70edab6b028e46bfc8065c6aff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48cd992_8de949b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-26T15:50:43Z",
+      "side": 1,
+      "message": "Thanks for takink a look, but I\u0027m not sure this is the right way to fix the issue. Is it possible to get the timezone independently of DST instead? The test as written will break if any of the timezones changes it\u0027s handling of DST.",
+      "revId": "a49ced43e9c0b70edab6b028e46bfc8065c6aff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
