@@ -68,6 +68,23 @@
       "message": "Adding tast-owners@ for tast review.",
       "revId": "2c4cb033bdde52a8c36148ef919e258ccf09d9c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "211271d7_246aa14e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-10-26T23:12:29Z",
+      "side": 1,
+      "message": "thanks for review!",
+      "revId": "2c4cb033bdde52a8c36148ef919e258ccf09d9c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
