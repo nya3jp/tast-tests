@@ -52,6 +52,24 @@
       "parentUuid": "b52dd044_d6c3f5a0",
       "revId": "5aefbca6c70fc1559efe014b93341645a8ad5188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89eb8355_4d810e86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-26T08:22:24Z",
+      "side": 1,
+      "message": "If you\u0027re looking at performance tests, noisy tests are equivalent to flaky tests. IMO, noisy tests actually worse, since inaccurate performance numbers are obvious with flaky tests, but not necessarily obvious with noisy data. More likely than not, failures here are going to be due to improper cleanup/incomplete initialization. If there\u0027s a board that\u0027s actually incapable of hitting 20% utilization while idle, then perhaps we could parameterize WaitUntilIdle to deal with that. But I don\u0027t think ignoring the error within cpu.WaitUntilIdle is the correct course of action.",
+      "parentUuid": "b7872161_a01241c6",
+      "revId": "5aefbca6c70fc1559efe014b93341645a8ad5188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
