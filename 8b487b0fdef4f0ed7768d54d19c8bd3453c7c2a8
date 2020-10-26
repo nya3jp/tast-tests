@@ -85,6 +85,24 @@
       "parentUuid": "79e0273c_033691fa",
       "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea18c95_f3f0d222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_star_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-26T10:00:17Z",
+      "side": 1,
+      "message": "For Tauto (Autotest) tests, orthogonal tests were often combined to avoid per-test overhead. But Tast tests can make the per-test overhead almost zero by using preconditions.\n\nThis test uses chrome.LoggedIn precondition, so I guess splitting the test adds almost no runtime overhead.\n\nI\u0027m not sure how much rastertostar and rastertostarlm are correlated though.",
+      "parentUuid": "1130e111_e52f4947",
+      "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
