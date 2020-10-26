@@ -16,5 +16,5 @@ service SystemTimezoneService {
 }
 
 message TestSystemTimezoneRequest {
-  string Timezone = 1;
+  string timezone = 1;
 }

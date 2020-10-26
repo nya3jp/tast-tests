@@ -53,12 +53,12 @@ func SystemTimezone(ctx context.Context, s *testing.State) {
 		{
 			name:     "Berlin",
 			policy:   policy.SystemTimezone{Val: "Europe/Berlin"},
-			timezone: "CEST",
+			timezone: "Europe/Berlin",
 		},
 		{
 			name:     "Los Angeles",
 			policy:   policy.SystemTimezone{Val: "America/Los_Angeles"},
-			timezone: "PDT",
+			timezone: "America/Los_Angeles",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
