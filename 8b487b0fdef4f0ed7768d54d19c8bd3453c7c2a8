@@ -103,6 +103,24 @@
       "parentUuid": "1130e111_e52f4947",
       "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d456c7f1_9591de7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_star_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T23:14:13Z",
+      "side": 1,
+      "message": "Saw this from another CL. Just a comment, this looks like a case where the correct solution might be merging this with the other add_*_printer tests and just making it one parameterized test:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests\n\nThen the tests would look like:\nprinter.AddPrinter.star\nprinter.AddPrinter.starlm\nprinter.AddPrinter.epson\netc.\n\nSide note, since this is the printer category, saying \"printer.AddPrinter\" is a bit redundant. Instead you could just call the tests \"printer.Add\", or if they stay separate, \"Printer.AddStar\", etc.",
+      "parentUuid": "5ea18c95_f3f0d222",
+      "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
