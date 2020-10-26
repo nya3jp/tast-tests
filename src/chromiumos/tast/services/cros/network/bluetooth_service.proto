@@ -21,6 +21,7 @@ service BluetoothService {
 
 message SetBluetoothPoweredRequest {
     bool powered = 1;
+    string credentials = 2;
 }
 
 message GetBluetoothPoweredResponse {
