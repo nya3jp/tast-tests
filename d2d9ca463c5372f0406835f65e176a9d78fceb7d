@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3edb608_a8ed1428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-26T17:46:39Z",
+      "side": 1,
+      "message": "note: this is actually specifically for automation API (accessibility API); actually the renderer process which uses the automation API caches the location and/or other properties, and the updates of the new location data may not come timely, and so the test may go into an intermediate cached state. This function helps eliminating such state.\n\nHowever, the shelf bounds API was -- IIRC -- fetched through autotestPrivate API. That wouldn\u0027t suffer from the problem of automation API.\n\nI am guessing this function may not be the ideal tool for your waiting.  Sadly there\u0027s no way to stabilize the animation on the desktop, but simply timed waiting (such as testing.Sleep(ctx, 3*time.Second)) might be good enough.",
+      "range": {
+        "startLine": 291,
+        "startChar": 11,
+        "endLine": 291,
+        "endChar": 51
+      },
+      "revId": "d2d9ca463c5372f0406835f65e176a9d78fceb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
