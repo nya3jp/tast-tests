@@ -16,6 +16,23 @@
       "message": "Origin of this CL was this comment (N.B. internal only):\nhttps://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-pita/+/3353974/comment/0e3961d8_7802b4da/\n\n(Basically, the observation we are writing the screenshot to disk for no point.)\n\nI have observed us also doing this here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go;l\u003d93;drc\u003da1e4c5d2c0bbc19dfa9e85585706a60103ecb6c3",
       "revId": "6372a0c25d50023a3269c9be3b0a5b11963c1521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7353a9e0_1c7e8fb6",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-26T02:43:42Z",
+      "side": 1,
+      "message": "optional: you could share the JS code between this and the captureInternal function",
+      "revId": "6372a0c25d50023a3269c9be3b0a5b11963c1521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
