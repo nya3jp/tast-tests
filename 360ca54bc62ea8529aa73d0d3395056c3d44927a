@@ -69,6 +69,24 @@
       "parentUuid": "4d7d3628_b4873a08",
       "revId": "360ca54bc62ea8529aa73d0d3395056c3d44927a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83181c98_23b5b940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-26T17:57:05Z",
+      "side": 1,
+      "message": "Just the library moved, this file doesn\u0027t need to move, just change the import.\n\n 1) Rebase\n 2) Change line 15 to \"chromiumos/tast/local/android/ui\"\n 3) If you want to be extra proper, also s/arcui/androidui/\n 4) reupload.",
+      "parentUuid": "cb32a612_e6d4804a",
+      "revId": "360ca54bc62ea8529aa73d0d3395056c3d44927a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
