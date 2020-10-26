@@ -25,7 +25,7 @@ func init() {
 			"sarthakkukreti@google.com",
 			"chromeos-storage@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
@@ -39,6 +39,10 @@ func FscryptEncryptionPolicy(ctx context.Context, s *testing.State) {
 	// Make sure cryptohomed is running.
 	if err := upstart.EnsureJobRunning(ctx, "cryptohomed"); err != nil {
 		s.Fatal("Failed to start cryptohomed: ", err)
+	}
+
+	if err := cryptohome.CheckService(ctx); err != nil {
+		s.Fatal("Cryptohomed not running as expected: ", err)
 	}
 
 	// Create user vault.

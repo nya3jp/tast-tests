@@ -9,9 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/bundles/cros/policy/pre"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -66,7 +66,7 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 

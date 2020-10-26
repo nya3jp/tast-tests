@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -38,11 +37,10 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Pre: ash.LoggedInWith100DummyApps(),
+			Pre: ash.LoggedInWith100FakeApps(),
 		}, {
 			Name:              "skia_renderer",
-			Pre:               ash.LoggedInWith100DummyAppsWithSkiaRenderer(),
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("nocturne", "krane")),
+			Pre:               ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
 		}},
 	})
 }
@@ -129,11 +127,6 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to close the connection to chrome")
 		}
 		currentWindows = windows
-		// The best effort to stabilize CPU usage. This may or
-		// may not be satisfied in time.
-		if err := cpu.WaitUntilIdle(ctx); err != nil {
-			s.Error("Failed to wait for system UI to be stabilized: ", err)
-		}
 
 		suffix := fmt.Sprintf("%dwindows", currentWindows)
 		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
@@ -157,7 +150,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 			"Apps.StateTransition.Drag.PresentationTime.ClamshellMode"),
 			perfutil.StoreAll(perf.SmallerIsBetter, "ms", suffix))
 	}
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

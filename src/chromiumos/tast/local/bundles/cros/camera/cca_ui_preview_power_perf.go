@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/power"
@@ -19,6 +20,10 @@ import (
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+type config struct {
+	BatteryMode setup.BatteryDischargeMode
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -30,15 +35,38 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Params: []testing.Param{{
-			Name: "noarc",
-			Pre:  chrome.LoggedIn(),
+			Name:              "noarc",
+			Pre:               chrome.LoggedIn(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
 		}, {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
+		}, {
+			Name:              "noarc_nobatterymetrics",
+			Pre:               chrome.LoggedIn(),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
+		}, {
+			Name:              "vm_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.Booted(),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
 		}},
 		Timeout: 5 * time.Minute,
 	})
@@ -58,8 +86,13 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	if !ok {
 		cr = s.PreValue().(arc.PreData).Chrome
 	}
+	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	if err != nil {
+		s.Fatal("Failed to construct test bridge: ", err)
+	}
+	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -70,13 +103,14 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 
 	sup, cleanup := setup.New("CCA camera preview power")
 
-	defer func() {
-		if err := cleanup(cleanupCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := cleanup(ctx); err != nil {
 			s.Error("Cleanup failed: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	batteryMode := s.Param().(setup.BatteryDischargeMode)
+	sup.Add(setup.PowerTest(ctx, tconn, batteryMode))
 
 	const (
 		iterationCount          = 30
@@ -106,18 +140,15 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Start Chrome Camera App (CCA).
-	app, err := cca.Init(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), func(tconn *chrome.TestConn) error {
-		if err := tconn.Call(ctx, nil, "chrome.management.launchApp", cca.ID); err != nil {
-			return err
-		}
-		return nil
-	})
-
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-
-	defer app.Close(ctx)
+	defer func(ctx context.Context) {
+		if err := app.Close(ctx); err != nil {
+			s.Error("Failed to close app: ", err)
+		}
+	}(ctx)
 
 	if err := app.MaximizeWindow(ctx); err != nil {
 		s.Fatal("Failed to maximize CCA: ", err)
@@ -137,12 +168,12 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	p, err := metrics.StopRecording()
+	values, err := metrics.StopRecording()
 	if err != nil {
 		s.Fatal("Error while recording power metrics: ", err)
 	}
 
-	if err := p.Save(s.OutDir()); err != nil {
+	if err := values.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

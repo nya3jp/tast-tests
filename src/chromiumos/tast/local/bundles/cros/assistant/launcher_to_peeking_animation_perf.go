@@ -46,7 +46,11 @@ func LauncherToPeekingAnimationPerf(ctx context.Context, s *testing.State) {
 	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
-	defer assistant.Cleanup(ctx, s, cr, tconn)
+	defer func() {
+		if err := assistant.Cleanup(ctx, s.HasError, cr, tconn); err != nil {
+			s.Fatal("Failed to disable Assistant: ", err)
+		}
+	}()
 
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {

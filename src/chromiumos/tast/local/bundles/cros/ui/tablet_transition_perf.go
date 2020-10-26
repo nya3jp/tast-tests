@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 )
@@ -56,12 +55,8 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain the window list: ", err)
 	}
 
-	if _, err := ash.SetWindowState(ctx, tconn, windows[0].ID, ash.WMEventNormal); err != nil {
+	if err := ash.SetWindowStateAndWait(ctx, tconn, windows[0].ID, ash.WindowStateNormal); err != nil {
 		s.Fatalf("Failed to set the window (%d): %v", windows[0].ID, err)
-	}
-
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
@@ -87,7 +82,7 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		"Ash.TabletMode.AnimationSmoothness.Exit"),
 		perfutil.StoreSmoothness)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

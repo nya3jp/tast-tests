@@ -28,29 +28,27 @@ func init() {
 			"ddavenport@chromium.org",
 			"chromeos-gfx@google.com",
 		},
+		SoftwareDeps: []string{"drm_atomic", "igt"},
 		Params: []testing.Param{{
 			Name: "kms_atomic",
 			Val: igtTest{
 				exe: "kms_atomic",
 			},
-			ExtraSoftwareDeps: []string{"drm_atomic"},
-			Timeout:           5 * time.Minute,
+			Timeout: 5 * time.Minute,
 		}, {
 			Name: "kms_addfb_basic",
 			Val: igtTest{
 				exe: "kms_addfb_basic",
 			},
-			ExtraSoftwareDeps: []string{"drm_atomic"},
-			Timeout:           5 * time.Minute,
+			Timeout: 5 * time.Minute,
 		}, {
 			Name: "kms_plane",
 			Val: igtTest{
 				exe: "kms_plane",
 			},
-			ExtraSoftwareDeps: []string{"drm_atomic"},
-			Timeout:           5 * time.Minute,
+			Timeout: 5 * time.Minute,
 		}},
-		Attr: []string{"group:graphics"},
+		Attr: []string{"group:graphics", "graphics_perbuild"},
 	})
 }
 

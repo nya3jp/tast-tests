@@ -18,8 +18,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -136,7 +137,7 @@ func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks int) e
 			if finishedSeeks == 0 {
 				finishedSeeks = prevFinishedSeeks
 			}
-			return errors.Wrapf(err, "Error while seeking, completed %d/%d seeks", finishedSeeks, numSeeks)
+			return errors.Wrapf(err, "error while seeking, completed %d/%d seeks", finishedSeeks, numSeeks)
 		}
 		if finishedSeeks == numSeeks {
 			break
@@ -193,13 +194,21 @@ func colorDistance(a, b color.Color) int {
 		}
 		return m
 	}
-	// Interestingly, the RGBA method returns components in the range [0, 65535] (see
-	// https://blog.golang.org/image). Therefore, we must shift them to the right by 8
-	// so that they are in the more typical [0, 255] range.
+	// Interestingly, the RGBA method returns components in the range [0, 0xFFFF] corresponding
+	// to the 8-bit values multiplied by 0x101 (see https://blog.golang.org/image). Therefore,
+	// we must shift them to the right by 8 so that they are in the more typical [0, 255] range.
 	return max(abs(int(aR>>8)-int(bR>>8)),
 		abs(int(aG>>8)-int(bG>>8)),
 		abs(int(aB>>8)-int(bB>>8)),
 		abs(int(aA>>8)-int(bA>>8)))
+}
+
+// isBlack returns true if c corresponds to opaque black. Returns false otherwise.
+func isBlack(c color.Color) bool {
+	// Note that the RGBA method returns components in the range [0, 0xFFFF] corresponding to
+	// the 8-bit values multiplied by 0x101 (https://blog.golang.org/image).
+	cR, cG, cB, cA := c.RGBA()
+	return cR == 0 && cG == 0 && cB == 0 && cA == 0xFFFF
 }
 
 // TestPlay checks that the video file named filename can be played using Chrome.
@@ -214,10 +223,10 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 	defer vl.Close()
 
-	if err := audio.Mute(ctx); err != nil {
+	if err := crastestclient.Mute(ctx); err != nil {
 		return err
 	}
-	defer audio.Unmute(ctx)
+	defer crastestclient.Unmute(ctx)
 
 	var chromeMediaInternalsConn *chrome.Conn
 	if mode != NoVerifyHWAcceleratorUsed {
@@ -287,14 +296,16 @@ func TestSeek(ctx context.Context, httpHandler http.Handler, cr *chrome.Chrome, 
 // TestPlayAndScreenshot plays the filename video, switches it to full
 // screen mode, takes a screenshot and analyzes the resulting image to
 // sample the colors of a few interesting points and compare them against
-// expectations.
+// expectations. The expectations are defined by refFilename which is a
+// PNG file corresponding to the ideally rendered video frame in the absence
+// of scaling or artifacts.
 //
 // Caveat: this test does not disable night light. Night light doesn't
 // seem to affect the output of the screenshot tool, but this might
 // not hold in the future in case we decide to apply night light at
 // compositing time if the hardware does not support the color
 // transform matrix.
-func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) error {
+func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename, refFilename string) error {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	url := path.Join(server.URL, "video.html")
@@ -314,7 +325,7 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	}
 
 	// Start playing the video indefinitely.
-	if err := conn.Eval(ctx, fmt.Sprintf("playRepeatedly(%q)", s.Param().(string)), nil); err != nil {
+	if err := conn.Eval(ctx, fmt.Sprintf("playRepeatedly(%q)", filename), nil); err != nil {
 		return errors.Wrapf(err, "failed to play %v", filename)
 	}
 
@@ -365,66 +376,156 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 		img = rotImg
 	}
 
-	// Find the top and bottom of the video, i.e., exclude the black strips on top and bottom. Note
-	// the video colors are chosen such that none of the RGB components are 0. We assume symmetry, so the
-	// bottom is calculated based on the value of the top instead of using a loop (this is because the
-	// bottom of the video can acceptably bleed into the bottom black strip and we want to ignore that).
-	// No black strips are expected on the left or right.
+	// Find the bounds of the video by excluding the black strips on each side.
+	xMiddle := img.Bounds().Dx() / 2
+	yMiddle := img.Bounds().Dy() / 2
 	top := 0
 	for ; top < img.Bounds().Dy(); top++ {
-		if r, _, _, _ := img.At(0, top).RGBA(); r != 0 {
+		if !isBlack(img.At(xMiddle, top)) {
 			break
 		}
 	}
-	if top >= img.Bounds().Dy() {
-		return errors.New("could not find the top of the video")
+	bottom := img.Bounds().Dy() - 1
+	for ; bottom >= 0; bottom-- {
+		if !isBlack(img.At(xMiddle, bottom)) {
+			break
+		}
 	}
-	bottom := img.Bounds().Dy() - 1 - top
+	if bottom <= top {
+		return errors.New("could not find the top or bottom boundary of the video")
+	}
 	left := 0
+	for ; left < img.Bounds().Dx(); left++ {
+		if !isBlack(img.At(left, yMiddle)) {
+			break
+		}
+	}
 	right := img.Bounds().Dx() - 1
+	for ; right >= 0; right-- {
+		if !isBlack(img.At(right, yMiddle)) {
+			break
+		}
+	}
+	if right <= left {
+		return errors.New("could not find the left or right boundary of the video")
+	}
+	s.Logf("Video bounds: (left, top) = (%d, %d); (right, bottom) = (%d, %d)",
+		left, top, right, bottom)
 
-	// Calculate the coordinates of the centers of the four rectangles in the video.
-	x25 := left + (right-left)/4
-	y25 := top + (bottom-top)/4
-	x75 := left + 3*(right-left)/4
-	y75 := top + 3*(bottom-top)/4
+	// Open the reference file to assert expectations on the screenshot later.
+	refPath := s.DataPath(refFilename)
+	f, err = os.Open(refPath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to open %v", refPath)
+	}
+	defer f.Close()
+	refImg, _, err := image.Decode(f)
+	if err != nil {
+		return errors.Wrapf(err, "could not decode %v", refPath)
+	}
+	videoW := refImg.Bounds().Dx()
+	videoH := refImg.Bounds().Dy()
 
-	// These are the expectations on the four rectangles of the test video:
-	//
-	// - CornerX and CornerY are the coordinates of a corner of the video plus some padding. The padding
-	//   is used to avoid testing exactly at the edges of the video where we might be subject to some
-	//   color bleeding artifacts that are still acceptable.
-	//
-	// - CenterX, CenterY are the coordinates of the center of the rectangle.
-	//
-	// - Color is the expected color for the entire rectangle (this includes the corner and the centers).
-	colors := map[string]struct {
-		CornerX, CornerY int
-		CenterX, CenterY int
-		Color            color.Color
+	// Measurement 1:
+	// We'll sample 20 interesting corner pixels and report the color distance
+	// with respect to the reference image.
+	// outerCorners defines the four absolute corners of the video, nothing fancy.
+	outerCorners := map[string]struct {
+		x, y int
 	}{
-		"top-left":     {left + 2, top + 2, x25, y25, color.RGBA{128, 64, 32, 255}},
-		"top-right":    {right - 2, top + 2, x75, y25, color.RGBA{32, 128, 64, 255}},
-		"bottom-right": {right - 2, bottom - 2, x75, y75, color.RGBA{64, 32, 128, 255}},
-		"bottom-left":  {left + 2, bottom - 2, x25, y75, color.RGBA{128, 32, 64, 255}},
+		"outer_top_left":     {0, 0},
+		"outer_top_right":    {videoW - 1, 0},
+		"outer_bottom_right": {videoW - 1, videoH - 1},
+		"outer_bottom_left":  {0, videoH - 1},
+	}
+	// innerCorners defines 4 stencils (one for each corner of the video). Each
+	// stencil is composed of 4 points arranged as a square. Each point
+	// corresponds to a pixel which we will sample. The expectation is that for
+	// each stencil, 3 of its points fall on the interior border of the video
+	// while the remaining point falls inside one of the color rectangles. This
+	// helps us detect undesired stretching/shifting/rotation/mirroring. The
+	// naming convention for each point of a stencil is as follows:
+	//
+	//   _00: top-left corner of the stencil.
+	//   _10: top-right corner of the stencil.
+	//   _11: bottom-right corner of the stencil.
+	//   _01: bottom-left corner of the stencil.
+	edgeOffset := 7
+	stencilW := 2
+	innerCorners := map[string]struct {
+		x, y int
+	}{
+		"inner_top_left_00":     {edgeOffset, edgeOffset},
+		"inner_top_left_10":     {edgeOffset + stencilW, edgeOffset},
+		"inner_top_left_11":     {edgeOffset + stencilW, edgeOffset + stencilW},
+		"inner_top_left_01":     {edgeOffset, edgeOffset + stencilW},
+		"inner_top_right_00":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset},
+		"inner_top_right_10":    {(videoW - 1) - edgeOffset, edgeOffset},
+		"inner_top_right_11":    {(videoW - 1) - edgeOffset, edgeOffset + stencilW},
+		"inner_top_right_01":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset + stencilW},
+		"inner_bottom_right_00": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_right_10": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_right_11": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset},
+		"inner_bottom_right_01": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset},
+		"inner_bottom_left_00":  {edgeOffset, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_left_10":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_left_11":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset},
+		"inner_bottom_left_01":  {edgeOffset, (videoH - 1) - edgeOffset},
+	}
+	samples := map[string]struct {
+		x, y int
+	}{}
+	for k, v := range innerCorners {
+		samples[k] = v
+	}
+	for k, v := range outerCorners {
+		samples[k] = v
 	}
 
-	const tolerance = 2
+	p := perf.NewValues()
+	for k, v := range samples {
+		// First convert the coordinates from video space to screenshot space.
+		videoX := v.x
+		videoY := v.y
+		screenX := left + (right-left)*v.x/(videoW-1)
+		screenY := top + (bottom-top)*v.y/(videoH-1)
 
-	// Check the colors of the centers of the four rectangles in the video.
-	for k, v := range colors {
-		actualColor := img.At(v.CenterX, v.CenterY)
-		if colorDistance(actualColor, v.Color) > tolerance {
-			return errors.Errorf("at the center of the %s rectangle (%d, %d): expected RGBA = %v; got RGBA = %v", k, v.CenterX, v.CenterY, v.Color, actualColor)
+		// Then report the distance between the expected and actual colors at this location.
+		expectedColor := refImg.At(videoX, videoY)
+		actualColor := img.At(screenX, screenY)
+		distance := colorDistance(expectedColor, actualColor)
+		s.Logf("At %v (video space = (%d, %d), screen space = (%d, %d)): expected RGBA = %v; got RGBA = %v; distance = %d",
+			k, videoX, videoY, screenX, screenY, expectedColor, actualColor, distance)
+		p.Set(perf.Metric{
+			Name:      k,
+			Unit:      "None",
+			Direction: perf.SmallerIsBetter,
+		}, float64(distance))
+	}
+
+	// Measurement 2:
+	// We report an aggregate distance for the image: we go through all the pixels
+	// in the screenshot video to add up all the distances and then normalize by
+	// the number of pixels at the end.
+	totalDistance := 0.0
+	for row := top; row <= bottom; row++ {
+		for col := left; col <= right; col++ {
+			// First convert the coordinates from screenshot space to video space.
+			videoX := (col - left) * (videoW - 1) / (right - left)
+			videoY := (row - top) * (videoH - 1) / (bottom - top)
+			expectedColor := refImg.At(videoX, videoY)
+			actualColor := img.At(col, row)
+			totalDistance += float64(colorDistance(expectedColor, actualColor))
 		}
 	}
+	totalDistance /= float64((right - left + 1) * (bottom - top + 1))
+	s.Log("The total distance for the entire image is ", totalDistance)
+	p.Set(perf.Metric{
+		Name:      "total_distance",
+		Unit:      "None",
+		Direction: perf.SmallerIsBetter,
+	}, totalDistance)
+	p.Save(s.OutDir())
 
-	// Check the color of the four corners of the video.
-	for k, v := range colors {
-		actualColor := img.At(v.CornerX, v.CornerY)
-		if colorDistance(actualColor, v.Color) > tolerance {
-			return errors.Errorf("at the %s corner (%d, %d): expected RGBA = %v; got RGBA = %v", k, v.CornerX, v.CornerY, v.Color, actualColor)
-		}
-	}
 	return nil
 }

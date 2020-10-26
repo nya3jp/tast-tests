@@ -12,14 +12,13 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
 const (
-	// StadiaAllGamesUrl is the url of all Stadia games page.
-	StadiaAllGamesUrl = "https://ggp-staging.sandbox.google.com/store/list"
+	// StadiaAllGamesURL is the url of all Stadia games page.
+	StadiaAllGamesURL = "https://ggp-staging.sandbox.google.com/store/list"
 )
 
 // StartGameFromGameListsView locates the game by its name from the game list page
@@ -28,6 +27,7 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	gameView := "View " + name + "."
 	gamePlay := "Play"
 	gameStart := name + " Play game"
+	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
 
 	// Find the game view from the game list.
 	gameViewButton, err := n.DescendantWithTimeout(ctx, ui.FindParams{Name: gameView, Role: ui.RoleTypeButton}, timeout)
@@ -35,14 +35,18 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 		return errors.Wrapf(err, "failed to find the game view button (%s)", gameView)
 	}
 	defer gameViewButton.Release(ctx)
-	if err := gameViewButton.FocusAndWait(ctx, timeout); err != nil {
-		return errors.Wrapf(err, "failed to focus on the game view button (%s)", gameView)
+	if err := gameViewButton.MakeVisible(ctx); err != nil {
+		return errors.Wrapf(err, "failed to make the game view button (%s) visible", gameView)
 	}
-	if err := gameViewButton.LeftClick(ctx); err != nil {
+	if err := gameViewButton.StableLeftClick(ctx, &pollOpts); err != nil {
 		return errors.Wrapf(err, "failed to click the game view button (%s)", gameView)
 	}
-	if err := webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
-		return errors.Wrap(err, "failed to wait for game page to finish loading")
+	// Wait for the progress bar to show up (new page loading) and to be gone (new page loading completed).
+	if err := n.WaitUntilDescendantExists(ctx, ui.FindParams{Role: ui.RoleTypeProgressIndicator}, timeout); err != nil {
+		return errors.Wrap(err, "failed to wait for progress bar to show up")
+	}
+	if err = n.WaitUntilDescendantGone(ctx, ui.FindParams{Role: ui.RoleTypeProgressIndicator}, timeout); err != nil {
+		return errors.Wrap(err, "failed to wait for progress bar to be gone")
 	}
 
 	// Play the game.
@@ -51,14 +55,34 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 		return errors.Wrapf(err, "failed to find the game play button (%s)", gamePlay)
 	}
 	defer gamePlayButton.Release(ctx)
-	if err := gamePlayButton.FocusAndWait(ctx, timeout); err != nil {
-		return errors.Wrapf(err, "failed to focus on the game play button (%s)", gamePlay)
+	if err := gamePlayButton.MakeVisible(ctx); err != nil {
+		return errors.Wrapf(err, "failed to make the game play button (%s) visible", gamePlay)
 	}
-	if err := gamePlayButton.LeftClick(ctx); err != nil {
+	// Make sure the Play button is clickable.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var atTop bool
+		if err := conn.Call(ctx, &atTop,
+			`() => {
+				var sel = Array.from(document.querySelectorAll('div')).find(e => e.textContent === "Play");
+				var b = sel.getBoundingClientRect();
+				var el = document.elementFromPoint((b.left+b.right)/2, (b.top+b.bottom)/2);
+				return sel.contains(el);
+			}`); err != nil {
+			return errors.Wrapf(err, "failed to check at top of selector %q", gamePlay)
+		}
+		if !atTop {
+			return errors.Errorf("selector %q is not at top", gamePlay)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for the Play button to be clickable")
+	}
+
+	if err := gamePlayButton.LeftClickUntil(ctx,
+		func(ctx context.Context) (bool, error) {
+			return ui.Exists(ctx, tconn, ui.FindParams{Name: gameStart, Role: ui.RoleTypeButton})
+		}, &pollOpts); err != nil {
 		return errors.Wrapf(err, "failed to click the game play button (%s)", gamePlay)
-	}
-	if err := webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
-		return errors.Wrap(err, "failed to wait for game page to finish loading")
 	}
 
 	// Start(enter) the game.
@@ -67,9 +91,6 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 		return errors.Wrapf(err, "failed to find the game start button (%s)", gameStart)
 	}
 	defer gameStartButton.Release(ctx)
-	if err := gameStartButton.FocusAndWait(ctx, timeout); err != nil {
-		return errors.Wrapf(err, "failed to focus on the game start button (%s)", gameStart)
-	}
 	// Make sure the game is fully launched.
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
@@ -77,21 +98,23 @@ func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, con
 	}
 	id0 := ws[0].ID
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := gameStartButton.LeftClick(ctx); err != nil {
-			return errors.Wrapf(err, "failed to click the game start button (%s)", gameStart)
-		}
 		w0, err := ash.GetWindow(ctx, tconn, id0)
 		if err != nil {
-			return errors.Wrapf(err, "failed to get the window")
+			return testing.PollBreak(errors.Wrap(err, "failed to get the window"))
 		}
-		// The window should turn into fullscreen mode when game starts.
-		if w0.State != ash.WindowStateFullscreen {
-			return errors.New("hasn't entered the game yet")
+		// If the window is already in full screen, the game has already started and
+		// no need to press the start button.
+		if w0.State == ash.WindowStateFullscreen {
+			return nil
 		}
-		return nil
+		if err := gameStartButton.StableLeftClick(ctx, &pollOpts); err != nil {
+			return errors.Wrapf(err, "failed to click the game start button (%s)", gameStart)
+		}
+		return errors.New("game hasn't started yet")
 	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to start the game %s", name)
 	}
+
 	return nil
 }
 
@@ -140,4 +163,3 @@ func ExitGame(ctx context.Context, kb *input.KeyboardEventWriter, webpage *ui.No
 	}
 	return nil
 }
-

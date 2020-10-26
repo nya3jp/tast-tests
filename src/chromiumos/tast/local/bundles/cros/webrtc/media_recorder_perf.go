@@ -37,7 +37,7 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "h264_sw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: false, profile: "H264"},
-			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcamAndSWEncoding(),
 		}, {
 			Name: "vp8_sw",
@@ -50,7 +50,7 @@ func init() {
 		}, {
 			Name:              "h264_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "H264"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "vp8_hw",
@@ -61,8 +61,7 @@ func init() {
 			Name:              "vp9_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP9"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			// TODO(crbug.com/811912): Use pre.ChromeVideoWithFakeWebcam() when VP9 encoder is enabled by default.
-			Pre: pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder(),
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}},
 	})
 }

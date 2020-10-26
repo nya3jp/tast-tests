@@ -6,6 +6,7 @@ package vm
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
 	"io/ioutil"
 	"strings"
@@ -37,6 +38,7 @@ const (
 type Concierge struct {
 	ownerID      string // cryptohome hash for the logged-in user
 	conciergeObj dbus.BusObject
+	ciceroneObj  dbus.BusObject
 }
 
 // GetRunningConcierge returns a concierge instance without restarting concierge service.
@@ -57,8 +59,9 @@ func GetRunningConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, errors.Wrapf(err, "%s is not owned", conciergeName)
 	}
 
-	obj := conn.Object(conciergeName, conciergePath)
-	return &Concierge{h, obj}, nil
+	concierge := conn.Object(conciergeName, conciergePath)
+	cicerone := conn.Object(ciceroneName, ciceronePath)
+	return &Concierge{h, concierge, cicerone}, nil
 }
 
 // NewConcierge restarts the vm_concierge service, which stops all running VMs.
@@ -72,10 +75,11 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 	if err = upstart.RestartJob(ctx, conciergeJob); err != nil {
 		return nil, errors.Wrapf(err, "%v Upstart job failed", conciergeJob)
 	}
-	bus, obj, err := dbusutil.Connect(ctx, conciergeName, conciergePath)
+	bus, concierge, err := dbusutil.Connect(ctx, conciergeName, conciergePath)
 	if err != nil {
 		return nil, err
 	}
+	cicerone := bus.Object(ciceroneName, ciceronePath)
 
 	testing.ContextLogf(ctx, "Restarting %v job", ciceroneJob)
 	if err = upstart.RestartJob(ctx, ciceroneJob); err != nil {
@@ -85,7 +89,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, errors.Wrapf(err, "%v D-Bus service unavailable", ciceroneName)
 	}
 
-	return &Concierge{h, obj}, nil
+	return &Concierge{h, concierge, cicerone}, nil
 }
 
 // StopConcierge stops the vm_concierge service, which stops all running VMs.
@@ -98,28 +102,44 @@ func StopConcierge(ctx context.Context) error {
 	return nil
 }
 
-// listVMDisksSize returns the size of the named VM through ListVmDisks.
-func (c *Concierge) listVMDisksSize(ctx context.Context, vmName string) (size uint64, err error) {
+// GetEncodedName returns the encoded version of the user-chosen name which
+// concierge uses to identify several pieces of the VM (its stateful image, log
+// files, and ssh keys).
+func GetEncodedName(name string) string {
+	return base64.URLEncoding.WithPadding(base64.StdPadding).EncodeToString([]byte(name))
+}
+
+// GetVMDiskInfo returns a VmDiskInfo proto for the given VM via ListVmDisks
+func (c *Concierge) GetVMDiskInfo(ctx context.Context, vmName string) (*vmpb.VmDiskInfo, error) {
 	resp := &vmpb.ListVmDisksResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".ListVmDisks",
+	if err := dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".ListVmDisks",
 		&vmpb.ListVmDisksRequest{
 			CryptohomeId: c.ownerID,
 			AllLocations: true,
 			VmName:       DefaultVMName,
 		}, resp); err != nil {
-		return 0, err
+		return nil, err
 	}
 
 	if !resp.GetSuccess() {
-		return 0, errors.Errorf("could not fetch VM disks info: %v", resp.GetFailureReason())
+		return nil, errors.Errorf("could not fetch VM disks info: %v", resp.GetFailureReason())
 	}
 
 	for _, diskInfo := range resp.GetImages() {
 		if diskInfo.GetName() == vmName {
-			return diskInfo.GetSize(), nil
+			return diskInfo, nil
 		}
 	}
-	return 0, errors.Errorf("could not find vm named %v", vmName)
+	return nil, errors.Errorf("could not find vm named %v", vmName)
+}
+
+// listVMDisksSize returns the size of the named VM through ListVmDisks.
+func (c *Concierge) listVMDisksSize(ctx context.Context, vmName string) (size uint64, err error) {
+	disk, err := c.GetVMDiskInfo(ctx, vmName)
+	if err != nil {
+		return 0, err
+	}
+	return disk.Size, nil
 }
 
 func (c *Concierge) createDiskImage(ctx context.Context, diskSize uint64) (diskPath string, err error) {

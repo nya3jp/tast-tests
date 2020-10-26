@@ -42,7 +42,7 @@ type PerfBootService struct {
 }
 
 func (c *PerfBootService) WaitUntilCPUCoolDown(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownStopUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownStopUI); err != nil {
 		return nil, errors.Wrap(err, "failed to wait until CPU is cooled down")
 	}
 	return &empty.Empty{}, nil
@@ -69,7 +69,7 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	// (Currently KeepState option only works for fake login.)
 	// TODO(niwa): Check if we should really use KeepState.
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.RestrictARCCPU(),
-		chrome.KeepState(), chrome.ExtraArgs("--disable-arc-data-wipe"))
+		chrome.KeepState(), chrome.ExtraArgs("--disable-arc-data-wipe", "--ignore-arcvm-dev-conf"))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}

@@ -10,8 +10,8 @@ import (
 	"math"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Gamepad,
 		Desc:         "Checks gamepad support works on Android",
-		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
@@ -28,7 +28,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -208,7 +207,7 @@ func waitForGamepadAxis(ctx context.Context, d *ui.Device, axis string, expected
 
 func Gamepad(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

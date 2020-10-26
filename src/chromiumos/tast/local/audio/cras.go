@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/godbus/dbus"
+	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
@@ -18,6 +19,7 @@ import (
 )
 
 const (
+	crasPath      = "/usr/bin/cras"
 	dbusName      = "org.chromium.cras"
 	dbusPath      = "/org/chromium/cras"
 	dbusInterface = "org.chromium.cras.Control"
@@ -236,4 +238,31 @@ func WaitForDevice(ctx context.Context, streamType StreamType) error {
 	}
 
 	return testing.Poll(ctx, checkActiveNodes, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
+// GetCRASPID finds the PID of cras.
+func GetCRASPID() (int, error) {
+	all, err := process.Pids()
+
+	if err != nil {
+		return -1, err
+	}
+
+	for _, pid := range all {
+		proc, err := process.NewProcess(pid)
+		if err != nil {
+			// Assume that the process exited.
+			continue
+		}
+
+		exe, err := proc.Exe()
+		if err != nil {
+			continue
+		}
+
+		if exe == crasPath {
+			return int(pid), nil
+		}
+	}
+	return -1, errors.Errorf("%v process not found", crasPath)
 }

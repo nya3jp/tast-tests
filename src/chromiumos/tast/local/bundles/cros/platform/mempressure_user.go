@@ -8,10 +8,10 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/platform/memoryuser"
-	"chromiumos/tast/local/bundles/cros/platform/mempressure"
+	"chromiumos/tast/local/memory/memoryuser"
+	"chromiumos/tast/local/memory/mempressure"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -55,7 +55,7 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 	}
 
 	youtubeFunc := func(a *arc.ARC) {
-		device, err := ui.NewDevice(ctx, a)
+		device, err := a.NewUIDevice(ctx)
 		if err != nil {
 			s.Fatal("Failed initializing UI Automator: ", err)
 		}
@@ -113,5 +113,7 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 		WPRArchivePath: s.DataPath(mempressure.WPRArchiveName),
 		UseARC:         true,
 	}
-	memoryuser.RunTest(ctx, s, memTasks, rp)
+	if err := memoryuser.RunTest(ctx, s.OutDir(), memTasks, rp); err != nil {
+		s.Fatal("RunTest failed: ", err)
+	}
 }

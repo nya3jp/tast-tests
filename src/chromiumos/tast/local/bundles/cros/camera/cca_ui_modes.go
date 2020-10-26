@@ -8,9 +8,9 @@ import (
 	"context"
 	"image/jpeg"
 	"os"
-	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/camera/cca"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -37,20 +37,25 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	if err != nil {
+		s.Fatal("Failed to construct test bridge: ", err)
+	}
+	defer tb.TearDown(ctx)
+
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-	defer app.Close(ctx)
-	defer (func() {
-		if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-			s.Error("Failed with javascript errors: ", err)
+	defer func(ctx context.Context) {
+		if err := app.Close(ctx); err != nil {
+			s.Error("Failed to close app: ", err)
 		}
-	})()
+	}(ctx)
 
 	// Switch to square mode and take photo.
 	if err := app.SwitchMode(ctx, cca.Square); err != nil {
@@ -62,11 +67,10 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	}
 
 	isSquarePhoto := func(info os.FileInfo, ctx context.Context, app *cca.App) (bool, error) {
-		path, err := app.SavedDir(ctx)
+		path, err := app.FilePathInSavedDirs(ctx, info.Name())
 		if err != nil {
 			return false, err
 		}
-		path = filepath.Join(path, info.Name())
 		file, err := os.Open(path)
 		if err != nil {
 			return false, err

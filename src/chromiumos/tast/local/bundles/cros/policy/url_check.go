@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/bundles/cros/policy/pre"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -66,8 +66,7 @@ func init() {
 				},
 			},
 			{
-				Name:      "blocklist",
-				ExtraAttr: []string{"informational"},
+				Name: "blocklist",
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
@@ -138,8 +137,7 @@ func init() {
 				},
 			},
 			{
-				Name:      "allowlist",
-				ExtraAttr: []string{"informational"},
+				Name: "allowlist",
 				Val: []blocklistTestTable{
 					{
 						name:        "single",

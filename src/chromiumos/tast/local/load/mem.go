@@ -14,18 +14,20 @@ import (
 
 // MemoryUsageSource is a perf.TimelineDatasource reporting the memory usage.
 type MemoryUsageSource struct {
-	name string
+	name        string
+	percentName string
+	prefix      string
 }
 
 // NewMemoryUsageSource creates a new instance of MemoryUsageSource with the
 // given name.
-func NewMemoryUsageSource(name string) *MemoryUsageSource {
-	return &MemoryUsageSource{name: name}
+func NewMemoryUsageSource(name, percentName string) *MemoryUsageSource {
+	return &MemoryUsageSource{name: name, percentName: percentName}
 }
 
 // Setup implements perf.TimelineDatasource.Setup.
 func (s *MemoryUsageSource) Setup(ctx context.Context, prefix string) error {
-	s.name = prefix + s.name
+	s.prefix = prefix
 	return nil
 }
 
@@ -41,11 +43,17 @@ func (s *MemoryUsageSource) Snapshot(ctx context.Context, values *perf.Values) e
 		return err
 	}
 	values.Append(perf.Metric{
-		Name:      s.name,
+		Name:      s.prefix + s.percentName,
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 		Multiple:  true,
 	}, memInfo.UsedPercent)
+	values.Append(perf.Metric{
+		Name:      s.prefix + s.name,
+		Unit:      "bytes",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}, float64(memInfo.Used))
 
 	return nil
 }

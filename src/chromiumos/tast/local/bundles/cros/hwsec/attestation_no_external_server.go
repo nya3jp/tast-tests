@@ -6,10 +6,15 @@ package hwsec
 
 import (
 	"context"
+	"strings"
 	"time"
 
+	"github.com/golang/protobuf/proto"
+
+	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/common/hwsec"
 	hwseclocal "chromiumos/tast/local/hwsec"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -24,9 +29,18 @@ func init() {
 	})
 }
 
+// isTPM2 checks if the DUT has a TPM2.0 implementation. In case of any error, |false| is returned.
+func isTPM2(ctx context.Context) bool {
+	out, err := testexec.CommandContext(ctx, "tpmc", "tpmversion").Output()
+	// If tpmc is not available, assume it's TPM-less.
+	if err != nil {
+		return false
+	}
+	return strings.TrimSpace(string(out)) == "2.0"
+}
+
 // AttestationNoExternalServer runs through the attestation flow, including enrollment, cert, sign challenge.
 // Also, it verifies the the key access functionality. All the external dependencies are replaced with the locally generated server responses.
-// TODO(b/154672162): Replace the communication with real servers with fake responses generated locally on DUT.
 func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	r, err := hwseclocal.NewCmdRunner()
 	if err != nil {
@@ -61,26 +75,18 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	}
 
 	at := hwsec.NewAttestaionTestWith(utility, hwsec.DefaultPCA, hwseclocal.NewPCAAgentClient(), hwseclocal.NewLocalVA())
-	for _, param := range []struct {
-		name  string
-		async bool
-	}{
-		{
-			name:  "async_enroll",
-			async: true,
-		}, {
-			name:  "sync_enroll",
-			async: false,
-		},
-	} {
-		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := utility.SetAttestationAsyncMode(ctx, param.async); err != nil {
-				s.Fatal("Failed to switch to sync mode: ", err)
-			}
-			if err := at.Enroll(ctx); err != nil {
-				s.Fatal("Failed to enroll device: ", err)
-			}
-		})
+
+	ac, err := hwseclocal.NewAttestationClient(ctx)
+	if err != nil {
+		s.Fatal("Failed to create attestation client: ", err)
+	}
+
+	enrollReply, err := ac.Enroll(ctx, &apb.EnrollRequest{Forced: proto.Bool(true)})
+	if err != nil {
+		s.Fatal("Failed to call Enroll D-Bus API: ", err)
+	}
+	if *enrollReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
+		s.Fatal("Faild to enroll: ", enrollReply.Status.String())
 	}
 
 	const username = "test@crashwsec.bigr.name"
@@ -98,7 +104,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	// Okay to call it even if the vault doesn't exist.
 	resetVault()
 
-	if err := utility.MountVault(ctx, username, "testpass", "dummy_label", true /* create */, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, username, "testpass", "fake_label", true /* create */, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 
@@ -109,33 +115,39 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 
 	for _, param := range []struct {
 		name     string
-		async    bool
 		username string
+		keyType  apb.KeyType
 	}{
 		{
-			name:     "async_system_cert",
-			async:    true,
+			name:     "system_cert",
 			username: "",
 		},
 		{
-			name:     "async_user_cert",
-			async:    true,
+			name:     "user_cert_rsa",
 			username: username,
-		}, {
-			name:     "sync_user_cert",
-			async:    false,
+			keyType:  apb.KeyType_KEY_TYPE_RSA,
+		},
+		{
+			name:     "user_cert_ecc",
 			username: username,
+			keyType:  apb.KeyType_KEY_TYPE_ECC,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := utility.SetAttestationAsyncMode(ctx, param.async); err != nil {
-				s.Fatal("Failed to switch to sync mode: ", err)
+			if !isTPM2(ctx) && param.keyType == apb.KeyType_KEY_TYPE_ECC {
+				s.Log("Skipping unsupported key type item: ", param.name)
+				return
 			}
 			username := param.username
-			if err := at.GetCertificate(ctx, username, hwsec.DefaultCertLabel); err != nil {
-				s.Fatal("Failed to enroll device: ", err)
+			certReply, err := ac.GetCertificate(ctx, &apb.GetCertificateRequest{Username: proto.String(username), KeyLabel: proto.String(hwsec.DefaultCertLabel), KeyType: &param.keyType})
+			if err != nil {
+				s.Fatal("Failed to call D-Bus API to get certificate: ", err)
+			}
+			if *certReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
+				s.Fatal("Faild to get certificate: ", enrollReply.Status.String())
 			}
 
+			// TODO(b/165426637): Enable it after we inject the fake device policy with customer ID.
 			if username != "" {
 				if err := at.SignEnterpriseChallenge(ctx, username, hwsec.DefaultCertLabel); err != nil {
 					s.Fatal("Failed to sign enterprise challenge: ", err)
@@ -181,8 +193,12 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 
 			s.Log("Verifying deletion of keys by prefix")
 			for _, label := range []string{"label1", "label2", "label3"} {
-				if err := at.GetCertificate(ctx, username, label); err != nil {
+				certReply, err := ac.GetCertificate(ctx, &apb.GetCertificateRequest{Username: proto.String(username), KeyLabel: proto.String(label)})
+				if err != nil {
 					s.Fatalf("Failed to create certificate request for label %q: %v", label, err)
+				}
+				if *certReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
+					s.Fatalf("Faild to get certificate for label %q: %v", label, enrollReply.Status.String())
 				}
 				_, err = utility.GetPublicKey(ctx, username, label)
 				if err != nil {

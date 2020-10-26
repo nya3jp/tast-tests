@@ -144,10 +144,10 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	// board that shares the first API level, and moreover they can be truncated
 	// (to -kerneln or -ker etc) and becomes hard to match exactly.
 	device := getProperty(propertyDevice)
-	deviceRegexp := regexp.MustCompile(`^([^-]+).*_(cheets|bertha)$`)
+	deviceRegexp := regexp.MustCompile(`^([^-]+).*_cheets$`)
 	match := deviceRegexp.FindStringSubmatch(device)
 	if match == nil {
-		s.Errorf("%v property is %q; should have _cheets or _bertha suffix",
+		s.Errorf("%v property is %q; should have _cheets suffix",
 			propertyDevice, device)
 	}
 	device = match[1]
@@ -180,8 +180,13 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	propertySuffixes := []string{"fingerprint", "id", "tags", "version.incremental"}
 	for _, propertySuffix := range propertySuffixes {
 		property := fmt.Sprintf("ro.build.%s", propertySuffix)
-		if value := getProperty(property); value == "" {
+		value := getProperty(property)
+		if value == "" {
 			s.Errorf("property %v is not set", property)
+		}
+		// Check that ro.build.fingerprint doesn't contain '_bertha' even when the device uses ARCVM (b/152775858)
+		if propertySuffix == "fingerprint" && !strings.Contains(value, "_cheets") {
+			s.Errorf("%v property is %q; should contain _cheets", property, value)
 		}
 	}
 

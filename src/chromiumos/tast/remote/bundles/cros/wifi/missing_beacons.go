@@ -20,8 +20,9 @@ func init() {
 		Desc:        "Test how a DUT behaves when an AP disappears suddenly",
 		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func"},
-		ServiceDeps: []string{"tast.cros.network.WifiService"},
-		Vars:        []string{"router"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePre(),
+		Vars:        []string{"router", "pcap"},
 		Params: []testing.Param{
 			// Two subtests:
 			// 1. MissingBeacons does not perform a scan before taking down the AP.
@@ -40,17 +41,13 @@ func MissingBeacons(ctx context.Context, s *testing.State) {
 	// Connects a DUT to an AP, then kills the AP in such a way that no de-auth
 	// message is sent.  Asserts that the DUT marks itself as disconnected from
 	// the AP within maxDisconnectTime.
-	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
+	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {
-		if err := tf.Close(ctx); err != nil {
-			s.Log("Failed to tear down test fixture: ", err)
+		if err := tf.CollectLogs(ctx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
 	}(ctx)
-	ctx, cancel := tf.ReserveForClose(ctx)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
 	ap, err := tf.DefaultOpenNetworkAP(ctx)

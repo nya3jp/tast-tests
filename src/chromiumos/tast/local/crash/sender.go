@@ -123,12 +123,6 @@ func RunSenderNoIgnorePauseFile(ctx context.Context) ([]*SendResult, error) {
 	return runSenderWithArgs(ctx)
 }
 
-// RunSenderNoDelete is similar to RunSender but it instructs crash_sender to not delete
-// files after running.
-func RunSenderNoDelete(ctx context.Context) ([]*SendResult, error) {
-	return runSenderWithArgs(ctx, "--ignore_pause_file", "--delete_crashes=false")
-}
-
 func runSenderWithArgs(ctx context.Context, args ...string) ([]*SendResult, error) {
 	sr, err := syslog.NewReader(ctx, syslog.Program("crash_sender"))
 	if err != nil {

@@ -12,8 +12,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	arcui "chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
@@ -84,7 +84,7 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 	if err != nil {
 		s.Fatal("Failed to open Files App: ", err)
 	}
-	defer files.Close(ctx)
+	defer files.Release(ctx)
 
 	if err := openWithReaderApp(ctx, files, dir); err != nil {
 		s.Fatal("Could not open file with ArcFileReaderTest: ", err)
@@ -228,7 +228,7 @@ func waitForFileType(ctx context.Context, files *filesapp.FilesApp) error {
 func validateResult(ctx context.Context, a *arc.ARC, expectations []Expectation) error {
 	testing.ContextLog(ctx, "Validating result in ArcFileReaderTest")
 
-	d, err := arcui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed initializing UI Automator")
 	}
@@ -244,8 +244,8 @@ func validateResult(ctx context.Context, a *arc.ARC, expectations []Expectation)
 }
 
 // validateLabel is a helper function to load app label texts and compare it with expectation.
-func validateLabel(ctx context.Context, d *arcui.Device, expectation Expectation) error {
-	uiObj := d.Object(arcui.ID(expectation.LabelID))
+func validateLabel(ctx context.Context, d *androidui.Device, expectation Expectation) error {
+	uiObj := d.Object(androidui.ID(expectation.LabelID))
 	if err := uiObj.WaitForExists(ctx, uiTimeout); err != nil {
 		return errors.Wrapf(err, "failed to find the label id %s", expectation.LabelID)
 	}

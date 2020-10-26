@@ -6,8 +6,6 @@ package security
 
 import (
 	"context"
-	"os"
-	"syscall"
 
 	"chromiumos/tast/local/bundles/cros/security/selinux"
 	"chromiumos/tast/local/chrome"
@@ -26,29 +24,6 @@ func init() {
 }
 
 func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
-	type rwFilter int
-	const (
-		readonly rwFilter = iota
-		writable
-	)
-	systemCPUFilter := func(writableFilter rwFilter) selinux.FileLabelCheckFilter {
-		return func(p string, fi os.FileInfo) (skipFile, skipSubdir selinux.FilterResult) {
-			mode := fi.Mode()
-			// Domain has search to both sysfs and sysfs_devices_system_cpu.
-			if mode.IsDir() {
-				return selinux.Skip, selinux.Check
-			}
-
-			isWritable := mode.IsRegular() && ((mode.Perm() & (syscall.S_IWUSR | syscall.S_IWGRP | syscall.S_IWOTH)) > 0)
-			// Writable files
-			if isWritable != (writableFilter == writable) {
-				return selinux.Skip, selinux.Check
-			}
-
-			return selinux.Check, selinux.Check
-		}
-	}
-
 	gpuDevices, err := selinux.GpuDevices()
 	if err != nil {
 		// Error instead of Fatal to continue test other testcases .
@@ -119,8 +94,6 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 			// we don't have anything special of conntrack files than others. conntrack slab cache changes when connections established or closes, and may cause flakiness.
 			"/sys/kernel/slab/nf_conntrack_.*",
 		}, gpuDevices...), crosEcIioDevices...))},
-		{Path: "/sys/devices/system/cpu", Context: "sysfs", Recursive: true, Filter: systemCPUFilter(writable)},
-		{Path: "/sys/devices/system/cpu", Context: "sysfs_devices_system_cpu", Recursive: true, Filter: systemCPUFilter(readonly)},
 		{Path: "/sys/fs/cgroup", Context: "cgroup", Recursive: true, Filter: selinux.IgnorePathButNotContents("/sys/fs/cgroup")},
 		{Path: "/sys/fs/cgroup", Context: "tmpfs"},
 		{Path: "/sys/fs/pstore", Context: "pstorefs"},
@@ -135,8 +108,10 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sys/kernel/debug/sync/info", Context: "debugfs_sync", IgnoreErrors: true},
 		{Path: "/usr/bin", Context: "cros_coreutils_exec", Recursive: true, Filter: selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile)},
 		{Path: "/usr/bin/anomaly_detector", Context: "cros_anomaly_detector_exec"},
+		{Path: "/usr/bin/chunneld", Context: "cros_chunneld_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/chrt", Context: "cros_chrt_exec"},
 		{Path: "/usr/bin/cras", Context: "cros_cras_exec"},
+		{Path: "/usr/bin/cups_proxy", Context: "cros_cups_proxy_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/dbus-daemon", Context: "cros_dbus_daemon_exec"},
 		{Path: "/usr/bin/dbus-uuidgen", Context: "cros_dbus_uuidgen_exec"},
 		{Path: "/usr/bin/ionice", Context: "cros_ionice_exec"},
@@ -147,10 +122,14 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/usr/bin/midis", Context: "cros_midis_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/periodic_scheduler", Context: "cros_periodic_scheduler_exec"},
 		{Path: "/usr/bin/powerd", Context: "cros_powerd_exec"},
+		{Path: "/usr/bin/seneschal", Context: "cros_seneschal_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/shill", Context: "cros_shill_exec"},
 		{Path: "/usr/bin/start_bluetoothd.sh", Context: "cros_init_start_bluetoothd_shell_script"},
 		{Path: "/usr/bin/start_bluetoothlog.sh", Context: "cros_init_start_bluetoothlog_shell_script"},
 		{Path: "/usr/bin/tlsdated", Context: "cros_tlsdated_exec"},
+		{Path: "/usr/bin/vm_cicerone", Context: "cros_vm_cicerone_exec", IgnoreErrors: true},
+		{Path: "/usr/bin/vm_concierge", Context: "cros_vm_concierge_exec", IgnoreErrors: true},
+		{Path: "/usr/bin/vmlog_forwarder", Context: "cros_vmlog_forwarder_exec", IgnoreErrors: true},
 		{Path: "/usr/libexec/bluetooth/bluetoothd", Context: "cros_bluetoothd_exec"},
 		{Path: "/usr/sbin/ModemManager", Context: "cros_modem_manager_exec"},
 		{Path: "/usr/sbin/accelerator-logs", Context: "cros_accelerator_logs_exec", IgnoreErrors: true},
@@ -162,6 +141,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/usr/sbin/chromeos-cleanup-logs", Context: "cros_chromeos_cleanup_logs_exec"},
 		{Path: "/usr/sbin/chromeos-trim", Context: "cros_chromeos_trim_exec"},
 		{Path: "/usr/sbin/conntrackd", Context: "cros_conntrackd_exec"},
+		{Path: "/usr/sbin/crosdns", Context: "cros_crosdns_exec", IgnoreErrors: true},
 		{Path: "/usr/sbin/cros-machine-id-regen", Context: "cros_machine_id_regen_exec"},
 		{Path: "/usr/sbin/cryptohomed", Context: "cros_cryptohomed_exec"},
 		{Path: "/usr/sbin/cryptohome-proxy", Context: "cros_cryptohome_proxy_exec"},

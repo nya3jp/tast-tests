@@ -30,7 +30,7 @@ func init() {
 		Desc:     "Run a test to make sure crostini does not have access to GoogleDrive",
 		Contacts: []string{"jinrong@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
-		Vars:     []string{"crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
+		Vars:     []string{"crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID", "keepState"},
 		Params: []testing.Param{{
 			Name:              "artifact_gaia",
 			Pre:               crostini.StartedByArtifactWithGaiaLogin(),
@@ -49,7 +49,7 @@ func init() {
 func NoAccessToDrive(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -65,7 +65,7 @@ func NoAccessToDrive(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Files app: ", err)
 	}
-	defer filesApp.Root.Release(cleanupCtx)
+	defer filesApp.Release(cleanupCtx)
 
 	// Define keyboard to perform keyboard shortcuts.
 	keyboard, err := input.Keyboard(ctx)

@@ -9,13 +9,16 @@ import (
 	"context"
 	"fmt"
 	"math"
+	"path/filepath"
 	"sort"
 	"strings"
 	"time"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -23,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/lacros"
@@ -247,13 +251,6 @@ func init() {
 
 var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 
-func waitForWindowState(ctx context.Context, ctconn *chrome.TestConn, windowID int, state ash.WindowStateType) error {
-	return ash.WaitForCondition(ctx, ctconn, func(w *ash.Window) bool {
-		// Wait for the window given by w to be in the given state and also not be animating.
-		return windowID == w.ID && w.State == state && !w.IsAnimating
-	}, pollOptions)
-}
-
 func leftClickLacros(ctx context.Context, ctconn *chrome.TestConn, windowID int, n *ui.Node) error {
 	if err := n.Update(ctx); err != nil {
 		return errors.Wrap(err, "failed to update the node's location")
@@ -288,43 +285,6 @@ func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn, clickFn fun
 	return nil
 }
 
-func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, name string) error {
-	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
-	params := ui.FindParams{
-		ClassName: "ash/StatusAreaWidgetDelegate",
-	}
-	statusArea, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the status area (time, battery, etc.)")
-	}
-	defer statusArea.Release(ctx)
-
-	if err := statusArea.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click status area")
-	}
-
-	// Find and click button in the Ubertray via UI.
-	params = ui.FindParams{
-		Name:      name,
-		ClassName: "FeaturePodIconButton",
-	}
-	nbtn, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find button")
-	}
-	defer nbtn.Release(ctx)
-
-	if err := nbtn.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click button")
-	}
-
-	// Close StatusArea.
-	if err := statusArea.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click status area")
-	}
-	return nil
-}
-
 func waitForWindowWithPredicate(ctx context.Context, ctconn *chrome.TestConn, p func(*ash.Window) bool) (*ash.Window, error) {
 	if err := ash.WaitForCondition(ctx, ctconn, p, pollOptions); err != nil {
 		return nil, err
@@ -342,23 +302,6 @@ func findFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash
 	return waitForWindowWithPredicate(ctx, ctconn, func(w *ash.Window) bool {
 		return !strings.Contains(w.Title, "about:blank")
 	})
-}
-
-func setWindowState(ctx context.Context, ctconn *chrome.TestConn, windowID int, state ash.WindowStateType) error {
-	windowEventMap := map[ash.WindowStateType]ash.WMEventType{
-		ash.WindowStateNormal:     ash.WMEventNormal,
-		ash.WindowStateMaximized:  ash.WMEventMaximize,
-		ash.WindowStateMinimized:  ash.WMEventMinimize,
-		ash.WindowStateFullscreen: ash.WMEventFullscreen,
-	}
-	wmEvent, ok := windowEventMap[state]
-	if !ok {
-		return errors.Errorf("didn't find the event for window state: %q", state)
-	}
-	if _, err := ash.SetWindowState(ctx, ctconn, windowID, wmEvent); err != nil {
-		return err
-	}
-	return waitForWindowState(ctx, ctconn, windowID, state)
 }
 
 func setWindowBounds(ctx context.Context, ctconn *chrome.TestConn, windowID int, to coords.Rect) error {
@@ -431,6 +374,9 @@ var metricMap = map[string]struct {
 		uma:       false,
 	},
 }
+
+// These are the default categories for 'UI Rendering' in chrome://tracing plus 'exo' and 'wayland'.
+var tracingCategories = []string{"benchmark", "cc", "exo", "gpu", "input", "toplevel", "ui", "views", "viz", "wayland"}
 
 type statType string
 
@@ -610,11 +556,17 @@ type testInvocation struct {
 	page     page
 	crt      lacros.ChromeType
 	metrics  *metricsRecorder
+	traceDir string
+}
+
+type traceable interface {
+	StartTracing(ctx context.Context, categories []string) error
+	StopTracing(ctx context.Context) (*trace.Trace, error)
 }
 
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
 // tconn is a test connection to the current browser being used (either ChromeOS or lacros chrome).
-func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, invoc *testInvocation) error {
+func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, tracer traceable, invoc *testInvocation) error {
 	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to test API")
@@ -635,7 +587,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 	}
 	if invoc.scenario == testTypeResize {
 		// Restore window.
-		if err := setWindowState(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore non-blank window")
 		}
 
@@ -663,11 +615,11 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 		}
 
 		// Restore windows.
-		if err := setWindowState(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore non-blank window")
 		}
 
-		if err := setWindowState(ctx, ctconn, wb.ID, ash.WindowStateNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, ctconn, wb.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore blank window")
 		}
 
@@ -701,7 +653,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 		}
 	} else {
 		// Maximize window.
-		if err := setWindowState(ctx, ctconn, w.ID, ash.WindowStateMaximized); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, ctconn, w.ID, ash.WindowStateMaximized); err != nil {
 			return errors.Wrap(err, "failed to maximize window")
 		}
 	}
@@ -719,12 +671,36 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 		defer toggleThreeDotMenu(ctx, tconn, clickFn)
 	}
 
+	if invoc.traceDir != "" {
+		oldPerfFn := perfFn
+		perfFn = func(ctx context.Context) error {
+			if err := tracer.StartTracing(ctx, tracingCategories); err != nil {
+				return err
+			}
+			if err := oldPerfFn(ctx); err != nil {
+				if _, err := tracer.StopTracing(ctx); err != nil {
+					testing.ContextLog(ctx, "Failed to stop tracing after encountering other error: ", err)
+				}
+				return err
+			}
+			tr, err := tracer.StopTracing(ctx)
+			if err != nil {
+				return err
+			}
+			filename := filepath.Join(invoc.traceDir, string(invoc.crt)+"-"+invoc.page.name+"-trace.data")
+			if err := chrome.SaveTraceToFile(tr, filename); err != nil {
+				return err
+			}
+			return nil
+		}
+	}
+
 	return runHistogram(ctx, tconn, invoc, perfFn)
 }
 
 func waitForStableEnvironment(ctx context.Context) error {
 	// Wait for CPU to cool down.
-	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		return errors.Wrap(err, "failed to wait for CPU to cool down")
 	}
 
@@ -793,7 +769,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 		defer connBlank.CloseTarget(ctx)
 	}
 
-	return runTest(ctx, ltconn, pd, invoc)
+	return runTest(ctx, ltconn, pd, l, invoc)
 }
 
 func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
@@ -829,7 +805,7 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation
 		defer connBlank.CloseTarget(ctx)
 	}
 
-	return runTest(ctx, ctconn, pd, invoc)
+	return runTest(ctx, ctconn, pd, pd.Chrome, invoc)
 }
 
 func GpuCUJ(ctx context.Context, s *testing.State) {
@@ -838,16 +814,16 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	if err := audio.Mute(ctx); err != nil {
+	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute audio: ", err)
 	}
-	defer audio.Unmute(ctx)
+	defer crastestclient.Unmute(ctx)
 
-	if err := toggleTraySetting(ctx, tconn, "Toggle Do not disturb. Do not disturb is off."); err != nil {
+	if err := quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, true); err != nil {
 		s.Fatal("Failed to disable notifications: ", err)
 	}
 	defer func() {
-		if err := toggleTraySetting(ctx, tconn, "Toggle Do not disturb. Do not disturb is on."); err != nil {
+		if err := quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, false); err != nil {
 			s.Fatal("Failed to re-enable notifications: ", err)
 		}
 	}()

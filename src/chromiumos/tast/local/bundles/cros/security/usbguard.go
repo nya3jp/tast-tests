@@ -9,16 +9,12 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strings"
 	"syscall"
 	"time"
-
-	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/security/seccomp"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
@@ -58,23 +54,6 @@ func USBGuard(ctx context.Context, s *testing.State) {
 
 		jobTimeout = 10 * time.Second
 	)
-
-	isFeatureEnabled := func(feature string) (bool, error) {
-		const (
-			dbusName   = "org.chromium.ChromeFeaturesService"
-			dbusPath   = "/org/chromium/ChromeFeaturesService"
-			dbusMethod = "org.chromium.ChromeFeaturesServiceInterface.IsFeatureEnabled"
-		)
-
-		_, obj, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
-		if err != nil {
-			return false, err
-		}
-
-		enabled := false
-		err = obj.CallWithContext(ctx, dbusMethod, 0, feature).Store(&enabled)
-		return enabled, err
-	}
 
 	unlockScreen := func() (rerr error) {
 		ew, err := input.Keyboard(ctx)
@@ -136,145 +115,6 @@ func USBGuard(ctx context.Context, s *testing.State) {
 			err = errors.Wrapf(err, "failed to kill %v(%v)", usbguardProcess, pid)
 		}
 		return err
-	}
-
-	runTest := func(usbguardEnabled, usbbouncerEnabled bool) {
-		featureValues := map[string]bool{
-			usbguardFeature:   usbguardEnabled,
-			usbbouncerFeature: usbbouncerEnabled,
-		}
-		var enabled, disabled []string
-		for name, val := range featureValues {
-			if val {
-				enabled = append(enabled, name)
-			} else {
-				disabled = append(disabled, name)
-			}
-		}
-
-		var args []string
-		if len(enabled) > 0 {
-			args = append(args, "--enable-features="+strings.Join(enabled, ","))
-		}
-		if len(disabled) > 0 {
-			args = append(args, "--disable-features="+strings.Join(disabled, ","))
-		}
-
-		cr, err := chrome.New(ctx, chrome.ExtraArgs(args...), chrome.Auth(defaultUser, defaultPass, defaultGaiaID))
-		if err != nil {
-			s.Fatal("Failed to start Chrome: ", err)
-		}
-		defer func() {
-			if err := cr.Close(ctx); err != nil {
-				s.Error("Failed to close Chrome: ", err)
-			}
-		}()
-
-		for name, val := range featureValues {
-			if en, err := isFeatureEnabled(name); err != nil {
-				s.Errorf("Failed checking if the %v feature is enabled: %v", name, err)
-				return
-			} else if en != val {
-				s.Errorf("The %v feature's enabled state is %v; want %v", name, en, val)
-				return
-			}
-		}
-
-		if err := expectUsbguardRunning(false /*running*/, false /*onLockScreen*/); err != nil {
-			s.Errorf("Unexpected initial job status for %q: %v", usbguardJob, err)
-			return
-		}
-
-		// Watch for the ScreenIsLocked signal.
-		sm, err := session.NewSessionManager(ctx)
-		if err != nil {
-			s.Fatal("Failed to connect session_manager: ", err)
-		}
-
-		sw, err := sm.WatchScreenIsLocked(ctx)
-		if err != nil {
-			s.Error("Failed to observe the lock screen being shown: ", err)
-			return
-		}
-		defer func() {
-			if err := sw.Close(ctx); err != nil {
-				s.Error("Failed to close session manager ScreenIsLocked watcher: ", err)
-			}
-		}()
-
-		s.Log("Locking the screen")
-		if err := sm.LockScreen(ctx); err != nil {
-			s.Error("Failed to lock the screen: ", err)
-			return
-		}
-
-		s.Log("Verifying the usbguard job is running")
-		if err := expectUsbguardRunning(usbguardEnabled /*running*/, true /*onLockScreen*/); err != nil {
-			s.Error("Failed to check if usbguard is running: ", err)
-		}
-
-		s.Log("Verifying the lock screen is shown")
-		select {
-		case <-sw.Signals:
-			s.Log("Got ScreenIsLocked signal")
-		case <-ctx.Done():
-			s.Error("Didn't get ScreenIsLocked signal: ", ctx.Err())
-			return
-		}
-
-		if locked, err := sm.IsScreenLocked(ctx); err != nil {
-			s.Error("Failed to get lock screen state: ", err)
-			return
-		} else if !locked {
-			s.Error("Got unlocked; expected locked")
-			return
-		}
-
-		if usbguardEnabled {
-			s.Logf("Killing %q to check for respawn", usbguardProcess)
-			if err = checkUsbguardRespawn(); err != nil {
-				s.Errorf("Failed to check that %v job respawns: %v", usbguardJob, err)
-			}
-		}
-
-		// Watch for the ScreenIsUnlocked signal.
-		swUnlocked, err := sm.WatchScreenIsUnlocked(ctx)
-		if err != nil {
-			s.Error("Failed to observe the lock screen being dismissed: ", err)
-			return
-		}
-		defer func() {
-			if err := swUnlocked.Close(ctx); err != nil {
-				s.Error("Failed to close session manager ScreenIsUnlocked watcher: ", err)
-			}
-		}()
-
-		s.Log("Unlocking the screen")
-		if err := unlockScreen(); err != nil {
-			s.Error("Failed to unlock the screen: ", err)
-			return
-		}
-
-		s.Log("Verifying the lock screen is dismissed")
-		select {
-		case <-swUnlocked.Signals:
-			s.Log("Got ScreenIsUnlocked signal")
-		case <-ctx.Done():
-			s.Error("Didn't get ScreenIsUnlocked signal: ", ctx.Err())
-			return
-		}
-
-		if err := expectUsbguardRunning(false /*running*/, false /*onLockScreen*/); err != nil {
-			s.Errorf("Unexpected final job status for %q: %v", usbguardJob, err)
-		}
-
-		if locked, err := sm.IsScreenLocked(ctx); err != nil {
-			s.Error("Failed to get lock screen state: ", err)
-			return
-		} else if locked {
-			s.Error("Got locked; expected unlocked")
-			return
-		}
 	}
 
 	generateSeccompPolicy := func() {
@@ -369,7 +209,108 @@ func USBGuard(ctx context.Context, s *testing.State) {
 	}
 
 	generateSeccompPolicy()
-	runTest(true /*usbguardEnabled*/, false /*usbbouncerEnabled*/)
-	runTest(false /*usbguardEnabled*/, false /*usbbouncerEnabled*/)
-	// Testing USB Bouncer requires the usb_bouncer ebuild which isn't installed by default yet.
+
+	cr, err := chrome.New(ctx, chrome.Auth(defaultUser, defaultPass, defaultGaiaID))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer func() {
+		if err := cr.Close(ctx); err != nil {
+			s.Error("Failed to close Chrome: ", err)
+		}
+	}()
+
+	if err := expectUsbguardRunning(false /*running*/, false /*onLockScreen*/); err != nil {
+		s.Errorf("Unexpected initial job status for %q: %v", usbguardJob, err)
+		return
+	}
+
+	// Watch for the ScreenIsLocked signal.
+	sm, err := session.NewSessionManager(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect session_manager: ", err)
+	}
+
+	sw, err := sm.WatchScreenIsLocked(ctx)
+	if err != nil {
+		s.Error("Failed to observe the lock screen being shown: ", err)
+		return
+	}
+	defer func() {
+		if err := sw.Close(ctx); err != nil {
+			s.Error("Failed to close session manager ScreenIsLocked watcher: ", err)
+		}
+	}()
+
+	s.Log("Locking the screen")
+	if err := sm.LockScreen(ctx); err != nil {
+		s.Error("Failed to lock the screen: ", err)
+		return
+	}
+
+	s.Log("Verifying the usbguard job is running")
+	if err := expectUsbguardRunning(true /*running*/, true /*onLockScreen*/); err != nil {
+		s.Error("Failed to check if usbguard is running: ", err)
+	}
+
+	s.Log("Verifying the lock screen is shown")
+	select {
+	case <-sw.Signals:
+		s.Log("Got ScreenIsLocked signal")
+	case <-ctx.Done():
+		s.Error("Didn't get ScreenIsLocked signal: ", ctx.Err())
+		return
+	}
+
+	if locked, err := sm.IsScreenLocked(ctx); err != nil {
+		s.Error("Failed to get lock screen state: ", err)
+		return
+	} else if !locked {
+		s.Error("Got unlocked; expected locked")
+		return
+	}
+
+	s.Logf("Killing %q to check for respawn", usbguardProcess)
+	if err = checkUsbguardRespawn(); err != nil {
+		s.Errorf("Failed to check that %v job respawns: %v", usbguardJob, err)
+	}
+
+	// Watch for the ScreenIsUnlocked signal.
+	swUnlocked, err := sm.WatchScreenIsUnlocked(ctx)
+	if err != nil {
+		s.Error("Failed to observe the lock screen being dismissed: ", err)
+		return
+	}
+	defer func() {
+		if err := swUnlocked.Close(ctx); err != nil {
+			s.Error("Failed to close session manager ScreenIsUnlocked watcher: ", err)
+		}
+	}()
+
+	s.Log("Unlocking the screen")
+	if err := unlockScreen(); err != nil {
+		s.Error("Failed to unlock the screen: ", err)
+		return
+	}
+
+	s.Log("Verifying the lock screen is dismissed")
+	select {
+	case <-swUnlocked.Signals:
+		s.Log("Got ScreenIsUnlocked signal")
+	case <-ctx.Done():
+		s.Error("Didn't get ScreenIsUnlocked signal: ", ctx.Err())
+		return
+	}
+
+	if err := expectUsbguardRunning(false /*running*/, false /*onLockScreen*/); err != nil {
+		s.Errorf("Unexpected final job status for %q: %v", usbguardJob, err)
+	}
+
+	if locked, err := sm.IsScreenLocked(ctx); err != nil {
+		s.Error("Failed to get lock screen state: ", err)
+		return
+	} else if locked {
+		s.Error("Got locked; expected unlocked")
+		return
+	}
 }

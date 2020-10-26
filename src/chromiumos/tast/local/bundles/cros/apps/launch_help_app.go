@@ -30,7 +30,7 @@ func init() {
 			"showoff-eng@google.com",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"apps.LaunchHelpApp.consumer_username", "apps.LaunchHelpApp.consumer_password"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
@@ -44,6 +44,7 @@ func init() {
 			}, {
 				Name:              "clamshell_oobe_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
@@ -58,6 +59,7 @@ func init() {
 			}, {
 				Name:              "tablet_oobe_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
@@ -73,6 +75,7 @@ func init() {
 			}, {
 				Name:              "clamshell_logged_in_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       true,
@@ -88,6 +91,7 @@ func init() {
 			}, {
 				Name:              "tablet_logged_in_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
+				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       false,
@@ -117,9 +121,8 @@ func helpAppLaunchDuringOOBE(ctx context.Context, s *testing.State, isTabletMode
 	} else {
 		uiMode = "--force-tablet-mode=clamshell"
 	}
-	const helpAppFirstRun = "--enable-features=HelpAppFirstRun"
 
-	cr, err := chrome.New(ctx, chrome.Auth(username, password, ""), chrome.GAIALogin(), chrome.DontSkipOOBEAfterLogin(), chrome.ExtraArgs(uiMode, helpAppFirstRun))
+	cr, err := chrome.New(ctx, chrome.Auth(username, password, ""), chrome.GAIALogin(), chrome.DontSkipOOBEAfterLogin(), chrome.EnableFeatures("HelpAppFirstRun"), chrome.ExtraArgs(uiMode))
 
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -172,7 +175,7 @@ func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.
 		}
 
 		// Verify perk is shown to default consumer user.
-		isPerkShown, err := helpapp.IsPerkShown(ctx, tconn)
+		isPerkShown, err := helpapp.IsTabShown(ctx, tconn, helpapp.PerksTab)
 		if err != nil {
 			s.Fatal("Failed to check perks visibility: ", err)
 		}

@@ -11,14 +11,13 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
-	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -34,7 +33,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Pre:          ash.LoggedInWith100DummyApps(),
+		Pre:          ash.LoggedInWith100FakeApps(),
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -202,7 +201,7 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 
 	if state == overviewIsVisible {
 		// Hide notifications before testing overview, so notifications are not shown over the hotseat in  tablet mode.
-		if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 			return cleanupAll, errors.Wrap(err, "failed to hide all notifications")
 		}
 
@@ -257,11 +256,6 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 		return cleanupAll, err
 	}
 
-	// The best effort to stabilize CPU usage. This may or
-	// may not be satisfied in time.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return cleanupAll, errors.Wrap(err, "failed to wait for system UI to be stabilized")
-	}
 	return cleanupAll, nil
 }
 
@@ -336,7 +330,7 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed to save performance data in file: ", err)
 	}
 }

@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -38,10 +37,6 @@ func SystemTrayPerf(ctx context.Context, s *testing.State) {
 	}
 
 	defer ui.WaitForLocationChangeCompleted(ctx, tconn)
-
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed to wait: ", err)
-	}
 
 	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
 	params := ui.FindParams{
@@ -89,7 +84,7 @@ func SystemTrayPerf(ctx context.Context, s *testing.State) {
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded"),
 		perfutil.StoreSmoothness)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)
 	}
 }

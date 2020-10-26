@@ -10,12 +10,14 @@ import (
 	"context"
 	"image"
 	"image/color"
+	"image/png"
 	"io/ioutil"
 	"os"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/screenshot"
 )
 
@@ -72,6 +74,20 @@ func CountDiffPixels(imageA, imageB image.Image, threshold uint8) (int, error) {
 	return numPixels, nil
 }
 
+// GrabAndCropScreenshot grabs a screenshot and crops it to the specified bounds.
+func GrabAndCropScreenshot(ctx context.Context, cr *chrome.Chrome, bounds coords.Rect) (image.Image, error) {
+	img, err := GrabScreenshot(ctx, cr)
+	if err != nil {
+		return nil, err
+	}
+
+	subImage := img.(interface {
+		SubImage(r image.Rectangle) image.Image
+	}).SubImage(image.Rect(bounds.Left, bounds.Top, bounds.Right(), bounds.Bottom()))
+
+	return subImage, nil
+}
+
 // GrabScreenshot creates a screenshot and returns an image.Image.
 // The path of the image is generated ramdomly in /tmp.
 func GrabScreenshot(ctx context.Context, cr *chrome.Chrome) (image.Image, error) {
@@ -91,4 +107,14 @@ func GrabScreenshot(ctx context.Context, cr *chrome.Chrome) (image.Image, error)
 		return nil, errors.Wrap(err, "error decoding image file")
 	}
 	return img, nil
+}
+
+// DumpImageToPNG saves the image to path.
+func DumpImageToPNG(ctx context.Context, image *image.Image, path string) error {
+	fd, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer fd.Close()
+	return png.Encode(fd, *image)
 }

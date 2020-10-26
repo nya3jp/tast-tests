@@ -10,14 +10,13 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
-	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -34,7 +33,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Pre:          ash.LoggedInWith100DummyApps(),
+		Pre:          ash.LoggedInWith100FakeApps(),
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -91,14 +90,10 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		// under the app-launcher has the combination of window and wallpaper. This
 		// is not the case of the tablet mode (since windows are always maximized in
 		// the tablet mode).
-		ws, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to get the window list: ", err)
-		}
-		for _, w := range ws {
-			if _, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventNormal); err != nil {
-				s.Fatalf("Failed to set the window (%d) to normal: %v", w.ID, err)
-			}
+		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal)
+		}); err != nil {
+			s.Fatal("Failed to set all windows to normal: ", err)
 		}
 	}
 
@@ -107,12 +102,8 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// actions on certain devices and causes test failures. Open and close the
 	// quick settings to dismiss those notification popups. See
 	// https://crbug.com/1084185.
-	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to open/close the quick settings: ", err)
-	}
-
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed to wait: ", err)
 	}
 
 	// Search or Shift-Search key to show the apps grid in fullscreen.
@@ -261,7 +252,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		"Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency."+suffix),
 		perfutil.StoreLatency)
 
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)
 	}
 }

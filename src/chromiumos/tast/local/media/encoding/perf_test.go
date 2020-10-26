@@ -12,8 +12,9 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/kylelemons/godebug/diff"
+
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/diff"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testutil"
 )
@@ -62,9 +63,8 @@ func saveAndCompare(t *testing.T, p *perf.Values, goldenPath string) {
 			t.Fatal(rerr)
 		} else if golden, gerr := ioutil.ReadFile(goldenPath); gerr != nil {
 			t.Fatal(gerr)
-		} else if diff, derr := diff.Diff(string(data), string(golden)); derr != nil {
-			t.Fatal(derr)
 		} else {
+			diff := diff.Diff(string(data), string(golden))
 			t.Fatalf("%v; output:\n%s", err, diff)
 		}
 	}

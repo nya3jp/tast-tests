@@ -31,11 +31,22 @@ import (
 type TestConfig struct {
 	ClassName            string
 	Prefix               string
+	Subtest              string
 	PerfValues           *perf.Values
 	BatteryDischargeMode setup.BatteryDischargeMode
 	ApkPath              string
 	OutDir               string
 }
+
+const (
+	// NethelperPort is the port used for nethelper to listen for connections.
+	NethelperPort = 1235
+
+	// X86ApkName is the name of the ArcAppLoadingTest APK for x86/x86_64 devices.
+	X86ApkName = "ArcAppLoadingTest_x86.apk"
+	// ArmApkName is the name of the ArcAppLoadingTest APK for Arm devices.
+	ArmApkName = "ArcAppLoadingTest_arm.apk"
+)
 
 // Used to keep information for a key, identified by the array of possible suffixes.
 var keyInfo = []struct {
@@ -46,26 +57,23 @@ var keyInfo = []struct {
 	// Performance direction, for example perf.BiggerIsBetter.
 	direction perf.Direction
 }{{
-	suffixes:  []string{"_duration", "_utime", "_stime"},
-	unitName:  "ms",
-	direction: perf.SmallerIsBetter,
-}, {
-	suffixes:  []string{"_byte_count"},
-	unitName:  "bytes",
-	direction: perf.BiggerIsBetter,
-}, {
 	suffixes:  []string{"_score"},
 	unitName:  "mbps",
 	direction: perf.BiggerIsBetter,
-}, {
-	suffixes:  []string{"_page_faults", "_page_reclaims", "_context_switches"},
-	unitName:  "count",
-	direction: perf.SmallerIsBetter,
-}, {
-	suffixes:  []string{"_fs_reads", "_fs_writes", "_msgs_sent", "_msgs_rcvd"},
-	unitName:  "count",
-	direction: perf.BiggerIsBetter,
 },
+}
+
+// ApkNameForArch gets the name of the APK file to install on the DUT.
+func ApkNameForArch(ctx context.Context, a *arc.ARC) (string, error) {
+	out, err := a.Command(ctx, "getprop", "ro.product.cpu.abi").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get abi: %v", err)
+	}
+
+	if strings.HasPrefix(string(out), "x86") {
+		return X86ApkName, nil
+	}
+	return ArmApkName, nil
 }
 
 // RunTest executes subset of tests in APK determined by the test class name.
@@ -76,6 +84,9 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	)
 
 	testName := packageName + "." + config.ClassName
+	if config.Subtest != "" {
+		testName += "#" + config.Subtest
+	}
 	testing.ContextLogf(ctx, "Running test: %s", testName)
 
 	testing.ContextLog(ctx, "Clearing caches, system buffer, dentries and inodes")
@@ -129,10 +140,6 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 		return 0, errors.Wrap(err, "failed to install apk app")
 	}
 
-	// Grant permissions to activity.
-	sup.Add(setup.GrantAndroidPermission(ctx, a, packageName, "android.permission.READ_EXTERNAL_STORAGE"))
-	sup.Add(setup.GrantAndroidPermission(ctx, a, packageName, "android.permission.WRITE_EXTERNAL_STORAGE"))
-
 	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Prefix(config.Prefix+"_"), perf.Interval(tPowerSnapshotDuration))
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to build metrics")
@@ -145,11 +152,19 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	}
 
 	testing.ContextLog(ctx, "Waiting until CPU is cool down")
-	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		return 0, errors.Wrap(err, "failed to wait until CPI is cool down")
 	}
 
 	testing.ContextLog(ctx, "Running test")
+	if err := metrics.Start(ctx); err != nil {
+		return 0, errors.Wrap(err, "failed to start metrics")
+	}
+
+	if err := metrics.StartRecording(ctx); err != nil {
+		return 0, errors.Wrap(err, "failed to start recording")
+	}
+
 	out, err := a.Command(ctx, "am", "instrument", "-w", "-e", "class", testName, packageName).CombinedOutput()
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to execute test")
@@ -161,14 +176,6 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	}
 	testing.ContextLog(ctx, "Finished writing to log: ", outputFile)
 
-	if err := metrics.Start(ctx); err != nil {
-		return 0, errors.Wrap(err, "failed to start metrics")
-	}
-
-	if err := metrics.StartRecording(ctx); err != nil {
-		return 0, errors.Wrap(err, "failed to start recording")
-	}
-
 	// Make sure test is completed successfully.
 	if !regexp.MustCompile(`\nOK \(\d+ tests?\)\n*$`).Match(out) {
 		return 0, errors.Errorf("test is not completed successfully, see: %s", outputFile)
@@ -178,6 +185,9 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	if err != nil {
 		return 0, errors.Wrap(err, "error while recording power metrics")
 	}
+
+	// Merge previous perf metrics with new power metrics.
+	config.PerfValues.Merge(powerPerfValues)
 
 	testing.ContextLog(ctx, "Analyzing results")
 
@@ -197,16 +207,13 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 		}
 		if strings.HasSuffix(key, "_score") {
 			score += value
+			info, err := makeMetricInfo(key)
+			if err != nil {
+				return score, errors.Wrap(err, "failed to parse key")
+			}
+			config.PerfValues.Set(info, value)
 		}
-		info, err := makeMetricInfo(key)
-		if err != nil {
-			return score, errors.Wrap(err, "failed to parse key")
-		}
-		config.PerfValues.Set(info, value)
 	}
-
-	// Merge previous perf metrics with new power metrics.
-	config.PerfValues.Merge(powerPerfValues)
 
 	var result int
 	// There may be several INSTRUMENTATION_STATUS_CODE: X (x = 0 or x = -1)

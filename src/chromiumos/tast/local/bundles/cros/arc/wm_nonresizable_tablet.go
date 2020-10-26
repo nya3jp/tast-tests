@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
@@ -36,9 +36,24 @@ func WMNonresizableTablet(ctx context.Context, s *testing.State) {
 			Func: wmNT01,
 		},
 		wm.TestCase{
+			// non-resizable/tablet: immerse via API from maximized
+			Name: "NT_immerse_via_API_from_maximized",
+			Func: wmNT07,
+		},
+		wm.TestCase{
 			// non-resizable/tablet: hide Shelf
 			Name: "NT_hide_shelf",
 			Func: wmNT12,
+		},
+		wm.TestCase{
+			// non-resizable/tablet: display size change
+			Name: "NT_display_size_change",
+			Func: wmNT15,
+		},
+		wm.TestCase{
+			// non-resizable/tablet: font size change
+			Name: "NT_font_size_change",
+			Func: wmNT17,
 		},
 	})
 }
@@ -58,6 +73,31 @@ func wmNT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletDefaultLaunchHelper(ctx, tconn, a, d, ntActivities, false)
+}
+
+// wmNT07 covers non-resizable/tablet: immerse via API from maximized.
+// Expected behavior is defined in: go/arc-wm-r NT07: non-resizable/tablet: immerse via API from maximized.
+func wmNT07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	acts := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletImmerseViaAPI(ctx, tconn, a, d, acts)
 }
 
 // wmNT12 covers non-resizable/tablet: hide Shelf behavior.
@@ -92,4 +132,54 @@ func wmNT12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletShelfHideShowHelper(ctx, tconn, a, d, puActivities, wm.CheckMaximizeNonResizable)
+}
+
+// wmNT15 covers non-resizable/tablet: display size change.
+// Expected behavior is defined in: go/arc-wm-r NT15: non-resizable/tablet: display size change.
+func wmNT15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	ntActivities := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletDisplaySizeChangeHelper(ctx, tconn, a, d, ntActivities)
+}
+
+// wmNT17 covers non-resizable/tablet: font size change.
+// Expected behavior is defined in: go/arc-wm-r NT17: non-resizable/tablet: font size change.
+func wmNT17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	acts := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.NonResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletFontSizeChangeHelper(ctx, tconn, a, d, acts)
 }

@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/ready"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
@@ -122,7 +123,7 @@ func ensureDiskSpace(ctx context.Context, purgeable []string) (uint64, error) {
 	return disk.FreeSpace(statefulPartition)
 }
 
-func testHook(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
+func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
 	// Store the current log state.
 	oldInfo, err := os.Stat(varLogMessages)
 	if err != nil {
@@ -144,6 +145,11 @@ func testHook(ctx context.Context, s *testing.TestHookState) func(ctx context.Co
 
 	if err := crash.MarkTestInProgress(s.TestInstance().Name); err != nil {
 		s.Log("Failed to mark crash test in progress: ", err)
+	}
+
+	// Wait for Internet connectivity.
+	if err := shill.WaitForOnline(ctx); err != nil {
+		s.Log("Failed to wait for Internet connectivity: ", err)
 	}
 
 	return func(ctx context.Context, s *testing.TestHookState) {
@@ -182,10 +188,10 @@ func testHook(ctx context.Context, s *testing.TestHookState) func(ctx context.Co
 	}
 }
 
-// Main is an entry point function for bundles.
-func Main() {
+// RunLocal is an entry point function for local bundles.
+func RunLocal() {
 	os.Exit(bundle.LocalDefault(bundle.LocalDelegate{
 		Ready:    ready.Wait,
-		TestHook: testHook,
+		TestHook: testHookLocal,
 	}))
 }

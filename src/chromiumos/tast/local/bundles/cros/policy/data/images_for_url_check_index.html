@@ -1,0 +1,29 @@
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>DefaultImagesSetting</title>
+  <script type="text/javascript">
+    var pageReady = false;
+
+    function onLoad() {
+      pageReady = true;
+    }
+  </script>
+</head>
+
+<!-- onerror attribute for handling errors wasn't used in the img tag, because
+     looks like it was done intentionally to don't provide information to the web site that
+     images are disallowed, otherwise they may use another ways to show image -->
+
+<body onload="onLoad()">
+  <div id="imagePage">
+    <img src='images_for_url_check_index_img.jpg' alt='img' id='img_id'>
+  </div>
+</body>
+
+</html>

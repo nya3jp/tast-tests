@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
@@ -36,6 +36,11 @@ func WMResizableTablet(ctx context.Context, s *testing.State) {
 			Func: wmRT01,
 		},
 		wm.TestCase{
+			// resizable/tablet: immerse via API from maximized
+			Name: "RT_immerse_via_API_from_maximized",
+			Func: wmRT07,
+		},
+		wm.TestCase{
 			// resizable/tablet: hide Shelf behavior
 			Name: "RT_hide_Shelf_behavior",
 			Func: wmRT12,
@@ -44,6 +49,11 @@ func WMResizableTablet(ctx context.Context, s *testing.State) {
 			// resizable/tablet: display size change
 			Name: "RT_display_size_change",
 			Func: wmRT15,
+		},
+		wm.TestCase{
+			// resizable/tablet: font size change
+			Name: "RT_font_size_change",
+			Func: wmRT17,
 		},
 	})
 }
@@ -63,6 +73,31 @@ func wmRT01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletDefaultLaunchHelper(ctx, tconn, a, d, ntActivities, true)
+}
+
+// wmRT07 covers resizable/tablet: immerse via API from maximized.
+// Expected behavior is defined in: go/arc-wm-r RT07: resizable/tablet: immerse via API from maximized.
+func wmRT07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	acts := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletImmerseViaAPI(ctx, tconn, a, d, acts)
 }
 
 // wmRT12 covers resizable/tablet: hide Shelf behavior.
@@ -122,4 +157,29 @@ func wmRT15(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletDisplaySizeChangeHelper(ctx, tconn, a, d, ntActivities)
+}
+
+// wmRT17 covers resizable/tablet: font size change.
+// Expected behavior is defined in: go/arc-wm-r RT17: resizable/tablet: font size change.
+func wmRT17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	acts := []wm.TabletLaunchActivityInfo{
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableLandscapeActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationLandscapePrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizablePortraitActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+		wm.TabletLaunchActivityInfo{
+			ActivityName: wm.ResizableUnspecifiedActivity,
+			DesiredDO:    display.OrientationPortraitPrimary,
+		},
+	}
+
+	return wm.TabletFontSizeChangeHelper(ctx, tconn, a, d, acts)
 }

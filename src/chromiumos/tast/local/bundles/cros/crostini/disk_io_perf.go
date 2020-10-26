@@ -30,14 +30,16 @@ func fioFiles() []string {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DiskIOPerf,
-		Desc:         "Tests Crostini Disk IO Performance",
-		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Func:     DiskIOPerf,
+		Desc:     "Tests Crostini Disk IO Performance",
+		Contacts: []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
+		// TODO(crbug.com/1124920): Test is disabled until it can be fixed
+		// Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      60 * time.Minute,
 		Data:         append([]string{crostini.ImageArtifact}, fioFiles()...),
 		Pre:          crostini.StartedTraceVM(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
+		Vars:         []string{"keepState"},
 		Params: []testing.Param{
 			{
 				Name:              "artifact",
@@ -116,9 +118,8 @@ func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings
 	extraArgs := []string{"--output-format=json", "--end_fsync=1"}
 
 	cmd := re.fioCmd(ctx, re.jobFilePath(jobFile), envArgs, extraArgs)
-	out, err := cmd.Output()
+	out, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		if err := writeError("Run fio failure", out); err != nil {
 			testing.ContextLog(ctx, "Failed to write fio running error to log file: ", err)
 		}
@@ -232,10 +233,10 @@ func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, 
 // DiskIOPerf runs disk IO performance tests by running the tool "fio".
 func DiskIOPerf(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	testing.ContextLog(ctx, "Installing fio")
-	if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "fio").Run(); err != nil {
+	if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "fio").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to install fio: ", err)
 	}
 

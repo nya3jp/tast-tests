@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -75,10 +74,6 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	}
 	defer conns.Close()
 
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
-
 	if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
@@ -112,7 +107,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

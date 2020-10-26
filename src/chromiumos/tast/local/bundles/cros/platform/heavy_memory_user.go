@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/platform/memoryuser"
+	"chromiumos/tast/local/memory/memoryuser"
 	"chromiumos/tast/testing"
 )
 
@@ -57,5 +57,7 @@ func HeavyMemoryUser(ctx context.Context, s *testing.State) {
 		ParallelTasks: true,
 	}
 	memTasks := []memoryuser.MemoryTask{&cTask, &vmTask}
-	memoryuser.RunTest(ctx, s, memTasks, rp)
+	if err := memoryuser.RunTest(ctx, s.OutDir(), memTasks, rp); err != nil {
+		s.Fatal("RunTest failed: ", err)
+	}
 }

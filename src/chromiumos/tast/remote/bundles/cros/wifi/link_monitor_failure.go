@@ -20,9 +20,10 @@ func init() {
 		Func:        LinkMonitorFailure,
 		Desc:        "Verifies how fast the DUT detects the link failure and reconnects to the AP when an AP changes its DHCP configuration",
 		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_unstable", "wificell_func"},
-		ServiceDeps: []string{"tast.cros.network.WifiService"},
-		Vars:        []string{"router"},
+		Attr:        []string{"group:wificell", "wificell_func"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePre(),
+		Vars:        []string{"router", "pcap"},
 	})
 }
 
@@ -33,18 +34,13 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 		reassociateTimeout         = 10 * time.Second
 	)
 
-	s.Log("Setting up the test fixture and AP")
-	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
-	if err != nil {
-		s.Fatal("Failed to set up the test fixture: ", err)
-	}
+	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {
-		if err := tf.Close(ctx); err != nil {
-			s.Log("Failed to tear down test fixture: ", err)
+		if err := tf.CollectLogs(ctx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
 	}(ctx)
-	ctx, cancel := tf.ReserveForClose(ctx)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
 	ap, err := tf.DefaultOpenNetworkAP(ctx)
@@ -80,11 +76,11 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ping from the DUT: ", err)
 	}
 
-	el, err := iw.NewEventLogger(ctx, s.DUT())
+	ew, err := iw.NewEventWatcher(ctx, s.DUT())
 	if err != nil {
-		s.Fatal("Failed to create iw event logger: ", err)
+		s.Fatal("Failed to create iw event watcher: ", err)
 	}
-	defer el.Stop(ctx)
+	defer ew.Stop(ctx)
 
 	// Start to change the DHCP config.
 
@@ -99,44 +95,30 @@ func LinkMonitorFailure(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for link failure detected event")
-	if err := testing.Poll(ctx, func(context.Context) error {
-		_, err := el.DisconnectTime()
-		return err
-	}, &testing.PollOptions{
-		Timeout:  linkFailureDetectedTimeout,
-		Interval: time.Second * 3,
-	}); err != nil {
+	wCtx, cancel := context.WithTimeout(ctx, linkFailureDetectedTimeout)
+	defer cancel()
+	linkFailureDetectedEv, err := ew.WaitByType(wCtx, iw.EventTypeDisconnect)
+	if err != nil {
 		s.Fatal("Failed to wait for link failure detected event: ", err)
 	}
 
 	// Calculate duration for sensing the link failure.
-	linkFailureDetectedTime, err := el.DisconnectTime()
-	if err != nil {
-		s.Fatal("Failed to get link failure detection time: ", err)
-	}
-	linkFailureDetectedDuration := linkFailureDetectedTime.Sub(linkFailureTime)
+	linkFailureDetectedDuration := linkFailureDetectedEv.Timestamp.Sub(linkFailureTime)
 	if linkFailureDetectedDuration > linkFailureDetectedTimeout {
 		s.Error("Failed to detect link failure within given timeout")
 	}
 	s.Logf("Link failure detection time: %.2f seconds", linkFailureDetectedDuration.Seconds())
 
 	s.Log("Waiting for reassociation to complete")
-	if err := testing.Poll(ctx, func(context.Context) error {
-		_, err := el.ConnectedTime()
-		return err
-	}, &testing.PollOptions{
-		Timeout:  reassociateTimeout,
-		Interval: time.Second * 1,
-	}); err != nil {
+	wCtx, cancel = context.WithTimeout(ctx, reassociateTimeout)
+	defer cancel()
+	connectedEv, err := ew.WaitByType(wCtx, iw.EventTypeConnected)
+	if err != nil {
 		s.Error("Failed to wait for reassociation to complete: ", err)
 	}
 
 	// Get the reassociation time.
-	connectedTime, err := el.ConnectedTime()
-	if err != nil {
-		s.Fatal("Failed to get connected time: ", err)
-	}
-	reassociateDuration := connectedTime.Sub(linkFailureDetectedTime)
+	reassociateDuration := connectedEv.Timestamp.Sub(linkFailureDetectedEv.Timestamp)
 	if reassociateDuration < 0 {
 		s.Errorf("Unexpected reassociate duration: %d is negative", reassociateDuration)
 	}

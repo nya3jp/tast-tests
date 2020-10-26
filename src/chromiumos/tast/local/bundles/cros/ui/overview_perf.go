@@ -7,6 +7,8 @@ package ui
 import (
 	"context"
 	"fmt"
+	"net/http"
+	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -17,8 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
-	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -38,8 +38,7 @@ func init() {
 		}, {
 			Name:              "skia_renderer",
 			Val:               lacros.ChromeTypeChromeOS,
-			Pre:               ash.LoggedInWith100DummyAppsWithSkiaRenderer(),
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("nocturne", "krane")),
+			Pre:               ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
 		}, {
 			Name:      "lacros",
 			Val:       lacros.ChromeTypeLacros,
@@ -48,6 +47,7 @@ func init() {
 			// TODO(crbug.com/1082608): Use ExtraSoftwareDeps here instead.
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
 		}},
+		Data: []string{"animation.html", "animation.js"},
 	})
 }
 
@@ -86,6 +86,11 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		animationTypeMinimizedTabletMode
 	)
 
+	// Run an http server to serve the test contents for accessing from the chrome browsers.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+	url := server.URL + "/animation.html"
+
 	r := perfutil.NewRunner(cr)
 	currentWindows := 0
 	// Run the overview mode enter/exit flow for various situations.
@@ -93,7 +98,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	// - the window system status; clamshell mode with maximized windows or
 	//   tablet mode.
 	for _, windows := range []int{2, 8} {
-		conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows)
 		if err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}
@@ -107,30 +112,22 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 		currentWindows = windows
 
-		if err = cpu.WaitUntilIdle(ctx); err != nil {
-			s.Error("Failed to wait for system UI to be stabilized: ", err)
-		}
-
 		for _, state := range []overviewAnimationType{animationTypeMaximized, animationTypeNormalWindow, animationTypeTabletMode, animationTypeMinimizedTabletMode} {
 			inTabletMode := (state == animationTypeTabletMode || state == animationTypeMinimizedTabletMode)
 			if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
 				s.Fatalf("Failed to set tablet mode %v: %v", inTabletMode, err)
 			}
 
-			eventType := ash.WMEventNormal
+			windowState := ash.WindowStateNormal
 			if state == animationTypeMaximized || state == animationTypeTabletMode {
-				eventType = ash.WMEventMaximize
+				windowState = ash.WindowStateMaximized
 			} else if state == animationTypeMinimizedTabletMode {
-				eventType = ash.WMEventMinimize
+				windowState = ash.WindowStateMinimized
 			}
-			ws, err := ash.GetAllWindows(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to obtain the window list: ", err)
-			}
-			for _, w := range ws {
-				if _, err := ash.SetWindowState(ctx, tconn, w.ID, eventType); err != nil {
-					s.Fatalf("Failed to set the window (%d): %v", w.ID, err)
-				}
+			if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+				return ash.SetWindowStateAndWait(ctx, tconn, w.ID, windowState)
+			}); err != nil {
+				s.Fatalf("Failed to set all windows to state %v: %v", windowState, err)
 			}
 
 			// Wait for 3 seconds to stabilize the result. Note that this doesn't
@@ -168,7 +165,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := r.Values().Save(s.OutDir()); err != nil {
+	if err := r.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

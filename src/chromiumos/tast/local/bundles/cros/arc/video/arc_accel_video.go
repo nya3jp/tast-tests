@@ -20,7 +20,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/c2e2etest"
+	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/testexec"
@@ -34,7 +36,7 @@ const (
 	xmlLogName  = "gtest_logs.xml"
 
 	perfMeasurementDuration = time.Duration(30) * time.Second
-	perfTestSlack           = time.Duration(100) * time.Second
+	perfTestSlack           = time.Duration(180) * time.Second
 
 	// PerfTestRuntime is the runtime for a single performance test case
 	// * 2 because two sets of perf measurements are gathered per test (rendering, no rendering)
@@ -93,20 +95,12 @@ func arcVideoTestCleanup(ctx context.Context, a *arc.ARC) {
 	}
 }
 
-// waitForFinishedHack is a temporary replacement for act.WaitForFinished
-// TODO(b/152576355): Use act.WaitForFinished when R is supported
-func waitForFinishedHack(ctx context.Context, a *arc.ARC, ac *arc.Activity) error {
-	pkgRegExp := regexp.MustCompile(ac.PackageName())
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := a.Command(ctx, "dumpsys", "activity", "top").Output(testexec.DumpLogOnError)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "could not get 'dumpsys activity top' output"))
-		}
-		if len(pkgRegExp.FindAllStringSubmatch(string(out), -1)) != 0 {
-			return errors.New("activity still running")
-		}
-		return nil
-	}, nil)
+func makeActivityFullscreen(ctx context.Context, activity *arc.Activity, tconn *chrome.TestConn) error {
+	if err := activity.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
+		return err
+	}
+
+	return ash.WaitForARCAppWindowState(ctx, tconn, activity.PackageName(), ash.WindowStateFullscreen)
 }
 
 func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo string, requireMD5File bool) *c2e2etest.VideoMetadata {
@@ -195,8 +189,13 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 		s.Fatal("Failed starting APK main activity: ", err)
 	}
 
+	s.Log("Making activity fullscreen")
+	if err := makeActivityFullscreen(ctx, act, tconn); err != nil {
+		s.Fatal("Failed to make activity fullscreen: ", err)
+	}
+
 	s.Log("Waiting for activity to finish")
-	if err := waitForFinishedHack(ctx, a, act); err != nil {
+	if err := act.WaitForFinished(ctx, ctxutil.MaxTimeout); err != nil {
 		s.Fatal("Failed to wait for activity: ", err)
 	}
 
@@ -213,7 +212,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 
 // runARCVideoPerfTest runs c2_e2e_test APK in ARC and gathers perf statistics.
 // It fails if c2_e2e_test fails.
-// It returns a map of perf statistics containing fps, dropped frame, cpu, and power stats.
+// It returns a map of perf statistics containing fps, dropped frame, and cpu stats.
 func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (perf map[string]float64) {
 	cr := s.PreValue().(arc.PreData).Chrome
 
@@ -242,8 +241,20 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	defer act.Close()
 	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
 		"--esa", "test-args", strings.Join(args, ","),
+		"--ez", "delay-start", "true",
 		"--es", "log-file", arcFilePath + textLogName}); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
+	}
+
+	s.Log("Making activity fullscreen")
+	if err := makeActivityFullscreen(ctx, act, tconn); err != nil {
+		s.Fatal("Failed to make activity fullscreen: ", err)
+	}
+
+	s.Log("Starting test")
+	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
+		"-a", "org.chromium.c2.test.START_TEST"}); err != nil {
+		s.Fatal("Failed to start test: ", err)
 	}
 
 	const measureDelay = time.Duration(5) * time.Second
@@ -265,7 +276,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	}
 
 	s.Log("Waiting for activity to finish")
-	if err := waitForFinishedHack(ctx, a, act); err != nil {
+	if err := act.WaitForFinished(ctx, ctxutil.MaxTimeout); err != nil {
 		s.Fatal("Failed to wait for activity: ", err)
 	}
 
@@ -281,11 +292,6 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	perfMap := make(map[string]float64)
 	s.Logf("CPU Usage = %.4f", stats["cpu"])
 	perfMap["cpu"] = stats["cpu"]
-
-	if power, ok := stats["power"]; ok {
-		s.Logf("Power Usage = %.4f", power)
-		perfMap["power"] = stats["power"]
-	}
 
 	fps, df, err := reportFrameStats(outLogFile)
 	if err != nil {
@@ -385,14 +391,6 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, stats["cpu"])
-
-	if power, ok := stats["power"]; ok {
-		p.Set(perf.Metric{
-			Name:      "power_consumption",
-			Unit:      "watts",
-			Direction: perf.SmallerIsBetter,
-		}, power)
-	}
 
 	p.Set(perf.Metric{
 		Name:      "frame_drop_percentage",

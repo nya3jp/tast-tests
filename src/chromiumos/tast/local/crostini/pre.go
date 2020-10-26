@@ -18,11 +18,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/crostini/lxd"
 	cui "chromiumos/tast/local/crostini/ui"
+	"chromiumos/tast/local/crostini/ui/settings"
+	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -34,8 +34,8 @@ import (
 // criteria at go/tast-add-test to judge whether it should be on the CQ.
 var UnstableModels = []string{
 	// Platform auron
-	"auron_paine",
-	"auron_yuna",
+	"paine", // crbug.com/1072877
+	"yuna",  // crbug.com/1072877
 	// Platform banon
 	"banon",
 	// Platform bob
@@ -45,6 +45,7 @@ var UnstableModels = []string{
 	// Platform celes
 	"celes",
 	// Platform coral
+	"astronaut",
 	"blacktip360",
 	"blacktiplte",
 	"bruce",
@@ -59,7 +60,7 @@ var UnstableModels = []string{
 	// Platform fizz
 	"jax",
 	// Platform gandof
-	"gandof",
+	"gandof", // crbug.com/1072877
 	// Platform grunt
 	"aleena",
 	"barla",
@@ -67,17 +68,18 @@ var UnstableModels = []string{
 	"kasumi",
 	"treeya",
 	// Platform guado
-	"guado",
+	"guado", // crbug.com/1072877
 	// Platform hana
 	"hana",
 	// Platform kefka
 	"kefka",
 	// Platform kevin
 	"kevin",
+	"kevin1", // crbug.com/1140145
 	// Platform kukui
 	"krane",
 	// Platform lulu
-	"lulu",
+	"lulu", // crbug.com/1072877
 	// Platform nocturne
 	"nocturne",
 	// Platform octopus
@@ -97,6 +99,10 @@ var UnstableModels = []string{
 	"sparky",
 	"vorticon",
 	"vortininja",
+	// Platform reef
+	"electro",
+	// Platform reks
+	"reks",
 	// Platform relm
 	"relm",
 	// Platform sarien
@@ -104,8 +110,12 @@ var UnstableModels = []string{
 	// Platform scarlet
 	"dru",
 	"dumo",
+	// Platform samus
+	"samus", // crbug.com/1072877
 	// Platform terra
 	"terra",
+	// Platform tidus
+	"tidus", // crbug.com/1072877
 	// Platform ultima
 	"ultima",
 }
@@ -139,16 +149,19 @@ type PreData struct {
 // StartedByArtifact is similar to StartedByDownloadBuster, but will
 // use a pre-built image as a data-dependency rather than downloading one. To
 // use this precondition you must have crostini.ImageArtifact as a data dependency.
+// Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
 
 // StartedByDownloadStretch is a precondition that ensures a tast test
 // will begin after crostini has been started by downloading an image
 // running Debian Stretch.
+// Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByDownloadStretch() testing.Precondition { return startedByDownloadStretchPre }
 
 // StartedByDownloadBuster is a precondition that ensures a tast test will
 // begin after crostini has been started by downloading an image
 // running Debian Buster.
+// Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByDownloadBuster() testing.Precondition { return startedByDownloadBusterPre }
 
 // StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
@@ -156,14 +169,17 @@ func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 
 // StartedARCEnabled is similar to StartedByArtifact, but will start Chrome
 // with ARCEnabled() option.
+// Tip: Run tests with -var=keepState=true to speed up local development
 func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
 
 // StartedByArtifactWithGaiaLogin is similar to StartedByArtifact, but will log in Chrome with Gaia
 // with Auth() option.
+// Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByArtifactWithGaiaLogin() testing.Precondition { return startedByArtifactWithGaiaLoginPre }
 
 // StartedByDownloadBusterWithGaiaLogin is similar to StartedByDownloadBuster, but will log in Chrome with Gaia
 // with Auth() option.
+// Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByDownloadBusterWithGaiaLogin() testing.Precondition {
 	return startedByDownloadBusterWithGaiaLoginPre
 }
@@ -189,24 +205,24 @@ var startedByArtifactPre = &preImpl{
 }
 
 var startedByDownloadStretchPre = &preImpl{
-	name:    "crostini_started_by_download_stretch",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
-	mode:    download,
-	arch:    vm.DebianStretch,
+	name:          "crostini_started_by_download_stretch",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	mode:          download,
+	debianVersion: vm.DebianStretch,
 }
 
 var startedByDownloadBusterPre = &preImpl{
-	name:    "crostini_started_by_download_buster",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
-	mode:    download,
-	arch:    vm.DebianBuster,
+	name:          "crostini_started_by_download_buster",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	mode:          download,
+	debianVersion: vm.DebianBuster,
 }
 
 var startedTraceVMPre = &preImpl{
 	name:        "crostini_started_trace_vm",
 	timeout:     chrome.LoginTimeout + 10*time.Minute,
 	mode:        artifact,
-	minDiskSize: 16 * cui.SizeGB, // graphics.TraceReplay relies on at least 16GB size.
+	minDiskSize: 16 * settings.SizeGB, // graphics.TraceReplay relies on at least 16GB size.
 }
 
 var startedARCEnabledPre = &preImpl{
@@ -224,66 +240,34 @@ var startedByArtifactWithGaiaLoginPre = &preImpl{
 }
 
 var startedByDownloadBusterWithGaiaLoginPre = &preImpl{
-	name:      "crostini_started_by_download_buster_gaialogin",
-	timeout:   chrome.LoginTimeout + 10*time.Minute,
-	mode:      download,
-	arch:      vm.DebianBuster,
-	loginType: loginGaia,
+	name:          "crostini_started_by_download_buster_gaialogin",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	mode:          download,
+	debianVersion: vm.DebianBuster,
+	loginType:     loginGaia,
 }
 
 // Implementation of crostini's precondition.
 type preImpl struct {
-	name        string               // Name of this precondition (for logging/uniqueing purposes).
-	timeout     time.Duration        // Timeout for completing the precondition.
-	mode        setupMode            // Where (download/build artifact) the container image comes from.
-	arch        vm.ContainerArchType // Architecture/distribution of the container image.
-	arcEnabled  bool                 // Flag for whether Arc++ should be available (as well as crostini).
-	minDiskSize uint64               // The minimum size of the VM image in bytes. 0 to use default disk size.
-	cr          *chrome.Chrome
-	tconn       *chrome.TestConn
-	cont        *vm.Container
-	keyboard    *input.KeyboardEventWriter
-	loginType   loginType
+	name          string                    // Name of this precondition (for logging/uniqueing purposes).
+	timeout       time.Duration             // Timeout for completing the precondition.
+	mode          setupMode                 // Where (download/build artifact) the container image comes from.
+	debianVersion vm.ContainerDebianVersion // OS version of the container image.
+	arcEnabled    bool                      // Flag for whether Arc++ should be available (as well as crostini).
+	minDiskSize   uint64                    // The minimum size of the VM image in bytes. 0 to use default disk size.
+	cr            *chrome.Chrome
+	tconn         *chrome.TestConn
+	cont          *vm.Container
+	keyboard      *input.KeyboardEventWriter
+	loginType     loginType
+	startedOK     bool
 }
 
 // Interface methods for a testing.Precondition.
 func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
 
-func expectDaemonRunning(ctx context.Context, name string) error {
-	goal, state, _, err := upstart.JobStatus(ctx, name)
-	if err != nil {
-		return errors.Wrapf(err, "failed to get status of job %q", name)
-	}
-	if goal != upstart.StartGoal {
-		return errors.Errorf("job %q has goal %q, expected %q", name, goal, upstart.StartGoal)
-	}
-	if state != upstart.RunningState {
-		return errors.Errorf("job %q has state %q, expected %q", name, state, upstart.RunningState)
-	}
-	return nil
-}
-
-func checkDaemonsRunning(ctx context.Context) error {
-	if err := expectDaemonRunning(ctx, "vm_concierge"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "vm_cicerone"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "seneschal"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "patchpanel"); err != nil {
-		return err
-	}
-	if err := expectDaemonRunning(ctx, "vmlog_forwarder"); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (p *preImpl) grabLXCLogs(ctx context.Context) {
+func (p *preImpl) writeLXCLogs(ctx context.Context) {
 	vm, err := vm.GetRunningVM(ctx, p.cr.User())
 	if err != nil {
 		testing.ContextLog(ctx, "No running VM, possibly we failed before staring the VM")
@@ -296,7 +280,7 @@ func (p *preImpl) grabLXCLogs(ctx context.Context) {
 	}
 
 	testing.ContextLog(ctx, "Creating file")
-	path := filepath.Join(dir, "crostini_vm_logs.txt")
+	path := filepath.Join(dir, "crostini_logs.txt")
 	f, err := os.Create(path)
 	if err != nil {
 		testing.ContextLog(ctx, "Error creating file: ", err)
@@ -330,8 +314,12 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
+	// Read the -keepState variable always, to force an error if tests don't
+	// have it defined.
+	useLocalImage := keepState(s) && vm.TerminaImageExists()
+
 	if p.cont != nil {
-		if err := SimpleCommandWorks(ctx, p.cont); err != nil {
+		if err := BasicCommandWorks(ctx, p.cont); err != nil {
 			s.Log("Precondition unsatisifed: ", err)
 			p.cont = nil
 			p.Close(ctx, s)
@@ -349,7 +337,10 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	shouldClose := true
 	defer func() {
 		if shouldClose {
-			p.grabLXCLogs(ctx)
+			p.writeLXCLogs(ctx)
+			if p.cont != nil {
+				TrySaveVMLogs(ctx, p.cont.VM)
+			}
 			p.cleanUp(ctx, s)
 		}
 	}()
@@ -372,6 +363,10 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			s.RequiredVar("crostini.gaiaID"),
 		), chrome.GAIALogin())
 	}
+	if useLocalImage {
+		// Retain the user's cryptohome directory and previously installed VM.
+		opts = append(opts, chrome.KeepState())
+	}
 	var err error
 	if p.cr, err = chrome.New(ctx, opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -380,80 +375,41 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-
-	terminaImage := ""
-	containerDir := ""
-
-	switch p.mode {
-	case download:
-		terminaImage, err = vm.DownloadStagingTermina(ctx)
-		if err != nil {
-			s.Fatal("Failed to download staging termina: ", err)
-		}
-
-		containerDir, err = vm.DownloadStagingContainer(ctx, p.arch)
-		if err != nil {
-			s.Fatal("Failed to download staging container: ", err)
-		}
-
-	case artifact:
-		artifactPath := s.DataPath(ImageArtifact)
-		terminaImage, err = vm.ExtractTermina(ctx, artifactPath)
-		if err != nil {
-			s.Fatal("Failed to extract termina: ", err)
-		}
-
-		containerDir, err = vm.ExtractContainer(ctx, p.cr.User(), artifactPath)
-		if err != nil {
-			s.Fatal("Failed to extract container: ", err)
-		}
-	default:
-		s.Fatal("Unrecognized mode: ", p.mode)
-	}
-
-	server, err := lxd.NewServer(ctx, containerDir)
-	if err != nil {
-		s.Fatal("Error creating lxd image server: ", err)
-	}
-	addr, err := server.ListenAndServe(ctx)
-	if err != nil {
-		s.Fatal("Error starting lxd image server: ", err)
-	}
-	defer server.Shutdown(ctx)
-
-	s.Log("Installing crostini")
-
-	url := "http://" + addr + "/"
-	if err := p.tconn.Eval(ctx, fmt.Sprintf(
-		`chrome.autotestPrivate.registerComponent(%q, %q)`,
-		vm.ImageServerURLComponentName, url), nil); err != nil {
-		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
-	}
-
-	vm.MountComponent(ctx, terminaImage)
-	if err := p.tconn.Eval(ctx, fmt.Sprintf(
-		`chrome.autotestPrivate.registerComponent(%q, %q)`,
-		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
-		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
-	}
-
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, p.tconn)
 
-	settings, err := cui.OpenSettings(ctx, p.tconn)
-	if err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
+	if p.keyboard, err = input.Keyboard(ctx); err != nil {
+		s.Fatal("Failed to create keyboard device: ", err)
 	}
-	installer, err := settings.OpenInstaller(ctx)
-	if err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
-	}
-	if p.minDiskSize != 0 {
-		if err := installer.SetDiskSize(ctx, p.minDiskSize); err != nil {
-			s.Fatal("SetDiskSize error: ", err)
+
+	if useLocalImage {
+		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
+		terminalApp, err := terminalapp.Launch(ctx, p.tconn)
+		if err != nil {
+			s.Fatal("keepState failed to launch Terminal. Try again, cryptohome will be cleared on the next run to reset to a good state: ", err)
+		}
+		if err = terminalApp.Exit(ctx, p.keyboard); err != nil {
+			s.Fatal("Failed to exit Terminal window: ", err)
+		}
+	} else {
+		// Install Crostini.
+		iOptions := &cui.InstallationOptions{
+			UserName:      p.cr.User(),
+			Mode:          cui.Download,
+			MinDiskSize:   p.minDiskSize,
+			DebianVersion: p.debianVersion,
+		}
+		if p.mode == artifact {
+			iOptions.Mode = cui.Artifact
+			iOptions.ImageArtifactPath = s.DataPath(ImageArtifact)
+		}
+		if err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
+			s.Fatal("Failed to install Crostini: ", err)
 		}
 	}
-	if err := installer.Install(ctx); err != nil {
-		s.Fatal("Failed to install Crostini: ", err)
+
+	p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
+	if err != nil {
+		s.Fatal("Failed to connect to running container: ", err)
 	}
 
 	// Report disk size again after successful install.
@@ -461,40 +417,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Log("Failed to gather disk usage: ", err)
 	}
 
-	if err := p.Connect(ctx); err != nil {
-		s.Fatal("Error connecting to running container: ", err)
-	}
-
-	// The VM should now be running, check that all the host daemons are also running to catch any errors in our init scripts etc.
-	if err = checkDaemonsRunning(ctx); err != nil {
-		s.Fatal("VM host daemons in an unexpected state: ", err)
-	}
-
-	if p.keyboard, err = input.Keyboard(ctx); err != nil {
-		s.Fatal("Failed to create keyboard device: ", err)
-	}
-
-	// Stop the apt-daily systemd timers since they may end up running while we
-	// are executing the tests and cause failures due to resource contention.
-	for _, t := range []string{"apt-daily", "apt-daily-upgrade"} {
-		s.Log("Disabling service: ", t)
-		cmd := p.cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
-		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
-			s.Fatalf("Failed to stop %s timer: %v", t, err)
-		}
-	}
-
-	// If the wayland backend is used, the fonctconfig cache will be
-	// generated the first time the app starts. On a low-end device, this
-	// can take a long time and timeout the app executions below.
-	s.Log("Generating fontconfig cache")
-	fcCmd := p.cont.Command(ctx, "fc-cache")
-	if err := fcCmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to generate fontconfig cache: ", err)
-	}
-
 	ret := p.buildPreData(ctx, s)
+	p.startedOK = true
 
 	chrome.Lock()
 	vm.Lock()
@@ -502,12 +426,17 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	return ret
 }
 
-// Connect connects the precondition to a running VM/container.
-// If you shutdown and restart the VM you will need to call Connect again.
-func (p *preImpl) Connect(ctx context.Context) error {
-	var err error
-	p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
-	return err
+// keepState returns whether the precondition should keep state from the
+// previous test execution and try to recycle the VM.
+func keepState(s *testing.PreState) bool {
+	if str, ok := s.Var("keepState"); ok {
+		b, err := strconv.ParseBool(str)
+		if err != nil {
+			s.Fatalf("Cannot parse argument %q to keepState: %v", str, err)
+		}
+		return b
+	}
+	return false
 }
 
 // Connect connects the precondition to a running VM/container.
@@ -538,18 +467,25 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 		p.keyboard = nil
 	}
 
-	if p.cont != nil {
-		if err := vm.StopConcierge(ctx); err != nil {
-			s.Log("Failure stopping concierge: ", err)
+	// Don't stop concierge or delete the image for keepState so that
+	// crostini is still running after the test, and the image can be reused.
+	if keepState(s) && p.startedOK {
+		s.Log("keepState not stopping concierge or unmounting and deleting image in cleanUp")
+	} else {
+		if p.cont != nil {
+			if err := vm.StopConcierge(ctx); err != nil {
+				s.Log("Failure stopping concierge: ", err)
+			}
+			p.cont = nil
 		}
-		p.cont = nil
+		// It is always safe to unmount the component, which just posts some
+		// logs if it was never mounted.
+		vm.UnmountComponent(ctx)
+		if err := vm.DeleteImages(); err != nil {
+			s.Log("Error deleting images: ", err)
+		}
 	}
-	// It is always safe to unmount the component, which just posts some
-	// logs if it was never mounted.
-	vm.UnmountComponent(ctx)
-	if err := vm.DeleteImages(); err != nil {
-		s.Log("Error deleting images: ", err)
-	}
+	p.startedOK = false
 
 	// Nothing special needs to be done to close the test API connection.
 	p.tconn = nil

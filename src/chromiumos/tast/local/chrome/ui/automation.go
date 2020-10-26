@@ -15,6 +15,8 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/google/go-cmp/cmp"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -180,13 +182,13 @@ func (n *Node) Release(ctx context.Context) {
 	n.object.Release(ctx)
 }
 
-// LeftClick executes the default action of the node.
+// LeftClick executes a left click on the node.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) LeftClick(ctx context.Context) error {
 	return n.mouseClick(ctx, leftClick)
 }
 
-// RightClick shows the context menu of the node.
+// RightClick executes a right click on the node.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) RightClick(ctx context.Context) error {
 	return n.mouseClick(ctx, rightClick)
@@ -198,6 +200,24 @@ func (n *Node) DoubleClick(ctx context.Context) error {
 	return n.mouseClick(ctx, doubleClick)
 }
 
+// StableLeftClick waits for the location to be stable and then left clicks the node.
+// The location must be stable for 1 iteration of polling (default 100ms).
+func (n *Node) StableLeftClick(ctx context.Context, pollOpts *testing.PollOptions) error {
+	return n.stableMouseClick(ctx, leftClick, pollOpts)
+}
+
+// StableRightClick waits for the location to be stable and then right clicks the node.
+// The location must be stable for 1 iteration of polling (default 100ms).
+func (n *Node) StableRightClick(ctx context.Context, pollOpts *testing.PollOptions) error {
+	return n.stableMouseClick(ctx, rightClick, pollOpts)
+}
+
+// StableDoubleClick waits for the location to be stable and then double clicks the node.
+// The location must be stable for 1 iteration of polling (default 100ms).
+func (n *Node) StableDoubleClick(ctx context.Context, pollOpts *testing.PollOptions) error {
+	return n.stableMouseClick(ctx, doubleClick, pollOpts)
+}
+
 // clickType describes how user clicks mouse.
 type clickType int
 
@@ -207,23 +227,63 @@ const (
 	doubleClick
 )
 
+const clickNode = `
+	async function(button){
+		var loc = this.location;
+		var centerpoint = {"x": loc.left + loc.width/2, "y": loc.top + loc.height/2};
+		await tast.promisify(chrome.autotestPrivate.mouseMove)(centerpoint, 0);
+		await tast.promisify(chrome.autotestPrivate.mouseClick)(button);
+	}`
+
 func (n *Node) mouseClick(ctx context.Context, ct clickType) error {
-	if err := n.Update(ctx); err != nil {
-		return errors.Wrap(err, "failed to update the node's location")
-	}
-	if n.Location.Empty() {
-		return errors.New("This node doesn't have a location on the screen and can't be clicked")
-	}
 	switch ct {
 	case leftClick:
-		return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.LeftButton)
+		return n.object.Call(ctx, nil, clickNode, mouse.LeftButton)
 	case rightClick:
-		return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.RightButton)
+		return n.object.Call(ctx, nil, clickNode, mouse.RightButton)
 	case doubleClick:
+		if err := n.Update(ctx); err != nil {
+			return errors.Wrap(err, "failed to update the node's location")
+		}
+		if n.Location.Empty() {
+			return errors.New("This node doesn't have a location on the screen and can't be clicked")
+		}
 		return mouse.DoubleClick(ctx, n.tconn, n.Location.CenterPoint(), 100*time.Millisecond)
 	default:
 		return errors.New("invalid click type")
 	}
+}
+
+func (n *Node) updateLocation(ctx context.Context) error {
+	return n.object.Call(ctx, &n.Location, `function(){return this.location}`)
+}
+
+// WaitLocationStable waits for the nodes location to be the same for a single iteration of polling.
+// Polling options work the same way as in testing.Poll().
+func (n *Node) WaitLocationStable(ctx context.Context, pollOpts *testing.PollOptions) error {
+	location := coords.Rect{}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := n.updateLocation(ctx); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to update the node's location"))
+		}
+		if !cmp.Equal(n.Location, location) {
+			location = n.Location
+			return errors.New("node location still changing")
+		}
+		return nil
+	}, pollOpts); err != nil {
+		return errors.Wrap(err, "node location unstable")
+	}
+	return nil
+}
+
+// stableMouseClick waits for a nodes location to be stable before attempting to click it.
+// The location must be stable for 1 iteration of polling (default 100ms).
+func (n *Node) stableMouseClick(ctx context.Context, ct clickType, pollOpts *testing.PollOptions) error {
+	if err := n.WaitLocationStable(ctx, pollOpts); err != nil {
+		return err
+	}
+	return n.mouseClick(ctx, ct)
 }
 
 // LeftClickUntil repeatedly left clicks the node until the condition returns true with no error.
@@ -242,6 +302,39 @@ func (n *Node) LeftClickUntil(ctx context.Context, condition func(context.Contex
 		}
 		return nil
 	}, opts)
+}
+
+// StableFind repeatedly finds the first matching node until the node's location if stable.
+// It will relocate the node if unexpected error happens, such as an element being refreshed.
+// Stable*Click and WaitLocationStable are alternative solutions if the node is not completely deleted and recreated.
+// Side effect: using this function will increase the test duration.
+// Error example: "Failed to update the node's location: unexpected end of JSON input".
+// Error example: "Cannot read property 'left' of undefined".
+func StableFind(ctx context.Context, tconn *chrome.TestConn, params FindParams, opts *testing.PollOptions) (node *Node, err error) {
+	location := coords.Rect{}
+
+	return node, testing.Poll(ctx, func(ctx context.Context) error {
+		node, err = Find(ctx, tconn, params)
+		if err != nil {
+			return errors.Wrap(err, "failed to find node")
+		}
+		if !cmp.Equal(node.Location, location) {
+			location = node.Location
+			node.Release(ctx)
+			return errors.New("node location still changing")
+		}
+		return nil
+	}, opts)
+}
+
+// StableFindAndClick waits for the first matching stable node and then left clicks it.
+func StableFindAndClick(ctx context.Context, tconn *chrome.TestConn, params FindParams, opts *testing.PollOptions) error {
+	node, err := StableFind(ctx, tconn, params, opts)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find stable node with %v", params)
+	}
+	defer node.Release(ctx)
+	return node.LeftClick(ctx)
 }
 
 // FocusAndWait calls the focus() Javascript method of the AutomationNode.
@@ -263,6 +356,15 @@ func (n *Node) FocusAndWait(ctx context.Context, timeout time.Duration) error {
 		return errors.Wrap(err, "failed to wait for the focus event on the specified node")
 	}
 
+	return nil
+}
+
+// MakeVisible calls makeVisible() Javascript method of the AutomationNode to make
+// target node visible.
+func (n *Node) MakeVisible(ctx context.Context) error {
+	if err := n.object.Call(ctx, nil, "function(){return this.makeVisible()}"); err != nil {
+		return errors.Wrap(err, "failed to call makeVisible() on the specified node")
+	}
 	return nil
 }
 
@@ -357,6 +459,9 @@ func (n *Node) WaitUntilDescendantExists(ctx context.Context, params FindParams,
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
+// ErrNodeExists is returned when the node is found, but should not exist.
+var ErrNodeExists = errors.New("node still exists")
+
 // WaitUntilDescendantGone checks if a descendant node doesn't exist repeatedly until the timeout.
 // If the timeout is hit or the JavaScript fails to execute, an error is returned.
 func (n *Node) WaitUntilDescendantGone(ctx context.Context, params FindParams, timeout time.Duration) error {
@@ -366,7 +471,7 @@ func (n *Node) WaitUntilDescendantGone(ctx context.Context, params FindParams, t
 			return testing.PollBreak(err)
 		}
 		if exists {
-			return errors.New("node still exists")
+			return ErrNodeExists
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
@@ -521,6 +626,17 @@ func WaitUntilGone(ctx context.Context, tconn *chrome.TestConn, params FindParam
 	}
 	defer root.Release(ctx)
 	return root.WaitUntilDescendantGone(ctx, params, timeout)
+}
+
+// WaitUntilExistsStatus repeatedly checks the existence of a node
+// until the desired status is found or the timeout is reached.
+// If the JavaScript fails to execute, an error is returned.
+func WaitUntilExistsStatus(ctx context.Context, tconn *chrome.TestConn, params FindParams, exists bool, timeout time.Duration) error {
+	if exists {
+		return WaitUntilExists(ctx, tconn, params, timeout)
+	}
+
+	return WaitUntilGone(ctx, tconn, params, timeout)
 }
 
 // RootDebugInfo returns the chrome.automation root as a string.

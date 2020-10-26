@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -24,11 +24,17 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         InputCompat,
 		Desc:         "Checks input compatibility for M and games working",
-		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"informational", "group:mainline"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -54,7 +60,7 @@ func InputCompat(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
@@ -172,12 +178,15 @@ func InputCompat(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to receive the expected event: ", err)
 		}
 
-		if err := doTrackpadScroll(ctx); err != nil {
-			s.Fatal("Failed to perform two finger scroll: ", err)
-		}
+		// Skip testing trackpad scroll for tablet-mode devices.
+		if !tabletMode {
+			if err := doTrackpadScroll(ctx); err != nil {
+				s.Fatal("Failed to perform two finger scroll: ", err)
+			}
 
-		if err := expectEvent(ctx, true, settings.InputSourceDuringScroll, settings.NumPointersDuringScroll); err != nil {
-			s.Fatal("Failed to receive the expected event: ", err)
+			if err := expectEvent(ctx, true, settings.InputSourceDuringScroll, settings.NumPointersDuringScroll); err != nil {
+				s.Fatal("Failed to receive the expected event: ", err)
+			}
 		}
 
 		if err := tw.End(); err != nil {

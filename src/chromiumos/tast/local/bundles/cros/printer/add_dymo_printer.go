@@ -7,7 +7,7 @@ package printer
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/printer/addtest"
+	"chromiumos/tast/local/bundles/cros/printer/lpprint"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -50,6 +50,6 @@ func AddDymoPrinter(ctx context.Context, s *testing.State) {
 	)
 
 	// Tests printing with the old Ink PPDs.
-	addtest.Run(ctx, s, dymolwPPD, dymoToPrintFile, dymolwGoldenFile, dymolwDiffFile)
-	addtest.Run(ctx, s, dymolmPPD, dymoToPrintFile, dymolmGoldenFile, dymolmDiffFile)
+	lpprint.Run(ctx, s, dymolwPPD, dymoToPrintFile, dymolwGoldenFile, dymolwDiffFile)
+	lpprint.Run(ctx, s, dymolmPPD, dymoToPrintFile, dymolmGoldenFile, dymolmDiffFile)
 }

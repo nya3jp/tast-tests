@@ -25,6 +25,34 @@ const (
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
 	PowerState           StringControl = "power_state"
 	V4Role               StringControl = "servo_v4_role"
+	ECUARTCmd            StringControl = "ec_uart_cmd"
+)
+
+// An IntControl contains the name of a gettable/settable Control which takes an integer value.
+type IntControl string
+
+// These are the Servo controls which can be get/set with an integer value.
+const (
+	VolumeDownHold   IntControl = "volume_down_hold"    // Integer represents a number of milliseconds.
+	VolumeUpHold     IntControl = "volume_up_hold"      // Integer represents a number of milliseconds.
+	VolumeUpDownHold IntControl = "volume_up_down_hold" // Integer represents a number of milliseconds.
+)
+
+// A OnOffControl accepts either "on" or "off" as a value.
+type OnOffControl string
+
+// These controls accept only "on" and "off" as values.
+const (
+	RecMode OnOffControl = "rec_mode"
+)
+
+// An OnOffValue is a string value that would be accepted by an OnOffControl.
+type OnOffValue string
+
+// These are the values used by OnOff controls.
+const (
+	Off OnOffValue = "off"
+	On  OnOffValue = "on"
 )
 
 // A KeypressControl is a special type of Control which can take either a numerical value or a KeypressDuration.
@@ -88,6 +116,10 @@ const (
 	V4RoleSrc V4RoleValue = "src"
 )
 
+// ServoKeypressDelay comes from hdctools/servo/drv/keyboard_handlers.py.
+// It is the minimum time interval between 'press' and 'release' keyboard events.
+const ServoKeypressDelay = 100 * time.Millisecond
+
 // Echo calls the Servo echo method.
 func (s *Servo) Echo(ctx context.Context, message string) (string, error) {
 	var val string
@@ -134,13 +166,21 @@ func (s *Servo) GetString(ctx context.Context, control StringControl) (string, e
 	return value, nil
 }
 
-// SetString sets a specified control to a specified value.
+// SetString sets a Servo control to a string value.
 func (s *Servo) SetString(ctx context.Context, control StringControl, value string) error {
 	// Servo's Set method returns a bool stating whether the call succeeded or not.
 	// This is redundant, because a failed call will return an error anyway.
 	// So, we can skip unpacking the output.
 	if err := s.run(ctx, newCall("set", string(control), value)); err != nil {
 		return errors.Wrapf(err, "setting servo control %q to %q", control, value)
+	}
+	return nil
+}
+
+// SetInt sets a Servo control to an integer value.
+func (s *Servo) SetInt(ctx context.Context, control IntControl, value int) error {
+	if err := s.run(ctx, newCall("set", string(control), value)); err != nil {
+		return errors.Wrapf(err, "setting servo control %q to %d", control, value)
 	}
 	return nil
 }
@@ -258,4 +298,23 @@ func (s *Servo) SetV4Role(ctx context.Context, value V4RoleValue) error {
 		return nil
 	}
 	return s.SetString(ctx, V4Role, string(value))
+}
+
+// RunECCommand runs the given command on the EC on the device.
+func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
+	return s.SetString(ctx, ECUARTCmd, cmd)
+}
+
+// ToggleOffOn turns a switch off and on again.
+func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
+	if err := s.SetString(ctx, StringControl(ctrl), string(Off)); err != nil {
+		return err
+	}
+	if err := testing.Sleep(ctx, ServoKeypressDelay); err != nil {
+		return err
+	}
+	if err := s.SetString(ctx, StringControl(ctrl), string(On)); err != nil {
+		return err
+	}
+	return nil
 }

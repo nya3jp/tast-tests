@@ -13,8 +13,10 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,16 +28,32 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Pre:          arc.BootedWithDisableSyncFlags(),
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
 		}, {
 			Name:              "vm",
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
+		}, {
+			Name:              "vm_nobatterymetrics",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
 		}},
-		Timeout: 5 * time.Minute,
+		Timeout: 10 * time.Minute,
 	})
 }
 
@@ -72,7 +90,8 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	batteryMode := s.Param().(setup.BatteryDischargeMode)
+	sup.Add(setup.PowerTest(ctx, tconn, batteryMode))
 
 	// Install camera testing app.
 	a := s.PreValue().(arc.PreData).ARC
@@ -81,7 +100,11 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 	// Grant permissions to activity.
 	sup.Add(setup.GrantAndroidPermission(ctx, a, cameraAppPackage, "android.permission.CAMERA"))
 
-	// TODO(springerm): WaitUntilCPUCoolDown before starting activity.
+	// Wait until CPU is cooled down.
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("CPU failed to cool down: ", err)
+	}
+
 	// Start camera testing app.
 	sup.Add(setup.StartActivity(ctx, tconn, a, cameraAppPackage, cameraAppActivity))
 

@@ -20,7 +20,7 @@ const (
 	maxEventSize     = 16
 )
 
-// TriggerECEvent writes data to the EC event trigger path and triggers a dummy
+// TriggerECEvent writes data to the EC event trigger path and triggers a fake
 // EC event.
 func TriggerECEvent() error {
 	if err := ioutil.WriteFile(eventTriggerPath, []byte{0}, 0644); err != nil {

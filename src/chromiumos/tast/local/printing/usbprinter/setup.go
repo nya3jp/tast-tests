@@ -258,3 +258,31 @@ func WaitPrinterConfigured(ctx context.Context, devInfo DevInfo) (string, error)
 	}
 	return foundName, nil
 }
+
+// StopPrinter terminates the virtual-usb-printer process, then waits for a
+// udev event indicating that its associated USB device has been removed.
+func StopPrinter(ctx context.Context, cmd *testexec.Cmd, devInfo DevInfo) error {
+	// Begin waiting for udev event.
+	udevCh := make(chan error, 1)
+	go func() {
+		udevCh <- waitEvent(ctx, "remove", devInfo)
+	}()
+
+	cmd.Kill()
+	cmd.Wait()
+
+	// Wait for a signal from udevadm to say the device was successfully
+	// detached.
+	testing.ContextLog(ctx, "Waiting for udev event")
+	select {
+	case err := <-udevCh:
+		if err != nil {
+			return err
+		}
+		testing.ContextLog(ctx, "Found remove event")
+	case <-ctx.Done():
+		return errors.Wrap(ctx.Err(), "didn't get udev event")
+	}
+
+	return nil
+}

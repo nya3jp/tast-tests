@@ -28,15 +28,22 @@ func init() {
 		Func:         VirtualKeyboardAccent,
 		Desc:         "Checks that long pressing keys pop up accent window",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: pre.InputsStableModels,
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "stable",
+			ExtraHardwareDeps: pre.InputsStableModels,
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
 func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -70,14 +77,8 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	}
 	defer element.Release(ctx)
 
-	s.Log("Click searchbox to trigger virtual keyboard")
-	if err := element.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
-	}
-
-	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
+		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 
 	s.Log("Waiting for the virtual keyboard to render buttons")

@@ -95,6 +95,8 @@ type Phy struct {
 	Modes, Commands, Features []string
 	RxAntenna, TxAntenna      int
 	MaxScanSSIDs              int
+	SupportHE                 bool
+	SupportHE160              bool
 	SupportVHT                bool
 	SupportHT2040             bool
 	SupportHT20SGI            bool
@@ -127,12 +129,15 @@ type section struct {
 type sectionAttributes struct {
 	bands                 []Band
 	phyModes, phyCommands []string
-	supportVHT            bool
-	supportHT2040         bool
-	supportHT20SGI        bool
-	supportHT40SGI        bool
-	supportVHT80SGI       bool
-	supportMUMIMO         bool
+
+	supportHE       bool
+	supportHE160    bool
+	supportVHT      bool
+	supportHT2040   bool
+	supportHT20SGI  bool
+	supportHT40SGI  bool
+	supportVHT80SGI bool
+	supportMUMIMO   bool
 }
 
 // TimedScanData contains the BSS responses from an `iw scan` and its execution time.
@@ -252,9 +257,9 @@ func (r *Runner) PhyByID(ctx context.Context, id int) (*Phy, error) {
 // TimedScan runs a scan on a specified interface and frequencies (if applicable).
 // A channel map for valid frequencies can be found in
 // third_party/autotest/files/server/cros/network/hostap_config.py
-// The frequency slice is used to whitelist which frequencies/bands to scan on.
+// The frequency slice is used to list which frequencies/bands to scan on.
 // The SSIDs slice will filter the results of the scan to those that pertain
-// to the whitelisted SSIDs (although this doesn't seem to work on some devices).
+// to the allowed SSIDs (although this doesn't seem to work on some devices).
 func (r *Runner) TimedScan(ctx context.Context, iface string,
 	frequencies []int, ssids []string) (*TimedScanData, error) {
 	args := []string{"dev", iface, "scan"}
@@ -898,6 +903,8 @@ func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 		RxAntenna:       rxAntenna,
 		TxAntenna:       txAntenna,
 		MaxScanSSIDs:    maxScanSSIDs,
+		SupportHE:       attrs.supportHE,
+		SupportHE160:    attrs.supportHE160,
 		SupportVHT:      attrs.supportVHT,
 		SupportHT2040:   attrs.supportHT2040,
 		SupportHT20SGI:  attrs.supportHT20SGI,
@@ -1038,6 +1045,13 @@ func parseBand(attrs *sectionAttributes, sectionName, contents string) error {
 
 func parseThroughput(attrs *sectionAttributes, sectionName, contents string) error {
 	// This parser evaluates the throughput capabilities of the phy.
+	// HE-MAC related.
+	if strings.Contains(contents, "HE MAC Capabilities") {
+		attrs.supportHE = true
+	}
+	if strings.Contains(contents, "HE160/5GHz") {
+		attrs.supportHE160 = true
+	}
 	// HT related.
 	if strings.Contains(contents, "HT20/HT40") {
 		attrs.supportHT2040 = true

@@ -6,13 +6,12 @@ package audio
 
 import (
 	"context"
-	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -28,33 +27,10 @@ func init() {
 }
 
 func CrasRecord(ctx context.Context, s *testing.State) {
-	const (
-		duration         = 1 // second
-		getDeviceTimeout = 3 * time.Second
-	)
-
-	var devName string
+	const duration = 1 // second
 
 	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
 		s.Fatal("Failed to wait for input stream: ", err)
-	}
-
-	// Get the first running input device by parsing audio thread logs.
-	// A device may not be opened immediately so it will repeat a query until there is a running input device.
-	re := regexp.MustCompile("Input dev: (.*)")
-	getRunningInputDevice := func(ctx context.Context) error {
-		s.Log("Dump audio thread to check running devices")
-		dump, err := testexec.CommandContext(ctx, "cras_test_client", "--dump_audio_thread").Output()
-		if err != nil {
-			return errors.Errorf("failed to dump audio thread: %s", err)
-		}
-
-		dev := re.FindStringSubmatch(string(dump))
-		if dev != nil {
-			devName = dev[1]
-			return nil
-		}
-		return errors.New("no such device")
 	}
 
 	// Set timeout to duration + 1s, which is the time buffer to complete the normal execution.
@@ -76,7 +52,8 @@ func CrasRecord(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := testing.Poll(ctx, getRunningInputDevice, &testing.PollOptions{Timeout: getDeviceTimeout}); err != nil {
+	devName, err := crastestclient.FirstRunningDevice(ctx, audio.InputStream)
+	if err != nil {
 		s.Fatal("Failed to detect running input device: ", err)
 	}
 

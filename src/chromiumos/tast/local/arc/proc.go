@@ -11,6 +11,8 @@ import (
 	"chromiumos/tast/local/sysutil"
 )
 
+var errInitNotFound = errors.New("didn't find init process")
+
 // getUserPath returns the user and the path to the entry point of ARC
 func getUserPath() (user, path string, err error) {
 	vm, err := VMEnabled()
@@ -21,21 +23,11 @@ func getUserPath() (user, path string, err error) {
 		return "crosvm", "/usr/bin/crosvm", nil
 	}
 
-	ver, err := SDKVersion()
-	if err != nil {
-		return "", "", errors.Wrap(err, "failed to get SDK version")
-	}
-
-	var initPath string
-	if ver >= SDKQ {
-		initPath = "/system/bin/init"
-	} else {
-		initPath = "/init"
-	}
-	return "android-root", initPath, nil
+	return "android-root", "/init", nil
 }
 
 // InitPID returns the PID (outside the guest) of the ARC init process.
+// It returns an error in case process is not found.
 func InitPID() (int32, error) {
 	u, initPath, err := getUserPath()
 	if err != nil {
@@ -59,5 +51,18 @@ func InitPID() (int32, error) {
 			}
 		}
 	}
-	return -1, errors.New("didn't find init process")
+
+	return -1, errInitNotFound
+}
+
+// InitExists returns true in case ARC init process exists.
+func InitExists() (bool, error) {
+	_, err := InitPID()
+	if err != nil {
+		if errors.Is(err, errInitNotFound) {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
 }

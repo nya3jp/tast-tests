@@ -28,15 +28,22 @@ func init() {
 		Func:         VirtualKeyboardChangeInput,
 		Desc:         "Checks that changing input method in different ways",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
-		HardwareDeps: pre.InputsStableModels,
+		Params: []testing.Param{{
+			Name:              "stable",
+			ExtraHardwareDeps: pre.InputsStableModels,
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
 func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -50,11 +57,11 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	const (
-		defaultInputMethod       = "xkb:us::eng"
+		defaultInputMethod       = string(ime.INPUTMETHOD_XKB_US_ENG)
 		defaultInputMethodLabel  = "US"
 		defaultInputMethodOption = "US keyboard"
 		language                 = "fr-FR"
-		inputMethod              = "xkb:fr::fra"
+		inputMethod              = string(ime.INPUTMETHOD_XKB_FR_FRA)
 		InputMethodLabel         = "FR"
 	)
 
@@ -88,8 +95,8 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	defer inputFieldElement.Release(ctx)
 
 	s.Log("Click input field to trigger virtual keyboard")
-	if err := inputFieldElement.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
+	if err := vkb.ClickUntilVKShown(ctx, tconn, inputFieldElement); err != nil {
+		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 
 	// Input method changing is done async between front-end ui and background.
@@ -106,7 +113,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 			currentInputMethod, err := vkb.GetCurrentInputMethod(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to get current input method")
-			} else if currentInputMethod != vkb.ImePrefix+inputMethod {
+			} else if currentInputMethod != inputMethod {
 				return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, vkb.ImePrefix+inputMethod)
 			}
 			keyboard, err := vkb.VirtualKeyboard(ctx, tconn)

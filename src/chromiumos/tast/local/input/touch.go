@@ -425,13 +425,13 @@ func (tw *TouchEventWriter) Close() {
 	}
 }
 
-// DoubleSwipe performs a swipe movement with two touches. One is from x0/y0 to x1/y1, and the other is x0+d/y0 to x1+d/y1.
-// t represents how long the swipe should last.
-// If t is less than 5 milliseconds, 5 milliseconds will be used instead.
-// DoubleSwipe() does not call End(), allowing the user to concatenate multiple swipes together.
-func (tw *TouchEventWriter) DoubleSwipe(ctx context.Context, x0, y0, x1, y1, d TouchCoord, t time.Duration) error {
-	if len(tw.touches) < 2 {
-		return errors.Errorf("requested 2 touches for double finger swipe; got %d", len(tw.touches))
+// Swipe performs a swipe movement with an user defined number of touches. The touches are separated in the x
+// coordinates by d. So for a 3 touch swipe, the initial touches will be (x0, y0), (x0+d, y0) and (x0+2d, y0).
+// t represents how long the swipe should last. If t is less than 5 milliseconds, 5 milliseconds will be used instead.
+// Swipe() does not call End(), allowing the user to concatenate multiple swipes together.
+func (tw *TouchEventWriter) Swipe(ctx context.Context, x0, y0, x1, y1, d TouchCoord, touches int, t time.Duration) error {
+	if len(tw.touches) < touches {
+		return errors.Errorf("requested %d touches for swipe; got %d", touches, len(tw.touches))
 	}
 	steps := int(t/touchFrequency) + 1
 	// A minimum of two touches are needed. One for the start point and another one for the end point.
@@ -444,20 +444,30 @@ func (tw *TouchEventWriter) DoubleSwipe(ctx context.Context, x0, y0, x1, y1, d T
 	for i := 0; i < steps; i++ {
 		x := x0 + TouchCoord(math.Round(deltaX*float64(i)))
 		y := y0 + TouchCoord(math.Round(deltaY*float64(i)))
-		if err := tw.touches[0].SetPos(x, y); err != nil {
-			return err
+
+		for j := 0; j < touches; j++ {
+			if err := tw.touches[j].SetPos(x+TouchCoord(j)*d, y); err != nil {
+				return err
+			}
 		}
-		if err := tw.touches[1].SetPos(x+d, y); err != nil {
-			return err
-		}
+
 		if err := tw.Send(); err != nil {
 			return err
 		}
+
 		if err := testing.Sleep(ctx, touchFrequency); err != nil {
 			return errors.Wrap(err, "timeout while doing sleep")
 		}
 	}
 	return nil
+}
+
+// DoubleSwipe performs a swipe movement with two touches. One is from x0/y0 to x1/y1, and the other is x0+d/y0 to x1+d/y1.
+// t represents how long the swipe should last.
+// If t is less than 5 milliseconds, 5 milliseconds will be used instead.
+// DoubleSwipe() does not call End(), allowing the user to concatenate multiple swipes together.
+func (tw *TouchEventWriter) DoubleSwipe(ctx context.Context, x0, y0, x1, y1, d TouchCoord, t time.Duration) error {
+	return tw.Swipe(ctx, x0, y0, x1, y1, d, 2, t)
 }
 
 // Move injects a touch event at x and y touchscreen coordinates. This is applied

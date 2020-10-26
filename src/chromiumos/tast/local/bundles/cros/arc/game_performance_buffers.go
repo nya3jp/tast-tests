@@ -15,10 +15,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GamePerformanceBuffers,
-		Desc:         "Captures set of performance metrics for buffers and upload it to the server",
-		Contacts:     []string{"khmel@chromium.org", "skuhne@chromium.org", "arc-performance@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:     GamePerformanceBuffers,
+		Desc:     "Captures set of performance metrics for buffers and upload it to the server",
+		Contacts: []string{"khmel@chromium.org", "skuhne@chromium.org", "arc-performance@google.com"},
+		// TODO(http://b/140444033): Test is disabled until it can be fixed
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Data:         []string{"ArcGamePerformanceTest.apk"},

@@ -8,9 +8,7 @@
 package main
 
 import (
-	"os"
-
-	"chromiumos/tast/bundle"
+	"chromiumos/tast/remote/bundlemain"
 
 	// These packages register their tests via init functions.
 	_ "chromiumos/tast/remote/bundles/cros/arc"
@@ -19,6 +17,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/example"
 	_ "chromiumos/tast/remote/bundles/cros/factory"
 	_ "chromiumos/tast/remote/bundles/cros/firmware"
+	_ "chromiumos/tast/remote/bundles/cros/hardware"
 	_ "chromiumos/tast/remote/bundles/cros/hwsec"
 	_ "chromiumos/tast/remote/bundles/cros/meta"
 	_ "chromiumos/tast/remote/bundles/cros/network"
@@ -33,5 +32,5 @@ import (
 )
 
 func main() {
-	os.Exit(bundle.RemoteDefault())
+	bundlemain.RunRemote()
 }

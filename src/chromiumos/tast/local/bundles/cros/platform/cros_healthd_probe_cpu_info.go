@@ -31,9 +31,8 @@ func init() {
 
 func verifyPhysicalCPU(lines []string) error {
 	// Make sure we've received at least nine lines. The first should be the
-	// physical CPU header, followed by one line of keys, one line of values,
-	// and six or more lines of logical CPU data.
-	if len(lines) < 9 {
+	// physical CPU header, followed by one line of keys, one line of values.
+	if len(lines) < 3 {
 		return errors.New("could not find any lines of physical CPU info")
 	}
 
@@ -59,7 +58,7 @@ func verifyPhysicalCPU(lines []string) error {
 	// Verify each logical CPU.
 	for start, i := 3, 4; i <= len(lines); i++ {
 		if i == len(lines) || lines[i] == "Logical CPU:" {
-			if err := verifyLogicalCPU(lines[start : i-1]); err != nil {
+			if err := verifyLogicalCPU(lines[start:i]); err != nil {
 				return errors.Wrap(err, "failed to verify logical CPU")
 			}
 			start = i
@@ -70,10 +69,9 @@ func verifyPhysicalCPU(lines []string) error {
 }
 
 func verifyLogicalCPU(lines []string) error {
-	// Make sure we've received at least six lines. The first should be the
-	// logical CPU header, followed by one line of keys, one line of values, and
-	// three or more lines of C-state data.
-	if len(lines) < 6 {
+	// Make sure we've received at least three lines. The first should be the
+	// logical CPU header, followed by one line of keys, and one line of values.
+	if len(lines) < 3 {
 		return errors.New("could not find any lines of logical CPU info")
 	}
 
@@ -85,7 +83,7 @@ func verifyLogicalCPU(lines []string) error {
 	}
 
 	// Verify the keys are correct.
-	want := []string{"max_clock_speed_khz", "scaling_max_frequency_khz", "scaling_current_frequency_khz", "idle_time_user_hz"}
+	want := []string{"max_clock_speed_khz", "scaling_max_frequency_khz", "scaling_current_frequency_khz", "user_time_user_hz", "system_time_user_hz", "idle_time_user_hz"}
 	got := strings.Split(lines[1], ",")
 	if !reflect.DeepEqual(want, got) {
 		return errors.Errorf("incorrect logical CPU keys: got %v; want %v", got, want)
@@ -94,7 +92,7 @@ func verifyLogicalCPU(lines []string) error {
 	// Check for error values.
 	vals := strings.Split(lines[2], ",")
 	if len(vals) != len(want) {
-		return errors.Errorf("wrong number of logical CPU values: got %v, want 4", len(vals))
+		return errors.Errorf("wrong number of logical CPU values: got %v, want %v", len(vals), len(want))
 	}
 
 	for i, val := range vals {
@@ -109,10 +107,10 @@ func verifyLogicalCPU(lines []string) error {
 }
 
 func verifyCStates(lines []string) error {
-	// Make sure we've received at least three lines. The first should be the
-	// C-state header, followed by one line of keys and one or more lines of
+	// Make sure we've received at least two lines. The first should be the
+	// C-state header, followed by one line of keys and zero or more lines of
 	// C-states.
-	if len(lines) < 3 {
+	if len(lines) < 2 {
 		return errors.New("could not find any lines of C-state info")
 	}
 
@@ -130,7 +128,7 @@ func verifyCStates(lines []string) error {
 		return errors.Errorf("incorrect C-state keys: got %v; want %v", got, want)
 	}
 
-	// Verify each C-state value.
+	// Verify each C-state value that exists.
 	for _, line := range lines[2:] {
 		vals := strings.Split(line, ",")
 		if len(vals) != 2 {
@@ -141,7 +139,7 @@ func verifyCStates(lines []string) error {
 			return errors.New("empty name")
 		}
 
-		if i, err := strconv.Atoi(vals[1]); err != nil {
+		if i, err := strconv.ParseInt(vals[1], 10, 64); err != nil {
 			return errors.Wrapf(err, "failed to convert time_in_state_since_last_boot_us to integer: %q", vals[1])
 		} else if i < 0 {
 			return errors.Errorf("invalid time_in_state_since_last_boot_us: %d", i)
@@ -198,7 +196,7 @@ func CrosHealthdProbeCPUInfo(ctx context.Context, s *testing.State) {
 	// assumption.
 	for start, i := 2, 3; i <= len(lines); i++ {
 		if i == len(lines) || lines[i] == "Physical CPU:" {
-			err := verifyPhysicalCPU(lines[start : i-1])
+			err := verifyPhysicalCPU(lines[start:i])
 			if err != nil {
 				s.Error("Failed to verify physical CPU: ", err)
 			}

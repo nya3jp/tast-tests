@@ -13,8 +13,14 @@ import (
 	"regexp"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+)
+
+const (
+	playbackDevicePath = "/proc/asound/card*/pcm*p/sub0/status"
+	captureDevicePath  = "/proc/asound/card*/pcm*c/sub0/status"
 )
 
 // TestDeviceFiles tests device files matching pattern, a regular expression
@@ -72,4 +78,46 @@ func TestALSACommand(ctx context.Context, s *testing.State, name string) {
 	if strings.Contains(string(out), "no soundcards found") {
 		s.Errorf("%s recognized no sound cards", name)
 	}
+}
+
+func findRunningDevice(ctx context.Context, pathPattern string) error {
+	paths, err := filepath.Glob(pathPattern)
+	if err != nil {
+		return err
+	}
+	for _, p := range paths {
+		b, err := ioutil.ReadFile(p)
+		if err != nil {
+			return errors.Wrapf(err, "failed to read %q", p)
+		}
+
+		s := string(b)
+		if strings.Contains(s, "RUNNING") {
+			return nil
+		}
+	}
+
+	return errors.New("failed to find running device")
+}
+
+// CheckRunningDevice checks the running output/input device by parsing asound status.
+// A device may not be opened immediately so it will repeat the query until the
+// expected running device(s) are found.
+func CheckRunningDevice(ctx context.Context, playback, capture bool) error {
+	if !playback && !capture {
+		return errors.New("at least one of playback and capture should be true")
+	}
+	if playback {
+		if err := findRunningDevice(ctx, playbackDevicePath); err != nil {
+			return errors.Errorf("failed to grep playback asound status: %s", err)
+		}
+	}
+
+	if capture {
+		if err := findRunningDevice(ctx, captureDevicePath); err != nil {
+			return errors.Errorf("failed to grep capture asound status: %s", err)
+		}
+	}
+
+	return nil
 }

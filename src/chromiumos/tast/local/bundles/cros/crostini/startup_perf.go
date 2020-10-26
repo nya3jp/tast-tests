@@ -40,7 +40,7 @@ func createNewContainer(ctx context.Context, user string) (cont *vm.Container, e
 
 	startTime := time.Now()
 
-	if err := cont.Create(ctx, vm.ContainerType{Image: vm.StagingImageServer, Arch: vm.DebianStretch}); err != nil {
+	if err := cont.Create(ctx, vm.ContainerType{Image: vm.StagingImageServer, DebianVersion: vm.DebianStretch}); err != nil {
 		return nil, 0, err
 	}
 
@@ -98,6 +98,7 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 
 	type measurements struct {
 		vmStart         time.Duration
+		lxdStart        time.Duration
 		containerCreate time.Duration // set only when container needs to be created
 		containerStart  time.Duration
 		vmShutdown      time.Duration
@@ -115,8 +116,25 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to start VM: ", err)
 		}
+		vmRunning := true
+		defer func() {
+			if vmRunning {
+				if err := vmInstance.Stop(ctx); err != nil {
+					s.Error("Failed to stop the VM instance: ", err)
+				}
+			}
+		}()
 		timing.vmStart = time.Since(startTime)
 		s.Log("Elapsed time to start VM ", timing.vmStart.Round(time.Millisecond))
+
+		s.Log("Starting LXD")
+		startTime = time.Now()
+		err = vmInstance.StartLxd(ctx)
+		if err != nil {
+			s.Fatal("Failed to start LXD: ", err)
+		}
+		timing.lxdStart = time.Since(startTime)
+		s.Log("Elapsed time to start LXD ", timing.lxdStart.Round(time.Millisecond))
 
 		// Create default container for the initial run.
 		if cont == nil {
@@ -143,6 +161,7 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to close VM: ", err)
 		}
 		timing.vmShutdown = time.Since(startTime)
+		vmRunning = false
 		s.Log("Elapsed time to shut down VM ", timing.vmShutdown.Round(time.Millisecond))
 
 		return timing
@@ -166,6 +185,13 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		Direction: perf.SmallerIsBetter,
 		Multiple:  false,
 	}, timing.vmStart.Seconds())
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "initial_lxd_start_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, timing.lxdStart.Seconds())
 	value.Set(perf.Metric{
 		Name:      "crostini_start_time",
 		Variant:   "initial_container_start_time",
@@ -202,6 +228,13 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 			Direction: perf.SmallerIsBetter,
 			Multiple:  true,
 		}, timing.vmStart.Seconds())
+		value.Set(perf.Metric{
+			Name:      "crostini_start_time",
+			Variant:   "lxd_start_time",
+			Unit:      "s",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  false,
+		}, timing.lxdStart.Seconds())
 		value.Append(perf.Metric{
 			Name:      "crostini_start_time",
 			Variant:   "container_start_time",

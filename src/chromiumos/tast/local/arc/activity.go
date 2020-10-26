@@ -307,12 +307,20 @@ func (ac *Activity) moveWindowP(ctx context.Context, to coords.Point, t time.Dur
 // moveWindowR only works with WindowStateNormal and WindowStatePIP windows. Will fail otherwise.
 // moveWindowR performs the movement using a mouse drag.
 func (ac *Activity) moveWindowR(ctx context.Context, tconn *chrome.TestConn, t time.Duration, toBounds, fromBounds coords.Rect) error {
-	windowState, err := ash.GetARCAppWindowState(ctx, tconn, ac.PackageName())
+	windowStates, err := ash.GetAllARCAppWindowStates(ctx, tconn, ac.PackageName())
 	if err != nil {
 		return errors.Wrap(err, "could not get app window state")
 	}
-	if windowState != ash.WindowStatePIP && windowState != ash.WindowStateNormal {
-		return errors.Errorf("cannot move window in state %s", windowState)
+
+	supportsMove := false
+	for _, windowState := range windowStates {
+		if windowState == ash.WindowStatePIP || windowState == ash.WindowStateNormal {
+			supportsMove = true
+			break
+		}
+	}
+	if !supportsMove {
+		return errors.New("move window only supports Normal and PIP windows")
 	}
 
 	// We'll drag the window from the top-left quadrant.
@@ -349,12 +357,12 @@ func (ac *Activity) ResizeWindow(ctx context.Context, tconn *chrome.TestConn, bo
 
 	switch sdkVer {
 	case SDKP:
-		if err := ac.resizeWindowP(ctx, BorderTopLeft, coords.NewPoint(0, 0), time.Second); err != nil {
+		if err := ac.resizeWindowP(ctx, border, to, time.Second); err != nil {
 			return errors.Wrap(err, "could not resize window")
 		}
 		return nil
 	case SDKR:
-		if err := ac.resizeWindowR(ctx, tconn, BorderTopLeft, coords.NewPoint(0, 0), time.Second); err != nil {
+		if err := ac.resizeWindowR(ctx, tconn, border, to, time.Second); err != nil {
 			return errors.Wrap(err, "could not resize window")
 		}
 		return nil
@@ -425,12 +433,24 @@ func (ac *Activity) resizeWindowP(ctx context.Context, border BorderType, to coo
 // resizeWindowR only works with WindowStateNormal and WindowStatePIP windows. Will fail otherwise.
 // resizeWindowR performs the resizing using a mouse drag.
 func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, border BorderType, to coords.Point, t time.Duration) error {
-	windowState, err := ash.GetARCAppWindowState(ctx, tconn, ac.PackageName())
+	windowStates, err := ash.GetAllARCAppWindowStates(ctx, tconn, ac.PackageName())
 	if err != nil {
 		return errors.Wrap(err, "could not get app window state")
 	}
-	if windowState != ash.WindowStatePIP && windowState != ash.WindowStateNormal {
-		return errors.Errorf("cannot resize window in state %s", windowState)
+
+	supportsMove := false
+	hasPIPWindow := false
+	for _, windowState := range windowStates {
+		if windowState == ash.WindowStatePIP {
+			hasPIPWindow = true
+		}
+		if windowState == ash.WindowStatePIP || windowState == ash.WindowStateNormal {
+			supportsMove = true
+			break
+		}
+	}
+	if !supportsMove {
+		return errors.New("resize window only supports Normal and PIP windows")
 	}
 
 	// Default value: center of window.
@@ -438,7 +458,7 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 	src := bounds.CenterPoint()
 
 	borderOffset := borderOffsetForNormal
-	if windowState == ash.WindowStatePIP {
+	if hasPIPWindow {
 		borderOffset = borderOffsetForPIP
 	}
 
@@ -594,17 +614,6 @@ func (ac *Activity) WaitForFinished(ctx context.Context, timeout time.Duration) 
 
 // IsRunning returns true if the activity is running, false otherwise.
 func (ac *Activity) IsRunning(ctx context.Context) (bool, error) {
-	n, err := SDKVersion()
-	if err != nil {
-		return false, errors.Wrap(err, "unable to get Android SDK version")
-	}
-
-	if n == SDKR {
-		// TODO(b/152576355): activity.IsRunning is broken on Android R.
-		// As a workaround (to fix tests), return IsRunning = true for now.
-		return true, nil
-	}
-
 	if _, err := ac.getTaskInfo(ctx); err != nil {
 		if errors.Is(err, errNoTaskInfo) {
 			return false, nil
@@ -689,8 +698,11 @@ func (ac *Activity) getTaskInfo(ctx context.Context) (TaskInfo, error) {
 	}
 	for _, task := range tasks {
 		for _, activity := range task.ActivityInfos {
-			if activity.PackageName == ac.pkgName && activity.ActivityName == ac.activityName {
-				return task, nil
+			if activity.PackageName == ac.pkgName {
+				qualifiedName := activity.PackageName + activity.ActivityName
+				if activity.ActivityName == ac.activityName || qualifiedName == ac.activityName {
+					return task, nil
+				}
 			}
 		}
 	}

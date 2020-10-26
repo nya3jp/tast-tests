@@ -8,9 +8,12 @@ import (
 	"context"
 	"path/filepath"
 	"regexp"
+	"strings"
 
 	"chromiumos/tast/local/bundles/cros/platform/csv"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/croshealthd"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -64,6 +67,29 @@ func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
 		manufactureDateRegex = regexp.MustCompile("[0-9]{4}-[0-9]{2}-[0-9]{2}")
 	)
 
+	// Sanitize the marketing name value to remove commas. This matches the
+	// behavior of the telem tool. For example
+	// "Acer Chromebook Spin 11 (CP311-H1, CP311-1HN)" ->
+	// "Acer Chromebook Spin 11 (CP311-H1/CP311-1HN)"
+	// TODO(crbug/1135261): Remove these explicit values checks from the test
+	marketingNameRaw, err := crosconfig.Get(ctx, arcBuildPropertiesPath, marketingNameProperty)
+	if err != nil {
+		s.Fatal("Unable to get marketing name from cros_config: ", err)
+	}
+	marketingName := strings.ReplaceAll(marketingNameRaw, ", ", "/")
+
+	lsbValues, err := lsbrelease.Load()
+	if err != nil {
+		s.Fatal("Failed to get lsb-release info: ", err)
+	}
+	versionComponents := []string{
+		lsbValues[lsbrelease.Milestone],
+		lsbValues[lsbrelease.BuildNumber],
+		lsbValues[lsbrelease.PatchNumber],
+	}
+	osVersion := strings.Join(versionComponents, ".")
+	osReleaseChannel := lsbValues[lsbrelease.ReleaseTrack]
+
 	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategorySystem, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get system info: ", err)
@@ -71,18 +97,21 @@ func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
 
 	err = csv.ValidateCSV(records,
 		csv.Rows(2),
-		csv.Column("first_power_date", csv.EqualToFileContentOrNA(firstPowerDatePath),
-			csv.MatchRegexOrNA(firstPowerDateRegex)),
-		csv.Column("manufacture_date", csv.EqualToFileContentOrNA(manufactureDatePath),
-			csv.MatchRegexOrNA(manufactureDateRegex)),
-		csv.Column("product_sku_number", csv.EqualToFileIfCrosConfigPropOrNA(ctx, crosHealthdCachedVpdPath,
+		csv.ColumnWithDefault("first_power_date", croshealthd.NotApplicable, csv.EqualToFileContent(firstPowerDatePath),
+			csv.MatchRegex(firstPowerDateRegex)),
+		csv.ColumnWithDefault("manufacture_date", croshealthd.NotApplicable, csv.EqualToFileContent(manufactureDatePath),
+			csv.MatchRegex(manufactureDateRegex)),
+		csv.ColumnWithDefault("product_sku_number", croshealthd.NotApplicable, csv.EqualToFileIfCrosConfigProp(ctx, crosHealthdCachedVpdPath,
 			skuNumberProperty, skuNumberPath)),
-		csv.Column("marketing_name", csv.EqualToCrosConfigProp(ctx, arcBuildPropertiesPath, marketingNameProperty)),
-		csv.Column("bios_version", csv.EqualToFileContentOrNA(biosVersionPath)),
-		csv.Column("board_name", csv.EqualToFileContentOrNA(boardNamePath)),
-		csv.Column("board_version", csv.EqualToFileContentOrNA(boardVersionPath)),
-		csv.Column("chassis_type", csv.UInt64(), csv.EqualToFileContentOrNA(chassisTypePath)),
-		csv.Column("product_name", csv.EqualToFileContentOrNA(productNamePath)))
+		csv.ColumnWithDefault("marketing_name", croshealthd.NotApplicable, csv.MatchValue(marketingName)),
+		csv.ColumnWithDefault("bios_version", croshealthd.NotApplicable, csv.EqualToFileContent(biosVersionPath)),
+		csv.ColumnWithDefault("board_name", croshealthd.NotApplicable, csv.EqualToFileContent(boardNamePath)),
+		csv.ColumnWithDefault("board_version", croshealthd.NotApplicable, csv.EqualToFileContent(boardVersionPath)),
+		csv.ColumnWithDefault("chassis_type", croshealthd.NotApplicable, csv.EqualToFileContent(chassisTypePath)),
+		csv.ColumnWithDefault("product_name", croshealthd.NotApplicable, csv.EqualToFileContent(productNamePath)),
+		csv.Column("os_version", csv.MatchValue(osVersion)),
+		csv.Column("os_channel", csv.MatchValue(osReleaseChannel)),
+	)
 
 	if err != nil {
 		s.Error("Failed to validate CSV output: ", err)

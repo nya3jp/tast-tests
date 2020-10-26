@@ -6,7 +6,7 @@
 // extension that can interact with the Wilco DTC VM.
 package wilcoextension
 
-// ID is whitelisted in Chrome to have access to the private API.
+// ID is hardcoded in Chrome to have access to the private API.
 const ID = "emelalhagcpibaiiiijjlkmhhbekaidg"
 
 // Manifest gives the extension permissions necessary to access the private API.

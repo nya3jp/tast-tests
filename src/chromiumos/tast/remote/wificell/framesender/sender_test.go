@@ -51,7 +51,7 @@ func TestConfigToArgs(t *testing.T) {
 		},
 	}
 
-	// A dummy sender without a valid host (and also no workDir).
+	// A fake sender without a valid host (and also no workDir).
 	sender := &Sender{
 		iface: iface,
 	}

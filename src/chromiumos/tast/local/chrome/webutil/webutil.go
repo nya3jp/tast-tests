@@ -52,3 +52,17 @@ func WaitForQuiescence(ctx context.Context, conn *chrome.Conn, timeout time.Dura
 			return performance.now() >= lastEventTime + QUIESCENCE_TIMEOUT_MS;
 		})()`, timeout)
 }
+
+// WaitForRender waits for the tab connected to the given chrome.Conn is rendered.
+func WaitForRender(ctx context.Context, conn *chrome.Conn, timeout time.Duration) error {
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+	// We wait for two calls to requestAnimationFrame. When the first
+	// requestAnimationFrame is called, we know that a frame is in the
+	// pipeline. When the second requestAnimationFrame is called, we know that
+	// the first frame has reached the screen.
+	return conn.Eval(ctx, `(async () => {
+	  await new Promise(window.requestAnimationFrame);
+	  await new Promise(window.requestAnimationFrame);
+	})()`, nil)
+}

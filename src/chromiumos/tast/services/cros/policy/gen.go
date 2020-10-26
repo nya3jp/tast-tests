@@ -5,6 +5,7 @@
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. policy.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. system_timezone.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. client_certificate_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. device_minimum_version_service.proto
 
 // Package policy provides the PolicyService
 package policy

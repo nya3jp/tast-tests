@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -30,66 +31,131 @@ func init() {
 			"chromeos-audio-bugs@google.com", // Media team
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Pre:          arc.BootedWithDisableSyncFlags(),
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Params: []testing.Param{
 			{
 				Name: "default",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModeNone,
+					PerformanceMode:      audio.PerformanceModeNone,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			},
 			{
 				Name: "default_vm",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModeNone,
+					PerformanceMode:      audio.PerformanceModeNone,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			},
 			{
 				Name: "low_latency",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModeLowLatency,
+					PerformanceMode:      audio.PerformanceModeLowLatency,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			},
 			{
 				Name: "low_latency_vm",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModeLowLatency,
+					PerformanceMode:      audio.PerformanceModeLowLatency,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			},
 			{
 				Name: "power_saving",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModePowerSaving,
+					PerformanceMode:      audio.PerformanceModePowerSaving,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			},
 			{
 				Name: "power_saving_vm",
 				Val: audio.TestParameters{
-					PerformanceMode: audio.PerformanceModePowerSaving,
+					PerformanceMode:      audio.PerformanceModePowerSaving,
+					BatteryDischargeMode: setup.ForceBatteryDischarge,
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			},
+			{
+				Name: "default_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModeNone,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			},
+			{
+				Name: "default_vm_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModeNone,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			},
+			{
+				Name: "low_latency_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModeLowLatency,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			},
+			{
+				Name: "low_latency_vm_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModeLowLatency,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			},
+			{
+				Name: "power_saving_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModePowerSaving,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			},
+			{
+				Name: "power_saving_vm_nobatterymetrics",
+				Val: audio.TestParameters{
+					PerformanceMode:      audio.PerformanceModePowerSaving,
+					BatteryDischargeMode: setup.NoBatteryDischarge,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
 			},
 		},
-		Timeout: 5 * time.Minute,
+		Timeout: 10 * time.Minute,
 	})
 }
 
 // PowerAudioPlaybackPerf measures the battery drain during audio playback with different performance flags.
 func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 	const (
-		testActivity            = "org.chromium.arc.testapp.arcaudiotest.PlaybackPerformanceActivity"
-		afterBootWarmupDuration = 10 * time.Second
-		audioWarmupDuration     = 10 * time.Second
-		measureDuration         = 60 * time.Second
-		keyPerformanceMode      = "perf_mode"
-		keyDuration             = "duration"
-		playbackDurationSecond  = audioWarmupDuration + measureDuration + 10*time.Second // Add 10 seconds buffer.
+		testActivity           = "org.chromium.arc.testapp.arcaudiotest.PlaybackPerformanceActivity"
+		audioWarmupDuration    = 10 * time.Second
+		measureDuration        = 60 * time.Second
+		keyPerformanceMode     = "perf_mode"
+		keyDuration            = "duration"
+		playbackDurationSecond = audioWarmupDuration + measureDuration + 10*time.Second // Add 10 seconds buffer.
 	)
 
 	param := s.Param().(audio.TestParameters)
@@ -118,15 +184,15 @@ func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	sup.Add(setup.PowerTest(ctx, tconn, param.BatteryDischargeMode))
 
 	// Install testing app.
 	a := s.PreValue().(arc.PreData).ARC
 	sup.Add(setup.InstallApp(ctx, a, arc.APKPath(audio.Apk), audio.Pkg))
 
-	s.Log("Warmup: Waiting for Android to settle down")
-	if err := testing.Sleep(ctx, afterBootWarmupDuration); err != nil {
-		s.Fatal("Failed to sleep: ", err)
+	// Wait until CPU is cooled down.
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("CPU failed to cool down: ", err)
 	}
 
 	powerMetrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(measureDuration))

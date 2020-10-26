@@ -12,8 +12,7 @@ import (
 func TestParseGetStorageInfoOutputSimpleHealthyEMMC(t *testing.T) {
 	const out = `
   Extended CSD rev 1.8 (MMC 5.1)
-Device life time estimation type B [DEVICE_LIFE_TIME_EST_TYP_B: 0x01]
-Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x00]
+Pre EOL information [PRE_EOL_INFO: 0x01]
 `
 
 	info, err := parseGetStorageInfoOutput([]byte(out))
@@ -35,8 +34,7 @@ Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x00]
 func TestParseGetStorageInfoOutputSimpleFailingEMMC(t *testing.T) {
 	const out = `
   Extended CSD rev 1.8 (MMC 5.1)
-Device life time estimation type B [DEVICE_LIFE_TIME_EST_TYP_B: 0x01]
-Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x0A]
+Pre EOL information [PRE_EOL_INFO: 0x03]
 `
 
 	info, err := parseGetStorageInfoOutput([]byte(out))
@@ -60,6 +58,7 @@ func TestParseGetStorageInfoOutputSimpleOlderEMMC(t *testing.T) {
   Extended CSD rev 0.0 (MMC 4.5)
 Device life time estimation type B [DEVICE_LIFE_TIME_EST_TYP_B: 0x01]
 Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x00]
+Pre EOL information [PRE_EOL_INFO: 0x01]
 `
 	info, err := parseGetStorageInfoOutput([]byte(out))
 	if err == nil {
@@ -69,8 +68,8 @@ Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x00]
 
 func TestParseGetStorageInfoOutputSimpleHealthyNVMe(t *testing.T) {
 	const out = `
-	SMART/Health Information (NVMe Log 0x02, NSID 0xffffffff)
-	Percentage Used:                        25%
+        SMART/Health Information (NVMe Log 0x02, NSID 0xffffffff)
+        Percentage Used:                        25%
 `
 
 	info, err := parseGetStorageInfoOutput([]byte(out))
@@ -91,8 +90,8 @@ func TestParseGetStorageInfoOutputSimpleHealthyNVMe(t *testing.T) {
 
 func TestParseGetStorageInfoOutputSimpleFailingNVMe(t *testing.T) {
 	const out = `
-	SMART/Health Information (NVMe Log 0x02, NSID 0xffffffff)
-	Percentage Used:                        100%
+        SMART/Health Information (NVMe Log 0x02, NSID 0xffffffff)
+        Percentage Used:                        100%
 `
 
 	info, err := parseGetStorageInfoOutput([]byte(out))
@@ -113,7 +112,7 @@ func TestParseGetStorageInfoOutputSimpleFailingNVMe(t *testing.T) {
 
 func TestParseGetStorageInfoOutputSimpleHealthySSD(t *testing.T) {
 	const out = `
-	ATA Version is:   7
+        ATA Version is:   7
 ID# ATTRIBUTE_NAME          FLAGS    VALUE WORST THRESH FAIL RAW_VALUE
   5 Reallocated_Sector_Ct   -O----   100   100   000    -    0
   9 Power_On_Hours          -O----   100   100   000    -    333
@@ -139,7 +138,7 @@ ID# ATTRIBUTE_NAME          FLAGS    VALUE WORST THRESH FAIL RAW_VALUE
 
 func TestParseGetStorageInfoOutputSimpleFailingSSD(t *testing.T) {
 	const out = `
-	ATA Version is:   7
+        ATA Version is:   7
 ID# ATTRIBUTE_NAME          FLAGS    VALUE WORST THRESH FAIL RAW_VALUE
   5 Reallocated_Sector_Ct   -O----   100   100   000    -    0
   9 Power_On_Hours          -O----   100   100   000    -    333
@@ -165,7 +164,7 @@ ID# ATTRIBUTE_NAME          FLAGS    VALUE WORST THRESH FAIL RAW_VALUE
 
 func TestParseGetStorageInfoOutputSimpleHealthySSDPercentage(t *testing.T) {
 	const out = `
-	ATA Version is:   7
+        ATA Version is:   7
 Device Statistics (GP Log 0x04)
 Page  Offset Size        Value Flags Description
 0x05  =====  =               =  ===  == Temperature Statistics (rev 1) ==
@@ -204,7 +203,7 @@ Page  Offset Size        Value Flags Description
 
 func TestParseGetStorageInfoOutputSimpleFailingSSDPercentage(t *testing.T) {
 	const out = `
-	ATA Version is:   7
+        ATA Version is:   7
 Device Statistics (GP Log 0x04)
 Page  Offset Size        Value Flags Description
 0x05  =====  =               =  ===  == Temperature Statistics (rev 1) ==

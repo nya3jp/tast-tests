@@ -18,8 +18,8 @@ func init() {
 		Func: ShillStability,
 		Desc: "Checks that shill isn't respawning",
 		Contacts: []string{
-			"kirtika@chromium.org",     // Connectivity team
-			"briannorris@chromium.org", // Tast port author
+			"npoojary@chromium.org",    // Connectivity team
+			"briannorris@chromium.org", // Connectivity team
 		},
 		Attr: []string{"group:mainline"},
 	})

@@ -19,6 +19,7 @@ func init() {
 		Desc:     "Checks that ARC(VM) runs in parallel with Crostini",
 		Contacts: []string{"niwa@chromium.org", "arcvm-eng@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
+		Vars:     []string{"keepState"},
 		Timeout:  7 * time.Minute,
 		Data:     []string{crostini.ImageArtifact},
 		Pre:      crostini.StartedARCEnabled(),
@@ -40,10 +41,10 @@ func init() {
 func RunWithARC(ctx context.Context, s *testing.State) {
 	// First ensure crostini works in isolation by running a simple test.
 	cont := s.PreValue().(crostini.PreData).Container
-	if err := crostini.SimpleCommandWorks(ctx, cont); err != nil {
+	if err := crostini.BasicCommandWorks(ctx, cont); err != nil {
 		s.Fatal("Failed to run a command in the container: ", err)
 	}
-	defer crostini.RunCrostiniPostTest(ctx, cont)
+	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {

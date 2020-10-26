@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Verifies that login is workin during TPM ownership is being taken",
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"reboot", "tpm"},
-		Attr:         []string{"group:hwsec_destructive"},
+		Attr:         []string{"group:hwsec_destructive_func"},
 	})
 }
 

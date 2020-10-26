@@ -190,6 +190,21 @@ type Window struct {
 
 var defaultPollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 
+var stateToWmTypes = map[WindowStateType]WMEventType{
+	WindowStateNormal:       WMEventNormal,
+	WindowStateMinimized:    WMEventMinimize,
+	WindowStateMaximized:    WMEventMaximize,
+	WindowStateFullscreen:   WMEventFullscreen,
+	WindowStateLeftSnapped:  WMEventSnapLeft,
+	WindowStateRightSnapped: WMEventSnapRight,
+}
+
+// WMEventTypeForState returns the WMEventType to turn a window into the given
+// state.
+func WMEventTypeForState(state WindowStateType) WMEventType {
+	return stateToWmTypes[state]
+}
+
 // SetWindowState requests changing the state of the window to the requested
 // event type and returns the updated state.
 func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEventType) (WindowStateType, error) {
@@ -204,6 +219,24 @@ func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEv
 		return WindowStateNormal, err
 	}
 	return state, nil
+}
+
+// SetWindowStateAndWait requests a WMEvent to make the window for the id to be
+// in the targetState, and wait for the window animations when it happens. It
+// returns an error when it can't be in the target state. It will return nil
+// when the window is already in the target state.
+func SetWindowStateAndWait(ctx context.Context, tconn *chrome.TestConn, id int, targetState WindowStateType) error {
+	gotState, err := SetWindowState(ctx, tconn, id, stateToWmTypes[targetState])
+	if err != nil {
+		return errors.Wrap(err, "failed to set the window state")
+	}
+	if gotState != targetState {
+		return errors.Errorf("failed to set the window state: got %v want %v", gotState, targetState)
+	}
+	if err = WaitWindowFinishAnimating(ctx, tconn, id); err != nil {
+		return errors.Wrap(err, "failed to wait for the window animation")
+	}
+	return nil
 }
 
 // SetWindowBounds requests changing the bounds of the window and which display it is on to the given values.
@@ -242,6 +275,13 @@ func GetARCAppWindowInfo(ctx context.Context, tconn *chrome.TestConn, pkgName st
 	})
 }
 
+// GetAllARCAppWindowsInfo queries into Ash and returns all of the ARC windows info.
+func GetAllARCAppWindowsInfo(ctx context.Context, tconn *chrome.TestConn, pkgName string) ([]*Window, error) {
+	return FindAllWindows(ctx, tconn, func(window *Window) bool {
+		return window.ARCPackageName == pkgName
+	})
+}
+
 // GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
 func GetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName string) (WindowStateType, error) {
 	window, err := GetARCAppWindowInfo(ctx, tconn, pkgName)
@@ -249,6 +289,18 @@ func GetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName s
 		return WindowStateNormal, err
 	}
 	return window.State, nil
+}
+
+// GetAllARCAppWindowStates gets all the Chrome side window states of the ARC app windows with pkgName.
+func GetAllARCAppWindowStates(ctx context.Context, tconn *chrome.TestConn, pkgName string) (windowStates []WindowStateType, err error) {
+	windows, err := GetAllARCAppWindowsInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return windowStates, err
+	}
+	for _, window := range windows {
+		windowStates = append(windowStates, window.State)
+	}
+	return windowStates, nil
 }
 
 // WaitForARCAppWindowState waits for a window state to appear on the Chrome side. If you expect an Activity's window state
@@ -403,7 +455,7 @@ func ForEachWindow(ctx context.Context, tconn *chrome.TestConn, f func(window *W
 	}
 	for _, window := range ws {
 		if err := f(window); err != nil {
-			return err
+			return errors.Wrapf(err, "failure on window (%d) %q", window.ID, window.Title)
 		}
 	}
 	return nil
@@ -422,6 +474,20 @@ func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Win
 		}
 	}
 	return nil, ErrWindowNotFound
+}
+
+// FindAllWindows returns the Chrome windows with which the given predicate returns true.
+func FindAllWindows(ctx context.Context, tconn *chrome.TestConn, predicate func(*Window) bool) (matchingWindows []*Window, err error) {
+	windows, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get all windows")
+	}
+	for _, window := range windows {
+		if predicate(window) {
+			matchingWindows = append(matchingWindows, window)
+		}
+	}
+	return matchingWindows, nil
 }
 
 // ConnSource is an interface which allows new chrome.Conn connections to be created.
@@ -625,11 +691,13 @@ func DragToShowHomescreen(ctx context.Context, width, height input.TouchCoord, s
 	} else if !inTabletMode {
 		return errors.New("this function does not support clamshell mode")
 	}
-	windows, err := GetAllWindows(ctx, tconn)
+	windows, err := FindAllWindows(ctx, tconn, func(window *Window) bool {
+		return window.IsVisible
+	})
 	if err != nil {
 		return errors.Wrap(err, "failed to get all windows")
 	}
-	// Do nothing if there are no windows. Homescreen should be there already.
+	// Do nothing if there are no visible windows. Homescreen should be there already.
 	if len(windows) == 0 {
 		return nil
 	}

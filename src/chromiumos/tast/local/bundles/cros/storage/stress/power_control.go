@@ -17,7 +17,6 @@ import (
 const (
 	defaultSuspendTimeout    = 20 * time.Second
 	defaultSuspendWakeupTime = 30 * time.Second
-	defaultRebootTimeout     = 2 * time.Minute
 )
 
 // Suspend suspends the device for a pre-defined time and then resumes it.
@@ -35,6 +34,10 @@ func suspend(ctx context.Context, timeout, wakeup time.Duration) error {
 		"--timeout="+inSec(timeout),
 		"--wakeup_timeout="+inSec(wakeup)).Run(testexec.DumpLogOnError)
 	if err != nil {
+		if errors.Is(err, context.DeadlineExceeded) {
+			// It is a normal behavior if suspend is interrupted by context deadline.
+			return nil
+		}
 		// Device might still be trying to suspend, so need to restart.
 		restartPowerd(ctx)
 
@@ -48,13 +51,6 @@ func restartPowerd(ctx context.Context) {
 	testing.ContextLog(ctx, "Restarting powerd")
 	err := testexec.CommandContext(ctx, "restart", "powerd").Run(testexec.DumpLogOnError)
 	if err != nil {
-		testing.ContextLog(ctx, "Failed restarting DUT powerd, rebooting: ", err)
-
-		// If we fail to restart powerd, just reboot.
-		if err := testexec.CommandContext(ctx, "reboot").Run(testexec.DumpLogOnError); err != nil {
-			testing.ContextLog(ctx, "Failed restarting DUT: ", err)
-		}
-		var ch <-chan struct{}
-		<-ch // wait for reboot indefinitely
+		testing.ContextLog(ctx, "Failed restarting DUT powerd: ", err)
 	}
 }

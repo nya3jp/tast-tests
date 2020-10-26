@@ -17,10 +17,17 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// DataArtifact holds the name of the tarball which contains the lacros-chrome
-// binary. When using the StartedByData precondition, you must list this as one
-// of the data dependencies of your test.
-const DataArtifact string = "lacros_binary.tar"
+const (
+	// mojoSocketPath indicates the path of the unix socket that ash-chrome creates.
+	// This unix socket is used for getting the file descriptor needed to connect mojo
+	// from ash-chrome to lacros.
+	mojoSocketPath = "/tmp/lacros.socket"
+
+	// DataArtifact holds the name of the tarball which contains the lacros-chrome
+	// binary. When using the StartedByData precondition, you must list this as one
+	// of the data dependencies of your test.
+	DataArtifact = "lacros_binary.tar"
+)
 
 // The PreData object is made available to users of this precondition via:
 //
@@ -48,10 +55,10 @@ func startedByDataWithChromeOSChromeOptions(suffix string, opts ...chrome.Option
 	}
 }
 
-// StartedByDataWith100DummyApps is the same as StartedByData but creates 100 dummy apps that are shown in the
+// StartedByDataWith100FakeApps is the same as StartedByData but creates 100 fake apps that are shown in the
 // ChromeOS-chrome launcher.
-func StartedByDataWith100DummyApps() testing.Precondition {
-	return startedByDataWith100DummyAppsPre
+func StartedByDataWith100FakeApps() testing.Precondition {
+	return startedByDataWith100FakeAppsPre
 }
 
 // StartedByDataForceComposition is the same as StartedByData but forces composition for ChromeOS-chrome.
@@ -71,17 +78,19 @@ var startedByDataPre = &preImpl{
 	name:    "lacros_started_by_artifact",
 	timeout: chrome.LoginTimeout + 7*time.Minute,
 	mode:    download,
-	opts:    nil,
+	opts:    []chrome.Option{chrome.ExtraArgs("--lacros-mojo-socket-for-testing=" + mojoSocketPath)},
 }
 
 var startedByDataForceCompositionPre = &preImpl{
 	name:    "lacros_started_by_artifact_force_composition",
 	timeout: chrome.LoginTimeout + 7*time.Minute,
 	mode:    download,
-	opts:    []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\"")}, // Force composition.
+	opts: []chrome.Option{chrome.ExtraArgs(
+		"--lacros-mojo-socket-for-testing="+mojoSocketPath,
+		"--enable-hardware-overlays=\"\"")}, // Force composition.
 }
 
-var startedByDataWith100DummyAppsPre = ash.NewDummyAppPrecondition("dummy_apps", 100, startedByDataWithChromeOSChromeOptions, false)
+var startedByDataWith100FakeAppsPre = ash.NewFakeAppPrecondition("fake_apps", 100, startedByDataWithChromeOSChromeOptions, false)
 
 // Implementation of lacros's precondition.
 type preImpl struct {

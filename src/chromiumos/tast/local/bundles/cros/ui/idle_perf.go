@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 )
@@ -37,6 +36,18 @@ func init() {
 func IdlePerf(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(arc.PreData).Chrome
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	// Recorder with no additional config; it records and reports memory usage and
+	// CPU percents of browser/GPU processes.
+	recorder, err := cuj.NewRecorder(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to create a recorder: ", err)
+	}
+
 	conn, err := cr.NewConn(ctx, ui.PerftestURL)
 	if err != nil {
 		s.Fatal("Failed to open the new tab page: ", err)
@@ -46,22 +57,8 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	if err = conn.Close(); err != nil {
 		s.Fatal("Failed to close the connection: ", err)
 	}
-	if err = cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed to wait: ", err)
-	}
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
-
-	// Recorder with no additional config; it records and reports memory usage and
-	// CPU percents of browser/GPU processes.
-	recorder, err := cuj.NewRecorder(ctx)
-	if err != nil {
-		s.Fatal("Failed to create a recorder: ", err)
-	}
-	if err := recorder.Run(ctx, tconn, func(ctx context.Context) error {
+	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		s.Log("Just wait for 20 seconds to check the load of idle status")
 		return testing.Sleep(ctx, 20*time.Second)
 	}); err != nil {
@@ -69,7 +66,7 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	if err = recorder.Record(pv); err != nil {
+	if err = recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to report: ", err)
 	}
 	if err = pv.Save(s.OutDir()); err != nil {

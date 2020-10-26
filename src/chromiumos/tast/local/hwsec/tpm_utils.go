@@ -32,6 +32,10 @@ var highLevelTPMDaemonsToRestart = []string{
 	"tpm_managerd", "chapsd", "bootlockboxd", "attestationd", "u2fd", "cryptohomed",
 }
 
+var optionalDaemons = map[string]struct{}{
+	"u2fd": {},
+}
+
 // OOBE and TPM-related files that should be cleared after TPM is soft-cleared.
 var filesToRemove = []string{
 	"/mnt/stateful_partition/.tpm_owned",
@@ -99,6 +103,7 @@ func ResetTPMAndSystemStates(ctx context.Context) (firstErr error) {
 	// trunksd is needed by the tpm_softclear command below and is stopped/started separately.
 	copyOfHighLevelDaemons := append([]string(nil), highLevelTPMDaemonsToRestart...)
 	jobsToRestart := append(copyOfHighLevelDaemons, "ui")
+	jobsToRestart = removeOptionaNotExistJobs(ctx, jobsToRestart)
 
 	defer func() {
 		if err := ensureJobsStarted(ctx, jobsToRestart); err != nil {
@@ -160,6 +165,7 @@ func RestartTPMDaemons(ctx context.Context) (firstErr error) {
 	// Trunksd must restart first prior to other TPM daemons.
 	daemonsToRestart := append([]string{trunksd}, highLevelTPMDaemonsToRestart...)
 	daemonsToStop := reverseStringSlice(daemonsToRestart)
+	daemonsToStop = removeOptionaNotExistJobs(ctx, daemonsToStop)
 
 	defer func() {
 		if err := ensureJobsStarted(ctx, daemonsToRestart); err != nil {
@@ -255,6 +261,20 @@ func reverseStringSlice(elements []string) []string {
 	}
 
 	return newElements
+}
+
+// removeOptionaNotExistJobs returns the slice without optional none exists jobs. This function doesn't change the input slice.
+func removeOptionaNotExistJobs(ctx context.Context, jobs []string) []string {
+	var newJobs []string
+
+	for _, job := range jobs {
+		_, optional := optionalDaemons[job]
+		if !optional || upstart.JobExists(ctx, job) {
+			newJobs = append(newJobs, job)
+		}
+	}
+
+	return newJobs
 }
 
 // resetDaemonsAndSystemStates removes TPM-related caches, device policies, and local states.

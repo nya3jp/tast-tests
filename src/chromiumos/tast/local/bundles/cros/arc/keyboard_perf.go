@@ -6,12 +6,10 @@ package arc
 
 import (
 	"context"
-	"encoding/json"
 	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arc/inputlatency"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
@@ -20,15 +18,20 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     KeyboardPerf,
-		Desc:     "Test ARC keyboard system performance",
-		Contacts: []string{"arc-performance@google.com", "wvk@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
-		// TODO(wvk): Once clocks are synced between the host and guest, add
-		// support for ARCVM to this test (b/123416853).
-		SoftwareDeps: []string{"chrome", "android_p"},
-		Pre:          arc.Booted(),
-		Timeout:      2 * time.Minute,
+		Func:         KeyboardPerf,
+		Desc:         "Test ARC keyboard system performance",
+		Contacts:     []string{"arc-performance@google.com", "wvk@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		SoftwareDeps: []string{"chrome"},
+		Data:         inputlatency.AndroidData(),
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+		Pre:     arc.Booted(),
+		Timeout: 2 * time.Minute,
 	})
 }
 
@@ -40,7 +43,7 @@ func KeyboardPerf(ctx context.Context, s *testing.State) {
 	}
 
 	a := s.PreValue().(arc.PreData).ARC
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Could not initialize UI Automator: ", err)
 	}
@@ -51,6 +54,10 @@ func KeyboardPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to create virtual keyboard: ", err)
 	}
 	defer kbd.Close()
+
+	if err := inputlatency.InstallArcHostClockClient(ctx, a, s); err != nil {
+		s.Fatal("Could not install arc-host-clock-client: ", err)
+	}
 
 	const (
 		apkName      = "ArcInputLatencyTest.apk"
@@ -79,55 +86,31 @@ func KeyboardPerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Injecting key events")
-	const numEvents = 50
+	const (
+		numEvents = 50
+		waitMS    = 50
+	)
 	eventTimes := make([]int64, 0, numEvents)
 	for i := 0; i < numEvents; i += 2 {
-		eventTimes = append(eventTimes, time.Now().UnixNano()/1000000)
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
+			s.Fatal("Failed to generate event time: ", err)
+		}
 		if err := kbd.AccelPress(ctx, "a"); err != nil {
 			s.Fatal("Unable to inject key events: ", err)
 		}
 
-		eventTimes = append(eventTimes, time.Now().UnixNano()/1000000)
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
+			s.Fatal("Failed to generate event time: ", err)
+		}
 		if err := kbd.AccelRelease(ctx, "a"); err != nil {
 			s.Fatal("Unable to inject key events: ", err)
 		}
 	}
 
-	s.Log("Collecting results")
-	txt, err := inputlatency.WaitForEvents(ctx, d, numEvents)
-	if err != nil {
-		s.Fatal("Unable to wait for events: ", err)
-	}
-	var events []inputlatency.InputEvent
-	if err := json.Unmarshal([]byte(txt), &events); err != nil {
-		s.Fatal("Could not unmarshal events from app: ", err)
-	}
-
-	// Add RTCEventTime to inputEvents. We assume the order and number of events in the log
-	// is the same as eventTimes.
-	if len(events) != len(eventTimes) {
-		s.Fatal("There are events missing from the log")
-	}
-	for i := range events {
-		events[i].RTCEventTime = eventTimes[i]
-	}
-
-	mean, median, stdDev, max, min := inputlatency.CalculateMetrics(events, func(i int) float64 {
-		return float64(events[i].Latency)
-	})
-	s.Logf("Keyboard latency: mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
-
-	rmean, rmedian, rstdDev, rmax, rmin := inputlatency.CalculateMetrics(events, func(i int) float64 {
-		return float64(events[i].RTCRecvTime - events[i].RTCEventTime)
-	})
-	s.Logf("Keyboard RTC latency: mean %f median %f std %f max %f min %f", rmean, rmedian, rstdDev, rmax, rmin)
-
 	pv := perf.NewValues()
-	pv.Set(perf.Metric{
-		Name:      "avgKeyboardLatency",
-		Unit:      "milliseconds",
-		Direction: perf.SmallerIsBetter,
-	}, mean)
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgKeyboardLatency", pv); err != nil {
+		s.Fatal("Failed to evaluate: ", err)
+	}
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data: ", err)
 	}

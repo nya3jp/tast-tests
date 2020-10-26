@@ -31,11 +31,16 @@ const (
 	TelemCategoryCPU               TelemCategory = "cpu"
 	TelemCategoryFan               TelemCategory = "fan"
 	TelemCategoryMemory            TelemCategory = "memory"
+	TelemCategoryNetwork           TelemCategory = "network"
 	TelemCategoryStatefulPartition TelemCategory = "stateful_partition"
 	TelemCategoryStorage           TelemCategory = "storage"
 	TelemCategorySystem            TelemCategory = "system"
 	TelemCategoryTimezone          TelemCategory = "timezone"
 )
+
+// NotApplicable is the value printed for optional fields when they aren't
+// populated.
+const NotApplicable = "N/A"
 
 // RunTelem runs cros-health-tool's telem command with the given category and
 // returns the output. It also dumps the output to a file for debugging. An

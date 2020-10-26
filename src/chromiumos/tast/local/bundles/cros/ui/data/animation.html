@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+     <head>
+      <style>
+html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+      border: 0;
+      overflow: hidden; /*  Disable scrollbars */
+      display: block;  /* No floating content on sides */
+    }
+      </style>
+   </head>
+   <body>
+      <canvas id = "canvas" style='position:absolute; left:0px; top:0px;'></canvas>
+  <script id="vertex_shader" type="not-javascript">
+    uniform float vs_t;
+    uniform int vs_grid_size;
+    uniform mat4 vs_proj;
+    uniform mat4 vs_view;
+    uniform mat4 vs_model;
+                attribute float vs_vertex;
+    varying vec4 color;
+
+void translate(vec3 translation, out mat4 matrix) {
+  matrix = mat4(1,0,0,0, 0,1,0,0, 0,0,1,0, translation.xyz,1);
+}
+
+void rotateX(float angle, out mat4 matrix) {
+  float rad = radians(angle);
+  float c = cos(rad);
+  float s = sin(rad);
+  matrix = mat4(1,0,0,0, 0,c,s,0, 0,-s,c,0, 0,0,0,1);
+}
+
+void rotateY(float angle, out mat4 matrix) {
+  float rad = radians(angle);
+  float c = cos(rad);
+  float s = sin(rad);
+  matrix = mat4(c,0,-s,0, 0,1,0,0, s,0,c,0, 0,0,0,1);
+}
+
+void rotateZ(float angle, out mat4 matrix) {
+  float rad = radians(angle);
+  float c = cos(rad);
+  float s = sin(rad);
+  matrix = mat4(c,s,0,0, -s,c,0,0, 0,0,1,0, 0,0,0,1);
+}
+
+void scale(vec3 s, out mat4 matrix) {
+  matrix = mat4(s[0],0,0,0, 0,s[1],0,0, 0,0,s[2],0, 0,0,0,1);
+}
+
+float diffuse(vec3 light_normal, vec3 vertex_normal){
+  float cosine = dot(normalize(-light_normal), normalize(vertex_normal));
+  clamp(cosine, 0.0, 1.0);
+  return cosine;
+}
+
+int modulo(int a, int b) {
+  return int(mod(float(a), float(b))+0.5);
+}
+
+void getPosAndColor(int index, int grid_size, float t, out vec4 out_pos, out vec4 color) {
+  vec3 vertices[8];
+  vertices[0] = vec3(1,1,1);vertices[1] = vec3(-1,1,1);
+  vertices[2] = vec3(-1,-1,1);vertices[3] = vec3(1,-1,1);
+  vertices[4] = vec3(1,1,-1);vertices[5] = vec3(-1,1,-1);
+  vertices[6] = vec3(-1,-1,-1);vertices[7] = vec3(1,-1,-1);
+
+  vec3 normals[6];
+  normals[0] = vec3(0,0,1);normals[1] = vec3(0,1,0);
+  normals[2] = vec3(0,-1,0);normals[3] = vec3(0,0,-1);
+  normals[4] = vec3(-1,0,0);normals[5] = vec3(1,0,0);
+
+  ivec3 indices[12];
+  indices[0] = ivec3(0,3,1); indices[1] = ivec3(2,1,3);
+  indices[2] = ivec3(0,1,5); indices[3] = ivec3(5,4,0);
+  indices[4] = ivec3(2,3,6); indices[5] = ivec3(3,7,6);
+  indices[6] = ivec3(4,5,6); indices[7] = ivec3(4,6,7);
+  indices[8] = ivec3(1,2,6); indices[9] = ivec3(1,6,5);
+  indices[10] = ivec3(3,0,7); indices[11] = ivec3(4,7,0);
+
+  vec3 top_left = vec3(0.8,0,0.55);
+  vec3 top_right = vec3(0.9,0.6,0.25);
+  vec3 bottom_left = vec3(0.5,0,0.5);
+  vec3 bottom_right = vec3(0.7,0,0.45);
+
+  vec3 quad_colors[6];
+  quad_colors[0] = top_right; quad_colors[1] = bottom_right;
+  quad_colors[2] = top_left; quad_colors[3] = bottom_left;
+  quad_colors[4] = top_left; quad_colors[5] = bottom_right;
+  float multi = 1.0;
+
+  if (index < 6) {
+    int a = index /3;
+    int b= modulo(index, 3);
+                int vertex_index;
+                for (int i = 0; i < 2; ++i){
+                  for (int j =0; j < 3; ++j) {
+                      if (i == a && j == b){
+                        vertex_index = indices[i][j];
+                        break;
+                      }
+                  }
+                }
+                for (int i = 0; i < 8; ++i) {
+                  if (i == vertex_index){
+                    out_pos = vec4(vertices[i], 1);
+                    break;
+                  }
+                }
+                for (int i = 0; i < 6; ++i) {
+                  if (i == index)
+                   color = clamp(vec4(quad_colors[i]*multi,1),vec4(0),vec4(1));
+                }
+    out_pos.z = 1.0;
+    return;
+  }
+
+  int adjusted_index = index -6;
+  int m = modulo(adjusted_index, 36);
+  int quad_id = m / 6;
+  int vertex_id = 0;//indices[m / 3][modulo(m,3)];
+        for (int i = 0; i < 12; ++i) {
+          for (int j = 0; j < 3; ++j) {
+            if (m/3 == i && modulo(m,3) == j){
+              vertex_id = indices[i][j];
+              break;
+            }
+          }
+        }
+
+        for (int i = 0; i < 8; ++i){
+          if (vertex_id == i){
+          out_pos = vec4(vertices[i], 1);
+                break;
+          }
+        }
+  int coord = (adjusted_index - m) / 36;
+  float y = float(coord / grid_size);
+  float x = mod(float(coord), float(grid_size));
+  float z = 3.0 *sin(0.18*(t+x + /*sin(0.05*t)*/y));
+
+  float r = abs(sin(0.004*t+radians(90.0)));
+  float g = abs(sin(0.002*t + radians(25.0)));
+  float b = abs(sin(0.003*t + radians(45.0)));
+
+  color = vec4(r,g,b,0.1);
+
+  mat4 tmat;
+  mat4 rmat;
+  mat4 mat;
+  rotateZ(0.63*t+45.0, mat);
+  rmat = mat;
+  rotateY(0.5*t+60.0, mat);
+  rmat *= mat;
+  rotateX(0.8*t + 45.0, mat);
+  rmat *= mat;
+  float distance = 5.0;
+  translate(vec3(float(x)*distance+sin(0.01*t),float(y)*distance+cos(0.01*t),z), tmat);
+  vec4 out_pos4 = tmat *rmat*out_pos;
+
+        vec3 quad_normal;
+        for (int i = 0; i < 6; ++i){
+          if (i == quad_id)
+      quad_normal = (rmat * vec4(normals[i],1)).xyz;
+        }
+  vec3 light[4];
+  light[0] = vec3(1,0,-1);
+  light[1] = vec3(-1,0,-1);
+  light[2] = vec3(0,1,-1);
+  light[3] = vec3(0,-1,-1);
+  float diff = 0.0;
+  for (int i = 0; i < 4; ++i) {
+    diff += diffuse(light[i], quad_normal);
+  }
+  diff /=4.0;
+  color = vec4(color.xyz* pow(diff,1.0), 0.5);
+
+  translate(vec3(-float(grid_size)*distance/2.0, -float(grid_size)*distance/2.0,0.0), tmat);
+  rotateZ(abs(sin(0.2)* t),rmat);
+  out_pos = rmat * tmat * out_pos4;
+}
+
+void main() {
+  vec4 pos;
+  getPosAndColor(int(vs_vertex),vs_grid_size, vs_t, pos, color);
+  gl_Position = vs_proj*vs_view*vs_model*pos;
+  if (vs_vertex < 6.0)
+    gl_Position = pos;
+}
+  </script>
+  <script id="fragment_shader" type="not-javascript">
+    precision mediump float;
+    varying vec4 color;
+    void main() {
+      gl_FragColor = color;
+    }
+  </script>
+  <script src="./animation.js">
+  </script>
+   </body>
+</html>

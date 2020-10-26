@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -63,10 +63,12 @@ type Feature string
 
 // List of accessibility features that interacts with ARC.
 const (
-	SpokenFeedback Feature = "spokenFeedback"
-	SwitchAccess           = "switchAccess"
-	SelectToSpeak          = "selectToSpeak"
-	FocusHighlight         = "focusHighlight"
+	SpokenFeedback  Feature = "spokenFeedback"
+	SwitchAccess            = "switchAccess"
+	SelectToSpeak           = "selectToSpeak"
+	FocusHighlight          = "focusHighlight"
+	DockedMagnifier         = "dockedMagnifier"
+	ScreenMagnifier         = "screenMagnifier"
 )
 
 // focusedNode returns the currently focused node of ChromeVox.
@@ -191,10 +193,10 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
 
-	if err := audio.Mute(ctx); err != nil {
+	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute device: ", err)
 	}
-	defer audio.Unmute(fullCtx)
+	defer crastestclient.Unmute(fullCtx)
 
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC
@@ -216,7 +218,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 
 	cvconn, err := waitForSpokenFeedbackReady(ctx, cr, a)
 	if err != nil {
-		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
+		s.Fatal(err) // NOLINT: adb/ui returns loggable errors
 	}
 	defer cvconn.Close()
 
@@ -253,9 +255,8 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 
 			if err := func() error {
 				if err = WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
-					ClassName: TextView,
-					Name:      activity.Title,
-					Role:      ui.RoleTypeStaticText,
+					Name: activity.Title,
+					Role: ui.RoleTypeApplication,
 				}, 10*time.Second); err != nil {
 					return errors.Wrap(err, "failed to wait for initial ChromeVox focus")
 				}

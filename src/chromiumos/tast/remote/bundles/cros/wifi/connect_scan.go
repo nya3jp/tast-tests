@@ -11,30 +11,29 @@ import (
 	"reflect"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/network/ip"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ConnectScan,
-		Desc:         "Verifies that the 802.11 probe frames with expected SSIDs are seen over-the-air when connecting to WiFi",
-		Contacts:     []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:         []string{"group:wificell", "wificell_func"},
-		ServiceDeps:  []string{wificell.TFServiceName},
-		Pre:          wificell.TestFixturePreWithCapture(),
-		Vars:         []string{"router", "pcap"},
-		HardwareDeps: hwdep.D(hwdep.WifiMACAddrRandomize()),
+		Func:        ConnectScan,
+		Desc:        "Verifies that the 802.11 probe frames with expected SSIDs are seen over-the-air when connecting to WiFi",
+		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
+		Attr:        []string{"group:wificell", "wificell_func"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePreWithCapture(),
+		Vars:        []string{"router", "pcap"},
 		Params: []testing.Param{
 			{
 				Name:      "hidden",
@@ -82,18 +81,31 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
-	// Disable MAC randomization as we're filtering the packets with MAC address.
-	resp, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: false})
-	if err != nil {
-		s.Fatal("Failed to disable MAC randomization: ", err)
-	}
-	defer func(ctx context.Context) {
-		if _, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: resp.OldSetting}); err != nil {
-			s.Errorf("Failed to restore MAC randomization to %t: %v", resp.OldSetting, err)
+	// If MAC randomization setting is supported, disable MAC randomization
+	// as we're filtering the packets with MAC address.
+	if supResp, err := tf.WifiClient().MACRandomizeSupport(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to get if MAC randomization is supported: ", err)
+	} else if supResp.Supported {
+		resp, err := tf.WifiClient().GetMACRandomize(ctx, &empty.Empty{})
+		if err != nil {
+			s.Fatal("Failed to get MAC randomization setting: ", err)
 		}
-	}(ctx)
-	ctx, cancel = ctxutil.Shorten(ctx, time.Second)
-	defer cancel()
+		if resp.Enabled {
+			ctxRestore := ctx
+			ctx, cancel = ctxutil.Shorten(ctx, time.Second)
+			defer cancel()
+			_, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: false})
+			if err != nil {
+				s.Fatal("Failed to disable MAC randomization: ", err)
+			}
+			// Restore the setting when exiting.
+			defer func(ctx context.Context) {
+				if _, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: true}); err != nil {
+					s.Error("Failed to re-enable MAC randomization: ", err)
+				}
+			}(ctxRestore)
+		}
+	}
 
 	// Get the MAC address of WiFi interface.
 	iface, err := tf.ClientInterface(ctx)
@@ -107,7 +119,7 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 	}
 
 	apOps := s.Param().([]hostapd.Option)
-	pcapPath, apConf, err := connectAndCollectPcap(ctx, tf, "pcap", apOps)
+	pcapPath, apConf, err := wifiutil.ConnectAndCollectPcap(ctx, tf, "pcap", apOps)
 	if err != nil {
 		s.Fatal("Failed to collect packet: ", err)
 	}
@@ -130,9 +142,6 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read packets: ", err)
 	}
 	s.Logf("Total %d probe requests found", len(packets))
-	if len(packets) == 0 {
-		s.Fatal("No probe request captured")
-	}
 
 	ssidSet := make(map[string]struct{})
 	for _, p := range packets {
@@ -142,10 +151,6 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 		}
 		ssid, err := pcap.ParseProbeReqSSID(layer.(*layers.Dot11MgmtProbeReq))
 		if err != nil {
-			// Let's be strict here as we've filtered source MAC and
-			// packets with invalid FCS, so we don't expect malformed
-			// packets here.
-			s.Errorf("Malformed probe request %v: %v", layer, err)
 			continue
 		}
 		ssidSet[ssid] = struct{}{}
@@ -175,61 +180,4 @@ func ConnectScan(ctx context.Context, s *testing.State) {
 			}
 		}
 	}
-}
-
-// connectAndCollectPcap sets up a WiFi AP and then asks DUT to connect.
-// The path to the packet file and the config of the AP is returned.
-// Note: This function assumes that TestFixture spawns Capturer for us.
-func connectAndCollectPcap(ctx context.Context, tf *wificell.TestFixture, name string, apOps []hostapd.Option) (pcapPath string, apConf *hostapd.Config, err error) {
-	// As we'll collect pcap file after APIface and Capturer closed, run it
-	// in an inner function so that we can clean up easier with defer.
-	capturer, conf, err := func(ctx context.Context) (ret *pcap.Capturer, retConf *hostapd.Config, retErr error) {
-		collectFirstErr := func(err error) {
-			if retErr == nil {
-				ret = nil
-				retConf = nil
-				retErr = err
-			}
-			testing.ContextLog(ctx, "Error in connectAndCollectPcap: ", err)
-		}
-
-		testing.ContextLog(ctx, "Configuring WiFi to connect")
-		ap, err := tf.ConfigureAP(ctx, apOps, nil)
-		if err != nil {
-			return nil, nil, errors.Wrap(err, "failed to configure AP")
-		}
-		defer func(ctx context.Context) {
-			if err := tf.DeconfigAP(ctx, ap); err != nil {
-				collectFirstErr(errors.Wrap(err, "failed to deconfig AP"))
-			}
-		}(ctx)
-		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
-		defer cancel()
-
-		testing.ContextLog(ctx, "Connecting to WiFi")
-		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
-			return nil, nil, err
-		}
-		defer func(ctx context.Context) {
-			if err := tf.CleanDisconnectWifi(ctx); err != nil {
-				collectFirstErr(errors.Wrap(err, "failed to disconnect"))
-			}
-		}(ctx)
-		ctx, cancel = tf.ReserveForDisconnect(ctx)
-		defer cancel()
-
-		capturer, ok := tf.Capturer(ap)
-		if !ok {
-			return nil, nil, errors.New("cannot get the capturer from TestFixture")
-		}
-		return capturer, ap.Config(), nil
-	}(ctx)
-	if err != nil {
-		return "", nil, err
-	}
-	pcapPath, err = capturer.PacketPath(ctx)
-	if err != nil {
-		return "", nil, err
-	}
-	return pcapPath, conf, nil
 }

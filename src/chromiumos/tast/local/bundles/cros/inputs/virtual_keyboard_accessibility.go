@@ -20,9 +20,16 @@ func init() {
 		Func:         VirtualKeyboardAccessibility,
 		Desc:         "Checks that the accessibility keyboard displays correctly",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: pre.InputsStableModels,
+		Params: []testing.Param{{
+			Name:              "stable",
+			ExtraHardwareDeps: pre.InputsStableModels,
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
@@ -51,7 +58,7 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Enabling the accessibility keyboard")
-	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.a11y.virtual_keyboard", true); err != nil {
+	if err := vkb.EnableA11yVirtualKeyboard(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to enable the accessibility keyboard: ", err)
 	}
 
@@ -59,14 +66,8 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
 
-	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-
-	s.Log("Waiting for the virtual keyboard to render buttons")
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed to wait for virtual keyboard ready: ", err)
 	}
 
 	// Check that the keyboard has modifier and tab keys.

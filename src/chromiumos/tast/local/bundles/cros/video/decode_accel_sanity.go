@@ -33,9 +33,9 @@ func init() {
 			Val:       "vda_sanity-bear_profile2.vp9",
 			ExtraAttr: []string{"informational"},
 			ExtraData: []string{"vda_sanity-bear_profile2.vp9", "vda_sanity-bear_profile2.vp9.json"},
-			// The "vp9_sanity" SoftwareDeps is a whitelist used to filter out devices that are
+			// The "vp9_sanity" SoftwareDeps is an allowlist used to filter out devices that are
 			// known to be unstable when encountering unexpected features in a VP9 video stream.
-			// The whitelist is used to avoid crashes on devices that are not expected to be fixed
+			// The allowlist is used to avoid crashes on devices that are not expected to be fixed
 			// soon, as device crashes affect all subsequent test runs. Currently RK3399 devices
 			// may crash so they are excluded. See crbug.com/971032 for details.
 			ExtraSoftwareDeps: []string{"vp9_sanity"},

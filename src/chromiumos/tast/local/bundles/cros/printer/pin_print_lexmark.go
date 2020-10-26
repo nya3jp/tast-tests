@@ -7,7 +7,7 @@ package printer
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/printer/pinprint"
+	"chromiumos/tast/local/bundles/cros/printer/ippprint"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -22,38 +22,37 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data: []string{
-			"printer_pin_print_Lexmark.ppd",
+			"printer_Lexmark.ppd",
 			"to_print.pdf",
 		},
-		Attr: []string{"group:mainline"},
+		// TODO(crbug.com/1131304): Mark as informational until the test can be fixed.
+		Attr: []string{"group:mainline", "informational"},
 		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "no_pin",
-			Val: &pinprint.Params{
-				PpdFile:      "printer_pin_print_Lexmark.ppd",
+			Val: &ippprint.Params{
+				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_lexmark_no_pin_golden.ps",
 				OutDiffFile:  "no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_lexmark_no_pin_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "pin",
-			Val: &pinprint.Params{
-				PpdFile:      "printer_pin_print_Lexmark.ppd",
+			Val: &ippprint.Params{
+				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_lexmark_pin_golden.ps",
 				OutDiffFile:  "pin_diff.txt",
-				Options:      []pinprint.Option{pinprint.WithJobPassword("1234")},
+				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_lexmark_pin_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
 
 func PinPrintLexmark(ctx context.Context, s *testing.State) {
-	testOpt := s.Param().(*pinprint.Params)
+	testOpt := s.Param().(*ippprint.Params)
 
-	pinprint.Run(ctx, s, testOpt)
+	ippprint.Run(ctx, s, testOpt)
 }

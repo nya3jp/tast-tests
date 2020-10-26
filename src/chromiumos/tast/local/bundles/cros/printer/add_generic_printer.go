@@ -7,7 +7,7 @@ package printer
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/printer/addtest"
+	"chromiumos/tast/local/bundles/cros/printer/lpprint"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -43,5 +43,5 @@ func AddGenericPrinter(ctx context.Context, s *testing.State) {
 	// golden data and actual request in case of failure.
 	const diffFile = "printer_add_generic_printer_diff.txt"
 
-	addtest.Run(ctx, s, genericPPDFile, genericToPrintFile, genericGoldenFile, diffFile)
+	lpprint.Run(ctx, s, genericPPDFile, genericToPrintFile, genericGoldenFile, diffFile)
 }

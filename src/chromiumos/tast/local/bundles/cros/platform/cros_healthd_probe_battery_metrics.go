@@ -105,12 +105,12 @@ func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 
 		s.Logf("Value for %v: %v", e.key, value)
 		if hasSmartInfo {
-			if value == "NA" || value == e.zeroFmt {
+			if value == croshealthd.NotApplicable || value == e.zeroFmt {
 				s.Error("Invalid value for ", e.key)
 			}
 		} else {
-			if value != "NA" {
-				s.Errorf("Value for %v should be NA", e.key)
+			if value != croshealthd.NotApplicable {
+				s.Errorf("Value for %v should be N/A", e.key)
 			}
 		}
 	}

@@ -109,3 +109,21 @@ func (a *Adapter) Name(ctx context.Context) (string, error) {
 	}
 	return name, nil
 }
+
+// StartDiscovery starts a discovery on the adapter.
+func (a *Adapter) StartDiscovery(ctx context.Context) error {
+	c := a.obj.CallWithContext(ctx, adapterIface+".StartDiscovery", 0)
+	if c.Err != nil {
+		return errors.Wrap(c.Err, "failed to start discovery")
+	}
+	return nil
+}
+
+// StopDiscovery stops the discovery on the adapter.
+func (a *Adapter) StopDiscovery(ctx context.Context) error {
+	c := a.obj.CallWithContext(ctx, adapterIface+".StopDiscovery", 0)
+	if c.Err != nil {
+		return errors.Wrap(c.Err, "failed to stop discovery")
+	}
+	return nil
+}

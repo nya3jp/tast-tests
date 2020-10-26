@@ -124,8 +124,10 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Finished setup")
 
-	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		s.Fatal("Failed to cool down: ", err)
+	// Wait until CPU is cooled down.
+	cooldownTime, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI)
+	if err != nil {
+		s.Fatal("CPU failed to cool down: ", err)
 	}
 
 	if err := metrics.Start(ctx); err != nil {
@@ -144,6 +146,9 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Error while recording power metrics: ", err)
 	}
+
+	cooldownTimeMetric := perf.Metric{Name: "cooldown_time", Unit: "ms", Direction: perf.SmallerIsBetter}
+	p.Set(cooldownTimeMetric, float64(cooldownTime.Milliseconds()))
 
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)

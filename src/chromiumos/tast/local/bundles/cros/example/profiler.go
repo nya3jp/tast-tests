@@ -29,9 +29,16 @@ func Profiler(ctx context.Context, s *testing.State) {
 		}),
 		profiler.VMStat(nil)}
 
+	var perfStatOutput profiler.PerfStatOutput
+	runPerf := false
+
 	// TODO(crbug.com/996728): aarch64 is disabled before the kernel crash is fixed.
 	if u, err := sysutil.Uname(); err == nil && u.Machine != "aarch64" {
-		profs = append(profs, profiler.Perf(&profiler.PerfOpts{Type: profiler.PerfStat}))
+		profs = append(profs, profiler.Perf(profiler.PerfStatRecordOpts()))
+
+		// Get CPU cycle count for all processes.
+		profs = append(profs, profiler.Perf(profiler.PerfStatOpts(&perfStatOutput, profiler.PerfAllProcs)))
+		runPerf = true
 	}
 
 	p, err := profiler.Start(ctx, s.OutDir(), profs...)
@@ -41,7 +48,10 @@ func Profiler(ctx context.Context, s *testing.State) {
 
 	defer func() {
 		if err := p.End(); err != nil {
-			s.Fatal("Failure in ending the profiler: ", err)
+			s.Error("Failure in ending the profiler: ", err)
+		}
+		if runPerf {
+			s.Log("All CPU cycle count per second: ", perfStatOutput.CyclesPerSecond)
 		}
 	}()
 

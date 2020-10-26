@@ -7,7 +7,10 @@ package arc
 import (
 	"context"
 	"image/color"
+	"path/filepath"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome/ash"
@@ -18,10 +21,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         QuarterSizedWindowZooming,
-		Desc:         "Check quarter-sized window zooming feature is working properly",
-		Contacts:     []string{"cuicuiruan@google.com", "ricardoq@google.com", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     QuarterSizedWindowZooming,
+		Desc:     "Check quarter-sized window zooming feature is working properly",
+		Contacts: []string{"cuicuiruan@google.com", "ricardoq@google.com", "arc-framework+tast@google.com"},
+		// Disable test until it can be fixed: https://crbug.com/1038163
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 	})
@@ -43,7 +47,7 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	if err := arc.BootstrapCommand(ctx, "/system/bin/setprop", quarterSizeSetting, "whitelist").Run(testexec.DumpLogOnError); err != nil {
+	if err := arc.BootstrapCommand(ctx, "/system/bin/setprop", quarterSizeSetting, "allowlist").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to set developer option: ", err)
 	}
 	defer arc.BootstrapCommand(ctx, "/system/bin/setprop", quarterSizeSetting, "default").Run(testexec.DumpLogOnError)
@@ -52,7 +56,33 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
 	}
-	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+	if tabletModeEnabled {
+		// Wait for set device to clamshell mode.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+				return err
+			}
+			tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+			if err != nil {
+				return err
+			}
+			if tabletModeEnabled {
+				return errors.New("failed to set device to clamshell mode")
+			}
+			return nil
+		}, nil); err != nil {
+			s.Fatal("Failed to set device to clamshell mode: ", err)
+		}
+
+		defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+		// TODO(ricardoq): Wait for "tablet mode animation is finished" in a reliable way.
+		// If an activity is launched while the tablet mode animation is active, the activity
+		// will be launched in an undefined state, making the test flaky.
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to wait until tablet-mode animation finished: ", err)
+		}
+	}
 
 	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
 		s.Fatal("Failed to install app: ", err)
@@ -69,8 +99,8 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 	}
 	defer act.Stop(ctx, tconn)
 
-	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to set tablet mode enabled to false: ", err)
+	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+		s.Fatal("Failed to wait for QuarterSizedWindowZooming activity visible: ", err)
 	}
 
 	if err := act.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
@@ -83,17 +113,15 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 
 	// Wait for window finishing animating before taking screenshot,
 	// or the line color will be off as expected.
-	windows, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to obtain the window list: ", err)
-	}
-	// Only one Activity is open in this test, so control the window length to 1 and
-	// the first window is expected.
-	if len(windows) != 1 {
-		s.Fatalf("Unexpected window length: got %d, want 1", len(windows))
-	}
-	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, info.ID); err != nil {
 		s.Fatal("Failed to wait for top window animation: ", err)
+	}
+
+	// TODO(ruanc): Waiting for one second before taking screenshot.
+	// The drawing is more stable after one second. Not sure about the root cause yet. (https://crbug.com/1123620)
+	if err := testing.Sleep(ctx, time.Second); err != nil {
+		s.Fatal("Failed to wait until tablet-mode animation finished: ", err)
 	}
 
 	img, err := screenshot.GrabScreenshot(ctx, cr)
@@ -123,11 +151,21 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 			if i%4 == 0 || i%4 == 1 {
 				// Should be black.
 				if !colorcmp.ColorsMatch(img.At(rect.Min.X+j, rect.Min.Y+i), black, colorMaxDiff) {
+					path := filepath.Join(s.OutDir(), "screenshot_fail.png")
+					if err := screenshot.DumpImageToPNG(ctx, &img, path); err != nil {
+						s.Fatal("Failed to create screenshot: ", err)
+					}
+					s.Logf("Screenshot image for failed test created in: %s", path)
 					s.Fatal("Feature does not work properly: expect black but: ", rect.Min.X+j, rect.Min.Y+i, img.At(rect.Min.X+j, rect.Min.Y+i))
 				}
 			} else {
 				// Should be white.
 				if !colorcmp.ColorsMatch(img.At(rect.Min.X+j, rect.Min.Y+i), white, colorMaxDiff) {
+					path := filepath.Join(s.OutDir(), "screenshot_fail.png")
+					if err := screenshot.DumpImageToPNG(ctx, &img, path); err != nil {
+						s.Fatal("Failed to create screenshot: ", err)
+					}
+					s.Logf("Screenshot image for failed test created in: %s", path)
 					s.Fatal("Feature does not work properly: expect white but: ", rect.Min.X+j, rect.Min.Y+i, img.At(rect.Min.X+j, rect.Min.Y+i))
 				}
 			}

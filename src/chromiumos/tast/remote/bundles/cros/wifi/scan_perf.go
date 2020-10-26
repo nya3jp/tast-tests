@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remoteiw "chromiumos/tast/remote/network/iw"
@@ -23,39 +24,31 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ScanPerf,
-		Desc:     "Measure BSS scan performance in various setup",
-		Contacts: []string{"deanliao@google.com", "chromeos-platform-connectivity@google.com"},
-		// TODO(b/158433447): Run in a group for wificell-dependent perf tests.
+		Func:        ScanPerf,
+		Desc:        "Measure BSS scan performance in various setup",
+		Contacts:    []string{"deanliao@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_perf"},
-		ServiceDeps: []string{"tast.cros.network.WifiService"},
-		Vars:        []string{"router"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePre(),
+		Vars:        []string{"router", "pcap"},
 	})
 }
 
-// Upper bounds for different scan methods.
-const (
-	fgSingleChannelScanTimeout = time.Second
-	fgFullScanTimeout          = 10 * time.Second
-	bgFullScanTimeout          = 15 * time.Second
-)
-
 func ScanPerf(ctx context.Context, s *testing.State) {
-	var tfOps []wificell.TFOption
-	if router, _ := s.Var("router"); router != "" {
-		tfOps = append(tfOps, wificell.TFRouter(router))
-	}
+	// Upper bounds for different scan methods.
+	const (
+		fgSingleChannelScanTimeout = time.Second
+		fgFullScanTimeout          = 10 * time.Second
+		bgFullScanTimeout          = 15 * time.Second
+	)
 
-	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), tfOps...)
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
+	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {
-		if err := tf.Close(ctx); err != nil {
-			s.Error("Failed to tear down test fixture: ", err)
+		if err := tf.CollectLogs(ctx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
 	}(ctx)
-	ctx, cancel := tf.ReserveForClose(ctx)
+	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
 	ap, err := tf.DefaultOpenNetworkAP(ctx)
@@ -148,17 +141,24 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 	// Background full scan, which means the scan is performed with a established connection.
 	// Disable background scan mode first.
 	s.Log("Disable the DUT's WiFi background scan")
-	method, err := tf.WifiClient().GetBgscanMethod(ctx, &empty.Empty{})
+	bgscanResp, err := tf.WifiClient().GetBgscanConfig(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatal("Unable to get the DUT's WiFi bgscan method: ", err)
 	}
-	if _, err := tf.WifiClient().SetBgscanMethod(ctx, &network.SetBgscanMethodRequest{Method: "none"}); err != nil {
+	originalBgscanConfig := bgscanResp.Config
+	noBgscanReq := &network.SetBgscanConfigRequest{
+		Config: &network.BgscanConfig{},
+	}
+	// Make a shallow copy as we'll change bgscan method to "none".
+	*noBgscanReq.Config = *originalBgscanConfig
+	noBgscanReq.Config.Method = shillconst.DeviceBgscanMethodNone
+	if _, err := tf.WifiClient().SetBgscanConfig(ctx, noBgscanReq); err != nil {
 		s.Fatal("Unable to stop the DUT's WiFi bgscan: ", err)
 	}
 	defer func(ctx context.Context) {
-		s.Log("Restore the DUT's WiFi background scan to ", method.Method)
-		if _, err := tf.WifiClient().SetBgscanMethod(ctx, &network.SetBgscanMethodRequest{Method: method.Method}); err != nil {
-			s.Errorf("Failed to restore the DUT's bgscan method to %s: %v", method.Method, err)
+		s.Log("Restore the DUT's WiFi background scan to ", originalBgscanConfig)
+		if _, err := tf.WifiClient().SetBgscanConfig(ctx, &network.SetBgscanConfigRequest{Config: originalBgscanConfig}); err != nil {
+			s.Errorf("Failed to restore the DUT's bgscan to %v: %v", bgscanResp.Config, err)
 		}
 	}(ctx)
 	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
