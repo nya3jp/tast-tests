@@ -31,8 +31,6 @@ const (
 	tarballRootfsPath                 = "/mnt/shared/MyFiles/Downloads/crostini/container_rootfs.tar.xz"
 	tarballMetadataPath               = "/mnt/shared/MyFiles/Downloads/crostini/container_metadata.tar.xz"
 
-	testContainerUsername = "testuser" // default container username during testing
-
 	ciceroneName      = "org.chromium.VmCicerone"
 	ciceronePath      = dbus.ObjectPath("/org/chromium/VmCicerone")
 	ciceroneInterface = "org.chromium.VmCicerone"
@@ -113,9 +111,10 @@ func newContainer(ctx context.Context, containerName, userName string) *Containe
 }
 
 // DefaultContainer returns a container object with default settings.
-func DefaultContainer(ctx context.Context, user string) (*Container, error) {
-	c := newContainer(ctx, DefaultContainerName, testContainerUsername)
-	return c, c.Connect(ctx, user)
+func DefaultContainer(ctx context.Context, userEmail string) (*Container, error) {
+	username := strings.SplitN(userEmail, "@", 2)[0]
+	c := newContainer(ctx, DefaultContainerName, username)
+	return c, c.Connect(ctx, userEmail)
 }
 
 // Connect connects the container to the running VM and cicerone instances.
@@ -371,7 +370,7 @@ func (c *Container) sftpCommand(ctx context.Context, sftpCmd string) error {
 		"-o", "UserKnownHostsFile=" + knownHostsFile,
 		"-P", "2222",
 		"-r",
-		testContainerUsername + "@" + ip,
+		c.username + "@" + ip,
 	}
 	cmd := testexec.CommandContext(ctx, "sftp", sftpArgs...)
 	if err := cmd.Run(); err != nil {
