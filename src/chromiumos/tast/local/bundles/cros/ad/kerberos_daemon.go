@@ -93,7 +93,7 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 			LineIndex: proto.Int32(1),
 		},
 	}
-	if !reflect.DeepEqual(*validateResp, expectedResp) {
+	if !reflect.DeepEqual(validateResp, &expectedResp) {
 		s.Fatalf("ValidateConfig returned unexpected response: got %q; want %q", validateResp.String(), expectedResp.String())
 	}
 
@@ -128,7 +128,7 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 		PasswordWasRemembered: proto.Bool(true),
 		UseLoginPassword:      proto.Bool(false),
 	}
-	if !reflect.DeepEqual(*acc, expectedAcc) {
+	if !reflect.DeepEqual(acc, &expectedAcc) {
 		s.Fatalf("Unexpected account: got %q; want %q", acc.String(), expectedAcc.String())
 	}
 

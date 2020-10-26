@@ -24,6 +24,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 		// We assign it to two different group in order to run it against pool:suite and pool:cros_av_analysis.
 		Attr:    []string{"group:mainline", "group:graphics", "graphics_trace", "graphics_perbuild", "graphics_av_analysis"},
+		Vars:    []string{"keepState"},
 		Timeout: 15 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -57,6 +58,7 @@ func init() {
 func TraceReplay(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	config := s.Param().(comm.TestGroupConfig)
+	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), pre.Container, &config); err != nil {
 		s.Fatal("Trace replay test failed: ", err)
 	}

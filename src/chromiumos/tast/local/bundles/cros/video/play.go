@@ -43,7 +43,7 @@ func init() {
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
-			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:      "vp8",
@@ -68,7 +68,7 @@ func init() {
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
-			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name:      "vp8_sw",
@@ -99,7 +99,7 @@ func init() {
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:              "vp8_hw",
@@ -137,7 +137,7 @@ func init() {
 			Val:               playParams{fileName: "bear-320x240.h264.mpd", videoType: play.MSEVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.h264.mp4", "bear-320x240-audio-only.aac.mp4", "bear-320x240.h264.mpd"),
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:              "vp8_hw_mse",
@@ -164,7 +164,7 @@ func init() {
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
-			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithGuestLogin(),
 		}, {
 			Name:      "vp8_guest",
@@ -183,7 +183,7 @@ func init() {
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "vp8_hw_alt",

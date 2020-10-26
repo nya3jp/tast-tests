@@ -43,7 +43,7 @@ var advancedSubHeadings = []ui.FindParams{
 	},
 	{
 		Role: ui.RoleTypeHeading,
-		Name: "Languages and input",
+		Name: "Languages and inputs",
 	},
 	{
 		Role: ui.RoleTypeHeading,

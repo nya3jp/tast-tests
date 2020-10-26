@@ -150,6 +150,28 @@ func (c *Cmd) CombinedOutput(opts ...RunOption) ([]byte, error) {
 	return buf.Bytes(), err
 }
 
+// SeparatedOutput runs an external command, waits for its completion and
+// returns stdout/stderr output of the command separately.
+func (c *Cmd) SeparatedOutput(opts ...RunOption) (stdout, stderr []byte, err error) {
+	if c.Stdout != nil {
+		return nil, nil, errStdoutSet
+	}
+	if c.Stderr != nil {
+		return nil, nil, errStderrSet
+	}
+
+	var outbuf, errbuf bytes.Buffer
+	c.Stdout = &outbuf
+	c.Stderr = &errbuf
+
+	if err := c.Start(); err != nil {
+		return nil, nil, err
+	}
+
+	err = c.Wait(opts...)
+	return outbuf.Bytes(), errbuf.Bytes(), err
+}
+
 // Start starts an external command.
 //
 // See os/exec package for details.

@@ -69,10 +69,11 @@ var lookupWLANDev = map[DevInfo]string{
 	{vendor: "0x8086", device: "0x2723"}: Intel22260,
 	// For integrated wifi chips, use device_id and subsystem_id together
 	// as an identifier.
-	// 0x02f0 is for Quasar on CML, 0x4070 and 0x0074 is for HrP2
+	// 0x02f0 is for Quasar on CML, 0x4070, 0x0074 and 0x6074 is for HrP2
 	{vendor: "0x8086", device: "0x02f0", subsystem: "0x0034"}: Intel9000,
 	{vendor: "0x8086", device: "0x02f0", subsystem: "0x4070"}: Intel22560,
 	{vendor: "0x8086", device: "0x02f0", subsystem: "0x0074"}: Intel22560,
+	{vendor: "0x8086", device: "0x02f0", subsystem: "0x6074"}: Intel22560,
 	{vendor: "0x8086", device: "0x4df0", subsystem: "0x0074"}: Intel22560,
 	{vendor: "0x8086", device: "0xa0f0", subsystem: "0x4070"}: Intel22560,
 	{vendor: "0x8086", device: "0xa0f0", subsystem: "0x0074"}: Intel22560,
@@ -168,7 +169,8 @@ func DeviceInfo(ctx context.Context, netIf string) (*DevInfo, error) {
 		return &DevInfo{vendor: vendorID, device: productID, subsystem: subsystemID, Name: d}, nil
 	}
 
-	return nil, errors.Errorf("get device %s: device unknown", netIf)
+	return nil, errors.Errorf("unknown %s device with vendorID=%s, productID=%s, subsystemID=%s",
+		netIf, vendorID, productID, subsystemID)
 }
 
 // LogBandwidthSupport logs info about the device bandwidth support.

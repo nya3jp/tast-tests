@@ -24,16 +24,23 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardOOBE,
 		Desc:         "Checks that the virtual keyboard works in OOBE Gaia Login",
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: pre.InputsStableModels,
 		Vars:         []string{"inputs.signinProfileTestExtensionManifestKey"},
+		Params: []testing.Param{{
+			Name:              "stable",
+			ExtraHardwareDeps: pre.InputsStableModels,
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
 func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.ExtraArgs("--enable-virtual-keyboard", "--force-tablet-mode=touch_view"), chrome.LoadSigninProfileExtension(s.RequiredVar("inputs.signinProfileTestExtensionManifestKey")))
+	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.LoadSigninProfileExtension(s.RequiredVar("inputs.signinProfileTestExtensionManifestKey")))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -76,13 +83,9 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 	}
 	defer element.Release(ctx)
 
-	if err := element.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
-	}
-
-	s.Log("Wait for virtual keyboard shown up")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
+	s.Log("Click input to trigger virtual keyboard")
+	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
+		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 
 	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(

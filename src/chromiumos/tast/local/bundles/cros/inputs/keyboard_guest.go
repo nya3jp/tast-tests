@@ -24,20 +24,34 @@ func init() {
 		Func:         KeyboardGuest,
 		Desc:         "Checks that both physical and virtual keyboards work in guest mode",
 		Contacts:     []string{"essential-inputs-team@google.com", "shengjun@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: pre.InputsStableModels,
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "stable",
+			ExtraHardwareDeps: pre.InputsStableModels,
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: pre.InputsUnstableModels,
+		}},
 	})
 }
 
 // KeyboardGuest checks that both physical keyboard and virtual keyboard work in guest mode.
 func KeyboardGuest(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard", "--force-tablet-mode=touch_view"), chrome.GuestLogin())
+	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.GuestLogin())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	// VK uses different extension instance in login profile and guest profile.
+	// BackgroundConn will wait until the background connection is unique.
+	bconn, err := vkb.BackgroundConn(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to connect to virtual keyboard background after guest login: ", err)
+	}
+	defer bconn.Close()
 
 	// Use virtual keyboard to type keywords.
 	kconn, err := vkb.UIConn(ctx, cr)

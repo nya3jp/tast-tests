@@ -1,1 +1,5 @@
-../../../../arc/c2e2etest/data/c2_e2e_test_x86.apk.external
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/c2_e2e_test_x86_6839091_20200917.apk",
+  "size": 2786269,
+  "sha256sum": "edcfd336a06de99926de2f6d652edf4181b077c32755c4990eeaeee8b8e5b1fe"
+}

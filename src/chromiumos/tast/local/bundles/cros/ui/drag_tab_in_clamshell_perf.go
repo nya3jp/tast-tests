@@ -15,7 +15,6 @@ import (
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -64,7 +63,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain the window list: ", err)
 	}
 	id0 := ws[0].ID
-	if _, err := ash.SetWindowState(ctx, tconn, id0, ash.WMEventNormal); err != nil {
+	if err := ash.SetWindowStateAndWait(ctx, tconn, id0, ash.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set the window state to normal: ", err)
 	}
 	if err := ash.WaitWindowFinishAnimating(ctx, tconn, id0); err != nil {
@@ -90,11 +89,6 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Fatalf("Expected 2 tabs, only found %v tab(s)", len(tabs))
 	}
 	start := tabs[0].Location.CenterPoint()
-
-	// Stabilize CPU usage.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Error("Failed to wait for system UI to be stabilized: ", err)
-	}
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := mouse.Drag(ctx, tconn, start, end, time.Second); err != nil {
@@ -128,7 +122,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		"Ash.WorkspaceWindowResizer.TabDragging.PresentationTime.MaxLatency.ClamshellMode"),
 		perfutil.StoreLatency)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

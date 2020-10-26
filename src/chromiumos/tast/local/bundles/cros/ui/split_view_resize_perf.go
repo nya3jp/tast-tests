@@ -7,19 +7,19 @@ package ui
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
-	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -279,10 +279,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to prepare: ", err)
 			}
 
-			if err = cpu.WaitUntilIdle(ctx); err != nil {
-				s.Fatal("Failed to wait: ", err)
-			}
-
 			const dividerSmoothnessName = "Ash.SplitViewResize.AnimationSmoothness.DividerAnimation"
 			histogramNames := []string{
 				fmt.Sprintf("Ash.SplitViewResize.PresentationTime.%s.%s", modeName, testCase.name),
@@ -293,7 +289,21 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			if modeName == "TabletMode" {
 				histogramNames = append(histogramNames, dividerSmoothnessName)
 			}
+			if tabletMode && testCase.name == "WithOverview" {
+				histogramNames = append(histogramNames,
+					"Ash.Overview.AnimationSmoothness.Enter.SplitView",
+					"Ash.Overview.AnimationSmoothness.Exit.SplitView",
+				)
+			}
 			runner.RunMultiple(ctx, s, testCase.name, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) (err error) {
+				if tabletMode && testCase.name == "WithOverview" {
+					if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+						return errors.Wrap(err, "failed to exit overview at right")
+					}
+					if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+						return errors.Wrap(err, "failed to start overview at right")
+					}
+				}
 				if !tabletMode {
 					// In clamshell mode, the window width does not stick to the half of
 					// the screen exactly, and the previous drag will end up with a
@@ -351,7 +361,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 						testing.ContextLog(ctx, hist.Name, " = ", value)
 						unit := "ms"
 						direction := perf.SmallerIsBetter
-						if hist.Name == dividerSmoothnessName {
+						if strings.Contains(hist.Name, "AnimationSmoothnes") {
 							unit = "percent"
 							direction = perf.BiggerIsBetter
 						}
@@ -366,7 +376,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 		})
 	}
 
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

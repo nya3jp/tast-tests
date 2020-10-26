@@ -1,0 +1,17 @@
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DefaultPopupsSetting</title>
+</head>
+<script>
+var popUp = window.open('popups_for_url_check_popup.html')
+if(!popUp || popUp.closed)
+{
+  document.querySelector("head > title").innerText = "Popups blocked";
+}
+</script>
+</html>

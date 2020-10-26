@@ -21,9 +21,9 @@ func init() {
 		Func:        BeaconInterval,
 		Desc:        "Verifies that the beacon interval set on the AP is successfully adopted by the DUT",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
+		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
 	})
 }

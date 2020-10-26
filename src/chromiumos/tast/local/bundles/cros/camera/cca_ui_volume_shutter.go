@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/caps"
@@ -112,8 +113,13 @@ func (vh *volumeHelper) verifyVolumeChanged(ctx context.Context, doChange func()
 
 func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
+	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	if err != nil {
+		s.Fatal("Failed to construct test bridge: ", err)
+	}
+	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -142,16 +148,25 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
-	defer app.Close(cleanupCtx)
+	defer func(ctx context.Context) {
+		if err := app.Close(ctx); err != nil {
+			s.Error("Failed to close app: ", err)
+		}
+	}(ctx)
 
 	restartApp := func(ctx context.Context) {
 		s.Log("Restarts CCA")
-		if err := app.Restart(ctx); err != nil {
-			s.Fatal("Failed to restart CCA: ", err)
+		if err := app.Restart(ctx, tb, false); err != nil {
+			var errJS *cca.ErrJS
+			if errors.As(err, &errJS) {
+				s.Error("There are JS errors when running CCA: ", err)
+			} else {
+				s.Fatal("Failed to restart CCA: ", err)
+			}
 		}
 	}
 
@@ -198,7 +213,7 @@ func testClamshell(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *inp
 
 // testTakePicture tests scenario of taking a picture by volume button in tablet mode.
 func testTakePicture(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
-	dir, err := app.SavedDir(ctx)
+	dirs, err := app.SavedDirs(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
 	}
@@ -216,7 +231,7 @@ func testTakePicture(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 		if err := kb.Accel(ctx, key); err != nil {
 			return errors.Wrapf(err, "failed to press %v key", key)
 		}
-		if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
+		if _, err := app.WaitForFileSaved(ctx, dirs, cca.PhotoPattern, start); err != nil {
 			return errors.Wrap(err, "cannot find captured result file")
 		}
 		if err := app.WaitForState(ctx, "taking", false); err != nil {
@@ -245,7 +260,7 @@ func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 	}
 	defer cleanup(cleanupCtx)
 
-	dir, err := app.SavedDir(ctx)
+	dirs, err := app.SavedDirs(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
 	}
@@ -278,7 +293,7 @@ func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 		if err := kb.Accel(ctx, key); err != nil {
 			return errors.Wrapf(err, "failed to press %v key", key)
 		}
-		if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
+		if _, err := app.WaitForFileSaved(ctx, dirs, cca.VideoPattern, start); err != nil {
 			return errors.Wrap(err, "cannot find result video")
 		}
 		if err := app.WaitForState(ctx, "taking", false); err != nil {

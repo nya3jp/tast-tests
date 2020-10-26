@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	arcui "chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/colorcmp"
@@ -75,7 +75,7 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Initializing UI Automator")
-	d, err := arcui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
@@ -99,7 +99,7 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed starting app: ", err)
 		}
 		s.Log("Waiting for " + color + " app to show up")
-		if err := d.Object(arcui.ID(titleID), arcui.Text(color+titleSuffix)).WaitForExists(ctx, 30*time.Second); err != nil {
+		if err := d.Object(androidui.ID(titleID), androidui.Text(color+titleSuffix)).WaitForExists(ctx, 30*time.Second); err != nil {
 			s.Fatal("Failed to wait for the app shown: ", err)
 		}
 	}

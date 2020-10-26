@@ -25,8 +25,14 @@ func init() {
 		Desc:     "Checks that hardware overlay works with ARC applications in tablet mode",
 		Contacts: []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(ricardoq): enable test once the bug that fixes hardware overlay gets fixed. See: http://b/120557146
-		SoftwareDeps: []string{"drm_atomic", "tablet_mode", "android_p", "chrome"},
+		SoftwareDeps: []string{"drm_atomic", "tablet_mode", "chrome"},
 		Pre:          arc.Booted(),
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 

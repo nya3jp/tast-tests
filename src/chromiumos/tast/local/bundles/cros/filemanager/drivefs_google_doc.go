@@ -68,9 +68,7 @@ func DrivefsGoogleDoc(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not launch the Files App: ", err)
 	}
-	// Instead of closing the Files App, just release the memory reference.
-	// Otherwise, when this test fails, the screenshot will be of an empty desktop/closing app.
-	defer filesApp.Root.Release(ctx)
+	defer filesApp.Release(ctx)
 
 	// Navigate to Google Drive via the Files App ui.
 	if err := filesApp.OpenDrive(ctx); err != nil {

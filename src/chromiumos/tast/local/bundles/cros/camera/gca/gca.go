@@ -14,8 +14,8 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/testexec"
@@ -301,7 +301,7 @@ func setUpDevice(ctx context.Context, a *arc.ARC, apkPath string) (*ui.Device, e
 		}
 	}
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to initialize UIAutomator")
 	}

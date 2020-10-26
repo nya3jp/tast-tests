@@ -158,14 +158,14 @@ func SetUpBenchmark(ctx context.Context) (cleanUp func(ctx context.Context), err
 	return cleanUp, nil
 }
 
-// WaitUntilIdle waits until the CPU is idle, for a maximum of 60s. The CPU is
+// WaitUntilIdle waits until the CPU is idle, for a maximum of 120s. The CPU is
 // considered idle if the average usage over all CPU cores is less than 5%.
 // This percentage will be gradually increased to 20%, as older boards might
 // have a hard time getting below 5%.
 func WaitUntilIdle(ctx context.Context) error {
 	const (
 		// time to wait for CPU to become idle.
-		waitIdleCPUTimeout = 60 * time.Second
+		waitIdleCPUTimeout = 120 * time.Second
 		// percentage below which CPU is ideally considered idle, gradually
 		// increased up to idleCPUUsagePercentMax.
 		idleCPUUsagePercentBase = 5.0
@@ -189,7 +189,8 @@ func WaitUntilIdle(ctx context.Context) error {
 		timeout := waitIdleCPUTimeout / idleCPUSteps
 		testing.ContextLogf(ctx, "Waiting up to %v for CPU usage to drop below %.1f%% (%d/%d)",
 			timeout.Round(time.Second), idlePercent, i+1, idleCPUSteps)
-		if usage, err := waitUntilIdleStep(ctx, timeout, idlePercent); err == nil {
+		var usage float64
+		if usage, err = waitUntilIdleStep(ctx, timeout, idlePercent); err == nil {
 			testing.ContextLogf(ctx, "Waiting for idle CPU took %v (usage: %.1f%%, threshold: %.1f%%)",
 				time.Now().Sub(startTime).Round(time.Second), usage, idlePercent)
 			return nil
@@ -204,8 +205,10 @@ func WaitUntilIdle(ctx context.Context) error {
 // range [0.0, 100.0].
 func waitUntilIdleStep(ctx context.Context, timeout time.Duration, maxUsage float64) (usage float64, err error) {
 	const measureDuration = time.Second
-	err = testing.Poll(ctx, func(ctx context.Context) error {
+	err = testing.Poll(ctx, func(context.Context) error {
 		var e error
+		// testing.Poll shortens ctx so that its deadline matches timeout. Use the original ctx to
+		// prevent the Sleep in MeasureCPUUsage from always failing during the last poll iteration.
 		usage, e = MeasureCPUUsage(ctx, measureDuration)
 		if e != nil {
 			return testing.PollBreak(errors.Wrap(e, "failed measuring CPU usage"))
@@ -358,7 +361,7 @@ func disableCPUFrequencyScaling(ctx context.Context) (func(ctx context.Context) 
 	configPatterns := []cpuConfigEntry{
 		// crbug.com/938729: BIOS settings might prevent us from overwriting intel_pstate/no_turbo.
 		{"/sys/devices/system/cpu/intel_pstate/no_turbo", "1", true},
-		// Fix the intel_pstate percentage to 100 if possible. We raise he
+		// Fix the intel_pstate percentage to 100 if possible. We raise the
 		// maximum value before the minimum value as the min cannot exceed the
 		// max. To restore them, the order must be inverted. Note that we set
 		// and save the original values for these values because changing

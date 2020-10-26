@@ -31,14 +31,13 @@ func init() {
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 5 * time.Minute,
-		// "chrome_internal" is needed for H.264 videos because H.264 is a proprietary codec.
 		Params: []testing.Param{{
 			Name: "h264_144p_30fps_hw",
 			Val: playbackPerfParams{
 				fileName:    "144p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"144p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideo(),
@@ -48,7 +47,7 @@ func init() {
 				fileName:    "240p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"240p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideo(),
@@ -58,7 +57,7 @@ func init() {
 				fileName:    "360p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"360p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideo(),
@@ -68,7 +67,7 @@ func init() {
 				fileName:    "480p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"480p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideo(),
@@ -78,7 +77,7 @@ func init() {
 				fileName:    "720p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideo(),
@@ -88,7 +87,7 @@ func init() {
 				fileName:    "1080p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideo(),
 		}, {
@@ -97,7 +96,7 @@ func init() {
 				fileName:    "1080p_60fps_600frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
 			Pre:               pre.ChromeVideo(),
 		}, {
@@ -106,7 +105,7 @@ func init() {
 				fileName:    "2160p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K, "proprietary_codecs"},
 			ExtraData:         []string{"2160p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideo(),
 		}, {
@@ -115,7 +114,7 @@ func init() {
 				fileName:    "2160p_60fps_600frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K60, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K60, "proprietary_codecs"},
 			ExtraData:         []string{"2160p_60fps_600frames.h264.mp4"},
 			Pre:               pre.ChromeVideo(),
 		}, {
@@ -296,7 +295,7 @@ func init() {
 				fileName:    "480p_30fps_300frames.h264.mp4",
 				decoderType: playback.Software,
 			},
-			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"480p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideoWithSWDecoding(),
@@ -306,7 +305,7 @@ func init() {
 				fileName:    "720p_30fps_300frames.h264.mp4",
 				decoderType: playback.Software,
 			},
-			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideoWithSWDecoding(),
@@ -316,7 +315,7 @@ func init() {
 				fileName:    "1080p_30fps_300frames.h264.mp4",
 				decoderType: playback.Software,
 			},
-			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideoWithSWDecoding(),
 		}, {
@@ -325,7 +324,7 @@ func init() {
 				fileName:    "1080p_60fps_600frames.h264.mp4",
 				decoderType: playback.Software,
 			},
-			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
 			Pre:               pre.ChromeVideoWithSWDecoding(),
 		}, {
@@ -487,8 +486,7 @@ func init() {
 				fileName:    "1080p_60fps_600frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			// "chrome_internal" is needed because H.264 is a proprietary codec.
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {

@@ -7,15 +7,12 @@ package stress
 import (
 	"context"
 	"encoding/json"
-	"fmt"
-	"math"
 	"os"
-	"os/exec"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/storage"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -24,6 +21,8 @@ import (
 
 const (
 	defaultFileSizeBytes = 1024 * 1024 * 1024
+	// BootDeviceFioPath is the pass to test the boot device with.
+	BootDeviceFioPath = "/mnt/stateful_partition/fio_test_data"
 )
 
 var (
@@ -43,21 +42,74 @@ var (
 		"8k_read",
 		"1m_stress",
 		"1m_write",
+		"write_stress",
 	}
 )
 
-// fioResult is a serializable structure representing fio results output.
-type fioResult struct {
-	Jobs []struct {
-		Jobname string                 `json:"jobname"`
-		Read    map[string]interface{} `json:"read"`
-		Write   map[string]interface{} `json:"write"`
-		Trim    map[string]interface{} `json:"trim"`
-		Sync    map[string]interface{} `json:"sync"`
-	}
-	DiskUtil []struct {
-		Name string
-	} `json:"disk_util"`
+// TestConfig provides extra test configuration arguments.
+type TestConfig struct {
+	// Duration is a minimal duration that the stress should be running for.
+	// If single run of the stress takes less than this time, it's going
+	// to be repeated until the total running time is greater than this duration.
+	Duration time.Duration
+
+	// Job is the name of the fio profile to execute. Must be on of the Configs.
+	Job string
+
+	// JobFile is the absolute path and filename of the fio profile file corresponding to Job.
+	JobFile string
+
+	// Path to the fio target
+	Path string
+
+	// VerifyOnly if true, make benchmark data is collected to result-chart.json
+	// without running the actual stress.
+	VerifyOnly bool
+
+	// ResultWriter references the result processing object.
+	ResultWriter *FioResultWriter
+}
+
+// WithDuration sets Duration in TestConfig.
+func (t TestConfig) WithDuration(duration time.Duration) TestConfig {
+	t.Duration = duration
+	return t
+}
+
+// WithJob sets Job in TestConfig.
+func (t TestConfig) WithJob(job string) TestConfig {
+	t.Job = job
+	return t
+}
+
+// WithJobFile sets JobFile in TestConfig.
+func (t TestConfig) WithJobFile(jobFile string) TestConfig {
+	t.JobFile = jobFile
+	return t
+}
+
+// WithPath sets Path in TestConfig.
+func (t TestConfig) WithPath(path string) TestConfig {
+	t.Path = path
+	return t
+}
+
+// WithBootDevice sets Path to BootDeviceFioPath in TestConfig.
+func (t TestConfig) WithBootDevice() TestConfig {
+	t.Path = BootDeviceFioPath
+	return t
+}
+
+// WithVerifyOnly sets VerifyOnly in TestConfig.
+func (t TestConfig) WithVerifyOnly(verifyOnly bool) TestConfig {
+	t.VerifyOnly = verifyOnly
+	return t
+}
+
+// WithResultWriter sets ResultWriter in TestConfig.
+func (t TestConfig) WithResultWriter(resultWriter *FioResultWriter) TestConfig {
+	t.ResultWriter = resultWriter
+	return t
 }
 
 // runFIO runs "fio" storage stress with a given config (jobFile), parses the output JSON and returns the result.
@@ -73,7 +125,7 @@ func runFIO(ctx context.Context, testDataPath, jobFile string, verifyOnly bool) 
 		"FILENAME=" + testDataPath,
 		"FILESIZE=" + strconv.Itoa(defaultFileSizeBytes),
 		"VERIFY_ONLY=" + verifyFlag,
-		"CONTINUE_ERRORS=verifyOnly",
+		"CONTINUE_ERRORS=verify",
 	}
 	testing.ContextLog(ctx, "Environment: ", cmd.Env)
 	testing.ContextLog(ctx, "Running command: ", cmd)
@@ -81,113 +133,11 @@ func runFIO(ctx context.Context, testDataPath, jobFile string, verifyOnly bool) 
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run fio")
 	}
-	var result fioResult
-	if err := json.Unmarshal(out, &result); err != nil {
+	result := &fioResult{}
+	if err := json.Unmarshal(out, result); err != nil {
 		return nil, errors.Wrap(err, "failed to parse fio result")
 	}
-	return &result, nil
-}
-
-// reportJobRWResult appends metrics for latency and bandwidth from the current test results
-// to the given perf values.
-func reportJobRWResult(ctx context.Context, testRes map[string]interface{}, prefix, dev string, perfValues *perf.Values) {
-	flatResult, err := flattenNestedResults("", testRes)
-	if err != nil {
-		testing.ContextLog(ctx, "Error flattening results json: ", err)
-		return
-	}
-
-	for k, v := range flatResult {
-		if strings.Contains(k, "percentile") {
-			perfValues.Append(perf.Metric{
-				Name:      "_" + prefix + k,
-				Variant:   dev,
-				Unit:      "ns",
-				Direction: perf.SmallerIsBetter,
-				Multiple:  true,
-			}, v)
-		} else if k == "_bw" {
-			perfValues.Append(perf.Metric{
-				Name:      "_" + prefix + k,
-				Variant:   dev,
-				Unit:      "KB_per_sec",
-				Direction: perf.BiggerIsBetter,
-				Multiple:  true,
-			}, v)
-		}
-	}
-}
-
-// flattenNestedResults flattens nested structures to the root level.
-// Names are prefixed with the nested names, i.e. {foo: { bar: {}}} -> {foo<prefix>bar: {}}
-func flattenNestedResults(prefix string, nested interface{}) (flat map[string]float64, err error) {
-	flat = make(map[string]float64)
-
-	merge := func(to, from map[string]float64) {
-		for kt, vt := range from {
-			to[kt] = float64(vt)
-		}
-	}
-
-	switch nested := nested.(type) {
-	case map[string]interface{}:
-		for k, v := range nested {
-			fm1, fe := flattenNestedResults(prefix+"_"+k, v)
-			if fe != nil {
-				err = fe
-				return
-			}
-			merge(flat, fm1)
-		}
-	case []interface{}:
-		for i, v := range nested {
-			fm1, fe := flattenNestedResults(prefix+"_"+strconv.Itoa(i), v)
-			if fe != nil {
-				err = fe
-				return
-			}
-			merge(flat, fm1)
-		}
-	default:
-		flat[prefix] = nested.(float64)
-	}
-	return
-}
-
-// diskSizePretty returns a size string (i.e. "128G") of a storage device.
-func diskSizePretty(dev string) (sizeGB string, err error) {
-	cmd := fmt.Sprintf("cat /proc/partitions | egrep '%v$' | awk '{print $3}'", dev)
-	out, err := exec.Command("bash", "-c", cmd).CombinedOutput()
-	if err != nil {
-		return "", err
-	}
-	blocks, err := strconv.ParseFloat(strings.TrimSpace(string(out)), 64)
-	if err != nil {
-		return "", err
-	}
-	// Covert number of blocks to bytes (*1024), then to a string of whole GB,
-	// i.e. 125034840 -> "128G"
-	return strconv.Itoa(int(1024*blocks/math.Pow(10, 9.0)+0.5)) + "G", nil
-}
-
-func reportResults(ctx context.Context, s *testing.State, res *fioResult, dev string, perfValues *perf.Values) {
-	devName := res.DiskUtil[0].Name
-	devSize, err := diskSizePretty(devName)
-	if err != nil {
-		testing.ContextLog(ctx, "Error acquiring size of device: ", devName, err)
-		devSize = ""
-	}
-	testing.ContextLogf(ctx, "Size of device: %s is: %s", devName, devSize)
-	group := dev + "_" + string(devSize)
-
-	for _, job := range res.Jobs {
-		if strings.Contains(job.Jobname, "read") || strings.Contains(job.Jobname, "stress") {
-			reportJobRWResult(ctx, job.Read, job.Jobname+"_read", group, perfValues)
-		}
-		if strings.Contains(job.Jobname, "write") || strings.Contains(job.Jobname, "stress") {
-			reportJobRWResult(ctx, job.Write, job.Jobname+"_write", group, perfValues)
-		}
-	}
+	return result, nil
 }
 
 func getStorageInfo(ctx context.Context) (*storage.Info, error) {
@@ -202,13 +152,13 @@ func getStorageInfo(ctx context.Context) (*storage.Info, error) {
 	return info, nil
 }
 
-func validateTestConfig(ctx context.Context, s *testing.State, job string) {
+func validateJob(ctx context.Context, job string) error {
 	for _, config := range Configs {
 		if job == config {
-			return
+			return nil
 		}
 	}
-	s.Fatalf("job = %q, want one of %q", job, Configs)
+	return errors.Errorf("job = %q, want one of %q", job, Configs)
 }
 
 // escapeJSONName replaces all invalid characters that might be present in the device name to appear
@@ -217,30 +167,61 @@ func escapeJSONName(name string) string {
 	return regexp.MustCompile(`[[\]<>{} ]`).ReplaceAllString(name, "_")
 }
 
-// RunFioStress runs a single given storage job. job must be in Configs.
-// If verifyOnly is true, only benchmark data is collected to result-chart.json
-func RunFioStress(ctx context.Context, s *testing.State, job string, verifyOnly bool) {
-	validateTestConfig(ctx, s, job)
+func resultGroupName(ctx context.Context, res *fioResult, dev string, rawDevTest bool) string {
+	devName := res.DiskUtil[0].Name
+	devSize, err := diskSizePretty(devName)
+	if err != nil {
+		testing.ContextLog(ctx, "Error acquiring size of device: ", devName, err)
+		devSize = ""
+	}
+	testing.ContextLogf(ctx, "Size of device: %s is: %s", devName, devSize)
+	group := dev + "_" + string(devSize)
+	if rawDevTest {
+		group += "_raw"
+	}
+
+	return group
+}
+
+// RunFioStress runs an fio job single given path according to testConfig.
+// This function returns an error rather than failing the test.
+func RunFioStress(ctx context.Context, testConfig TestConfig) error {
+	rawDev := strings.HasPrefix(testConfig.Path, "/dev/")
+
+	if err := validateJob(ctx, testConfig.Job); err != nil {
+		return errors.Wrap(err, "failed validating job")
+	}
 
 	// Get device status/info.
 	info, err := getStorageInfo(ctx)
 	if err != nil {
-		s.Fatal("Failed to get storage info: ", err)
+		return errors.Wrap(err, "failed to get storage info")
 	}
 	devName := escapeJSONName(info.Name)
 
-	// File name the disk I/O test is performed on.
-	const testDataPath = "/mnt/stateful_partition/fio_test_data"
-	// Delete the test data file on host.
-	defer os.RemoveAll(testDataPath)
-
-	testing.ContextLog(ctx, "Running job ", job)
-	res, err := runFIO(ctx, testDataPath, s.DataPath(job), verifyOnly)
-	if err != nil {
-		s.Errorf("%v failed: %v", job, err)
+	if !rawDev {
+		// Delete the test data file on host.
+		defer os.RemoveAll(testConfig.Path)
 	}
 
-	perfValues := perf.NewValues()
-	reportResults(ctx, s, res, devName, perfValues)
-	perfValues.Save(s.OutDir())
+	testing.ContextLog(ctx, "Running job ", testConfig.Job)
+	var res *fioResult
+	for start := time.Now().Round(0); ; {
+		res, err = runFIO(ctx, testConfig.Path, testConfig.JobFile, testConfig.VerifyOnly)
+		if err != nil {
+			return errors.Wrapf(err, "%v failed", testConfig.Job)
+		}
+
+		// If duration test parameter is 0, we do a single iteration of a test.
+		if testConfig.Duration == 0 || time.Since(start) > testConfig.Duration {
+			break
+		}
+	}
+
+	if testConfig.ResultWriter != nil {
+		group := resultGroupName(ctx, res, devName, rawDev)
+		testConfig.ResultWriter.Report(group, res)
+	}
+
+	return nil
 }

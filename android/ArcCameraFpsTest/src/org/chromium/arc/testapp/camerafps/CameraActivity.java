@@ -47,6 +47,8 @@ public class CameraActivity extends Activity {
             "org.chromium.arc.testapp.camerafps.ACTION_GET_RECORDING_RESOLUTIONS";
     private static final String ACTION_GET_RECORDING_SIZE =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_RECORDING_SIZE";
+    private static final String ACTION_GET_SENSOR_TIMESTAMP_SOURCE =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_SENSOR_TIMESTAMP_SOURCE";
     private static final String ACTION_GET_SNAPSHOT_RESOLUTIONS =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_SNAPSHOT_RESOLUTIONS";
     private static final String ACTION_GET_SNAPSHOT_SIZE =
@@ -132,6 +134,10 @@ public class CameraActivity extends Activity {
                             case ACTION_GET_LAST_SNAPSHOT_TIME:
                                 setResultData(Long.toString(mHistogram.getLastSnapshotTime()));
                                 break;
+                            case ACTION_GET_SENSOR_TIMESTAMP_SOURCE:
+                                setResultData(Integer.toString(
+                                        mCameraFragment.getSensorTimestampSource()));
+                                break;
                             case ACTION_GET_SNAPSHOT_RESOLUTIONS:
                                 setResultData(mCameraFragment.getSnapshotResolutions());
                                 break;
@@ -147,7 +153,8 @@ public class CameraActivity extends Activity {
                                 int fps = intent.getIntExtra(KEY_FPS, DEFAULT_FPS);
                                 mHistogram.setTargetFrameDuration((int) (1000.0 / fps));
                                 mCameraFragment.setTargetFps(fps);
-                                mCameraFragment.startPreview();
+                                mCameraFragment.onPause();
+                                mCameraFragment.onResume();
                                 break;
                             case ACTION_SET_TARGET_RESOLUTION:
                                 int width = intent.getIntExtra(KEY_WIDTH, DEFAULT_WIDTH);
@@ -157,7 +164,8 @@ public class CameraActivity extends Activity {
                                 } else {
                                     mCameraFragment.setTargetResolution(new Size(width, height));
                                 }
-                                mCameraFragment.startPreview();
+                                mCameraFragment.onPause();
+                                mCameraFragment.onResume();
                                 break;
                             case ACTION_START_RECORDING:
                                 String videoFilename = mCameraFragment.startRecordingVideo();
@@ -200,6 +208,7 @@ public class CameraActivity extends Activity {
         filter.addAction(ACTION_RESET_HISTOGRAM);
         filter.addAction(ACTION_SET_TARGET_FPS);
         filter.addAction(ACTION_SET_TARGET_RESOLUTION);
+        filter.addAction(ACTION_GET_SENSOR_TIMESTAMP_SOURCE);
         filter.addAction(ACTION_GET_SNAPSHOT_RESOLUTIONS);
         filter.addAction(ACTION_GET_SNAPSHOT_SIZE);
         filter.addAction(ACTION_START_RECORDING);

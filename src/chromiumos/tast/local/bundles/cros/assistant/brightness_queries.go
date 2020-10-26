@@ -39,7 +39,11 @@ func BrightnessQueries(ctx context.Context, s *testing.State) {
 	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
-	defer assistant.Cleanup(ctx, s, cr, tconn)
+	defer func() {
+		if err := assistant.Cleanup(ctx, s.HasError, cr, tconn); err != nil {
+			s.Fatal("Failed to disable Assistant: ", err)
+		}
+	}()
 
 	// Set initial brightness with the Assistant. Initial value is set to zero percent to provide a
 	// consistent starting point for the test regardless of initial DUT state. A non-zero value is not used

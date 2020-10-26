@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_hp_printer_pclm_20201010.ppd.gz",
+  "size": 2938,
+  "sha256sum": "1a60d866112985d8a6cad06d7650efee530cc93a105c1d694d94255f0479c363"
+}

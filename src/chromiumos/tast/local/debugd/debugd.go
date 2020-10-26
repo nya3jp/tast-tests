@@ -55,6 +55,24 @@ const (
 	// CUPSBadURI indicates that the operation failed because debugd
 	// rejected the printer URI.
 	CUPSBadURI CUPSResult = 5
+
+	// CUPSIOError indicates that the operation failed because of I/O error.
+	CUPSIOError CUPSResult = 6
+
+	// CUPSMemoryAllocError indicates that the operation failed because of
+	// memory allocation error.
+	CUPSMemoryAllocError CUPSResult = 7
+
+	// CUPSPrinterUnreachable indicates that the printer did not respond.
+	CUPSPrinterUnreachable CUPSResult = 8
+
+	// CUPSPrinterWrongResponse indicates that the printer sent
+	// an unexpected response.
+	CUPSPrinterWrongResponse CUPSResult = 9
+
+	// CUPSPrinterNotAutoconf indicates that the operation failed because
+	// the printer is not autoconfigurable as it supposed to be.
+	CUPSPrinterNotAutoconf CUPSResult = 10
 )
 
 func (r CUPSResult) String() string {
@@ -71,6 +89,16 @@ func (r CUPSResult) String() string {
 		return fmt.Sprintf("CUPSAutoconfFailure(%d)", r)
 	case CUPSBadURI:
 		return fmt.Sprintf("CUPSBadURI(%d)", r)
+	case CUPSIOError:
+		return fmt.Sprintf("CUPSIOError(%d)", r)
+	case CUPSMemoryAllocError:
+		return fmt.Sprintf("CUPSMemoryAllocError(%d)", r)
+	case CUPSPrinterUnreachable:
+		return fmt.Sprintf("CUPSPrinterUnreachable(%d)", r)
+	case CUPSPrinterWrongResponse:
+		return fmt.Sprintf("CUPSPrinterWrongResponse(%d)", r)
+	case CUPSPrinterNotAutoconf:
+		return fmt.Sprintf("CUPSPrinterNotAutoconf(%d)", r)
 	default:
 		return fmt.Sprintf("Unknown(%d)", r)
 	}

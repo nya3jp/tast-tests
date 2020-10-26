@@ -50,7 +50,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Timeout:      7 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "unmanaged",
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -114,7 +114,7 @@ func OptInAfterInterruption(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar(param.password)
 	extraArgs := param.chromeArgs
 
-	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install"}
+	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--ignore-arcvm-dev-conf"}
 	args = append(args, extraArgs...)
 
 	for _, delay := range param.delays {

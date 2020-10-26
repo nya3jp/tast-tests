@@ -96,9 +96,8 @@ EOF
   else
     echo "* Test exited successfully."
   fi
+  if [[ -z "${stop_on_error}" ]]
+  then
+    echo "* Test failed ${failures} times out of ${i}."
+  fi
 done
-
-if [[ -z "${stop_on_error}" ]]
-then
-  echo "* Test failed ${failures} times out of ${repetitions}."
-fi

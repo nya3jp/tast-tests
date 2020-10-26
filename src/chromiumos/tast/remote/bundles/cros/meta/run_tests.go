@@ -6,7 +6,6 @@ package meta
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -17,19 +16,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// These are subsets of the testing.Error and TestResult structs.
-type testError struct {
-	Reason string `json:"reason"`
-}
-type testResult struct {
-	Name   string      `json:"name"`
-	Errors []testError `json:"errors"`
-}
-
 // runTestsParam is a parameter to the meta.RunTests test.
 type runTestsParam struct {
 	tests       []string
-	wantResults []testResult
+	wantResults []tastrun.TestResult
 	wantFiles   map[string]string // special value exists/notExists is allowed
 }
 
@@ -60,27 +50,28 @@ func init() {
 					"meta.RemoteFail",
 					"meta.RemotePass",
 				},
-				wantResults: []testResult{
-					{Name: "meta.LocalFail", Errors: []testError{{Reason: "Failed"}}},
+				wantResults: []tastrun.TestResult{
+					{Name: "meta.LocalFail", Errors: []tastrun.TestError{{Reason: "Failed"}}},
 					{Name: "meta.LocalPass"},
-					{Name: "meta.RemoteFail", Errors: []testError{{Reason: "Failed"}}},
+					{Name: "meta.RemoteFail", Errors: []tastrun.TestError{{Reason: "Failed"}}},
 					{Name: "meta.RemotePass"},
 				},
 				wantFiles: map[string]string{
 					"meta.LocalFail/faillog/ps.txt":  exists,
 					"meta.LocalPass/faillog/ps.txt":  notExists,
-					"meta.RemoteFail/faillog/ps.txt": notExists,
+					"meta.RemoteFail/faillog/ps.txt": exists,
 					"meta.RemotePass/faillog/ps.txt": notExists,
 				},
 			},
-			ExtraAttr: []string{"group:mainline", "informational"},
+			// TODO(https://crbug.com/1111251): Test is disabled until it can be fixed
+			// ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name: "files",
 			Val: runTestsParam{
 				tests: []string{
 					"meta.LocalFiles",
 				},
-				wantResults: []testResult{
+				wantResults: []tastrun.TestResult{
 					{Name: "meta.LocalFiles"},
 				},
 				wantFiles: map[string]string{
@@ -96,7 +87,7 @@ func init() {
 				tests: []string{
 					"meta.RemoteFiles",
 				},
-				wantResults: []testResult{
+				wantResults: []tastrun.TestResult{
 					{Name: "meta.RemoteFiles"},
 				},
 				wantFiles: map[string]string{
@@ -104,15 +95,16 @@ func init() {
 					"meta.RemoteFiles/remote_files_external.txt": "This is an external data file for remote tests.\n",
 				},
 			},
-			ExtraAttr: []string{"group:mainline", "informational"},
+			// TODO(https://crbug.com/1111251): Test is disabled until it can be fixed
+			// ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name: "panic",
 			Val: runTestsParam{
 				tests: []string{
 					"meta.LocalPanic",
 				},
-				wantResults: []testResult{
-					{Name: "meta.LocalPanic", Errors: []testError{{"Panic: intentionally panicking"}}},
+				wantResults: []tastrun.TestResult{
+					{Name: "meta.LocalPanic", Errors: []tastrun.TestError{{Reason: "Panic: intentionally panicking"}}},
 				},
 			},
 			ExtraAttr: []string{"group:mainline", "group:meta"},
@@ -123,7 +115,7 @@ func init() {
 					"meta.LocalVars",
 					"meta.RemoteVars",
 				},
-				wantResults: []testResult{
+				wantResults: []tastrun.TestResult{
 					{Name: "meta.LocalVars"},
 					{Name: "meta.RemoteVars"},
 				},
@@ -147,22 +139,17 @@ func RunTests(ctx context.Context, s *testing.State) {
 		"-var=meta.LocalVars.var=" + localVarValue,
 		"-var=meta.RemoteVars.var=" + remoteVarValue,
 	}
-	stdout, _, err := tastrun.Run(ctx, s, "run", flags, param.tests)
+	stdout, _, err := tastrun.Exec(ctx, s, "run", flags, param.tests)
 	if err != nil {
 		lines := strings.Split(strings.TrimSpace(string(stdout)), "\n")
 		s.Fatalf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
 	}
 
-	var results []testResult
-	rf, err := os.Open(filepath.Join(resultsDir, "results.json"))
+	results, err := tastrun.ParseResultsJSON(resultsDir)
 	if err != nil {
-		s.Fatal("Couldn't open results file: ", err)
+		s.Fatal("Failed to get results for tests ", param.tests)
 	}
-	defer rf.Close()
 
-	if err = json.NewDecoder(rf).Decode(&results); err != nil {
-		s.Fatalf("Couldn't decode results from %v: %v", rf.Name(), err)
-	}
 	if !reflect.DeepEqual(results, param.wantResults) {
 		s.Errorf("Got results %+v; want %+v", results, param.wantResults)
 	}

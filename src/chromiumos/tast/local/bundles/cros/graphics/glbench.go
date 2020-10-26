@@ -18,6 +18,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
@@ -50,6 +51,7 @@ func init() {
 			"oka@chromium.org", // Tast port
 		},
 		SoftwareDeps: []string{"no_qemu"},
+		Vars:         []string{"keepState"},
 		Params: []testing.Param{
 			{
 				Name:      "",
@@ -121,16 +123,14 @@ func GLBench(ctx context.Context, s *testing.State) {
 			}
 		}()
 
-		must := func(err error) {
-			if err != nil {
-				s.Fatal("Set up failed: ", err)
-			}
+		if err := reportTemperature(ctx, pv, "temperature_1_start"); err != nil {
+			s.Fatal("Set up failed: ", err)
 		}
 
-		must(reportTemperature(ctx, pv, "temperature_1_start"))
-
 		cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
-		must(err)
+		if err != nil {
+			s.Fatal("Set up failed: ", err)
+		}
 		defer cleanUpBenchmark(ctx)
 
 		// Leave a bit of time to clean up benchmark mode.
@@ -140,8 +140,16 @@ func GLBench(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		// Make machine behaviour consistent.
-		must(cpu.WaitUntilIdle(ctx))
-		must(reportTemperature(ctx, pv, "temperature_2_before_test"))
+		if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+			s.Log("Unable get cool machine. Trying to get idle cpu: ", err)
+			if err2 := cpu.WaitUntilIdle(ctx); err2 != nil {
+				s.Error("Unable to get stable machine: ", errors.Wrap(err, err2.Error()))
+			}
+		}
+
+		if err := reportTemperature(ctx, pv, "temperature_2_before_test"); err != nil {
+			s.Fatal("Failed to report temperature: ", err)
+		}
 	}
 
 	// Run the test, saving is optional and helps with debugging
@@ -312,7 +320,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 			// We have triaged the failure and have filed a tracking bug.
 			// Don't throw an exception and remind there is a problem.
 			errMsg = fmt.Sprintf("knownbad [%s]", imageFile)
-			// This failure is whitelisted so don't add to failedTests.
+			// This failure is allowed so don't add to failedTests.
 		case strings.Contains(referenceImageNames, imageFile):
 			// Known good reference images (default).
 		case imageFile == "none":

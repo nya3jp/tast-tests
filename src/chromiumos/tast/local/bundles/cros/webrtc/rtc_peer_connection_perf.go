@@ -35,12 +35,12 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "h264_hw",
 			Val:               rtcPerfTest{enableHWAccel: true, profile: "H264"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "h264_sw",
 			Val:               rtcPerfTest{enableHWAccel: false, profile: "H264"},
-			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcamAndSWDecoding(),
 		}, {
 			Name:              "vp8_hw",
@@ -52,12 +52,10 @@ func init() {
 			Val:  rtcPerfTest{enableHWAccel: false, profile: "VP8"},
 			Pre:  pre.ChromeVideoWithFakeWebcamAndSWDecoding(),
 		}, {
-			Name: "vp9_hw",
-			Val:  rtcPerfTest{enableHWAccel: true, profile: "VP9"},
-			// TODO(crbug.com/811912): Remove "vaapi" and use pre.ChromeVideoWithFakeWebcam()
-			// once the feature is enabled by default on VA-API devices.
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
-			Pre:               pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder(),
+			Name:              "vp9_hw",
+			Val:               rtcPerfTest{enableHWAccel: true, profile: "VP9"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name: "vp9_sw",
 			Val:  rtcPerfTest{enableHWAccel: false, profile: "VP9"},

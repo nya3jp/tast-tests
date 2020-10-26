@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	chromeui "chromiumos/tast/local/chrome/ui"
@@ -25,7 +25,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AndroidIMEInBrowser,
 		Desc:         "Checks Android IME in a browser window",
-		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.BootedInTabletMode(),
@@ -67,7 +67,7 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	dev, err := ui.NewDevice(ctx, a)
+	dev, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

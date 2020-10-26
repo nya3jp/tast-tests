@@ -19,6 +19,7 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/cryptohome"
@@ -82,9 +83,6 @@ var (
 	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
 	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
-	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
-	// BackgroundURL is the url of the CCA background page.
-	BackgroundURL = fmt.Sprintf("chrome-extension://%s/views/background.html", ID)
 	// ErrVideoNotActive indicates that video is not active.
 	ErrVideoNotActive = "Video is not active within given time"
 )
@@ -170,26 +168,24 @@ const (
 	VideoResolution = "video"
 )
 
-type errorLevel string
-
-const (
-	errorLevelWarning errorLevel = "WARNING"
-	errorLevelError              = "ERROR"
-)
-
-type errorInfo struct {
-	ErrorType string     `json:"type"`
-	Level     errorLevel `json:"level"`
-	Stack     string     `json:"stack"`
-	Time      int64      `json:"time"`
-}
-
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
 	conn        *chrome.Conn
 	cr          *chrome.Chrome
 	scriptPaths []string
 	outDir      string // Output directory to save the execution result
+	appLauncher testutil.AppLauncher
+	appWindow   *testutil.AppWindow
+}
+
+// ErrJS represents an error occurs when executing JavaScript.
+type ErrJS struct {
+	msg string
+}
+
+// Error returns the wrapped message of a ErrJS.
+func (e *ErrJS) Error() string {
+	return e.msg
 }
 
 // Resolution represents dimension of video or photo.
@@ -203,19 +199,11 @@ func (r *Resolution) AspectRatio() float64 {
 	return float64(r.Width) / float64(r.Height)
 }
 
-// AppLauncher is used during the launch process of CCA. We could launch CCA
-// by launchApp event, camera intent or any other ways.
-type AppLauncher func(tconn *chrome.TestConn) error
-
-func isMatchCCAPrefix(t *target.Info) bool {
-	return strings.HasPrefix(t.URL, ccaURLPrefix)
-}
-
-// Init launches a CCA instance by appLauncher, evaluates the helper script
-// within it and waits until its AppWindow interactable. The scriptPath should
-// be the data path to the helper script cca_ui.js. The returned App instance
-// must be closed when the test is finished.
-func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher AppLauncher) (*App, error) {
+// Init launches a CCA instance, evaluates the helper script within it and waits
+// until its AppWindow interactable. The scriptPath should be the data path to
+// the helper script cca_ui.js. The returned App instance must be closed when
+// the test is finished.
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher testutil.AppLauncher, tb *testutil.TestBridge, useSWA bool) (*App, error) {
 	// The cros-camera job exists only on boards that use the new camera stack.
 	if upstart.JobExists(ctx, "cros-camera") {
 		// Ensure that cros-camera service is running, because the service
@@ -226,93 +214,52 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		}
 	}
 
-	tconn, err := cr.TestAPIConn(ctx)
+	conn, appWindow, err := testutil.LaunchApp(ctx, cr, tb, appLauncher)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed when launching app")
 	}
 
-	if err := tconn.Call(ctx, nil, `
-		(id) => {
-		  let resolveConnect;
-		  let resolveDisconnect;
-		  const errors = [];
-		  window.CCATestConnection = {
-		    connect: new Promise((resolve) => { resolveConnect = resolve; }),
-		    disconnect: new Promise((resolve) => { resolveDisconnect = resolve; }),
-		    errors,
-		  };
-		  const port = chrome.runtime.connect(id, {name: 'SET_TEST_CONNECTION'});
-		  port.onMessage.addListener((msg) => {
-		    switch(msg.name) {
-		      case 'connect':
-		        resolveConnect(msg.windowUrl);
-		        return;
-		      case 'disconnect':
-		        resolveDisconnect(msg.windowUrl);
-		        return;
-		      case 'error':
-		        errors.push(msg.errorInfo);
-		        return;
-		    }
-		  });
-		}`, ID); err != nil {
-		return nil, err
-	}
-
-	if err := appLauncher(tconn); err != nil {
-		return nil, err
-	}
-
-	var windowURL string
-	if err := tconn.Eval(ctx, `window.CCATestConnection.connect`, &windowURL); err != nil {
-		return nil, err
-	}
-	// The expected windowURL is returned as:
-	//		views/main.html
-	// Or:
-	//		views/main.html?...
-	// And the CCA's URL used in chrome package should be something like:
-	//		chrome-extension://.../views/main.html...
-	// As a result, we should add the "chrome-extension://.../" as prefix.
-	if !strings.HasPrefix(windowURL, "views/main.html") {
-		return nil, errors.Errorf("unexpected window URL is returned: %q", windowURL)
-	}
-	windowURL = ccaURLPrefix + strings.TrimPrefix(windowURL, "views/main.html")
-
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(windowURL))
-	if err != nil {
-		return nil, err
-	}
-
-	conn.StartProfiling(ctx)
-
-	// Let CCA perform some one-time initialization after launched.  Otherwise
-	// the first CheckVideoActive() might timed out because it's still
-	// initializing, especially on low-end devices and when the system is busy.
-	// Fail the test early if it's timed out to make it easier to figure out
-	// the real reason of a test failure.
-	if err := conn.Eval(ctx, `(async () => {
-		  const deadline = await new Promise(
-		      (resolve) => requestIdleCallback(resolve, {timeout: 30000}));
-		  if (deadline.didTimeout) {
-		    throw new Error('Timed out initializing CCA');
-		  }
+	if err := func() error {
+		// Let CCA perform some one-time initialization after launched.  Otherwise
+		// the first CheckVideoActive() might timed out because it's still
+		// initializing, especially on low-end devices and when the system is busy.
+		// Fail the test early if it's timed out to make it easier to figure out
+		// the real reason of a test failure.
+		if err := conn.Eval(ctx, `(async () => {
+			const deadline = await new Promise(
+				(resolve) => requestIdleCallback(resolve, {timeout: 30000}));
+			if (deadline.didTimeout) {
+			throw new Error('Timed out initializing CCA');
+			}
 		})()`, nil); err != nil {
+			return err
+		}
+
+		for _, scriptPath := range scriptPaths {
+			script, err := ioutil.ReadFile(scriptPath)
+			if err != nil {
+				return err
+			}
+			if err := conn.Eval(ctx, string(script), nil); err != nil {
+				return err
+			}
+		}
+		testing.ContextLog(ctx, "CCA launched")
+		return nil
+	}(); err != nil {
+		if closeErr := conn.CloseTarget(ctx); closeErr != nil {
+			testing.ContextLog(ctx, "Failed to close app: ", closeErr)
+		}
+		if closeErr := conn.Close(); closeErr != nil {
+			testing.ContextLog(ctx, "Failed to close app connection: ", closeErr)
+		}
+		if releaseErr := appWindow.Release(ctx); releaseErr != nil {
+			testing.ContextLog(ctx, "Failed to release app window: ", releaseErr)
+		}
 		return nil, err
 	}
 
-	for _, scriptPath := range scriptPaths {
-		script, err := ioutil.ReadFile(scriptPath)
-		if err != nil {
-			return nil, err
-		}
-		if err := conn.Eval(ctx, string(script), nil); err != nil {
-			return nil, err
-		}
-	}
-	testing.ContextLog(ctx, "CCA launched")
-
-	app := &App{conn, cr, scriptPaths, outDir}
+	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow}
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
 			return errors.Wrap(err, ErrVideoNotActive)
@@ -320,53 +267,67 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		return app.WaitForState(ctx, "view-camera", true)
 	}
 	if err := waitForWindowReady(); err != nil {
-		app.Close(ctx)
+		if err2 := app.Close(ctx); err2 != nil {
+			testing.ContextLog(ctx, "Failed to close app: ", err2)
+		}
 		return nil, errors.Wrap(err, "CCA window is not ready after launching app")
 	}
 	testing.ContextLog(ctx, "CCA window is ready")
-
 	return app, nil
 }
 
-// New launches a CCA instance by launchApp event and initialize it. The
-// returned App instance must be closed when the test is finished.
-func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string) (*App, error) {
-	return Init(ctx, cr, scriptPaths, outDir, func(tconn *chrome.TestConn) error {
-		return tconn.Call(ctx, nil, `tast.promisify(chrome.management.launchApp)`, ID)
-	})
+// New launches a CCA instance. The returned App instance must be closed when the test is finished.
+func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge, useSWA bool) (*App, error) {
+	launcher := testutil.PlatformAppLauncher()
+	if useSWA {
+		launcher = testutil.SWALauncher()
+	}
+	return Init(ctx, cr, scriptPaths, outDir, launcher, tb, useSWA)
 }
 
 // InstanceExists checks if there is any running CCA instance.
-func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
-	return cr.IsTargetAvailable(ctx, isMatchCCAPrefix)
+func InstanceExists(ctx context.Context, cr *chrome.Chrome, useSWA bool) (bool, error) {
+	checkPrefix := func(t *target.Info) bool {
+		url := fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
+		if useSWA {
+			url = "chrome://camera-app/views/main.html"
+		}
+		return strings.HasPrefix(t.URL, url)
+	}
+	return cr.IsTargetAvailable(ctx, checkPrefix)
 }
 
-// CheckJSError checks javascript error emitted by CCA error callback.
-func (a *App) CheckJSError(ctx context.Context, logDir string) error {
-	var errorInfos []errorInfo
-	tconn, err := a.cr.TestAPIConn(ctx)
+// ClosingItself checks if CCA intends to close itself.
+func (a *App) ClosingItself(ctx context.Context) (bool, error) {
+	return a.appWindow.ClosingItself(ctx)
+}
+
+// checkJSError checks javascript error emitted by CCA error callback.
+func (a *App) checkJSError(ctx context.Context) error {
+	if a.appWindow == nil {
+		// It might be closed already. Do nothing.
+		return nil
+	}
+	errorInfos, err := a.appWindow.Errors(ctx)
 	if err != nil {
 		return err
 	}
-	if err := tconn.Eval(ctx, "window.CCATestConnection.errors", &errorInfos); err != nil {
-		return err
-	}
 
-	jsErrors := make([]errorInfo, 0)
-	jsWarnings := make([]errorInfo, 0)
+	jsErrors := make([]testutil.ErrorInfo, 0)
+	jsWarnings := make([]testutil.ErrorInfo, 0)
 	for _, err := range errorInfos {
-		if err.Level == errorLevelWarning {
+		if err.Level == testutil.ErrorLevelWarning {
 			jsWarnings = append(jsWarnings, err)
-		} else if err.Level == errorLevelError {
+		} else if err.Level == testutil.ErrorLevelError {
 			jsErrors = append(jsErrors, err)
 		} else {
 			return errors.Errorf("unknown error level: %v", err.Level)
 		}
 	}
 
-	writeLogFile := func(lv errorLevel, errs []errorInfo) error {
+	writeLogFile := func(lv testutil.ErrorLevel, errs []testutil.ErrorInfo) error {
 		filename := fmt.Sprintf("CCA_JS_%v.log", lv)
-		logPath := filepath.Join(logDir, filename)
+		logPath := filepath.Join(a.outDir, filename)
 		f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 		if err != nil {
 			return err
@@ -380,25 +341,55 @@ func (a *App) CheckJSError(ctx context.Context, logDir string) error {
 		return nil
 	}
 
-	if err := writeLogFile(errorLevelWarning, jsWarnings); err != nil {
+	if err := writeLogFile(testutil.ErrorLevelWarning, jsWarnings); err != nil {
 		return err
 	}
-	if err := writeLogFile(errorLevelError, jsErrors); err != nil {
+	if err := writeLogFile(testutil.ErrorLevelError, jsErrors); err != nil {
 		return err
 	}
 	if len(jsErrors) > 0 {
-		return errors.Errorf("there are %d errors, first error: %v: %v",
-			len(jsErrors), jsErrors[0].Level, jsErrors[0].ErrorType)
+		return &ErrJS{fmt.Sprintf("there are %d JS errors, first error: %v: %v",
+			len(jsErrors), jsErrors[0].Level, jsErrors[0].ErrorType)}
 	}
 	return nil
 }
 
-// Close closes the App and the associated connection.
-func (a *App) Close(ctx context.Context) error {
+// Close closes the App and the associated connection.gi
+func (a *App) Close(ctx context.Context) (retErr error) {
 	if a.conn == nil {
 		// It's already closed. Do nothing.
 		return nil
 	}
+
+	defer func(ctx context.Context) {
+		reportOrLogError := func(err error) {
+			if retErr == nil {
+				retErr = err
+			} else {
+				testing.ContextLog(ctx, "Failed to close app: ", err)
+			}
+		}
+
+		if err := a.conn.CloseTarget(ctx); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to CloseTarget()"))
+		}
+		if err := a.conn.Close(); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to Conn.Close()"))
+		}
+		if err := a.appWindow.WaitUntilClosed(ctx); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to wait for appWindow close"))
+		}
+		if err := a.checkJSError(ctx); err != nil {
+			reportOrLogError(errors.Wrap(err, "There are JS errors when running CCA"))
+		}
+		if err := a.appWindow.Release(ctx); err != nil {
+			reportOrLogError(errors.Wrap(err, "failed to release app window"))
+		}
+
+		testing.ContextLog(ctx, "CCA closed")
+		a.conn = nil
+		a.appWindow = nil
+	}(ctx)
 
 	if err := a.conn.Eval(ctx, "Tast.removeCacheData()", nil); err != nil {
 		return errors.Wrap(err, "failed to clear cached data in local storage")
@@ -410,34 +401,15 @@ func (a *App) Close(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-
-	var firstErr error
-	if err := a.conn.CloseTarget(ctx); err != nil {
-		firstErr = errors.Wrap(err, "failed to CloseTarget()")
-	}
-	if err := a.conn.Close(); err != nil && firstErr == nil {
-		firstErr = errors.Wrap(err, "failed to Conn.Close()")
-	}
-
-	if firstErr == nil {
-		if tconn, err := a.cr.TestAPIConn(ctx); err != nil {
-			firstErr = errors.Wrap(err, "failed to get test api connection")
-		} else if err := tconn.Eval(ctx, `window.CCATestConnection.disconnect`, nil); err != nil {
-			firstErr = errors.Wrap(err, "failed to wait for disconnect event")
-		}
-	}
-
-	a.conn = nil
-	testing.ContextLog(ctx, "CCA closed")
-	return firstErr
+	return nil
 }
 
 // Restart restarts the App and resets the associated connection.
-func (a *App) Restart(ctx context.Context) error {
+func (a *App) Restart(ctx context.Context, tb *testutil.TestBridge, useSWA bool) error {
 	if err := a.Close(ctx); err != nil {
 		return err
 	}
-	newApp, err := New(ctx, a.cr, a.scriptPaths, a.outDir)
+	newApp, err := Init(ctx, a.cr, a.scriptPaths, a.outDir, a.appLauncher, tb, useSWA)
 	if err != nil {
 		return err
 	}
@@ -485,16 +457,26 @@ func (a *App) WaitForVideoActive(ctx context.Context) error {
 
 // WaitForFileSaved waits for the presence of the captured file with file name matching the specified
 // pattern, size larger than zero, and modified time after the specified timestamp.
-func (a *App) WaitForFileSaved(ctx context.Context, dir string, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
+func (a *App) WaitForFileSaved(ctx context.Context, dirs []string, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
 	const timeout = 5 * time.Second
 	var result os.FileInfo
 	seen := make(map[string]struct{})
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		files, err := ioutil.ReadDir(dir)
-		if err != nil {
-			return errors.Wrap(err, "failed to read the directory where media files are saved")
+		var allFiles []os.FileInfo
+		var lastErr error
+		for _, dir := range dirs {
+			files, err := ioutil.ReadDir(dir)
+			if err != nil {
+				lastErr = err
+				continue
+			}
+			allFiles = append(allFiles, files...)
 		}
-		for _, file := range files {
+		if lastErr != nil && len(allFiles) == 0 {
+			return errors.Wrap(lastErr, "failed to read the directory where media files are saved")
+		}
+
+		for _, file := range allFiles {
 			if file.Size() == 0 || file.ModTime().Before(ts) {
 				continue
 			}
@@ -647,14 +629,14 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 		return nil, errors.Wrap(err, "capturing hasn't ended")
 	}
 
-	dir, err := a.SavedDir(ctx)
+	dirs, err := a.SavedDirs(ctx)
 	if err != nil {
 		return nil, err
 	}
 
 	var fileInfos []os.FileInfo
 	for _, pattern := range patterns {
-		info, err := a.WaitForFileSaved(ctx, dir, pattern, start)
+		info, err := a.WaitForFileSaved(ctx, dirs, pattern, start)
 		if err != nil {
 			return nil, errors.Wrapf(err, "cannot find result picture with regexp: %v", pattern)
 		}
@@ -678,7 +660,7 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 
 	metadataPatterns := getMetadataPatterns(fileInfos)
 	for _, pattern := range metadataPatterns {
-		info, err := a.WaitForFileSaved(ctx, dir, pattern, start)
+		info, err := a.WaitForFileSaved(ctx, dirs, pattern, start)
 		if err != nil {
 			return nil, errors.Wrapf(err, "cannot find result metadata with regexp: %v", pattern)
 		}
@@ -690,8 +672,14 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 		if err != nil {
 			return nil, err
 		}
+
+		path, err := a.FilePathInSavedDirs(ctx, info.Name())
+		if err != nil {
+			return nil, err
+		}
+
 		var jsonString map[string]interface{}
-		if content, err := ioutil.ReadFile(filepath.Join(dir, info.Name())); err != nil {
+		if content, err := ioutil.ReadFile(path); err != nil {
 			return nil, errors.Wrapf(err, "failed to read metadata file %v", info.Name())
 		} else if err := json.Unmarshal(content, &jsonString); err != nil {
 			return nil, errors.Wrapf(err, "not a valid json file %v", info.Name())
@@ -753,11 +741,11 @@ func (a *App) StopRecording(ctx context.Context, timerState TimerState, startTim
 	if err := a.WaitForState(ctx, "taking", false); err != nil {
 		return nil, errors.Wrap(err, "shutter is not ended")
 	}
-	dir, err := a.SavedDir(ctx)
+	dirs, err := a.SavedDirs(ctx)
 	if err != nil {
 		return nil, err
 	}
-	info, err := a.WaitForFileSaved(ctx, dir, VideoPattern, startTime)
+	info, err := a.WaitForFileSaved(ctx, dirs, VideoPattern, startTime)
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot find result video")
 	} else if elapsed := info.ModTime().Sub(startTime); timerState == TimerOn && elapsed < TimerDelay {
@@ -780,47 +768,85 @@ func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration t
 	return a.StopRecording(ctx, timerState, startTime)
 }
 
-// savedDir returns the path to the folder where captured files are saved.
-func savedDir(ctx context.Context, cr *chrome.Chrome) (string, error) {
+// savedDirs returns the paths to the folder where captured files might be saved.
+func savedDirs(ctx context.Context, cr *chrome.Chrome) ([]string, error) {
 	path, err := cryptohome.UserPath(ctx, cr.User())
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	return filepath.Join(path, "Downloads"), err
+	myFiles := filepath.Join(path, "MyFiles")
+	return []string{filepath.Join(myFiles, "Downloads"), filepath.Join(myFiles, "Camera")}, nil
 }
 
-// ClearSavedDir clears all files in the folder where captured files are saved.
-func ClearSavedDir(ctx context.Context, cr *chrome.Chrome) error {
-	dir, err := savedDir(ctx, cr)
-	if err != nil {
-		return errors.Wrap(err, "failed to get saved directory")
-	}
-	files, err := ioutil.ReadDir(dir)
-	if err != nil {
-		return errors.Wrap(err, "failed to read saved directory")
-	}
+// ClearSavedDirs clears all files in the folders where captured files might be saved.
+func ClearSavedDirs(ctx context.Context, cr *chrome.Chrome) error {
+	clearDir := func(ctx context.Context, cr *chrome.Chrome, dir string) error {
+		files, err := ioutil.ReadDir(dir)
+		if err != nil {
+			return errors.Wrap(err, "failed to read saved directory")
+		}
 
-	// Pattern for metadata files of all different kinds of photos.
-	metadataPattern := regexp.MustCompile(`^IMG_\d{8}_\d{6}.*\.json$`)
-	capturedPatterns := []*regexp.Regexp{PhotoPattern, VideoPattern, PortraitPattern, PortraitRefPattern, metadataPattern}
-	for _, file := range files {
-		for _, pat := range capturedPatterns {
-			if pat.MatchString(file.Name()) {
-				path := filepath.Join(dir, file.Name())
-				if err := os.Remove(path); err != nil {
-					return errors.Wrapf(err, "failed to remove file %v from saved directory", path)
+		// Pattern for metadata files of all different kinds of photos.
+		metadataPattern := regexp.MustCompile(`^IMG_\d{8}_\d{6}.*\.json$`)
+		capturedPatterns := []*regexp.Regexp{PhotoPattern, VideoPattern, PortraitPattern, PortraitRefPattern, metadataPattern}
+		for _, file := range files {
+			for _, pat := range capturedPatterns {
+				if pat.MatchString(file.Name()) {
+					path := filepath.Join(dir, file.Name())
+					if err := os.Remove(path); err != nil {
+						return errors.Wrapf(err, "failed to remove file %v from saved directory", path)
+					}
+					break
 				}
-				break
 			}
 		}
+
+		return nil
 	}
 
+	dirs, err := savedDirs(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to get saved directorys")
+	}
+	for _, dir := range dirs {
+		if _, err := os.Stat(dir); err != nil {
+			if os.IsNotExist(err) {
+				continue
+			} else {
+				return err
+			}
+		}
+
+		if err := clearDir(ctx, cr, dir); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
-// SavedDir returns the path to the folder where captured files are saved.
-func (a *App) SavedDir(ctx context.Context) (string, error) {
-	return savedDir(ctx, a.cr)
+// SavedDirs returns the path to the folder where captured files are saved.
+func (a *App) SavedDirs(ctx context.Context) ([]string, error) {
+	return savedDirs(ctx, a.cr)
+}
+
+// FilePathInSavedDirs finds and returns the path of the target file in saved directories.
+func (a *App) FilePathInSavedDirs(ctx context.Context, name string) (string, error) {
+	dirs, err := savedDirs(ctx, a.cr)
+	if err != nil {
+		return "", err
+	}
+
+	for _, dir := range dirs {
+		path := filepath.Join(dir, name)
+		_, err := os.Stat(path)
+		if err == nil {
+			return path, nil
+		}
+		if !os.IsNotExist(err) {
+			return "", err
+		}
+	}
+	return "", errors.New("file not found in saved path")
 }
 
 // CheckFacing returns an error if the active camera facing is not expected.
@@ -1099,11 +1125,17 @@ func (a *App) WaitForState(ctx context.Context, state string, active bool) error
 
 // WaitForMinimized waits for app window to be minimized/restored.
 func (a *App) WaitForMinimized(ctx context.Context, minimized bool) error {
-	code := fmt.Sprintf("Tast.isMinimized() === %t", minimized)
-	if err := a.conn.WaitForExpr(ctx, code); err != nil {
-		return errors.Wrap(err, "failed to wait for app window being minimized/restored")
-	}
-	return nil
+	const timeout = 5 * time.Second
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		actual, err := a.IsWindowMinimized(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to check if window is minimized"))
+		}
+		if actual != minimized {
+			return errors.New("failed to wait for window minimized/restored")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
 }
 
 // CheckGridOption checks whether grid option enable state is as expected.

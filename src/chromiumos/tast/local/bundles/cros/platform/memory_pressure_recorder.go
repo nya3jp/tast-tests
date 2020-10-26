@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/platform/mempressure"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/memory/mempressure"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -31,5 +31,7 @@ func MemoryPressureRecorder(ctx context.Context, s *testing.State) {
 		Mode: wpr.Record,
 	}
 
-	mempressure.Run(ctx, s, s.PreValue().(*chrome.Chrome), p)
+	if err := mempressure.Run(ctx, s.OutDir(), s.PreValue().(*chrome.Chrome), p); err != nil {
+		s.Fatal("Run failed: ", err)
+	}
 }

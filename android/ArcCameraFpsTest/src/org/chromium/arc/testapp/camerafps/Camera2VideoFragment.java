@@ -112,6 +112,8 @@ public class Camera2VideoFragment extends Fragment {
         for (Size size : choices) {
             if (mTargetResolution != null) {
                 if (size.equals(mTargetResolution)) {
+                    Log.i(TAG, "Selected user-specified target resolution: "
+                            + size.getWidth() + " x " + size.getHeight());
                     return size;
                 }
             } else {
@@ -128,6 +130,8 @@ public class Camera2VideoFragment extends Fragment {
                     + " but this resolution is not supported by the camera.");
         }
 
+        Log.i(TAG, "Selected resolution: "
+                + largestSize.getWidth() + " x " + largestSize.getHeight());
         return largestSize;
     }
 
@@ -366,6 +370,11 @@ public class Camera2VideoFragment extends Fragment {
         } catch (CameraAccessException e) {
             throw new RuntimeException("No Camera access", e);
         }
+    }
+
+    public int getSensorTimestampSource() {
+        return mCameraCharacteristics.get(
+                CameraCharacteristics.SENSOR_INFO_TIMESTAMP_SOURCE);
     }
 
     // Open the camera device.

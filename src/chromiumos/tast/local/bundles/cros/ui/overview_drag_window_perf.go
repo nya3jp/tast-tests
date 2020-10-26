@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -334,11 +333,6 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to enter into the overview mode: ", err)
 		}
 
-		// Wait for cpu idle after creating windows and entering overview.
-		if err := cpu.WaitUntilIdle(ctx); err != nil {
-			s.Fatal("Failed waiting for CPU to become idle: ", err)
-		}
-
 		// Run the drag and collect histogram.
 		suffix := fmt.Sprintf("%dwindows", currentWindows)
 		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
@@ -369,7 +363,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 			perfutil.StoreAll(perf.SmallerIsBetter, "ms", drag.l+"."+suffix))
 	}
 
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

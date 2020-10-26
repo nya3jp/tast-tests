@@ -25,7 +25,7 @@ func init() {
 			"vsavu@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
@@ -51,7 +51,7 @@ func ShowLowDiskSpaceNotification(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for notification")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		notifications, err := ash.VisibleNotifications(ctx, tconn)
+		notifications, err := ash.Notifications(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get notifications"))
 		}

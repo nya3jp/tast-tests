@@ -25,6 +25,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/dbus"
 	_ "chromiumos/tast/local/bundles/cros/debugd"
 	_ "chromiumos/tast/local/bundles/cros/dev"
+	_ "chromiumos/tast/local/bundles/cros/diagnostics"
 	_ "chromiumos/tast/local/bundles/cros/example"
 	_ "chromiumos/tast/local/bundles/cros/factory"
 	_ "chromiumos/tast/local/bundles/cros/feedback"
@@ -47,6 +48,8 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/printer"
 	_ "chromiumos/tast/local/bundles/cros/qemu"
 	_ "chromiumos/tast/local/bundles/cros/scanner"
+	_ "chromiumos/tast/local/bundles/cros/scanning"
+	_ "chromiumos/tast/local/bundles/cros/sched"
 	_ "chromiumos/tast/local/bundles/cros/security"
 	_ "chromiumos/tast/local/bundles/cros/session"
 	_ "chromiumos/tast/local/bundles/cros/storage"
@@ -58,5 +61,5 @@ import (
 )
 
 func main() {
-	bundlemain.Main()
+	bundlemain.RunLocal()
 }

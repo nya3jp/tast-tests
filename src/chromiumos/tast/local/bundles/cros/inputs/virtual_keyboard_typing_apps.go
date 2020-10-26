@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -24,29 +25,36 @@ func init() {
 		Func:         VirtualKeyboardTypingApps,
 		Desc:         "Checks that the virtual keyboard works in apps",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		Pre:          pre.VKEnabled(),
 		Timeout:      5 * time.Minute,
-		HardwareDeps: pre.InputsStableModels,
-	})
+		Params: []testing.Param{{
+			Name:              "stable",
+			ExtraHardwareDeps: pre.InputsStableModels,
+		}, {
+			Name:              "unstable",
+			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
+		}}})
 }
 
 func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 	// typingKeys indicates a key series that tapped on virtual keyboard.
-	var typingKeys = []string{"g", "o"}
+	const typingKeys = "go"
 
-	const expectedTypingResult = "go"
-
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
+	if err != nil {
+		s.Fatal("Failed to ensure in tablet mode: ", err)
+	}
+	defer cleanup(ctx)
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
@@ -68,45 +76,37 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		Role: ui.RoleTypeSearchBox,
 		Name: "Search settings",
 	}
-	element, err := ui.FindWithTimeout(ctx, tconn, params, 5*time.Second)
+	searchInputElement, err := ui.FindWithTimeout(ctx, tconn, params, 5*time.Second)
 	if err != nil {
 		s.Fatal("Failed to find searchbox input field in settings: ", err)
 	}
-	defer element.Release(ctx)
+	defer searchInputElement.Release(ctx)
 
 	s.Log("Click searchbox to trigger virtual keyboard")
-	if err := element.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
+	if err := vkb.ClickUntilVKShown(ctx, tconn, searchInputElement); err != nil {
+		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 
-	s.Log("Wait for virtual keyboard shown up")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed to wait for virtual keyboard ready")
 	}
 
-	s.Log("Wait for decoder running")
-	if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
-	}
-
-	if err := vkb.TapKeys(ctx, tconn, typingKeys); err != nil {
+	if err := vkb.TapKeys(ctx, tconn, strings.Split(typingKeys, "")); err != nil {
 		s.Fatal("Failed to input with virtual keyboard: ", err)
 	}
 
-	// Value change can be a bit delayed after input.
+	// Hide virtual keyboard to submit candidate
+	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+		s.Fatal("Failed to hide virtual keyboard: ", err)
+	}
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		element, err := ui.FindWithTimeout(ctx, tconn, params, 2*time.Second)
-		if err != nil {
-			s.Fatal("Failed to find searchbox input field in settings: ", err)
+		if err := searchInputElement.Update(ctx); err != nil {
+			return errors.Wrap(err, "failed to update the node's location")
 		}
-		defer element.Release(ctx)
-		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, 2*time.Second)
-		if err != nil {
-			return err
-		}
-		defer inputValueElement.Release(ctx)
-		if inputValueElement.Name != expectedTypingResult {
-			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, expectedTypingResult)
+
+		if searchInputElement.Value != typingKeys {
+			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", searchInputElement.Value, typingKeys)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {

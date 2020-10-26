@@ -11,13 +11,14 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
@@ -69,18 +70,15 @@ type pipTestParams struct {
 	initMethod initializationType
 }
 
-var stablePipTests = []pipTestParams{
+var pipTests = []pipTestParams{
 	{name: "PIP Move", fn: testPIPMove, initMethod: enterPip},
 	{name: "PIP Resize To Max", fn: testPIPResizeToMax, initMethod: enterPip},
-	{name: "PIP GravityStatusArea", fn: testPIPGravityStatusArea, initMethod: enterPip},
+	{name: "PIP GravityQuickSettings", fn: testPIPGravityQuickSettings, initMethod: enterPip},
 	{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
 	{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
 	{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
 	{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: startActivity},
 	{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: startActivity},
-}
-
-var unstablePipTests = []pipTestParams{
 	{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
 }
 
@@ -90,23 +88,15 @@ func init() {
 		Desc:         "Checks that ARC++ Picture-in-Picture works as expected",
 		Contacts:     []string{"edcourtney@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"tablet_mode", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Val:               stablePipTests,
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name:              "unstable",
-			Val:               unstablePipTests,
+			Val:               pipTests,
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			Val:               stablePipTests,
-			ExtraSoftwareDeps: []string{"android_vm"},
-		}, {
-			Name:              "vm_unstable",
-			Val:               unstablePipTests,
+			Val:               pipTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -149,7 +139,7 @@ func PIP(ctx context.Context, s *testing.State) {
 	}
 	defer maPIPBaseAct.Close()
 
-	dev, err := ui.NewDevice(ctx, a)
+	dev, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
@@ -192,14 +182,11 @@ func PIP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get display mode: ", err)
 	}
 
-	// TODO(b:162267844) There are still some tests not yet working in tablet mode. Remove these checks once R is fully working.
-	tabletModes := []bool{false}
+	tabletModes := []bool{false, true}
 	enableMultiActivityPIP := []bool{true, false}
-
-	if sdkVer, err := arc.SDKVersion(); err != nil {
+	sdkVer, err := arc.SDKVersion()
+	if err != nil {
 		s.Fatal("Failed to get the SDK version: ", err)
-	} else if sdkVer != arc.SDKR {
-		tabletModes = append(tabletModes, true)
 	}
 
 	// Run all subtests twice. First, with tablet mode disabled. And then, with it enabled.
@@ -211,7 +198,12 @@ func PIP(ctx context.Context, s *testing.State) {
 
 		// There are two types of PIP: single activity PIP and multi activity PIP. Run each test with both types by default.
 		for _, multiActivityPIP := range enableMultiActivityPIP {
-			s.Logf("Running tests with multi activity PIP enabled=%t", multiActivityPIP)
+			if !multiActivityPIP && tabletMode && sdkVer == arc.SDKR {
+				// TODO(b:156685602) There are still some tests not yet working in tablet mode. Remove these checks once R is fully working.
+				continue
+			}
+
+			s.Logf("Running tests with tablet mode enabled=%t and MAPIP enabled=%t", tabletMode, multiActivityPIP)
 			for idx, test := range s.Param().([]pipTestParams) {
 				testing.ContextLog(ctx, "About to run test: ", test.name)
 
@@ -221,6 +213,14 @@ func PIP(ctx context.Context, s *testing.State) {
 					}
 
 					must(pipAct.Start(ctx, tconn))
+
+					if multiActivityPIP {
+						// Wait for pipAct to finish settling on top of the base activity. Minimize could be called before on the base activity
+						// otherwise.
+						if err := testing.Sleep(ctx, time.Second); err != nil {
+							s.Fatal("Failed to sleep waiting for MAPIP: ", err)
+						}
+					}
 				}
 
 				if test.initMethod == enterPip {
@@ -341,16 +341,16 @@ func testPIPResizeToMax(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	return nil
 }
 
-// testPIPGravityStatusArea tests that PIP windows moves accordingly when the status area is hidden / displayed.
-func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
-	// testPIPGravityStatusArea verifies that:
-	// 1) The PIP window moves to the left of the status area when it is shown.
-	// 2) The PIP window returns close the right border when the status area is dismissed.
+// testPIPGravityQuickSettings tests that PIP windows moves accordingly when Quick Settings is hidden / displayed.
+func testPIPGravityQuickSettings(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	// testPIPGravityQuickSettings verifies that:
+	// 1) The PIP window moves to the left of the Quick Settings area when it is shown.
+	// 2) The PIP window returns close the right border when the Quick Settings area is dismissed.
 
 	collisionWindowWorkAreaInsetsPX := int(math.Round(collisionWindowWorkAreaInsetsDP * dispMode.DeviceScaleFactor))
 	testing.ContextLog(ctx, "Using: collisionWindowWorkAreaInsetsPX = ", collisionWindowWorkAreaInsetsPX)
 
-	// 0) Sanity check. Verify that PIP window is in the expected initial position and that Status Area is hidden.
+	// 0) Sanity check. Verify that PIP window is in the expected initial position and that Quick Settings is hidden.
 
 	if err := waitForPIPWindow(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to wait for PIP window")
@@ -365,34 +365,34 @@ func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.TestConn, a *ar
 		return errors.Wrap(err, "the PIP window must be along the right edge of the display")
 	}
 
-	// 1) The PIP window should move to the left of the status area.
+	// 1) The PIP window should move to the left of the Quick Settings area.
 
-	testing.ContextLog(ctx, "Showing system status area")
-	if err := showSystemStatusArea(ctx, tconn); err != nil {
+	testing.ContextLog(ctx, "Showing Quick Settings area")
+	if err := quicksettings.Show(ctx, tconn); err != nil {
 		return err
 	}
-	// Be nice, and no matter what happens, hide the Status Area on exit.
-	defer hideSystemStatusArea(ctx, tconn)
+	// Be nice, and no matter what happens, hide Quick Settings on exit.
+	defer quicksettings.Hide(ctx, tconn)
 
-	statusRectDP, err := getStatusAreaRect(ctx, tconn, 10*time.Second)
+	statusRectDP, err := quicksettings.Rect(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to get system status area rect")
+		return errors.Wrap(err, "failed to get quick settings rect")
 	}
 	statusLeftPX := int(math.Round(float64(statusRectDP.Left) * dispMode.DeviceScaleFactor))
 
 	if err = waitForNewBoundsWithMargin(ctx, tconn, statusLeftPX-collisionWindowWorkAreaInsetsPX, right, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
-		return errors.Wrap(err, "the PIP window must move to the left when system status area gets shown")
+		return errors.Wrap(err, "the PIP window must move to the left when Quick Settings gets shown")
 	}
 
-	// 2) The PIP window should move close the right border when the status area is dismissed.
+	// 2) The PIP window should move close the right border when Quick Settings is dismissed.
 
-	testing.ContextLog(ctx, "Dismissing system status area")
-	if err := hideSystemStatusArea(ctx, tconn); err != nil {
+	testing.ContextLog(ctx, "Dismissing Quick Settings")
+	if err := quicksettings.Hide(ctx, tconn); err != nil {
 		return err
 	}
 
 	if err = waitForNewBoundsWithMargin(ctx, tconn, bounds.Left+bounds.Width, right, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
-		return errors.Wrap(err, "the PIP window must go back to the original position when system status area gets hidden")
+		return errors.Wrap(err, "the PIP window must go back to the original position when Quick Settings gets hidden")
 	}
 
 	return nil
@@ -692,17 +692,18 @@ func expandPIPViaMenuTouchP(ctx context.Context, tconn *chrome.TestConn, act *ar
 // After moving the mouse to the center of the PIP window it waits for a second so that the pip
 // menu appears and the expand icon can be clicked.
 func expandPIPViaMenuTouchR(ctx context.Context, tconn *chrome.TestConn, restoreWindowState ash.WindowStateType) error {
-	window, err := getPIPWindow(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
-	}
-
-	bounds := window.BoundsInRoot
-	if err := mouse.Move(ctx, tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), 0); err != nil {
-		return err
-	}
-
 	return testing.Poll(ctx, func(ctx context.Context) error {
+		window, err := getPIPWindow(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "could not get PIP window bounds"))
+		}
+
+		bounds := window.BoundsInRoot
+
+		if err := mouse.Move(ctx, tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), 0); err != nil {
+			return testing.PollBreak(err)
+		}
+
 		// Need to wait for the menu to appear.
 		if err := testing.Sleep(ctx, time.Second); err != nil {
 			return testing.PollBreak(err)
@@ -714,15 +715,11 @@ func expandPIPViaMenuTouchR(ctx context.Context, tconn *chrome.TestConn, restore
 			return testing.PollBreak(err)
 		}
 
-		windowState, err := ash.GetARCAppWindowState(ctx, tconn, pipTestPkgName)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
-		}
-		if windowState != restoreWindowState {
-			return errors.New("the window isn't expanded yet")
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, pipTestPkgName, restoreWindowState); err != nil {
+			return errors.Wrap(err, "did not expand to restore window state")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond})
+	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 500 * time.Millisecond})
 }
 
 // waitForPIPWindow keeps looking for a PIP window until it appears on the Chrome side.
@@ -730,7 +727,7 @@ func waitForPIPWindow(ctx context.Context, tconn *chrome.TestConn) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := getPIPWindow(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "The PIP window hasn't been created yet")
+			return errors.Wrap(err, "the PIP window hasn't been created yet")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
@@ -739,65 +736,6 @@ func waitForPIPWindow(ctx context.Context, tconn *chrome.TestConn) error {
 // getPIPWindow returns the PIP window if any.
 func getPIPWindow(ctx context.Context, tconn *chrome.TestConn) (*ash.Window, error) {
 	return ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.State == ash.WindowStatePIP })
-}
-
-// getSystemUIRect returns the rect whose window corresponds to className on the Chrome window hierarchy.
-// As it's possible that it takes some time for the window to show up and get synced to API, we try a few times until we get a valid bounds.
-func getSystemUIRect(ctx context.Context, tconn *chrome.TestConn, className string, timeout time.Duration) (coords.Rect, error) {
-	// Find the node with className.
-	window, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: className}, timeout)
-	if err != nil {
-		return coords.Rect{}, err
-	}
-	defer window.Release(ctx)
-	return window.Location, nil
-}
-
-// getStatusAreaRect returns Chrome OS's Status Area rect, in DPs.
-// Returns error if Status Area is not present.
-func getStatusAreaRect(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) (coords.Rect, error) {
-	return getSystemUIRect(ctx, tconn, "BubbleFrameView", timeout)
-}
-
-// showSystemStatusArea shows the System Status Area in case it is not already shown.
-func showSystemStatusArea(ctx context.Context, tconn *chrome.TestConn) error {
-	// Already visible ?
-	if _, err := getStatusAreaRect(ctx, tconn, time.Second); err == nil {
-		return nil
-	}
-
-	if err := toggleSystemStatusArea(ctx, tconn); err != nil {
-		return err
-	}
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := getStatusAreaRect(ctx, tconn, time.Second)
-		if err != nil {
-			return errors.Wrap(err, "The system status area hasn't been created yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
-}
-
-// hideSystemStatusArea hides the System Status Area in case it is not already hidden.
-func hideSystemStatusArea(ctx context.Context, tconn *chrome.TestConn) error {
-	// Already hidden ?
-	if _, err := getStatusAreaRect(ctx, tconn, time.Second); err != nil {
-		return nil
-	}
-
-	if err := toggleSystemStatusArea(ctx, tconn); err != nil {
-		return err
-	}
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := getStatusAreaRect(ctx, tconn, time.Second)
-		// Once the window gets hidden, getStatusAreaRect should return error.
-		if err == nil {
-			return errors.Wrap(err, "The system status area hasn't been hidden yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // pressShelfIcon press the shelf icon of PIP window.
@@ -818,19 +756,6 @@ func pressShelfIcon(ctx context.Context, tconn *chrome.TestConn) error {
 	defer icon.Release(ctx)
 
 	return icon.LeftClick(ctx)
-}
-
-// toggleSystemStatusArea toggles Chrome OS's system status area.
-func toggleSystemStatusArea(ctx context.Context, tconn *chrome.TestConn) error {
-	// A reliable way to toggle the status area is by injecting Alt+Shift+s. But on tablet mode
-	// it doesn't work since the keyboard is disabled.
-	// Instead, we click on the StatusAreaWidgetDelegate.
-	widget, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: "ash/StatusAreaWidgetDelegate"}, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to get status area widget")
-	}
-	defer widget.Release(ctx)
-	return widget.LeftClick(ctx)
 }
 
 // waitForNewBoundsWithMargin waits until Chrome animation finishes completely and check the position of an edge of the PIP window.

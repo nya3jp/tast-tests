@@ -1,0 +1,40 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.firmware;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/firmware";
+
+// BiosService provides ability to manipulate bios settings on DUT
+service BiosService {
+  // GetGBBFlags gets the flags that are cleared and set.
+  rpc GetGBBFlags (google.protobuf.Empty) returns (GBBFlagsState) {}
+}
+
+// GBBFlag bit positions
+enum GBBFlag {
+  DEV_SCREEN_SHORT_DELAY    = 0;
+  LOAD_OPTION_ROMS          = 1;
+  ENABLE_ALTERNATE_OS       = 2;
+  FORCE_DEV_SWITCH_ON       = 3;
+  FORCE_DEV_BOOT_USB        = 4;
+  DISABLE_FW_ROLLBACK_CHECK = 5;
+  ENTER_TRIGGERS_TONORM     = 6;
+  FORCE_DEV_BOOT_LEGACY     = 7;
+  FAFT_KEY_OVERIDE          = 8;
+  DISABLE_EC_SOFTWARE_SYNC  = 9;
+  DEFAULT_DEV_BOOT_LEGACY   = 10;
+  DISABLE_PD_SOFTWARE_SYNC  = 11;
+  DISABLE_LID_SHUTDOWN      = 12;
+  FORCE_DEV_BOOT_FASTBOOT_FULL_CAP = 13;
+}
+
+message GBBFlagsState {
+  repeated GBBFlag Clear = 1;
+  repeated GBBFlag Set = 2;
+}

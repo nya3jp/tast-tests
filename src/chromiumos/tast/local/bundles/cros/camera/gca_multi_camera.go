@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/camera/gca"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"

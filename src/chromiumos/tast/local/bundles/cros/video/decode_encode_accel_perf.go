@@ -92,7 +92,7 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		[]string{
 			encoding.CreateStreamDataArg(encodeParams, encodeProfile, encodePixelFormat, streamPath, "/dev/null"),
 			"--run_at_fps",
-			"--ozone-platform=gbm",
+			"--ozone-platform=drm",
 			"--num_frames_to_encode=1000000",  // Large enough to encode entire measurement duration.
 			"--test-launcher-timeout=3600000", // Timeout is management by Tast test.
 			"--single-process-tests",

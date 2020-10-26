@@ -9,11 +9,13 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"net"
 	"os"
 	"strings"
 	"syscall"
 	"time"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 	"github.com/mafredri/cdp/protocol/target"
 	"github.com/shirou/gopsutil/process"
 	"golang.org/x/sys/unix"
@@ -33,11 +35,23 @@ const BinaryPath = LacrosTestPath + "/lacros_binary"
 // LacrosChrome contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
 type LacrosChrome struct {
-	Devsess     *cdputil.Session // Debugging session for lacros-chrome
-	cmd         *testexec.Cmd    // The command context used to start lacros-chrome.
-	logMaster   *jslog.Master    // collects JS console output
-	testExtID   string           // ID for test extension exposing APIs
-	testExtConn *chrome.Conn     // connection to test extension exposing APIs
+	Devsess       *cdputil.Session  // Debugging session for lacros-chrome
+	cmd           *testexec.Cmd     // The command context used to start lacros-chrome.
+	logAggregator *jslog.Aggregator // collects JS console output
+	testExtID     string            // ID for test extension exposing APIs
+	testExtConn   *chrome.Conn      // connection to test extension exposing APIs
+}
+
+// StartTracing starts trace events collection for the selected categories. Android
+// categories must be prefixed with "disabled-by-default-android ", e.g. for the
+// gfx category, use "disabled-by-default-android gfx", including the space.
+func (l *LacrosChrome) StartTracing(ctx context.Context, categories []string) error {
+	return l.Devsess.StartTracing(ctx, categories)
+}
+
+// StopTracing stops trace collection and returns the collected trace events.
+func (l *LacrosChrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
+	return l.Devsess.StopTracing(ctx)
 }
 
 // Close kills a launched instance of lacros-chrome.
@@ -53,9 +67,9 @@ func (l *LacrosChrome) Close(ctx context.Context) error {
 		l.cmd.Cmd.Wait()
 		l.cmd = nil
 	}
-	if l.logMaster != nil {
-		l.logMaster.Close()
-		l.logMaster = nil
+	if l.logAggregator != nil {
+		l.logAggregator.Close()
+		l.logAggregator = nil
 	}
 	if l.testExtConn != nil {
 		l.testExtConn.Close()
@@ -105,6 +119,63 @@ func killLacrosChrome(ctx context.Context) {
 	}
 }
 
+func closeFDs(ctx context.Context, fds []int) {
+	for _, fd := range fds {
+		if err := syscall.Close(fd); err != nil {
+			testing.ContextLog(ctx, "Failed to close file descriptor while cleaning up: ", err)
+		}
+	}
+}
+
+func receiveMojoFile(ctx context.Context) (*os.File, error) {
+	addr := &net.UnixAddr{
+		Name: mojoSocketPath,
+		Net:  "unix",
+	}
+	conn, err := net.DialUnix("unix", nil, addr)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not open lacros mojo socket")
+	}
+	defer conn.Close()
+
+	oob := make([]byte, syscall.CmsgSpace(4))
+	_, oobn, _, _, err := conn.ReadMsgUnix(nil, oob)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not read lacros mojo socket")
+	}
+
+	msgs, err := syscall.ParseSocketControlMessage(oob[:oobn])
+	if err != nil {
+		return nil, err
+	}
+
+	var fds []int
+	var firstErr error
+	for _, msg := range msgs {
+		msgfds, err := syscall.ParseUnixRights(&msg)
+		if firstErr == nil {
+			firstErr = err
+		}
+		fds = append(fds, msgfds...)
+	}
+
+	if firstErr != nil {
+		closeFDs(ctx, fds)
+		return nil, errors.Wrap(firstErr, "could not extract fds from lacros mojo socket")
+	}
+
+	if len(fds) != 1 {
+		closeFDs(ctx, fds)
+		return nil, errors.Errorf("expected exactly 1 file descriptor, got %d", len(fds))
+	}
+
+	f := os.NewFile(uintptr(fds[0]), "lacros.sock")
+	if f == nil {
+		return nil, errors.New("could not use fd for mojo")
+	}
+	return f, nil
+}
+
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
 func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	killLacrosChrome(ctx)
@@ -133,16 +204,32 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		"--lang=en-US",                              // Language
 		"--breakpad-dump-location=" + BinaryPath,    // Specify location for breakpad dump files.
 		"--window-size=800,600",
-		"--log-file=" + userDataDir + "/logfile", // Specify log file location for debugging.
-		"--enable-logging",                       // This flag is necessary to ensure the log file is written.
-		"--enable-gpu-rasterization",             // Enable GPU rasterization. This is necessary to enable OOP rasterization.
-		"--enable-oop-rasterization",             // Enable OOP rasterization.
-		"--disable-extensions-except=" + extList, // Disable extensions other than the Tast test extension.
-		chrome.BlankURL,                          // Specify first tab to load.
+		"--log-file=" + userDataDir + "/logfile",     // Specify log file location for debugging.
+		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
+		"--enable-gpu-rasterization",                 // Enable GPU rasterization. This is necessary to enable OOP rasterization.
+		"--enable-oop-rasterization",                 // Enable OOP rasterization.
+		"--disable-extensions-except=" + extList,     // Disable extensions other than the Tast test extension.
+		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
+		"--use-cras",                                 // Use CrAS.
+		"--use-fake-ui-for-media-stream",             // Avoid the need to grant camera/microphone permissions.
+		"--mojo-platform-channel-handle=3",           // Pass the file descriptor needed to connect lacros and ash-chrome via Mojo.
+		chrome.BlankURL,                              // Specify first tab to load.
 	}
+
+	// Get a file to connect to ash-chrome using Mojo with. Make sure to do this
+	f, err := receiveMojoFile(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get fd for mojo")
+	}
+	defer f.Close()
 
 	l.cmd = testexec.CommandContext(ctx, BinaryPath+"/chrome", args...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
+
+	// The mojo platform channel file is the first element of ExtraFiles, so it will be be accessible
+	// to lacros as file descriptor #3. Be careful about this when adding more ExtraFiles.
+	l.cmd.Cmd.ExtraFiles = append(l.cmd.Cmd.ExtraFiles, f)
+
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
 	if err := l.cmd.Cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros-chrome")
@@ -161,7 +248,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
 
-	l.logMaster = jslog.NewMaster()
+	l.logAggregator = jslog.NewAggregator()
 
 	return l, nil
 }
@@ -196,7 +283,7 @@ func (l *LacrosChrome) NewConn(ctx context.Context, url string, opts ...cdputil.
 }
 
 func (l *LacrosChrome) newConnInternal(ctx context.Context, id target.ID, url string) (*chrome.Conn, error) {
-	conn, err := chrome.NewConn(ctx, l.Devsess, id, l.logMaster, url, func(err error) error { return err })
+	conn, err := chrome.NewConn(ctx, l.Devsess, id, l.logAggregator, url, func(err error) error { return err })
 	if err != nil {
 		return nil, err
 	}

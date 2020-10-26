@@ -9,11 +9,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -524,7 +526,7 @@ func SetupAndRunTestCases(ctx context.Context, s *testing.State, isTabletMode bo
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed to initialize UI Automator: ", err)
 	}
@@ -554,4 +556,57 @@ func SetupAndRunTestCases(ctx context.Context, s *testing.State, isTabletMode bo
 			s.Errorf("%s test failed: %v", test.Name, err)
 		}
 	}
+}
+
+// GetButtonBounds is used to get button bounds in a given package name.
+func GetButtonBounds(ctx context.Context, d *ui.Device, actPkgName string) (coords.Rect, error) {
+	// Get a buttons info.
+	button := d.Object(ui.PackageName(actPkgName),
+		ui.ClassName("android.widget.Button"),
+		ui.ID("org.chromium.arc.testapp.windowmanager:id/button_show"))
+
+	if err := button.WaitForExists(ctx, 10*time.Second); err != nil {
+		return coords.Rect{}, err
+	}
+	buttonBounds, err := button.GetBounds(ctx)
+	if err != nil {
+		return coords.Rect{}, err
+	}
+
+	return buttonBounds, nil
+}
+
+// EnsureARCFontScaleChanged changes the android font scale via settings and waits until the font scale changes completely.
+func EnsureARCFontScaleChanged(ctx context.Context, a *arc.ARC, fontScale float64) error {
+	cmd := a.Command(ctx, "settings", "put", "system", "font_scale", fmt.Sprintf("%f", fontScale))
+	if err := cmd.Run(); err != nil {
+		return errors.Wrap(err, "unable to run adb shell command")
+	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		fs, err := GetARCFontScale(ctx, a)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		if fs != fontScale {
+			return testing.PollBreak(errors.Errorf("unable to wait for font scale to change: got %f, want %f", fs, fontScale))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
+// GetARCFontScale gets the font scale from the android settings.
+func GetARCFontScale(ctx context.Context, a *arc.ARC) (float64, error) {
+	cmd := a.Command(ctx, "settings", "get", "system", "font_scale")
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to run adb shell command")
+	}
+	outStr := strings.TrimSpace(string(output))
+	fs, err := strconv.ParseFloat(outStr, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "invalid font_scale: %q", outStr)
+	}
+
+	return fs, nil
 }

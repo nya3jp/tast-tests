@@ -62,6 +62,8 @@ func EventsBufferSize(size int) EventWatcherOption {
 }
 
 // NewEventWatcher creates and starts a new EventWatcher.
+// Note that the watcher may not be ready right after this function returned due to race condition,
+// and it probably won't be fixed. Choose other solution if possible.
 func NewEventWatcher(ctx context.Context, dut *dut.DUT, ops ...EventWatcherOption) (*EventWatcher, error) {
 	conf := &eventWatcherConfig{eventsBufferSize: 10}
 	for _, op := range ops {
@@ -128,15 +130,17 @@ func (e *EventWatcher) Wait(ctx context.Context) (*Event, error) {
 }
 
 // WaitByType waits for the next matched event.
-// Similar to Wait, a channelClosedError may be returned.
-func (e *EventWatcher) WaitByType(ctx context.Context, et EventType) (*Event, error) {
+// Similar to Wait, a ErrWatcherClosed may be returned.
+func (e *EventWatcher) WaitByType(ctx context.Context, ets ...EventType) (*Event, error) {
 	for {
 		ev, err := e.Wait(ctx)
 		if err != nil {
 			return nil, err
 		}
-		if ev.Type == et {
-			return ev, nil
+		for _, et := range ets {
+			if ev.Type == et {
+				return ev, nil
+			}
 		}
 	}
 }

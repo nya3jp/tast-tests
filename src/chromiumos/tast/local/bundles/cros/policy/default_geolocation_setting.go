@@ -12,9 +12,10 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/policy/pre"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -40,6 +41,15 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
+
+	// Connect to Test API to use it with the ui library.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// TODO: Remove it when the test is not informational anymore.
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	for _, param := range []struct {
 		name           string
@@ -89,14 +99,8 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
-			}
-
-			// Connect to Test API to use it with the ui library.
-			tconn, err := cr.TestAPIConn(ctx)
-			if err != nil {
-				s.Fatal("Failed to create Test API connection: ", err)
 			}
 
 			// Open a website.
@@ -111,17 +115,27 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 			// The routine will then click the allow button in the dialog.
 			ch := make(chan error, 1)
 			go func() {
-				// Get the allow button.
 				params := ui.FindParams{
 					Role: ui.RoleTypeButton,
 					Name: "Allow",
 				}
-				node, err := ui.FindWithTimeout(ctx, tconn, params, 15*time.Second)
-				if err != nil && !errors.Is(err, ui.ErrNodeDoesNotExist) {
+
+				if err := ui.WaitUntilExistsStatus(ctx, tconn, params, param.wantAsk, 30*time.Second); err != nil {
+					ch <- errors.Wrap(err, "failed to confirm the desired status of the allow button")
+					return
+				}
+
+				// Return if there is no dialog.
+				if !param.wantAsk {
+					ch <- nil
+					return
+				}
+
+				// Get the allow button.
+				node, err := ui.Find(ctx, tconn, params)
+				if err != nil {
 					ch <- errors.Wrap(err, "failed to find allow button node")
 					return
-				} else if b := !errors.Is(err, ui.ErrNodeDoesNotExist); param.wantAsk != b {
-					ch <- errors.Errorf("unexpected existence of dialog to ask for permission: got %t; want %t", b, param.wantAsk)
 				}
 
 				// This button takes a bit before it is clickable.

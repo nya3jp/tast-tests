@@ -9,7 +9,6 @@ package ready
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -53,12 +52,6 @@ func Wait(ctx context.Context) error {
 
 	killOrphanAutotestd(ctx)
 	clearPolicies(ctx)
-
-	// Disable the periodic log cleanup job to make sure system logs generated during tests are preserved.
-	// We never resume the job so as to make it easier for users to inspect system logs later.
-	if err := disableLogCleanup(); err != nil {
-		return err
-	}
 
 	// Delete all core dumps to free up spaces.
 	if err := crash.DeleteCoreDumps(ctx); err != nil {
@@ -187,14 +180,6 @@ func killOrphanAutotestd(ctx context.Context) {
 	}
 }
 
-// disableLogCleanup stops the periodic log cleanup job permanently.
-func disableLogCleanup() error {
-	if err := ioutil.WriteFile("/var/lib/cleanup_logs_paused", nil, 0666); err != nil {
-		return errors.Wrap(err, "failed to disable the log cleanup job")
-	}
-	return nil
-}
-
 // hasTPM checks whether the DUT has a TPM.
 func hasTPM(ctx context.Context) bool {
 	const noTPMError = "Communication failure"
@@ -284,6 +269,7 @@ func getCryptohomedUptime() (time.Duration, error) {
 // These match lines in the output from "cryptohome --action=tpm_more_status".
 var tpmEnabledRegexp = regexp.MustCompile(`(?m)^\s*enabled:\s*true\s*$`)
 var tpmInitializedRegexp = regexp.MustCompile(`(?m)^\s*attestation_prepared:\s*true\s*$`)
+var tpmOwnedRegexp = regexp.MustCompile(`(?m)^\s*owned:\s*true\s*$`)
 
 // ensureTPMInitialized checks if the TPM is already initialized and tries to take ownership if not.
 // nil is returned if the TPM is not enabled (as is the case on VMs).
@@ -291,27 +277,31 @@ func ensureTPMInitialized(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, 2*time.Minute)
 	defer cancel()
 
-	tpmStatus := func(ctx context.Context) (enabled, initialized bool, err error) {
+	tpmStatus := func(ctx context.Context) (enabled, initialized, owned bool, err error) {
 		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_more_status").Output()
 		if err != nil {
-			return false, false, err
+			return false, false, false, err
 		}
-		return tpmEnabledRegexp.Match(out), tpmInitializedRegexp.Match(out), nil
+		return tpmEnabledRegexp.Match(out), tpmInitializedRegexp.Match(out), tpmOwnedRegexp.Match(out), nil
 	}
 
 	// Check if the TPM is disabled or already initialized.
-	if enabled, initialized, err := tpmStatus(ctx); err != nil {
+	enabled, initialized, owned, err := tpmStatus(ctx)
+	if err != nil {
 		return err
 	} else if !enabled || initialized {
 		return nil
 	}
 
 	testing.ContextLog(ctx, "TPM not initialized; taking ownership now to ensure that tests aren't blocked during login")
+	if owned {
+		testing.ContextLog(ctx, "TPM is already owned; finishing initialization")
+	}
 	if err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_take_ownership").Run(); err != nil {
 		return err
 	}
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if _, initialized, err := tpmStatus(ctx); err != nil {
+		if _, initialized, _, err := tpmStatus(ctx); err != nil {
 			// cryptohome error encountered while polling.
 			return testing.PollBreak(err)
 		} else if !initialized {
@@ -374,14 +364,16 @@ const EnterpriseOwnedLogLocation = "/tmp/ready-enterpriseOwned.err"
 var trueRegex = regexp.MustCompile(`(?m)^\s*[Tt]rue\s*$`)
 
 func checkEnterpriseOwned(ctx context.Context) {
-	isEnterpriseOwned := func(ctx context.Context) (bool, error) {
+	isEnterpriseOwned := func(ctx context.Context) bool {
 		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=install_attributes_get", "--name=enterprise.owned").Output()
 		if err != nil {
-			return false, err
+			// Don't fail as install attributes can be missing. Device is not
+			// enterprise owned in that case.
+			return false
 		}
 
 		owned := trueRegex.Match(out)
-		return owned, nil
+		return owned
 	}
 
 	// Clear error log for this function.
@@ -389,15 +381,7 @@ func checkEnterpriseOwned(ctx context.Context) {
 		testing.ContextLogf(ctx, "Failed to remove error log %q: %v", EnterpriseOwnedLogLocation, err)
 	}
 
-	owned, err := isEnterpriseOwned(ctx)
-	if err != nil {
-		// Don't fail here as install attributes can be missing. Device is not
-		// enterprise owned in that case.
-		testing.ContextLog(ctx, "Failed to check if device is enterprise enrolled: ", err)
-		return
-	}
-
-	if owned {
+	if isEnterpriseOwned(ctx) {
 		if err := errorLogAppendError(EnterpriseOwnedLogLocation, "Device is enterprise owned"); err != nil {
 			testing.ContextLog(ctx, err.Error())
 		}

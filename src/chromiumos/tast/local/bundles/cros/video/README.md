@@ -278,16 +278,36 @@ devices that support NV12 overlays (see `hwdep.SupportsNV12Overlays()`. The
 *_composited_hw tests don't have this restriction: they force hardware overlays
 off so that they have to be composited.
 
-The pixels we check are the centers of each of the four rectangles of the test
-video and the four corners of the video (plus some padding to ignore some
-artifacts which are acceptable).
+To check for color correctness, we sample a few interesting pixels. A video
+frame should have the following structure:
 
-If the color check at the centers fails, video playback is broken in a very
-visible (read major) way.
+```
+*MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*
+M-MM-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-MM-M
+MMMAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBMMM
+M-MA-AAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBB-BM-M
+MMMAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBMMM
+MMMAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBMMM
+MMMAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBMMM
+MMMCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDMMM
+MMMCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDMMM
+MMMCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDMMM
+M-MC-CCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDD-DM-M
+MMMCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDMMM
+M-MM-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-MM-M
+*MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*
+```
 
-If the color check at the centers succeeds, but the check at the corners fails,
-the likely culprit is an incorrect rectangle or size in the Chrome compositing
-pipeline.
+Where M is a magenta border; A, B, C, and D are the colors of the quadrants;
+and - and * are the pixels we sample. * are the "outer corners" and - are the
+"inner corners." Note that for the inner corners, we sample four pixels per
+corner: three of those inside the magenta border and one inside the quadrant.
+These pixels are near each other, so this helps us detect incorrect
+stretching/shifting/rotation/mirroring. Sampling the outer corners helps us
+detect leakage of invisible data.
+
+Currently, these tests report the color distance for each sampled pixel as a
+performance measurement. They don't currently fail due to unexpected colors.
 
 To run these tests use:
 
@@ -302,10 +322,17 @@ To run these tests use:
 
 # Generates an image of size canvas_width x canvas_height. The image contains an
 # area of size area_width x area_height starting at (offset_x, offset_y) which
-# is subdivided into quadrants and each one is colored differently. The rest of
-# the image is cyan. The colors of the quadrants are chosen arbitrarily with the
-# assumption that those colors are unlikely to correspond to common artifacts
-# (e.g., green lines). The image is saved as output_file.
+# has an 8px magenta interior border and the remaining area is subdivided into
+# quadrants. Each quadrant is colored differently. The rest of the image is
+# cyan. The colors are chosen so that the distance between any two colors is at
+# least 127 (when taking the maximum absolute difference between components).
+# That way, it's easy to programmatically distinguish among regions. Also, the
+# assumption is that those colors are unlikely to correspond to common artifacts
+# (e.g., green lines). The image is saved as output_file. An image of only
+# area_width x area_height starting at (offset_x, offset_y) is saved as
+# output_ref_file if provided: this is intended to be used as the "reference"
+# image for how a video frame generated from output_file should be rendered in
+# the absence of scaling and artifacts.
 gen_image() {
   canvas_width=$1
   canvas_height=$2
@@ -314,6 +341,7 @@ gen_image() {
   offset_x=$5
   offset_y=$6
   output_file=$7
+  output_ref_file=$8
 
   # Calculate the coordinates of the top left corner of the area (x0, y0), the
   # middle of the area (x50, y50), and the bottom right corner (x100, y100).
@@ -327,15 +355,24 @@ gen_image() {
   # Draw rectangles in the following order: top-left, top-right, bottom-right,
   # bottom-left.
   convert -size ${canvas_width}x${canvas_height} canvas:cyan -draw " \
-    fill rgba(128, 64, 32, 255) \
-    rectangle ${x0},${y0} ${x50},${y50} \
-    fill rgba(32, 128, 64, 255) \
-    rectangle $((x50 + 1)),${y0} ${x100},${y50} \
-    fill rgba(64, 32, 128, 255) \
-    rectangle $((x50 + 1)),$((y50 + 1)) ${x100},${y100} \
-    fill rgba(128, 32, 64, 255) \
-    rectangle ${x0},$((y50 + 1)) ${x50},${y100}" \
+    fill rgba(255, 0, 255) \
+    rectangle ${x0},${y0} ${x100},${y100} \
+    fill rgba(128, 128, 0, 255) \
+    rectangle $((x0 + 8)),$((y0 + 8)) ${x50},${y50} \
+    fill rgba(0, 128, 128, 255) \
+    rectangle $((x50 + 1)),$((y0 + 8)) $((x100 - 8)),${y50} \
+    fill rgba(128, 0, 128, 255) \
+    rectangle $((x50 + 1)),$((y50 + 1)) $((x100 - 8)),$((y100 - 8)) \
+    fill rgba(0, 0, 128, 255) \
+    rectangle $((x0 + 8)),$((y50 + 1)) ${x50},$((y100 - 8))" \
     ${output_file}
+
+  if [ -n "$output_ref_file" ]
+  then
+    convert ${output_file} -crop ${area_width}x${area_height}+${x0}+${y0} \
+      +repage ${output_ref_file}
+    exiftool -overwrite_original -all= ${output_ref_file}
+  fi
 }
 
 # Given an image (input_file), generates an H.264 video which lasts 30 seconds,
@@ -401,18 +438,22 @@ overwrite_image_height() {
 # H.264 crop rectangle and modify the resulting MP4 file to make sure it carries
 # a 640x360 size instead of 640x368.
 
-gen_image 640 368 640 360 0 0 still-colors-360p.bmp
+gen_image 640 368 640 360 0 0 still-colors-360p.bmp \
+  still-colors-360p.ref.png
 gen_cropped_video 0 0 8 0 still-colors-360p.bmp still-colors-360p.h264.mp4
 overwrite_image_height still-colors-360p.h264.mp4 360
 
-gen_image 864 480 854 480 0 0 still-colors-480p.bmp
+gen_image 864 480 854 480 0 0 still-colors-480p.bmp \
+  still-colors-480p.ref.png
 gen_cropped_video 0 10 0 0 still-colors-480p.bmp still-colors-480p.h264.mp4
 overwrite_image_width still-colors-480p.h264.mp4 854
 
-gen_image 1280 720 1280 720 0 0 still-colors-720p.bmp
+gen_image 1280 720 1280 720 0 0 still-colors-720p.bmp \
+  still-colors-720p.ref.png
 gen_video still-colors-720p.bmp still-colors-720p.h264.mp4
 
-gen_image 1920 1088 1920 1080 0 0 still-colors-1080p.bmp
+gen_image 1920 1088 1920 1080 0 0 still-colors-1080p.bmp \
+  still-colors-1080p.ref.png
 gen_cropped_video 0 0 8 0 still-colors-1080p.bmp still-colors-1080p.h264.mp4
 overwrite_image_height still-colors-1080p.h264.mp4 1080
 
@@ -422,7 +463,8 @@ overwrite_image_height still-colors-1080p.h264.mp4 1080
 # H.264 allows for fancy visible rectangles that don't start at (0, 0). The
 # video here is 720x480 but it is cropped by a different amount on each side
 # (using H.264 metadata) in such a way that the visible area ends up being
-# 640x360.
+# 640x360 (thus, the resulting video should be rendered essentially like
+# still-colors-360p.h264.mp4 above).
 
 gen_image 720 480 640 360 64 32 still-colors-720x480.bmp
 gen_cropped_video 32 16 88 64 still-colors-720x480.bmp \

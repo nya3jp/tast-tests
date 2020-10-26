@@ -197,7 +197,7 @@ func Print(ctx context.Context, s *testing.State) {
 	}
 
 	// Hide all notifications to prevent them from covering the print button.
-	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to hide all notifications: ", err)
 	}
 

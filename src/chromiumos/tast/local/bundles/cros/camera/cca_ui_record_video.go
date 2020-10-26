@@ -7,7 +7,6 @@ package camera
 import (
 	"context"
 	"os"
-	"path/filepath"
 	"time"
 
 	"github.com/abema/go-mp4"
@@ -15,6 +14,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -28,6 +28,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
+		Timeout:      5 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 	})
 }
@@ -37,8 +38,13 @@ const durationTolerance = 300 * time.Millisecond
 
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
+	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	if err != nil {
+		s.Fatal("Failed to construct test bridge: ", err)
+	}
+	defer tb.TearDown(ctx)
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
@@ -59,16 +65,15 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 			ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 			defer cancel()
 
-			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
 			if err != nil {
 				s.Fatal("Failed to open CCA: ", err)
 			}
-			defer app.Close(cleanupCtx)
-			defer func(ctx context.Context) {
-				if err := app.CheckJSError(ctx, s.OutDir()); err != nil {
-					s.Error("Failed with javascript errors: ", err)
+			defer (func(ctx context.Context) {
+				if err := app.Close(ctx); err != nil {
+					s.Error("Failed to close app: ", err)
 				}
-			}(cleanupCtx)
+			})(cleanupCtx)
 
 			testing.ContextLog(ctx, "Switch to video mode")
 			if err := app.SwitchMode(ctx, cca.Video); err != nil {
@@ -94,7 +99,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 }
 
 func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
-	dir, err := app.SavedDir(ctx)
+	dirs, err := app.SavedDirs(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get CCA default saved path")
 	}
@@ -127,7 +132,7 @@ func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
 	}
-	if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
+	if _, err := app.WaitForFileSaved(ctx, dirs, cca.VideoPattern, start); err != nil {
 		return errors.Wrap(err, "cannot find result video")
 	}
 	return nil
@@ -178,11 +183,11 @@ func testVideoSnapshot(ctx context.Context, app *cca.App) error {
 	if err := app.Click(ctx, cca.VideoSnapshotButton); err != nil {
 		return err
 	}
-	dir, err := app.SavedDir(ctx)
+	dirs, err := app.SavedDirs(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to get saved directory")
+		return errors.Wrap(err, "failed to get saved directories")
 	}
-	if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, startTime); err != nil {
+	if _, err := app.WaitForFileSaved(ctx, dirs, cca.PhotoPattern, startTime); err != nil {
 		return errors.Wrap(err, "failed find saved video snapshot file")
 	}
 
@@ -212,12 +217,10 @@ func startRecordAndPause(ctx context.Context, app *cca.App) error {
 }
 
 func videoDuration(ctx context.Context, app *cca.App, info os.FileInfo) (time.Duration, error) {
-	dir, err := app.SavedDir(ctx)
+	path, err := app.FilePathInSavedDirs(ctx, info.Name())
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to get CCA default saved path")
+		return 0, errors.Wrap(err, "failed to get file path in saved path")
 	}
-
-	path := filepath.Join(dir, info.Name())
 	f, err := os.Open(path)
 	if err != nil {
 		return 0, errors.Wrapf(err, "failed to open file %v", path)
@@ -248,8 +251,7 @@ func stopRecordWithDuration(ctx context.Context, app *cca.App, startTime time.Ti
 	}
 
 	if duration > expected+durationTolerance || duration < expected-durationTolerance {
-		return errors.Errorf(
-			"incorrect result video duration get %v; want %v with tolerance %v",
+		return errors.Errorf("incorrect result video duration get %v; want %v with tolerance %v",
 			duration, expected, durationTolerance)
 	}
 	return nil

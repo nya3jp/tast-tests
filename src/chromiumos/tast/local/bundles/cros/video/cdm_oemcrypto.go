@@ -12,11 +12,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type execConfig struct {
-	exec      string
-	extraArgs []string
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: CDMOEMCrypto,
@@ -27,10 +22,10 @@ func init() {
 		},
 		Params: []testing.Param{{
 			Name: "ce_cdm",
-			Val:  execConfig{"widevine_ce_cdm_hw_tests", []string{"-n"}},
+			Val:  "widevine_ce_cdm_hw_tests",
 		}, {
 			Name: "oemcrypto",
-			Val:  execConfig{"oemcrypto_hw_ref_tests", []string{}},
+			Val:  "oemcrypto_hw_ref_tests",
 		}},
 		// TODO(jkardatzke): Add SoftwareDeps for cdm_factory_daemon USE flag and
 		// add Attr to enable this for CI once this is functional.
@@ -38,13 +33,12 @@ func init() {
 }
 
 func CDMOEMCrypto(ctx context.Context, s *testing.State) {
-	testOpt := s.Param().(execConfig)
+	testExec := s.Param().(string)
 	logdir := filepath.Join(s.OutDir(), "gtest")
-	s.Log("Running ", testOpt.exec)
-	if _, err := gtest.New(testOpt.exec,
-		gtest.Logfile(filepath.Join(logdir, testOpt.exec+".log")),
-		gtest.ExtraArgs(testOpt.extraArgs...),
+	s.Log("Running ", testExec)
+	if _, err := gtest.New(testExec,
+		gtest.Logfile(filepath.Join(logdir, testExec+".log")),
 	).Run(ctx); err != nil {
-		s.Errorf("%s failed: %v", testOpt.exec, err)
+		s.Errorf("%s failed: %v", testExec, err)
 	}
 }

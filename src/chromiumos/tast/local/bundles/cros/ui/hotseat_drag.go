@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -77,10 +76,6 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 		s.Error("Failed to close the connection to a browser window")
 	}
 
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
-
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil || len(ws) == 0 {
@@ -112,7 +107,7 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 		"Ash.HotseatTransition.Drag.PresentationTime.MaxLatency"),
 		perfutil.StoreLatency)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

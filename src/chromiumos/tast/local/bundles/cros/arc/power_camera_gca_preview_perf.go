@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,16 +26,30 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Pre:          arc.BootedWithDisableSyncFlags(),
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Data:         []string{"GoogleCameraArc.apk"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val:               setup.ForceBatteryDischarge,
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
+		}, {
+			Name:              "vm_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val:               setup.NoBatteryDischarge,
 		}},
-		Timeout: 45 * time.Minute,
+		Timeout: 10 * time.Minute,
 	})
 }
 
@@ -71,7 +86,8 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	batteryMode := s.Param().(setup.BatteryDischargeMode)
+	sup.Add(setup.PowerTest(ctx, tconn, batteryMode))
 
 	// Install GCA APK.
 	a := s.PreValue().(arc.PreData).ARC
@@ -85,7 +101,11 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 		sup.Add(setup.GrantAndroidPermission(ctx, a, gcaPackage, fullPermission))
 	}
 
-	// TODO(springerm): WaitUntilCPUCoolDown before starting GCA.
+	// Wait until CPU is cooled down.
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("CPU failed to cool down: ", err)
+	}
+
 	// Start GCA (Google Camera App).
 	sup.Add(setup.StartActivity(ctx, tconn, a, gcaPackage, gcaActivity))
 

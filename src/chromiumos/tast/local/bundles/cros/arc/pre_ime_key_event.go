@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -27,7 +27,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PreIMEKeyEvent,
 		Desc:         "Checks View.onKeyPreIme() works on Android apps",
-		Contacts:     []string{"yhanada@chromium.org", "arc-framework@google.com"},
+		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
@@ -156,7 +156,7 @@ func testPreIMEKeyEvent(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 
 func PreIMEKeyEvent(ctx context.Context, s *testing.State) {
 	// TODO(b/148193316): Remove the flag once it's enabled by default.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=ArcPreImeKeyEventSupport"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.EnableFeatures("ArcPreImeKeyEventSupport"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -173,7 +173,7 @@ func PreIMEKeyEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

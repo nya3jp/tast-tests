@@ -5,12 +5,13 @@
 package firmware
 
 import (
-	"bytes"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testutil"
@@ -26,17 +27,25 @@ const (
 	withECBatteryName = "withECBattery"
 )
 
-// In order to tell more easily where each value is obtained from, each mock config sets all integer fields to the same value.
+// In order to tell more easily where each value is obtained from, each mock config sets all numeric fields to the same value.
+// Exercise both integers and floats.
 const (
 	defaultValue       = 1
-	myGrandparentValue = 2
-	myParentValue      = 3
-	myBoardValue       = 4
-	myModelValue       = 5
+	myGrandparentValue = 2.2
+	myParentValue      = 3.3
+	myBoardValue       = 4.4
+	myModelValue       = 5.5
+
+	// Duration equivalents of the above
+	defaultDuration       = 1 * time.Second
+	myGrandparentDuration = 2200 * time.Millisecond
+	myParentDuration      = 3300 * time.Millisecond
+	myBoardDuration       = 4400 * time.Millisecond
+	myModelDuration       = 5500 * time.Millisecond
 )
 
-var mockData = map[string][]byte{
-	defaultName: []byte(fmt.Sprintf(`{
+var mockData = map[string]json.RawMessage{
+	defaultName: json.RawMessage(fmt.Sprintf(`{
 		"platform": null,
 		"parent": null,
 		"firmware_screen": %d,
@@ -44,28 +53,28 @@ var mockData = map[string][]byte{
 		"confirm_screen": %d,
 		"usb_plug": %d
 	}`, defaultValue, defaultValue, defaultValue, defaultValue)),
-	myBoardName: []byte(fmt.Sprintf(`{
+	myBoardName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
 		"parent": %q,
-		"firmware_screen": %d,
+		"firmware_screen": %f,
 		"models": {
 			%q: {
-				"firmware_screen": %d
+				"firmware_screen": %f
 			}
 		}
 	}`, myBoardName, myParentName, myBoardValue, myModelName, myModelValue)),
-	myParentName: []byte(fmt.Sprintf(`{
+	myParentName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
 		"parent": %q,
-		"confirm_screen": %d,
-		"firmware_screen": %d
+		"confirm_screen": %f,
+		"firmware_screen": %f
 	}`, myParentName, myGrandparentName, myParentValue, myParentValue)),
-	myGrandparentName: []byte(fmt.Sprintf(`{
+	myGrandparentName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
-		"usb_plug": %d,
-		"confirm_screen": %d
+		"usb_plug": %f,
+		"confirm_screen": %f
 	}`, myGrandparentName, myGrandparentValue, myGrandparentValue)),
-	withECBatteryName: []byte(fmt.Sprintf(`{
+	withECBatteryName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
 		"ec_capability": [
 			%q
@@ -73,41 +82,39 @@ var mockData = map[string][]byte{
 	}`, withECBatteryName, ECBattery)),
 }
 
-// setupMockData creates a temporary directory containing .json files for each platform in mockData.
-func setupMockData(t *testing.T) (string, error) {
-	mockConfigDir := testutil.TempDir(t)
-	for platform, b := range mockData {
-		err := ioutil.WriteFile(filepath.Join(mockConfigDir, fmt.Sprintf("%s.json", platform)), b, 0644)
-		if err != nil {
-			return mockConfigDir, errors.Wrapf(err, "writing mock data for platform %s to tempdir %s", platform, mockConfigDir)
-		}
+// setupMockData creates a temporary directory with a consolidated JSON file containing all the data from mockData.
+func setupMockData(t *testing.T) (cfgDir, cfgFilepath string, retErr error) {
+	// Create JSON bytes out of mock data
+	mockJSON, err := json.Marshal(mockData)
+	if err != nil {
+		return "", "", errors.Wrap(err, "marshaling mock data into JSON")
 	}
-	return mockConfigDir, nil
-}
 
-func TestLoadBytes(t *testing.T) {
-	mockConfigDir, err := setupMockData(t)
-	defer os.RemoveAll(mockConfigDir)
-	if err != nil {
-		t.Fatal(err)
+	// Create temp dir to contain mock consolidated JSON file
+	cfgDir = testutil.TempDir(t)
+	defer func() {
+		if retErr != nil {
+			os.RemoveAll(cfgDir)
+		}
+	}()
+
+	// Create mock consolidated JSON file
+	cfgFilepath = filepath.Join(cfgDir, consolidatedBasename)
+	if err = ioutil.WriteFile(cfgFilepath, mockJSON, 0644); err != nil {
+		return "", "", errors.Wrapf(err, "writing mock json to file %s", cfgFilepath)
 	}
-	b, err := loadBytes(mockConfigDir, myBoardName)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if !bytes.Equal(b, mockData[myBoardName]) {
-		t.Errorf("unexpected response from loadBytes for platform %s; got %s, want %s", myBoardName, b, mockData[myBoardName])
-	}
+
+	return cfgDir, cfgFilepath, nil
 }
 
 // TestNewConfig verifies that we can create a new Config object with proper inheritance.
 func TestNewConfig(t *testing.T) {
-	mockConfigDir, err := setupMockData(t)
-	defer os.RemoveAll(mockConfigDir)
+	cfgDir, cfgFilepath, err := setupMockData(t)
+	defer os.RemoveAll(cfgDir)
 	if err != nil {
 		t.Fatal(err)
 	}
-	cfg, err := NewConfig(mockConfigDir, myBoardName, "")
+	cfg, err := NewConfig(cfgFilepath, myBoardName, "")
 	if err != nil {
 		t.Fatalf("creating config for %s: %+v", myBoardName, err)
 	}
@@ -115,31 +122,31 @@ func TestNewConfig(t *testing.T) {
 		t.Errorf("unexpected Platform value; got %q, want %q", cfg.Platform, myBoardName)
 	}
 	// Platform and parents do not set values; inherit defaults.
-	if cfg.DelayRebootToPing != defaultValue {
-		t.Errorf("unexpected DelayRebootToPing value; got %d, want %d", cfg.DelayRebootToPing, defaultValue)
+	if cfg.DelayRebootToPing != defaultDuration {
+		t.Errorf("unexpected DelayRebootToPing value; got %s, want %s", cfg.DelayRebootToPing, defaultDuration)
 	}
 	// Platform overwrites defaults (even though parent also sets the value)
-	if cfg.FirmwareScreen != myBoardValue {
-		t.Errorf("unexpected FirmwareScreen value; got %d, want %d", cfg.FirmwareScreen, myBoardValue)
+	if cfg.FirmwareScreen != myBoardDuration {
+		t.Errorf("unexpected FirmwareScreen value; got %s, want %s", cfg.FirmwareScreen, myBoardDuration)
 	}
 	// Platform inherits from parent (even though grandparent also sets the value)
-	if cfg.ConfirmScreen != myParentValue {
-		t.Errorf("unexpected ConfirmScreen value; got %d, want %d", cfg.ConfirmScreen, myParentValue)
+	if cfg.ConfirmScreen != myParentDuration {
+		t.Errorf("unexpected ConfirmScreen value; got %s, want %s", cfg.ConfirmScreen, myParentDuration)
 	}
 	// Platform inherits from grandparent
-	if cfg.USBPlug != myGrandparentValue {
-		t.Errorf("unexpected USBPlug value; got %d, want %d", cfg.USBPlug, myGrandparentValue)
+	if cfg.USBPlug != myGrandparentDuration {
+		t.Errorf("unexpected USBPlug value; got %s, want %s", cfg.USBPlug, myGrandparentDuration)
 	}
 }
 
 // TestNewConfigNoParent verifies that a new config with no parent value has proper inheritance.
 func TestNewConfigNoParent(t *testing.T) {
-	mockConfigDir, err := setupMockData(t)
-	defer os.RemoveAll(mockConfigDir)
+	cfgDir, cfgFilepath, err := setupMockData(t)
+	defer os.RemoveAll(cfgDir)
 	if err != nil {
 		t.Fatal(err)
 	}
-	cfg, err := NewConfig(mockConfigDir, myGrandparentName, "")
+	cfg, err := NewConfig(cfgFilepath, myGrandparentName, "")
 	if err != nil {
 		t.Fatalf("creating config for %s: %+v", myGrandparentName, err)
 	}
@@ -147,43 +154,43 @@ func TestNewConfigNoParent(t *testing.T) {
 		t.Errorf("unexpected Platform value; got %q, want %q", cfg.Platform, myGrandparentName)
 	}
 	// mygrandparent has a custom value for USBPlug, overwriting defaults.
-	if cfg.USBPlug != myGrandparentValue {
-		t.Errorf("unexpected USBPlug value; got %d, want %d", cfg.USBPlug, myGrandparentValue)
+	if cfg.USBPlug != myGrandparentDuration {
+		t.Errorf("unexpected USBPlug value; got %s, want %s", cfg.USBPlug, myGrandparentDuration)
 	}
 	// mygrandparent does not set a value for FirmwareScreen, so should inherit defaults.
-	if cfg.FirmwareScreen != defaultValue {
-		t.Errorf("unexpected FirmwareScreen value; got %d, want %d", cfg.FirmwareScreen, defaultValue)
+	if cfg.FirmwareScreen != defaultDuration {
+		t.Errorf("unexpected FirmwareScreen value; got %s, want %s", cfg.FirmwareScreen, defaultDuration)
 	}
 }
 
 // TestNewConfigNoParent verifies that a model-specific config overrides the platform config.
 func TestNewConfigModelOverride(t *testing.T) {
-	mockConfigDir, err := setupMockData(t)
-	defer os.RemoveAll(mockConfigDir)
+	cfgDir, cfgFilepath, err := setupMockData(t)
+	defer os.RemoveAll(cfgDir)
 	if err != nil {
 		t.Fatal(err)
 	}
 	// Test with model-specific override
-	cfg, err := NewConfig(mockConfigDir, myBoardName, myModelName)
-	if cfg.FirmwareScreen != myModelValue {
-		t.Errorf("unexpected FirmwareScreen value; got %d, want %d // %+v", cfg.FirmwareScreen, myModelValue, cfg)
+	cfg, err := NewConfig(cfgFilepath, myBoardName, myModelName)
+	if cfg.FirmwareScreen != myModelDuration {
+		t.Errorf("unexpected FirmwareScreen value; got %s, want %s // %+v", cfg.FirmwareScreen, myModelDuration, cfg)
 	}
 	// Test with no model-specific override
-	cfg, err = NewConfig(mockConfigDir, myBoardName, myOtherModelName)
-	if cfg.FirmwareScreen != myBoardValue {
-		t.Errorf("unexpected FirmwareScreen value; got %d, want %d", cfg.FirmwareScreen, myModelValue)
+	cfg, err = NewConfig(cfgFilepath, myBoardName, myOtherModelName)
+	if cfg.FirmwareScreen != myBoardDuration {
+		t.Errorf("unexpected FirmwareScreen value; got %s, want %s", cfg.FirmwareScreen, myModelDuration)
 	}
 }
 
 // TestHasECCapability exercises HasECCapability to verify that we can check whether a Config contains a certain EC capability.
 func TestHasECCapability(t *testing.T) {
-	mockConfigDir, err := setupMockData(t)
-	defer os.RemoveAll(mockConfigDir)
+	cfgDir, cfgFilepath, err := setupMockData(t)
+	defer os.RemoveAll(cfgDir)
 	if err != nil {
 		t.Fatal(err)
 	}
 	// Test a platform that does not define any ec_capability
-	cfg, err := NewConfig(mockConfigDir, myBoardName, "")
+	cfg, err := NewConfig(cfgFilepath, myBoardName, "")
 	if err != nil {
 		t.Fatalf("Creating config for platform %s: %+v", myBoardName, err)
 	}
@@ -191,7 +198,7 @@ func TestHasECCapability(t *testing.T) {
 		t.Fatalf("Platform %q: HasECCapability(ECBattery) returned True; want False", myBoardName)
 	}
 	// Test a platform that defines some ec_capabilities
-	cfg, err = NewConfig(mockConfigDir, withECBatteryName, "")
+	cfg, err = NewConfig(cfgFilepath, withECBatteryName, "")
 	if err != nil {
 		t.Fatalf("Creating config for platform %s: %+v", withECBatteryName, err)
 	}

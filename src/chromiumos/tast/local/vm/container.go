@@ -31,8 +31,6 @@ const (
 	tarballRootfsPath                 = "/mnt/shared/MyFiles/Downloads/crostini/container_rootfs.tar.xz"
 	tarballMetadataPath               = "/mnt/shared/MyFiles/Downloads/crostini/container_metadata.tar.xz"
 
-	testContainerUsername = "testuser" // default container username during testing
-
 	ciceroneName      = "org.chromium.VmCicerone"
 	ciceronePath      = dbus.ObjectPath("/org/chromium/VmCicerone")
 	ciceroneInterface = "org.chromium.VmCicerone"
@@ -50,22 +48,22 @@ const (
 	Tarball
 )
 
-// ContainerArchType represents the architecture+version of the container's image.
-type ContainerArchType int
+// ContainerDebianVersion represents the OS version of the container's image.
+type ContainerDebianVersion string
 
 const (
 	// DebianStretch refers to the "stretch" distribution of debian (a.k.a. debian 9).
-	DebianStretch ContainerArchType = iota
+	DebianStretch ContainerDebianVersion = "stretch"
 	// DebianBuster refers to the "buster" distribution of debian (a.k.a. debian 10).
-	DebianBuster
+	DebianBuster ContainerDebianVersion = "buster"
 )
 
 // ContainerType defines the type of container.
 type ContainerType struct {
 	// Image is the image source for this container.
 	Image ContainerImageType
-	// Arch is the architecture that the image has.
-	Arch ContainerArchType
+	// DebianVersion is the version of debian that the image has.
+	DebianVersion ContainerDebianVersion
 }
 
 // Container encapsulates a container running in a VM.
@@ -76,7 +74,6 @@ type Container struct {
 	username           string // username of the container's primary user
 	hostPrivateKey     string // private key to use when doing sftp to container
 	containerPublicKey string // known_hosts for doing sftp to container
-	ciceroneObj        dbus.BusObject
 }
 
 // locked is used to prevent creation of a container while the precondition is being used.
@@ -114,9 +111,10 @@ func newContainer(ctx context.Context, containerName, userName string) *Containe
 }
 
 // DefaultContainer returns a container object with default settings.
-func DefaultContainer(ctx context.Context, user string) (*Container, error) {
-	c := newContainer(ctx, DefaultContainerName, testContainerUsername)
-	return c, c.Connect(ctx, user)
+func DefaultContainer(ctx context.Context, userEmail string) (*Container, error) {
+	username := strings.SplitN(userEmail, "@", 2)[0]
+	c := newContainer(ctx, DefaultContainerName, username)
+	return c, c.Connect(ctx, userEmail)
 }
 
 // Connect connects the container to the running VM and cicerone instances.
@@ -126,22 +124,25 @@ func (c *Container) Connect(ctx context.Context, user string) error {
 		return err
 	}
 	c.VM = vm
-	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
-		return err
-	}
 	return nil
+}
+
+// GetRunningContainer returns a Container struct for a currently running container.
+// This is useful when the container was started by some other means, eg the installer.
+// Will return an error if no container is currently running.
+func GetRunningContainer(ctx context.Context, user string) (*Container, error) {
+	_, err := GetRunningVM(ctx, user)
+	if err != nil {
+		return nil, err
+	}
+	return DefaultContainer(ctx, user)
 }
 
 // ArchitectureAlias returns the alias subpath of the chosen container
 // architecture, i.e. part of the path used to compute the container's
 // gsutil URL.
-func ArchitectureAlias(t ContainerArchType) string {
-	switch t {
-	case DebianStretch:
-		return "debian/stretch/test"
-	default:
-		return "debian/buster/test"
-	}
+func ArchitectureAlias(t ContainerDebianVersion) string {
+	return fmt.Sprintf("debian/%s/test", t)
 }
 
 // Create will create a Linux container in an existing VM. It returns without waiting for the creation to complete.
@@ -156,17 +157,17 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 	switch t.Image {
 	case LiveImageServer:
 		req.ImageServer = liveContainerImageServerFormat
-		req.ImageAlias = ArchitectureAlias(t.Arch)
+		req.ImageAlias = ArchitectureAlias(t.DebianVersion)
 	case StagingImageServer:
 		req.ImageServer = stagingContainerImageServerFormat
-		req.ImageAlias = ArchitectureAlias(t.Arch)
+		req.ImageAlias = ArchitectureAlias(t.DebianVersion)
 	case Tarball:
 		req.RootfsPath = tarballRootfsPath
 		req.MetadataPath = tarballMetadataPath
 	}
 
 	resp := &cpb.CreateLxdContainerResponse{}
-	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
 		req, resp); err != nil {
 		return err
 	}
@@ -190,7 +191,7 @@ func (c *Container) start(ctx context.Context) error {
 	defer starting.Close(ctx)
 
 	resp := &cpb.StartLxdContainerResponse{}
-	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".StartLxdContainer",
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".StartLxdContainer",
 		&cpb.StartLxdContainerRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -258,7 +259,7 @@ func (c *Container) StartAndWait(ctx context.Context, dir string) error {
 // GetUsername returns the default user in a container.
 func (c *Container) GetUsername(ctx context.Context) (string, error) {
 	resp := &cpb.GetLxdContainerUsernameResponse{}
-	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".GetLxdContainerUsername",
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".GetLxdContainerUsername",
 		&cpb.GetLxdContainerUsernameRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -277,7 +278,7 @@ func (c *Container) GetUsername(ctx context.Context) (string, error) {
 // SetUpUser sets up the default user in a container.
 func (c *Container) SetUpUser(ctx context.Context) error {
 	resp := &cpb.SetUpLxdContainerUserResponse{}
-	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".SetUpLxdContainerUser",
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".SetUpLxdContainerUser",
 		&cpb.SetUpLxdContainerUserRequest{
 			VmName:            c.VM.name,
 			ContainerName:     c.containerName,
@@ -369,7 +370,7 @@ func (c *Container) sftpCommand(ctx context.Context, sftpCmd string) error {
 		"-o", "UserKnownHostsFile=" + knownHostsFile,
 		"-P", "2222",
 		"-r",
-		testContainerUsername + "@" + ip,
+		c.username + "@" + ip,
 	}
 	cmd := testexec.CommandContext(ctx, "sftp", sftpArgs...)
 	if err := cmd.Run(); err != nil {
@@ -521,7 +522,7 @@ func (c *Container) Cleanup(ctx context.Context, path string) error {
 // 'package_id;version;arch;repository'.
 func (c *Container) LinuxPackageInfo(ctx context.Context, path string) (packageID string, err error) {
 	resp := &cpb.LinuxPackageInfoResponse{}
-	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".GetLinuxPackageInfo",
+	if err := dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".GetLinuxPackageInfo",
 		&cpb.LinuxPackageInfoRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -548,7 +549,7 @@ func (c *Container) InstallPackage(ctx context.Context, path string) error {
 	defer progress.Close(ctx)
 
 	resp := &cpb.InstallLinuxPackageResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".InstallLinuxPackage",
+	if err = dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".InstallLinuxPackage",
 		&cpb.LinuxPackageInfoRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -594,7 +595,7 @@ func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileI
 	defer progress.Close(ctx)
 
 	resp := &cpb.UninstallPackageOwningFileResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".UninstallPackageOwningFile",
+	if err = dbusutil.CallProtoMethod(ctx, c.VM.Concierge.ciceroneObj, ciceroneInterface+".UninstallPackageOwningFile",
 		&cpb.UninstallPackageOwningFileRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -637,7 +638,7 @@ func containerCommand(ctx context.Context, vmName, containerName, ownerID string
 		"--"},
 		vshArgs...)
 	cmd := testexec.CommandContext(ctx, "vsh", args...)
-	// Add a dummy buffer for stdin to force allocating a pipe. vsh uses
+	// Add an empty buffer for stdin to force allocating a pipe. vsh uses
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
 	return cmd
@@ -653,48 +654,6 @@ func DefaultContainerCommand(ctx context.Context, ownerID string, vshArgs ...str
 // container.
 func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
 	return containerCommand(ctx, c.VM.name, c.containerName, c.VM.Concierge.ownerID, vshArgs...)
-}
-
-// CreateDefaultContainer prepares a container in a running VM with default settings.
-// user is the user that is running the VM.
-// The directory dir may be used to store logs on failure. If the container
-// type is Tarball, then artifactPath must be specified with the path to the
-// tarball containing the termina VM and container. Otherwise, artifactPath
-// is ignored. Caller may wish to stop the VM if an error is returned.
-func CreateDefaultContainer(ctx context.Context, user string, t ContainerType, dir string) (*Container, error) {
-	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("LxdContainerCreated"))
-	if err != nil {
-		return nil, err
-	}
-	// Always close the InstallLinuxPackageProgress watcher regardless of success.
-	defer created.Close(ctx)
-
-	c, err := DefaultContainer(ctx, user)
-	if err != nil {
-		return nil, err
-	}
-	if err := c.Create(ctx, t); err != nil {
-		return nil, err
-	}
-	// Container is being created, wait for signal.
-	createdSig := &cpb.LxdContainerCreatedSignal{}
-	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", c.containerName, c.VM.name)
-	if err := waitForDBusSignal(ctx, created, nil, createdSig); err != nil {
-		return nil, errors.Wrap(err, "failed to get LxdContainerCreatedSignal")
-	}
-	if createdSig.GetVmName() != c.VM.name {
-		return nil, errors.Errorf("unexpected container creation signal for VM %q", createdSig.GetVmName())
-	} else if createdSig.GetContainerName() != c.containerName {
-		return nil, errors.Errorf("unexpected container creation signal for container %q", createdSig.GetContainerName())
-	}
-	if createdSig.GetStatus() != cpb.LxdContainerCreatedSignal_CREATED {
-		return nil, errors.Errorf("failed to create container: status: %d reason: %v", createdSig.GetStatus(), createdSig.GetFailureReason())
-	}
-
-	if err := c.StartAndWait(ctx, dir); err != nil {
-		return nil, err
-	}
-	return c, nil
 }
 
 func ciceroneDBusMatchSpec(memberName string) dbusutil.MatchSpec {

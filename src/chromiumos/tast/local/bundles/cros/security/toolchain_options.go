@@ -34,14 +34,12 @@ func init() {
 				Val: toolchain.CheckNormal,
 			},
 			{
-				Name:      "allowlist",
-				Val:       toolchain.CheckAllowlist,
-				ExtraAttr: []string{"informational"},
+				Name: "allowlist",
+				Val:  toolchain.CheckAllowlist,
 			},
 			{
-				Name:      "dlc",
-				Val:       toolchain.CheckNormalWithDLCs,
-				ExtraAttr: []string{"informational"},
+				Name: "dlc",
+				Val:  toolchain.CheckNormalWithDLCs,
 			},
 		},
 	})
@@ -64,6 +62,7 @@ var prunePaths = []string{
 	"/root/.debug",
 	// Skip vdso .so files which are built together with the kernel without RELRO
 	"/lib/modules/*/vdso",
+	"/lib/modules/*/vdso32",
 }
 
 // File match strings which will be ignored when searching for ELF files.
@@ -110,10 +109,6 @@ var libgccAllowlist = []string{
 	// FIXME: Remove after mesa is fixed to not need libgcc_s. crbug.com/808264
 	"/usr/lib/dri/kms_swrast_dri.so",
 	"/usr/lib/dri/swrast_dri.so",
-	// Same for betty.
-	"/usr/lib64/dri/kms_swrast_dri.so",
-	"/usr/lib64/dri/swrast_dri.so",
-	"/usr/lib64/dri/virtio_gpu_dri.so",
 }
 
 var libstdcAllowlist = []string{

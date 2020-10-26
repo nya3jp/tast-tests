@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboard,
 		Desc:         "Checks physical keyboard works on Android",
-		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Attr:         []string{"group:mainline"},
@@ -28,7 +28,6 @@ func init() {
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
@@ -47,7 +46,7 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		pkg = "org.chromium.arc.testapp.keyboard"
 	)
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

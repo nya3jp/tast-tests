@@ -54,7 +54,7 @@ func (x ExpectShillPropertyRequest_CheckMethod) String() string {
 }
 
 func (ExpectShillPropertyRequest_CheckMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{23, 0}
+	return fileDescriptor_7d1eecb28f2859f1, []int{29, 0}
 }
 
 type ConnectRequest struct {
@@ -129,7 +129,9 @@ type ShillVal struct {
 	// Types that are valid to be assigned to Val:
 	//	*ShillVal_Str
 	//	*ShillVal_Bool
+	//	*ShillVal_Uint32
 	//	*ShillVal_StrArray
+	//	*ShillVal_Uint32Array
 	Val                  isShillVal_Val `protobuf_oneof:"val"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
@@ -173,15 +175,27 @@ type ShillVal_Bool struct {
 	Bool bool `protobuf:"varint,2,opt,name=bool,proto3,oneof"`
 }
 
+type ShillVal_Uint32 struct {
+	Uint32 uint32 `protobuf:"varint,3,opt,name=uint32,proto3,oneof"`
+}
+
 type ShillVal_StrArray struct {
-	StrArray *StrArray `protobuf:"bytes,3,opt,name=strArray,proto3,oneof"`
+	StrArray *StrArray `protobuf:"bytes,4,opt,name=str_array,json=strArray,proto3,oneof"`
+}
+
+type ShillVal_Uint32Array struct {
+	Uint32Array *Uint32Array `protobuf:"bytes,5,opt,name=uint32_array,json=uint32Array,proto3,oneof"`
 }
 
 func (*ShillVal_Str) isShillVal_Val() {}
 
 func (*ShillVal_Bool) isShillVal_Val() {}
 
+func (*ShillVal_Uint32) isShillVal_Val() {}
+
 func (*ShillVal_StrArray) isShillVal_Val() {}
+
+func (*ShillVal_Uint32Array) isShillVal_Val() {}
 
 func (m *ShillVal) GetVal() isShillVal_Val {
 	if m != nil {
@@ -204,9 +218,23 @@ func (m *ShillVal) GetBool() bool {
 	return false
 }
 
+func (m *ShillVal) GetUint32() uint32 {
+	if x, ok := m.GetVal().(*ShillVal_Uint32); ok {
+		return x.Uint32
+	}
+	return 0
+}
+
 func (m *ShillVal) GetStrArray() *StrArray {
 	if x, ok := m.GetVal().(*ShillVal_StrArray); ok {
 		return x.StrArray
+	}
+	return nil
+}
+
+func (m *ShillVal) GetUint32Array() *Uint32Array {
+	if x, ok := m.GetVal().(*ShillVal_Uint32Array); ok {
+		return x.Uint32Array
 	}
 	return nil
 }
@@ -216,7 +244,9 @@ func (*ShillVal) XXX_OneofWrappers() []interface{} {
 	return []interface{}{
 		(*ShillVal_Str)(nil),
 		(*ShillVal_Bool)(nil),
+		(*ShillVal_Uint32)(nil),
 		(*ShillVal_StrArray)(nil),
+		(*ShillVal_Uint32Array)(nil),
 	}
 }
 
@@ -259,6 +289,45 @@ func (m *StrArray) GetVals() []string {
 	return nil
 }
 
+type Uint32Array struct {
+	Vals                 []uint32 `protobuf:"varint,1,rep,packed,name=vals,proto3" json:"vals,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Uint32Array) Reset()         { *m = Uint32Array{} }
+func (m *Uint32Array) String() string { return proto.CompactTextString(m) }
+func (*Uint32Array) ProtoMessage()    {}
+func (*Uint32Array) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{3}
+}
+
+func (m *Uint32Array) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Uint32Array.Unmarshal(m, b)
+}
+func (m *Uint32Array) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Uint32Array.Marshal(b, m, deterministic)
+}
+func (m *Uint32Array) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Uint32Array.Merge(m, src)
+}
+func (m *Uint32Array) XXX_Size() int {
+	return xxx_messageInfo_Uint32Array.Size(m)
+}
+func (m *Uint32Array) XXX_DiscardUnknown() {
+	xxx_messageInfo_Uint32Array.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Uint32Array proto.InternalMessageInfo
+
+func (m *Uint32Array) GetVals() []uint32 {
+	if m != nil {
+		return m.Vals
+	}
+	return nil
+}
+
 // ConnectResponse is the response of Connect call which includes the
 // object path of connected service and timing data of the connection
 // (all time in nanosecond unit).
@@ -276,7 +345,7 @@ func (m *ConnectResponse) Reset()         { *m = ConnectResponse{} }
 func (m *ConnectResponse) String() string { return proto.CompactTextString(m) }
 func (*ConnectResponse) ProtoMessage()    {}
 func (*ConnectResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{3}
+	return fileDescriptor_7d1eecb28f2859f1, []int{4}
 }
 
 func (m *ConnectResponse) XXX_Unmarshal(b []byte) error {
@@ -325,6 +394,100 @@ func (m *ConnectResponse) GetConfigurationTime() int64 {
 	return 0
 }
 
+type DiscoverBSSIDRequest struct {
+	Bssid                string   `protobuf:"bytes,1,opt,name=bssid,proto3" json:"bssid,omitempty"`
+	Interface            string   `protobuf:"bytes,2,opt,name=interface,proto3" json:"interface,omitempty"`
+	Ssid                 []byte   `protobuf:"bytes,3,opt,name=ssid,proto3" json:"ssid,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DiscoverBSSIDRequest) Reset()         { *m = DiscoverBSSIDRequest{} }
+func (m *DiscoverBSSIDRequest) String() string { return proto.CompactTextString(m) }
+func (*DiscoverBSSIDRequest) ProtoMessage()    {}
+func (*DiscoverBSSIDRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{5}
+}
+
+func (m *DiscoverBSSIDRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DiscoverBSSIDRequest.Unmarshal(m, b)
+}
+func (m *DiscoverBSSIDRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DiscoverBSSIDRequest.Marshal(b, m, deterministic)
+}
+func (m *DiscoverBSSIDRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DiscoverBSSIDRequest.Merge(m, src)
+}
+func (m *DiscoverBSSIDRequest) XXX_Size() int {
+	return xxx_messageInfo_DiscoverBSSIDRequest.Size(m)
+}
+func (m *DiscoverBSSIDRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DiscoverBSSIDRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DiscoverBSSIDRequest proto.InternalMessageInfo
+
+func (m *DiscoverBSSIDRequest) GetBssid() string {
+	if m != nil {
+		return m.Bssid
+	}
+	return ""
+}
+
+func (m *DiscoverBSSIDRequest) GetInterface() string {
+	if m != nil {
+		return m.Interface
+	}
+	return ""
+}
+
+func (m *DiscoverBSSIDRequest) GetSsid() []byte {
+	if m != nil {
+		return m.Ssid
+	}
+	return nil
+}
+
+type DiscoverBSSIDResponse struct {
+	DiscoveryTime        int64    `protobuf:"varint,1,opt,name=discovery_time,json=discoveryTime,proto3" json:"discovery_time,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DiscoverBSSIDResponse) Reset()         { *m = DiscoverBSSIDResponse{} }
+func (m *DiscoverBSSIDResponse) String() string { return proto.CompactTextString(m) }
+func (*DiscoverBSSIDResponse) ProtoMessage()    {}
+func (*DiscoverBSSIDResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{6}
+}
+
+func (m *DiscoverBSSIDResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DiscoverBSSIDResponse.Unmarshal(m, b)
+}
+func (m *DiscoverBSSIDResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DiscoverBSSIDResponse.Marshal(b, m, deterministic)
+}
+func (m *DiscoverBSSIDResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DiscoverBSSIDResponse.Merge(m, src)
+}
+func (m *DiscoverBSSIDResponse) XXX_Size() int {
+	return xxx_messageInfo_DiscoverBSSIDResponse.Size(m)
+}
+func (m *DiscoverBSSIDResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DiscoverBSSIDResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DiscoverBSSIDResponse proto.InternalMessageInfo
+
+func (m *DiscoverBSSIDResponse) GetDiscoveryTime() int64 {
+	if m != nil {
+		return m.DiscoveryTime
+	}
+	return 0
+}
+
 type DisconnectRequest struct {
 	ServicePath          string   `protobuf:"bytes,1,opt,name=service_path,json=servicePath,proto3" json:"service_path,omitempty"`
 	RemoveProfile        bool     `protobuf:"varint,2,opt,name=remove_profile,json=removeProfile,proto3" json:"remove_profile,omitempty"`
@@ -337,7 +500,7 @@ func (m *DisconnectRequest) Reset()         { *m = DisconnectRequest{} }
 func (m *DisconnectRequest) String() string { return proto.CompactTextString(m) }
 func (*DisconnectRequest) ProtoMessage()    {}
 func (*DisconnectRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{4}
+	return fileDescriptor_7d1eecb28f2859f1, []int{7}
 }
 
 func (m *DisconnectRequest) XXX_Unmarshal(b []byte) error {
@@ -383,7 +546,7 @@ func (m *DeleteEntriesForSSIDRequest) Reset()         { *m = DeleteEntriesForSSI
 func (m *DeleteEntriesForSSIDRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteEntriesForSSIDRequest) ProtoMessage()    {}
 func (*DeleteEntriesForSSIDRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{5}
+	return fileDescriptor_7d1eecb28f2859f1, []int{8}
 }
 
 func (m *DeleteEntriesForSSIDRequest) XXX_Unmarshal(b []byte) error {
@@ -422,7 +585,7 @@ func (m *QueryServiceRequest) Reset()         { *m = QueryServiceRequest{} }
 func (m *QueryServiceRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryServiceRequest) ProtoMessage()    {}
 func (*QueryServiceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{6}
+	return fileDescriptor_7d1eecb28f2859f1, []int{9}
 }
 
 func (m *QueryServiceRequest) XXX_Unmarshal(b []byte) error {
@@ -470,7 +633,7 @@ func (m *QueryServiceResponse) Reset()         { *m = QueryServiceResponse{} }
 func (m *QueryServiceResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryServiceResponse) ProtoMessage()    {}
 func (*QueryServiceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{7}
+	return fileDescriptor_7d1eecb28f2859f1, []int{10}
 }
 
 func (m *QueryServiceResponse) XXX_Unmarshal(b []byte) error {
@@ -577,7 +740,7 @@ func (m *QueryServiceResponse_Wifi) Reset()         { *m = QueryServiceResponse_
 func (m *QueryServiceResponse_Wifi) String() string { return proto.CompactTextString(m) }
 func (*QueryServiceResponse_Wifi) ProtoMessage()    {}
 func (*QueryServiceResponse_Wifi) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{7, 0}
+	return fileDescriptor_7d1eecb28f2859f1, []int{10, 0}
 }
 
 func (m *QueryServiceResponse_Wifi) XXX_Unmarshal(b []byte) error {
@@ -651,7 +814,7 @@ func (m *GetInterfaceResponse) Reset()         { *m = GetInterfaceResponse{} }
 func (m *GetInterfaceResponse) String() string { return proto.CompactTextString(m) }
 func (*GetInterfaceResponse) ProtoMessage()    {}
 func (*GetInterfaceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{8}
+	return fileDescriptor_7d1eecb28f2859f1, []int{11}
 }
 
 func (m *GetInterfaceResponse) XXX_Unmarshal(b []byte) error {
@@ -680,7 +843,7 @@ func (m *GetInterfaceResponse) GetName() string {
 }
 
 type GetIPv4AddrsRequest struct {
-	InterfaceName        string   `protobuf:"bytes,1,opt,name=interfaceName,proto3" json:"interfaceName,omitempty"`
+	InterfaceName        string   `protobuf:"bytes,1,opt,name=interface_name,json=interfaceName,proto3" json:"interface_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -690,7 +853,7 @@ func (m *GetIPv4AddrsRequest) Reset()         { *m = GetIPv4AddrsRequest{} }
 func (m *GetIPv4AddrsRequest) String() string { return proto.CompactTextString(m) }
 func (*GetIPv4AddrsRequest) ProtoMessage()    {}
 func (*GetIPv4AddrsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{9}
+	return fileDescriptor_7d1eecb28f2859f1, []int{12}
 }
 
 func (m *GetIPv4AddrsRequest) XXX_Unmarshal(b []byte) error {
@@ -729,7 +892,7 @@ func (m *GetIPv4AddrsResponse) Reset()         { *m = GetIPv4AddrsResponse{} }
 func (m *GetIPv4AddrsResponse) String() string { return proto.CompactTextString(m) }
 func (*GetIPv4AddrsResponse) ProtoMessage()    {}
 func (*GetIPv4AddrsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{10}
+	return fileDescriptor_7d1eecb28f2859f1, []int{13}
 }
 
 func (m *GetIPv4AddrsResponse) XXX_Unmarshal(b []byte) error {
@@ -757,6 +920,84 @@ func (m *GetIPv4AddrsResponse) GetIpv4() []string {
 	return nil
 }
 
+type GetHardwareAddrRequest struct {
+	InterfaceName        string   `protobuf:"bytes,1,opt,name=interfaceName,proto3" json:"interfaceName,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetHardwareAddrRequest) Reset()         { *m = GetHardwareAddrRequest{} }
+func (m *GetHardwareAddrRequest) String() string { return proto.CompactTextString(m) }
+func (*GetHardwareAddrRequest) ProtoMessage()    {}
+func (*GetHardwareAddrRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{14}
+}
+
+func (m *GetHardwareAddrRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetHardwareAddrRequest.Unmarshal(m, b)
+}
+func (m *GetHardwareAddrRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetHardwareAddrRequest.Marshal(b, m, deterministic)
+}
+func (m *GetHardwareAddrRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetHardwareAddrRequest.Merge(m, src)
+}
+func (m *GetHardwareAddrRequest) XXX_Size() int {
+	return xxx_messageInfo_GetHardwareAddrRequest.Size(m)
+}
+func (m *GetHardwareAddrRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetHardwareAddrRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetHardwareAddrRequest proto.InternalMessageInfo
+
+func (m *GetHardwareAddrRequest) GetInterfaceName() string {
+	if m != nil {
+		return m.InterfaceName
+	}
+	return ""
+}
+
+type GetHardwareAddrResponse struct {
+	HwAddr               string   `protobuf:"bytes,1,opt,name=hw_addr,json=hwAddr,proto3" json:"hw_addr,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetHardwareAddrResponse) Reset()         { *m = GetHardwareAddrResponse{} }
+func (m *GetHardwareAddrResponse) String() string { return proto.CompactTextString(m) }
+func (*GetHardwareAddrResponse) ProtoMessage()    {}
+func (*GetHardwareAddrResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{15}
+}
+
+func (m *GetHardwareAddrResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetHardwareAddrResponse.Unmarshal(m, b)
+}
+func (m *GetHardwareAddrResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetHardwareAddrResponse.Marshal(b, m, deterministic)
+}
+func (m *GetHardwareAddrResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetHardwareAddrResponse.Merge(m, src)
+}
+func (m *GetHardwareAddrResponse) XXX_Size() int {
+	return xxx_messageInfo_GetHardwareAddrResponse.Size(m)
+}
+func (m *GetHardwareAddrResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetHardwareAddrResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetHardwareAddrResponse proto.InternalMessageInfo
+
+func (m *GetHardwareAddrResponse) GetHwAddr() string {
+	if m != nil {
+		return m.HwAddr
+	}
+	return ""
+}
+
 type ExpectWifiFrequenciesRequest struct {
 	// SSID to look up. Required.
 	Ssid []byte `protobuf:"bytes,1,opt,name=ssid,proto3" json:"ssid,omitempty"`
@@ -771,7 +1012,7 @@ func (m *ExpectWifiFrequenciesRequest) Reset()         { *m = ExpectWifiFrequenc
 func (m *ExpectWifiFrequenciesRequest) String() string { return proto.CompactTextString(m) }
 func (*ExpectWifiFrequenciesRequest) ProtoMessage()    {}
 func (*ExpectWifiFrequenciesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{11}
+	return fileDescriptor_7d1eecb28f2859f1, []int{16}
 }
 
 func (m *ExpectWifiFrequenciesRequest) XXX_Unmarshal(b []byte) error {
@@ -806,82 +1047,139 @@ func (m *ExpectWifiFrequenciesRequest) GetFrequencies() []uint32 {
 	return nil
 }
 
-type GetBgscanMethodResponse struct {
-	Method               string   `protobuf:"bytes,1,opt,name=method,proto3" json:"method,omitempty"`
+type BgscanConfig struct {
+	Method string `protobuf:"bytes,1,opt,name=method,proto3" json:"method,omitempty"`
+	// ShortInterval time in seconds, only value in uint16 range is valid as dbus property type is uint16.
+	ShortInterval uint32 `protobuf:"varint,2,opt,name=short_interval,json=shortInterval,proto3" json:"short_interval,omitempty"`
+	// LongInterval time in seconds, only value in uint16 range is valid as dbus property type is uint16.
+	LongInterval         uint32   `protobuf:"varint,3,opt,name=long_interval,json=longInterval,proto3" json:"long_interval,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetBgscanMethodResponse) Reset()         { *m = GetBgscanMethodResponse{} }
-func (m *GetBgscanMethodResponse) String() string { return proto.CompactTextString(m) }
-func (*GetBgscanMethodResponse) ProtoMessage()    {}
-func (*GetBgscanMethodResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{12}
+func (m *BgscanConfig) Reset()         { *m = BgscanConfig{} }
+func (m *BgscanConfig) String() string { return proto.CompactTextString(m) }
+func (*BgscanConfig) ProtoMessage()    {}
+func (*BgscanConfig) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{17}
 }
 
-func (m *GetBgscanMethodResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetBgscanMethodResponse.Unmarshal(m, b)
+func (m *BgscanConfig) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BgscanConfig.Unmarshal(m, b)
 }
-func (m *GetBgscanMethodResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetBgscanMethodResponse.Marshal(b, m, deterministic)
+func (m *BgscanConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BgscanConfig.Marshal(b, m, deterministic)
 }
-func (m *GetBgscanMethodResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetBgscanMethodResponse.Merge(m, src)
+func (m *BgscanConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BgscanConfig.Merge(m, src)
 }
-func (m *GetBgscanMethodResponse) XXX_Size() int {
-	return xxx_messageInfo_GetBgscanMethodResponse.Size(m)
+func (m *BgscanConfig) XXX_Size() int {
+	return xxx_messageInfo_BgscanConfig.Size(m)
 }
-func (m *GetBgscanMethodResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetBgscanMethodResponse.DiscardUnknown(m)
+func (m *BgscanConfig) XXX_DiscardUnknown() {
+	xxx_messageInfo_BgscanConfig.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetBgscanMethodResponse proto.InternalMessageInfo
+var xxx_messageInfo_BgscanConfig proto.InternalMessageInfo
 
-func (m *GetBgscanMethodResponse) GetMethod() string {
+func (m *BgscanConfig) GetMethod() string {
 	if m != nil {
 		return m.Method
 	}
 	return ""
 }
 
-type SetBgscanMethodRequest struct {
-	Method               string   `protobuf:"bytes,1,opt,name=method,proto3" json:"method,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SetBgscanMethodRequest) Reset()         { *m = SetBgscanMethodRequest{} }
-func (m *SetBgscanMethodRequest) String() string { return proto.CompactTextString(m) }
-func (*SetBgscanMethodRequest) ProtoMessage()    {}
-func (*SetBgscanMethodRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{13}
-}
-
-func (m *SetBgscanMethodRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetBgscanMethodRequest.Unmarshal(m, b)
-}
-func (m *SetBgscanMethodRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetBgscanMethodRequest.Marshal(b, m, deterministic)
-}
-func (m *SetBgscanMethodRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetBgscanMethodRequest.Merge(m, src)
-}
-func (m *SetBgscanMethodRequest) XXX_Size() int {
-	return xxx_messageInfo_SetBgscanMethodRequest.Size(m)
-}
-func (m *SetBgscanMethodRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetBgscanMethodRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetBgscanMethodRequest proto.InternalMessageInfo
-
-func (m *SetBgscanMethodRequest) GetMethod() string {
+func (m *BgscanConfig) GetShortInterval() uint32 {
 	if m != nil {
-		return m.Method
+		return m.ShortInterval
 	}
-	return ""
+	return 0
+}
+
+func (m *BgscanConfig) GetLongInterval() uint32 {
+	if m != nil {
+		return m.LongInterval
+	}
+	return 0
+}
+
+type GetBgscanConfigResponse struct {
+	Config               *BgscanConfig `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *GetBgscanConfigResponse) Reset()         { *m = GetBgscanConfigResponse{} }
+func (m *GetBgscanConfigResponse) String() string { return proto.CompactTextString(m) }
+func (*GetBgscanConfigResponse) ProtoMessage()    {}
+func (*GetBgscanConfigResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{18}
+}
+
+func (m *GetBgscanConfigResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetBgscanConfigResponse.Unmarshal(m, b)
+}
+func (m *GetBgscanConfigResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetBgscanConfigResponse.Marshal(b, m, deterministic)
+}
+func (m *GetBgscanConfigResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetBgscanConfigResponse.Merge(m, src)
+}
+func (m *GetBgscanConfigResponse) XXX_Size() int {
+	return xxx_messageInfo_GetBgscanConfigResponse.Size(m)
+}
+func (m *GetBgscanConfigResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetBgscanConfigResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetBgscanConfigResponse proto.InternalMessageInfo
+
+func (m *GetBgscanConfigResponse) GetConfig() *BgscanConfig {
+	if m != nil {
+		return m.Config
+	}
+	return nil
+}
+
+type SetBgscanConfigRequest struct {
+	Config               *BgscanConfig `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *SetBgscanConfigRequest) Reset()         { *m = SetBgscanConfigRequest{} }
+func (m *SetBgscanConfigRequest) String() string { return proto.CompactTextString(m) }
+func (*SetBgscanConfigRequest) ProtoMessage()    {}
+func (*SetBgscanConfigRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{19}
+}
+
+func (m *SetBgscanConfigRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetBgscanConfigRequest.Unmarshal(m, b)
+}
+func (m *SetBgscanConfigRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetBgscanConfigRequest.Marshal(b, m, deterministic)
+}
+func (m *SetBgscanConfigRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetBgscanConfigRequest.Merge(m, src)
+}
+func (m *SetBgscanConfigRequest) XXX_Size() int {
+	return xxx_messageInfo_SetBgscanConfigRequest.Size(m)
+}
+func (m *SetBgscanConfigRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetBgscanConfigRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetBgscanConfigRequest proto.InternalMessageInfo
+
+func (m *SetBgscanConfigRequest) GetConfig() *BgscanConfig {
+	if m != nil {
+		return m.Config
+	}
+	return nil
 }
 
 type AssureDisconnectRequest struct {
@@ -896,7 +1194,7 @@ func (m *AssureDisconnectRequest) Reset()         { *m = AssureDisconnectRequest
 func (m *AssureDisconnectRequest) String() string { return proto.CompactTextString(m) }
 func (*AssureDisconnectRequest) ProtoMessage()    {}
 func (*AssureDisconnectRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{14}
+	return fileDescriptor_7d1eecb28f2859f1, []int{20}
 }
 
 func (m *AssureDisconnectRequest) XXX_Unmarshal(b []byte) error {
@@ -932,8 +1230,8 @@ func (m *AssureDisconnectRequest) GetTimeout() int64 {
 }
 
 type DisableEnableTestRequest struct {
-	InterfaceName        string   `protobuf:"bytes,1,opt,name=interfaceName,proto3" json:"interfaceName,omitempty"`
-	ServicePath          string   `protobuf:"bytes,2,opt,name=servicePath,proto3" json:"servicePath,omitempty"`
+	InterfaceName        string   `protobuf:"bytes,1,opt,name=interface_name,json=interfaceName,proto3" json:"interface_name,omitempty"`
+	ServicePath          string   `protobuf:"bytes,2,opt,name=service_path,json=servicePath,proto3" json:"service_path,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -943,7 +1241,7 @@ func (m *DisableEnableTestRequest) Reset()         { *m = DisableEnableTestReque
 func (m *DisableEnableTestRequest) String() string { return proto.CompactTextString(m) }
 func (*DisableEnableTestRequest) ProtoMessage()    {}
 func (*DisableEnableTestRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{15}
+	return fileDescriptor_7d1eecb28f2859f1, []int{21}
 }
 
 func (m *DisableEnableTestRequest) XXX_Unmarshal(b []byte) error {
@@ -989,7 +1287,7 @@ func (m *RequestScansRequest) Reset()         { *m = RequestScansRequest{} }
 func (m *RequestScansRequest) String() string { return proto.CompactTextString(m) }
 func (*RequestScansRequest) ProtoMessage()    {}
 func (*RequestScansRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{16}
+	return fileDescriptor_7d1eecb28f2859f1, []int{22}
 }
 
 func (m *RequestScansRequest) XXX_Unmarshal(b []byte) error {
@@ -1028,7 +1326,7 @@ func (m *SetMACRandomizeRequest) Reset()         { *m = SetMACRandomizeRequest{}
 func (m *SetMACRandomizeRequest) String() string { return proto.CompactTextString(m) }
 func (*SetMACRandomizeRequest) ProtoMessage()    {}
 func (*SetMACRandomizeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{17}
+	return fileDescriptor_7d1eecb28f2859f1, []int{23}
 }
 
 func (m *SetMACRandomizeRequest) XXX_Unmarshal(b []byte) error {
@@ -1067,7 +1365,7 @@ func (m *SetMACRandomizeResponse) Reset()         { *m = SetMACRandomizeResponse
 func (m *SetMACRandomizeResponse) String() string { return proto.CompactTextString(m) }
 func (*SetMACRandomizeResponse) ProtoMessage()    {}
 func (*SetMACRandomizeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{18}
+	return fileDescriptor_7d1eecb28f2859f1, []int{24}
 }
 
 func (m *SetMACRandomizeResponse) XXX_Unmarshal(b []byte) error {
@@ -1106,7 +1404,7 @@ func (m *ConfigureAndAssertAutoConnectRequest) Reset()         { *m = ConfigureA
 func (m *ConfigureAndAssertAutoConnectRequest) String() string { return proto.CompactTextString(m) }
 func (*ConfigureAndAssertAutoConnectRequest) ProtoMessage()    {}
 func (*ConfigureAndAssertAutoConnectRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{19}
+	return fileDescriptor_7d1eecb28f2859f1, []int{25}
 }
 
 func (m *ConfigureAndAssertAutoConnectRequest) XXX_Unmarshal(b []byte) error {
@@ -1145,7 +1443,7 @@ func (m *ConfigureAndAssertAutoConnectResponse) Reset()         { *m = Configure
 func (m *ConfigureAndAssertAutoConnectResponse) String() string { return proto.CompactTextString(m) }
 func (*ConfigureAndAssertAutoConnectResponse) ProtoMessage()    {}
 func (*ConfigureAndAssertAutoConnectResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{20}
+	return fileDescriptor_7d1eecb28f2859f1, []int{26}
 }
 
 func (m *ConfigureAndAssertAutoConnectResponse) XXX_Unmarshal(b []byte) error {
@@ -1174,8 +1472,8 @@ func (m *ConfigureAndAssertAutoConnectResponse) GetPath() string {
 }
 
 type GetCurrentTimeResponse struct {
-	NowSecond            int64    `protobuf:"varint,1,opt,name=nowSecond,proto3" json:"nowSecond,omitempty"`
-	NowNanosecond        int64    `protobuf:"varint,2,opt,name=nowNanosecond,proto3" json:"nowNanosecond,omitempty"`
+	NowSecond            int64    `protobuf:"varint,1,opt,name=now_second,json=nowSecond,proto3" json:"now_second,omitempty"`
+	NowNanosecond        int64    `protobuf:"varint,2,opt,name=now_nanosecond,json=nowNanosecond,proto3" json:"now_nanosecond,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1185,7 +1483,7 @@ func (m *GetCurrentTimeResponse) Reset()         { *m = GetCurrentTimeResponse{}
 func (m *GetCurrentTimeResponse) String() string { return proto.CompactTextString(m) }
 func (*GetCurrentTimeResponse) ProtoMessage()    {}
 func (*GetCurrentTimeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{21}
+	return fileDescriptor_7d1eecb28f2859f1, []int{27}
 }
 
 func (m *GetCurrentTimeResponse) XXX_Unmarshal(b []byte) error {
@@ -1231,7 +1529,7 @@ func (m *SelectedServiceResponse) Reset()         { *m = SelectedServiceResponse
 func (m *SelectedServiceResponse) String() string { return proto.CompactTextString(m) }
 func (*SelectedServiceResponse) ProtoMessage()    {}
 func (*SelectedServiceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{22}
+	return fileDescriptor_7d1eecb28f2859f1, []int{28}
 }
 
 func (m *SelectedServiceResponse) XXX_Unmarshal(b []byte) error {
@@ -1263,6 +1561,7 @@ type ExpectShillPropertyRequest struct {
 	// Shill object path (e.g. Service or Device).
 	ObjectPath           string                                  `protobuf:"bytes,1,opt,name=object_path,json=objectPath,proto3" json:"object_path,omitempty"`
 	Props                []*ExpectShillPropertyRequest_Criterion `protobuf:"bytes,2,rep,name=props,proto3" json:"props,omitempty"`
+	MonitorProps         []string                                `protobuf:"bytes,3,rep,name=monitor_props,json=monitorProps,proto3" json:"monitor_props,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                `json:"-"`
 	XXX_unrecognized     []byte                                  `json:"-"`
 	XXX_sizecache        int32                                   `json:"-"`
@@ -1272,7 +1571,7 @@ func (m *ExpectShillPropertyRequest) Reset()         { *m = ExpectShillPropertyR
 func (m *ExpectShillPropertyRequest) String() string { return proto.CompactTextString(m) }
 func (*ExpectShillPropertyRequest) ProtoMessage()    {}
 func (*ExpectShillPropertyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{23}
+	return fileDescriptor_7d1eecb28f2859f1, []int{29}
 }
 
 func (m *ExpectShillPropertyRequest) XXX_Unmarshal(b []byte) error {
@@ -1307,6 +1606,13 @@ func (m *ExpectShillPropertyRequest) GetProps() []*ExpectShillPropertyRequest_Cr
 	return nil
 }
 
+func (m *ExpectShillPropertyRequest) GetMonitorProps() []string {
+	if m != nil {
+		return m.MonitorProps
+	}
+	return nil
+}
+
 type ExpectShillPropertyRequest_Criterion struct {
 	// The shill property name.
 	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
@@ -1324,7 +1630,7 @@ func (m *ExpectShillPropertyRequest_Criterion) Reset()         { *m = ExpectShil
 func (m *ExpectShillPropertyRequest_Criterion) String() string { return proto.CompactTextString(m) }
 func (*ExpectShillPropertyRequest_Criterion) ProtoMessage()    {}
 func (*ExpectShillPropertyRequest_Criterion) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{23, 0}
+	return fileDescriptor_7d1eecb28f2859f1, []int{29, 0}
 }
 
 func (m *ExpectShillPropertyRequest_Criterion) XXX_Unmarshal(b []byte) error {
@@ -1373,19 +1679,68 @@ func (m *ExpectShillPropertyRequest_Criterion) GetMethod() ExpectShillPropertyRe
 	return ExpectShillPropertyRequest_CHECK_WAIT
 }
 
-type ExpectShillPropertyResponse struct {
-	Key                  string    `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+type ShillPropertyChangedSignal struct {
+	Prop                 string    `protobuf:"bytes,1,opt,name=prop,proto3" json:"prop,omitempty"`
 	Val                  *ShillVal `protobuf:"bytes,2,opt,name=val,proto3" json:"val,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
 }
 
+func (m *ShillPropertyChangedSignal) Reset()         { *m = ShillPropertyChangedSignal{} }
+func (m *ShillPropertyChangedSignal) String() string { return proto.CompactTextString(m) }
+func (*ShillPropertyChangedSignal) ProtoMessage()    {}
+func (*ShillPropertyChangedSignal) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{30}
+}
+
+func (m *ShillPropertyChangedSignal) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ShillPropertyChangedSignal.Unmarshal(m, b)
+}
+func (m *ShillPropertyChangedSignal) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ShillPropertyChangedSignal.Marshal(b, m, deterministic)
+}
+func (m *ShillPropertyChangedSignal) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ShillPropertyChangedSignal.Merge(m, src)
+}
+func (m *ShillPropertyChangedSignal) XXX_Size() int {
+	return xxx_messageInfo_ShillPropertyChangedSignal.Size(m)
+}
+func (m *ShillPropertyChangedSignal) XXX_DiscardUnknown() {
+	xxx_messageInfo_ShillPropertyChangedSignal.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ShillPropertyChangedSignal proto.InternalMessageInfo
+
+func (m *ShillPropertyChangedSignal) GetProp() string {
+	if m != nil {
+		return m.Prop
+	}
+	return ""
+}
+
+func (m *ShillPropertyChangedSignal) GetVal() *ShillVal {
+	if m != nil {
+		return m.Val
+	}
+	return nil
+}
+
+type ExpectShillPropertyResponse struct {
+	Key                  string                        `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Val                  *ShillVal                     `protobuf:"bytes,2,opt,name=val,proto3" json:"val,omitempty"`
+	Props                []*ShillPropertyChangedSignal `protobuf:"bytes,3,rep,name=props,proto3" json:"props,omitempty"`
+	MonitorDone          bool                          `protobuf:"varint,4,opt,name=monitor_done,json=monitorDone,proto3" json:"monitor_done,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
+	XXX_unrecognized     []byte                        `json:"-"`
+	XXX_sizecache        int32                         `json:"-"`
+}
+
 func (m *ExpectShillPropertyResponse) Reset()         { *m = ExpectShillPropertyResponse{} }
 func (m *ExpectShillPropertyResponse) String() string { return proto.CompactTextString(m) }
 func (*ExpectShillPropertyResponse) ProtoMessage()    {}
 func (*ExpectShillPropertyResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{24}
+	return fileDescriptor_7d1eecb28f2859f1, []int{31}
 }
 
 func (m *ExpectShillPropertyResponse) XXX_Unmarshal(b []byte) error {
@@ -1420,6 +1775,20 @@ func (m *ExpectShillPropertyResponse) GetVal() *ShillVal {
 	return nil
 }
 
+func (m *ExpectShillPropertyResponse) GetProps() []*ShillPropertyChangedSignal {
+	if m != nil {
+		return m.Props
+	}
+	return nil
+}
+
+func (m *ExpectShillPropertyResponse) GetMonitorDone() bool {
+	if m != nil {
+		return m.MonitorDone
+	}
+	return false
+}
+
 type ProfileBasicTestRequest struct {
 	Ap0                  *ProfileBasicTestRequest_Config `protobuf:"bytes,1,opt,name=ap0,proto3" json:"ap0,omitempty"`
 	Ap1                  *ProfileBasicTestRequest_Config `protobuf:"bytes,2,opt,name=ap1,proto3" json:"ap1,omitempty"`
@@ -1432,7 +1801,7 @@ func (m *ProfileBasicTestRequest) Reset()         { *m = ProfileBasicTestRequest
 func (m *ProfileBasicTestRequest) String() string { return proto.CompactTextString(m) }
 func (*ProfileBasicTestRequest) ProtoMessage()    {}
 func (*ProfileBasicTestRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{25}
+	return fileDescriptor_7d1eecb28f2859f1, []int{32}
 }
 
 func (m *ProfileBasicTestRequest) XXX_Unmarshal(b []byte) error {
@@ -1482,7 +1851,7 @@ func (m *ProfileBasicTestRequest_Config) Reset()         { *m = ProfileBasicTest
 func (m *ProfileBasicTestRequest_Config) String() string { return proto.CompactTextString(m) }
 func (*ProfileBasicTestRequest_Config) ProtoMessage()    {}
 func (*ProfileBasicTestRequest_Config) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7d1eecb28f2859f1, []int{25, 0}
+	return fileDescriptor_7d1eecb28f2859f1, []int{32, 0}
 }
 
 func (m *ProfileBasicTestRequest_Config) XXX_Unmarshal(b []byte) error {
@@ -1531,13 +1900,571 @@ func (m *ProfileBasicTestRequest_Config) GetShillProps() map[string]*ShillVal {
 	return nil
 }
 
+type RequestRoamRequest struct {
+	InterfaceName        string   `protobuf:"bytes,1,opt,name=interface_name,json=interfaceName,proto3" json:"interface_name,omitempty"`
+	Bssid                string   `protobuf:"bytes,2,opt,name=bssid,proto3" json:"bssid,omitempty"`
+	Timeout              int64    `protobuf:"varint,3,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RequestRoamRequest) Reset()         { *m = RequestRoamRequest{} }
+func (m *RequestRoamRequest) String() string { return proto.CompactTextString(m) }
+func (*RequestRoamRequest) ProtoMessage()    {}
+func (*RequestRoamRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{33}
+}
+
+func (m *RequestRoamRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RequestRoamRequest.Unmarshal(m, b)
+}
+func (m *RequestRoamRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RequestRoamRequest.Marshal(b, m, deterministic)
+}
+func (m *RequestRoamRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RequestRoamRequest.Merge(m, src)
+}
+func (m *RequestRoamRequest) XXX_Size() int {
+	return xxx_messageInfo_RequestRoamRequest.Size(m)
+}
+func (m *RequestRoamRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_RequestRoamRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RequestRoamRequest proto.InternalMessageInfo
+
+func (m *RequestRoamRequest) GetInterfaceName() string {
+	if m != nil {
+		return m.InterfaceName
+	}
+	return ""
+}
+
+func (m *RequestRoamRequest) GetBssid() string {
+	if m != nil {
+		return m.Bssid
+	}
+	return ""
+}
+
+func (m *RequestRoamRequest) GetTimeout() int64 {
+	if m != nil {
+		return m.Timeout
+	}
+	return 0
+}
+
+type DHCPProperties struct {
+	VendorClass          string   `protobuf:"bytes,1,opt,name=vendor_class,json=vendorClass,proto3" json:"vendor_class,omitempty"`
+	Hostname             string   `protobuf:"bytes,2,opt,name=hostname,proto3" json:"hostname,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DHCPProperties) Reset()         { *m = DHCPProperties{} }
+func (m *DHCPProperties) String() string { return proto.CompactTextString(m) }
+func (*DHCPProperties) ProtoMessage()    {}
+func (*DHCPProperties) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{34}
+}
+
+func (m *DHCPProperties) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DHCPProperties.Unmarshal(m, b)
+}
+func (m *DHCPProperties) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DHCPProperties.Marshal(b, m, deterministic)
+}
+func (m *DHCPProperties) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DHCPProperties.Merge(m, src)
+}
+func (m *DHCPProperties) XXX_Size() int {
+	return xxx_messageInfo_DHCPProperties.Size(m)
+}
+func (m *DHCPProperties) XXX_DiscardUnknown() {
+	xxx_messageInfo_DHCPProperties.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DHCPProperties proto.InternalMessageInfo
+
+func (m *DHCPProperties) GetVendorClass() string {
+	if m != nil {
+		return m.VendorClass
+	}
+	return ""
+}
+
+func (m *DHCPProperties) GetHostname() string {
+	if m != nil {
+		return m.Hostname
+	}
+	return ""
+}
+
+type SetDHCPPropertiesRequest struct {
+	Props                *DHCPProperties `protobuf:"bytes,1,opt,name=props,proto3" json:"props,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *SetDHCPPropertiesRequest) Reset()         { *m = SetDHCPPropertiesRequest{} }
+func (m *SetDHCPPropertiesRequest) String() string { return proto.CompactTextString(m) }
+func (*SetDHCPPropertiesRequest) ProtoMessage()    {}
+func (*SetDHCPPropertiesRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{35}
+}
+
+func (m *SetDHCPPropertiesRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetDHCPPropertiesRequest.Unmarshal(m, b)
+}
+func (m *SetDHCPPropertiesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetDHCPPropertiesRequest.Marshal(b, m, deterministic)
+}
+func (m *SetDHCPPropertiesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetDHCPPropertiesRequest.Merge(m, src)
+}
+func (m *SetDHCPPropertiesRequest) XXX_Size() int {
+	return xxx_messageInfo_SetDHCPPropertiesRequest.Size(m)
+}
+func (m *SetDHCPPropertiesRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetDHCPPropertiesRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetDHCPPropertiesRequest proto.InternalMessageInfo
+
+func (m *SetDHCPPropertiesRequest) GetProps() *DHCPProperties {
+	if m != nil {
+		return m.Props
+	}
+	return nil
+}
+
+type SetDHCPPropertiesResponse struct {
+	Props                *DHCPProperties `protobuf:"bytes,1,opt,name=props,proto3" json:"props,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *SetDHCPPropertiesResponse) Reset()         { *m = SetDHCPPropertiesResponse{} }
+func (m *SetDHCPPropertiesResponse) String() string { return proto.CompactTextString(m) }
+func (*SetDHCPPropertiesResponse) ProtoMessage()    {}
+func (*SetDHCPPropertiesResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{36}
+}
+
+func (m *SetDHCPPropertiesResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetDHCPPropertiesResponse.Unmarshal(m, b)
+}
+func (m *SetDHCPPropertiesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetDHCPPropertiesResponse.Marshal(b, m, deterministic)
+}
+func (m *SetDHCPPropertiesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetDHCPPropertiesResponse.Merge(m, src)
+}
+func (m *SetDHCPPropertiesResponse) XXX_Size() int {
+	return xxx_messageInfo_SetDHCPPropertiesResponse.Size(m)
+}
+func (m *SetDHCPPropertiesResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetDHCPPropertiesResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetDHCPPropertiesResponse proto.InternalMessageInfo
+
+func (m *SetDHCPPropertiesResponse) GetProps() *DHCPProperties {
+	if m != nil {
+		return m.Props
+	}
+	return nil
+}
+
+type ReassociateRequest struct {
+	InterfaceName        string   `protobuf:"bytes,1,opt,name=interface_name,json=interfaceName,proto3" json:"interface_name,omitempty"`
+	Timeout              int64    `protobuf:"varint,2,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ReassociateRequest) Reset()         { *m = ReassociateRequest{} }
+func (m *ReassociateRequest) String() string { return proto.CompactTextString(m) }
+func (*ReassociateRequest) ProtoMessage()    {}
+func (*ReassociateRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{37}
+}
+
+func (m *ReassociateRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReassociateRequest.Unmarshal(m, b)
+}
+func (m *ReassociateRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReassociateRequest.Marshal(b, m, deterministic)
+}
+func (m *ReassociateRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReassociateRequest.Merge(m, src)
+}
+func (m *ReassociateRequest) XXX_Size() int {
+	return xxx_messageInfo_ReassociateRequest.Size(m)
+}
+func (m *ReassociateRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReassociateRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReassociateRequest proto.InternalMessageInfo
+
+func (m *ReassociateRequest) GetInterfaceName() string {
+	if m != nil {
+		return m.InterfaceName
+	}
+	return ""
+}
+
+func (m *ReassociateRequest) GetTimeout() int64 {
+	if m != nil {
+		return m.Timeout
+	}
+	return 0
+}
+
+type GetWifiEnabledResponse struct {
+	Enabled              bool     `protobuf:"varint,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetWifiEnabledResponse) Reset()         { *m = GetWifiEnabledResponse{} }
+func (m *GetWifiEnabledResponse) String() string { return proto.CompactTextString(m) }
+func (*GetWifiEnabledResponse) ProtoMessage()    {}
+func (*GetWifiEnabledResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{38}
+}
+
+func (m *GetWifiEnabledResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetWifiEnabledResponse.Unmarshal(m, b)
+}
+func (m *GetWifiEnabledResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetWifiEnabledResponse.Marshal(b, m, deterministic)
+}
+func (m *GetWifiEnabledResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetWifiEnabledResponse.Merge(m, src)
+}
+func (m *GetWifiEnabledResponse) XXX_Size() int {
+	return xxx_messageInfo_GetWifiEnabledResponse.Size(m)
+}
+func (m *GetWifiEnabledResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetWifiEnabledResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetWifiEnabledResponse proto.InternalMessageInfo
+
+func (m *GetWifiEnabledResponse) GetEnabled() bool {
+	if m != nil {
+		return m.Enabled
+	}
+	return false
+}
+
+type SetWifiEnabledRequest struct {
+	Enabled              bool     `protobuf:"varint,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SetWifiEnabledRequest) Reset()         { *m = SetWifiEnabledRequest{} }
+func (m *SetWifiEnabledRequest) String() string { return proto.CompactTextString(m) }
+func (*SetWifiEnabledRequest) ProtoMessage()    {}
+func (*SetWifiEnabledRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{39}
+}
+
+func (m *SetWifiEnabledRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetWifiEnabledRequest.Unmarshal(m, b)
+}
+func (m *SetWifiEnabledRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetWifiEnabledRequest.Marshal(b, m, deterministic)
+}
+func (m *SetWifiEnabledRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetWifiEnabledRequest.Merge(m, src)
+}
+func (m *SetWifiEnabledRequest) XXX_Size() int {
+	return xxx_messageInfo_SetWifiEnabledRequest.Size(m)
+}
+func (m *SetWifiEnabledRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetWifiEnabledRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetWifiEnabledRequest proto.InternalMessageInfo
+
+func (m *SetWifiEnabledRequest) GetEnabled() bool {
+	if m != nil {
+		return m.Enabled
+	}
+	return false
+}
+
+type WaitForBSSIDRequest struct {
+	Ssid                 []byte   `protobuf:"bytes,1,opt,name=ssid,proto3" json:"ssid,omitempty"`
+	Bssid                string   `protobuf:"bytes,2,opt,name=bssid,proto3" json:"bssid,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *WaitForBSSIDRequest) Reset()         { *m = WaitForBSSIDRequest{} }
+func (m *WaitForBSSIDRequest) String() string { return proto.CompactTextString(m) }
+func (*WaitForBSSIDRequest) ProtoMessage()    {}
+func (*WaitForBSSIDRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{40}
+}
+
+func (m *WaitForBSSIDRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WaitForBSSIDRequest.Unmarshal(m, b)
+}
+func (m *WaitForBSSIDRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WaitForBSSIDRequest.Marshal(b, m, deterministic)
+}
+func (m *WaitForBSSIDRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WaitForBSSIDRequest.Merge(m, src)
+}
+func (m *WaitForBSSIDRequest) XXX_Size() int {
+	return xxx_messageInfo_WaitForBSSIDRequest.Size(m)
+}
+func (m *WaitForBSSIDRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_WaitForBSSIDRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_WaitForBSSIDRequest proto.InternalMessageInfo
+
+func (m *WaitForBSSIDRequest) GetSsid() []byte {
+	if m != nil {
+		return m.Ssid
+	}
+	return nil
+}
+
+func (m *WaitForBSSIDRequest) GetBssid() string {
+	if m != nil {
+		return m.Bssid
+	}
+	return ""
+}
+
+type MACRandomizeSupportResponse struct {
+	Supported            bool     `protobuf:"varint,1,opt,name=supported,proto3" json:"supported,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MACRandomizeSupportResponse) Reset()         { *m = MACRandomizeSupportResponse{} }
+func (m *MACRandomizeSupportResponse) String() string { return proto.CompactTextString(m) }
+func (*MACRandomizeSupportResponse) ProtoMessage()    {}
+func (*MACRandomizeSupportResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{41}
+}
+
+func (m *MACRandomizeSupportResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MACRandomizeSupportResponse.Unmarshal(m, b)
+}
+func (m *MACRandomizeSupportResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MACRandomizeSupportResponse.Marshal(b, m, deterministic)
+}
+func (m *MACRandomizeSupportResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MACRandomizeSupportResponse.Merge(m, src)
+}
+func (m *MACRandomizeSupportResponse) XXX_Size() int {
+	return xxx_messageInfo_MACRandomizeSupportResponse.Size(m)
+}
+func (m *MACRandomizeSupportResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MACRandomizeSupportResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MACRandomizeSupportResponse proto.InternalMessageInfo
+
+func (m *MACRandomizeSupportResponse) GetSupported() bool {
+	if m != nil {
+		return m.Supported
+	}
+	return false
+}
+
+type GetMACRandomizeResponse struct {
+	Enabled              bool     `protobuf:"varint,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetMACRandomizeResponse) Reset()         { *m = GetMACRandomizeResponse{} }
+func (m *GetMACRandomizeResponse) String() string { return proto.CompactTextString(m) }
+func (*GetMACRandomizeResponse) ProtoMessage()    {}
+func (*GetMACRandomizeResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{42}
+}
+
+func (m *GetMACRandomizeResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetMACRandomizeResponse.Unmarshal(m, b)
+}
+func (m *GetMACRandomizeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetMACRandomizeResponse.Marshal(b, m, deterministic)
+}
+func (m *GetMACRandomizeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetMACRandomizeResponse.Merge(m, src)
+}
+func (m *GetMACRandomizeResponse) XXX_Size() int {
+	return xxx_messageInfo_GetMACRandomizeResponse.Size(m)
+}
+func (m *GetMACRandomizeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetMACRandomizeResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetMACRandomizeResponse proto.InternalMessageInfo
+
+func (m *GetMACRandomizeResponse) GetEnabled() bool {
+	if m != nil {
+		return m.Enabled
+	}
+	return false
+}
+
+type EAPAuthSkippedResponse struct {
+	Skipped              bool     `protobuf:"varint,1,opt,name=skipped,proto3" json:"skipped,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *EAPAuthSkippedResponse) Reset()         { *m = EAPAuthSkippedResponse{} }
+func (m *EAPAuthSkippedResponse) String() string { return proto.CompactTextString(m) }
+func (*EAPAuthSkippedResponse) ProtoMessage()    {}
+func (*EAPAuthSkippedResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{43}
+}
+
+func (m *EAPAuthSkippedResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_EAPAuthSkippedResponse.Unmarshal(m, b)
+}
+func (m *EAPAuthSkippedResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_EAPAuthSkippedResponse.Marshal(b, m, deterministic)
+}
+func (m *EAPAuthSkippedResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EAPAuthSkippedResponse.Merge(m, src)
+}
+func (m *EAPAuthSkippedResponse) XXX_Size() int {
+	return xxx_messageInfo_EAPAuthSkippedResponse.Size(m)
+}
+func (m *EAPAuthSkippedResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_EAPAuthSkippedResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_EAPAuthSkippedResponse proto.InternalMessageInfo
+
+func (m *EAPAuthSkippedResponse) GetSkipped() bool {
+	if m != nil {
+		return m.Skipped
+	}
+	return false
+}
+
+type SuspendAssertConnectRequest struct {
+	WakeUpTimeout        int64    `protobuf:"varint,1,opt,name=wake_up_timeout,json=wakeUpTimeout,proto3" json:"wake_up_timeout,omitempty"`
+	ServicePath          string   `protobuf:"bytes,2,opt,name=service_path,json=servicePath,proto3" json:"service_path,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SuspendAssertConnectRequest) Reset()         { *m = SuspendAssertConnectRequest{} }
+func (m *SuspendAssertConnectRequest) String() string { return proto.CompactTextString(m) }
+func (*SuspendAssertConnectRequest) ProtoMessage()    {}
+func (*SuspendAssertConnectRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{44}
+}
+
+func (m *SuspendAssertConnectRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SuspendAssertConnectRequest.Unmarshal(m, b)
+}
+func (m *SuspendAssertConnectRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SuspendAssertConnectRequest.Marshal(b, m, deterministic)
+}
+func (m *SuspendAssertConnectRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SuspendAssertConnectRequest.Merge(m, src)
+}
+func (m *SuspendAssertConnectRequest) XXX_Size() int {
+	return xxx_messageInfo_SuspendAssertConnectRequest.Size(m)
+}
+func (m *SuspendAssertConnectRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SuspendAssertConnectRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SuspendAssertConnectRequest proto.InternalMessageInfo
+
+func (m *SuspendAssertConnectRequest) GetWakeUpTimeout() int64 {
+	if m != nil {
+		return m.WakeUpTimeout
+	}
+	return 0
+}
+
+func (m *SuspendAssertConnectRequest) GetServicePath() string {
+	if m != nil {
+		return m.ServicePath
+	}
+	return ""
+}
+
+type SuspendAssertConnectResponse struct {
+	ReconnectTime        int64    `protobuf:"varint,1,opt,name=reconnect_time,json=reconnectTime,proto3" json:"reconnect_time,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SuspendAssertConnectResponse) Reset()         { *m = SuspendAssertConnectResponse{} }
+func (m *SuspendAssertConnectResponse) String() string { return proto.CompactTextString(m) }
+func (*SuspendAssertConnectResponse) ProtoMessage()    {}
+func (*SuspendAssertConnectResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7d1eecb28f2859f1, []int{45}
+}
+
+func (m *SuspendAssertConnectResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SuspendAssertConnectResponse.Unmarshal(m, b)
+}
+func (m *SuspendAssertConnectResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SuspendAssertConnectResponse.Marshal(b, m, deterministic)
+}
+func (m *SuspendAssertConnectResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SuspendAssertConnectResponse.Merge(m, src)
+}
+func (m *SuspendAssertConnectResponse) XXX_Size() int {
+	return xxx_messageInfo_SuspendAssertConnectResponse.Size(m)
+}
+func (m *SuspendAssertConnectResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_SuspendAssertConnectResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SuspendAssertConnectResponse proto.InternalMessageInfo
+
+func (m *SuspendAssertConnectResponse) GetReconnectTime() int64 {
+	if m != nil {
+		return m.ReconnectTime
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterEnum("tast.cros.network.ExpectShillPropertyRequest_CheckMethod", ExpectShillPropertyRequest_CheckMethod_name, ExpectShillPropertyRequest_CheckMethod_value)
 	proto.RegisterType((*ConnectRequest)(nil), "tast.cros.network.ConnectRequest")
 	proto.RegisterMapType((map[string]*ShillVal)(nil), "tast.cros.network.ConnectRequest.ShillpropsEntry")
 	proto.RegisterType((*ShillVal)(nil), "tast.cros.network.ShillVal")
 	proto.RegisterType((*StrArray)(nil), "tast.cros.network.StrArray")
+	proto.RegisterType((*Uint32Array)(nil), "tast.cros.network.Uint32Array")
 	proto.RegisterType((*ConnectResponse)(nil), "tast.cros.network.ConnectResponse")
+	proto.RegisterType((*DiscoverBSSIDRequest)(nil), "tast.cros.network.DiscoverBSSIDRequest")
+	proto.RegisterType((*DiscoverBSSIDResponse)(nil), "tast.cros.network.DiscoverBSSIDResponse")
 	proto.RegisterType((*DisconnectRequest)(nil), "tast.cros.network.DisconnectRequest")
 	proto.RegisterType((*DeleteEntriesForSSIDRequest)(nil), "tast.cros.network.DeleteEntriesForSSIDRequest")
 	proto.RegisterType((*QueryServiceRequest)(nil), "tast.cros.network.QueryServiceRequest")
@@ -1546,9 +2473,12 @@ func init() {
 	proto.RegisterType((*GetInterfaceResponse)(nil), "tast.cros.network.GetInterfaceResponse")
 	proto.RegisterType((*GetIPv4AddrsRequest)(nil), "tast.cros.network.GetIPv4AddrsRequest")
 	proto.RegisterType((*GetIPv4AddrsResponse)(nil), "tast.cros.network.GetIPv4AddrsResponse")
+	proto.RegisterType((*GetHardwareAddrRequest)(nil), "tast.cros.network.GetHardwareAddrRequest")
+	proto.RegisterType((*GetHardwareAddrResponse)(nil), "tast.cros.network.GetHardwareAddrResponse")
 	proto.RegisterType((*ExpectWifiFrequenciesRequest)(nil), "tast.cros.network.ExpectWifiFrequenciesRequest")
-	proto.RegisterType((*GetBgscanMethodResponse)(nil), "tast.cros.network.GetBgscanMethodResponse")
-	proto.RegisterType((*SetBgscanMethodRequest)(nil), "tast.cros.network.SetBgscanMethodRequest")
+	proto.RegisterType((*BgscanConfig)(nil), "tast.cros.network.BgscanConfig")
+	proto.RegisterType((*GetBgscanConfigResponse)(nil), "tast.cros.network.GetBgscanConfigResponse")
+	proto.RegisterType((*SetBgscanConfigRequest)(nil), "tast.cros.network.SetBgscanConfigRequest")
 	proto.RegisterType((*AssureDisconnectRequest)(nil), "tast.cros.network.AssureDisconnectRequest")
 	proto.RegisterType((*DisableEnableTestRequest)(nil), "tast.cros.network.DisableEnableTestRequest")
 	proto.RegisterType((*RequestScansRequest)(nil), "tast.cros.network.RequestScansRequest")
@@ -1561,124 +2491,182 @@ func init() {
 	proto.RegisterType((*SelectedServiceResponse)(nil), "tast.cros.network.SelectedServiceResponse")
 	proto.RegisterType((*ExpectShillPropertyRequest)(nil), "tast.cros.network.ExpectShillPropertyRequest")
 	proto.RegisterType((*ExpectShillPropertyRequest_Criterion)(nil), "tast.cros.network.ExpectShillPropertyRequest.Criterion")
+	proto.RegisterType((*ShillPropertyChangedSignal)(nil), "tast.cros.network.ShillPropertyChangedSignal")
 	proto.RegisterType((*ExpectShillPropertyResponse)(nil), "tast.cros.network.ExpectShillPropertyResponse")
 	proto.RegisterType((*ProfileBasicTestRequest)(nil), "tast.cros.network.ProfileBasicTestRequest")
 	proto.RegisterType((*ProfileBasicTestRequest_Config)(nil), "tast.cros.network.ProfileBasicTestRequest.Config")
 	proto.RegisterMapType((map[string]*ShillVal)(nil), "tast.cros.network.ProfileBasicTestRequest.Config.ShillPropsEntry")
+	proto.RegisterType((*RequestRoamRequest)(nil), "tast.cros.network.RequestRoamRequest")
+	proto.RegisterType((*DHCPProperties)(nil), "tast.cros.network.DHCPProperties")
+	proto.RegisterType((*SetDHCPPropertiesRequest)(nil), "tast.cros.network.SetDHCPPropertiesRequest")
+	proto.RegisterType((*SetDHCPPropertiesResponse)(nil), "tast.cros.network.SetDHCPPropertiesResponse")
+	proto.RegisterType((*ReassociateRequest)(nil), "tast.cros.network.ReassociateRequest")
+	proto.RegisterType((*GetWifiEnabledResponse)(nil), "tast.cros.network.GetWifiEnabledResponse")
+	proto.RegisterType((*SetWifiEnabledRequest)(nil), "tast.cros.network.SetWifiEnabledRequest")
+	proto.RegisterType((*WaitForBSSIDRequest)(nil), "tast.cros.network.WaitForBSSIDRequest")
+	proto.RegisterType((*MACRandomizeSupportResponse)(nil), "tast.cros.network.MACRandomizeSupportResponse")
+	proto.RegisterType((*GetMACRandomizeResponse)(nil), "tast.cros.network.GetMACRandomizeResponse")
+	proto.RegisterType((*EAPAuthSkippedResponse)(nil), "tast.cros.network.EAPAuthSkippedResponse")
+	proto.RegisterType((*SuspendAssertConnectRequest)(nil), "tast.cros.network.SuspendAssertConnectRequest")
+	proto.RegisterType((*SuspendAssertConnectResponse)(nil), "tast.cros.network.SuspendAssertConnectResponse")
 }
 
 func init() { proto.RegisterFile("wifi_service.proto", fileDescriptor_7d1eecb28f2859f1) }
 
 var fileDescriptor_7d1eecb28f2859f1 = []byte{
-	// 1718 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x57, 0xdd, 0x72, 0x1a, 0xc9,
-	0x15, 0xe6, 0x47, 0x48, 0x70, 0xd0, 0x9f, 0xdb, 0x8a, 0x3c, 0x8b, 0x9d, 0x2c, 0x3b, 0xb1, 0xb3,
-	0xf2, 0x6e, 0x8c, 0x2c, 0xc5, 0x55, 0xfb, 0x63, 0x5f, 0x2c, 0x42, 0x5a, 0x4b, 0x15, 0x5b, 0x96,
-	0x07, 0xd9, 0xde, 0xb8, 0x92, 0x90, 0x61, 0xa6, 0x11, 0xbd, 0x1e, 0xa6, 0xc9, 0x74, 0x83, 0x4c,
-	0x5e, 0x20, 0x79, 0x80, 0xbc, 0x43, 0xee, 0x72, 0x97, 0xaa, 0x3c, 0x46, 0xee, 0x52, 0x95, 0xd7,
-	0xc8, 0x0b, 0x6c, 0xf5, 0xcf, 0xc0, 0x80, 0x7a, 0x90, 0xa5, 0x2a, 0xdf, 0x50, 0xdd, 0x87, 0xf3,
-	0x37, 0xdf, 0xe9, 0x73, 0xfa, 0x6b, 0x40, 0xe7, 0xa4, 0x43, 0x5a, 0x0c, 0x47, 0x43, 0xe2, 0xe1,
-	0x5a, 0x3f, 0xa2, 0x9c, 0xa2, 0x1b, 0xdc, 0x65, 0xbc, 0xe6, 0x45, 0x94, 0xd5, 0x42, 0xcc, 0xcf,
-	0x69, 0xf4, 0xae, 0x72, 0xfb, 0x8c, 0xd2, 0xb3, 0x00, 0x6f, 0x4b, 0x85, 0xf6, 0xa0, 0xb3, 0x8d,
-	0x7b, 0x7d, 0x3e, 0x52, 0xfa, 0xf6, 0x5f, 0x73, 0xb0, 0xda, 0xa0, 0x61, 0x88, 0x3d, 0xee, 0xe0,
-	0x3f, 0x0f, 0x30, 0xe3, 0x08, 0xc1, 0x02, 0x63, 0xc4, 0xb7, 0xb2, 0xd5, 0xec, 0xd6, 0xb2, 0x23,
-	0xd7, 0x68, 0x13, 0x16, 0xbb, 0xc4, 0xf7, 0x71, 0x68, 0xe5, 0xaa, 0xd9, 0xad, 0xa2, 0xa3, 0x77,
-	0xa8, 0x02, 0x45, 0x86, 0xbd, 0x41, 0x44, 0xf8, 0xc8, 0xca, 0x57, 0xb3, 0x5b, 0x25, 0x67, 0xbc,
-	0x47, 0x2f, 0x01, 0x58, 0x97, 0x04, 0x41, 0x3f, 0xa2, 0x7d, 0x66, 0x2d, 0x54, 0xf3, 0x5b, 0xe5,
-	0xdd, 0x9d, 0xda, 0x85, 0xfc, 0x6a, 0xd3, 0xe1, 0x6b, 0xcd, 0xb1, 0xcd, 0x41, 0xc8, 0xa3, 0x91,
-	0x93, 0x70, 0x52, 0x79, 0x0b, 0x6b, 0x33, 0x7f, 0xa3, 0x75, 0xc8, 0xbf, 0xc3, 0x23, 0x99, 0x6c,
-	0xc9, 0x11, 0x4b, 0xb4, 0x03, 0x85, 0xa1, 0x1b, 0x0c, 0xb0, 0x4c, 0xb5, 0xbc, 0x7b, 0xdb, 0x10,
-	0x52, 0x3a, 0x79, 0xed, 0x06, 0x8e, 0xd2, 0xfc, 0x36, 0xf7, 0x75, 0xd6, 0x1e, 0x42, 0x31, 0x16,
-	0x23, 0x04, 0x79, 0xc6, 0x23, 0xe5, 0xf4, 0x30, 0xe3, 0x88, 0x0d, 0xda, 0x80, 0x85, 0x36, 0xa5,
-	0x81, 0x02, 0xe0, 0x30, 0xe3, 0xc8, 0x1d, 0xfa, 0x06, 0x8a, 0x8c, 0x47, 0xf5, 0x28, 0x72, 0x15,
-	0x00, 0x29, 0xf1, 0xb4, 0xca, 0x61, 0xc6, 0x19, 0xab, 0xef, 0x15, 0x20, 0x3f, 0x74, 0x03, 0xfb,
-	0x17, 0x50, 0x8c, 0xff, 0x16, 0xd0, 0x0f, 0xdd, 0x80, 0x59, 0xd9, 0x6a, 0x7e, 0xab, 0xe4, 0xc8,
-	0xb5, 0xfd, 0xaf, 0x2c, 0xac, 0x8d, 0x21, 0x62, 0x7d, 0x1a, 0x32, 0x8c, 0x3e, 0x83, 0x65, 0x5d,
-	0xf6, 0x56, 0xdf, 0xe5, 0x5d, 0xfd, 0xf5, 0x65, 0x2d, 0x3b, 0x71, 0x79, 0x17, 0xdd, 0x83, 0x55,
-	0x9f, 0x30, 0x8f, 0x0e, 0x71, 0x34, 0x6a, 0x71, 0xd2, 0x53, 0x70, 0xe4, 0x9d, 0x95, 0xb1, 0xf4,
-	0x94, 0xf4, 0x30, 0xba, 0x0f, 0xeb, 0x2e, 0x63, 0xd4, 0x23, 0x2e, 0x27, 0x34, 0x54, 0x8a, 0x79,
-	0xa9, 0xb8, 0x96, 0x90, 0x4b, 0xd5, 0x07, 0x80, 0x3c, 0x1a, 0x76, 0xc8, 0xd9, 0x20, 0x4a, 0x28,
-	0x2f, 0x48, 0xe5, 0x1b, 0x53, 0xff, 0x08, 0x75, 0xfb, 0x0f, 0x70, 0x63, 0x5f, 0x84, 0x9a, 0x3a,
-	0x5b, 0x1f, 0x96, 0x78, 0x84, 0x7b, 0x74, 0x88, 0x5b, 0xfd, 0x88, 0x76, 0x48, 0x80, 0xf5, 0x91,
-	0x5b, 0x51, 0xd2, 0x13, 0x25, 0xb4, 0x77, 0xe0, 0xf6, 0x3e, 0x0e, 0x30, 0xc7, 0xe2, 0x18, 0x10,
-	0xcc, 0xbe, 0xa7, 0x51, 0xb3, 0x79, 0xb4, 0x3f, 0xe7, 0x10, 0xdb, 0xf7, 0xe1, 0xe6, 0xcb, 0x01,
-	0x8e, 0x46, 0x4d, 0x15, 0x2d, 0xa1, 0x9a, 0xc8, 0x45, 0xae, 0xed, 0xff, 0xe7, 0x61, 0x63, 0x5a,
-	0x57, 0x23, 0x8f, 0x60, 0x21, 0x74, 0x7b, 0x38, 0x56, 0x16, 0x6b, 0xd1, 0x1c, 0x3e, 0x16, 0x5a,
-	0x32, 0xd3, 0x92, 0xa3, 0x77, 0x42, 0x97, 0x8f, 0xfa, 0x58, 0x37, 0x86, 0x5c, 0x0b, 0x59, 0x8f,
-	0xfa, 0x0a, 0xb6, 0x92, 0x23, 0xd7, 0x68, 0x03, 0x0a, 0x8c, 0xbb, 0x1c, 0x5b, 0x05, 0x29, 0x54,
-	0x1b, 0x64, 0xc1, 0xd2, 0x90, 0x30, 0xd2, 0x0e, 0xb0, 0xb5, 0x28, 0x01, 0x88, 0xb7, 0x02, 0x44,
-	0xc2, 0x5a, 0x1a, 0x59, 0xec, 0x5b, 0x4b, 0xf2, 0xef, 0x32, 0x61, 0x8d, 0x58, 0x84, 0xbe, 0x83,
-	0x05, 0x31, 0x1c, 0xac, 0xa2, 0x3c, 0x92, 0xbf, 0x36, 0x1c, 0x49, 0xd3, 0xd7, 0xd5, 0xde, 0x90,
-	0x0e, 0x71, 0xa4, 0xa5, 0x48, 0xf4, 0x6c, 0x40, 0x7c, 0xab, 0xa4, 0x12, 0x15, 0x6b, 0xf4, 0x4b,
-	0x58, 0xd1, 0x51, 0x45, 0xf9, 0x89, 0x6f, 0x41, 0x35, 0xbb, 0x55, 0x70, 0x96, 0x27, 0xc2, 0x23,
-	0xbf, 0xf2, 0xef, 0x2c, 0x2c, 0x08, 0x3f, 0xe2, 0xb3, 0xda, 0xe3, 0x1a, 0x94, 0x1c, 0xb5, 0x41,
-	0x77, 0xa0, 0xd4, 0x89, 0x04, 0xf2, 0xa1, 0x37, 0x92, 0x78, 0xad, 0x38, 0x13, 0x81, 0x28, 0xfe,
-	0x78, 0xd3, 0x0a, 0x08, 0xe3, 0x56, 0xbe, 0x9a, 0xdf, 0x5a, 0x71, 0x56, 0xc6, 0xd2, 0x67, 0x84,
-	0x71, 0xf4, 0x09, 0x14, 0xbb, 0xf8, 0x7d, 0x4b, 0x7a, 0x57, 0x48, 0x2e, 0x75, 0xf1, 0xfb, 0xa6,
-	0xf0, 0xff, 0x29, 0x94, 0xd5, 0x6c, 0x52, 0xff, 0x16, 0x24, 0x36, 0xa0, 0x44, 0x52, 0xe1, 0x13,
-	0x28, 0xf6, 0xbb, 0xa3, 0x96, 0xac, 0xc2, 0xa2, 0x8c, 0xbf, 0xd4, 0xef, 0x8e, 0x9e, 0x53, 0x1f,
-	0xdb, 0x5f, 0xc0, 0xc6, 0x53, 0xcc, 0x8f, 0x42, 0x8e, 0xa3, 0x8e, 0x3b, 0xbf, 0xe8, 0xf6, 0x63,
-	0xb8, 0x29, 0x74, 0x4f, 0x86, 0x8f, 0xea, 0xbe, 0x1f, 0xb1, 0xf8, 0x30, 0xdd, 0x85, 0x15, 0x12,
-	0xdb, 0x1f, 0x4f, 0x6c, 0xa6, 0x85, 0x71, 0xa0, 0x89, 0xf1, 0x24, 0x10, 0xe9, 0x0f, 0x1f, 0xc5,
-	0xfd, 0x2f, 0xd6, 0xf6, 0x29, 0xdc, 0x39, 0x78, 0xdf, 0xc7, 0x1e, 0x17, 0xa0, 0x7e, 0xaf, 0x61,
-	0x20, 0x98, 0xcd, 0x1b, 0xd7, 0x55, 0x28, 0x77, 0x26, 0x9a, 0x56, 0x4e, 0x62, 0x98, 0x14, 0xd9,
-	0x3b, 0x70, 0xeb, 0x29, 0xe6, 0x7b, 0x67, 0xcc, 0x73, 0xc3, 0xe7, 0x98, 0x77, 0xa9, 0x3f, 0x4e,
-	0x62, 0x13, 0x16, 0x7b, 0x52, 0xa2, 0x73, 0xd7, 0x3b, 0xfb, 0x21, 0x6c, 0x36, 0x67, 0x4d, 0x54,
-	0x0a, 0x69, 0x16, 0xaf, 0xe1, 0x56, 0x9d, 0xb1, 0x41, 0x84, 0xaf, 0x35, 0x08, 0x2c, 0x58, 0x12,
-	0x13, 0x86, 0x0e, 0xb8, 0x1e, 0x5d, 0xf1, 0xd6, 0x6e, 0x83, 0xb5, 0x4f, 0x98, 0xdb, 0x0e, 0xf0,
-	0x41, 0x28, 0x7e, 0x4f, 0x31, 0xe3, 0x57, 0x2a, 0x80, 0x00, 0x28, 0x11, 0x4a, 0xf7, 0x6d, 0x52,
-	0x64, 0x7f, 0x09, 0x37, 0xb5, 0xcb, 0xa6, 0xe7, 0x86, 0x63, 0xb4, 0x37, 0xa0, 0xe0, 0xd1, 0x41,
-	0xc8, 0xa5, 0xdb, 0x82, 0xa3, 0x36, 0x1a, 0x9a, 0xe7, 0xf5, 0x86, 0xe3, 0x86, 0x3e, 0xed, 0x91,
-	0xbf, 0xe0, 0x04, 0x34, 0x58, 0xe6, 0x28, 0x0d, 0x8a, 0x8e, 0xde, 0xd9, 0xdf, 0xc2, 0xad, 0x0b,
-	0x16, 0x1a, 0xff, 0x4f, 0xa1, 0x4c, 0x03, 0xbf, 0xc5, 0x30, 0xe7, 0x24, 0x3c, 0xd3, 0x76, 0x40,
-	0x03, 0xbf, 0xa9, 0x24, 0xf6, 0x7f, 0xb3, 0x70, 0xb7, 0xa1, 0xe7, 0x2d, 0xae, 0x87, 0x7e, 0x9d,
-	0x31, 0x1c, 0xf1, 0xfa, 0x80, 0xd3, 0x99, 0x9b, 0xfc, 0x07, 0x28, 0xa8, 0xcb, 0x37, 0x2b, 0x2f,
-	0xdf, 0x3d, 0xf3, 0xe5, 0x7b, 0xa9, 0x9f, 0xda, 0xc9, 0xe4, 0x36, 0x56, 0x0e, 0x2b, 0xaf, 0x00,
-	0x4e, 0x3e, 0xc2, 0x1d, 0xfc, 0x18, 0xee, 0x5d, 0x92, 0xd0, 0xa4, 0x51, 0x2e, 0xcc, 0xec, 0xdf,
-	0xc3, 0xe6, 0x53, 0xcc, 0x1b, 0x83, 0x28, 0xc2, 0x21, 0x17, 0x57, 0xd0, 0x58, 0xfb, 0x0e, 0x94,
-	0x42, 0x7a, 0xde, 0xc4, 0x1e, 0x0d, 0xd5, 0x11, 0xcd, 0x3b, 0x13, 0x81, 0x38, 0x31, 0x21, 0x3d,
-	0x3f, 0x76, 0x43, 0xca, 0x94, 0x86, 0xbe, 0x28, 0xa7, 0x84, 0xf6, 0x13, 0x51, 0xb0, 0x40, 0x4e,
-	0xd7, 0xd9, 0x3b, 0xe1, 0xf2, 0xb3, 0x6c, 0xff, 0x23, 0x0f, 0x15, 0xd5, 0xc5, 0xf2, 0xb3, 0x05,
-	0x76, 0x38, 0xe2, 0xa3, 0xb8, 0x50, 0xa2, 0xe4, 0xed, 0x1f, 0xb1, 0xc7, 0x93, 0x0e, 0x40, 0x89,
-	0x64, 0x2f, 0x3c, 0x8f, 0x2b, 0x99, 0x93, 0x95, 0xfc, 0xca, 0x80, 0x67, 0xba, 0xfb, 0x5a, 0x23,
-	0x22, 0x1c, 0x47, 0x84, 0x86, 0x71, 0xf9, 0xfe, 0x97, 0x85, 0xd2, 0x58, 0x68, 0x28, 0xdf, 0x2e,
-	0x2c, 0xba, 0xe1, 0xa8, 0x45, 0x3b, 0x3a, 0xde, 0xfc, 0xfa, 0xb9, 0xe1, 0xe8, 0x45, 0x07, 0x3d,
-	0x82, 0xa5, 0x90, 0x86, 0x58, 0x18, 0xe5, 0x2f, 0x37, 0x5a, 0x14, 0xba, 0x2f, 0x3a, 0xe8, 0xe5,
-	0x78, 0x74, 0x88, 0x39, 0xbe, 0xba, 0xfb, 0xcd, 0x15, 0xbf, 0xac, 0x8b, 0xbd, 0x77, 0x7a, 0x18,
-	0xc5, 0x53, 0xe7, 0x09, 0x94, 0x13, 0x62, 0xb4, 0x0a, 0xd0, 0x38, 0x3c, 0x68, 0xfc, 0xb6, 0xf5,
-	0xa6, 0x7e, 0x74, 0xba, 0x9e, 0x41, 0x2b, 0x50, 0x7a, 0x71, 0xdc, 0x6a, 0x1c, 0xd6, 0x8f, 0x9f,
-	0x1e, 0xac, 0x67, 0x27, 0x7f, 0xbf, 0x38, 0x7e, 0xf6, 0xbb, 0xf5, 0x9c, 0xfd, 0x47, 0xb8, 0x6d,
-	0x8c, 0xa7, 0x6b, 0x7d, 0x11, 0xab, 0x07, 0x92, 0xc6, 0x7d, 0xc8, 0x41, 0x97, 0x74, 0xef, 0x9f,
-	0x79, 0xb8, 0xa5, 0x39, 0xcc, 0x9e, 0xcb, 0x88, 0x97, 0x9c, 0x5d, 0x0d, 0xc8, 0xbb, 0xfd, 0x87,
-	0xd2, 0xb9, 0x99, 0x2a, 0xa7, 0x18, 0xea, 0x2e, 0x76, 0x84, 0xb5, 0x72, 0xb2, 0xa3, 0xf3, 0xb9,
-	0x9e, 0x93, 0x9d, 0xca, 0xdf, 0x72, 0xb0, 0xa8, 0xf6, 0xc6, 0xfb, 0x25, 0x49, 0xfb, 0x73, 0x33,
-	0xb4, 0x7f, 0x15, 0x72, 0xa4, 0xaf, 0x39, 0x4f, 0x8e, 0xf4, 0x51, 0x1b, 0xca, 0x92, 0xc1, 0xb7,
-	0x92, 0xef, 0x80, 0xfa, 0x95, 0xf3, 0xaa, 0x8d, 0xeb, 0x31, 0xf5, 0x2e, 0x38, 0x99, 0x7a, 0x17,
-	0x7c, 0x84, 0x99, 0xb4, 0xfb, 0x9f, 0x35, 0x28, 0x8b, 0xab, 0x57, 0x77, 0x3d, 0x7a, 0x0c, 0x4b,
-	0x47, 0x21, 0xe1, 0xfb, 0xaf, 0x4e, 0xd1, 0x66, 0x4d, 0x3d, 0xad, 0x6a, 0xf1, 0xd3, 0xaa, 0x76,
-	0x20, 0x9e, 0x56, 0x95, 0x14, 0xb9, 0x9d, 0x41, 0x0d, 0x58, 0x73, 0x30, 0x09, 0x09, 0x17, 0x1f,
-	0xd8, 0x94, 0x3c, 0xef, 0xea, 0x4e, 0x9e, 0x40, 0xf1, 0x14, 0xbb, 0xd1, 0x3e, 0x3d, 0x0f, 0xaf,
-	0x61, 0xed, 0xc0, 0x92, 0x9e, 0xa6, 0xe8, 0xb3, 0x4b, 0x5f, 0x63, 0x15, 0x7b, 0x9e, 0x8a, 0xea,
-	0x09, 0x3b, 0x83, 0x9e, 0x01, 0x4c, 0xae, 0x78, 0x74, 0xd7, 0x60, 0x73, 0x81, 0x01, 0xcc, 0xc9,
-	0xf0, 0x4f, 0xb0, 0x61, 0xa2, 0xf6, 0xa8, 0x66, 0xf2, 0x9b, 0xfe, 0x06, 0x98, 0x13, 0xc1, 0x85,
-	0xe5, 0x24, 0xff, 0x45, 0xbf, 0xba, 0x94, 0x20, 0x2b, 0x8f, 0x9f, 0x7f, 0x20, 0x91, 0xb6, 0x33,
-	0xe8, 0x25, 0x2c, 0x27, 0xb9, 0x64, 0x6a, 0xa1, 0x4c, 0x2e, 0x4d, 0x24, 0x54, 0x65, 0x9d, 0x64,
-	0x8d, 0xc6, 0xac, 0x0d, 0x9c, 0x34, 0x35, 0xc4, 0x2c, 0xfd, 0xb4, 0x33, 0xa8, 0x0d, 0x3f, 0x33,
-	0x92, 0x4d, 0xb4, 0x9d, 0x3a, 0x97, 0xcd, 0xb4, 0x74, 0x0e, 0xf8, 0x6f, 0x60, 0x6d, 0x86, 0x7a,
-	0xa6, 0x82, 0xf3, 0x85, 0x39, 0x73, 0x13, 0x6d, 0xb5, 0x33, 0xe8, 0x35, 0xac, 0xcd, 0x10, 0x54,
-	0x74, 0xdf, 0xd4, 0xe4, 0x46, 0x12, 0x3b, 0x27, 0xe1, 0x1f, 0x60, 0x7d, 0x96, 0xc6, 0x22, 0x53,
-	0x66, 0x29, 0x5c, 0x77, 0x8e, 0xe7, 0xb7, 0xf2, 0x8d, 0x3c, 0x4d, 0x64, 0xd1, 0x97, 0xe6, 0xf6,
-	0x31, 0xd2, 0xdd, 0x39, 0xbe, 0x4f, 0x60, 0x39, 0x49, 0x60, 0x8d, 0xa7, 0xc5, 0xc0, 0x70, 0xe7,
-	0x78, 0xfc, 0x51, 0xe2, 0x9b, 0xe4, 0xac, 0x69, 0xf8, 0x1a, 0x98, 0xb0, 0xb1, 0x96, 0x29, 0x14,
-	0xd8, 0xce, 0xa0, 0xef, 0x60, 0xf9, 0x8d, 0x4b, 0x64, 0x66, 0x47, 0x7e, 0x70, 0x9d, 0x29, 0xf9,
-	0xf7, 0x2c, 0xfc, 0x7c, 0x2e, 0x99, 0x44, 0x5f, 0x5d, 0x93, 0x0f, 0x57, 0xbe, 0xbe, 0xba, 0xe1,
-	0xf8, 0xc3, 0x5e, 0xc1, 0xea, 0x34, 0x4b, 0x4d, 0xfd, 0xb4, 0xfb, 0xe6, 0xc3, 0x6f, 0x20, 0xb8,
-	0xaa, 0xa9, 0x66, 0xe8, 0xe9, 0x95, 0x9a, 0x2a, 0x85, 0xda, 0xda, 0x19, 0xf4, 0x1e, 0x6e, 0x1a,
-	0xf8, 0x10, 0x7a, 0x70, 0x25, 0x9e, 0x56, 0xa9, 0x7d, 0xa8, 0x7a, 0x1c, 0xf7, 0x61, 0x56, 0xb4,
-	0xdd, 0x2c, 0x25, 0x30, 0xb6, 0x5d, 0x0a, 0x6f, 0x48, 0x3f, 0x1a, 0x7b, 0x9f, 0xbf, 0xbd, 0xe7,
-	0x75, 0x23, 0xda, 0x23, 0x83, 0x1e, 0x65, 0xdb, 0xc2, 0xe3, 0xb6, 0x26, 0xeb, 0x6c, 0x5b, 0xb8,
-	0xde, 0xd6, 0xae, 0xdb, 0x8b, 0xd2, 0xf4, 0x37, 0x3f, 0x05, 0x00, 0x00, 0xff, 0xff, 0x0f, 0x7d,
-	0x4e, 0xd8, 0x6a, 0x15, 0x00, 0x00,
+	// 2418 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x19, 0xdb, 0x52, 0x1b, 0xc9,
+	0x55, 0x17, 0x6e, 0x3a, 0xe2, 0xe6, 0x06, 0x63, 0x59, 0x78, 0xd7, 0x78, 0x62, 0xaf, 0xf1, 0xee,
+	0x5a, 0x18, 0xec, 0x2a, 0x6f, 0x6c, 0xd7, 0x66, 0x85, 0xc0, 0x86, 0x8a, 0x8d, 0xf1, 0x08, 0xec,
+	0x8d, 0xab, 0xb2, 0x93, 0x41, 0xd3, 0xa0, 0x36, 0xd2, 0xf4, 0x64, 0xba, 0x25, 0xac, 0xfc, 0x40,
+	0xf2, 0x01, 0xf9, 0x8e, 0xbc, 0xa5, 0x2a, 0xaf, 0x79, 0xc9, 0x53, 0x9e, 0x93, 0xaa, 0xfc, 0x46,
+	0x7e, 0x60, 0xab, 0x7b, 0x7a, 0x46, 0x33, 0xa2, 0x47, 0x20, 0xaa, 0xf6, 0x85, 0x9a, 0x3e, 0x3a,
+	0xb7, 0x3e, 0xa7, 0xcf, 0x15, 0x40, 0x67, 0xe4, 0x98, 0x58, 0x0c, 0xfb, 0x5d, 0xd2, 0xc0, 0x15,
+	0xcf, 0xa7, 0x9c, 0xa2, 0x6b, 0xdc, 0x66, 0xbc, 0xd2, 0xf0, 0x29, 0xab, 0xb8, 0x98, 0x9f, 0x51,
+	0xff, 0xb4, 0xbc, 0x7c, 0x42, 0xe9, 0x49, 0x0b, 0xaf, 0x49, 0x84, 0xa3, 0xce, 0xf1, 0x1a, 0x6e,
+	0x7b, 0xbc, 0x17, 0xe0, 0x1b, 0x7f, 0xce, 0xc1, 0x6c, 0x8d, 0xba, 0x2e, 0x6e, 0x70, 0x13, 0xff,
+	0xb1, 0x83, 0x19, 0x47, 0x08, 0xc6, 0x18, 0x23, 0x4e, 0x29, 0xbb, 0x92, 0x5d, 0x9d, 0x36, 0xe5,
+	0x37, 0x5a, 0x82, 0x89, 0x26, 0x71, 0x1c, 0xec, 0x96, 0x72, 0x2b, 0xd9, 0xd5, 0x29, 0x53, 0x9d,
+	0x50, 0x19, 0xa6, 0x18, 0x6e, 0x74, 0x7c, 0xc2, 0x7b, 0xa5, 0xfc, 0x4a, 0x76, 0xb5, 0x60, 0x46,
+	0x67, 0xf4, 0x0e, 0x80, 0x35, 0x49, 0xab, 0xe5, 0xf9, 0xd4, 0x63, 0xa5, 0xb1, 0x95, 0xfc, 0x6a,
+	0x71, 0x63, 0xbd, 0x72, 0x4e, 0xbf, 0x4a, 0x52, 0x7c, 0xa5, 0x1e, 0xd1, 0x6c, 0xbb, 0xdc, 0xef,
+	0x99, 0x31, 0x26, 0xe5, 0x8f, 0x30, 0x37, 0xf0, 0x33, 0x9a, 0x87, 0xfc, 0x29, 0xee, 0x49, 0x65,
+	0x0b, 0xa6, 0xf8, 0x44, 0xeb, 0x30, 0xde, 0xb5, 0x5b, 0x1d, 0x2c, 0x55, 0x2d, 0x6e, 0x2c, 0x6b,
+	0x44, 0x4a, 0x26, 0xef, 0xed, 0x96, 0x19, 0x60, 0x3e, 0xcb, 0x7d, 0x97, 0x35, 0xfe, 0x93, 0x85,
+	0xa9, 0x10, 0x8e, 0x10, 0xe4, 0x19, 0xf7, 0x03, 0xae, 0x3b, 0x19, 0x53, 0x1c, 0xd0, 0x22, 0x8c,
+	0x1d, 0x51, 0xda, 0x0a, 0x2c, 0xb0, 0x93, 0x31, 0xe5, 0x09, 0x95, 0x60, 0xa2, 0x43, 0x5c, 0xfe,
+	0x78, 0x43, 0xde, 0x7f, 0x66, 0x27, 0x63, 0xaa, 0x33, 0x7a, 0x06, 0x05, 0xc6, 0x7d, 0xcb, 0xf6,
+	0x7d, 0xbb, 0x57, 0x1a, 0x4b, 0xd7, 0x85, 0xfb, 0x55, 0x81, 0xb2, 0x93, 0x31, 0xa7, 0x98, 0xfa,
+	0x46, 0x35, 0x98, 0x0e, 0xb8, 0x28, 0xf2, 0x71, 0x49, 0xfe, 0xa5, 0x86, 0xfc, 0x50, 0xa2, 0x85,
+	0x1c, 0x8a, 0x9d, 0xfe, 0x71, 0x73, 0x1c, 0xf2, 0x5d, 0xbb, 0x65, 0x7c, 0x09, 0x53, 0xa1, 0x0c,
+	0xe1, 0xdb, 0xae, 0xdd, 0x62, 0xa5, 0xec, 0x4a, 0x7e, 0xb5, 0x60, 0xca, 0x6f, 0xe3, 0x0e, 0x14,
+	0x63, 0x4c, 0x12, 0x28, 0x33, 0x0a, 0xe5, 0xef, 0x59, 0x98, 0x8b, 0xdc, 0xc4, 0x3c, 0xea, 0x32,
+	0x8c, 0xee, 0xc0, 0xb4, 0x7a, 0x7a, 0x96, 0x67, 0xf3, 0xa6, 0xf2, 0x40, 0x51, 0xc1, 0xf6, 0x6d,
+	0xde, 0x44, 0xf7, 0x60, 0xd6, 0x21, 0xac, 0x41, 0xbb, 0xd8, 0xef, 0x59, 0x9c, 0xb4, 0x03, 0x97,
+	0xe4, 0xcd, 0x99, 0x08, 0x7a, 0x40, 0xda, 0x18, 0x3d, 0x80, 0x79, 0x9b, 0x31, 0xda, 0x20, 0x36,
+	0x27, 0xd4, 0x0d, 0x10, 0xf3, 0x12, 0x71, 0x2e, 0x06, 0x97, 0xa8, 0x0f, 0x01, 0x35, 0xa8, 0x7b,
+	0x4c, 0x4e, 0x3a, 0x7e, 0x0c, 0x79, 0x4c, 0x22, 0x5f, 0x4b, 0xfc, 0x22, 0xd0, 0x8d, 0x9f, 0x60,
+	0x71, 0x4b, 0x89, 0xda, 0xac, 0xd7, 0x77, 0xb7, 0xc2, 0x27, 0xbe, 0x08, 0xe3, 0x47, 0xd1, 0x1b,
+	0x2f, 0x98, 0xc1, 0x01, 0xdd, 0x82, 0x02, 0x71, 0x39, 0xf6, 0x8f, 0xed, 0x46, 0xa0, 0x69, 0xc1,
+	0xec, 0x03, 0xa2, 0xb0, 0xc8, 0xf7, 0xc3, 0xc2, 0xf8, 0x1e, 0xae, 0x0f, 0xf0, 0x57, 0xc6, 0x39,
+	0x7f, 0xf3, 0xac, 0xe6, 0xe6, 0xc6, 0xef, 0xe1, 0x9a, 0xa4, 0x4f, 0xc4, 0xdf, 0xe5, 0x0c, 0xeb,
+	0xe3, 0x36, 0xed, 0x62, 0xcb, 0xf3, 0xe9, 0x31, 0x69, 0x61, 0x15, 0x96, 0x33, 0x01, 0x74, 0x3f,
+	0x00, 0x1a, 0xeb, 0xb0, 0xbc, 0x85, 0x5b, 0x98, 0x63, 0x11, 0x2a, 0x04, 0xb3, 0x97, 0xd4, 0x8f,
+	0x5b, 0x41, 0x13, 0xe8, 0xc6, 0x03, 0x58, 0x78, 0xd7, 0xc1, 0x7e, 0xaf, 0x1e, 0x48, 0x8b, 0xa1,
+	0xc6, 0x74, 0x91, 0xdf, 0xc6, 0xff, 0xf3, 0xb0, 0x98, 0xc4, 0x55, 0x97, 0x47, 0x30, 0xe6, 0xda,
+	0xea, 0xca, 0x05, 0x53, 0x7e, 0x8b, 0x04, 0xe2, 0x60, 0x81, 0xa5, 0x0c, 0xab, 0x4e, 0x02, 0x97,
+	0xf7, 0x3c, 0xac, 0x92, 0x87, 0xfc, 0x16, 0xb0, 0x36, 0x75, 0x02, 0xb7, 0x16, 0x4c, 0xf9, 0x2d,
+	0x3c, 0xc6, 0xb8, 0xcd, 0xb1, 0x8c, 0x84, 0x82, 0x19, 0x1c, 0x50, 0x09, 0x26, 0xbb, 0x84, 0x91,
+	0xa3, 0x16, 0x2e, 0x4d, 0x48, 0x03, 0x84, 0x47, 0x61, 0x44, 0xc2, 0x2c, 0x65, 0x59, 0xec, 0x94,
+	0x26, 0xe5, 0xcf, 0x45, 0xc2, 0x6a, 0x21, 0x08, 0xfd, 0x00, 0x63, 0x22, 0x81, 0x96, 0xa6, 0x64,
+	0x6c, 0x7d, 0xab, 0x89, 0x2d, 0xdd, 0xed, 0x2a, 0x1f, 0xc8, 0x31, 0x31, 0x25, 0xa5, 0x50, 0xf4,
+	0xa4, 0x43, 0x9c, 0x52, 0x21, 0x50, 0x54, 0x7c, 0xa3, 0x5f, 0xc1, 0x8c, 0x92, 0x2a, 0x9e, 0x27,
+	0x71, 0x4a, 0xb0, 0x92, 0x5d, 0x1d, 0x37, 0xa7, 0xfb, 0xc0, 0x5d, 0xa7, 0xfc, 0x8f, 0x2c, 0x8c,
+	0x09, 0x3e, 0xe9, 0x0f, 0xf1, 0xd8, 0x17, 0x96, 0x77, 0x1b, 0x3d, 0x69, 0xaf, 0x19, 0xb3, 0x0f,
+	0x10, 0xce, 0x8f, 0x0e, 0x56, 0x8b, 0x30, 0x5e, 0xca, 0xcb, 0x50, 0x9d, 0x89, 0xa0, 0xaf, 0x09,
+	0xe3, 0xe8, 0x26, 0x4c, 0x35, 0xf1, 0x67, 0x4b, 0x72, 0x0f, 0x2c, 0x39, 0xd9, 0xc4, 0x9f, 0xeb,
+	0x82, 0xff, 0x6d, 0x28, 0x06, 0xf9, 0x3b, 0xf8, 0x75, 0x5c, 0xda, 0x06, 0x02, 0x90, 0x44, 0xb8,
+	0x09, 0x53, 0x5e, 0xb3, 0x67, 0x49, 0x2f, 0x4c, 0x48, 0xf9, 0x93, 0x5e, 0xb3, 0xf7, 0x86, 0x3a,
+	0xd8, 0xf8, 0x1a, 0x16, 0x5f, 0x61, 0xbe, 0x1b, 0x86, 0xc5, 0x30, 0xa7, 0x1b, 0x2f, 0x60, 0x41,
+	0xe0, 0xee, 0x77, 0x9f, 0x54, 0x1d, 0xc7, 0x67, 0xe1, 0x63, 0xba, 0x07, 0xb3, 0x51, 0x58, 0x59,
+	0x31, 0xa2, 0x99, 0x08, 0xba, 0x27, 0xa8, 0x95, 0xa4, 0x3e, 0x75, 0x5f, 0x12, 0xf1, 0xba, 0x4f,
+	0xc2, 0x1c, 0x26, 0xbe, 0x8d, 0xef, 0x61, 0xe9, 0x15, 0xe6, 0x3b, 0xb6, 0xef, 0x9c, 0xd9, 0x3e,
+	0x16, 0xf8, 0xa1, 0xb0, 0xbb, 0x90, 0x64, 0xab, 0x97, 0xb5, 0x01, 0x37, 0xce, 0xd1, 0x2b, 0x71,
+	0x37, 0x60, 0xb2, 0x79, 0x66, 0xd9, 0x8e, 0xa3, 0xca, 0x81, 0x39, 0xd1, 0x3c, 0x13, 0x08, 0xc6,
+	0x01, 0xdc, 0xda, 0xfe, 0xec, 0xe1, 0x06, 0x17, 0x9e, 0x7c, 0xa9, 0x6c, 0x4f, 0x30, 0x1b, 0x56,
+	0x47, 0x57, 0xa0, 0x78, 0xdc, 0xc7, 0x2c, 0xe5, 0xa4, 0xe3, 0xe2, 0x20, 0xc3, 0x87, 0xe9, 0xcd,
+	0x13, 0xd6, 0xb0, 0xdd, 0x9a, 0xcc, 0x66, 0x22, 0x70, 0xda, 0x98, 0x37, 0x69, 0xf8, 0x44, 0xd4,
+	0x49, 0x18, 0x91, 0x35, 0xa9, 0xcf, 0x2d, 0x79, 0x91, 0xae, 0xdd, 0x52, 0x0f, 0x65, 0x46, 0x42,
+	0x77, 0x15, 0x50, 0x3c, 0xc7, 0x16, 0x75, 0x4f, 0xfa, 0x58, 0xb2, 0x4a, 0x99, 0xd3, 0x02, 0x18,
+	0x22, 0x19, 0xa6, 0xbc, 0x7d, 0x5c, 0x6c, 0x74, 0xfb, 0xa7, 0x30, 0x11, 0xa4, 0x55, 0x29, 0xbe,
+	0xb8, 0x71, 0x5b, 0x13, 0x26, 0x09, 0x42, 0x85, 0x6e, 0xbc, 0x83, 0xa5, 0xfa, 0x20, 0xcf, 0xc0,
+	0x2e, 0x57, 0x66, 0xf9, 0x1e, 0x6e, 0x54, 0x19, 0xeb, 0xf8, 0xf8, 0x4a, 0x39, 0xb3, 0x04, 0x93,
+	0x22, 0x11, 0xd3, 0x0e, 0x57, 0x55, 0x28, 0x3c, 0x1a, 0x0e, 0x94, 0xb6, 0x08, 0xb3, 0x8f, 0x5a,
+	0x78, 0xdb, 0x15, 0x7f, 0x0f, 0x30, 0xe3, 0xa3, 0xbd, 0xd5, 0x73, 0xf2, 0x73, 0xe7, 0xe4, 0x1b,
+	0xdf, 0xc0, 0x82, 0x62, 0x5a, 0x6f, 0xd8, 0x2e, 0x8b, 0x95, 0xa2, 0x06, 0xed, 0xb8, 0x5c, 0xf2,
+	0x1d, 0x37, 0x83, 0x83, 0xf1, 0x48, 0x5a, 0xef, 0x4d, 0xb5, 0x66, 0xda, 0xae, 0x43, 0xdb, 0xe4,
+	0x4f, 0x51, 0x26, 0x5e, 0x82, 0x09, 0x2c, 0xb5, 0x94, 0x04, 0x53, 0xa6, 0x3a, 0x19, 0xcf, 0xe0,
+	0xc6, 0x39, 0x0a, 0xe5, 0xc3, 0xdb, 0x50, 0xa4, 0x2d, 0xc7, 0x62, 0x98, 0x73, 0xe2, 0x9e, 0x28,
+	0x3a, 0xa0, 0x2d, 0xa7, 0x1e, 0x40, 0x8c, 0xff, 0x66, 0xe1, 0x6e, 0x4d, 0x15, 0x4f, 0x5c, 0x75,
+	0x9d, 0x2a, 0x63, 0xd8, 0xe7, 0xd5, 0x0e, 0xa7, 0x03, 0xad, 0xe1, 0x8f, 0x30, 0x1e, 0x74, 0x73,
+	0x59, 0xd9, 0xcd, 0x6d, 0xea, 0xbb, 0xb9, 0x0b, 0xf9, 0x54, 0xf6, 0xfb, 0xed, 0x5d, 0xc0, 0xb0,
+	0x7c, 0x08, 0xb0, 0xff, 0x0b, 0x34, 0x75, 0xcf, 0xe1, 0xde, 0x05, 0x0a, 0xf5, 0x93, 0xca, 0xb9,
+	0x02, 0xf7, 0x93, 0x4c, 0x2a, 0xb5, 0x8e, 0xef, 0x63, 0x97, 0x8b, 0x7a, 0x1d, 0x61, 0x7f, 0x01,
+	0xe0, 0xd2, 0x33, 0x8b, 0xe1, 0x06, 0x75, 0x1d, 0x55, 0xda, 0x0b, 0x2e, 0x3d, 0xab, 0x4b, 0x80,
+	0x78, 0x34, 0xe2, 0x67, 0xd7, 0x76, 0xa9, 0x42, 0x51, 0x7d, 0x8f, 0x4b, 0xcf, 0xf6, 0x22, 0xa0,
+	0xf1, 0x42, 0xb8, 0xac, 0x25, 0x8b, 0xd1, 0x60, 0x09, 0xbd, 0xf8, 0x3d, 0x1b, 0xff, 0xce, 0x43,
+	0x39, 0xc8, 0x3f, 0xf2, 0xe2, 0xc2, 0x7a, 0xd8, 0xe7, 0xbd, 0xd0, 0x55, 0xc2, 0xe9, 0x47, 0x9f,
+	0x70, 0x83, 0xc7, 0x19, 0x40, 0x00, 0x92, 0xf1, 0xf0, 0x26, 0xf4, 0x65, 0x4e, 0xfa, 0xf2, 0xa9,
+	0xc6, 0xa2, 0xe9, 0xec, 0x2b, 0x35, 0x9f, 0x70, 0xec, 0x13, 0xea, 0x2a, 0x07, 0x8a, 0x44, 0xd3,
+	0xa6, 0x2e, 0xe1, 0xd4, 0xb7, 0x02, 0xb6, 0x79, 0x99, 0x9e, 0xa7, 0x15, 0x50, 0x3a, 0xb7, 0xfc,
+	0xbf, 0x2c, 0x14, 0x22, 0x4a, 0x8d, 0x97, 0x37, 0x60, 0xc2, 0x76, 0x7b, 0x16, 0x3d, 0x56, 0x4a,
+	0x0d, 0x77, 0xb3, 0xed, 0xf6, 0xde, 0x1e, 0xa3, 0x27, 0x30, 0xe9, 0x52, 0x17, 0x0b, 0xa2, 0xfc,
+	0xc5, 0x44, 0x13, 0x02, 0xf7, 0xed, 0x31, 0x7a, 0x17, 0xa5, 0x55, 0x51, 0x1b, 0x67, 0x37, 0x7e,
+	0x3d, 0xe2, 0xf5, 0x9b, 0xb8, 0x71, 0xfa, 0x46, 0x32, 0x08, 0x33, 0xb2, 0xf1, 0x02, 0x8a, 0x31,
+	0x30, 0x9a, 0x05, 0xa8, 0xed, 0x6c, 0xd7, 0x7e, 0x6b, 0x7d, 0xa8, 0xee, 0x1e, 0xcc, 0x67, 0xd0,
+	0x0c, 0x14, 0xde, 0xee, 0x59, 0xb5, 0x9d, 0xea, 0xde, 0xab, 0xed, 0xf9, 0x6c, 0xff, 0xe7, 0xb7,
+	0x7b, 0xaf, 0x7f, 0x37, 0x9f, 0x33, 0x2c, 0x28, 0x27, 0x24, 0xd5, 0x9a, 0xb6, 0x7b, 0x82, 0x9d,
+	0x3a, 0x39, 0x71, 0xe5, 0x3c, 0x32, 0x26, 0xac, 0x1a, 0x3d, 0x4f, 0x9f, 0x7a, 0xe8, 0xa1, 0x6c,
+	0xef, 0x2f, 0x13, 0x10, 0x72, 0x0c, 0xf8, 0x57, 0x16, 0x96, 0xb5, 0x37, 0x52, 0x4f, 0xee, 0xbc,
+	0x37, 0x46, 0x13, 0x80, 0x6a, 0xe1, 0x83, 0x0a, 0xdc, 0xf0, 0x30, 0x8d, 0x40, 0x7b, 0xc3, 0xf0,
+	0x19, 0xdd, 0x81, 0xf0, 0xc5, 0x58, 0x0e, 0x75, 0x83, 0x1e, 0x70, 0xca, 0x2c, 0x2a, 0xd8, 0x16,
+	0x75, 0xb1, 0xf1, 0xb7, 0x3c, 0xdc, 0x50, 0x1d, 0xee, 0xa6, 0xcd, 0x48, 0x23, 0x9e, 0xae, 0x6b,
+	0x90, 0xb7, 0xbd, 0x47, 0xaa, 0xb0, 0xe8, 0x86, 0xcd, 0x14, 0x42, 0x95, 0xb6, 0x4c, 0x41, 0x1d,
+	0x30, 0x59, 0x57, 0xf7, 0xbe, 0x1a, 0x93, 0xf5, 0xf2, 0x5f, 0x72, 0x30, 0xa1, 0x4a, 0xb8, 0xae,
+	0x11, 0x88, 0x0f, 0xce, 0xb9, 0x81, 0xc1, 0x79, 0x16, 0x72, 0xc4, 0x53, 0x1d, 0x71, 0x8e, 0x78,
+	0xe8, 0x08, 0x8a, 0x72, 0x06, 0xb6, 0xe2, 0x93, 0x74, 0x75, 0x64, 0xbd, 0xfa, 0xd6, 0x4f, 0x4c,
+	0xd6, 0xfb, 0x89, 0xc9, 0xfa, 0x97, 0x48, 0xc2, 0xa7, 0x80, 0x94, 0x26, 0x26, 0xb5, 0xdb, 0x23,
+	0x56, 0xd6, 0xa8, 0x43, 0xce, 0xc5, 0x3b, 0xe4, 0x58, 0x31, 0xcf, 0x27, 0x8b, 0xf9, 0x5b, 0x98,
+	0xdd, 0xda, 0xa9, 0xed, 0xab, 0x47, 0x46, 0xb0, 0x7c, 0x52, 0x5d, 0xec, 0x3a, 0xd4, 0xb7, 0x1a,
+	0x2d, 0x9b, 0xb1, 0x30, 0x97, 0x06, 0xb0, 0x9a, 0x00, 0x09, 0x6f, 0x34, 0x29, 0xe3, 0x52, 0x0b,
+	0xe5, 0x8d, 0xf0, 0x6c, 0xd4, 0xa1, 0x54, 0xc7, 0x3c, 0xc9, 0xb3, 0xdf, 0xca, 0x44, 0xf5, 0x50,
+	0x18, 0xe4, 0x8e, 0xc6, 0x20, 0x03, 0x84, 0x01, 0xbe, 0x71, 0x00, 0x37, 0x35, 0x4c, 0xa3, 0x9e,
+	0xeb, 0x8a, 0x5c, 0x0f, 0x85, 0xa1, 0xc3, 0x91, 0x19, 0x8f, 0x68, 0xe8, 0xf4, 0xfe, 0x68, 0x43,
+	0xd6, 0x41, 0xd1, 0xe5, 0x06, 0xfd, 0x91, 0x13, 0x69, 0x5a, 0x82, 0xc9, 0xa0, 0xfd, 0x70, 0x54,
+	0x57, 0x11, 0x1e, 0x8d, 0x75, 0xb8, 0x5e, 0x1f, 0xa0, 0x09, 0xb4, 0x49, 0x27, 0xf9, 0x0d, 0x2c,
+	0x7c, 0xb0, 0x09, 0x7f, 0x49, 0x93, 0xb3, 0xba, 0x2e, 0x7a, 0xb4, 0x8f, 0xc2, 0x78, 0x0e, 0xcb,
+	0xf1, 0xfe, 0xa7, 0xde, 0xf1, 0x3c, 0xea, 0xf7, 0x4b, 0xfc, 0x2d, 0x28, 0xb0, 0x00, 0x14, 0xc9,
+	0xee, 0x03, 0x8c, 0xc7, 0xb2, 0x07, 0xd6, 0xf6, 0x4f, 0xe9, 0x2a, 0x6f, 0xc0, 0xd2, 0x76, 0x75,
+	0xbf, 0xda, 0xe1, 0xcd, 0xfa, 0x29, 0xf1, 0xbc, 0xa4, 0x65, 0x58, 0x00, 0x0a, 0x69, 0xd4, 0xd1,
+	0x68, 0xc2, 0x72, 0xbd, 0xc3, 0x3c, 0x1c, 0x76, 0x23, 0x03, 0x2d, 0xd6, 0x57, 0x30, 0x77, 0x66,
+	0x9f, 0x62, 0xab, 0xe3, 0x59, 0xa1, 0x3b, 0xd4, 0xea, 0x40, 0x80, 0x0f, 0xbd, 0x83, 0x00, 0x78,
+	0x99, 0x8e, 0x73, 0x1b, 0x6e, 0xe9, 0x25, 0xf5, 0x97, 0x14, 0x3e, 0x56, 0x8d, 0x74, 0x62, 0x49,
+	0x11, 0x41, 0x85, 0xb0, 0x8d, 0x7f, 0x96, 0xa0, 0x28, 0x1c, 0xa9, 0x7a, 0x14, 0xf4, 0x1c, 0x26,
+	0x77, 0x5d, 0xc2, 0xb7, 0x0e, 0x0f, 0xd0, 0x52, 0x25, 0xd8, 0x2d, 0x56, 0xc2, 0xdd, 0x62, 0x65,
+	0xbb, 0xed, 0xf1, 0x5e, 0x39, 0x05, 0x6e, 0x64, 0x50, 0x0d, 0xe6, 0x4c, 0x4c, 0x5c, 0xc2, 0x45,
+	0x7e, 0xaa, 0xcb, 0x21, 0x7e, 0x74, 0x26, 0x2f, 0x60, 0xea, 0x00, 0xdb, 0xfe, 0x16, 0x3d, 0x73,
+	0xaf, 0x40, 0x6d, 0xc2, 0xa4, 0xb2, 0x04, 0xba, 0x73, 0xe1, 0x3a, 0xb2, 0x6c, 0x0c, 0x43, 0x09,
+	0x0c, 0x69, 0x64, 0xd0, 0x6b, 0x80, 0xfe, 0x50, 0x82, 0xee, 0xea, 0x22, 0x76, 0x70, 0x66, 0x19,
+	0xa2, 0xe1, 0x1f, 0x60, 0x51, 0xb7, 0xb7, 0x41, 0x15, 0x1d, 0xdf, 0xf4, 0x05, 0xcf, 0x10, 0x09,
+	0x36, 0x4c, 0xc7, 0x97, 0x1b, 0xe8, 0xab, 0x0b, 0xb7, 0x1f, 0x01, 0xc7, 0xfb, 0x97, 0xdc, 0x92,
+	0x18, 0x19, 0xf4, 0x0e, 0xa6, 0xe3, 0x8b, 0x82, 0x54, 0x47, 0xe9, 0x58, 0xea, 0x36, 0x0c, 0x81,
+	0xd6, 0xf1, 0x8d, 0x80, 0x56, 0x6b, 0xcd, 0xc2, 0x21, 0x55, 0xc4, 0xe0, 0x6a, 0xc1, 0xc8, 0xa0,
+	0x4f, 0x30, 0x37, 0xb0, 0x08, 0x40, 0x0f, 0xf4, 0xd4, 0x9a, 0x65, 0x43, 0xf9, 0xeb, 0xcb, 0xa0,
+	0x46, 0xb2, 0x8e, 0xe0, 0xba, 0x76, 0x81, 0x80, 0xd6, 0x52, 0x9b, 0x51, 0xfd, 0xaa, 0x61, 0x88,
+	0xa3, 0x3f, 0xc8, 0xfb, 0x24, 0x37, 0x0a, 0x29, 0x8e, 0x48, 0x51, 0x5e, 0xb7, 0x16, 0x30, 0x32,
+	0xe8, 0x3d, 0xcc, 0x0d, 0xcc, 0xf7, 0x5a, 0x43, 0xe9, 0x77, 0x00, 0x43, 0x14, 0xfe, 0x11, 0xe6,
+	0x07, 0x87, 0x7c, 0xa4, 0xd3, 0x2c, 0x65, 0x13, 0x30, 0x84, 0xf3, 0x47, 0xb9, 0x6c, 0x4d, 0x8e,
+	0xf9, 0xe8, 0x1b, 0x7d, 0xa8, 0x6a, 0x97, 0x01, 0x43, 0x78, 0xef, 0xc3, 0x74, 0x7c, 0xb8, 0xd7,
+	0xbe, 0x4c, 0xcd, 0xf4, 0x3f, 0x84, 0xe3, 0x27, 0x69, 0xdf, 0x78, 0x3d, 0x4a, 0xb3, 0xaf, 0x66,
+	0x4b, 0xa0, 0xf5, 0x65, 0xca, 0x7a, 0xc0, 0xc8, 0xa0, 0x1f, 0x60, 0x5a, 0x54, 0x5e, 0xa1, 0xd9,
+	0xae, 0xd3, 0xba, 0x4a, 0x46, 0xfe, 0x6b, 0x16, 0xbe, 0x18, 0x3a, 0x68, 0xa3, 0xa7, 0x57, 0xdc,
+	0x15, 0x94, 0xbf, 0x1b, 0x9d, 0x30, 0xba, 0xd8, 0x21, 0xcc, 0x26, 0x27, 0xf8, 0xd4, 0xab, 0xa5,
+	0x04, 0xb9, 0x66, 0xf8, 0x0f, 0x82, 0x6a, 0x60, 0x70, 0x1f, 0x29, 0xa8, 0x52, 0x86, 0x7e, 0x23,
+	0x83, 0x3e, 0xc3, 0x82, 0x66, 0x44, 0x43, 0x0f, 0x47, 0x1a, 0x4e, 0xcb, 0x95, 0xcb, 0xa2, 0x87,
+	0x72, 0x1f, 0x65, 0x45, 0xd8, 0x0d, 0x4e, 0x0f, 0xda, 0xb0, 0x4b, 0x19, 0x31, 0x86, 0x3c, 0x0d,
+	0x07, 0x66, 0x12, 0xff, 0x23, 0x41, 0xf7, 0xd3, 0xaa, 0xe3, 0xc0, 0x7f, 0x69, 0xca, 0xab, 0x17,
+	0x23, 0x46, 0x96, 0xdb, 0x83, 0x62, 0x6c, 0xc6, 0x40, 0xf7, 0xd2, 0xe3, 0x2f, 0x36, 0x83, 0x0c,
+	0xd1, 0xda, 0x83, 0x6b, 0xe7, 0x1a, 0x74, 0x6d, 0xb2, 0x48, 0x9b, 0x0d, 0xca, 0xdf, 0x5e, 0x0e,
+	0x39, 0x79, 0x83, 0xa8, 0x79, 0x4f, 0xb9, 0xc1, 0x60, 0x73, 0x3f, 0xe4, 0x06, 0xc1, 0xdb, 0x8f,
+	0x75, 0xe0, 0xa3, 0xbe, 0x7d, 0x4d, 0xc3, 0x6f, 0x64, 0xd0, 0x01, 0xcc, 0x26, 0x1b, 0x7b, 0xb4,
+	0xaa, 0xbf, 0xe8, 0xf9, 0xde, 0x7f, 0x78, 0xfe, 0x8c, 0xf7, 0xfe, 0xda, 0xfc, 0xa9, 0x19, 0x0e,
+	0x86, 0x70, 0xb4, 0x60, 0x41, 0x33, 0x0c, 0xa4, 0xda, 0x40, 0x17, 0x33, 0x43, 0x86, 0x89, 0xa8,
+	0xb2, 0x26, 0x12, 0xf4, 0x88, 0x95, 0x35, 0x25, 0x1b, 0x7f, 0x80, 0xd9, 0xe4, 0x50, 0x31, 0x92,
+	0xe3, 0xf4, 0xf3, 0x88, 0x8c, 0xf1, 0x1e, 0x2c, 0xea, 0xe6, 0x01, 0x6d, 0x5b, 0x39, 0x64, 0x44,
+	0x29, 0xaf, 0x5d, 0x1a, 0x3f, 0x14, 0xbe, 0x79, 0xff, 0xe3, 0xbd, 0x46, 0xd3, 0xa7, 0x6d, 0xd2,
+	0x69, 0x53, 0xb6, 0x26, 0xc8, 0xd7, 0xd4, 0xa4, 0xc2, 0xd6, 0x04, 0x9f, 0x35, 0xc5, 0xe7, 0x68,
+	0x42, 0x5e, 0xf1, 0xf1, 0xcf, 0x01, 0x00, 0x00, 0xff, 0xff, 0xa1, 0x01, 0xa7, 0x71, 0xdc, 0x20,
+	0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1711,12 +2699,14 @@ type WifiServiceClient interface {
 	GetInterface(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetInterfaceResponse, error)
 	// GetIPv4Addrs returns the IPv4 addresses for the network interface.
 	GetIPv4Addrs(ctx context.Context, in *GetIPv4AddrsRequest, opts ...grpc.CallOption) (*GetIPv4AddrsResponse, error)
+	// GetHardwareAddr returns the HardwareAddr for the network interface.
+	GetHardwareAddr(ctx context.Context, in *GetHardwareAddrRequest, opts ...grpc.CallOption) (*GetHardwareAddrResponse, error)
 	// ExpectWifiFrequencies checks if the device discovers the given SSID on the specific frequencies.
 	ExpectWifiFrequencies(ctx context.Context, in *ExpectWifiFrequenciesRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// GetBgscanMethod returns the bgscan method the device's WiFi module currently uses.
-	GetBgscanMethod(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetBgscanMethodResponse, error)
-	// SetBgscanMethod sets the device's WiFi module's bgscan method.
-	SetBgscanMethod(ctx context.Context, in *SetBgscanMethodRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// GetBgscanConfig returns the bgscan configuration the device's WiFi module currently uses.
+	GetBgscanConfig(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetBgscanConfigResponse, error)
+	// SetBgscanConfig sets the device's WiFi module's bgscan configuration.
+	SetBgscanConfig(ctx context.Context, in *SetBgscanConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// AssureDisconnect assures that the WiFi service has disconnected within timeout (nanoseconds).
 	AssureDisconnect(ctx context.Context, in *AssureDisconnectRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DisableEnableTest disables and then enables the WiFi interface.
@@ -1741,12 +2731,15 @@ type WifiServiceClient interface {
 	GetCurrentTime(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetCurrentTimeResponse, error)
 	// SelectedService returns the object path of selected service of WiFi service.
 	SelectedService(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*SelectedServiceResponse, error)
-	// ExpectShillProperty is a streaming gRPC, takes a shill service path and expects a list of property
-	// criteria in order. When a property's value is expected, it responds the property's (key, value) pair.
-	// The method sends an empty response as the property watcher is set. A property matching criterion
-	// consists of a property name, a list of expected values, a list of excluded values, and a "CheckType".
-	// We say a criterion is met iff the property value is in one of the expected values and not in any of
-	// the excluded values. If the property value is one of the excluded values, the method fails immediately.
+	// ExpectShillProperty is a streaming gRPC, takes a shill service path, expects a list of property
+	// criteria in order, and takes a list of shill properties to monitor. When a property's value is
+	// expected, it responds the property's (key, value) pair. The method sends an empty response as the
+	// property watcher is set. A property matching criterion consists of a property name, a list of
+	// expected values, a list of excluded values, and a "CheckType". We say a criterion is met iff the
+	// property value is in one of the expected values and not in any of the excluded values. If the
+	// property value is one of the excluded values, the method fails immediately. The call monitors the
+	// specified shill properties and returns the monitor results as a chronological list of pairs
+	// (changed property, changed value) at the end.
 	// For CheckMethod, it has three methods:
 	// 1. CHECK_ONLY: checks if the criterion is met.
 	// 2. ON_CHANGE: waits for the property changes to the expected values.
@@ -1756,6 +2749,35 @@ type WifiServiceClient interface {
 	// pushes, and pops the profiles and asserts the connection states between
 	// those operations.
 	ProfileBasicTest(ctx context.Context, in *ProfileBasicTestRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// DiscoverBSSID discovers the specified BSSID by running a scan.
+	DiscoverBSSID(ctx context.Context, in *DiscoverBSSIDRequest, opts ...grpc.CallOption) (*DiscoverBSSIDResponse, error)
+	// RequestRoam requests DUT to roam to the specified BSSID and waits until
+	// the DUT has roamed.
+	RequestRoam(ctx context.Context, in *RequestRoamRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// SetDHCPProperties sets the DHCP properties in shill and returns the original
+	// values.
+	SetDHCPProperties(ctx context.Context, in *SetDHCPPropertiesRequest, opts ...grpc.CallOption) (*SetDHCPPropertiesResponse, error)
+	// Reassociate triggers reassociation with the current AP and waits until it
+	// has reconnected or the timeout (in nanoseconds) expires.
+	Reassociate(ctx context.Context, in *ReassociateRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// GetWifiEnabled checks to see if Wifi is an enabled technology on shill.
+	// This call will wait for WiFi to appear in available technologies so we
+	// can get correct enabled setting.
+	GetWifiEnabled(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetWifiEnabledResponse, error)
+	// SetWifiEnabled persistently enables/disables Wifi via shill.
+	SetWifiEnabled(ctx context.Context, in *SetWifiEnabledRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// WaitForBSSID waits for a specific BSSID to be found.
+	WaitForBSSID(ctx context.Context, in *WaitForBSSIDRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// MACRandomizeSupport tells if MAC randomization is supported for the WiFi device.
+	MACRandomizeSupport(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*MACRandomizeSupportResponse, error)
+	// GetMACRandomize tells if MAC randomization is enabled for the WiFi device.
+	GetMACRandomize(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetMACRandomizeResponse, error)
+	// EAPAuthSkipped is a streaming gRPC, who watches wpa_supplicant's D-Bus signals until the next connection
+	// completes, and tells that the EAP authentication is skipped (i.e., PMKSA is cached and used) or not.
+	// Note that the method sends an empty response as the signal watcher is set.
+	EAPAuthSkipped(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (WifiService_EAPAuthSkippedClient, error)
+	// SuspendAssertConnect suspends the DUT and waits for connection after resuming.
+	SuspendAssertConnect(ctx context.Context, in *SuspendAssertConnectRequest, opts ...grpc.CallOption) (*SuspendAssertConnectResponse, error)
 }
 
 type wifiServiceClient struct {
@@ -1847,6 +2869,15 @@ func (c *wifiServiceClient) GetIPv4Addrs(ctx context.Context, in *GetIPv4AddrsRe
 	return out, nil
 }
 
+func (c *wifiServiceClient) GetHardwareAddr(ctx context.Context, in *GetHardwareAddrRequest, opts ...grpc.CallOption) (*GetHardwareAddrResponse, error) {
+	out := new(GetHardwareAddrResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/GetHardwareAddr", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *wifiServiceClient) ExpectWifiFrequencies(ctx context.Context, in *ExpectWifiFrequenciesRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/ExpectWifiFrequencies", in, out, opts...)
@@ -1856,18 +2887,18 @@ func (c *wifiServiceClient) ExpectWifiFrequencies(ctx context.Context, in *Expec
 	return out, nil
 }
 
-func (c *wifiServiceClient) GetBgscanMethod(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetBgscanMethodResponse, error) {
-	out := new(GetBgscanMethodResponse)
-	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/GetBgscanMethod", in, out, opts...)
+func (c *wifiServiceClient) GetBgscanConfig(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetBgscanConfigResponse, error) {
+	out := new(GetBgscanConfigResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/GetBgscanConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *wifiServiceClient) SetBgscanMethod(ctx context.Context, in *SetBgscanMethodRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (c *wifiServiceClient) SetBgscanConfig(ctx context.Context, in *SetBgscanConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
-	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/SetBgscanMethod", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/SetBgscanConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1987,6 +3018,128 @@ func (c *wifiServiceClient) ProfileBasicTest(ctx context.Context, in *ProfileBas
 	return out, nil
 }
 
+func (c *wifiServiceClient) DiscoverBSSID(ctx context.Context, in *DiscoverBSSIDRequest, opts ...grpc.CallOption) (*DiscoverBSSIDResponse, error) {
+	out := new(DiscoverBSSIDResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/DiscoverBSSID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wifiServiceClient) RequestRoam(ctx context.Context, in *RequestRoamRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/RequestRoam", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wifiServiceClient) SetDHCPProperties(ctx context.Context, in *SetDHCPPropertiesRequest, opts ...grpc.CallOption) (*SetDHCPPropertiesResponse, error) {
+	out := new(SetDHCPPropertiesResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/SetDHCPProperties", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wifiServiceClient) Reassociate(ctx context.Context, in *ReassociateRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/Reassociate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wifiServiceClient) GetWifiEnabled(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetWifiEnabledResponse, error) {
+	out := new(GetWifiEnabledResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/GetWifiEnabled", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wifiServiceClient) SetWifiEnabled(ctx context.Context, in *SetWifiEnabledRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/SetWifiEnabled", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wifiServiceClient) WaitForBSSID(ctx context.Context, in *WaitForBSSIDRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/WaitForBSSID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wifiServiceClient) MACRandomizeSupport(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*MACRandomizeSupportResponse, error) {
+	out := new(MACRandomizeSupportResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/MACRandomizeSupport", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wifiServiceClient) GetMACRandomize(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetMACRandomizeResponse, error) {
+	out := new(GetMACRandomizeResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/GetMACRandomize", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wifiServiceClient) EAPAuthSkipped(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (WifiService_EAPAuthSkippedClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_WifiService_serviceDesc.Streams[1], "/tast.cros.network.WifiService/EAPAuthSkipped", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &wifiServiceEAPAuthSkippedClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type WifiService_EAPAuthSkippedClient interface {
+	Recv() (*EAPAuthSkippedResponse, error)
+	grpc.ClientStream
+}
+
+type wifiServiceEAPAuthSkippedClient struct {
+	grpc.ClientStream
+}
+
+func (x *wifiServiceEAPAuthSkippedClient) Recv() (*EAPAuthSkippedResponse, error) {
+	m := new(EAPAuthSkippedResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *wifiServiceClient) SuspendAssertConnect(ctx context.Context, in *SuspendAssertConnectRequest, opts ...grpc.CallOption) (*SuspendAssertConnectResponse, error) {
+	out := new(SuspendAssertConnectResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/SuspendAssertConnect", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WifiServiceServer is the server API for WifiService service.
 type WifiServiceServer interface {
 	// InitDUT initialize the DUT for WiFi testing.
@@ -2007,12 +3160,14 @@ type WifiServiceServer interface {
 	GetInterface(context.Context, *empty.Empty) (*GetInterfaceResponse, error)
 	// GetIPv4Addrs returns the IPv4 addresses for the network interface.
 	GetIPv4Addrs(context.Context, *GetIPv4AddrsRequest) (*GetIPv4AddrsResponse, error)
+	// GetHardwareAddr returns the HardwareAddr for the network interface.
+	GetHardwareAddr(context.Context, *GetHardwareAddrRequest) (*GetHardwareAddrResponse, error)
 	// ExpectWifiFrequencies checks if the device discovers the given SSID on the specific frequencies.
 	ExpectWifiFrequencies(context.Context, *ExpectWifiFrequenciesRequest) (*empty.Empty, error)
-	// GetBgscanMethod returns the bgscan method the device's WiFi module currently uses.
-	GetBgscanMethod(context.Context, *empty.Empty) (*GetBgscanMethodResponse, error)
-	// SetBgscanMethod sets the device's WiFi module's bgscan method.
-	SetBgscanMethod(context.Context, *SetBgscanMethodRequest) (*empty.Empty, error)
+	// GetBgscanConfig returns the bgscan configuration the device's WiFi module currently uses.
+	GetBgscanConfig(context.Context, *empty.Empty) (*GetBgscanConfigResponse, error)
+	// SetBgscanConfig sets the device's WiFi module's bgscan configuration.
+	SetBgscanConfig(context.Context, *SetBgscanConfigRequest) (*empty.Empty, error)
 	// AssureDisconnect assures that the WiFi service has disconnected within timeout (nanoseconds).
 	AssureDisconnect(context.Context, *AssureDisconnectRequest) (*empty.Empty, error)
 	// DisableEnableTest disables and then enables the WiFi interface.
@@ -2037,12 +3192,15 @@ type WifiServiceServer interface {
 	GetCurrentTime(context.Context, *empty.Empty) (*GetCurrentTimeResponse, error)
 	// SelectedService returns the object path of selected service of WiFi service.
 	SelectedService(context.Context, *empty.Empty) (*SelectedServiceResponse, error)
-	// ExpectShillProperty is a streaming gRPC, takes a shill service path and expects a list of property
-	// criteria in order. When a property's value is expected, it responds the property's (key, value) pair.
-	// The method sends an empty response as the property watcher is set. A property matching criterion
-	// consists of a property name, a list of expected values, a list of excluded values, and a "CheckType".
-	// We say a criterion is met iff the property value is in one of the expected values and not in any of
-	// the excluded values. If the property value is one of the excluded values, the method fails immediately.
+	// ExpectShillProperty is a streaming gRPC, takes a shill service path, expects a list of property
+	// criteria in order, and takes a list of shill properties to monitor. When a property's value is
+	// expected, it responds the property's (key, value) pair. The method sends an empty response as the
+	// property watcher is set. A property matching criterion consists of a property name, a list of
+	// expected values, a list of excluded values, and a "CheckType". We say a criterion is met iff the
+	// property value is in one of the expected values and not in any of the excluded values. If the
+	// property value is one of the excluded values, the method fails immediately. The call monitors the
+	// specified shill properties and returns the monitor results as a chronological list of pairs
+	// (changed property, changed value) at the end.
 	// For CheckMethod, it has three methods:
 	// 1. CHECK_ONLY: checks if the criterion is met.
 	// 2. ON_CHANGE: waits for the property changes to the expected values.
@@ -2052,6 +3210,35 @@ type WifiServiceServer interface {
 	// pushes, and pops the profiles and asserts the connection states between
 	// those operations.
 	ProfileBasicTest(context.Context, *ProfileBasicTestRequest) (*empty.Empty, error)
+	// DiscoverBSSID discovers the specified BSSID by running a scan.
+	DiscoverBSSID(context.Context, *DiscoverBSSIDRequest) (*DiscoverBSSIDResponse, error)
+	// RequestRoam requests DUT to roam to the specified BSSID and waits until
+	// the DUT has roamed.
+	RequestRoam(context.Context, *RequestRoamRequest) (*empty.Empty, error)
+	// SetDHCPProperties sets the DHCP properties in shill and returns the original
+	// values.
+	SetDHCPProperties(context.Context, *SetDHCPPropertiesRequest) (*SetDHCPPropertiesResponse, error)
+	// Reassociate triggers reassociation with the current AP and waits until it
+	// has reconnected or the timeout (in nanoseconds) expires.
+	Reassociate(context.Context, *ReassociateRequest) (*empty.Empty, error)
+	// GetWifiEnabled checks to see if Wifi is an enabled technology on shill.
+	// This call will wait for WiFi to appear in available technologies so we
+	// can get correct enabled setting.
+	GetWifiEnabled(context.Context, *empty.Empty) (*GetWifiEnabledResponse, error)
+	// SetWifiEnabled persistently enables/disables Wifi via shill.
+	SetWifiEnabled(context.Context, *SetWifiEnabledRequest) (*empty.Empty, error)
+	// WaitForBSSID waits for a specific BSSID to be found.
+	WaitForBSSID(context.Context, *WaitForBSSIDRequest) (*empty.Empty, error)
+	// MACRandomizeSupport tells if MAC randomization is supported for the WiFi device.
+	MACRandomizeSupport(context.Context, *empty.Empty) (*MACRandomizeSupportResponse, error)
+	// GetMACRandomize tells if MAC randomization is enabled for the WiFi device.
+	GetMACRandomize(context.Context, *empty.Empty) (*GetMACRandomizeResponse, error)
+	// EAPAuthSkipped is a streaming gRPC, who watches wpa_supplicant's D-Bus signals until the next connection
+	// completes, and tells that the EAP authentication is skipped (i.e., PMKSA is cached and used) or not.
+	// Note that the method sends an empty response as the signal watcher is set.
+	EAPAuthSkipped(*empty.Empty, WifiService_EAPAuthSkippedServer) error
+	// SuspendAssertConnect suspends the DUT and waits for connection after resuming.
+	SuspendAssertConnect(context.Context, *SuspendAssertConnectRequest) (*SuspendAssertConnectResponse, error)
 }
 
 // UnimplementedWifiServiceServer can be embedded to have forward compatible implementations.
@@ -2085,14 +3272,17 @@ func (*UnimplementedWifiServiceServer) GetInterface(ctx context.Context, req *em
 func (*UnimplementedWifiServiceServer) GetIPv4Addrs(ctx context.Context, req *GetIPv4AddrsRequest) (*GetIPv4AddrsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetIPv4Addrs not implemented")
 }
+func (*UnimplementedWifiServiceServer) GetHardwareAddr(ctx context.Context, req *GetHardwareAddrRequest) (*GetHardwareAddrResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetHardwareAddr not implemented")
+}
 func (*UnimplementedWifiServiceServer) ExpectWifiFrequencies(ctx context.Context, req *ExpectWifiFrequenciesRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExpectWifiFrequencies not implemented")
 }
-func (*UnimplementedWifiServiceServer) GetBgscanMethod(ctx context.Context, req *empty.Empty) (*GetBgscanMethodResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetBgscanMethod not implemented")
+func (*UnimplementedWifiServiceServer) GetBgscanConfig(ctx context.Context, req *empty.Empty) (*GetBgscanConfigResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBgscanConfig not implemented")
 }
-func (*UnimplementedWifiServiceServer) SetBgscanMethod(ctx context.Context, req *SetBgscanMethodRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetBgscanMethod not implemented")
+func (*UnimplementedWifiServiceServer) SetBgscanConfig(ctx context.Context, req *SetBgscanConfigRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetBgscanConfig not implemented")
 }
 func (*UnimplementedWifiServiceServer) AssureDisconnect(ctx context.Context, req *AssureDisconnectRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AssureDisconnect not implemented")
@@ -2123,6 +3313,39 @@ func (*UnimplementedWifiServiceServer) ExpectShillProperty(req *ExpectShillPrope
 }
 func (*UnimplementedWifiServiceServer) ProfileBasicTest(ctx context.Context, req *ProfileBasicTestRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProfileBasicTest not implemented")
+}
+func (*UnimplementedWifiServiceServer) DiscoverBSSID(ctx context.Context, req *DiscoverBSSIDRequest) (*DiscoverBSSIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DiscoverBSSID not implemented")
+}
+func (*UnimplementedWifiServiceServer) RequestRoam(ctx context.Context, req *RequestRoamRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RequestRoam not implemented")
+}
+func (*UnimplementedWifiServiceServer) SetDHCPProperties(ctx context.Context, req *SetDHCPPropertiesRequest) (*SetDHCPPropertiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetDHCPProperties not implemented")
+}
+func (*UnimplementedWifiServiceServer) Reassociate(ctx context.Context, req *ReassociateRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Reassociate not implemented")
+}
+func (*UnimplementedWifiServiceServer) GetWifiEnabled(ctx context.Context, req *empty.Empty) (*GetWifiEnabledResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetWifiEnabled not implemented")
+}
+func (*UnimplementedWifiServiceServer) SetWifiEnabled(ctx context.Context, req *SetWifiEnabledRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetWifiEnabled not implemented")
+}
+func (*UnimplementedWifiServiceServer) WaitForBSSID(ctx context.Context, req *WaitForBSSIDRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WaitForBSSID not implemented")
+}
+func (*UnimplementedWifiServiceServer) MACRandomizeSupport(ctx context.Context, req *empty.Empty) (*MACRandomizeSupportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MACRandomizeSupport not implemented")
+}
+func (*UnimplementedWifiServiceServer) GetMACRandomize(ctx context.Context, req *empty.Empty) (*GetMACRandomizeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMACRandomize not implemented")
+}
+func (*UnimplementedWifiServiceServer) EAPAuthSkipped(req *empty.Empty, srv WifiService_EAPAuthSkippedServer) error {
+	return status.Errorf(codes.Unimplemented, "method EAPAuthSkipped not implemented")
+}
+func (*UnimplementedWifiServiceServer) SuspendAssertConnect(ctx context.Context, req *SuspendAssertConnectRequest) (*SuspendAssertConnectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SuspendAssertConnect not implemented")
 }
 
 func RegisterWifiServiceServer(s *grpc.Server, srv WifiServiceServer) {
@@ -2291,6 +3514,24 @@ func _WifiService_GetIPv4Addrs_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WifiService_GetHardwareAddr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetHardwareAddrRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).GetHardwareAddr(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/GetHardwareAddr",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).GetHardwareAddr(ctx, req.(*GetHardwareAddrRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _WifiService_ExpectWifiFrequencies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ExpectWifiFrequenciesRequest)
 	if err := dec(in); err != nil {
@@ -2309,38 +3550,38 @@ func _WifiService_ExpectWifiFrequencies_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WifiService_GetBgscanMethod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _WifiService_GetBgscanConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(empty.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WifiServiceServer).GetBgscanMethod(ctx, in)
+		return srv.(WifiServiceServer).GetBgscanConfig(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/tast.cros.network.WifiService/GetBgscanMethod",
+		FullMethod: "/tast.cros.network.WifiService/GetBgscanConfig",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WifiServiceServer).GetBgscanMethod(ctx, req.(*empty.Empty))
+		return srv.(WifiServiceServer).GetBgscanConfig(ctx, req.(*empty.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WifiService_SetBgscanMethod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetBgscanMethodRequest)
+func _WifiService_SetBgscanConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetBgscanConfigRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WifiServiceServer).SetBgscanMethod(ctx, in)
+		return srv.(WifiServiceServer).SetBgscanConfig(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/tast.cros.network.WifiService/SetBgscanMethod",
+		FullMethod: "/tast.cros.network.WifiService/SetBgscanConfig",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WifiServiceServer).SetBgscanMethod(ctx, req.(*SetBgscanMethodRequest))
+		return srv.(WifiServiceServer).SetBgscanConfig(ctx, req.(*SetBgscanConfigRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2528,6 +3769,207 @@ func _WifiService_ProfileBasicTest_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WifiService_DiscoverBSSID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DiscoverBSSIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).DiscoverBSSID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/DiscoverBSSID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).DiscoverBSSID(ctx, req.(*DiscoverBSSIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WifiService_RequestRoam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestRoamRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).RequestRoam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/RequestRoam",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).RequestRoam(ctx, req.(*RequestRoamRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WifiService_SetDHCPProperties_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetDHCPPropertiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).SetDHCPProperties(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/SetDHCPProperties",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).SetDHCPProperties(ctx, req.(*SetDHCPPropertiesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WifiService_Reassociate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReassociateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).Reassociate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/Reassociate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).Reassociate(ctx, req.(*ReassociateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WifiService_GetWifiEnabled_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).GetWifiEnabled(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/GetWifiEnabled",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).GetWifiEnabled(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WifiService_SetWifiEnabled_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetWifiEnabledRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).SetWifiEnabled(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/SetWifiEnabled",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).SetWifiEnabled(ctx, req.(*SetWifiEnabledRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WifiService_WaitForBSSID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WaitForBSSIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).WaitForBSSID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/WaitForBSSID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).WaitForBSSID(ctx, req.(*WaitForBSSIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WifiService_MACRandomizeSupport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).MACRandomizeSupport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/MACRandomizeSupport",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).MACRandomizeSupport(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WifiService_GetMACRandomize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).GetMACRandomize(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/GetMACRandomize",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).GetMACRandomize(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WifiService_EAPAuthSkipped_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(empty.Empty)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(WifiServiceServer).EAPAuthSkipped(m, &wifiServiceEAPAuthSkippedServer{stream})
+}
+
+type WifiService_EAPAuthSkippedServer interface {
+	Send(*EAPAuthSkippedResponse) error
+	grpc.ServerStream
+}
+
+type wifiServiceEAPAuthSkippedServer struct {
+	grpc.ServerStream
+}
+
+func (x *wifiServiceEAPAuthSkippedServer) Send(m *EAPAuthSkippedResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _WifiService_SuspendAssertConnect_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SuspendAssertConnectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServiceServer).SuspendAssertConnect(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.WifiService/SuspendAssertConnect",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServiceServer).SuspendAssertConnect(ctx, req.(*SuspendAssertConnectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _WifiService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.network.WifiService",
 	HandlerType: (*WifiServiceServer)(nil),
@@ -2569,16 +4011,20 @@ var _WifiService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _WifiService_GetIPv4Addrs_Handler,
 		},
 		{
+			MethodName: "GetHardwareAddr",
+			Handler:    _WifiService_GetHardwareAddr_Handler,
+		},
+		{
 			MethodName: "ExpectWifiFrequencies",
 			Handler:    _WifiService_ExpectWifiFrequencies_Handler,
 		},
 		{
-			MethodName: "GetBgscanMethod",
-			Handler:    _WifiService_GetBgscanMethod_Handler,
+			MethodName: "GetBgscanConfig",
+			Handler:    _WifiService_GetBgscanConfig_Handler,
 		},
 		{
-			MethodName: "SetBgscanMethod",
-			Handler:    _WifiService_SetBgscanMethod_Handler,
+			MethodName: "SetBgscanConfig",
+			Handler:    _WifiService_SetBgscanConfig_Handler,
 		},
 		{
 			MethodName: "AssureDisconnect",
@@ -2616,11 +4062,56 @@ var _WifiService_serviceDesc = grpc.ServiceDesc{
 			MethodName: "ProfileBasicTest",
 			Handler:    _WifiService_ProfileBasicTest_Handler,
 		},
+		{
+			MethodName: "DiscoverBSSID",
+			Handler:    _WifiService_DiscoverBSSID_Handler,
+		},
+		{
+			MethodName: "RequestRoam",
+			Handler:    _WifiService_RequestRoam_Handler,
+		},
+		{
+			MethodName: "SetDHCPProperties",
+			Handler:    _WifiService_SetDHCPProperties_Handler,
+		},
+		{
+			MethodName: "Reassociate",
+			Handler:    _WifiService_Reassociate_Handler,
+		},
+		{
+			MethodName: "GetWifiEnabled",
+			Handler:    _WifiService_GetWifiEnabled_Handler,
+		},
+		{
+			MethodName: "SetWifiEnabled",
+			Handler:    _WifiService_SetWifiEnabled_Handler,
+		},
+		{
+			MethodName: "WaitForBSSID",
+			Handler:    _WifiService_WaitForBSSID_Handler,
+		},
+		{
+			MethodName: "MACRandomizeSupport",
+			Handler:    _WifiService_MACRandomizeSupport_Handler,
+		},
+		{
+			MethodName: "GetMACRandomize",
+			Handler:    _WifiService_GetMACRandomize_Handler,
+		},
+		{
+			MethodName: "SuspendAssertConnect",
+			Handler:    _WifiService_SuspendAssertConnect_Handler,
+		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "ExpectShillProperty",
 			Handler:       _WifiService_ExpectShillProperty_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "EAPAuthSkipped",
+			Handler:       _WifiService_EAPAuthSkipped_Handler,
 			ServerStreams: true,
 		},
 	},

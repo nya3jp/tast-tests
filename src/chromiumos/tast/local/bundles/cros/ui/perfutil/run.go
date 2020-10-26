@@ -22,8 +22,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Runs provides the number of iteration for a perftest conducts.
-const Runs = 10
+// DefaultRuns provides the default number of iteration for a perftest conducts.
+const DefaultRuns = 10
 
 // ScenarioFunc is the function to conduct the test operation and returns the
 // metric value.
@@ -47,6 +47,31 @@ func RunAndWaitAny(tconn *chrome.TestConn, f func(ctx context.Context) error, na
 
 // StoreFunc is a function to be used for RunMultiple.
 type StoreFunc func(ctx context.Context, pv *Values, hists []*metrics.Histogram) error
+
+// StoreAllWithHeuristics is a utility function to store all metrics. It
+// determines the direction of perf (bigger is better or smaller is better)
+// and unit through heuristics from the name of metrics.
+func StoreAllWithHeuristics(ctx context.Context, pv *Values, hists []*metrics.Histogram) error {
+	for _, hist := range hists {
+		mean, err := hist.Mean()
+		if err != nil {
+			return errors.Wrapf(err, "failed to get mean for histogram %s", hist.Name)
+		}
+		testing.ContextLog(ctx, hist.Name, " = ", mean)
+		direction := perf.BiggerIsBetter
+		unit := "percent"
+		if estimateMetricType(ctx, hist.Name) == metricLatency {
+			direction = perf.SmallerIsBetter
+			unit = "ms"
+		}
+		pv.Append(perf.Metric{
+			Name:      hist.Name,
+			Unit:      unit,
+			Direction: direction,
+		}, mean)
+	}
+	return nil
+}
 
 // StoreAll is a function to store all histograms into values.
 func StoreAll(direction perf.Direction, unit, suffix string) StoreFunc {
@@ -84,13 +109,15 @@ func StoreLatency(ctx context.Context, pv *Values, hists []*metrics.Histogram) e
 
 // Runner is an entity to manage multiple runs of the test scenario.
 type Runner struct {
-	cr *chrome.Chrome
-	pv *Values
+	cr         *chrome.Chrome
+	pv         *Values
+	Runs       int
+	RunTracing bool
 }
 
 // NewRunner creates a new instance of Runner.
 func NewRunner(cr *chrome.Chrome) *Runner {
-	return &Runner{cr: cr, pv: NewValues()}
+	return &Runner{cr: cr, pv: NewValues(), Runs: DefaultRuns, RunTracing: true}
 }
 
 // Values returns the values in the runner.
@@ -110,7 +137,7 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 	if name == "" {
 		runPrefix = "run"
 	}
-	for i := 0; i < Runs; i++ {
+	for i := 0; i < r.Runs; i++ {
 		if !s.Run(ctx, fmt.Sprintf("%s-%d", runPrefix, i), func(ctx context.Context, s *testing.State) {
 			hists, err := scenario(ctx)
 			if err != nil {
@@ -123,22 +150,45 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 			return false
 		}
 	}
+	if !r.RunTracing {
+		return true
+	}
+
+	const traceCleanupDuration = 2 * time.Second
+	if deadline, ok := ctx.Deadline(); ok && deadline.Sub(time.Now()) < traceCleanupDuration {
+		testing.ContextLog(ctx, "There are no time to conduct a tracing run. Skipping")
+		return true
+	}
+
 	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
-		sctx, cancel := ctxutil.Shorten(ctx, time.Second)
+		sctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
 		defer cancel()
 		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}); err != nil {
-			s.Fatal("Failed to start tracing: ", err)
+			// Sometimes, start tracing request is reached to the browser process but
+			// waiting for the reply gets timeout. To ensure the tracing status
+			// stopped, StopTracing should be called here.
+			if _, stopErr := r.cr.StopTracing(ctx); stopErr != nil {
+				testing.ContextLog(ctx, "Failed to stop tracing: ", stopErr)
+			}
+			s.Log("Failed to start tracing: ", err)
+			return
 		}
 		if _, err := scenario(sctx); err != nil {
 			s.Error("Failed to run the test scenario: ", err)
 		}
 		tr, err := r.cr.StopTracing(ctx)
 		if err != nil {
-			s.Fatal("Failed to stop tracing: ", err)
+			s.Log("Failed to stop tracing: ", err)
+			return
+		}
+		if tr == nil || len(tr.Packet) == 0 {
+			s.Log("No trace data is collected")
+			return
 		}
 		data, err := proto.Marshal(tr)
 		if err != nil {
-			s.Fatal("Failed to marshal the tracing data: ", err)
+			s.Log("Failed to marshal the tracing data: ", err)
+			return
 		}
 		filename := "trace.data.gz"
 		if name != "" {
@@ -146,13 +196,25 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		}
 		file, err := os.OpenFile(filepath.Join(s.OutDir(), filename), os.O_CREATE|os.O_RDWR, 0644)
 		if err != nil {
-			s.Fatal("Failed to open the trace file: ", err)
+			s.Log("Failed to open the trace file: ", err)
+			return
 		}
-		defer file.Close()
+		defer func() {
+			if err := file.Close(); err != nil {
+				s.Log("Failed to close the trace file: ", err)
+			}
+		}()
 		writer := gzip.NewWriter(file)
-		defer writer.Close()
+		defer func() {
+			if err := writer.Close(); err != nil {
+				s.Log("Failed to close the gzip writer for the trace file: ", err)
+			}
+		}()
 		if _, err := writer.Write(data); err != nil {
-			s.Fatal("Failed to write the data: ", err)
+			s.Log("Failed to write the data: ", err)
+		}
+		if err := writer.Flush(); err != nil {
+			s.Log("Failed to flush the gzip writer: ", err)
 		}
 	})
 }

@@ -35,10 +35,12 @@ const (
 	DevicePropertyEapCompleted      = "EapAuthenticationCompleted"
 
 	// WiFi device property names.
-	DevicePropertyWiFiBgscanMethod       = "BgscanMethod"
-	DevicePropertyMACAddrRandomEnabled   = "MACAddressRandomizationEnabled"
-	DevicePropertyMACAddrRandomSupported = "MACAddressRandomizationSupported"
-	DevicePropertyScanning               = "Scanning" // Also for cellular.
+	DevicePropertyWiFiBgscanMethod        = "BgscanMethod"
+	DevicePropertyWiFiScanInterval        = "ScanInterval"
+	DevicePropertyWiFiBgscanShortInterval = "BgscanShortInterval"
+	DevicePropertyMACAddrRandomEnabled    = "MACAddressRandomizationEnabled"
+	DevicePropertyMACAddrRandomSupported  = "MACAddressRandomizationSupported"
+	DevicePropertyScanning                = "Scanning" // Also for cellular.
 )
 
 // IPConfig property names.
@@ -60,6 +62,7 @@ const (
 // Manager property names.
 const (
 	ManagerPropertyActiveProfile          = "ActiveProfile"
+	ManagerPropertyAvailableTechnologies  = "AvailableTechnologies"
 	ManagerPropertyDevices                = "Devices"
 	ManagerPropertyEnabledTechnologies    = "EnabledTechnologies"
 	ManagerPropertyProfiles               = "Profiles"
@@ -127,7 +130,7 @@ const (
 )
 
 // ServiceConnectedStates is a list of service states that are considered connected.
-var ServiceConnectedStates = []string{
+var ServiceConnectedStates = []interface{}{
 	ServiceStatePortal,
 	ServiceStateNoConnectivity,
 	ServiceStateRedirectFound,
@@ -179,4 +182,25 @@ const (
 const (
 	ProfileEntryPropertyName = "Name"
 	ProfileEntryPropertyType = "Type"
+)
+
+// The common prefix of DHCP property keys in shill.
+const dhcpPropertyPrefix = "DHCPProperty."
+
+// DHCP property names defined in dhcp/dhcp_properties.cc.
+// These keys can be used in properties of both Manager or Service.
+const (
+	DHCPPropertyHostname    = dhcpPropertyPrefix + "Hostname"
+	DHCPPropertyVendorClass = dhcpPropertyPrefix + "VendorClass"
+)
+
+// Device background scan methods.
+// The values are from wpa_supplicant + "none" for no background scan.
+// See:
+//   https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+//   platform2/shill/supplicant/wpa_supplicant.cc
+const (
+	DeviceBgscanMethodSimple = "simple"
+	DeviceBgscanMethodLearn  = "learn"
+	DeviceBgscanMethodNone   = "none"
 )

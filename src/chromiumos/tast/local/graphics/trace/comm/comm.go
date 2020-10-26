@@ -13,6 +13,11 @@ const (
 
 	// ProtocolVersion defines the current version of the communication protocol
 	ProtocolVersion = 1
+
+	// TestFlagDefault is used to select the default replay mode
+	TestFlagDefault = "default"
+	// TestFlagSurfaceless is used to select the surfaceless replay mode
+	TestFlagSurfaceless = "surfaceless"
 )
 
 // VersionInfo is used as a container for the protocol version information
@@ -43,12 +48,13 @@ type SystemInfo struct {
 // to define a trace replay test group configuration as well as a container to deliver
 // the required host environment related information inside the guest
 type TestGroupConfig struct {
-	Labels      []string        `json:"Labels"`
-	Flags       []string        `json:"Flags"`
-	Repository  RepositoryInfo  `json:"Repository"`
-	Host        SystemInfo      `json:"Host"`
-	ProxyServer ProxyServerInfo `json:"ProxyServer"`
-	Timeout     uint32          `json:"Timeout,string"`
+	Labels           []string        `json:"Labels"`
+	Flags            []string        `json:"Flags"`
+	Repository       RepositoryInfo  `json:"Repository"`
+	Host             SystemInfo      `json:"Host"`
+	ProxyServer      ProxyServerInfo `json:"ProxyServer"`
+	Timeout          uint32          `json:"Timeout,string"`
+	ExtendedDuration uint32          `json:"ExtendedDuration,string"`
 }
 
 // ValueEntry struct contains the result metrics for one trace replay test

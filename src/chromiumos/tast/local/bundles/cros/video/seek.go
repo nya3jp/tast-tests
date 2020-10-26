@@ -39,7 +39,7 @@ func init() {
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_h264.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:              "vp8",
@@ -60,7 +60,7 @@ func init() {
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:              "switch_vp8",
@@ -97,7 +97,7 @@ func init() {
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 1000},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_h264.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Timeout:           20 * time.Minute,
 			Pre:               pre.ChromeVideo(),
 		}, {
@@ -105,7 +105,7 @@ func init() {
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_h264.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "vp8_alt",
@@ -126,7 +126,7 @@ func init() {
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "switch_vp8_alt",
@@ -163,7 +163,7 @@ func init() {
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 1000},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_h264.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Timeout:           20 * time.Minute,
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}},

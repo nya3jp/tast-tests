@@ -21,7 +21,7 @@ import (
 const (
 	iwlwifiPath   = "/sys/kernel/debug/iwlwifi"
 	fwnmiPath     = "/iwlmvm/fw_nmi"
-	funcName      = `NMI_INTERRUPT_UNKNOWN`
+	funcName      = `(NMI_INTERRUPT_UNKNOWN|ADVANCED_SYSASSERT)`
 	crashBaseName = `kernel_iwlwifi_error_` + funcName + `\.\d{8}\.\d{6}\.0`
 )
 
@@ -46,6 +46,8 @@ func init() {
 		// WiFi chips that would work for this test. However, for now
 		// there is no better way to specify the exact hardware
 		// parameters needed for this test. (See linked bug.)
+		// TODO(crbug.com/1115620): remove "Elm" and "Hana" after
+		// unibuild migration completed.
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob",
 			"elm",
 			"grunt",
@@ -53,11 +55,18 @@ func init() {
 			"jacuzzi",
 			"kevin",
 			"kukui",
+			"oak",
 			"scarlet",
 			"veyron_fievel",
 			"veyron_mickey",
 			"veyron_tiger",
-		), hwdep.SkipOnModel("blooglet", "ezkinil", "trembyle")),
+			// TODO(https://crbug.com/1121243): cros_config gives the above four boards the below platform IDs.
+			// Once it gives them their proper names, remove these.
+			"gru",
+			"fievel",
+			"mickey",
+			"tiger",
+		), hwdep.SkipOnModel("blooglet", "dalboz", "ezkinil", "trembyle")),
 	})
 }
 
@@ -108,7 +117,9 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for files")
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
+	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+	files, err := crash.WaitForCrashFiles(waitCtx, []string{crash.SystemCrashDir}, expectedRegexes)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}

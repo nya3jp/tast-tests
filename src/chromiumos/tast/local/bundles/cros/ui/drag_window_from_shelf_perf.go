@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -74,10 +73,6 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 	}
 	defer conns.Close()
 
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
-
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
@@ -90,7 +85,7 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 		"Ash.DragWindowFromShelf.PresentationTime.MaxLatency"),
 		perfutil.StoreLatency)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

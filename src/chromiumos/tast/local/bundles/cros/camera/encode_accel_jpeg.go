@@ -14,7 +14,9 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,6 +27,14 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
 		Data:         []string{"bali_640x368_P420.yuv"},
+		Params: []testing.Param{{
+			Name:              "mmap",
+			Val:               "-*Dma*",
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("kukui")),
+		}, {
+			Name: "dmabuf",
+			Val:  "*Dma*",
+		}},
 	})
 }
 
@@ -37,11 +47,21 @@ func EncodeAccelJPEG(ctx context.Context, s *testing.State) {
 	}
 	defer vl.Close()
 
+	// Stopping the UI is not strictly needed to run the test executable
+	// below. However, it's a good idea for stability reasons: if the UI
+	// plays a video (e.g., in the OOBE), we don't want that to interfere
+	// with the test.
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui: ", err)
+	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
 	// Execute the test binary.
 	const exec = "jpeg_encode_accelerator_unittest"
 	if report, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), "gtest.log")),
+		gtest.Filter(s.Param().(string)),
 		gtest.ExtraArgs(
 			logging.ChromeVmoduleFlag(),
 			fmt.Sprintf("--yuv_filenames=%s:640x368", s.DataPath("bali_640x368_P420.yuv"))),

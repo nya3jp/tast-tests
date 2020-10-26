@@ -23,7 +23,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowOutsideDisplay,
 		Desc:         "Ensures an ARC window can move outside the display",
-		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
@@ -59,6 +59,7 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 		pkg          = "com.android.settings"
 		activityName = ".Settings"
 		dragDur      = time.Second
+		marginPX     = 2
 	)
 
 	act, err := arc.NewActivity(a, pkg, activityName)
@@ -100,6 +101,14 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the window to finish animating: ", err)
 	}
 
+	nearlyEqual := func(a, b int) bool {
+		diff := a - b
+		if diff < 0 {
+			diff = -diff
+		}
+		return diff <= marginPX
+	}
+
 	// Waits for the window bounds to be updated on the Android side.
 	waitForWindowBounds := func(ctx context.Context, expected coords.Rect) error {
 		expected = coords.ConvertBoundsFromDPToPX(expected, dispMode.DeviceScaleFactor)
@@ -108,7 +117,10 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 			if err != nil {
 				return testing.PollBreak(err)
 			}
-			if actual != expected {
+			if !nearlyEqual(expected.Left, actual.Left) ||
+				!nearlyEqual(expected.Top, actual.Top) ||
+				!nearlyEqual(expected.Width, actual.Width) ||
+				!nearlyEqual(expected.Height, actual.Height) {
 				return errors.Errorf("window bounds doesn't match: got %v, want %v", actual, expected)
 			}
 			return nil

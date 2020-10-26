@@ -311,7 +311,7 @@ func collectFields(deviceInfo *hvpb.HwVerificationReport_GenericDeviceInfo, fiel
 // reboot in order to verify the consistency of the execution in the init
 // script /etc/init/hardware-verifier.conf.
 func hwVerify(ctx context.Context, dut *dut.DUT, fieldsMapping requiredFieldSet) (sortableMessage, error) {
-	args := []string{"-u", "hardware_verifier", "hardware_verifier"}
+	args := []string{"-u", "hardware_verifier", "hardware_verifier", "--pii"}
 	output, err := dut.Command("sudo", args...).Output(ctx)
 	if err != nil {
 		exitError, isExitError := err.(*ssh.ExitError)

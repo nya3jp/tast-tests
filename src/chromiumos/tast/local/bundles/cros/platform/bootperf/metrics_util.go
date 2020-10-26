@@ -12,6 +12,7 @@ import (
 	"math"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -54,6 +55,9 @@ var (
 	//     JS code. So V8 is initialized and running, etc...
 	//   kernel_to_login - The moment when user can actually see signin UI.
 	//   kernel_to_android_start - The moment when Android is started.
+	//   kernel_to_cellular_registered - The moment when Shill detects a
+	//     cellular device.
+	//   kernel_to_wifi_registered - The moment when Shill detects a WiFi device.
 	eventMetrics = []struct {
 		MetricName string
 		EventName  string
@@ -72,6 +76,11 @@ var (
 		{"kernel_to_login", "login-prompt-visible", true},
 		// Not all boards support ARC.
 		{"kernel_to_android_start", "android-start", false},
+		// Not all devices have cellular. All should have WiFi, but we
+		// still don't want to fail (e.g., if there are hardware
+		// issues).
+		{"kernel_to_cellular_registered", "network-cellular-registered", false},
+		{"kernel_to_wifi_registered", "network-wifi-registered", false},
 	}
 
 	uptimeFileGlob = filepath.Join("/tmp", uptimePrefix+"*")
@@ -191,15 +200,19 @@ func parseUptime(eventName, bootstatDir string, index int) (float64, error) {
 // GatherTimeMetrics reads and reports boot time metrics. It reads
 // "seconds since kernel startup" from the bootstat files for the events named
 // in |eventMetrics|, and stores the values as perf metrics.  The following
-// metrics are recorded:
+// metrics may be recorded:
 //   * seconds_kernel_to_startup
 //   * seconds_kernel_to_startup_done
 //   * seconds_kernel_to_chrome_exec
 //   * seconds_kernel_to_chrome_main
+//   * seconds_kernel_to_signin_start
+//   * seconds_kernel_to_signin_wait
+//   * seconds_kernel_to_signin_users
 //   * seconds_kernel_to_login
+//   * seconds_kernel_to_android_start
+//   * seconds_kernel_to_cellular_registered
+//   * seconds_kernel_to_wifi_registered
 //   * seconds_kernel_to_network
-// All of these metrics are considered mandatory, except for
-// seconds_kernel_to_network.
 func GatherTimeMetrics(ctx context.Context, results *platform.GetBootPerfMetricsResponse) error {
 	for _, k := range eventMetrics {
 		key := "seconds_" + k.MetricName
@@ -321,6 +334,32 @@ func calculateTimeval(event, t0, t1, tUptime float64) (float64, float64) {
 	return bootTimeval + event, error
 }
 
+// findMostRecentBootstatArchivePath returns the path of the bootstat archive
+// generated from the most recent successful shutdown.
+func findMostRecentBootstatArchivePath() (string, error) {
+	bootstatArchives, _ := filepath.Glob(bootstatArchiveGlob) // filepath.Glob() only returns error on malformed glob patterns.
+	if len(bootstatArchives) == 0 {
+		return "", errors.New("failed to list bootstat archive directories")
+	}
+
+	// Sort |bootstatArchives| using string comparison. This works in finding the entry with the largest timestamp value because the timestamp is generated using the command `date '+%Y%m%d%H%M%S'` during shutdown.
+	sort.Strings(bootstatArchives)
+	for i := len(bootstatArchives) - 1; i >= 0; i-- {
+		bootstatDir := bootstatArchives[i]
+		// Check that this is a valid archive: in a successful shutdown, the timestamp file should contain 2 entries written by bootstat_archive.
+		timestampPath := filepath.Join(bootstatDir, "timestamp")
+		b, err := ioutil.ReadFile(timestampPath)
+		if err != nil && !os.IsNotExist(err) {
+			// Shouldn't have any error other than timestamp not existent.
+			return "", errors.Wrapf(err, "unexpected error in checking bootstat archive file: %s", timestampPath)
+		}
+		if err == nil && len(strings.Split(string(b), "\n")) > 1 {
+			return bootstatDir, nil
+		}
+	}
+	return "", errors.New("failed to find the bootstat archive for the latest shutdown")
+}
+
 // GatherRebootMetrics reads and reports shutdown and reboot times. The shutdown
 // process saves all bootstat files in /var/log, plus it saves a timestamp file
 // that can be used to convert "time since boot" into times in UTC.  Read the
@@ -332,23 +371,10 @@ func calculateTimeval(event, t0, t1, tUptime float64) (float64, float64) {
 //   * seconds_reboot_time
 //   * seconds_reboot_error
 func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
-	bootstatArchives, _ := filepath.Glob(bootstatArchiveGlob) // filepath.Glob() only returns error on malformed glob patterns.
-	if bootstatArchives == nil {
-		return errors.New("failed to list bootstat archive directories")
+	bootstatDir, err := findMostRecentBootstatArchivePath()
+	if err != nil {
+		return err
 	}
-
-	// max() for string comparison.
-	max := func(in []string) string {
-		m := ""
-		for _, s := range in {
-			if s > m {
-				m = s
-			}
-		}
-		return m
-	}
-	// It's safe using string > operator in max() to find the entry with the largest timestamp value because the timestamp is generated using the command `date '+%Y%m%d%H%M%S'`.
-	bootstatDir := max(bootstatArchives)
 
 	bootID, err := ioutil.ReadFile("/proc/sys/kernel/random/boot_id")
 	if err != nil {
@@ -388,11 +414,11 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 	}
 	shutdownUptime, err := parseUptime("ui-post-stop", bootstatDir, -1)
 	if err != nil {
-		return errors.Wrap(err, "failed in parsing uptime of event archive")
+		return errors.Wrap(err, "failed in parsing uptime of event ui-post-stop")
 	}
 	archiveT0, err := strconv.ParseFloat(archiveTs[0], 64)
 	if err != nil {
-		return errors.Wrap(err, "error in parsing timestamp value")
+		return errors.Wrapf(err, "error in parsing timestamp value %s", archiveTs[0])
 	}
 	archiveT1, err := strconv.ParseFloat(archiveTs[1], 64)
 	if err != nil {

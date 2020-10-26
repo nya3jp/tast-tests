@@ -14,8 +14,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/testing"
 )
+
+const uiTimeout = 10 * time.Second
 
 // State contains the state returned by chrome.autotestPrivate.loginStatus,
 // corresponding to 'LoginStatusDict' as defined in autotest_private.idl.
@@ -77,4 +80,34 @@ func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username 
 		Attributes: attributes,
 	}
 	return ui.WaitUntilExists(ctx, tconn, params, timeout)
+}
+
+// Lock locks the screen.
+func Lock(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := tconn.Eval(ctx, `chrome.autotestPrivate.lockScreen()`, nil); err != nil {
+		return errors.Wrap(err, "failed calling chrome.autotestPrivate.lockScreen")
+	}
+
+	if st, err := WaitState(ctx, tconn, func(st State) bool { return st.Locked && st.ReadyForPassword }, 3*uiTimeout); err != nil {
+		return errors.Wrapf(err, "waiting for screen to be locked failed: %v (last status %+v)", err, st)
+	}
+
+	return nil
+}
+
+// EnterPIN enters the specified PIN.
+func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
+	for i, d := range PIN {
+		if err := uig.Do(ctx, tconn,
+			uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: string(d)}, uiTimeout).LeftClick(),
+		); err != nil {
+			return errors.Wrapf(err, "failed to press %q button (Digit %v of PIN)", d, i)
+		}
+	}
+	return nil
+}
+
+// SubmitPIN submits the entered PIN.
+func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
+	return uig.Do(ctx, tconn, uig.FindWithTimeout(ui.FindParams{Name: "Submit", Role: ui.RoleTypeButton}, uiTimeout).LeftClick())
 }

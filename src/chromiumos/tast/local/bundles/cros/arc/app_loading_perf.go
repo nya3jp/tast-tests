@@ -6,17 +6,18 @@ package arc
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/apploading"
+	"chromiumos/tast/local/bundles/cros/arc/nethelper"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
-
-const apkName = "ArcAppLoadingTest.apk"
 
 var (
 	arcAppLoadingGaia = &arc.GaiaVars{
@@ -30,7 +31,7 @@ var (
 
 	// arcAppLoadingVMBooted is a precondition similar to arc.VMBooted(). The only difference from arc.VMBooted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off")
+	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, "--ignore-arcvm-dev-conf", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off")
 )
 
 func init() {
@@ -44,8 +45,8 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{apkName},
-		Timeout:      15 * time.Minute,
+		Data:         []string{apploading.X86ApkName, apploading.ArmApkName},
+		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
@@ -80,32 +81,72 @@ func init() {
 // subflow will be tested separately including separate performance metrics
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
-	weightsDict := map[string]float64{
-		"memory":  0.1,
-		"file":    6.5,
-		"network": 5.2,
-		"opengl":  4.0,
+	// Start network helper to serve requests from the app.
+	conn, err := nethelper.Start(ctx, apploading.NethelperPort)
+	if err != nil {
+		s.Fatal("Failed to start nethelper: ", err)
 	}
+	defer func() {
+		if err := conn.Close(ctx); err != nil {
+			s.Logf("WARNING: Failed to close nethelper connection: %s", err)
+		}
+	}()
 
 	finalPerfValues := perf.NewValues()
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
+
+	// Geometric mean for tests in the same group are computed together.  All
+	// tests where group is not defined will be computed separately using the
+	// geometric means from other groups.
 	tests := []struct {
-		name   string
-		prefix string
+		name      string
+		prefix    string
+		subtest   string
+		group     string
+		multiarch bool
 	}{{
 		name:   "MemoryTest",
 		prefix: "memory",
 	}, {
-		name:   "FileTest",
-		prefix: "file",
+		name:    "FileTest",
+		prefix:  "file_obb",
+		subtest: "runObbTest",
+		group:   "not_ext4_fs",
 	}, {
-		name:   "NetworkTest",
-		prefix: "network",
+		name:    "FileTest",
+		prefix:  "file_squashfs",
+		subtest: "runSquashFSTest",
+		group:   "not_ext4_fs",
+	}, {
+		name:    "FileTest",
+		prefix:  "file_esd",
+		subtest: "runEsdTest",
+		group:   "not_ext4_fs",
+	}, {
+		name:    "FileTest",
+		prefix:  "file_ext4",
+		subtest: "runExt4Test",
+	}, {
+		name:      "NetworkTest",
+		prefix:    "network",
+		multiarch: true,
 	}, {
 		name:   "OpenGLTest",
 		prefix: "opengl",
+	}, {
+		name:   "DecompressionTest",
+		prefix: "decompression",
+	}, {
+		name:      "UITest",
+		prefix:    "ui",
+		multiarch: true,
 	}}
 
+	a := s.PreValue().(arc.PreData).ARC
+	apkName, err := apploading.ApkNameForArch(ctx, a)
+	if err != nil {
+		s.Fatal("Failed to get APK name: ", err)
+	}
 	config := apploading.TestConfig{
 		PerfValues:           finalPerfValues,
 		BatteryDischargeMode: batteryMode,
@@ -113,29 +154,57 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		OutDir:               s.OutDir(),
 	}
 
-	var totalScore float64
-	a := s.PreValue().(arc.PreData).ARC
+	var scores []float64
+	groups := make(map[string][]float64)
 	cr := s.PreValue().(arc.PreData).Chrome
 	for _, test := range tests {
 		config.ClassName = test.name
 		config.Prefix = test.prefix
+		config.Subtest = test.subtest
+
+		// TODO(b/169367367): Many apps / games run libhoudini (b/169446394) which
+		// is a major use case. These subflows test for crashes but are not scored.
+		if apkName == apploading.X86ApkName && test.multiarch {
+			armConfig := config
+			armConfig.ApkPath = s.DataPath(apploading.ArmApkName)
+			armConfig.Prefix += "_arm"
+			if _, err := apploading.RunTest(ctx, armConfig, a, cr); err != nil {
+				s.Fatal("Failed to run apploading test (arm): ", err)
+			}
+		}
 		score, err := apploading.RunTest(ctx, config, a, cr)
 		if err != nil {
 			s.Fatal("Failed to run apploading test: ", err)
 		}
 
-		weight, ok := weightsDict[config.Prefix]
-		if !ok {
-			s.Fatal("Failed to obtain weight value for test: ", config.Prefix)
+		// Put scores in the same group together, else add to top-level scores.
+		if test.group != "" {
+			groups[test.group] = append(groups[test.group], score)
+		} else {
+			scores = append(scores, score)
 		}
-		score *= weight
-		totalScore += score
+	}
+
+	// Obtain geometric mean of each group and append to top-level scores.
+	for _, group := range groups {
+		score, err := calcGeometricMean(group)
+		if err != nil {
+			s.Fatal("Failed to process geometric mean: ", err)
+		}
+		scores = append(scores, score)
+	}
+
+	// Calculate grand mean (geometric) of top-level scores which includes the
+	// geometric means from each group.
+	totalScore, err := calcGeometricMean(scores)
+	if err != nil {
+		s.Fatal("Failed to process geometric mean: ", err)
 	}
 
 	finalPerfValues.Set(
 		perf.Metric{
 			Name:      "total_score",
-			Unit:      "mbps",
+			Unit:      "None",
 			Direction: perf.BiggerIsBetter,
 			Multiple:  false,
 		}, totalScore)
@@ -146,4 +215,20 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	if err := finalPerfValues.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save final perf metrics: ", err)
 	}
+}
+
+// calcGeometricMean computes the geometric mean but use antilog method to
+// prevent overflow: EXP((LOG(x1) + LOG(x2) + LOG(x3)) ... + LOG(xn)) / n)
+func calcGeometricMean(scores []float64) (float64, error) {
+	if len(scores) == 0 {
+		return 0, errors.New("scores can not be empty")
+	}
+
+	var mean float64
+	for _, score := range scores {
+		mean += math.Log(score)
+	}
+	mean /= float64(len(scores))
+
+	return math.Exp(mean), nil
 }

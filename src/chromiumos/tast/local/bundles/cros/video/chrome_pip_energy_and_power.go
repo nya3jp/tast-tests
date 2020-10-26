@@ -19,9 +19,15 @@ import (
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
+
+type chromePIPEnergyAndPowerTestParams struct {
+	bigPIP       bool
+	layerOverPIP bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -29,16 +35,22 @@ func init() {
 		Desc:         "Measures energy and power usage of Chrome PIP",
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"chrome", "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		Data:         []string{"bear-320x240.h264.mp4", "pip.html"},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "small",
-			Val:  false,
+			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: false},
 		}, {
 			Name: "big",
-			Val:  true,
+			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: false},
+		}, {
+			Name: "small_blend",
+			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: true},
+		}, {
+			Name: "big_blend",
+			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: true},
 		}},
 	})
 }
@@ -56,7 +68,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to hide notifications: ", err)
 	}
 
@@ -65,12 +77,18 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the primary display info: ", err)
 	}
 
+	kw, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard event writer: ", err)
+	}
+	defer kw.Close()
+
 	timeline, err := perf.NewTimeline(ctx, power.TestMetrics())
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
 
-	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		s.Fatal("Failed to wait for CPU to cool down: ", err)
 	}
 
@@ -122,12 +140,12 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move mouse to PIP resize handle: ", err)
 	}
 	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-		s.Fatal("Failed to press left mouse button: ", err)
+		s.Fatal("Failed to press left mouse button for dragging PIP resize handle: ", err)
 	}
-	bigPIP := s.Param().(bool)
+	params := s.Param().(chromePIPEnergyAndPowerTestParams)
 	workAreaTopLeft := info.WorkArea.TopLeft()
 	var resizeEnd coords.Point
-	if bigPIP {
+	if params.bigPIP {
 		resizeEnd = workAreaTopLeft
 	} else {
 		resizeEnd = info.WorkArea.BottomRight().Sub(coords.NewPoint(1, 1))
@@ -139,7 +157,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move mouse for dragging PIP resize handle: ", err)
 	}
 	if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-		s.Fatal("Failed to release left mouse button: ", err)
+		s.Fatal("Failed to release left mouse button for dragging PIP resize handle: ", err)
 	}
 
 	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
@@ -152,7 +170,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer pipWindow.Release(ctx)
 
-	if bigPIP {
+	if params.bigPIP {
 		maxWidth := info.WorkArea.Width / 2
 		maxHeight := info.WorkArea.Height / 2
 		// Expect the PIP window to have either the maximum width or the maximum
@@ -174,9 +192,28 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Ensure that the PIP window will show no controls or resize shadows.
-	if err := mouse.Move(ctx, tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second); err != nil {
-		s.Fatal("Failed to move mouse: ", err)
+	if params.layerOverPIP {
+		chromeIcon, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Name: "Google Chrome", ClassName: "ash/ShelfAppButton"})
+		if err != nil {
+			s.Fatal("Failed to get Chrome icon: ", err)
+		}
+		defer chromeIcon.Release(ctx)
+
+		if err := mouse.Move(ctx, tconn, chromeIcon.Location.CenterPoint(), time.Second); err != nil {
+			s.Fatal("Failed to move mouse to Chrome icon: ", err)
+		}
+		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+			s.Fatal("Failed to press left mouse button for dragging Chrome icon: ", err)
+		}
+		defer mouse.Release(ctx, tconn, mouse.LeftButton)
+		if err := mouse.Move(ctx, tconn, pipWindow.Location.CenterPoint(), time.Second); err != nil {
+			s.Fatal("Failed to move mouse for dragging Chrome icon: ", err)
+		}
+	} else {
+		// Ensure that the PIP window will show no controls or resize shadows.
+		if err := mouse.Move(ctx, tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second); err != nil {
+			s.Fatal("Failed to move mouse: ", err)
+		}
 	}
 
 	extraConn, err := cr.NewConn(ctx, "chrome://settings")
@@ -185,10 +222,14 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer extraConn.Close()
 
-	// Wait for chrome://settings to be quiescent. We want data that we
-	// could extrapolate, as in a steady state that could last for hours.
 	if err := webutil.WaitForQuiescence(ctx, extraConn, 10*time.Second); err != nil {
 		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
+	}
+
+	// Tab away from the search box of chrome://settings, so that
+	// there will be no blinking cursor.
+	if err := kw.Accel(ctx, "Tab"); err != nil {
+		s.Fatal("Failed to send Tab: ", err)
 	}
 
 	if err := timeline.Start(ctx); err != nil {

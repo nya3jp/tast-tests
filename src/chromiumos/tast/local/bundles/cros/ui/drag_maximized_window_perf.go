@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -65,7 +64,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 	// Position the windows so that they will get some occlusion changes while we drag the maximized window. Here we place one in each corner.
 	count := 0
 	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-		if _, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to set window state")
 		}
 		bounds := coords.NewRect(0, 0, width, height)
@@ -90,12 +89,8 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain the window list: ", err)
 	}
 	window := windows[0]
-	if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventMaximize); err != nil {
+	if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateMaximized); err != nil {
 		s.Fatalf("Failed to set the state of window (%d): %v", window.ID, err)
-	}
-
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
 	// Check that the window we maximized is the active window, otherwise this test won't work.
@@ -162,7 +157,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 		"Ash.Window.AnimationSmoothness.CrossFade.DragUnmaximize"),
 		perfutil.StoreSmoothness)
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

@@ -87,6 +87,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/dev":                              {nil, "devtmpfs", "rw,nosuid,noexec,mode=755"},
 		"/dev/pts":                          {nil, "devpts", "rw,nosuid,noexec,gid=5,mode=620"},
 		"/dev/shm":                          {nil, "tmpfs", defaultRW},
+		"/etc/hosts.d":                      {regexp.MustCompile("^run$"), "tmpfs", defaultRW},
 		"/home":                             {nil, "ext4", defaultRW},
 		"/home/chronos":                     {nil, "ext4", defaultRW},
 		"/home/root":                        {nil, "ext4", defaultRW}, // TODO(crbug.com/1069501): remove once bug is fixed.
@@ -125,6 +126,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/sys/fs/cgroup/cpuset":              {nil, "cgroup", defaultRW},
 		"/sys/fs/cgroup/devices":             {nil, "cgroup", defaultRW},
 		"/sys/fs/cgroup/freezer":             {nil, "cgroup", defaultRW},
+		"/sys/fs/cgroup/net_cls":             {nil, "cgroup", defaultRW},
 		"/sys/fs/cgroup/schedtune":           {nil, "cgroup", defaultRW},
 		"/sys/fs/cgroup":                     {nil, "tmpfs", defaultRW + ",mode=755"},
 		"/sys/fs/fuse/connections":           {nil, "fusectl", defaultRW},
@@ -160,6 +162,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/home",
 		"/tmp",
 		"/usr/local",
+		"/var/cache/dlc-images",
 		"/var/db/pkg",
 		"/var/lib/portage",
 		// imageloader creates mount point at /run/imageloader/{id}/{package}.

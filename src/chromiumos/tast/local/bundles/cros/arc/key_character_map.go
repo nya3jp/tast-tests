@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -20,11 +20,17 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         KeyCharacterMap,
 		Desc:         "Checks KeyCharacterMap working in non-US layouts",
-		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"informational", "group:mainline"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -64,7 +70,7 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 	}
 	defer act.Stop(cleanupCtx, tconn)
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

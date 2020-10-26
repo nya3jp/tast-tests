@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/vkb"
@@ -30,11 +30,11 @@ type vkTestParams struct {
 
 var stableVkTests = []vkTestParams{
 	{"Basic editing", chromeVirtualKeyboardBasicEditingTest},
-	{"Focus change", chromeVirtualKeyboardFocusChangeTest},
 	{"Editing on TYPE_NULL", chromeVirtualKeyboardEditingOnNullTypeTest},
 }
 
 var unstableVkTests = []vkTestParams{
+	{"Focus change", chromeVirtualKeyboardFocusChangeTest},
 	{"Floating mode", chromeVirtualKeyboardFloatingTest},
 	{"Rotation", chromeVirtualKeyboardRotationTest},
 }
@@ -45,7 +45,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeVirtualKeyboard,
 		Desc:         "Checks Chrome virtual keyboard working on Android apps",
-		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.BootedInTabletMode(),
@@ -395,7 +395,7 @@ func chromeVirtualKeyboardFloatingTest(
 				return testing.PollBreak(err)
 			}
 			if expected != bounds {
-				return errors.Errorf("The field doesn't move: %q != %q", expected, bounds)
+				return errors.Errorf("the field doesn't move: %q != %q", expected, bounds)
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second})
@@ -525,7 +525,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}

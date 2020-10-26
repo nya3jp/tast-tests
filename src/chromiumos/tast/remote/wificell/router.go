@@ -7,6 +7,7 @@ package wificell
 import (
 	"context"
 	"fmt"
+	"net"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -41,10 +42,9 @@ type Router struct {
 	name          string
 	board         string
 	busySubnet    map[byte]struct{}
-	phys          map[int]*iw.Phy            // map from phy idx to iw.Phy.
-	busyPhy       map[int]map[iw.IfType]bool // map from phy idx to the map of business of interface types.
-	availIfaces   map[string]*iw.NetDev      // map from interface name to iw.NetDev.
-	busyIfaces    map[string]*iw.NetDev      // map from interface name to iw.NetDev.
+	phys          map[int]*iw.Phy       // map from phy idx to iw.Phy.
+	availIfaces   map[string]*iw.NetDev // map from interface name to iw.NetDev.
+	busyIfaces    map[string]*iw.NetDev // map from interface name to iw.NetDev.
 	ifaceID       int
 	iwr           *iw.Runner
 	ipr           *ip.Runner
@@ -64,7 +64,6 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		name:          name,
 		busySubnet:    make(map[byte]struct{}),
 		phys:          make(map[int]*iw.Phy),
-		busyPhy:       make(map[int]map[iw.IfType]bool),
 		availIfaces:   make(map[string]*iw.NetDev),
 		busyIfaces:    make(map[string]*iw.NetDev),
 		iwr:           remote_iw.NewRemoteRunner(host),
@@ -325,19 +324,33 @@ func (r *Router) phy(ctx context.Context, channel int, t iw.IfType) (int, error)
 	if err != nil {
 		return 0, errors.Errorf("channel %d not available", channel)
 	}
+	// Try to find an idle phy which is suitable
 	for id, phy := range r.phys {
-		// Skip busy phys.
 		if r.isPhyBusy(id, t) {
 			continue
 		}
-		// Check channel support.
-		for _, b := range phy.Bands {
-			if _, ok := b.FrequencyFlags[freq]; ok {
-				return id, nil
-			}
+		if phySupportsFrequency(phy, freq) {
+			return id, nil
+		}
+	}
+	// Try to find any phy which is suitable, even a busy one
+	for id, phy := range r.phys {
+		if phySupportsFrequency(phy, freq) {
+			return id, nil
 		}
 	}
 	return 0, errors.Errorf("cannot find supported phy for channel=%d", channel)
+}
+
+// phySupportsFrequency returns true if any band of the given phy supports
+// the desired frequency.
+func phySupportsFrequency(phy *iw.Phy, freq int) bool {
+	for _, b := range phy.Bands {
+		if _, ok := b.FrequencyFlags[freq]; ok {
+			return true
+		}
+	}
+	return false
 }
 
 // netDev finds an available interface suitable for the given channel and type.
@@ -593,11 +606,9 @@ func (r *Router) createWifiIface(ctx context.Context, phyID int, t iw.IfType) (*
 
 // isPhyBusyAny returns if the phyID is occupied by a busy interface of any type.
 func (r *Router) isPhyBusyAny(phyID int) bool {
-	if m, ok := r.busyPhy[phyID]; ok {
-		for _, b := range m {
-			if b {
-				return true
-			}
+	for _, nd := range r.busyIfaces {
+		if nd.PhyNum == phyID {
+			return true
 		}
 	}
 	return false
@@ -605,33 +616,12 @@ func (r *Router) isPhyBusyAny(phyID int) bool {
 
 // isPhyBusy returns if the phyID is occupied by a busy interface of type t.
 func (r *Router) isPhyBusy(phyID int, t iw.IfType) bool {
-	m, ok := r.busyPhy[phyID]
-	if !ok {
-		// Unseen phyID: not busy.
-		return false
+	for _, nd := range r.busyIfaces {
+		if nd.PhyNum == phyID && nd.IfType == t {
+			return true
+		}
 	}
-	// Unseen type has zero value = false: not busy.
-	return m[t]
-}
-
-// setPhyBusyBool is the internal setter for setPhyBusy and freePhy.
-func (r *Router) setPhyBusyBool(phyID int, t iw.IfType, busy bool) {
-	m, ok := r.busyPhy[phyID]
-	if !ok {
-		m = make(map[iw.IfType]bool)
-		r.busyPhy[phyID] = m
-	}
-	m[t] = busy
-}
-
-// setPhyBusy marks the phy as occupied by a busy interface of type t.
-func (r *Router) setPhyBusy(phyID int, t iw.IfType) {
-	r.setPhyBusyBool(phyID, t, true)
-}
-
-// freePhy marks phyID as free for interface of type t.
-func (r *Router) freePhy(phyID int, t iw.IfType) {
-	r.setPhyBusyBool(phyID, t, false)
+	return false
 }
 
 // setIfaceBusy marks iface as busy.
@@ -642,7 +632,6 @@ func (r *Router) setIfaceBusy(iface string) {
 	}
 	r.busyIfaces[iface] = nd
 	delete(r.availIfaces, iface)
-	r.setPhyBusy(nd.PhyNum, nd.IfType)
 }
 
 // freeIface marks iface as free.
@@ -653,7 +642,6 @@ func (r *Router) freeIface(iface string) {
 	}
 	r.availIfaces[iface] = nd
 	delete(r.busyIfaces, iface)
-	r.freePhy(nd.PhyNum, nd.IfType)
 }
 
 // reserveSubnetIdx finds a free subnet index and reserves it.
@@ -800,4 +788,9 @@ func (r *Router) ChangeAPIfaceSubnetIdx(ctx context.Context, h *APIface) (retErr
 
 	testing.ContextLogf(ctx, "changing AP subnet index from %d to %d", oldIdx, newIdx)
 	return h.changeSubnetIdx(ctx, newIdx)
+}
+
+// MAC returns the MAC address of iface on this router.
+func (r *Router) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
+	return r.ipr.MAC(ctx, iface)
 }

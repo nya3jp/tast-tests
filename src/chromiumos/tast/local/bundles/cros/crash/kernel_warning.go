@@ -79,7 +79,7 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 		metaFile := files[metaName][0]
 		if contents, err := ioutil.ReadFile(metaFile); err != nil {
 			s.Errorf("Couldn't read meta file %s contents: %v", metaFile, err)
-		} else if !strings.Contains(string(contents), "upload_var_in_progress_tast_test=crash.KernelWarning") {
+		} else if !strings.Contains(string(contents), "upload_var_in_progress_integration_test=crash.KernelWarning") {
 			s.Error(".meta file did not contain expected contents")
 			crash.MoveFilesToOut(ctx, s.OutDir(), metaFile)
 		}

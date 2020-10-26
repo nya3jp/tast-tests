@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -91,10 +90,6 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 
 		numExistingWindows = numWindows
 
-		if err = cpu.WaitUntilIdle(ctx); err != nil {
-			s.Fatal("Failed waiting for CPU to become idle: ", err)
-		}
-
 		suffix := fmt.Sprintf("%dwindows", numWindows)
 		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAny(tconn, func(ctx context.Context) error {
 			// Create a shorter context to ensure the time to release the alt-key.
@@ -146,7 +141,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 			})
 	}
 
-	if err = runner.Values().Save(s.OutDir()); err != nil {
+	if err = runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

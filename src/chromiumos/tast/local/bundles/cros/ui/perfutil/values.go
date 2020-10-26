@@ -6,7 +6,12 @@
 package perfutil
 
 import (
+	"context"
+	"sort"
+
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Values keeps the reporting values for multiple runs.
@@ -32,11 +37,35 @@ func (v *Values) Append(metric perf.Metric, value float64) {
 	v.values[name] = append(v.values[name], value)
 }
 
+func minMaxIndices(vs []float64) (minIndex, maxIndex int) {
+	max := vs[0]
+	min := vs[0]
+	for i, v := range vs {
+		if v > max {
+			max = v
+			maxIndex = i
+		}
+		if v < min {
+			min = v
+			minIndex = i
+		}
+	}
+	return minIndex, maxIndex
+}
+
 // Values creates a new perf.Values for its data points.
-func (v *Values) Values() *perf.Values {
+func (v *Values) Values(ctx context.Context) *perf.Values {
 	pv := perf.NewValues()
 
-	for name, metric := range v.metrics {
+	// Ensure that the iteration order is sorted by the name of the metrics, as
+	// this iteration also logs the name/results.
+	names := make([]string, 0, len(v.metrics))
+	for name := range v.metrics {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	for _, name := range names {
+		metric := v.metrics[name]
 		vs := v.values[name]
 		if len(vs) == 0 {
 			continue
@@ -51,31 +80,71 @@ func (v *Values) Values() *perf.Values {
 		otherMetric.Variant = "average"
 		otherMetric.Multiple = true
 
-		max := vs[0]
-		min := vs[0]
-		maxIndex := 0
-		minIndex := 0
-		for i, v := range vs {
-			if v > max {
-				max = v
-				maxIndex = i
-			}
-			if v < min {
-				min = v
-				minIndex = i
-			}
-		}
+		minIndex, maxIndex := minMaxIndices(vs)
+		var sum float64
+		var count int
 		for i, v := range vs {
 			if len(vs) < 3 || (i != maxIndex && i != minIndex) {
 				pv.Append(otherMetric, v)
+				sum += v
+				count++
 			}
 		}
+		testing.ContextLogf(ctx, "Average %s = %v", name, sum/float64(count))
 	}
 	return pv
 }
 
+// Verify verifies the stored values with the numbers in expects and returns a
+// list of misses of the expectations. If no problem, it will return empty.
+func (v *Values) Verify(ctx context.Context, expects map[string]float64) []error {
+	var errs []error
+	for name, metric := range v.metrics {
+		vs := v.values[name]
+		if len(vs) == 0 {
+			continue
+		}
+		exp, ok := expects[name]
+		if !ok {
+			testing.ContextLogf(ctx, "Skipping %s", name)
+			continue
+		}
+		var sum float64
+		var count int
+		if len(vs) < 3 {
+			count = len(vs)
+			for _, v := range vs {
+				sum += v
+			}
+		} else {
+			minIndex, maxIndex := minMaxIndices(vs)
+			for i, v := range vs {
+				if i != minIndex && i != maxIndex {
+					sum += v
+					count++
+				}
+			}
+		}
+		avg := sum / float64(count)
+		var isGood bool
+		var operator string
+		if metric.Direction == perf.BiggerIsBetter {
+			isGood = exp <= avg
+			operator = ">="
+		} else {
+			isGood = avg <= exp
+			operator = "<="
+		}
+		if !isGood {
+			errs = append(errs, errors.Errorf(
+				"%s: got %v want %s%v", name, avg, operator, exp))
+		}
+	}
+	return errs
+}
+
 // Save is a shortcut of Values().Save(outdir). Helpful when the test does not
 // have to combine with other data points.
-func (v *Values) Save(outdir string) error {
-	return v.Values().Save(outdir)
+func (v *Values) Save(ctx context.Context, outdir string) error {
+	return v.Values(ctx).Save(outdir)
 }

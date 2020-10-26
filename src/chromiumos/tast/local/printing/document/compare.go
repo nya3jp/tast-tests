@@ -11,7 +11,8 @@ import (
 	"io/ioutil"
 	"regexp"
 
-	"chromiumos/tast/diff"
+	"github.com/kylelemons/godebug/diff"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -93,11 +94,7 @@ func CompareFileContents(ctx context.Context, output, golden, diffPath string) e
 	golden = cleanPdfContents(golden)
 
 	testing.ContextLog(ctx, "Comparing output with golden file")
-	diff, err := diff.Diff(output, golden)
-	if err != nil {
-		return errors.Wrap(err, "unexpected diff output")
-	}
-	if diff != "" {
+	if diff := diff.Diff(output, golden); diff != "" {
 		testing.ContextLog(ctx, "Dumping diff to ", diffPath)
 		if err := ioutil.WriteFile(diffPath, []byte(diff), 0644); err != nil {
 			testing.ContextLog(ctx, "Failed to dump diff: ", err)

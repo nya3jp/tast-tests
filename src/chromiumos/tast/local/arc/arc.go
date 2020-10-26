@@ -11,12 +11,15 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -89,6 +92,7 @@ func Type() (t InstallType, ok bool) {
 // ARC holds resources related to an active ARC session. Call Close to release
 // those resources.
 type ARC struct {
+	device       *adb.Device   // ADB device to communicate with ARC
 	logcatCmd    *testexec.Cmd // process saving Android logs
 	logcatWriter dynamicWriter // writes output from logcatCmd to logcatFile
 	logcatFile   *os.File      // file currently being written to
@@ -152,15 +156,24 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	testing.ContextLog(ctx, "Waiting for Android boot")
 
-	if err := WaitAndroidInit(ctx); err != nil {
-		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
-	}
-
-	// At this point we can start logcat.
+	// Prepare logcat file, it may be empty if early boot fails.
 	logcatPath := filepath.Join(outDir, logcatName)
 	if err := arc.setLogcatFile(logcatPath); err != nil {
 		return nil, errors.Wrap(err, "failed to create logcat output file")
 	}
+
+	if err := WaitAndroidInit(ctx); err != nil {
+		// Try starting logcat just in case logcat is possible. Android might still be up.
+		logcatCmd := BootstrapCommand(ctx, "/system/bin/logcat", "-d")
+		logcatCmd.Stdout = &arc.logcatWriter
+		testing.ContextLog(ctx, "Forcing collection of logcat at early boot")
+		if err := logcatCmd.Run(); err != nil {
+			testing.ContextLog(ctx, "Tried starting logcat anyway but failed: ", err)
+		}
+		return nil, diagnose(logcatPath, errors.Wrap(err, "Android failed to boot in very early stage"))
+	}
+
+	// At this point we can start logcat.
 	logcatCmd, err := startLogcat(ctx, &arc.logcatWriter)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start logcat")
@@ -179,7 +192,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	testing.ContextLog(ctx, "Setting up ADB connection")
 	ch = make(chan error, 1)
 	go func() {
-		ch <- setUpADBAuth(ctx)
+		ch <- adb.LaunchServer(ctx)
 	}()
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
@@ -194,9 +207,11 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 
 	// Connect to ADB.
-	if err := connectADB(ctx); err != nil {
+	device, err := connectADB(ctx)
+	if err != nil {
 		return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
 	}
+	arc.device = device
 
 	toClose = nil
 	return arc, nil
@@ -289,7 +304,7 @@ func ensureARCEnabled() error {
 	}
 
 	for _, a := range args {
-		if a == "--arc-start-mode=always-start" || a == "--arc-start-mode=always-start-with-no-play-store" || a == "--arc-availability=officially-supported" {
+		if a == "--arc-start-mode=always-start-with-no-play-store" || a == "--arc-availability=officially-supported" {
 			return nil
 		}
 	}
@@ -309,6 +324,28 @@ func getChromeArgs() ([]string, error) {
 	return proc.CmdlineSlice()
 }
 
+// diagnoseInitfailure extracts significant logs for init failure,
+// such as exit message from crosvm.
+func diagnoseInitfailure(reader *syslog.Reader, observedErr error) error {
+	lastMessage := ""
+	for {
+		entry, err := reader.Read()
+		if err != nil {
+			// End of syslog is reached (io.EOF) or some other error
+			// happened.  Either way, return with last significant
+			// message if available.
+			if lastMessage != "" {
+				return errors.Wrapf(observedErr, "%v", lastMessage)
+			}
+			return observedErr
+		}
+		if strings.HasPrefix(entry.Program, "ARCVM") {
+			// TODO(b/167944318): try a better message
+			lastMessage = entry.Content
+		}
+	}
+}
+
 // WaitAndroidInit waits for Android init process to start.
 //
 // It is very rare you want to call this function from your test; to wait for
@@ -320,11 +357,32 @@ func WaitAndroidInit(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, androidInitTimeout)
 	defer cancel()
 
+	// Start a syslog reader so we can give more useful debug
+	// information waiting for boot.
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
+	// Wait for init or crosvm process to start before checking deeper.
+	testing.ContextLog(ctx, "Waiting for initial ARC process")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := InitPID()
+		return err
+	}, &testing.PollOptions{Interval: time.Second}); err != nil {
+		return diagnoseInitfailure(reader, errors.Wrap(err, "init/crosvm process did not start up"))
+	}
+
 	// Wait for an arbitrary property set by Android init very
 	// early in "on boot". Wait for it to ensure Android init
 	// process started.
 	const prop = "net.tcp.default_init_rwnd"
 	if err := waitProp(ctx, prop, "60", reportTiming); err != nil {
+		// Check if init/crosvm is still alive at this point.
+		if _, err := InitPID(); err != nil {
+			return errors.Wrap(err, "init/crosvm process exited unexpectedly")
+		}
 		return errors.Wrapf(err, "%s property is not set which shows that Android init did not come up", prop)
 	}
 	return nil
@@ -370,9 +428,7 @@ func waitProp(ctx context.Context, name, value string, tm timingMode) error {
 	}, &testing.PollOptions{Interval: time.Second})
 }
 
-const apkPathPrefix = "/usr/local/libexec/tast/apks/local/cros"
-
 // APKPath returns the absolute path to a helper APK.
 func APKPath(value string) string {
-	return filepath.Join(apkPathPrefix, value)
+	return adb.APKPath(value)
 }

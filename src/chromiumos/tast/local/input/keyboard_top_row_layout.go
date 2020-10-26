@@ -67,7 +67,7 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 	}
 
 	// Wilco mappings taken from:
-	// https://source.chromium.org/chromium/chromium/src/+/master:ui/chromeos/events/event_rewriter_chromeos.cc;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e;l=1599
+	// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.cc;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e;l=1599
 	// MEDIA_PLAY_PAUSE removed, MEDIA_LAUNCH_APP2 added.
 	mappingWilco := TopRowLayout{
 		BrowserBack:    "search+F1",
@@ -107,7 +107,7 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 	}
 
 	// Logic taken from here:
-	// https://source.chromium.org/chromium/chromium/src/+/master:ui/chromeos/events/event_rewriter_chromeos.h;l=56;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e
+	// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.h;l=56;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e
 	if _, ok := attrs["function_row_physmap"]; ok {
 		return &mappingCustom, nil
 	}
@@ -124,7 +124,7 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 		}
 	}
 	// If keyboard cannot be identified, return mappings1 as defined here:
-	// https://source.chromium.org/chromium/chromium/src/+/master:ui/chromeos/events/event_rewriter_chromeos.h;l=172;drc=c537d05a0cc7b74258fe1474260094923b1e4f68?originalUrl=https:%2F%2Fcs.chromium.org%2F
+	// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.h;l=172;drc=c537d05a0cc7b74258fe1474260094923b1e4f68
 	return &mapping1, nil
 }
 

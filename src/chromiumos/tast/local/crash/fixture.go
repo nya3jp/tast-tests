@@ -36,6 +36,11 @@ const (
 	// case the DUT reboots multiple times during the test. It is only used
 	// when the RebootingTest option is passed.
 	rebootPersistenceCount = "4"
+
+	// rebootPersistDir is the directory to which mock-consent and
+	// crash-test-in-progress written to in order to preserve them across
+	// reboot.
+	rebootPersistDir = "/mnt/stateful_partition/unencrypted/preserve/"
 )
 
 // ConsentType is to be used for parameters to tests, to allow them to determine
@@ -196,7 +201,7 @@ func WithMockConsent() Option {
 
 // RebootingTest indicates that this test will reboot the machine, and the crash
 // reporting state files (e.g. crash-test-in-progress) should also be placed in
-// /var/spool/crash/ (so that the persist-crash-test task moves them over to
+// rebootPersistDir (so that the persist-crash-test task moves them over to
 // /run/crash_reporter on boot).
 func RebootingTest() Option {
 	return func(p *setUpParams) {
@@ -235,7 +240,7 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	p := setUpParams{
 		inProgDir:        crashTestInProgressDir,
 		crashDirs:        crashDirs,
-		rebootPersistDir: SystemCrashDir,
+		rebootPersistDir: rebootPersistDir,
 		senderPausePath:  senderPausePath,
 		filterInPath:     FilterInPath,
 		senderProcName:   senderProcName,
@@ -463,7 +468,7 @@ func TearDownCrashTest(ctx context.Context, opts ...tearDownOption) error {
 	p := tearDownParams{
 		inProgDir:        crashTestInProgressDir,
 		crashDirs:        crashDirs,
-		rebootPersistDir: SystemCrashDir,
+		rebootPersistDir: rebootPersistDir,
 		senderPausePath:  senderPausePath,
 		mockSendingPath:  mockSendingPath,
 		filterInPath:     FilterInPath,

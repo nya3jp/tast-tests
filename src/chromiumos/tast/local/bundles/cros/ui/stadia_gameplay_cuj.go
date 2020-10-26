@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
 	"chromiumos/tast/local/chrome/ui"
@@ -41,6 +42,11 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		gameName = "Mortal Kombat 11"
 	)
 
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
+
 	cr := s.PreValue().(cuj.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -53,18 +59,28 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
-	conn, err := cr.NewConn(ctx, stadiacuj.StadiaAllGamesUrl)
+	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
+		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
+		"percent", perf.SmallerIsBetter, []int64{50, 80})}
+
+	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	if err != nil {
+		s.Fatal("Failed to create the recorder: ", err)
+	}
+	defer recorder.Close(closeCtx)
+
+	conn, err := cr.NewConn(ctx, stadiacuj.StadiaAllGamesURL)
 	if err != nil {
 		s.Fatal("Failed to open the stadia staging instance: ", err)
 	}
 	defer conn.Close()
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
 
 	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find webview: ", err)
 	}
-	defer webview.Release(ctx)
+	defer webview.Release(closeCtx)
 
 	if err := stadiacuj.StartGameFromGameListsView(ctx, tconn, conn, webview, gameName, timeout); err != nil {
 		s.Fatalf("Failed to start the game %s: %s", gameName, err)
@@ -82,15 +98,17 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
-		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-		"percent", perf.SmallerIsBetter, []int64{50, 80})}
+	gameOngoing := false
+	defer func() {
+		if gameOngoing {
+			// Exit the game.
+			if err := stadiacuj.ExitGame(closeCtx, kb, webview); err != nil {
+				s.Error("Failed to exit game: ", err)
+			}
+		}
+	}()
 
-	recorder, err := cuj.NewRecorder(ctx, configs...)
-	if err != nil {
-		s.Fatal("Failed to create the recorder: ", err)
-	}
-	if err := recorder.Run(ctx, tconn, func(ctx context.Context) error {
+	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Hard code the game playing routine.
 		// Enter the menu.
 		if err := stadiacuj.PressKeyInGame(ctx, kb, "Enter", 10*time.Second); err != nil {
@@ -109,13 +127,10 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		if err := stadiacuj.PressKeyInGame(ctx, kb, "Enter", 20*time.Second); err != nil {
 			s.Fatal("Failed to enter Exploration Mode: ", err)
 		}
+		gameOngoing = true
 		// Game starts. Control the main character to move forward for 30 seconds.
 		if err := stadiacuj.HoldKeyInGame(ctx, kb, "W", 30*time.Second); err != nil {
 			s.Fatal("Failed to move forward: ", err)
-		}
-		// Exit the game.
-		if err := stadiacuj.ExitGame(ctx, kb, webview); err != nil {
-			s.Fatal("Failed to exit game: ", err)
 		}
 		return nil
 	}); err != nil {
@@ -123,12 +138,12 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Check if there is any tab crashed.
-	if err := tabChecker.Check(ctx); err != nil {
+	if err := tabChecker.Check(closeCtx); err != nil {
 		s.Fatal("Tab renderer crashed: ", err)
 	}
 
 	pv := perf.NewValues()
-	if err := recorder.Record(pv); err != nil {
+	if err := recorder.Record(closeCtx, pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}
 	if err := pv.Save(s.OutDir()); err != nil {

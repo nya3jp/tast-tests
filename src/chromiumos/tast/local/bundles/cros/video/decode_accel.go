@@ -10,7 +10,18 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+// cqAllowlist is the list of stable device models we want to enable CQ for.
+// Note: The CQ runs a test pre-commit dozens/hundreds of times per post-commit release build.
+// Adding tests to the CQ is therefore extremely expensive. As tests in the CQ may prevent Chrome
+// from upreving, only devices that are present in Chromium CQ are added. Consider carefully which
+// tests/devices to add to the CQ.
+var cqAllowlist = []string{
+	"eve",
+	"kevin1",
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -21,6 +32,14 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               "test-25fps.h264",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
+		}, {
+			// Run H264 video decode tests on CQ, limited to devices on the CQ allow list.
+			Name:              "h264_cq",
+			Val:               "test-25fps.h264",
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(cqAllowlist...)),
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},

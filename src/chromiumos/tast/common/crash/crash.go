@@ -21,5 +21,7 @@ const (
 // ExpectedCorePattern is the content of core_pattern file that is expected to
 // be written by crash_reporter at initialization.
 func ExpectedCorePattern() string {
-	return fmt.Sprintf("|%s --user=%%P:%%s:%%u:%%g:%%e", CrashReporterPath)
+	// %f is a new format string since Linux kernel 5.9+. It means the
+	// file name of the executable. All Chromium OS kernels also support it.
+	return fmt.Sprintf("|%s --user=%%P:%%s:%%u:%%g:%%f", CrashReporterPath)
 }

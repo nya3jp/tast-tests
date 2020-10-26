@@ -3,7 +3,9 @@
 // found in the LICENSE file.
 
 // Package motioninput provides a representation of Android's MotionEvent, and allows communication
-// with the test application ArcMotionInputTest.apk via a Tester.
+// with the test application ArcMotionInputTest.apk via a Tester. It also provides a test framework
+// that allows tests to verify MotionEvents across various windowing modes, such as clamshell,
+// tablet, fullscreen, maximized, etc.
 package motioninput
 
 import (
@@ -13,8 +15,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
@@ -87,8 +89,8 @@ type Tester struct {
 	act   *arc.Activity
 }
 
-// NewTester creates a new instance of a tester.
-// The provided activity should be started before any of the tester's methods are called.
+// NewTester creates a new instance of a Tester.
+// The provided activity should be started before any of the Tester's methods are called.
 // All provided arguments must outlive the Tester.
 func NewTester(tconn *chrome.TestConn, d *ui.Device, act *arc.Activity) *Tester {
 	return &Tester{
@@ -107,7 +109,7 @@ func (t *Tester) ExpectMotionEvents(ctx context.Context, matchers ...Matcher) er
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		events, err := t.readMotionEvents(ctx)
 		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to read motion event"))
+			return errors.Wrap(err, "failed to read motion event")
 		}
 
 		// TODO(b/156655077): Remove filtering of batched events after the bug is fixed.
@@ -132,6 +134,24 @@ func (t *Tester) ExpectMotionEvents(ctx context.Context, matchers ...Matcher) er
 			}
 		}
 		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
+// WaitUntilEvent polls readMotionEvents repeatedly until it receives any motionEvent that
+// matches the provided matcher, while ignoring any event that does not match.
+func (t *Tester) WaitUntilEvent(ctx context.Context, matcher Matcher) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		events, err := t.readMotionEvents(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to read motion event")
+		}
+
+		for i := 0; i < len(events); i++ {
+			if err := matcher(&events[i]); err == nil {
+				return nil
+			}
+		}
+		return errors.New("no matching event received")
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
@@ -189,13 +209,14 @@ func ActionSourceMatcher(a Action, s Source) Matcher {
 				break
 			}
 		}
+		var err error
 		if !sourceMatches {
-			return errors.Errorf("source does not match: got %v; want %s", event.Sources, s)
+			err = errors.Wrapf(err, "source does not match: got %v; want %s", event.Sources, s)
 		}
 		if event.Action != a {
-			return errors.Errorf("action does not match: got %s; want: %s", event.Action, a)
+			err = errors.Wrapf(err, "action does not match: got %s; want: %s", event.Action, a)
 		}
-		return nil
+		return err
 	}
 }
 
@@ -227,15 +248,28 @@ func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) 
 			// expect these values to be more precise.
 			defaultAxisEpsilon = 1e-5
 		)
-		if err := axisMatcher(AxisX, float64(p.X), coordinateAxisEpsilon); err != nil {
-			return err
+		var err error
+		if e := axisMatcher(AxisX, float64(p.X), coordinateAxisEpsilon); e != nil {
+			err = errors.Wrap(err, e.Error())
 		}
-		if err := axisMatcher(AxisY, float64(p.Y), coordinateAxisEpsilon); err != nil {
-			return err
+		if e := axisMatcher(AxisY, float64(p.Y), coordinateAxisEpsilon); e != nil {
+			err = errors.Wrap(err, e.Error())
 		}
-		if err := axisMatcher(AxisPressure, pressure, defaultAxisEpsilon); err != nil {
-			return err
+		if e := axisMatcher(AxisPressure, pressure, defaultAxisEpsilon); e != nil {
+			err = errors.Wrap(err, e.Error())
 		}
-		return nil
+		return err
+	}
+}
+
+// MatcherOr produces a Matcher that matches any of the provided matchers.
+func MatcherOr(matchers ...Matcher) Matcher {
+	return func(event *MotionEvent) error {
+		for i := 0; i < len(matchers); i++ {
+			if err := matchers[i](event); err == nil {
+				return nil
+			}
+		}
+		return errors.New("did not match any of the expected matchers")
 	}
 }

@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -23,10 +23,10 @@ func init() {
 		Desc: "Launches a testing APK to generate notification and verifies its state",
 		Contacts: []string{
 			"edcourtney@chromium.org", // Notification owner.
-			"arc-framework@google.com",
+			"arc-framework+tast@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
@@ -82,7 +82,7 @@ func Notification(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch the app: ", err)
 	}
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed to initialize UI Automator: ", err)
 	}
@@ -105,7 +105,7 @@ func Notification(ctx context.Context, s *testing.State) {
 	}
 
 	findNotification := func() (*ash.Notification, error) {
-		ns, err := ash.VisibleNotifications(ctx, tconn)
+		ns, err := ash.Notifications(ctx, tconn)
 		if err != nil {
 			return nil, err
 		}

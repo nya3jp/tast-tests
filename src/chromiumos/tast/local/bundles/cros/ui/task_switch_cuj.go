@@ -10,17 +10,17 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/playstore"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -61,6 +61,11 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		timeout              = 10 * time.Second
 	)
 
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
+
 	cr := s.PreValue().(cuj.PreData).Chrome
 	a := s.PreValue().(cuj.PreData).ARC
 
@@ -82,7 +87,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed to setup ARC and Play Store: ", err)
 	}
@@ -107,10 +112,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to install %s: %v", pkgName, err)
 		}
 		cancel()
-	}
-
-	if err = cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed to wait for idle-ness: ", err)
 	}
 
 	var pc pointer.Controller
@@ -225,7 +226,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 					if err != nil {
 						return errors.Wrap(err, "can't find the menu items")
 					}
-					defer menus.Release(ctx)
+					defer menus.Release(closeCtx)
 					targetMenus := make([]*chromeui.Node, 0, len(menus))
 					for i := 1; i < len(menus); i++ {
 						if !hasYoutubeIcon || !strings.HasPrefix(strings.ToLower(menus[i].Name), "youtube") {
@@ -314,10 +315,11 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		configs = append(configs,
 			cuj.NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness."+suffix))
 	}
-	recorder, err := cuj.NewRecorder(ctx, configs...)
+	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+	defer recorder.Close(closeCtx)
 
 	// Launch arc apps from the app launcher; first open the app-launcher, type
 	// the query and select the first search result, and wait for the app window
@@ -391,7 +393,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			return errors.New("too many dialog popups")
 		}},
 	} {
-		if err = recorder.Run(ctx, tconn, func(ctx context.Context) error {
+		if err = recorder.Run(ctx, func(ctx context.Context) error {
 			launchCtx, cancel := context.WithTimeout(ctx, 2*time.Minute)
 			defer cancel()
 			if _, err := ash.GetARCAppWindowInfo(ctx, tconn, app.packageName); err == nil {
@@ -455,14 +457,10 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		}
 		browserWindows[w.ID] = true
 		if !tabletMode {
-			if _, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventNormal); err != nil {
+			if err := ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal); err != nil {
 				s.Fatalf("Failed to change the window (%s) into the normal state: %v", url, err)
 			}
 		}
-	}
-
-	if err = cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed to wait for idle-ness: ", err)
 	}
 
 	subtests := []subtest{
@@ -532,7 +530,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		s.Log(st.desc)
 		s.Run(ctx, st.name, func(ctx context.Context, s *testing.State) {
 			for i := 0; i < len(ws); i++ {
-				if err := recorder.Run(ctx, tconn, func(ctx context.Context) error { return st.f(ctx, s, i) }); err != nil {
+				if err := recorder.Run(ctx, func(ctx context.Context) error { return st.f(ctx, s, i) }); err != nil {
 					s.Error("Failed to run the scenario: ", err)
 				}
 			}
@@ -540,7 +538,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	if err = recorder.Record(pv); err != nil {
+	if err = recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to report: ", err)
 	}
 	if err = pv.Save(s.OutDir()); err != nil {

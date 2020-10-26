@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/c2e2etest"
+	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
 	"chromiumos/tast/local/bundles/cros/arc/video"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/encoding"
@@ -21,10 +21,10 @@ import (
 // deviceBlocklist is the list of devices we want to disable these tests on.
 var deviceBlocklist = []string{
 	// The ARC++ HW encoder is not enabled on MT8173: b/142514178
+	// TODO(crbug.com/1115620): remove "Elm" and "Hana" after unibuild migration completed.
 	"elm",
-	"elm_kernelnext",
 	"hana",
-	"hana_kernelnext",
+	"oak",
 }
 
 func init() {
@@ -117,5 +117,8 @@ func init() {
 }
 
 func VideoEncodeAccel(ctx context.Context, s *testing.State) {
-	video.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC, s.Param().(encoding.TestOptions))
+	// Enable to download the video file encoded by the test.
+	const pullEncodedVideo = false
+	video.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC,
+		s.Param().(encoding.TestOptions), pullEncodedVideo)
 }

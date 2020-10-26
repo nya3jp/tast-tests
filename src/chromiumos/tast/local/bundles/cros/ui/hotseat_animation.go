@@ -6,6 +6,10 @@ package ui
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -19,7 +23,6 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -50,19 +53,18 @@ func init() {
 			{
 				Name: "non_overflow_shelf",
 				Val:  nonOverflow,
-				Pre:  ash.LoggedInWith100DummyApps(),
+				Pre:  ash.LoggedInWith100FakeApps(),
 			},
 			{
 				Name: "overflow_shelf",
 				Val:  overflow,
-				Pre:  ash.LoggedInWith100DummyApps(),
+				Pre:  ash.LoggedInWith100FakeApps(),
 			},
 
 			// TODO(https://crbug.com/1083068): when the flag shelf-hide-buttons-in-tablet is removed, delete this sub-test.
 			{
 				Name: "shelf_with_navigation_widget",
 				Val:  showNavigationWidget,
-				Pre:  chrome.NewPrecondition("ShowNavigationWidget", chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode")),
 			},
 		},
 	})
@@ -101,7 +103,36 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		overviewTimeout = 10 * time.Second
 	)
 
-	cr := s.PreValue().(*chrome.Chrome)
+	var cr *chrome.Chrome
+
+	testType := s.Param().(hotseatTestType)
+	if testType == showNavigationWidget {
+		tmpdir, err := ioutil.TempDir("", "fakeApps")
+		if err != nil {
+			s.Fatal("Failed to create temp dir for app installation: ", err)
+		}
+		defer os.RemoveAll(tmpdir)
+
+		const numApps = 100
+		if _, err := ash.PrepareFakeApps(tmpdir, numApps); err != nil {
+			s.Fatalf("Failed to prepare %v fake apps under %v: %v", numApps, tmpdir, err)
+		}
+		var opts []chrome.Option
+		for i := 0; i < numApps; i++ {
+			opts = append(opts, chrome.UnpackedExtension(filepath.Join(tmpdir, fmt.Sprintf("fake_%d", i))))
+		}
+		opts = append(opts, chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode", "--disable-features=MaintainShelfStateWhenEnteringOverview"))
+
+		// Install fake apps and disable flags.
+		cr, err = chrome.New(ctx, opts...)
+		if err != nil {
+			s.Fatal("Failed to connect to Chrome: ", err)
+		}
+
+		defer cr.Close(ctx)
+	} else {
+		cr = s.PreValue().(*chrome.Chrome)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -135,15 +166,11 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
-	if s.Param().(hotseatTestType) == overflow {
+	shouldEnterOverflow := testType != nonOverflow
+	if shouldEnterOverflow {
 		if err := ash.EnterShelfOverflow(ctx, tconn); err != nil {
 			s.Fatal(err, "Failed to enter overflow shelf")
 		}
-	}
-
-	// Wait for the animations to complete and for things to settle down.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
 	runner := perfutil.NewRunner(cr)
@@ -185,20 +212,25 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	histogramsName = []string{
 		shownHotseatHistogram,
 		shownHotseatWidgetHistogram,
-		shownHotseatTranslucentBackgroundHistogram,
-		extendedHotseatHistogram,
 		extendedHotseatWidgetHistogram,
-		extendedHotseatTranslucentBackgroundHistogram,
 		shownHomeLauncherHistogram,
 		hiddenHomeLauncherHistogram}
-	if s.Param().(hotseatTestType) == showNavigationWidget {
+	if shouldEnterOverflow {
+		// Record metrics data which can only be collected in overflow shelf.
+		histogramsName = append(histogramsName, shownHotseatTranslucentBackgroundHistogram)
+	}
+	if testType == showNavigationWidget {
+		// Record metrics data which can only be collected with the shelf navigation widget shown.
 		histogramsName = append(histogramsName,
-			extendedBackButtonHistogram,
 			shownBackButtonHistogram,
 			extendedHomeButtonHistogram,
 			shownHomeButtonHistogram,
 			extendedWidgetHistogram,
-			shownWidgetHistogram)
+			shownWidgetHistogram,
+			// Data for those three histograms can only be collected when the flag, which maintains the shelf state when entering the overview mode, is disabled.
+			extendedHotseatHistogram,
+			extendedHotseatTranslucentBackgroundHistogram,
+			extendedBackButtonHistogram)
 	}
 
 	// Histograms for window activation.
@@ -280,6 +312,14 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			return err
 		}
 
+		// Swipe the hotseat up from the hidden state to the extended state.
+		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
+			return err
+		}
+		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfExtended); err != nil {
+			return err
+		}
+
 		// Enter home launcher from in-app mode by gesture swipe up from shelf.
 		start := displayInfo.Bounds.BottomCenter()
 		startX, startY := tcc.ConvertLocation(start)
@@ -352,7 +392,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		})
 
 	// Save metrics data in file.
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed saving perf data in file: ", err)
 	}
 }

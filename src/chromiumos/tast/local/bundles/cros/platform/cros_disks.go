@@ -16,8 +16,8 @@ func init() {
 		Func: CrosDisks,
 		Desc: "Verifies CrosDisks' D-Bus API works",
 		Contacts: []string{
-			"benchan@chromium.org",  // Original autotest maintainer
-			"hidehiko@chromium.org", // Tast port author
+			"dats@chromium.org",
+			"fdegros@chromium.org",
 		},
 		Attr: []string{"group:mainline"},
 	})
@@ -25,5 +25,5 @@ func init() {
 
 func CrosDisks(ctx context.Context, s *testing.State) {
 	// Run series of tests. Please see crosdisks package for details.
-	crosdisks.RunTests(ctx, s)
+	crosdisks.RunBasicTests(ctx, s)
 }

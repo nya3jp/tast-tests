@@ -9,10 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
@@ -28,9 +27,9 @@ type Helper struct {
 	// Config contains a variety of platform-specific attributes.
 	Config *Config
 
-	// configDataDir is the full path to the data directory containing fw-testing-configs JSON files.
-	// Any tests requiring a Config should set configDataDir to s.DataPath(firmware.ConfigDir) during NewHelper.
-	configDataDir string
+	// cfgFilepath is the full path to the data directory containing fw-testing-configs JSON files.
+	// Any tests requiring a Config should set cfgFilepath to s.DataPath(firmware.ConfigFile) during NewHelper.
+	cfgFilepath string
 
 	// DUT is used for communicating with the device under test.
 	DUT *dut.DUT
@@ -38,6 +37,9 @@ type Helper struct {
 	// Model contains the DUT's model, as reported by the Platform RPC.
 	// Currently, this is based on cros_config / name.
 	Model string
+
+	// Reporter reports various info from the DUT.
+	Reporter *reporters.Reporter
 
 	// RPCClient is a direct client connection to the Tast gRPC server hosted on the DUT.
 	RPCClient *rpc.Client
@@ -60,10 +62,11 @@ type Helper struct {
 
 // NewHelper creates a new Helper object with info from testing.State.
 // For tests that do not use a certain Helper aspect (e.g. RPC or Servo), it is OK to pass null-values (nil or "").
-func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, configDataDir, servoHostPort string) *Helper {
+func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort string) *Helper {
 	return &Helper{
-		configDataDir: configDataDir,
+		cfgFilepath:   cfgFilepath,
 		DUT:           d,
+		Reporter:      reporters.New(d),
 		rpcHint:       rpcHint,
 		servoHostPort: servoHostPort,
 	}
@@ -127,20 +130,24 @@ func (h *Helper) CloseRPCConnection(ctx context.Context) error {
 	return nil
 }
 
-// RequirePlatform fetches the DUT's board and model from RPC and caches them, unless they have already been cached.
+// RequirePlatform fetches the DUT's board and model and caches them, unless they have already been cached.
 func (h *Helper) RequirePlatform(ctx context.Context) error {
-	if h.Board != "" {
-		return nil
+	if h.Board == "" {
+		board, err := h.Reporter.Board(ctx)
+		if err != nil {
+			return errors.Wrap(err, "getting DUT board")
+		}
+		h.Board = strings.ToLower(board)
 	}
-	if err := h.RequireRPCUtils(ctx); err != nil {
-		return errors.Wrap(err, "requiring RPC utils")
+	if h.Model == "" {
+		model, err := h.Reporter.Model(ctx)
+		// Ignore error, as not all boards have a model
+		if err == nil {
+			h.Model = strings.ToLower(model)
+		} else {
+			testing.ContextLogf(ctx, "Failed to get DUT model for board %s: %+v", h.Board, err)
+		}
 	}
-	platformResponse, err := h.RPCUtils.Platform(ctx, &empty.Empty{})
-	if err != nil {
-		return errors.Wrap(err, "during Platform rpc")
-	}
-	h.Board = strings.ToLower(platformResponse.Board)
-	h.Model = strings.ToLower(platformResponse.Model)
 	return nil
 }
 
@@ -152,11 +159,11 @@ func (h *Helper) RequireConfig(ctx context.Context) error {
 	if err := h.RequirePlatform(ctx); err != nil {
 		return errors.Wrap(err, "requiring DUT platform")
 	}
-	// configDataDir comes from testing.State, so it needs to be passed during NewHelper.
-	if h.configDataDir == "" {
-		return errors.New("cannot create firmware Config with a null Helper.configDataDir")
+	// cfgFilepath comes from testing.State, so it needs to be passed during NewHelper.
+	if h.cfgFilepath == "" {
+		return errors.New("cannot create firmware Config with a null Helper.cfgFilepath")
 	}
-	cfg, err := NewConfig(h.configDataDir, h.Board, h.Model)
+	cfg, err := NewConfig(h.cfgFilepath, h.Board, h.Model)
 	if err != nil {
 		return errors.Wrapf(err, "during NewConfig with board=%s, model=%s", h.Board, h.Model)
 	}

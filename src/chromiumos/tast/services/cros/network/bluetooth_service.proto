@@ -1,0 +1,28 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.network;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/network";
+
+service BluetoothService {
+  // SetBluetoothPowered enables/disables the Bluetooth device through dbus.
+  rpc SetBluetoothPowered(SetBluetoothPoweredRequest) returns (google.protobuf.Empty) {}
+  // GetBluetoothPowered returns the status of the bluetooth adapter.
+  rpc GetBluetoothPowered(google.protobuf.Empty) returns (GetBluetoothPoweredResponse) {}
+  // ValidateBluetoothFunctional checks to see whether the Bluetooth device is usable.
+  rpc ValidateBluetoothFunctional(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message SetBluetoothPoweredRequest {
+    bool powered = 1;
+}
+
+message GetBluetoothPoweredResponse {
+    bool powered = 1;
+}

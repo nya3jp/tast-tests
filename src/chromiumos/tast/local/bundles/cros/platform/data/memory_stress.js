@@ -10,12 +10,12 @@ function alloc(sizeMB, randomRatio) {
   // Using Float64Array as each element of Float64Array should consume 64
   // bits memory. Each elements of Uint32Array might consume 64 bits memory
   // on 64-bit architecture.
-  // Random array is uncompressable.
+  // Random array is uncompressible.
   const randomArray = new Float64Array(randomCount);
   for (let i = 0; i < randomArray.length; i++) {
     randomArray[i] = Math.random();
   }
-  // Constant array is compressable.
+  // Constant array is compressible.
   const constCount = totalCount * (1 - randomRatio);
   const constArray = new Float64Array(constCount);
   for (let i = 0; i < constArray.length; i++) {
@@ -30,7 +30,7 @@ function main() {
   const randomRatio = parseFloat(url.searchParams.get('ratio'));
 
   const startTime = new Date();
-  // Assigns the content to docuement to avoid optimization of unused data.
+  // Assigns the content to document to avoid optimization of unused data.
   document.out = alloc(allocMb, randomRatio);
   const ellapse = (new Date() - startTime) / 1000;
   // Shows the loading time for manual test.

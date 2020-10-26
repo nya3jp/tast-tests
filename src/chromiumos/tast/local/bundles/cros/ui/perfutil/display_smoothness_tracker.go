@@ -6,7 +6,6 @@ package perfutil
 
 import (
 	"context"
-	"fmt"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -16,6 +15,13 @@ import (
 type DisplaySmoothnessTracker struct {
 	// Ids of the displays that have display smoothness tracked.
 	displayIDs map[string]bool
+}
+
+// DisplayFrameData  holds the collected display frame data.
+type DisplayFrameData struct {
+	FramesExpected int `json:"framesExpected"`
+	FramesProduced int `json:"framesProduced"`
+	JankCount      int `json:"jankCount"`
 }
 
 // displayIDString returns a string representing the given display id.
@@ -46,9 +52,8 @@ func (t *DisplaySmoothnessTracker) Start(ctx context.Context, tconn *chrome.Test
 		return errors.Errorf("display smoothness already tracked for %q", displayIDString(displayID))
 	}
 
-	err := tconn.EvalPromise(ctx,
-		fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.startSmoothnessTracking)(%q)`, displayID),
-		nil)
+	err := tconn.Call(ctx, nil,
+		`tast.promisify(chrome.autotestPrivate.startSmoothnessTracking)`, displayID)
 	if err != nil {
 		return err
 	}
@@ -60,22 +65,21 @@ func (t *DisplaySmoothnessTracker) Start(ctx context.Context, tconn *chrome.Test
 // Stop stops tracking for the given display id and report the smoothness
 // since the relevant Start() call. Primary display is used if the given display
 // id is empty.
-func (t *DisplaySmoothnessTracker) Stop(ctx context.Context, tconn *chrome.TestConn, displayID string) (float64, error) {
+func (t *DisplaySmoothnessTracker) Stop(ctx context.Context, tconn *chrome.TestConn, displayID string) (*DisplayFrameData, error) {
 	_, found := t.displayIDs[displayID]
 	if !found {
-		return 0, errors.Errorf("display smoothness not tracked for %q", displayIDString(displayID))
+		return nil, errors.Errorf("display smoothness not tracked for %q", displayIDString(displayID))
 	}
 
-	var ds float64
-	err := tconn.EvalPromise(ctx,
-		fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.stopSmoothnessTracking)(%q)`, displayID),
-		&ds)
+	var dsData DisplayFrameData
+	err := tconn.Call(ctx, &dsData,
+		`tast.promisify(chrome.autotestPrivate.stopSmoothnessTracking)`, displayID)
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
 
 	delete(t.displayIDs, displayID)
-	return ds, nil
+	return &dsData, nil
 }
 
 // NewDisplaySmoothnessTracker creates a DisplaySmoothnessTracker.

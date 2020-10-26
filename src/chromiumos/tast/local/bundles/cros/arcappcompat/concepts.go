@@ -9,12 +9,13 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // ClamshellTests are placed here.
@@ -40,6 +41,7 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("elm")),
 		Params: []testing.Param{{
 			Val:               clamshellTestsForConcepts,
 			ExtraSoftwareDeps: []string{"android_p"},

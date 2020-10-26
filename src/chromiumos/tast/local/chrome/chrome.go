@@ -77,6 +77,9 @@ const (
 	BlankURL = "about:blank"
 )
 
+// Virtual keyboard background page url.
+const vkBackgroundPageURL = "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background.html"
+
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
 var loginPollOpts = &testing.PollOptions{Interval: 10 * time.Millisecond}
 
@@ -86,7 +89,8 @@ var locked = false
 // prePackages lists packages containing preconditions that are allowed to call Lock and Unlock.
 var prePackages = []string{
 	"chromiumos/tast/local/arc",
-	"chromiumos/tast/local/bundles/cros/policy/pre",
+	"chromiumos/tast/local/policyutil/pre",
+	"chromiumos/tast/local/bundles/cros/camera/testutil",
 	"chromiumos/tast/local/bundles/cros/ui/cuj",
 	"chromiumos/tast/local/bundles/crosint/pita/pre",
 	"chromiumos/tast/local/bundles/pita/pita/pre",
@@ -150,6 +154,13 @@ type Option func(c *Chrome)
 // See https://crbug.com/1076660 for more details.
 func EnableWebAppInstall() Option {
 	return func(c *Chrome) { c.installWebApp = true }
+}
+
+// VKEnabled returns an Option that force enable virtual keyboard.
+// VKEnabled option appends "--enable-virtual-keyboard" to chrome initialization and also checks VK connection after user login.
+// Note: This option can not be used by ARC tests as some boards block VK background from presence.
+func VKEnabled() Option {
+	return func(c *Chrome) { c.vkEnabled = true }
 }
 
 // Auth returns an Option that can be passed to New to configure the login credentials used by Chrome.
@@ -315,6 +326,7 @@ type Chrome struct {
 	keepState              bool
 	deferLogin             bool
 	loginMode              loginMode
+	vkEnabled              bool
 	skipOOBEAfterLogin     bool // skip OOBE post user login
 	installWebApp          bool // auto install essential apps after user login
 	region                 string
@@ -340,8 +352,10 @@ type Chrome struct {
 	signinExtDir  string // dir containing signin test profile extension
 	signinExtConn *Conn  // connection to signin profile test extension
 
-	watcher   *browserWatcher // tries to catch Chrome restarts
-	logMaster *jslog.Master   // collects JS console output
+	tracingStarted bool // true when tracing is started
+
+	watcher       *browserWatcher   // tries to catch Chrome restarts
+	logAggregator *jslog.Aggregator // collects JS console output
 }
 
 // User returns the username that was used to log in to Chrome.
@@ -376,13 +390,15 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		gaiaID:             defaultGaiaID,
 		keepState:          false,
 		loginMode:          fakeLogin,
+		vkEnabled:          false,
 		skipOOBEAfterLogin: true,
 		installWebApp:      false,
 		region:             "us",
 		policyEnabled:      false,
 		enroll:             false,
 		breakpadTestMode:   true,
-		logMaster:          jslog.NewMaster(),
+		tracingStarted:     false,
+		logAggregator:      jslog.NewAggregator(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -460,6 +476,23 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
+	// VK uses different extension instance in login profile and user profile.
+	// BackgroundConn will wait until the background connection is unique.
+	if c.vkEnabled {
+		// Background target from login persists for a few seconds, causing 2 background targets.
+		// Polling until connected to the unique target.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			bconn, err := c.NewConnForTarget(ctx, MatchTargetURL(vkBackgroundPageURL))
+			if err != nil {
+				return err
+			}
+			bconn.Close()
+			return nil
+		}, &testing.PollOptions{Timeout: 60 * time.Second, Interval: 1 * time.Second}); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for unique virtual keyboard background target")
+		}
+	}
+
 	toClose = nil
 	return c, nil
 }
@@ -531,9 +564,9 @@ func (c *Chrome) Close(ctx context.Context) error {
 	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
-		c.logMaster.Save(filepath.Join(dir, "jslog.txt"))
+		c.logAggregator.Save(filepath.Join(dir, "jslog.txt"))
 	}
-	c.logMaster.Close()
+	c.logAggregator.Close()
 
 	// As the chronos home directory is cleared during chrome.New(), we
 	// should manually move these crashes from the user crash directory to
@@ -594,11 +627,18 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		testing.ContextLog(ctx, "Not all targets finished closing: ", err)
 	}
 
-	vkEnabled := false
-	for _, arg := range c.extraArgs {
-		if arg == "--enable-virtual-keyboard" {
-			vkEnabled = true
-			break
+	// If the test case started the tracing but somehow StopTracing isn't called,
+	// the tracing should be stopped in ResetState.
+	if c.tracingStarted {
+		// As noted in the comment of c.StartTracing, the tracingStarted flag is
+		// marked before actually StartTracing request is sent because
+		// StartTracing's failure doesn't necessarily mean that tracing isn't
+		// started. So at this point, c.StopTracing may fail if StartTracing failed
+		// and tracing actually didn't start. Because of that, StopTracing's error
+		// wouldn't cause an error of ResetState, but simply reporting the error
+		// message.
+		if _, err := c.StopTracing(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
 		}
 	}
 
@@ -614,10 +654,27 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		return errors.Wrap(err, "failed to get test API connection")
 	}
 
-	if vkEnabled {
-		// calling the method directly to avoid vkb/chrome circular imports
+	if c.vkEnabled {
+		// Calling the method directly to avoid vkb/chrome circular imports.
 		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.inputMethodPrivate.hideInputView)()", nil); err != nil {
 			return errors.Wrap(err, "failed to hide virtual keyboard")
+		}
+
+		// Waiting until virtual keyboard disappears from a11y tree.
+		var isVKShown bool
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := tconn.Eval(ctx, `
+				tast.promisify(chrome.automation.getDesktop)().then(
+					root => {return !!(root.find({role: 'rootWebArea', name: 'Chrome OS Virtual Keyboard'}))}
+				)`, &isVKShown); err != nil {
+				return errors.Wrap(err, "failed to hide virtual keyboard")
+			}
+			if isVKShown {
+				return errors.New("virtual keyboard is still visible")
+			}
+			return nil
+		}, &testing.PollOptions{Interval: 3 * time.Second, Timeout: 30 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed to wait for virtual keyboard to be invisible")
 		}
 	}
 
@@ -629,6 +686,11 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		if err := tconn.Eval(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.mouseRelease)(%q)`, button), nil); err != nil {
 			return errors.Wrapf(err, "failed to release %s mouse button", button)
 		}
+	}
+
+	// Clear all notifications in case a test generated some but did not close them.
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
+		return errors.Wrap(err, "failed to clear notifications")
 	}
 
 	// Disable the automation feature. Otherwise, automation tree updates and
@@ -746,7 +808,6 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--ash-disable-system-sounds",                // Disable system startup sound.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
-		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
 		"--no-startup-window",                        // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
@@ -765,6 +826,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		args = append(args, "--disable-features=DefaultWebAppInstallation")
 	}
 
+	if c.vkEnabled {
+		args = append(args, "--enable-virtual-keyboard")
+	}
+
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	}
@@ -773,6 +838,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	}
 	if len(c.signinExtDir) > 0 {
 		args = append(args, "--load-signin-profile-test-extension="+c.signinExtDir)
+		args = append(args, "--whitelisted-extension-id="+c.signinExtID) // Allowlists the signin profile's test extension to access all Chrome APIs.
+	} else {
+		args = append(args, "--whitelisted-extension-id="+c.testExtID) // Allowlists the test extension to access all Chrome APIs.
 	}
 	if c.policyEnabled {
 		args = append(args, "--profile-requires-policy=true")
@@ -801,7 +869,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 			// Do not sync the locale with ARC.
 			"--arc-disable-locale-sync",
 			// Do not update Play Store automatically.
-			"--arc-play-store-auto-update=off")
+			"--arc-play-store-auto-update=off",
+			// Make 1 Android pixel always match 1 Chrome devicePixel.
+			"--force-remote-shell-scale=")
 		if !c.restrictARCCPU {
 			args = append(args,
 				// Disable CPU restrictions to let tests run faster
@@ -949,7 +1019,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 // newConnInternal is a convenience function that creates a new Conn connected to the specified target.
 // url is only used for logging JavaScript console messages.
 func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
-	return NewConn(ctx, c.devsess, id, c.logMaster, url, c.chromeErr)
+	return NewConn(ctx, c.devsess, id, c.logAggregator, url, c.chromeErr)
 }
 
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
@@ -1265,6 +1335,15 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	case fakeLogin, gaiaLogin:
 		if err := c.loginUser(ctx); err != nil {
 			return err
+		}
+		// Clear all notifications after logging in so none will be shown at the beginning of tests.
+		// TODO(crbug/1079235): move this outside of the switch once the test API is available in guest mode.
+		tconn, err := c.TestAPIConn(ctx)
+		if err != nil {
+			return err
+		}
+		if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
+			return errors.Wrap(err, "failed to clear notifications")
 		}
 	case guestLogin:
 		if err := c.logInAsGuest(ctx); err != nil {
@@ -1593,12 +1672,22 @@ func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool,
 // categories must be prefixed with "disabled-by-default-android ", e.g. for the
 // gfx category, use "disabled-by-default-android gfx", including the space.
 func (c *Chrome) StartTracing(ctx context.Context, categories []string) error {
+	// Note: even when StartTracing fails, it might be due to the case that the
+	// StartTracing request is successfully sent to the browser and tracing
+	// collection has started, but the context deadline is exceeded before Tast
+	// receives the reply.  Therefore, tracingStarted flag is marked beforehand.
+	c.tracingStarted = true
 	return c.devsess.StartTracing(ctx, categories)
 }
 
 // StopTracing stops trace collection and returns the collected trace events.
 func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
-	return c.devsess.StopTracing(ctx)
+	traces, err := c.devsess.StopTracing(ctx)
+	if err != nil {
+		return nil, err
+	}
+	c.tracingStarted = false
+	return traces, nil
 }
 
 // SaveTraceToFile marshals the given trace into a binary protobuf and saves it

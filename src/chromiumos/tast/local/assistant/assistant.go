@@ -45,14 +45,16 @@ func Disable(ctx context.Context, tconn *chrome.TestConn) error {
 // Cleanup stops the Google Assistant service so other tests are not impacted.
 // If a failure happened, we make a screenshot beforehand so the Assistant UI
 // is visible in the screenshot.
-func Cleanup(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) {
-	if s.HasError() {
-		screenshot.CaptureChrome(ctx, cr, filepath.Join(s.OutDir(), "screenshot.png"))
+func Cleanup(ctx context.Context, hasError func() bool, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+	if hasError() {
+		outDir, ok := testing.ContextOutDir(ctx)
+		if !ok {
+			return errors.New("outdir not available")
+		}
+		screenshot.CaptureChrome(ctx, cr, filepath.Join(outDir, "screenshot.png"))
 	}
 
-	if err := Disable(ctx, tconn); err != nil {
-		s.Fatal("Failed to disable Assistant: ", err)
-	}
+	return Disable(ctx, tconn)
 }
 
 // EnableAndWaitForReady brings up Google Assistant service, waits for
@@ -79,6 +81,16 @@ func SetContextEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool
 	return setPrefValue(ctx, tconn, "settings.voice_interaction.context.enabled", enabled)
 }
 
+// SetVoiceInteractionConsentValue enables/disables the consent value for Assistant voice interaction.
+func SetVoiceInteractionConsentValue(ctx context.Context, tconn *chrome.TestConn, value int) error {
+	return setPrefValue(ctx, tconn, "settings.voice_interaction.activity_control.consent_status", value)
+}
+
+// setPrefValue is a helper function to set value for Assistant related preferences.
+func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, value interface{}) error {
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, value)
+}
+
 // ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.
 func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := tconn.Call(ctx, nil, `async () => {
@@ -95,11 +107,6 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return nil
-}
-
-// setPrefValue is a helper function to set value for Assistant related preferences.
-func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, enabled bool) error {
-	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, enabled)
 }
 
 // VerboseLogging is a helper function passed into chrome.New which will:

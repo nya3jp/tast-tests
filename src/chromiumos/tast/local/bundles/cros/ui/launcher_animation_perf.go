@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
 	lacroslauncher "chromiumos/tast/local/lacros/launcher"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -38,16 +37,15 @@ func init() {
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Val: lacros.ChromeTypeChromeOS,
-			Pre: ash.LoggedInWith100DummyApps(),
+			Pre: ash.LoggedInWith100FakeApps(),
 		}, {
 			Name:              "skia_renderer",
 			Val:               lacros.ChromeTypeChromeOS,
-			Pre:               ash.LoggedInWith100DummyAppsWithSkiaRenderer(),
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("nocturne", "krane")),
+			Pre:               ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
 		}, {
 			Name:      "lacros",
 			Val:       lacros.ChromeTypeLacros,
-			Pre:       lacroslauncher.StartedByDataWith100DummyApps(),
+			Pre:       lacroslauncher.StartedByDataWith100FakeApps(),
 			ExtraData: []string{lacroslauncher.DataArtifact},
 			// TODO(crbug.com/1082608): Use ExtraSoftwareDeps here instead.
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
@@ -154,8 +152,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		}
 		// Maximize all windows to ensure a consistent state.
 		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-			_, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventMaximize)
-			return err
+			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal)
 		}); err != nil {
 			s.Fatal("Failed to maximize windows: ", err)
 		}
@@ -169,11 +166,6 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to close the connection to chrome")
 		}
 		currentWindows = windows
-		// The best effort to stabilize CPU usage. This may or
-		// may not be satisfied in time.
-		if err := cpu.WaitUntilIdle(ctx); err != nil {
-			s.Error("Failed to wait for system UI to be stabilized: ", err)
-		}
 
 		for _, at := range []launcherAnimationType{animationTypePeeking, animationTypeHalf, animationTypeFullscreenSearch, animationTypeFullscreenAllApps} {
 			// Wait for 1 seconds to stabilize the result. Note that this doesn't
@@ -206,7 +198,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", currentWindows)))
 		}
 	}
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

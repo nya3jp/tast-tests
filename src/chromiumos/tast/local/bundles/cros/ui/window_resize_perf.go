@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -83,17 +82,14 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			continue
 		}
 		id0 := ws[0].ID
-		if _, err = ash.SetWindowState(ctx, tconn, id0, ash.WMEventSnapLeft); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, id0, ash.WindowStateLeftSnapped); err != nil {
 			s.Fatalf("Failed to set the state of window (%d): %v", id0, err)
 		}
 		if len(ws) > 1 {
-			if _, err = ash.SetWindowState(ctx, tconn, ws[1].ID, ash.WMEventSnapRight); err != nil {
-				s.Fatalf("Failed to set the state of window (%d): %v", ws[1].ID, err)
+			id1 := ws[1].ID
+			if err := ash.SetWindowStateAndWait(ctx, tconn, id1, ash.WindowStateRightSnapped); err != nil {
+				s.Fatalf("Failed to set the state of window (%d): %v", id1, err)
 			}
-		}
-
-		if err = cpu.WaitUntilIdle(ctx); err != nil {
-			s.Fatal("Failed to wait: ", err)
 		}
 
 		suffix := fmt.Sprintf("%dwindows", numWindows)
@@ -156,7 +152,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			perfutil.StoreAll(perf.SmallerIsBetter, "ms", suffix))
 	}
 
-	if err := runner.Values().Save(s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }

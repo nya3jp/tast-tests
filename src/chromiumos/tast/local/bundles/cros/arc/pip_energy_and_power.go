@@ -10,17 +10,23 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
+
+type arcPIPEnergyAndPowerTestParams struct {
+	activityName string
+	bigPIP       bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -33,10 +39,16 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "small",
-			Val:  false,
+			Val:  arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false},
 		}, {
 			Name: "big",
-			Val:  true,
+			Val:  arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true},
+		}, {
+			Name: "small_blend",
+			Val:  arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false},
+		}, {
+			Name: "big_blend",
+			Val:  arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true},
 		}},
 	})
 }
@@ -54,7 +66,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	if err := ash.HideAllNotifications(ctx, tconn); err != nil {
+	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to hide notifications: ", err)
 	}
 
@@ -63,7 +75,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	d, err := ui.NewDevice(ctx, a)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
@@ -79,16 +91,23 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the selected display mode of the primary display: ", err)
 	}
 
+	kw, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard event writer: ", err)
+	}
+	defer kw.Close()
+
 	timeline, err := perf.NewTimeline(ctx, power.TestMetrics())
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
 
-	if err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		s.Fatal("Failed to wait for CPU to cool down: ", err)
 	}
 
-	act, err := arc.NewActivity(a, "org.chromium.arc.testapp.pictureinpicturevideo", ".VideoActivity")
+	params := s.Param().(arcPIPEnergyAndPowerTestParams)
+	act, err := arc.NewActivity(a, "org.chromium.arc.testapp.pictureinpicturevideo", params.activityName)
 	if err != nil {
 		s.Fatal("Failed to create activity: ", err)
 	}
@@ -109,14 +128,14 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		var err error
 		pipWindow, err = ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.State == ash.WindowStatePIP })
 		if err != nil {
-			return errors.Wrap(err, "The PIP window hasn't been created yet")
+			return errors.Wrap(err, "the PIP window hasn't been created yet")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for PIP window: ", err)
 	}
 
-	if s.Param().(bool) { // Branch for arc.PIPEnergyAndPower.big.
+	if params.bigPIP {
 		if err := mouse.Move(ctx, tconn, pipWindow.TargetBounds.CenterPoint(), time.Second); err != nil {
 			s.Fatal("Failed to move mouse to PIP window: ", err)
 		}
@@ -161,7 +180,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		if 5*pipWindow.TargetBounds.Width <= 2*info.WorkArea.Width && 5*pipWindow.TargetBounds.Height <= 2*info.WorkArea.Height {
 			s.Fatalf("Expected big PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
 		}
-	} else { // Branch for arc.PIPEnergyAndPower.small.
+	} else {
 		if 10*pipWindow.TargetBounds.Width >= 3*info.WorkArea.Width && 10*pipWindow.TargetBounds.Height >= 3*info.WorkArea.Height {
 			s.Fatalf("Expected small PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
 		}
@@ -173,10 +192,14 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	// Wait for chrome://settings to be quiescent. We want data that we
-	// could extrapolate, as in a steady state that could last for hours.
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
+	}
+
+	// Tab away from the search box of chrome://settings, so that
+	// there will be no blinking cursor.
+	if err := kw.Accel(ctx, "Tab"); err != nil {
+		s.Fatal("Failed to send Tab: ", err)
 	}
 
 	if err := timeline.Start(ctx); err != nil {
