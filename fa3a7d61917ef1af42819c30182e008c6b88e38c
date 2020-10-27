@@ -22,6 +22,30 @@
       },
       "revId": "fa3a7d61917ef1af42819c30182e008c6b88e38c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b06f664_81ff8045",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-27T22:53:29Z",
+      "side": 1,
+      "message": "this can be in a follow-up CL",
+      "parentUuid": "44a7b27f_bd0328b3",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "fa3a7d61917ef1af42819c30182e008c6b88e38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
