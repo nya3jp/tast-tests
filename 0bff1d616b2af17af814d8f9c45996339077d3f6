@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17bcf6b0_e4394f6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-27T16:32:39Z",
+      "side": 1,
+      "message": "arc.NativeCrash* too",
+      "range": {
+        "startLine": 16,
+        "startChar": 54,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "0bff1d616b2af17af814d8f9c45996339077d3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d6236f_5beab58f",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-27T16:32:39Z",
+      "side": 1,
+      "message": "great example case!",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 48
+      },
+      "revId": "0bff1d616b2af17af814d8f9c45996339077d3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
