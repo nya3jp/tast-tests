@@ -164,7 +164,6 @@ func waitUntilPasswordDialogExists(ctx context.Context, files *filesapp.FilesApp
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		// Get reference to the current password dialog.
 		params := ui.FindParams{
-			Name: "Password",
 			Role: ui.RoleTypeDialog,
 		}
 
