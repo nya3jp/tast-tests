@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65827d8e_17c823da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-10-27T16:01:34Z",
+      "side": 1,
+      "message": "I guess you also want to delete src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/scanning/doc.go.",
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
