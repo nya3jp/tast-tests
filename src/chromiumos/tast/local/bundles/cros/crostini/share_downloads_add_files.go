@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -203,4 +204,25 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 		}
 	})
 
+	s.Run(ctx, "test_permission", func(ctx context.Context, s *testing.State) {
+		const (
+			testFile   = "test.sh"
+			testString = "ls"
+		)
+
+		// Add a file in Downloads.
+		filePath := filepath.Join(filesapp.DownloadPath, testFile)
+		if err := ioutil.WriteFile(filePath, []byte(testString), 0644); err != nil {
+			s.Fatal("Failed to create file in Downloads: ", err)
+		}
+
+		result, err := cont.Command(ctx, "ls", "-l", filepath.Join(sharedfolders.MountPathDownloads, testFile)).Output()
+		if err != nil {
+			s.Fatal("Failed to run './test.sh' in container: ", err)
+		}
+		permission := strings.Split(string(result), " ")[0]
+		if strings.Contains(permission, "x") {
+			s.Fatalf("Failed to verify the permission of shared file, got %s, want %s", permission, "-rw-rw----")
+		}
+	})
 }
