@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c30af376_9a4b1bd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-27T14:06:15Z",
+      "side": 1,
+      "message": "Tests are almost always passing, only known issues unrelated to the test itself remain.\n\nhttps://tastboard.corp.google.com/test/policy.PopupsForURLCheck.default\nhttps://tastboard.corp.google.com/test/policy.PopupsForURLCheck.blocklist\nhttps://tastboard.corp.google.com/test/policy.PopupsForURLCheck.allowlist",
+      "revId": "ed3cd43423215d38cd31a9f6acb6ea5145d2282d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
