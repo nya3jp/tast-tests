@@ -16,6 +16,29 @@
       "message": "PTAL, thanks!",
       "revId": "588891c728f513f74f6d1f0aa24cda6012eba936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2363d78b_2a5802d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-27T22:00:04Z",
+      "side": 1,
+      "message": "Although we shouldn\u0027t check the runtime version (and use parameter when needed), I think this is a good case where checking runtime version makes sense. e.g:\n\n  ver, err :\u003d SDKVersion()\n  # check error\n  switch sdkVer {\n    case SDKP:\n      // xxx\n    case SDKR:\n      // yyy\n    default:\n      // error\n  }\n\n\nSearch for SDKVersion for other examples",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 41
+      },
+      "revId": "588891c728f513f74f6d1f0aa24cda6012eba936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
