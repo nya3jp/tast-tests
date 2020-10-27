@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a7b27f_bd0328b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-27T16:16:43Z",
+      "side": 1,
+      "message": "While you\u0027re here could you switch this over to using the board software deps? https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1122066#c6\n\nmodel names are highly error-prone and break based on internal details (see https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1124372)",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "fa3a7d61917ef1af42819c30182e008c6b88e38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
