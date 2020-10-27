@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f47a7b_052282ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-10-27T05:12:05Z",
+      "side": 1,
+      "message": "LGTM. I think you will need owner\u0027s approval.",
+      "revId": "d03625c16d516faaa9a4ac6e5c5f3281db423d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f992b33f_493b5d2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gralloc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-10-27T05:12:05Z",
+      "side": 1,
+      "message": "These variables can be defined inside Gralloc. This might expose the variables.",
+      "revId": "d03625c16d516faaa9a4ac6e5c5f3281db423d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
