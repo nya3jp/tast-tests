@@ -9,6 +9,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -22,6 +23,9 @@ func init() {
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		// Do not use VKEnabled as precondition which force enables virtual keyboard.
+		// A11y virtual keyboard will be enabled via accessibility prefs in this test.
+		Pre: pre.VKEnabledClamshell(),
 		Params: []testing.Param{{
 			Name:              "stable",
 			ExtraHardwareDeps: pre.InputsStableModels,
@@ -34,13 +38,7 @@ func init() {
 }
 
 func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
-	// Do not use --enable-virtual-keyboard as it will be enabled via
-	// accessibility prefs.
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -49,25 +47,26 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	shown, err := vkb.IsShown(ctx, tconn)
+	its, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Failed to check if the virtual keyboard is initially hidden: ", err)
+		s.Fatal("Fail to launch inputs test server: ", err)
 	}
-	if shown {
-		s.Fatal("Virtual keyboard is shown, but expected it to be hidden")
+	defer its.Close()
+
+	inputField := testserver.TextAreaInputField
+
+	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 	}
 
-	s.Log("Enabling the accessibility keyboard")
-	if err := vkb.EnableA11yVirtualKeyboard(ctx, tconn, true); err != nil {
-		s.Fatal("Failed to enable the accessibility keyboard: ", err)
-	}
+	defer func() {
+		if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+			s.Log("Failed to hide virtual keyboard: ", err)
+		}
+	}()
 
-	if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
-		s.Fatal("Failed to show the virtual keyboard: ", err)
-	}
-
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard ready: ", err)
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for virtual keyboard shown and locationed: ", err)
 	}
 
 	// Check that the keyboard has modifier and tab keys.
