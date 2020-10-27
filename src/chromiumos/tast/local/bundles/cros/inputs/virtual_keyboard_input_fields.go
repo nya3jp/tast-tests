@@ -26,7 +26,6 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          pre.VKEnabled(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -61,7 +60,11 @@ func init() {
 }
 
 func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -69,8 +72,8 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 	}
 
 	// Get current input method. Change IME for testing and revert it back in teardown.
-	imeCode := string(s.Param().(ime.InputMethodCode))
-	originalInputMethod, err := vkb.GetCurrentInputMethod(ctx, tconn)
+	imeCode := ime.ImePrefix + string(s.Param().(ime.InputMethodCode))
+	originalInputMethod, err := ime.GetCurrentInputMethod(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get current input method: ", err)
 	} else if originalInputMethod != imeCode {
@@ -79,17 +82,17 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 		ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 
+		s.Logf("Set current input method to: %s", imeCode)
+		if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
+			s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
+		}
+
 		defer func(ctx context.Context) {
 			s.Logf("Changing back input method to: %s", originalInputMethod)
-			if err := vkb.SetCurrentInputMethod(ctx, tconn, originalInputMethod); err != nil {
+			if err := ime.SetCurrentInputMethod(ctx, tconn, originalInputMethod); err != nil {
 				s.Logf("Failed to set input method to %s: %v", originalInputMethod, err)
 			}
 		}(cleanupCtx)
-
-		s.Logf("Set current input method to: %s", imeCode)
-		if err := vkb.SetCurrentInputMethod(ctx, tconn, imeCode); err != nil {
-			s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
-		}
 
 		// To install a new input method, it requires downloading and installing resources, it can take up to 10s.
 		// TODO(b/157686038): A better solution to identify decoder status.
@@ -261,10 +264,6 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 					s.Log("Failed to hide virtual keyboard: ", err)
 				}
 			}()
-
-			if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-				s.Fatal("Failed to wait for virtual keyboard shown and locationed: ", err)
-			}
 
 			if err := vkb.TapKeys(ctx, tconn, subtest.keySeq); err != nil {
 				s.Fatalf("Failed to tap keys %v: %v", subtest.keySeq, err)

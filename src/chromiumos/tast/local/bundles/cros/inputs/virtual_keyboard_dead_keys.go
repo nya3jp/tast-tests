@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -44,7 +45,6 @@ func init() {
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          pre.VKEnabled(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -116,7 +116,11 @@ func init() {
 func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(deadKeysTestCase)
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -150,7 +154,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	defer conn.Close()
 
 	s.Log("Set input method to: ", testCase.inputMethodID)
-	if err := vkb.SetCurrentInputMethod(ctx, tconn, testCase.inputMethodID); err != nil {
+	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ImePrefix+testCase.inputMethodID); err != nil {
 		s.Fatalf("Failed to set input method to %q: %v", testCase.inputMethodID, err)
 	}
 
@@ -175,7 +179,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Wait for virtual keyboard shown up")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
 	}
 	defer vkb.HideVirtualKeyboard(ctx, tconn)

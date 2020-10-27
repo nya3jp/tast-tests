@@ -88,7 +88,7 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the input element: ", err)
 	}
 
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for virtual keyboard shown: ", err)
 	}
 

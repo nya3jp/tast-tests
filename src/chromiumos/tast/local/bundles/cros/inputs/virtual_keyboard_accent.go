@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -71,21 +72,6 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
-	if err != nil {
-		s.Fatalf("Failed to find input element %s: %v", identifier, err)
-	}
-	defer element.Release(ctx)
-
-	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
-		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
-	}
-
-	s.Log("Waiting for the virtual keyboard to render buttons")
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
-
 	kconn, err := vkb.UIConn(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to create connection to virtual keyboard UI: ", err)
@@ -95,14 +81,24 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	// The input method ID is from:
 	// src/chrome/browser/resources/chromeos/input_method/google_xkb_manifest.json
 	const (
-		inputMethodID = "xkb:fr::fra"
+		inputMethodID = string(ime.INPUTMETHOD_XKB_FR_FRA)
 		keyName       = "e"
 		accentKeyName = "é"
 		languageLabel = "FR"
 	)
 
-	if err := vkb.SetCurrentInputMethod(ctx, tconn, inputMethodID); err != nil {
+	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ImePrefix+inputMethodID); err != nil {
 		s.Fatal("Failed to set input method: ", err)
+	}
+
+	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
+	if err != nil {
+		s.Fatalf("Failed to find input element %s: %v", identifier, err)
+	}
+	defer element.Release(ctx)
+
+	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
+		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 
 	params := ui.FindParams{

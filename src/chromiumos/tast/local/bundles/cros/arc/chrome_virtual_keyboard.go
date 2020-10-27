@@ -105,12 +105,10 @@ func chromeVirtualKeyboardBasicEditingTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
+
 	if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
 		s.Fatal("Failed to wait for the IME decoder is ready: ", err)
 	}
@@ -204,11 +202,8 @@ func chromeVirtualKeyboardFocusChangeTest(
 	}
 
 	s.Log("Waiting for the virtual keyboard to be ready")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
 	// The virtual keyboard should keep showing when the focus is moved between the text fields programmatically.
@@ -243,12 +238,10 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := field1.Click(ctx); err != nil {
 		s.Fatal("Failed to click the field: ", err)
 	}
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
+
 	s.Log("Clicking the button to hide the virtual keyboard")
 	button3 := d.Object(ui.ID(buttonID3))
 	if err := button3.Click(ctx); err != nil {
@@ -301,11 +294,8 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 
 	// No need to wait for decoder enabled because the decoder won't be enabled on TYPE_NULL field.
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
 	keyDownLabel := d.Object(ui.ID(lastKeyDownLabelID))
@@ -371,11 +361,8 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	s.Log("Waiting for the virtual keyboard to be ready")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
 	// Showing the normal virtual keyboard should push up the view.
@@ -460,11 +447,8 @@ func chromeVirtualKeyboardRotationTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
 	// Chrome OS virtual keyboard is shown and ready. Let's rotate the device.
