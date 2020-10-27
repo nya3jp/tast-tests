@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
@@ -24,7 +25,7 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Pre:          pre.User,
 	})
 }
@@ -37,6 +38,7 @@ func ShowLogoutButtonInTray(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	for _, param := range []struct {
 		name       string
