@@ -46,6 +46,30 @@
       },
       "revId": "31779fa8fb0799a78bfcf7a071491efa4105ae06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8b750f_cd5b52fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-27T21:52:14Z",
+      "side": 1,
+      "message": "I think people will just keep adding to the list instead of fixing the BIOS. Which makes the test somewhat pointless. How do we ensure this list does not grow? Should we leave a strong worded comment? Should we add an OWNERs file?",
+      "parentUuid": "973a17e3_093b5008",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "31779fa8fb0799a78bfcf7a071491efa4105ae06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
