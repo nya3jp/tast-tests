@@ -22,10 +22,24 @@ func init() {
 		},
 		SoftwareDeps: []string{"tablet_mode"},
 		Attr:         []string{"group:mainline"},
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel(
-			"ezkinil", // TODO(b/162258095): Ezkinil lab DUTs have Qualcomm chip
-			"dalboz",  // TODO(b/162258095): Dalboz lab DUTs have Qualcomm chip
-		)),
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(
+					"ezkinil",                                                                             // TODO(b/162258095): Ezkinil lab DUTs have Qualcomm chip
+					"dalboz",                                                                              // TODO(b/162258095): Dalboz lab DUTs have Qualcomm chip
+					"bard", "ekko", "sona", "syndra", "electro", "ampton", "dood", "garg360", "phaser360", // TODO(b/171737478): Re-enable once models have been audited/fixed.
+				)),
+			},
+			{
+				Name:      "informational",
+				ExtraAttr: []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(
+					"ezkinil",                                                                             // TODO(b/162258095): Ezkinil lab DUTs have Qualcomm chip
+					"dalboz",                                                                              // TODO(b/162258095): Dalboz lab DUTs have Qualcomm chip
+					"bard", "ekko", "sona", "syndra", "electro", "ampton", "dood", "garg360", "phaser360", // TODO(b/171737478): Re-enable once models have been audited/fixed.
+				)),
+			},
+		},
 	})
 }
 
