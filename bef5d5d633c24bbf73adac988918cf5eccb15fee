@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24effab4_fc0d3e73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-27T18:16:17Z",
+      "side": 1,
+      "message": "You can use the const testChannel here",
+      "range": {
+        "startLine": 85,
+        "startChar": 78,
+        "endLine": 85,
+        "endChar": 79
+      },
+      "revId": "bef5d5d633c24bbf73adac988918cf5eccb15fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
