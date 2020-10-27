@@ -33,6 +33,24 @@
       "message": "These variables can be defined inside Gralloc. This might expose the variables.",
       "revId": "d03625c16d516faaa9a4ac6e5c5f3281db423d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77cea24d_553bea52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gralloc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-27T05:30:53Z",
+      "side": 1,
+      "message": "IIUC, Go exports symbols when they start with a capital letter. Although it is true that there\u0027s no reason for these to be defined here.",
+      "parentUuid": "f992b33f_493b5d2a",
+      "revId": "d03625c16d516faaa9a4ac6e5c5f3281db423d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
