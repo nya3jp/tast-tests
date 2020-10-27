@@ -92,10 +92,7 @@ func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 
 			// The Security and sign-in page is password protected. It asks for the password in a dialog.
-			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeDialog,
-				Name: "Confirm your password",
-			}, 15*time.Second); err != nil {
+			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: "Confirm your password"}, 15*time.Second); err != nil {
 				s.Fatal("Waiting for password dialog failed: ", err)
 			}
 
