@@ -85,6 +85,46 @@
       "message": "lamzin@, could you take a look for Owner-Review?",
       "revId": "219a283a5c390aaa78054eaedea4c24dba5be2ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb238f36_6e097b3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-27T10:23:04Z",
+      "side": 1,
+      "message": "Sorry for delay, I was OOO on Monday.\n\nLGTM % comment, thanks!",
+      "revId": "219a283a5c390aaa78054eaedea4c24dba5be2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf4f0b0b_24ae8163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-10-27T10:23:04Z",
+      "side": 1,
+      "message": "i\u0027d prefer it to be in a separate CL.",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 29
+      },
+      "revId": "219a283a5c390aaa78054eaedea4c24dba5be2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
