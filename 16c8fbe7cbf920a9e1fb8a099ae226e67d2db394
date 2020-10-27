@@ -34,6 +34,23 @@
       "parentUuid": "65827d8e_17c823da",
       "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c027fc_2c98e7b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2020-10-27T16:20:25Z",
+      "side": 1,
+      "message": "Is this the only way to do this? I like that this dedupes a lot of the logic, but it feels like maybe these app-specific pieces should be passed in from outside rather than having them all pushed down to the base functionality?",
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
