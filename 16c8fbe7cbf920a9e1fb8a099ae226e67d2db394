@@ -16,6 +16,24 @@
       "message": "I guess you also want to delete src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/scanning/doc.go.",
       "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de4c8574_540fbd0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-27T16:12:45Z",
+      "side": 1,
+      "message": "That file is indeed deleted but for some reason marked as \"renamed\" for peripherals/doc.go",
+      "parentUuid": "65827d8e_17c823da",
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
