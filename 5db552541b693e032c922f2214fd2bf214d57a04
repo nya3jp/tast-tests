@@ -211,6 +211,30 @@
       },
       "revId": "5db552541b693e032c922f2214fd2bf214d57a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fbd719_5908ae37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/max98390.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-10-27T17:15:53Z",
+      "side": 1,
+      "message": "Got it. Thanks!",
+      "parentUuid": "f99f3aa7_b6bff926",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "5db552541b693e032c922f2214fd2bf214d57a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
