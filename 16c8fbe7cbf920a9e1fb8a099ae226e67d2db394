@@ -38,6 +38,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3bfd0df_acb19275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-10-27T17:08:57Z",
+      "side": 1,
+      "message": "One other general question: when we make very app-specific tests (like connecting to a virtual USB scanner and performing a scan with the Scan app), should those tests all go in peripherals? The UI driver and virtual USB code will still exist in other libs, but where should the test file live?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 19
+      },
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05c027fc_2c98e7b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
         "patchSetId": 3
