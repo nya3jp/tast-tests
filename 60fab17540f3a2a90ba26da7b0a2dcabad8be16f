@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7a2319_b309b538",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-27T20:38:53Z",
+      "side": 1,
+      "message": "Please be a bit more specific in the commit message, e.g.\n\u003e Cleanup perappdensity.StartViewActivityWithWindowState",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ebfff94_b9f03c00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-27T20:38:53Z",
+      "side": 1,
+      "message": "Similarly, please be a bit more descriptive.\n\n\u003e Allow StartViewActivityWithWindowState to receive the activity name for the greater flexibility.\n\u003e Also renamed as StartActivityWithWindowState.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9940e32a_6049f790",
@@ -66,6 +112,23 @@
       "writtenOn": "2020-10-27T06:18:16Z",
       "side": 1,
       "message": "tast-owners@ ptal",
+      "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e27e0c2_75594f2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-27T20:38:53Z",
+      "side": 1,
+      "message": "LGTM % nits",
       "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
