@@ -6,17 +6,13 @@ package inputs
 
 import (
 	"context"
-	"fmt"
-	"io"
-	"net/http"
-	"net/http/httptest"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
@@ -134,24 +130,8 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Start a local server for the test page")
-	const identifier = "e14s-inputbox"
-	html := fmt.Sprintf(`<input type="text" id="text" autocorrect="off" autocapitalize="off" aria-label=%q/>`, identifier)
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
-	}))
-	defer server.Close()
-
-	conn, err := cr.NewConn(ctx, server.URL)
-	if err != nil {
-		s.Fatal("Creating renderer failed: ", err)
-	}
-	defer conn.Close()
-
-	s.Log("Set input method to: ", testCase.inputMethodID)
-	if err := vkb.SetCurrentInputMethod(ctx, tconn, testCase.inputMethodID); err != nil {
-		s.Fatalf("Failed to set input method to %q: %v", testCase.inputMethodID, err)
+	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ImePrefix+testCase.inputMethodID); err != nil {
+		s.Fatal("Failed to add and set input method: ", err)
 	}
 
 	if testCase.useA11yVk {
@@ -163,22 +143,18 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable/disable the accessibility keyboard: ", err)
 	}
 
-	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
+	s.Log("Start a local server to test chrome")
+	its, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatalf("Failed to find input element %s: %v", identifier, err)
+		s.Fatal("Fail to launch inputs test server: ", err)
 	}
-	defer element.Release(ctx)
+	defer its.Close()
 
-	s.Log("Click input element to trigger virtual keyboard")
-	if err := element.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
-	}
+	inputField := testserver.TextAreaInputField
 
-	s.Log("Wait for virtual keyboard shown up")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
+	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 	}
-	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
 	if testCase.hasDecoder {
 		s.Log("Wait for decoder running")
@@ -191,19 +167,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to input with virtual keyboard: ", err)
 	}
 
-	// Value change can be a bit delayed after input.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, 2*time.Second)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		defer inputValueElement.Release(ctx)
-
-		if inputValueElement.Name != testCase.expectedTypingResult {
-			return errors.Errorf("failed to input with virtual keyboard: got %q, want %q", inputValueElement.Name, testCase.expectedTypingResult)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Error("Failed to input with virtual keyboard: ", err)
+	if err := inputField.WaitForValueToBe(ctx, tconn, testCase.expectedTypingResult); err != nil {
+		s.Fatal("Failed to verify input: ", err)
 	}
 }

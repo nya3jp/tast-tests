@@ -6,17 +6,11 @@ package inputs
 
 import (
 	"context"
-	"fmt"
-	"io"
-	"net/http"
-	"net/http/httptest"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -28,7 +22,7 @@ func init() {
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:essential-inputs", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          pre.VKEnabled(),
+		Pre:          pre.VKEnabledTablet(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
@@ -50,47 +44,15 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
-	if err != nil {
-		s.Fatal("Failed to ensure in tablet mode: ", err)
-	}
-	defer cleanup(ctx)
 
 	s.Log("Start a local server to test chrome")
-	const identifier = "e14s-inputbox"
-	html := fmt.Sprintf(`<input type="text" id="text" autocorrect="off" aria-label=%q/>`, identifier)
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
-	}))
-	defer server.Close()
-
-	conn, err := cr.NewConn(ctx, server.URL)
+	its, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Creating renderer for test page failed: ", err)
+		s.Fatal("Fail to launch inputs test server: ", err)
 	}
-	defer conn.Close()
+	defer its.Close()
 
-	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
-	if err != nil {
-		s.Fatalf("Failed to find input element %s: %v", identifier, err)
-	}
-	defer element.Release(ctx)
-
-	hideAndShowVirtualKeyboard := func() {
-		if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
-			s.Fatal("Failed to hide virtual keyboard: ", err)
-		}
-
-		if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for vk hidden: ", err)
-		}
-
-		s.Log("Click input to trigger virtual keyboard")
-		if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
-			s.Fatal("Failed to click the input and wait for vk shown: ", err)
-		}
-	}
+	inputField := testserver.TextAreaInputField
 
 	s.Log("Wait for decoder running")
 	if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
@@ -106,8 +68,8 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Click input to trigger virtual keyboard")
-	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
-		s.Fatal("Failed to click the input and wait for vk shown: ", err)
+	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 	}
 
 	if err := vkb.TapKeys(ctx, tconn, typingKeys); err != nil {
@@ -121,23 +83,19 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set settings: ", err)
 	}
 
-	hideAndShowVirtualKeyboard()
+	// Hide and Trigger VK again to update settings.
+	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+		s.Fatal("Failed to hide virtual keyboard: ", err)
+	}
+	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
+	}
 
 	if err := vkb.TapKeys(ctx, tconn, typingKeys); err != nil {
 		s.Fatal("Failed to input with virtual keyboard: ", err)
 	}
 
-	// Value change can be a bit delayed after input.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, 2*time.Second)
-		if err != nil {
-			return err
-		}
-		if inputValueElement.Name != expectedTypingResult {
-			return errors.Errorf("failed to input with virtual keyboard; got: %s, want: %s", inputValueElement.Name, expectedTypingResult)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Error("Failed to input with virtual keyboard: ", err)
+	if err := inputField.WaitForValueToBe(ctx, tconn, expectedTypingResult); err != nil {
+		s.Fatal("Failed to verify input: ", err)
 	}
 }
