@@ -16,6 +16,57 @@
       "message": "This is reliant on a CL to add a new autotest api in ChromeOS:\n\nhttps://chromium-review.googlesource.com/c/chromium/src/+/2485754",
       "revId": "162670a156faa766e7ac3af853c2920fe548a958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6a0a3d_a2450edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-27T03:54:24Z",
+      "side": 1,
+      "message": "Does this need to be switched back on after the test, or does Chrome reset set it back to off?",
+      "revId": "162670a156faa766e7ac3af853c2920fe548a958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95246bf4_f29744f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-27T03:54:24Z",
+      "side": 1,
+      "message": "It is better not to put sleeps in the test code, as they are a common source of flakiness.  perhaps ui.WaitForLocationChangeCompleted is more appropriate if you are waiting for an animation to complete.",
+      "revId": "162670a156faa766e7ac3af853c2920fe548a958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de373dc3_041cd999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-27T03:54:24Z",
+      "side": 1,
+      "message": "Do these need to be set back to default values to not affect subsequent tests?",
+      "revId": "162670a156faa766e7ac3af853c2920fe548a958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
