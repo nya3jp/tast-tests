@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -53,11 +54,13 @@ func ExtensionInstallForceList(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(cleanupCtx)
 
+	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to get TestConn: ", err)
+		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer tconn.Close()
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
 	const (
 		extensionID = "hoppbgdeajkagempifacalpdapphfoai"
 		downloadURL = "https://chrome.google.com/webstore/detail/platformkeys-test-extensi/" + extensionID
