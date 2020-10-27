@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46bf1d40_40712203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-27T21:02:43Z",
+      "side": 1,
+      "message": "Some fixes and answers.\n\nAlso, I moved configuration to a separate .go file, as it grew a little and added some unsolicited fixes that turned out necessary as I finalize Attenuated Perf test.",
+      "revId": "5edd468e91bc91c9db942d06dc9a6941088d90f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
