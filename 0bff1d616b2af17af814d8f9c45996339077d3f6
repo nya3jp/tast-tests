@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e22a7361_b684a389",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-27T21:52:39Z",
+      "side": 1,
+      "message": "I don\u0027t have any boards that will run them. My kukui, my hana, and my cyan all give me \"[ SKIP ] missing SoftwareDeps: android_vm\" for those tests.",
+      "parentUuid": "17bcf6b0_e4394f6d",
+      "range": {
+        "startLine": 16,
+        "startChar": 54,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "0bff1d616b2af17af814d8f9c45996339077d3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "42d6236f_5beab58f",
