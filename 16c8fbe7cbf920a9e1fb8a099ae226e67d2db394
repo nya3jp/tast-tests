@@ -51,6 +51,24 @@
       "message": "Is this the only way to do this? I like that this dedupes a lot of the logic, but it feels like maybe these app-specific pieces should be passed in from outside rather than having them all pushed down to the base functionality?",
       "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc8190c3_a451feeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-27T16:29:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I follow, could you explain what you mean by passed in from outside vs pushing down to the base functionality?\n\nI think this is doing what you are describing. When you run \"peripherals.LaunchAppFromLauncher.diagnostics\" it\u0027ll only take the diagnostics-specific testParams and run the function below. You can\u0027t run \"peripherals.LaunchAppFromLauncher\" without specifying which test you want to run.",
+      "parentUuid": "05c027fc_2c98e7b6",
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
