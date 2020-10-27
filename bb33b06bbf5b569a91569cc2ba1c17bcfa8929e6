@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdef8773_27576868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-27T03:35:07Z",
+      "side": 1,
+      "message": "\u003e \"keybaord\" is a possible misspelling of \"keyboard\".\n\nPlease fix.",
+      "parentUuid": "f64545be_cf4379aa",
+      "range": {
+        "startLine": 58,
+        "startChar": 66,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "bb33b06bbf5b569a91569cc2ba1c17bcfa8929e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
