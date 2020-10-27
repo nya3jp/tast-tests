@@ -85,6 +85,23 @@
       "message": "thanks for review!",
       "revId": "2c4cb033bdde52a8c36148ef919e258ccf09d9c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "964fd4d2_02d11d2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-10-27T20:43:34Z",
+      "side": 1,
+      "message": "I won\u0027t be able to submit this as it is currently. It looks like certain ARC P boards like cave and novato don\u0027t have vm_concierge installed by default, which causes the test to fail on the added cases. I think adding \"vm_host\" to the test\u0027s SoftwareDeps would prevent it from running on these devices (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md), or we might wait until there is an ARC-R/VM specific SELinux test. fqj@, does adding the dependency sound reasonable?",
+      "revId": "2c4cb033bdde52a8c36148ef919e258ccf09d9c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
