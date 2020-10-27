@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83006acf_b354a79e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-10-27T16:13:19Z",
+      "side": 1,
+      "message": "https://tastboard.corp.google.com/test/policy.NewTabPageLocation",
+      "revId": "c042cf937411b447fe837347f6f1d0c3e67e4ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
