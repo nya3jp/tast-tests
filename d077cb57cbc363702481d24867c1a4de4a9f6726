@@ -160,6 +160,29 @@
       },
       "revId": "d077cb57cbc363702481d24867c1a4de4a9f6726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a9448ad_bd62a073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-27T21:56:33Z",
+      "side": 1,
+      "message": "Is this \"unstable\" in the sense of flaky from device to device and build to build, or is this permanently failing due to a bad bios? Maybe we should call this say \"known_to_have_bad_bios\"?",
+      "range": {
+        "startLine": 70,
+        "startChar": 23,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "d077cb57cbc363702481d24867c1a4de4a9f6726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
