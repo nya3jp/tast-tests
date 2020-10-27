@@ -143,13 +143,45 @@ func (its *InputsTestServer) Close() {
 	its.server.Close()
 }
 
-// Click clicks the input field.
+// clickType describes how user clicks mouse.
+type clickType int
+
+const (
+	leftClick clickType = iota
+	rightClick
+	doubleClick
+)
+
+// Click left clicks the input field.
 func (inputField InputField) Click(ctx context.Context, tconn *chrome.TestConn) error {
+	return inputField.mouseClick(ctx, tconn, leftClick)
+}
+
+// RightClick right clicks the input field.
+func (inputField InputField) RightClick(ctx context.Context, tconn *chrome.TestConn) error {
+	return inputField.mouseClick(ctx, tconn, rightClick)
+}
+
+// DoubleClick double clicks the input field.
+func (inputField InputField) DoubleClick(ctx context.Context, tconn *chrome.TestConn) error {
+	return inputField.mouseClick(ctx, tconn, doubleClick)
+}
+
+func (inputField InputField) mouseClick(ctx context.Context, tconn *chrome.TestConn, ct clickType) error {
 	actionFunc := func(node *ui.Node) error {
 		if err := node.MakeVisible(ctx); err != nil {
 			return errors.Wrapf(err, "failed to make the %s input field visible", string(inputField))
 		}
-		return node.LeftClick(ctx)
+
+		switch ct {
+		case leftClick:
+			return node.StableLeftClick(ctx, nil)
+		case rightClick:
+			return node.StableRightClick(ctx, nil)
+		case doubleClick:
+			return node.StableDoubleClick(ctx, nil)
+		}
+		return nil
 	}
 	return inputField.action(ctx, tconn, actionFunc)
 }

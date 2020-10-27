@@ -6,14 +6,11 @@ package inputs
 
 import (
 	"context"
-	"fmt"
-	"io"
-	"net/http"
-	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
@@ -29,6 +26,7 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name:              "stable",
 			ExtraHardwareDeps: pre.InputsStableModels,
@@ -40,11 +38,7 @@ func init() {
 }
 
 func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -53,42 +47,25 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Start a local server to test chrome")
-	const identifier = "e14s-inputbox"
-	html := fmt.Sprintf(`<input type="text" id="text" autocorrect="off" aria-label=%q/>`, identifier)
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
-	}))
-	defer server.Close()
-
-	conn, err := cr.NewConn(ctx, server.URL)
+	its, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Creating renderer for test page failed: ", err)
+		s.Fatal("Fail to launch inputs test server: ", err)
 	}
-	defer conn.Close()
+	defer its.Close()
 
-	inputElement, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
-	if err != nil {
-		s.Fatalf("Failed to find input element %s: %v", identifier, err)
-	}
-	defer inputElement.Release(ctx)
+	inputField := testserver.TextAreaInputField
 
-	if err := inputElement.RightClick(ctx); err != nil {
+	if err := inputField.RightClick(ctx, tconn); err != nil {
 		s.Fatal("Failed to right click the input element: ", err)
 	}
 
-	emojiMenuElement, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Emoji"}, 5*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find Emoji menu item: ", err)
-	}
-	defer emojiMenuElement.Release(ctx)
-
-	if err := emojiMenuElement.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
+	// Find and click emoji from option menu.
+	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}
+	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{Name: "Emoji"}, &opts); err != nil {
+		s.Fatal("Failed to find and click Emoji menu item: ", err)
 	}
 
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for virtual keyboard shown: ", err)
 	}
 
@@ -101,10 +78,6 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to hide virtual keyboard: ", err)
 	}
 
-	if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard hidden: ", err)
-	}
-
 	// Verify virtual keyboard status is not persisted on clamshell.
 	// Should not test it on tablet devices. It depends on the physical conditions of the running device.
 	// For more details, refer to b/169527206.
@@ -114,7 +87,7 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 	}
 
 	if !tabletModeEnabled {
-		if err := inputElement.LeftClick(ctx); err != nil {
+		if err := inputField.Click(ctx, tconn); err != nil {
 			s.Fatal("Failed to click the input element: ", err)
 		}
 

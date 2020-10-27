@@ -7,14 +7,35 @@ package ime
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
+
+// ImePrefix is the prefix of IME chrome extension
+const ImePrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
+
+// AddAndSetInputMethod adds the IME identified by imeID and then sets it to the current input method.
+func AddAndSetInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string) error {
+	if err := AddInputMethod(ctx, tconn, imeID); err != nil {
+		return errors.Wrapf(err, "failed to add input method %q", imeID)
+	}
+	return SetCurrentInputMethod(ctx, tconn, imeID)
+}
 
 // AddInputMethod adds the IME identified by imeID via
 // chorme.languageSettingsPrivate.addInputMethod API.
 func AddInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string) error {
-	return tconn.Call(ctx, nil, `chrome.languageSettingsPrivate.addInputMethod`, imeID)
+	if err := tconn.Call(ctx, nil, `chrome.languageSettingsPrivate.addInputMethod`, imeID); err != nil {
+		return errors.Wrapf(err, "failed to add input method %q", imeID)
+	}
+	if err := WaitForInstalledInputMethod(ctx, tconn, imeID, 20*time.Second); err != nil {
+		return errors.Wrapf(err, "failed to wait for IME %q installed", imeID)
+	}
+
+	return nil
 }
 
 // RemoveInputMethod removes the IME identified by imeID via
@@ -26,7 +47,16 @@ func RemoveInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string
 // SetCurrentInputMethod sets the current input method to the IME identified imeID
 // via chrome.inputMethodPrivate.setCurrentInputMethod API.
 func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string) error {
-	return tconn.Call(ctx, nil, `chrome.inputMethodPrivate.setCurrentInputMethod`, imeID)
+	if err := tconn.Call(ctx, nil, `chrome.inputMethodPrivate.setCurrentInputMethod`, imeID); err != nil {
+		return errors.Wrapf(err, "failed to set current input method to %q", imeID)
+	}
+	if err := WaitForInputMethodToBe(ctx, tconn, imeID, 20*time.Second); err != nil {
+		return errors.Wrapf(err, "failed to wait for IME to be %q", imeID)
+	}
+	// Change IME takes up to 10s to install. There is no method to verify readiness of IME decoder.
+	// This problem will be solved once decoder moved from Nacl to IME service.
+	// TODO(b/157686038): Use API to identify completion of changing language
+	return testing.Sleep(ctx, 10*time.Second)
 }
 
 // GetCurrentInputMethod returns the ID of current IME obtained
@@ -35,6 +65,37 @@ func GetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn) (string,
 	var imeID string
 	err := tconn.Call(ctx, &imeID, `tast.promisify(chrome.inputMethodPrivate.getCurrentInputMethod)`)
 	return imeID, err
+}
+
+// WaitForInputMethodToBe repeatedly check until the current ime matches expectation.
+func WaitForInputMethodToBe(ctx context.Context, tconn *chrome.TestConn, imeID string, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		currentIME, err := GetCurrentInputMethod(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get current ime")
+		}
+		if currentIME != imeID {
+			return errors.Errorf("got %q; want %q", currentIME, imeID)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// WaitForInstalledInputMethod repeatedly checks until a certain IME is installed.
+func WaitForInstalledInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		inputMethods, err := GetInstalledInputMethods(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get installed input methods")
+		}
+
+		for _, inputMethod := range inputMethods {
+			if inputMethod.ID == imeID {
+				return nil
+			}
+		}
+		return errors.Wrapf(err, "%q is not found in installed input methods: %+v", imeID, inputMethods)
+	}, &testing.PollOptions{Timeout: timeout})
 }
 
 // EnableLanguage enables the given language
@@ -63,7 +124,7 @@ type InputMethodLists struct {
 	ThirdPartyExtensionIMEs []InputMethod `json:"thirdPartyExtensionImes"`
 }
 
-// GetInputMethodLists returns InputMethodLists obtained
+// GetInputMethodLists returns supported InputMethodLists obtained
 // via chrome.languageSettingsPrivate.getInputMethodLists API.
 func GetInputMethodLists(ctx context.Context, tconn *chrome.TestConn) (*InputMethodLists, error) {
 	var imes InputMethodLists
@@ -71,4 +132,14 @@ func GetInputMethodLists(ctx context.Context, tconn *chrome.TestConn) (*InputMet
 		return nil, err
 	}
 	return &imes, nil
+}
+
+// GetInstalledInputMethods returns installed input methods
+// via chrome.inputMethodPrivate.getInputMethods API.
+func GetInstalledInputMethods(ctx context.Context, tconn *chrome.TestConn) ([]InputMethod, error) {
+	var inputMethods []InputMethod
+	if err := tconn.Call(ctx, &inputMethods, `tast.promisify(chrome.inputMethodPrivate.getInputMethods)`); err != nil {
+		return nil, err
+	}
+	return inputMethods, nil
 }
