@@ -6,6 +6,7 @@ package crash
 
 import (
 	"context"
+	"path"
 	"path/filepath"
 	"strings"
 	"time"
@@ -125,6 +126,10 @@ func WatchdogCrash(ctx context.Context, s *testing.State) {
 	fs = crash_service.NewFixtureServiceClient(cl.Conn)
 
 	base := `kernel\.\d{8}\.\d{6}\.0`
+	biosLogMatches := &crash_service.RegexMatch{
+		Regex: base + `\.bios_log`,
+		Files: nil,
+	}
 	waitReq := &crash_service.WaitForCrashFilesRequest{
 		Dirs:    []string{systemCrashDir},
 		Regexes: []string{base + `\.kcrash`, base + `\.meta`, base + `\.log`},
@@ -145,13 +150,18 @@ func WatchdogCrash(ctx context.Context, s *testing.State) {
 				continue
 			}
 			if err := d.Command("/bin/grep", "-q", "sig=kernel-(WATCHDOG)", m.Files[0]).Run(ctx); err != nil {
+				if err := d.GetFile(cleanupCtx, m.Files[0], filepath.Join(s.OutDir(), path.Base(m.Files[0]))); err != nil {
+					s.Log("Failed to get meta file: ", err)
+				}
 				s.Error("Did not find correct pattern in meta file: ", err)
 			}
+			// Also remove the bios log if it was created.
+			biosLogMatches.Files = append(biosLogMatches.Files, strings.TrimSuffix(m.Files[0], filepath.Ext(m.Files[0]))+".bios_log")
 		}
 	}
 
 	removeReq := &crash_service.RemoveAllFilesRequest{
-		Matches: res.Matches,
+		Matches: append(res.Matches, biosLogMatches),
 	}
 	if _, err := fs.RemoveAllFiles(ctx, removeReq); err != nil {
 		s.Error("Error removing files: ", err)
