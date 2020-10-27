@@ -69,6 +69,24 @@
       "parentUuid": "05c027fc_2c98e7b6",
       "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03380738_23994eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2020-10-27T16:42:10Z",
+      "side": 1,
+      "message": "I mean that all the information about each specific app (name, flags, etc) is all stored with the base functionality.\n\nAs an OO analogy this would be like having a base class that contains all the implementations of all the derived classes and you just pass a param to the methods to tell it which derived class it should behave like. Rather than having only the common functionality in the base and each specific derivation containing the specializations.\n\nI\u0027m just worried that if we have 5 more tests like this that each contain n branches for each app that all the app specific logic will spread all through the common functionality. Vs having all the base functionality together, and all the individual specializations for each app also grouped together.",
+      "parentUuid": "dc8190c3_a451feeb",
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
