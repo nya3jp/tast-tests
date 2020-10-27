@@ -51,6 +51,23 @@
       "parentUuid": "9e8d79b9_d9b5b192",
       "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a14f050_f47fdf34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-10-27T06:18:16Z",
+      "side": 1,
+      "message": "tast-owners@ ptal",
+      "revId": "60fab17540f3a2a90ba26da7b0a2dcabad8be16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
