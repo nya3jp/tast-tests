@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
@@ -62,24 +61,24 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 				&policy.QuickUnlockModeWhitelist{Val: []string{"PIN"}},
 			},
 		},
-		{
-			name:    "shorter",
-			pin:     "1342",
-			warning: "PIN must be at least 4 digits",
-			policies: []policy.Policy{
-				&policy.PinUnlockMinimumLength{Val: 4},
-				&policy.QuickUnlockModeWhitelist{Val: []string{"PIN"}},
-			},
-		},
-		{
-			name:    "longer",
-			pin:     "13574268",
-			warning: "PIN must be at least 8 digits",
-			policies: []policy.Policy{
-				&policy.PinUnlockMinimumLength{Val: 8},
-				&policy.QuickUnlockModeWhitelist{Val: []string{"PIN"}},
-			},
-		},
+		// {
+		// 	name:    "shorter",
+		// 	pin:     "1342",
+		// 	warning: "PIN must be at least 4 digits",
+		// 	policies: []policy.Policy{
+		// 		&policy.PinUnlockMinimumLength{Val: 4},
+		// 		&policy.QuickUnlockModeWhitelist{Val: []string{"PIN"}},
+		// 	},
+		// },
+		// {
+		// 	name:    "longer",
+		// 	pin:     "13574268",
+		// 	warning: "PIN must be at least 8 digits",
+		// 	policies: []policy.Policy{
+		// 		&policy.PinUnlockMinimumLength{Val: 8},
+		// 		&policy.QuickUnlockModeWhitelist{Val: []string{"PIN"}},
+		// 	},
+		// },
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			// Perform cleanup.
@@ -92,25 +91,12 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Launch os-settings at People page.
-			if err := ossettings.LaunchAtPage(ctx, tconn, ui.FindParams{
-				Name: "People",
-				Role: ui.RoleTypeLink,
-			}); err != nil {
-				s.Fatal("Failed to launch Settings: ", err)
+			// Open a new window and go to lockScreen os settings.
+			if err := kb.Accel(ctx, "ctrl+n"); err != nil {
+				s.Fatal("Failed to open new browser window: ", err)
 			}
-
-			// At People page find and click on Security and sign-in.
-			nodeSSI, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeLink,
-				Name: "Security and sign-in",
-			}, 15*time.Second)
-			if err != nil {
-				s.Fatal("Failed to find Security and sign-in option: ", err)
-			}
-			defer nodeSSI.Release(ctx)
-			if err := nodeSSI.StableLeftClick(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 15 * time.Second}); err != nil {
-				s.Fatal("Failed to open the Security and sign-in option: ", err)
+			if err := kb.Type(ctx, "chrome://os-settings/lockScreen\n"); err != nil {
+				s.Fatal("Failed to type lockScreen settings url: ", err)
 			}
 
 			// Find and enter the password in the pop up window.
