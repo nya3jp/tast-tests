@@ -50,6 +50,23 @@
       "message": "yhanada@: friendly ping?",
       "revId": "afe655100973b921c2c152c9aa746001efa60db3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b2211d6_e00cf59b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-10-27T07:59:30Z",
+      "side": 1,
+      "message": "Sorry for the delay!",
+      "revId": "afe655100973b921c2c152c9aa746001efa60db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
