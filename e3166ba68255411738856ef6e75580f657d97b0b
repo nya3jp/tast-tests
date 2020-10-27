@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1413c146_ffceae97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-27T10:07:14Z",
+      "side": 1,
+      "message": "Sorry for delay!\n",
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44231560_d38b1d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gs_pdf_unembedded_font.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-27T10:07:14Z",
+      "side": 1,
+      "message": "style: GSPDF...\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bef96d6_ed250fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gs_pdf_unembedded_font.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-27T10:07:14Z",
+      "side": 1,
+      "message": "It\u0027s idiomatic to use filepath.Join for concatenating file path components.\n\nhttps://godoc.org/path/filepath#Join",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9740272_0124fd5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gs_pdf_unembedded_font.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-27T10:07:14Z",
+      "side": 1,
+      "message": "In this way we lose the content of err, which might be useful for debugging.\n\nI recommend doing something like:\n\n out, err :\u003d cmd.CombinedOutput()\n if err !\u003d nil {\n   s.Fatal(\"Failed to run gs: \", err)\n }\n if len(out) \u003e 0 {\n   if err :\u003d ioutil.WriteFile(filepath.Join(s.OutDir(), \"gs-output.txt\"), out, 0666); err !\u003d nil {\n     s.Error(\"Failed to save gs-output.txt: \", err)\n   }\n   s.Fatal(\"gs failed (see gs-output.txt for details)\")\n }",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 66
+      },
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfd4028d_5df561db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gs_pdf_unembedded_font.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-27T10:07:14Z",
+      "side": 1,
+      "message": "Please avoid calling Fatal without arguments - message passed here appear in various UIs, so it\u0027s important to make it short and readable.",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 11
+      },
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b226a468_f6f314ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gs_pdf_unembedded_font.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-27T10:07:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 59,
+        "startChar": 29,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
