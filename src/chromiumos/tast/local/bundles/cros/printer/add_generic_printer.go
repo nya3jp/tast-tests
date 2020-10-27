@@ -20,7 +20,7 @@ func init() {
 			"skau@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome", "cups"},
+		SoftwareDeps: []string{"chrome", "cros_internal", "cups"},
 		Data:         []string{genericPPDFile, genericToPrintFile, genericGoldenFile},
 		Pre:          chrome.LoggedIn(),
 		Attr:         []string{"group:mainline"},

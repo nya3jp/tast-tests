@@ -21,7 +21,7 @@ func init() {
 			"bmalcolm@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome", "cups"},
+		SoftwareDeps: []string{"chrome", "cros_internal", "cups"},
 		Data: []string{
 			"to_print.pdf",
 			"printer_Lexmark.ppd",
