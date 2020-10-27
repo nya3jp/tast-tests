@@ -6,6 +6,7 @@ package crash
 
 import (
 	"context"
+	"path"
 	"path/filepath"
 	"strings"
 	"time"
@@ -147,13 +148,25 @@ func WatchdogCrash(ctx context.Context, s *testing.State) {
 				continue
 			}
 			if err := d.Command("/bin/grep", "-q", "sig=kernel-(WATCHDOG)", m.Files[0]).Run(ctx); err != nil {
+				if err := d.GetFile(cleanupCtx, m.Files[0], filepath.Join(s.OutDir(), path.Base(m.Files[0]))); err != nil {
+					s.Log("Failed to get meta file")
+				}
 				s.Error("Did not find correct pattern in meta file: ", err)
 			}
 		}
 	}
 
+	// Also remove the bios log if it was created.
+	biosLogMatches := &crash_service.RegexMatch{
+		Regex: base + `\.bios_log`,
+		Files: nil,
+	}
+	for _, f := range res.Matches[0].Files {
+		biosLogMatches.Files = append(biosLogMatches.Files, strings.TrimSuffix(f, filepath.Ext(f))+".bios_log")
+	}
+
 	removeReq := &crash_service.RemoveAllFilesRequest{
-		Matches: res.Matches,
+		Matches: append(res.Matches, biosLogMatches),
 	}
 	if _, err := fs.RemoveAllFiles(ctx, removeReq); err != nil {
 		s.Error("Error removing files: ", err)
