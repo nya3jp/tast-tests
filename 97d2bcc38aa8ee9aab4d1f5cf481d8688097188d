@@ -336,6 +336,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e9544be_1992fbb8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-27T03:57:12Z",
+      "side": 1,
+      "message": "I\u0027m not really worried about the 1s command either. The main concern I have is that we might have a s.Error/s.Fatal call after the testbody ends. I think the call is not really expected and might have undefined/unknown behavior.\n\nTo avoid that and also respect context deadline, I\u0027m thinking maybe the error can be returned with the channel? something like:\n\n  senderDone :\u003d make(chan error, 1)\n  go func() {\n    defer close(senderDone)\n    senderDone \u003c- func() error {\n      // do somethings here.\n    }()\n  }()\n\n  defer func() {\n    select {\n    case err :\u003d \u003c-senderDone:\n      if err !\u003d nil {\n        s.Error(...)\n      }\n    case \u003c-ctx.Done():\n      s.Error(...)\n    }\n  }()\n\nWDYT?",
+      "parentUuid": "b6995787_91f09cd3",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0671e23c_f63fe645",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
         "patchSetId": 2
@@ -418,6 +436,30 @@
       "side": 1,
       "message": "Hmm, how does that interact with using TestFixturePreWithCapture? By my reading the DeconfigAP() logic would already be attempting to stop the capturer even if I hadn\u0027t done so during the test.\n\nSo with that change (using TestFixturePreWithCapture) made there\u0027s definitely some cleanup code that will get run even if things error out in the middle during the frame-sender and scanning logic.\n\n(This doesn\u0027t appear to lead to any issues, because the call to pcap.Capturer.close() doesn\u0027t check the error returned from c.cmd.Wait. It\u0027s possible that this is intentional for precisely this reason, because the easiest solution IMO is definitely to make the packet capturer Close() method idempotent. But if it\u0027s not supposed to be idempotent then I\u0027ll probably need to change the test to not use TestFixturePreWithCapture and do like you sketched out above.)",
       "parentUuid": "9fb495d7_5fe03fd5",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb1b168_8c181490",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-27T03:57:12Z",
+      "side": 1,
+      "message": "\u003e Hmm, how does that interact with using TestFixturePreWithCapture? By my reading the DeconfigAP() logic would already be attempting to stop the capturer even if I hadn\u0027t done so during the test.\n\nFor this test, I think we also don\u0027t need the AP after we\u0027re done scanning, so we can stop the capturer and AP all together with DeconfigAP and the pattern might still work. If it\u0027s not the case, I would suggest control the pcap life cycle in the test instead of with TestFixturePreWithCapture.\n\n\u003e This doesn\u0027t appear to lead to any issues, because the call to pcap.Capturer.close() doesn\u0027t check the error returned from c.cmd.Wait.\n\nThis part is intentional as the process is killed and can have non-zero return value, esp. the cmd interface only allow us to Abort instead of Signal(SIGTERM). (but currently we use the pkill work-around)\n\n\u003e It\u0027s possible that this is intentional for precisely this reason, because the easiest solution IMO is definitely to make the packet capturer Close() method idempotent. But if it\u0027s not supposed to be idempotent then I\u0027ll probably need to change the test to not use TestFixturePreWithCapture and do like you sketched out above.\n\nI guess this might not be really intentional, as I didn\u0027t think of this case when writing. :p\nCalling StopCapturer twice might still be harmful as it can might free a busy interface unexpectedly on pcap.\n\nThe framework doesn\u0027t provide very nice auto-cleanup mechanism as I thought \"defer\" might be enough. However, in some cases, we might still want some help when unexpected errors occur. I\u0027ll take a look at related usages and see if it can be improved.",
+      "parentUuid": "d5325475_beaefb46",
       "range": {
         "startLine": 135,
         "startChar": 0,
