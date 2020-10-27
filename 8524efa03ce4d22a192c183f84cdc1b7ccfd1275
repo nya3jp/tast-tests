@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b506d0_52b4fb95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T23:22:49Z",
+      "side": 1,
+      "message": "Thanks for the edits! Just a few more comments.",
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e521f1cc_627326b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T23:22:49Z",
+      "side": 1,
+      "message": "nit/style: I recommend bs instead of s, to avoid the confusing s.s.Logf.",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b0492c_6864da5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T23:22:49Z",
+      "side": 1,
+      "message": "nit/style: remove newline",
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a8af2e_49089a03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T23:22:49Z",
+      "side": 1,
+      "message": "Please reserve time for cleanup, per http://go/tast-writing#reserve-time-for-clean_up-task:\n\n    cleanupCtx :\u003d ctx\n    ctx, cancel \u003d ctxutil.Shorten(ctx, some_duration)\n    defer cancel()\n    defer cleanup(cleanupCtx, s, bs, *old)",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62821791_5668dc12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T23:22:49Z",
+      "side": 1,
+      "message": "ClearAndSetGBBFlags, I think, has the potential to mutate the GBB flags yet still return a failure. In that case, we would fatally exit without ever deferring the cleanup. So, please move this deferred cleanup task to before ClearAndSetGBBFlags, i.e. after L43.",
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9b593e_d3aac30e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T23:22:49Z",
+      "side": 1,
+      "message": "nit/style: Change to an internal function. This will prevent a namespace collision with other \"cleanup\" functions in the remote/bundles/cros/firmware package.\n\n    func GBBFlags(ctx context.Context, s *testing.State) {\n        ...\n        bs :\u003d pb.NewBiosServiceClient(cl.Conn)\n\n        func cleanup(ctx context.Context, orig pb.GBBFlagsState) {\n            ...\n        }\n        ...\n        defer cleanup(ctx, *old)\n        ...\n    }\n\nOr, more idiomatically, you can defer it as an anonymous cleanup function:\n\n    func GBBFlags(ctx context.Context, s *testing.State) {\n        ...\n        defer func(ctx context.Context) {\n            if _, err :\u003d bs.ClearAndSetGBBFlags(ctx, old); err !\u003d nil {\n                s.Fatal(\"ClearAndSetGBBFlags to restore original values failed: \", err)\n            }\n            if err :\u003d checkGBBFlags(ctx, bs, old); err !\u003d nil {\n                s.Fatal(\"all flags should have been restored: \", err)\n            }\n        }(ctx)\n        ...\n    }\n\n(Note that the anonymous cleanup function here takes a context parameter; this is to allow for a shortened context, as I explain in my other comment)",
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
