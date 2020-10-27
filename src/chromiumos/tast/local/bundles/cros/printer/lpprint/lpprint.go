@@ -26,9 +26,13 @@ import (
 // diff.
 func CleanPSContents(content string) string {
 	r := regexp.MustCompile(
-		// Matches the embedded poppler version in the PS file. This gets
-		// outdated on every poppler uprev, so we strip it out.
-		`(?m)(^(.*poppler.*version:.*` +
+		// Matches the embedded ghostscript version in the PS file.
+		// This gets outdated on every gs uprev, so we strip it out.
+		`(?m)(^(%%Creator: GPL Ghostscript .*` +
+			// Remove postscript creation date
+			`|%%CreationDate: D:.*` +
+			// Remove gs invocation command
+			`|%%Invocation: .*` +
 			// For Brother jobs, jobtime and printlog item 2 contain
 			// time-specific values.
 			`|@PJL SET JOBTIME = .*` +
