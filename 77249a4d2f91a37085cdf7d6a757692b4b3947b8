@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199b970b_d0b10b98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-27T01:06:39Z",
+      "side": 1,
+      "message": "I\u0027m sorry for your loss: https://crbug.com/1070299",
+      "revId": "77249a4d2f91a37085cdf7d6a757692b4b3947b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
