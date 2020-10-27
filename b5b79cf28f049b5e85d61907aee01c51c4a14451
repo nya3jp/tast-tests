@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a51f93_f2ae9284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-27T02:39:18Z",
+      "side": 1,
+      "message": "I... tried? It\u0027s hard to know if I got all the tests that use this function.",
+      "parentUuid": "981906c9_79bf694a",
+      "revId": "b5b79cf28f049b5e85d61907aee01c51c4a14451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "306828ec_44589b1b",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6110860b_c210496d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-27T02:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "306828ec_44589b1b",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "b5b79cf28f049b5e85d61907aee01c51c4a14451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71ce178c_0016c4e5",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-10-26T23:35:47Z",
       "side": 1,
       "message": "extra s?",
+      "range": {
+        "startLine": 383,
+        "startChar": 15,
+        "endLine": 383,
+        "endChar": 16
+      },
+      "revId": "b5b79cf28f049b5e85d61907aee01c51c4a14451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c78b6e_ef108f25",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-27T02:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71ce178c_0016c4e5",
       "range": {
         "startLine": 383,
         "startChar": 15,
