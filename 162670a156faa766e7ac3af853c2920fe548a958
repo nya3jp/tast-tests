@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a852d067_78095fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-10-27T17:35:18Z",
+      "side": 1,
+      "message": "I\u0027ll toggle this to off by setting the preference",
+      "parentUuid": "6a6a0a3d_a2450edc",
+      "revId": "162670a156faa766e7ac3af853c2920fe548a958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95246bf4_f29744f3",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "782e9667_e171b507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-10-27T17:35:18Z",
+      "side": 1,
+      "message": "clicking the button on line 134 causes a location change and then it fires off an async request to download a list of album titles to display to the user as checkboxes. I have to wait for that to download. What I really wanted was \n\n|ui.FindAllWithTimeout| but I\u0027ll use a combination of |WaitUntilDescendantExists| and |FindAll|.",
+      "parentUuid": "95246bf4_f29744f3",
+      "revId": "162670a156faa766e7ac3af853c2920fe548a958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de373dc3_041cd999",
@@ -65,6 +101,24 @@
       "writtenOn": "2020-10-27T03:54:24Z",
       "side": 1,
       "message": "Do these need to be set back to default values to not affect subsequent tests?",
+      "revId": "162670a156faa766e7ac3af853c2920fe548a958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78253082_2a1b109f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-10-27T17:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de373dc3_041cd999",
       "revId": "162670a156faa766e7ac3af853c2920fe548a958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
