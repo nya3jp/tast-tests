@@ -39,7 +39,7 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Pre:          pre.User,
 		Data:         []string{"popups_for_url_check_index.html", "popups_for_url_check_popup.html"},
 		Params: []testing.Param{
