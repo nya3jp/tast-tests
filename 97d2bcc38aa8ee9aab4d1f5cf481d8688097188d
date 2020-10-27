@@ -354,6 +354,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc3a7791_df76fa7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-10-27T18:26:31Z",
+      "side": 1,
+      "message": "I agree with Yen-lin +1",
+      "parentUuid": "1e9544be_1992fbb8",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0671e23c_f63fe645",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
         "patchSetId": 2
