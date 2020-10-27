@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc6cc5e_6b84f185",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-27T04:18:50Z",
+      "side": 1,
+      "message": "I think we discussed the re-use here. I\u0027m thinking if the reusing these interfaces is too excessive, given the size of code and that few tests need it. WDYT?",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d68f35_6e4c505f",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-27T04:18:50Z",
+      "side": 1,
+      "message": "Hmm... kind of want to avoid parsing output of dbus-send. Let me think if there\u0027s any alternative...",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef8d6e8_7fa554b2",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-27T04:18:50Z",
+      "side": 1,
+      "message": "this is only for CrOS-base test AP. Not sure if we\u0027ll use non-CrOS test AP, but might be nice to have a notice for it?",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

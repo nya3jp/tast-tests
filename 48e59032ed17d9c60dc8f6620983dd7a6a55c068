@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf36c4b_c2fa4b03",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-27T04:18:50Z",
+      "side": 0,
+      "message": "Oh, thanks for finding my mistakes, so this can now silently fail somehow...",
+      "revId": "48e59032ed17d9c60dc8f6620983dd7a6a55c068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
