@@ -105,6 +105,52 @@
       "parentUuid": "03380738_23994eb4",
       "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a171ce32_a2697713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-10-27T17:00:05Z",
+      "side": 1,
+      "message": "nit: Can we call this \"scan\" to match the app name?",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb81c9bb_1f0cc8ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-10-27T17:00:05Z",
+      "side": 1,
+      "message": "For apps that have a feature flag, I wonder if we could also store them in chromiumos/tast/local/apps (i.e. use apps.Scan.FeatureFlag instead of hardcoding it here in the tests).",
+      "range": {
+        "startLine": 73,
+        "startChar": 19,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
