@@ -516,6 +516,46 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	return c, nil
 }
 
+// Resume reconnects to an existing chrome instance that is created via New().
+// Note the return chrome does not all options set for the existing instance.
+func Resume(ctx context.Context) (*Chrome, error) {
+	if locked {
+		panic("Cannot create Chrome instance while precondition is being used")
+	}
+
+	ctx, st := timing.Start(ctx, "chrome_resume")
+	defer st.End()
+
+	var err error
+
+	c := &Chrome{
+		user:               DefaultUser,
+		pass:               DefaultPass,
+		gaiaID:             defaultGaiaID,
+		keepState:          true,
+		loginMode:          fakeLogin,
+		vkEnabled:          false,
+		skipOOBEAfterLogin: true,
+		installWebApp:      false,
+		region:             "us",
+		policyEnabled:      false,
+		enroll:             false,
+		breakpadTestMode:   true,
+		tracingStarted:     false,
+		logAggregator:      jslog.NewAggregator(),
+	}
+
+	if err := c.PrepareExtensions(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to prepare extensions")
+	}
+
+	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
+		return nil, errors.Wrapf(c.chromeErr(err), "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
+	}
+
+	return c, nil
+}
+
 // checkSoftwareDeps ensures the current test declares necessary software dependencies.
 func checkSoftwareDeps(ctx context.Context) error {
 	deps, ok := testing.ContextSoftwareDeps(ctx)

@@ -30,6 +30,7 @@ type rdpVars struct {
 	pass      string
 	wait      bool
 	reset     bool
+	restart   bool
 	extraArgs []string
 }
 
@@ -44,7 +45,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
 			// For running manually.
-			"user", "pass", "wait", "extra_args", "reset",
+			"user", "pass", "wait", "extra_args", "reset", "restart",
 			// For automated testing.
 			"dev.username", "dev.password",
 		},
@@ -244,6 +245,15 @@ func getVars(s *testing.State) rdpVars {
 		s.Fatal("Failed to parse the variable `reset`: ", err)
 	}
 
+	restartStr, ok := s.Var("restart")
+	if !ok {
+		restartStr = "false"
+	}
+	restart, err := strconv.ParseBool(restartStr)
+	if err != nil {
+		s.Fatal("Failed to parse the variable `restart`: ", err)
+	}
+
 	waitStr, ok := s.Var("wait")
 	if !ok {
 		// Only wait for remote connection when running manually.
@@ -269,6 +279,7 @@ func getVars(s *testing.State) rdpVars {
 		pass:      pass,
 		wait:      wait,
 		reset:     reset,
+		restart:   restart,
 		extraArgs: extraArgs,
 	}
 }
@@ -296,9 +307,19 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 		opts = append(opts, chrome.ExtraArgs(vars.extraArgs...))
 	}
 
-	cr, err := chrome.New(ctx, opts...)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
+	var cr *chrome.Chrome
+	if vars.restart {
+		var err error
+		cr, err = chrome.New(ctx, opts...)
+		if err != nil {
+			s.Fatal("Failed to start Chrome: ", err)
+		}
+	} else {
+		var err error
+		cr, err = chrome.Resume(ctx)
+		if err != nil {
+			s.Fatal("Failed to resume Chrome: ", err)
+		}
 	}
 	defer cr.Close(ctx)
 
