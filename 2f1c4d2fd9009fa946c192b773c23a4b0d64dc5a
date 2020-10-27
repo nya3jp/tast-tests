@@ -69,6 +69,29 @@
       "parentUuid": "a2d49629_52730cb8",
       "revId": "2f1c4d2fd9009fa946c192b773c23a4b0d64dc5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ff822d_53de0b84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-10-27T13:55:29Z",
+      "side": 1,
+      "message": "Should this timeout be as long as the wider testing.Poll timeout?",
+      "range": {
+        "startLine": 115,
+        "startChar": 104,
+        "endLine": 115,
+        "endChar": 118
+      },
+      "revId": "2f1c4d2fd9009fa946c192b773c23a4b0d64dc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
