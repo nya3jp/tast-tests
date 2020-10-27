@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -203,4 +204,48 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 		}
 	})
 
+	s.Run(ctx, "test_permission", func(ctx context.Context, s *testing.State) {
+		const (
+			testFile   = "test.sh"
+			echoString = "hello"
+			testString = "#!/bin/sh\necho -n " + echoString
+		)
+
+		// Add a file in Downloads.
+		filePath := filepath.Join(filesapp.DownloadPath, testFile)
+		if err := ioutil.WriteFile(filePath, []byte(testString), 0755); err != nil {
+			s.Fatal("Failed to create file in Downloads: ", err)
+		}
+
+		// Check the permission.
+		filePath = filepath.Join(sharedfolders.MountPathDownloads, testFile)
+		result, err := cont.Command(ctx, "ls", "-l", filePath).Output()
+		if err != nil {
+			s.Fatal("Failed to run ls on the test file in the container: ", err)
+		}
+		permission := strings.Split(string(result), " ")[0]
+		expected := "-rwxr-xr-x"
+		if permission != expected {
+			s.Fatalf("Failed to verify the permission of shared file, got %s, want %s", permission, expected)
+		}
+
+		// Copy file to home dir and run it.
+		if err := cont.Command(ctx, "cp", filePath, ".").Run(); err != nil {
+			s.Fatalf("Failed to copy %s to home directory: %s", filePath, err)
+		}
+		// Run the test file to make sure it is executable in home directory.
+		result, err = cont.Command(ctx, "./"+testFile).Output()
+		if err != nil {
+			s.Fatalf("Failed to run %s in home directory: %s", testFile, err)
+		}
+		if string(result) != echoString {
+			s.Fatalf("Failed to verify the output of the test file, got %s, want %s", string(result), echoString)
+		}
+
+		// Run the test file in shared folder.
+		err = cont.Command(ctx, filePath).Run()
+		if err == nil {
+			s.Fatal("Was unexpectedly able to run " + filePath)
+		}
+	})
 }
