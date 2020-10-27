@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2959cc6c_d5cb75d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gs_pdf_unembedded_font.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-27T21:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44231560_d38b1d59",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bef96d6_ed250fad",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-27T10:07:14Z",
       "side": 1,
       "message": "It\u0027s idiomatic to use filepath.Join for concatenating file path components.\n\nhttps://godoc.org/path/filepath#Join",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9cd5a4_4d6b022b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gs_pdf_unembedded_font.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-27T21:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bef96d6_ed250fad",
       "range": {
         "startLine": 42,
         "startChar": 16,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82665632_6f22151b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gs_pdf_unembedded_font.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-27T21:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9740272_0124fd5a",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 66
+      },
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfd4028d_5df561db",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74b023f2_4682a756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gs_pdf_unembedded_font.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-27T21:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd4028d_5df561db",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 11
+      },
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b226a468_f6f314ff",
@@ -123,6 +219,30 @@
       "writtenOn": "2020-10-27T10:07:14Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 59,
+        "startChar": 29,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "e3166ba68255411738856ef6e75580f657d97b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a113c7_2fb41407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gs_pdf_unembedded_font.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-27T21:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b226a468_f6f314ff",
       "range": {
         "startLine": 59,
         "startChar": 29,
