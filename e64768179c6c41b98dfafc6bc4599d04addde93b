@@ -87,6 +87,30 @@
       },
       "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "072a61e8_726d1c07",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-27T01:33:31Z",
+      "side": 1,
+      "message": "WRT name UnchangedWifiInterfaces kind of works maybe DoNotChangeWifiInterfaces is better. Unchange sounds like a verb which implies that the wifi interfaces were changed before.\n\nIn this case where the point of this is to disable services etc I think having the /default/ be disable makes more sense.\n\nIf we change it so disabling is not default, then the function of calling PowerTest is: Disable a bunch of stuff, except wifi, which you have to specify even harder to disable. Most power tests want wifi disabled, so the default should be the common case IMO. WDYT?",
+      "parentUuid": "ee42431b_2cd8f6bd",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 13
+      },
+      "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
