@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697111fb_ad7b30a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-27T15:30:46Z",
+      "side": 0,
+      "message": "Already done in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2502377",
+      "revId": "98f8330ab379fecda383efe0024b566d90f78678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc87124_54fd2b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_logout_button_in_tray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-27T15:30:46Z",
+      "side": 0,
+      "message": "Already done in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2502379.",
+      "revId": "98f8330ab379fecda383efe0024b566d90f78678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

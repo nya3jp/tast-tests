@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e212f469_799d27c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-27T15:30:46Z",
+      "side": 1,
+      "message": "LGTM, but you will have a conflict with the linked promotions.",
+      "revId": "9c37dd28af1762dde7f255c5af9d657777ec1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
