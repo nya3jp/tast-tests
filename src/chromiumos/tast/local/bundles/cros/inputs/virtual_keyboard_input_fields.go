@@ -9,7 +9,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
@@ -69,32 +68,14 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 	}
 
 	// Get current input method. Change IME for testing and revert it back in teardown.
-	imeCode := string(s.Param().(ime.InputMethodCode))
-	originalInputMethod, err := vkb.GetCurrentInputMethod(ctx, tconn)
+	imeCode := ime.ImePrefix + string(s.Param().(ime.InputMethodCode))
+	originalInputMethod, err := ime.GetCurrentInputMethod(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get current input method: ", err)
 	} else if originalInputMethod != imeCode {
-		cleanupCtx := ctx
-		var cancel func()
-		ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
-		defer cancel()
-
-		defer func(ctx context.Context) {
-			s.Logf("Changing back input method to: %s", originalInputMethod)
-			if err := vkb.SetCurrentInputMethod(ctx, tconn, originalInputMethod); err != nil {
-				s.Logf("Failed to set input method to %s: %v", originalInputMethod, err)
-			}
-		}(cleanupCtx)
-
-		s.Logf("Set current input method to: %s", imeCode)
-		if err := vkb.SetCurrentInputMethod(ctx, tconn, imeCode); err != nil {
-			s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
+		if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
+			s.Fatal("Failed to add and set input method: ", err)
 		}
-
-		// To install a new input method, it requires downloading and installing resources, it can take up to 10s.
-		// TODO(b/157686038): A better solution to identify decoder status.
-		// Decoder works async in returning status to frontend IME and self loading.
-		testing.Sleep(ctx, 10*time.Second)
 	}
 
 	its, err := testserver.Launch(ctx, cr)
@@ -262,7 +243,7 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 				}
 			}()
 
-			if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+			if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 				s.Fatal("Failed to wait for virtual keyboard shown and locationed: ", err)
 			}
 
