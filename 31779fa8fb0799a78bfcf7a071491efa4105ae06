@@ -70,6 +70,30 @@
       },
       "revId": "31779fa8fb0799a78bfcf7a071491efa4105ae06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9765937d_1714fa01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-27T22:20:39Z",
+      "side": 1,
+      "message": "I think the same argument can be address to any test in CQ. People can always removing test from CQ. \nAdded a few words in the comment.",
+      "parentUuid": "2e8b750f_cd5b52fd",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "31779fa8fb0799a78bfcf7a071491efa4105ae06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
