@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ba3a61b_f52b85a5",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-27T02:24:23Z",
+      "side": 0,
+      "message": "timing is sometimes help for debugging or profiling. I would be nice to keep them, e.g. in NewAPIface and APIface.Stop.",
+      "revId": "01905380e2a3a4802a3314234368c036ed0dbc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
