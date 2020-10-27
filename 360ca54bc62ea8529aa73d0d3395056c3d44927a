@@ -87,6 +87,24 @@
       "parentUuid": "cb32a612_e6d4804a",
       "revId": "360ca54bc62ea8529aa73d0d3395056c3d44927a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a306a0_ecdcda0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-10-27T18:33:43Z",
+      "side": 1,
+      "message": "Rebased the branch and updated the code with \"chromiumos/tast/local/android/ui\"",
+      "parentUuid": "83181c98_23b5b940",
+      "revId": "360ca54bc62ea8529aa73d0d3395056c3d44927a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
