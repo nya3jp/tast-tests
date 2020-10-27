@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd4deab_bb5e5679",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T01:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9820b6f4_5c8c83d7",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ba65ab2_38b65e45",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed92b91d_c802f3e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T01:57:36Z",
+      "side": 1,
+      "message": "That makes sense; I wasn\u0027t thinking about the way Tast packages work and just stuck them here like one would for a standalone executable.\n\nMoved inside the ChannelScanDwellTime function.",
+      "parentUuid": "7ba65ab2_38b65e45",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fa7588a_3accd153",
@@ -88,6 +130,30 @@
       "writtenOn": "2020-10-26T04:54:17Z",
       "side": 1,
       "message": "It is not always wlan0. Please call tf.ClientInterface() to get the default WiFi interface name.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/test_fixture.go?l\u003d916",
+      "range": {
+        "startLine": 68,
+        "startChar": 45,
+        "endLine": 68,
+        "endChar": 50
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a47f1f8_cb1a599f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T01:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fa7588a_3accd153",
       "range": {
         "startLine": 68,
         "startChar": 45,
@@ -133,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "405802e1_a97ded17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T01:57:36Z",
+      "side": 1,
+      "message": "Done (I looked for examples of that pattern and it seems like the name \u0027cleanupCtx\u0027 is what\u0027s commonly used (\u003e100 matches across tast-tests), so that\u0027s what I named it too).\n\nI tried to do the same for other instances of context shortening in this test, but ReserveForDeconfigAP has to happen after tf.ConfigureAP so I left that one unmodified for now.",
+      "parentUuid": "93344d14_afa3779a",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbf50fc4_710cf606",
@@ -146,6 +230,24 @@
       "writtenOn": "2020-10-26T04:54:17Z",
       "side": 1,
       "message": "With TestFixturePreWithCapture, you don\u0027t need to set up pcap here.",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0bcceb_73f0cfdc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T01:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbf50fc4_710cf606",
       "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -175,6 +277,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d5887db_c52e9e48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T01:57:36Z",
+      "side": 1,
+      "message": "I believe DefaultOpenNetworkAP will put the interface on channel 48 at 5240 MHz, the choice of channel 1 and 802.11b here was deliberate to keep things identical to Autotest ChannelScanDwellTime test.\n\nIt\u0027s my understanding that the dwell time varies depending on the channel, so I suspect that we don\u0027t want to change that at this time (although I\u0027m not entirely sure what benefit we\u0027re actually getting from a dwell time measurement just on channel 1).\n\nI have modified this bit to use tf.ConfigureAP() though, I\u0027m not sure why exactly I used StartAPIface() directly in the first place.",
+      "parentUuid": "8d3a2215_468bb5b7",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 0
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "426cf467_60f1334f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
         "patchSetId": 2
@@ -186,6 +312,24 @@
       "writtenOn": "2020-10-26T05:59:09Z",
       "side": 1,
       "message": "nit: not sure if we should wait for this routine to end (e.g. with sync.WaitGroup?) before leaving the test.\n\nbtw, I plan to work on a Start/Stop version for framesender.Send, which might be more suitable for the usage here.",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6995787_91f09cd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T01:57:36Z",
+      "side": 1,
+      "message": "The frame sender is transmitting 1024 beacons, 1ms apart (and unlike the Autotest version, this one stops after those 1024 so that indices don\u0027t wrap around and potentially cause ambiguous results), so it should terminate within at most 1 second regardless of any cleanup logic.\n\nI went ahead and added the WaitGroup logic because I figured it wouldn\u0027t hurt, but wg.Wait() isn\u0027t context-aware, so I replaced that with the obvious channel-based equivalent so it could select on ctx.Done() as well.\n\nI\u0027m not at all convinced that the extra lines of code are worth it to double-check the shutdown of a command that should finish in \u003c1s anyway, but they shouldn\u0027t hurt anything.",
+      "parentUuid": "426cf467_60f1334f",
       "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -213,6 +357,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2627a51c_dbee1689",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T01:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0671e23c_f63fe645",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fb495d7_5fe03fd5",
@@ -226,6 +394,30 @@
       "writtenOn": "2020-10-26T05:59:09Z",
       "side": 1,
       "message": "As the PacketPath is only valid after StopCapture, it is kind of tricky to use... I had one refinement CL but it was blocked by crbug.com/1030635 somehow.\n\nFor the usage here, it is possible that capturer is not closed if some Fatal is triggered before StopCapture here.\n\nI usually wrap the period of capturing in a function for ease of cleanup with defer, e.g.\n\n  capturer, err :\u003d func() (*pcap.Capturer, error) {\n    capturer, err :\u003d StartCapturer(...)\n    if err !\u003d nil {\n      return nil, err // Or just Fatal here.\n    }\n    defer func() {\n      if err :\u003d StopCapturer(ctx, capturer); err !\u003d nil {\n        // May modify returned error or Fatal/Error.\n      }\n    }()\n\n    // Do some stuffs.\n\n    return capturer, nil\n  }()\n  if err !\u003d nil {\n    s.Fatal(\"...\", err)\n  }\n  pcapPath :\u003d capturer.PacketPath(ctx)\n  ...\n\nI guess the pattern might also help a little bit here. (also an example with TestFixturePreWithCapture in remote/bundles/cros/wifi/wifiutil/pcap_util.go)",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5325475_beaefb46",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T01:57:36Z",
+      "side": 1,
+      "message": "Hmm, how does that interact with using TestFixturePreWithCapture? By my reading the DeconfigAP() logic would already be attempting to stop the capturer even if I hadn\u0027t done so during the test.\n\nSo with that change (using TestFixturePreWithCapture) made there\u0027s definitely some cleanup code that will get run even if things error out in the middle during the frame-sender and scanning logic.\n\n(This doesn\u0027t appear to lead to any issues, because the call to pcap.Capturer.close() doesn\u0027t check the error returned from c.cmd.Wait. It\u0027s possible that this is intentional for precisely this reason, because the easiest solution IMO is definitely to make the packet capturer Close() method idempotent. But if it\u0027s not supposed to be idempotent then I\u0027ll probably need to change the test to not use TestFixturePreWithCapture and do like you sketched out above.)",
+      "parentUuid": "9fb495d7_5fe03fd5",
       "range": {
         "startLine": 135,
         "startChar": 0,
