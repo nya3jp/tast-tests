@@ -16,6 +16,52 @@
       "message": "Not sure I parsed this TODO correctly;\n- where does this come from?  yusukes@ isn\u0027t in the CL\n- this test conducts arc.Booted() precondition. BootTime should be consumed within Precondition\u0027s time, which does not affect the test\u0027s timeout",
       "revId": "8eb518dbadfb6a48aafe7abfa393e3d6475bab13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1f6223_136998fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gralloc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2020-10-27T21:52:40Z",
+      "side": 1,
+      "message": "Should it be \"Failed to run\" or \"Test failed\"?",
+      "range": {
+        "startLine": 76,
+        "startChar": 27,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "8eb518dbadfb6a48aafe7abfa393e3d6475bab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e5f1fc_ddbd3541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gralloc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2020-10-27T21:52:40Z",
+      "side": 1,
+      "message": "Just double check, if there is case failing in the test, this test will also fail, right?",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "8eb518dbadfb6a48aafe7abfa393e3d6475bab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
