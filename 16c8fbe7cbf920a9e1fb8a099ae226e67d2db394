@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9136424a_cbde9801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-27T18:21:03Z",
+      "side": 1,
+      "message": "Probably up to the writers discretion, but if there are more than one such app-specific tests then it\u0027ll be better to start a new directory. This directory can contain common peripherals tests and any one-offs.",
+      "parentUuid": "e3bfd0df_acb19275",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 19
+      },
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05c027fc_2c98e7b6",
@@ -153,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dbef1aa_5d0f6162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-27T18:21:03Z",
+      "side": 1,
+      "message": "Done. It would be good to use apps.Scan.Name here, except param.Name must be in snake case.",
+      "parentUuid": "a171ce32_a2697713",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb81c9bb_1f0cc8ff",
@@ -166,6 +214,30 @@
       "writtenOn": "2020-10-27T17:00:05Z",
       "side": 1,
       "message": "For apps that have a feature flag, I wonder if we could also store them in chromiumos/tast/local/apps (i.e. use apps.Scan.FeatureFlag instead of hardcoding it here in the tests).",
+      "range": {
+        "startLine": 73,
+        "startChar": 19,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "16c8fbe7cbf920a9e1fb8a099ae226e67d2db394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd2d7551_edc1eebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-27T18:21:03Z",
+      "side": 1,
+      "message": "I think given that majority of apps do not have a feature flag, and since all existing use case of feature flags re: apps so far are temporary, and also since feature flags aren\u0027t inherently a property of the app, it\u0027s better to have them here and remove when the apps are released.",
+      "parentUuid": "eb81c9bb_1f0cc8ff",
       "range": {
         "startLine": 73,
         "startChar": 19,
