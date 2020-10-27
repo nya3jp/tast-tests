@@ -370,6 +370,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "608f2fdd_f0f4f44b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T21:02:20Z",
+      "side": 1,
+      "message": "Done\n\nI was originally hesitant to do that because logging the error in the defer would mean that any errors from Send() would be delayed until the test completed. But after moving the actual \"perform test\" code into an internal helper function this isn\u0027t as much of a problem (since the error will still appear at approximately the right place in the logs).",
+      "parentUuid": "1e9544be_1992fbb8",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0671e23c_f63fe645",
@@ -478,6 +496,30 @@
       "side": 1,
       "message": "\u003e Hmm, how does that interact with using TestFixturePreWithCapture? By my reading the DeconfigAP() logic would already be attempting to stop the capturer even if I hadn\u0027t done so during the test.\n\nFor this test, I think we also don\u0027t need the AP after we\u0027re done scanning, so we can stop the capturer and AP all together with DeconfigAP and the pattern might still work. If it\u0027s not the case, I would suggest control the pcap life cycle in the test instead of with TestFixturePreWithCapture.\n\n\u003e This doesn\u0027t appear to lead to any issues, because the call to pcap.Capturer.close() doesn\u0027t check the error returned from c.cmd.Wait.\n\nThis part is intentional as the process is killed and can have non-zero return value, esp. the cmd interface only allow us to Abort instead of Signal(SIGTERM). (but currently we use the pkill work-around)\n\n\u003e It\u0027s possible that this is intentional for precisely this reason, because the easiest solution IMO is definitely to make the packet capturer Close() method idempotent. But if it\u0027s not supposed to be idempotent then I\u0027ll probably need to change the test to not use TestFixturePreWithCapture and do like you sketched out above.\n\nI guess this might not be really intentional, as I didn\u0027t think of this case when writing. :p\nCalling StopCapturer twice might still be harmful as it can might free a busy interface unexpectedly on pcap.\n\nThe framework doesn\u0027t provide very nice auto-cleanup mechanism as I thought \"defer\" might be enough. However, in some cases, we might still want some help when unexpected errors occur. I\u0027ll take a look at related usages and see if it can be improved.",
       "parentUuid": "d5325475_beaefb46",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e405b772_593f8ce7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-27T21:02:20Z",
+      "side": 1,
+      "message": "You\u0027re right, the AP isn\u0027t used for anything after that point.\n\nI\u0027ve modified the test to put everything from \u0027ConfigureAP()\u0027 up to the end of the scan in a helper function (like you suggested earlier but for the entire AP lifetime rather than just the pcap). This allows the usual deferred DeconfigAP() call take care of stopping the capturer for us, and then after the wrapper function returns the rest of the test is just doing the dwell time computation with scan results + pcap data.\n\nWDYT?",
+      "parentUuid": "9fb1b168_8c181490",
       "range": {
         "startLine": 135,
         "startChar": 0,
