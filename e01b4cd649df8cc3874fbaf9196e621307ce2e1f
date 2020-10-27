@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de8fd9b9_86e687b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-27T19:48:19Z",
+      "side": 1,
+      "message": "Please get a eview from a team member as well before submitting.",
+      "revId": "e01b4cd649df8cc3874fbaf9196e621307ce2e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
