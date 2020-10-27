@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -50,8 +51,8 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := vkb.SetCurrentInputMethod(ctx, tconn, "nacl_mozc_jp"); err != nil {
-		s.Fatal("Failed to set input method: ", err)
+	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ImePrefix+string(ime.INPUTMETHOD_NACL_MOZC_JP)); err != nil {
+		s.Fatal("Failed to add and set input method: ", err)
 	}
 
 	s.Log("Opening Japanese IME options page")
@@ -92,7 +93,7 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 		}
 
 		// Wait until vk fully displayed and positioned.
-		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 			s.Fatal("Failed to wait for virtual keyboard positioned: ", err)
 		}
 

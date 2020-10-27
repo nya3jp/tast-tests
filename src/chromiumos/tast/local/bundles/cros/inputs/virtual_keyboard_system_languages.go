@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -90,7 +91,7 @@ func init() {
 
 func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	regionCode := s.Param().(testParameters).regionCode
-	defaultInputMethodID := s.Param().(testParameters).defaultInputMethodID
+	defaultInputMethodID := ime.ImePrefix + s.Param().(testParameters).defaultInputMethodID
 	defaultInputMethodName := s.Param().(testParameters).defaultInputMethodName
 
 	cr, err := chrome.New(ctx, chrome.Region(regionCode), chrome.VKEnabled())
@@ -107,7 +108,7 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Verify default input method
-	currentInputMethodID, err := vkb.GetCurrentInputMethod(ctx, tconn)
+	currentInputMethodID, err := ime.GetCurrentInputMethod(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get current input method: ", err)
 	}
@@ -121,7 +122,7 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitForLocationed(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 

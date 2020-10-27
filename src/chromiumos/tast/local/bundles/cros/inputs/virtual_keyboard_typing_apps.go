@@ -76,7 +76,9 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		Role: ui.RoleTypeSearchBox,
 		Name: "Search settings",
 	}
-	searchInputElement, err := ui.FindWithTimeout(ctx, tconn, params, 5*time.Second)
+
+	opt := testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}
+	searchInputElement, err := ui.StableFind(ctx, tconn, params, &opt)
 	if err != nil {
 		s.Fatal("Failed to find searchbox input field in settings: ", err)
 	}
