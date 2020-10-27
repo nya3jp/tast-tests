@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66580244_35e20f4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-27T11:00:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64381574_0e12c14a",
+      "range": {
+        "startLine": 7,
+        "startChar": 55,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "795cb3076b096058010d6426a2b10c5b8aac9d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd4ff822_4575a7e0",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-27T10:54:59Z",
       "side": 1,
       "message": "Is this CL really can help to fix that bug? I mean do you see failures because you don\u0027t stop activity? if so, please keep it, otherwise probably we need to remove it.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "795cb3076b096058010d6426a2b10c5b8aac9d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd5154a_9f6456d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-27T11:00:20Z",
+      "side": 1,
+      "message": "Partially it can.\nBecause we didn\u0027t stop the activity, we hit our Chrome side bug. We already have fixed the Chrome side bug and we no longer need to stop the activity, but I think it\u0027s still related to the bug.",
+      "parentUuid": "bd4ff822_4575a7e0",
       "range": {
         "startLine": 12,
         "startChar": 4,
