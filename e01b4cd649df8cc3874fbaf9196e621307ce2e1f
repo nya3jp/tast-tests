@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "428fba5b_1b336019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-10-27T23:57:02Z",
+      "side": 1,
+      "message": "I don\u0027t know yet the lifecycle of tests (and preconditions) on device. Does this cleanup need to happen because the test will be retried? Does logging out and logging in on another account to run a different test reset all these prefs?",
+      "parentUuid": "65e26e0f_f75c0ce8",
+      "range": {
+        "startLine": 68,
+        "startChar": 11,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "e01b4cd649df8cc3874fbaf9196e621307ce2e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6cc0fbf2_c7af6cb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
         "patchSetId": 3
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-27T20:37:04Z",
       "side": 1,
       "message": "Is this always \"off\"? What if cleanupAmbientMode failed.",
+      "range": {
+        "startLine": 116,
+        "startChar": 54,
+        "endLine": 116,
+        "endChar": 57
+      },
+      "revId": "e01b4cd649df8cc3874fbaf9196e621307ce2e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ebfac55_d7fac160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-10-27T23:57:02Z",
+      "side": 1,
+      "message": "I\u0027ll set the pref to off at the beginning of the test",
+      "parentUuid": "6cc0fbf2_c7af6cb1",
       "range": {
         "startLine": 116,
         "startChar": 54,
