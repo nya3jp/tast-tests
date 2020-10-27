@@ -14,7 +14,44 @@ import (
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+// dpPlusModels are models that have DPPlus support in BIOS.
+var dpPlusModels = []string{
+	"asuka",
+	"chell",
+	"cave",
+	"caroline",
+	// drallion family
+	"drallion", "drallion360",
+	// TODO(b:16119031): Unmark dedede once it is fixed.
+	// dedede family
+	"drawlat", "drawman",
+	// fizz family
+	"teemo", "jax",
+	"guado",
+	"karma",
+	"lars",
+	"nautilus",
+	"nocturne",
+	// nami family
+	"vayne", "sona", "pantheon", "ekko", "bard", "akali", "akali360", "syndra",
+	// octopus family
+	"dorp",
+	// puff family
+	"wyvern", "puff", "nooibat", "kaisa", "faffy", "duffy",
+	// rammus family
+	"shyvana", "leona",
+	"rikku",
+	"sentry",
+	"soraka",
+	// sarien family
+	"sarien", "arcada",
+	"tidus",
+	// volteer family
+	"volteer", "volteer2", "delbin",
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -25,6 +62,15 @@ func init() {
 			"chromeos-gfx@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
+		Params: []testing.Param{
+			{
+				Name:              "",
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(dpPlusModels...)),
+			}, {
+				Name:              "unstable",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(dpPlusModels...)),
+			},
+		},
 	})
 }
 
