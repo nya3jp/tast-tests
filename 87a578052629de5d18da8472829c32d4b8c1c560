@@ -1,0 +1,311 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "254ccb00_c2aedfc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "Please combine L52–53:\n\n    if err \u003d img.ClearSetGBBFlags(req.Clear, req.Set); err !\u003d nil {",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c46233f_559c821c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "Please combine L56–57:\n\n    if err \u003d img.WriteSection(ctx, bios.GBBImageSection); err !\u003d nil {",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c76e2027_fb97371e",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "gbb isn\u0027t a very clear name when we also have newGBB in the picture. Rename to currentGBB (or just curr)?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 8
+      },
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54191ec7_99845be3",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "nit/style: Please change to newGBB, per http://go/go-code-review-comments#initialisms",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 7
+      },
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0b3d77_654a94ac",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "nit/style: I recommend flipping this conditional for readability:\n\n    if newGBB \u003d\u003d gbb {\n        // No need to write section data if GBB flags are already correct\n        return nil\n    }\n    return i.writeSectionData(GBBImageSection, gbbHeaderOffset, newGBB)",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3f5617_2998f930",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "It\u0027s not clear at a glance how writeSectionData differs from WriteSection, although the two methods are very different. WDYT about renaming WriteSection to something like WriteSectionToFlashrom, or CommitSection? Or renaming writeSectionData to modifySectionData?",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d66ef7bc_82914079",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "typo: writing",
+      "range": {
+        "startLine": 132,
+        "startChar": 27,
+        "endLine": 132,
+        "endChar": 33
+      },
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb3a71a_a82bb7e1",
+        "filename": "src/chromiumos/tast/local/firmware/bios/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "Combine L213—214:\n\n    if err :\u003d binary.Write(\u0026buf, binary.LittleEndian, data); err !\u003d nil {",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2259cdfb_416d6f29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "nit/style: Remove newline",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d06770a9_1369d69c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "If the test fatally exits in the middle, the GBB flags can be left in a mutated state, which would be bad. Please defer a function to restore the original GBB flags.",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32184efa_92a3c70f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "Combine L46—48:\n\n    if _, err \u003d bs.ClearSetGBBFlags(ctx, \u0026req); err !\u003d nil {",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecbfca6f_7235e8eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "Reduce scope by combining the conditionals:\n\n    if res, err :\u003d bs.GetGBBFlags(ctx, \u0026empty.Empty{}); err !\u003d nil {\n        s.Fatal(...)\n    } else if !reflect.DeepEqual(req.Set, res.Set) || !reflect.DeepEqual(req.Clear, res.Clear) {\n        s.Fatalf(...)\n     }",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ef2947_422de612",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "Consider reducing reused logic (L58 \u0026 L74) by adding a utility function to compare the equality of two GBBFlagsState\u0027s:\n\n    func equalGBBFlagStates(a, b GBBFlagState) bool {\n        return reflect.DeepEqual(a.Set, b.Set) \u0026\u0026 reflect.DeepEqual(a.Clear, b.Clear)\n    }\n    ...\n    if !equalGBBFlagStates(req, res) {\n        s.Fatalf(...)\n    }",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec2f4bc7_a9dc0514",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "Change this to Errorf",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28fb78c_9230ec02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "Combine L62–64:\n\n    if _, err \u003d bs.ClearSetGBBFlags(ctx, old); err !\u003d nil {\n        s.Fatal(...)\n    }",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7090743_83b2db18",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "Combine conditionals to reduce scope:\n\n    if res, err \u003d bs.GetGBBFlags(ctx, \u0026empty.Empty{}); err !\u003d nil {\n        s.Fatal(...)\n    } else if !reflect.DeepEqual(old.Set, res.Set) || !reflect.DeepEqual(old.Clear, res.Clear) {\n        s.Fatalf(...)\n    }",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc3f3019_7db9f737",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-27T18:59:10Z",
+      "side": 1,
+      "message": "This name is unclear, because it can be parsed as \"clear the GBB flags that are currently set\". How about ClearAndSetGBBFlags, or ModifyGBBFlags?",
+      "revId": "87a578052629de5d18da8472829c32d4b8c1c560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
