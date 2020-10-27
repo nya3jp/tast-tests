@@ -16,6 +16,24 @@
       "message": "You might also want to put in the commit message that this CL saves the diff (if there is one) to the output directory for easy debugging, since the poppler-\u003egs change isn\u0027t the only one here.",
       "revId": "6e2f1447b2c0291327c1dd806da7b4c1c98c105a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64bafc53_43cc74cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-27T23:07:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bfc7256_79177ba2",
+      "revId": "6e2f1447b2c0291327c1dd806da7b4c1c98c105a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
