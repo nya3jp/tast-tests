@@ -14,7 +14,46 @@ import (
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+// dpPlusModels are models that have DP++ support in BIOS.
+// This list contains models that have wrong bios setting as of 2020/10.
+// Please contact chromeos-gfx@ team to edit the list if new device exposes dp++ support on purpose.
+var dpPlusModels = []string{
+	"asuka",
+	"cave",
+	"caroline",
+	"chell",
+	// drallion family
+	"drallion", "drallion360",
+	// TODO(b:161190931): Unmark dedede once it is fixed.
+	// dedede family
+	"drawlat", "drawman",
+	// fizz family
+	"fizz", "jax", "kench", "sion", "teemo",
+	"guado",
+	"karma",
+	"lars",
+	"nautilus",
+	"nocturne",
+	// nami family
+	"akali", "akali360", "bard", "ekko", "pantheon", "sona", "syndra", "vayne",
+	// octopus family
+	"dorp",
+	// puff family
+	"duffy", "faffy", "kaisa", "nooibat", "puff", "wyvern",
+	// rammus family
+	"leona", "shyvana",
+	"rikku",
+	"sentry",
+	"soraka",
+	// sarien family
+	"arcada", "sarien",
+	"tidus",
+	// volteer family
+	"delbin", "volteer", "volteer2",
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -25,6 +64,15 @@ func init() {
 			"chromeos-gfx@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
+		Params: []testing.Param{
+			{
+				Name:              "",
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(dpPlusModels...)),
+			}, {
+				Name:              "bad_bios",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(dpPlusModels...)),
+			},
+		},
 	})
 }
 
