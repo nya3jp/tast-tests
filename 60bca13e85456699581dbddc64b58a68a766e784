@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b4ad314_afe685bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-27T09:25:26Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m trying to understand the intention of this change.\n\nIIUC the test runs multiple subtests\n",
+      "revId": "60bca13e85456699581dbddc64b58a68a766e784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c0837cd_8f554e01",
@@ -53,6 +70,52 @@
         "startChar": 1,
         "endLine": 158,
         "endChar": 19
+      },
+      "revId": "60bca13e85456699581dbddc64b58a68a766e784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec5a2bc4_5e7a64f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-27T09:25:26Z",
+      "side": 1,
+      "message": "I don\u0027t recommend comparing err with context.DeadlineExceeded in general. A function may set different timeouts to different operations inside, so context.DeadlineExceeded might not be caused by the timeout we set in runAppLoadingTest.\n\nActually I wonder why we want to specially handle timeout errors. IIUC the point of the change to continue gathering subtest results even if we hit a timeout error on a subtest case in the middle. Then why don\u0027t we continue on other errors as well?",
+      "range": {
+        "startLine": 174,
+        "startChar": 7,
+        "endLine": 174,
+        "endChar": 50
+      },
+      "revId": "60bca13e85456699581dbddc64b58a68a766e784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a1c531_e31c92cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-27T09:25:26Z",
+      "side": 1,
+      "message": "In this way we will drop non-first deadline-exceeded errors.\n\nHow about calling s.Error instead to always report errors, and checking s.HasError later to stop test execution?",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 83
       },
       "revId": "60bca13e85456699581dbddc64b58a68a766e784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
