@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6405c48f_42286f21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-27T21:54:08Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "261cef10a03974e65add9a8cc9421707c79af57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a0b6261_c42b2a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-27T21:54:08Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be 777 or something executable?",
+      "revId": "261cef10a03974e65add9a8cc9421707c79af57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec50205d_b8639ee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-10-27T21:54:08Z",
+      "side": 1,
+      "message": "Isn\u0027t 0644 -rw-r--r--? If e.g. making the file writable and dropping other access is intentional be good to test that too. And if it\u0027s happening but not intended we should fix it :).",
+      "revId": "261cef10a03974e65add9a8cc9421707c79af57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
