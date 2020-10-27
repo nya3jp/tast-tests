@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1efb32a_747a95ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-10-27T22:34:59Z",
+      "side": 1,
+      "message": "Can we make this \"bad_bios\" for clarity?\n\nAlso if they are not green, green stainless will become unhappy with us. So should we pass them when the check fails (so they get moved over to the good case if the bios is ever fixed, like dedede above)?",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "0434ac77d382608b53f8352b3f93cd06cb46633f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
