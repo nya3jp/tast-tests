@@ -22,6 +22,30 @@
       },
       "revId": "0434ac77d382608b53f8352b3f93cd06cb46633f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35984db_e1002c44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-10-27T23:02:44Z",
+      "side": 1,
+      "message": "Done. \n\nI have little knowledge over how the bios table is working. can we push a bios update over the air? I was informed that there\u0027s little we can do to fix this, in this sense, we can simply remove the bad_bios subtest. (This is mostly for monitoring dedede)",
+      "parentUuid": "e1efb32a_747a95ff",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "0434ac77d382608b53f8352b3f93cd06cb46633f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
