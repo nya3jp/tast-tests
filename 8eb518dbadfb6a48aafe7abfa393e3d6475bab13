@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0482fe5_c3632148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gralloc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-27T20:35:43Z",
+      "side": 1,
+      "message": "Not sure I parsed this TODO correctly;\n- where does this come from?  yusukes@ isn\u0027t in the CL\n- this test conducts arc.Booted() precondition. BootTime should be consumed within Precondition\u0027s time, which does not affect the test\u0027s timeout",
+      "revId": "8eb518dbadfb6a48aafe7abfa393e3d6475bab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
