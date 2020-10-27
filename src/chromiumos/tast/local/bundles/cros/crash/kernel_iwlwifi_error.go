@@ -57,6 +57,7 @@ func init() {
 			"kukui",
 			"oak",
 			"scarlet",
+			"trogdor",
 			"veyron_fievel",
 			"veyron_mickey",
 			"veyron_tiger",
