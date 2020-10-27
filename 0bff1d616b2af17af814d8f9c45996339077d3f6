@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6385f009_9b322d1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-10-27T22:42:34Z",
+      "side": 1,
+      "message": "OK, it\u0027s probably fine.\n\nI *think* if you flash kukui-arc-r onto your kukui that would work, per https://tastboard.corp.google.com/test/arc.NativeCrash.mock_consent, but I\u0027m not sure if it\u0027s worth it.",
+      "parentUuid": "e22a7361_b684a389",
+      "range": {
+        "startLine": 16,
+        "startChar": 54,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "0bff1d616b2af17af814d8f9c45996339077d3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "42d6236f_5beab58f",
