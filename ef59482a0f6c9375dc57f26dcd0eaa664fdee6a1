@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb3288a_a1d893c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-28T23:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdd26e11_b4bea07c",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 13
+      },
+      "revId": "ef59482a0f6c9375dc57f26dcd0eaa664fdee6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcd20c1d_fb7b6990",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-28T23:31:50Z",
       "side": 1,
       "message": "optional: Probably out of scope of this CL, but you might like to move your colorDistance function to \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/colorcmp/cmp.go;l\u003d59?q\u003dcolorcmp.ColorsMatch\u0026type\u003dcs\n\nThe function you use here is basically the same as colorcmp.ColorsMatch(c, paddingColor, tolerance).",
+      "range": {
+        "startLine": 214,
+        "startChar": 8,
+        "endLine": 214,
+        "endChar": 21
+      },
+      "revId": "ef59482a0f6c9375dc57f26dcd0eaa664fdee6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae38a47_dfb7cfad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-10-28T23:53:42Z",
+      "side": 1,
+      "message": "Oh interesting, I didn\u0027t know about cmp.go. I\u0027ll look into refactoring to re-use that in a follow-up. Thanks for bringing that up!",
+      "parentUuid": "bcd20c1d_fb7b6990",
       "range": {
         "startLine": 214,
         "startChar": 8,
