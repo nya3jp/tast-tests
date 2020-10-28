@@ -242,6 +242,7 @@ var startedARCEnabledPre = &preImpl{
 	timeout:    chrome.LoginTimeout + 10*time.Minute,
 	mode:       artifact,
 	arcEnabled: true,
+	loginType:  loginGaia, // Needs gaia login to enable Play files.
 }
 
 var startedByArtifactWithGaiaLoginPre = &preImpl{
