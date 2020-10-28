@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cdd11a90_cd74b819",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-28T22:38:21Z",
+      "side": 1,
+      "message": "Done.\n\nAdded an error return to ssidIndex(). It\u0027s only called twice, so it\u0027s reasonable to add error checks where that happens.",
+      "parentUuid": "dc4ab087_dbb5a568",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 11
+      },
+      "revId": "a6c3452efeac376acf51eb1beed106d93894cf18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "089403a2_32a2f7d8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-28T03:10:06Z",
       "side": 1,
       "message": "I think either way is OK to me. We can extract it when some other tests need this to avoid too many methods in TestFixture. (downside: the test writer might not notice the existing one)",
+      "range": {
+        "startLine": 257,
+        "startChar": 7,
+        "endLine": 257,
+        "endChar": 51
+      },
+      "revId": "a6c3452efeac376acf51eb1beed106d93894cf18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aeaee8c_b4621e7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-10-28T22:38:21Z",
+      "side": 1,
+      "message": "SGTM, I\u0027ll leave it as a helper function in this file for now.",
+      "parentUuid": "089403a2_32a2f7d8",
       "range": {
         "startLine": 257,
         "startChar": 7,
