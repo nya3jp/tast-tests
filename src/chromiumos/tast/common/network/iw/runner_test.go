@@ -597,6 +597,27 @@ func TestExtractBSSID(t *testing.T) {
 	}
 }
 
+func TestExtractSignalLevel(t *testing.T) {
+	const testStr = `Connected to 74:e5:43:10:4f:c0 (on wlan0)
+	SSID: PMKSACaching_4m9p5_ch1
+	freq: 5220
+	RX: 5370 bytes (37 packets)
+	TX: 3604 bytes (15 packets)
+	signal: -59 dBm
+	tx bitrate: 13.0 MBit/s MCS 1
+
+	bss flags:      short-slot-time
+	dtim period:    5
+	beacon int:     100`
+	expected := -59
+	lvl, err := extractSignalLevel(testStr)
+	if err != nil {
+		t.Errorf("unexpected error=%s", err.Error())
+	} else if lvl != expected {
+		t.Errorf("got lvl: %d, expected: %d", lvl, expected)
+	}
+}
+
 func TestRegulatoryDomain(t *testing.T) {
 	testcases := []struct {
 		out         string
