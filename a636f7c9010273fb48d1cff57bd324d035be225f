@@ -16,6 +16,24 @@
       "message": "nit:\nCq-Depend: chromium:2503874\n\nThen you can Cq+2 both CLs at the same time and they should get submitted together. Also makes sure you don\u0027t accidentally submit this one first.",
       "revId": "a636f7c9010273fb48d1cff57bd324d035be225f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "725d6c7d_91323d8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-10-28T18:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a1d2b5_edf4c530",
+      "revId": "a636f7c9010273fb48d1cff57bd324d035be225f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
