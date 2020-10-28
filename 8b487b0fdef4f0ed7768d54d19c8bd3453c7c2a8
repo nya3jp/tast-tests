@@ -54,6 +54,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d9593fb9_a72a2a5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-28T16:14:51Z",
+      "side": 1,
+      "message": "Thanks for the information.  We\u0027ll follow up with a refactor to parameterize all the printing tests.\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1143290",
+      "revId": "8b487b0fdef4f0ed7768d54d19c8bd3453c7c2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "79e0273c_033691fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_star_printer.go",
         "patchSetId": 1
