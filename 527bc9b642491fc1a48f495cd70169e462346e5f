@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f079aafa_4b5e14ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-28T16:31:56Z",
+      "side": 1,
+      "message": "Thanks for doing this!\n\nHow did you update all those values? When I added EventType values into this file, it was done manually as I thought it was a one-shot task.\nIf you made up some script for updating them, I like that script to be committed somewhere in tast-tests repository.  If you did manually, that\u0027s fine and thanks again for doing this carefully.",
+      "revId": "527bc9b642491fc1a48f495cd70169e462346e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
