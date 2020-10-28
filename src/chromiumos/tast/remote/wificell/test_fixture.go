@@ -736,6 +736,19 @@ func (tf *TestFixture) CleanDisconnectWifi(ctx context.Context) error {
 	return tf.disconnectWifi(ctx, true)
 }
 
+// ForceDisconnectWifi attempts to disconnect DUT from the current WiFi service
+// and removes SSID entries regardless of disconnect result.
+func (tf *TestFixture) ForceDisconnectWifi(ctx context.Context, apSSID string) error {
+	if err := tf.disconnectWifi(ctx, true); err != nil {
+		testing.ContextLogf(ctx, "Unable to disconnect ap %s, err: %v", apSSID, err)
+		// Ignore the error. The service is most likely already disconnected.
+	}
+	if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.DeleteEntriesForSSIDRequest{Ssid: []byte(apSSID)}); err != nil {
+		return errors.Wrapf(err, "failed to remove entries for ssid=%s", apSSID)
+	}
+	return nil
+}
+
 // ReserveForDisconnect returns a shorter ctx and cancel function for tf.DisconnectWifi.
 func (tf *TestFixture) ReserveForDisconnect(ctx context.Context) (context.Context, context.CancelFunc) {
 	return ctxutil.Shorten(ctx, 5*time.Second)
