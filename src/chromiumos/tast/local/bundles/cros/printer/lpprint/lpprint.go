@@ -33,6 +33,8 @@ func CleanPSContents(content string) string {
 			`|%%CreationDate: D:.*` +
 			// Remove gs invocation command
 			`|%%Invocation: .*` +
+			// Remove additional lines of invocation command
+			`|%%\+ .*` +
 			// For Brother jobs, jobtime and printlog item 2 contain
 			// time-specific values.
 			`|@PJL SET JOBTIME = .*` +
