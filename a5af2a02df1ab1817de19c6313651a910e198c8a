@@ -16,6 +16,24 @@
       "message": "IIUC, this is mostly to run the test locally, in your workstation.\n\nIf that\u0027s the case, using `tast run -var keepCache\u003dtrue ...` might be better, since you don\u0027t have to modify the .go files each time.\n\nSee: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#runtime-variables",
       "revId": "a5af2a02df1ab1817de19c6313651a910e198c8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663a3ed0_adaa66a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-10-28T04:37:27Z",
+      "side": 1,
+      "message": "Didn\u0027t know about \"-var keepCache\u003dtrue\", thanks for the info! Apologies for the slow reply, was OOO for a few weeks.\n\nI prefer to also have a variable to control the behavior from inside the tests to have a bit more control, rather than keeping the full cache. It\u0027s only a small change anyway, and some tests have more than one configuration option (e.g. to download the encoded video after a test run for debugging purposes).",
+      "parentUuid": "d44acb05_996b6033",
+      "revId": "a5af2a02df1ab1817de19c6313651a910e198c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
