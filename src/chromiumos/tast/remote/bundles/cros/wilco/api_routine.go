@@ -180,21 +180,6 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
-			name: "battery_fail",
-			request: dtcpb.RunRoutineRequest{
-				Routine: dtcpb.DiagnosticRoutine_ROUTINE_BATTERY,
-				Parameters: &dtcpb.RunRoutineRequest_BatteryParams{
-					BatteryParams: &dtcpb.BatteryRoutineParameters{
-						LowMah:  10,
-						HighMah: 100,
-					},
-				},
-			},
-			// HighMah is 100 (all devices should have a battery larger than
-			// this).
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
-		},
-		{
 			name: "battery_sysfs",
 			request: dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_BATTERY_SYSFS,
