@@ -533,6 +533,16 @@ func (r *Router) StopCapture(ctx context.Context, capturer *pcap.Capturer) error
 	return firstErr
 }
 
+// StartRawCapturer starts a capturer on an existing interface on the router without reserving
+// resources. This is a simple wrap around pcap.StartCapturer to use the router's working dir.
+// As no resource is reserved, the caller should use ReserveForClose and Close of the returned
+// capturer directly.
+// This function is useful for the tests that don't care the 802.11 frames but the behavior
+// of upper layer traffic and can capture packets directly on AP's interface.
+func (r *Router) StartRawCapturer(ctx context.Context, name, iface string, ops ...pcap.Option) (*pcap.Capturer, error) {
+	return pcap.StartCapturer(ctx, r.host, name, iface, r.workDir(), ops...)
+}
+
 // NewFrameSender creates a frame sender object.
 func (r *Router) NewFrameSender(ctx context.Context, iface string) (ret *framesender.Sender, retErr error) {
 	nd, err := r.monitorOnInterface(ctx, iface)
