@@ -175,6 +175,13 @@ func Auth(user, pass, gaiaID string) Option {
 	}
 }
 
+// Contact returns an Option that can be passed to New to configure the contact email used by Chrome.
+func Contact(contact string) Option {
+	return func(c *Chrome) {
+		c.contact = contact
+	}
+}
+
 // ParentAuth returns an Option that can be passed to New to configure the login credentials of a parent user.
 // If the GAIA account specified by Auth is a supervised child user, this credential is used to go through the unicorn login flow.
 // Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
@@ -322,21 +329,21 @@ func LoadSigninProfileExtension(key string) Option {
 type Chrome struct {
 	devsess *cdputil.Session // DevTools session
 
-	user, pass, gaiaID     string // login credentials
-	normalizedUser         string // user with domain added, periods removed, etc.
-	parentUser, parentPass string // unicorn parent login credentials
-	keepState              bool
-	deferLogin             bool
-	loginMode              loginMode
-	vkEnabled              bool
-	skipOOBEAfterLogin     bool // skip OOBE post user login
-	installWebApp          bool // auto install essential apps after user login
-	region                 string
-	policyEnabled          bool   // flag to enable policy fetch
-	dmsAddr                string // Device Management URL, or empty if using default
-	enroll                 bool   // whether device should be enrolled
-	arcMode                arcMode
-	restrictARCCPU         bool // a flag to control cpu restrictions on ARC
+	user, pass, gaiaID, contact string // login credentials
+	normalizedUser              string // user with domain added, periods removed, etc.
+	parentUser, parentPass      string // unicorn parent login credentials
+	keepState                   bool
+	deferLogin                  bool
+	loginMode                   loginMode
+	vkEnabled                   bool
+	skipOOBEAfterLogin          bool // skip OOBE post user login
+	installWebApp               bool // auto install essential apps after user login
+	region                      string
+	policyEnabled               bool   // flag to enable policy fetch
+	dmsAddr                     string // Device Management URL, or empty if using default
+	enroll                      bool   // whether device should be enrolled
+	arcMode                     arcMode
+	restrictARCCPU              bool // a flag to control cpu restrictions on ARC
 
 	// If breakpadTestMode is true, tell Chrome's breakpad to always write
 	// dumps directly to a hardcoded directory.
@@ -1468,11 +1475,49 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
 	}
-	if err := insertGAIAField(ctx, gaiaConn, "password", c.pass); err != nil {
-		return errors.Wrap(err, "failed to fill password field")
+	if c.contact == "" {
+		if err := insertGAIAField(ctx, gaiaConn, "password", c.pass); err != nil {
+			return errors.Wrap(err, "failed to fill password field")
+		}
+	} else {
+		testing.ContextLog(ctx, "Contact email is supplied")
+		if err := insertGAIAFieldByName(ctx, gaiaConn, "email", c.contact); err != nil {
+			return errors.Wrap(err, "failed to fill contact email field")
+		}
 	}
 	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
+	}
+
+	if c.contact != "" {
+		testing.ContextLog(ctx, "Please go to https://g.co/verifyaccount to approve the login request")
+
+		testing.ContextLog(ctx, "Waiting for approval...")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			result := false
+			oobeConn.Eval(ctx, "Oobe.getInstance().currentScreen.id == 'saml-confirm-password'", &result)
+			if !result {
+				return errors.Wrapf(err, "Still waiting at the gaia-signin page")
+			}
+			return nil
+		}, loginPollOpts); err != nil {
+			return errors.Wrap(c.chromeErr(err), "Timeout waiting at the gaia-signin page")
+		}
+
+		localPassword := "test0000"
+		testing.ContextLogf(ctx, "Enter local password as %q", localPassword)
+		if err := insertOOBEField(ctx, oobeConn, "passwordInput", localPassword); err != nil {
+			return errors.Wrap(err, "failed to fill passwordInput field")
+		}
+		if err := insertOOBEField(ctx, oobeConn, "confirmPasswordInput", localPassword); err != nil {
+			return errors.Wrap(err, "failed to fill confirmPasswordInput field")
+		}
+
+		const codeTmpl = "document.getElementById('saml-confirm-password').shadowRoot.getElementById(%[1]q).click()"
+		if err := oobeConn.Exec(ctx, fmt.Sprintf(
+			codeTmpl, "next")); err != nil {
+			return errors.Wrapf(err, "failed to submit local password")
+		}
 	}
 
 	// Perform Unicorn login if parent user given.
@@ -1519,6 +1564,74 @@ func insertGAIAField(ctx context.Context, gaiaConn *Conn, inputID, value string)
 		})()`, inputID, value)
 	if err := gaiaConn.Exec(ctx, script); err != nil {
 		return errors.Wrapf(err, "failed to use %q element", inputID)
+	}
+	return nil
+}
+
+// insertGAIAFieldByName fills a field of the GAIA login form by field name.
+func insertGAIAFieldByName(ctx context.Context, gaiaConn *Conn, inputName, value string) error {
+	// Ensure that the input exists.
+	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
+		"document.getElementsByName(%[1]q)", inputName)); err != nil {
+		return errors.Wrapf(err, "failed to wait for %q element", inputName)
+	}
+	// Ensure the input field is empty.
+	// This confirms that we are not using the field before it is cleared.
+	fieldReady := fmt.Sprintf(`
+                (function() {
+                        let field = document.getElementsByName(%q)[0];
+                        if (field.tagName !== 'INPUT') {
+                                field = field.getElementsByTagName('INPUT')[0];
+                        }
+                        return field.value === "";
+				})()`, inputName)
+	if err := gaiaConn.WaitForExpr(ctx, fieldReady); err != nil {
+		return errors.Wrapf(err, "failed to wait for %q element to be empty", inputName)
+	}
+
+	// Fill field and click next.
+	testing.ContextLogf(ctx, "Filling in email: %q", value)
+	script := fmt.Sprintf(`
+                (function() {
+                        let field = document.getElementsByName(%q)[0];
+                        if (field.tagName !== 'INPUT') {
+                                field = field.getElementsByTagName('INPUT')[0];
+                        }
+                        field.value = %q;
+                })()`, inputName, value)
+	if err := gaiaConn.Exec(ctx, script); err != nil {
+		return errors.Wrapf(err, "failed to use %q element", inputName)
+	}
+	return nil
+}
+
+// insertOOBEField fills a field of the OOBE login form by field name.
+func insertOOBEField(ctx context.Context, oobe *Conn, inputName, value string) error {
+	// Ensure that the input exists.
+	if err := oobe.WaitForExpr(ctx, fmt.Sprintf(
+		"document.getElementById('saml-confirm-password').shadowRoot.getElementById(%[1]q)", inputName)); err != nil {
+		return errors.Wrapf(err, "failed to wait for %q element", inputName)
+	}
+	// Ensure the input field is empty.
+	// This confirms that we are not using the field before it is cleared.
+	fieldReady := fmt.Sprintf(`
+                (function() {
+                        let field = document.getElementById('saml-confirm-password').shadowRoot.getElementById(%q);
+                        return field.value === "";
+				})()`, inputName)
+	if err := oobe.WaitForExpr(ctx, fieldReady); err != nil {
+		return errors.Wrapf(err, "failed to wait for %q element to be empty", inputName)
+	}
+
+	// Fill field and click next.
+	testing.ContextLogf(ctx, "Filling in %q", inputName)
+	script := fmt.Sprintf(`
+                (function() {
+                        let field = document.getElementById('saml-confirm-password').shadowRoot.getElementById(%q);
+                        field.value = %q;
+                })()`, inputName, value)
+	if err := oobe.Exec(ctx, script); err != nil {
+		return errors.Wrapf(err, "failed to use %q element", inputName)
 	}
 	return nil
 }
