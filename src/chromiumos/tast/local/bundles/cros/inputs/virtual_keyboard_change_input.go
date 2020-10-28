@@ -6,14 +6,11 @@ package inputs
 
 import (
 	"context"
-	"fmt"
-	"io"
-	"net/http"
-	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
@@ -65,66 +62,40 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		InputMethodLabel         = "FR"
 	)
 
-	if err := ime.EnableLanguage(ctx, tconn, language); err != nil {
-		s.Fatalf("Failed to enable the language %q: %v", language, err)
+	if err := ime.AddInputMethod(ctx, tconn, ime.IMEPrefix+inputMethod); err != nil {
+		s.Fatal("Failed to add input method: ", err)
 	}
 
-	if err := ime.AddInputMethod(ctx, tconn, vkb.ImePrefix+inputMethod); err != nil {
-		s.Fatalf("Failed to enable the IME %q: %v", inputMethod, err)
-	}
-
-	s.Log("Start a local server to test chrome")
-	const identifier = "e14s-inputbox"
-	html := fmt.Sprintf(`<input type="text" id="text" autocorrect="off" aria-label=%q/>`, identifier)
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
-	}))
-	defer server.Close()
-
-	conn, err := cr.NewConn(ctx, server.URL)
+	ts, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Failed to render test page: ", err)
+		s.Fatal("Fail to launch inputs test server: ", err)
 	}
-	defer conn.Close()
+	defer ts.Close()
 
-	inputFieldElement, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
-	if err != nil {
-		s.Fatalf("Failed to find input element %s: %v", identifier, err)
-	}
-	defer inputFieldElement.Release(ctx)
+	inputField := testserver.TextAreaInputField
 
-	s.Log("Click input field to trigger virtual keyboard")
-	if err := vkb.ClickUntilVKShown(ctx, tconn, inputFieldElement); err != nil {
-		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
+	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 	}
 
 	// Input method changing is done async between front-end ui and background.
 	// So nicely to assert both of them to make sure input method changed completely.
 	assertInputMethod := func(ctx context.Context, inputMethod, inputMethodLabel string) {
-		s.Logf("Waiting for %v virtual keyboard to show", inputMethod)
-		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-		}
-
 		s.Logf("Wait for current input method label to be %q, %q", inputMethod, inputMethodLabel)
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			// Assert current language using API
-			currentInputMethod, err := vkb.GetCurrentInputMethod(ctx, tconn)
+			currentInputMethod, err := ime.GetCurrentInputMethod(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to get current input method")
-			} else if currentInputMethod != inputMethod {
-				return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, vkb.ImePrefix+inputMethod)
+			} else if currentInputMethod != ime.IMEPrefix+inputMethod {
+				return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, ime.IMEPrefix+inputMethod)
 			}
-			keyboard, err := vkb.VirtualKeyboard(ctx, tconn)
-			if err != nil {
-				return errors.Wrap(err, "virtual keyboard does not show")
-			}
-			defer keyboard.Release(ctx)
 
-			if _, err := keyboard.Descendants(ctx, ui.FindParams{Name: inputMethodLabel}); err != nil {
+			imeKeyNode, err := vkb.DescendantNode(ctx, tconn, ui.FindParams{Name: inputMethodLabel})
+			if err != nil {
 				return errors.Wrapf(err, "failed to wait for language menu label change to %s", inputMethodLabel)
 			}
+			defer imeKeyNode.Release(ctx)
 			return nil
 		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 			s.Fatal("Failed to assert input method: ", err)
@@ -161,23 +132,12 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click language menu on vk: ", err)
 	}
 
-	// Wait for language option menu full positioned.
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for language option menu positioned: ", err)
-	}
-
 	languageOptionParams := ui.FindParams{
 		Name: defaultInputMethodOption,
 	}
-
-	languageOption, err := ui.FindWithTimeout(ctx, tconn, languageOptionParams, 10*time.Second)
-	if err != nil {
-		s.Fatalf("Failed to find language option with %v: %v", languageOptionParams, err)
-	}
-	defer languageOption.Release(ctx)
-
-	if err := languageOption.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click default language: ", err)
+	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}
+	if err := ui.StableFindAndClick(ctx, tconn, languageOptionParams, &opts); err != nil {
+		s.Fatalf("Failed to select language option %s: %v", defaultInputMethodOption, err)
 	}
 
 	assertInputMethod(ctx, defaultInputMethod, defaultInputMethodLabel)

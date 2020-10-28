@@ -94,7 +94,7 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	const imePrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
+	const imePrefix = ime.IMEPrefix
 
 	switchInputMethod := func(ctx context.Context, language, layout string) {
 		if err := ime.EnableLanguage(ctx, tconn, language); err != nil {
