@@ -88,6 +88,24 @@
       "parentUuid": "89eb8355_4d810e86",
       "revId": "5aefbca6c70fc1559efe014b93341645a8ad5188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03791e5_af9fe1fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-10-28T02:42:08Z",
+      "side": 1,
+      "message": "The performance tests enable benchmarking mode which disables CPU frequency scaling before waiting for the CPU to become idle.",
+      "parentUuid": "0dd8df3b_93ca2fb5",
+      "revId": "5aefbca6c70fc1559efe014b93341645a8ad5188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
