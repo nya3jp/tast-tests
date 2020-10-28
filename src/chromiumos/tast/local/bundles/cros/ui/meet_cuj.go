@@ -109,7 +109,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		timeout     = 10 * time.Second
 		botDuration = 2 * time.Minute
 		docsURL     = "https://docs.google.com/document/d/1qREN9w1WgjgdGYBT_eEtE6T21ErlW_4nQoBJVhrR1S0/edit"
-		notes       = "Lorem lpsum"
+		notes       = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
@@ -517,27 +517,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		// Simulate notes input.
-		if meet.docs {
-			docsTextfield, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Document content", Role: ui.RoleTypeTextField}, timeout)
-			if err != nil {
-				s.Fatal("Failed to find the docs text field: ", err)
-			}
-			defer docsTextfield.Release(closeCtx)
-			if err := docsTextfield.StableLeftClick(ctx, &pollOpts); err != nil {
-				s.Fatal("Failed to click on the docs text field: ", err)
-			}
-			if err := kw.Accel(ctx, "Ctrl+A"); err != nil {
-				s.Fatal("Failed to hit ctrl-a and select all text: ", err)
-			}
-			if err := kw.Type(ctx, notes); err != nil {
-				s.Fatal("Failed to type the notes: ", err)
-			}
-			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
-				s.Fatal("Failed to hit alt-tab and focus back to Meet tab: ", err)
-			}
-		}
-
 		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
 		if err != nil {
 			s.Fatal("Failed to start the profiler: ", err)
@@ -555,8 +534,36 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			//   rather than just sleeping.
 			// - graphics.MeasureGPUCounters may quit immediately when the hardware or
 			//   kernel does not support the reporting mechanism.
-			errc <- graphics.MeasureGPUCounters(ctx, 30*time.Second, pv)
+			errc <- graphics.MeasureGPUCounters(ctx, 60*time.Second, pv)
 		}()
+
+		// Simulate notes input.
+		if meet.docs {
+			docsTextfield, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Document content", Role: ui.RoleTypeTextField}, timeout)
+			if err != nil {
+				s.Fatal("Failed to find the docs text field: ", err)
+			}
+			defer docsTextfield.Release(closeCtx)
+			if err := docsTextfield.StableLeftClick(ctx, &pollOpts); err != nil {
+				s.Fatal("Failed to click on the docs text field: ", err)
+			}
+			if err := kw.Accel(ctx, "Ctrl+A"); err != nil {
+				s.Fatal("Failed to hit ctrl-a and select all text: ", err)
+			}
+			// Type notes three times with 5 seconds pauses.
+			for i := 0; i < 3; i++ {
+				if err := kw.Type(ctx, notes); err != nil {
+					s.Fatal("Failed to type the notes: ", err)
+				}
+				if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+					return errors.Wrap(err, "failed to wait")
+				}
+			}
+			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
+				s.Fatal("Failed to hit alt-tab and focus back to Meet tab: ", err)
+			}
+		}
+
 		s.Log("Waiting for 30 seconds")
 		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
 			return errors.Wrap(err, "failed to wait")
