@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f37180_3cd989a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-28T16:49:12Z",
+      "side": 1,
+      "message": "Is this how pdftopdf is implemented?  So we fix the problem by just embedding the fonts before we render?",
+      "revId": "7caaa317a9150045c922daec1418b6099298d481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
