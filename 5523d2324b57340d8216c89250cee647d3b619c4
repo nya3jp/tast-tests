@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c95f5994_3aea80c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-28T23:09:17Z",
+      "side": 1,
+      "message": "Oh sorry about that! I didn\u0027t notice...",
+      "parentUuid": "66c1b7fc_ec250349",
+      "revId": "5523d2324b57340d8216c89250cee647d3b619c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fb9853f_3f728131",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86128443_bbf35c31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-28T23:09:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fb9853f_3f728131",
+      "revId": "5523d2324b57340d8216c89250cee647d3b619c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73b6f661_7a2745d8",
@@ -48,6 +84,30 @@
       "writtenOn": "2020-10-28T17:02:57Z",
       "side": 1,
       "message": "Looks like this 30 seconds waiting isn\u0027t necessary anymore (reading \"errc\" below makes the waiting effectively). Can you remove this?",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 3
+      },
+      "revId": "5523d2324b57340d8216c89250cee647d3b619c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a98a41_22f3512a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-10-28T23:09:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73b6f661_7a2745d8",
       "range": {
         "startLine": 568,
         "startChar": 0,
