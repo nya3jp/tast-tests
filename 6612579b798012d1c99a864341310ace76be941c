@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "968f84f6_371eec81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-10-28T16:07:34Z",
+      "side": 1,
+      "message": "+1 to additional test variants rather than doing everything at once, thanks all for the idea/knowledge!",
+      "revId": "6612579b798012d1c99a864341310ace76be941c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3da61bf_b5f4b8a9",
