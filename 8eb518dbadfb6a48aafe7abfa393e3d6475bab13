@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84141880_1c15f210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gralloc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-28T01:54:50Z",
+      "side": 1,
+      "message": "Yeah. I also asked other tast reviewers for the confirmation, but it seems I\u0027m correct and this TODO may not be meaningful on tests like this. Thanks for removing this!",
+      "parentUuid": "d3c6a7fe_25edd7f0",
+      "revId": "8eb518dbadfb6a48aafe7abfa393e3d6475bab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e1f6223_136998fa",
