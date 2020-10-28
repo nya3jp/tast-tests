@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1592285_74502eef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-28T15:01:37Z",
+      "side": 1,
+      "message": "Thanks for adding the test.",
+      "revId": "c63e70054c119f3f54b71824bf51634d088b9eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f7d7596_5ba39590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-28T15:01:37Z",
+      "side": 1,
+      "message": "I assume there is no ui node for this element?",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 370
+      },
+      "revId": "c63e70054c119f3f54b71824bf51634d088b9eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4fa3e5_71599eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-28T15:01:37Z",
+      "side": 1,
+      "message": "Don\u0027t use an interval here, we want the test to finish as fast as possible.",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "c63e70054c119f3f54b71824bf51634d088b9eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5abe8b_e8ef2b9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-10-28T15:01:37Z",
+      "side": 1,
+      "message": "got %s; want %s",
+      "range": {
+        "startLine": 109,
+        "startChar": 96,
+        "endLine": 109,
+        "endChar": 112
+      },
+      "revId": "c63e70054c119f3f54b71824bf51634d088b9eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
