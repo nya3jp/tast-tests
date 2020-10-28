@@ -46,6 +46,30 @@
       },
       "revId": "d2d9ca463c5372f0406835f65e176a9d78fceb7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "362da970_8f37d74b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-28T01:48:56Z",
+      "side": 1,
+      "message": "Looks great!  Thanks for doing this.",
+      "parentUuid": "6051bc45_7c0c7b8c",
+      "range": {
+        "startLine": 291,
+        "startChar": 11,
+        "endLine": 291,
+        "endChar": 51
+      },
+      "revId": "d2d9ca463c5372f0406835f65e176a9d78fceb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
