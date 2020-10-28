@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3b862b09_e789ca35",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-10-28T02:33:04Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c3522b2c_b616bf82",
+      "range": {
+        "startLine": 711,
+        "startChar": 0,
+        "endLine": 712,
+        "endChar": 32
+      },
+      "revId": "b4d3882cc8ab2e8a4ded95dc3ae99d09b157cb4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a52fb528_d7885040",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 3
@@ -66,6 +90,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "582d0be0_b357aaca",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-10-28T02:33:04Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a52fb528_d7885040",
+      "range": {
+        "startLine": 714,
+        "startChar": 0,
+        "endLine": 715,
+        "endChar": 35
+      },
+      "revId": "b4d3882cc8ab2e8a4ded95dc3ae99d09b157cb4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f5e21bad_32031419",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 3
@@ -77,6 +125,30 @@
       "writtenOn": "2020-10-28T01:48:56Z",
       "side": 1,
       "message": "nit: According to the comparison operators document, plain simple object like coords.Rect should be able to be compared through standard \u003d\u003d or !\u003d operators (cf. https://golang.org/ref/spec#Comparison_operators)",
+      "range": {
+        "startLine": 731,
+        "startChar": 6,
+        "endLine": 731,
+        "endChar": 52
+      },
+      "revId": "b4d3882cc8ab2e8a4ded95dc3ae99d09b157cb4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee9c78de_a39cf814",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-10-28T02:33:04Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f5e21bad_32031419",
       "range": {
         "startLine": 731,
         "startChar": 6,
