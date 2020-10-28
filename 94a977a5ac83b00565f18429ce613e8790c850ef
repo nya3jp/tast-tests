@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d4f63fa_221fe934",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caa40e6f_d894fa3f",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0770b58_75c85ba0",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c849cf08_ab2a8bf6",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0770b58_75c85ba0",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26a086e2_0816053a",
@@ -54,6 +96,24 @@
       "writtenOn": "2020-10-28T04:08:11Z",
       "side": 1,
       "message": "Same here:\n// UnsetBridge unsets the bridge of the device (iface).\nUnsetBridge(ctx, iface)",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8575e133_360a6c36",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26a086e2_0816053a",
       "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b71aefd1_1cae5b43",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7f9225_c2ca8377",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cc6cc5e_6b84f185",
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c28d90c_6b3919e7",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Hmm... Let\u0027s not maintain these maps and just create/delete these kinds of the devices directly.",
+      "parentUuid": "5cc6cc5e_6b84f185",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e71c4bf3_ea66b329",
@@ -111,6 +213,30 @@
       "writtenOn": "2020-10-28T04:08:11Z",
       "side": 1,
       "message": "remove\n\nsame below",
+      "range": {
+        "startLine": 333,
+        "startChar": 63,
+        "endLine": 333,
+        "endChar": 69
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5245460_9120d9d2",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "e71c4bf3_ea66b329",
       "range": {
         "startLine": 333,
         "startChar": 63,
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a18fbb_25ea67d4",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8086c5e7_a053b964",
+      "range": {
+        "startLine": 672,
+        "startChar": 63,
+        "endLine": 672,
+        "endChar": 127
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca77e7b1_c10372e2",
@@ -157,6 +307,24 @@
       "writtenOn": "2020-10-28T04:08:11Z",
       "side": 1,
       "message": "What\u0027s the advantage of keeping used bridge names? Does \"ip link add\" takes time to complete?",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2efa48ce_d852c795",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "I guess not that much. Let\u0027s add/delete in the New/Release directly.",
+      "parentUuid": "ca77e7b1_c10372e2",
       "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +352,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa21c5c9_1168db52",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a385e2f1_f30e4b0a",
+      "range": {
+        "startLine": 707,
+        "startChar": 53,
+        "endLine": 707,
+        "endChar": 127
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae57e295_d87ed9b1",
@@ -201,6 +393,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b4cccdc_a1941cfe",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "ae57e295_d87ed9b1",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e69f6881_956accb1",
@@ -214,6 +424,30 @@
       "writtenOn": "2020-10-28T04:08:11Z",
       "side": 1,
       "message": "releases the veth pair without delete it for further use.",
+      "range": {
+        "startLine": 732,
+        "startChar": 19,
+        "endLine": 732,
+        "endChar": 85
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa5ff5c_2084abc2",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Now we delete them directly.",
+      "parentUuid": "e69f6881_956accb1",
       "range": {
         "startLine": 732,
         "startChar": 19,
@@ -249,6 +483,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "287f90cf_30d436ee",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "No, they should not share the same semantic. Bind and Unbind are applied to a specific end of veth, but not both ends.",
+      "parentUuid": "c241f2f7_2c55e51d",
+      "range": {
+        "startLine": 733,
+        "startChar": 0,
+        "endLine": 733,
+        "endChar": 125
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67621c31_cbb93639",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 1
@@ -260,6 +518,30 @@
       "writtenOn": "2020-10-28T04:08:11Z",
       "side": 1,
       "message": "vethPeerPrefix",
+      "range": {
+        "startLine": 737,
+        "startChar": 31,
+        "endLine": 737,
+        "endChar": 41
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ffc16d9_cefec3e6",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67621c31_cbb93639",
       "range": {
         "startLine": 737,
         "startChar": 31,
@@ -304,6 +586,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "137bfc4e_6b84f176",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cef8d6e8_7fa554b2",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01cd6893_f546185a",
@@ -327,6 +627,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcaaa629_7dabeced",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01cd6893_f546185a",
+      "range": {
+        "startLine": 928,
+        "startChar": 0,
+        "endLine": 938,
+        "endChar": 38
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a47319d_72cf409d",
@@ -340,6 +664,30 @@
       "writtenOn": "2020-10-28T04:08:11Z",
       "side": 1,
       "message": "vethPeerPrefix",
+      "range": {
+        "startLine": 985,
+        "startChar": 31,
+        "endLine": 985,
+        "endChar": 41
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea7821a7_b661a5dd",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:53:16Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "6a47319d_72cf409d",
       "range": {
         "startLine": 985,
         "startChar": 31,
