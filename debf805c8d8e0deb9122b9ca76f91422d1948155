@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e1684e_bcab148e",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:31:43Z",
+      "side": 1,
+      "message": "md or mdId  (though I saw some debate on whether ID or Id is correct: https://github.com/golang/lint/issues/124).",
+      "range": {
+        "startLine": 232,
+        "startChar": 20,
+        "endLine": 232,
+        "endChar": 24
+      },
+      "revId": "debf805c8d8e0deb9122b9ca76f91422d1948155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59eb6f2e_636f1365",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:31:43Z",
+      "side": 1,
+      "message": "nas_identifier",
+      "range": {
+        "startLine": 238,
+        "startChar": 46,
+        "endLine": 238,
+        "endChar": 60
+      },
+      "revId": "debf805c8d8e0deb9122b9ca76f91422d1948155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b0efec_c4a78fb8",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:31:43Z",
+      "side": 1,
+      "message": "id",
+      "range": {
+        "startLine": 239,
+        "startChar": 19,
+        "endLine": 239,
+        "endChar": 24
+      },
+      "revId": "debf805c8d8e0deb9122b9ca76f91422d1948155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a165b9c_a46298c0",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:31:43Z",
+      "side": 1,
+      "message": "NASIdentifier or NASId",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "debf805c8d8e0deb9122b9ca76f91422d1948155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee29c011_80c0656e",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:31:43Z",
+      "side": 1,
+      "message": "\"... fields: \", khs",
+      "range": {
+        "startLine": 563,
+        "startChar": 65,
+        "endLine": 563,
+        "endChar": 66
+      },
+      "revId": "debf805c8d8e0deb9122b9ca76f91422d1948155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
