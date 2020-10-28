@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "749f3b62_e3eafb47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T19:45:40Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "76017bc8e4a3d629f8b8fb95252fb88783085187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1305770_9f282f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T19:45:40Z",
+      "side": 1,
+      "message": "nit: please add comment about the difference between R and P. What is the extra event that is being generated.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "76017bc8e4a3d629f8b8fb95252fb88783085187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
