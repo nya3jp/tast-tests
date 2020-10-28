@@ -28,6 +28,7 @@ var rdpPollOpts = &testing.PollOptions{Interval: time.Second}
 type rdpVars struct {
 	user      string
 	pass      string
+	contact   string
 	wait      bool
 	reset     bool
 	extraArgs []string
@@ -44,7 +45,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
 			// For running manually.
-			"user", "pass", "wait", "extra_args", "reset",
+			"user", "pass", "contact", "wait", "extra_args", "reset",
 			// For automated testing.
 			"dev.username", "dev.password",
 		},
@@ -221,18 +222,22 @@ func waitConnection(ctx context.Context, tconn *chrome.TestConn) error {
 // getVars extracts the testing parameters from testing.State. The user
 // provided credentials would override the credentials from config file.
 func getVars(s *testing.State) rdpVars {
-	manual := true
-
-	user, ok := s.Var("user")
-	if !ok {
-		manual = false
+	user, hasUser := s.Var("user")
+	if !hasUser {
 		user = s.RequiredVar("dev.username")
 	}
 
-	pass, ok := s.Var("pass")
-	if !ok {
-		manual = false
+	pass, hasPass := s.Var("pass")
+	if !hasPass {
 		pass = s.RequiredVar("dev.password")
+	}
+
+	contact, hasContact := s.Var("contact")
+
+	// Manual test requires username + password/contact.
+	manual := false
+	if hasUser && (hasPass || hasContact) {
+		manual = true
 	}
 
 	resetStr, ok := s.Var("reset")
@@ -267,6 +272,7 @@ func getVars(s *testing.State) rdpVars {
 	return rdpVars{
 		user:      user,
 		pass:      pass,
+		contact:   contact,
 		wait:      wait,
 		reset:     reset,
 		extraArgs: extraArgs,
@@ -286,6 +292,7 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 	}
 	opts = append(opts, chromeARCOpt)
 	opts = append(opts, chrome.Auth(vars.user, vars.pass, ""))
+	opts = append(opts, chrome.Contact(vars.contact))
 	opts = append(opts, chrome.GAIALogin())
 
 	if !vars.reset {
@@ -298,6 +305,12 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
+		// In case of authentication error, provide a more informative message to the user.
+		if strings.Contains(err.Error(), "chrome.Auth") {
+			err = errors.Wrap(err, "please supply a password with -var=pass=<password>")
+		} else if strings.Contains(err.Error(), "chrome.Contact") {
+			err = errors.Wrap(err, "please supply a contact email with -var=contact=<contact>")
+		}
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
