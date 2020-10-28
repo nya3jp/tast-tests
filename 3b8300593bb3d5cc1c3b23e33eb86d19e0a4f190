@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c89766ac_31fdf0f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-28T05:50:54Z",
+      "side": 1,
+      "message": "ctx\u0027s timeout. runFioStress would return error on timeout.\nIt must not be ignored.",
+      "parentUuid": "4e820fcd_09416d19",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "906e5fd2_8df068bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
         "patchSetId": 1
@@ -166,6 +184,24 @@
       "side": 1,
       "message": "Please see my reply above.",
       "parentUuid": "6a25dfef_703d0edc",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d141573d_7e67bb97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-28T05:50:54Z",
+      "side": 1,
+      "message": "could you find my comment above?",
+      "parentUuid": "a4d63d03_5d87fdc8",
       "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -430,6 +466,30 @@
       "side": 1,
       "message": "load_base_vars and get_fixed_dst_drive are functions defined in the preceding scripts (write_gpt.sh and chromeos-common.sh respectively). There is no additional error that I could possible report even if I split this command into 4 separate ones - they cannot fail separately. See the reference: http://cs/android/external/autotest/client/bin/utils.py?l\u003d1983\u0026rcl\u003d93ef648dc19dfa017b9dccde384bc855cf5635fb",
       "parentUuid": "17ad89d5_d3094947",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 94
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "841c033d_def0fc9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-28T05:50:54Z",
+      "side": 1,
+      "message": "I see. Could you add brief comment about it?",
+      "parentUuid": "9b6fb3bb_2c041222",
       "range": {
         "startLine": 152,
         "startChar": 1,
