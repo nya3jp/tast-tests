@@ -226,7 +226,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 			},
 			Event: axEventLog{
-				EventType:  ui.EventTypeValueChanged,
+				EventType:  ui.EventTypeRangeValueChanged,
 				TargetName: "seekBar",
 			},
 		},
@@ -253,7 +253,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 			},
 			Event: axEventLog{
-				EventType: ui.EventTypeValueChanged,
+				EventType: ui.EventTypeRangeValueChanged,
 			},
 		},
 	}
@@ -281,7 +281,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 			},
 			Event: axEventLog{
-				EventType:  ui.EventTypeValueChanged,
+				EventType:  ui.EventTypeValueInTextFieldChanged,
 				TargetName: "contentDescription",
 			},
 		},
