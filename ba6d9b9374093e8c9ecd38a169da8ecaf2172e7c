@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "980c0cb7_f9118c96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-28T07:27:24Z",
+      "side": 1,
+      "message": "Please do a full review.\n\nI\u0027ve got some WIP tests based on top of this, so I can evaluate any changes now with much more confidence.",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9fdccb_2b98d98d",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-28T07:27:24Z",
+      "side": 1,
+      "message": "Matthew, would it be possible to reboot the VM and restore to a previous disk snapshot? How fast would that be?\n\nI\u0027m worries that if we don\u0027t clean up, files/services/programs left over from previous tests will make the results unstable.",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e4da26d_75c2a514",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-28T07:27:24Z",
+      "side": 1,
+      "message": "Matthew, any input on what we should do here? Is stopping the VM enough?",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
