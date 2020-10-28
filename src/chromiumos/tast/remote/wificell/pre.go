@@ -69,9 +69,10 @@ func (p *testFixturePreImpl) String() string {
 // Timeout returns the amount of time dedicated to prepare and close the precondition.
 func (p *testFixturePreImpl) Timeout() time.Duration {
 	// When connecting to devices with slower SSH, e.g. in lab, the first
-	// Prepare might take up to 30 seconds. Set a sufficient timeout for
-	// the case here.
-	return time.Minute
+	// Prepare might take up to 30 seconds. Also, it is possible that
+	// something is broken and we'll have to reconstruct the TestFixture.
+	// Set a sufficient timeout for these cases.
+	return 2 * time.Minute
 }
 
 // Prepare initializes the shared TestFixture if not yet created and returns it
@@ -84,16 +85,17 @@ func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.PreState) i
 	defer st.End()
 
 	if p.tf != nil {
-		if err := p.tf.Reinit(ctx); err != nil {
-			// Reinit failed.
-			s.Log("Try recreating the TestFixture as it failed to re-initialize, err: ", err)
-			if err := p.tf.Close(ctx); err != nil {
-				s.Log("Failed to close the broken TestFixture, err: ", err)
-			}
-			p.tf = nil
-		} else {
+		err := p.tf.Reinit(ctx)
+		if err == nil { // Reinit succeeded, we're done.
 			return p.tf
 		}
+		// Reinit failed, close the old TestFixture.
+		s.Log("Try recreating the TestFixture as it failed to re-initialize, err: ", err)
+		if err := p.tf.Close(ctx); err != nil {
+			s.Log("Failed to close the broken TestFixture, err: ", err)
+		}
+		p.tf = nil
+		// Fallthrough the creation of TestFixture.
 	}
 
 	// Create TestFixture.
