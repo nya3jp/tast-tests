@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b0838add_f47477e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-28T23:36:23Z",
+      "side": 1,
+      "message": "lgtm\n\nI don\u0027t have more to add.",
+      "revId": "eadafb27ce17709166feb85cb7f925880cce9c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a638f806_0a7159f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 7
