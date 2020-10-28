@@ -388,6 +388,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "128e3400_d72afa2d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-28T03:10:06Z",
+      "side": 1,
+      "message": "Oh, yes, the timestamp/order of errors will not be accurate... Thanks for pointing it out.\n\nI don\u0027t have a good solution in mind now, but the helper function somehow gathers the errors inside it so probably a little better as you said.",
+      "parentUuid": "608f2fdd_f0f4f44b",
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0671e23c_f63fe645",
@@ -520,6 +538,30 @@
       "side": 1,
       "message": "You\u0027re right, the AP isn\u0027t used for anything after that point.\n\nI\u0027ve modified the test to put everything from \u0027ConfigureAP()\u0027 up to the end of the scan in a helper function (like you suggested earlier but for the entire AP lifetime rather than just the pcap). This allows the usual deferred DeconfigAP() call take care of stopping the capturer for us, and then after the wrapper function returns the rest of the test is just doing the dwell time computation with scan results + pcap data.\n\nWDYT?",
       "parentUuid": "9fb1b168_8c181490",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "97d2bcc38aa8ee9aab4d1f5cf481d8688097188d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "038c1695_875a05ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-28T03:10:06Z",
+      "side": 1,
+      "message": "Thanks for the change! Current structure looks good to me.",
+      "parentUuid": "e405b772_593f8ce7",
       "range": {
         "startLine": 135,
         "startChar": 0,
