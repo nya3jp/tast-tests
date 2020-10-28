@@ -39,6 +39,30 @@
       },
       "revId": "82806b919260009134756cb88b7e30dd0f34cdfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ebb0a7_35805238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/bit_life.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-10-28T23:45:39Z",
+      "side": 1,
+      "message": "Since clamshell resize is getting timeout during maximizing the window, clamshell reopen is also getting failed due to the context deadline exceeded. Performing clamshell reopen before clamshell resize fixed the issue. Checked it by running the tast test locally.",
+      "parentUuid": "fabbd5e2_094cb0f5",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 71
+      },
+      "revId": "82806b919260009134756cb88b7e30dd0f34cdfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
