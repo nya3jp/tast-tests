@@ -98,6 +98,46 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4db6345b_b6a60412",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T19:14:14Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "0bff1d616b2af17af814d8f9c45996339077d3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a5d28d2_a22b98d9",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T19:14:14Z",
+      "side": 1,
+      "message": "nit:\n\n  const (\n    metaRegex \u003d ...\n    dmpRegex \u003d ...\n    ...\n  )",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 41
+      },
+      "revId": "0bff1d616b2af17af814d8f9c45996339077d3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "42d6236f_5beab58f",
         "filename": "src/chromiumos/tast/local/crash/crash_test.go",
         "patchSetId": 5
