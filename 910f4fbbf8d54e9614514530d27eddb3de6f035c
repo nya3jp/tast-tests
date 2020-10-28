@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e1ef1e_17b28fe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-10-28T15:55:26Z",
+      "side": 1,
+      "message": "This is a prototype only.\n\nVerification email was sent to the OTA account owner.\nLog-in approval was sent.\nWaitForUserMount() failed. (Details in b/171878875)\n\nI\u0027m not sure what else is needed to support the new OTA workflow.",
+      "revId": "910f4fbbf8d54e9614514530d27eddb3de6f035c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
