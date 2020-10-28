@@ -193,6 +193,30 @@
       },
       "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d15acf7_c67b8b5b",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-10-28T03:53:46Z",
+      "side": 1,
+      "message": "I\u0027m convinced that it should at least be consistent between NoBatteryDischarge vs DoNotChangeWifiInterfaces. Let me change it so DoNotChangeWifiInterfaces is the default.",
+      "parentUuid": "956e4402_6a6a4fb7",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 13
+      },
+      "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
