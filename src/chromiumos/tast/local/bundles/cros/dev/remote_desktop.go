@@ -26,6 +26,7 @@ var rdpPollOpts = &testing.PollOptions{Interval: time.Second}
 type rdpVars struct {
 	user      string
 	pass      string
+	contact   string
 	wait      bool
 	reset     bool
 	extraArgs []string
@@ -42,7 +43,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
 			// For running manually.
-			"user", "pass", "wait", "extra_args", "reset",
+			"user", "pass", "contact", "wait", "extra_args", "reset",
 			// For automated testing.
 			"dev.username", "dev.password",
 		},
@@ -232,6 +233,9 @@ func getVars(s *testing.State) rdpVars {
 		pass = s.RequiredVar("dev.password")
 	}
 
+	// Contact email is optional.
+	contact, ok := s.Var("contact")
+
 	resetStr, ok := s.Var("reset")
 	if !ok {
 		resetStr = "false"
@@ -264,6 +268,7 @@ func getVars(s *testing.State) rdpVars {
 	return rdpVars{
 		user:      user,
 		pass:      pass,
+		contact:   contact,
 		wait:      wait,
 		reset:     reset,
 		extraArgs: extraArgs,
@@ -283,6 +288,7 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 	}
 	opts = append(opts, chromeARCOpt)
 	opts = append(opts, chrome.Auth(vars.user, vars.pass, ""))
+	opts = append(opts, chrome.Contact(vars.contact))
 	opts = append(opts, chrome.GAIALogin())
 
 	if !vars.reset {
