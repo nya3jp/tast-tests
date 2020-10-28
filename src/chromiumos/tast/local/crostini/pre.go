@@ -16,6 +16,7 @@ import (
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	cui "chromiumos/tast/local/crostini/ui"
@@ -215,10 +216,24 @@ func StartedByArtifactBuster() testing.Precondition { return startedByArtifactBu
 // StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
 func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 
-// StartedARCEnabled is similar to StartedByArtifactBuster, but will
-// start Chrome with ARCEnabled() option.
+// StartedARCEnabled is similar to StartedByArtifactBuster, but will start Chrome
+// with ARCEnabled() option.
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
+
+// StartedArtifactStretchARCEnabledGaia is similar to StartedByArtifactStretch, but will
+// start Chrome with ARCEnabled() option and gaia login.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedArtifactStretchARCEnabledGaia() testing.Precondition {
+	return startedByArtifactStretchARCEnabledGaiaPre
+}
+
+// StartedArtifactBusterARCEnabledGaia is similar to StartedByArtifactBuster, but will
+// start Chrome with ARCEnabled() option and gaia login.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedArtifactBusterARCEnabledGaia() testing.Precondition {
+	return startedByArtifactBusterARCEnabledGaiaPre
+}
 
 // StartedByArtifactWithGaiaLoginStretch is similar to
 // StartedByArtifactStretch, but will log in Chrome with Gaia with
@@ -284,6 +299,24 @@ var startedARCEnabledPre = &preImpl{
 	mode:          artifact,
 	debianVersion: vm.DebianBuster,
 	arcEnabled:    true,
+}
+
+var startedByArtifactStretchARCEnabledGaiaPre = &preImpl{
+	name:          "crostini_started_arc_enabled_stretch",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	mode:          artifact,
+	debianVersion: vm.DebianStretch,
+	arcEnabled:    true,
+	loginType:     loginGaia, // Needs gaia login to enable Play files.
+}
+
+var startedByArtifactBusterARCEnabledGaiaPre = &preImpl{
+	name:          "crostini_started_arc_enabled_buster",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	mode:          artifact,
+	debianVersion: vm.DebianBuster,
+	arcEnabled:    true,
+	loginType:     loginGaia, // Needs gaia login to enable Play files.
 }
 
 var startedByArtifactWithGaiaLoginStretchPre = &preImpl{
@@ -407,9 +440,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	}()
 
-	opt := chrome.ARCDisabled()
+	opts := []chrome.Option{chrome.ARCDisabled(), chrome.ExtraArgs("--vmodule=crostini*=1")}
 	if p.arcEnabled {
-		opt = chrome.ARCEnabled()
+		if p.loginType == loginGaia {
+			opts = []chrome.Option{chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...), chrome.ExtraArgs("--vmodule=crostini*=1")}
+		} else {
+			opts = []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs("--vmodule=crostini*=1")}
+		}
 	}
 
 	// To help identify sources of flake, we report disk usage before the test.
@@ -417,7 +454,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Log("Failed to gather disk usage: ", err)
 	}
 
-	opts := []chrome.Option{opt, chrome.ExtraArgs("--vmodule=crostini*=1")}
 	if p.loginType == loginGaia {
 		opts = append(opts, chrome.Auth(
 			s.RequiredVar("crostini.gaiaUsername"),
