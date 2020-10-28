@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ab3c70_57c05965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-28T15:07:13Z",
+      "side": 1,
+      "message": "Yes, unfortunately no ui node for those elements.",
+      "parentUuid": "3f7d7596_5ba39590",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 370
+      },
+      "revId": "c63e70054c119f3f54b71824bf51634d088b9eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f4fa3e5_71599eec",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b0fcba_9a8d75e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-28T15:07:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f4fa3e5_71599eec",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "c63e70054c119f3f54b71824bf51634d088b9eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c5abe8b_e8ef2b9c",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-10-28T15:01:37Z",
       "side": 1,
       "message": "got %s; want %s",
+      "range": {
+        "startLine": 109,
+        "startChar": 96,
+        "endLine": 109,
+        "endChar": 112
+      },
+      "revId": "c63e70054c119f3f54b71824bf51634d088b9eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb58b44_372b0ad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-28T15:07:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c5abe8b_e8ef2b9c",
       "range": {
         "startLine": 109,
         "startChar": 96,
