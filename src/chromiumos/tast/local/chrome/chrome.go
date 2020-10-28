@@ -76,6 +76,11 @@ const (
 
 	// BlankURL is the URL corresponding to the about:blank page.
 	BlankURL = "about:blank"
+
+	// localPassword is used in OOBE login screen. When contact email approval flow is used,
+	// there is no password supplied by the user and this local password will be used to encrypt
+	// cryptohome instead.
+	localPassword = "test0000"
 )
 
 // Virtual keyboard background page url.
@@ -146,6 +151,15 @@ const (
 	guestLogin                  // sign in as ephemeral guest user
 )
 
+// authType describes the type of authentication to be used in GAIA.
+type authType string
+
+const (
+	undetermined authType = ""         // cannot determine the authentication type
+	password     authType = "password" // password based authentication
+	contact      authType = "contact"  // contact email approval based authentication
+)
+
 // Option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
@@ -177,6 +191,15 @@ func Auth(user, pass, gaiaID string) Option {
 		c.user = user
 		c.pass = pass
 		c.gaiaID = gaiaID
+	}
+}
+
+// Contact returns an Option that can be passed to New to configure the contact email used by Chrome for
+// cross account challenge (go/ota-security). Please do not check in real credentials to public repositories
+// when using this in conjunction with GAIALogin.
+func Contact(contact string) Option {
+	return func(c *Chrome) {
+		c.contact = contact
 	}
 }
 
@@ -332,22 +355,22 @@ func LoadSigninProfileExtension(key string) Option {
 type Chrome struct {
 	devsess *cdputil.Session // DevTools session
 
-	user, pass, gaiaID     string // login credentials
-	normalizedUser         string // user with domain added, periods removed, etc.
-	parentUser, parentPass string // unicorn parent login credentials
-	keepState              bool
-	deferLogin             bool
-	loginMode              loginMode
-	enableLoginVerboseLogs bool // enable verbose logging in some login related files
-	vkEnabled              bool
-	skipOOBEAfterLogin     bool // skip OOBE post user login
-	installWebApp          bool // auto install essential apps after user login
-	region                 string
-	policyEnabled          bool   // flag to enable policy fetch
-	dmsAddr                string // Device Management URL, or empty if using default
-	enroll                 bool   // whether device should be enrolled
-	arcMode                arcMode
-	restrictARCCPU         bool // a flag to control cpu restrictions on ARC
+	user, pass, gaiaID, contact string // login credentials
+	normalizedUser              string // user with domain added, periods removed, etc.
+	parentUser, parentPass      string // unicorn parent login credentials
+	keepState                   bool
+	deferLogin                  bool
+	loginMode                   loginMode
+	enableLoginVerboseLogs      bool // enable verbose logging in some login related files
+	vkEnabled                   bool
+	skipOOBEAfterLogin          bool // skip OOBE post user login
+	installWebApp               bool // auto install essential apps after user login
+	region                      string
+	policyEnabled               bool   // flag to enable policy fetch
+	dmsAddr                     string // Device Management URL, or empty if using default
+	enroll                      bool   // whether device should be enrolled
+	arcMode                     arcMode
+	restrictARCCPU              bool // a flag to control cpu restrictions on ARC
 
 	// If breakpadTestMode is true, tell Chrome's breakpad to always write
 	// dumps directly to a hardcoded directory.
@@ -832,6 +855,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--cros-region=" + c.region,                  // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
+		"--enable-oobe-test-api",                     // Enable OOBE helper functions for authentication.
 	}
 	if c.enroll {
 		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
@@ -1248,6 +1272,9 @@ func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	if err = conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
 		return nil, errors.Wrap(c.chromeErr(err), "OOBE didn't show up (Oobe.readyForTesting not found)")
 	}
+	if err = conn.WaitForExpr(ctx, "typeof OobeAPI == 'object'"); err != nil {
+		return nil, errors.Wrap(c.chromeErr(err), "OOBE didn't show up (OobeAPI not found)")
+	}
 
 	connToRet := conn
 	conn = nil
@@ -1494,17 +1521,54 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	defer gaiaConn.Close()
 
 	testing.ContextLog(ctx, "Performing GAIA login")
-	if err := insertGAIAField(ctx, gaiaConn, "identifierId", c.user); err != nil {
+
+	// Fill in username.
+	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", c.user); err != nil {
 		return errors.Wrap(err, "failed to fill username field")
 	}
 	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
 	}
-	if err := insertGAIAField(ctx, gaiaConn, "password", c.pass); err != nil {
-		return errors.Wrap(err, "failed to fill password field")
+
+	// Fill in password / contact email.
+	authType, err := getAuthType(ctx, gaiaConn)
+	if err != nil {
+		return errors.Wrap(err, "could not determine the authentication type for this account")
+	}
+	if authType == password {
+		testing.ContextLog(ctx, "This account uses password authentication")
+		if c.pass == "" {
+			return errors.New("please supply a password with -var=pass=<password>")
+		}
+		if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", c.pass); err != nil {
+			return errors.Wrap(err, "failed to fill in password field")
+		}
+	} else if authType == contact {
+		testing.ContextLog(ctx, "This account uses contact email authentication")
+		if c.contact == "" {
+			return errors.New("please supply a contact email with -var=contact=<contact>")
+		}
+		if err := insertGAIAField(ctx, gaiaConn, "input[name=email]", c.contact); err != nil {
+			return errors.Wrap(err, "failed to fill in contact email field")
+		}
+	} else {
+		return errors.Errorf("got an invalid authentication type (%q) for this account", authType)
 	}
 	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
+	}
+
+	// Wait for contact email approval and fill in local password.
+	if authType == "contact" {
+		testing.ContextLog(ctx, "Please go to https://g.co/verifyaccount to approve the login request")
+		testing.ContextLog(ctx, "Waiting for approval")
+		if err := oobeConn.WaitForExpr(ctx, "OobeAPI.screens.ConfirmSamlPasswordScreen.isVisible()"); err != nil {
+			return errors.Wrap(err, "failed to wait for OOBE password screen")
+		}
+		testing.ContextLog(ctx, "The login request is approved. Entering local password")
+		if err := oobeConn.Call(ctx, nil, `(pw) => { OobeAPI.screens.ConfirmSamlPasswordScreen.enterManualPasswords(pw); }`, localPassword); err != nil {
+			return errors.Wrap(err, "failed to fill in local password field")
+		}
 	}
 
 	// Perform Unicorn login if parent user given.
@@ -1517,36 +1581,58 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	return nil
 }
 
+// getAuthType determines whether the current authentication page is expecting a password or contact
+// email input.
+func getAuthType(ctx context.Context, gaiaConn *Conn) (authType, error) {
+	const query = `
+	(function() {
+		if (document.getElementById('password')) {
+			return 'password';
+		}
+		if (document.getElementsByName('email').length > 0) {
+			return 'contact';
+		}
+		return "";
+	})();
+	`
+	t := undetermined
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := gaiaConn.Eval(ctx, query, &t); err != nil {
+			return err
+		}
+		if t == password || t == contact {
+			return nil
+		}
+		return errors.New("failed to locate password or contact input field")
+	}, loginPollOpts); err != nil {
+		return undetermined, err
+	}
+
+	return t, nil
+}
+
 // insertGAIAField fills a field of the GAIA login form.
 func insertGAIAField(ctx context.Context, gaiaConn *Conn, inputID, value string) error {
 	// Ensure that the input exists.
 	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
-		"document.getElementById(%[1]q)", inputID)); err != nil {
+		"document.querySelector(%q)", inputID)); err != nil {
 		return errors.Wrapf(err, "failed to wait for %q element", inputID)
 	}
 	// Ensure the input field is empty.
 	// This confirms that we are not using the field before it is cleared.
 	fieldReady := fmt.Sprintf(`
 		(function() {
-			let field = document.getElementById(%q);
-			if (field.tagName !== 'INPUT') {
-				field = field.getElementsByTagName('INPUT')[0];
-			}
+			const field = document.querySelector(%q);
 			return field.value === "";
 		})()`, inputID)
 	if err := gaiaConn.WaitForExpr(ctx, fieldReady); err != nil {
 		return errors.Wrapf(err, "failed to wait for %q element to be empty", inputID)
 	}
 
-	// Fill field and click next.
-	// In GAIA v2, the 'password' element wraps an unidentified <input> element.
-	// See https://crbug.com/739998 for more information.
+	// Fill the field with value.
 	script := fmt.Sprintf(`
 		(function() {
-			let field = document.getElementById(%q);
-			if (field.tagName !== 'INPUT') {
-				field = field.getElementsByTagName('INPUT')[0];
-			}
+			const field = document.querySelector(%q);
 			field.value = %q;
 		})()`, inputID, value)
 	if err := gaiaConn.Exec(ctx, script); err != nil {
@@ -1622,7 +1708,7 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 	}
 
 	testing.ContextLog(ctx, "Typing parent password")
-	if err := insertGAIAField(ctx, gaiaConn, "password", c.parentPass); err != nil {
+	if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", c.parentPass); err != nil {
 		return err
 	}
 	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
