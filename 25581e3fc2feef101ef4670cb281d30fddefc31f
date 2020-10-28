@@ -16,6 +16,24 @@
       "message": "It\u0027s okay if you\u0027re fine with 1 minute, but just FYI; the default timeout (not specifying) is 2 minutes, so unless you want to fail earlier, I\u0027d recommend to just removing rather than specifying 1 min.",
       "revId": "25581e3fc2feef101ef4670cb281d30fddefc31f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3213b6e_53024b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gralloc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-28T02:00:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "1dab9aca_2fce27ed",
+      "revId": "25581e3fc2feef101ef4670cb281d30fddefc31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
