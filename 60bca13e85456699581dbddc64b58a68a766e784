@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92dd5ae3_b874a0d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-28T09:08:01Z",
+      "side": 1,
+      "message": "Note intention 1. is no longer valid.  I spoke with khmel@ and decided on a different approach to gather binary translation test flow data.\n\n1. Continue on fail for timeouts while runAppLoadingTest using binary translation (arm APK) test flows only (since scores are not uploaded to Crosbolt), but still s.Fatal immediately for normal runAppLoadingTest calls where score is used (my previous patch did not impl. this correctly).  At end of test, still s.Fatal for previous arm test flow failures after perfValues.Save (Crosbolt upload is already done).\n\n2. Load updated APK from http://b/166352175.",
+      "parentUuid": "2b4ad314_afe685bd",
+      "revId": "60bca13e85456699581dbddc64b58a68a766e784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c0837cd_8f554e01",
@@ -65,6 +83,30 @@
       "writtenOn": "2020-10-27T07:12:08Z",
       "side": 1,
       "message": "I would just fail and not continue after error. Data won\u0027t be uploaded to the server. Lab would eat resources without outcome. Could we simplify it? I don\u0027t clear understand reason to continue. Maybe you want to run test locally using tast? In last case it could be possible to pass some parameter like \u0027local \u003d true\u0027 or have a const to easy modify locally.\n\nIn last case, logic might be \nif _, err :\u003d runAppLoadingTest(ctx, armConfig, a, cr); err !\u003d nil {\n   if local {\n      log error.\n   } else {\n      s.Fatal();\n   }\n\n....\nif (local)  {\n   return\n}\n\n\nWDYT?",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "60bca13e85456699581dbddc64b58a68a766e784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c3ffe6_76095195",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-28T09:08:01Z",
+      "side": 1,
+      "message": "Per discussion, I added separate test configs for binary translation test flows.",
+      "parentUuid": "4c0837cd_8f554e01",
       "range": {
         "startLine": 158,
         "startChar": 1,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a5d381b_143adba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-28T09:08:01Z",
+      "side": 1,
+      "message": "Thanks for the advice and noted.  Although I decided on a different approach to run separate binary translation test configs.  And decided to fail immediately if runAppLoadingTest errors rather than COF per khmel@\u0027s comment about not wasting valuable test resources.",
+      "parentUuid": "ec5a2bc4_5e7a64f4",
+      "range": {
+        "startLine": 174,
+        "startChar": 7,
+        "endLine": 174,
+        "endChar": 50
+      },
+      "revId": "60bca13e85456699581dbddc64b58a68a766e784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23a1c531_e31c92cd",
@@ -111,6 +177,30 @@
       "writtenOn": "2020-10-27T09:25:26Z",
       "side": 1,
       "message": "In this way we will drop non-first deadline-exceeded errors.\n\nHow about calling s.Error instead to always report errors, and checking s.HasError later to stop test execution?",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 83
+      },
+      "revId": "60bca13e85456699581dbddc64b58a68a766e784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9a39793_b1c0a4af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-28T09:08:01Z",
+      "side": 1,
+      "message": "Good point.  Although I changed approach so previous code is NA now.",
+      "parentUuid": "23a1c531_e31c92cd",
       "range": {
         "startLine": 177,
         "startChar": 5,
