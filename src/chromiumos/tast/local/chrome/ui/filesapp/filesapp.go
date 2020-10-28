@@ -50,6 +50,7 @@ const (
 	Downloads   = "Downloads"
 	GoogleDrive = "Google Drive"
 	MyDrive     = "My Drive"
+	Playfiles   = "Play files"
 )
 
 // TODO(crbug/1046853): Look for way to not rely on names being in English.

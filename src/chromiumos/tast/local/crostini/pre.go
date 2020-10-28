@@ -230,6 +230,7 @@ var startedARCEnabledPre = &preImpl{
 	timeout:    chrome.LoginTimeout + 10*time.Minute,
 	mode:       artifact,
 	arcEnabled: true,
+	loginType:  loginGaia, // Needs gaia login to enable Play files.
 }
 
 var startedByArtifactWithGaiaLoginPre = &preImpl{
@@ -347,7 +348,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	opt := chrome.ARCDisabled()
 	if p.arcEnabled {
-		opt = chrome.ARCEnabled()
+		opt = chrome.ARCSupported()
 	}
 
 	// To help identify sources of flake, we report disk usage before the test.
