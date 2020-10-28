@@ -313,6 +313,9 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "tf.Close")
 	defer st.End()
 
+	ctx, cancel := context.WithTimeout(ctx, 20*time.Second)
+	defer cancel()
+
 	var firstErr error
 
 	if err := tf.resetNetCertStore(ctx); err != nil {
@@ -363,6 +366,9 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 // Reinit reinitialize the TestFixture. This can be used in precondition or between
 // testcases to guarantee a cleaner state.
 func (tf *TestFixture) Reinit(ctx context.Context) error {
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+
 	if _, err := tf.WifiClient().ReinitTestState(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "failed to reinit DUT")
 	}
