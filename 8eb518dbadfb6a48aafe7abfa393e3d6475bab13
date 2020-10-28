@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3c6a7fe_25edd7f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gralloc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-28T01:32:45Z",
+      "side": 1,
+      "message": "Ah, didn\u0027t know (2). The TODO was added to another of my tests as part of a larger change, but I guess it wasn\u0027t necessary there, either.",
+      "parentUuid": "a0482fe5_c3632148",
+      "revId": "8eb518dbadfb6a48aafe7abfa393e3d6475bab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e1f6223_136998fa",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "296b4d64_b97bc012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gralloc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-28T01:32:45Z",
+      "side": 1,
+      "message": "Oh, I guess this is unclear. I wrote this to mean \u0027failed to run successfully\u0027, but it\u0027s definitely ambiguous. Reworded.",
+      "parentUuid": "4e1f6223_136998fa",
+      "range": {
+        "startLine": 76,
+        "startChar": 27,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "8eb518dbadfb6a48aafe7abfa393e3d6475bab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11e5f1fc_ddbd3541",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-10-27T21:52:40Z",
       "side": 1,
       "message": "Just double check, if there is case failing in the test, this test will also fail, right?",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "8eb518dbadfb6a48aafe7abfa393e3d6475bab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f6afd6d_310ae90d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gralloc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-10-28T01:32:45Z",
+      "side": 1,
+      "message": "Yes, the test binary returns an error code if any subtest fails.",
+      "parentUuid": "11e5f1fc_ddbd3541",
       "range": {
         "startLine": 78,
         "startChar": 24,
