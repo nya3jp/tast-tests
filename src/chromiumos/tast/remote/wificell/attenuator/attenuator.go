@@ -169,6 +169,18 @@ func (a *Attenuator) SetAttenuation(ctx context.Context, channel int, val float6
 	return nil
 }
 
+// Reset resets all channels to 0.
+func (a *Attenuator) Reset(ctx context.Context) error {
+	for channel := range a.fixedAttenuations {
+		err := a.SetAttenuation(ctx, channel, 0)
+		if err != nil {
+			// No point in continuing...
+			return errors.Wrap(err, "failed to reset attenuation")
+		}
+	}
+	return nil
+}
+
 // approximateFrequency finds an approximate frequency to freq.
 //
 // In case freq is not present in fixedAttenuations, we use a value
@@ -205,6 +217,18 @@ func (a *Attenuator) SetTotalAttenuation(ctx context.Context, channel int, atten
 	approxFreq := a.approximateFrequency(ctx, channel, frequencyMhz)
 	variableAttenDb := attenDb - freqToFixedLoss[approxFreq]
 	return a.SetAttenuation(ctx, channel, variableAttenDb)
+}
+
+// SetTotalAttenuationAllCh sets attenuation level for the specified frequency on all channels.
+func (a *Attenuator) SetTotalAttenuationAllCh(ctx context.Context, attenDb float64, frequencyMhz int) error {
+	for channel := range a.fixedAttenuations {
+		err := a.SetTotalAttenuation(ctx, channel, attenDb, frequencyMhz)
+		if err != nil {
+			// No point in continuing...
+			return errors.Wrap(err, "failed to set attenuation")
+		}
+	}
+	return nil
 }
 
 // MinTotalAttenuation returns the minimal attenuation the attenuator can be set for the given channel.
