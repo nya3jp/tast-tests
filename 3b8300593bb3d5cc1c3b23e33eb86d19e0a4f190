@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e06224_7bef4b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-28T22:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c89766ac_31fdf0f1",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "906e5fd2_8df068bc",
@@ -202,6 +220,24 @@
       "side": 1,
       "message": "could you find my comment above?",
       "parentUuid": "a4d63d03_5d87fdc8",
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df05ce1_904fd1f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-28T22:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d141573d_7e67bb97",
       "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -490,6 +526,30 @@
       "side": 1,
       "message": "I see. Could you add brief comment about it?",
       "parentUuid": "9b6fb3bb_2c041222",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 94
+      },
+      "revId": "3b8300593bb3d5cc1c3b23e33eb86d19e0a4f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f56344_2776e7b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-28T22:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "841c033d_def0fc9d",
       "range": {
         "startLine": 152,
         "startChar": 1,
