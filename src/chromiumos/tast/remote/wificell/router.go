@@ -847,3 +847,8 @@ func (r *Router) ChangeAPIfaceSubnetIdx(ctx context.Context, h *APIface) (retErr
 func (r *Router) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
 	return r.ipr.MAC(ctx, iface)
 }
+
+// Conn returns ssh.Conn pointer.
+func (r *Router) Conn() *ssh.Conn {
+	return r.host
+}
