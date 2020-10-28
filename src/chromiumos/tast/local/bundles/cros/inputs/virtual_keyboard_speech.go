@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/vkb"
@@ -33,7 +32,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{enTestFile},
-		Pre:          pre.VKEnabled(),
+		Pre:          pre.VKEnabledTablet(),
 	})
 }
 
@@ -43,11 +42,8 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	ctx, shortCancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer shortCancel()
 
-	cr := s.PreValue().(*chrome.Chrome)
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 

@@ -14,7 +14,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -30,6 +29,7 @@ func init() {
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		Pre:          pre.VKEnabledTablet(),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
@@ -43,16 +43,8 @@ func init() {
 }
 
 func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
