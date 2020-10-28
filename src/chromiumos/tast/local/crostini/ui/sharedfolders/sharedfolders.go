@@ -31,6 +31,8 @@ const (
 	MountFolderMyDrive     = "MyDrive"
 	MountPathMyDrive       = MountPathGoogleDrive + "/" + MountFolderMyDrive
 	MountPathDownloads     = MountPathMyFiles + "/" + filesapp.Downloads
+	MountFolderPlay        = "PlayFiles"
+	MountPathPlay          = MountPath + "/" + MountFolderPlay
 )
 
 // Strings for sharing My files.
