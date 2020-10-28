@@ -16,6 +16,24 @@
       "message": "Is this how pdftopdf is implemented?  So we fix the problem by just embedding the fonts before we render?",
       "revId": "7caaa317a9150045c922daec1418b6099298d481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4197e11_8ef82197",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-28T21:01:28Z",
+      "side": 1,
+      "message": "pdftopdf does not currently embed missing fonts. Embedding is done by ghostscript when converting the pdf file to postscript/raster. I could change the test to use ps2write instead of pdfwrite as this is the device that is actually used by the pdftops filter, but the former should probably work if the later works and pdf files are a bit easier to work with (eg. I can use pdffonts to confirm that the fonts are embedded and preview the contents directly in chrome).",
+      "parentUuid": "60f37180_3cd989a4",
+      "revId": "7caaa317a9150045c922daec1418b6099298d481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
