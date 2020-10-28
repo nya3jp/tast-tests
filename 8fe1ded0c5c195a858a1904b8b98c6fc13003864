@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d29973a_19637e14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-10-28T22:48:34Z",
+      "side": 1,
+      "message": "Yes Ack !\u003d Done plus I haven\u0027t uploaded another CL yet. 😉",
+      "parentUuid": "6a58d241_55a74ce1",
+      "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ceec216b_10f1c3e3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
         "patchSetId": 1
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "If you expect only one match, could you verify it explicitly in advance, like at L144?\nIf that\u0027s the case, you shouldn\u0027t need the iteration at L144, either.",
       "parentUuid": "34702d04_b218ba47",
+      "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d47061e_8b4f9208",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-10-28T22:48:34Z",
+      "side": 1,
+      "message": "My golang foo is weak. It looks like Matches[0] is used because that corresponds to the single regex at L159. So yes we do expect to only see one bios_log file but if there are more files matching that single regex, we will remove them all. My understanding of this test is that all crash files are cleaned out before the test and then restored when the test is over so that we have a known working state. Is that right mutexlox@?\n\nSo to answer the initial question:\n\u003e Should this need to iterate over Matches array?\nNo. There is only one match because there is only one Regex. The regex could match multiple files and that\u0027s fine.",
+      "parentUuid": "518bfee3_115d5b8f",
       "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
