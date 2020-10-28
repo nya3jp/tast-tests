@@ -16,6 +16,74 @@
       "message": "Should I add the companion Android app to some ChromeOS repo as well?",
       "revId": "e0367330b1021aa5c76048c0b339b043b9faf7d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e69c6f_6d0dcf5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-28T23:28:06Z",
+      "side": 1,
+      "message": "Thanks for this\n\nAs a note to anyone else, this is bringing some standalone intern code into tast with minimal conversion",
+      "revId": "e0367330b1021aa5c76048c0b339b043b9faf7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fb811ff_9b68e1f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-28T23:28:06Z",
+      "side": 1,
+      "message": "please remove it from mainline, we don\u0027t want this actually running at the moment.",
+      "revId": "e0367330b1021aa5c76048c0b339b043b9faf7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b952e4_02b74856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-28T23:28:06Z",
+      "side": 1,
+      "message": "Perhaps add a TODO referencing the handover doc at https://docs.google.com/document/d/1OMgtJ3DXQ5xhG_TgHTEDzsKiPiwuO7krn_-W8gWru2g/edit#heading\u003dh.5irk4csrpu0y",
+      "revId": "e0367330b1021aa5c76048c0b339b043b9faf7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "486e0db5_c48536e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-28T23:28:06Z",
+      "side": 1,
+      "message": "Please use testexec instead: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go",
+      "revId": "e0367330b1021aa5c76048c0b339b043b9faf7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
