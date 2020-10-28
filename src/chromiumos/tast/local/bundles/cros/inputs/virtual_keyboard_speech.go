@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -33,7 +32,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{enTestFile},
-		Pre:          pre.VKEnabled(),
 	})
 }
 
@@ -43,7 +41,12 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	ctx, shortCancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer shortCancel()
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -82,10 +85,6 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 			s.Log("Failed to hide virtual keyboard: ", err)
 		}
 	}()
-
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard shown and locationed: ", err)
-	}
 
 	vkb.SwitchToVoiceInput(ctx, tconn)
 

@@ -57,7 +57,7 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
