@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ac6b7d_4d927d76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-28T08:48:12Z",
+      "side": 1,
+      "message": "policy: Fix PinUnlockMinimumLength",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "22a52d4d7cebc4a5df9cd16152d6eeac737db676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1438b86_61439c47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-28T08:48:12Z",
+      "side": 1,
+      "message": "Describe why do we need the fix.",
+      "revId": "22a52d4d7cebc4a5df9cd16152d6eeac737db676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207194b2_e21fa4a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-28T08:48:12Z",
+      "side": 1,
+      "message": "Could you also add a faillog here? Like in I66467b79d032ab9892cf5165d3bb088d266cf6d2\nI skipped this test from my CL, because you were working on it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "22a52d4d7cebc4a5df9cd16152d6eeac737db676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
