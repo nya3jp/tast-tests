@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf8814f_d8f694a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-28T02:31:49Z",
+      "side": 1,
+      "message": "FYI, I noticed that even after my change is merged, the test won\u0027t pass because a recent change http://crrev/c/2492301 would regress it again.\nI\u0027ll make another patch to fix it.",
+      "revId": "fe273e2d6aba52d261cc7f8902b94adf7b92a9da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf104c6a_23bf8a89",
