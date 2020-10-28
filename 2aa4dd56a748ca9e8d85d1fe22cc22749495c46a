@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5932c0bc_6d61565c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-28T22:04:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d29262a2_ea94c903",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38527c2f_f5a6031e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c670c753_da53e925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-28T22:04:31Z",
+      "side": 1,
+      "message": "Thanks. Add comment in commit message. The coding is actually done, in another cl https://crrev.com/c/2505033\n\nThis change is huge, I have splitted it to 3 changes already. Sorry it still mixes something.",
+      "parentUuid": "38527c2f_f5a6031e",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c7c7631_2ba4814d",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-28T18:25:13Z",
       "side": 1,
       "message": "nit:\nIme -\u003e IME\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883587dd_feabebd0",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-28T22:04:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c7c7631_2ba4814d",
       "range": {
         "startLine": 18,
         "startChar": 5,
@@ -116,6 +188,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ee4e1a_dcdeee1f",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-28T22:04:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38644525_5b1cda7b",
+      "range": {
+        "startLine": 86,
+        "startChar": 37,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dcbbd0a_39342d3b",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-28T22:04:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9279146c_999555b6",
+      "range": {
+        "startLine": 86,
+        "startChar": 61,
+        "endLine": 86,
+        "endChar": 64
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9023efec_1e19dec6",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d315e12_e1c9aad6",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-28T22:04:31Z",
+      "side": 1,
+      "message": "Renamed it to WaitForInputMethodMatches",
+      "parentUuid": "9023efec_1e19dec6",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52270017_e0d48d11",
@@ -152,6 +296,30 @@
       "writtenOn": "2020-10-28T18:25:13Z",
       "side": 1,
       "message": "nit: I googled \"locationed\" and apparently the word doesn\u0027t exists. It is only a noun, not a verb (?).\n\nPerhaps \"WaitForShownAndStableLocation\" ? or just keep the old \"WaitForShown\" (and update the documentation)\n\n\"... waits for the virtual keyboard to appear and to have a stable location\" ?",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f19786a_459d530c",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-28T22:04:31Z",
+      "side": 1,
+      "message": "I renamed the function to WaitLocationStable, the same as the function name used on *ui.Node.\nThe old function name is confusing with ClickUntilShown. Basically ClickUntilShown retries clicking until vk to appear, and then waits for location stable.",
+      "parentUuid": "52270017_e0d48d11",
       "range": {
         "startLine": 62,
         "startChar": 12,
