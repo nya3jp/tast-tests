@@ -109,7 +109,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		timeout     = 10 * time.Second
 		botDuration = 2 * time.Minute
 		docsURL     = "https://docs.google.com/document/d/1qREN9w1WgjgdGYBT_eEtE6T21ErlW_4nQoBJVhrR1S0/edit"
-		notes       = "Lorem lpsum"
+		notes       = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		meetTimeout = 30 * time.Second
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
@@ -375,7 +376,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Hide notifications so that they won't overlap with other UI components.
 		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-			s.Fatal("Failed to hide visible notifications: ", err)
+			return errors.Wrap(err, "failed to hide visible notifications")
 		}
 		shareMessage := "Share this info with people you want in the meeting"
 		if err := webview.WaitUntilDescendantExists(ctx, ui.FindParams{Name: shareMessage}, timeout); err == nil {
@@ -410,7 +411,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		// Hide notifications so that they won't overlap with other UI components.
 		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-			s.Fatal("Failed to hide visible notifications: ", err)
+			return errors.Wrap(err, "failed to hide visible notifications")
 		}
 		// Select and click the more options button.
 		// TODO(crbug/1137568): use hrTelemetryApi once it supports changing the number of the maximum tiles.
@@ -431,116 +432,95 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 			return nil
 		}, &pollOpts); err != nil {
-			s.Fatal("Failed to click more options button: ", err)
+			return errors.Wrap(err, "failed to click more options button")
 		}
 		changeLayout, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Change layout", Role: ui.RoleTypeMenuItem}, timeout)
 		if err != nil {
-			s.Fatal("Failed to find the change-layout item (likely because options button was not clicked correctly): ", err)
+			return errors.Wrap(err, "failed to find the change-layout item")
 		}
 		defer changeLayout.Release(closeCtx)
 		if err := changeLayout.StableLeftClick(ctx, &pollOpts); err != nil {
-			s.Fatal("Failed to click the change-layout button: ", err)
+			return errors.Wrap(err, "failed to click the change-layout button")
 		}
 		layout, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: string(meet.layout), Role: ui.RoleTypeRadioButton}, timeout)
 		if err != nil {
-			s.Fatal("Failed to find the layout button: ", err)
+			return errors.Wrap(err, "failed to find the layout button")
 		}
 		defer layout.Release(closeCtx)
 		if err := layout.StableLeftClick(ctx, &pollOpts); err != nil {
-			s.Fatal("Failed to click the layout button: ", err)
+			return errors.Wrap(err, "failed to click the layout button")
 		}
 		if meet.layout == meetLayoutAuto || meet.layout == meetLayoutTiled {
 			if err := kw.Accel(ctx, "Tab"); err != nil {
-				s.Fatal("Failed to hit the tab key: ", err)
+				return errors.Wrap(err, "failed to hit the tab key")
 			}
 			// Max up the number of the maximum tiles to display.
 			for i := 0; i < 5; i++ {
 				if err := kw.Accel(ctx, "Right"); err != nil {
-					s.Fatal("Failed to hit the right key: ", err)
+					return errors.Wrap(err, "failed to hit the right key")
 				}
 			}
 		}
 		// Close the layout change view.
 		closeButton, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Close", Role: ui.RoleTypeButton}, timeout)
 		if err != nil {
-			s.Fatal("Failed to find the close button: ", err)
+			return errors.Wrap(err, "failed to find the close button")
 		}
 		defer closeButton.Release(closeCtx)
 		if err := closeButton.StableLeftClick(ctx, &pollOpts); err != nil {
-			s.Fatal("Failed to click the close button: ", err)
+			return errors.Wrap(err, "failed to click the close button")
 		}
 
 		if meet.present {
 			if meet.docs == false {
-				s.Fatal("Need a Google Docs tab to present")
+				return errors.New("need a Google Docs tab to present")
 			}
 			// Start presenting the Google Docs tab.
 			// TODO(crbug/1137568): use hrTelemetryApi once it supports starting presentation.
 			present, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Present now", Role: ui.RoleTypePopUpButton}, timeout)
 			if err != nil {
-				s.Fatal("Failed to find the present button: ", err)
+				return errors.Wrap(err, "failed to find the present button")
 			}
 			defer present.Release(closeCtx)
 			if err := present.LeftClickUntil(ctx,
 				func(ctx context.Context) (bool, error) {
 					return ui.Exists(ctx, tconn, ui.FindParams{Name: "A Chrome tab"})
 				}, &pollOpts); err != nil {
-				s.Fatal("Failed to click the present button: ", err)
+				return errors.Wrap(err, "failed to click the present button")
 			}
 			presentTab, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "A Chrome tab"}, timeout)
 			if err != nil {
-				s.Fatal("Failed to find the present-a-chrome-tab button: ", err)
+				return errors.Wrap(err, "failed to find the present-a-chrome-tab button")
 			}
 			defer presentTab.Release(closeCtx)
 			if err := presentTab.LeftClickUntil(ctx,
 				func(ctx context.Context) (bool, error) {
 					return ui.Exists(ctx, tconn, ui.FindParams{Name: "Meet - " + meetingCode, Role: ui.RoleTypeCell})
 				}, &pollOpts); err != nil {
-				s.Fatal("Failed to click the present-a-chrome-tab button: ", err)
+				return errors.Wrap(err, "failed to click the present-a-chrome-tab button")
 			}
 			tabs, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Chrome Tab", Role: ui.RoleTypeListGrid}, timeout)
 			if err != nil {
-				s.Fatal("Failed to find the tab list: ", err)
+				return errors.Wrap(err, "failed to find the tab list")
 			}
 			defer tabs.Release(closeCtx)
 			if err := tabs.StableLeftClick(ctx, &pollOpts); err != nil {
-				s.Fatal("Failed to click the tab list: ", err)
+				return errors.Wrap(err, "failed to click the tab list")
 			}
 			// Select the second tab (Google Docs tab) to present.
 			for i := 0; i < 2; i++ {
 				if err := kw.Accel(ctx, "Down"); err != nil {
-					s.Fatal("Failed to hit the down key: ", err)
+					return errors.Wrap(err, "failed to hit the down key")
 				}
 			}
 			if err := kw.Accel(ctx, "Enter"); err != nil {
-				s.Fatal("Failed to hit the enter key: ", err)
-			}
-		}
-
-		// Simulate notes input.
-		if meet.docs {
-			docsTextfield, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Document content", Role: ui.RoleTypeTextField}, timeout)
-			if err != nil {
-				s.Fatal("Failed to find the docs text field: ", err)
-			}
-			defer docsTextfield.Release(closeCtx)
-			if err := docsTextfield.StableLeftClick(ctx, &pollOpts); err != nil {
-				s.Fatal("Failed to click on the docs text field: ", err)
-			}
-			if err := kw.Accel(ctx, "Ctrl+A"); err != nil {
-				s.Fatal("Failed to hit ctrl-a and select all text: ", err)
-			}
-			if err := kw.Type(ctx, notes); err != nil {
-				s.Fatal("Failed to type the notes: ", err)
-			}
-			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
-				s.Fatal("Failed to hit alt-tab and focus back to Meet tab: ", err)
+				return errors.Wrap(err, "failed to hit the enter key")
 			}
 		}
 
 		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
 		if err != nil {
-			s.Fatal("Failed to start the profiler: ", err)
+			return errors.Wrap(err, "failed to start the profiler")
 		}
 		defer func() {
 			if err := prof.End(); err != nil {
@@ -549,18 +529,42 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}()
 
 		errc := make(chan error)
+		s.Log("Keeping the meet session for ", meetTimeout)
 		go func() {
 			// Using goroutine to measure GPU counters asynchronously because:
-			// - we will add some test scenarios (controlling windows / meet sessions)
-			//   rather than just sleeping.
+			// - we will add some other test scenarios (controlling windows / meet sessions).
 			// - graphics.MeasureGPUCounters may quit immediately when the hardware or
 			//   kernel does not support the reporting mechanism.
-			errc <- graphics.MeasureGPUCounters(ctx, 30*time.Second, pv)
+			errc <- graphics.MeasureGPUCounters(ctx, meetTimeout, pv)
 		}()
-		s.Log("Waiting for 30 seconds")
-		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
-			return errors.Wrap(err, "failed to wait")
+
+		// Simulate notes input.
+		if meet.docs {
+			docsTextfield, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Document content", Role: ui.RoleTypeTextField}, timeout)
+			if err != nil {
+				return errors.Wrap(err, "failed to find the docs text field")
+			}
+			defer docsTextfield.Release(closeCtx)
+			if err := docsTextfield.StableLeftClick(ctx, &pollOpts); err != nil {
+				return errors.Wrap(err, "failed to click on the docs text field")
+			}
+			if err := kw.Accel(ctx, "Ctrl+A"); err != nil {
+				return errors.Wrap(err, "failed to hit ctrl-a and select all text")
+			}
+			// Type notes three times with 5 seconds pauses.
+			for i := 0; i < 3; i++ {
+				if err := kw.Type(ctx, notes); err != nil {
+					return errors.Wrap(err, "failed to type the notes")
+				}
+				if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+					return errors.Wrap(err, "failed to wait")
+				}
+			}
+			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
+				return errors.Wrap(err, "failed to hit alt-tab and focus back to Meet tab")
+			}
 		}
+
 		if err := <-errc; err != nil {
 			return errors.Wrap(err, "failed to collect GPU counters")
 		}
