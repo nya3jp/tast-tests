@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a638f806_0a7159f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-28T23:32:11Z",
+      "side": 1,
+      "message": "nit: you could use \u0027meetTimeout\u0027 as\n  s.Log(\"Keeping the meet session for \", meetTimeout)",
+      "range": {
+        "startLine": 532,
+        "startChar": 2,
+        "endLine": 532,
+        "endChar": 50
+      },
+      "revId": "eadafb27ce17709166feb85cb7f925880cce9c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
