@@ -56,6 +56,7 @@ func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
 		firstPowerDatePath  = filepath.Join(cachedVpdRwPath, "ActivateDate")
 		manufactureDatePath = filepath.Join(cachedVpdRoPath, "mfg_date")
 		skuNumberPath       = filepath.Join(cachedVpdRoPath, "sku_number")
+		serialNumberPath    = filepath.Join(cachedVpdRoPath, "serial_number")
 
 		biosVersionPath  = filepath.Join(dmiPath, "bios_version")
 		boardNamePath    = filepath.Join(dmiPath, "board_name")
@@ -103,6 +104,7 @@ func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
 			csv.MatchRegex(manufactureDateRegex)),
 		csv.ColumnWithDefault("product_sku_number", croshealthd.NotApplicable, csv.EqualToFileIfCrosConfigProp(ctx, crosHealthdCachedVpdPath,
 			skuNumberProperty, skuNumberPath)),
+		csv.ColumnWithDefault("product_serial_number", croshealthd.NotApplicable, csv.EqualToFileContent(serialNumberPath)),
 		csv.ColumnWithDefault("marketing_name", croshealthd.NotApplicable, csv.MatchValue(marketingName)),
 		csv.ColumnWithDefault("bios_version", croshealthd.NotApplicable, csv.EqualToFileContent(biosVersionPath)),
 		csv.ColumnWithDefault("board_name", croshealthd.NotApplicable, csv.EqualToFileContent(boardNamePath)),
