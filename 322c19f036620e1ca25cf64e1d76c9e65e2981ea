@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3f1d98_84e978df",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-10-28T04:27:23Z",
+      "side": 1,
+      "message": "Great suggestion, thanks!",
+      "parentUuid": "0a966299_654c47e5",
+      "revId": "322c19f036620e1ca25cf64e1d76c9e65e2981ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0806860_69e2aa9f",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-10-08T16:27:36Z",
       "side": 1,
       "message": "Is this correct behavior? This branch will activate, and we will skip extraction, if md5OfYUV doesn\u0027t contain yuvName (!found). Based on the comment in L60, I would think that you should only skip extraction if the hash matches the expected value.",
+      "range": {
+        "startLine": 74,
+        "startChar": 39,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "322c19f036620e1ca25cf64e1d76c9e65e2981ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c7b7fa_8124d2ec",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-10-28T04:27:23Z",
+      "side": 1,
+      "message": "I wanted to make it a bit easier when using custom test video files, but I guess it\u0027s correcter to always extract if we don\u0027t have the hash. Adapted.",
+      "parentUuid": "b0806860_69e2aa9f",
       "range": {
         "startLine": 74,
         "startChar": 39,
