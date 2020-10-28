@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e80abb03_35284907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-28T15:38:25Z",
+      "side": 1,
+      "message": "Yeah, we just added this test for these apps as a starter. We plan on adding a bunch more as the feature is set, but thanks for pointing that directory out. We might be able to utilize it for one off tests",
+      "parentUuid": "cd6c7976_b6ebfcba",
+      "revId": "b3ce945549a9ffc5c238826c5cba49c5bd479c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20790191_50411aec",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-27T22:12:09Z",
       "side": 1,
       "message": "This can be merged with Attr atm.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "b3ce945549a9ffc5c238826c5cba49c5bd479c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "558b1957_f00e5441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-28T15:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20790191_50411aec",
       "range": {
         "startLine": 48,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6567e65_068d8f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-28T15:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "003a5568_a7e36f72",
+      "revId": "b3ce945549a9ffc5c238826c5cba49c5bd479c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3d37e28_94903893",
@@ -71,6 +131,30 @@
       "writtenOn": "2020-10-27T22:12:09Z",
       "side": 1,
       "message": "node should be released after test. defer appNode.Release(ctx). Though it is not related to cl.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "b3ce945549a9ffc5c238826c5cba49c5bd479c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e75c938a_a2f88cd3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-10-28T15:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d37e28_94903893",
       "range": {
         "startLine": 32,
         "startChar": 1,
