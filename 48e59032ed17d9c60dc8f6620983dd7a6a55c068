@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8caf1f89_f2255577",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be9fdd91_fab84c05",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 6
+      },
+      "revId": "48e59032ed17d9c60dc8f6620983dd7a6a55c068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b053f48_62b384b8",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-27T02:24:23Z",
       "side": 1,
       "message": "Hmm, I think I missed the hostapd.Config() one when modifying the returned pointer/value. Now I think maybe it\u0027s better to:\n- copy the config once in hostapd.StartServer. \n- hostapd.Config return the pointer and should be read-only (notice in comment)\n- APIface always use h.hostapd.Config() instead of keeping a copy\n\nWDYT?\n\n(but the change in hostapd.Config might be in a separate CL for syncing the behavior)",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 19
+      },
+      "revId": "48e59032ed17d9c60dc8f6620983dd7a6a55c068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21056cec_080a4ceb",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:48:04Z",
+      "side": 1,
+      "message": "Do we really need to make copies? Even now, the slice and interface fields in Config are still not copied and may be modified. I guess we can just return the pointer directly (and of course left read-only comments). Otherwise, we should add some Clone methods to security packages...",
+      "parentUuid": "4b053f48_62b384b8",
       "range": {
         "startLine": 115,
         "startChar": 1,
