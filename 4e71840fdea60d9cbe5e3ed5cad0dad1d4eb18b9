@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cad0b48_efd47d96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-28T22:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c9c9781_61abc384",
+      "revId": "4e71840fdea60d9cbe5e3ed5cad0dad1d4eb18b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "710a441e_dfa94308",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c13d8b1_f92ed1f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-28T22:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "710a441e_dfa94308",
+      "revId": "4e71840fdea60d9cbe5e3ed5cad0dad1d4eb18b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84390499_f9ec7fea",
@@ -48,6 +84,24 @@
       "writtenOn": "2020-10-28T05:50:54Z",
       "side": 1,
       "message": "nit: could you check partition\u0027s emptiness just above?",
+      "revId": "4e71840fdea60d9cbe5e3ed5cad0dad1d4eb18b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd795a7_a4118662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/disk_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-10-28T22:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84390499_f9ec7fea",
       "revId": "4e71840fdea60d9cbe5e3ed5cad0dad1d4eb18b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
