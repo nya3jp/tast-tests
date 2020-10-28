@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c1b7fc_ec250349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-28T17:02:57Z",
+      "side": 1,
+      "message": "I was overseeing this, but there is a mixture of s.Fatal and returning an error (see line 559). This isn\u0027t nice from coding style perspective. Sorry I didn\u0027t point previously.\n\nSince this code is within a recorder.Run(), returning an error should be preferred rather than s.Fatal.  Please update this part accordingly (here, \"return errors.Wrap(err, \"failed to find the docs text field\")).\n\nThere are a lot of similar use of s.Fatal in this file. I think eventually they should also be replaced by returning error, but that can be done by other CLs.",
+      "revId": "5523d2324b57340d8216c89250cee647d3b619c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fb9853f_3f728131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-28T17:02:57Z",
+      "side": 1,
+      "message": "It gets unclear to me about 30 seconds waiting.  Do we really need to wait when docs scenario?\nMaybe it is worthwhile to reform this code as:\n- prepare the timeout of the meet session (30 seconds or 60 seconds)\n- setup graphics.MeasureGPUCounters for this timeout\n- if docs, makes the typing repeatedly\n- otherwise, do nothing (don\u0027t need testing.Sleep, as I commented below)\n\nI think this log message should be removed with that reform.  Instead, before dispatching the goroutine for MeasureGPUCounters(), please add an s.Log.  That message would be something like \"Keeping the meet session for 30 seconds\" (or 60 seconds, whichever you like).",
+      "revId": "5523d2324b57340d8216c89250cee647d3b619c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b6f661_7a2745d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-28T17:02:57Z",
+      "side": 1,
+      "message": "Looks like this 30 seconds waiting isn\u0027t necessary anymore (reading \"errc\" below makes the waiting effectively). Can you remove this?",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 3
+      },
+      "revId": "5523d2324b57340d8216c89250cee647d3b619c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
