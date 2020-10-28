@@ -301,6 +301,19 @@ func (r *Runner) CurrentBSSID(ctx context.Context, iface string) (string, error)
 	return extractBSSID(string(res))
 }
 
+// CurrentSignalLevel gets the signal level on the interface specified, using 'iw link' output.
+func (r *Runner) CurrentSignalLevel(ctx context.Context, iface string) (int, error) {
+	output, err := r.cmd.Output(ctx, "iw", "dev", iface, "link")
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to get link information from interface %s", iface)
+	}
+	res, err := extractSignalLevel(string(output))
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to parse command output: %s", output)
+	}
+	return res, nil
+}
+
 // LinkValue gets the specified link value from the iw link output.
 func (r *Runner) LinkValue(ctx context.Context, iface, iwLinkKey string) (string, error) {
 	res, err := r.cmd.Output(ctx, "iw", "dev", iface, "link")
@@ -696,6 +709,23 @@ func extractBSSID(out string) (string, error) {
 		return "", errors.New("no bssid found")
 	}
 	return m[1], nil
+}
+
+// extractSignalLevel parses the signal level the interface associated with from the output
+// of `iw dev $iface link`.
+func extractSignalLevel(out string) (int, error) {
+	r := regexp.MustCompile(`(?m)signal:\s+([-0-9]+)\s+dBm`)
+	m := r.FindStringSubmatch(out)
+	if len(m) < 2 {
+		return 0, errors.New("no signal data found")
+	}
+
+	signalLvl, err := strconv.Atoi(m[1])
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to parse signal field")
+	}
+
+	return signalLvl, nil
 }
 
 // getAllLinkKeys parses `link` or `station dump` output into key value pairs.
