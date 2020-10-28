@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f300289_f42a6301",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-28T19:18:20Z",
+      "side": 1,
+      "message": "Thanks for the thorough review.",
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e521f1cc_627326b3",
@@ -41,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c583cd2_9c594241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-28T19:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e521f1cc_627326b3",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64b0492c_6864da5f",
@@ -54,6 +95,24 @@
       "writtenOn": "2020-10-27T23:22:49Z",
       "side": 1,
       "message": "nit/style: remove newline",
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b937b02e_a9e6f488",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-28T19:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64b0492c_6864da5f",
       "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +157,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c60da123_7e04b5f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-28T19:18:20Z",
+      "side": 1,
+      "message": "If ClearAndSetGBBFlags failed, then probably the cleanup will also fail or even cause more issues since it uses ClearAndSetGBBFlags.  The cleanup is more geared towards checkGBBFlags failure so that we attempt to restore the old flags.",
+      "parentUuid": "62821791_5668dc12",
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1471a2_23c2cd84",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-28T19:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08a8af2e_49089a03",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa9b593e_d3aac30e",
@@ -111,6 +212,24 @@
       "writtenOn": "2020-10-27T23:22:49Z",
       "side": 1,
       "message": "nit/style: Change to an internal function. This will prevent a namespace collision with other \"cleanup\" functions in the remote/bundles/cros/firmware package.\n\n    func GBBFlags(ctx context.Context, s *testing.State) {\n        ...\n        bs :\u003d pb.NewBiosServiceClient(cl.Conn)\n\n        func cleanup(ctx context.Context, orig pb.GBBFlagsState) {\n            ...\n        }\n        ...\n        defer cleanup(ctx, *old)\n        ...\n    }\n\nOr, more idiomatically, you can defer it as an anonymous cleanup function:\n\n    func GBBFlags(ctx context.Context, s *testing.State) {\n        ...\n        defer func(ctx context.Context) {\n            if _, err :\u003d bs.ClearAndSetGBBFlags(ctx, old); err !\u003d nil {\n                s.Fatal(\"ClearAndSetGBBFlags to restore original values failed: \", err)\n            }\n            if err :\u003d checkGBBFlags(ctx, bs, old); err !\u003d nil {\n                s.Fatal(\"all flags should have been restored: \", err)\n            }\n        }(ctx)\n        ...\n    }\n\n(Note that the anonymous cleanup function here takes a context parameter; this is to allow for a shortened context, as I explain in my other comment)",
+      "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69eda394_3b2b242c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/gbb_flags.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-10-28T19:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa9b593e_d3aac30e",
       "revId": "8524efa03ce4d22a192c183f84cdc1b7ccfd1275",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
