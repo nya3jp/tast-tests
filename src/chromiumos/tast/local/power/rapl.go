@@ -83,6 +83,11 @@ func (rapl *RAPLValues) Core() float64 {
 	return rapl.joules[core]
 }
 
+// DRAM returns the joules from the DRAM.
+func (rapl *RAPLValues) DRAM() float64 {
+	return rapl.joules[dram]
+}
+
 // Uncore returns the joules from the GPU.
 func (rapl *RAPLValues) Uncore() float64 {
 	return rapl.joules[uncore]

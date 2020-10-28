@@ -378,6 +378,11 @@ var metricMap = map[string]struct {
 		direction: perf.SmallerIsBetter,
 		uma:       false,
 	},
+	"dram_power": {
+		unit:      "joules",
+		direction: perf.SmallerIsBetter,
+		uma:       false,
+	},
 }
 
 // These are the default categories for 'UI Rendering' in chrome://tracing plus 'exo' and 'wayland'.
@@ -547,6 +552,9 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvoca
 		return err
 	}
 	if err := invoc.metrics.recordValue(ctx, invoc, "cpu_power", raplv.Core()); err != nil {
+		return err
+	}
+	if err := invoc.metrics.recordValue(ctx, invoc, "dram_power", raplv.DRAM()); err != nil {
 		return err
 	}
 	if err := invoc.metrics.recordValue(ctx, invoc, "gpu_power", raplv.Uncore()); err != nil {
