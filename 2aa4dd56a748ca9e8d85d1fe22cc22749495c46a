@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29262a2_ea94c903",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T18:25:13Z",
+      "side": 1,
+      "message": "nit: cannot access link... perhaps link should be available to all chromeos organization?",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38527c2f_f5a6031e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T18:25:13Z",
+      "side": 1,
+      "message": "here and in the other tests:\n\nNot clear from the commit description why the Precondition was removed.\nPerhaps move this to a different bug? or Could you add that info in the commit description?\nThe bug mentions that a new Precondition will be used: but I\u0027d do the \"replace old precondition with a new one\" in a single commit.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c7c7631_2ba4814d",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T18:25:13Z",
+      "side": 1,
+      "message": "nit:\nIme -\u003e IME\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38644525_5b1cda7b",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T18:25:13Z",
+      "side": 1,
+      "message": "huge nit: check -\u003e checks",
+      "range": {
+        "startLine": 86,
+        "startChar": 37,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9279146c_999555b6",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T18:25:13Z",
+      "side": 1,
+      "message": "nit (here and in the rest): in the documentation use IME instead of ime.",
+      "range": {
+        "startLine": 86,
+        "startChar": 61,
+        "endLine": 86,
+        "endChar": 64
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9023efec_1e19dec6",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T18:25:13Z",
+      "side": 1,
+      "message": "nit: Not clear what \"ToBe\" should mean in this context... perhaps replacing with \"MatchesIME\"\n\n(or similar...)",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52270017_e0d48d11",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-28T18:25:13Z",
+      "side": 1,
+      "message": "nit: I googled \"locationed\" and apparently the word doesn\u0027t exists. It is only a noun, not a verb (?).\n\nPerhaps \"WaitForShownAndStableLocation\" ? or just keep the old \"WaitForShown\" (and update the documentation)\n\n\"... waits for the virtual keyboard to appear and to have a stable location\" ?",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "2aa4dd56a748ca9e8d85d1fe22cc22749495c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
