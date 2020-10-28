@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -26,7 +25,7 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          pre.VKEnabled(),
+		Pre:          pre.VKEnabledTablet(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -61,12 +60,8 @@ func init() {
 }
 
 func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
 	// Get current input method. Change IME for testing and revert it back in teardown.
 	imeCode := string(s.Param().(ime.InputMethodCode))
@@ -257,9 +252,12 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 			}
 
 			defer func() {
+				s.Log("hide vk")
 				if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
 					s.Log("Failed to hide virtual keyboard: ", err)
 				}
+				testing.Sleep(ctx, 3*time.Second)
+
 			}()
 
 			if err := vkb.WaitUntilShown(ctx, tconn); err != nil {

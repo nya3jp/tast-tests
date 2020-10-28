@@ -11,6 +11,9 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
+// ImePrefix is the prefix of IME chrome extension
+const ImePrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
+
 // AddInputMethod adds the IME identified by imeID via
 // chorme.languageSettingsPrivate.addInputMethod API.
 func AddInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string) error {
@@ -71,4 +74,14 @@ func GetInputMethodLists(ctx context.Context, tconn *chrome.TestConn) (*InputMet
 		return nil, err
 	}
 	return &imes, nil
+}
+
+// GetInstalledInputMethods returns installed input methods
+// via chrome.inputMethodPrivate.getInputMethods API.
+func GetInstalledInputMethods(ctx context.Context, tconn *chrome.TestConn) ([]InputMethod, error) {
+	var inputMethods []InputMethod
+	if err := tconn.Call(ctx, &inputMethods, `tast.promisify(chrome.inputMethodPrivate.getInputMethods)`); err != nil {
+		return nil, err
+	}
+	return inputMethods, nil
 }
