@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "225cf2d7_aff674d8",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:54:11Z",
+      "side": 1,
+      "message": "I used mdId before I uploaded, but tast linter said that we should use mdID instead.",
+      "parentUuid": "d7e1684e_bcab148e",
+      "range": {
+        "startLine": 232,
+        "startChar": 20,
+        "endLine": 232,
+        "endChar": 24
+      },
+      "revId": "debf805c8d8e0deb9122b9ca76f91422d1948155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59eb6f2e_636f1365",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-28T04:31:43Z",
       "side": 1,
       "message": "nas_identifier",
+      "range": {
+        "startLine": 238,
+        "startChar": 46,
+        "endLine": 238,
+        "endChar": 60
+      },
+      "revId": "debf805c8d8e0deb9122b9ca76f91422d1948155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e673f1_8d5b0bab",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59eb6f2e_636f1365",
       "range": {
         "startLine": 238,
         "startChar": 46,
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18755736_f4b87d95",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b0efec_c4a78fb8",
+      "range": {
+        "startLine": 239,
+        "startChar": 19,
+        "endLine": 239,
+        "endChar": 24
+      },
+      "revId": "debf805c8d8e0deb9122b9ca76f91422d1948155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d526946_8c1eba3d",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a165b9c_a46298c0",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "debf805c8d8e0deb9122b9ca76f91422d1948155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee29c011_80c0656e",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-10-28T04:31:43Z",
       "side": 1,
       "message": "\"... fields: \", khs",
+      "range": {
+        "startLine": 563,
+        "startChar": 65,
+        "endLine": 563,
+        "endChar": 66
+      },
+      "revId": "debf805c8d8e0deb9122b9ca76f91422d1948155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b59a35_91d53c38",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-10-28T13:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee29c011_80c0656e",
       "range": {
         "startLine": 563,
         "startChar": 65,
