@@ -16,6 +16,69 @@
       "message": "Thanks Ilja.\n\ntast-owners@ PTAL",
       "revId": "ef59482a0f6c9375dc57f26dcd0eaa664fdee6a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce4a6e21_46995e02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-28T23:31:50Z",
+      "side": 1,
+      "message": "LGTM for Tast Review. Some optional items.",
+      "revId": "ef59482a0f6c9375dc57f26dcd0eaa664fdee6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd26e11_b4bea07c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-28T23:31:50Z",
+      "side": 1,
+      "message": "optional: maybe \"black\" would be a better name for this variable?",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 13
+      },
+      "revId": "ef59482a0f6c9375dc57f26dcd0eaa664fdee6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd20c1d_fb7b6990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-10-28T23:31:50Z",
+      "side": 1,
+      "message": "optional: Probably out of scope of this CL, but you might like to move your colorDistance function to \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/colorcmp/cmp.go;l\u003d59?q\u003dcolorcmp.ColorsMatch\u0026type\u003dcs\n\nThe function you use here is basically the same as colorcmp.ColorsMatch(c, paddingColor, tolerance).",
+      "range": {
+        "startLine": 214,
+        "startChar": 8,
+        "endLine": 214,
+        "endChar": 21
+      },
+      "revId": "ef59482a0f6c9375dc57f26dcd0eaa664fdee6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
