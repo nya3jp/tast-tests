@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "466a8e06_3d5e26ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-28T09:46:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19ac6b7d_4d927d76",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "22a52d4d7cebc4a5df9cd16152d6eeac737db676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1438b86_61439c47",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d97e8f0_d3310e96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-28T09:46:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1438b86_61439c47",
+      "revId": "22a52d4d7cebc4a5df9cd16152d6eeac737db676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "207194b2_e21fa4a8",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-10-28T08:48:12Z",
       "side": 1,
       "message": "Could you also add a faillog here? Like in I66467b79d032ab9892cf5165d3bb088d266cf6d2\nI skipped this test from my CL, because you were working on it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "22a52d4d7cebc4a5df9cd16152d6eeac737db676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a88f08_4abe806d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-10-28T09:46:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "207194b2_e21fa4a8",
       "range": {
         "startLine": 38,
         "startChar": 0,
