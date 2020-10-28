@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "245c138e_539f8c05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-10-28T00:16:24Z",
+      "side": 1,
+      "message": "\"Precondition failure] Failed to start ARC: Android failed to boot (logcat is empty): Android failed to boot in very early stage: init/crosvm process did not start up: context deadline exceeded; last error follows: didn\u0027t find init process\"\n\nI\u0027m giving up on that test. It\u0027s too flaky and I\u0027ve already spent too much time on it. I\u0027ll look at tastboard once this is in to make sure it doesn\u0027t go from flaky to never-works.",
+      "parentUuid": "6385f009_9b322d1d",
+      "range": {
+        "startLine": 16,
+        "startChar": 54,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "0bff1d616b2af17af814d8f9c45996339077d3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "42d6236f_5beab58f",
         "filename": "src/chromiumos/tast/local/crash/crash_test.go",
         "patchSetId": 5
