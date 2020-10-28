@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a1d2b5_edf4c530",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-28T18:07:46Z",
+      "side": 1,
+      "message": "nit:\nCq-Depend: chromium:2503874\n\nThen you can Cq+2 both CLs at the same time and they should get submitted together. Also makes sure you don\u0027t accidentally submit this one first.",
+      "revId": "a636f7c9010273fb48d1cff57bd324d035be225f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
