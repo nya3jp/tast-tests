@@ -3,6 +3,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "caa40e6f_d894fa3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "veth pair",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0770b58_75c85ba0",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "How about\n// SetLinkMaster adds the device (iface) into the bridge (master).\n\nAlso, \"master\" is sort of prohibited term now. How about renaming the function as: SetBridge(ctx, iface, br)?",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a086e2_0816053a",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "Same here:\n// UnsetBridge unsets the bridge of the device (iface).\nUnsetBridge(ctx, iface)",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7f9225_c2ca8377",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "How about\n// LinkWithPrefix shows the device names with prefix.",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cc6cc5e_6b84f185",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 1
@@ -14,6 +94,178 @@
       "writtenOn": "2020-10-27T04:18:50Z",
       "side": 1,
       "message": "I think we discussed the re-use here. I\u0027m thinking if the reusing these interfaces is too excessive, given the size of code and that few tests need it. WDYT?",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71c4bf3_ea66b329",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "remove\n\nsame below",
+      "range": {
+        "startLine": 333,
+        "startChar": 63,
+        "endLine": 333,
+        "endChar": 69
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8086c5e7_a053b964",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "the caller is responsible to call ReleaseBridge.",
+      "range": {
+        "startLine": 672,
+        "startChar": 63,
+        "endLine": 672,
+        "endChar": 127
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca77e7b1_c10372e2",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "What\u0027s the advantage of keeping used bridge names? Does \"ip link add\" takes time to complete?",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a385e2f1_f30e4b0a",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "Note that the caller is responsible to call ReleaseVethPair.",
+      "range": {
+        "startLine": 707,
+        "startChar": 53,
+        "endLine": 707,
+        "endChar": 127
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae57e295_d87ed9b1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "Consider alternative flow:\nif len(r.availVethPairs) \u003d\u003d 0 {\n  // ip link add \n  // add veth pair to r.availVethPairs.\n}\nfor veth, vethPeer :\u003d range r.availVethPairs {\n  ...\n}\n\nBy doing so, you don\u0027t need to have r.createVethPair() and the logic is more straightforward: if no available pair, create one before setting the pair up.\n\nSame for NewBridge.",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e69f6881_956accb1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "releases the veth pair without delete it for further use.",
+      "range": {
+        "startLine": 732,
+        "startChar": 19,
+        "endLine": 732,
+        "endChar": 85
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c241f2f7_2c55e51d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "Do we really want to support this (either veth or vethPeer is acceptable)? If so, the below functions, BindVethToBridge and UnbindVeth, should share the same semantic.",
+      "range": {
+        "startLine": 733,
+        "startChar": 0,
+        "endLine": 733,
+        "endChar": 125
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67621c31_cbb93639",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "vethPeerPrefix",
+      "range": {
+        "startLine": 737,
+        "startChar": 31,
+        "endLine": 737,
+        "endChar": 41
+      },
       "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +300,52 @@
       "writtenOn": "2020-10-27T04:18:50Z",
       "side": 1,
       "message": "this is only for CrOS-base test AP. Not sure if we\u0027ll use non-CrOS test AP, but might be nice to have a notice for it?",
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01cd6893_f546185a",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "Let\u0027s move it out to setLinkPairUp(ctx, link, linkPeer) so that both createVethPair and NewVethPair can use it to avoid duplicate.\n\nOr if you adopt line 709 comment, we no longer need createVethPair().",
+      "range": {
+        "startLine": 928,
+        "startChar": 0,
+        "endLine": 938,
+        "endChar": 38
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a47319d_72cf409d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-10-28T04:08:11Z",
+      "side": 1,
+      "message": "vethPeerPrefix",
+      "range": {
+        "startLine": 985,
+        "startChar": 31,
+        "endLine": 985,
+        "endChar": 41
+      },
       "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
