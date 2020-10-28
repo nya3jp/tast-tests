@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9de96f1_b1cb5691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ghostscript/runtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-28T04:23:01Z",
+      "side": 1,
+      "message": "nit: would it be better to print the path of the file to make it easier to access.",
+      "range": {
+        "startLine": 72,
+        "startChar": 96,
+        "endLine": 72,
+        "endChar": 113
+      },
+      "revId": "3a72dc55b2d230adccd59177010e42e8112485e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
