@@ -123,7 +123,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 
 			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 
-			// It is ok if the package is currently equal the installer package.
+			// It is ok if the package is currently equal the the installer package.
 			// It is also ok if the package is currently equal the play service package.
 			// This happens when you need to accept permissions.
 			if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
@@ -250,63 +250,67 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const restartButtonResourceID = "android:id/button1"
 
-	if !isNApp(ctx, s, tconn, a, d, appPkgName) {
-		s.Log("Maximizing the window")
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
-			s.Log("Failed to maximize the window: ", err)
-		}
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
-			s.Log("The window is not maximized: ", err)
-		}
-
-		// Click on restart button.
-		s.Log("It's a pre N-app; Attempting restart")
-		restartButton := d.Object(ui.ResourceID(restartButtonResourceID))
-		if err := restartButton.WaitForExists(ctx, LongUITimeout); err != nil {
-			s.Fatal("Restart button does not exist: ", err)
-		}
-		if err := restartButton.Click(ctx); err != nil {
-			s.Fatal("Failed to click on restart button: ", err)
-		}
-		if _, err := d.WaitForWindowUpdate(ctx, appPkgName, LongUITimeout); err != nil {
-			s.Fatal("Failed to wait window updated: ", err)
-		}
-
-		DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-	} else {
-		act, err := arc.NewActivity(a, appPkgName, appActivity)
-		if err != nil {
-			s.Fatal("Failed to create new app activity: ", err)
-		}
-		defer act.Close()
-
-		s.Log("It's an N-app; Checking if Resizable")
-		resizable, err := act.PackageResizable(ctx)
-		if err != nil {
-			s.Fatal("Failed get the resizable info: ", err)
-		}
-		if resizable {
-			s.Log("App is resizable")
-			s.Log("Reseting window to normal size")
-			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
-				s.Error("Failed to reset window to normal size: ", err)
-			}
-			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
-				s.Error("The window is not normalized: ", err)
-			}
-
-			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-
-			s.Log("Setting window back to maximized")
+	if !checkProductName(ctx, s, tconn, a, d) {
+		if !isNApp(ctx, s, tconn, a, d, appPkgName) {
+			s.Log("Maximizing the window")
 			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
-				s.Log("Failed to set window to maximized: ", err)
+				s.Log("Failed to maximize the window: ", err)
 			}
 			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
 				s.Log("The window is not maximized: ", err)
 			}
+
+			// Click on restart button.
+			s.Log("It's a pre N-app; Attempting restart")
+			restartButton := d.Object(ui.ResourceID(restartButtonResourceID))
+			if err := restartButton.WaitForExists(ctx, LongUITimeout); err != nil {
+				s.Fatal("Restart button does not exist: ", err)
+			}
+			if err := restartButton.Click(ctx); err != nil {
+				s.Fatal("Failed to click on restart button: ", err)
+			}
+			if _, err := d.WaitForWindowUpdate(ctx, appPkgName, LongUITimeout); err != nil {
+				s.Fatal("Failed to wait window updated: ", err)
+			}
+
+			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 		} else {
-			s.Log("App is not resizable")
+			act, err := arc.NewActivity(a, appPkgName, appActivity)
+			if err != nil {
+				s.Fatal("Failed to create new app activity: ", err)
+			}
+			defer act.Close()
+
+			s.Log("It's an N-app; Checking if Resizable")
+			resizable, err := act.PackageResizable(ctx)
+			if err != nil {
+				s.Fatal("Failed get the resizable info: ", err)
+			}
+			if resizable {
+				s.Log("App is resizable")
+				s.Log("Reseting window to normal size")
+				if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
+					s.Error("Failed to reset window to normal size: ", err)
+				}
+				if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
+					s.Error("The window is not normalized: ", err)
+				}
+
+				DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+
+				s.Log("Setting window back to maximized")
+				if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
+					s.Log("Failed to set window to maximized: ", err)
+				}
+				if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
+					s.Log("The window is not maximized: ", err)
+				}
+			} else {
+				s.Log("App is not resizable")
+			}
 		}
+	} else {
+		s.Log("Skip clamshell resize window")
 	}
 }
 
@@ -324,6 +328,26 @@ func isNApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *ar
 		nApp = true
 	}
 	return nApp
+}
+
+// checkProductName func to check for the productname
+func checkProductName(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) bool {
+	var (
+		skipDevice  bool
+		productName string
+	)
+
+	info, err := d.GetInfo(ctx)
+	if err != nil {
+		s.Log("Failed to get Device Info: ", err)
+		return false
+	}
+	s.Logf("product Name %+v", info.ProductName)
+	productName = info.ProductName
+	if productName == "eve" || productName == "kohaku" || productName == "dru" || productName == "soraka" {
+		skipDevice = true
+	}
+	return skipDevice
 }
 
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
