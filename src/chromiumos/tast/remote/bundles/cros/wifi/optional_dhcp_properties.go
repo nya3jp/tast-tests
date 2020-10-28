@@ -5,17 +5,13 @@
 package wifi
 
 import (
-	"bytes"
 	"context"
-	"net"
 	"time"
 
-	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
-	"chromiumos/tast/remote/network/ip"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/services/cros/network"
@@ -29,7 +25,7 @@ func init() {
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
+		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
 	})
 }
@@ -66,54 +62,66 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	// Get the MAC address of WiFi interface.
-	iface, err := tf.ClientInterface(ctx)
+	// Connect and capture L3 packets on the interface of AP.
+	// As we'll collect pcap file after Capturer closed, run it in
+	// an inner function so that we can clean up easier with defer.
+	capturer, err := func(ctx context.Context) (ret *pcap.Capturer, retErr error) {
+		collectFirstErr := func(err error) {
+			if retErr == nil {
+				ret = nil
+				retErr = err
+			}
+			testing.ContextLog(ctx, "Error when connect and collect packets: ", err)
+		}
+
+		testing.ContextLog(ctx, "Configuring WiFi to connect")
+		ap, err := tf.DefaultOpenNetworkAP(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to configure AP")
+		}
+		defer func(ctx context.Context) {
+			if err := tf.DeconfigAP(ctx, ap); err != nil {
+				collectFirstErr(errors.Wrap(err, "failed to deconfig AP"))
+			}
+		}(ctx)
+		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
+		defer cancel()
+
+		capturer, err := tf.Router().StartRawCapturer(ctx, "dhcp", ap.Interface())
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to start capturer")
+		}
+		defer func(ctx context.Context) {
+			if err := tf.Router().StopRawCapturer(ctx, capturer); err != nil {
+				collectFirstErr(errors.Wrap(err, "failed to close capturer"))
+			}
+		}(ctx)
+		ctx, cancel = tf.Router().ReserveForStopRawCapturer(ctx, capturer)
+		defer cancel()
+
+		testing.ContextLog(ctx, "Connecting to WiFi")
+		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+			return nil, err
+		}
+		defer func(ctx context.Context) {
+			if err := tf.CleanDisconnectWifi(ctx); err != nil {
+				collectFirstErr(errors.Wrap(err, "failed to disconnect"))
+			}
+		}(ctx)
+		// We're done after get connected, start tearing down.
+		return capturer, nil
+	}(ctx)
 	if err != nil {
-		s.Fatal("Failed to get WiFi interface of DUT")
+		s.Fatal("Failed to connect and collect packets: ", err)
+	}
+	pcapPath, err := capturer.PacketPath(ctx)
+	if err != nil {
+		s.Fatal("Failed to get path to packets")
 	}
 
-	ipr := ip.NewRemoteRunner(s.DUT().Conn())
-	mac, err := ipr.MAC(ctx, iface)
-	if err != nil {
-		s.Fatal("Failed to get MAC of the WiFi interface")
-	}
-
-	apOps := tf.DefaultOpenNetworkAPOptions()
-	pcapPath, _, err := wifiutil.ConnectAndCollectPcap(ctx, tf, "pcap", apOps)
-	if err != nil {
-		s.Fatal("Failed to collect packet: ", err)
-	}
-
-	// TODO(b/162395242): May capture the DHCP packets directly on managed0
-	// so that we don't have to do the Dot11 filtering and it is less likely
-	// to have packet loss.
 	s.Log("Start analyzing pcap")
 	// Filter the DHCP packets from DUT.
 	filters := []pcap.Filter{
-		pcap.TypeFilter(
-			layers.LayerTypeDot11,
-			func(layer gopacket.Layer) bool {
-				dot11 := layer.(*layers.Dot11)
-				// Filter Data frame.
-				if dot11.Type.MainType() != layers.Dot11TypeData {
-					return false
-				}
-				// Filter source. See ieee802.11 9.2.4.1.4 for more details.
-				var source net.HardwareAddr
-				switch {
-				case !dot11.Flags.FromDS():
-					// FromDS = 0: Sent by STA to AP/another STA, source in Address2.
-					source = dot11.Address2
-				case !dot11.Flags.ToDS():
-					// FromDS = 1, ToDS = 0: Sent by STA, source in Address3.
-					source = dot11.Address3
-				default:
-					// FromDS = 1, ToDS = 1: Sent by mesh STA, source in Address4.
-					source = dot11.Address4
-				}
-				return bytes.Equal(source, mac)
-			},
-		),
 		pcap.TypeFilter(layers.LayerTypeDHCPv4, nil),
 	}
 	packets, err := pcap.ReadPackets(pcapPath, filters...)
