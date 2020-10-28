@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c70b986_dfbaec03",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-28T23:15:05Z",
+      "side": 1,
+      "message": "currently the Crostini tests don\u0027t do any formal restore between tests, generally we haven\u0027t seen significant problems from state leaked between tests.\n\nMost of the crostini tests clean up the files they create, but it hasn\u0027t een a significant issue yet.\n\nThe backup restore test takes ~3 minutes to run.  I\u0027m not sure how much of that is the actual restore, but if it is significant it is not realistic to run it each time.",
+      "parentUuid": "3d9fdccb_2b98d98d",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e4da26d_75c2a514",
         "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
         "patchSetId": 6
@@ -48,6 +66,24 @@
       "writtenOn": "2020-10-28T07:27:24Z",
       "side": 1,
       "message": "Matthew, any input on what we should do here? Is stopping the VM enough?",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95826f03_7d206371",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-28T23:15:05Z",
+      "side": 1,
+      "message": "Clarified with the engineers, there is no longer any need to stop Concierge.  I will e updating the precondition when I get some time.",
+      "parentUuid": "4e4da26d_75c2a514",
       "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
