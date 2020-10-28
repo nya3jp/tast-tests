@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfaafbc4_ea8cdad3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-10-28T03:05:19Z",
+      "side": 1,
+      "message": "Sorry for the late reply... (new `Bring to attention of` feature of Gerrit works for me)\n\nLGTM for the logic, added a comment on the \"DoNotChangeWifiInterfaces\" discussion.",
+      "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b50b917d_41985f4e",
@@ -144,6 +161,30 @@
       "side": 1,
       "message": "Naming is hard...\n\nI\u0027m ok with DoNotChange... \n\nAs I mentioned, making \"no-change\" as default is optional.\nIn general, AFAIK, go prefers to write code explicitly. If it needs to do something, it is expected to written so.\n\nIf there\u0027s common options, i\u0027d introduce a function returning the common configuration, instead of \"(enable|disable)-by-defualt\" in the caller.",
       "parentUuid": "072a61e8_726d1c07",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 13
+      },
+      "revId": "e64768179c6c41b98dfafc6bc4599d04addde93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956e4402_6a6a4fb7",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-10-28T03:05:19Z",
+      "side": 1,
+      "message": "I support Hidehiko\u0027s opinion. For battery mode, \"NoBatteryDischarge\" is used as a default despite of that majority of the tests are running with \"ForceBatteryDischarge\" option. I think making \"DoNotChangeWifiInterfaces\" as a default here is good for consistency.",
+      "parentUuid": "9f4444fe_2a49ba5a",
       "range": {
         "startLine": 131,
         "startChar": 1,
