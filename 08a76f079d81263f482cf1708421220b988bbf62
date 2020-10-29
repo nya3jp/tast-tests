@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "18fdf6c7_8a726728",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-29T19:18:34Z",
+      "side": 1,
+      "message": "Just a note, for simple functions like this, generally a test that uses them is enough to confirm they work. I wouldn\u0027t worry about unittests/mocking until you have complex logic.",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc6fe48b_d6df2eb1",
@@ -14,6 +37,98 @@
       "writtenOn": "2020-10-26T20:58:25Z",
       "side": 1,
       "message": "The companion CL to my adding of DUT.IthWifiPeerHost(). This one establishes the wifipeer.go file where I\u0027m putting all the functions to control wifipeers. There is not unittest for this, but I have one mostly written. I just need to learn how to mock DUT out before I submit it. It pings real devices right now, but proves that my code works.",
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8121feb9_2df3fbf9",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-29T19:18:34Z",
+      "side": 1,
+      "message": "Why is a WifiPeer an array of multiple Peers?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 1
+      },
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28df9a86_5d4105dc",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-29T19:18:34Z",
+      "side": 1,
+      "message": "This probably shouldn\u0027t be a method on WifiPeer. I assume this is more suited as a method that returns a WifiPeer.",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f02038b3_221e67f8",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-29T19:18:34Z",
+      "side": 1,
+      "message": "style: go does not limit line length. Please make this one line.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14bdb2ff_72081b6f",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-29T19:18:34Z",
+      "side": 1,
+      "message": "This should at a minimum have proper clean up and closing of ssh connections if it fails to get a peer. Also, please resolve that TODO before trying to submit.",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 72
+      },
       "revId": "08a76f079d81263f482cf1708421220b988bbf62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
