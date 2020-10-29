@@ -29,7 +29,8 @@ func init() {
 			"cherieccy@google.com",
 			"arc-storage@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(http://b/172012540): Test is disabled until it can be fixed
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "drivefs"},
 		Timeout:      5 * time.Minute,
 		Vars:         []string{"arc.Drivefs.user", "arc.Drivefs.password"},
