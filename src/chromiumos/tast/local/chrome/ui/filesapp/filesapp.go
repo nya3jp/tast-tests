@@ -497,18 +497,13 @@ func (f *FilesApp) RenameFile(ctx context.Context, keyboard *input.KeyboardEvent
 		return errors.Wrapf(err, "failed to open %s", strings.Join(path, ">"))
 	}
 
-	// Right click and select rename.
-	if err := f.SelectContextMenu(ctx, oldName, Rename); err != nil {
-		return errors.Wrapf(err, "failed to select Rename in context menu for file %s in Linux files", oldName)
+	if err := f.SelectFile(ctx, oldName); err != nil {
+		return errors.Wrapf(err, "failed to select %s", oldName)
 	}
 
-	// Wait for rename text field.
-	params := ui.FindParams{
-		Role:  ui.RoleTypeTextField,
-		State: map[ui.StateType]bool{ui.StateTypeEditable: true, ui.StateTypeFocusable: true, ui.StateTypeFocused: true},
-	}
-	if err := f.Root.WaitUntilDescendantExists(ctx, params, uiTimeout); err != nil {
-		return errors.Wrap(err, "failed finding rename input text field")
+	// Press Ctrl+Enter.
+	if err := keyboard.Accel(ctx, "Ctrl+Enter"); err != nil {
+		return errors.Wrap(err, "failed press Ctrl+Enter")
 	}
 
 	// Type the new name.
