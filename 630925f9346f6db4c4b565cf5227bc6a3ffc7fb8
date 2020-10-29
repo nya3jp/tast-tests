@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb2dc9fd_31fd406a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-29T20:07:19Z",
+      "side": 1,
+      "message": "What actually does this function do? Also, would it would for all of the other apps as well?",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 123
+      },
+      "revId": "630925f9346f6db4c4b565cf5227bc6a3ffc7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef4a50c_9e35f9a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-29T20:07:19Z",
+      "side": 1,
+      "message": "Why can\u0027t discord be closed with ash? and chromeos window manager like the other apps?",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "630925f9346f6db4c4b565cf5227bc6a3ffc7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
