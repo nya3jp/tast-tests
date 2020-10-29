@@ -35,14 +35,15 @@ var dpPlusModels = []string{
 	"guado",
 	"karma",
 	"lars",
-	"nautilus",
+	// nautilus family
+	"nautilus", "nautiluslte",
 	"nocturne",
 	// nami family
 	"akali", "akali360", "bard", "ekko", "pantheon", "sona", "syndra", "vayne",
 	// octopus family
 	"dorp",
 	// puff family
-	"duffy", "faffy", "kaisa", "nooibat", "puff", "wyvern",
+	"duffy", "faffy", "kaisa", "noibat", "puff", "wyvern",
 	// rammus family
 	"leona", "shyvana",
 	"rikku",
