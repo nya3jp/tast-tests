@@ -158,6 +158,24 @@
       "parentUuid": "518bfee3_115d5b8f",
       "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b47437_cf0428b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-29T10:03:36Z",
+      "side": 1,
+      "message": "|res| is the response from the DUT corresponding to WaitForCrashFiles.\nSo either,\n1) If it is expected exact one match, could you verify it just before L144, and avoid iterator matches at line L144 and here.\n2) If it is expected to match multiple entries, this line also should iterate.\n\nBTW, stepping back i\u0027m a bit more confused.\nIIUC, the returned files are the ones matched the given pattern at L133, so bios_log may not be included?\nCould you share the details how you tested this CL? Could you double check if bios_log file removal request is sent out?",
+      "parentUuid": "0d47061e_8b4f9208",
+      "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
