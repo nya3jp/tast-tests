@@ -37,13 +37,15 @@ var touchviewTestsForMicrosoftPowerpoint = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MicrosoftPowerpoint,
-		Desc:         "Functional test for MicrosoftPowerpoint that installs the app also verifies it is logged in and that the main page is open, checks MicrosoftPowerpoint correctly changes the window state in both clamshell and touchview mode",
-		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat"},
+		Func:     MicrosoftPowerpoint,
+		Desc:     "Functional test for MicrosoftPowerpoint that installs the app also verifies it is logged in and that the main page is open, checks MicrosoftPowerpoint correctly changes the window state in both clamshell and touchview mode",
+		Contacts: []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
+		// TODO(http://b/172010167): Test is disabled until it can be fixed
+		// Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:               clamshellTestsForMicrosoftPowerpoint,
+			ExtraAttr:         []string{"group:appcompat"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               pre.AppCompatBooted,
 		}, {
