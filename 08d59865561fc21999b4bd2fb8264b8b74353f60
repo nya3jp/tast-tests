@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fad7c3c_892e60d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-29T17:07:58Z",
+      "side": 1,
+      "message": "please be more verbose in describing the tests that you performed.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "08d59865561fc21999b4bd2fb8264b8b74353f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "12671e40_18a7ff1f",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-10-28T22:34:13Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "08d59865561fc21999b4bd2fb8264b8b74353f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17467d71_df46828b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-10-29T17:07:58Z",
+      "side": 1,
+      "message": "+2 % comment",
       "revId": "08d59865561fc21999b4bd2fb8264b8b74353f60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
