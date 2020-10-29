@@ -16,6 +16,24 @@
       "message": "This is an good alternative to the 3 CLs you recently submitted for Concepts and BitLife. I think that it is a cleaner solution. It fixes both b\\168934280 and b\\159444478",
       "revId": "17eaa7fdd2e2420126de1b0b4c652111e8540dfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3209160c_9c10489e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-10-29T21:22:26Z",
+      "side": 1,
+      "message": "Got.Thanks.",
+      "parentUuid": "cf3ddc0a_e8984477",
+      "revId": "17eaa7fdd2e2420126de1b0b4c652111e8540dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
