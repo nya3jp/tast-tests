@@ -16,6 +16,23 @@
       "message": "LGTM, \n\nThanks Michael,",
       "revId": "032b60e6c8c65e4e3e614b25c9bb88b13715ee6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bba8b3c_db24fb30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-10-29T05:43:58Z",
+      "side": 1,
+      "message": "(I wonder how to make Auto-Submit work)",
+      "revId": "032b60e6c8c65e4e3e614b25c9bb88b13715ee6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
