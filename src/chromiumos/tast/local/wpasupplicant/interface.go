@@ -18,6 +18,8 @@ const (
 	dbusInterfaceInterface      = "fi.w1.wpa_supplicant1.Interface"
 	dbusInterfaceMethodReattach = "Reattach"
 	dbusInterfacePropBSSs       = "BSSs"
+	// DBusInterfacePropDisconnectReason the most recent IEEE802.11 reason code for disconnect. Negative value indicates locally generated disconnect.
+	DBusInterfacePropDisconnectReason = "DisconnectReason"
 	// DBusInterfaceSignalBSSAdded Interface became awaere of a new BSS.
 	DBusInterfaceSignalBSSAdded = "BSSAdded"
 	// DBusInterfaceSignalPropertiesChanged indicates that some properties have changed. Possible properties are: "ApScan", "Scanning", "State", "CurrentBSS", "CurrentNetwork".
@@ -31,6 +33,8 @@ const (
 	DBusInterfaceStateAssociated = "associated"
 	// DBusInterfaceStateCompleted is the value of the State property when all authentication is completed.
 	DBusInterfaceStateCompleted = "completed"
+	// DBusInterfaceStateDisconnected is the value of the State property when service is disconnected.
+	DBusInterfaceStateDisconnected = "disconnected"
 )
 
 // Interface is the object to interact with wpa_supplicant's
