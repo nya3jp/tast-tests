@@ -16,6 +16,23 @@
       "message": "Topic does not work in Chrome OS Gerrit :( Can you add this line here:\n\n Cq-Depend: chromium:2500130",
       "revId": "b6f40c0d03c5cccde200d46075873c2d6f566895",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea1c56bf_5412413a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-29T07:56:00Z",
+      "side": 1,
+      "message": "After adding Cq-Depend, can you try CQ dry run (CQ+1) to see if these changes do not break builds?\n",
+      "revId": "b6f40c0d03c5cccde200d46075873c2d6f566895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
