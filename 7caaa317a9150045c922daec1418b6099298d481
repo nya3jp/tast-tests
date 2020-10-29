@@ -34,6 +34,41 @@
       "parentUuid": "60f37180_3cd989a4",
       "revId": "7caaa317a9150045c922daec1418b6099298d481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2250009_8e75f715",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-29T04:19:18Z",
+      "side": 1,
+      "message": "I\u0027m confused why you\u0027re testing pdfwrite instead of just verifying rasterization?  I assume that we have a filter that uses this ghostscript device, but I can\u0027t name it.",
+      "parentUuid": "d4197e11_8ef82197",
+      "revId": "7caaa317a9150045c922daec1418b6099298d481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0e80ab_78647a0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-29T04:19:18Z",
+      "side": 1,
+      "message": "But why are we ",
+      "revId": "7caaa317a9150045c922daec1418b6099298d481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
