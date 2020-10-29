@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54af95a0_f122d19d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-29T05:39:31Z",
+      "side": 1,
+      "message": "might be nice to WithName() this since it is broken into a separate function now.\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uig/uig.go;l\u003d89",
+      "range": {
+        "startLine": 84,
+        "startChar": 125,
+        "endLine": 84,
+        "endChar": 126
+      },
+      "revId": "2dfb2ac58e9dbc8034785f109116b45a06f00507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
