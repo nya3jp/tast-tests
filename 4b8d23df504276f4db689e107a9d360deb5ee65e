@@ -355,6 +355,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f0fb81_f29c08a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-29T10:14:04Z",
+      "side": 1,
+      "message": "Ok, I have also created a bug to track this:\nhttps://b.corp.google.com/issues/171949862",
+      "parentUuid": "e6e88ac4_572986d5",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b42729f0_0c277213",
