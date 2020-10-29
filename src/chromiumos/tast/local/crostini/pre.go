@@ -402,7 +402,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			iOptions.Mode = cui.Artifact
 			iOptions.ImageArtifactPath = s.DataPath(ImageArtifact)
 		}
-		if err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
+		if _, err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}
 	}
