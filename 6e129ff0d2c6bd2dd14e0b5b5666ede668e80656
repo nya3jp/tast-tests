@@ -16,6 +16,46 @@
       "message": "Thanks Ilja.\n\ntast-owners@ PTAL",
       "revId": "6e129ff0d2c6bd2dd14e0b5b5666ede668e80656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdd0060_9fc3003b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-29T09:51:39Z",
+      "side": 1,
+      "message": "LGTM with a request.",
+      "revId": "6e129ff0d2c6bd2dd14e0b5b5666ede668e80656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d74682c5_8ad21056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-29T09:51:39Z",
+      "side": 1,
+      "message": "nit: could you move this into above if block?\n\nif orient.Type !\u003d Landscape {\n  s.Log(...)\n  if err :\u003d display.SetDisplayRotationSync(...) {\n    return ...\n  }\n  orient, err \u003d display.GetOrientation(...)\n  ...\n}\n\nbecause this is the check that L339 works as expected.",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 2
+      },
+      "revId": "6e129ff0d2c6bd2dd14e0b5b5666ede668e80656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
