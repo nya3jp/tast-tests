@@ -33,6 +33,24 @@
       "message": "After adding Cq-Depend, can you try CQ dry run (CQ+1) to see if these changes do not break builds?\n",
       "revId": "b6f40c0d03c5cccde200d46075873c2d6f566895",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "635172f4_2b55c418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-10-29T12:16:42Z",
+      "side": 1,
+      "message": "+1.\nI think the two changes need to cq-depend each other and land simultaneously (same for dry run).",
+      "parentUuid": "ea1c56bf_5412413a",
+      "revId": "b6f40c0d03c5cccde200d46075873c2d6f566895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
