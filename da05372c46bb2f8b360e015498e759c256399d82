@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f89f4176_510d2861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T09:46:35Z",
+      "side": 1,
+      "message": "I\u0027ll review the two CLs again tomorrow. Sorry for the delay.",
+      "revId": "da05372c46bb2f8b360e015498e759c256399d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
