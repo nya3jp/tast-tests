@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "613f8c5c_cde81a91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T06:22:30Z",
+      "side": 1,
+      "message": "Thanks for the info! The setting is stored in chrome (ash), so we\u0027ll always need the chrome...\n\nGiven this, I wonder if we can modify the GetBluetoothPowered to get the setting from chrome (and this might address another comment)? And then, we can also divide the check into two more detailed part:\n1. the setting in chrome persists after reboot\n2. the behavior in Bluez adapter is consistent with the persistent setting\n\nWDYT? (I\u0027m not really sure if they\u0027re feasible, so just some thoughts)",
+      "parentUuid": "fd32a82f_4d48ba7b",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e200af3_33de091a",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
