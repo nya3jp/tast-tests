@@ -25,7 +25,8 @@ func init() {
 		Desc:         "Verifies that ARC is available in different scenarios",
 		Contacts:     []string{"timkovich@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(http://b/172011479): Test is disabled until it can be fixed
+		// Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
