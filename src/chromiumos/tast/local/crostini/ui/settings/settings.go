@@ -303,14 +303,18 @@ func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *uig.Action
 		return 0, errors.Wrap(err, "error getting disk size setting")
 	}
 	defer node.Release(ctx)
+	return ParseDiskSize(node.Name)
+}
 
-	parts := strings.Split(node.Name, " ")
+// ParseDiskSize parses disk size from a string like "xx.x GB" to a uint64 value in bytes.
+func ParseDiskSize(sizeString string) (uint64, error) {
+	parts := strings.Split(sizeString, " ")
 	if len(parts) != 2 {
-		return 0, errors.Errorf("failed to parse disk size from %s: does not have exactly 2 space separated parts", node.Name)
+		return 0, errors.Errorf("failed to parse disk size from %s: does not have exactly 2 space separated parts", sizeString)
 	}
 	num, err := strconv.ParseFloat(parts[0], 64)
 	if err != nil {
-		return 0, errors.Wrapf(err, "failed to parse disk size from %s", node.Name)
+		return 0, errors.Wrapf(err, "failed to parse disk size from %s", sizeString)
 	}
 	unitMap := map[string]float64{
 		"B":  SizeB,
@@ -321,7 +325,7 @@ func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *uig.Action
 	}
 	units, ok := unitMap[parts[1]]
 	if !ok {
-		return 0, errors.Errorf("failed to parse disk size from %s: does not have a recognized units string", node.Name)
+		return 0, errors.Errorf("failed to parse disk size from %s: does not have a recognized units string", sizeString)
 	}
 	return uint64(num * units), nil
 }
