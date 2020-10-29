@@ -16,6 +16,23 @@
       "message": "What about making these mainline information too?",
       "revId": "f0cbc1a7ce260b8fffe111aa196583aad40bc39e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5988d671_e67e5d9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-10-29T08:11:21Z",
+      "side": 1,
+      "message": "Thanks! LGTM!",
+      "revId": "f0cbc1a7ce260b8fffe111aa196583aad40bc39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
