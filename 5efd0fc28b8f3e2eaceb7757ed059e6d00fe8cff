@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dae8df1_6b42cca8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2020-10-29T13:29:38Z",
+      "side": 1,
+      "message": "Nice catch. Thanks, Victor!",
+      "revId": "5efd0fc28b8f3e2eaceb7757ed059e6d00fe8cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
