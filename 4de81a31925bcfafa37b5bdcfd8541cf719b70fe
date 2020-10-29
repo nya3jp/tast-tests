@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f69048_d50b33ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-29T22:38:31Z",
+      "side": 1,
+      "message": "Can you please move this list to pre.go so that it can be shared by the large container tests?",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 71
+      },
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f40b7b_32126084",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-29T22:38:31Z",
+      "side": 1,
+      "message": "Can we skip this if everything went ok?",
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27b770a2_872c3012",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-29T22:38:31Z",
+      "side": 1,
+      "message": "This doesn\u0027t feel like a good abstraction, I think just explicit RunCommand followed by the find would be best in the test code.",
+      "range": {
+        "startLine": 213,
+        "startChar": 23,
+        "endLine": 213,
+        "endChar": 32
+      },
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e84e8a_956930ae",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-29T22:38:31Z",
+      "side": 1,
+      "message": "If you want to abstract some of this, feel free to make a crostiniWindow page object, like\n\napp :\u003d crostini.FindWindow(title)\napp.Focus()\napp.Type(content)\napp.Accel(\"ctrl+S\")\napp.Accel(\"ctrl+W\")\napp.Accel(\"ctrl+W\")\napp.WaitUntilGone()",
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f90d569_5a713db9",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-29T22:38:31Z",
+      "side": 1,
+      "message": "This function doesn\u0027t use ta at all, it should not be a member function of TerminalApp.",
+      "range": {
+        "startLine": 234,
+        "startChar": 23,
+        "endLine": 234,
+        "endChar": 46
+      },
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7385b40b_610f558e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-29T22:38:31Z",
+      "side": 1,
+      "message": "I think this function does too much, I think that a crostini.FocusWindow() function is reasonable which can do the first two actions, but the other operations should just be explicit in the test code.",
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b69c8618_f2c028a4",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-29T22:38:31Z",
+      "side": 1,
+      "message": "Please include the path that was searched for the container to make this easier to debug.",
+      "range": {
+        "startLine": 178,
+        "startChar": 50,
+        "endLine": 178,
+        "endChar": 51
+      },
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
