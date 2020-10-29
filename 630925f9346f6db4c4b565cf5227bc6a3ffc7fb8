@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23bc3c20_6e296289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-10-29T21:21:00Z",
+      "side": 1,
+      "message": "This function does not require app activity to launch the app, it launches with package name. This function is for discord app only. Thanks.",
+      "parentUuid": "fb2dc9fd_31fd406a",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 123
+      },
+      "revId": "630925f9346f6db4c4b565cf5227bc6a3ffc7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ef4a50c_9e35f9a7",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-29T20:07:19Z",
       "side": 1,
       "message": "Why can\u0027t discord be closed with ash? and chromeos window manager like the other apps?",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "630925f9346f6db4c4b565cf5227bc6a3ffc7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba248562_7ecf8a05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-10-29T21:21:00Z",
+      "side": 1,
+      "message": "I observed that, on using ash for closing Discord app, it is throwing the error,\"Failed to get window info\". So we need to skip ash for closing Discord.",
+      "parentUuid": "3ef4a50c_9e35f9a7",
       "range": {
         "startLine": 76,
         "startChar": 2,
