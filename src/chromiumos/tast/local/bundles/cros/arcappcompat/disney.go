@@ -38,10 +38,11 @@ var touchviewTestsForDisney = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Disney,
-		Desc:         "Functional test for Disney that installs the app also verifies it is logged in, and that the main page is open, checks Disney correctly changes the window state in both clamshell and touchview mode, finally logout from the app",
-		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat"},
+		Func:     Disney,
+		Desc:     "Functional test for Disney that installs the app also verifies it is logged in, and that the main page is open, checks Disney correctly changes the window state in both clamshell and touchview mode, finally logout from the app",
+		Contacts: []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
+		// TODO(http://b/172008558): Test is disabled until it can be fixed
+		// Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:               clamshellTestsForDisney,
