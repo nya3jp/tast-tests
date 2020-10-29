@@ -164,8 +164,8 @@ func GetTPMVersion(ctx context.Context) (version string, err error) {
 func RestartTPMDaemons(ctx context.Context) (firstErr error) {
 	// Trunksd must restart first prior to other TPM daemons.
 	daemonsToRestart := append([]string{trunksd}, highLevelTPMDaemonsToRestart...)
+	daemonsToRestart = removeOptionaNotExistJobs(ctx, daemonsToRestart)
 	daemonsToStop := reverseStringSlice(daemonsToRestart)
-	daemonsToStop = removeOptionaNotExistJobs(ctx, daemonsToStop)
 
 	defer func() {
 		if err := ensureJobsStarted(ctx, daemonsToRestart); err != nil {
