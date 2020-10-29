@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c80fb1f_439b537d",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-29T01:18:23Z",
+      "side": 1,
+      "message": "Yeah, three minutes per test is too much. I will just make sure we have careful cleanup logic in the Crostini tests I add.",
+      "parentUuid": "7c70b986_dfbaec03",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e4da26d_75c2a514",
