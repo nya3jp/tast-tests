@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/dut"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -74,6 +75,15 @@ func (p *testFixturePreImpl) Timeout() time.Duration {
 	return time.Minute
 }
 
+// companionName facilitates obtaining of the companion device's hostname.
+func companionName(s *testing.PreState, suffix string) string {
+	name, err := s.DUT().CompanionDeviceHostname(suffix)
+	if err != nil {
+		s.Fatal("Unable to synthesize name, err: ", err)
+	}
+	return name
+}
+
 // Prepare initializes the shared TestFixture if not yet created and returns it
 // as precondition value.
 // Note that the test framework already reserves p.Timeout() for both Prepare
@@ -109,24 +119,37 @@ func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.PreState) i
 			}
 			ops = append(ops, TFRouter(slice...))
 		} else {
-			s.Fatal("Needs paremeter: routers=<router1>,<router2>")
+			routers := []string{
+				companionName(s, dut.CompanionSuffixRouter),
+				companionName(s, dut.CompanionSuffixPcap),
+			}
+			s.Log("companion routers: ", routers)
+			ops = append(ops, TFRouter(routers...))
 		}
-	} else if router, ok := s.Var("router"); ok && router != "" {
+	} else {
+		router, ok := s.Var("router")
+		if !ok || router == "" {
+			s.Log("Using default router name")
+			router = companionName(s, dut.CompanionSuffixRouter)
+		}
 		s.Log("router: ", router)
 		ops = append(ops, TFRouter(router))
 	}
-	if pcap, ok := s.Var("pcap"); ok && pcap != "" {
-		s.Log("pcap: ", pcap)
-		ops = append(ops, TFPcap(pcap))
+	pcap, ok := s.Var("pcap")
+	if !ok || pcap == "" {
+		pcap = companionName(s, dut.CompanionSuffixPcap)
 	}
+	s.Log("pcap: ", pcap)
+	ops = append(ops, TFPcap(pcap))
 	// Read attenuator variable.
 	if p.features&TFFeaturesAttenuator != 0 {
-		if atten, ok := s.Var("attenuator"); ok && atten != "" {
-			s.Log("attenuator: ", atten)
-			ops = append(ops, TFAttenuator(atten))
-		} else {
-			s.Fatal("Needs paremeter: attenuator=<hostname>")
+		atten, ok := s.Var("attenuator")
+		if !ok || atten == "" {
+			// Attenuator is not typical companion, so we synthesize its name here.
+			atten = companionName(s, "-attenuator.cros")
 		}
+		s.Log("attenuator: ", atten)
+		ops = append(ops, TFAttenuator(atten))
 	}
 	// Enable capturing.
 	if p.features&TFFeaturesCapture != 0 {
