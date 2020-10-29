@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6ff08f_3bf9f5b8",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T02:33:52Z",
+      "side": 1,
+      "message": "Sorry for the delay, I originally expect to use the scripts of shill but it is quite unfortunate that shill-test-scripts is not installed in testbed-ap image... Releasing a new image with it might take much time and we\u0027ll need other solutions before that.\n\nTo avoid parsing the dbus-send, I\u0027m not sure if the following alternatives might be OK (both is kind of hacky...)\n\nAlternative 1:\n- Polling until link up (should be brought up by shill -\u003e shill already detect the device)\n- Device.Disable\n- Polling until link down\n- Bring link up\n\nAlternative 2:\n- Polling for a successful Device.Disable\n- Polling until link down\n- Bring link up\n\nWDYT?",
+      "revId": "11641955fdfcac45562f80e6f4a6daba1d0af746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
