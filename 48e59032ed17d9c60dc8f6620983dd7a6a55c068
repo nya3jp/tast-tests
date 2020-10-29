@@ -110,6 +110,30 @@
       },
       "revId": "48e59032ed17d9c60dc8f6620983dd7a6a55c068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f925d2e_de471136",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T01:53:28Z",
+      "side": 1,
+      "message": "always use the pointer and regard it as RO object also SGTM.",
+      "parentUuid": "21056cec_080a4ceb",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 19
+      },
+      "revId": "48e59032ed17d9c60dc8f6620983dd7a6a55c068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
