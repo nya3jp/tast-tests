@@ -452,6 +452,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf3d8228_b5db9d53",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-29T08:35:43Z",
+      "side": 1,
+      "message": "Actually I\u0027m concerned about netperf output changing and silent errors due to that. How about a quick check if the 5th line contain the column names as it is assumed to?",
+      "parentUuid": "62f9b4a8_b6a39bb8",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fbe4d24_b880652f",
         "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
         "patchSetId": 3
@@ -1491,6 +1515,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4131cb7a_3aab2519",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-29T08:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f872be60_4aa85c25",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64077d29_d9d7829d",
@@ -1919,6 +1967,30 @@
       "side": 1,
       "message": "measurementMaxSamples \u003d 10\nmeasurementMinSamples \u003d 3\nmeasurementMaxFailures \u003d 9\nlen(history) \u003d 2\nnoneCount \u003d 8\nIt never gets through first fromSamples(), but still contains valid results history that can be used by this call.",
       "parentUuid": "a9ee341d_dcb76b0f",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3dc6024_abe421b4",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-29T08:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5dfa9b0f_4720be9c",
       "range": {
         "startLine": 109,
         "startChar": 2,

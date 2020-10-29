@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145da81e_0d15980a",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-29T08:35:43Z",
+      "side": 1,
+      "message": "Does this need to be public? The same AllDeviationsLessThanFraction",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 21
+      },
+      "revId": "4634def61fa5f8b12d04ae12f2f21b6a4b3b1df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b2be8a_710f727d",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-10-29T08:35:43Z",
+      "side": 1,
+      "message": "public?",
+      "range": {
+        "startLine": 205,
+        "startChar": 17,
+        "endLine": 205,
+        "endChar": 22
+      },
+      "revId": "4634def61fa5f8b12d04ae12f2f21b6a4b3b1df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
