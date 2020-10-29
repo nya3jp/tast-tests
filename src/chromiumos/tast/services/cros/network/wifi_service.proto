@@ -142,6 +142,12 @@ service WifiService {
 
   // SuspendAssertConnect suspends the DUT and waits for connection after resuming.
   rpc SuspendAssertConnect(SuspendAssertConnectRequest) returns (SuspendAssertConnectResponse) {}
+
+  // DisconnectReason is a streaming gRPC, who waits for the wpa_supplicant's
+  // DisconnectReason property change, and returns the code to the client.
+  // To notify the caller that it is ready, it sends an empty response after
+  // the signal watcher is initialized.
+  rpc DisconnectReason(google.protobuf.Empty) returns (stream DisconnectReasonResponse) {}
 }
 
 message ConnectRequest {
@@ -410,6 +416,10 @@ message GetMACRandomizeResponse {
 
 message EAPAuthSkippedResponse {
   bool skipped = 1;
+}
+
+message DisconnectReasonResponse {
+  int32 reason = 1;
 }
 
 message SuspendAssertConnectRequest {

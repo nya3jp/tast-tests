@@ -7,6 +7,7 @@ package crash
 import (
 	"context"
 	"os"
+	"time"
 
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
@@ -15,8 +16,9 @@ import (
 )
 
 const (
-	iwlwifiDir = "/sys/kernel/debug/iwlwifi"
-	crashDir   = "/var/spool/crash"
+	iwlwifiDir      = "/sys/kernel/debug/iwlwifi"
+	crashDir        = "/var/spool/crash"
+	devCoreDumpName = `devcoredump_iwlwifi\.[0-9]{8}\.[0-9]{6}\.[0-9]*\.devcore`
 )
 
 func init() {
@@ -91,11 +93,69 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 
 	// Check that expected device coredump is copied to crash directory.
 	devCoreFiles, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
-		[]string{`devcoredump_iwlwifi\.[0-9]{8}\.[0-9]{6}\.[0-9]*\.devcore`})
+		[]string{devCoreDumpName})
 	if err != nil {
 		s.Fatal("Failed while polling crash directory: ", err)
 	}
+
+	s.Log(devCoreFiles[devCoreDumpName])
+	devCoreDumpFile2 := devCoreFiles[devCoreDumpName][0]
+	fileInfo2, err := os.Stat(devCoreDumpFile2)
+	if err != nil {
+		s.Fatal("Failed to get the file information of the fw core dump")
+	}
+
+	//dumpSizeMB2 := float64(fileInfo2.Size()) / 1000000
+	s.Log(fileInfo2.Size())
+
+	testing.Sleep(ctx, 30*time.Second)
+
 	if err := crash.RemoveAllFiles(ctx, devCoreFiles); err != nil {
 		s.Log("Couldn't clean up files: ", err)
 	}
+	/*
+		//------------------------------------------------------------------------------------------------------------------------
+		s.Log("Triggering a devcoredump by writing 1 to the fw_dbg_collect")
+
+		// Use the find command to get the full path to the fw_dbg_collect file.
+		pathDebugCollect, err := testexec.CommandContext(ctx, "find", iwlwifiDir, "-name", "fw_dbg_collect").Output(testexec.DumpLogOnError)
+		if err != nil {
+			s.Fatal("Failed to find fw_restart file: ", err)
+		}
+
+		// Trigger a wifi fw debug collect by echoing 1 into the fw_dbg_collect file.
+		err = testexec.CommandContext(ctx, "sh", "-c", string("echo 1 > "+string(pathDebugCollect))).Run(testexec.DumpLogOnError)
+		if err != nil {
+			s.Fatal("Failed to trigger device coredump: ", err)
+		}
+
+		s.Log("Waiting for .devcore file to be added to crash directory")
+
+		// Check that expected device coredump is copied to crash directory.
+		devCoreFilesDebugCollect, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
+			[]string{devCoreDumpName})
+		if err != nil {
+			s.Fatal("Failed while polling crash directory: ", err)
+		}
+
+		s.Log(devCoreFilesDebugCollect[devCoreDumpName])
+
+		devCoreDumpFile := devCoreFilesDebugCollect[devCoreDumpName][0]
+		fileInfo, err := os.Stat(devCoreDumpFile)
+		if err != nil {
+			s.Fatal("Failed to get the file information of the fw core dump")
+		}
+
+		dumpSizeMB := float64(fileInfo.Size()) / 1000000
+		s.Log(fileInfo.Size())
+
+		// Check that the fw dump is not empty.
+		if dumpSizeMB <= 1 {
+			s.Fatalf("Unexpected fw dump size; got %f MB, want 1 MB", dumpSizeMB)
+		}
+
+		if err := crash.RemoveAllFiles(ctx, devCoreFilesDebugCollect); err != nil {
+			s.Log("Couldn't clean up files: ", err)
+		}
+	*/
 }
