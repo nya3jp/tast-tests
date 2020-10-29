@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf5985e_8f89177d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T07:27:32Z",
+      "side": 1,
+      "message": "I tried a few things but didn\u0027t find a very good way to replace this:\n- Detect the WARN_ON with crash file under /var/spool/crash: trigger the similar thing with \"echo 1 \u003e /sys/kernel/debug/mwifiex/mlan0/reset\", but when triggered multiple times, only the first one will have crash file. (not yet sure if it\u0027s expected) so this is not very accurate.\n- Drop this directly as mwifiex_sdio_card_reset will cause disconnect event in iw: This might not work for other driver, e.g. trigger some \u0027reset\u0027 with \"echo $TYPE \u003e /sys/kernel/debug/ieee80211/$PHY/ath10k/simulate_fw_crash` on grunt, but there will not be disconnect event. (We won\u0027t really lose coverage for this case, though)\n\nAny suggestion?",
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a5807b1_15b06d9d",
+        "filename": "src/chromiumos/tast/remote/wificell/framesender/sender.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T07:27:32Z",
+      "side": 1,
+      "message": "This is also added in crrev.com/c/2485885, so might have conflict.",
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
