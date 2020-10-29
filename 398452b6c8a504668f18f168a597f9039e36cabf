@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e723b0de_b23d69eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296309
+      },
+      "writtenOn": "2020-10-29T20:22:01Z",
+      "side": 1,
+      "message": "You don\u0027t have to wait for the owner. Add \u0027Exempt-From-Owner-Approval:Test flaky\u0027 to your commit message and you can submit the change.",
+      "revId": "398452b6c8a504668f18f168a597f9039e36cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
