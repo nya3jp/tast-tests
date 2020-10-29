@@ -8,9 +8,6 @@ import (
 	"context"
 	"time"
 
-	"golang.org/x/sys/unix"
-
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hardware/iio"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -55,9 +52,9 @@ func SensorRing(ctx context.Context, s *testing.State) {
 
 	for _, sn := range ring.Sensors {
 		func() {
-			start, err := boottime()
+			start, err := iio.BootTime()
 			if err != nil {
-				s.Fatal("Error reading boottime: ", err)
+				s.Fatal("Error reading BootTime: ", err)
 			}
 			if err := sn.Enable(sn.Sensor.MaxFrequency, sn.Sensor.MaxFrequency); err != nil {
 				s.Errorf("Error enabling sensor %v %v: %v",
@@ -91,54 +88,17 @@ func SensorRing(ctx context.Context, s *testing.State) {
 						sn.Sensor.Location, sn.Sensor.Name, ctx.Err())
 				}
 			}
-			end, err := boottime()
+			end, err := iio.BootTime()
 			if err != nil {
-				s.Fatal("Error reading boottime: ", err)
+				s.Fatal("Error reading BootTime: ", err)
 			}
 
 			s.Logf("Got %v readings from %v %v",
 				len(rs), sn.Sensor.Location, sn.Sensor.Name)
-			validate(rs, start, end, sn.Sensor, collectTime, s)
+
+			if err := iio.Validate(rs, start, end, sn.Sensor, collectTime); err != nil {
+				s.Fatal("Error validating data: ", err)
+			}
 		}()
 	}
-}
-
-func validate(rs []*iio.SensorReading, start, end time.Duration, sn *iio.Sensor, collectTime time.Duration, s *testing.State) {
-	var expected int
-
-	if sn.Name == iio.Light {
-		// Light is on-change only. At worse, we may not see any sample if the light is very steady.
-		expected = 0
-	} else {
-		// Expect that there are at least half the number of samples for the given frequency.
-		expected = int(float64(sn.MaxFrequency)/1e3*collectTime.Seconds()) / 2
-	}
-
-	if len(rs) < expected {
-		s.Errorf("Not enough data collected for %v %v with %.2f Hz in %v: got %v; expected at least %v",
-			sn.Location, sn.Name, float64(sn.MaxFrequency)/1e3, collectTime, len(rs), expected)
-	}
-
-	last := start
-	for ix, sr := range rs {
-		if sr.Timestamp < last {
-			s.Errorf("Timestamp out of order for %v %v at index %v: got %v; want >= %v",
-				sn.Location, sn.Name, ix, sr.Timestamp, last)
-		}
-
-		last = sr.Timestamp
-		if sr.Timestamp > end {
-			s.Errorf("Timestamp in future for %v %v at index %v: got %v; want <= %v",
-				sn.Location, sn.Name, ix, sr.Timestamp, end)
-		}
-	}
-}
-
-// boottime returns the duration from the boot time of the DUT to now.
-func boottime() (time.Duration, error) {
-	var ts unix.Timespec
-	if err := unix.ClockGettime(unix.CLOCK_BOOTTIME, &ts); err != nil {
-		return 0, errors.Wrap(err, "error reading boottime")
-	}
-	return time.Duration(ts.Nano()), nil
 }
