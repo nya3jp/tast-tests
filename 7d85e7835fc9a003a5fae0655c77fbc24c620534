@@ -211,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "820053e7_bcf2ed28",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T03:43:23Z",
+      "side": 1,
+      "message": "Per offline discussion, let\u0027s keep it as-is now.",
+      "parentUuid": "61eac05c_8553b59e",
+      "range": {
+        "startLine": 444,
+        "startChar": 48,
+        "endLine": 444,
+        "endChar": 129
+      },
+      "revId": "7d85e7835fc9a003a5fae0655c77fbc24c620534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "282fa577_69a537ee",
