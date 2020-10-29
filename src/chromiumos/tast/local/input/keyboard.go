@@ -161,6 +161,7 @@ func (kw *KeyboardEventWriter) Type(ctx context.Context, s string) error {
 		}
 
 		kw.sendKey(k.code, 1, &firstErr)
+		kw.sleepAfterType(ctx, &firstErr)
 		kw.sendKey(k.code, 0, &firstErr)
 
 		if shifted && (i+1 == len(keys) || !keys[i+1].shifted) {
