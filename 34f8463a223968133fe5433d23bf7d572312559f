@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f560bf9_dcf50c05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-29T15:53:34Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "34f8463a223968133fe5433d23bf7d572312559f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb14c7c_ed19b0b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-10-29T15:53:34Z",
+      "side": 1,
+      "message": "This initial value is misleading, since it will never actually be used. I recommend initializing the variable without assigning a value:\n\n    var direction perf.Direction",
+      "revId": "34f8463a223968133fe5433d23bf7d572312559f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
