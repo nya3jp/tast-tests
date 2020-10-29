@@ -8,20 +8,15 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/crostini/ui/sharedfolders"
+	"chromiumos/tast/local/drivefs"
 	"chromiumos/tast/testing"
-)
-
-const (
-	drive   = "GoogleDrive"
-	mntPath = "/mnt/chromeos"
 )
 
 func init() {
@@ -47,42 +42,35 @@ func init() {
 }
 
 func NoAccessToDrive(ctx context.Context, s *testing.State) {
-	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
-	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
+	cr := s.PreValue().(crostini.PreData).Chrome
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
+	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
-	if err := cont.CheckFileDoesNotExistInDir(ctx, mntPath, drive); err != nil {
-		s.Fatalf("GoogleDrive is unexpectedly listed in %s in the container: %s", mntPath, err)
+	if err := cont.CheckFileDoesNotExistInDir(ctx, sharedfolders.MountPath, sharedfolders.MountFolderGoogleDrive); err != nil {
+		s.Fatalf("GoogleDrive is unexpectedly listed in %s in the container: %s", sharedfolders.MountPath, err)
 	}
-
-	// Open Files app.
-	filesApp, err := filesapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to open Files app: ", err)
-	}
-	defer filesApp.Release(cleanupCtx)
-
-	// Define keyboard to perform keyboard shortcuts.
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Error creating keyboard: ", err)
-	}
-	defer keyboard.Close()
 
 	// Generate a random folder name to avoid duplicate across devices.
 	newFolder := fmt.Sprintf("NoAccessToDrive_%d", rand.Intn(1000000000))
 	s.Log("The new folder name is ", newFolder)
-	// Create a new folder in Drive
-	if err := createFolderInDrive(ctx, filesApp, keyboard, newFolder); err != nil {
-		s.Fatal("Failed to create a folder in Drive: ", err)
-	}
 
-	defer filesApp.DeleteFileOrFolder(cleanupCtx, newFolder)
+	// Create a new folder in Drive.
+	mountPath, err := drivefs.WaitForDriveFs(ctx, cr.User())
+	if err != nil {
+		s.Fatal("Failed waiting for DriveFS to start: ", err)
+	}
+	folderPath := filepath.Join(mountPath, "root", newFolder)
+
+	// Add a file and a folder in Drive.
+	if err := os.MkdirAll(folderPath, 0755); err != nil {
+		s.Fatal("Failed to create test folder in Drive: ", err)
+	}
+	defer os.RemoveAll(folderPath)
 
 	fileList, err := cont.GetFileList(ctx, ".")
 	if err != nil {
@@ -92,56 +80,7 @@ func NoAccessToDrive(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to verify file list in home directory in the container: got %q, want []", fileList)
 	}
 
-	if err := cont.CheckFileDoesNotExistInDir(ctx, mntPath, drive); err != nil {
-		s.Fatalf("GoogleDrive is unexpectedly listed in %s in the container: %s", mntPath, err)
+	if err := cont.CheckFileDoesNotExistInDir(ctx, sharedfolders.MountPath, sharedfolders.MountFolderGoogleDrive); err != nil {
+		s.Fatalf("GoogleDrive is unexpectedly listed in %s in the container: %s", sharedfolders.MountPath, err)
 	}
-}
-
-func createFolderInDrive(ctx context.Context, filesApp *filesapp.FilesApp, keyboard *input.KeyboardEventWriter, newFolder string) error {
-	// Open Google Drive
-	if err := filesApp.OpenDrive(ctx); err != nil {
-		return errors.Wrap(err, "failed to open Google Drive")
-	}
-	// Get the Files App listBox.
-	filesBox, err := filesApp.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, 15*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed getting filesBox")
-	}
-	defer filesBox.Release(ctx)
-
-	// Move the focus to the file list.
-	if err := filesBox.FocusAndWait(ctx, 15*time.Second); err != nil {
-		return errors.Wrap(err, "failed selecting filesBox: ")
-	}
-
-	// Press ctrl+E to create a folder.
-	if err := keyboard.Accel(ctx, "ctrl+E"); err != nil {
-		return errors.Wrap(err, "failed to create a folder in Google Drive")
-	}
-
-	// Wait for rename text field.
-	params := ui.FindParams{
-		Role:  ui.RoleTypeTextField,
-		State: map[ui.StateType]bool{ui.StateTypeEditable: true, ui.StateTypeFocusable: true, ui.StateTypeFocused: true},
-	}
-	if err := filesApp.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
-		return errors.Wrap(err, "failed finding rename input text field")
-	}
-
-	// Name the folder with the new name.
-	if err := keyboard.Type(ctx, newFolder); err != nil {
-		return errors.Wrap(err, "failed to type the new name")
-	}
-
-	// Press Enter.
-	if err := keyboard.Accel(ctx, "Enter"); err != nil {
-		return errors.Wrap(err, "failed to rename the new folder")
-	}
-
-	// Check the newly created folder is listed Google Drive.
-	if err := filesApp.WaitForFile(ctx, newFolder, 10*time.Second); err != nil {
-		return errors.Wrapf(err, "failed to list the new folder %s in Drive", newFolder)
-	}
-
-	return nil
 }
