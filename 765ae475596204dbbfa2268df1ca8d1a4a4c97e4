@@ -16,6 +16,23 @@
       "message": "Removed cq tests from wifi_unstable. Validated each has been ran over 2000 times and failed less than 40 times. I feel good about adding these cases. But, as always, if you disagree, let me know.",
       "revId": "765ae475596204dbbfa2268df1ca8d1a4a4c97e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71392f99_d452d0c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-29T22:19:09Z",
+      "side": 1,
+      "message": "Thanks!\n\nThis (removing \"wificell_unstable\") is usually when we go delete the Autotest variant:\n\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/network_WiFi_SimpleConnect/\n\nI think for this CL, that would be:\n\ncontrol.wifi_checkWPA_multi\ncontrol.wifi_checkWPA2_PMF",
+      "revId": "765ae475596204dbbfa2268df1ca8d1a4a4c97e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
