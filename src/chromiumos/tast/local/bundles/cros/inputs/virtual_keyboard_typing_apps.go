@@ -32,6 +32,7 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "stable",
 			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "unstable",
 			ExtraHardwareDeps: pre.InputsUnstableModels,
