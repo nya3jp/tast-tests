@@ -39,14 +39,13 @@ type Sensor struct {
 	Device
 	Name          SensorName
 	Location      SensorLocation
+	IioID         uint
 	ID            uint
 	Scale         float64
 	MinFrequency  int
 	MaxFrequency  int
 	OldSysfsStyle bool
 }
-
-var iioDeviceRegexp = regexp.MustCompile(`^iio:device[0-9]+$`)
 
 // SensorReading is one reading from a sensor.
 type SensorReading struct {
@@ -198,8 +197,8 @@ func parseSensor(devName string) (*Sensor, error) {
 	var scale float64
 	var zeroInt, zeroFrac, minInt, minFrac, maxInt, maxFrac int
 
-	if !iioDeviceRegexp.MatchString(devName) {
-		return nil, errors.New("not a sensor")
+	if _, err := fmt.Sscanf(devName, "iio:device%d", &sensor.IioID); err != nil {
+		return nil, errors.Wrapf(err, "%q not a sensor", devName)
 	}
 
 	sensor.Path = devName

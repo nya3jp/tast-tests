@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"time"
 
+	"golang.org/x/sys/unix"
+
 	"chromiumos/tast/errors"
 )
 
@@ -285,4 +287,45 @@ func (cr *CrosRing) parseEvent(b *BufferData) (*SensorReading, error) {
 	ret.Timestamp = time.Duration(t)
 
 	return &ret, nil
+}
+
+// BootTime returns the duration from the boot time of the DUT to now.
+func BootTime() (time.Duration, error) {
+	var ts unix.Timespec
+	if err := unix.ClockGettime(unix.CLOCK_BOOTTIME, &ts); err != nil {
+		return 0, errors.Wrap(err, "error reading BootTime")
+	}
+	return time.Duration(ts.Nano()), nil
+}
+
+// Validate ensures the sample timestamps are within expected range.
+func Validate(rs []*SensorReading, start, end time.Duration, sn *Sensor, collectTime time.Duration) error {
+	var expected int
+	if sn.Name == Light {
+		// Light is on-change only. At worse, we may not see any sample if the light is very steady.
+		expected = 0
+	} else {
+		// Expect that there are at least half the number of samples for the given frequency.
+		expected = int(float64(sn.MaxFrequency)/1e3*collectTime.Seconds()) / 2
+	}
+
+	if len(rs) < expected {
+		return errors.Errorf("not enough data collected for %v %v with %.2f Hz in %v: got %v; want at least %v",
+			sn.Location, sn.Name, float64(sn.MaxFrequency)/1e3, collectTime, len(rs), expected)
+	}
+
+	last := start
+	for ix, sr := range rs {
+		if sr.Timestamp < last {
+			return errors.Errorf("timestamp out of order for %v %v at index %v: got %v; want >= %v",
+				sn.Location, sn.Name, ix, sr.Timestamp, last)
+		}
+
+		last = sr.Timestamp
+		if sr.Timestamp > end {
+			return errors.Errorf("timestamp in future for %v %v at index %v: got %v; want <= %v",
+				sn.Location, sn.Name, ix, sr.Timestamp, end)
+		}
+	}
+	return nil
 }
