@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a895c4e_a558e8b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-29T20:50:40Z",
+      "side": 1,
+      "message": "Sorry for any noise. I have not started investigation, but happy to degrade the tests to unblock cq.",
+      "revId": "7a2895581ebb3a62cf7919cbc80b37c92b5016f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
