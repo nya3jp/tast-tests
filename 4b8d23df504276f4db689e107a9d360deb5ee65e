@@ -339,6 +339,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6e88ac4_572986d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T09:46:35Z",
+      "side": 1,
+      "message": "Uh, sorry if I misled you, but wificell_perf is not suitable for this one. To make sure, I just checked one DUT in wificell_perf pool (chromeos15-row8-rack3-host3) the its \"-attenuator\" companion does not exist. So you\u0027ll need to add a new attribute like in https://b.corp.google.com/issues/161258468 and then schedule it in a suitable suite/pool. Perhaps the suite/pool as attenuated perf.\n\nTo unblock this big CL, I would suggest to remove wificell_perf and leave a TODO for making it scheduled in follow-up commits. Also, hopefully, the Var part can be resolved in parallel (Without it, this test will always fail due to lack of 2nd router)",
+      "parentUuid": "e57af0da_a817e77a",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b42729f0_0c277213",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
         "patchSetId": 1
