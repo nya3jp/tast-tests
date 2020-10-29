@@ -37,9 +37,9 @@ func TestGetSensors(t *testing.T) {
 	}
 
 	expected := []*Sensor{
-		{Device{"iio:device0"}, Accel, Lid, 0, .25, 100, 1000, true},
-		{Device{"iio:device1"}, Gyro, Base, 1, 0, 0, 0, false},
-		{Device{"iio:device3"}, Ring, None, 0, 0, 0, 0, false},
+		{Device{"iio:device0"}, Accel, Lid, 0, 0, .25, 100, 1000, true},
+		{Device{"iio:device1"}, Gyro, Base, 1, 1, 0, 0, 0, false},
+		{Device{"iio:device3"}, Ring, None, 3, 0, 0, 0, 0, false},
 	}
 
 	if !reflect.DeepEqual(expected, sensors) {
