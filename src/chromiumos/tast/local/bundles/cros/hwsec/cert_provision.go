@@ -24,7 +24,7 @@ func init() {
 		Func:         CertProvision,
 		Desc:         "Verifies cert provision by closed loop testing",
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
-		SoftwareDeps: []string{"tpm"},
+		SoftwareDeps: []string{"cert_provision", "tpm"},
 	})
 }
 
