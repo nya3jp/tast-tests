@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1d9df8a_c5e88398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/discord.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-29T23:29:36Z",
+      "side": 1,
+      "message": "If you change this to \".app.AppActivity$Main\" then the changes to testutil.go are not needed.\n\nAlso, it removes the need for reOpenWindowForDiscord.",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "630925f9346f6db4c4b565cf5227bc6a3ffc7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb2dc9fd_31fd406a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 4
