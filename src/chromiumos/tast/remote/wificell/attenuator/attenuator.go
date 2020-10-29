@@ -65,7 +65,11 @@ func Open(ctx context.Context, host string, proxyConn *ssh.Conn) (att *Attenuato
 	}
 	hostIPs, err := net.LookupIP(host)
 	if err != nil {
-		return nil, errors.Errorf("could not resolve IP for host %s", host)
+		// For some reason, .cros is not always in search domain.
+		hostIPs, err = net.LookupIP(fmt.Sprintf("%s.cros", host))
+		if err != nil {
+			return nil, errors.Errorf("could not resolve IP for host %s", host)
+		}
 	}
 
 	a.fixedAttenuations = fixedAttenuations
