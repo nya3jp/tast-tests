@@ -159,7 +159,7 @@ func cleanup(ctx context.Context, opts ...chrome.Option) error {
 
 func installAndShutDown(ctx context.Context, tconn *chrome.TestConn, iOptions *cui.InstallationOptions) error {
 	// Install Crostini.
-	if err := cui.InstallCrostini(ctx, tconn, iOptions); err != nil {
+	if _, err := cui.InstallCrostini(ctx, tconn, iOptions); err != nil {
 		return errors.Wrapf(err, "failed to install Crostini for user %s", iOptions.UserName)
 	}
 

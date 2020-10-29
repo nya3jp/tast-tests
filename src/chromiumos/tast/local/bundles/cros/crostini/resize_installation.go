@@ -63,9 +63,10 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 	}
 
 	iOptions := &ui.InstallationOptions{
-		UserName:    cr.User(),
-		Mode:        mode,
-		MinDiskSize: 16 * settings.SizeGB,
+		UserName:      cr.User(),
+		Mode:          mode,
+		MinDiskSize:   16 * settings.SizeGB,
+		IsSoftMinimum: true,
 	}
 	if mode == ui.Artifact {
 		iOptions.ImageArtifactPath = s.DataPath(crostini.ImageArtifact)
@@ -95,7 +96,8 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 	}()
 
 	// Install Crostini.
-	if err := ui.InstallCrostini(ctx, tconn, iOptions); err != nil {
+	resultDiskSize, err := ui.InstallCrostini(ctx, tconn, iOptions)
+	if err != nil {
 		s.Fatal("Failed to install Crostini: ", err)
 	}
 
@@ -112,13 +114,12 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the container: ", err)
 	}
 
-	if err := verifyDiskSize(ctx, tconn, cont, "16.0 GB", iOptions.MinDiskSize); err != nil {
+	if err := verifyDiskSize(ctx, tconn, cont, resultDiskSize); err != nil {
 		s.Fatal("Failed to verify disk size: ", err)
 	}
-
 }
 
-func verifyDiskSize(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, sizeInString string, size uint64) error {
+func verifyDiskSize(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, size uint64) error {
 	// Open the Linux settings.
 	st, err := settings.OpenLinuxSettings(ctx, tconn)
 	if err != nil {
@@ -131,8 +132,12 @@ func verifyDiskSize(ctx context.Context, tconn *chrome.TestConn, cont *vm.Contai
 	if err != nil {
 		return errors.Wrap(err, "failed to get the disk size from the Settings app")
 	}
-	if sizeInString != sizeOnSettings {
-		return errors.Errorf("failed to verify the disk size on the Settings app, got %s, want %s", sizeOnSettings, sizeInString)
+	parsedSize, err := settings.ParseDiskSize(sizeOnSettings)
+	if err != nil {
+		return errors.Wrap(err, "failed to get result disk size in bytes")
+	}
+	if size != parsedSize {
+		return errors.Errorf("failed to verify the disk size on the Settings app, got %v, want %v", parsedSize, size)
 	}
 
 	// Check the disk size of the container.

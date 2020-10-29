@@ -49,6 +49,7 @@ type InstallationOptions struct {
 	ImageArtifactPath string
 	MinDiskSize       uint64
 	DebianVersion     vm.ContainerDebianVersion
+	IsSoftMinimum     bool // If true, use the maximum disk size if MinDiskSize is larger than the maximum disk size.
 }
 
 // Installer is a page object for the settings screen of the Crostini Installer.
@@ -64,7 +65,7 @@ func New(tconn *chrome.TestConn) *Installer {
 // SetDiskSize uses the slider on the Installer options pane to set the disk
 // size to the smallest slider increment larger than the specified disk size.
 // If minDiskSize is smaller than the possible minimum disk size, disk size will be the smallest size.
-func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
+func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftMinimum bool) (uint64, error) {
 	window := uig.FindWithTimeout(installWindowFindParams, uiTimeout)
 	radioGroup := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRadioGroup}, uiTimeout)
 	slider := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeSlider}, uiTimeout)
@@ -73,47 +74,51 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64) error {
 		radioGroup.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "Custom"}, uiTimeout).LeftClick(),
 		slider.FocusAndWait(uiTimeout),
 	)); err != nil {
-		return errors.Wrap(err, "error in SetDiskSize()")
+		return 0, errors.Wrap(err, "error in SetDiskSize()")
 	}
 
 	// Use keyboard to manipulate the slider rather than writing
 	// custom mouse code to click on exact locations on the slider.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrap(err, "error in SetDiskSize: error opening keyboard")
+		return 0, errors.Wrap(err, "error in SetDiskSize: error opening keyboard")
 	}
 	defer kb.Close()
 
 	defaultSize, err := settings.GetDiskSize(ctx, p.tconn, slider)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the initial disk size")
+		return 0, errors.Wrap(err, "failed to get the initial disk size")
 	}
 	if defaultSize == minDiskSize {
-		return nil
+		return minDiskSize, nil
 	}
 	if defaultSize > minDiskSize {
 		// To make sure that the final disk size is equal or larger than the minDiskSize,
 		// move the slider to the left of minDiskSize first.
 		minimumSize, err := settings.ChangeDiskSize(ctx, p.tconn, kb, slider, false, minDiskSize)
 		if err != nil {
-			return errors.Wrap(err, "failed to move the disk slider to the left")
+			return 0, errors.Wrap(err, "failed to move the disk slider to the left")
 		}
 		if minimumSize == minDiskSize {
-			return nil
+			return minDiskSize, nil
 		}
 		if minimumSize > minDiskSize {
 			testing.ContextLogf(ctx,
-				"The target disk size %v is smaller than the minimum disk size %v, using the minimum disk size %v",
-				minDiskSize, minimumSize, minimumSize)
-			return nil
+				"The target disk size %v is smaller than the minimum disk size, using the minimum disk size %v",
+				minDiskSize, minimumSize)
+			return minimumSize, nil
 		}
 	}
 
 	size, err := settings.ChangeDiskSize(ctx, p.tconn, kb, slider, true, minDiskSize)
 	if size < minDiskSize {
-		return errors.Errorf("could not set disk size to larger than %v", size)
+		if IsSoftMinimum {
+			testing.ContextLogf(ctx, "The maximum disk size %v < the target disk size %v, using the maximum disk size %v", size, minDiskSize, size)
+			return size, nil
+		}
+		return 0, errors.Errorf("could not set disk size to larger than %v", size)
 	}
-	return nil
+	return size, nil
 }
 
 // checkErrorMessage checks to see if an error message is currently displayed in the
@@ -220,20 +225,20 @@ func startLxdServer(ctx context.Context, containerDir string) (server *lxd.Serve
 }
 
 // InstallCrostini prepares image and installs Crostini from UI.
-func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *InstallationOptions) error {
+func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *InstallationOptions) (uint64, error) {
 	// Check for /dev/kvm before we do anything else.
 	// On some boards in the lab the existence of this is flaky crbug.com/1072877
 	if _, err := os.Stat("/dev/kvm"); err != nil {
-		return errors.Wrap(err, "cannot install crostini: cannot stat /dev/kvm")
+		return 0, errors.Wrap(err, "cannot install crostini: cannot stat /dev/kvm")
 	}
 	// Setup lxd server.
 	containerDir, terminaImage, err := prepareImages(ctx, iOptions)
 	if err != nil {
-		return errors.Wrap(err, "failed to prepare image")
+		return 0, errors.Wrap(err, "failed to prepare image")
 	}
 	server, addr, err := startLxdServer(ctx, containerDir)
 	if err != nil {
-		return errors.Wrap(err, "failed to start lxd server")
+		return 0, errors.Wrap(err, "failed to start lxd server")
 	}
 	defer server.Shutdown(ctx)
 
@@ -243,56 +248,58 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 	if err := tconn.Eval(ctx, fmt.Sprintf(
 		`chrome.autotestPrivate.registerComponent(%q, %q)`,
 		vm.ImageServerURLComponentName, url), nil); err != nil {
-		return errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
+		return 0, errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
 	}
 
 	if err := vm.MountComponent(ctx, terminaImage); err != nil {
-		return errors.Wrap(err, "failed to mount component")
+		return 0, errors.Wrap(err, "failed to mount component")
 	}
 
 	if err := tconn.Eval(ctx, fmt.Sprintf(
 		`chrome.autotestPrivate.registerComponent(%q, %q)`,
 		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
-		return errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
+		return 0, errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
 	}
 
 	// Install Crostini from Settings.
 	settings, err := settings.Open(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to open Settings")
+		return 0, errors.Wrap(err, "failed to open Settings")
 	}
 	defer settings.Close(ctx)
 
 	if err := settings.OpenInstaller(ctx); err != nil {
-		return errors.Wrap(err, "failed to launch crostini installation from Settings")
+		return 0, errors.Wrap(err, "failed to launch crostini installation from Settings")
 	}
 	installer := New(tconn)
+	var resultDiskSize uint64
 	if iOptions.MinDiskSize != 0 {
-		if err := installer.SetDiskSize(ctx, iOptions.MinDiskSize); err != nil {
-			return errors.Wrap(err, "failed to set disk size in installation dialog")
+		resultDiskSize, err = installer.SetDiskSize(ctx, iOptions.MinDiskSize, iOptions.IsSoftMinimum)
+		if err != nil {
+			return 0, errors.Wrap(err, "failed to set disk size in installation dialog")
 		}
 	}
 	if err := installer.Install(ctx); err != nil {
-		return errors.Wrap(err, "failed to install Crostini from UI")
+		return 0, errors.Wrap(err, "failed to install Crostini from UI")
 	}
 
 	// Get the container.
 	cont, err := vm.DefaultContainer(ctx, iOptions.UserName)
 	if err != nil {
-		return errors.Wrap(err, "failed to connect to running container")
+		return 0, errors.Wrap(err, "failed to connect to running container")
 	}
 
 	// The VM should now be running, check that all the host daemons are also running to catch any errors in our init scripts etc.
 	if err = checkDaemonsRunning(ctx); err != nil {
-		return errors.Wrap(err, "failed to check VM host daemons state")
+		return 0, errors.Wrap(err, "failed to check VM host daemons state")
 	}
 
 	if err := stopAptDaily(ctx, cont); err != nil {
-		return errors.Wrap(err, "failed to stop apt-daily")
+		return 0, errors.Wrap(err, "failed to stop apt-daily")
 	}
 
 	if err := disableGarconPackageUpdates(ctx, cont); err != nil {
-		return errors.Wrap(err, "failed to stop garcon from auto-updating packages")
+		return 0, errors.Wrap(err, "failed to stop garcon from auto-updating packages")
 	}
 
 	// If the wayland backend is used, the fonctconfig cache will be
@@ -300,10 +307,10 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 	// can take a long time and timeout the app executions below.
 	testing.ContextLog(ctx, "Generating fontconfig cache")
 	if err := cont.Command(ctx, "fc-cache").Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to generate fontconfig cache")
+		return 0, errors.Wrap(err, "failed to generate fontconfig cache")
 	}
 
-	return nil
+	return resultDiskSize, nil
 }
 
 func expectDaemonRunning(ctx context.Context, name string) error {
