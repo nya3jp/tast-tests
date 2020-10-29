@@ -16,6 +16,23 @@
       "message": "LGTM from cros_healthd domain",
       "revId": "bc7d9022662a39127c0f1cd6ba5d076e5a8a997d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb886ac5_c3338c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-10-29T22:18:07Z",
+      "side": 1,
+      "message": "Is Temparature Channels guaranteed to be after all of the physical CPUS? will this ever change?",
+      "revId": "bc7d9022662a39127c0f1cd6ba5d076e5a8a997d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
