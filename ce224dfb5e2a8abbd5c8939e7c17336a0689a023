@@ -22,6 +22,30 @@
       },
       "revId": "ce224dfb5e2a8abbd5c8939e7c17336a0689a023",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ad4be1_0e733fef",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-29T19:37:57Z",
+      "side": 1,
+      "message": "As discussed on bug, this is fine.",
+      "parentUuid": "e65fe828_dc847b4f",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 56
+      },
+      "revId": "ce224dfb5e2a8abbd5c8939e7c17336a0689a023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
