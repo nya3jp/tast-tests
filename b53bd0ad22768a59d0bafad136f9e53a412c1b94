@@ -16,6 +16,143 @@
       "message": "bluetoothPrivate flow for PersistenceWifiSansBluetooth now works. A patch on chromium is needed (chromium:2500445) is necessary for this test to work.",
       "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278dd29d_c4a1347a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T03:42:09Z",
+      "side": 1,
+      "message": "Sorry for the delay. I don\u0027t have much knowledge of BT so some comments are questions rather than actionable suggestions.",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2e7137_ad71a01a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T03:42:09Z",
+      "side": 1,
+      "message": "I tried to monitor dbus when changing the setting of BT on UI but does not find anything special. Maybe the persistent setting is stored in some other place?\n\nbluetoothPrivate might be OK, but one downside is: starting chrome can take much time. Also, we\u0027re not yet sure why it does not work with startup window...\n\nabhishekpandit@, do you have some suggestions on how to set/get the persistent BT powered setting?",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e200af3_33de091a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T03:42:09Z",
+      "side": 1,
+      "message": "It might be better to separate this part of change into another CL and include maintainers of chrome package to review? Or directly in this CL if you think chrome folks can help with why we need this option for bluetoothPrivate.",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccac99bb_a67ce8f7",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T03:42:09Z",
+      "side": 1,
+      "message": "The indent seems to be unmatched. (I think it\u0027s using spaces here)",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 1
+      },
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574a866f_aba81596",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T03:42:09Z",
+      "side": 1,
+      "message": "nit: This is used multiple times, maybe worth a clearer variable for it e.g. credKey?",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b0dba6_2914d789",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T03:42:09Z",
+      "side": 1,
+      "message": "TestFixture will close UI in its init, so I\u0027d suggest moving these outside of this function as the gRPC will start chrome now. It is not harmful for now as TestFixture does not depend much on the assumption.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b361260_fcac236e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T03:42:09Z",
+      "side": 1,
+      "message": "Similar to the case in crrev.com/c/2478322, this might be a potential flake: when the disabled setting does not persist after reboot, it is still possible that we get \"down\" state here if the device is not yet initialized. Then the test will wrongly pass.\n\nWe\u0027ll need a way to tell uninitialized/disabled or to get the persistent setting directly for this test.",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
