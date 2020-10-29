@@ -1086,6 +1086,27 @@ func (tf *TestFixture) EAPAuthSkipped(ctx context.Context) (func() (bool, error)
 	}, nil
 }
 
+// DisconnectReason is a wrapper for the streaming gRPC call DisconnectReason.
+// It returns a function that waits for service to disconnects and returns the wpa_supplicant.
+func (tf *TestFixture) DisconnectReason(ctx context.Context) (func() (int32, error), error) {
+	recv, err := tf.WifiClient().DisconnectReason(ctx, &empty.Empty{})
+	if err != nil {
+		return nil, err
+	}
+	ready, err := recv.Recv()
+	if err != nil || ready.Reason != 0 {
+		// Error due to expecting an empty response as ready signal.
+		return nil, errors.New("failed to get the ready signal")
+	}
+	return func() (int32, error) {
+		resp, err := recv.Recv()
+		if err != nil {
+			return 0, errors.Wrap(err, "failed to receive from DisconnectReason")
+		}
+		return resp.Reason, nil
+	}, nil
+}
+
 // SuspendAssertConnect suspends the DUT for wakeUpTimeout seconds through gRPC and returns the duration from resume to connect.
 func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout time.Duration) (time.Duration, error) {
 	service, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
@@ -1100,4 +1121,11 @@ func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout t
 		return 0, errors.Wrap(err, "failed to suspend and assert connection")
 	}
 	return time.Duration(resp.ReconnectTime), nil
+}
+
+// SetWifiEnabled persistently enables/disables Wifi via shill.
+func (tf *TestFixture) SetWifiEnabled(ctx context.Context, enabled bool) error {
+	req := &network.SetWifiEnabledRequest{Enabled: enabled}
+	_, err := tf.WifiClient().SetWifiEnabled(ctx, req)
+	return err
 }
