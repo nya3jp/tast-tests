@@ -46,12 +46,14 @@ func init() {
 			"niwa@chromium.org",  // Tast port author.
 			"arc-performance@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		// TODO(http://b/161260610): Test is disabled until it can be fixed
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		// This test steps through opt-in flow 10 times and each iteration takes 20~40 seconds.
 		Timeout: 20 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "unmanaged",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				username:          "arc.AuthPerf.unmanaged_username",
@@ -61,6 +63,7 @@ func init() {
 			},
 		}, {
 			Name:              "unmanaged_vm",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				username:          "arc.AuthPerf.unmanaged_username",
