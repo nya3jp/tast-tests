@@ -34,6 +34,23 @@
       "parentUuid": "cf3ddc0a_e8984477",
       "revId": "17eaa7fdd2e2420126de1b0b4c652111e8540dfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f1c544_e271cd78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-10-29T21:39:16Z",
+      "side": 1,
+      "message": "Hi Brendan, \nI could not find the usage for CanResize function in the code search. Could you share the link of the function in the code search. Thanks.",
+      "revId": "17eaa7fdd2e2420126de1b0b4c652111e8540dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
