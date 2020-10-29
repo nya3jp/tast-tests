@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5203d12a_c79d24ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-10-29T23:48:41Z",
+      "side": 1,
+      "message": "I think this is the wrong CL to revert.  The bug mentions crrev.com/c/2492912, not crrev.com/c/2484253.",
+      "revId": "679098cecc2dd5263b39c87b27d1f3e977fadfeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
