@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4661b4a5_336fa385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-10-29T14:15:12Z",
+      "side": 1,
+      "message": "Looks like the release of enter gets lost in the omnibox, this can be solved by sleeping after every key event as is suggested in the keyboard.go file. Do you think it\u0027s worth investigating more?",
+      "revId": "2504f9944c06549ad3eb0a7ee808cebcc9ccec86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
