@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2e306f_2e06f24c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-10-29T16:31:35Z",
+      "side": 1,
+      "message": "Patch set 2 is a working prototype 😊",
+      "revId": "b7d08233fbe79fd17fdfc493a8c35ceb67947708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
