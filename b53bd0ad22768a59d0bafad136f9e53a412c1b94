@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89351904_5d597031",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-29T23:07:32Z",
+      "side": 1,
+      "message": "bluetoothPrivate / javascript is pretty new to me, and I don\u0027t have much to say for it. If you can\u0027t find a decent reviewer for that, I can try my best.\n\nOther stuff LGTM, modulo the few comments Yen-lin and I made.",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb2e7137_ad71a01a",
@@ -101,6 +118,24 @@
       "writtenOn": "2020-10-29T03:42:09Z",
       "side": 1,
       "message": "It might be better to separate this part of change into another CL and include maintainers of chrome package to review? Or directly in this CL if you think chrome folks can help with why we need this option for bluetoothPrivate.",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e414fd32_683982d9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-29T23:07:32Z",
+      "side": 1,
+      "message": "+1\n\nThis is slightly concerning (and I really enjoy your \"I have no idea\" comment elsewhere), and probably should be reviewed separately. And if we stick with it, maybe it needs a TODO(b/....) comment on the usage, alongside \"I have no idea\".",
+      "parentUuid": "5e200af3_33de091a",
       "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -176,6 +211,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f285194_dd60de57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-29T23:07:32Z",
+      "side": 1,
+      "message": "I wonder if we should add a parameter to the TestFixture and/or wifi_service\u0027s InitDUT() to prevent NewTestFixture() stopping Chrome. It\u0027s useful for some cases (to prevent spurious Chrome-requested scans), but not important for basic connection tests like this. Then you don\u0027t need to worry about separating Chrome-dependent and Chrome-clobbering helpers, and you save time too.",
+      "parentUuid": "97b0dba6_2914d789",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b361260_fcac236e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
         "patchSetId": 2
@@ -187,6 +246,23 @@
       "writtenOn": "2020-10-29T03:42:09Z",
       "side": 1,
       "message": "Similar to the case in crrev.com/c/2478322, this might be a potential flake: when the disabled setting does not persist after reboot, it is still possible that we get \"down\" state here if the device is not yet initialized. Then the test will wrongly pass.\n\nWe\u0027ll need a way to tell uninitialized/disabled or to get the persistent setting directly for this test.",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47145c6_51254441",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-29T23:07:32Z",
+      "side": 1,
+      "message": "any reason not to run another wifiutil.AssertWifiEnabled()? It actually seems more important to verify here than to verify at L78 -- at 78, we\u0027re just at normal steady-state conditions: both BT and WiFi are enabled and haven\u0027t been messed with. The \"tough\" part is when we\u0027ve disabled one and rebooted.",
       "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
