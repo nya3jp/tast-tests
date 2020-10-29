@@ -70,8 +70,11 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 	lockStage.End()
 
 	s.Log("Typing wrong password")
-	if err := kb.Type(ctx, wrongPassword+"\n"); err != nil {
+	if err := kb.Type(ctx, wrongPassword); err != nil {
 		s.Fatal("Typing wrong password failed: ", err)
+	}
+	if err := kb.Accel(ctx, "enter"); err != nil {
+		s.Fatal("Pressing enter failed: ", err)
 	}
 	s.Log("Waiting for lock screen to respond to wrong password (can block if TPM is busy)")
 	if st, err := lockscreen.WaitState(ctx, conn, func(st lockscreen.State) bool { return !st.Locked || st.ReadyForPassword }, badAuthTimeout); err != nil {
@@ -81,8 +84,11 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Unlocking screen by typing correct password")
-	if err := kb.Type(ctx, password+"\n"); err != nil {
+	if err := kb.Type(ctx, password); err != nil {
 		s.Fatal("Typing correct password failed: ", err)
+	}
+	if err := kb.Accel(ctx, "enter"); err != nil {
+		s.Fatal("Pressing enter failed: ", err)
 	}
 	s.Log("Waiting for Chrome to report that screen is unlocked")
 	_, unlockStage := timing.Start(ctx, "unlock_screen") // don't assign to ctx; there's no child stage
