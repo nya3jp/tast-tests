@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0b15f5_24792ab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-29T15:34:29Z",
+      "side": 1,
+      "message": "LGTM with suggestion.",
+      "revId": "122dd77bac720e2f6e2113fda0a8c37e3ffc96e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae55e0c_61abbe1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-29T15:34:29Z",
+      "side": 1,
+      "message": "optional: it may worth trying to include expected and/or index. Also maybe GetText() to understand the failure in case.",
+      "revId": "122dd77bac720e2f6e2113fda0a8c37e3ffc96e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
