@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd32a82f_4d48ba7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-29T05:54:58Z",
+      "side": 1,
+      "message": "The persistent setting is stored through settingsPrivate. It\u0027s stored as \"ash.system.bluetooth.adapter_enabled\" (This is toggled in line 69 of bluetooth_service.go). You will need to patch chromium in order for this line to work (see chromium:2500445).\n\nBluez does not store a persistence setting, so this is stored in chromium. It\u0027s also a bit confusing that bluetoothPrivate is not responsible for this setting as well. I have filed a bug regarding this behavior in this bug: https://b.corp.google.com/issues/171805553",
+      "parentUuid": "bb2e7137_ad71a01a",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e200af3_33de091a",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
