@@ -1961,6 +1961,61 @@ func (s *WifiService) EAPAuthSkipped(_ *empty.Empty, sender network.WifiService_
 	}
 }
 
+// DisconnectReason is a streaming gRPC, who waits for the wpa_supplicant's
+// DisconnectReason property change, and returns the code to the client.
+// To notify the caller that it is ready, it sends an empty response after
+// the signal watcher is initialized.
+// This is the implementation of network.Wifi/DisconnectReason gRPC.
+func (s *WifiService) DisconnectReason(_ *empty.Empty, sender network.WifiService_DisconnectReasonServer) error {
+	ctx, cancel := reserveForStreamingReturn(sender.Context())
+	defer cancel()
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create shill manager")
+	}
+	ifaceName, err := shill.WifiInterface(ctx, m, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to get WiFi interface")
+	}
+	supplicant, err := wpasupplicant.NewSupplicant(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to wpa_supplicant")
+	}
+	iface, err := supplicant.GetInterface(ctx, ifaceName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get interface object paths")
+	}
+
+	sw, err := iface.DBusObject().CreateWatcher(ctx, wpasupplicant.DBusInterfaceSignalPropertiesChanged)
+	if err != nil {
+		return errors.Wrap(err, "failed to create signal watcher")
+	}
+	defer sw.Close(ctx)
+
+	// Send an empty response to notify that the watcher is ready.
+	if err := sender.Send(&network.DisconnectReasonResponse{}); err != nil {
+		return errors.Wrap(err, "failed to send a ready signal")
+	}
+
+	for {
+		select {
+		case s := <-sw.Signals:
+			name := wpasupplicant.SignalName(s)
+			if name != wpasupplicant.DBusInterfaceSignalPropertiesChanged {
+				return errors.Errorf("unexpected name type: %s", name)
+			}
+			props := s.Body[0].(map[string]dbus.Variant)
+			if val, ok := props[wpasupplicant.DBusInterfacePropDisconnectReason]; ok {
+				reason := val.Value().(int32)
+				return sender.Send(&network.DisconnectReasonResponse{Reason: reason})
+			}
+		case <-ctx.Done():
+			return errors.Wrap(ctx.Err(), "failed to wait for signal")
+		}
+	}
+}
+
 // suspend suspends the DUT for wakeUpTimeout.
 // TODO(b/171280216): Extract these logics from network component.
 func suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
