@@ -49,7 +49,7 @@ const (
 
 // find params for fixed items.
 var (
-	linuxBetaButton       = ui.FindParams{Name: "Linux (Beta)", Role: ui.RoleTypeButton}
+	developersButton      = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Developers|Linux.*`)}, Role: ui.RoleTypeButton}
 	nextButton            = ui.FindParams{Name: "Next", Role: ui.RoleTypeButton}
 	settingsHeading       = ui.FindParams{Name: "Settings", Role: ui.RoleTypeHeading}
 	linuxSettings         = ui.FindParams{Name: PageNameLinux, Role: ui.RoleTypeRootWebArea}
@@ -79,6 +79,11 @@ func Open(ctx context.Context, tconn *chrome.TestConn) (*Settings, error) {
 	return s, nil
 }
 
+func navigateToDevelopers(ctx context.Context, tconn *chrome.TestConn) error {
+	// Navigate to Developers page or Linux settings page.
+	return uig.Do(ctx, tconn, uig.Retry(2, uig.FindWithTimeout(developersButton, uiTimeout).FocusAndWait(uiTimeout).LeftClick())).WithNamef("navigateToDevelopers()")
+}
+
 // OpenLinuxSettings open finds or launches Settings app and navigate to Linux Settings and its sub settings if any.
 // Returns a Settings instance.
 func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, subSettings ...string) (s *Settings, err error) {
@@ -92,8 +97,8 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, subSettings 
 		}
 	}()
 
-	// Navigate to Linux settings page.
-	if err = uig.Do(ctx, tconn, uig.Retry(2, uig.FindWithTimeout(linuxBetaButton, uiTimeout).FocusAndWait(uiTimeout).LeftClick())); err != nil {
+	// Navigate to Developers settings page.
+	if err = navigateToDevelopers(ctx, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to open Linux settings")
 	}
 
@@ -143,9 +148,11 @@ func (s *Settings) OpenInstaller(ctx context.Context) error {
 	if err := s.ensureOpen(ctx); err != nil {
 		return errors.Wrap(err, "error in OpenInstaller()")
 	}
+	if err := navigateToDevelopers(ctx, s.tconn); err != nil {
+		return errors.Wrap(err, "error in OpenInstaller()")
+	}
 	return uig.Do(ctx, s.tconn,
 		uig.Steps(
-			uig.Retry(2, uig.FindWithTimeout(linuxBetaButton, uiTimeout).FocusAndWait(uiTimeout).LeftClick()),
 			uig.FindWithTimeout(nextButton, uiTimeout).LeftClick()).WithNamef("OpenInstaller()"))
 }
 
