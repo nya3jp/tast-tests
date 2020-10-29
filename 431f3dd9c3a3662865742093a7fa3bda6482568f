@@ -16,6 +16,131 @@
       "message": "Mukai-san, would you mind taking a look at this as well? Thanks!",
       "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb836a4b_fd26e6af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-29T19:54:51Z",
+      "side": 1,
+      "message": "Thank you for doing this. Looks good but have a few questions around the style.",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34fd8a15_07cc1547",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-29T19:54:51Z",
+      "side": 1,
+      "message": "out of curiosity -- why using closure_compiler\u0027s definition?  The IDL file (src/extensions/common/api/automation.idl) should be the source of truth.  Just because it\u0027s easier to parse?",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 75
+      },
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb01899_20700008",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-29T19:54:51Z",
+      "side": 1,
+      "message": "Can you make an assignee of the TODO (or an issue for it)? i.e.\n  TODO(hirokisato): ...\nor\n  TODO(crbug.com/nnnn): ...",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cb08bb9_ea0133d7",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-29T19:54:51Z",
+      "side": 1,
+      "message": "Restriction should be readable from the code. Am I missing something?",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "136f736b_24e84b61",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-29T19:54:51Z",
+      "side": 1,
+      "message": "This function is worth having a docstring (https://chromium.googlesource.com/chromiumos/docs/+/master/styleguide/python.md#describing-arguments-in-docstrings)",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b00ab28_82947b41",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-29T19:54:51Z",
+      "side": 1,
+      "message": "Similarly, it would be worth having a docstring",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fe85ffb_ff41e70d",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-10-29T19:54:51Z",
+      "side": 1,
+      "message": "The style guide says in ChromeOS, we use %-formatting exclusively (https://chromium.googlesource.com/chromiumos/docs/+/master/styleguide/python.md#formatting)",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
