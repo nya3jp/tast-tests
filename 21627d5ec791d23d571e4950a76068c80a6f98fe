@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e73f6a6_7b4165da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-10-29T08:35:31Z",
+      "side": 1,
+      "message": "While rewriting it to not use the Runnable that calls itself, I got rid of the need for intents.\n\nWe\u0027ll just parse logcat to see when it finishes.",
+      "revId": "21627d5ec791d23d571e4950a76068c80a6f98fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
