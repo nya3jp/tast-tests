@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "59aaebcd_c67b0bd7",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "I was told to add myself as an owner. ",
       "revId": "0a5d18f766cfca23a09678f15a0f7208d08fe74c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "54f49921_a940abf6",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "LGTM",
       "revId": "0a5d18f766cfca23a09678f15a0f7208d08fe74c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "c085c55a_599e0990",
         "filename": "/PATCHSET_LEVEL",
@@ -48,10 +49,10 @@
       "side": 1,
       "message": "LGTM, but please wait Pavol response to my comment regarding e-mail.",
       "revId": "0a5d18f766cfca23a09678f15a0f7208d08fe74c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "610b12bf_8e04e299",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_device.go",
@@ -71,8 +72,31 @@
         "endChar": 21
       },
       "revId": "0a5d18f766cfca23a09678f15a0f7208d08fe74c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff25a756_322394f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/required_client_certificate_for_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-10-29T11:36:58Z",
+      "side": 1,
+      "message": "If this will result in e-mail pings, google.com should be more reliable :-)",
+      "parentUuid": "610b12bf_8e04e299",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "0a5d18f766cfca23a09678f15a0f7208d08fe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
