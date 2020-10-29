@@ -16,6 +16,24 @@
       "message": "Did not see that CL, working on a more stressful test:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2506403",
       "revId": "76acc99ba1afb702db5c92fbc6e3a6e2d02f3f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da24c11b_8dfecb99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2020-10-29T07:42:45Z",
+      "side": 1,
+      "message": "So I think the plan is to go with CL:2506403 ?",
+      "parentUuid": "12697838_a0eca470",
+      "revId": "76acc99ba1afb702db5c92fbc6e3a6e2d02f3f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
