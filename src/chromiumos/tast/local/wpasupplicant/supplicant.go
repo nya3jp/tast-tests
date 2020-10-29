@@ -16,6 +16,17 @@ const (
 	dbusBasePath           = "/fi/w1/wpa_supplicant1"
 	dbusBaseInterface      = "fi.w1.wpa_supplicant1"
 	dbusBaseGetIfaceMethod = "GetInterface"
+
+	// The following are some of the expected values of the property DisconnectReason.
+
+	// DisconnReasonPreviousAuthenticationInvalid previous authentication no longer valid.
+	DisconnReasonPreviousAuthenticationInvalid = 2
+	// DisconnReasonDeauthSTALeaving deauthenticated because sending STA is leaving (or has left) IBSS or ESS.
+	DisconnReasonDeauthSTALeaving = 3
+	// DisconnReasonLGDeauthSTALeaving (locally generated).
+	DisconnReasonLGDeauthSTALeaving = -3
+	// DisconnReasonLGDisassociatedInactivity (locally generated) disassociated due to inactivity.
+	DisconnReasonLGDisassociatedInactivity = -4
 )
 
 // Supplicant is the object to interact with wpa_supplicant's
