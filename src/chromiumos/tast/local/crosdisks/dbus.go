@@ -40,8 +40,7 @@ func New(ctx context.Context) (*CrosDisks, error) {
 
 // Close connection to CrosDisks D-Bus service.
 func (c *CrosDisks) Close() error {
-	// Do not close the connection as it's a singleton shared with other tests.
-	return nil
+	return c.conn.Close()
 }
 
 // call is a thin wrapper of CallWithContext for convenience.
