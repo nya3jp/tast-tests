@@ -16,6 +16,24 @@
       "message": "Didn\u0027t you just add this?",
       "revId": "3595e29c4a331ffd771e00fc2474a3be2c9c173c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42907ae3_4419b4bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lpprint/lpprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-29T23:43:51Z",
+      "side": 0,
+      "message": "The cups-filter uprev modifies the invocation command. However as this command takes up multiple lines the easy way to handle this case is to remove all postscript comments.",
+      "parentUuid": "dc5e9c7f_7d5e763d",
+      "revId": "3595e29c4a331ffd771e00fc2474a3be2c9c173c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
