@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb43c49_5d5b2ddf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-10-29T10:51:40Z",
+      "side": 0,
+      "message": "also remove the parameters here",
+      "revId": "33011122ea18a4fbc8baa9f579db53bb1e1c891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
