@@ -34,6 +34,24 @@
       "parentUuid": "9e6ff08f_3bf9f5b8",
       "revId": "11641955fdfcac45562f80e6f4a6daba1d0af746",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe65a5b7_e4077479",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T08:52:43Z",
+      "side": 1,
+      "message": "I\u0027m not very satisfied with my own suggestion but I don\u0027t have better one for now... Ack.",
+      "parentUuid": "8dc45b4e_7c7728b9",
+      "revId": "11641955fdfcac45562f80e6f4a6daba1d0af746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

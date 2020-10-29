@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b143ee_d8c2b86c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T08:52:43Z",
+      "side": 1,
+      "message": "only a few nits, mostly LGTM. Will come back approving when I finished the RoamFT CL.",
+      "revId": "f2328f2b314fe7c9383d3d7e98a05cfb32d8959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac121f74_aef25d6a",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T08:52:43Z",
+      "side": 1,
+      "message": "nit: I slightly prefer keeping the MAC function by wrapping this function so that we don\u0027t have to rename existing callers. YMMV, though.",
+      "revId": "f2328f2b314fe7c9383d3d7e98a05cfb32d8959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bba688_5ba772b6",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T08:52:43Z",
+      "side": 1,
+      "message": "maybe the porting bug ID here. Might also worth to mention some information we have for future reader:\n1. the hack here is for avoiding parsing dbus-send output\n2. shill-test-script might be an alternative. (ref: https://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/shill-test-scripts/shill-test-scripts-9999.ebuild)",
+      "range": {
+        "startLine": 781,
+        "startChar": 7,
+        "endLine": 781,
+        "endChar": 8
+      },
+      "revId": "f2328f2b314fe7c9383d3d7e98a05cfb32d8959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28002bd0_0d6984fc",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-29T08:52:43Z",
+      "side": 1,
+      "message": "nit: \u0027--print-reply\u0027 and dump Output when error might provide some messages useful?",
+      "range": {
+        "startLine": 790,
+        "startChar": 11,
+        "endLine": 792,
+        "endChar": 11
+      },
+      "revId": "f2328f2b314fe7c9383d3d7e98a05cfb32d8959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
