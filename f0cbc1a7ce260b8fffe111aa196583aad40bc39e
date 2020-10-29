@@ -33,6 +33,40 @@
       "message": "Thanks! LGTM!",
       "revId": "f0cbc1a7ce260b8fffe111aa196583aad40bc39e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34298ebb_c54b3de2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-29T09:47:38Z",
+      "side": 1,
+      "message": "Thank you for making a change!",
+      "revId": "f0cbc1a7ce260b8fffe111aa196583aad40bc39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b885717b_aedda835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-10-29T09:47:38Z",
+      "side": 1,
+      "message": "Could you introduce \"lacros\" software deps?\nThat\u0027d be currently calculated as \"!arm\".",
+      "revId": "f0cbc1a7ce260b8fffe111aa196583aad40bc39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
