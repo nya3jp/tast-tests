@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b38d05c_d070e120",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1601,
+      "author": {
+        "id": 1001299
+      },
+      "writtenOn": "2020-10-29T17:22:41Z",
+      "side": 1,
+      "message": "not needed?",
+      "range": {
+        "startLine": 1601,
+        "startChar": 19,
+        "endLine": 1601,
+        "endChar": 30
+      },
+      "revId": "1cb7cf392326627621fcf69df1eb854c38246e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f243fc20_f8a955fc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1001299
+      },
+      "writtenOn": "2020-10-29T17:22:41Z",
+      "side": 1,
+      "message": "You should probably also raise value change events here, as the part of field modification:\nfield.dispatchEvent(new Event(\"input\"));\nfield.dispatchEvent(new Event(\"change\"));",
+      "range": {
+        "startLine": 1606,
+        "startChar": 24,
+        "endLine": 1606,
+        "endChar": 35
+      },
+      "revId": "1cb7cf392326627621fcf69df1eb854c38246e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
