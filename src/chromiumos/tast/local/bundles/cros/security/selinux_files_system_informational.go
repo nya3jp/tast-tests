@@ -54,8 +54,32 @@ func SELinuxFilesSystemInformational(ctx context.Context, s *testing.State) {
 		{Path: "/var/log/messages", Context: "cros_syslog", Log: true},
 		{Path: "/var/log/net.log", Context: "cros_net_log", Log: true},
 		{Path: "/var/log/secure", Context: "cros_secure_log", Log: true},
+		{Path: "/sys", Context: "sysfs.*", Recursive: true, Filter: selinux.IgnorePathsRegex(append(append([]string{
+			"/sys/bus/iio/devices",
+			"/sys/class/drm",
+			"/sys/devices/system/cpu",
+			"/sys/fs/cgroup",
+			"/sys/fs/pstore",
+			"/sys/fs/selinux",
+			"/sys/kernel/config",
+			"/sys/kernel/debug",
+			// we don't have anything special of conntrack files than others. conntrack slab cache changes when connections established or closes, and may cause flakiness.
+			"/sys/kernel/slab/nf_conntrack_.*",
+		}, gpuDevices...), crosEcIioDevices...))},
 		{Path: "/sys/devices/system/cpu", Context: "sysfs", Recursive: true, Filter: systemCPUFilter(writable)},
 		{Path: "/sys/devices/system/cpu", Context: "sysfs_devices_system_cpu", Recursive: true, Filter: systemCPUFilter(readonly)},
+		{Path: "/sys/fs/cgroup", Context: "cgroup", Recursive: true, Filter: selinux.IgnorePathButNotContents("/sys/fs/cgroup")},
+		{Path: "/sys/fs/cgroup", Context: "tmpfs"},
+		{Path: "/sys/fs/pstore", Context: "pstorefs"},
+		{Path: "/sys/fs/selinux", Context: "selinuxfs", Recursive: true, Filter: selinux.IgnorePathButNotContents("/sys/fs/selinux/null")},
+		{Path: "/sys/fs/selinux/null", Context: "null_device"},
+		{Path: "/sys/kernel/config", Context: "configfs", IgnoreErrors: true},
+		{Path: "/sys/kernel/debug", Context: "debugfs"},
+		{Path: "/sys/kernel/debug/debugfs_tracing_on", Context: "debugfs_tracing", IgnoreErrors: true},
+		{Path: "/sys/kernel/debug/tracing", Context: "debugfs_tracing"},
+		{Path: "/sys/kernel/debug/tracing/trace_marker", Context: "debugfs_trace_marker", IgnoreErrors: true},
+		{Path: "/sys/kernel/debug/sync", Context: "debugfs_sync", IgnoreErrors: true},
+		{Path: "/sys/kernel/debug/sync/info", Context: "debugfs_sync", IgnoreErrors: true},
 	}
 
 	selinux.FilesTestInternal(ctx, s, testArgs)
