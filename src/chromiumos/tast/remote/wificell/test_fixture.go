@@ -31,6 +31,7 @@ import (
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/attenuator"
+	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/rpc"
@@ -1120,6 +1121,28 @@ func (tf *TestFixture) EAPAuthSkipped(ctx context.Context) (func() (bool, error)
 	}, nil
 }
 
+// DisconnectReason is a wrapper for the streaming gRPC call DisconnectReason.
+// It returns a function that waits for the wpa_supplicant DisconnectReason
+// property change, and returns the disconnection reason code.
+func (tf *TestFixture) DisconnectReason(ctx context.Context) (func() (int32, error), error) {
+	recv, err := tf.WifiClient().DisconnectReason(ctx, &empty.Empty{})
+	if err != nil {
+		return nil, err
+	}
+	ready, err := recv.Recv()
+	if err != nil || ready.Reason != 0 {
+		// Error due to expecting an empty response as ready signal.
+		return nil, errors.New("failed to get the ready signal")
+	}
+	return func() (int32, error) {
+		resp, err := recv.Recv()
+		if err != nil {
+			return 0, errors.Wrap(err, "failed to receive from DisconnectReason")
+		}
+		return resp.Reason, nil
+	}, nil
+}
+
 // SuspendAssertConnect suspends the DUT for wakeUpTimeout seconds through gRPC and returns the duration from resume to connect.
 func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout time.Duration) (time.Duration, error) {
 	service, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
@@ -1202,4 +1225,91 @@ func (tf *TestFixture) TurnOffBgscan(ctx context.Context) (context.Context, func
 		_, err := tf.wifiClient.SetBgscanConfig(ctxForRestoreBgConfig, &network.SetBgscanConfigRequest{Config: oldBgConfig})
 		return err
 	}, nil
+}
+
+// SendChannelSwitchAnnouncement sends a CSA frame and waits for Client_Disconnection, or Channel_Switch event.
+func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, ap *APIface, maxRetry, alternateChannel int) error {
+	ctxForCloseFrameSender := ctx
+	ctx, cancel := tf.Router().ReserveForCloseFrameSender(ctx)
+	defer cancel()
+	sender, err := tf.Router().NewFrameSender(ctx, ap.Interface())
+	if err != nil {
+		return errors.Wrap(err, "failed to create frame sender")
+	}
+	defer func(ctx context.Context) error {
+		if err := tf.Router().CloseFrameSender(ctx, sender); err != nil {
+			return errors.Wrap(err, "failed to close frame sender")
+		}
+		return nil
+	}(ctxForCloseFrameSender)
+
+	ew, err := iw.NewEventWatcher(ctx, tf.dut)
+	if err != nil {
+		return errors.Wrap(err, "failed to start iw.EventWatcher")
+	}
+	defer ew.Stop(ctx)
+
+	// Action frame might be lost, give it some retries.
+	for i := 0; i < maxRetry; i++ {
+		testing.ContextLogf(ctx, "Try sending channel switch frame %d", i)
+		if err := sender.Send(ctx, framesender.TypeChannelSwitch, alternateChannel); err != nil {
+			return errors.Wrap(err, "failed to send channel switch frame")
+		}
+		// The frame might need some time to reach DUT, wait for a few seconds.
+		wCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		defer cancel()
+		// TODO(b/154879577): Find some way to know if DUT supports
+		// channel switch, and only wait for the proper event.
+		_, err := ew.WaitByType(wCtx, iw.EventTypeChanSwitch, iw.EventTypeDisconnect)
+		if err == context.DeadlineExceeded {
+			// Retry if deadline exceeded.
+			continue
+		}
+		if err != nil {
+			return errors.Wrap(err, "failed to wait for iw event")
+		}
+		// Channel switch or client disconnection detected.
+		return nil
+	}
+
+	return errors.New("failed to disconnect client or switch channel")
+}
+
+// DisablePowersaveMode disables power saving mode (if it's enabled) and return a function to restore it's initial mode.
+func (tf *TestFixture) DisablePowersaveMode(ctx context.Context) (shortenCtx context.Context, restore func() error, err error) {
+	// TODO(b/154879577): Currently the action frames sent by FrameSender
+	// are not buffered for DTIM so if the DUT is in power saving mode, it
+	// cannot receive the action frame and the test will fail.
+	// Turn off power saving mode to replicate the behavior of Autotest in
+	// this test for now.
+	iwr := iw.NewRemoteRunner(tf.dut.Conn())
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		return ctx, nil, errors.Wrap(err, "failed to get the client interface")
+	}
+
+	ctxForResetingPowersaveMode := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	psMode, err := iwr.PowersaveMode(ctx, iface)
+	if err != nil {
+		return ctx, nil, errors.Wrap(err, "failed to get the powersave mode")
+	}
+	if psMode {
+		restore := func() error {
+			cancel()
+			testing.ContextLogf(ctxForResetingPowersaveMode, "Restoring power save mode to %t", psMode)
+			if err := iwr.SetPowersaveMode(ctxForResetingPowersaveMode, iface, psMode); err != nil {
+				return errors.Wrapf(err, "failed to restore powersave mode to %t", psMode)
+			}
+			return nil
+		}
+		testing.ContextLog(ctx, "Disabling power save in the test")
+		if err := iwr.SetPowersaveMode(ctx, iface, false); err != nil {
+			return ctx, nil, errors.Wrap(err, "failed to turn off powersave")
+		}
+		return ctx, restore, nil
+	}
+
+	// Power saving mode already disabled.
+	return ctx, func() error { return nil }, nil
 }
