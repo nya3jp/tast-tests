@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6d6240_417b6638",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-29T07:55:24Z",
+      "side": 1,
+      "message": "Topic does not work in Chrome OS Gerrit :( Can you add this line here:\n\n Cq-Depend: chromium:2500130",
+      "revId": "b6f40c0d03c5cccde200d46075873c2d6f566895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
