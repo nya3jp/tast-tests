@@ -21,7 +21,8 @@ func init() {
 		Func:         AudioPlay,
 		Desc:         "Tests basic audio playback on lacros",
 		Contacts:     []string{"yuhsuan@chromium.org", "lacros-team@google.com"},
-		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "lacros"},
 		Pre:          launcher.StartedByData(),
 		Timeout:      7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 		Data:         []string{launcher.DataArtifact, "media_session_60sec_test.ogg", "audio_playback_test.html"},

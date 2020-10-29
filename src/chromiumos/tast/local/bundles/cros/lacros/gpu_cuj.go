@@ -131,6 +131,7 @@ func init() {
 		Contacts:     []string{"edcourtney@chromium.org", "hidehiko@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		// TODO(crbug.com/1140407): Run on all lacros devices after removing live video streaming test.
 		HardwareDeps: hwdep.D(hwdep.Model("eve")),
 		Timeout:      120 * time.Minute,
 		Data:         []string{launcher.DataArtifact},

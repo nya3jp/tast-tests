@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Tests basic lacros startup",
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "no_arm"},
+		SoftwareDeps: []string{"chrome", "lacros"},
 		Pre:          launcher.StartedByData(),
 		Timeout:      7 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
