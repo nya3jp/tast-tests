@@ -41,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b123af_6649a189",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-29T20:10:03Z",
+      "side": 1,
+      "message": "+1 to Brendan\u0027s comments",
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8121feb9_2df3fbf9",
@@ -105,6 +122,29 @@
         "startChar": 0,
         "endLine": 22,
         "endChar": 43
+      },
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24fc6ef4_86ad1a79",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-29T20:10:03Z",
+      "side": 1,
+      "message": "similar questions to the other CL: how are we going to come up with \u0027count\u0027?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 6
       },
       "revId": "08a76f079d81263f482cf1708421220b988bbf62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
