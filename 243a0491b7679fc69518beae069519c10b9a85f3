@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d1fda0a_5c2646d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-29T23:04:58Z",
+      "side": 1,
+      "message": "This title is a little misleading.  It should be something like:\nUpdate tests to match cups-filter uprev\n\nIt\u0027s not actually uprevving the package.",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "243a0491b7679fc69518beae069519c10b9a85f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa7e5eb_f4e99eb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-29T23:04:58Z",
+      "side": 1,
+      "message": "Thanks.  Please update CL description before landing.",
+      "revId": "243a0491b7679fc69518beae069519c10b9a85f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cac80f5_5a8065fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ghostscript/runtest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-10-29T23:04:58Z",
+      "side": 1,
+      "message": "nit: in the future, it\u0027s nice to make changes like this in a separate CL.  If, for whatever reason, the actual test change needs to be reverted, this won\u0027t get caught.  Similarly, if this happens to have a bug in it, it\u0027s easier to roll back.",
+      "revId": "243a0491b7679fc69518beae069519c10b9a85f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
