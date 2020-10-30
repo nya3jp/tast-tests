@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56660ea0_333d8f54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-10-30T10:25:16Z",
+      "side": 1,
+      "message": "As mentioned, it\u0027s temp solution. We should look for long term solution later.",
+      "revId": "5e6f647cc5e2901e2d74c2e8781c2004a6fe11c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf553c75_d5f872c4",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-10-30T10:25:16Z",
+      "side": 1,
+      "message": "Ideally, register client for Mojo service event will resolve it.",
+      "range": {
+        "startLine": 270,
+        "startChar": 20,
+        "endLine": 270,
+        "endChar": 22
+      },
+      "revId": "5e6f647cc5e2901e2d74c2e8781c2004a6fe11c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
