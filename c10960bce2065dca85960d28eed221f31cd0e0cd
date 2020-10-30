@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00b6fa6_130079f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-30T05:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d4531f_e0919458",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "c10960bce2065dca85960d28eed221f31cd0e0cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7669f457_62a98cee",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4fea9f_1ae03ffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-30T05:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7669f457_62a98cee",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 72
+      },
+      "revId": "c10960bce2065dca85960d28eed221f31cd0e0cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "060c87fa_35a81a32",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-30T03:41:47Z",
       "side": 1,
       "message": "When calling s.Fatal/s.Error for errors please always err in error messages for better diagnosis.\n\n s.Fatal(\"Failed to extract archive: \", err)\n\n s.Fatal(\"Failed to read directory: \", err)\n\n s.Errorf(\"%s: %v\", file.Name(), err)",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "c10960bce2065dca85960d28eed221f31cd0e0cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f278128_782a912f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-30T05:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "060c87fa_35a81a32",
       "range": {
         "startLine": 40,
         "startChar": 2,
