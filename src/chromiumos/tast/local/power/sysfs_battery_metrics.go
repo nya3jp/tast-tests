@@ -90,12 +90,12 @@ func ReadBatteryCapacity(devPaths []string) (float64, error) {
 	return float64(capacity), nil
 }
 
-// readSystemPower returns system power consumption in Watt.
+// ReadSystemPower returns system power consumption in Watts.
 // It is assumed that power supplies listed in devPaths have attributes
 // voltage_now and current_now.
 // If reading these attributes fails, this function returns non-nil error,
 // otherwise returns sum of power consumption of each battery.
-func readSystemPower(devPaths []string) (float64, error) {
+func ReadSystemPower(devPaths []string) (float64, error) {
 	systemPower := 0.
 	for _, devPath := range devPaths {
 		supplyVoltage, err := readFloat64(path.Join(devPath, "voltage_now"))
@@ -207,7 +207,7 @@ func (b *SysfsBatteryMetrics) Snapshot(ctx context.Context, values *perf.Values)
 	if len(b.batteryPaths) == 0 {
 		return nil
 	}
-	power, err := readSystemPower(b.batteryPaths)
+	power, err := ReadSystemPower(b.batteryPaths)
 	if err != nil {
 		return err
 	}

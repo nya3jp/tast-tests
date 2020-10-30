@@ -6,8 +6,13 @@ package platform
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/platform/mlbenchmark"
+	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/setup"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -118,6 +123,41 @@ func init() {
 }
 
 func MLBenchmark(ctx context.Context, s *testing.State) {
+	// Shorten the test context so that even if the test times out
+	// there will be time to clean up.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
+	// setup.Setup configures a DUT for a test, and cleans up after.
+	sup, cleanup := setup.New("MLBenchmark")
+	defer func() {
+		if err := cleanup(cleanupCtx); err != nil {
+			s.Fatal("Cleanup failed: ", err)
+		}
+	}()
+
+	// Add the default power test configuration.
+	sup.Add(setup.PowerTest(ctx, nil, setup.PowerTestOptions{
+		Wifi:    setup.DisableWifiInterfaces,
+		Battery: setup.ForceBatteryDischarge,
+		// Since we stop the UI disabling the Night Light is redundant.
+		NightLight: setup.DoNotDisableNightLight,
+	}))
+	if err := sup.Check(ctx); err != nil {
+		s.Fatal("Setup failed: ", err)
+	}
+
+	// Stop UI in order to minimize the number of factors that could influence the results.
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui: ", err)
+	}
+	defer upstart.StartJob(ctx, "ui")
+
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("Failed to wait CPU cool down: ", err)
+	}
+
 	const workspacePath = "/usr/local/ml_benchmark"
 
 	p, ok := s.Param().(benchmarkParams)
