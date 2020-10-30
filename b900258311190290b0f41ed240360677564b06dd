@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb47cba9_dfb32026",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-30T05:57:51Z",
+      "side": 1,
+      "message": "How long does it take for the dbus call to fail? 25s timeout sounds too long, considering that the overall login timeout (LoginTimeout) is 80s.",
+      "range": {
+        "startLine": 716,
+        "startChar": 1,
+        "endLine": 719,
+        "endChar": 20
+      },
+      "revId": "b900258311190290b0f41ed240360677564b06dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
