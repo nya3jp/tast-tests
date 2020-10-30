@@ -27,11 +27,12 @@ func init() {
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		SoftwareDeps: []string{"reboot"},
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.network.BluetoothService"},
-		Vars:         []string{"router"},
+		Vars:         []string{"router", "wifi.signinProfileTestExtensionManifestKey"},
 	})
 }
 
 func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
+	credKey := s.RequiredVar("wifi.signinProfileTestExtensionManifestKey")
 	// Cleanup on exit.
 	defer func(ctx context.Context) {
 		d := s.DUT()
@@ -80,7 +81,7 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 
 		// Assert bluetooth is up.
 		btClient := network.NewBluetoothServiceClient(r.Conn)
-		if response, err := btClient.GetBluetoothPowered(ctx, &empty.Empty{}); err != nil {
+		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
 			s.Fatal("Could not get Bluetooth status: ", err)
 		} else if !response.Powered {
 			s.Fatal("Bluetooth is off, expected to be on ")
@@ -129,7 +130,7 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 	// not yet get initialized after reboot.
 	btClient := network.NewBluetoothServiceClient(r.Conn)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if response, err := btClient.GetBluetoothPowered(ctx, &empty.Empty{}); err != nil {
+		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
 			return errors.Wrap(err, "could not get Bluetooth status")
 		} else if !response.Powered {
 			return errors.New("Bluetooth is off, expected to be on")
