@@ -21,10 +21,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         KeyboardGuest,
-		Desc:         "Checks that both physical and virtual keyboards work in guest mode",
-		Contacts:     []string{"essential-inputs-team@google.com", "shengjun@chromium.org"},
-		Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
+		Func:     KeyboardGuest,
+		Desc:     "Checks that both physical and virtual keyboards work in guest mode",
+		Contacts: []string{"essential-inputs-team@google.com", "shengjun@chromium.org"},
+		// TODO(http://b/172079282): Test is disabled until it can be fixed
+		// Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
