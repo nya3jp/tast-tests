@@ -74,6 +74,14 @@ func listBacklightPaths() ([]string, error) {
 	return backlightPaths, nil
 }
 
+func SetBacklightPercent(ctx context.Context, percent int) error {
+	brightnessArg := "--set_brightness_percent=" + strconv.Itoa(percent) + ".0"
+	if err := testexec.CommandContext(ctx, "backlight_tool", brightnessArg).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable to set backlight brightness")
+	}
+	return nil
+}
+
 // SetBacklightLux sets the screen backlight to a brightness in lux.
 func SetBacklightLux(ctx context.Context, lux uint) (CleanupCallback, error) {
 	backlightPaths, err := listBacklightPaths()
