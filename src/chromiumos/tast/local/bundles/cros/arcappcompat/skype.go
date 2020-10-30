@@ -107,12 +107,22 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(signInOrCreateDes))
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("signInButton doesn't exists: ", err)
-	} else if err := signInButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on signInButton: ", err)
+	}
+
+	// click on signin button until allow exists.
+	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowButtonText))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := allowButton.Exists(ctx); err != nil {
+			signInButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Log("Allow button doesn't exists: ", err)
 	}
 
 	// Click on allow button to access your photos, media and files.
-	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowButtonText))
+	allowButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowButtonText))
 	if err := allowButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Log("Allow Button doesn't exists: ", err)
 	} else if err := allowButton.Click(ctx); err != nil {
