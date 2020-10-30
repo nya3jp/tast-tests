@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcde75c4_dc3941b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-10-30T15:23:24Z",
+      "side": 1,
+      "message": "Added Cq-Depend on chrome-internal:3371228 to fix Cq tast-local-tests-crosint build failure.",
+      "revId": "9372a0a63ff3efe89916a0326bb65df4633f347f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
