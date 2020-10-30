@@ -63,6 +63,30 @@
       },
       "revId": "cbed99e5a4e89dac6198eb5612df38b75b542ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0d27e64_76bec6dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-10-30T08:47:55Z",
+      "side": 1,
+      "message": "Unfortunately, ui.Text selector doesn\u0027t work with an emtpy string. I don\u0027t know it\u0027s intended or not though. I removed it.",
+      "parentUuid": "4f13b21c_ee616529",
+      "range": {
+        "startLine": 551,
+        "startChar": 60,
+        "endLine": 551,
+        "endChar": 61
+      },
+      "revId": "cbed99e5a4e89dac6198eb5612df38b75b542ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
