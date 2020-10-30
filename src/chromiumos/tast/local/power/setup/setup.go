@@ -131,10 +131,22 @@ const (
 	DisableWifiInterfaces
 )
 
+// NightLightMode what setup is needed for a test.
+type NightLightMode int
+
+const (
+	// DisableNightLight indicates that Night Light should be disabled.
+	DisableNightLight = iota
+
+	// DoNotDisableNightLight indicates that Night Light should be left in the same state.
+	DoNotDisableNightLight
+)
+
 // PowerTestOptions describes how to set up a power test.
 type PowerTestOptions struct {
-	Battery BatteryDischargeMode
-	Wifi    WifiInterfacesMode
+	Battery    BatteryDischargeMode
+	Wifi       WifiInterfacesMode
+	NightLight NightLightMode
 }
 
 // PowerTest configures a DUT to run a power test by disabling features that add
@@ -155,7 +167,9 @@ func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions
 			s.Add(SetBatteryDischarge(ctx, 2.0))
 		}
 		s.Add(DisableBluetooth(ctx))
-		s.Add(TurnOffNightLight(ctx, c))
+		if options.NightLight == DisableNightLight {
+			s.Add(TurnOffNightLight(ctx, c))
+		}
 		return nil
 	})
 }

@@ -13,10 +13,13 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 // Types from BenchmarkResults proto in ml_benchmark package
@@ -53,7 +56,27 @@ func addLatencyMetric(p *perf.Values, name string, latencyMS float64) {
 	p.Set(m, latencyMS)
 }
 
-func processOutputFile(scenario, outDir, outputFilename string) error {
+func addMetric(p *perf.Values, m metric, scenario string) error {
+	var direction perf.Direction
+	switch m.ImprovementDirection {
+	case "smaller_is_better":
+		direction = perf.SmallerIsBetter
+	case "bigger_is_better":
+		direction = perf.BiggerIsBetter
+	default:
+		return errors.Errorf("unhandled ImprovementDirection %s", m.ImprovementDirection)
+	}
+
+	p.Set(perf.Metric{
+		Name:      scenario + "_" + m.Name,
+		Unit:      m.Units,
+		Direction: direction,
+		Multiple:  m.Cardinality == "multiple"}, m.Values...)
+
+	return nil
+}
+
+func processOutputFile(scenario, outDir, outputFilename string, additionalMetrics []metric) error {
 	outputJSON, err := ioutil.ReadFile(outputFilename)
 	if err != nil {
 		return errors.Wrap(err, "unable to open the results file from the benchmark")
@@ -71,22 +94,10 @@ func processOutputFile(scenario, outDir, outputFilename string) error {
 
 	p := perf.NewValues()
 
-	for _, m := range results.Metrics {
-		var direction perf.Direction
-		switch m.ImprovementDirection {
-		case "smaller_is_better":
-			direction = perf.SmallerIsBetter
-		case "bigger_is_better":
-			direction = perf.BiggerIsBetter
-		default:
-			return errors.Wrapf(err, "unhandled ImprovementDirection %s", m.ImprovementDirection)
+	for _, m := range append(results.Metrics, additionalMetrics...) {
+		if err := addMetric(p, m, scenario); err != nil {
+			return err
 		}
-
-		p.Set(perf.Metric{
-			Name:      scenario + "_" + m.Name,
-			Unit:      m.Units,
-			Direction: direction,
-			Multiple:  m.Cardinality == "multiple"}, m.Values...)
 	}
 
 	if results.LatenciesUS.Percentile50 != 0 {
@@ -142,9 +153,52 @@ func ExecuteScenario(ctx context.Context, outDir, workspacePath, driver, configF
 	cmd.Stderr = logFile
 	cmd.Stdout = logFile
 
+	quitSampling := make(chan struct{}, 1)
+	samplingResult := make(chan SamplingResult)
+	samplingInterval := 1 * time.Second
+	samplingFunction, err := GetReadMomentaryPowerW(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get power sampling lambda")
+	}
+	go SamplePower(ctx, samplingFunction, samplingInterval, quitSampling, samplingResult)
+
+	raplEnergyBefore, err := power.NewRAPLSnapshot()
+	if err != nil {
+		testing.ContextLog(ctx, "RAPL Energy status is not available for this board")
+	}
+
 	if err := cmd.Run(); err != nil {
 		return errors.Wrapf(err, "benchmark failed, see %s for more details", logFilename)
 	}
 
-	return processOutputFile(scenario, outDir, outputFile.Name())
+	quitSampling <- struct{}{}
+	batteryPower := <-samplingResult
+	if batteryPower.Err != nil {
+		return errors.Wrap(batteryPower.Err, "error during power sampling")
+	}
+	raplPower := 0.
+
+	if raplEnergyBefore != nil {
+		energyDif, err := raplEnergyBefore.DiffWithCurrentRAPL()
+		if err != nil {
+			return errors.Wrap(err, "failed to get RAPL power usage")
+		}
+		raplPower = energyDif.Total()
+	}
+
+	additionalMetrics := []metric{{
+		Name:                 "total_power_from_battery",
+		Units:                "J",
+		ImprovementDirection: "smaller_is_better",
+		Cardinality:          "single",
+		Values:               []float64{batteryPower.Value},
+	}, {
+		Name:                 "total_power_from_rapl",
+		Units:                "J",
+		ImprovementDirection: "smaller_is_better",
+		Cardinality:          "single",
+		Values:               []float64{raplPower},
+	}}
+
+	return processOutputFile(scenario, outDir, outputFile.Name(), additionalMetrics)
 }
