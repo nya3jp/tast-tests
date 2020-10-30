@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dddf9916_05b9cdbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "This defer should be changed like in I5d40cf5aa80b773131a2814845dc581e9aef19d7.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 68
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e66bbc_200fd0a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "Can you try putting the variations in a testing table, and use a second layer of s.Run() here?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 4
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f3e3ad6_4e6225bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "These functions seems rather useful, I think others can be interested in them as well.\nCan you create a bookmark folder in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/\nand add there functions there?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 1
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6c529a_e19b2fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "This could also go to the common package.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 1
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24eb8c2c_a8cf8a35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "This could also go to the common package.",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 2
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d1c724b_fabfb01c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "Please add error handling.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 2
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad2c872_675574c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "This could also go to the common package.",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 17
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0162e44a_9d12dfef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "This could also go to the common package.",
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7a7b51_4cf74be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "Please handle the error.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 2
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d9159e_bd91e5ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "This could also go to the common package.",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 17
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
