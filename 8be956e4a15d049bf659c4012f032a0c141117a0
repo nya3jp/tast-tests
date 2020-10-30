@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3bd5558_e7045ba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "Generally looks good. Thanks! a few more nit-picks. Matthew@ do you want to also take a glance at this CL?",
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b6a3113_a74be20e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure which might be more noticable: here or in the beginning of RoamDiagnostics. (I personally used to place detailed comments in the test function).",
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d33305_48c20c95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "nit: as you\u0027re generating your own SSID instead of default, perhaps you can have a more distinguishable prefix for easier log search, e.g. \"ROAM_DIAG_\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 46,
+        "endLine": 58,
+        "endChar": 56
+      },
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c1a979_3174bb7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "We usually leave TODO with bug or owner, now we have b/171949862 for it. So maybe \"TODO(b/171949862): ...\"",
+      "range": {
+        "startLine": 87,
+        "startChar": 71,
+        "endLine": 87,
+        "endChar": 72
+      },
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb808641_94a072d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "nit: Perhaps these can be simplified a little with break label. [1] e.g.\n\n  success :\u003d false\nretryLoop:\n  for ... {\n    // ...\n    for {\n      // ...\n      _, success \u003d event.(*wificell.ScanResultsEvent)\n      if success {\n        break retryLoop\n      }\n    }\n    s.Logf(\"Scan failed %d time(s)\", scan+1)\n  }\n  if !success {\n    s.Fatal(...)\n  }\n\n[1] https://golang.org/ref/spec#Break_statements",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 3
+      },
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "501e7cff_b3c115d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "nit: as this is never used outside the loop, perhaps move it into the for loop. A little bit clearer that the following code only cares \"roam\" variable.",
+      "range": {
+        "startLine": 149,
+        "startChar": 29,
+        "endLine": 150,
+        "endChar": 18
+      },
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09483654_5baf502b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "nit: might not need these as the spec [1] guarantees that the first return will be zero value (nil here) when ok\u003dfalse and \"received\" will be overwritten in next round and never used outside this loop.\n\n[1] https://golang.org/ref/spec#Type_assertions",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 12
+      },
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64861ec3_d39d1f1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "nit: a space after \"//\". and one question: didn\u0027t Clamp handle this case for us? like when taking Max(x, xMin)?",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 36
+      },
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8188ca99_fc3d530a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "nit: remove this empty line? Or, is this for separating 2nd line of function proto and body with the same indent? (similar in some other places)",
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f654635_40fbe086",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "Should we Fatal/Error when set attenuation failed? (similar in other places)",
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a402b557_927d8508",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T04:02:39Z",
+      "side": 1,
+      "message": "One boundary case: all zeros in freqStats.",
+      "range": {
+        "startLine": 290,
+        "startChar": 54,
+        "endLine": 290,
+        "endChar": 70
+      },
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
