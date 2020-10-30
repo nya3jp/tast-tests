@@ -60,10 +60,12 @@ type WifiService struct {
 }
 
 // InitDUT properly initializes the DUT for WiFi tests.
-func (s *WifiService) InitDUT(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
-	// Stop UI to avoid interference from UI (e.g. request scan).
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		return nil, errors.Wrap(err, "failed to stop ui")
+func (s *WifiService) InitDUT(ctx context.Context, req *network.InitDUTRequest) (*empty.Empty, error) {
+	if !req.WithUi {
+		// Stop UI to avoid interference from UI (e.g. request scan).
+		if err := upstart.StopJob(ctx, "ui"); err != nil {
+			return nil, errors.Wrap(err, "failed to stop ui")
+		}
 	}
 
 	m, dev, err := s.wifiDev(ctx)

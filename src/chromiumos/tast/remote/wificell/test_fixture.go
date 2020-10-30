@@ -81,6 +81,15 @@ func TFAttenuator(target string) TFOption {
 	}
 }
 
+// TFWithUI sets if the test fixture should not skip stopping UI.
+// This option is useful for tests with UI settings + basic WiFi functionality,
+// where the interference of UI (e.g. trigger scans) does not matter much.
+func TFWithUI() TFOption {
+	return func(tf *TestFixture) {
+		tf.option.withUI = true
+	}
+}
+
 // TFServiceName is the service needed by TestFixture.
 const TFServiceName = "tast.cros.network.WifiService"
 
@@ -105,6 +114,10 @@ type TestFixture struct {
 
 	attenuatorTarget string
 	attenuator       *attenuator.Attenuator
+
+	option struct {
+		withUI bool
+	}
 
 	apID      int
 	capturers map[*APIface]*pcap.Capturer
@@ -199,7 +212,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	tf.wifiClient = network.NewWifiServiceClient(tf.rpc.Conn)
 
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
-	if _, err := tf.wifiClient.InitDUT(ctx, &empty.Empty{}); err != nil {
+	if _, err := tf.wifiClient.InitDUT(ctx, &network.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
 		return nil, errors.Wrap(err, "failed to InitDUT")
 	}
 
