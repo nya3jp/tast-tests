@@ -63,6 +63,30 @@
       },
       "revId": "b900258311190290b0f41ed240360677564b06dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df027005_766a00a4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-30T06:14:39Z",
+      "side": 1,
+      "message": "Oh actually I was not aware of graphics_TraceReplayExtended Tauto test that runs Tast in parallel...\n\nLet me comment in b/172010469.",
+      "parentUuid": "7de68d8d_432d9f9f",
+      "range": {
+        "startLine": 716,
+        "startChar": 1,
+        "endLine": 719,
+        "endChar": 20
+      },
+      "revId": "b900258311190290b0f41ed240360677564b06dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
