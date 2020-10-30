@@ -290,6 +290,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ced3b695_5b7d53c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T13:17:39Z",
+      "side": 1,
+      "message": "There is still the \":\" that should be removed.",
+      "parentUuid": "38e461df_c8549151",
+      "range": {
+        "startLine": 156,
+        "startChar": 64,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66476b81_b7d9cfa6",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 7
