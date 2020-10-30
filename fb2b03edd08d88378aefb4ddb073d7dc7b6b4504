@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b3429f_6363731c",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T21:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ebaa189_572afd3a",
+      "range": {
+        "startLine": 206,
+        "startChar": 21,
+        "endLine": 206,
+        "endChar": 27
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3927561_b7311e9b",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-10-30T08:57:56Z",
       "side": 1,
       "message": "Can we avoid connecting directly by IP to ARC using hardcoded IPs.This has been proven fragile to maintain and caused issues when we implemented multinetworking in ARC.\n\nWhat about using adb port forwarding feature and connecting to localhost:\u003cforwarded_port\u003e instead ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0964ad0_c7e91809",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T21:30:13Z",
+      "side": 1,
+      "message": "We only connect to arc over IP as a backup if the arc emulator does not show up when running `adb devices`. This essentially never happens and is never used, but there have been bugs before that stopped emulators from showing up in in adb. In those cases, the port forwarding would not be an option because we do not have a connection to arc to send that command.",
+      "parentUuid": "c3927561_b7311e9b",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef2b1a26_0aa9c639",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T21:30:13Z",
+      "side": 1,
+      "message": "I don\u0027t have the initial context since I am just porting. I switched to using ip6tables and it seems to work just fine. If the test ends up being flaky in the lab, I will come back and look at this.",
+      "parentUuid": "d9dc9412_c9424d56",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 103
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0466871a_6f4582f6",
         "filename": "src/chromiumos/tast/local/arc/networking.go",
         "patchSetId": 2
@@ -117,6 +189,30 @@
       "writtenOn": "2020-10-30T08:57:56Z",
       "side": 1,
       "message": "Have you tried instead dropping IPv6 through ip6tables ?\n\nI am afraid this might not work super well if you connect and disconnect networks because we also ask netd to disable and enable IPv6 at the iface level (net.ipv6.conf.\u003ciface\u003e.disable_ipv6) with https://source.corp.google.com/android/vendor/google_arc/libs/arc-services/src/com/android/server/arc/net/ArcNetworkFactory.java;l\u003d946 every time a new network connection appears.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09daf290_14172907",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T21:30:13Z",
+      "side": 1,
+      "message": "Good to know. I switched to ip6tables, and it seems to work just fine.",
+      "parentUuid": "0466871a_6f4582f6",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7432d9fc_fb947707",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T21:30:13Z",
+      "side": 1,
+      "message": "Sorry was just copying over the rules and forgot about that.\nRemoved.",
+      "parentUuid": "39a1cb3b_e9c4e058",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34a9f301_8101a4cc",
@@ -163,6 +283,30 @@
       "writtenOn": "2020-10-30T08:57:56Z",
       "side": 1,
       "message": "I would strongly suggest to make this a parameter of the function.",
+      "range": {
+        "startLine": 16,
+        "startChar": 36,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84c414f_dd92583d",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T21:30:13Z",
+      "side": 1,
+      "message": "I don\u0027t understand why. The IPAddr is arc specific and should be a constant in arc. The individual tests that call this function will not having any extra information about the arc ip address.",
+      "parentUuid": "34a9f301_8101a4cc",
       "range": {
         "startLine": 16,
         "startChar": 36,
