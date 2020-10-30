@@ -292,22 +292,10 @@ func GetSuggestions(ctx context.Context, kconn *chrome.Conn) ([]string, error) {
 
 // WaitForDecoderEnabled waits for decoder to be enabled or disabled.
 func WaitForDecoderEnabled(ctx context.Context, cr *chrome.Chrome, enabled bool) error {
-	bconn, err := BackgroundConn(ctx, cr)
-	if err != nil {
-		return errors.Wrap(err, "failed to create IME background connection")
-	}
-	defer bconn.Close()
-
 	// TODO(b/157686038) A better solution to identify decoder status.
 	// Decoder works async in returning status to frontend IME and self loading.
-	// So sleep is still required to wait for decoder warming up.
-	if err := bconn.WaitForExpr(ctx, fmt.Sprintf("background.inputviewLoader_.controller_.currentInputBundle_.ime_.shouldUseDecoder()===%t", enabled)); err != nil {
-		return errors.Wrapf(err, "failed wait for decoder enabled to be %t: %v", enabled, err)
-	}
-
-	if enabled {
-		return testing.Sleep(ctx, 3*time.Second)
-	}
+	// Using sleep temporarily before a reliable evaluation api provided in cl/339837443.
+	testing.Sleep(ctx, 10*time.Second)
 	return nil
 }
 
