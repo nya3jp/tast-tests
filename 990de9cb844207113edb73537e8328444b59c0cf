@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a613961f_516c1319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-30T10:52:32Z",
+      "side": 1,
+      "message": "Provided justification why we can\u0027t simply turn off the test immediately. Also CLs ready to submit today to address most of the failures.  Responded in http://b/172010486.  Please let me know what you think.  Thanks.",
+      "revId": "990de9cb844207113edb73537e8328444b59c0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
