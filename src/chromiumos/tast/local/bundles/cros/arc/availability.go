@@ -157,7 +157,7 @@ func Availability(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed initializing UI Automator: ", err)
 		}
-		defer d.Close()
+		defer d.Close(ctx)
 
 		isPlayStoreOpen(ctx, s, d, tconn)
 	}()
@@ -191,7 +191,7 @@ func Availability(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	s.Log("Opening the Play Store after restart")
 	reopenPlayStore(ctx, s, a, d, tconn)

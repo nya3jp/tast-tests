@@ -97,7 +97,7 @@ func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	const apk = "media_session_test.apk"
 	s.Log("Installing and starting ", apk)
