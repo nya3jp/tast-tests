@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "302c6392_0653e6d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/ppds_all.tar.xz.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-30T10:02:56Z",
+      "side": 1,
+      "message": "Somehow the size increased (13MB -\u003e 36MB), I hope it\u0027s intended.",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 18
+      },
+      "revId": "d9e28203bcf1cebf69de2745b13868c0b6c3d9f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
