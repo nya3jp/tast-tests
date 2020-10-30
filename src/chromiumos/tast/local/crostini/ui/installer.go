@@ -32,7 +32,7 @@ const uiTimeout = 30 * time.Second
 
 var installWindowFindParams = ui.FindParams{
 	Role:       ui.RoleTypeRootWebArea,
-	Attributes: map[string]interface{}{"name": regexp.MustCompile(`^Set up Linux \(Beta\) on your `)},
+	Attributes: map[string]interface{}{"name": regexp.MustCompile(`^Set up Linux`)},
 }
 
 // Image setup mode.
