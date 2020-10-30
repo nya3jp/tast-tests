@@ -35,7 +35,8 @@ func init() {
 			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
-		Attr:         []string{"group:enrollment"},
+		// TODO(http://b/172069477): Test is disabled until it can be fixed
+		// Attr:         []string{"group:enrollment"},
 		SoftwareDeps: []string{"reboot", "vm_host", "wilco", "chrome"},
 		ServiceDeps:  []string{"tast.cros.wilco.WilcoService", "tast.cros.policy.PolicyService"},
 		Timeout:      10 * time.Minute,
