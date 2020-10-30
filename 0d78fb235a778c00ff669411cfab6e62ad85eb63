@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3174593c_2bf83ab7",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T18:00:49Z",
+      "side": 1,
+      "message": "The plan is that this will be extended to support booted with x parameter/ in x mode, correct? So in the future it will contain gaia credentials, etc?",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832fd33a_16e81406",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T18:00:49Z",
+      "side": 1,
+      "message": "Do we want timing in these methods like we have in the precondition?",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a715849f_eb839e54",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T18:00:49Z",
+      "side": 1,
+      "message": "I wonder if there is a better way to setup or name this variable. Just seeing it out of context takes a bit to process and realize that it is from another file in arc.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 7
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7114f10_38dd4d26",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T18:00:49Z",
+      "side": 1,
+      "message": "super nit: is arc really a connection? Should this just say \"failed to close ARC\"? Especially since when we launch it, we say \"failed to start ARC\" not \"ARC connection?",
+      "range": {
+        "startLine": 77,
+        "startChar": 29,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a13b135a_5f976a0c",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T18:00:49Z",
+      "side": 1,
+      "message": "super nit: ditto",
+      "range": {
+        "startLine": 83,
+        "startChar": 25,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf773c5_ea3831bb",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T18:00:49Z",
+      "side": 1,
+      "message": "Should this be ported somewhere in the fixture? Actually can it be ported? reset doesn\u0027t have access to s.\n\nWithout this, the entire logcat for all tests would be written to a single file, correct?",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 4
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "024cb53a_f76352bb",
+        "filename": "src/chromiumos/tast/local/arc/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T18:00:49Z",
+      "side": 1,
+      "message": "I feel like this wouldn\u0027t necessarily be the job of snapshot. Maybe this comment should be moved to the reset function of the bootedFixture in general?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 62
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
