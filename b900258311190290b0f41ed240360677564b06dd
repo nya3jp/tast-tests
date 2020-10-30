@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d724daf_06367fba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-10-30T06:04:07Z",
+      "side": 1,
+      "message": "And the failure is also specific to graphics_TraceReplayExtended.glxgears_1minute autotest.\n\nNormally, if ResetState fails, tast would restart chrome. But that does not happen with the tast started in that autotest.",
+      "revId": "b900258311190290b0f41ed240360677564b06dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb47cba9_dfb32026",
