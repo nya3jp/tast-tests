@@ -350,7 +350,7 @@ func tearDownDevice(ctx context.Context, a *arc.ARC, d *ui.Device) error {
 
 	// Close UIAutomator server.
 	// TODO(lnishan): Check the error. Currently Close() always returns an error.
-	d.Close()
+	d.Close(ctx)
 	return firstErr
 }
 
