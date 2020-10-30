@@ -27,10 +27,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TaskSwitchCUJ,
-		Desc:         "Measures the performance of tab-switching CUJ",
-		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:     TaskSwitchCUJ,
+		Desc:     "Measures the performance of tab-switching CUJ",
+		Contacts: []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
+		// TODO(http://b/172069859): Test is disabled until it can be fixed
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      8 * time.Minute,
