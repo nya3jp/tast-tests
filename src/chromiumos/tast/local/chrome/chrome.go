@@ -713,13 +713,17 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		return errors.Wrap(err, "failed to wait for the ready state")
 	}
 
-	// Ensures that display is on because UI tests need real output.
-	_, obj, err := dbusutil.Connect(ctx, "org.chromium.PowerManager", dbus.ObjectPath("/org/chromium/PowerManager"))
-	if err != nil {
-		return errors.Wrap(err, "failed to dbus connect to power manager")
-	}
-	if err := obj.CallWithContext(ctx, "org.chromium.PowerManager.HandleUserActivity", dbus.FlagNoReplyExpected, 0).Err; err != nil {
-		return errors.Wrap(err, "failed to dbus call power manager to simulate user activity")
+	// Ensures that display is on because UI tests need real output. However,
+	// allow the dbus call to power manager daemon to fail since some tests run
+	// with power test in parallel and could cause the daemon to be gone.
+	// See b/172010469.
+	connCtx, cancel := context.WithDeadline(ctx, time.Now().Add(25*time.Second))
+	defer cancel()
+	_, obj, err := dbusutil.Connect(connCtx, "org.chromium.PowerManager", dbus.ObjectPath("/org/chromium/PowerManager"))
+	if err == nil {
+		if err := obj.CallWithContext(ctx, "org.chromium.PowerManager.HandleUserActivity", dbus.FlagNoReplyExpected, 0).Err; err != nil {
+			return errors.Wrap(err, "failed to dbus call power manager to simulate user activity")
+		}
 	}
 
 	return nil
