@@ -47,7 +47,6 @@ var testFiles = []string{
 	"launch_terminal.go",
 	"no_access_to_downloads.go",
 	"no_shared_folder.go",
-	"open_with_terminal.go",
 	"package_info.go",
 	"package_install_uninstall.go",
 	"remove_cancel.go",
