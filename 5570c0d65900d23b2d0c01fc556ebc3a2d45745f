@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c6daec2_cccddb0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-10-30T23:40:48Z",
+      "side": 1,
+      "message": "LGTM, fyi there is also currently discussion (https://crbug.com/1062147) about removing this test entirely in favor of platform.MemoryPressure.",
+      "revId": "5570c0d65900d23b2d0c01fc556ebc3a2d45745f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
