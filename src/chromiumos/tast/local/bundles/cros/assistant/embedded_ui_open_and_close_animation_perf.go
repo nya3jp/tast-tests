@@ -23,10 +23,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         EmbeddedUIOpenAndCloseAnimationPerf,
-		Desc:         "Measures the smoothness of the embedded UI open and close animation",
-		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:     EmbeddedUIOpenAndCloseAnimationPerf,
+		Desc:     "Measures the smoothness of the embedded UI open and close animation",
+		Contacts: []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
+		// TODO(http://b/172082691): Test is disabled until it can be fixed
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
