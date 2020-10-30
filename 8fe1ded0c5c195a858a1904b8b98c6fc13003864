@@ -212,6 +212,24 @@
       "parentUuid": "84b47437_cf0428b9",
       "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f20bd39_239c4199",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-10-30T22:30:11Z",
+      "side": 1,
+      "message": "Per our Chat conversation, this bios_log code is also in the kernel_crash test (see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go;l\u003d180;drc\u003d0ef1dc48d2cacd71629385c75a2f898839e955af)",
+      "parentUuid": "75d68b38_39282e91",
+      "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
