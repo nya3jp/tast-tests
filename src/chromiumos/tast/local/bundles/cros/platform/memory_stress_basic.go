@@ -45,7 +45,8 @@ func init() {
 		Func:     MemoryStressBasic,
 		Desc:     "Create heavy memory pressure and check if oom-killer is invoked",
 		Contacts: []string{"vovoy@chromium.org", "chromeos-memory@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_memory_nightly"},
+		// TODO(http://b/172074406): Test is disabled until it can be fixed
+		// Attr:     []string{"group:crosbolt", "crosbolt_memory_nightly"},
 		// This test takes 15-30 minutes to run.
 		Timeout: 45 * time.Minute,
 		Data: []string{
