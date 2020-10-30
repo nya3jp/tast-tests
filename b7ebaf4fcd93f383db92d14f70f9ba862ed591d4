@@ -16,6 +16,52 @@
       "message": "LGTM",
       "revId": "b7ebaf4fcd93f383db92d14f70f9ba862ed591d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f80643_d6c85129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-30T08:15:20Z",
+      "side": 1,
+      "message": "I would extract this variable and make a template with it. Also, this appears as a magic string right now. Giving it a name would help maintenance.\nBy template I mean:\nvar element1 \u003d \"selector\" // with the elementName actually saying what UI element it locates\nand usage\neval(cts, element + \".disabled\",...\n\nsame below\nvar uiElement2 \u003d \"selector\"\neval(cts, element + \".selected\",...\n\nI see those two elements have the same root that could be extracted as a constant too.",
+      "range": {
+        "startLine": 88,
+        "startChar": 30,
+        "endLine": 88,
+        "endChar": 370
+      },
+      "revId": "b7ebaf4fcd93f383db92d14f70f9ba862ed591d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c814ce_ff05d716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-10-30T08:15:20Z",
+      "side": 1,
+      "message": "it would be great to know from the error message what was the behavior that failed in the test. You did that already in s.Fatal - you say explicitly the reason of failure.",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 81
+      },
+      "revId": "b7ebaf4fcd93f383db92d14f70f9ba862ed591d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
