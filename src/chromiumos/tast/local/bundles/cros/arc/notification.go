@@ -70,7 +70,7 @@ func Notification(ctx context.Context, s *testing.State) {
 		// earlier.
 		notificationID = "|" + pkg + "|" + msgID + "|"
 	)
-	pollOpts := &testing.PollOptions{Timeout: 5 * time.Second}
+	pollOpts := &testing.PollOptions{Timeout: 10 * time.Second}
 
 	s.Logf("Installing %s", apk)
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
