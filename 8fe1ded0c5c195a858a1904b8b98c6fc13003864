@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f31a87a_8bf985ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-10-30T02:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d29973a_19637e14",
+      "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ceec216b_10f1c3e3",
@@ -174,6 +192,24 @@
       "side": 1,
       "message": "|res| is the response from the DUT corresponding to WaitForCrashFiles.\nSo either,\n1) If it is expected exact one match, could you verify it just before L144, and avoid iterator matches at line L144 and here.\n2) If it is expected to match multiple entries, this line also should iterate.\n\nBTW, stepping back i\u0027m a bit more confused.\nIIUC, the returned files are the ones matched the given pattern at L133, so bios_log may not be included?\nCould you share the details how you tested this CL? Could you double check if bios_log file removal request is sent out?",
       "parentUuid": "0d47061e_8b4f9208",
+      "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75d68b38_39282e91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-10-30T02:27:55Z",
+      "side": 1,
+      "message": "\u003e |res| is the response from the DUT corresponding to WaitForCrashFiles\n\nYes but WaitForCrashFiles will return an error if a regex doesn\u0027t match. I added a \u0027notthere\u0027 file to the regex and it failed because the file doesn\u0027t exist:\n\n```\n2020/10/29 19:20:23 [19:20:23.863] Failed to wait for crash files: timed out while waiting for crash files: no file matched notthere (found /var/spool/crash/coreutils.20201030.021943.222.core, /var/spool/crash/coreutils.20201030.021943.222.dmp, /var/spool/crash/coreutils.20201030.021943.222.meta, /var/spool/crash/coreutils.20201030.021943.222.proclog, /var/spool/crash/kernel.20201029.192002.0.bios_log, /var/spool/crash/kernel.20201029.192002.0.kcrash, /var/spool/crash/kernel.20201029.192002.0.log, /var/spool/crash/kernel.20201029.192002.0.meta)\n2020/10/29 19:20:25 [19:20:25.064] Error at watchdog_crash.go:142: Failed to find crash files: rpc error: code \u003d Unknown desc \u003d failed to wait for crash files: timed out while waiting for crash files: no file matched notthere (found /var/spool/crash/coreutils.20201030.021943.222.core, /var/spool/crash/coreutils.20201030.021943.222.dmp, /var/spool/crash/coreutils.20201030.021943.222.meta, /var/spool/crash/coreutils.20201030.021943.222.proclog, /var/spool/crash/kernel.20201029.192002.0.bios_log, /var/spool/crash/kernel.20201029.192002.0.kcrash, /var/spool/crash/kernel.20201029.192002.0.log, /var/spool/crash/kernel.20201029.192002.0.meta)\n```\n\n\u003e Could you share the details how you tested this CL?\n\nI ran this test on Lazor in skylab and locally. The bios_log is made on this platform and after the test runs the bios_log is removed with this CL.\n\n\u003e So either,\n\nThe iteration is for Files, not Matches[0]. There could be multiple files matching the regex pattern. This line is iterating because we don\u0027t really care how many ${base}.bios_log files appear, we want to clear them all out so we regex match the bios log files and remove them if they\u0027re generated. This matches the logic at L144 to look for any number of kernel crash files and print an error if there are multiple of them at L146. Currently the code continues if there are multiple crashes (because we see multiple meta file matches) so we should also match the multiple possible bios log files here and clear them out.\n\nLong story short, I hope this convinces you that there isn\u0027t anything to do here. We should match multiple possible bios_log files and clean them out because we get to this point in the code regardless of how many kernel crashes there are and the error print message at L146.",
+      "parentUuid": "84b47437_cf0428b9",
       "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
