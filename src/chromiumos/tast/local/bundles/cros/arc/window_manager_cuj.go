@@ -65,16 +65,18 @@ var unstableCUJTests = []wmCUJTestParams{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WindowManagerCUJ,
-		Desc:         "Verifies that Window Manager Critical User Journey behaves as described in go/arc-wm-p",
-		Contacts:     []string{"ricardoq@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     WindowManagerCUJ,
+		Desc:     "Verifies that Window Manager Critical User Journey behaves as described in go/arc-wm-p",
+		Contacts: []string{"ricardoq@chromium.org", "arc-framework+tast@google.com"},
+		// TODO(http://b/149790068): Test is disabled until it can be fixed
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Data:         []string{"ArcPipSimpleTastTest.apk"},
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stableCUJTests,
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "unstable",
@@ -82,10 +84,12 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			Val:               stableCUJTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name:              "vm_unstable",
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			Val:               unstableCUJTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
