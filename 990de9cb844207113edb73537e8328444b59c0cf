@@ -16,6 +16,24 @@
       "message": "Provided justification why we can\u0027t simply turn off the test immediately. Also CLs ready to submit today to address most of the failures.  Responded in http://b/172010486.  Please let me know what you think.  Thanks.",
       "revId": "990de9cb844207113edb73537e8328444b59c0cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d9ba1e1_c759e098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-10-30T17:01:08Z",
+      "side": 1,
+      "message": "Makes sense, thank you for the thorough explanation.  I\u0027m fine to keep this running as long as it\u0027s providing value and we\u0027re looking at the failures.",
+      "parentUuid": "a613961f_516c1319",
+      "revId": "990de9cb844207113edb73537e8328444b59c0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
