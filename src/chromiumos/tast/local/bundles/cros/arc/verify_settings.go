@@ -19,10 +19,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VerifySettings,
-		Desc:         "Verifies ARC++ settings work as intended",
-		Contacts:     []string{"vkrishan@google.com", "rohitbm@google.com", "arc-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     VerifySettings,
+		Desc:     "Verifies ARC++ settings work as intended",
+		Contacts: []string{"vkrishan@google.com", "rohitbm@google.com", "arc-eng@google.com"},
+		// TODO(http://b/172088677): Test is disabled until it can be fixed
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
