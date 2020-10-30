@@ -13,16 +13,20 @@ option go_package = "chromiumos/tast/services/cros/network";
 service BluetoothService {
   // SetBluetoothPowered enables/disables the Bluetooth device through dbus.
   rpc SetBluetoothPowered(SetBluetoothPoweredRequest) returns (google.protobuf.Empty) {}
-  // GetBluetoothPowered returns the status of the bluetooth adapter.
-  rpc GetBluetoothPowered(google.protobuf.Empty) returns (GetBluetoothPoweredResponse) {}
+  // GetBluetoothPowered returns the status of the bluetooth adapter as well as the machine's Bluetooth boot preference.
+  rpc GetBluetoothPowered(GetBluetoothPoweredRequest) returns (GetBluetoothPoweredResponse) {}
   // ValidateBluetoothFunctional checks to see whether the Bluetooth device is usable.
   rpc ValidateBluetoothFunctional(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message SetBluetoothPoweredRequest {
     bool powered = 1;
+    string credentials = 2;
 }
-
+message GetBluetoothPoweredRequest {
+    string credentials = 1;
+}
 message GetBluetoothPoweredResponse {
     bool powered = 1;
+    bool persistent = 2;
 }
