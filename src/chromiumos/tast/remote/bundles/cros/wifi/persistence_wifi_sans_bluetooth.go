@@ -21,8 +21,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PersistenceBluetoothSansWifi,
-		Desc:         "Verifies that Bluetooth remains operational when Wifi is disabled on reboot",
+		Func:         PersistenceWifiSansBluetooth,
+		Desc:         "Verifies that WiFi remains operational when Bluetooth is disabled on reboot",
 		Contacts:     []string{"billyzhao@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		SoftwareDeps: []string{"chrome", "reboot"},
@@ -31,9 +31,9 @@ func init() {
 	})
 }
 
-func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
-	credKey := s.RequiredVar("wifi.signinProfileTestExtensionManifestKey")
+func PersistenceWifiSansBluetooth(ctx context.Context, s *testing.State) {
 	// Cleanup on exit.
+	credKey := s.RequiredVar("wifi.signinProfileTestExtensionManifestKey")
 	defer func(ctx context.Context) {
 		d := s.DUT()
 		r, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
@@ -41,29 +41,25 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to connect rpc: ", err)
 		}
 		defer r.Close(ctx)
-		// Enable wifi device.
-		wifiClient := network.NewWifiServiceClient(r.Conn)
-		if _, err := wifiClient.SetWifiEnabled(ctx, &network.SetWifiEnabledRequest{Enabled: true}); err != nil {
-			s.Error("Could not enable Wifi through shill: ", err)
+		// Enable Bluetooth device.
+		btClient := network.NewBluetoothServiceClient(r.Conn)
+		if _, err := btClient.SetBluetoothPowered(ctx, &network.SetBluetoothPoweredRequest{Powered: true, Credentials: credKey}); err != nil {
+			s.Error("Could not enable Bluetooth through bluetoothPrivate: ", err)
 		}
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	func(ctx context.Context) {
-		d := s.DUT()
-		r, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
-		if err != nil {
-			s.Fatal("Failed to connect rpc: ", err)
-		}
-		defer r.Close(ctx)
+	// Initialize TestFixture Options.
+	var tfOps []wificell.TFOption
+	if router, ok := s.Var("router"); ok && router != "" {
+		tfOps = append(tfOps, wificell.TFRouter(router))
+	}
+	tfOps = append(tfOps, wificell.TFWithUI())
 
+	func(ctx context.Context) {
 		// Assert WiFi is up.
-		var tfOps []wificell.TFOption
-		if router, ok := s.Var("router"); ok && router != "" {
-			tfOps = append(tfOps, wificell.TFRouter(router))
-		}
-		tf, err := wificell.NewTestFixture(ctx, ctx, d, s.RPCHint(), tfOps...)
+		tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), tfOps...)
 		if err != nil {
 			s.Fatal("Failed to set up test fixture: ", err)
 		}
@@ -79,7 +75,15 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 			s.Fatal("Wifi not functioning: ", err)
 		}
 
-		// Assert bluetooth is up.
+		// Initialize gRPC connection with DUT.
+		d := s.DUT()
+		r, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+		if err != nil {
+			s.Fatal("Failed to connect rpc: ", err)
+		}
+		defer r.Close(ctx)
+
+		// Assert Bluetooth is up.
 		btClient := network.NewBluetoothServiceClient(r.Conn)
 		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
 			s.Fatal("Could not get Bluetooth status: ", err)
@@ -90,19 +94,17 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 			s.Fatal("Could not get validate Bluetooth status: ", err)
 		}
 
-		// Disable WiFi.
-		wifiClient := network.NewWifiServiceClient(r.Conn)
-		if _, err := wifiClient.SetWifiEnabled(ctx, &network.SetWifiEnabledRequest{Enabled: false}); err != nil {
-			s.Fatal("Could not disable Wifi: ", err)
+		// Disable Bluetooth.
+		if _, err := btClient.SetBluetoothPowered(ctx, &network.SetBluetoothPoweredRequest{Powered: false, Credentials: credKey}); err != nil {
+			s.Fatal("Could not disable Bluetooth: ", err)
 		}
 
-		// Assert WiFi is down.
-		if response, err := wifiClient.GetWifiEnabled(ctx, &empty.Empty{}); err != nil {
-			s.Fatal("Could not get WiFi status: ", err)
-		} else if response.Enabled {
-			s.Fatal("Wifi is on, expected to be off ")
+		// Assert Bluetooth is down.
+		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
+			s.Fatal("Could not get Bluetooth status: ", err)
+		} else if response.Powered {
+			s.Fatal("Bluetooth is on, expected to be off ")
 		}
-
 	}(ctx)
 
 	// Reboot the DUT.
@@ -118,22 +120,15 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 	}
 	defer r.Close(ctx)
 
-	// Assert WiFi is down.
-	wifiClient := network.NewWifiServiceClient(r.Conn)
-	if response, err := wifiClient.GetWifiEnabled(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Could not get WiFi status: ", err)
-	} else if response.Enabled {
-		s.Fatal("Wifi is on, expected to be off ")
-	}
-
-	// Assert Bluetooth is up. We need to poll a little bit here as it might
-	// not yet get initialized after reboot.
+	// Assert Bluetooth is down.
 	btClient := network.NewBluetoothServiceClient(r.Conn)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
 			return errors.Wrap(err, "could not get Bluetooth status")
-		} else if !response.Powered {
-			return errors.New("Bluetooth is off, expected to be on")
+		} else if response.Persistent {
+			return testing.PollBreak(errors.Wrap(err, "Bluetooth is set to start on boot, should be off on boot"))
+		} else if response.Powered {
+			return errors.New("Bluetooth is on, expected to be off")
 		}
 		return nil
 	}, &testing.PollOptions{
@@ -142,7 +137,21 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 	}); err != nil {
 		s.Fatal("Failed to wait for BT to be powered: ", err)
 	}
-	if _, err := btClient.ValidateBluetoothFunctional(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Could not get validate Bluetooth status: ", err)
+
+	// Assert WiFi is up.
+	tf, err := wificell.NewTestFixture(ctx, ctx, d, s.RPCHint(), tfOps...)
+	if err != nil {
+		s.Fatal("Failed to set up test fixture: ", err)
+	}
+	defer func(ctx context.Context) {
+		if err := tf.Close(ctx); err != nil {
+			s.Error("Failed to properly take down test fixture: ", err)
+		}
+	}(ctx)
+	ctx, cancel = tf.ReserveForClose(ctx)
+	defer cancel()
+
+	if err := wifiutil.AssertWifiEnabled(ctx, tf); err != nil {
+		s.Fatal("Wifi not functioning: ", err)
 	}
 }
