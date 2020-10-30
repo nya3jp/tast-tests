@@ -16,6 +16,29 @@
       "message": "Hi Brendan,\n\nPlease review it. Thanks.\n\nRegards,\nMeena\n",
       "revId": "7703da8569b4195fdec9062072b79ff2796cd71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df65a71c_f134ab83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T18:03:48Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed anymore because it should be covered by the above code.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "7703da8569b4195fdec9062072b79ff2796cd71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
