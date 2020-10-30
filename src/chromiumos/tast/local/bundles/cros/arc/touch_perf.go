@@ -47,6 +47,7 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not initialize UI Automator: ", err)
 	}
+	defer d.Close(ctx)
 
 	s.Log("Creating virtual touchscreen")
 	ts, err := input.Touchscreen(ctx)

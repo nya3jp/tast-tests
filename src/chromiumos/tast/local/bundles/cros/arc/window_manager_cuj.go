@@ -105,7 +105,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	for _, apk := range []string{wm.APKNameArcWMTestApp23, wm.APKNameArcWMTestApp24} {
 		if err := a.Install(ctx, arc.APKPath(apk)); err != nil {

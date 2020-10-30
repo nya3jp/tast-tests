@@ -177,7 +177,7 @@ func PreIMEKeyEvent(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
