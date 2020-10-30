@@ -13,7 +13,7 @@ option go_package = "chromiumos/tast/services/cros/network";
 // WifiService allows remote WiFi setup through shill dbus interface.
 service WifiService {
   // InitDUT initialize the DUT for WiFi testing.
-  rpc InitDUT(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc InitDUT(InitDUTRequest) returns (google.protobuf.Empty) {}
 
   // ReinitTestState cleans and sets up the environment for a single WiFi testcase.
   rpc ReinitTestState(google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -433,4 +433,8 @@ message GetGlobalFTPropertyResponse {
 
 message SetGlobalFTPropertyRequest {
   bool enabled = 1;
+}
+
+message InitDUTRequest {
+  bool with_ui = 1;
 }
