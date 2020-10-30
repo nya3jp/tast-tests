@@ -12,9 +12,9 @@ import (
 // tests.
 func TestMetrics() []perf.TimelineDatasource {
 	return []perf.TimelineDatasource{
-		NewRAPLPowerMetrics(),
+		// NewRAPLPowerMetrics(),
 		NewSysfsBatteryMetrics(),
-		NewSysfsThermalMetrics(),
-		NewProcfsCPUMetrics(),
+		// NewSysfsThermalMetrics(),
+		// NewProcfsCPUMetrics(),
 	}
 }

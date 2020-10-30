@@ -90,6 +90,31 @@ func ReadBatteryCapacity(devPaths []string) (float64, error) {
 	return float64(capacity), nil
 }
 
+// ReadBatteryCharge returns the charge of a battery in Ah
+// which comes from /sys/class/power_supply/<supply name>/charge_now.
+func ReadBatteryCharge(devPaths []string) (float64, error) {
+	if len(devPaths) != 1 {
+		return 0, errors.New("device has multiple batteries")
+	}
+	devPath := devPaths[0]
+	charge, err := readInt64(path.Join(devPath, "charge_now"))
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read charge from %v", devPath)
+	}
+	return float64(charge) / 1000000.0, nil
+}
+
+// ReadBatteryEnergy returns the remaining energy of a battry in Wh.
+func ReadBatteryEnergy(devPaths []string) (float64, error) {
+	charge, err := ReadBatteryCharge(devPaths)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read energy from %v", devPaths)
+	}
+	// FIXME(mblsha): How power_supply_info does calculate the remaining energy?
+	// 7.5 seems to bee the correct value form my nami device.
+	return charge * 7.5, nil
+}
+
 // readSystemPower returns system power consumption in Watt.
 // It is assumed that power supplies listed in devPaths have attributes
 // voltage_now and current_now.
