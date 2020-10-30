@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d4531f_e0919458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-30T03:41:47Z",
+      "side": 1,
+      "message": "Please prefer doing things in Go rather than external commands when it\u0027s easy:\n\n defer os.RemoveAll(ppdsPath)",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "c10960bce2065dca85960d28eed221f31cd0e0cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7669f457_62a98cee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-30T03:41:47Z",
+      "side": 1,
+      "message": "This command extracts the file to the current directory, but the current directory for Tast tests is not well-defined at this moment.\n\nCan you instead create a temporary directory and extract files there?\n\n dir, err :\u003d ioutil.TempDir(\"\", \"\")\n if err !\u003d nil {\n   ...\n }\n defer os.RemoveAll(dir)\n\n cmd :\u003d testexec.CommandContext(ctx, \"tar\", \"-x\", \"-C\", dir, \"-f\", s.DataPath(ppdsAll))\n ...",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 72
+      },
+      "revId": "c10960bce2065dca85960d28eed221f31cd0e0cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060c87fa_35a81a32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-30T03:41:47Z",
+      "side": 1,
+      "message": "When calling s.Fatal/s.Error for errors please always err in error messages for better diagnosis.\n\n s.Fatal(\"Failed to extract archive: \", err)\n\n s.Fatal(\"Failed to read directory: \", err)\n\n s.Errorf(\"%s: %v\", file.Name(), err)",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "c10960bce2065dca85960d28eed221f31cd0e0cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
