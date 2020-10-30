@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1688cd93_60ba345b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-30T03:43:52Z",
+      "side": 1,
+      "message": "Thanks, all.",
+      "revId": "bc7d9022662a39127c0f1cd6ba5d076e5a8a997d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb886ac5_c3338c25",
@@ -31,6 +48,24 @@
       "writtenOn": "2020-10-29T22:18:07Z",
       "side": 1,
       "message": "Is Temparature Channels guaranteed to be after all of the physical CPUS? will this ever change?",
+      "revId": "bc7d9022662a39127c0f1cd6ba5d076e5a8a997d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e81b58c6_211adad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-10-30T03:43:52Z",
+      "side": 1,
+      "message": "It is, and it shouldn\u0027t change.",
+      "parentUuid": "eb886ac5_c3338c25",
       "revId": "bc7d9022662a39127c0f1cd6ba5d076e5a8a997d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
