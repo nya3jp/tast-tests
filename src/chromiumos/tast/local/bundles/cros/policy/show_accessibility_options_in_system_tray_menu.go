@@ -41,7 +41,6 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Open a keyboard device.
 	kb, err := input.Keyboard(ctx)
@@ -78,6 +77,8 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name+".txt")
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
