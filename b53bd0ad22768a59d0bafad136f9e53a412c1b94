@@ -235,6 +235,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c701bbd3_e67031e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T10:18:39Z",
+      "side": 1,
+      "message": "This sounds reasonable. And if we have more tests need interaction with UI, we\u0027ll likely want a precondition. Although Precondition is probably not yet for this test as reboot can destroy the setup + gRPC and will need some more effort to support Reboot there. A quick PoC in crrev.com/c/2509531.",
+      "parentUuid": "8f285194_dd60de57",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b361260_fcac236e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
         "patchSetId": 2
