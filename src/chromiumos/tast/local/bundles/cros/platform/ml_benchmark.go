@@ -6,8 +6,13 @@ package platform
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/platform/mlbenchmark"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -32,7 +37,8 @@ func init() {
 			"group:crosbolt",
 			"crosbolt_nightly",
 		},
-		SoftwareDeps: []string{"ml_benchmark"},
+		SoftwareDeps: []string{"chrome", "ml_benchmark"},
+		HardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 		Params: []testing.Param{
 			{
 				Name: "soda_no_nnapi",
@@ -136,6 +142,43 @@ func init() {
 }
 
 func MLBenchmark(ctx context.Context, s *testing.State) {
+	// Shorten the test context so that even if the test times out
+	// there will be time to clean up.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// setup.Setup configures a DUT for a test, and cleans up after.
+	sup, cleanup := setup.New("MLBenchmark")
+	defer func() {
+		if err := cleanup(cleanupCtx); err != nil {
+			s.Fatal("Cleanup failed: ", err)
+		}
+	}()
+
+	// Add the default power test configuration.
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+		Wifi:    setup.DisableWifiInterfaces,
+		Battery: setup.ForceBatteryDischarge,
+	}))
+	if err := sup.Check(ctx); err != nil {
+		s.Fatal("Setup failed: ", err)
+	}
+
+	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
+		s.Fatal("Failed to wait CPU cool down: ", err)
+	}
+
 	const workspacePath = "/usr/local/ml_benchmark"
 
 	p, ok := s.Param().(benchmarkParams)
