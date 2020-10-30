@@ -23,15 +23,17 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardEnglishSettings,
-		Desc:         "Checks that the input settings works in Chrome",
-		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:essential-inputs", "informational"},
+		Func:     VirtualKeyboardEnglishSettings,
+		Desc:     "Checks that the input settings works in Chrome",
+		Contacts: []string{"essential-inputs-team@google.com"},
+		// TODO(http://b/172079414): Test is disabled until it can be fixed
+		// Attr:         []string{"group:mainline", "group:essential-inputs", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Pre:          pre.VKEnabled(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
+			ExtraAttr:         []string{"group:mainline", "group:essential-inputs", "informational"},
 			ExtraHardwareDeps: pre.InputsStableModels,
 		}, {
 			Name:              "unstable",
