@@ -359,18 +359,10 @@ func (f *FilesApp) CreateFolder(ctx context.Context, dirName string, keyboard *i
 	if err := listBox.FocusAndWait(ctx, uiTimeout); err != nil {
 		return errors.Wrap(err, "failed to focus on listbox")
 	}
-	if err := listBox.RightClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to open listbox context menu")
-	}
 
-	// Wait location.
-	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for animation finished")
-	}
-
-	// Left click menuItem.
-	if err := f.LeftClickItem(ctx, NewFolder, ui.RoleTypeMenuItem); err != nil {
-		return errors.Wrapf(err, "failed to click %s in context menu", NewFolder)
+	// Press Ctrl+E to create a new folder.
+	if err := keyboard.Accel(ctx, "Ctrl+E"); err != nil {
+		return errors.Wrap(err, "failed to press Ctrl+E")
 	}
 
 	// Wait for rename text field.
@@ -389,7 +381,11 @@ func (f *FilesApp) CreateFolder(ctx context.Context, dirName string, keyboard *i
 
 	// Press Enter.
 	if err := keyboard.Accel(ctx, "Enter"); err != nil {
-		return errors.Wrapf(err, "failed validating the name of file %s: ", dirName)
+		return errors.Wrapf(err, "failed validating the name of file %s", dirName)
+	}
+
+	if err := f.WaitForFile(ctx, dirName, uiTimeout); err != nil {
+		return errors.Wrapf(err, "failed to find the newly created folder %s", dirName)
 	}
 
 	return nil
