@@ -16,6 +16,24 @@
       "message": "nit: could you log \"err\" and \"m.Files[0]\" too?",
       "revId": "8296f7021c54d682b71cffd516e7fc241d0dbda1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05faf0b6_fcb9895d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-10-30T02:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c04b1c07_67a4b4e2",
+      "revId": "8296f7021c54d682b71cffd516e7fc241d0dbda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
