@@ -33,6 +33,23 @@
       "message": "+tast-owner (PST) ricardoq to take a look.",
       "revId": "a6a0b02f278dd45247e13616f1c226def8c128a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb9927b9_25a03dc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-10-30T21:43:04Z",
+      "side": 1,
+      "message": "+Brendan (Ricardo is OoO)",
+      "revId": "a6a0b02f278dd45247e13616f1c226def8c128a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
