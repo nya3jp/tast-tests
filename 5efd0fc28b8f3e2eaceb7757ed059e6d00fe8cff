@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "246e6301_8b18da6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2020-10-30T15:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bb8676b_25e99819",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "5efd0fc28b8f3e2eaceb7757ed059e6d00fe8cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "871285cb_58afae0f",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b692e57_18dacd7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2020-10-30T15:54:11Z",
+      "side": 1,
+      "message": "I removed the reference to the CL after adding the chromium bug in BUG field, as it has more context. WDYT?",
+      "parentUuid": "871285cb_58afae0f",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 69
+      },
+      "revId": "5efd0fc28b8f3e2eaceb7757ed059e6d00fe8cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a50ff96_8c7247dc",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-30T10:56:46Z",
       "side": 1,
       "message": "Maybe we can mention chromium:1131609 as related bug?",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "5efd0fc28b8f3e2eaceb7757ed059e6d00fe8cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "453704c4_87e385c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2020-10-30T15:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a50ff96_8c7247dc",
       "range": {
         "startLine": 25,
         "startChar": 4,
