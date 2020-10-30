@@ -56,9 +56,9 @@ func SystemTimezone(ctx context.Context, s *testing.State) {
 			timezone: "Europe/Berlin",
 		},
 		{
-			name:     "Los Angeles",
-			policy:   policy.SystemTimezone{Val: "America/Los_Angeles"},
-			timezone: "America/Los_Angeles",
+			name:     "Tokyo",
+			policy:   policy.SystemTimezone{Val: "Asia/Tokyo"},
+			timezone: "Asia/Tokyo",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
