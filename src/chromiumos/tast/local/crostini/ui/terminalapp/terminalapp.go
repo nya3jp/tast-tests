@@ -104,7 +104,7 @@ func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemName string) 
 
 	shutdown := uig.Steps(
 		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Terminal"}, uiTimeout).RightClick(),
-		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeMenuItem, Name: itemName}, uiTimeout).LeftClick(),
+		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeMenuItem, Attributes: map[string]interface{}{"name": regexp.MustCompile(itemName)}}, uiTimeout).LeftClick(),
 	).WithNamef("TerminalApp.clickShelfMenuItem()")
 	return uig.Do(ctx, ta.tconn, shutdown)
 }
@@ -134,7 +134,7 @@ func (ta *TerminalApp) RestartCrostini(ctx context.Context, keyboard *input.Keyb
 
 // ShutdownCrostini shuts down Crostini.
 func (ta *TerminalApp) ShutdownCrostini(ctx context.Context, cont *vm.Container) error {
-	if err := ta.clickShelfMenuItem(ctx, "Shut down Linux (Beta)"); err != nil {
+	if err := ta.clickShelfMenuItem(ctx, "Shut down Linux"); err != nil {
 		return errors.Wrap(err, "failed to shutdown crostini")
 	}
 
