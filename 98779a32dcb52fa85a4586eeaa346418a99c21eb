@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e66d64f_3162d95f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/ppds_all.tar.xz.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-30T05:55:53Z",
+      "side": 1,
+      "message": "Sorry I overlooked this in the earlier iteration, but this is a bucket for private tests.\n\nCan\u0027t we publish ppds_all.tar.xz?",
+      "range": {
+        "startLine": 2,
+        "startChar": 15,
+        "endLine": 2,
+        "endChar": 43
+      },
+      "revId": "98779a32dcb52fa85a4586eeaa346418a99c21eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
