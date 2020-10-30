@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf2a9d7_35f10c5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-10-30T01:12:46Z",
+      "side": 1,
+      "message": "The test is pretty stable according to https://tastboard.corp.google.com/test/platform.CrosDisksFilesystem",
+      "revId": "a488f31113153c14011494436f1889293c788a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
