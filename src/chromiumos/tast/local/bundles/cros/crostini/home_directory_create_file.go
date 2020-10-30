@@ -99,7 +99,7 @@ func testCreateFolderFromLinuxFiles(ctx context.Context, filesApp *filesapp.File
 
 	// Check that the file now exists in the container.
 	if err := cont.CheckFilesExistInDir(ctx, ".", dirName); err != nil {
-		return errors.Wrapf(err, "creation of folder %q did not propogate to container", dirName)
+		return errors.Wrapf(err, "creation of folder %q did not propagate to container", dirName)
 	}
 	return nil
 }
