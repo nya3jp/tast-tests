@@ -105,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "969a65af_510ecf84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-30T22:50:27Z",
+      "side": 1,
+      "message": "This is feasible. The tradeoff is that I have to reinitialize the chrome ui every time I want to access this. I just had the getter return both booleans and let the test poll this function and determine whether to fail early.",
+      "parentUuid": "613f8c5c_cde81a91",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e200af3_33de091a",
@@ -140,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d068d40_dc900db8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-30T22:50:27Z",
+      "side": 1,
+      "message": "Done. I have moved this to another cl for review.",
+      "parentUuid": "e414fd32_683982d9",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccac99bb_a67ce8f7",
@@ -163,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c674f10_6d90437f",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-30T22:50:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccac99bb_a67ce8f7",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 1
+      },
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574a866f_aba81596",
@@ -176,6 +236,30 @@
       "writtenOn": "2020-10-29T03:42:09Z",
       "side": 1,
       "message": "nit: This is used multiple times, maybe worth a clearer variable for it e.g. credKey?",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "904cb76d_c1a3e798",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-30T22:50:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "574a866f_aba81596",
       "range": {
         "startLine": 37,
         "startChar": 2,
@@ -257,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d552c272_8078a32d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-30T22:50:27Z",
+      "side": 1,
+      "message": "Done. I have to restart the rpc connection to achieve this.",
+      "parentUuid": "c701bbd3_e67031e0",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b361260_fcac236e",
@@ -274,6 +382,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a28e494_05023616",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-30T22:50:27Z",
+      "side": 1,
+      "message": "Done, solved by polling the bluetooth state and persistence state for consistency.",
+      "parentUuid": "1b361260_fcac236e",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f47145c6_51254441",
@@ -287,6 +413,24 @@
       "writtenOn": "2020-10-29T23:07:32Z",
       "side": 1,
       "message": "any reason not to run another wifiutil.AssertWifiEnabled()? It actually seems more important to verify here than to verify at L78 -- at 78, we\u0027re just at normal steady-state conditions: both BT and WiFi are enabled and haven\u0027t been messed with. The \"tough\" part is when we\u0027ve disabled one and rebooted.",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0289cba4_11737295",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-10-30T22:50:27Z",
+      "side": 1,
+      "message": "Done. I agree with your assessment here.",
+      "parentUuid": "f47145c6_51254441",
       "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
