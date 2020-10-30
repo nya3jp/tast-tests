@@ -476,6 +476,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0fd9304_2001fa4e",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T18:10:07Z",
+      "side": 1,
+      "message": "It is not checked in the original test and I somehow doubt it will change unnoticed. There\u0027s simply nothing to add to these columns.",
+      "parentUuid": "bf3d8228_b5db9d53",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "cf810bddee1dd8f2e7cddbbea6aa9ab2b1f15857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fbe4d24_b880652f",
         "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
         "patchSetId": 3
