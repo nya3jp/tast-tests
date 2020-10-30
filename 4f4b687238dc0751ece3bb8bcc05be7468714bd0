@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4c53d1_998b4fc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-10-30T00:15:45Z",
+      "side": 1,
+      "message": "It might be worth using named constants for these numbers passed to verifyMountStatus.",
+      "range": {
+        "startLine": 102,
+        "startChar": 91,
+        "endLine": 102,
+        "endChar": 93
+      },
+      "revId": "4f4b687238dc0751ece3bb8bcc05be7468714bd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b58c23_c134a991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-10-30T00:15:45Z",
+      "side": 1,
+      "message": "This tests a very specific case, and a modification (patch) we had to put in fuse-zip.\nSee https://crbug.com/1127752\nand https://github.com/nih-at/libzip/issues/209",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 76
+      },
+      "revId": "4f4b687238dc0751ece3bb8bcc05be7468714bd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
