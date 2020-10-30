@@ -42,10 +42,11 @@ type hotseatTestVal struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HotseatAnimation,
-		Desc:         "Measures the framerate of the hotseat animation in tablet mode",
-		Contacts:     []string{"newcomer@chromium.org", "manucornet@chromium.org", "andrewxu@chromium.org", "cros-shelf-prod-notifications@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:     HotseatAnimation,
+		Desc:     "Measures the framerate of the hotseat animation in tablet mode",
+		Contacts: []string{"newcomer@chromium.org", "manucornet@chromium.org", "andrewxu@chromium.org", "cros-shelf-prod-notifications@google.com"},
+		// TODO(http://b/172071031): Test is disabled until it can be fixed
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
@@ -56,9 +57,10 @@ func init() {
 				Pre:  ash.LoggedInWith100FakeApps(),
 			},
 			{
-				Name: "overflow_shelf",
-				Val:  overflow,
-				Pre:  ash.LoggedInWith100FakeApps(),
+				Name:      "overflow_shelf",
+				ExtraAttr: []string{"group:crosbolt", "crosbolt_perbuild"},
+				Val:       overflow,
+				Pre:       ash.LoggedInWith100FakeApps(),
 			},
 
 			// TODO(https://crbug.com/1083068): when the flag shelf-hide-buttons-in-tablet is removed, delete this sub-test.
