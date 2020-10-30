@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56672f2a_321c1135",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T21:46:46Z",
+      "side": 1,
+      "message": "I realized that I am actually slightly wrong here. When the emulator fails to show up, we actually connect to arc through `127.0.0.1:5555`. This means the only use of the hardcoded ip is by UIAutomator. I will switch it to use forwarding in a follow up cl.",
+      "parentUuid": "c0964ad0_c7e91809",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9dc9412_c9424d56",
@@ -307,6 +331,30 @@
       "side": 1,
       "message": "I don\u0027t understand why. The IPAddr is arc specific and should be a constant in arc. The individual tests that call this function will not having any extra information about the arc ip address.",
       "parentUuid": "34a9f301_8101a4cc",
+      "range": {
+        "startLine": 16,
+        "startChar": 36,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22796532_d62aa368",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-30T21:46:46Z",
+      "side": 1,
+      "message": "Looking at this more, I am gonna create a follow up CL to remove the dependency for UIAutomator to use that ip address at all. `adb forward tcp:0 tcp:9008` should be able to totally replace the need for using that address here.",
+      "parentUuid": "a84c414f_dd92583d",
       "range": {
         "startLine": 16,
         "startChar": 36,
