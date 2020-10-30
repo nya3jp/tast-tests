@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "069fbb7e_355ef9e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-10-30T11:55:29Z",
+      "side": 1,
+      "message": "No need to use Params if there is only one variant?\n\n(Tests that only run on arcvm : https://source.corp.google.com/search?q\u003d%5CsSoftwareDeps.*android_vm\u0026sq\u003dpackage:chromeos )",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "3146f095c634226f291599cd18bbf60e072fa956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "640c8400_ef3a5a77",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
         "patchSetId": 3
