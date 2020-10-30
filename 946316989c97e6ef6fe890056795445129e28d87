@@ -34,6 +34,24 @@
       "parentUuid": "d738448b_562de13d",
       "revId": "946316989c97e6ef6fe890056795445129e28d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dbe3ed3_b02e1e39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-10-30T19:51:53Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ve been looking into them.\n\nSo far, adding\nif err :\u003d ash.WaitForStableShelfBounds(ctx, tconn); err !\u003d nil {\n   s.Fatal(\"Failed to wait for location changes: \", err)\n}\n\nbefore calling runner.RunMultiple, e.g. at line 153 seems to fix the test (at least for me locally), but I\u0027m still trying to figure out what exactly broke the tests.",
+      "parentUuid": "d738448b_562de13d",
+      "revId": "946316989c97e6ef6fe890056795445129e28d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
