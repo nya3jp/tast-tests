@@ -29,7 +29,8 @@ func init() {
 		Func:     LowMemoryKiller,
 		Desc:     "Checks that oom_score_adj is set for Chrome and Android processes and that a process is killed by Chrome tab manager before OOM",
 		Contacts: []string{"wvk@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
+		// TODO(http://b/172091239): Test is disabled until it can be fixed
+		// Attr:     []string{"group:mainline", "informational"},
 		// This test doesn't run well in VMs. See crbug.com/1103472.
 		SoftwareDeps: []string{"chrome", "android_p", "no_qemu"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
