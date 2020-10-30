@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e5d6954_3ac2188c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-10-30T10:17:03Z",
+      "side": 1,
+      "message": "I guess maybe not that necessary to also branch here when WithUI, as UI up is more of a \"default\" condition. (also we don\u0027t really save/restore the initial status)",
+      "revId": "9f4e1a6a4a51248e85c2a7ff2fcc836ac0e25ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
