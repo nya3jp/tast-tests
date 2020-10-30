@@ -69,6 +69,24 @@
       "message": "But why are we ",
       "revId": "7caaa317a9150045c922daec1418b6099298d481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de623aa_6717a184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-30T03:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2250009_8e75f715",
+      "revId": "7caaa317a9150045c922daec1418b6099298d481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
