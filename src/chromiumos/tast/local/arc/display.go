@@ -76,17 +76,35 @@ func (d *Display) PhysicalDensity(ctx context.Context) (density float64, err err
 		return -1, errors.Wrap(err, "failed to execute 'dumpsys display'")
 	}
 
-	// TODO(sstan): Test it on Android Q/R.
-	// This regexp works on Android P.
-	// Looking for:
-	// Display Devices: size=1
-	//  DisplayDeviceInfo
-	//   mDisplayInfos=
-	//    PhysicalDisplayInfo{..., density 1.5, ...}
-	re := regexp.MustCompile(`(?m)` + // Enable multiline.
-		`^Display Devices: size=1\n` + // Match Display Devices section.
-		`(?:\s+.*$)*` + // Skip entire lines...
-		`\s*PhysicalDisplayInfo{.*density (\d\.\d+)?`) // ...until density is matched.
+	n, err := SDKVersion()
+	if err != nil {
+		return -1, err
+	}
+	var re *regexp.Regexp
+	switch n {
+	case SDKP:
+		// In Android P, we are looking for:
+		// Display Devices: size=1
+		//  DisplayDeviceInfo
+		//   mDisplayInfos=
+		//    PhysicalDisplayInfo{..., density 1.5, ...}
+		re = regexp.MustCompile(`(?m)` + // Enable multiline.
+			`^Display Devices: size=1\n` + // Match Display Devices section.
+			`(?:\s+.*$)*` + // Skip entire lines...
+			`\s*PhysicalDisplayInfo{.*density (\d\.\d+)?`) // ...until density is matched.
+	case SDKR:
+		// In Android R, we are looking for:
+		// Display Devices: size=2
+		//   DisplayDeviceInfo
+		//     mDisplayInfo=DisplayInfo{..., density=2.0, ...}
+		re = regexp.MustCompile(`(?m)` + // Enable multiline.
+			`^Display Devices: size=2\n` + // Match Display Devices section.
+			`(?:\s+.*$)*` + // Skip entire lines...
+			`\s*mDisplayInfo.*{.*density=(\d\.\d+)?`) // ...until density is matched.
+	default:
+		return -1, errors.Errorf("unsupported Android version %d", n)
+	}
+
 	groups := re.FindStringSubmatch(string(output))
 	if len(groups) != 2 {
 		return -1, errors.New("failed to parse 'dumpsys display'")
