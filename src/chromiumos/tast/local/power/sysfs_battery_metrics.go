@@ -90,12 +90,68 @@ func ReadBatteryCapacity(devPaths []string) (float64, error) {
 	return float64(capacity), nil
 }
 
-// readSystemPower returns system power consumption in Watt.
+// ReadBatteryChargeNow returns the charge of a battery in Ah
+// which comes from /sys/class/power_supply/<supply name>/charge_now.
+func ReadBatteryChargeNow(devPaths []string) (float64, error) {
+	if len(devPaths) != 1 {
+		return 0, errors.New("device has multiple batteries")
+	}
+	devPath := devPaths[0]
+	charge, err := readInt64(path.Join(devPath, "charge_now"))
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read charge from %v", devPath)
+	}
+	return float64(charge) / 1000000, nil
+}
+
+// ReadBatteryChargeFull returns the full charge of a battery in Ah
+// which comes from /sys/class/power_supply/<supply name>/charge_full.
+func ReadBatteryChargeFull(devPaths []string) (float64, error) {
+	if len(devPaths) != 1 {
+		return 0, errors.New("device has multiple batteries")
+	}
+	devPath := devPaths[0]
+	charge, err := readInt64(path.Join(devPath, "charge_full"))
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read charge from %v", devPath)
+	}
+	return float64(charge) / 1000000, nil
+}
+
+// ReadBatteryEnergy returns the remaining energy of a battry in Wh.
+func ReadBatteryEnergy(devPaths []string) (float64, error) {
+	charge, err := ReadBatteryChargeNow(devPaths)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read energy from %v", devPaths)
+	}
+
+	voltage, err := readFloat64(path.Join(devPaths[0], "voltage_min_design"))
+	if err != nil {
+		// autotest/files/client/cros/power/power_status.py uses current
+		// voltage in case it can't get the specced one.
+		return 0., errors.Wrap(err, "failed to read voltage_min_design")
+	}
+	return charge * float64(voltage) / 1000000, nil
+}
+
+func ReadBatteryChargePercentage(devPaths[] string) (float64, error) {
+	charge_now, err := ReadBatteryChargeNow(devPaths)
+	if err != nil {
+		return 0, err
+	}
+	charge_full, err := ReadBatteryChargeFull(devPaths)
+	if err != nil {
+		return 0, err
+	}
+	return charge_now / charge_full, nil
+}
+
+// ReadSystemMomentaryPower returns system power consumption in Watts.
 // It is assumed that power supplies listed in devPaths have attributes
 // voltage_now and current_now.
 // If reading these attributes fails, this function returns non-nil error,
 // otherwise returns sum of power consumption of each battery.
-func readSystemPower(devPaths []string) (float64, error) {
+func ReadSystemMomentaryPower(devPaths []string) (float64, error) {
 	systemPower := 0.
 	for _, devPath := range devPaths {
 		supplyVoltage, err := readFloat64(path.Join(devPath, "voltage_now"))
@@ -207,7 +263,7 @@ func (b *SysfsBatteryMetrics) Snapshot(ctx context.Context, values *perf.Values)
 	if len(b.batteryPaths) == 0 {
 		return nil
 	}
-	power, err := readSystemPower(b.batteryPaths)
+	power, err := ReadSystemMomentaryPower(b.batteryPaths)
 	if err != nil {
 		return err
 	}

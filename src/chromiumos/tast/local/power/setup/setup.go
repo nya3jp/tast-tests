@@ -128,15 +128,24 @@ func PowerTest(ctx context.Context, c *chrome.TestConn, option BatteryDischargeM
 		s.Add(DisableService(ctx, "update-engine"))
 		s.Add(DisableServiceIfExists(ctx, "vnc"))
 		s.Add(DisableServiceIfExists(ctx, "dptf"))
-		s.Add(SetBacklightLux(ctx, 150))
+		// mblsha: Want the CPU to be the main factor
+		// s.Add(SetBacklightLux(ctx, 0))
 		s.Add(SetKeyboardBrightness(ctx, 24))
 		s.Add(MuteAudio(ctx))
-		s.Add(DisableWiFiInterfaces(ctx))
+
+		// mblsha: I'm connected to my DUT using WiFi
+		// s.Add(DisableWiFiInterfaces(ctx))
+
+		// FIXME(mblsha): Even with this my nami device appears to charge during the test
 		if option == ForceBatteryDischarge {
 			s.Add(SetBatteryDischarge(ctx, 2.0))
 		}
+
 		s.Add(DisableBluetooth(ctx))
-		s.Add(TurnOffNightLight(ctx, c))
+
+		// mblsha: requires non-nil |c| pointer
+		// s.Add(TurnOffNightLight(ctx, c))
+
 		return nil
 	})
 }
