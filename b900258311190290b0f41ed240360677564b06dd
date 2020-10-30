@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29470fe6_906b3ff7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-10-30T06:31:30Z",
+      "side": 1,
+      "message": "Sorry, but now I\u0027m not comfortable with this change. Please see:\nhttps://b.corp.google.com/issues/172010469#comment8\n",
+      "revId": "b900258311190290b0f41ed240360677564b06dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb47cba9_dfb32026",
