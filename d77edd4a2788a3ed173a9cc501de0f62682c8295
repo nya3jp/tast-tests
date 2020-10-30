@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1d57ba_e0a2225f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-10-30T12:02:52Z",
+      "side": 1,
+      "message": "You can check the test results at: https://tastboard.corp.google.com/test/policy.AllowScreenLock",
+      "revId": "d77edd4a2788a3ed173a9cc501de0f62682c8295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
