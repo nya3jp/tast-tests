@@ -7,9 +7,15 @@ package ime
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
+
+// IMEPrefix is the prefix of IME chrome extension.
+const IMEPrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
 
 // AddInputMethod adds the IME identified by imeID via
 // chorme.languageSettingsPrivate.addInputMethod API.
@@ -71,4 +77,31 @@ func GetInputMethodLists(ctx context.Context, tconn *chrome.TestConn) (*InputMet
 		return nil, err
 	}
 	return &imes, nil
+}
+
+// WaitForInstalledInputMethod repeatedly checks until a certain IME is installed.
+func WaitForInstalledInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		inputMethods, err := GetInstalledInputMethods(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get installed input methods")
+		}
+
+		for _, inputMethod := range inputMethods {
+			if inputMethod.ID == imeID {
+				return nil
+			}
+		}
+		return errors.Wrapf(err, "%q is not found in installed input methods: %+v", imeID, inputMethods)
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// GetInstalledInputMethods returns installed input methods
+// via chrome.inputMethodPrivate.getInputMethods API.
+func GetInstalledInputMethods(ctx context.Context, tconn *chrome.TestConn) ([]InputMethod, error) {
+	var inputMethods []InputMethod
+	if err := tconn.Call(ctx, &inputMethods, `tast.promisify(chrome.inputMethodPrivate.getInputMethods)`); err != nil {
+		return nil, err
+	}
+	return inputMethods, nil
 }
