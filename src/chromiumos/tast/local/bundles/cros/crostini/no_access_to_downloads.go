@@ -13,8 +13,9 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui/sharedfolders"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -59,38 +60,38 @@ func init() {
 
 func NoAccessToDownloads(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	s.Log("Test home directory in container is empty by default")
 	if err := checkHomeDirInContainerEmpty(ctx, cont); err != nil {
 		s.Fatal("Home directory in container is not empty by default: ", err)
 	}
-	s.Log("Test MyFiles are not in the container by default")
-	const (
-		myFiles = "MyFiles"
-		mntPath = "/mnt/chromeos"
-	)
-	if err := cont.CheckFileDoesNotExistInDir(ctx, mntPath, myFiles); err != nil {
+
+	if err := cont.CheckFileDoesNotExistInDir(ctx, sharedfolders.MountPath, sharedfolders.MountFolderMyFiles); err != nil {
 		s.Fatal("MyFiles is unexpectedly listed in /mnt/chromeos in container by default: ", err)
 	}
 
 	// Create a file in Downloads.
-	const filename = "test.txt"
-	if err := ioutil.WriteFile(filepath.Join(filesapp.DownloadPath, filename), []byte("teststring"), 0644); err != nil {
+	const fileName = "test.txt"
+	ownerID, err := cryptohome.UserHash(ctx, cr.User())
+	if err != nil {
+		s.Fatal("Failed to get user hash: ", err)
+	}
+	filePath := filepath.Join("/home/user", ownerID, "Downloads", fileName)
+	if err := ioutil.WriteFile(filePath, []byte("teststring"), 0644); err != nil {
 		s.Fatal("Failed to create a file in Downloads: ", err)
 	}
-	defer os.Remove(filepath.Join(filesapp.DownloadPath, filename))
+	defer os.Remove(filePath)
 
-	s.Log("Test home directory in container is empty after creating a file in Downloads in Chrome")
 	if err := checkHomeDirInContainerEmpty(ctx, cont); err != nil {
 		s.Fatal("Home directory in container is not empty after creating a file in Downloads in Chrome: ", err)
 	}
-	s.Log("Test MyFiles are not in the container after creating a file in Downloads in Chrome")
-	if err := cont.CheckFileDoesNotExistInDir(ctx, mntPath, myFiles); err != nil {
+
+	if err := cont.CheckFileDoesNotExistInDir(ctx, sharedfolders.MountPath, sharedfolders.MountFolderMyFiles); err != nil {
 		s.Fatal("MyFiles is unexpectedly listed in /mnt/chromeos in container: ", err)
 	}
 }
