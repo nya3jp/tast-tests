@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a15779bf_df6a5f6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-30T15:33:31Z",
+      "side": 1,
+      "message": "Please review.\nAs it is a bit hard to test all changes on CloudTop, I managed to test them separately.\nBelow some log excerpts:\n\nDual-purpose router/pcap:\n2020/10/30 15:16:45 [15:16:45.888] Preparing precondition \"wificell_test_fixture_capture\"\n2020/10/30 15:16:45 [15:16:45.888] router: localhost:2203\n2020/10/30 15:16:45 [15:16:45.888] pcap: localhost:2203\n2020/10/30 15:16:47 [15:16:47.608] Adding router localhost:2203\n2020/10/30 15:16:55 [15:16:55.151] Supplied pcap name already on router list\n2020/10/30 15:16:55 [15:16:55.151] Starting subtest Testcase #0\n\nName generation in precondition (name base:localhost):\n2020/10/29 16:30:55 [16:30:55.247] Preparing precondition \"wificell_test_fixture_attenuator\"\n2020/10/29 16:30:55 [16:30:55.247] Using default router name\n2020/10/29 16:30:55 [16:30:55.247] router: localhost-router\n2020/10/29 16:30:55 [16:30:55.247] pcap: localhost-pcap\n2020/10/29 16:30:55 [16:30:55.247] attenuator: localhost-attenuator.cros\n2020/10/29 16:30:57 [16:30:57.008] Adding router localhost-router\n",
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bdfec1d_06a75011",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-10-30T15:33:31Z",
+      "side": 1,
+      "message": "Missing function header.",
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
