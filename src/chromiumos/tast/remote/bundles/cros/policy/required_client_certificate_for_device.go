@@ -28,7 +28,8 @@ func init() {
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},
-		Attr:         []string{"group:enrollment"},
+		// TODO(http://b/172073832): Test is disabled until it can be fixed
+		// Attr:         []string{"group:enrollment"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.policy.ClientCertificateService"},
 		Timeout:      6 * time.Minute,
