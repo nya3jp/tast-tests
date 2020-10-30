@@ -247,7 +247,7 @@ func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 
 // RemoveConfirmDialog represents the confirm dialog of removing Crostini.
 type RemoveConfirmDialog struct {
-	Self   *uig.Action `name:"Delete Linux (Beta)" role:"dialog"`
+	Self   *uig.Action `name:"Remove Linux" role:"dialog"`
 	Delete *uig.Action `name:"Delete" role:"button"`
 	Cancel *uig.Action `name:"Cancel" role:"button"`
 }
