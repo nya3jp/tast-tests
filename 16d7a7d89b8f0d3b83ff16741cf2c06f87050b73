@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a091f3_86ccc742",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-10-30T03:24:13Z",
+      "side": 1,
+      "message": "ptal sstan@\nThis is required to be able to run uniform_scale_factor tests in R.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+      "revId": "16d7a7d89b8f0d3b83ff16741cf2c06f87050b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
