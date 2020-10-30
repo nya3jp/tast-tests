@@ -39,6 +39,30 @@
       },
       "revId": "5e6f647cc5e2901e2d74c2e8781c2004a6fe11c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1af1d35_2c20f30f",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-10-30T10:28:14Z",
+      "side": 1,
+      "message": "Let\u0027s discuss a final solution offline.",
+      "parentUuid": "cf553c75_d5f872c4",
+      "range": {
+        "startLine": 270,
+        "startChar": 20,
+        "endLine": 270,
+        "endChar": 22
+      },
+      "revId": "5e6f647cc5e2901e2d74c2e8781c2004a6fe11c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
