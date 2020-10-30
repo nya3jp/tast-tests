@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17c5e9ad_7cf3e896",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-10-30T09:59:23Z",
+      "side": 1,
+      "message": "PTL\nThis CL took arc.Reboot as an example.",
+      "revId": "3146f095c634226f291599cd18bbf60e072fa956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
