@@ -21,10 +21,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StadiaGameplayCUJ,
-		Desc:         "Measures the performance of critical user journey for game playing on Stadia",
-		Contacts:     []string{"yichenz@chromium.org"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:     StadiaGameplayCUJ,
+		Desc:     "Measures the performance of critical user journey for game playing on Stadia",
+		Contacts: []string{"yichenz@chromium.org"},
+		// TODO(http://b/172070475): Test is disabled until it can be fixed
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		Timeout:      10 * time.Minute,
 		Vars: []string{
