@@ -70,7 +70,7 @@ func TFPcap(target string) TFOption {
 // TFCapture sets if the test fixture should spawn packet capturer in ConfigureAP.
 func TFCapture(b bool) TFOption {
 	return func(tf *TestFixture) {
-		tf.packetCapture = b
+		tf.option.packetCapture = b
 	}
 }
 
@@ -78,6 +78,15 @@ func TFCapture(b bool) TFOption {
 func TFAttenuator(target string) TFOption {
 	return func(tf *TestFixture) {
 		tf.attenuatorTarget = target
+	}
+}
+
+// TFWithUI sets if the test fixture should not skip stopping UI.
+// This option is useful for tests with UI settings + basic WiFi functionality,
+// where the interference of UI (e.g. trigger scans) does not matter much.
+func TFWithUI() TFOption {
+	return func(tf *TestFixture) {
+		tf.option.withUI = true
 	}
 }
 
@@ -98,13 +107,17 @@ type TestFixture struct {
 
 	routers []routerData
 
-	pcapTarget    string
-	pcapHost      *ssh.Conn
-	pcap          *Router
-	packetCapture bool
+	pcapTarget string
+	pcapHost   *ssh.Conn
+	pcap       *Router
 
 	attenuatorTarget string
 	attenuator       *attenuator.Attenuator
+
+	option struct {
+		packetCapture bool
+		withUI        bool
+	}
 
 	apID      int
 	capturers map[*APIface]*pcap.Capturer
@@ -199,7 +212,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	tf.wifiClient = network.NewWifiServiceClient(tf.rpc.Conn)
 
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
-	if _, err := tf.wifiClient.InitDUT(ctx, &empty.Empty{}); err != nil {
+	if _, err := tf.wifiClient.InitDUT(ctx, &network.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
 		return nil, errors.Wrap(err, "failed to InitDUT")
 	}
 
@@ -416,7 +429,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 	}
 
 	var capturer *pcap.Capturer
-	if tf.packetCapture {
+	if tf.option.packetCapture {
 		freqOps, err := config.PcapFreqOptions()
 		if err != nil {
 			return nil, err
