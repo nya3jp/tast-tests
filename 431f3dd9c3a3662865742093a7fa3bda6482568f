@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b82f1c_39059d1f",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-30T01:37:43Z",
+      "side": 1,
+      "message": "Yes. As js file is generated one, the format is determined and easier to parse. Added a comment for this.",
+      "parentUuid": "34fd8a15_07cc1547",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 75
+      },
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb01899_20700008",
@@ -71,6 +95,24 @@
       "writtenOn": "2020-10-29T19:54:51Z",
       "side": 1,
       "message": "Can you make an assignee of the TODO (or an issue for it)? i.e.\n  TODO(hirokisato): ...\nor\n  TODO(crbug.com/nnnn): ...",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b389a89_751f83fa",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-30T01:37:43Z",
+      "side": 1,
+      "message": "deleted this TODO as restriction is generated now and checked state is just embedded string and I think it\u0027s impossible to get the values from idl or js file.",
+      "parentUuid": "cdb01899_20700008",
       "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa5d2c31_c12fdba6",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-30T01:37:43Z",
+      "side": 1,
+      "message": "ooops. I just grepped \"restrictionState\". Thanks.",
+      "parentUuid": "7cb08bb9_ea0133d7",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "136f736b_24e84b61",
@@ -105,6 +165,24 @@
       "writtenOn": "2020-10-29T19:54:51Z",
       "side": 1,
       "message": "This function is worth having a docstring (https://chromium.googlesource.com/chromiumos/docs/+/master/styleguide/python.md#describing-arguments-in-docstrings)",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2af7b1_01f483bb",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-30T01:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "136f736b_24e84b61",
       "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +204,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "346912ce_18c04243",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-30T01:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b00ab28_82947b41",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fe85ffb_ff41e70d",
@@ -139,6 +235,24 @@
       "writtenOn": "2020-10-29T19:54:51Z",
       "side": 1,
       "message": "The style guide says in ChromeOS, we use %-formatting exclusively (https://chromium.googlesource.com/chromiumos/docs/+/master/styleguide/python.md#formatting)",
+      "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62662c9_75fc5177",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-10-30T01:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fe85ffb_ff41e70d",
       "revId": "431f3dd9c3a3662865742093a7fa3bda6482568f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
