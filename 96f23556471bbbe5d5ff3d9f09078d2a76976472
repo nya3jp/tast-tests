@@ -16,6 +16,23 @@
       "message": "Hi Ross, \n\nDisney is failing due to \"app is not compatible with the device\". Please find the bug for this, https://buganizer.corp.google.com/issues/145689582#comment3. As per the comment app might be not compatible if the build is not CTS pass. So it is genuine failure. Thanks.\n\nRegards,\nMeena\n",
       "revId": "96f23556471bbbe5d5ff3d9f09078d2a76976472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1359cfc4_7e3a4694",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-10-30T20:37:22Z",
+      "side": 1,
+      "message": "Meena, what\u0027s your opinion on this CL ?",
+      "revId": "96f23556471bbbe5d5ff3d9f09078d2a76976472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
